@@ -1,0 +1,16 @@
+Algebra dim: 45
+Symmetric bilinear form parameter count: 1035 = 1035
+Building all invariance equations...
+Full invariance system rank: 1034
+Invariant symmetric form space dim = 1
+✓ UNIQUE (up to scalar) invariant form → SIMPLE
+
+Cartan rank verification:
+  5 standard so(10) Cartan elements J_1..J_5: ✓ in algebra, ✓ mutually commute
+  Extension beyond 5 possible? NO (rank = 5)
+
+Root system check:
+  ad(H) eigenvalue real parts range: [-0.00, 0.00]
+  ad(H) eigenvalue imag parts range: [-9.00, 9.00]
+  # zero eigenvalues: 5 (expected 5 for Cartan = kernel of ad(H))
+  Eigenvalue count = 40 nonzero + 5 zero = 45? True

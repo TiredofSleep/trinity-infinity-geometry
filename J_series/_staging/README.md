@@ -10,6 +10,13 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J29 — HOLD (referee re-verification 2026-05-12)
+
+- **Status:** **HOLD.** Manuscript (post-SAVE_PLAN 2026-05-07 rewrite) claims (i) exact-arithmetic SymPy diagnostics, (ii) full 21,952-equation simplicity enumeration, (iii) Lemma 2.5 specific dimension drops on F minus single index, (iv) Cartan rank 4 verified by explicit 4-element abelian subspace. Independent re-run of the existing scripts in `Gen14/targets/journals/J_series/J29/manuscript/verification/` shows: scripts are still pure numpy float (not SymPy); the −0.004 small Killing eigenvalue flagged in the SAVE_PLAN as needing resolution is still in the output; `stage7_disambiguate.py` caps `tested > 3000` (not 21,952); `stage5_so8.py` greedy-Cartan returns rank 1 (mismatch with rank 4 claim); brute-force F-minus-single-index enumeration gives dim 28 for F minus 1, 3, 4, 6, 8 and dim 21 only for F minus 2 (manuscript claims 21/21/15/28/21/28); and the minimum so(8)-generating subset of $\Omega \setminus \{0,7\}$ has **size 3** (e.g., $\{1,2,4\}$), so F is NOT the minimal generating set.
+- **What's solid:** the core identification $\mathfrak{g} \cong \mathfrak{so}(8)$ at dim 28 is correct (matched by `stage4_correct_closure.py` and `stage7_disambiguate.py`'s nullity-1 conclusion); F = {1,2,3,4,6,8} reaches dim 28 under closure (verified).
+- **Gating:** (a) rewrite all five diagnostics in SymPy or exact-rational integer arithmetic in a single `verify_J29_so8.py`; (b) drop the `tested > 3000` cap and run the full 21,952 (or argue symmetry reduction); (c) construct an explicit 4-dim abelian subspace exactly, or drop D5 and rely on Cartan-classification uniqueness at dim 28; (d) update Lemma 2.5 with the correct dimension drops and reframe the canonicity claim honestly (F is not minimal — minimum is size 3).
+- **Estimated effort:** 8–12 hours for the script rewrite + manuscript reconciliation pass.
+
 ### Corpus centerpiece pair — BOTH LANDED 2026-05-12
 
 - **J35** (Four-Core Fusion-Closure, *Journal of Algebra*) — **LANDED 2026-05-12 at [`../algebra/J35/`](../algebra/J35/).** 6/6 PASS at machine precision; referee-grade pass complete; CC-BY-4.0 verification script header; honest-negatives discipline on T*=5/7 and bounded F_p scan.
@@ -94,7 +101,7 @@ W1-D: J11, J12, J16
 W1-E: J05, J08, J09
 W2-A: J03, J04, J06
 W2-B: J07, J10, J19
-W2-C: J28, J29, J30
+W2-C: J28, J29 (J30 landed 2026-05-12 at [`../algebra/J30/`](../algebra/J30/))
 W2-D: J33, J34, J36
 W2-F: J45, J47 (J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/))
 W2-G: J49, J50, J52, J53 (author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
