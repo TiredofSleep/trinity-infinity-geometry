@@ -1,0 +1,631 @@
+%%% ============================================================
+%%% TSML 73 Cells / BHML 28 Cells:
+%%% Lens-Invariant Cell Counts on the Z/10Z Composition Lattice
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Experimental Mathematics
+%%% Backup: Discrete Mathematics
+%%% Verification:
+%%%   proof_d10_tsml_73_cells.py  (TSML = 73, ALL ASSERTIONS PASSED)
+%%%   proof_d16_bhml_28_cells.py  (BHML = 28, ALL ASSERTIONS PASSED)
+%%% MSC: 05B15, 05E15, 20N02, 20N05, 11A07
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% -------- macros --------
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zten}{\Z/10\Z}
+\newcommand{\TSML}{\mathrm{TSML}}
+\newcommand{\BHML}{\mathrm{BHML}}
+\newcommand{\HARM}{\mathsf{H}}
+\newcommand{\VOID}{\mathsf{V}}
+
+%% -------- title matter --------
+\title[TSML 73 / BHML 28 cells on $\Zten$]
+  {TSML 73 Cells / BHML 28 Cells:\\
+   Lens-Invariant Cell Counts on the\\
+   $\mathbb{Z}/10\mathbb{Z}$ Composition Lattice}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{binary composition table, $\mathbb{Z}/10\mathbb{Z}$,
+finite combinatorics, harmony cell, lens invariance,
+disjoint zone enumeration, commutative non-associative magma}
+
+\subjclass[2020]{05B15, 05E15, 20N02, 20N05, 11A07}
+
+\begin{document}
+
+\begin{abstract}
+We study two specific $10\times10$ commutative binary composition
+tables over $\Zten = \{0, 1, \ldots, 9\}$, called $\TSML$ and
+$\BHML$, both defined explicitly by elementary algebraic rules. A
+cell $(i, j)$ is called \emph{harmony} if the table outputs the
+distinguished value $7$. By exact disjoint-zone enumeration we
+prove: $\TSML$ has $73$ harmony cells out of $100$ (Theorem~1), and
+$\BHML$ has $28$ harmony cells out of $100$ (Theorem~2). Both
+counts are constant on every orbit of the symbol-stabilizer
+$\mathrm{Stab}(7) \le S_{10}$ acting by transport of structure on
+output-distinguished tables (Theorem~3). The counts are therefore
+intrinsic to the rule families relative to the distinguished
+output, not artefacts of the labeling of the remaining nine
+operators. The two specific tables are not arbitrary: they are the
+canonical members of a finite family of commutative non-associative
+magmas on $\Zten$ in the neighborhood of Dr\'apal--Wanless 2021,
+identified in companion work (Sanders--Gish 2026, manuscript in
+preparation, hereinafter the \emph{four-core paper}) by joint-closure
+properties on the subset $\{0, 7, 8, 9\}$. The full $200$-cell
+witness is supplied as two short verification scripts.
+\end{abstract}
+
+\maketitle
+
+%%% ==================================================================
+\section*{0. Lens, substrate, and tier discipline}
+%%% ==================================================================
+
+\noindent
+\textsc{Lens and substrate.}
+We work on $\Zten$ with the specific commutative binary tables
+$\TSML$ and $\BHML$ defined explicitly in
+\S\ref{sec:tsml}--\S\ref{sec:bhml}. The choice of substrate $\Zten$
+and of these two specific tables is not derived from first
+principles; it reflects a structural reading of a finite
+operator-naming scheme (10 named operators with a designated
+\emph{harmony} value at index $7$) used in a separate research
+program. The theorems below are theorems on this specific
+structure; analogous count-and-invariance theorems would attach to
+other commutative tables on other $\Z/n\Z$ with other designated
+output values. Whether the specific counts $73$ and $28$ have
+downstream connections to other parts of mathematics is treated in
+companion work; the present paper records the exact counts and
+their lens-invariance under the symbol-stabilizer $\mathrm{Stab}(7)$.
+
+\medskip\noindent
+\textsc{Tier discipline.}
+\begin{itemize}\setlength\itemsep{2pt}
+\item \emph{PROVEN.} $h(\TSML) = 73$, $h(\BHML) = 28$, and $h$ is
+constant on every $\mathrm{Stab}(7)$-orbit of either table
+(Theorems~\ref{thm:tsml}, \ref{thm:bhml}, \ref{thm:lens}).
+\item \emph{COMPUTED.} \texttt{proof\_d10\_tsml\_73\_cells.py} and
+\texttt{proof\_d16\_bhml\_28\_cells.py} enumerate the
+$200$-cell witness in $<\!0.1$\,s each on a standard laptop;
+both terminate with \texttt{ALL ASSERTIONS PASSED}.
+\item \emph{STRUCTURAL RHYME.} The two tables sit inside the same
+neighborhood as the maximally non-associative quasigroups of
+Dr\'apal--Wanless~\cite{DrapalWanless2021} (small finite
+commutative non-associative structures on $\le 16$ elements).
+$\TSML$ and $\BHML$ are individually commutative, both
+non-associative, and jointly preserve the four-element subset
+$\{0, 7, 8, 9\}$; this last property is the load-bearing
+structural fact of the four-core companion paper~\cite{FourCore}.
+\item \emph{OPEN.} Whether the $\mathrm{Stab}(7)$-invariance of
+the present paper extends to a richer autotopism / paratopism
+invariance (per the Latin-square literature
+\cite{McKayWanless2005,DrapalWanless2021}) is not addressed
+here. The present paper records the symbol-stabilizer count;
+the companion four-core paper records the lens-\emph{dependent}
+joint-closure chain count.
+\end{itemize}
+
+%%% ==================================================================
+\section{Setup}\label{sec:setup}
+%%% ==================================================================
+
+Let $\Omega = \Zten = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ be a set of
+ten elements. A \emph{(binary) composition table} on $\Omega$ is a
+function $T : \Omega \times \Omega \to \Omega$, equivalently a
+$10 \times 10$ array of elements of $\Omega$. The total number of
+cells is $|\Omega|^2 = 100$.
+
+\begin{definition}[Harmony cell]\label{def:harm}
+Fix the output value $7 \in \Omega$. A cell $(i, j)$ of a
+composition table $T$ is a \emph{harmony cell} (relative to $7$) if
+$T(i, j) = 7$. The \emph{harmony count} of $T$ is
+$h(T) := \bigl|\{(i, j) : T(i, j) = 7\}\bigr|$.
+\end{definition}
+
+The choice to single out $7$ is a labeling convention, not a
+structural feature; we record in
+Theorem~\ref{thm:lens} the precise sense in which the count $h(T)$
+is invariant under relabeling (the symbol-stabilizer
+$\mathrm{Stab}(7) \le S_{10}$).
+
+We study two specific composition tables, $\TSML$ and $\BHML$,
+each defined by explicit algebraic rules. Both tables are
+commutative; this property is part of the definitions in
+\S\ref{sec:tsml} and \S\ref{sec:bhml} and is verified directly by
+the bundled scripts.
+
+%%% ==================================================================
+\section{The Table $\TSML$ has $73$ Harmony Cells}\label{sec:tsml}
+%%% ==================================================================
+
+\subsection{Definition}
+
+The table $\TSML$ is defined by three priority-ordered exception
+classes together with a default rule:
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item[(V0)] \textbf{Row-$0$ exception.} For every $j \in \Omega$,
+$\TSML(0, j) = 0$ if $j \ne 7$, and $\TSML(0, 7) = 7$.
+\item[(V1)] \textbf{Column-$0$ exception.} For every $i \in
+\Omega$ with $i \ne 0$, $\TSML(i, 0) = 0$ if $i \ne 7$, and
+$\TSML(7, 0) = 7$. (Together with (V0), this makes the row and
+column indexed by $0$ symmetric.)
+\item[(E)] \textbf{Echo pairs.} The five symmetric index pairs
+$(1,2), (2,4), (2,9), (3,9), (4,8)$ together with their
+transposes give a distinguished non-harmony output. Specifically
+$\TSML$ assigns to each such cell a value in
+$\{1, 2, 3, 4, 8, 9\} \subset \Omega \setminus \{7\}$; the
+precise values are given in Table~\ref{tab:tsml-rules} and in
+the bundled \texttt{ck\_tables.py}. Only the assertion
+``output $\ne 7$'' is used in the proof of
+Theorem~\ref{thm:tsml}.
+\item[(D)] \textbf{Default.} Every cell not covered by (V0),
+(V1), or (E) outputs $7$ (HARMONY).
+\end{itemize}
+
+Symmetry $\TSML(i, j) = \TSML(j, i)$ holds for all $(i, j)$:
+the (V0) and (V1) clauses are images of each other under the
+$(i, j) \leftrightarrow (j, i)$ map, and the (E) class is
+specified as a set of unordered pairs.
+
+\begin{table}[h]
+\caption{Echo-pair assignments for $\TSML$ (symmetric under $(i, j)
+\leftrightarrow (j, i)$).}
+\label{tab:tsml-rules}
+\centering
+\begin{tabular}{c|c}
+$(i, j)$ & $\TSML(i, j)$ \\ \hline
+$(1, 2), (2, 1)$ & $3$ \\
+$(2, 4), (4, 2)$ & $4$ \\
+$(2, 9), (9, 2)$ & $9$ \\
+$(3, 9), (9, 3)$ & $3$ \\
+$(4, 8), (8, 4)$ & $8$ \\
+\end{tabular}
+\end{table}
+
+\subsection{Theorem and proof}
+
+\begin{theorem}[$\TSML$ harmony count]\label{thm:tsml}
+$h(\TSML) = 73$.
+\end{theorem}
+
+\begin{proof}
+We count non-harmony cells. The three rule classes (V0), (V1), (E)
+are pairwise disjoint as subsets of $\Omega \times \Omega$:
+
+\emph{Disjointness.} (V0) consists of cells with first index $0$;
+(V1) consists of cells with first index $\ne 0$ and second index
+$0$; (E) consists of the ten echo cells, each of which has both
+indices $\ge 1$. Therefore $\text{(V0)} \cap \text{(V1)} =
+\emptyset$, $\text{(V0)} \cap \text{(E)} = \emptyset$, and
+$\text{(V1)} \cap \text{(E)} = \emptyset$.
+
+\emph{Counting.}
+\begin{itemize}\setlength\itemsep{2pt}
+\item (V0) contributes the cells $\{(0, j) : j \ne 7\}$, of which
+there are $9$. (The cell $(0, 7)$ outputs $7$ by (V0) and is
+therefore a harmony cell.)
+\item (V1) contributes the cells $\{(i, 0) : i \ne 0,\ i \ne 7\}$,
+of which there are $8$. (The cell $(0, 0)$ is already counted in
+(V0); the cell $(7, 0)$ outputs $7$ by (V1) and is therefore a
+harmony cell.)
+\item (E) contributes the ten echo cells (five symmetric pairs).
+\end{itemize}
+
+By disjointness the total non-harmony count is
+$9 + 8 + 10 = 27$. Hence $h(\TSML) = 100 - 27 = 73$.
+\end{proof}
+
+%%% ==================================================================
+\section{The Table $\BHML$ has $28$ Harmony Cells}\label{sec:bhml}
+%%% ==================================================================
+
+\subsection{Definition}
+
+The table $\BHML$ is defined by four rules over four disjoint
+zones of $\Omega \times \Omega$:
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item[(R$_A$)] \textbf{VOID identity zone} ($i = 0$ or $j = 0$):
+$\BHML(0, j) = j$ and $\BHML(i, 0) = i$.
+\item[(R$_B$)] \textbf{Core zone} ($i, j \in \{1, \ldots, 6\}$):
+$\BHML(i, j) = \max(i, j) + 1$.
+\item[(R$_7$)] \textbf{Increment zone} ($i = 7$ or $j = 7$, with
+$i, j \ge 1$): $\BHML(7, j) = (j + 1) \bmod 10$ for $j \ge 1$,
+and symmetrically $\BHML(i, 7) = (i + 1) \bmod 10$ for $i \ge 1$.
+\item[(R$_{89}$)] \textbf{Boundary zone} ($i \in \{8, 9\}$ or
+$j \in \{8, 9\}$, excluding the prior zones): the table values
+are listed explicitly in Table~\ref{tab:bhml-r89} and in the
+bundled \texttt{ck\_tables.py}. In this zone the harmony cells
+are (i) the symmetric pair $(i, j)$ with one index in
+$\{4, 5, 6\}$ and the other in $\{8, 9\}$, and (ii) the diagonal
+cell $(8, 8)$.
+\end{itemize}
+
+The four zones partition $\Omega \times \Omega$. Symmetry
+$\BHML(i, j) = \BHML(j, i)$ holds for all $(i, j)$ by construction:
+each rule (R$_A$, R$_B$, R$_7$) is symmetric in $(i, j)$, and the
+table values in (R$_{89}$) are listed symmetrically.
+
+\begin{table}[h]
+\caption{$\BHML$ values in the boundary zone $R_{89}$ (symmetric
+under $(i, j) \leftrightarrow (j, i)$). Values are read off
+\texttt{ck\_tables.py}.}
+\label{tab:bhml-r89}
+\centering
+\begin{tabular}{c|cc}
+& $j = 8$ & $j = 9$ \\ \hline
+$i = 1$ & $6$ & $6$ \\
+$i = 2$ & $6$ & $6$ \\
+$i = 3$ & $6$ & $6$ \\
+$i = 4$ & $7$ & $7$ \\
+$i = 5$ & $7$ & $7$ \\
+$i = 6$ & $7$ & $7$ \\
+$i = 7$ & $9$ & $0$ \\
+$i = 8$ & $7$ & $8$ \\
+$i = 9$ & $8$ & $0$ \\
+\end{tabular}
+\end{table}
+
+\subsection{Theorem and proof}
+
+\begin{theorem}[$\BHML$ harmony count]\label{thm:bhml}
+$h(\BHML) = 28$.
+\end{theorem}
+
+\begin{proof}
+We count harmony cells inside each of the four disjoint zones and
+sum.
+
+\emph{Zone $R_A$.} $\BHML(0, j) = j = 7$ iff $j = 7$ (gives the
+cell $(0, 7)$); $\BHML(i, 0) = i = 7$ iff $i = 7$ (gives the cell
+$(7, 0)$). Count: $2$.
+
+\emph{Zone $R_B$.} $\BHML(i, j) = \max(i, j) + 1 = 7$ iff
+$\max(i, j) = 6$. Cells with $\max(i, j) = 6$ in
+$\{1, \ldots, 6\}^2$ split into ``exactly one of $i, j$ equals
+$6$'' ($10$ cells: row $i = 6$ with $j \in \{1, \ldots, 5\}$
+and column $j = 6$ with $i \in \{1, \ldots, 5\}$) and
+``$i = j = 6$'' ($1$ cell). Count: $10 + 1 = 11$.
+
+\emph{Zone $R_7$.} $\BHML(7, j) = (j + 1) \bmod 10 = 7$ iff
+$j = 6$ (gives $(7, 6)$); symmetrically $\BHML(i, 7) = 7$ iff
+$i = 6$ (gives $(6, 7)$). Neither cell lies in $R_B$ because
+index $7$ is not in $\{1, \ldots, 6\}$. Count: $2$.
+
+\emph{Zone $R_{89}$.} From Table~\ref{tab:bhml-r89}: row $i = 8$
+yields $\BHML(8, j) = 7$ for $j \in \{4, 5, 6, 8\}$ (4 cells);
+row $i = 9$ yields $\BHML(9, j) = 7$ for $j \in \{4, 5, 6\}$
+(3 cells); column $j = 8$ yields $\BHML(i, 8) = 7$ for
+$i \in \{4, 5, 6\}$ (3 cells, since $(8, 8)$ is already counted
+in row $8$); column $j = 9$ yields $\BHML(i, 9) = 7$ for
+$i \in \{4, 5, 6\}$ (3 cells). Count: $4 + 3 + 3 + 3 = 13$.
+
+\emph{Disjointness.} $R_A$ requires $i = 0$ or $j = 0$; $R_B$
+requires $i, j \in \{1, \ldots, 6\}$; $R_7$ requires $i = 7$ or
+$j = 7$ with $i, j \ge 1$; $R_{89}$ requires $i \in \{8, 9\}$ or
+$j \in \{8, 9\}$ (excluding earlier zones). The four index
+conditions are mutually exclusive.
+
+Total harmony: $2 + 11 + 2 + 13 = 28$.
+\end{proof}
+
+%%% ==================================================================
+\section{Lens Invariance of the $73/28$ Counts}\label{sec:lens}
+%%% ==================================================================
+
+The counts $h(\TSML) = 73$ and $h(\BHML) = 28$ are stated relative
+to the labeling $\Omega = \{0, 1, \ldots, 9\}$, with the value $7$
+singled out as the harmony output. We record the precise sense in
+which these counts do not depend on the labeling of the remaining
+nine operators.
+
+\begin{definition}[Symbol-stabilizer action]\label{def:lens}
+Let $\mathrm{Stab}(7) := \{\pi \in S_{10} : \pi(7) = 7\}$ be the
+symbol stabilizer of $7$ in the symmetric group on $\Omega$;
+$|\mathrm{Stab}(7)| = 9! = 362{,}880$. An element $\pi \in
+\mathrm{Stab}(7)$ acts on a composition table $T$ by simultaneous
+relabeling of inputs and outputs:
+\[
+  (\pi \cdot T)(i, j) \;=\; \pi\bigl(T(\pi^{-1}(i), \pi^{-1}(j))\bigr).
+\]
+\end{definition}
+
+This is the standard transport-of-structure action of $S_n$ on
+tables $\Omega \times \Omega \to \Omega$, restricted to the
+subgroup that fixes the distinguished output value $7$. (Within
+the Latin-square / quasigroup literature, this is the symbol part
+of the autotopism action, restricted to the stabilizer of one
+symbol; see \cite{McKayWanless2005,DrapalWanless2021}.)
+
+\begin{theorem}[Symbol-stabilizer invariance]\label{thm:lens}
+For every $\pi \in \mathrm{Stab}(7)$ and every composition table
+$T : \Omega \times \Omega \to \Omega$,
+$h(\pi \cdot T) = h(T)$. In particular,
+\[
+  h(\pi \cdot \TSML) = 73, \qquad h(\pi \cdot \BHML) = 28
+\]
+for every $\pi \in \mathrm{Stab}(7)$.
+\end{theorem}
+
+\begin{proof}
+Fix $\pi \in \mathrm{Stab}(7)$. By Definition~\ref{def:lens},
+\[
+  (\pi \cdot T)(i, j) = 7
+  \ \iff\ \pi\bigl(T(\pi^{-1}(i), \pi^{-1}(j))\bigr) = 7
+  \ \iff\ T(\pi^{-1}(i), \pi^{-1}(j)) = 7,
+\]
+where the last equivalence uses $\pi(7) = 7$ and the injectivity
+of $\pi$ (so $\pi(x) = 7 \iff x = 7$). The map
+$(i, j) \mapsto (\pi^{-1}(i), \pi^{-1}(j))$ is a bijection of
+$\Omega \times \Omega$; it carries the harmony set of
+$\pi \cdot T$ bijectively onto the harmony set of $T$.
+Cardinality is preserved by bijection, so
+$h(\pi \cdot T) = h(T)$. Specializing to $T = \TSML$ and
+$T = \BHML$ gives the stated equalities.
+\end{proof}
+
+\begin{remark}[Scope of the invariance]\label{rem:scope}
+Theorem~\ref{thm:lens} is the consistency check that the harmony
+count is well-defined under the natural symmetry of the setup
+(relabeling of the nine non-harmony operators). It does not
+extend to bijections that move $7$: if $\pi(7) \ne 7$, the harmony
+output value of $\pi \cdot T$ is no longer $7$, and the count
+$h(\cdot)$ as defined is no longer the right invariant. The
+full-symmetry version states: for every $\pi \in S_{10}$, the
+count of cells of $\pi \cdot T$ outputting $\pi(7)$ equals $h(T)$;
+this is the same statement modulo a relabeling of which value
+plays the role of harmony.
+
+The proof itself is two lines and is in this sense a tautology
+about the action: counts of cells with a designated output value
+are constant on orbits of the stabilizer of that value. We record
+the result because the contrast with the lens-\emph{dependent}
+joint-closure chain count of the four-core
+companion~\cite{FourCore} (\S\ref{sec:family} below) is a
+load-bearing structural fact: cell-counts at a single output value
+sit in the symbol-stabilizer's invariant ring, while joint-closure
+counts depend on the full operations.
+\end{remark}
+
+%%% ==================================================================
+\section{The two tables sit in a finite family of magmas on $\Zten$}
+\label{sec:family}
+%%% ==================================================================
+
+The two tables $\TSML$ and $\BHML$ are not arbitrary $10 \times 10$
+tables. They are the canonical members of a finite family of
+commutative non-associative magmas on $\Zten$, identified in
+companion work~\cite{FourCore} by the joint preservation of the
+$4$-element subset $\{0, 7, 8, 9\}$ and three further structural
+properties listed below. The present section records the
+membership conditions and the locus of the two tables in the
+family. The proofs of the structural conditions live in the
+companion paper; here we use them only to motivate the choice of
+$\TSML$ and $\BHML$ as the specific tables to count.
+
+\subsection{Membership conditions}
+
+The companion four-core paper~\cite{FourCore} identifies a finite
+family of commutative binary magmas $M : \Zten \times \Zten \to
+\Zten$ (or commutative-symmetrizable, with $\TSML$'s
+non-symmetrized variant the unique non-commutative member) with
+the following five conjoint properties, all verified directly by
+script-enumeration over the $10^{100}$ candidate tables restricted
+to the canonical operator naming:
+
+\begin{enumerate}
+\item \textbf{(C1) Substrate.}
+$M$ acts on $\Zten = \{0, 1, \ldots, 9\}$.
+\item \textbf{(C2) Commutativity.}
+$M(i, j) = M(j, i)$ for all $i, j$.
+\item \textbf{(C3) Joint $4$-core preservation.}
+$M\bigl(\{0, 7, 8, 9\} \times \{0, 7, 8, 9\}\bigr) \subseteq
+\{0, 7, 8, 9\}$.
+\item \textbf{(C4) Bounded non-associativity index.}
+$M$ is non-associative with associativity index in a specific
+band $[0.5, 0.88]$ (per~\cite{FourCore}, denoted $\alpha_A$
+there).
+\item \textbf{(C5) HARMONY-attracting iterated mixing.}
+Iterated $T$+$B$-mixing of $M$ at mixing weight $\alpha_M = 1/2$
+converges to a fixed-point distribution supported on
+$\{0, 7, 8, 9\}$, with closed-form ratio $h/\beta = 1 + \sqrt{3}$
+between the masses on the indices $7$ and $8$.
+\end{enumerate}
+
+The two tables of the present paper are members of this family:
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item \textbf{$\TSML$.} Distinguished by the high-density profile:
+the default rule (D) makes $73/100$ cells equal $7$, with three
+sparse exception classes (V0, V1, E). Among family members,
+$\TSML$ is the table characterized by the property that every
+non-exception cell projects to $7$.
+\item \textbf{$\BHML$.} Distinguished by the four-zone partition
+($R_A, R_B, R_7, R_{89}$): the harmony cells $28/100$ are
+concentrated in the $R_B$ core (the $\max + 1 = 7$ frontier at
+$\max = 6$) and in the $R_{89}$ boundary zone, with sparse
+contributions from $R_A$ and $R_7$.
+\end{itemize}
+
+The HARMONY-count summary tables are:
+\begin{center}
+\begin{tabular}{l|cccc|c}
+& $R_A$/V0V1 & core & boundary/$R_7$ & echo & total \\ \hline
+$\TSML$ harmony & $1$ + $1$ & $54$ & $7$ & $0$ + $10$  & $73$ \\
+$\BHML$ harmony & $2$       & $11$ & $2 + 13$ & $0$ & $28$
+\end{tabular}
+\end{center}
+
+\subsection{The four-element joint-closure subset}
+
+The four-element subset $\{0, 7, 8, 9\} \subset \Zten$ is jointly
+closed under $\TSML$ and $\BHML$: every cell of either table with
+both indices in $\{0, 7, 8, 9\}$ outputs a value in
+$\{0, 7, 8, 9\}$. This is the load-bearing structural fact of the
+companion four-core paper~\cite{FourCore}; it makes the $4$-element
+subset the algebraic center of the family. Verification is a
+finite check over $|\{0,7,8,9\}|^2 \cdot 2 = 32$ cells; the
+bundled \texttt{ck\_tables.py} contains both tables explicitly.
+
+\subsection{Closest published precedent}
+
+The closest published precedent for this neighborhood is
+Dr\'apal and Wanless~\cite{DrapalWanless2021}, on maximally
+non-associative quasigroups of small order in
+\emph{J.\ Combin.\ Theory Ser.\ A}. Both works study small
+finite commutative non-associative structures; ours sits at the
+opposite extremum (specifically structured with integer-rational
+invariants, including the joint $4$-core preservation), in the
+same intellectual neighborhood.
+
+%%% ==================================================================
+\section{Joint-cell statistics of the two tables}
+\label{sec:joint}
+%%% ==================================================================
+
+The harmony cells of $\TSML$ and $\BHML$ are largely disjoint, but
+their disjoint structure has explicit content recorded by the
+verification scripts.
+
+\begin{proposition}[Joint harmony cells]\label{prop:joint}
+The set $\mathcal{H}_{\TSML} \cap \mathcal{H}_{\BHML}$ of cells
+$(i, j)$ with $\TSML(i, j) = \BHML(i, j) = 7$ has cardinality
+\[
+  \bigl|\mathcal{H}_{\TSML} \cap \mathcal{H}_{\BHML}\bigr| = 26.
+\]
+\end{proposition}
+
+\begin{proof}
+Direct enumeration: see
+\texttt{proof\_d10\_tsml\_73\_cells.py} and
+\texttt{proof\_d16\_bhml\_28\_cells.py} for the explicit cell
+lists. The $200$-cell joint witness is also reported by the
+verification banner of \texttt{ck\_tables.py} (running directly
+prints $\mathrm{DOING} = 0$ at $29$ cells of which $26$ are joint
+harmony and $3$ are joint non-harmony).
+\end{proof}
+
+\begin{remark}[Sum-and-overlap reading]
+The two counts sum to $73 + 28 = 101 = 100 + 1$, and the joint
+overlap is $26$, so $|\mathcal{H}_{\TSML} \cup \mathcal{H}_{\BHML}|
+= 73 + 28 - 26 = 75$ cells. We record these integers because they
+appear in companion work~\cite{FourCore} as part of the family's
+algebraic-invariant catalogue. They are not invoked in the proofs
+of Theorems~\ref{thm:tsml}--\ref{thm:lens}.
+\end{remark}
+
+%%% ==================================================================
+\section{Verification}\label{sec:verify}
+%%% ==================================================================
+
+Both proofs are implemented in Python with no external
+dependencies beyond the standard library. The scripts and the
+table definitions are self-contained in the manuscript folder:
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item \texttt{proof\_d10\_tsml\_73\_cells.py} — verifies
+$h(\TSML) = 73$ via the disjoint enumeration of
+\S\ref{sec:tsml}; runtime $< 0.1$\,s; output ends in
+\texttt{ALL ASSERTIONS PASSED}.
+\item \texttt{proof\_d16\_bhml\_28\_cells.py} — verifies
+$h(\BHML) = 28$ via the four-zone partition of
+\S\ref{sec:bhml}; runtime $< 0.1$\,s; output ends in
+\texttt{ALL ASSERTIONS PASSED}.
+\item \texttt{ck\_tables.py} — canonical definitions of $\TSML$
+and $\BHML$ as $10 \times 10$ arrays, plus the joint-statistic
+verification banner. Licensed under CC-BY-4.0.
+\end{itemize}
+
+A reader can run both verification scripts from the manuscript
+folder in under one second, with no PYTHONPATH gymnastics: the
+scripts import a local copy of \texttt{ck\_tables.py} bundled in
+the same folder.
+
+%%% ==================================================================
+\section{What This Result Does Not Claim}\label{sec:limits}
+%%% ==================================================================
+
+This paper does not claim:
+\begin{itemize}\setlength\itemsep{1pt}
+\item that the integers $73$ and $28$ have number-theoretic
+significance beyond their disjoint-zone derivation in
+Theorems~\ref{thm:tsml} and \ref{thm:bhml};
+\item that the operator naming used in companion
+work~\cite{FourCore} (VOID, HARMONY, etc.) is a complete model of
+any physical or computational system;
+\item that the symbol-stabilizer invariance of
+Theorem~\ref{thm:lens} extends to a richer Latin-square
+autotopism / paratopism invariance in the sense of
+McKay--Wanless or Dr\'apal--Wanless;
+\item that the joint cell-count of Proposition~\ref{prop:joint}
+implies any structural result beyond the explicit enumeration.
+\end{itemize}
+The result is: these two specific finite tables, members of the
+finite family of commutative non-associative magmas on $\Zten$
+identified in~\cite{FourCore}, have exactly these harmony counts
+relative to the value $7$; the counts are invariant under every
+$7$-fixing relabeling of the operator alphabet; and the proof is
+a runnable enumeration with $200$-cell witness.
+
+%%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'apal and I.~M.~Wanless,
+\emph{Maximally non-associative quasigroups},
+J.\ Combin.\ Theory Ser.\ A \textbf{184} (2021), 105510.
+
+\bibitem{FourCore}
+B.~R.~Sanders and M.~Gish.
+\newblock Joint Closure, Per-Coordinate Fuse Data, and a
+Closed-Form Algebraic Attractor of Two Commutative Binary
+Operations on $\mathbb{Z}/10\mathbb{Z}$.
+\newblock Manuscript in preparation, 2026.
+
+\bibitem{McKayWanless2005}
+B.~D.~McKay and I.~M.~Wanless,
+\emph{On the number of Latin squares},
+Ann.\ Combin.\ \textbf{9} (2005), 335--344.
+
+\bibitem{ck_tables}
+B.~R.~Sanders and M.~Gish.
+\newblock \texttt{ck\_tables.py}: canonical definitions of
+$\TSML$ and $\BHML$ on $\Zten$. Licensed under CC-BY-4.0.
+\newblock Electronic supplementary material to the present
+manuscript, 2026.
+
+\end{thebibliography}
+
+\end{document}

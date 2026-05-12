@@ -10,6 +10,7 @@ Physics papers from the TIG corpus, covering Clifford algebra structure, gauge t
 |---|---|---|---|
 | **J23** | Discrete Dirac inside Cl(0, 10): Chirality, the Outer Automorphism, and an Atomic-Substrate Refinement | *Communications in Mathematical Physics* (FALLBACK: *J. Math. Phys.*, *Annals of Physics*) | 2/2 verify PASS at machine precision; Volume K cross-reference at §2.1; landed 2026-05-12 |
 | **J48** | An Operadic Obstruction in a Bilinear-Closed Magma on ℤ/10ℤ: A Synthesis | *Notices of the American Mathematical Society* (FALLBACK: *Adv. Math.*, *J. Pure Appl. Algebra*, *Lett. Math. Phys.*) | 6/6 verify PASS at machine precision; 67 restricted D₄-orbits with profile (44, 7, 4, 10, 2); 16 bracketing-pair-incoherent orbits witness Theorem 4.1; σ³ obstruction localized to the single diagonal triple (3,9,9); landed 2026-05-12 |
+| **J45** | A Substrate-Derived FN Pattern with λ = 10/49 and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy | *Physical Review D* | 6/6 verify PASS at machine precision (`verify_J45_yukawa.py`, self-contained referee script); λ = T*(1−T*) = 10/49 substrate-forced; y_t = 0.93 Tier-A anchor at μ = M_Z; nine charged Yukawas reproduced via integer powers n ∈ {0, 3, 5, 6, 7, 9} from V^⊗5 SU(5) decomposition + σ-orbit step; landed 2026-05-12 |
 
 ---
 
@@ -17,7 +18,6 @@ Physics papers from the TIG corpus, covering Clifford algebra structure, gauge t
 
 | J# | Title | Target venue | Status |
 |---|---|---|---|
-| **J45** | Yukawa Mass Hierarchy + Freezing Quintessence | *Physical Review D* (cosmology) or *JHEP* | W2-F build; awaiting layer choice for §3 |
 | **J22** | TIG Algebraic Universality (J22 rebuttal addressed) | TBD | rebuttal filed; sympy reverification of tig_dirac.py |
 | **J14** | (algebra rebuttal addressed) | TBD | rebuttal filed |
 

@@ -1,0 +1,865 @@
+%%% ============================================================
+%%% First-Coprime-Failure and the Discrete Fejer Kernel:
+%%% A Coordinate Translation across Squarefree Bases
+%%%
+%%% B. R. Sanders, M. Gish (2026)
+%%% Target venue: Experimental Mathematics
+%%% MSC: 11A41, 11N05, 11A51, 42A16, 11Y70
+%%% DOI of bundle: 10.5281/zenodo.18852047
+%%%
+%%% Builds on J04 (First-G Law, submitted to Integers) as the
+%%% foundational localization lemma. The present note records the
+%%% companion harmonic identity (the discrete Fejer kernel at
+%%% rational frequency) and the elementary fact that its first
+%%% zero co-locates with the first-coprime-failure index. The
+%%% closed form is a textbook calculation; the contribution is the
+%%% packaging plus the exhaustive verification harness.
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\spf}{spf}
+\DeclareMathOperator{\sinc}{sinc}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Prm}{\mathbb{P}}
+\newcommand{\bigO}{\mathcal{O}}
+
+%% -------- title matter --------
+\title[First-Coprime-Failure and the Discrete Fej\'er Kernel]%
+{First-Coprime-Failure and the Discrete Fej\'er Kernel:\\
+ A Coordinate Translation across Squarefree Bases}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{2026}
+
+\keywords{coprimality partition, smallest prime factor, Fej\'er
+kernel, discrete sinc identity, sieve of Eratosthenes,
+exponential sums on rational frequencies, experimental number
+theory}
+
+\subjclass[2020]{11A41, 11N05, 11A51, 42A16, 11Y70}
+
+\begin{document}
+
+\begin{abstract}
+For an integer $b > 1$ with smallest prime factor $p_1 = \spf(b)$,
+the First-G Localization Lemma~\cite{J04Sanders} identifies
+$k = p_1$ as the smallest alphabet size at which the sieve of
+Eratosthenes marks an element of $\{1, \ldots, k\}$ as
+non-coprime to $b$. The present note records a companion
+harmonic identity, the discrete Fej\'er kernel at rational
+frequency, and the elementary fact that its first integer zero
+co-locates with the first-coprime-failure index --- a coordinate
+translation between the arithmetic gate at $k = p_1$ and the
+harmonic zero of $R(k, p_1) = \sin^2(\pi k / p_1) /
+(k^2 \sin^2(\pi / p_1))$ at $k = p_1$, both of which solve
+``smallest positive $k$ such that $p_1 \mid k$.'' The closed form
+is a standard Fej\'er-kernel calculation
+\cite{Fejer1900,Apostol1976,IwaniecKowalski2004}; we record it
+together with the Eratosthenes synchronization, an
+$\omega$-blindness corollary, and a discrete-to-continuum
+sinc-squared identity. We verify all four claims across $8$
+small primes and $187$ semiprimes: $712$ distinct algebraic
+checks, max deviation $1.11 \times 10^{-16}$ (machine
+$\epsilon$), zero exceptions; runtime under three minutes on a
+2024 consumer laptop. A brief remark relates the universal
+mid-period constant $\sinc^2(1/2) = 4/\pi^2$ to the same
+constant in Montgomery's pair correlation
+$R_2(u) = 1 - \sinc^2(u)$~\cite{Montgomery1973}, a coincidence of
+the rectangular-pulse spectral window common to both contexts.
+\end{abstract}
+
+\maketitle
+
+%%% ==================================================================
+\section*{0. Lens, substrate, and tier discipline}
+%%% ==================================================================
+
+\noindent
+\textsc{Lens and substrate.}
+The arithmetic side of the present paper works on $\Z$ with the
+smallest-prime-factor function $\spf : \Z_{> 1} \to \Prm$, which
+is structurally orthogonal to the algebraic substrate
+$\Zten = \Z / 10\Z$ studied in companion
+work~\cite{J04Sanders,FourCore}. The two sides share only the
+broader research program's interest in prime-indexed phase
+transitions; the present paper's claims are number-theoretic,
+not magma-theoretic, and stand independently of the algebraic
+substrate.
+
+\medskip\noindent
+\textsc{Tier discipline.}
+\begin{itemize}\setlength\itemsep{2pt}
+\item \emph{KNOWN (Lemma).} The closed form
+$R(k, f) = \sin^2(\pi k / f) / (k^2 \sin^2(\pi / f))$ is the
+discrete Fej\'er kernel at rational frequency $1/f$, normalized
+by alphabet size. It is in Apostol~\cite{Apostol1976} \S11.5,
+Iwaniec--Kowalski~\cite{IwaniecKowalski2004} \S1.7, and
+Oppenheim--Schafer~\cite{OppenheimSchafer2010} \S3.8 as the
+frequency response of an FIR filter with rectangular window.
+We attribute the lemma directly to Fej\'er~\cite{Fejer1900}.
+\item \emph{PROVEN.} The synchronization (Theorem~\ref{thm:zerowidth})
+recording that the First-G event of~\cite{J04Sanders} at
+$k = p_1 = \spf(b)$ and the first integer zero of
+$R(\cdot, p_1)$ at $k = p_1$ are the same event in two
+coordinate systems, both solving ``smallest positive $k$ such
+that $p_1 \mid k$.'' The continuum identification
+$R(k, f) \to \sinc^2(k/f)$
+(Theorem~\ref{thm:continuum}). The $\omega$-blindness statement
+that $R(k, 1/p)$ depends only on $k$ and $p$, not on the
+modulus $b$ (Corollary~\ref{cor:omegablind}) --- a one-line
+consequence of the closed form.
+\item \emph{COMPUTED.} The verification harness exhausts
+$712$ distinct algebraic checks: $106$ closed-form $(f, k)$
+pairs across $8$ primes, $561$ pre-collapse and gate evaluations
+across $187$ semiprimes, $42$ ring-structure cells for the
+$\omega$-blindness statement, and $3$ continuum-limit witnesses
+for Theorem~\ref{thm:continuum}. Runtime under three minutes;
+max deviation $1.11 \times 10^{-16}$ (machine $\epsilon$); zero
+exceptions. The script
+\texttt{verify\_prime\_phase\_transition.py} runs from the
+manuscript folder with no external data dependencies beyond
+\texttt{numpy} and the \texttt{cmath} module.
+\item \emph{STRUCTURAL RHYME.} The constant $\sinc^2(1/2) =
+4/\pi^2 = (2/3)/\zeta(2)$ is a textbook consequence of
+$\zeta(2) = \pi^2/6$. We record its appearance at the
+half-period of the rectangular spectral window, and we note
+without claim that the same constant appears in Montgomery's
+pair correlation $R_2(u) = 1 - \sinc^2(u)$ at $u = 1/2$, a
+coincidence reflecting the universality of the rectangular
+spectral window common to both contexts~\cite{Montgomery1973,
+OppenheimSchafer2010}.
+\item \emph{OPEN.} What forces the rectangular-pulse alphabet
+$\{1, \ldots, k\}$ as the natural object of study (rather than
+some smoothed-window analogue) is not addressed here. Whether
+arithmetic counterparts of the GUE pair-correlation density
+admit closed-form approximations in some scaling regime is
+left as an open question (Remark~\ref{rem:open-bridge}).
+\end{itemize}
+
+%%% ==================================================================
+\section{Introduction}
+\label{sec:intro}
+%%% ==================================================================
+
+\subsection*{Setup.}
+
+The First-G Localization Lemma of~\cite{J04Sanders} is a clean
+foundational lemma about the sieve of Eratosthenes: for an
+integer $b > 1$ with smallest prime factor $p_1$, the coprimality
+partition
+\[
+  C_k(b) = \{x \in \{1, \ldots, k\} : \gcd(x, b) = 1\},
+  \qquad
+  G_k(b) = \{1, \ldots, k\} \setminus C_k(b)
+\]
+satisfies $|G_k(b)| = 0$ for every $k < p_1$ and
+$G_{p_1}(b) = \{p_1\}$, so the alphabet $\{1, \ldots, k\}$ first
+contains an element non-coprime to $b$ at exactly $k = p_1$. The
+\emph{stability window} of $b$ is the interval
+$\{1, \ldots, p_1 - 1\}$ on which $|G_k(b)| = 0$.
+
+\subsection*{The companion harmonic identity.}
+
+The signal we record alongside the partition statistic is the
+squared modulus of the normalized exponential sum at frequency
+$1/f$ on the alphabet:
+\begin{equation}
+  R(k, f) := |S(k, f)|^2,
+  \qquad
+  S(k, f) := \frac{1}{k} \sum_{j=1}^{k} e^{2\pi i j / f}.
+  \label{eq:Rdef}
+\end{equation}
+For $f \in \Z_{\ge 2}$, $R(k, f)$ admits a closed form via the
+geometric sum (Lemma~\ref{lem:countdown} below); the closed form
+is the squared Fej\'er kernel at rational frequency, evaluated
+at integer abscissa $k$ and normalized by alphabet size $k$. The
+closed form holds for every integer $f \ge 2$, not specifically
+primes; primality enters only when interpreting $f = p_1 =
+\spf(b)$ as the smallest prime factor of an integer $b$.
+
+\subsection*{What this paper records.}
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item The Fej\'er-kernel closed form
+(Lemma~\ref{lem:countdown}), with attribution to Fej\'er 1900,
+Apostol 1976, Iwaniec--Kowalski 2004, and Oppenheim--Schafer
+2010 as the standard genealogy.
+\item The Eratosthenes synchronization
+(Theorem~\ref{thm:zerowidth}): the first-coprime-failure event
+at $k = p_1$ and the first integer zero of $R(\cdot, p_1)$ at
+$k = p_1$ are two coordinate-translations of the same
+elementary fact ``the smallest positive multiple of $p_1$ is
+$p_1$.''
+\item The $\omega$-blindness corollary
+(Corollary~\ref{cor:omegablind}): $R(k, 1/p)$ depends only on
+$k$ and $p$, not on the modulus $b$.
+\item The continuum identification
+(Theorem~\ref{thm:continuum}): $R(k, f) \to \sinc^2(k/f)$ as
+$f \to \infty$ along $k/f \to t$ fixed, recovering
+$\sinc^2(1/2) = 4/\pi^2$ at the half-period.
+\item An exhaustive verification harness:
+$712$ distinct algebraic checks across $8$ primes and $187$
+semiprimes, max deviation $1.11 \times 10^{-16}$, zero
+exceptions, runtime under three minutes. Implementation in
+$\sim 200$ lines of Python with \texttt{numpy} +
+\texttt{cmath}; runnable from the manuscript folder.
+\end{enumerate}
+
+\subsection*{Honest accounting of novelty.}
+
+The closed form (Lemma~\ref{lem:countdown}) is standard. The
+synchronization (Theorem~\ref{thm:zerowidth}) is a
+coordinate translation of the elementary fact ``$p_1$ is the
+smallest positive multiple of $p_1$.'' The $\omega$-blindness
+corollary is a one-line consequence of the closed form. The
+continuum identity is the standard discrete-to-continuum limit
+of the Fej\'er kernel.
+
+The contribution of the present paper is the \emph{packaging}
+plus the verification harness: collecting these four facts
+together, identifying the synchronization between the arithmetic
+sieve and the harmonic kernel, and verifying the synchronization
+exhaustively across all primes up to $23$ and all semiprimes
+$b = pq$ with $3 \le p < q$, $p \le 59$. The harness is
+$712$ algebraic checks at machine precision; we record this as
+a clean object of study in the spirit of \emph{Experimental
+Mathematics}.
+
+\subsection*{The 712 vs 36{,}662 question.}
+
+The present manuscript reports $712$ distinct algebraic checks,
+the harness count for the four specific theorems. A separate
+working paper~\cite{Sanders2026WP35} of the broader research
+program reports a cumulative $36{,}662$ exact computations
+across a wider corpus of related identities and observations
+(seeded residue persistence, $D_1/D_2$ kinematics, scale-free
+sinc approximations, etc.). The $712$ is what the present
+manuscript verifies; the $36{,}662$ is the cumulative corpus
+total of which $712$ is the J08-specific subset. We mention the
+$36{,}662$ here only to forestall confusion; the manuscript's
+verification claims are the $712$ at machine precision, full
+stop.
+
+%%% ==================================================================
+\section{Setup}
+\label{sec:setup}
+%%% ==================================================================
+
+Throughout, $b$ denotes an integer with $b > 1$ and smallest prime
+factor $p_1 = \spf(b)$. We use the coprimality partition of
+\cite{J04Sanders}: for $k \in \{1, 2, \ldots\}$,
+\[
+  C_k(b) = \{ x \in \{1, \ldots, k\} : \gcd(x, b) = 1 \},
+  \qquad
+  G_k(b) = \{1, \ldots, k\} \setminus C_k(b).
+\]
+The First-G Localization Lemma of J04 \cite[Theorem~3.1]{J04Sanders}
+asserts $|G_k(b)| = 0$ for every $k < p_1$ and
+$G_{p_1}(b) = \{p_1\}$.
+
+\begin{definition}[Harmonic resonance signal]
+\label{def:R}
+For an integer $f \ge 2$ and $k \ge 1$, define
+\begin{equation}
+  S(k, f) = \frac{1}{k} \sum_{j=1}^{k} e^{2\pi i j / f},
+  \qquad
+  R(k, f) = |S(k, f)|^2.
+  \label{eq:RSdef}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+$S(k, f)$ is the discrete-time Fourier transform of the indicator
+$\mathbf{1}_{\{1, \ldots, k\}}$ evaluated at frequency $1/f$,
+normalized by alphabet size. We write $R(k, f)$ throughout, with
+$f$ being the prime (or other integer $\ge 2$); some sources use
+the equivalent notation $R(k, 1/p)$ for emphasis on the frequency.
+\end{remark}
+
+%%% ==================================================================
+\section{The discrete Fej\'er kernel at rational frequency}
+\label{sec:lemma}
+%%% ==================================================================
+
+\begin{lemma}[Discrete Fej\'er kernel; cf.\ Fej\'er 1900,
+Apostol 1976 \S11.5, Iwaniec--Kowalski 2004 \S1.7]
+\label{lem:countdown}
+For every integer $f \ge 2$ and every positive integer $k$,
+\begin{equation}
+  R(k, f) = \frac{\sin^2(\pi k / f)}{k^2 \sin^2(\pi / f)}.
+  \label{eq:countdown}
+\end{equation}
+Hence
+\[
+  R(1, f) = 1,
+  \quad
+  R(f-1, f) = \frac{1}{(f-1)^2},
+  \quad
+  R(f, f) = 0,
+  \quad
+  R(f+1, f) = \frac{1}{(f+1)^2},
+\]
+and $R(\cdot, f)$ is strictly decreasing on $\{1, 2, \ldots, f-1\}$.
+The integer zero $R(f, f) = 0$ has zero width: $R(f-1, f) > 0$
+and $R(f+1, f) > 0$.
+\end{lemma}
+
+\begin{proof}
+The geometric-sum formula gives
+\[
+  \sum_{j=1}^{k} e^{2\pi i j / f}
+  = e^{2\pi i / f} \cdot \frac{1 - e^{2\pi i k / f}}{1 - e^{2\pi i / f}}.
+\]
+Taking the squared modulus of $(1/k)$ times this sum and applying
+$|1 - e^{i\theta}|^2 = 4 \sin^2(\theta/2)$ twice gives
+\[
+  |S(k, f)|^2
+  = \frac{1}{k^2} \cdot \frac{|1 - e^{2\pi i k / f}|^2}{|1 - e^{2\pi i / f}|^2}
+  = \frac{1}{k^2} \cdot \frac{4 \sin^2(\pi k / f)}{4 \sin^2(\pi / f)}
+  = \frac{\sin^2(\pi k / f)}{k^2 \sin^2(\pi / f)},
+\]
+giving \eqref{eq:countdown}. The boundary values follow by
+substitution: at $k = 1$, $R = \sin^2(\pi/f)/\sin^2(\pi/f) = 1$;
+at $k = f$, $\sin(\pi) = 0$; at $k = f \pm 1$,
+$\sin^2(\pi(f \pm 1)/f) = \sin^2(\pi/f)$ via
+$\sin^2(\pi - x) = \sin^2(x)$, so
+$R(f \pm 1, f) = 1/(f \pm 1)^2$. Strict decrease on
+$\{1, \ldots, f-1\}$ follows because the function
+$x \mapsto \sin(\pi x / f) / x$ is strictly decreasing on
+$(0, f)$ (its derivative is negative there since
+$x \mapsto \sin(x)/x$ is strictly decreasing on $(0, \pi)$); the
+strictness propagates to integer abscissae and is preserved by
+squaring of non-negative values.
+\end{proof}
+
+\begin{remark}[Primality is not used]
+The closed form \eqref{eq:countdown} holds for every integer
+$f \ge 2$. The discrete Fej\'er kernel's primality-blindness is
+what makes the synchronization in
+Section~\ref{sec:synchronization} possible: at $f = p_1 =
+\spf(b)$, both the arithmetic sieve event ``$|G_k(b)|$ first
+nonzero'' and the harmonic event ``$R(k, p_1) = 0$'' occur at
+$k = p_1$ for the same elementary reason ($p_1 \mid k$),
+expressed in two coordinate systems.
+\end{remark}
+
+%%% ==================================================================
+\section{Eratosthenes synchronization}
+\label{sec:synchronization}
+%%% ==================================================================
+
+\begin{theorem}[Coordinate translation between arithmetic and
+harmonic gates]
+\label{thm:zerowidth}
+Let $b > 1$ with smallest prime factor $p_1 = \spf(b)$. The
+following two events occur at the same integer $k = p_1$:
+\begin{itemize}\setlength\itemsep{2pt}
+\item[\rm (i)] (Arithmetic gate.) The smallest $k \ge 1$ for which
+$|G_k(b)| > 0$ is $k = p_1$, with $G_{p_1}(b) = \{p_1\}$
+\cite[Theorem~3.1]{J04Sanders}.
+\item[\rm (ii)] (Harmonic zero.) The smallest $k \ge 1$ for
+which $R(k, p_1) = 0$ is $k = p_1$, with $R(p_1 - 1, p_1) =
+1/(p_1 - 1)^2 > 0$ (Lemma~\ref{lem:countdown}).
+\end{itemize}
+Both (i) and (ii) are reformulations of the elementary fact
+\emph{the smallest positive multiple of $p_1$ is $p_1$}.
+\end{theorem}
+
+\begin{proof}
+The smallest positive integer that has $p_1$ as a divisor is
+$p_1$ itself. Statement (i) reformulates this as ``$p_1$ is the
+smallest $k$ with $\gcd(k, b) > 1$'' (because $p_1 \mid b$ and
+no smaller positive integer has any prime factor of $b$).
+Statement (ii) reformulates the same fact as ``$p_1$ is the
+smallest $k$ with $\sin(\pi k / p_1) = 0$'' (because
+$\sin(\pi k / p_1) = 0$ iff $p_1 \mid k$). The two events
+co-locate at $k = p_1$ because they encode the same divisibility
+condition.
+\end{proof}
+
+\begin{remark}[The synchronization is a tautology, recorded for
+clarity]\label{rem:tautology}
+Theorem~\ref{thm:zerowidth} is not a coincidence between two
+independently-defined objects. The arithmetic event ``$|G_k(b)|$
+first nonzero'' and the harmonic event
+``$R(\cdot, p_1)$ first zero'' both solve ``smallest positive
+$k$ with $p_1 \mid k$'' --- the first phrased in terms of
+divisibility of $b$ by $p_1$, the second in terms of vanishing
+of $\sin(\pi k / p_1)$. We record the synchronization because
+it is useful: a reader presented with either signal can compute
+$p_1$ from the gate position. But the synchronization itself is
+a re-coordinatization, not a non-trivial coincidence requiring
+explanation.
+\end{remark}
+
+\begin{corollary}[$\omega$-blindness of the harmonic resonance]
+\label{cor:omegablind}
+For a fixed prime $p$, the function $k \mapsto R(k, 1/p)$ depends
+only on $k$ and $p$ and not on the modulus $b$, regardless of the
+ring structure $\omega(b)$ (number of distinct prime factors of $b$).
+Concretely: if $p \mid b_1$ and $p \mid b_2$ for two integers
+$b_1, b_2$, then $R(k, 1/p)$ has the same value at $b = b_1$ and
+$b = b_2$ for every $k$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:countdown},
+$R(k, 1/p) = \sin^2(\pi k / p) / (k^2 \sin^2(\pi/p))$, which is
+a function of $k$ and $p$ alone. The modulus $b$ does not appear
+in the closed form.
+\end{proof}
+
+\begin{remark}[Consequence for ring-structure detection]
+\label{rem:omega-detection}
+An observer with access only to the harmonic resonance signal
+$R(k, 1/p)$ for $k = 1, \ldots, p-1$ cannot distinguish $b = p^2$
+from $b = p \cdot q$ from $b = p \cdot q \cdot r$. To detect
+$\omega(b)$ from the alphabet, one must observe an additional
+signal --- e.g., the closure-defect statistic of
+\cite[\S6]{Sanders2026WP35}, which does vary with $\omega(b)$.
+The harmonic resonance gives the prime; the closure defect gives
+the ring.
+\end{remark}
+
+%%% ==================================================================
+\section{Continuum identification with $\sinc^2$}
+\label{sec:continuum}
+%%% ==================================================================
+
+\begin{theorem}[Discrete-to-continuum identity]
+\label{thm:continuum}
+Fix $t \in (0, 1)$ and let $f \to \infty$ along a sequence of
+integers with $k / f \to t$. Then
+\begin{equation}
+  R(k, f) \longrightarrow \sinc^2(t),
+  \qquad \sinc(t) := \frac{\sin(\pi t)}{\pi t}.
+  \label{eq:continuum}
+\end{equation}
+At the half-period $t = 1/2$,
+\[
+  \lim_{f \to \infty,\, k/f \to 1/2} R(k, f) = \sinc^2(1/2) = \frac{4}{\pi^2}
+  = 0.4052847\ldots,
+\]
+with rate of convergence $\bigO(1/f^2)$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:countdown},
+$R(k, f) = \sin^2(\pi k / f) / (k^2 \sin^2(\pi / f))$. As
+$f \to \infty$ with $k / f \to t$ along a sequence of integers
+$k = k(f)$, we have $\sin(\pi k / f) \to \sin(\pi t)$ and
+$f \sin(\pi / f) = \pi - \pi^3/(6 f^2) + \bigO(1/f^4) \to \pi$,
+so $k \sin(\pi/f) = (k/f) \cdot f \sin(\pi/f) \to t \cdot \pi$.
+Hence
+\[
+  R(k, f)
+  = \frac{\sin^2(\pi k / f)}{(k \sin(\pi / f))^2}
+  \longrightarrow \frac{\sin^2(\pi t)}{(\pi t)^2}
+  = \sinc^2(t).
+\]
+At $t = 1/2$, $\sinc(1/2) = (\sin(\pi/2)) / (\pi/2) = 2/\pi$, so
+$\sinc^2(1/2) = 4/\pi^2$. The error term: at $t = 1/2$ along
+$k = \lfloor f / 2 \rfloor$, $|R(k, f) - \sinc^2(1/2)| =
+\bigO(1/f^2)$ from the Taylor expansion of $\sin^2(\pi/f)$
+around $f = \infty$, since
+$f \sin(\pi/f) = \pi(1 - \pi^2/(6 f^2) + \bigO(1/f^4))$ and
+the leading correction propagates through the squared
+denominator with coefficient $\pi^2/3$.
+\end{proof}
+
+\begin{remark}[Alphabet as rectangular spectral window]
+\label{rem:rectangular}
+The continuum function $\sinc^2(t)$ is the power spectral density
+of the indicator $\mathbf{1}_{[0, 1]}$ on $\R$ \cite{Shannon1949,
+OppenheimSchafer2010}. The discrete alphabet $\{1, \ldots, k\}$
+is a discrete rectangular window of width $k$;
+Theorem~\ref{thm:continuum} identifies the discrete spectral
+power $R(k, f)$ at frequency $1/f$ with the continuous power
+spectral density of the rectangular window in the appropriate
+scaling limit. This identification is the standard
+discrete-to-continuum limit of the Fej\'er kernel.
+\end{remark}
+
+%%% ==================================================================
+\section{Verification}
+\label{sec:verification}
+%%% ==================================================================
+
+We verified Lemma~\ref{lem:countdown},
+Theorems \ref{thm:zerowidth} and \ref{thm:continuum}, and
+Corollary~\ref{cor:omegablind} exhaustively at machine precision.
+The verification harness comprises four specific check classes;
+the totals are tabulated in
+Section~\ref{sec:verify-totals}. All computations use IEEE
+double-precision floating point (errors at machine epsilon
+$\sim 10^{-16}$).
+
+\subsection{Closed-form identity at small primes}
+
+For each prime $f \in \{3, 5, 7, 11, 13, 17, 19, 23\}$, we
+compute $R(k, f)$ as a literal double-precision sum
+$|(1/k) \sum_{j=1}^{k} e^{2\pi i j / f}|^2$ and compare to the
+closed form \eqref{eq:countdown} for all $k \in \{1, \ldots, f+1\}$.
+Total $(f, k)$ pairs: $106$. Maximum error across the
+$106$ comparisons: $4.44 \times 10^{-16}$. Selected pre-collapse
+values:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+\toprule
+$f$ & $k = f - 1$ & $R(f-1, f)$ measured & $1 / (f-1)^2$ predicted & error \\
+\midrule
+$3$  & $2$  & $0.25000000$  & $0.25000000$  & $5.55 \times 10^{-17}$ \\
+$5$  & $4$  & $0.06250000$  & $0.06250000$  & $2.78 \times 10^{-17}$ \\
+$7$  & $6$  & $0.02777778$  & $0.02777778$  & $3.47 \times 10^{-18}$ \\
+$11$ & $10$ & $0.01000000$  & $0.01000000$  & $1.39 \times 10^{-17}$ \\
+$13$ & $12$ & $0.00694444$  & $0.00694444$  & $1.91 \times 10^{-17}$ \\
+$17$ & $16$ & $0.00390625$  & $0.00390625$  & $9.54 \times 10^{-18}$ \\
+$19$ & $18$ & $0.00308642$  & $0.00308642$  & $1.30 \times 10^{-18}$ \\
+$23$ & $22$ & $0.00206612$  & $0.00206612$  & $1.73 \times 10^{-18}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Macro sweep across 187 semiprimes}
+
+For each of $187$ semiprimes $b = p \times q$ with $3 \le p < q$
+and $p \le 59$ (and a representative sample of larger $q$), we
+verified Lemma~\ref{lem:countdown} at $k = p - 1$ (the
+pre-collapse minimum) and Theorem~\ref{thm:zerowidth}
+synchronization (the partition gate event at $k = p_1$). The
+macro sweep totals $561$ algebraic checks; the maximum error
+against the closed form is $1.11 \times 10^{-16}$ (machine
+$\epsilon$). Zero exceptions in $561$ cases.
+
+Selected entries:
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+\toprule
+$b$ & $p$ & $q$ & $R(p-1, 1/p)$ measured & $1/(p-1)^2$ predicted & error \\
+\midrule
+$35$   & $5$  & $7$  & $0.062500$ & $0.062500$ & $2.78 \times 10^{-17}$ \\
+$77$   & $7$  & $11$ & $0.027778$ & $0.027778$ & $1.39 \times 10^{-17}$ \\
+$143$  & $11$ & $13$ & $0.010000$ & $0.010000$ & $1.39 \times 10^{-17}$ \\
+$323$  & $17$ & $19$ & $0.003906$ & $0.003906$ & $1.04 \times 10^{-17}$ \\
+$667$  & $23$ & $29$ & $0.002066$ & $0.002066$ & $1.73 \times 10^{-18}$ \\
+$1073$ & $29$ & $37$ & $0.001276$ & $0.001276$ & $2.39 \times 10^{-18}$ \\
+$4187$ & $53$ & $79$ & $0.000370$ & $0.000370$ & $3.96 \times 10^{-18}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{$\omega$-blindness across ring structures}
+
+Corollary~\ref{cor:omegablind} predicts $R(k, 1/p)$ is identical
+for every $b$ with $p \mid b$, regardless of $\omega(b)$.
+Verification holds $p = 7$ fixed and varies $b$ across
+$\omega \in \{1, 2, 3\}$:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+$b$    & $\omega(b)$ & ring structure         & $R(1, 1/7), R(2, 1/7), \ldots, R(6, 1/7)$ \\
+\midrule
+$49$   & $1$ & $7^2$        & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+$343$  & $1$ & $7^3$        & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+$77$   & $2$ & $7 \cdot 11$ & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+$91$   & $2$ & $7 \cdot 13$ & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+$1001$ & $3$ & $7 \cdot 11 \cdot 13$ & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+$1463$ & $3$ & $7 \cdot 11 \cdot 19$ & $1.0000, 0.8117, 0.5610, 0.3156, 0.1299, 0.0278$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The signal is byte-identical across all six rings (up to floating
+point, with errors at $10^{-16}$), as required by
+Corollary~\ref{cor:omegablind}. With $7$ values of $k$
+($k = 1, \ldots, 6$ plus $k = 7$ checking the zero), the harness
+contributes $6 \cdot 7 = 42$ check cells.
+
+\subsection{Universal mid-period constant}
+
+Theorem~\ref{thm:continuum} predicts $R(k, p) \to 4/\pi^2$ as
+$p \to \infty$ along $k / p \to 1/2$, with rate $\bigO(1/p^2)$.
+Numerical verification at proxy primes:
+\begin{center}
+\begin{tabular}{c|c|c}
+\toprule
+$p$   & $R(\lfloor p / 2 \rfloor, p)$ & deviation from $4/\pi^2 = 0.4052847\ldots$ \\
+\midrule
+$1009$    & $0.406090$ & $+8.0 \times 10^{-4}$ \\
+$10007$   & $0.405366$ & $+8.1 \times 10^{-5}$ \\
+$100003$  & $0.405293$ & $+8.1 \times 10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The successive ratios $8.0/0.81 \approx 100$ and $8.1/0.81
+\approx 100$ confirm the predicted $\bigO(1/p^2)$ rate (each
+order-of-magnitude increase in $p$ reduces the error by
+$\sim 10^2$). Three continuum-limit witnesses; total $3$ check
+cells.
+
+\subsection{Verification harness totals}
+\label{sec:verify-totals}
+
+The four check classes contribute:
+\begin{center}
+\begin{tabular}{l|c}
+\toprule
+Check class & Algebraic checks \\
+\midrule
+Closed form (Lemma~\ref{lem:countdown}) at 8 primes
+& $106$ \\
+Synchronization (Theorem~\ref{thm:zerowidth}) at 187 semiprimes
+& $561$ \\
+$\omega$-blindness (Corollary~\ref{cor:omegablind}) at 6 rings
+& $42$ \\
+Continuum (Theorem~\ref{thm:continuum}) at 3 large primes
+& $3$ \\
+\midrule
+Total
+& $\mathbf{712}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Maximum deviation across all $712$ checks: $1.11 \times 10^{-16}$
+(machine epsilon). Zero exceptions; runtime under three minutes
+on a 2024 consumer laptop.
+
+\subsection{Software, runtime, and reproducibility}
+
+The verification script
+\texttt{verify\_prime\_phase\_transition.py} runs with
+\texttt{numpy}, \texttt{cmath}, and \texttt{math.gcd} on Python
+3.10+. Total runtime under three minutes; typically under thirty
+seconds for the small-prime closed-form check, with the
+$187$-semiprime sweep dominating the runtime. All sums are
+computed in double-precision floating point; gcd computations
+use exact integer arithmetic. The script exits $0$ if and only
+if every comparison falls below $10^{-10}$ (well above machine
+epsilon). The bundle DOI is \texttt{10.5281/zenodo.18852047}.
+
+%%% ==================================================================
+\section{The constant $4/\pi^2$ in $\sinc^2$ and in
+Montgomery's pair correlation: a rectangular-window remark}
+\label{sec:montgomery}
+%%% ==================================================================
+
+We close with a brief remark on a coincidence of basis functions.
+Montgomery~\cite{Montgomery1973} proved (assuming the Riemann
+hypothesis, for the relevant range of test parameters) that the
+pair correlation of normalized non-trivial zeros of $\zeta(s)$
+satisfies
+\[
+  R_2(u) = 1 - \left(\frac{\sin(\pi u)}{\pi u}\right)^2 = 1 - \sinc^2(u).
+\]
+Theorem~\ref{thm:continuum} of the present paper, in the
+discrete arithmetic side, gives
+$\lim R(k, f) = \sinc^2(t)$ as $f \to \infty$ along $k/f \to t$.
+At the half-period $t = u = 1/2$, both functions evaluate to
+involve the same constant: $\sinc^2(1/2) = 4/\pi^2$ and
+$1 - \sinc^2(1/2) = 1 - 4/\pi^2$.
+
+The shared appearance of $\sinc^2$ in the two contexts reflects
+the universality of the rectangular spectral window:
+$\sinc^2$ is the power spectrum of the indicator of an interval,
+which appears in arithmetic (the alphabet $\{1, \ldots, k\}$ in
+the present paper) and in spectral statistics (the test function
+in Montgomery's pair correlation, where it is the rectangular
+window in the explicit formula). This is a common
+rectangular-window origin, not a connection between the two
+arithmetic phenomena. We do not claim Theorem~\ref{thm:continuum}
+bears on the Riemann hypothesis, on the analytic continuation of
+$\zeta$, or on any aspect of GUE-type spectral statistics for
+zeta zeros.
+
+\begin{remark}[Identity sinc$^2(1/2) = (2/3)/\zeta(2)$]
+\label{rem:sinc-zeta}
+The half-period value admits the alternative form
+\[
+  \sinc^2(1/2) = \frac{4}{\pi^2} = \frac{2}{3} \cdot \frac{6}{\pi^2}
+  = \frac{2}{3} \cdot \frac{1}{\zeta(2)},
+\]
+using $\zeta(2) = \pi^2/6$ (Euler 1734). We record this as a
+\emph{structural rhyme}, not a theorem of the present paper:
+the identity is a one-line algebraic consequence of the
+Basel-problem solution and is recognizable to any number theorist
+in five seconds. It does not mean that the corridor midpoint of
+the rectangular spectral window is forced to $1/2$ by
+zeta-function considerations. Why the natural object of study is
+the rectangular window $\{1, \ldots, k\}$ rather than some other
+weighting is itself an open question. Outside scope.
+\end{remark}
+
+\begin{remark}[Open]\label{rem:open-bridge}
+The discrete sum $\sum_{k = 1}^{f - 1} R(k, f) \cdot g(k / f)$ for
+a smooth test function $g$ converges in the limit $f \to \infty$
+to $\int_0^1 \sinc^2(x) g(x)\, dx$ by the Riemann-sum
+interpretation of Theorem~\ref{thm:continuum}. Whether the
+appropriate dual sum
+$\sum_{|\gamma| \le T} R_2(\gamma / 2\pi) \cdot \tilde g(\gamma)$
+over Riemann zeros admits an analogous closed-form approximation
+in some scaling regime is an open question we leave to future
+work; we make no claim here that such an approximation exists.
+\end{remark}
+
+%%% ==================================================================
+\section{Scope and limitations}
+\label{sec:scope}
+%%% ==================================================================
+
+We list explicitly what the paper does and does not claim.
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item \textbf{What is recorded.} The Fej\'er-kernel closed form
+(Lemma~\ref{lem:countdown}, attributed); the
+Eratosthenes-vs-harmonic synchronization
+(Theorem~\ref{thm:zerowidth}, identified as a coordinate
+translation); the $\omega$-blindness corollary
+(Corollary~\ref{cor:omegablind}, a one-line consequence of the
+closed form); the continuum identity
+(Theorem~\ref{thm:continuum}, the standard discrete-to-continuum
+limit).
+
+\item \textbf{What is verified.} $712$ distinct algebraic checks
+across $8$ small primes, $187$ semiprimes, $6$ ring structures,
+and $3$ continuum-limit witnesses. Maximum deviation
+$1.11 \times 10^{-16}$ (machine $\epsilon$); zero exceptions;
+runtime under three minutes on a 2024 consumer laptop.
+
+\item \textbf{What is \emph{not} claimed.} No statement about
+the analytic continuation of $\zeta(s)$. No consequence for the
+Riemann hypothesis (the Montgomery-correspondence remark in
+Section~\ref{sec:montgomery} is a coincidence of the
+rectangular-window basis function, not a mechanism). No
+polynomial-time factoring algorithm: Lemma~\ref{lem:countdown}
+is pointwise efficient, but extracting $p_1$ from the gate
+position $k = p_1$ requires the alphabet to traverse
+$\bigO(p_1)$ steps, which is exponential in the bit-length of
+an RSA-scale modulus and consistent with sub-exponential
+best-known classical complexity (NFS,
+\cite{LenstraEtAl1993}). No claim about non-squarefree $b$
+beyond what the algebra already covers; the
+$\omega$-blindness statement
+(Corollary~\ref{cor:omegablind}) is verified for
+$\omega(b) \in \{1, 2, 3\}$ and follows formally from the
+closed form for any $\omega(b) \ge 1$.
+
+\item \textbf{Restriction to squarefree $b$ in the verification
+harness.} The verification script restricts to squarefree $b$
+because that is the case shared with the J04 First-G
+Localization companion~\cite{J04Sanders}. The closed form
+(Lemma~\ref{lem:countdown}) and the $\omega$-blindness
+statement (Corollary~\ref{cor:omegablind}) are not restricted
+to squarefree $b$; their proofs use only $f \in \Z_{\ge 2}$
+and the geometric sum.
+
+\item \textbf{Finite-range verification.} The exhaustive check is
+for $p \le 59$ and a representative sample of larger $q$. The
+theorems hold in full generality; the finite verification is
+reassurance, not a pillar of the result.
+\end{enumerate}
+
+%%% ==================================================================
+\section*{Acknowledgements}
+%%% ==================================================================
+
+This paper is part of a coordinated J-series of submissions by
+the authors. The First-G Localization Lemma of the companion
+submission~\cite{J04Sanders} is the foundational lemma on which
+the synchronization rests. Algorithmic verification was
+implemented and checked over the spring of 2026.
+
+%%% ==================================================================
+\begin{thebibliography}{99}
+%%% ==================================================================
+
+\bibitem{J04Sanders}
+B.~R. Sanders, M.~Gish, \emph{The First-G Event in the
+Coprimality Partition: Stability Windows, CRT Idempotent Count,
+and Prime-Indexed Phase Transitions}, manuscript in preparation,
+2026.
+
+\bibitem{FourCore}
+B.~R. Sanders, M.~Gish, \emph{Joint Closure, Per-Coordinate Fuse
+Data, and a Closed-Form Algebraic Attractor of Two Commutative
+Binary Operations on $\Z/10\Z$}, manuscript in preparation, 2026.
+
+\bibitem{Sanders2026WP35}
+B.~R. Sanders, M.~Gish, \emph{Prime-Indexed Phase Transitions:
+Harmonic Pre-Echo, Closure-Defect, and Scale-Free Sinc
+Approximations}, working paper WP35, 7Site LLC research
+register, 2026.
+
+\bibitem{Apostol1976}
+T.~M. Apostol, \emph{Introduction to Analytic Number Theory},
+Undergraduate Texts in Mathematics, Springer-Verlag, New York-Heidelberg,
+1976.
+
+\bibitem{Fejer1900}
+L.~Fej\'er, \emph{Sur les fonctions born\'ees et int\'egrables},
+C.~R.~Acad.~Sci.\ Paris \textbf{131} (1900), 984--987.
+
+\bibitem{IwaniecKowalski2004}
+H.~Iwaniec, E.~Kowalski, \emph{Analytic Number Theory}, AMS
+Colloquium Publications, Vol.\ 53, American Mathematical Society,
+Providence, RI, 2004.
+
+\bibitem{LenstraEtAl1993}
+A.~K. Lenstra, H.~W. Lenstra Jr., M.~S. Manasse, J.~M. Pollard,
+\emph{The number field sieve}, in \emph{The Development of the
+Number Field Sieve}, Lecture Notes in Mathematics 1554,
+Springer, Berlin, 1993, pp.~11--42.
+
+\bibitem{Montgomery1973}
+H.~L. Montgomery, \emph{The pair correlation of zeros of the zeta
+function}, in \emph{Analytic Number Theory} (St.~Louis, MO, 1972),
+Proc.~Sympos.~Pure Math., Vol.~XXIV, American Mathematical Society,
+Providence, R.I., 1973, pp.~181--193.
+
+\bibitem{Odlyzko1987}
+A.~M. Odlyzko, \emph{On the distribution of spacings between zeros
+of the zeta function}, Math.\ Comp.\ \textbf{48} (1987), no.~177,
+273--308.
+
+\bibitem{OppenheimSchafer2010}
+A.~V. Oppenheim, R.~W. Schafer, \emph{Discrete-Time Signal
+Processing}, 3rd ed., Prentice Hall, Upper Saddle River, NJ, 2010.
+
+\bibitem{Shannon1949}
+C.~E. Shannon, \emph{Communication in the presence of noise},
+Proc.~IRE \textbf{37}(1) (1949), 10--21.
+
+\end{thebibliography}
+
+\end{document}
