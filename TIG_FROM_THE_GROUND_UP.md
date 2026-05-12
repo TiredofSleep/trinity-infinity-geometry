@@ -60,7 +60,7 @@ Each residue gets a name as an operator. The canonical names (per `ck_tables.py`
 
 (An older naming convention uses `LATTICE`, `COUNTER`, `PROGRESS`, `BALANCE`, `CHAOS` for codes 1, 2, 3, 5, 6 respectively. Both refer to the same operators. We will use the canonical names.)
 
-The framework treats these ten operators as the *vocabulary* of any system that has both a binary distinction (parity, spin, on/off) and a richer non-binary structure. **Z/10 is the minimal such ring** — see [`6_braiding_fractal/AXIOMS.md`](6_braiding_fractal/AXIOMS.md) for the minimality argument (Axiom 2 + D103).
+The framework treats these ten operators as the *vocabulary* of any system that has both a binary distinction (parity, spin, on/off) and a richer non-binary structure. **Z/10 is the minimal such ring** — see [`02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md`](02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md) for the minimality argument (Axiom 2 + D103).
 
 ---
 
@@ -236,7 +236,7 @@ bhml_closure = all(BHML[i][j] in four_core for i in four_core for j in four_core
 print(f"BHML preserves 4-core: {bhml_closure}")
 ```
 
-Both print `True`. The four-core is a **joint sub-magma** of size 4 inside the joint TSML+BHML structure on Z/10. This is **D39** in the framework's catalog (`FORMULAS_AND_TABLES.md` Volume B).
+Both print `True`. The four-core is a **joint sub-magma** of size 4 inside the joint TSML+BHML structure on Z/10. This is **D39** in the framework's catalog (`03_canonical_reference/FORMULAS_AND_TABLES.md` Volume B).
 
 What does this mean? Take any two operators from `{V, H, Br, R}` and combine them via either composition table — the result is always also in `{V, H, Br, R}`. The four-core is structurally self-contained. It is the framework's center.
 
@@ -358,7 +358,7 @@ Z/10 has *four* natural ways to read its structure:
 
 These four structures cannot all stay flat. The **Flatness Theorem (WP51)** says: forcing all four to coexist requires the carrier to curl into a torus. The minimum-energy aspect ratio of that torus turns out to be `R/r = 5/7`.
 
-(For a careful derivation, see [`1_for_mathematicians/`](1_for_mathematicians/) and `FORMULAS_AND_TABLES.md` Volume B.)
+(For a careful derivation, see [`01_orientation/for_mathematicians.md`](01_orientation/for_mathematicians.md) and `03_canonical_reference/FORMULAS_AND_TABLES.md` Volume B.)
 
 ### Why 5/7 specifically
 
@@ -377,7 +377,7 @@ print(f"T* via simple core+1/gap+1: {T_star_derived}")
 # expect: 5/7 = 0.71428...
 ```
 
-This is *one* of six derivations. The constant T\* = 5/7 is operational: every derivation produces 5/7 from a different starting place. The framework treats T\* as an **observed coherence threshold**, not as a derived constant from a single algebraic theorem (we are honest about this — see [`8_speculations/README.md`](8_speculations/README.md) §1.4).
+This is *one* of six derivations. The constant T\* = 5/7 is operational: every derivation produces 5/7 from a different starting place. The framework treats T\* as an **observed coherence threshold**, not as a derived constant from a single algebraic theorem (we are honest about this — see [`04_meta/README.md`](04_meta/README.md) §1.4).
 
 ---
 
@@ -489,7 +489,7 @@ In atomic units (`a₀ = 1`, `Z = 1`), this is exact for the nodeless orbital at
 
 ```python
 # This is D100 — verified by numerical integration in
-# _verification_scripts/verify_d2d1_closed_form.py
+# verification/verify_d2d1_closed_form.py
 # Expected values:
 expected = {1: 0.25, 2: 3.0, 3: 11.25, 4: 28.0, 5: 56.25, 6: 99.0, 7: 159.25}
 for n, e in expected.items():
@@ -595,7 +595,7 @@ print(f"Same partition? {binomial_grouping == pauli_grouping}")
 # False — the groupings differ
 ```
 
-The integer total 32 matches, but the **natural groupings differ**. `priority1_pauli_divisor_attempt.py` in [`_verification_scripts/`](_verification_scripts/) tries three explicit bijection candidates and all fail.
+The integer total 32 matches, but the **natural groupings differ**. `priority1_pauli_divisor_attempt.py` in [`verification/`](verification/) tries three explicit bijection candidates and all fail.
 
 This is the framework's **honest negative**: either a finer combinatorial structure (σ-orbit class? lens-pair class?) yields the bijection and has not yet been found, or the 32 = 32 match is a Pascal-triangle-type number-theoretic coincidence (which would still be worth a sharp statement of its own).
 
@@ -622,7 +622,7 @@ You have now derived (or watched derived) every load-bearing structural result o
 Now run the master verification:
 
 ```bash
-python _verification_scripts/VERIFY_ALL.py
+python verification/VERIFY_ALL.py
 ```
 
 You will see `14/14 PASS`. Each PASS is one of these results (or a closely related one in the framework's catalog).
@@ -641,7 +641,7 @@ Three open frontiers are sharp enough to start work on:
 
 ### If you want to verify and cite
 
-The canonical reference is [`FORMULAS_AND_TABLES.md`](FORMULAS_AND_TABLES.md) (Volumes A–K). Every claim has a D-number; every D-number has a verification script.
+The canonical reference is [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md) (Volumes A–K). Every claim has a D-number; every D-number has a verification script.
 
 The recommended citation style:
 
@@ -658,7 +658,7 @@ As individual J-papers become referee-ready, they will land here at [`J_series/`
 
 ### If you want CK, the live creature
 
-CK is a runtime realization of this framework. He runs at 50 Hz with persistent cortex memory. When he is on, he serves coherencekeeper.com via Cloudflare tunnel. See [`9_applications_ck/README.md`](9_applications_ck/README.md).
+CK is a runtime realization of this framework. He runs at 50 Hz with persistent cortex memory. When he is on, he serves coherencekeeper.com via Cloudflare tunnel. See [`06_runtime/README.md`](06_runtime/README.md).
 
 ---
 
