@@ -1,0 +1,320 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\Z/n\Z}
+\newcommand{\Zns}{(\Z/n\Z)^{\times}}
+\newcommand{\meet}{\wedge}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\triv}{\mathrm{triv}}
+\newcommand{\DYN}{\mathrm{DYN}}
+\newcommand{\SPEC}{\mathrm{SPEC}}
+\newcommand{\UG}{\mathrm{UG}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\lcm}{\mathrm{lcm}}
+\newcommand{\MVJN}{\mathrm{MVJN}}
+
+\title[Non-CRT sufficient pairs and MVJN on squarefree $\Z/n\Z$]{Non-CRT Sufficient Pairs and the Minimum Viable\\
+Jump Number on Squarefree $\Z/n\Z$}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+For squarefree $n = p_1 \cdots p_k$ ($k \geq 2$), we study the partition lattice of $\Zn$ from the perspective of the Chinese Remainder Theorem coordinate decomposition. We prove three structural results. First (Theorem~\ref{thm:orbit-pair}): the orbit-pair classification --- $\{\pi_{\DYN}(g), \pi_{\DYN}(h)\}$ on $\Zn$ is sufficient iff $\langle g \rangle \cap \langle h \rangle = \{1\}$ in $\Zns$, equivalently $\gcd(\ord_{p_i}(g), \ord_{p_i}(h)) = 1$ at every prime $p_i \mid n$. Second (Theorem~\ref{thm:mechanisms}): a support-based classification of sufficient orbit-pairs into three mutually exclusive and exhaustive mechanisms --- focused at distinct primes (M1); same-prime coprime orders (M2); mixed (M3) --- with mechanism (M2) existing iff some $p_i - 1$ has at least two distinct prime factors. Third (Theorem~\ref{thm:n30}): on $\Z/30\Z$, three sufficient $2$-partition families with one orthogonal jump exhibit three distinct mechanisms --- $\{\pi_{\DYN}(7), \pi_{\DYN}(11)\}$ (orbit + orbit, by the orbit-pair classification), $\{\pi_2, \pi_{15}\}$ (residue + residue, by CRT), and $\{\pi_{\SPEC}, \pi_{15}\}$ (reflection + composite residue). We work the $n = 10$ case in detail. Finally we settle the global question: $\MVJN(\Zn) = 1$ for every squarefree $n$ with $k \geq 2$ primes (Theorem~\ref{thm:MVJN}).
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+\subsection{Scope and tier discipline}
+
+\textbf{Proven:} The orbit-pair classification (Theorem~\ref{thm:orbit-pair}); the three-mechanism support classification (Theorem~\ref{thm:mechanisms}); rigidity of the prime-factor family (Theorem~\ref{thm:rigid}); the $\MVJN(\Zn) = 1$ theorem for squarefree $n$ with $k \geq 2$ primes (Theorem~\ref{thm:MVJN}). \textbf{Computed:} All sufficiency claims on $\Z/10\Z$, $\Z/30\Z$, and $\Z/42\Z$ verified by direct enumeration. Smallest primes $p$ with $p - 1$ having $\geq 2$ distinct prime factors verified through $p = 50$. \textbf{Structural rhyme:} The orbit-pair classification is in the same intellectual neighborhood as the existence theory of orthogonal pairs of cyclic Latin squares (e.g., Bose--Shrikhande--Parker), though the precise translation is not developed here. \textbf{Open:} Classification of all sufficient $2$-partition families in the mixed (residue + orbit) regime; optimal-information sufficient pairs minimizing the block-size product; extension to non-squarefree $n$. The framing follows the line of work on small finite combinatorial structures with explicit CRT-coordinate criteria, in the neighborhood of Drápal--Wanless~\cite{DrapalWanless2021}.
+
+\subsection{Setting}
+
+Throughout, $n = p_1 p_2 \cdots p_k$ is squarefree with $k \geq 2$. The Chinese Remainder Theorem provides $\Psi \colon \Zn \to \prod_i \Z/p_i\Z$, $x \mapsto (x_1, \ldots, x_k)$ where $x_i = x \bmod p_i$. The unit group factors as $\Zns \cong \prod_i (\Z/p_i\Z)^{\times}$, each factor cyclic of order $p_i - 1$.
+
+A partition $\pi$ of $\Zn$ has unresolved-pair set $U(\pi) = \{\{x,y\} : x \neq y, x \sim_{\pi} y\}$. A family $\{\pi_1, \pi_2, \ldots, \pi_m\}$ is \emph{sufficient} when $\bigcap_i U(\pi_i) = \emptyset$, equivalently $\pi_1 \meet \pi_2 \meet \cdots \meet \pi_m = \pi_{\disc}$. Two partitions are \emph{incompatible} when neither refines the other.
+
+The two natural classes of partitions used here are the residue partitions $\pi_d$ (for $d \mid n$) and the orbit partitions $\pi_{\DYN}(g)$ (for $g \in \Zns$, with blocks the orbits of multiplication-by-$g$). The reflection partition $\pi_{\SPEC}$ has blocks $\{x, n-x\}$.
+
+\subsection{The minimum viable jump number}
+
+\begin{definition}[MVJN] \label{def:MVJN}
+For squarefree $\Zn$ with $k \geq 2$ primes, $\MVJN(\Zn)$ is the minimum, over sufficient $2$-partition families $\{\pi_1, \pi_2\}$ on $\Zn$, of the count of incompatible (non-comparable) pairs --- equivalently, $0$ if some sufficient $\{\pi_1, \pi_2\}$ has $\pi_1 \leq \pi_2$ or $\pi_2 \leq \pi_1$, and $1$ otherwise.
+\end{definition}
+
+The two-family scope is deliberate: any sufficient $2$-family has either $0$ or $1$ orthogonal jump, so the question is whether the minimum-count is achieved by an incompatible pair. (Larger sufficient families admit higher jump counts, but the minimum is always achieved by some $2$-family on squarefree $n \geq 6$, as Theorem~\ref{thm:MVJN} shows.)
+
+\subsection{Lens-ownership}
+
+This paper works on $\Zn$ for squarefree $n$ with $k \geq 2$ prime factors, with the partition-pair framework built from two natural classes: residue partitions $\pi_d$ ($d \mid n$) and multiplicative orbit partitions $\pi_{\DYN}(g)$ ($g \in \Zns$). Sufficiency is the meet-discrete property in the partition lattice; the orthogonal-jump count quantifies how a family achieves separation. These class choices are foundational, not derived: they reflect the multiplicative-additive structure of $\Zns$ acting on $\Zn$. The theorems below are theorems on this specific lens; analogous theorems would hold for other natural partition classes.
+
+\subsection{Main results}
+
+\begin{theorem}[Orbit-pair classification] \label{thm:orbit-pair}
+For $g, h \in \Zns$ with squarefree $n$, the pair $\{\pi_{\DYN}(g), \pi_{\DYN}(h)\}$ is sufficient iff $\langle g \rangle \cap \langle h \rangle = \{1\}$ in $\Zns$, equivalently $\gcd(\ord_{p_i}(g), \ord_{p_i}(h)) = 1$ at every prime $p_i \mid n$.
+\end{theorem}
+
+\begin{definition}[Support of a unit] \label{def:support}
+For $g \in \Zns$ with squarefree $n$, the \emph{support} of $g$ is $\supp(g) := \{p_i \mid n : g_i \neq 1\}$, where $g_i = g \bmod p_i \in (\Z/p_i\Z)^{\times}$.
+\end{definition}
+
+\begin{theorem}[Three-mechanism support classification] \label{thm:mechanisms}
+For $g, h \in \Zns$ with squarefree $n$, the pair $\{\pi_{\DYN}(g), \pi_{\DYN}(h)\}$ is sufficient iff $\gcd(\ord_{p_i}(g), \ord_{p_i}(h)) = 1$ at every $p_i \mid n$. Sufficient orbit-pairs partition into three mutually exclusive types:
+\begin{enumerate}[label=\textup{(M\arabic*)}]
+\item \emph{Focused on distinct primes:} $\supp(g) \cap \supp(h) = \emptyset$ and $\supp(g) \cup \supp(h) \neq \emptyset$.
+\item \emph{Same-prime coprime orders:} $\supp(g) = \supp(h) = \{p_i\}$ for a single prime $p_i$.
+\item \emph{Mixed:} otherwise (each of $g, h$ acts non-trivially at multiple primes, or $\supp(g) \neq \supp(h)$ both non-empty multi-element).
+\end{enumerate}
+Mechanism \textup{(M2)} exists at $p_i$ iff $p_i - 1$ has at least two distinct prime factors. The smallest five primes admitting \textup{(M2)} are $7, 11, 13, 19, 23$; the next is $29$.
+\end{theorem}
+
+\begin{theorem}[Three explicit non-CRT pairs on $\Z/30\Z$] \label{thm:n30}
+There exist three sufficient $2$-partition families on $\Z/30\Z$ with exactly one orthogonal jump:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\{\pi_{\DYN}(7), \pi_{\DYN}(11)\}$ --- by Theorem~\ref{thm:orbit-pair}, mechanism \textup{(M3)}.
+\item $\{\pi_2, \pi_{15}\}$ --- by CRT (Theorem~\ref{thm:full-meet}).
+\item $\{\pi_{\SPEC}, \pi_{15}\}$ --- by direct enumeration of $U(\pi_{\SPEC}) \cap U(\pi_{15})$.
+\end{enumerate}
+In particular, $\MVJN(\Z/30\Z) = 1$ (Theorem~\ref{thm:MVJN} below).
+\end{theorem}
+
+\begin{theorem}[Rigidity of the prime-factor family] \label{thm:rigid}
+For squarefree $n$ with $k \geq 2$ primes, every minimal sufficient family among $\{\pi_{p_1}, \ldots, \pi_{p_k}\}$ has length exactly $k$, and every consecutive transition between distinct factor partitions is an orthogonal jump. The minimum-jump count within the prime-factor family is exactly $k - 1$.
+\end{theorem}
+
+\begin{theorem}[Universal MVJN $= 1$] \label{thm:MVJN}
+$\MVJN(\Zn) = 1$ for every squarefree $n$ with $k \geq 2$ prime factors.
+\end{theorem}
+
+The genuinely novel sufficient pair on $\Z/30\Z$ is family (a) of Theorem~\ref{thm:n30}: a pair of orbit partitions, neither a residue partition, sufficient by the coordinate-wise coprime-order condition. Families (b) and (c) achieve $\MVJN = 1$ via composite-residue compression of CRT data.
+
+\section{The CRT prime-factor family}
+
+\begin{lemma}[Pairwise incompatibility of factor partitions] \label{lem:pwise-incomp}
+For distinct primes $p_i, p_j \mid n$ (squarefree), the partitions $\pi_{p_i}$ and $\pi_{p_j}$ are incompatible.
+\end{lemma}
+
+\begin{proof}
+Suppose for contradiction $\pi_{p_i} \leq \pi_{p_j}$. A $\pi_{p_i}$-block is the residue class of some $r \pmod {p_i}$, of size $n/p_i$, and consists of $\{r, r + p_i, \ldots, r + (n/p_i - 1) p_i\} \pmod n$. The block is an arithmetic progression mod $n$ with common difference $p_i$. Since $\gcd(p_i, p_j) = 1$ and the block has size $n/p_i \geq p_j$ (as $p_j \mid n$ and $p_j \neq p_i$), the block surjects onto $\Z/p_j\Z$ (every residue mod $p_j$ is hit at least once). So the block is not contained in any single $\pi_{p_j}$-block, contradicting $\pi_{p_i} \leq \pi_{p_j}$.
+\end{proof}
+
+\begin{theorem}[Full meet $=$ discrete] \label{thm:full-meet}
+$\bigwedge_{i=1}^{k} \pi_{p_i} = \pi_{\disc}$, and exactly $k$ factor partitions are needed: for any proper sub-family $S \subsetneq \{p_1,\ldots,p_k\}$, the meet $\bigwedge_{p_i \in S} \pi_{p_i}$ is strictly coarser than $\pi_{\disc}$.
+\end{theorem}
+
+\begin{proof}
+Two elements $x, y$ are in the same block of $\bigwedge_i \pi_{p_i}$ iff $p_i \mid x - y$ for every $i$, iff $n \mid x - y$ (since $\lcm = n$ for squarefree $n$), iff $x = y$. For any $S \subsetneq \{p_1, \ldots, p_k\}$ omitting some $p_j$: the elements $0$ and $n/p_j = \prod_{i \neq j} p_i$ have $p_i \mid n/p_j$ for every $p_i \in S$, so they share the same block in every $\pi_{p_i}$ for $p_i \in S$. They are not equal in $\Zn$ (since $n/p_j \neq 0$ in $\Zn$), so the meet over $S$ is strictly coarser than $\pi_{\disc}$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rigid}]
+Sufficiency requires using all $k$ partitions (Theorem~\ref{thm:full-meet}). A minimal sufficient family ordered linearly has length $k$ with $k - 1$ transitions; by Lemma~\ref{lem:pwise-incomp} every transition is between incompatible partitions, giving exactly $k - 1$ orthogonal jumps.
+\end{proof}
+
+\section{Orbit-pair classification}
+
+\begin{proof}[Proof of Theorem~\ref{thm:orbit-pair}]
+We give a direct CRT-coordinate argument. Write the action of $g \in \Zns$ on $\Zn$ in CRT components as $(g \cdot x)_i = g_i x_i$ at every prime $p_i$.
+
+\emph{Necessity.} Suppose $\langle g \rangle \cap \langle h \rangle \ni c \neq 1$, write $c = g^m = h^{\ell}$. Some prime $p_i$ has $c_i \neq 1$. Choose $x \in \Zn$ with $x_j = 0$ for $j \neq i$ and $x_i = 1$ in $(\Z/p_i\Z)^{\times}$. Then $y := g^m x = h^{\ell} x$ has $y_i = c_i \neq 1 = x_i$ and $y_j = 0 = x_j$ at $j \neq i$. So $y \neq x$, and $y \in (\langle g \rangle x) \cap (\langle h \rangle x)$. Hence $\{x, y\} \in U(\pi_{\DYN}(g)) \cap U(\pi_{\DYN}(h))$.
+
+\emph{Sufficiency.} Suppose $\langle g \rangle \cap \langle h \rangle = \{1\}$ and $\{x, y\} \in U(\pi_{\DYN}(g)) \cap U(\pi_{\DYN}(h))$, so $g^m x = y = h^{\ell} x$ for some $m, \ell$. At each coordinate $i$: if $x_i \neq 0$, then $g_i^m = h_i^{\ell}$, an element of $\langle g_i \rangle \cap \langle h_i \rangle$. By hypothesis applied at the level of $\Zns \cong \prod_i (\Z/p_i\Z)^{\times}$ (where the intersection of the cyclic subgroups generated by $g$ and $h$ is trivial iff each coordinate intersection is trivial), this forces $g_i^m = 1$, hence $y_i = x_i$. If $x_i = 0$, then $y_i = g_i^m \cdot 0 = 0 = x_i$. Either way $y_i = x_i$, so $y = x$, contradicting $\{x, y\}$ unresolved.
+
+\emph{Reduction to coordinate-wise gcd.} A non-trivial element of $\langle g \rangle \cap \langle h \rangle$ exists iff some coordinate $i$ has a non-trivial element in $\langle g_i \rangle \cap \langle h_i \rangle$ in $(\Z/p_i\Z)^{\times}$, iff some $\gcd(\ord_{p_i}(g), \ord_{p_i}(h)) > 1$. The negation is the coordinate-wise gcd condition.
+\end{proof}
+
+\begin{remark}[Connection to orthogonal cyclic Latin squares]
+Theorem~\ref{thm:orbit-pair} is in the intellectual neighborhood of the existence theory of orthogonal pairs of cyclic Latin squares: a Latin square $L_g$ based on the action of $g$ (entries $g^j i \pmod n$ for row $i$, column $j$) is orthogonal to $L_h$ iff a certain joint-image condition is satisfied. The cyclic case has a long history (Bose--Shrikhande--Parker, Mullin--Stinson, etc.). We note the connection without developing the precise translation; a careful comparison would require a separate study.
+\end{remark}
+
+\section{The three-mechanism support classification}
+
+\begin{proof}[Proof of Theorem~\ref{thm:mechanisms}]
+The sufficiency criterion is from Theorem~\ref{thm:orbit-pair}.
+
+\emph{Mutual exclusivity and exhaustiveness of (M1)--(M3).} For sufficient $\{g, h\}$, consider $\supp(g)$ and $\supp(h)$. If they are disjoint and at least one is non-empty: case (M1). If $\supp(g) = \supp(h) = \{p_i\}$ (a single prime, both supported there): case (M2). Otherwise (both have multi-prime support, or have non-disjoint multi-element supports): case (M3). The cases are mutually exclusive and cover all possibilities for sufficient pairs (the case $\supp(g) = \supp(h) = \emptyset$ corresponds to $g = h = 1$, hence $\pi_{\DYN}(g) = \pi_{\DYN}(h) = \pi_{\triv}$, not sufficient).
+
+\emph{Existence of (M1).} Choose $g$ a generator of $(\Z/p_i\Z)^{\times}$ extended trivially to other primes, and $h$ at $p_{\ell}$ for $\ell \neq i$, similarly extended. Coordinate-wise: $\gcd(p_i - 1, 1) = 1$ at the off-primes, $\gcd(1, p_{\ell} - 1) = 1$ symmetric. Sufficient.
+
+\emph{Existence of (M2) requires $p_i - 1$ to have $\geq 2$ distinct prime factors.} If $p_i - 1 = q^a$ for a single prime $q$, every element of $(\Z/p_i\Z)^{\times}$ has order a power of $q$, and any pair of non-trivial orders has $\gcd > 1$. Conversely, if $p_i - 1 = a b$ with $\gcd(a, b) = 1$ and $a, b > 1$, the cyclic group of order $p_i - 1$ contains a unique subgroup of each order dividing $p_i - 1$; pick $g_i$ of order $a$ and $h_i$ of order $b$. Then $\gcd(a, b) = 1$. Extend $g_i, h_i$ trivially to other primes to construct $g, h$ in $\Zns$ with the coprime-order condition at $p_i$ and trivially elsewhere. This realizes (M2) at $p_i$.
+
+\emph{Existence of (M3).} Take $n = 42 = 2 \cdot 3 \cdot 7$. Set $g = 11$: $\ord_3(11) = 2$ (since $11 \equiv 2 \pmod 3$ and $\ord_3(2) = 2$), $\ord_7(11) = 3$ (since $11 \equiv 4 \pmod 7$ and $\ord_7(4) = 3$); so $\supp(g) = \{3, 7\}$. Set $h = 13$: $\ord_3(13) = 1$ ($13 \equiv 1 \pmod 3$), $\ord_7(13) = 2$ ($13 \equiv 6 \pmod 7$, $\ord_7(6) = 2$); so $\supp(h) = \{7\}$. At $p = 3$: $\gcd(2, 1) = 1$. At $p = 7$: $\gcd(3, 2) = 1$. The pair $\{\pi_{\DYN}(11), \pi_{\DYN}(13)\}$ is sufficient on $\Z/42\Z$, with $g$ acting non-trivially at multiple primes; hence (M3).
+
+\emph{Smallest primes admitting (M2).} We need $p$ with $p - 1$ having $\geq 2$ distinct prime factors. Compute: $p = 7$, $6 = 2 \cdot 3$ ($\geq 2$); $p = 11$, $10 = 2 \cdot 5$; $p = 13$, $12 = 2^2 \cdot 3$; $p = 19$, $18 = 2 \cdot 3^2$; $p = 23$, $22 = 2 \cdot 11$. Skipping $p = 17$ ($16 = 2^4$, single prime), the next is $p = 29$ ($28 = 2^2 \cdot 7$, two primes). Continuing: $31$ ($30 = 2 \cdot 3 \cdot 5$), $37$ ($36 = 2^2 \cdot 3^2$), \ldots
+\end{proof}
+
+\section{Non-CRT sufficient $2$-partition families on $\Z/30\Z$}
+
+\begin{proof}[Proof of Theorem~\ref{thm:n30}, family (a) $\{\pi_{\DYN}(7), \pi_{\DYN}(11)\}$]
+Apply Theorem~\ref{thm:orbit-pair}. Orders mod the primes of $30 = 2 \cdot 3 \cdot 5$:
+\[
+\ord_2(7) = 1, \quad \ord_3(7) = 1, \quad \ord_5(7) = 4; \qquad
+\ord_2(11) = 1, \quad \ord_3(11) = 2, \quad \ord_5(11) = 1.
+\]
+Coordinate-wise gcds: $\gcd(1, 1) = 1$ at $p = 2$, $\gcd(1, 2) = 1$ at $p = 3$, $\gcd(4, 1) = 1$ at $p = 5$. All gcds are $1$, so the pair is sufficient.
+
+Mechanism: $\supp(7) = \{5\}$ and $\supp(11) = \{3\}$. Both have non-empty single-prime support, but the supports are different, hence (M3).
+
+Incompatibility: the orbit of $1$ under $T_7$ is $\{1, 7, 19, 13\}$ (since $7^2 \equiv 19$, $7^3 \equiv 13$, $7^4 \equiv 1 \pmod{30}$); the orbit of $1$ under $T_{11}$ is $\{1, 11\}$. Neither is a union of the other's orbits, so $\pi_{\DYN}(7) \not\leq \pi_{\DYN}(11)$ and conversely. Hence one orthogonal jump.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:n30}, family (b) $\{\pi_2, \pi_{15}\}$]
+$\pi_2 \meet \pi_{15} = \pi_{\lcm(2, 15)} = \pi_{30} = \pi_{\disc}$, by Theorem~\ref{thm:full-meet} applied with composite residue $d = 15$ resolving the joint mod-$3$ and mod-$5$ data. Incompatibility: the $\pi_{15}$-block $\{0, 15\}$ has $0$ even, $15$ odd --- different $\pi_2$-blocks; the $\pi_2$-block of even residues contains both $0$ ($\bmod 15 = 0$) and $2$ ($\bmod 15 = 2$), different $\pi_{15}$-blocks.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:n30}, family (c) $\{\pi_{\SPEC}, \pi_{15}\}$]
+The unresolved-pair sets are
+\[
+U(\pi_{\SPEC}) = \{\{x, 30 - x\} : 1 \leq x \leq 14\}, \quad U(\pi_{15}) = \{\{x, x + 15\} : 0 \leq x \leq 14\}.
+\]
+A pair lies in both iff $a + b \equiv 0 \pmod{30}$ and $b \equiv a + 15 \pmod{30}$. Substituting, $2a \equiv -15 \equiv 15 \pmod{30}$. Since $\gcd(2, 30) = 2$ does not divide $15$, no solution exists. So $U(\pi_{\SPEC}) \cap U(\pi_{15}) = \emptyset$, sufficient.
+
+Incompatibility: the $\pi_{15}$-block $\{0, 15\}$ has $0$ in the $\SPEC$-singleton $\{0\}$ but $15$ in the $\SPEC$-singleton $\{15\}$ --- different $\SPEC$-blocks. Conversely the $\SPEC$-block $\{1, 29\}$ has $1 \bmod 15 = 1$ and $29 \bmod 15 = 14$, different $\pi_{15}$-blocks.
+\end{proof}
+
+\begin{remark}[Three different mechanisms]
+Family (a) is purely orbit-pair --- novel relative to CRT. Families (b) and (c) achieve $\MVJN = 1$ via composite-residue compression of CRT data: $\pi_{15}$ encodes both mod-$3$ and mod-$5$ coordinates simultaneously, leaving the mod-$2$ coordinate to the companion partition. The composite residue compression illustrates that the prime-factor family's $k - 1 = 2$ jump count for $k = 3$ primes is not the minimum.
+\end{remark}
+
+\section{Worked example: the partition lattice on $\Z/10\Z$}
+
+We work the $n = 10$ case in detail to illustrate the lattice structure. Note: for $k = 2$ primes the prime-factor jump count $k - 1 = 1$ is already optimal, so $\MVJN(\Z/10\Z) = 1$ trivially via $\{\pi_2, \pi_5\}$. The interest is structural: how the four principal partitions on $\Z/10\Z$ interact.
+
+\subsection{Named partitions}
+
+For $\Z/10\Z = \{0, 1, \ldots, 9\}$, the four principal partitions are
+\begin{align*}
+\pi_{\DYN}(3) = \pi_{\UG} &= \{\{0\}, \{1, 3, 7, 9\}, \{2, 4, 6, 8\}, \{5\}\},\\
+\pi_{\SPEC} &= \{\{0\}, \{1, 9\}, \{2, 8\}, \{3, 7\}, \{4, 6\}, \{5\}\},\\
+\pi_2 &= \{\{0, 2, 4, 6, 8\}, \{1, 3, 5, 7, 9\}\},\\
+\pi_5 &= \{\{0, 5\}, \{1, 6\}, \{2, 7\}, \{3, 8\}, \{4, 9\}\}.
+\end{align*}
+Here $\pi_{\UG}$ is the gcd-class partition (blocks indexed by $\gcd(\cdot, 10) \in \{1, 2, 5, 10\}$).
+
+\begin{lemma} \label{lem:dyn-ug}
+On $\Z/10\Z$, $\pi_{\DYN}(3) = \pi_{\UG}$.
+\end{lemma}
+
+\begin{proof}
+Since $\gcd(3, 10) = 1$, $\gcd(3 x, 10) = \gcd(x, 10)$ for all $x$, so $T_3$ permutes each gcd-class. The unit class $\{1, 3, 7, 9\}$ is a single $T_3$-orbit ($1 \to 3 \to 9 \to 7 \to 1$) since $\ord_{10}(3) = 4$. The class of gcd $2$, namely $\{2, 4, 6, 8\}$, is a single $T_3$-orbit ($2 \to 6 \to 8 \to 4 \to 2$). The classes $\{0\}$ and $\{5\}$ are fixed.
+\end{proof}
+
+\subsection{Refinement relations}
+
+\begin{proposition} \label{prop:n10-lattice}
+On $\Z/10\Z$:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\pi_{\SPEC} \leq \pi_{\UG} \leq \pi_2$.
+\item $\pi_5$ is incompatible with each of $\pi_2$, $\pi_{\UG}$, and $\pi_{\SPEC}$.
+\item $\pi_2 \meet \pi_5 = \pi_{\disc}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Every reflection pair $\{x, 10 - x\}$ has $\gcd(x, 10) = \gcd(10 - x, 10)$, so $\pi_{\SPEC} \leq \pi_{\UG}$. Each gcd-class lies entirely in one $\pi_2$-block (units $\{1, 3, 7, 9\}$ are odd; $\{2, 4, 6, 8\}$ are even; $\{0\}$ even, $\{5\}$ odd), so $\pi_{\UG} \leq \pi_2$.
+
+(b) The $\pi_5$-block $\{0, 5\}$ contains $0$ (even) and $5$ (odd) --- different $\pi_2$-blocks; the $\pi_2$-block of evens has size $5$, not a union of size-$2$ $\pi_5$-blocks. Similarly for $\pi_{\UG}$ and $\pi_{\SPEC}$.
+
+(c) Two elements with both the same parity and the same residue mod $5$ are equal in $\Z/10\Z$ (CRT, Theorem~\ref{thm:full-meet}).
+\end{proof}
+
+The chain $\pi_{\SPEC} \leq \pi_{\UG} \leq \pi_2$ contributes only refinement moves and is insufficient (its meet is $\pi_{\SPEC} \neq \pi_{\disc}$). The single orthogonal jump comes from inserting $\pi_5$.
+
+\section{$\MVJN(\Zn) = 1$}
+
+\begin{lemma}[Refinement-trap lower bound] \label{lem:refinement-trap}
+For squarefree $\Zn$ with $k \geq 2$ primes, no chain $\pi_1 \leq \pi_2 \leq \cdots \leq \pi_m$ of proper partitions ($\pi \neq \pi_{\disc}$) is sufficient.
+\end{lemma}
+
+\begin{proof}
+A chain has meet equal to its finest element $\pi_1$. For sufficiency, $\pi_1 = \pi_{\disc}$, contradicting that $\pi_1$ is proper.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:MVJN}]
+\emph{Lower bound:} $\MVJN(\Zn) \geq 1$ by Lemma~\ref{lem:refinement-trap} applied to a sufficient $2$-family of proper partitions.
+
+\emph{Upper bound:} The family $\{\pi_{p_1}, \pi_{n/p_1}\}$ is sufficient by Theorem~\ref{thm:full-meet} applied with $S = \{p_1, n/p_1\}$ (where the composite divisor $n/p_1 = p_2 \cdots p_k$ acts as a single residue partition resolving all of $p_2, \ldots, p_k$ jointly via CRT). This family has length $2$. By Lemma~\ref{lem:pwise-incomp}-style argument adapted to general residue partitions: $\pi_{p_1}$ has block size $n/p_1$, an arithmetic progression mod $p_2 \cdots p_k$ that surjects to every $\pi_{n/p_1}$-block, so the partitions are incompatible. Hence the family contributes one orthogonal jump.
+
+So $\MVJN(\Zn) \leq 1$, giving $\MVJN(\Zn) = 1$.
+\end{proof}
+
+\section{Open questions}
+
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{Classification of all sufficient $2$-partition families.} The orbit-pair case is fully classified by Theorem~\ref{thm:orbit-pair} and the residue-pair case by $\lcm$-coverage (CRT). The general mixed case --- where one partition is an orbit partition and the other a residue partition --- is open.
+\item \emph{Optimal-information sufficient pairs.} Among sufficient pairs $\{\pi_A, \pi_B\}$, those minimizing $|\mathrm{blocks}(\pi_A)| \cdot |\mathrm{blocks}(\pi_B)|$ are combinatorial orthogonal arrays of minimum size. For $n = 30$, $\{\pi_2, \pi_{15}\}$ achieves $2 \cdot 15 = 30 = n$. The general existence question for arbitrary squarefree $n$ is open.
+\item \emph{Beyond squarefree.} For $n$ with prime-power factors, the partition lattice changes; a separate analysis is required.
+\end{enumerate}
+
+\section*{Acknowledgments}
+
+We thank an anonymous referee for sharp comments leading to the clarified MVJN definition (Definition~\ref{def:MVJN}), the promotion of the $\MVJN = 1$ conjecture to a theorem (Theorem~\ref{thm:MVJN}), and the standalone CRT-coordinate proofs that removed several companion-paper dependencies. We also thank C.~A.~Luther for early discussions of the partition-lattice formulation.
+
+\begin{thebibliography}{9}
+
+\bibitem{Birkhoff1940}
+G.~Birkhoff,
+\emph{Lattice Theory},
+Amer.\ Math.\ Soc.\ Colloq.\ Publ.\ 25,
+American Mathematical Society, 1940.
+
+\bibitem{DrapalWanless2021}
+A.~Drápal and I.~M.~Wanless,
+\emph{Maximally non-associative quasigroups},
+J.\ Combin.\ Theory Ser.\ A \textbf{184} (2021), 105510.
+
+\bibitem{DummitFoote}
+D.~S.~Dummit and R.~M.~Foote,
+\emph{Abstract Algebra}, 3rd ed.,
+Wiley, 2004.
+
+\bibitem{HardyWright}
+G.~H.~Hardy and E.~M.~Wright,
+\emph{An Introduction to the Theory of Numbers}, 6th ed.,
+Oxford University Press, 2008.
+
+\bibitem{IrelandRosen}
+K.~Ireland and M.~Rosen,
+\emph{A Classical Introduction to Modern Number Theory}, 2nd ed.,
+Graduate Texts in Math.\ 84, Springer, 1990.
+
+\bibitem{Lang2002}
+S.~Lang,
+\emph{Algebra}, 3rd ed.,
+Graduate Texts in Math.\ 211, Springer, 2002.
+
+\bibitem{Ore1942}
+O.~Ore,
+\emph{Theory of equivalence relations},
+Duke Math.\ J.\ \textbf{9} (1942), 573--627.
+
+\end{thebibliography}
+
+\end{document}
