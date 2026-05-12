@@ -15,17 +15,23 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 - **J35** (Four-Core Fusion-Closure, *Journal of Algebra*) — **LANDED 2026-05-12 at [`../algebra/J35/`](../algebra/J35/).** 6/6 PASS at machine precision; referee-grade pass complete; CC-BY-4.0 verification script header; honest-negatives discipline on T*=5/7 and bounded F_p scan.
 - **J54** (Foundation Paper, *Algebraic Combinatorics*) — **LANDED 2026-05-12 at [`../combinatorics/J54/`](../combinatorics/J54/).** 6/6 + 3/3 PASS at machine precision; A1–A9 axioms cell-by-cell explicit; three substrate tables displayed inline; forcing theorem proved in §1.3 (breaks the J33 citation cycle by stating its own foundations); referee-grade pass complete (theorem numbering reconciled across manuscript, README, cover letter, and scripts; CC-BY-4.0 license headers added to both verify scripts; lens-ownership paragraph labeled in §0; honest-negative TSML_SYM-vs-TSML_RAW chain-count lens-dependence at size 7 recorded).
 
-### J02 + J15 — v3 triadic launch (remaining slots; J01 landed 2026-05-12)
+### v3 triadic launch — ALL THREE LANDED 2026-05-12
 
 J01 (σ rate theorem, *JCT-A*) landed at `J_series/combinatorics/J01/` on
 2026-05-12 (referee pass complete; 4/4 PASS at machine precision; cover letter
-finalized). The remaining two slots of the triadic launch:
-
-- **J02** (four-core, *Algebraic Combinatorics*) — combinatorial framing of the four-core fusion-closure.
-- **J15** (Galois D₄, *Communications in Algebra*) — D₄ Galois group of the runtime quartic over LMFDB 4.2.10224.1.
-
-**Status:** tier discipline applied; verification scripts staged. **Gating:** cover letters need final passes; J15 wants one more reading.
-**When ready:** J02 → `J_series/combinatorics/J02/`; J15 → `J_series/algebra/J15/`.
+finalized). J02 (four-core combinatorial framing, *Algebraic Combinatorics*)
+landed at `J_series/combinatorics/J02/` on 2026-05-12 (referee pass complete;
+6/6 PASS on the main `4core_verification.py` plus four companion scripts PASS
+at 50-digit precision; consolidated v3 Path B; single author block;
+Drápal-Wanless 184:105510 citation aligned with J35/J54; cover letter finalized;
+J54 differentiation explicit). J15 (Galois D₄ deep cut, *Communications in
+Algebra*) landed at `J_series/algebra/J15/` on 2026-05-12 (referee pass
+complete; 6/6 PASS at machine precision in `verify_J15_galois.py`; standalone
+referee-portable Galois proof — case-by-case integer-factorization
+irreducibility argument, cubic resolvent (y+2)(y² − y + 18), C_4-vs-D_4
+distinction via Q(√−71), explicit Q(√3) factorization, Tschirnhaus reduction
+to LMFDB's x⁴ − 7x² − 12x − 8; cover letter finalized with explicit J35
+differentiation; author lane Sanders + Gish; Drápal-Wanless cited).
 
 ### J46 — Cosmology
 
@@ -70,10 +76,10 @@ Papers that have had specific corrections applied with new verification scripts 
 | J20 | M₂₂ irrep count corrected (7 of 12 strict in {3,5,7,11}, 10 of 12 B-band) | PASS | algebra or combinatorics |
 | J21 | Spectral max G(7) ≈ 19.472 (not 25); rigidity tautology fixed | PASS | combinatorics |
 | J27 | Lens-invariance retracted (B[1][1]=2 ∉ C; 16-cell BHML failure shown) | PASS | combinatorics |
-| J31 | D₄ isotypic decomposition (sympy exact: 3075027/2 : 9/2 : 288164 : 0 : 19608) | PASS | algebra |
+| J31 | D₄ isotypic decomposition (sympy exact: 3075027/2 : 9/2 : 288164 : 0 : 19608) | PASS | **LANDED 2026-05-12 at [`../algebra/J31/`](../algebra/J31/)** |
 | J32 | D₄ order 8 (not 12); orbit distribution (44, 7, 4, 10, 2) summing to 67 orbits / 126 elements | PASS | algebra |
 | J36 | 1/α "10⁻⁵" claim was unfounded (actual 12.6% off); Part 2 deferred | flagged | physics (Part 1 only) |
-| J42 | sinc²(1/10) = 0.9675 (not 0.9355) | PASS | number_theory |
+| J42 | sinc²(1/10) = 0.9675 (not 0.9355) | PASS | **LANDED 2026-05-12 at [`../number_theory/J42/`](../number_theory/J42/)** |
 | J43 + J51 | G(s) partition G_high at {4, 7} (not {5, 7}); σ³ pairing not σ²; ν₊ discriminator | PASS | algebra |
 
 ---

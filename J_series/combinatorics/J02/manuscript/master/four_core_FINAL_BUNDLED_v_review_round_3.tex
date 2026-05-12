@@ -1,0 +1,1091 @@
+%%% ============================================================
+%%% Joint Closure, a Common Fixed Point, and an Algebraic
+%%% Mixing Point for a Pair of Binary Operations on Z/10Z
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Algebraic Combinatorics
+%%% MSC: 20N02, 20N05, 11R16, 37C25
+%%%
+%%% Verification: 4core_verification.py archived at
+%%% DOI 10.5281/zenodo.18852047 (verification scripts archive)
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+%% -------- macros --------
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Zten}{\Z/10\Z}
+\newcommand{\Cfour}{\mathcal{C}}
+\newcommand{\Tfuse}{\widehat{T}}
+\newcommand{\Bfuse}{\widehat{B}}
+\newcommand{\Fmix}{F_{\alpha}}
+\newcommand{\Simp}{\Delta^{9}}
+
+\title[Joint Closure on $\Zten$]{Joint Closure, a Common Fixed Point, and an Algebraic
+Mixing Point for a Pair of Binary Operations on $\Zten$}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, AR, USA}
+\email{brayden@7site.io}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher}
+
+\subjclass[2020]{Primary 20N02; Secondary 20N05, 11R16, 37C25}
+
+\keywords{commutative magma, sub-magma chain, joint closure,
+fixed-point dynamics, quartic number field, Galois group}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We study a pair of commutative binary operations
+$T,B:\Zten\times\Zten\to\Zten$ given explicitly by their Cayley
+tables. Four exact structural results emerge from direct
+enumeration and elementary algebra. (i) The sub-magmas of $\Zten$
+that are jointly closed under both $T$ and $B$ form a strict
+$8$-element chain in the inclusion order, with sizes
+$\{1,4,5,6,7,8,9,10\}$; sizes $2$ and $3$ are forbidden as joint
+closures. (ii) On the minimal non-trivial element of this
+chain, the four-element subset $\Cfour=\{0,7,8,9\}$, the two
+operations have a common fuse-normalizer
+$Z_{T}(p)=Z_{B}(p)=(p_{0}+p_{7}+p_{8}+p_{9})^{2}$ for every $p$
+supported on $\Cfour$, despite disagreeing on $12$ of the $16$
+cells of the $4\times 4$ restriction. (iii) The convex-combination
+iteration $\Fmix=\alpha\Tfuse+(1-\alpha)\Bfuse$ on the $9$-simplex
+has a unique non-degenerate $\Cfour$-supported fixed point at
+$\alpha=\tfrac12$. This fixed point is exhibited explicitly in
+$\Q(\sqrt{3},y^{*})$, and at it one has
+$p_{7}/p_{8}=1+\sqrt{3}$ exactly;
+the proof is by elementary algebra and does not require computer
+algebra, the Brouwer fixed-point theorem, or numerical iteration.
+(iv) The ratio $p_{9}/p_{8}$ at the same fixed point satisfies an
+irreducible integer quartic $y^{4}+4y^{3}-y^{2}+2y-2=0$ with
+Galois group $D_{4}$ over $\Q$, generating the quartic number
+field LMFDB \textnumero $4.2.10224.1$. The same fixed point lives
+on every shell of size $\geq 4$ in the joint-closure chain
+(rigorously), and computational iteration from the uniform
+initialization on each such shell converges to it (verified at
+fifty-digit precision). We further
+observe at five sample mixing weights
+$\alpha\in\{0,\tfrac14,\tfrac12,\tfrac34,1\}$ that only
+$\alpha=\tfrac12$ admits a small-coefficient quadratic relation
+for $p_{7}/p_{8}$ at the runtime fixed point; whether $\tfrac12$
+is the unique rational mixing weight in $(0,1)$ with this property
+is left as an open question.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+This paper studies a small object: the family of sub-magmas of
+$\Zten$ that are simultaneously closed under two specific binary
+operations $T$ and $B$, together with the dynamics of their
+convex-combination iteration on the $9$-simplex. We establish
+four exact structural results, each accompanied by a deterministic
+verification script, and pose one open question precisely.
+
+The two operations are presented as Cayley tables in
+\S\ref{sec:setup}. Both are commutative and have $0$ acting as a
+zero on the off-diagonal. Beyond these features they differ
+markedly: $T$ has the value $7$ acting as a row absorber on most
+of $\Zten$; $B$ is approximately incrementing in the sense that
+$B(j,j)=j+1\pmod{10}$ for $j\in\{1,\dots,7\}$, with diagonal
+exceptions at $j\in\{0,8,9\}$ (where $B(0,0)=0$, $B(8,8)=7$, and
+$B(9,9)=0$). Despite this surface dissimilarity,
+several exact structural phenomena link them tightly.
+
+The novelty is not the isolated appearance of a quadratic or
+quartic algebraic number, but the coexistence of four rigid
+phenomena: a complete classification of the joint-closure lattice
+into a single $8$-element chain, an exact normalizer coincidence
+for two operations that disagree on $12$ of the $16$ cells of the
+restriction to the chain's minimal non-trivial element, a
+symmetric mixing point at which the fixed-point equations on that
+element collapse to a low-degree algebraic relation, and a
+quartic-field layer with explicitly determined Galois group.
+
+\paragraph{The chain (Theorem~\ref{thm:chain}).} The sub-magmas of
+$\Zten$ jointly closed under both $T$ and $B$, partially ordered
+by inclusion, form a totally ordered $8$-element chain
+\[
+\{0\}\subset\Cfour\subset\Cfour\cup\{6\}\subset\Cfour\cup\{5,6\}\subset
+\Cfour\cup\{4,5,6\}\subset\Cfour\cup\{3,4,5,6\}\subset
+\Cfour\cup\{2,3,4,5,6\}\subset\Zten,
+\]
+where $\Cfour=\{0,7,8,9\}$. The chain is strict: no size-$2$ or
+size-$3$ subset of $\Zten$ is jointly closed. Among all $1023$
+non-empty subsets of $\Zten$, exactly these eight satisfy joint
+closure.
+
+\paragraph{The 4-core normalizer identity (Theorem~\ref{thm:norm}).}
+On the minimal non-trivial element $\Cfour$ of the chain, the
+fuse-normalizer
+$Z_{M}(p)=\sum_{c\in\Zten}\sum_{(i,j):M(i,j)=c}p_{i}p_{j}$ is
+identical for $M=T$ and $M=B$:
+\[
+Z_{T}(p)=Z_{B}(p)=(p_{0}+p_{7}+p_{8}+p_{9})^{2}\qquad\text{for }p\text{ supported on }\Cfour,
+\]
+even though $T$ and $B$ disagree on $12$ of the $16$ cells of the
+$4\times 4$ restriction.
+
+\paragraph{The closed-form attractor (Theorem~\ref{thm:attractor}).}
+On the simplex $\Simp\subset\R^{10}$, the convex-combination
+iteration $\Fmix=\alpha\Tfuse+(1-\alpha)\Bfuse$ at
+$\alpha=\tfrac12$ has a unique non-degenerate fixed point with
+support $\Cfour$, exhibited by an explicit construction over
+$\Q(\sqrt{3},y^{*})$. At this fixed point $p_{7}/p_{8}=1+\sqrt{3}$;
+the ratio reduces, in three lines of algebra from one fixed-point
+coordinate equation, to the quadratic $x^{2}-2x-2=0$. Because
+$\Cfour$ is jointly closed (Corollary~\ref{cor:4core}), this same
+fixed point is also a fixed point of $\Fmix$ on every larger
+shell of the chain (Proposition~\ref{prop:universal}); numerical
+iteration on each shell at fifty-digit precision converges to it
+from the uniform initialization, which motivates the phrase
+``common attractor'' across the chain.
+
+\paragraph{The Galois extension (Theorem~\ref{thm:galois}).} The
+ratio $p_{9}/p_{8}$ at the same fixed point satisfies the
+irreducible integer quartic $y^{4}+4y^{3}-y^{2}+2y-2=0$, with
+Galois group over $\Q$ equal to the dihedral group $D_{4}$ of
+order $8$. The associated quartic number field is the field LMFDB
+\textnumero $4.2.10224.1$, with field discriminant
+$d_{K}=-10224=-2^{4}\cdot 3^{2}\cdot 71$ and class number $1$. The
+quadratic subfield $\Q(\sqrt{3})\subset K$ in which $p_{7}/p_{8}$
+lives can be exhibited explicitly by factoring the quartic over
+$\Q(\sqrt{3})$.
+
+\paragraph{The mixing-weight observations (Theorem~\ref{thm:alpha}).}
+At $\alpha=1$ (pure $T$) the iteration collapses to the Dirac mass
+$\delta_{7}$ in eight steps. At $\alpha=0$ (pure $B$) it
+converges to a distribution on $\Cfour$ at which
+$p_{7}/p_{8}\approx 0.585$ admits no integer-quadratic relation
+$ay^{2}+by+c=0$ with $|a|,|b|,|c|\leq 20$ at fifty-digit
+precision. The same is true at $\alpha\in\{\tfrac14,\tfrac34\}$.
+Only $\alpha=\tfrac12$ produces a small-coefficient quadratic in
+our sample. We do \emph{not} claim that $\alpha=\tfrac12$ is the
+unique rational with this property in $(0,1)\cap\Q$; the question
+is delicate (\S\ref{sec:scope-alpha}) and we leave it open.
+
+\paragraph{Positioning.} The mixing-weight phenomena of
+Theorem~\ref{thm:alpha} are reminiscent of rate-theoretic results
+on non-associativity densities for binary operations on $\Z/N\Z$
+\cite{SandersGish2026Sigma}, where exact algebraic relations also
+appear at very specific arithmetic points. The classical
+Drápal--Kepka tradition of low-density associativity in
+quasigroups \cite{Kepka1980, DrapalKepka1985} treats
+non-associativity counts on cancellative structures; the present
+paper studies the joint closure of two non-cancellative magmas and
+the dynamics of their convex combination, and is not implied by
+the corresponding density results in those references. The
+fixed-point result of Theorem~\ref{thm:attractor} sits on the
+dynamical side rather than the associativity-counting side.
+
+\paragraph{Outline.} \S\ref{sec:setup} fixes the two tables and
+the iteration. \S\ref{sec:chain} proves the joint-closure chain
+(Theorem~\ref{thm:chain}). \S\ref{sec:norm} proves the normalizer
+coincidence (Theorem~\ref{thm:norm}). \S\ref{sec:attractor}
+proves the closed-form attractor at $\alpha=\tfrac12$
+(Theorem~\ref{thm:attractor}) and the fact that this fixed point
+lives on every shell of the chain
+(Proposition~\ref{prop:universal}). \S\ref{sec:galois}
+derives the $D_{4}$ Galois structure (Theorem~\ref{thm:galois}).
+\S\ref{sec:alpha} documents the mixing-weight observations
+(Theorem~\ref{thm:alpha}). \S\ref{sec:scope-alpha} discusses the
+open uniqueness question. \S\ref{sec:verify} catalogs the
+verification scripts and \S\ref{sec:scope} states the limitations
+of the present results.
+
+%% -------- section 2: setup --------
+\section{Definitions and the two tables}\label{sec:setup}
+
+We work throughout on the additive group $\Zten$, identified with
+the labels $\{0,1,\dots,9\}$.
+
+\begin{definition}[The two tables]\label{def:tables}
+The two binary operations $T,B:\Zten\times\Zten\to\Zten$ are given
+by their Cayley tables:
+\[
+T = \left[
+\begin{array}{*{10}{c}}
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 7 & 0 & 0 \\
+0 & 7 & 3 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 3 & 7 & 7 & 4 & 7 & 7 & 7 & 7 & 9 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 3 \\
+0 & 7 & 4 & 7 & 7 & 7 & 7 & 7 & 8 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 8 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 9 & 3 & 7 & 7 & 7 & 7 & 7 & 7
+\end{array}
+\right],\qquad
+B = \left[
+\begin{array}{*{10}{c}}
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 2 & 6 & 6 \\
+2 & 3 & 3 & 4 & 5 & 6 & 7 & 3 & 6 & 6 \\
+3 & 4 & 4 & 4 & 5 & 6 & 7 & 4 & 6 & 6 \\
+4 & 5 & 5 & 5 & 5 & 6 & 7 & 5 & 7 & 7 \\
+5 & 6 & 6 & 6 & 6 & 6 & 7 & 6 & 7 & 7 \\
+6 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 0 \\
+8 & 6 & 6 & 6 & 7 & 7 & 7 & 9 & 7 & 8 \\
+9 & 6 & 6 & 6 & 7 & 7 & 7 & 0 & 8 & 0
+\end{array}
+\right].
+\]
+Both $T$ and $B$ are commutative.
+\end{definition}
+
+\begin{notation}
+We refer to the indices $0,7,8,9$ frequently. In proofs we
+sometimes write $(p_{0},p_{7},p_{8},p_{9})=(v,h,\beta,r)$ for
+masses on these four indices.
+\end{notation}
+
+\begin{definition}[Sub-magma; joint closure]\label{def:submagma}
+A subset $S\subseteq\Zten$ is a \emph{sub-magma} of $(\Zten,M)$ if
+$M(i,j)\in S$ for all $i,j\in S$. We call $S$ \emph{jointly
+closed} (under $T$ and $B$) if it is a sub-magma of both. The set
+of jointly closed subsets, ordered by inclusion, is denoted
+$\mathcal{L}(T,B)$.
+\end{definition}
+
+\begin{definition}[The fuse, normalizer, and iteration]\label{def:fuse}
+For a binary operation $M:\Zten\times\Zten\to\Zten$ and a vector
+$p=(p_{0},\dots,p_{9})\in\R^{10}$, the \emph{fuse}
+$\widehat{M}(p)\in\R^{10}$ is the convolution along the operation:
+\[
+\widehat{M}(p)_{c}\;=\;\sum_{(i,j)\in\Zten^{2}\,:\,M(i,j)=c}p_{i}p_{j},
+\qquad c\in\Zten.
+\]
+The \emph{normalizer} is $Z_{M}(p)=\sum_{c\in\Zten}\widehat{M}(p)_{c}$.
+For $\alpha\in[0,1]$ we define the \emph{convex-combination
+iteration} $\Fmix:\Simp\to\Simp$ by
+\[
+\Fmix(p)\;=\;\frac{\alpha\,\widehat{T}(p)+(1-\alpha)\,\widehat{B}(p)}{\alpha\,Z_{T}(p)+(1-\alpha)\,Z_{B}(p)},
+\]
+where $\Simp=\{p\in\R^{10}_{\geq 0}:\sum_{c}p_{c}=1\}$.
+\end{definition}
+
+\begin{remark}
+For any $p\in\Simp$, $Z_{M}(p)=\bigl(\sum_{i}p_{i}\bigr)^{2}=1$
+since the fuse is bilinear and each ordered pair $(i,j)$
+contributes $p_{i}p_{j}$ to exactly one output bucket. Hence on
+$\Simp$ the iteration reduces to
+$\Fmix(p)=\alpha\Tfuse(p)+(1-\alpha)\Bfuse(p)$ without
+normalization. We retain the explicit normalizer in
+Definition~\ref{def:fuse} for parallelism with non-simplex
+initializations.
+\end{remark}
+
+%% -------- section 3: chain --------
+\section{The joint-closure chain}\label{sec:chain}
+
+\begin{theorem}[Joint-closure chain]\label{thm:chain}
+The sub-magmas of $\Zten$ jointly closed under both $T$ and $B$
+form a strict chain of length $8$ in inclusion order:
+\[
+\mathcal{L}(T,B)\;=\;\bigl\{S_{1}\subset S_{4}\subset S_{5}\subset
+S_{6}\subset S_{7}\subset S_{8}\subset S_{9}\subset S_{10}\bigr\},
+\]
+where
+\begin{align*}
+S_{1}&=\{0\}, & S_{4}&=\{0,7,8,9\}, \\
+S_{5}&=\{0,6,7,8,9\}, & S_{6}&=\{0,5,6,7,8,9\}, \\
+S_{7}&=\{0,4,5,6,7,8,9\}, & S_{8}&=\{0,3,4,5,6,7,8,9\}, \\
+S_{9}&=\{0,2,3,4,5,6,7,8,9\}, & S_{10}&=\Zten.
+\end{align*}
+The chain is strict: no subset of $\Zten$ of size $2$ or size $3$
+is jointly closed.
+\end{theorem}
+
+\begin{proof}
+We verify the joint-closure status of each candidate subset by
+direct computation. The proof has two parts: (a) confirming that
+each $S_{k}$ in the displayed list is jointly closed, and (b)
+confirming that no other non-empty subset is jointly closed.
+
+\textbf{Part (a) — the eight subsets are jointly closed.} For
+each $k\in\{1,4,5,6,7,8,9,10\}$, the verification reduces to
+checking that $T(i,j)\in S_{k}$ and $B(i,j)\in S_{k}$ for all
+$i,j\in S_{k}$. We display the size-$4$ case explicitly and refer
+to the verification script (\S\ref{sec:verify}) for the others.
+
+For $S_{4}=\{0,7,8,9\}$, the $4\times 4$ restrictions are
+\[
+T\big|_{S_{4}\times S_{4}}=\begin{pmatrix}
+0 & 7 & 0 & 0 \\
+7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7
+\end{pmatrix},
+\qquad
+B\big|_{S_{4}\times S_{4}}=\begin{pmatrix}
+0 & 7 & 8 & 9 \\
+7 & 8 & 9 & 0 \\
+8 & 9 & 7 & 8 \\
+9 & 0 & 8 & 0
+\end{pmatrix}.
+\]
+Every entry of $T\big|_{S_{4}\times S_{4}}$ lies in
+$\{0,7\}\subseteq S_{4}$. Every entry of
+$B\big|_{S_{4}\times S_{4}}$ lies in $\{0,7,8,9\}=S_{4}$.
+
+\textbf{Part (b) — no other subset is jointly closed.}
+
+\emph{Sizes $2$ and $3$.} We dispatch these by exhaustive case
+analysis on the diagonal entries of $B$. Inspecting the diagonal:
+\[
+B(j,j)=\begin{cases}
+0 & j=0,\\
+j+1 & j\in\{1,2,3,4,5,6,7\},\\
+7 & j=8,\\
+0 & j=9.
+\end{cases}
+\]
+
+\emph{Size $2$.} Let $S=\{a,b\}$ with $a<b$. Joint closure requires
+$B(a,a),B(b,b)\in S$ and $T(a,a),T(b,b)\in S$, plus the off-diagonal
+constraints.
+
+\emph{Subcase $0\in S$.} Then $S=\{0,a\}$ with $a\in\{1,\dots,9\}$.
+The diagonal $B(a,a)$ must lie in $\{0,a\}$. From the diagonal
+table: for $a\in\{1,\dots,7\}$, $B(a,a)=a+1\notin\{0,a\}$; for
+$a=8$, $B(8,8)=7\notin\{0,8\}$; for $a=9$, $B(9,9)=0\in\{0,9\}$ and
+$B(0,9)=B(9,0)=9\in\{0,9\}$, so $\{0,9\}$ is $B$-closed. However
+$T(9,9)=7\notin\{0,9\}$, so $\{0,9\}$ fails $T$-closure.
+
+\emph{Subcase $0\notin S$.} Then $S\subseteq\{1,\dots,9\}$, and
+both $B(a,a)\in S$ and $B(b,b)\in S$ are required. Since
+$B(j,j)\neq j$ for all $j\in\{1,\dots,9\}$, we need $B(a,a)=b$ and
+$B(b,b)=a$. Listing all $j\in\{1,\dots,9\}$ with their diagonal
+values: $(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,8),(8,7),(9,0)$.
+The only unordered pair $\{a,b\}\subseteq\{1,\dots,9\}$ with
+$B(a,a)=b$ and $B(b,b)=a$ is $\{7,8\}$ (since $B(7,7)=8$ and
+$B(8,8)=7$). However $B(7,8)=9\notin\{7,8\}$, so $\{7,8\}$ fails
+$B$-closure.
+
+The remaining size-$2$ candidates do not satisfy
+$B(a,a),B(b,b)\in S$ and are excluded immediately. No size-$2$
+subset is jointly closed.
+
+\emph{Size $3$.} Suppose $S=\{a,b,c\}$ with $a<b<c$ is jointly
+closed. The three diagonal entries $B(a,a),B(b,b),B(c,c)$ and the
+three diagonals $T(s,s)$ for $s\in S$ must all lie in $S$. Direct
+enumeration of $\binom{10}{3}=120$ candidates against just the
+six diagonal constraints leaves only two candidates:
+$\{0,7,8\}$ and $\{6,7,8\}$. (For $\{0,7,8\}$: $B$-diagonals are
+$0,8,7$; for $\{6,7,8\}$: $B$-diagonals are $7,8,7$; in both
+cases the $T$-diagonals are $0,7,7$ and $7,7,7$ respectively,
+all in $S$.) However both candidates fail $B$-closure at the
+off-diagonal cell $B(7,8)=9$: in $\{0,7,8\}$, $9\notin S$; in
+$\{6,7,8\}$, $9\notin S$. Hence no size-$3$ subset is jointly
+closed.
+
+\emph{Sizes $4$ through $10$ — uniqueness within size class.} We
+must confirm that the listed $S_{k}$ is the \emph{unique}
+jointly-closed subset of its size class, for $k\in\{4,5,6,7,8,9\}$.
+At each size, direct enumeration over the $\binom{10}{k}$
+candidates (totalling $210+252+210+120+45+10=847$ subsets across
+sizes $4$–$9$, plus $\binom{10}{10}=1$ at size $10$) verifies that
+each non-listed candidate fails $T$- or $B$-closure on at least
+one cell. The script records the failing cell for each
+non-jointly-closed candidate.
+
+The full enumeration of all $1023$ non-empty subsets of $\Zten$,
+with the distinguishing failing cell recorded for each
+non-jointly-closed subset, is performed by the verification
+script \texttt{4core\_verification.py} (\S\ref{sec:verify}).
+\end{proof}
+
+\begin{remark}[Structural reading of the chain]\label{rem:sigma-walk}
+The chain has a clean structural description in terms of the
+permutation $\sigma:\Zten\to\Zten$ defined by
+$\sigma=(0)(3)(8)(9)(1\;7\;6\;5\;4\;2)$ in cycle notation. The
+operators $\{0,3,8,9\}$ are $\sigma$-fixed; the operators
+$\{1,2,4,5,6,7\}$ form a single $6$-cycle. The chain proceeds:
+\begin{itemize}\setlength\itemsep{0pt}
+\item Step $1\to 4$: adds $\{7,8,9\}$. Of these, $7$ is in the
+$6$-cycle and $\{8,9\}$ are $\sigma$-fixed.
+\item Steps $4\to 5$, $5\to 6$, $6\to 7$: each adds the next
+element of the $\sigma$-forward orbit of $7$, namely
+$\sigma(7)=6$, $\sigma^{2}(7)=5$, $\sigma^{3}(7)=4$.
+\item Step $7\to 8$: adds $3$, the remaining $\sigma$-fixed
+operator. The $\sigma$-orbit walk pauses for one step:
+$\sigma^{4}(7)=2$ would be the next $\sigma$-orbit element, but
+adding $2$ alone forces $3=B(2,2)$ into the closure as well,
+producing a size jump of $2$. Adding $3$ alone closes more
+cheaply.
+\item Steps $8\to 9$, $9\to 10$: completes the $\sigma$-orbit
+walk, adding $\sigma^{4}(7)=2$ at size $9$ and
+$\sigma^{5}(7)=1$ at size $10$.
+\end{itemize}
+The $\sigma$-fixed operators $\{0,3,8,9\}$ enter at three
+positions: $0$ at the bottom (size $1$), $\{8,9\}$ in the
+size-$1\to 4$ jump, and $3$ at the size-$7\to 8$ bridge. The
+$\sigma$-cycle $\{1,7,6,5,4,2\}$ enters in $\sigma$-forward order,
+with the size-$8$ bridge interrupting between
+$4=\sigma^{3}(7)$ and $2=\sigma^{4}(7)$.
+\end{remark}
+
+\begin{corollary}[Forbidden sizes]\label{cor:forbidden}
+No subset of $\Zten$ of size $2$ or $3$ is jointly closed under
+$T$ and $B$.
+\end{corollary}
+
+\begin{proof}
+Part~(b) of the proof of Theorem~\ref{thm:chain}.
+\end{proof}
+
+%% -------- section 4: 4-core --------
+\section{The 4-core is jointly closed}\label{sec:4core}
+
+The minimal non-trivial element of the chain in
+Theorem~\ref{thm:chain} is the four-element subset
+$\Cfour=\{0,7,8,9\}$.
+
+\begin{corollary}[4-core closure]\label{cor:4core}
+$\Cfour$ is jointly closed under $T$ and $B$. Explicitly,
+$T(\Cfour\times\Cfour)\subseteq\{0,7\}\subset\Cfour$ and
+$B(\Cfour\times\Cfour)=\Cfour$.
+\end{corollary}
+
+\begin{proof}
+Part~(a) of the proof of Theorem~\ref{thm:chain}, displayed
+explicitly via the $4\times 4$ restrictions.
+\end{proof}
+
+\begin{remark}\label{rem:rank-disparity}
+The image of $T\big|_{\Cfour\times\Cfour}$ is the proper subset
+$\{0,7\}\subset\Cfour$. The image of $B\big|_{\Cfour\times\Cfour}$
+is the full $\Cfour$. The two operations therefore differ
+markedly in rank on $\Cfour$. The two restrictions agree on
+exactly $4$ of the $16$ cells: $(0,0)\to 0$, $(0,7)\to 7$,
+$(7,0)\to 7$, and $(8,8)\to 7$. They disagree on the remaining
+$12$ cells. This makes the normalizer identity of
+Theorem~\ref{thm:norm} striking, as we now show.
+\end{remark}
+
+%% -------- section 5: normalizer --------
+\section{The normalizer identity on the 4-core}\label{sec:norm}
+
+For $p\in\R^{10}$ supported on $\Cfour$, write
+$(v,h,\beta,r)=(p_{0},p_{7},p_{8},p_{9})$.
+
+\begin{theorem}[Normalizer coincidence]\label{thm:norm}
+For every $p\in\R^{10}$ supported on $\Cfour$,
+\[
+Z_{T}(p)\;=\;Z_{B}(p)\;=\;(v+h+\beta+r)^{2}.
+\]
+\end{theorem}
+
+\begin{proof}
+We compute the four 4-core-supported coordinates of $\Tfuse(p)$
+and $\Bfuse(p)$ from Definition~\ref{def:fuse} and the restricted
+tables of Corollary~\ref{cor:4core}.
+
+For $T$: cells of $T\big|_{\Cfour\times\Cfour}$ producing $0$ are
+$(0,0),(0,8),(8,0),(0,9),(9,0)$ ($5$ cells). Cells producing $7$
+are the remaining $11$ cells. Tabulating fuse coordinates in
+$(v,h,\beta,r)$:
+\begin{align*}
+\Tfuse(p)_{0}&=v^{2}+2v\beta+2vr,\\
+\Tfuse(p)_{7}&=2vh+h^{2}+2h\beta+2hr+\beta^{2}+2\beta r+r^{2},\\
+\Tfuse(p)_{8}&=0,\qquad \Tfuse(p)_{9}=0.
+\end{align*}
+Summing over $\Cfour$ (and noting $\Tfuse(p)_{c}=0$ for
+$c\notin\Cfour$ when $p$ is $\Cfour$-supported, since $T(i,j)\in\Cfour$
+for $i,j\in\Cfour$):
+\[
+Z_{T}(p)\;=\;v^{2}+h^{2}+\beta^{2}+r^{2}+2(vh+v\beta+vr+h\beta+hr+\beta r)\;=\;(v+h+\beta+r)^{2}.
+\]
+
+For $B$: cells of $B\big|_{\Cfour\times\Cfour}$ producing $0$ are
+$(0,0),(7,9),(9,7),(9,9)$. Cells producing $7$ are
+$(0,7),(7,0),(8,8)$. Cells producing $8$ are
+$(0,8),(8,0),(7,7),(8,9),(9,8)$. Cells producing $9$ are
+$(0,9),(9,0),(7,8),(8,7)$. Tabulating fuse coordinates:
+\begin{align*}
+\Bfuse(p)_{0}&=v^{2}+2hr+r^{2},\\
+\Bfuse(p)_{7}&=2vh+\beta^{2},\\
+\Bfuse(p)_{8}&=2v\beta+h^{2}+2\beta r,\\
+\Bfuse(p)_{9}&=2vr+2h\beta.
+\end{align*}
+Summing:
+\[
+Z_{B}(p)\;=\;v^{2}+h^{2}+\beta^{2}+r^{2}+2(vh+v\beta+vr+h\beta+hr+\beta r)\;=\;(v+h+\beta+r)^{2}.
+\]
+Both equal $(v+h+\beta+r)^{2}$.
+\end{proof}
+
+\begin{corollary}[Normalizer is one on the 4-core simplex]\label{cor:Z=1}
+For $p\in\Simp$ with support in $\Cfour$, $Z_{T}(p)=Z_{B}(p)=1$.
+The convex-combination iteration on $\Cfour$-supported $p$ reduces
+to
+\[
+\Fmix(p)\;=\;\alpha\,\Tfuse(p)+(1-\alpha)\,\Bfuse(p),
+\]
+and the fixed-point equation $\Fmix(p)=p$ becomes a polynomial
+system in $(v,h,\beta,r)$ subject to $v+h+\beta+r=1$.
+\end{corollary}
+
+\begin{remark}
+The identity $Z_{T}=Z_{B}$ on $\Cfour$ arises by a global
+cancellation across the $16$ cells of the restriction, not by
+pointwise equality. The two operations agree on only $4$ of the
+$16$ cells; the remaining $12$ cells route output values
+differently between the four output buckets, in such a way that
+the total per-bucket sums coincide. The identity is in fact a
+polynomial identity in $(v,h,\beta,r)$, exact and independently
+verifiable by symbolic expansion.
+\end{remark}
+
+%% -------- section 6: closed-form attractor --------
+\section{The closed-form attractor at $\alpha=\tfrac12$}\label{sec:attractor}
+
+We turn now to the dynamics of $\Fmix$ on $\Cfour$-supported
+distributions.
+
+\begin{theorem}[Closed-form $4$-core common fixed point]\label{thm:attractor}
+The convex-combination iteration $\Fmix$ at $\alpha=\tfrac12$
+restricted to $\Cfour$-supported distributions has a unique
+non-degenerate fixed point $p^{*}$ in the relative interior of
+the $\Cfour$-supported sub-simplex
+$\Delta_{\Cfour}=\{p\in\Simp:\mathrm{supp}(p)\subseteq\Cfour\}$.
+At this fixed point,
+\[
+\frac{p^{*}_{7}}{p^{*}_{8}}\;=\;1+\sqrt{3},\qquad
+\frac{p^{*}_{9}}{p^{*}_{8}}\;=\;y^{*},
+\]
+where $y^{*}=\tfrac{1}{2}\bigl(\sqrt{11+8\sqrt{3}}-(2+\sqrt{3})\bigr)$
+is the unique positive root of $y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})=0$
+over $\Q(\sqrt{3})$.
+\end{theorem}
+
+\begin{proof}
+By Corollary~\ref{cor:Z=1}, on $\Cfour$-supported $p\in\Simp$ at
+$\alpha=\tfrac12$ the fixed-point equation $\Fmix(p)=p$ is the
+polynomial system
+\[
+v=\tfrac12(\Tfuse(p)_{0}+\Bfuse(p)_{0}),\qquad
+h=\tfrac12(\Tfuse(p)_{7}+\Bfuse(p)_{7}),
+\]
+\[
+\beta=\tfrac12(\Tfuse(p)_{8}+\Bfuse(p)_{8}),\qquad
+r=\tfrac12(\Tfuse(p)_{9}+\Bfuse(p)_{9}),
+\]
+subject to $v+h+\beta+r=1$. Note that the four right-hand sides
+sum to $(v+h+\beta+r)^{2}=1$ by Theorem~\ref{thm:norm}, so any
+three of the four coordinate equations together with the simplex
+constraint imply the fourth.
+
+\textbf{Part (a): forced ratios at any non-degenerate fixed point.}
+Substituting the explicit fuse expressions from
+Theorem~\ref{thm:norm}, the $\beta$-coordinate equation reads
+\[
+\beta\;=\;\tfrac12\bigl(0+2v\beta+h^{2}+2\beta r\bigr)\;=\;\tfrac{1}{2}h^{2}+\beta(v+r).
+\]
+Applying the simplex relation $v+r=1-h-\beta$:
+\[
+\beta(1-v-r)=\tfrac{1}{2}h^{2}\;\Longleftrightarrow\;\beta(h+\beta)=\tfrac{1}{2}h^{2}.
+\]
+At any non-degenerate fixed point ($\beta>0$), divide by
+$\beta^{2}$ and set $x=h/\beta$ to obtain
+\[
+x+1=\tfrac{1}{2}x^{2}\;\Longleftrightarrow\;x^{2}-2x-2=0,
+\]
+with positive root $x=1+\sqrt{3}$ (the negative root
+$1-\sqrt{3}<0$ being excluded by $h,\beta\geq 0$).
+
+The $r$-coordinate equation reads
+\[
+r\;=\;\tfrac12(0+2vr+2h\beta)\;=\;vr+h\beta,
+\]
+so $r(1-v)=h\beta$, and applying simplex $1-v=h+\beta+r$ gives
+\begin{equation}\label{eq:R-non-degen}
+r(h+\beta+r)=h\beta.
+\end{equation}
+Substituting $h=(1+\sqrt{3})\beta$ and dividing by $\beta^{2}$
+yields $y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})=0$ for $y=r/\beta$. Its
+discriminant over $\Q(\sqrt{3})$ is $(2+\sqrt{3})^{2}+4(1+\sqrt{3})=11+8\sqrt{3}>0$,
+so the equation has two real roots; since $11+8\sqrt{3}>(2+\sqrt{3})^{2}$
+(equivalent to $11+8\sqrt{3}>7+4\sqrt{3}$, i.e., $4+4\sqrt{3}>0$,
+true), $\sqrt{11+8\sqrt{3}}>2+\sqrt{3}$, so the larger root
+\[
+y^{*}\;=\;\tfrac{1}{2}\bigl(\sqrt{11+8\sqrt{3}}-(2+\sqrt{3})\bigr)
+\]
+is positive and the smaller is negative. By non-negativity of $r$,
+$r/\beta=y^{*}$ at any non-degenerate fixed point.
+
+\textbf{Part (b): existence and uniqueness via construction.}
+Set $x=1+\sqrt{3}$ and $y=y^{*}$ as above. Define
+\[
+D\;=\;(2+\sqrt{3})+2y+\frac{y^{2}(\sqrt{3}-1)}{4},\qquad
+\beta\;=\;\frac{1}{D},
+\]
+\[
+h\;=\;x\beta,\qquad r\;=\;y\beta,\qquad v\;=\;\beta\!\left(y+\frac{y^{2}(\sqrt{3}-1)}{4}\right).
+\]
+We check that $D>0$ (whence $\beta>0$): each summand in $D$ is
+positive ($x,y>0$ and $\sqrt{3}-1>0$). Then $h,r,v>0$ by the same
+positivity. The quadruple $(v,h,\beta,r)$ satisfies the simplex
+constraint by construction:
+\[
+v+h+\beta+r=\beta\!\left(y+\frac{y^{2}(\sqrt{3}-1)}{4}+x+1+y\right)=\beta\!\left((2+\sqrt{3})+2y+\frac{y^{2}(\sqrt{3}-1)}{4}\right)=\beta D=1,
+\]
+using $x+1=2+\sqrt{3}$ in the second equality.
+
+The $V$-coordinate equation $2h(v-r)=r^{2}$ holds by construction
+of $v$:
+\[
+v-r\;=\;\beta\!\left(y+\frac{y^{2}(\sqrt{3}-1)}{4}\right)-\beta y\;=\;\frac{\beta y^{2}(\sqrt{3}-1)}{4},
+\]
+so
+\[
+2h(v-r)\;=\;2\cdot x\beta\cdot\frac{\beta y^{2}(\sqrt{3}-1)}{4}\;=\;\frac{x(\sqrt{3}-1)\beta^{2}y^{2}}{2}.
+\]
+Since $x(\sqrt{3}-1)=(1+\sqrt{3})(\sqrt{3}-1)=\sqrt{3}-1+3-\sqrt{3}=2$,
+this equals $\beta^{2}y^{2}=r^{2}$, as required. The
+$\beta$-coordinate equation holds by part (a) (since $h/\beta=x$
+satisfies $x^{2}-2x-2=0$), and the $r$-coordinate equation holds
+by part (a) (since $r/\beta=y$ satisfies the derived quadratic
+over $\Q(\sqrt{3})$). The $h$-coordinate equation is then
+automatic, since the four coordinate equations sum to the simplex
+constraint. Hence
+$(v,h,\beta,r)$ is a fixed point of $\Fmix$ at $\alpha=\tfrac12$,
+and by construction it is non-degenerate.
+
+\textbf{Uniqueness.} Any non-degenerate fixed point has, by
+part (a), $h/\beta=1+\sqrt{3}$ and $r/\beta=y^{*}$. The $V$
+equation $2h(v-r)=r^{2}$ together with simplex $v+h+\beta+r=1$
+then determine $v$ and $\beta$ uniquely (a linear system in the
+two remaining unknowns). Hence the non-degenerate fixed point is
+unique.
+\end{proof}
+
+\begin{remark}
+The proof does not invoke the Brouwer fixed-point theorem,
+computer algebra, or numerical iteration. Three algebraic steps
+fix the ratio $h/\beta$ to $1+\sqrt{3}$: (i) restrict the
+fixed-point equation to the $\beta$-coordinate, (ii) apply the
+simplex relation to eliminate $v+r$, (iii) divide by $\beta^{2}$.
+Two further steps, using the $r$- and $V$-coordinate equations,
+construct the unique non-degenerate fixed point in
+$\Q(\sqrt{3},y^{*})$. Numerical iteration from the centroid of
+$\Delta_{\Cfour}$ at fifty-digit \texttt{mpmath} precision
+converges to this fixed point in $\sim 80$ iterations and
+provides an independent check; see \S\ref{sec:verify}.
+\end{remark}
+
+\begin{proposition}[The 4-core fixed point lives on every chain shell]\label{prop:universal}
+Let $p^{*}$ denote the unique non-degenerate fixed point of $\Fmix$
+at $\alpha=\tfrac12$ on $\Delta_{\Cfour}$ from
+Theorem~\ref{thm:attractor}, regarded as an element of $\Simp$ via
+the inclusion $\Cfour\subseteq\Zten$.
+\begin{enumerate}\setlength\itemsep{0pt}
+\item[(a)] (Algebraic.) For every shell $S_{k}$ in the chain of
+Theorem~\ref{thm:chain} with $k\geq 4$, $p^{*}$ is a fixed point
+of $\Fmix$ at $\alpha=\tfrac12$ restricted to $S_{k}$-supported
+distributions.
+\item[(b)] (Computational.) For each $S_{k}$ with
+$k\in\{4,5,6,7,8,9,10\}$, numerical iteration of $\Fmix$ at
+$\alpha=\tfrac12$ from the uniform $S_{k}$-supported initialization
+at fifty-digit \texttt{mpmath} precision converges to $p^{*}$, with
+$\ell^{\infty}$-error below $10^{-30}$ within $\sim 70$ iterations
+and with mass on $S_{k}\setminus\Cfour$ decaying geometrically
+(observed ratio $\approx 0.35$ per iteration).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) By Corollary~\ref{cor:4core}, $\Cfour$ is jointly closed under
+$T$ and $B$, so $\Cfour$-supported distributions are mapped by
+$\Tfuse$ and $\Bfuse$ to $\Cfour$-supported distributions, hence
+also by $\Fmix$ at any $\alpha$. The point $p^{*}$ is
+$\Cfour$-supported, so $\Fmix(p^{*})=p^{*}$ holds in $\Simp$
+regardless of which shell $S_{k}\supseteq\Cfour$ one regards as the
+ambient state space. (b) Verified by direct iteration; see
+\S\ref{sec:verify}.
+\end{proof}
+
+\begin{remark}
+The proposition does \emph{not} assert that $p^{*}$ is the unique
+fixed point of $\Fmix$ at $\alpha=\tfrac12$ on $S_{k}$ for
+$k\geq 5$. Such a uniqueness statement (and the global-attractor
+claim implicit in part~(b)) would require a basin-of-attraction
+argument we have not carried out. What is rigorous is that $p^{*}$
+is \emph{a} fixed point on every shell; what is computational is
+that it appears to be the attractor for the uniform initialization
+on each.
+\end{remark}
+
+%% -------- section 7: galois --------
+\section{The Galois structure of $r/\beta$}\label{sec:galois}
+
+The fixed point of Theorem~\ref{thm:attractor} provides a
+quadratic relation $h/\beta=1+\sqrt{3}$. The next-coordinate
+ratio $r/\beta$ satisfies a quartic relation, which we now derive.
+
+\begin{theorem}[Galois structure]\label{thm:galois}
+At the fixed point $p^{*}$ of Theorem~\ref{thm:attractor}, the
+ratio $y=r/\beta$ satisfies the irreducible integer quartic
+\begin{equation}\label{eq:quartic}
+y^{4}+4y^{3}-y^{2}+2y-2=0.
+\end{equation}
+The Galois group over $\Q$ is the dihedral group $D_{4}$ of
+order~$8$. The associated quartic number field
+$K=\Q[y]/(y^{4}+4y^{3}-y^{2}+2y-2)$ is the field LMFDB
+\textnumero $4.2.10224.1$, with field discriminant
+$d_{K}=-10224=-2^{4}\cdot 3^{2}\cdot 71$, signature $(2,1)$, and
+class number~$1$. The quadratic subfield $\Q(\sqrt{3})\subseteq K$,
+in which $h/\beta=1+\sqrt{3}$ lives, is the fixed field of the
+cyclic subgroup of order~$2$ in the centre of $D_{4}$.
+\end{theorem}
+
+\begin{proof}
+We derive \eqref{eq:quartic} from the $r$-coordinate fixed-point
+equation, applying $h=(1+\sqrt{3})\beta$ from
+Theorem~\ref{thm:attractor}. From Theorem~\ref{thm:norm},
+$\Tfuse(p)_{9}=0$ and $\Bfuse(p)_{9}=2vr+2h\beta$. The
+$r$-coordinate fixed-point equation at $\alpha=\tfrac12$ is
+\[
+r=\tfrac12(0+2vr+2h\beta)=vr+h\beta,
+\]
+so $r(1-v)=h\beta$. Using simplex $1-v=h+\beta+r$:
+\begin{equation}\label{eq:R-coord}
+r(h+\beta+r)\;=\;h\beta.
+\end{equation}
+Substituting $h=(1+\sqrt{3})\beta$ and writing $y=r/\beta$:
+\[
+\beta y\bigl((1+\sqrt{3})\beta+\beta+\beta y\bigr)=\beta\cdot(1+\sqrt{3})\beta.
+\]
+Dividing by $\beta^{2}$:
+\[
+y\bigl((2+\sqrt{3})+y\bigr)=1+\sqrt{3}\;\Longleftrightarrow\;
+y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})=0.
+\]
+This is a quadratic over $\Q(\sqrt{3})$. To obtain an integer
+polynomial in $y$, multiply by the Galois conjugate (replacing
+$\sqrt{3}$ by $-\sqrt{3}$):
+\[
+\bigl[y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})\bigr]\cdot
+\bigl[y^{2}+(2-\sqrt{3})y-(1-\sqrt{3})\bigr]\;=\;0.
+\]
+Set $A=y^{2}+2y-1$ and $B=y-1$, so the two factors are
+$A+\sqrt{3}\,B$ and $A-\sqrt{3}\,B$. Their product is
+$A^{2}-3B^{2}$:
+\begin{align*}
+A^{2}&=(y^{2}+2y-1)^{2}=y^{4}+4y^{3}+2y^{2}-4y+1,\\
+3B^{2}&=3(y-1)^{2}=3y^{2}-6y+3.
+\end{align*}
+Subtracting:
+\[
+A^{2}-3B^{2}=y^{4}+4y^{3}+2y^{2}-4y+1-3y^{2}+6y-3=y^{4}+4y^{3}-y^{2}+2y-2,
+\]
+which establishes \eqref{eq:quartic}.
+
+\textbf{Irreducibility.} The rational root theorem applied to
+\eqref{eq:quartic} gives candidate roots $\pm 1,\pm 2$;
+substitution shows none is a root. Suppose
+\eqref{eq:quartic} factors over $\Q$ as
+$(y^{2}+ay+b)(y^{2}+cy+d)$ with $a,b,c,d\in\Z$. Comparing
+coefficients:
+\[
+a+c=4,\quad b+d+ac=-1,\quad ad+bc=2,\quad bd=-2.
+\]
+The constraint $bd=-2$ forces
+$\{b,d\}\in\{(1,-2),(-1,2),(2,-1),(-2,1)\}$. Substituting each of
+the four cases together with $a+c=4$ produces a system in
+$(a,c)$. Case $(b,d)=(1,-2)$: $-a+2c=2$ and $a+c=4$ give
+$(a,c)=(2,2)$, but then $b+d+ac=-1+4=3\neq -1$. The other three
+cases produce analogous contradictions. Hence \eqref{eq:quartic}
+is irreducible over $\Q$.
+
+\textbf{Galois group.} The resolvent cubic of \eqref{eq:quartic}
+(in the form $y^{4}+py^{3}+qy^{2}+ry+s$ with $p=4,q=-1,r=2,s=-2$)
+is $z^{3}-qz^{2}+(pr-4s)z-(p^{2}s+r^{2}-4qs)$:
+\[
+g(z)=z^{3}+z^{2}+16z+36=(z+2)(z^{2}-z+18).
+\]
+The cubic has exactly one rational root ($z=-2$); the quadratic
+factor $z^{2}-z+18$ has discriminant $1-72=-71<0$. By the
+standard quartic Galois classification
+\cite[\S~14.6]{DummitFoote2004}, when the resolvent cubic has
+exactly one rational root, the Galois group of an irreducible
+quartic is either $C_{4}$ or $D_{4}$, distinguished by whether
+the quartic is irreducible over $\Q(\sqrt{\Delta_{f}})$ where
+$\Delta_{f}$ is the polynomial discriminant.
+
+The polynomial discriminant of \eqref{eq:quartic} is
+\[
+\Delta_{f}=-40896=-2^{6}\cdot 3^{2}\cdot 71=-24^{2}\cdot 71,
+\]
+so $\Q(\sqrt{\Delta_{f}})=\Q(\sqrt{-71})$. The Galois group is
+$D_{4}$ rather than $C_{4}$ if and only if \eqref{eq:quartic}
+remains irreducible over $\Q(\sqrt{-71})$ (the case $C_{4}$ would
+factor it into two Galois-conjugate irreducible quadratics over
+$\Q(\sqrt{-71})$). Direct symbolic factorization
+(\texttt{sympy.factor} with extension $\sqrt{-71}$, see
+verification script \S\ref{sec:verify}) shows that
+\eqref{eq:quartic} remains irreducible over $\Q(\sqrt{-71})$. The
+Galois group is therefore $D_{4}$.
+
+\textbf{Field invariants.} The polynomial discriminant
+$\Delta_{f}=-40896$ and field discriminant $d_{K}$ satisfy
+$\Delta_{f}=d_{K}\cdot[\mathcal{O}_{K}:\Z[\alpha]]^{2}$ where
+$\alpha$ is a root of \eqref{eq:quartic} and $\mathcal{O}_{K}$ is
+the ring of integers of $K$. With
+$d_{K}=-10224=-2^{4}\cdot 3^{2}\cdot 71$, the index is
+$\sqrt{40896/10224}=\sqrt{4}=2$. The field $K$ has signature
+$(2,1)$ (two real and one pair of complex embeddings) and class
+number $1$; both invariants can be read from the LMFDB entry
+\textnumero $4.2.10224.1$ \cite{LMFDB2024}.
+
+\textbf{Subfield structure.} To see that
+$\Q(\sqrt{3})\subseteq K$, note first that $h/\beta=1+\sqrt{3}$ is
+determined from the same fixed point as $y=r/\beta$. Moreover, the
+quadratic $y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})=0$ over
+$\Q(\sqrt{3})$ derived above shows that $\Q(\sqrt{3})$ is
+contained in any field in which the quartic has a root.
+Concretely, \eqref{eq:quartic} is irreducible over $\Q$ but
+factors over $\Q(\sqrt{3})$ as
+\[
+y^{4}+4y^{3}-y^{2}+2y-2\;=\;\bigl(y^{2}+(2-\sqrt{3})y+(\sqrt{3}-1)\bigr)\bigl(y^{2}+(2+\sqrt{3})y-(1+\sqrt{3})\bigr).
+\]
+This factorization can be verified by direct expansion in
+$\Q(\sqrt{3})[y]$. Hence $\Q(\sqrt{3})\subset K$, and since
+$D_{4}$ has a unique cyclic subgroup of order $2$ in its centre,
+this subfield is the fixed field of that centre.
+\end{proof}
+
+%% -------- section 8: alpha --------
+\section{The mixing-weight observations}\label{sec:alpha}
+
+We document the dependence of the runtime fixed point on $\alpha$
+at five sample values.
+
+\begin{theorem}[Mixing-weight observations]\label{thm:alpha}
+On the full substrate $\Zten$, the runtime iteration $\Fmix$ from
+the uniform initialization on $\Zten$ has the following behaviour
+at five sample mixing weights:
+\begin{enumerate}\setlength\itemsep{0pt}
+\item[(i)] At $\alpha=1$ (pure $T$): the iteration converges in
+$\leq 8$ steps to the Dirac mass $\delta_{7}$.
+\item[(ii)] At $\alpha=0$ (pure $B$): the iteration converges to a
+$\Cfour$-supported distribution $p^{*}_{0}$ with
+$p^{*}_{0,7}/p^{*}_{0,8}\approx 0.585$, which admits no
+integer-quadratic relation $ay^{2}+by+c=0$ with
+$|a|,|b|,|c|\leq 20$ at fifty-digit precision.
+\item[(iii)] At $\alpha\in\{\tfrac14,\tfrac34\}$: the iteration
+converges to $\Cfour$-supported distributions with
+$p^{*}_{\alpha,7}/p^{*}_{\alpha,8}\approx 1.462$ and $5.039$
+respectively, neither of which admits an integer-quadratic
+relation with coefficients of magnitude $\leq 20$ at fifty-digit
+precision.
+\item[(iv)] At $\alpha=\tfrac12$:
+$p^{*}_{1/2,7}/p^{*}_{1/2,8}=1+\sqrt{3}$ exactly, satisfying the
+integer quadratic $y^{2}-2y-2=0$, by Theorem~\ref{thm:attractor}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For (i), $T(7,7)=7$ and $T(7,j)=7$ for every $j\in\{1,\dots,9\}$
+(see Definition~\ref{def:tables}). Any positive mass at $7$ grows
+under $\Tfuse$, while mass at non-zero operators $j\neq 7$ flows
+into $7$. Direct iteration shows
+$|\Tfuse^{n}(\mathrm{uniform})-\delta_{7}|<10^{-50}$ within $8$
+steps.
+
+For (ii)–(iii): direct iteration with PSLQ post-processing at
+fifty-digit \texttt{mpmath} precision. At each $\alpha$, run
+$\Fmix$ from the uniform initialization on $\Zten$ until the
+Cauchy criterion $|p^{(n+1)}-p^{(n)}|_{\infty}<10^{-45}$ holds,
+record the 4-core ratio $p^{*}_{7}/p^{*}_{8}$, and search
+exhaustively over all triples $(a,b,c)\in\{-20,\dots,20\}^{3}\setminus\{(0,0,0)\}$
+with $\gcd(a,b,c)=1$ and $a\geq 0$ for a relation $ay^{2}+by+c=0$
+giving residual $<10^{-25}$. No such relation is found at
+$\alpha\in\{0,\tfrac14,\tfrac34\}$.
+
+For (iv), Theorem~\ref{thm:attractor}.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:alpha} reports observations at five sample
+$\alpha$-values. We do \emph{not} claim that $\alpha=\tfrac12$ is
+the unique $\alpha\in(0,1)\cap\Q$ at which the runtime fixed point
+admits a small-coefficient algebraic relation; the question is
+discussed in \S\ref{sec:scope-alpha}.
+\end{remark}
+
+%% -------- section 9: open question --------
+\section{The open uniqueness question}\label{sec:scope-alpha}
+
+A natural strengthening of Theorem~\ref{thm:alpha} would be:
+
+\begin{quote}
+\emph{Conjecture.} At every $\alpha\in(0,1)\cap\Q$ with
+$\alpha\neq\tfrac12$, the ratio
+$p^{*}_{\alpha,7}/p^{*}_{\alpha,8}$ at the runtime fixed point of
+$\Fmix$ fails to satisfy any integer-coefficient quadratic with
+coefficients of bounded magnitude.
+\end{quote}
+
+A stronger statement — that this ratio is transcendental over
+$\Q$ — would require methods beyond PSLQ. Even the
+small-coefficient version is non-trivial.
+
+A direct attack: treating $\alpha$ as a parameter, the
+$\beta$-coordinate fixed-point equation at general $\alpha$ takes
+the form
+\[
+\beta=(1-\alpha)\bigl(2v\beta+h^{2}+2\beta r\bigr),
+\]
+which after grouping and applying the simplex relation
+$v+r=1-h-\beta$ rearranges to
+\[
+(2\alpha-1)\,\beta+2(1-\alpha)\,\beta(h+\beta)=(1-\alpha)\,h^{2}.
+\]
+At $\alpha=\tfrac12$, the linear-in-$\beta$ coefficient $(2\alpha-1)$
+vanishes, leaving a degree-$2$ homogeneous equation in $(h,\beta)$
+that determines the ratio $x=h/\beta$ alone:
+$\beta(h+\beta)=\tfrac12 h^{2}$, equivalent to $x^{2}-2x-2=0$. At
+any $\alpha\neq\tfrac12$, the term $(2\alpha-1)\beta$ breaks the
+homogeneity, so the $\beta$-coordinate equation alone produces a
+relation between $x$ and $\beta$ but does not determine $x$
+without using the other three coordinate equations of $F_{\alpha}(p)=p$.
+The full elimination of $v$, $r$, and $\beta$ from the four
+coordinate equations and the simplex constraint yields a univariate
+polynomial in $x$ over $\Q(\alpha)$; characterizing the
+$\alpha$-dependent discriminant of that polynomial — in particular
+identifying the $\alpha\in\Q$ at which it is a rational square —
+is the natural path to settling the conjecture. Our preliminary
+attempts via \texttt{sympy} did not terminate within reasonable
+time; a more capable computer-algebra system or a hand-driven
+elimination is left as future work.
+
+%% -------- section 10: verification --------
+\section{Verification}\label{sec:verify}
+
+The exact statements and computational observations of this paper
+are independently verified by the script
+\texttt{4core\_verification.py},
+archived at DOI \texttt{10.5281/zenodo.18852047}. The script
+implements:
+\begin{enumerate}\setlength\itemsep{0pt}
+\item \textbf{Joint-closure enumeration} (\S\ref{sec:chain}):
+tests joint closure of all $1023$ non-empty subsets of $\Zten$
+and verifies the chain structure of Theorem~\ref{thm:chain}.
+\item \textbf{Normalizer identity} (\S\ref{sec:norm}): symbolically
+expands $Z_{T}(p)$ and $Z_{B}(p)$ on $\Cfour$ via \texttt{sympy}
+and confirms both equal $(v+h+\beta+r)^{2}$.
+\item \textbf{Closed-form attractor} (\S\ref{sec:attractor}):
+iterates $\Fmix$ at $\alpha=\tfrac12$ from the centroid of
+$\Delta_{\Cfour}$ at fifty-digit \texttt{mpmath} precision and
+confirms $|h^{*}/\beta^{*}-(1+\sqrt{3})|<10^{-30}$.
+\item \textbf{Common fixed point across the chain} (Proposition~\ref{prop:universal}):
+iterates $\Fmix$ from uniform initializations on each shell
+$S_{k}$ for $k\in\{4,5,6,7,8,9,10\}$ and confirms the limit
+coincides with the $S_{4}$-attractor.
+\item \textbf{Galois structure} (\S\ref{sec:galois}): verifies
+irreducibility of \eqref{eq:quartic} over $\Q$, computes the
+resolvent cubic and confirms its factorization
+$(z+2)(z^{2}-z+18)$, computes the polynomial and field
+discriminants, and cross-checks against the LMFDB
+\textnumero $4.2.10224.1$ entry.
+\item \textbf{$\alpha$-sweep} (\S\ref{sec:alpha}): runs PSLQ at
+each of $\alpha\in\{0,\tfrac14,\tfrac12,\tfrac34,1\}$ at
+fifty-digit precision against integer-quadratic candidates with
+$|a|,|b|,|c|\leq 20$, confirming the qualitative claims of
+Theorem~\ref{thm:alpha}.
+\end{enumerate}
+The script runs to completion in approximately three seconds on a
+modest desktop CPU. The output is deterministic.
+
+%% -------- section 11: scope --------
+\section{Scope and limits}\label{sec:scope}
+
+The results of this paper are about the specific tables $T$ and
+$B$ of Definition~\ref{def:tables}. We do \emph{not} claim:
+\begin{itemize}\setlength\itemsep{0pt}
+\item that the chain structure of Theorem~\ref{thm:chain} is
+shared by other natural pairs of binary operations on $\Zten$;
+\item that the normalizer identity of Theorem~\ref{thm:norm}
+arises from a categorical or group-theoretic universal
+construction;
+\item that $\alpha=\tfrac12$ is the unique rational mixing weight
+in $(0,1)$ at which $h/\beta$ satisfies a small-coefficient
+quadratic relation (only the five sample points of
+Theorem~\ref{thm:alpha} are tested);
+\item that the dynamics on $\Cfour$ encodes physical or
+information-theoretic content; the present paper is purely
+algebraic and combinatorial.
+\end{itemize}
+
+We \emph{do} claim that the four theorem-level statements of
+\S\ref{sec:chain}, \S\ref{sec:norm}, \S\ref{sec:attractor}, and
+\S\ref{sec:galois} are true of the specific $T$ and $B$ given.
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{DummitFoote2004}
+D.~S.~Dummit and R.~M.~Foote.
+\newblock \emph{Abstract Algebra}, 3rd edition.
+\newblock Wiley, Hoboken, NJ, 2004.
+
+\bibitem{DrapalKepka1985}
+A.~Dr\'{a}pal and T.~Kepka.
+\newblock Group distances of Latin squares.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+26(2):275--283, 1985.
+
+\bibitem{Kepka1980}
+T.~Kepka.
+\newblock A note on associative triples of elements in cancellation groupoids.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+21(3):479--487, 1980.
+
+\bibitem{LMFDB2024}
+The LMFDB Collaboration.
+\newblock \emph{The L-functions and modular forms database}.
+\newblock \url{https://www.lmfdb.org}, accessed 2026.
+\newblock Number field 4.2.10224.1:
+\url{https://www.lmfdb.org/NumberField/4.2.10224.1}.
+
+\bibitem{SandersGish2026Sigma}
+B.~R.~Sanders and M.~Gish.
+\newblock Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$.
+\newblock Preprint, 2026.
+
+\end{thebibliography}
+
+\end{document}

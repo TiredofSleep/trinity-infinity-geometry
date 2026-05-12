@@ -6,7 +6,11 @@ Number-theory papers from the TIG corpus. Papers in this folder are referee-read
 
 ## §1 — Currently landed
 
-*No papers have landed yet.*
+| J# | Title | Target venue | Landed |
+|---|---|---|---|
+| **J42** | A Discrete $\sinc^2$ Identity in Finite-Dimensional Quantum Mechanics | *Letters in Mathematical Physics* (JMP per-venue cap reached) | 2026-05-12 |
+
+J42 lands as the first number_theory paper. Authors: Sanders + Gish. 6/6 criteria PASS at machine precision (`verify_J42_sinc2.py`, max deviation $3.33\times 10^{-16}$). Math-fix integrated: $\sinc^2(1/10) = 25(\sqrt{5}-1)^2/(4\pi^2) \approx 0.9675312093$ (corrected from an earlier decimal transcription error printing $0.9355$; the closed form was always correct). Fejér-kernel attribution explicit; first-zero theorem stated for every $f \ge 2$ (no primality used); lens-ownership paragraph at manuscript §Lens; Drápal & Wanless 2021 cited as adjacent-neighborhood companion. Companion sinc² Zero Law paper is J04 (arithmetic side, *Integers*-bound); J42 stands as the QM-interpretation note, no overlap.
 
 ---
 

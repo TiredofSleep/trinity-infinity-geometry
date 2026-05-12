@@ -1,0 +1,771 @@
+%%% ============================================================
+%%% Joint Closure of Two Commutative Binary Operations on Z/10Z:
+%%% an Eight-Element Chain and a Normalizer Identity
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Algebraic Combinatorics
+%%% Backup: Communications in Algebra; Discrete Mathematics
+%%% MSC: 20N02, 20N05, 11A07
+%%%
+%%% This is the SEED-NARROW extraction from the bundled
+%%% four_core_FINAL_BUNDLED draft (review round 3).  Theorems
+%%% 1 and 2 (chain + normalizer) only.  Theorems 3 (closed-form
+%%% attractor), 4 (Galois D_4), and 5 (alpha-sweep) are deferred
+%%% to companion papers in preparation, listed in the Forward
+%%% Directions section.
+%%%
+%%% Verification: 4core_verification.py archived at DOI
+%%% 10.5281/zenodo.18852047 (chain enumeration + normalizer
+%%% symbolic checks; the attractor / Galois / alpha-sweep checks
+%%% in the same script support the companion papers in
+%%% preparation).
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+%% -------- macros --------
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Zten}{\Z/10\Z}
+\newcommand{\Cfour}{\mathcal{C}}
+\newcommand{\Tfuse}{\widehat{T}}
+\newcommand{\Bfuse}{\widehat{B}}
+
+\title[Joint closure on $\Zten$]{Joint Closure of Two Commutative Binary
+Operations on $\Zten$:\\ an Eight-Element Chain and a Normalizer Identity}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, AR, USA}
+\email{brayden@7site.io}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher}
+
+\subjclass[2020]{Primary 20N02; Secondary 20N05, 11A07}
+
+\keywords{commutative magma, sub-magma chain, joint closure,
+fuse normalizer, polynomial identity}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We study a pair of commutative binary operations
+$T,B:\Zten\times\Zten\to\Zten$ given explicitly by their Cayley
+tables, both of which arise as restrictions of a common
+operator-substrate construction (detailed in the companion
+paper~\cite{SandersGish2026Sigma}). Two exact structural results
+emerge from direct enumeration and elementary algebra.
+
+(i) The sub-magmas of $\Zten$ that are jointly closed under
+both $T$ and $B$ form a strict $8$-element chain in the inclusion
+order, with sizes $\{1, 4, 5, 6, 7, 8, 9, 10\}$; sizes $2$ and $3$
+are forbidden as joint closures. Among all $1023$ non-empty
+subsets of $\Zten$, exactly these eight satisfy joint closure.
+
+(ii) On the minimal non-trivial element of this chain, the
+four-element subset $\Cfour=\{0,7,8,9\}$, the two operations have
+a common fuse-normalizer
+$Z_{T}(p)=Z_{B}(p)=(p_{0}+p_{7}+p_{8}+p_{9})^{2}$ for every
+$p\in\R^{10}$ supported on $\Cfour$, despite the fact that $T$
+and $B$ disagree on $12$ of the $16$ cells of the $4\times 4$
+restriction. The identity is a polynomial identity in the four
+$\Cfour$-coordinates and is independently verifiable by symbolic
+expansion.
+
+The chain admits a clean structural reading in terms of a
+specific permutation $\pi:\Zten\to\Zten$ introduced in
+\S\ref{sec:chain}: the chain walks the $\pi$-forward orbit of
+$7$, with the $\pi$-fixed elements of $\{0,3,8,9\}$ contributing
+at the bottom, the size-$1\to 4$ jump, and the size-$7\to 8$
+bridge step. (We use $\pi$ rather than $\sigma$ to avoid a name
+collision with the non-associativity-rate function $\sigma(N)$
+of the companion paper~\cite{SandersGish2026Sigma}, a different
+object.)
+
+The dynamical and number-theoretic phenomena that arise from
+$(T,B)$ --- a closed-form fixed point of the convex-combination
+iteration at $\alpha=\tfrac12$ with $p_{7}/p_{8}=1+\sqrt{3}$, an
+associated quartic Galois extension, and observed
+mixing-weight phenomena at $\alpha\in(0,1)$ --- are the subject
+of two companion papers in preparation
+(see Forward Directions, \S\ref{sec:forward}).
+\end{abstract}
+
+\maketitle
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+This paper studies a small object: the family of sub-magmas of
+$\Zten$ that are simultaneously closed under two specific
+commutative binary operations $T$ and $B$. We establish two
+exact structural results, accompanied by a deterministic
+verification script.
+
+The two operations are presented as Cayley tables in
+\S\ref{sec:setup}. Both are commutative. Their behavior at the
+left-margin is asymmetric: $B$ has $0$ as a two-sided identity
+($B(0, j) = j$ for all $j \in \Zten$), while $T$ has $0$ as a
+near-zero element with the single off-diagonal exception
+$T(0, 7) = 7$ and otherwise $T(0, j) = 0$. Beyond this margin
+behavior the operations differ markedly: $T$ has the value $7$
+acting as a row absorber on most of $\Zten$; $B$ is approximately
+incrementing in the sense that $B(j,j) = j+1 \pmod{10}$ for
+$j \in \{1,\dots,7\}$, with diagonal exceptions at
+$j \in \{0,8,9\}$ (where $B(0,0)=0$, $B(8,8)=7$, and $B(9,9)=0$).
+Despite this surface dissimilarity, two exact structural
+phenomena link them tightly: a complete classification of the
+joint-closure lattice into a single $8$-element chain
+(Theorem~\ref{thm:chain}), and the explicit per-coordinate fuse
+data on the chain's minimal non-trivial element together with
+the rank-disparity that distinguishes the two operations
+(Proposition~\ref{prop:fuse-data}).
+
+\paragraph{The chain (Theorem~\ref{thm:chain}).} The sub-magmas of
+$\Zten$ jointly closed under both $T$ and $B$, partially ordered
+by inclusion, form a totally ordered $8$-element chain
+\[
+\{0\}\subset\Cfour\subset\Cfour\cup\{6\}\subset\Cfour\cup\{5,6\}\subset
+\Cfour\cup\{4,5,6\}\subset\Cfour\cup\{3,4,5,6\}\subset
+\Cfour\cup\{2,3,4,5,6\}\subset\Zten,
+\]
+where $\Cfour=\{0,7,8,9\}$. The chain is strict: no size-$2$ or
+size-$3$ subset of $\Zten$ is jointly closed. Among all $1023$
+non-empty subsets of $\Zten$, exactly these eight satisfy joint
+closure.
+
+\paragraph{The 4-core fuse data (Proposition~\ref{prop:fuse-data}).}
+On the minimal non-trivial element $\Cfour$ of the chain, the two
+operations have markedly different per-coordinate fuse images
+(see Proposition~\ref{prop:fuse-data}): $T$ sends mass on
+$\Cfour\times\Cfour$ into the rank-$2$ image $\{0, 7\}$, while $B$
+sends mass onto the full rank-$4$ image $\Cfour$. Despite this
+disparity, both fuses preserve $\Cfour$-support (consequence of
+joint closure, Theorem~\ref{thm:chain}) and both have the same
+total mass $Z_{T}(p) = Z_{B}(p) = (p_{0}+p_{7}+p_{8}+p_{9})^{2}$
+on $\Cfour$-supported $p$ --- the latter equality by total-mass
+conservation: the bilinear form $Z_{M}(p) = \sum_{i,j}p_{i}p_{j}
+= (\sum_{i}p_{i})^{2}$ for any binary operation $M$. Together
+these properties make the convex mixture $\alpha\widehat{T} +
+(1-\alpha)\widehat{B}$ a well-defined family of self-maps on the
+$3$-simplex $\Delta^{3}$ of $\Cfour$-supported probability
+vectors, $\alpha\in[0,1]$. The dynamics of this family are
+the subject of Forward Directions, \S\ref{sec:forward}.
+
+\paragraph{The pair $(T,B)$ is not independent.} Both Cayley
+tables arise from a common operator-substrate construction in
+which $T$ is the rank-3 threshold projection at threshold
+$T^{*} = 5/7$ and $B$ is the full rank-10 composition; the
+construction is detailed in the companion
+paper~\cite{SandersGish2026Sigma}. The present paper takes
+$(T, B)$ at $N = 10$ as given and studies the joint-closure
+structure of the pairing. The chain rigidity above has been
+verified for analogous tables $(T_{p}, B_{p})$ constructed via
+the same operator-substrate recipe over $\F_{p}$-substrates of
+comparable size, for $p \in \{2, 3, 5, 7, 11, 13\}$; the
+construction of $(T_{p}, B_{p})$ from $\F_{p}$ and the resulting
+$\F_{p}$-universality of the joint-closure structure are the
+subject of a companion paper in
+preparation~\cite{SandersClaudeChat2026BridgeSprint}.
+
+\paragraph{Positioning.} The classical Drápal--Kepka tradition
+of low-density associativity in
+quasigroups~\cite{Kepka1980, DrapalKepka1985} treats
+non-associativity counts on cancellative structures. The present
+paper studies the joint closure of two non-cancellative magmas
+and the polynomial identity arising from cell-cancellation
+across the $4\times 4$ restriction; it is not implied by the
+corresponding density results in those references.
+
+\paragraph{Outline.} \S\ref{sec:setup} fixes the two tables.
+\S\ref{sec:chain} proves the joint-closure chain
+(Theorem~\ref{thm:chain}). \S\ref{sec:4core} records the
+corollary that $\Cfour=\{0,7,8,9\}$ is jointly closed and is the
+minimal non-trivial element of the chain. \S\ref{sec:norm}
+records the per-coordinate fuse data on $\Cfour$
+(Proposition~\ref{prop:fuse-data}) together with the rank
+disparity between $\Tfuse$ and $\Bfuse$ on the $4$-core simplex.
+\S\ref{sec:verify} catalogs the verification script.
+\S\ref{sec:scope} states the limitations of the present results.
+\S\ref{sec:forward} lists three companion papers in preparation
+that develop the dynamical and number-theoretic structure of the
+pair $(T,B)$.
+
+%% -------- section 2: setup --------
+\section{Definitions and the two tables}\label{sec:setup}
+
+We work throughout on the additive group $\Zten$, identified with
+the labels $\{0,1,\dots,9\}$.
+
+\begin{definition}[The two tables]\label{def:tables}
+The two binary operations $T,B:\Zten\times\Zten\to\Zten$ are given
+by their Cayley tables:
+\[
+T = \left[
+\begin{array}{*{10}{c}}
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 7 & 0 & 0 \\
+0 & 7 & 3 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 3 & 7 & 7 & 4 & 7 & 7 & 7 & 7 & 9 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 3 \\
+0 & 7 & 4 & 7 & 7 & 7 & 7 & 7 & 8 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 8 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 9 & 3 & 7 & 7 & 7 & 7 & 7 & 7
+\end{array}
+\right],\qquad
+B = \left[
+\begin{array}{*{10}{c}}
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 2 & 6 & 6 \\
+2 & 3 & 3 & 4 & 5 & 6 & 7 & 3 & 6 & 6 \\
+3 & 4 & 4 & 4 & 5 & 6 & 7 & 4 & 6 & 6 \\
+4 & 5 & 5 & 5 & 5 & 6 & 7 & 5 & 7 & 7 \\
+5 & 6 & 6 & 6 & 6 & 6 & 7 & 6 & 7 & 7 \\
+6 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 0 \\
+8 & 6 & 6 & 6 & 7 & 7 & 7 & 9 & 7 & 8 \\
+9 & 6 & 6 & 6 & 7 & 7 & 7 & 0 & 8 & 0
+\end{array}
+\right].
+\]
+Both $T$ and $B$ are commutative.
+\end{definition}
+
+\begin{notation}
+We refer to the indices $0,7,8,9$ frequently. In proofs we
+sometimes write $(p_{0},p_{7},p_{8},p_{9})=(v,h,\beta,r)$ for
+masses on these four indices.
+\end{notation}
+
+\begin{definition}[Sub-magma; joint closure]\label{def:submagma}
+A subset $S\subseteq\Zten$ is a \emph{sub-magma} of $(\Zten,M)$ if
+$M(i,j)\in S$ for all $i,j\in S$. We call $S$ \emph{jointly
+closed} (under $T$ and $B$) if it is a sub-magma of both. The set
+of jointly closed subsets, ordered by inclusion, is denoted
+$\mathcal{L}(T,B)$.
+\end{definition}
+
+\begin{definition}[Fuse and normalizer]\label{def:fuse}
+For a binary operation $M:\Zten\times\Zten\to\Zten$ and a vector
+$p=(p_{0},\dots,p_{9})\in\R^{10}$, the \emph{fuse}
+$\widehat{M}(p)\in\R^{10}$ is the convolution along the operation:
+\[
+\widehat{M}(p)_{c}\;=\;\sum_{(i,j)\in\Zten^{2}\,:\,M(i,j)=c}p_{i}p_{j},
+\qquad c\in\Zten.
+\]
+The \emph{normalizer} is $Z_{M}(p)=\sum_{c\in\Zten}\widehat{M}(p)_{c}$.
+\end{definition}
+
+\begin{remark}\label{rem:total-mass}
+By bilinearity, $Z_{M}(p) = (\sum_{i}p_{i})^{2}$ identically for
+any binary operation $M:\Zten\times\Zten\to\Zten$ and any
+$p\in\R^{10}$, since each ordered pair $(i,j)\in\Zten^{2}$
+contributes $p_{i}p_{j}$ to exactly one output bucket. In
+particular, for $p$ supported on $\Cfour$ we have
+$\sum_{i}p_{i} = v+h+\beta+r$, and so
+$Z_{T}(p) = Z_{B}(p) = (v+h+\beta+r)^{2}$ holds by elementary
+total-mass conservation, with no input from the joint-closure
+structure. We state this explicitly and direct the reader to
+Proposition~\ref{prop:fuse-data} below for the substantive
+content of the $\Cfour$-fuse data, which is the
+\emph{per-coordinate} symbolic form of $\Tfuse(p)$ and
+$\Bfuse(p)$ and the structural rank disparity between them.
+\end{remark}
+
+%% -------- section 3: chain --------
+\section{The joint-closure chain}\label{sec:chain}
+
+\begin{theorem}[Joint-closure chain]\label{thm:chain}
+The sub-magmas of $\Zten$ jointly closed under both $T$ and $B$
+form a strict chain of length $8$ in inclusion order:
+\[
+\mathcal{L}(T,B)\;=\;\bigl\{S_{1}\subset S_{4}\subset S_{5}\subset
+S_{6}\subset S_{7}\subset S_{8}\subset S_{9}\subset S_{10}\bigr\},
+\]
+where
+\begin{align*}
+S_{1}&=\{0\}, & S_{4}&=\{0,7,8,9\}, \\
+S_{5}&=\{0,6,7,8,9\}, & S_{6}&=\{0,5,6,7,8,9\}, \\
+S_{7}&=\{0,4,5,6,7,8,9\}, & S_{8}&=\{0,3,4,5,6,7,8,9\}, \\
+S_{9}&=\{0,2,3,4,5,6,7,8,9\}, & S_{10}&=\Zten.
+\end{align*}
+The chain is strict: no subset of $\Zten$ of size $2$ or size $3$
+is jointly closed.
+\end{theorem}
+
+\begin{proof}
+We verify the joint-closure status of each candidate subset by
+direct computation. The proof has two parts: (a) confirming that
+each $S_{k}$ in the displayed list is jointly closed, and (b)
+confirming that no other non-empty subset is jointly closed.
+
+\textbf{Part (a) --- the eight subsets are jointly closed.} For
+each $k\in\{1,4,5,6,7,8,9,10\}$, the verification reduces to
+checking that $T(i,j)\in S_{k}$ and $B(i,j)\in S_{k}$ for all
+$i,j\in S_{k}$. We display the size-$4$ case explicitly and refer
+to the verification script (\S\ref{sec:verify}) for the others.
+
+For $S_{4}=\{0,7,8,9\}$, the $4\times 4$ restrictions are
+\[
+T\big|_{S_{4}\times S_{4}}=\begin{pmatrix}
+0 & 7 & 0 & 0 \\
+7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7
+\end{pmatrix},
+\qquad
+B\big|_{S_{4}\times S_{4}}=\begin{pmatrix}
+0 & 7 & 8 & 9 \\
+7 & 8 & 9 & 0 \\
+8 & 9 & 7 & 8 \\
+9 & 0 & 8 & 0
+\end{pmatrix}.
+\]
+Every entry of $T\big|_{S_{4}\times S_{4}}$ lies in
+$\{0,7\}\subseteq S_{4}$. Every entry of
+$B\big|_{S_{4}\times S_{4}}$ lies in $\{0,7,8,9\}=S_{4}$.
+
+\textbf{Part (b) --- no other subset is jointly closed.}
+
+\emph{Sizes $2$ and $3$.} We dispatch these by exhaustive case
+analysis on the diagonal entries of $B$. Inspecting the diagonal:
+\[
+B(j,j)=\begin{cases}
+0 & j=0,\\
+j+1 & j\in\{1,2,3,4,5,6,7\},\\
+7 & j=8,\\
+0 & j=9.
+\end{cases}
+\]
+
+\emph{Size $2$.} Let $S=\{a,b\}$ with $a<b$. Joint closure requires
+$B(a,a),B(b,b)\in S$ and $T(a,a),T(b,b)\in S$, plus the off-diagonal
+constraints.
+
+\emph{Subcase $0\in S$.} Then $S=\{0,a\}$ with $a\in\{1,\dots,9\}$.
+The diagonal $B(a,a)$ must lie in $\{0,a\}$. From the diagonal
+table: for $a\in\{1,\dots,7\}$, $B(a,a)=a+1\notin\{0,a\}$; for
+$a=8$, $B(8,8)=7\notin\{0,8\}$; for $a=9$, $B(9,9)=0\in\{0,9\}$ and
+$B(0,9)=B(9,0)=9\in\{0,9\}$, so $\{0,9\}$ is $B$-closed. However
+$T(9,9)=7\notin\{0,9\}$, so $\{0,9\}$ fails $T$-closure.
+
+\emph{Subcase $0\notin S$.} Then $S\subseteq\{1,\dots,9\}$, and
+both $B(a,a)\in S$ and $B(b,b)\in S$ are required. Since
+$B(j,j)\neq j$ for all $j\in\{1,\dots,9\}$, we need $B(a,a)=b$ and
+$B(b,b)=a$. Listing all $j\in\{1,\dots,9\}$ with their diagonal
+values: $(1,2),(2,3),(3,4),(4,5),(5,6),(6,7),(7,8),(8,7),(9,0)$.
+The only unordered pair $\{a,b\}\subseteq\{1,\dots,9\}$ with
+$B(a,a)=b$ and $B(b,b)=a$ is $\{7,8\}$ (since $B(7,7)=8$ and
+$B(8,8)=7$). However $B(7,8)=9\notin\{7,8\}$, so $\{7,8\}$ fails
+$B$-closure.
+
+The remaining size-$2$ candidates do not satisfy
+$B(a,a),B(b,b)\in S$ and are excluded immediately. No size-$2$
+subset is jointly closed.
+
+\emph{Size $3$.} Suppose $S=\{a,b,c\}$ with $a<b<c$ is jointly
+closed. The three diagonal entries $B(a,a),B(b,b),B(c,c)$ and the
+three diagonals $T(s,s)$ for $s\in S$ must all lie in $S$. Direct
+enumeration of $\binom{10}{3}=120$ candidates against just the
+six diagonal constraints leaves only two candidates:
+$\{0,7,8\}$ and $\{6,7,8\}$. (For $\{0,7,8\}$: $B$-diagonals are
+$0,8,7$; for $\{6,7,8\}$: $B$-diagonals are $7,8,7$; in both
+cases the $T$-diagonals are $0,7,7$ and $7,7,7$ respectively,
+all in $S$.) However both candidates fail $B$-closure at the
+off-diagonal cell $B(7,8)=9$: in $\{0,7,8\}$, $9\notin S$; in
+$\{6,7,8\}$, $9\notin S$. Hence no size-$3$ subset is jointly
+closed.
+
+\emph{Sizes $4$ through $10$ --- uniqueness within size class.}
+We must confirm that the listed $S_{k}$ is the \emph{unique}
+jointly-closed subset of its size class, for $k\in\{4,5,6,7,8,9\}$.
+A useful structural reduction: \emph{any jointly-closed subset
+$S \subseteq \Zten$ of size at least $4$ contains
+$\Cfour = \{0, 7, 8, 9\}$.}
+
+To establish $\Cfour \subseteq S$ for any jointly-closed
+$|S| \geq 4$: assume $S \neq \{0\}$ (the size-$1$ case),
+and that $S$ contains some element $j_{0} \neq 0$.
+
+\emph{Case 1: $j_{0} \in \{1,\dots,6\}$.} The diagonal
+$B(j_{0},j_{0}) = j_{0} + 1 \pmod{10}$ must lie in $S$. Iterating
+$j \mapsto B(j,j) = j + 1$ on the consecutive integers
+$\{j_{0}, j_{0}+1, \dots, 6, 7\}$ then forces all of these into
+$S$ (the diagonal increment chain stops at $j = 7$ since
+$B(7,7) = 8$ and $B(8,8) = 7$ stays in $\{7, 8\}$). Hence
+$\{7, 8\} \subseteq S$. Now, with $7, 8 \in S$, joint closure
+forces $B(7, 8) = 9 \in S$, then $B(7, 9) = 0 \in S$. Therefore
+$\Cfour = \{0, 7, 8, 9\} \subseteq S$.
+
+\emph{Case 2: $j_{0} = 7$.} Then $B(7,7) = 8 \in S$, and joint
+closure proceeds as in Case~1's tail: $B(7,8) = 9 \in S$,
+$B(7,9) = 0 \in S$, giving $\Cfour \subseteq S$.
+
+\emph{Case 3: $j_{0} \in \{8, 9\}$.} Then $B(j_{0}, j_{0}) \in
+\{7, 0\}$ lies in $S$. If $7 \in S$, Case~2 applies. If
+$j_{0} = 9$ and $0 \in S$ but $7 \notin S$: we need a third
+element to reach size $\geq 4$. Off-diagonal closure of $B$ on
+$\{0, 9\}$ gives $B(0, 9) = 9$ (already in $S$), so closure on
+$\{0, 9\}$ itself is achieved in size $2$, ruled out by the
+size-$2$ analysis. Adding any $k \notin \{0, 9\}$ to reach size
+$\geq 3$ then triggers Case~1 or Case~2 on $k$. Symmetric
+argument from $j_{0} = 8$.
+
+In every case $\Cfour \subseteq S$. Hence the listed $S_{k}$ for
+$k \geq 4$ are obtained by adjoining operators
+$\{2, 3, 4, 5, 6\}$ to $\Cfour$ in the order forced by joint
+closure (cf.\ Remark~\ref{rem:sigma-walk}).
+
+Direct enumeration over the $\binom{10}{k}$ candidates at each
+size (totalling $210+252+210+120+45+10=847$ subsets across sizes
+$4$–$9$, plus $\binom{10}{10}=1$ at size $10$) confirms that each
+non-listed candidate fails $T$- or $B$-closure on at least one
+cell, completing the uniqueness verification. The verification
+script (\S\ref{sec:verify}) records the failing cell for each
+non-jointly-closed candidate.
+
+The full enumeration of all $1023$ non-empty subsets of $\Zten$,
+with the distinguishing failing cell recorded for each
+non-jointly-closed subset, is performed by the verification
+script \texttt{4core\_verification.py} (\S\ref{sec:verify}).
+\end{proof}
+
+\begin{remark}[Structural reading of the chain]\label{rem:sigma-walk}
+The chain has a clean structural description in terms of a specific
+permutation $\pi:\Zten\to\Zten$ defined by
+\begin{equation}\label{eq:pi}
+\pi=(0)(3)(8)(9)(1\;7\;6\;5\;4\;2)
+\quad\text{in cycle notation.}
+\end{equation}
+The operators $\{0,3,8,9\}$ are $\pi$-fixed; the operators
+$\{1,2,4,5,6,7\}$ form a single $6$-cycle. We do not derive
+$\pi$ from the tables $T$ and $B$; rather, $\pi$ is introduced
+here as a candidate organizing permutation of the operator
+labels. (We use the symbol $\pi$ in this paper to avoid a
+collision with the symbol $\sigma$ used for the
+non-associativity-rate function in the companion
+paper~\cite{SandersGish2026Sigma}, which is a different object.
+The two are not yet structurally connected: whether the
+permutation $\pi$ here arises from the same operator-substrate
+construction that defines the $\sigma$-rate function in the
+companion is an open question of the substrate framework, and
+not a result of the present paper.) The structural reading below
+is the observation that this specific $\pi$ also organizes the
+chain of Theorem~\ref{thm:chain}. The chain proceeds:
+\begin{itemize}\setlength\itemsep{0pt}
+\item Step $1\to 4$: adds $\{7,8,9\}$. Of these, $7$ is in the
+$6$-cycle and $\{8,9\}$ are $\sigma$-fixed.
+\item Steps $4\to 5$, $5\to 6$, $6\to 7$: each adds the next
+element of the $\pi$-forward orbit of $7$, namely
+$\pi(7)=6$, $\pi^{2}(7)=5$, $\pi^{3}(7)=4$.
+\item Step $7\to 8$: adds $3$, the remaining $\pi$-fixed
+operator. The $\pi$-orbit walk pauses for one step:
+$\pi^{4}(7)=2$ would be the next $\pi$-orbit element, but
+adding $2$ alone forces $3=B(2,2)$ into the closure as well,
+producing a size jump of $2$. Adding $3$ alone closes more
+cheaply.
+\item Steps $8\to 9$, $9\to 10$: completes the $\pi$-orbit
+walk, adding $\pi^{4}(7)=2$ at size $9$ and
+$\pi^{5}(7)=1$ at size $10$.
+\end{itemize}
+The $\pi$-fixed operators $\{0,3,8,9\}$ enter at three
+positions: $0$ at the bottom (size $1$), $\{8,9\}$ in the
+size-$1\to 4$ jump, and $3$ at the size-$7\to 8$ bridge. The
+$\pi$-cycle $\{1,7,6,5,4,2\}$ enters in $\pi$-forward order,
+with the size-$8$ bridge interrupting between
+$4=\pi^{3}(7)$ and $2=\pi^{4}(7)$.
+\end{remark}
+
+\begin{corollary}[Forbidden sizes]\label{cor:forbidden}
+No subset of $\Zten$ of size $2$ or size $3$ is jointly closed under
+$T$ and $B$.
+\end{corollary}
+
+\begin{proof}
+Part~(b) of the proof of Theorem~\ref{thm:chain}.
+\end{proof}
+
+%% -------- section 4: 4-core --------
+\section{The 4-core is jointly closed}\label{sec:4core}
+
+The minimal non-trivial element of the chain in
+Theorem~\ref{thm:chain} is the four-element subset
+$\Cfour=\{0,7,8,9\}$.
+
+\begin{corollary}[4-core closure]\label{cor:4core}
+$\Cfour$ is jointly closed under $T$ and $B$. Explicitly,
+$T(\Cfour\times\Cfour)\subseteq\{0,7\}\subset\Cfour$ and
+$B(\Cfour\times\Cfour)=\Cfour$.
+\end{corollary}
+
+\begin{proof}
+Part~(a) of the proof of Theorem~\ref{thm:chain}, displayed
+explicitly via the $4\times 4$ restrictions.
+\end{proof}
+
+\begin{remark}\label{rem:rank-disparity}
+The image of $T\big|_{\Cfour\times\Cfour}$ is the proper subset
+$\{0,7\}\subset\Cfour$. The image of $B\big|_{\Cfour\times\Cfour}$
+is the full $\Cfour$. The two operations therefore differ
+markedly in rank on $\Cfour$. The two restrictions agree on
+exactly $4$ of the $16$ cells: $(0,0)\to 0$, $(0,7)\to 7$,
+$(7,0)\to 7$, and $(8,8)\to 7$. They disagree on the remaining
+$12$ cells. The per-coordinate fuse data of
+Proposition~\ref{prop:fuse-data} catalogs the resulting
+distribution explicitly.
+\end{remark}
+
+%% -------- section 5: per-coordinate fuse data on the 4-core --------
+\section{Per-coordinate fuse data on the 4-core}\label{sec:norm}
+
+For $p\in\R^{10}$ supported on $\Cfour$, write
+$(v,h,\beta,r)=(p_{0},p_{7},p_{8},p_{9})$.
+
+\begin{proposition}[$\Cfour$-fuse data]\label{prop:fuse-data}
+Let $p\in\R^{10}$ be supported on $\Cfour$. Then
+$\Tfuse(p)$ and $\Bfuse(p)$ are also supported on $\Cfour$
+(consequence of Theorem~\ref{thm:chain}), and their four
+$\Cfour$-coordinates are explicitly
+\begin{align*}
+\Tfuse(p)_{0} &= v^{2}+2v\beta+2vr,
+   & \Tfuse(p)_{7} &= 2vh+h^{2}+2h\beta+2hr+\beta^{2}+2\beta r+r^{2},\\
+\Tfuse(p)_{8} &= 0,
+   & \Tfuse(p)_{9} &= 0,
+\end{align*}
+\begin{align*}
+\Bfuse(p)_{0} &= v^{2}+2hr+r^{2},
+   & \Bfuse(p)_{7} &= 2vh+\beta^{2},\\
+\Bfuse(p)_{8} &= 2v\beta+h^{2}+2\beta r,
+   & \Bfuse(p)_{9} &= 2vr+2h\beta.
+\end{align*}
+The image of $T\big|_{\Cfour\times\Cfour}$ is $\{0,7\}$
+($\Tfuse$ has rank $2$ on $\Cfour$); the image of
+$B\big|_{\Cfour\times\Cfour}$ is the full $\Cfour$ ($\Bfuse$ has
+rank $4$ on $\Cfour$). Both fuses sum to the same total
+$Z_{T}(p) = Z_{B}(p) = (v+h+\beta+r)^{2}$, by the total-mass
+identity (Remark~\ref{rem:total-mass}).
+\end{proposition}
+
+\begin{proof}
+We compute the four 4-core-supported coordinates of $\Tfuse(p)$
+and $\Bfuse(p)$ from Definition~\ref{def:fuse} and the restricted
+tables of Corollary~\ref{cor:4core}.
+
+For $T$: cells of $T\big|_{\Cfour\times\Cfour}$ producing $0$ are
+$(0,0),(0,8),(8,0),(0,9),(9,0)$ ($5$ cells). Cells producing $7$
+are the remaining $11$ cells. Tabulating fuse coordinates in
+$(v,h,\beta,r)$:
+\begin{align*}
+\Tfuse(p)_{0}&=v^{2}+2v\beta+2vr,\\
+\Tfuse(p)_{7}&=2vh+h^{2}+2h\beta+2hr+\beta^{2}+2\beta r+r^{2},\\
+\Tfuse(p)_{8}&=0,\qquad \Tfuse(p)_{9}=0.
+\end{align*}
+Summing over $\Cfour$ (and noting $\Tfuse(p)_{c}=0$ for
+$c\notin\Cfour$ when $p$ is $\Cfour$-supported, since $T(i,j)\in\Cfour$
+for $i,j\in\Cfour$):
+\[
+Z_{T}(p)\;=\;v^{2}+h^{2}+\beta^{2}+r^{2}+2(vh+v\beta+vr+h\beta+hr+\beta r)\;=\;(v+h+\beta+r)^{2}.
+\]
+
+For $B$: cells of $B\big|_{\Cfour\times\Cfour}$ producing $0$ are
+$(0,0),(7,9),(9,7),(9,9)$. Cells producing $7$ are
+$(0,7),(7,0),(8,8)$. Cells producing $8$ are
+$(0,8),(8,0),(7,7),(8,9),(9,8)$. Cells producing $9$ are
+$(0,9),(9,0),(7,8),(8,7)$. Tabulating fuse coordinates:
+\begin{align*}
+\Bfuse(p)_{0}&=v^{2}+2hr+r^{2},\\
+\Bfuse(p)_{7}&=2vh+\beta^{2},\\
+\Bfuse(p)_{8}&=2v\beta+h^{2}+2\beta r,\\
+\Bfuse(p)_{9}&=2vr+2h\beta.
+\end{align*}
+Summing:
+\[
+Z_{B}(p)\;=\;v^{2}+h^{2}+\beta^{2}+r^{2}+2(vh+v\beta+vr+h\beta+hr+\beta r)\;=\;(v+h+\beta+r)^{2}.
+\]
+Both equal $(v+h+\beta+r)^{2}$.
+\end{proof}
+
+\begin{corollary}[Normalizer is one on the 4-core simplex]\label{cor:Z=1}
+For $p$ in the standard $9$-simplex $\Delta^{9}$ with support in
+$\Cfour$, $Z_{T}(p)=Z_{B}(p)=1$.
+\end{corollary}
+
+\begin{remark}\label{rem:rank-disparity-detailed}
+The two operations agree on only $4$ of the $16$ cells of the
+$\Cfour\times\Cfour$ restriction. The remaining $12$ cells
+distribute mass into different output buckets:
+$\Tfuse$ concentrates all mass on $\{0, 7\}$ (rank-$2$ image),
+while $\Bfuse$ spreads mass across all of $\Cfour$
+(rank-$4$ image). The per-coordinate values of
+Proposition~\ref{prop:fuse-data} therefore differ markedly --
+e.g., $\Tfuse(p)_{8} = 0$ identically while $\Bfuse(p)_{8} =
+2v\beta + h^{2} + 2\beta r$, a polynomial that vanishes only on
+the codimension-$1$ subset $\{h = 0,\ \beta(v + r) = 0\}$ of
+$\Delta^{3}$. The total-mass identity $Z_{T}(p) = Z_{B}(p)$ is
+not the substantive structural observation; the substantive
+observation is that the per-coordinate mass distributions
+$\Tfuse(p)_{c}$ and $\Bfuse(p)_{c}$ on the four cells $c\in\Cfour$
+are explicit non-negative quadratics in
+$(v, h, \beta, r)$, and that they preserve $\Cfour$-support, so
+that any convex combination $\alpha\Tfuse + (1-\alpha)\Bfuse$ for
+$\alpha\in[0,1]$ is a self-map of the $4$-core simplex
+$\Delta^{3}$. The dynamical structure of this family is the
+subject of the companion paper(s) referenced in
+\S\ref{sec:forward}.
+\end{remark}
+
+%% -------- section 6: verification --------
+\section{Verification}\label{sec:verify}
+
+The two theorems of this paper are independently verified by the
+script \texttt{4core\_verification.py}, archived at DOI
+\texttt{10.5281/zenodo.18852047}. The script implements:
+\begin{enumerate}\setlength\itemsep{0pt}
+\item \textbf{Joint-closure enumeration} (\S\ref{sec:chain}):
+tests joint closure of all $1023$ non-empty subsets of $\Zten$
+and verifies the chain structure of Theorem~\ref{thm:chain},
+recording the failing cell for each non-jointly-closed
+candidate.
+\item \textbf{Normalizer identity} (\S\ref{sec:norm}): symbolically
+expands $Z_{T}(p)$ and $Z_{B}(p)$ on $\Cfour$ via \texttt{sympy}
+and confirms both equal $(v+h+\beta+r)^{2}$.
+\end{enumerate}
+The script also implements four further checks supporting the
+companion papers in preparation (closed-form attractor at
+$\alpha=\tfrac12$; common fixed point across the chain; Galois
+$D_{4}$ structure; mixing-weight $\alpha$-sweep); see
+\S\ref{sec:forward}. The script runs to completion in
+approximately three seconds on a modest desktop CPU. The output
+is deterministic.
+
+%% -------- section 7: scope --------
+\section{Scope and limits}\label{sec:scope}
+
+The results of this paper are about the specific tables $T$ and
+$B$ of Definition~\ref{def:tables}. We do \emph{not} claim:
+\begin{itemize}\setlength\itemsep{0pt}
+\item that the chain structure of Theorem~\ref{thm:chain} is
+shared by other natural pairs of binary operations on $\Zten$;
+the chain is a property of the specific $(T, B)$ given;
+\item that the total-mass identity
+$Z_{T}(p) = Z_{B}(p) = (v + h + \beta + r)^{2}$ on
+$\Cfour$-supported $p$ is a non-trivial coincidence: as
+Remark~\ref{rem:total-mass} states, $Z_{M}(p) = (\sum_{i}p_{i})^{2}$
+holds for any binary operation $M$ on $\Zten$ by elementary
+bilinearity. The substantive structural content of
+\S\ref{sec:norm} is in the explicit per-coordinate fuse data of
+Proposition~\ref{prop:fuse-data} (the rank disparity between
+$\Tfuse$ and $\Bfuse$, the symbolic forms of the four
+$\Cfour$-coordinates) together with the support-preservation
+property inherited from joint closure;
+\item that the dynamics of any associated convex-combination
+iteration on the simplex is treated here; the present paper
+contains no dynamical content. Dynamical results for the pair
+$(T, B)$, including a closed-form fixed point of the
+convex-combination iteration at $\alpha = \tfrac{1}{2}$ with
+explicit algebraic ratios, are the subject of a companion paper
+in preparation (see \S\ref{sec:forward}).
+\end{itemize}
+
+We \emph{do} claim that the chain of Theorem~\ref{thm:chain},
+the corollaries of \S\ref{sec:4core}, and the per-coordinate
+fuse data of Proposition~\ref{prop:fuse-data} together with the
+rank-disparity reading of
+Remark~\ref{rem:rank-disparity-detailed}, are true of the
+specific $T$ and $B$ given. The structural
+$\sigma$-walk reading (Remark~\ref{rem:sigma-walk}) is offered
+as commentary on the chain of
+Theorem~\ref{thm:chain}; the permutation $\sigma$ is introduced
+in this paper and is not derived from $(T, B)$ themselves.
+
+%% -------- section 8: forward directions --------
+\section{Forward directions}\label{sec:forward}
+
+The pair $(T, B)$ admits further structural and dynamical
+phenomena, treated in companion work in preparation. The
+convex-combination iteration $F_{\alpha} = \alpha \widehat{T} +
+(1-\alpha)\widehat{B}$ on the $9$-simplex $\Delta^{9}$ has, at
+$\alpha = \tfrac{1}{2}$, a unique non-degenerate
+$\Cfour$-supported fixed point $p^{*}$ with $p^{*}_{7}/p^{*}_{8}
+= 1+\sqrt{3}$ exactly; the ratio $p^{*}_{9}/p^{*}_{8}$ is the
+unique positive root of an irreducible integer quartic with
+Galois group $D_{4}$ over $\Q$, generating the quartic number
+field LMFDB \textnumero 4.2.10224.1. Whether $\alpha =
+\tfrac{1}{2}$ is the \emph{unique} rational mixing weight in
+$(0,1)\cap\Q$ at which the runtime ratio admits a
+small-coefficient algebraic relation is an open question, with
+PSLQ evidence (at fifty-digit precision against integer
+quadratics with coefficients bounded by $20$) confirming the
+algebraic relation only at $\alpha = \tfrac{1}{2}$ among the
+sample $\{0, \tfrac{1}{4}, \tfrac{1}{2}, \tfrac{3}{4}, 1\}$. We
+also note that the chain of Theorem~\ref{thm:chain} and the
+per-coordinate fuse data of Proposition~\ref{prop:fuse-data}
+persist when $(T, B)$ at $N = 10$ are replaced by analogous
+tables $(T_{p}, B_{p})$ constructed via the same operator-
+substrate recipe over $\F_{p}$-substrates of comparable size,
+for $p \in \{2, 3, 5, 7, 11, 13\}$. We do not detail the
+$(T_{p}, B_{p})$ construction in the present paper; it is
+developed in the companion bridge-sprint
+material~\cite{SandersClaudeChat2026BridgeSprint}.
+
+The companion paper~\cite{SandersGish2026Sigma} provides the
+operator-substrate construction from which the pair $(T, B)$ at
+$N = 10$ is extracted as a specific instance.
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{DrapalKepka1985}
+A.~Dr\'{a}pal and T.~Kepka.
+\newblock Group distances of Latin squares.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+26(2):275--283, 1985.
+
+\bibitem{Kepka1980}
+T.~Kepka.
+\newblock A note on associative triples of elements in cancellation groupoids.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+21(3):479--487, 1980.
+
+\bibitem{SandersGish2026Sigma}
+B.~R.~Sanders and M.~Gish.
+\newblock Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$.
+\newblock Preprint, 2026.
+\newblock Companion paper; archived in shared Zenodo deposit DOI
+10.5281/zenodo.18852047.
+
+\bibitem{SandersClaudeChat2026BridgeSprint}
+B.~R.~Sanders et al.
+\newblock Bridge-Sprint Working Material: $\F_{p}$-Universality of the
+Operator-Substrate Construction.
+\newblock In preparation, 2026.
+
+\end{thebibliography}
+
+\end{document}
