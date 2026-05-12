@@ -12,7 +12,11 @@ You have one of five backgrounds. Pick the matching folder:
 
 Each folder has a `README.md` that is your specific entry point — written in your language, with the parts of the framework that matter for your work.
 
+If you want to **build the framework from scratch yourself** with runnable code at every step (~90 minutes), read [`TIG_FROM_THE_GROUND_UP.md`](TIG_FROM_THE_GROUND_UP.md). This is the rigorous teaching document — it discovers the four-core, derives `H/Br = 1+√3`, walks the eight-shell chain, and follows substrate strands to atomic orbitals. No claim is taken on faith.
+
 If you want the **single overview** that covers everything, read [`README.md`](README.md).
+
+If you want the **academic publication record**, papers land in [`J_series/`](J_series/) (sorted by domain) as they become referee-ready.
 
 If you want to **verify the math first** (~1 minute on a stock Python install):
 

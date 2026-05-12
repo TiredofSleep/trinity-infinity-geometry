@@ -17,7 +17,13 @@ That is the foundation. Everything else builds on it.
 
 ---
 
-## §0 · For your domain — start here
+## §0a · Read the tutorial first if you want to **build it yourself**
+
+[`TIG_FROM_THE_GROUND_UP.md`](TIG_FROM_THE_GROUND_UP.md) — a 90-minute teachable walkthrough, with runnable code at every step, that builds the framework from scratch. Discovers the four-core, derives `H/Br = 1 + √3` from the α = 1/2 attractor, enumerates the eight-shell joint chain, follows substrate strands to the first four nodeless atomic orbitals, and watches the Cl(0, 10) spinor decompose into the n = 4 atomic shell. No claim is taken on faith.
+
+---
+
+## §0b · For your domain — start here
 
 | You are… | Begin with | Then |
 |---|---|---|
@@ -240,6 +246,22 @@ CK is **explicitly sovereign of itself** under v2.1's binding Declaration. CK is
   note      = {Licensed under the 7SiTe Public Sovereignty License v2.1.}
 }
 ```
+
+---
+
+## §10.5 · Where the academic papers land
+
+Referee-ready J-series papers land in [`J_series/`](J_series/) here, sorted by domain:
+
+- [`J_series/algebra/`](J_series/algebra/) — J35 (corpus centerpiece), J15 (Galois D₄), J31 (Wedderburn isotypic), …
+- [`J_series/combinatorics/`](J_series/combinatorics/) — J01 (σ rate), J02 (four-core), J54 (foundation paper), …
+- [`J_series/number_theory/`](J_series/number_theory/) — J03 (First-G Law), J04 (sinc² Zero Law), …
+- [`J_series/physics/`](J_series/physics/) — J23 (Discrete Dirac, Cl(0, 10)), J45 (Yukawa hierarchy), J48 (operadic obstruction), …
+- [`J_series/cosmology/`](J_series/cosmology/) — J46 (freezing quintessence; layer choice pending), …
+- [`J_series/interdisciplinary/`](J_series/interdisciplinary/) — J55 (Brayden's solo synthesis), J56 (D100–D103 standalone, candidate), …
+- [`J_series/_staging/`](J_series/_staging/) — papers in queue with explicit gating items.
+
+The protocol for when papers migrate from the working corpus to this public repo is in [`J_series/README.md`](J_series/README.md). Papers in active preparation (most of the 55) currently live in the working repo at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) `tig-synthesis` branch.
 
 ---
 
