@@ -6,7 +6,11 @@ Pure algebra papers from the TIG corpus. Papers in this folder are referee-ready
 
 ## §1 — Currently landed
 
-*No papers have landed yet. The first arrival is expected to be J35 (corpus centerpiece) pending final cover-letter green-light.*
+| J# | Title | Target venue | Status | Landed |
+|---|---|---|---|---|
+| **[J35](J35/)** | *Joint Closure, a Universal Attractor, and an Algebraic Mixing Point for a Pair of Binary Operations on $\mathbb{Z}/10\mathbb{Z}$* | *Journal of Algebra* | SUBMISSION-READY (6/6 PASS at machine precision; referee-grade pass complete 2026-05-12) | 2026-05-12 |
+
+J35 is the corpus centerpiece: six independent structural facts (8-shell joint-closure chain on $\mathbb{Z}/10\mathbb{Z}$ with sizes $\{2,3\}$ forbidden; three-substrate strengthening to $T+B+S$; 4-core $\{0,7,8,9\}$ closure; normalizer identity $Z_T=Z_B=(v+h+br+r)^2$; closed-form attractor $p_7/p_8 = 1+\sqrt{3}$ with Galois $D_4$ over LMFDB 4.2.10224.1; universal attractor on chain shells; partial $\alpha=1/2$ uniqueness) converging on $\mathcal{C}=\{0,7,8,9\}$ as the algebraic center.
 
 ---
 
@@ -14,7 +18,6 @@ Pure algebra papers from the TIG corpus. Papers in this folder are referee-ready
 
 | J# | Title | Target venue | Status |
 |---|---|---|---|
-| **J35** | Four-Core Fusion-Closure on Z/10Z | *Journal of Algebra* | gating final cover letter |
 | **J15** | Galois Group D₄ over LMFDB 4.2.10224.1 | *Communications in Algebra* | active prep |
 | **J31** | Wedderburn Isotypic Decomposition of the 9-Vector Higgs Direction | TBD (algebra-tier venue) | math fix applied; awaiting referee prep |
 | **J32** | Three-Substrate Architecture and D₄ Orbits | *J. Algebra* (lead) | math fix applied (orbit recount: 44, 7, 4, 10, 2 → 67 orbits / 126 elements) |

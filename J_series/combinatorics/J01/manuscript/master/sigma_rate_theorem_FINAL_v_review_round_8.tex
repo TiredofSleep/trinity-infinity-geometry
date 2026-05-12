@@ -1,0 +1,521 @@
+%%% ============================================================
+%%% Non-Associativity Decay in Binary Composition Tables
+%%% over Z/NZ
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Journal of Combinatorial Theory, Series A
+%%% MSC: 05B15, 05E15, 11A07, 20N02, 20N05
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\DIS}{DIS}
+\DeclareMathOperator{\CL}{CL}
+\DeclareMathOperator{\ECHO}{E}
+\DeclareMathOperator{\HARM}{T}
+\DeclareMathOperator{\VOID}{Z}
+\newcommand{\ZN}{\mathbb{Z}/N\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+%% -------- title matter --------
+\title[Non-associativity decay on \texorpdfstring{$\mathbb{Z}/N\mathbb{Z}$}{Z/NZ}]%
+{Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{binary composition table, non-associativity, associative triples,
+squarefree modulus, Euler totient, quasigroup, finite binary operation}
+
+\subjclass[2020]{05B15, 05E15, 11A07, 20N02, 20N05}
+
+\begin{document}
+
+\begin{abstract}
+We define a family of binary composition tables $\CL_N$ on $\ZN$ via
+two absorbing classes (\emph{top-absorbing} $\HARM$, \emph{zero-absorbing}
+$\VOID$) and one arithmetic class (\emph{echo} $\ECHO$: $a+b\equiv a\cdot b\pmod N$),
+and prove that the non-associativity fraction
+$\sigma(N)=N^{-3}\#\{(a,b,c)\in(\ZN)^{3}:\CL_N(\CL_N(a,b),c)\neq\CL_N(a,\CL_N(b,c))\}$
+satisfies
+\[
+  \sigma(N)\;\le\;\frac{2}{N}
+\]
+for squarefree $N\ge 3$. The dominant non-associativity mechanism is
+$\VOID$--$\HARM$ rule disagreement at outer composition sites; an
+explicit case analysis gives the bound
+$\sigma(N)\,N^{3}\le 2(N-2)^{2}+\varepsilon(N)$ with
+$\varepsilon(N)\le 2\varphi(N)$, hence $N\sigma(N)<2$ for all
+squarefree $N\ge 3$, and $N\sigma(N)\to 2$ as $N\to\infty$ along
+any sequence of squarefree integers. The proof reduces $\ECHO$-counting to
+the number of units in $\ZN$ via the substitution
+$(a-1)(b-1)\equiv 1$, which by the Chinese Remainder Theorem equals
+$\varphi(N)$. This $\sigma\to 0$ regime is opposite in direction to
+the $\sigma\to 1$ program of maximally nonassociative quasigroups
+\cite{DrapalWanless2021,DrapalLisonek2020}. Selected numerical examples
+are verified by the script \texttt{proof\_sigma\_rate.py}, including
+$N\in\{10,30,210\}$.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+We study a three-rule family $\CL_N:\ZN\times\ZN\to\ZN$ with two
+absorbing classes ($\HARM$, $\VOID$) and one arithmetic class
+($\ECHO$) defined by additive--multiplicative coincidence. Define
+$\sigma(N)$ as the fraction of triples $(a,b,c)\in(\ZN)^3$ on which
+$\CL_N$ fails to associate:
+\begin{equation}\label{eq:sigma-def}
+  \sigma(N)=\frac{1}{N^{3}}
+  \#\Big\{(a,b,c)\in(\ZN)^{3}:
+         \CL_N\!\big(\CL_N(a,b),c\big)\neq\CL_N\!\big(a,\CL_N(b,c)\big)\Big\}.
+\end{equation}
+Our main result (Theorem~\ref{thm:rate}) is a rate bound
+$\sigma(N)\le 2/N$ valid for squarefree $N$. The proof is short
+and elementary: a case analysis isolates $\VOID$--$\HARM$ rule
+disagreement at outer composition sites as the dominant mechanism,
+and the $\ECHO$ enumeration reduces to counting units in $\ZN$
+via the substitution $(a-1)(b-1)\equiv 1$, which by the Chinese
+Remainder Theorem~\cite{Gauss1801,Lang2002} equals $\varphi(N)$.
+
+\paragraph{Positioning: opposite pole of quasigroup non-associativity.}
+The quantity $\sigma$ studied here is the classical
+non-associativity density of a binary operation. Earlier work on
+related rates appears in the cancellation-groupoid setting of
+Kepka~\cite{Kepka1980} and the Latin-square / quasigroup
+extension by Dr\'{a}pal and Kepka~\cite{DrapalKepka1985}; we note
+that $\CL_N$ is not a quasigroup (the absorbing rules break
+cancellation) and these earlier bounds therefore do not directly
+specialize to $\CL_N$. The present work sits in a different
+combinatorial class.
+Dr\'{a}pal and Wanless \cite{DrapalWanless2021} and
+Dr\'{a}pal and Lison\v{e}k \cite{DrapalLisonek2020} study the
+\emph{opposite} extremum, namely maximally nonassociative
+quasigroups with $\sigma\to 1$. The rate theorem of the present paper
+contributes (a) an explicit $\sigma\to 0$ rate bound on a specific
+squarefree family with absolute constant $C=2$, and (b) the
+identification of a three-rule absorbing composition law for which
+the dominant mechanism is $\VOID$--$\HARM$ rule disagreement at outer
+composition sites, making $\sigma\to 0$ provable by elementary case
+analysis.
+
+\paragraph{Positioning.}
+The statement is a finite, strictly combinatorial identity. A
+continuum development of the dynamics suggested by the family
+$(\CL_N)_{N}$, including connections to the Bialynicki--Birula--Mycielski
+classification of separability-preserving nonlinearities \cite{BB1976},
+appears in the companion paper~\cite{SandersGishJohnson2026JCAP}; the
+present paper does not address that limit and the combinatorial result
+above is independent of it.
+
+%% -------- section 2: definitions --------
+\section{Definitions}\label{sec:def}
+
+Throughout, $N\in\N_{\ge 2}$ is squarefree. Lemma~\ref{lem:echo}
+holds for all such $N$; the rate theorem (Theorem~\ref{thm:rate})
+requires $N\ge 3$, since the case analysis of \S\ref{sec:rate} uses
+the non-emptiness of $\{1,\dots,N-2\}$. Write $\ZN$ for
+$\Z/N\Z$, identifying residues with $\{0,1,\dots,N-1\}$. Arithmetic
+operations $+$ and $\cdot$ are interpreted modulo $N$.
+
+\begin{definition}[The binary table $\CL_N$]\label{def:cl}
+For $a,b\in\ZN$, define
+\begin{equation}\label{eq:cl-def}
+  \CL_N(a,b)=
+  \begin{cases}
+     N-1 & \text{if } a=N-1 \text{ or } b=N-1
+           \qquad\text{($\HARM$ rule)},\\[1pt]
+     0   & \text{else if } a=0 \text{ or } b=0
+           \qquad\text{($\VOID$ rule)},\\[1pt]
+     a+b & \text{else if } a+b\equiv a\cdot b\pmod N
+           \qquad\text{($\ECHO$ rule)},\\[1pt]
+     N-1 & \text{otherwise}
+           \qquad\text{(default $\HARM$)}.
+  \end{cases}
+\end{equation}
+\end{definition}
+
+Two auxiliary functions on $(\ZN)^{2}$ will be used:
+\begin{equation}\label{eq:dis-def}
+  \DIS(a,b)=\bigl((a+b)-(a\cdot b)\bigr)\bmod N,
+  \qquad
+  \ECHO(a,b)=\mathbf{1}\!\left[\DIS(a,b)=0\right].
+\end{equation}
+The set on which the $\ECHO$ rule applies is exactly
+$\{\DIS=0\}\setminus(\{a=0\}\cup\{b=0\}\cup\{a=N-1\}\cup\{b=N-1\})$;
+the boundary cases are absorbed by the earlier rules of
+Definition~\ref{def:cl}.
+
+%% -------- section 3: enumeration --------
+\section{Enumeration of the $\ECHO$ rule}\label{sec:enum}
+
+\begin{lemma}[$\ECHO$ count]\label{lem:echo}
+For squarefree $N\ge 2$, the equation $a+b\equiv a\cdot b\pmod N$ has
+\emph{exactly} $\varphi(N)$ solutions $(a,b)\in(\ZN)^{2}$.
+\end{lemma}
+
+\begin{proof}
+Set $a'=a-1$, $b'=b-1$. The map $(a,b)\mapsto(a',b')$ is a bijection
+$(\ZN)^{2}\to(\ZN)^{2}$, and
+\[
+  a+b\equiv ab\pmod N
+  \;\Longleftrightarrow\;
+  (a-1)(b-1)=a'b'\equiv 1\pmod N.
+\]
+For squarefree $N$, the Chinese Remainder Theorem gives
+$\ZN\cong\prod_{p\mid N}\mathbb F_{p}$ \cite{Gauss1801,Lang2002};
+a pair $(a',b')$ satisfies $a'b'\equiv 1$ iff $a'\in(\ZN)^{\times}$
+and $b'=(a')^{-1}$. There are exactly $\varphi(N)$ such unit pairs.
+The bijection above transfers the count to the original equation.
+\end{proof}
+
+\begin{remark}
+Numerical verification via \texttt{proof\_sigma\_rate.py} confirms
+$\#\{(a,b):\DIS(a,b)=0\}=\varphi(N)$ for
+$N\in\{10,30,210\}$, giving counts $4$, $8$, $48$ respectively.
+The subset surviving after the $\HARM$ ($a=N-1$ or $b=N-1$) and
+$\VOID$ ($a=0$ or $b=0$) priority rules is smaller by the number of
+boundary pairs in $\{\DIS=0\}$; this refined count is not needed for
+the bound used below.
+\end{remark}
+
+\begin{corollary}[$\ECHO$ density]\label{cor:echo-density}
+Let $\rho_N=\#\{(a,b)\in(\ZN)^{2}:\DIS(a,b)=0\}/N^{2}$. Then
+\begin{equation}\label{eq:rho}
+  \rho_N\;=\;\frac{\varphi(N)}{N^{2}}
+  \;=\;\frac{1}{N}\prod_{p\mid N}\!\Bigl(1-\tfrac{1}{p}\Bigr)
+  \;\le\;\frac{1}{N}.
+\end{equation}
+The inequality is strict for every squarefree $N>1$.
+\end{corollary}
+
+%% -------- section 4: rate theorem --------
+\section{The rate theorem}\label{sec:rate}
+
+\begin{theorem}[$\sigma$ rate, explicit form]\label{thm:rate}
+For squarefree $N\ge 3$ the non-associativity fraction defined in
+\eqref{eq:sigma-def} satisfies the explicit bound
+\begin{equation}\label{eq:rate}
+  \sigma(N)\,N^{3}\;\le\;2(N-2)^{2}\;+\;\varepsilon(N),
+\end{equation}
+where $\varepsilon(N)$ counts the residual non-associative triples
+with $a\neq 0$ \emph{and} $c\neq 0$, and satisfies
+$\varepsilon(N)\le 2\varphi(N)$. Consequently
+\begin{equation}\label{eq:rate-asymptotic}
+  \sigma(N)\;<\;\frac{2}{N},
+  \qquad N\sigma(N)\to 2 \text{ from below as } N\to\infty
+\end{equation}
+along any sequence of squarefree integers; in particular
+$\sigma(N)\to 0$ as $N\to\infty$.
+\end{theorem}
+
+\begin{proof}
+The dominant non-associativity mechanism is \emph{$\VOID$--$\HARM$ rule
+disagreement}. We classify all triples
+$(a,b,c)\in(\ZN)^{3}$ by which of $a,c$ vanishes; the three cases
+below ($a=0$; $c=0$ and $a\neq 0$; $a\neq 0$ and $c\neq 0$) partition
+$(\ZN)^{3}$ exhaustively, so every non-associative triple is treated.
+Throughout, write $h:=N-1$ for the harmony absorber.
+
+\medskip
+\noindent\textbf{Case 1 ($a=0$).} Then
+$\CL_N(\CL_N(0,b),c)=\CL_N(\bullet,c)$ where
+$\bullet=\CL_N(0,b)$ is $h$ if $b=h$ and $0$ otherwise. Six subcases:
+\begin{itemize}\setlength\itemsep{0pt}
+\item[(1a)] $b=h$: both bracketings return $h$; associative.
+\item[(1b)] $b=0$: direct check gives associativity for all $c$.
+\item[(1c)] $b\notin\{0,h\}$, $c=0$: associative (both return $0$).
+\item[(1d)] $b\notin\{0,h\}$, $c=h$: both return $h$; associative.
+\item[(1e)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)=h$:
+  $\CL_N(\CL_N(0,b),c)=\CL_N(0,c)=0$, while
+  $\CL_N(0,\CL_N(b,c))=\CL_N(0,h)=h$. \textbf{Non-associative.}
+\item[(1f)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)\neq h$: by the
+  $\VOID$ rule both bracketings return $0$; associative. (Here we use
+  that $\CL_N(b,c)\ne h$ together with $b,c\ne 0$ implies
+  $\CL_N(b,c) = b+c\bmod N$ via the $\ECHO$ rule, and the squarefree
+  argument later used in case (3.B) shows $b+c\not\equiv 0\pmod N$
+  whenever $b,c\in\{1,\dots,N-2\}$ with $(b-1)(c-1)\equiv 1\pmod N$.)
+\end{itemize}
+Subcase (1e) is the $\VOID$--$\HARM$ disagreement: the inner $\VOID$
+on the left bracketing returns $0$ which the outer $\VOID$ propagates,
+but on the right bracketing the inner produces $h$, which the outer
+$\HARM$ then absorbs. Subcase (1e) is the only non-associative
+contribution to Case~1 (the others, (1a)--(1d) and (1f), are
+associative by direct check); its count is exactly the number of
+pairs $(b,c)\in\{1,\dots,N-2\}^{2}$ with $\CL_N(b,c)=h$. Indeed,
+every pair in $\{1,\dots,N-2\}^{2}$ contributes either through the
+$\ECHO$ rule or through the default $\HARM$ rule. Among the
+$\ECHO$ pairs, the only ones still counted by $\CL_N(b,c)=h$ are
+those whose output is congruent to $-1\pmod N$. Define
+\begin{align}
+  E(N)   &:= \#\{(b,c)\in\{1,\dots,N-2\}^{2}:(b-1)(c-1)\equiv 1\pmod N\},
+  \label{eq:Edef}\\
+  E_{h}(N) &:= \#\{(b,c)\in\{1,\dots,N-2\}^{2}:(b-1)(c-1)\equiv 1\pmod N
+            \text{ and }b+c\equiv -1\pmod N\}.
+  \label{eq:Ehdef}
+\end{align}
+Then the count is $(N-2)^{2}-E(N)+E_{h}(N)$, giving the two-sided bound
+\begin{equation}\label{eq:case1-bounds}
+  (N-2)^{2}-\varphi(N)\;\le\;\#\,\text{Case 1}\;\le\;(N-2)^{2},
+\end{equation}
+since $0\le E_{h}(N)\le E(N)\le\varphi(N)$ by Lemma~\ref{lem:echo}.
+
+\medskip
+\noindent\textbf{Case 2 ($c=0$, $a\neq 0$).} By the
+left-right symmetry of the bracket pair this case contributes the
+same two-sided bound \eqref{eq:case1-bounds}.
+
+Cases 1 and 2 are disjoint (the overlap $a=c=0$ is associative by
+(1b)) and together contribute, exactly,
+$2[(N-2)^{2}-E(N)+E_{h}(N)]$ non-associative triples, with
+$2(N-2)^{2}-2\varphi(N)\le\#\,(\text{Cases 1+2})\le 2(N-2)^{2}$.
+
+\medskip
+\noindent\textbf{Case 3 ($a\neq 0$, $c\neq 0$).} The remaining
+non-associative triples have neither $a$ nor $c$ vanishing. If
+$a=h$ or $c=h$, both bracketings absorb to $h$ via the $\HARM$
+rule, so the triple is associative; we may therefore restrict to
+$a,c\in\{1,\dots,N-2\}$. For $b$: if $b=0$, both sides reduce to
+$0$ (using $a,c\neq h$); if $b=h$, both sides reduce to $h$;
+both subcases are associative. Restrict further to
+$b\in\{1,\dots,N-2\}$.
+
+With $a,b,c\in\{1,\dots,N-2\}$, the inner compositions $x:=\CL_N(a,b)$
+and $y:=\CL_N(b,c)$ each take one of two values:
+\[
+  x = \begin{cases} (a+b)\bmod N & \text{if }(a-1)(b-1)\equiv 1\pmod N \\
+                   h & \text{otherwise} \end{cases},
+  \qquad
+  y = \begin{cases} (b+c)\bmod N & \text{if }(b-1)(c-1)\equiv 1\pmod N \\
+                   h & \text{otherwise} \end{cases}.
+\]
+We classify into four sub-subcases by the $\ECHO$ status of
+$(a,b)$ and $(b,c)$:
+
+\smallskip\noindent\textit{(3.A) Neither $(a,b)$ nor $(b,c)$ in $\ECHO$.}
+Then $x=y=h$, so both bracketings return $h$. \emph{Associative}.
+
+\smallskip\noindent\textit{(3.B) $(a,b)$ in $\ECHO$, $(b,c)$ not.}
+Then $x=(a+b)\bmod N$ and $y=h$, so the right bracketing equals
+$\CL_N(a,h)=h$, and the left equals $\CL_N(x,c)$. We split on $x$:
+\begin{itemize}\setlength\itemsep{0pt}
+\item $x=0$, i.e., $a+b\equiv 0\pmod N$: then $\CL_N(0,c)=0\neq h$,
+giving non-associativity. But the simultaneous conditions
+$(a-1)(b-1)\equiv 1$ and $b\equiv -a\pmod N$ yield
+$(a-1)(-a-1)\equiv 1$, i.e., $a^{2}\equiv 0\pmod N$. For squarefree
+$N$ this forces $a\equiv 0\pmod N$, contradicting
+$a\in\{1,\dots,N-2\}$. \emph{No triples in this case.}
+\item $x=h$: then $\CL_N(h,c)=h=y$, associative.
+\item $x\in\{1,\dots,N-2\}$: $\CL_N(x,c)=h$ unless $(x,c)\in\ECHO$,
+in which case it equals $(x+c)\bmod N$, and non-associativity
+occurs iff $(x+c)\bmod N\neq h$. For each $\ECHO$ pair $(a,b)$,
+once $x=(a+b)\bmod N$ is fixed, the condition $(x,c)\in\ECHO$ is
+equivalent to $(x-1)(c-1)\equiv 1\pmod N$, which has no solution
+unless $x-1$ is a unit, and in that case has exactly one solution
+$c\in\ZN$. Hence the number of $(a,b,c)$ in this sub-subcase is at
+most the number of $\ECHO$ pairs $(a,b)$, which is $\le\varphi(N)$
+by Lemma~\ref{lem:echo}.
+\end{itemize}
+Together (3.B) contributes at most $\varphi(N)$ non-associative
+triples.
+
+\smallskip\noindent\textit{(3.C) $(b,c)$ in $\ECHO$, $(a,b)$ not.}
+By the left-right symmetry of the bracket pair, this case is
+isomorphic to (3.B) under $(a,b,c)\mapsto(c,b,a)$ and contributes
+at most $\varphi(N)$ non-associative triples.
+
+\smallskip\noindent\textit{(3.D) Both $(a,b)$ and $(b,c)$ in $\ECHO$.}
+The conditions $(a-1)(b-1)\equiv 1$ and $(b-1)(c-1)\equiv 1\pmod N$
+force $b-1$ to be a unit in $\ZN$, and hence
+$a-1\equiv(b-1)^{-1}\equiv c-1\pmod N$, so $a\equiv c\pmod N$. Then
+$x=a+b\equiv b+c=y\pmod N$, so the two bracketings are
+$\CL_N(x,a)$ and $\CL_N(a,x)$. The composition law $\CL_N$ is
+commutative (each rule in Definition~\ref{def:cl} is symmetric in
+its arguments), so $\CL_N(x,a)=\CL_N(a,x)$ and the triple is
+\emph{associative}. \emph{No triples in this case.}
+
+\smallskip\noindent
+Combining (3.A)--(3.D): $0\le\varepsilon(N)\le 2\varphi(N)$.
+
+\medskip
+Combining the three top-level cases,
+\begin{equation}\label{eq:case-sum}
+  2(N-2)^{2}-2\varphi(N)\;\le\;\sigma(N)\,N^{3}\;\le\;2(N-2)^{2}+2\varphi(N).
+\end{equation}
+Since $\varphi(N)\le N-1$ for $N\ge 2$, the right side of
+\eqref{eq:case-sum} is at most
+$2(N-2)^{2}+2(N-1)=2N^{2}-6N+6<2N^{2}$ for $N\ge 3$, proving the
+strict inequality $\sigma(N)<2/N$. For the asymptotic claim, divide
+\eqref{eq:case-sum} by $N^{2}$:
+\begin{equation}\label{eq:case-sum-Ns}
+  2\bigl(1-\tfrac{2}{N}\bigr)^{2}-\frac{2\varphi(N)}{N^{2}}
+  \;\le\;N\sigma(N)\;\le\;
+  2\bigl(1-\tfrac{2}{N}\bigr)^{2}+\frac{2\varphi(N)}{N^{2}}.
+\end{equation}
+The leading term $2(1-2/N)^{2}\to 2$ from below as $N\to\infty$, and
+$\varphi(N)/N^{2}\le 1/N\to 0$ for squarefree $N$, so both bounds in
+\eqref{eq:case-sum-Ns} converge to $2$ from below. Therefore
+$N\sigma(N)\to 2$ from below as $N\to\infty$ along any sequence of
+squarefree integers. The empirical confirmation appears in
+\S\ref{sec:verify}.
+\end{proof}
+
+\begin{remark}[non-squarefree $N$]
+The squarefree hypothesis is essential to the $\ECHO$ enumeration of
+Lemma~\ref{lem:echo}: the Chinese Remainder Theorem decomposition
+$\ZN\cong\prod_{p\mid N}\mathbb F_{p}$ uses squarefree-ness directly,
+and for $N=p^{k}$ with $k\ge 2$ the count of solutions to
+$(a-1)(b-1)\equiv 1$ in $\Z/p^{k}\Z$ equals $\varphi(p^{k})=p^{k-1}(p-1)$
+rather than $\varphi(p)$. Direct computation for $N=2^{k}$,
+$k=1,\ldots,7$, shows that $\sigma(2^{k})$ decays at empirical rate
+$\sim 2^{-0.64\,k}$, slower than the squarefree $2/N$ bound; the
+bound \eqref{eq:rate-asymptotic} is exceeded at $N=64$ and $N=128$.
+This is consistent with the fact that the squarefree CRT structure is what
+forces the residual count $\varepsilon(N)$ to remain small relative
+to the leading $\VOID$--$\HARM$ contribution. The rate behavior on
+non-squarefree $N$ is outside the scope of this paper.
+\end{remark}
+
+%% -------- section 5: BB conjecture --------
+%% -------- section 5: verification (was 6) --------
+\section{Verification}\label{sec:verify}
+
+Theorem~\ref{thm:rate}, Lemma~\ref{lem:echo}, and
+Corollary~\ref{cor:echo-density} are verified by exact computation
+for $N\in\{10,30,210\}$ via the accompanying script
+\texttt{proof\_sigma\_rate.py}. The contributions from Cases 1, 2,
+and 3 in the proof of Theorem~\ref{thm:rate} are reported
+separately to confirm the bound $\varepsilon(N)\le 2\varphi(N)$:
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c}
+$N$ & $\varphi(N)$ & Case 1 & Case 2 & $\varepsilon(N)$ &
+$2(N-2)^{2}+2\varphi(N)$ & $\sigma(N)\,N^{3}$\\
+\hline
+$10$  & $4$  & $61$    & $61$    & $6$  & $136$    & $128$\\
+$30$  & $8$  & $777$   & $777$   & $6$  & $1584$   & $1560$\\
+$210$ & $48$ & $43217$ & $43217$ & $30$ & $86624$  & $86464$\\
+\end{tabular}
+\end{center}
+
+In every tested case, the empirical $\varepsilon(N)$ stays well
+below the proved bound $2\varphi(N)$, and the total
+$\sigma(N)\,N^{3}$ stays below $2(N-2)^{2}+2\varphi(N)$. The
+quotients $N\sigma(N)$ are $1.28,\,1.73,\,1.961$ respectively.
+Extension to a broader squarefree test set
+$N\in\{10,30,42,66,105,110,154,210,330,462,770,1155\}$ tabulated
+during preparation gives $N\sigma(N)\le 1.993$ in every case,
+consistent with the asymptotic $N\sigma(N)\to 2$ in
+\eqref{eq:rate-asymptotic}. Verification scripts are archived at
+DOI~\texttt{10.5281/zenodo.18852047}.
+
+%% -------- section 7: scope --------
+\section{Scope and limits}\label{sec:scope}
+
+Theorem~\ref{thm:rate} gives the explicit bound
+$\sigma(N)\le 2(N-2)^{2}/N^{3}+\varepsilon(N)/N^{3}\le 2/N$ for
+squarefree $N\ge 3$. It does \emph{not} claim:
+(i) a sharp finite-$N$ constant strictly below $C=2$ --- although
+$N\sigma(N)\to 2$ from below along squarefree integers
+(Theorem~\ref{thm:rate}), the proof does not optimize lower-order
+terms at finite $N$, and on the numerically verified range
+$N\sigma(N)\le 1.993$;
+(ii) a rate for non-squarefree $N$ --- the $\ECHO$ enumeration of
+Lemma~\ref{lem:echo} uses squarefree-ness via the CRT product
+structure, and direct computation on prime powers $N=2^{k}$ shows
+the bound \eqref{eq:rate-asymptotic} is exceeded for $k\ge 6$;
+(iii) any analytic statement about a continuum limit of the family
+$(\CL_N)_{N}$. Connections to nonlinear wave-equation classifications
+(in the spirit of \cite{BB1976}) require additional hypotheses on a
+discrete-to-continuum embedding and are outside the scope of the
+present combinatorial result; a continuum development in the
+dark-energy scalar-field setting appears in the companion
+paper~\cite{SandersGishJohnson2026JCAP}.
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+%% -- classical number theory / algebra ----------------
+\bibitem{Gauss1801}
+C.~F.~Gauss.
+\newblock \emph{Disquisitiones Arithmeticae}.
+\newblock Leipzig, 1801.
+\newblock English translation, Yale University Press, 1966.
+
+\bibitem{Lang2002}
+S.~Lang.
+\newblock \emph{Algebra}, 3rd edition.
+\newblock Graduate Texts in Mathematics~211. Springer, New York, 2002.
+
+%% -- Bialynicki-Birula program ------------------------
+\bibitem{BB1976}
+I.~Bialynicki-Birula and J.~Mycielski.
+\newblock Nonlinear wave mechanics.
+\newblock \emph{Annals of Physics}, 100(1--2):62--93, 1976.
+\newblock DOI: \texttt{10.1016/0003-4916(76)90057-9}.
+
+%% -- quasigroup / non-associative combinatorics -------
+\bibitem{Kepka1980}
+T.~Kepka.
+\newblock A note on associative triples of elements in cancellation groupoids.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+21(3):479--487, 1980.
+
+\bibitem{DrapalKepka1985}
+A.~Dr\'{a}pal and T.~Kepka.
+\newblock Group distances of Latin squares.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+26(2):275--283, 1985.
+
+\bibitem{DrapalLisonek2020}
+A.~Dr\'{a}pal and P.~Lison\v{e}k.
+\newblock Maximally nonassociative quasigroups via quadratic orthomorphisms.
+\newblock \emph{Algebraic Combinatorics}, 3(3):695--717, 2020.
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'{a}pal and I.~M.~Wanless.
+\newblock Maximally nonassociative quasigroups from finite fields.
+\newblock \emph{Journal of Combinatorial Theory, Series A}, 181:105444, 2021.
+
+%% -- companion paper ----------------------------------
+\bibitem{SandersGishJohnson2026JCAP}
+B.~R.~Sanders, M.~Gish, and H.~J.~Johnson.
+\newblock Logarithmic Quintessence: A Dimensionless Scalar Dark Energy
+Model with an Analytic Vacuum.
+\newblock Preprint, 2026.
+
+\end{thebibliography}
+
+\end{document}

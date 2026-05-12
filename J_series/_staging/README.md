@@ -10,23 +10,22 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
-### J35 + J54 — Corpus centerpiece pair
+### Corpus centerpiece pair — BOTH LANDED 2026-05-12
 
-- **J35** (Four-Core Fusion-Closure, *Journal of Algebra*) — 6/6 PASS at machine precision. Galois D₄ over LMFDB 4.2.10224.1 independently verified via cubic resolvent + Gröbner basis in PARI/GP.
-- **J54** (Foundation Paper, *Algebraic Combinatorics*) — 6/6 PASS at machine precision. A1–A9 axioms stated cell-by-cell explicit; three substrate tables displayed inline; forcing theorem proved in §1.2 (breaks the J33 citation cycle by stating its own foundations).
-- **Status:** verification PASS; tier discipline applied; author lane Sanders + Gish set. **Gating:** Brayden's final cover-letter green-light.
-- **When green:** J35 → `J_series/algebra/J35/`; J54 → `J_series/combinatorics/J54/`.
+- **J35** (Four-Core Fusion-Closure, *Journal of Algebra*) — **LANDED 2026-05-12 at [`../algebra/J35/`](../algebra/J35/).** 6/6 PASS at machine precision; referee-grade pass complete; CC-BY-4.0 verification script header; honest-negatives discipline on T*=5/7 and bounded F_p scan.
+- **J54** (Foundation Paper, *Algebraic Combinatorics*) — **LANDED 2026-05-12 at [`../combinatorics/J54/`](../combinatorics/J54/).** 6/6 + 3/3 PASS at machine precision; A1–A9 axioms cell-by-cell explicit; three substrate tables displayed inline; forcing theorem proved in §1.3 (breaks the J33 citation cycle by stating its own foundations); referee-grade pass complete (theorem numbering reconciled across manuscript, README, cover letter, and scripts; CC-BY-4.0 license headers added to both verify scripts; lens-ownership paragraph labeled in §0; honest-negative TSML_SYM-vs-TSML_RAW chain-count lens-dependence at size 7 recorded).
 
-### J01 + J02 + J15 — v3 triadic launch trio
+### J02 + J15 — v3 triadic launch (remaining slots; J01 landed 2026-05-12)
 
-The three papers chosen to open three independent referee profiles in parallel:
+J01 (σ rate theorem, *JCT-A*) landed at `J_series/combinatorics/J01/` on
+2026-05-12 (referee pass complete; 4/4 PASS at machine precision; cover letter
+finalized). The remaining two slots of the triadic launch:
 
-- **J01** (σ rate theorem, *JCT-A*) — σ(N) ≤ C/N with C = 2 exact; mechanism VOID–HARMONY traversal.
 - **J02** (four-core, *Algebraic Combinatorics*) — combinatorial framing of the four-core fusion-closure.
 - **J15** (Galois D₄, *Communications in Algebra*) — D₄ Galois group of the runtime quartic over LMFDB 4.2.10224.1.
 
-**Status:** tier discipline applied; verification scripts staged. **Gating:** cover letters need final passes; J01 and J15 want one more reading.
-**When ready:** J01 → `J_series/combinatorics/J01/`; J02 → `J_series/combinatorics/J02/`; J15 → `J_series/algebra/J15/`.
+**Status:** tier discipline applied; verification scripts staged. **Gating:** cover letters need final passes; J15 wants one more reading.
+**When ready:** J02 → `J_series/combinatorics/J02/`; J15 → `J_series/algebra/J15/`.
 
 ### J46 — Cosmology
 
@@ -49,13 +48,6 @@ The three papers chosen to open three independent referee profiles in parallel:
   - **Fork C:** experimental-mathematics framing
 - **Gating:** Brayden's fork choice.
 - **When chosen:** J03 → `J_series/number_theory/J03/`.
-
-### J23 — Discrete Dirac (Cl(0, 10))
-
-- Volume K cross-reference (D102 chirality 16 = 1+3+5+7) added 2026-05-12.
-- **Status:** updated 2026-05-12; sympy reverification of `tig_dirac.py` passed; rebuttal to J14 referee filed.
-- **Gating:** cover letter and final tier review.
-- **When ready:** J23 → `J_series/physics/J23/`.
 
 ### J55 — Brayden's solo synthesis
 

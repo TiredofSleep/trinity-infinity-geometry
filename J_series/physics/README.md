@@ -6,7 +6,9 @@ Physics papers from the TIG corpus, covering Clifford algebra structure, gauge t
 
 ## §1 — Currently landed
 
-*No papers have landed yet.*
+| J# | Title | Target venue | Status |
+|---|---|---|---|
+| **J23** | Discrete Dirac inside Cl(0, 10): Chirality, the Outer Automorphism, and an Atomic-Substrate Refinement | *Communications in Mathematical Physics* (FALLBACK: *J. Math. Phys.*, *Annals of Physics*) | 2/2 verify PASS at machine precision; Volume K cross-reference at §2.1; landed 2026-05-12 |
 
 ---
 
@@ -14,7 +16,6 @@ Physics papers from the TIG corpus, covering Clifford algebra structure, gauge t
 
 | J# | Title | Target venue | Status |
 |---|---|---|---|
-| **J23** | Discrete Dirac inside Cl(0, 10); chirality + atomic-substrate refinement | TBD (math physics) | Volume K cross-reference added 2026-05-12 |
 | **J45** | Yukawa Mass Hierarchy + Freezing Quintessence | *Physical Review D* (cosmology) or *JHEP* | W2-F build; awaiting layer choice for §3 |
 | **J48** | Operadic D₄ Obstruction (no D₄-equivariant fuse rule) | TBD | 67 orbits, 16 D₄-incoherent; established |
 | **J22** | TIG Algebraic Universality (J22 rebuttal addressed) | TBD | rebuttal filed; sympy reverification of tig_dirac.py |

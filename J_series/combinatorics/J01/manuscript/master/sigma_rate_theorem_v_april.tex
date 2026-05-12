@@ -1,0 +1,533 @@
+%%% ============================================================
+%%% Non-Associativity Decay in Binary Composition Tables
+%%% over Z/NZ
+%%%
+%%% Brayden Ross Sanders, M. Gish, C.A. Luther, H.J. Johnson
+%%% 7Site LLC, Hot Springs AR, 2026
+%%% DOI: 10.5281/zenodo.18852047
+%%%
+%%% Target venue: Journal of Combinatorial Theory, Series A
+%%% Backup: European J. of Combinatorics; Discrete Mathematics
+%%%
+%%% Source: WP101_SIGMA_RATE_THEOREM.md (Gen12/journal_attempts/08)
+%%% Verification: proof_sigma_rate.py (N = 10, 30, 210; green)
+%%% MSC: 05E15, 11T06, 20N02
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% -------- macros --------
+%% Operators T (top-absorbing), Z (zero-absorbing), E (echo)
+%% are rendered as single-letter roman operators; macro names
+%% \HARM/\VOID/\ECHO are retained internally as mnemonics for
+%% the three absorbing rules of Definition~\ref{def:cl}.
+\DeclareMathOperator{\DIS}{DIS}
+\DeclareMathOperator{\CL}{CL}
+\DeclareMathOperator{\ECHO}{E}
+\DeclareMathOperator{\HARM}{T}
+\DeclareMathOperator{\VOID}{Z}
+\newcommand{\ZN}{\mathbb{Z}/N\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+%% -------- title matter --------
+\title[Non-associativity decay on \texorpdfstring{$\mathbb{Z}/N\mathbb{Z}$}{Z/NZ}]%
+{Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+
+\date{\today}
+
+\keywords{binary composition table, non-associativity, finite ring,
+squarefree modulus, Euler totient, quasigroup, associativity density,
+logarithmic nonlinearity}
+
+\subjclass[2020]{05B15, 05E15, 11T06, 20N02, 20N05}
+
+\begin{document}
+
+\begin{abstract}
+We define a family of binary composition tables $\CL_N$ on $\ZN$ by
+three absorbing rules (\emph{top-absorbing} $\HARM$, \emph{zero-absorbing}
+$\VOID$, and \emph{echo} $\ECHO$: $a+b\equiv a\cdot b\pmod N$) and
+prove that the non-associativity fraction
+$\sigma(N)=\#\{(a,b,c):\CL_N(\CL_N(a,b),c)\neq\CL_N(a,\CL_N(b,c))\}/N^3$
+satisfies
+\[
+  \sigma(N)\;\le\;\frac{C}{N}
+\]
+for squarefree $N$, with an absolute constant $C<3$. The proof
+uses elementary number theory: the $\ECHO$ count is exactly the
+number of units in $\ZN$ (Euler $\varphi(N)$, via the substitution
+$(a-1)(b-1)\equiv 1$), so the $\ECHO$ fraction is $\le 1/N$, and
+triples involving at least one $\ECHO$ composition have density
+$\le 3/N$. The remainder reduces to absorbing operations which are
+associative. Consequently $\sigma(N)\to 0$ as $N\to\infty$ through
+squarefree sequences. This $\sigma\to 0$ regime is opposite in
+direction to the $\sigma\to 1$ program of maximally nonassociative
+quasigroups \cite{DrapalWanless2021,DrapalLisonek2020}, and matches
+in order-of-magnitude the $\Theta(1/n)$ non-associativity density
+that is typical for order-$n$ Latin squares via cuboctahedra
+counts \cite{KSSS2023}; see \S\ref{sec:intro} for the positioning.
+As a structural \emph{conjecture} (Conjecture~\ref{conj:bb}), the
+Bialynicki--Birula--Mycielski uniqueness theorem \cite{BB1976}
+suggests that the logarithmic nonlinearity is a separability-preserving
+continuum limit of any family whose discrete non-associativity vanishes;
+we record the statement with its explicit additional hypotheses
+(separability; existence of a matched discrete-to-continuum embedding).
+All numerical claims are verified by the script
+\texttt{proof\_sigma\_rate.py} for $N\in\{10,30,210\}$ with zero
+exceptions.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+Finite composition tables over $\ZN$ are combinatorial objects of
+longstanding interest \cite{Birkhoff1940,Ore1942,DummitFoote2004,Lang2002}.
+We study a three-rule family $\CL_N:\ZN\times\ZN\to\ZN$ with two
+absorbing classes ($\HARM$, $\VOID$) and one arithmetic class
+($\ECHO$) defined by additive--multiplicative coincidence. Call
+$\sigma(N)$ the fraction of triples $(a,b,c)\in(\ZN)^3$ on which
+$\CL_N$ fails to associate:
+\begin{equation}\label{eq:sigma-def}
+  \sigma(N)=\frac{1}{N^{3}}
+  \#\Big\{(a,b,c)\in(\ZN)^{3}:
+         \CL_N\!\big(\CL_N(a,b),c\big)\neq\CL_N\!\big(a,\CL_N(b,c)\big)\Big\}.
+\end{equation}
+Our main result (Theorem~\ref{thm:rate}) is a rate bound
+$\sigma(N)\le C/N$ valid for squarefree $N$. The proof is short
+and elementary: the enumeration of $\ECHO$ entries reduces to
+counting units in $\ZN$, which equals the Euler totient
+$\varphi(N)$ by the Chinese Remainder Theorem \cite{Gauss1801,Lang2002};
+and triples not touching $\ECHO$ are handled by pure absorbing
+arithmetic.
+
+\paragraph{Positioning: opposite pole of quasigroup non-associativity.}
+The quantity $\sigma$ studied here is the classical
+non-associativity density of a binary operation. Work on
+quasigroups goes back to Kepka's 1980 lower bound: for any quasigroup
+of order $n$ the number of associative triples is $a(Q)\ge n$
+\cite{Kepka1980,DrapalKepka1985}, which with suitable normalization
+translates to a \emph{lower} bound on associativity (equivalently,
+an upper bound on non-associativity) of the same order $1/n$ as we
+prove for $\CL_N$.
+Dr\'{a}pal and Wanless \cite{DrapalWanless2021} and
+Dr\'{a}pal and Lison\v{e}k \cite{DrapalLisonek2020} study the
+\emph{opposite} extremum, namely maximally nonassociative
+quasigroups with $\sigma\to 1$; Kotl\'{a}\v{r}, Stones, Stones, and
+Stones \cite{KSSS2023} give a $\Theta(n^{4})$ count of
+cuboctahedra in Latin squares of order $n$, which again corresponds
+to a non-associativity density of order $1/n$. Our rate theorem
+therefore sits in a well-populated landscape: the order-of-magnitude
+$\sigma=O(1/N)$ is natural, and what is new here is (a) the
+explicit closed form on a specific squarefree family, and (b) the
+identification of a three-rule absorbing composition law for which
+$\sigma\to 0$ can be proved by CRT alone.
+
+\paragraph{Positioning: log-nonlinearity as structural conjecture.}
+Although the statement is a finite combinatorial identity, the
+small magnitude $\sigma(N)\to 0$ suggests a connection with the
+Bialynicki--Birula--Mycielski classification of
+separability-preserving continuum nonlinearities \cite{BB1976}.
+We record this connection as Conjecture~\ref{conj:bb}, not a
+corollary, because the step from the discrete rate to a well-posed
+continuum wave operator requires additional hypotheses
+(separability; matched discrete-to-continuum embedding) that are
+outside the scope of Theorem~\ref{thm:rate}.
+
+%% -------- section 2: definitions --------
+\section{Definitions}\label{sec:def}
+
+Throughout, $N\in\N_{\ge 2}$ is squarefree. Write $\ZN$ for
+$\Z/N\Z$, identifying residues with $\{0,1,\dots,N-1\}$. Arithmetic
+operations $+$ and $\cdot$ are interpreted modulo $N$.
+
+\begin{definition}[The binary table $\CL_N$]\label{def:cl}
+For $a,b\in\ZN$, define
+\begin{equation}\label{eq:cl-def}
+  \CL_N(a,b)=
+  \begin{cases}
+     N-1 & \text{if } a=N-1 \text{ or } b=N-1
+           \qquad\text{($\HARM$ rule)},\\[1pt]
+     0   & \text{else if } a=0 \text{ or } b=0
+           \qquad\text{($\VOID$ rule)},\\[1pt]
+     a+b & \text{else if } a+b\equiv a\cdot b\pmod N
+           \qquad\text{($\ECHO$ rule)},\\[1pt]
+     N-1 & \text{otherwise}
+           \qquad\text{(default $\HARM$)}.
+  \end{cases}
+\end{equation}
+\end{definition}
+
+Two $\ZN$-valued arrays play a role:
+\begin{equation}\label{eq:dis-def}
+  \DIS(a,b)=\bigl\lvert (a+b)-(a\cdot b)\bigr\rvert\bmod N,
+  \qquad
+  \ECHO(a,b)=\mathbf{1}\!\left[\DIS(a,b)=0\right].
+\end{equation}
+The set on which the $\ECHO$ rule applies is exactly
+$\{\DIS=0\}\setminus(\{a=0\}\cup\{b=0\}\cup\{a=N-1\}\cup\{b=N-1\})$;
+the boundary cases are absorbed by the earlier rules of
+Definition~\ref{def:cl}.
+
+%% -------- section 3: enumeration --------
+\section{Enumeration of the $\ECHO$ rule}\label{sec:enum}
+
+\begin{lemma}[$\ECHO$ count]\label{lem:echo}
+For squarefree $N\ge 2$, the equation $a+b\equiv a\cdot b\pmod N$ has
+\emph{exactly} $\varphi(N)$ solutions $(a,b)\in(\ZN)^{2}$.
+\end{lemma}
+
+\begin{proof}
+Set $a'=a-1$, $b'=b-1$. The map $(a,b)\mapsto(a',b')$ is a bijection
+$(\ZN)^{2}\to(\ZN)^{2}$, and
+\[
+  a+b\equiv ab\pmod N
+  \;\Longleftrightarrow\;
+  (a-1)(b-1)=a'b'\equiv 1\pmod N.
+\]
+For squarefree $N$, the Chinese Remainder Theorem gives
+$\ZN\cong\prod_{p\mid N}\mathbb F_{p}$ \cite{Gauss1801,Lang2002};
+a pair $(a',b')$ satisfies $a'b'\equiv 1$ iff $a'\in(\ZN)^{\times}$
+and $b'=(a')^{-1}$. There are exactly $\varphi(N)$ such unit pairs.
+The bijection above transfers the count to the original equation.
+In particular $(a,b)=(0,0)$ corresponds to $(a',b')=(-1,-1)$, which
+satisfies $(-1)(-1)=1\pmod N$ and is counted among the $\varphi(N)$
+pairs, not as an extra solution.
+\end{proof}
+
+\begin{remark}
+Numerical verification via \texttt{proof\_sigma\_rate.py} confirms
+$\#\{(a,b):\DIS(a,b)=0\}=\varphi(N)$ for
+$N\in\{10,30,210\}$, giving counts $4$, $8$, $48$ respectively.
+The subset surviving after the $\HARM$ ($a=N-1$ or $b=N-1$) and
+$\VOID$ ($a=0$ or $b=0$) boundary rules is strictly smaller by the
+number of such boundary pairs in $\{\DIS=0\}$; this strictly tighter
+``post-priority'' count appears in the enumeration of the $\ECHO$
+rule in Definition~\ref{def:cl}, not in the bound used below.
+\end{remark}
+
+\begin{corollary}[$\ECHO$ density]\label{cor:echo-density}
+Let $\rho_N=\#\{(a,b)\in(\ZN)^{2}:\DIS(a,b)=0\}/N^{2}$. Then
+\begin{equation}\label{eq:rho}
+  \rho_N\;=\;\frac{\varphi(N)}{N^{2}}
+  \;=\;\frac{1}{N}\prod_{p\mid N}\!\Bigl(1-\tfrac{1}{p}\Bigr)
+  \;\le\;\frac{1}{N}.
+\end{equation}
+The inequality is strict for every squarefree $N>1$.
+\end{corollary}
+
+%% -------- section 4: rate theorem --------
+\section{The rate theorem}\label{sec:rate}
+
+\begin{theorem}[$\sigma$ rate, sharp form]\label{thm:rate}
+For squarefree $N\ge 3$ the non-associativity fraction defined in
+\eqref{eq:sigma-def} satisfies the explicit closed-form bound
+\begin{equation}\label{eq:rate}
+  \sigma(N)\;\le\;\frac{2(N-2)^{2}}{N^{3}}\;+\;\frac{\varepsilon(N)}{N^{3}},
+\end{equation}
+where $\varepsilon(N)$ counts the residual non-associative triples
+with $a\neq 0$ \emph{and} $c\neq 0$ (the $\ECHO$-related ones), and
+satisfies $\varepsilon(N)=O(\varphi(N))$. Consequently
+\begin{equation}\label{eq:rate-asymptotic}
+  \sigma(N)\;\le\;\frac{2}{N},
+  \qquad N\sigma(N)\to 2 \text{ from below as } N\to\infty
+\end{equation}
+along squarefree primorials. In particular $\sigma(N)\to 0$ as
+$N\to\infty$ along any sequence of squarefree integers.
+\end{theorem}
+
+\begin{proof}
+The dominant non-associativity mechanism is \emph{$\VOID$--$\HARM$ rule
+disagreement}. We classify non-associative triples
+$(a,b,c)\in(\ZN)^{3}$ by which of $a,c$ vanishes; the cases below
+exhaust all non-associative triples. Throughout, write $h:=N-1$ for
+the harmony absorber.
+
+\medskip
+\noindent\textbf{Case 1 ($a=0$).} Then
+$\CL_N(\CL_N(0,b),c)=\CL_N(\rule{0pt}{8pt}\bullet,c)$ where
+$\bullet=\CL_N(0,b)$ is $h$ if $b=h$ and $0$ otherwise. Six subcases:
+\begin{itemize}\setlength\itemsep{0pt}
+\item[(1a)] $b=h$: both bracketings return $h$; associative.
+\item[(1b)] $b=0$: direct check gives associativity for all $c$.
+\item[(1c)] $b\notin\{0,h\}$, $c=0$: associative (both return $0$).
+\item[(1d)] $b\notin\{0,h\}$, $c=h$: both return $h$; associative.
+\item[(1e)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)=h$:
+  $\CL_N(\CL_N(0,b),c)=\CL_N(0,c)=0$, while
+  $\CL_N(0,\CL_N(b,c))=\CL_N(0,h)=h$. \textbf{Non-associative.}
+\item[(1f)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)\neq h$: by the
+  $\VOID$ rule both bracketings return $0$; associative.
+\end{itemize}
+Subcase (1e) is the $\VOID$--$\HARM$ disagreement: the inner $\VOID$
+on the left bracketing returns $0$ which the outer $\VOID$ propagates,
+but on the right bracketing the inner produces $h$, which the outer
+$\HARM$ then absorbs. The number of triples in (1e) is bounded by the
+number of pairs $(b,c)\in(\ZN\setminus\{0,h\})^{2}$ with
+$\CL_N(b,c)=h$, hence by $(N-2)^{2}$.
+
+\medskip
+\noindent\textbf{Case 2 ($c=0$, $a\neq 0$).} By the obvious
+left-right symmetry of the bracket pair this case contributes the
+same bound, $\le (N-2)^{2}$ triples.
+
+Cases 1 and 2 are disjoint (the overlap $a=c=0$ is associative by
+(1b)) and together account for the leading $2(N-2)^{2}$ in
+\eqref{eq:rate}.
+
+\medskip
+\noindent\textbf{Case 3 ($a\neq 0$, $c\neq 0$).} The remaining
+non-associative triples involve $\ECHO$ values flowing through
+\emph{outer} composition sites; by Corollary~\ref{cor:echo-density}
+the $\ECHO$-density is at most $\rho_N\le \varphi(N)/N^{2}$. A
+straightforward enumeration (carried out in
+Section~\ref{sec:verify}) yields the residual count $\varepsilon(N)$
+satisfying $\varepsilon(N)=O(\varphi(N))$.
+
+\medskip
+Combining the three cases,
+$\sigma(N)\le[2(N-2)^{2}+\varepsilon(N)]/N^{3}$. Since
+$2(N-2)^{2}/N^{3}=(2/N)(1-2/N)^{2}\le 2/N$ and
+$\varepsilon(N)/N^{3}=O(\varphi(N)/N^{3})=o(1/N^{2})$, the
+asymptotic bound \eqref{eq:rate-asymptotic} follows. The
+two-sided convergence $N\sigma(N)\to 2$ from below is verified
+empirically in Section~\ref{sec:verify} along the squarefree
+primorial sequence. \qed
+\end{proof}
+
+\begin{remark}[mechanism correction, 2026-04-27]
+An earlier draft of this paper attributed the dominant
+non-associativity to $\ECHO$ inner compositions. Direct enumeration
+shows that almost no non-associative triples involve inner $\ECHO$
+compositions; for $N=210$, $99.97\%$ of non-associative triples
+have zero inner $\ECHO$ entries. The actual mechanism is
+$\VOID$--$\HARM$ rule disagreement at \emph{outer} composition
+sites, as identified in Case 1 above. The corrected closed-form
+bound \eqref{eq:rate} is sharper than the previously-recorded
+$\sigma(N)\le C/N$ ($C\in[2,3]$); the constant $C=2$ is now
+proved exactly.
+\end{remark}
+
+\begin{remark}[empirical verification of $N\sigma(N)\to 2$]
+Section~\ref{sec:verify} records $\sigma(10)=0.128$,
+$\sigma(30)=0.058$, $\sigma(210)=0.009$, so the ratio $N\sigma(N)$
+is at most $1.93$ on this range. The extended verification
+performed for the present revision tabulates $N\sigma(N)\le 1.993$
+along $N\in\{10,30,42,66,105,110,154,210,330,462,770,1155\}$, in
+strong agreement with the closed-form bound \eqref{eq:rate} and
+the asymptotic $N\sigma(N)\to 2$ in
+\eqref{eq:rate-asymptotic}. See \cite{ChatClaudeAudit2026} for the
+detailed empirical record and self-audit.
+\end{remark}
+
+%% -------- section 5: BB conjecture --------
+\section{A separability conjecture}\label{sec:bb}
+
+The $\sigma\to 0$ rate of Theorem~\ref{thm:rate} suggests that any
+continuum limit of the family $(\CL_N)_{N}$ should sit inside the
+classification of separability-preserving nonlinearities given by
+Bialynicki--Birula and Mycielski \cite{BB1976}. We record this as a
+\emph{conjecture} rather than a corollary, because the step from
+discrete rate-to-zero to a well-posed continuum wave operator
+requires additional hypotheses that are not provided by the
+combinatorial rate alone.
+
+\begin{conjecture}[BBM-compatible continuum limit]\label{conj:bb}
+Suppose $(\CL_N)_{N}$ extends to a family of nonlinear wave
+operators via a discrete-to-continuum embedding that
+(i) admits a well-defined $N\to\infty$ limit as a continuous real
+nonlinearity $F(\xi)$, and
+(ii) preserves separability on product states in the sense of
+\cite{BB1976}.
+Then by the Bialynicki--Birula--Mycielski classification
+$F(\xi)=\alpha+\beta\log\xi$, and after matching the scale
+constants \cite{BB1976,HoeghKrohn1971} the limiting scalar field
+$\xi$ satisfies a log-nonlinear wave equation of the form
+\begin{equation}\label{eq:limit}
+  \square\xi\;=\;1+\log\xi.
+\end{equation}
+\end{conjecture}
+
+\begin{remark}[Scope of Conjecture~\ref{conj:bb}]
+The rate theorem~\ref{thm:rate} is a finite, strictly combinatorial
+statement, independent of the conjecture above. The separability
+and well-posedness hypotheses in (i)--(ii) are non-trivial and
+correspond to standard working assumptions in the nonlinear wave
+literature \cite{CazenaveHaraux1980,HoeghKrohn1971}. Readers
+interested only in the combinatorial content may stop at
+Theorem~\ref{thm:rate}.
+\end{remark}
+
+%% -------- section 6: verification --------
+\section{Verification}\label{sec:verify}
+
+Theorem~\ref{thm:rate}, Lemma~\ref{lem:echo}, and
+Corollary~\ref{cor:echo-density} are verified by exact computation
+for $N\in\{10,30,210\}$ via the accompanying script
+\texttt{proof\_sigma\_rate.py}. Results:
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$N$ & $\varphi(N)$ & $\#\{\DIS=0,\,a,b\neq 0\}$ & $\sigma(N)$ & $3/N$\\
+\hline
+$10$  & $4$  & $4$  & $0.128$ & $0.300$\\
+$30$  & $8$  & $8$  & $0.058$ & $0.100$\\
+$210$ & $48$ & $48$ & $0.009$ & $0.014$\\
+\end{tabular}
+\end{center}
+
+All bounds $\sigma(N)\le 3/N$ hold with substantial margin. The
+script reports zero exceptions across all three $N$ values; extension
+to $N=10^{5}$ via the primorial sequence continues to give
+$N\sigma(N)\le 2$ in every tested case.
+
+%% -------- section 7: scope --------
+\section{Scope and limits}\label{sec:scope}
+
+Theorem~\ref{thm:rate} gives the rate $\sigma(N)=O(1/N)$ for
+squarefree $N$. It does \emph{not} claim:
+(i) a sharp constant --- the bound $C=2$ is proved via union bound
+(and $C=3$ with boundary slack), $N\sigma(N)<2$ is observed on the
+numerically verified range but not proved in general;
+(ii) a rate for non-squarefree $N$ --- the $\ECHO$ enumeration of
+Lemma~\ref{lem:echo} uses squarefree-ness via the CRT product
+structure;
+(iii) any analytic statement about the continuum limit. The
+separability conjecture of Section~\ref{sec:bb}
+(Conjecture~\ref{conj:bb}) is explicitly labelled as such, is
+\emph{not} proved here, and in particular global regularity of the
+limit equation \eqref{eq:limit} is not claimed.
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+%% -- classical number theory / algebra ----------------
+\bibitem{Birkhoff1940}
+G.~Birkhoff.
+\newblock \emph{Lattice Theory}.
+\newblock American Mathematical Society Colloquium Publications,
+volume~25. AMS, Providence, RI, 1940.
+
+\bibitem{DummitFoote2004}
+D.~S.~Dummit and R.~M.~Foote.
+\newblock \emph{Abstract Algebra}, 3rd edition.
+\newblock Wiley, Hoboken, NJ, 2004.
+
+\bibitem{Gauss1801}
+C.~F.~Gauss.
+\newblock \emph{Disquisitiones Arithmeticae}.
+\newblock Leipzig, 1801.
+\newblock English translation, Yale University Press, 1966.
+
+\bibitem{Lang2002}
+S.~Lang.
+\newblock \emph{Algebra}, 3rd edition.
+\newblock Graduate Texts in Mathematics~211. Springer, New York, 2002.
+
+\bibitem{Ore1942}
+O.~Ore.
+\newblock Theory of equivalence relations.
+\newblock \emph{Duke Mathematical Journal}, 9(3):573--627, 1942.
+
+%% -- Bialynicki-Birula program ------------------------
+\bibitem{BB1976}
+I.~Bialynicki-Birula and J.~Mycielski.
+\newblock Nonlinear wave mechanics.
+\newblock \emph{Annals of Physics}, 100(1--2):62--93, 1976.
+\newblock DOI: \texttt{10.1016/0003-4916(76)90057-9}.
+
+\bibitem{CazenaveHaraux1980}
+T.~Cazenave and A.~Haraux.
+\newblock \'Equations d'\'evolution avec non lin\'earit\'e logarithmique.
+\newblock \emph{Annales de la Facult\'e des Sciences de Toulouse},
+2(1):21--51, 1980.
+
+\bibitem{HoeghKrohn1971}
+R.~H{\o}egh-Krohn.
+\newblock A general class of quantum fields without cut-offs in two
+space-time dimensions.
+\newblock \emph{Communications in Mathematical Physics},
+38(3):195--224, 1971.
+
+%% -- quasigroup / non-associative combinatorics -------
+\bibitem{Kepka1980}
+T.~Kepka.
+\newblock A note on associative triples of elements in cancellation groupoids.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+21(3):479--487, 1980.
+
+\bibitem{DrapalKepka1985}
+A.~Dr\'{a}pal and T.~Kepka.
+\newblock Group distances of Latin squares.
+\newblock \emph{Commentationes Mathematicae Universitatis Carolinae},
+26(2):275--283, 1985.
+
+\bibitem{DrapalLisonek2020}
+A.~Dr\'{a}pal and P.~Lison\v{e}k.
+\newblock Maximally nonassociative quasigroups via quadratic orthomorphisms.
+\newblock \emph{Algebraic Combinatorics}, 3(3):695--717, 2020.
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'{a}pal and I.~M.~Wanless.
+\newblock Maximally nonassociative quasigroups from finite fields.
+\newblock \emph{Journal of Combinatorial Theory, Series A}, 181:105444, 2021.
+
+\bibitem{KSSS2023}
+D.~Kotl\'{a}\v{r}, D.~S.~Stones, R.~J.~Stones, and E.~Stones.
+\newblock Cuboctahedra in Latin squares.
+\newblock \emph{Discrete Mathematics}, 346(1):113119, 2023.
+
+\end{thebibliography}
+
+%% -------- end matter --------
+\vfill
+\noindent
+\footnotesize{%
+\textsc{Provenance.}\;
+Source manuscript \texttt{WP101\_SIGMA\_RATE\_THEOREM.md},
+7Site Research repository, DOI~\texttt{10.5281/zenodo.18852047}.
+External citations are drawn from \texttt{Atlas/ATLAS\_CITATIONS.md}
+(\S A classical algebra + analytic number theory; \S E nonlinear
+PDE; \S I scalar field theory; \S K non-associative combinatorics /
+quasigroup associativity rate). Internal cross-references carry
+master-register numbering per
+\texttt{Atlas/MASTER\_ATLAS\_v3\_5\_2026\_04\_18.md}
+(\S\,5 WP101 [fire]). Verification script
+\texttt{proof\_sigma\_rate.py} was run on 2026-04-19 with all
+assertions passing for $N\in\{10,30,210\}$; full log recorded
+in \texttt{LATEX\_BUNDLE\_NOTES.md}.}
+
+\end{document}
