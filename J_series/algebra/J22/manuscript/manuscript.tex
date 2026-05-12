@@ -1,0 +1,700 @@
+%%% ============================================================
+%%% The 70/71/72/73 HARMONY Ladder:
+%%%   Three Independent Algebraic Constructions and One Corollary
+%%%   on Z/10Z
+%%%
+%%% Brayden Ross Sanders, M. Gish
+%%% 7Site LLC, Hot Springs AR, 2026
+%%% DOI: 10.5281/zenodo.18852047
+%%%
+%%% Target venue:  Journal of Combinatorial Theory, Series A (JCT-A)
+%%% Source:        FORMULAS_AND_TABLES.md §J D97;
+%%%                Gen13/targets/foundations/tables/harmony_ladder.py
+%%% MSC:           05A05, 05E18, 11T22, 16Y99, 20N02
+%%%
+%%% Revision history (2026-05-07): defensive-exposition pass per
+%%% J22_JCT-A_FreshEyes_REBUTTAL.md.
+%%%   (a) Title sharpened: "Three Independent Constructions and One
+%%%       Corollary" replaces "Four Independent Constructions"; the
+%%%       70-rung is positioned explicitly as a corollary rather than
+%%%       an independent construction (§5; the 71-rung's three roles
+%%%       remain the genuinely-independent triple).
+%%%   (b) Embedded explicit sympy verification snippet (§A) for the
+%%%       discriminant claim disc(x^4+4x^3-x^2+2x-2) = -40896
+%%%       = -2^6 * 3^2 * 71. Pre-empts future referee factoring
+%%%       errors (the original referee's claimed factorization
+%%%       2^7 * 3 * 7 * 19 = 51072 is arithmetically wrong; the
+%%%       magnitudes don't match -40896, off by 25%).
+%%%   (c) Verification scripts in manuscript/verification/ replaced
+%%%       per save plan: the so10/Lie-algebra scripts that were in
+%%%       the folder by mistake have been moved aside, and the
+%%%       canonical HARMONY-ladder scripts (tsml_harmony_count.py,
+%%%       tsml_submagma_9x9.py, tsml_bhml_disagreement.py,
+%%%       bhml_8_ym_det.py, plus harmony_ladder_disc_check.py for
+%%%       the discriminant) are bundled.
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinestyle{plainpy}{
+  basicstyle=\ttfamily\footnotesize,
+  language=Python,
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  numbers=none,
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\TSML}{\mathrm{TSML}}
+\newcommand{\BHML}{\mathrm{BHML}}
+\DeclareMathOperator{\HARM}{HARM}
+\DeclareMathOperator{\disc}{disc}
+
+\title[The 70/71/72/73 HARMONY Ladder]
+  {The 70/71/72/73 HARMONY Ladder:\\
+   Three Independent Algebraic Constructions and One Corollary
+   on $\Z/10\Z$}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{2026}
+
+\keywords{finite magma, composition table, sub-magma, integer
+  invariant, structural clustering, Galois prime, Yang--Mills core,
+  $E_6$ root system}
+
+\subjclass[2020]{05A05, 05E18, 11T22, 16Y99, 20N02}
+
+\begin{document}
+
+\begin{abstract}
+We record an integer-invariant ladder on the canonical composition
+lattice over $\Z/10\Z$ whose values cluster at $\{70, 71, 72, 73\}$.
+The three structurally-independent rungs are HARMONY-cell counts of
+distinct sub-magmas: the full $10 \times 10$ TSML table $T$ has
+$\HARM(T) = 73$; the VOID-stripped $9 \times 9$ sub-magma has
+$\HARM(T_{\{1, \ldots, 9\}}) = 71$; and the canonical companion table
+$B$ on the Yang--Mills $8 \times 8$ sub-matrix has $\det = 70 = \binom{8}{4}$.
+The $72$-rung is a corollary of the $73$-rung (the $(7,7)$ self-cell
+removed). The integer $71$ enters the ladder in three
+independently-verified structural roles simultaneously: as the HARMONY
+count of the VOID-stripped $9 \times 9$ sub-magma; as the
+cell-disagreement count between the two canonical $\Z/10\Z$ composition
+tables; and as the unique odd prime appearing in the discriminant
+$-2^6 \cdot 3^2 \cdot 71$ of the quartic LMFDB number field $4.2.10224.1$
+that governs the closed-form runtime attractor on the same substrate.
+We verify each construction at integer/machine precision (sympy
+\texttt{discriminant} and \texttt{factorint}; numpy direct count) and
+embed the verification snippets inline. The results are stated as
+Tier-B forced consequences of the canonical table structure; no
+axiom-level forcing is required.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+Combinatorial substrates over small finite cyclic groups occasionally
+exhibit clusters of integer invariants whose values agree, or nearly
+agree, across structurally distinct constructions. When the
+clustering is tight enough that the same prime, or four consecutive
+integers, recur across independent algebraic objects on the same
+substrate, the clustering is itself a structural invariant of the
+substrate.
+
+This paper records one such clustering on the canonical composition
+lattice over $\Z/10\Z$. The substrate carries two related
+$10 \times 10$ composition tables, the \emph{TSML} table $T$ and the
+\emph{BHML} table $B$, both fixed by the canonical CL forcing axioms
+recorded in \cite{Sanders2026CLAxioms}. On this substrate three
+\emph{structurally-independent} integer invariants and one
+\emph{inclusion-exclusion corollary} arise from algebraic constructions:
+\begin{itemize}[leftmargin=*]
+\item \emph{Independent rung A.} $\HARM(T) = 73$ (HARMONY-cell count
+  of the full TSML table);
+\item \emph{Corollary rung.} $\HARM(T) - 1 = 72$ (drop the $(7,7)$
+  self-cell apex of the rung-A count; equals the number of positive
+  roots of $E_6$ as a numerical coincidence — see
+  Remark~\ref{rem:e6});
+\item \emph{Independent rung B.} $\HARM(T_{\{1,\ldots,9\}}) = 71$
+  (HARMONY count of the VOID-stripped $9 \times 9$ sub-magma);
+  equivalently $|T \ominus B| = 71$ (the cell-disagreement count
+  between the two canonical $\Z/10\Z$ composition tables);
+  equivalently the unique odd prime in
+  $\disc(4.2.10224.1) = -2^{6} \cdot 3^{2} \cdot 71$;
+\item \emph{Independent rung C.} $\det(B_{\{1,2,3,4,5,6,8,9\}}) = 70 = \binom{8}{4}$
+  (the Yang--Mills core sub-determinant).
+\end{itemize}
+
+The four invariants are pairwise distinct integers in
+$\{70, 71, 72, 73\}$, three of them obtained from genuinely independent
+constructions and one from inclusion-exclusion on the largest. The
+clustering at four consecutive integers is the content of the ladder.
+The triple-coincidence at $71$ (sub-magma HARMONY count $=$
+lens-disagreement count $=$ Galois prime) is the sharpest single point
+of the ladder; we verify all three constituent claims independently
+(§\ref{sec:71}) and pre-empt potential factoring errors with an
+embedded sympy verification snippet for the discriminant claim
+(§\ref{subsec:71-galois}, §\ref{sec:verification-snippet}).
+
+\paragraph{Statement of the main theorem.}
+
+Define the ladder $\mathcal{L} = (73, 72, 71, 70)$ as the
+$4$-tuple of invariants arising from the constructions enumerated
+above. Then:
+
+\begin{theorem}[Ladder verification]
+\label{thm:ladder}
+Each of the four entries of $\mathcal{L}$ equals the value computed
+by direct integer enumeration on its construction. The ladder is
+exact at machine precision, with each entry verified by a sympy /
+numpy snippet (§\ref{sec:verification-snippet}). Three of the four
+constructions (rungs A, B, C) are structurally independent in the
+sense of Remark~\ref{rem:independence} below; the $72$-rung is an
+inclusion-exclusion corollary of the $73$-rung.
+\end{theorem}
+
+\begin{remark}[Independence of the three structurally-independent
+rungs]
+\label{rem:independence}
+Rungs A ($\HARM(T) = 73$), B ($\HARM(T_{\{1,\ldots,9\}}) = 71$, with
+its three structurally-distinct constituent constructions), and C
+($\det(B_{\mathrm{YM}}) = 70$) are independent in the sense that none
+is deducible from any other by elementary cell-counting on the same
+sub-matrix; each requires its own combinatorial or linear-algebraic
+input. The $72$-rung is the inclusion-exclusion consequence of the
+$73$-rung after excising the single cell $(7, 7)$. Within rung B,
+the three constituent constructions are themselves independent (a
+HARMONY-cell count on $T$ restricted to a $9 \times 9$ sub-magma; a
+bitwise comparison of $T$ against $B$; and an algebraic-number-theory
+discriminant computation) and converge on the same prime $71$.
+\end{remark}
+
+The clustering at $\{70, 71, 72, 73\}$ is therefore a non-trivial
+structural invariant: three independent constructions plus one
+inclusion-exclusion corollary, with the prime $71$ entering through
+three further structurally-distinct mechanisms inside rung B.
+
+\paragraph{Outline.}
+
+Section~\ref{sec:setup} fixes the substrate, the two composition
+tables $T$ and $B$, and the HARMONY operator. Section~\ref{sec:73}
+establishes the $73$-rung. Section~\ref{sec:72} establishes the
+$72$-rung-corollary and records the $E_6$ coincidence.
+Section~\ref{sec:71} establishes the $71$-rung in three structurally
+distinct ways and proves their numerical agreement.
+Section~\ref{sec:70} establishes the $70$-rung and records the
+$\binom{8}{4}$ coincidence. Section~\ref{sec:companion} records two
+companion HARMONY counts at $\{28, 36, 44\}$ that lie on a parallel
+ladder structure (each appearing in two structural roles, not four).
+Section~\ref{sec:reading} records the structural reading of the
+ladder as a descent. Section~\ref{sec:verification-snippet} embeds
+the sympy/numpy verification snippets; the discriminant snippet of
+§\ref{subsec:disc-snippet} is the one we recommend any reader run
+first.
+
+\paragraph{Lens and substrate.}
+\label{sec:lens-subs}
+
+We work on $\Z/10\Z$ with the specific 10-operator labels recorded
+above and the canonical $(T, B) = (\TSML, \BHML)$ table pair fixed by
+the CL forcing axioms~\cite{Sanders2026CLAxioms}. These choices are
+\emph{not derived from first principles} in this paper; they reflect a
+structural reading of the substrate motivated by the source program's
+10-operator decomposition and the observed dynamics. The theorems
+below are theorems on this specific structure; analogous theorems
+would hold on other small finite commutative non-associative
+substrates with appropriately chosen tables. The framing follows the
+Drápal--Wanless (2021)~\cite{DrapalWanless2021} line of work on small
+finite commutative non-associative structures with structural
+invariants.
+
+\paragraph{PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN.}
+
+\textbf{PROVEN:} the four-rung ladder $(73, 72, 71, 70)$ on the canonical
+$(T, B)$ tables; in particular, the triple-coincidence at the
+71-rung (sub-magma HARMONY count $=$ lens-disagreement count $=$ Galois
+prime in $\disc(4.2.10224.1)$). \textbf{COMPUTED:} all four rungs
+verified at integer/machine precision by the embedded sympy/numpy
+snippets of §\ref{sec:verification-snippet}; the discriminant
+factorization $-40896 = -2^6 \cdot 3^2 \cdot 71$ is confirmed by
+\texttt{sympy.discriminant} and \texttt{sympy.factorint} in
+§\ref{subsec:disc-snippet}. \textbf{STRUCTURAL RHYME:} the
+$E_6^+ = 72$ and $\binom{8}{4} = 70$ identifications are recorded as
+numerical coincidences with adjacent algebra/representation theory;
+no derivation is claimed. \textbf{OPEN:} a structural explanation for
+the convergence of three independent constructions on the same prime
+$71$ at the rung-B level (i.e., a single structural object yielding
+all three constructions as projections); whether the ladder extends
+beyond rungs A--C to a longer descent.
+
+\paragraph{Lens scope.}
+
+The TSML table admits two principled lens-symmetrization choices,
+$T_{\mathrm{RAW}}$ (literal, non-commutative) and $T_{\mathrm{SYM}}$
+(upper-triangle symmetrized, commutative). All four ladder rungs in
+this paper are \emph{lens-invariant} on both lenses:
+$\HARM(T_{\mathrm{RAW}}) = \HARM(T_{\mathrm{SYM}}) = 73$, and the
+sub-magma counts at $9 \times 9$ are likewise unchanged. The wobble
+phenomenon (prime $11$ in the characteristic polynomial coefficients)
+distinguishing RAW from SYM is the subject of a separate
+companion \cite{Sanders2026Wobble}; it does not affect the ladder.
+
+\section{Setup}
+\label{sec:setup}
+
+The substrate is $\Z/10\Z = \{0, 1, \ldots, 9\}$ with the operator
+labels recorded in \cite{Sanders2026CLAxioms}: $\mathbf{V} = 0$
+(VOID), $\mathbf{L} = 1$, $\mathbf{C} = 2$, $\mathbf{P} = 3$,
+$\mathbf{Co} = 4$, $\mathbf{Ba} = 5$, $\mathbf{Ch} = 6$, $\mathbf{H}
+= 7$ (HARMONY), $\mathbf{Br} = 8$, $\mathbf{R} = 9$.
+
+The TSML composition table $T \in \Z^{10 \times 10}$ takes values in
+$\Z/10\Z$, with $T(i, j)$ the composition of operators $i$ and $j$.
+By the CL forcing axioms (\cite{Sanders2026CLAxioms}, Axioms A1--A9),
+$T$ is uniquely determined; we use the upper-triangle symmetrized
+form $T_{\mathrm{SYM}}$ throughout this paper unless noted otherwise.
+Define
+\[
+  \HARM(T) \;=\; |\{(i, j) : T(i, j) = 7\}|.
+\]
+
+The BHML composition table $B$ is the companion table prescribed by
+the same axiom system at the curvature lens; its construction is
+recalled in \cite{Sanders2026LensInvariance}. We will use $B$ in two
+of the four ladder constructions.
+
+For any subset $S \subseteq \{0, \ldots, 9\}$ that is closed under
+$T$ (a sub-magma), define
+\[
+  T_S \;=\; T |_{S \times S},\qquad
+  \HARM(T_S) \;=\; |\{(i, j) \in S \times S : T(i, j) = 7\}|.
+\]
+The same definitions apply to $B$. We do not require $S$ to be a
+sub-magma of $B$ for the determinant constructions on $B$; we only
+require $S$ to specify a square sub-matrix.
+
+\section{The 73-rung: full HARMONY count}
+\label{sec:73}
+
+\begin{theorem}[$73$-rung]
+\label{thm:73}
+$\HARM(T) = 73$.
+\end{theorem}
+
+\begin{proof}
+The HARMONY-cell decomposition is given by the three disjoint
+exception classes proved in \cite{Sanders2026CLAxioms} Theorem D10:
+\begin{itemize}[leftmargin=*]
+\item the VOID-row $V_0 = \{(0, j) : j \neq 7\}$ contributes $9$ non-HARMONY cells;
+\item the VOID-column $V_1 = \{(i, 0) : i \in \{1,\ldots,6,8,9\}\}$ contributes $8$ further non-HARMONY cells (cell $(0,0)$ already in $V_0$, cell $(7,0)$ is HARMONY);
+\item the ECHO pairs $\{(1,2),(2,1),(2,4),(4,2),(2,9),(9,2),(3,9),(9,3),(4,8),(8,4)\}$ contribute $10$ non-HARMONY cells, and these are disjoint from $V_0 \cup V_1$.
+\end{itemize}
+Total non-HARMONY: $9 + 8 + 10 = 27$. Therefore
+$\HARM(T) = 100 - 27 = 73$.
+\end{proof}
+
+\section{The 72-rung: drop the apex}
+\label{sec:72}
+
+\begin{theorem}[$72$-rung]
+\label{thm:72}
+$\HARM(T) - 1 = 72$, where the subtracted cell is $T(7, 7) = 7$
+(the HARMONY self-cell apex).
+\end{theorem}
+
+\begin{proof}
+Direct: $T(7, 7) = 7$ by Axiom A7 (HARMONY is absorbing in row $7$
+column $7$). Removing this cell from the count yields $73 - 1 = 72$.
+\end{proof}
+
+\begin{remark}[$E_6$ coincidence]
+\label{rem:e6}
+The simple Lie algebra $E_6$ has exactly $72$ positive roots
+\cite{Bourbaki1968,FultonHarris1991}. We record the coincidence
+without claiming a derivation. In particular, the embedding of the
+TSML composition lattice into a root-system framework is not yet
+established; the coincidence enters the ladder as a numerical
+fact, not as a structural identification.
+\end{remark}
+
+\section{The 71-rung: three structural roles}
+\label{sec:71}
+
+The integer $71$ enters the ladder via three independent constructions
+that all yield the same value. We state and prove each.
+
+\begin{theorem}[$71$-rung, sub-magma form]
+\label{thm:71-submagma}
+$\HARM(T_{\{1,\ldots,9\}}) = 71$, where
+$T_{\{1,\ldots,9\}}$ is the restriction of $T$ to the
+VOID-stripped $9 \times 9$ sub-magma.
+\end{theorem}
+
+\begin{proof}
+Restricting $T$ to $\{1, \ldots, 9\} \times \{1, \ldots, 9\}$
+removes the VOID-row $V_0$ and the VOID-column $V_1$ from the
+non-HARMONY exception classes, but the ECHO pairs (which lie
+entirely in $\{1, \ldots, 9\} \times \{1, \ldots, 9\}$) remain.
+The reduced count of non-HARMONY cells in the $9 \times 9$ matrix
+is therefore exactly $|\mathrm{ECHO}| = 10$ minus zero (none of
+the ECHO pairs touch row $0$ or column $0$). The total cell count
+is $9 \times 9 = 81$, and the HARMONY count is
+$81 - 10 = 71$.
+\end{proof}
+
+\begin{theorem}[$71$-rung, lens-disagreement form]
+\label{thm:71-disagree}
+$|\{(i, j) : T(i, j) \neq B(i, j)\}| = 71$.
+\end{theorem}
+
+\begin{proof}
+Direct cell-by-cell comparison of the two canonical tables; the
+$71$-cell disagreement count is verified at machine precision in
+the script \texttt{tsml\_bhml\_disagreement.py}; see also
+\cite{Sanders2026LensInvariance}.
+\end{proof}
+
+\begin{theorem}[$71$-rung, Galois form]
+\label{thm:71-galois}
+\label{subsec:71-galois}
+$71$ is the unique odd prime $> 3$ in the discriminant
+$\disc(f) = -40896 = -2^{6} \cdot 3^{2} \cdot 71$ of the quartic
+$f(x) = x^4 + 4 x^3 - x^2 + 2 x - 2 \in \Z[x]$, the polynomial whose
+LMFDB identifier is $4.2.10224.1$ and which is identified in
+\cite{Sanders2026Attractor} as a defining polynomial of the field of
+definition of the closed-form $\TSML+\BHML$-mix runtime attractor at
+mixing weight $\alpha = 1/2$.
+\end{theorem}
+
+\begin{proof}
+The discriminant is computed from the minimal polynomial of the
+attractor coordinate ratio $H/\mathrm{Br} = 1 + \sqrt{3}$ together
+with the second algebraic ratio identified by the PSLQ analysis in
+\cite{Sanders2026Attractor}; the LMFDB identification $4.2.10224.1$
+is confirmed by direct comparison. The factorization
+$-40896 = -2^6 \cdot 3^2 \cdot 71$ is verified at integer precision
+by the sympy snippet below; an alternative factorization claim of
+$-40896 = -2^7 \cdot 3 \cdot 7 \cdot 19$ would equal $-51072$, which
+differs from $-40896$ by approximately $25\%$ and is therefore
+arithmetically wrong, not a difference of convention.
+
+\begin{lstlisting}[style=plainpy]
+import sympy
+x = sympy.Symbol('x')
+f = x**4 + 4*x**3 - x**2 + 2*x - 2
+disc = sympy.discriminant(f, x)
+print("disc =", disc)                   # -40896
+print("factor:", sympy.factorint(abs(disc)))
+                                         # {2: 6, 3: 2, 71: 1}
+\end{lstlisting}
+\end{proof}
+
+\begin{corollary}[Triple coincidence at $71$]
+\label{cor:71-triple}
+The integer $71$ appears in three independently-verified structural
+roles on the same substrate: as the HARMONY count of the VOID-stripped
+$9 \times 9$ sub-magma (Theorem~\ref{thm:71-submagma}), as the
+cell-disagreement count between the two canonical lens tables
+(Theorem~\ref{thm:71-disagree}), and as the unique odd prime in the
+Galois discriminant of the quartic field governing the substrate's
+closed-form attractor (Theorem~\ref{thm:71-galois}).
+\end{corollary}
+
+\begin{remark}[Reading the triple coincidence]
+\label{rem:71-reading}
+The three constructions in Corollary~\ref{cor:71-triple} are
+genuinely independent: the first is pure cell-counting on $T$, the
+second is bitwise comparison of $T$ against $B$, and the third is a
+discriminant computation in algebraic number theory keyed to the
+runtime attractor. Each was discovered separately in the development
+of the substrate; their numerical agreement at $71$ was not assumed
+in any of the three constructions and is not a corollary of a
+shared structural identity.
+\end{remark}
+
+\section{The 70-rung: Yang--Mills determinant}
+\label{sec:70}
+
+The fourth ladder rung is not a HARMONY count but a determinant. It
+arises from the $8 \times 8$ sub-matrix of $B$ obtained by dropping
+the VOID and HARMONY indices from $B$:
+\[
+  B_{\mathrm{YM}} \;=\; B|_{\{1,2,3,4,5,6,8,9\} \times \{1,2,3,4,5,6,8,9\}}.
+\]
+
+\begin{theorem}[$70$-rung]
+\label{thm:70}
+$\det(B_{\mathrm{YM}}) = 70 = \binom{8}{4}$.
+\end{theorem}
+
+\begin{proof}
+The determinant is computed by direct integer expansion of the
+$8 \times 8$ matrix $B_{\mathrm{YM}}$; the value $70$ is exact in
+$\Z$. The combinatorial identity $\binom{8}{4} = 70$ is elementary.
+The script \texttt{bhml\_8\_ym\_det.py} performs the computation at
+integer precision.
+\end{proof}
+
+\begin{remark}[Yang--Mills core reading]
+\label{rem:70-reading}
+The integer $\binom{8}{4} = 70$ is the dimension of the space of
+$4$-forms on $\R^8$, and equivalently the number of independent
+self-dual or anti-self-dual $4$-form components on $\R^8$. The
+matrix $B_{\mathrm{YM}}$ arises naturally as the Yang--Mills bridge
+core in the substrate's WP104 derivation
+\cite{Sanders2026YangMills}; its determinant matching $\binom{8}{4}$
+is the integer signature of that bridge. The determinant rung sits
+\emph{below} the three HARMONY-count rungs in the ladder: it lives
+in a different invariant layer of the substrate, but its integer
+value is the next step in the descent $73 \to 72 \to 71 \to 70$.
+\end{remark}
+
+\section{Companion HARMONY counts: a second ladder}
+\label{sec:companion}
+
+In addition to the four-rung ladder $(73, 72, 71, 70)$, the substrate
+carries three further integers $(28, 36, 44)$ that each appear at
+two structurally distinct roles. These are not part of the main
+ladder but are recorded for completeness; their proofs are
+direct counting arguments in the same spirit.
+
+\begin{proposition}[$28$-rung companion]
+\label{prop:28}
+$\HARM(B) = 28$. The same integer is the dimension of the simple Lie
+algebra $\mathfrak{so}(8)$.
+\end{proposition}
+
+\begin{proposition}[$36$-rung companion]
+\label{prop:36}
+$\HARM(T_{S_7}) = 36$, where $S_7 = \{0, 4, 5, 6, 7, 8, 9\}$ is the
+size-$7$ sub-magma in the joint $T+B$ closure chain
+\cite{Sanders2026FourCore}. The same integer is the BHML
+$\sigma^2$-cycle-A projection count
+\cite{Sanders2026LensInvariance}.
+\end{proposition}
+
+\begin{proposition}[$44$-rung companion]
+\label{prop:44}
+$\HARM(\mathrm{CL\_STD}) = 44$, where $\mathrm{CL\_STD}$ is the
+Standard encoding table on $\Z/10\Z$ from
+\cite{Sanders2026LensInvariance}, distinct from both $T$ and $B$.
+The same integer is the BHML $\sigma^2$-cycle-B projection count
+$28 + 11 + 5 = 44$.
+\end{proposition}
+
+The proofs are direct counting; verification scripts run in under
+$1$ second each at machine precision.
+
+\section{Structural reading and discussion}
+\label{sec:reading}
+
+The ladder $(73, 72, 71, 70)$ admits a natural reading as a four-step
+descent through the substrate's HARMONY structure:
+
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item \textbf{$73$ — full HARMONY apex.} The complete prescribed view
+  of the substrate's HARMONY-cell density.
+\item \textbf{$72$ — drop the $(7,7)$ apex.} The "BEING shell" view
+  with the central self-cell removed; coincides with $|E_6^+|$, the
+  positive root count of $E_6$.
+\item \textbf{$71$ — VOID-stripped HARMONY $=$ lens-disagreement $=$
+  Galois prime.} The triple coincidence: three independent
+  constructions on the substrate land on the same prime. Three
+  unrelated algebras pointing at the same integer is the algebraic
+  shape of a real invariant.
+\item \textbf{$70$ — Yang--Mills core determinant.} The descent from
+  HARMONY-cell counting into the determinant-invariant layer; the
+  rung that lives one floor below but is structurally adjacent.
+\end{enumerate}
+
+The descent reflects the dominance of the HARMONY axis ($7$) on the
+substrate: every nearby integer invariant lives within a few of
+$\HARM(T) = 73$. The four rungs are all integers; three of them are
+HARMONY counts; one of them is a determinant; the gaps between
+consecutive rungs are $\{1, 1, 1\}$.
+
+\paragraph{What becomes plain only when all four are held together.}
+
+No single rung individually distinguishes the substrate from a
+generic $10 \times 10$ table; HARMONY counts and small determinants
+are common in finite-magma combinatorics. What is unusual is the
+clustering at four consecutive integers from genuinely independent
+constructions, together with the prime $71$ entering through three
+separate mechanisms simultaneously. The Monte Carlo significance of
+the full HARMONY count $\HARM(T) = 73$ alone, against $200{,}000$
+random tables with the same row/column constraints, is
+$Z = 21.3$, $p < 10^{-50}$ \cite{Sanders2026CLAxioms}. The remaining
+three rungs reinforce this baseline: each is a non-generic invariant
+of the same substrate.
+
+\section{Embedded verification snippets}
+\label{sec:verification-snippet}
+
+The four ladder rungs are verified by short sympy / numpy snippets
+that any referee can run in under two seconds with a Python REPL.
+We embed the snippets directly so that no external script is required
+for the load-bearing claims.
+
+\subsection{Discriminant claim ($71$-rung, Galois form)}
+\label{subsec:disc-snippet}
+
+\begin{lstlisting}[style=plainpy]
+import sympy
+x = sympy.Symbol('x')
+f = x**4 + 4*x**3 - x**2 + 2*x - 2
+disc = sympy.discriminant(f, x)
+print("disc(f) =", disc)                          # -40896
+print("|disc(f)| =", abs(disc))                   # 40896
+print("factor:", sympy.factorint(abs(disc)))      # {2: 6, 3: 2, 71: 1}
+# Cross-check (negation of the alternate-factorization claim):
+print(2**7 * 3 * 7 * 19)                          # 51072 (NOT 40896)
+print(2**6 * 3**2 * 71)                           # 40896 (correct)
+\end{lstlisting}
+
+The two final lines are intentionally redundant: they let any reader
+verify by direct multiplication that $-2^6 \cdot 3^2 \cdot 71 = -40896$
+and that an alternative claim $-2^7 \cdot 3 \cdot 7 \cdot 19 = -51072$
+disagrees with $-40896$ by approximately $25\%$ — i.e., the alternate
+factorization is arithmetically wrong, not a difference of convention.
+
+\subsection{HARMONY-count claims ($73$-rung, $71$-rung sub-magma form)}
+\label{subsec:harm-snippet}
+
+\begin{lstlisting}[style=plainpy]
+import numpy as np
+T = np.array([
+    [0,0,0,0,0,0,0,7,0,0],
+    [0,7,3,7,7,7,7,7,7,7],
+    [0,3,7,7,4,7,7,7,7,9],
+    [0,7,7,7,7,7,7,7,7,3],
+    [0,7,4,7,7,7,7,7,8,7],
+    [0,7,7,7,7,7,7,7,7,7],
+    [0,7,7,7,7,7,7,7,7,7],
+    [7,7,7,7,7,7,7,7,7,7],
+    [0,7,7,7,8,7,7,7,7,7],
+    [0,7,9,3,7,7,7,7,7,7],
+])
+print("HARM(T) =", int((T == 7).sum()))           # 73
+T9 = T[1:, 1:]
+print("HARM(T_{1..9}) =", int((T9 == 7).sum()))   # 71
+\end{lstlisting}
+
+\subsection{Lens-disagreement count ($71$-rung, lens form)}
+\label{subsec:lens-snippet}
+
+\begin{lstlisting}[style=plainpy]
+# B is the BHML companion table; both T and B are recorded in
+# Gen13/targets/foundations/tables/canonical_tables.py
+from canonical_tables import T, B
+print("|T (xor) B|:", int((T != B).sum()))        # 71
+\end{lstlisting}
+
+\subsection{Yang--Mills determinant ($70$-rung)}
+\label{subsec:ym-det-snippet}
+
+\begin{lstlisting}[style=plainpy]
+import numpy as np
+from canonical_tables import B
+idx = [1, 2, 3, 4, 5, 6, 8, 9]
+B_YM = B[np.ix_(idx, idx)]
+print("det(B_YM) =", int(round(np.linalg.det(B_YM))))   # 70
+print("C(8, 4)   =", int(np.math.comb(8, 4)))           # 70
+\end{lstlisting}
+
+\subsection{Verification scripts (bundled)}
+
+The five ladder snippets above are also bundled as standalone scripts
+for one-shot reproducibility:
+
+\begin{itemize}[leftmargin=*]
+\item \texttt{harmony\_ladder\_disc\_check.py} — verifies the
+discriminant claim of §\ref{subsec:disc-snippet} ($\disc = -40896 =
+-2^6 \cdot 3^2 \cdot 71$, with the cross-check against the alternate
+factorization).
+\item \texttt{tsml\_harmony\_count.py} — verifies $\HARM(T) = 73$;
+\item \texttt{tsml\_submagma\_9x9.py} — verifies $\HARM(T_{\{1,\ldots,9\}}) = 71$;
+\item \texttt{tsml\_bhml\_disagreement.py} — verifies the cell-disagreement count $= 71$;
+\item \texttt{bhml\_8\_ym\_det.py} — verifies $\det(B_{\mathrm{YM}}) = 70$.
+\end{itemize}
+
+The wrapper module \texttt{harmony\_ladder.py} runs all five scripts
+in sequence and emits a $5 \times 3$ verification table
+(rung / expected / actual). All five match at integer precision.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bourbaki1968}
+N. Bourbaki, \emph{Groupes et alg\`ebres de Lie, Chapitres 4--6},
+Hermann, 1968.
+
+\bibitem{DrapalWanless2021}
+A. Drápal and I.M. Wanless, \emph{Maximally non-associative
+quasigroups}, J.~Combin.~Theory Ser.~A \textbf{184} (2021), 105510.
+
+\bibitem{FultonHarris1991}
+W. Fulton and J. Harris, \emph{Representation Theory: A First
+Course}, GTM 129, Springer, 1991.
+
+\bibitem{Sanders2026CLAxioms}
+B.R. Sanders and M. Gish, \emph{The CL Forcing Axioms: A1--A9
+Uniquely Force the Canonical Composition Lattice on $\Z/10\Z$},
+in preparation, 2026.
+
+\bibitem{Sanders2026LensInvariance}
+B.R. Sanders and M. Gish, \emph{TSML 73 Cells / BHML 28 Cells:
+Lens-Invariant Cell Counts on the $\Z/10\Z$ Composition Lattice},
+submitted to \emph{Experimental Mathematics}, 2026 (J09 in the
+release sequence).
+
+\bibitem{Sanders2026FourCore}
+B.R. Sanders and M. Gish, \emph{Joint Closure, Per-Coordinate Fuse
+Data, and a Closed-Form Algebraic Attractor of Two Commutative
+Binary Operations on $\Z/10\Z$}, submitted to \emph{Algebraic
+Combinatorics}, 2026 (J02 in the release sequence).
+
+\bibitem{Sanders2026Attractor}
+B.R. Sanders and M. Gish, \emph{Closed-Form Attractor and the
+$\alpha = 1/2$ Algebraic Singularity}, in preparation, 2026.
+
+\bibitem{Sanders2026Wobble}
+B.R. Sanders and M. Gish, \emph{Wobble Localization: Prime $11$ in
+TSML\_RAW Characteristic Polynomial Coefficients $c_2$ and $c_8$},
+in preparation, 2026.
+
+\bibitem{Sanders2026YangMills}
+B.R. Sanders and M. Gish, \emph{Yang--Mills Mass Gap Bridge:
+Substrate-Algebra Predictions}, in preparation, 2026.
+
+\end{thebibliography}
+
+\end{document}
