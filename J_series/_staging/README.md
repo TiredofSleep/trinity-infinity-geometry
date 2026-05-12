@@ -71,13 +71,13 @@ Papers that have had specific corrections applied with new verification scripts 
 | J# | Fix applied | Verified | Folder when landed |
 |---|---|---|---|
 | J13 | Polynomial corrected: x³ − x² − 2x + 1 is MP of 2cos(π/7), not 8x³−4x²−4x+1 | PASS | TBD |
-| J17 | Binomial-grade misstatement corrected (cells vs Cl(2n) grades distinguished) | PASS | algebra |
+| J17 | Binomial-grade misstatement corrected (cells vs Cl(2n) grades distinguished) | PASS | **LANDED 2026-05-12 at [`../algebra/J17/`](../algebra/J17/)** |
 | J18 | Sign-swap Ψ_B fixed; explicit table | PASS | algebra |
 | J20 | M₂₂ irrep count corrected (7 of 12 strict in {3,5,7,11}, 10 of 12 B-band) | PASS | algebra or combinatorics |
 | J21 | Spectral max G(7) ≈ 19.472 (not 25); rigidity tautology fixed | PASS | combinatorics |
 | J27 | Lens-invariance retracted (B[1][1]=2 ∉ C; 16-cell BHML failure shown) | PASS | combinatorics |
 | J31 | D₄ isotypic decomposition (sympy exact: 3075027/2 : 9/2 : 288164 : 0 : 19608) | PASS | **LANDED 2026-05-12 at [`../algebra/J31/`](../algebra/J31/)** |
-| J32 | D₄ order 8 (not 12); orbit distribution (44, 7, 4, 10, 2) summing to 67 orbits / 126 elements | PASS | algebra |
+| J32 | D₄ order 8 (not 12); orbit distribution (44, 7, 4, 10, 2) summing to 67 orbits / 126 elements | PASS | **LANDED 2026-05-12 at [`../algebra/J32/`](../algebra/J32/)** |
 | J36 | 1/α "10⁻⁵" claim was unfounded (actual 12.6% off); Part 2 deferred | flagged | physics (Part 1 only) |
 | J42 | sinc²(1/10) = 0.9675 (not 0.9355) | PASS | **LANDED 2026-05-12 at [`../number_theory/J42/`](../number_theory/J42/)** |
 | J43 + J51 | G(s) partition G_high at {4, 7} (not {5, 7}); σ³ pairing not σ²; ν₊ discriminator | PASS | algebra |
@@ -95,7 +95,7 @@ W2-A: J03, J04, J06
 W2-B: J07, J10, J19
 W2-C: J28, J29, J30
 W2-D: J33, J34, J36
-W2-F: J45, J47, J48
+W2-F: J45, J47 (J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/))
 W2-G: J49, J50, J52, J53 (author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
 W2-H: J37, J38, J14, J22
 W2-I: J20, J21, J25, J26

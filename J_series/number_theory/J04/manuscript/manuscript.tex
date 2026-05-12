@@ -1,0 +1,574 @@
+%%% ============================================================
+%%% Full-Period Cancellation of R(k, f) and the spf-Localization
+%%% for Squarefree Moduli
+%%%
+%%% B. R. Sanders, M. Gish (2026)
+%%% Target venue: Integers -- Electronic Journal of Combinatorial
+%%%               Number Theory
+%%% Backup venue: AMM Notes, Math. Magazine
+%%% MSC: 11A41, 11N05, 11A51, 11Y05, 42A16
+%%% DOI of bundle: 10.5281/zenodo.18852047
+%%%
+%%% Source: SAVE_PLAN_J04 implementation. Replaces former
+%%%   "Sinc^2 Zero Law for Squarefree Moduli" stub. The renamed
+%%%   paper rebuilds Theorem 2 with the 2^j - 1 layered-divisor
+%%%   count, adds Theorem 1.A (full-period cancellation as
+%%%   canonical statement), and adds Theorem 3 (asymptotic
+%%%   average to Si(2 pi)/pi via the corridor mean D14).
+%%%
+%%% Author lane: Sanders + Gish (Luther dropped per Brayden
+%%% directive 2026-05-07).
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\spf}{spf}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Si}{Si}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Prm}{\mathbb{P}}
+
+%% -------- title matter --------
+\title[Full-period cancellation of $R(k,f)$ and the spf-localization]%
+{Full-Period Cancellation of $R(k, f)$\\
+ and the spf-Localization for Squarefree Moduli}
+
+\author{B.~R.~Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.~Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{discrete Fej\'er quotient, full-period cancellation, smallest
+prime factor, squarefree moduli, layered divisor lattice, sinc function,
+sieve of Eratosthenes, sine integral}
+
+\subjclass[2020]{11A41, 11N05, 11A51, 11Y05, 42A16}
+
+\begin{document}
+
+\begin{abstract}
+For an integer $f \ge 2$ and a positive integer $k$, the
+\emph{discrete Fej\'er quotient} $R(k, f) = \sin^{2}(\pi k/f) /
+(k^{2} \sin^{2}(\pi/f))$ vanishes precisely at the integer multiples
+of $f$ --- this is full-period cancellation $R(k,f)=0 \iff f\mid k$
+(Theorem~\ref{thm:fullperiod}), uniform in $f$. We use this canonical
+statement together with the divisibility lattice on $\rad(\gcd(k, b))$
+to prove a layered closure for squarefree moduli (Theorem~\ref{thm:layered}):
+for $b = p_1 p_2 \cdots p_r$ squarefree with $p_1 < \cdots < p_r$, the
+smallest $k$ at which any non-trivial divisor $d \mid b$ produces
+$R(k, d) = 0$ is exactly $k = p_1 = \spf(b)$, and at the $j$-th
+primorial divisor $k = p_1 p_2 \cdots p_j$ exactly $2^{j} - 1$
+non-trivial divisors $d \mid b$ satisfy $R(k, d) = 0$. Finally we
+prove (Theorem~\ref{thm:asymptotic}) that the corridor average of
+$R(\cdot, f)$ converges as $f \to \infty$ to the sine-integral
+constant: $\frac{1}{f-1}\sum_{k=1}^{f-1} R(k,f) \to \Si(2\pi)/\pi
+\approx 0.4514$. Verification is exhaustive on small ranges --- exact
+arithmetic on primes $p \in \{3, \ldots, 199\}$ for the basic
+biconditional, $50$ squarefree $b \in \{6, 10, \ldots, 210\}$ for
+the layered closure, and Riemann-sum convergence at
+$f \in \{50, 100, 500, 1000\}$ for the asymptotic average. Companion
+paper \cite{SandersGish2026FirstG} proves the synchronization at the
+\emph{first} zero $k = \spf(b)$ in the alphabet-coordinate framing;
+the present paper handles the full-period structure.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 0: lens and substrate (per SAVE_PLAN J04 §5) --------
+\section*{Lens and substrate}\label{sec:lens}
+
+This note works on $\Z$ with the discrete Fej\'er quotient
+$R(k, f) = \sin^{2}(\pi k/f) / (k^{2} \sin^{2}(\pi/f))$ and the
+smallest-prime-factor function $\spf$. The objects are the standard
+discrete Fourier-analytic and divisibility structures of the integers;
+no specialized algebraic substrate is invoked. The squarefree-modulus
+restriction in Theorem~\ref{thm:layered} reflects the regime where
+the layered-divisor-lattice argument applies cleanly --- the radical
+of $b$ collapses non-squarefree multiplicities, recovering the
+squarefree case. The companion paper
+\cite{SandersGish2026FirstG} proves the related synchronization
+theorem at the \emph{first} zero $k = \spf(b)$; the present paper
+handles the full-period cancellation, the squarefree layered closure,
+and the asymptotic average across the corridor.
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+The discrete Fej\'er quotient at integer parameters $k \ge 1$ and
+$f \ge 2$,
+\begin{equation}\label{eq:Rdef}
+  R(k, f) := \frac{\sin^{2}(\pi k/f)}{k^{2} \sin^{2}(\pi/f)},
+\end{equation}
+is the squared modulus of the $k$-element average of the geometric
+progression $e^{2\pi i j/f}$ ($j = 1, \ldots, k$) and is the standard
+specialization of the Fej\'er kernel \cite{Fejer1900,Zygmund2002} to
+rational arguments. The closed form \eqref{eq:Rdef} is elementary;
+its zero set, however, has structure tied directly to the divisibility
+lattice on $\Z$. The present note records three theorems organizing
+that structure for squarefree moduli.
+
+\paragraph{Tier discipline.} This paper PROVES three theorems:
+full-period cancellation $R(k, f) = 0 \iff f \mid k$
+(Theorem~\ref{thm:fullperiod}), the squarefree layered-divisor
+structure with the explicit count $2^{j} - 1$ at the $j$-th primorial
+divisor (Theorem~\ref{thm:layered}), and the asymptotic average
+$\to \Si(2\pi)/\pi$ (Theorem~\ref{thm:asymptotic}). We COMPUTE the
+verifications via \texttt{proof\_d25\_loop\_closure.py} (primes
+$3, \ldots, 199$ for the basic biconditional; $50$ squarefree $b$ for
+the layered closure; numerical Riemann sums for $f \in \{50, 100, 500,
+1000\}$; runtime $< 5$ s; \texttt{ALL ASSERTIONS PASSED}). The exact
+identity $\sinc^{2}(1/2) = (2/3)/\zeta(2)$ is cited as STRUCTURAL
+RHYME, not theorem --- it follows in one line from $\zeta(2) = \pi^2/6$
+\cite{Apostol1976,HardyWright2008}. The theorem-shaped question of why
+the corridor midpoint at $t = 1/2$ makes this identity structurally
+relevant is OPEN.
+
+\paragraph{Naming.} The earlier draft of this note was titled ``The
+$\sinc^{2}$ Zero Law for Squarefree Moduli.'' That framing implied
+prime-specific structure that the basic biconditional does not deliver:
+$R(k, f) = 0$ at $k = f$ holds for any $f \ge 2$, with $\sin^{2}(\pi)
+= 0$ doing the work uniformly. We retain the ``squarefree'' modifier
+in the title not because the basic biconditional requires it, but
+because the layered-closure statement (Theorem~\ref{thm:layered}) and
+the divisibility-lattice argument it uses do.
+
+\paragraph{Companion structure.} This paper is one of two short notes
+on the discrete Fej\'er quotient $R(k, f)$ submitted to \emph{Integers}
+in the present quarter. The companion paper
+\cite{SandersGish2026FirstG} proves the synchronization at the
+\emph{first} zero $k = \spf(b)$: for every $b > 1$, the First-G event
+of the coprimality partition coincides with the first integer zero of
+$R(\cdot, \spf(b))$. The present paper proves the
+\emph{full-period} cancellation structure (Theorem~\ref{thm:fullperiod})
+for any $f \ge 2$ and develops the squarefree-modulus consequences. The
+two papers share the underlying object but address different questions;
+each stands alone, and the cross-citations are explicit.
+
+\paragraph{Organization.} Section~\ref{sec:setup} gives the setup.
+Section~\ref{sec:fullperiod} establishes Lemma~\ref{lem:basic} (the
+basic divisibility biconditional) and Theorem~\ref{thm:fullperiod}
+(full-period cancellation in the Fej\'er-quotient form).
+Section~\ref{sec:layered} proves the layered-divisor structure
+(Theorem~\ref{thm:layered}) for squarefree $b$ and records the
+companion-relation corollary. Section~\ref{sec:asymptotic} proves
+the asymptotic-average statement (Theorem~\ref{thm:asymptotic}).
+Section~\ref{sec:verify} reports the computational verification.
+Section~\ref{sec:scope} lists scope and limitations.
+
+%% -------- section 2: setup --------
+\section{Setup and notation}\label{sec:setup}
+
+For an integer $b > 1$, write $b = p_{1}^{a_{1}} \cdots p_{r}^{a_{r}}$
+with distinct prime factors $p_{1} < \cdots < p_{r}$, and set
+$\spf(b) = p_{1}$ and $\rad(b) = p_{1} \cdots p_{r}$. The integer $b$
+is \emph{squarefree} iff $b = \rad(b)$, equivalently $a_{i} = 1$ for
+every $i$. The normalized sinc function is
+\[
+  \sinc(x) =
+  \begin{cases}
+    \sin(\pi x)/(\pi x) & x \ne 0 \\
+    1 & x = 0
+  \end{cases},
+  \qquad
+  \sinc^{2}(x) = \sinc(x)^{2}.
+\]
+The discrete Fej\'er quotient $R(k, f)$ is defined in
+\eqref{eq:Rdef}.
+
+\begin{definition}[Coprimality partition; cf.~\cite{SandersGish2026FirstG}]\label{def:partition}
+For $b > 1$ and $k \ge 1$, the coprimality partition of the alphabet
+$\{1, \ldots, k\}$ relative to $b$ is the ordered pair
+\[
+  C_{k}(b) = \{x \in \{1, \ldots, k\} : \gcd(x, b) = 1\},
+  \qquad
+  G_{k}(b) = \{1, \ldots, k\} \setminus C_{k}(b).
+\]
+\end{definition}
+
+%% -------- section 3: full-period cancellation --------
+\section{Full-period cancellation of $R(k, f)$}\label{sec:fullperiod}
+
+We begin with the basic divisibility biconditional, which is uniform
+in $b$ and reflects the integer-argument zero of $\sin$.
+
+\begin{lemma}[Basic divisibility biconditional]\label{lem:basic}
+For every integer $b \ge 1$ and every $k \in \Z_{\ge 1}$,
+\[
+  \sinc^{2}(k/b) = 0 \iff b \mid k.
+\]
+\end{lemma}
+
+\begin{proof}
+By definition, $\sinc^{2}(x) = 0 \iff \sin(\pi x) = 0 \iff x \in \Z$
+(for $x \ne 0$). Substituting $x = k/b$: $\sinc^{2}(k/b) = 0 \iff
+k/b \in \Z \iff b \mid k$.
+\end{proof}
+
+The full-period cancellation theorem promotes Lemma~\ref{lem:basic}
+to the Fej\'er-quotient setting with explicit factorizations. It is
+the canonical statement of the zero set of $R(\cdot, f)$.
+
+\begin{theorem}[Full-period cancellation]\label{thm:fullperiod}
+For every $f \ge 2$ and every $k \ge 1$,
+\[
+  R(k, f) = 0 \iff f \mid k.
+\]
+\end{theorem}
+
+\begin{proof}
+By the closed form \eqref{eq:Rdef}, $R(k, f) = 0 \iff
+\sin^{2}(\pi k/f) = 0 \iff \pi k/f \in \pi \Z \iff k/f \in \Z \iff
+f \mid k$. (The denominator $k^{2} \sin^{2}(\pi/f)$ is positive for
+every $k \ge 1$ and $f \ge 2$, so the zero set of $R$ is determined
+solely by the numerator's zeros.)
+\end{proof}
+
+Theorem~\ref{thm:fullperiod} is the \emph{full-period} statement: the
+zeros of $R(\cdot, f)$ form the arithmetic progression
+$\{f, 2f, 3f, \ldots\}$ for every $f \ge 2$, not just primes. The
+companion paper \cite{SandersGish2026FirstG} addresses the
+\emph{first} zero in the coprimality-partition framework via the
+synchronization $k^{\star}(b) = \spf(b)$; the full-period analogue is
+the present theorem.
+
+\begin{remark}[Endpoint values]\label{rem:endpoints}
+At $k = f$, $R(f, f) = 0$ exactly. For $1 \le k < f$, the closed form
+gives $R(k, f) > 0$ since $\sin(\pi k/f) > 0$ on the open interval
+$(0, \pi)$. At $k = f - 1$, $R(f-1, f) = 1/(f-1)^{2}$, the last
+positive value before the first zero (this and strict monotonicity
+on $\{1, \ldots, f-1\}$ are recorded in
+\cite[Cor.~4.4]{SandersGish2026FirstG}).
+\end{remark}
+
+%% -------- section 4: layered closure --------
+\section{Squarefree layered-divisor structure}\label{sec:layered}
+
+For squarefree $b = p_1 p_2 \cdots p_r$ with $p_{1} < \cdots < p_{r}$,
+the divisor lattice is the Boolean lattice on $\{p_{1}, \ldots, p_{r}\}$:
+the divisors of $b$ are exactly the products $\prod_{i \in S} p_{i}$
+for subsets $S \subseteq \{1, \ldots, r\}$. The non-trivial divisors
+(i.e., divisors $> 1$) correspond to non-empty subsets, of which there
+are $2^{r} - 1$. We use this lattice structure to prove the following
+layered closure.
+
+\begin{theorem}[Squarefree layered-divisor structure]\label{thm:layered}
+Let $b = p_{1} p_{2} \cdots p_{r}$ be squarefree with $p_{1} < \cdots <
+p_{r}$. The set
+\[
+  Z(b) := \{k \in \{1, \ldots, b\} : R(k, d) = 0 \text{ for at least one
+  non-trivial divisor } d \mid b\}
+\]
+satisfies the following three statements.
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $Z(b) = \{k \in \{1, \ldots, b\} : \gcd(k, b) > 1\}$.
+\item The smallest element of $Z(b)$ is $k = p_{1} = \spf(b)$.
+\item For each $j \in \{1, 2, \ldots, r\}$, set $b_{j} = p_{1} p_{2}
+\cdots p_{j}$ (the $j$-th primorial divisor of $b$). The number of
+non-trivial divisors $d \mid b$ for which $R(b_{j}, d) = 0$ is
+exactly $2^{j} - 1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textit{(i)} By Theorem~\ref{thm:fullperiod}, $R(k, d) = 0 \iff d \mid k$.
+So $k \in Z(b)$ iff there exists a non-trivial divisor $d \mid b$ with
+$d \mid k$, equivalently iff $\gcd(k, b)$ has a non-trivial divisor,
+equivalently iff $\gcd(k, b) > 1$. Hence $Z(b) = \{k : \gcd(k, b) > 1\}$.
+
+\textit{(ii)} By (i), the smallest element of $Z(b)$ is the smallest
+$k \in \{1, \ldots, b\}$ with $\gcd(k, b) > 1$. The companion First-G
+localization \cite[Theorem~3.1]{SandersGish2026FirstG} identifies this
+$k$ as $\spf(b) = p_{1}$.
+
+\textit{(iii)} Fix $j$ and write $b_{j} = p_{1} p_{2} \cdots p_{j}$.
+A non-trivial divisor $d \mid b$ is of the form $d = \prod_{i \in S}
+p_{i}$ for some non-empty subset $S \subseteq \{1, \ldots, r\}$. By
+Theorem~\ref{thm:fullperiod}, $R(b_{j}, d) = 0 \iff d \mid b_{j}$.
+A divisor $d = \prod_{i \in S} p_{i}$ divides $b_{j} = \prod_{i=1}^{j}
+p_{i}$ iff $S \subseteq \{1, \ldots, j\}$ (here we use squarefree-ness
+of $b$, which makes the divisor lattice Boolean). The number of
+non-empty subsets of $\{1, \ldots, j\}$ is $2^{j} - 1$.
+\end{proof}
+
+\begin{corollary}[Companion to {\cite{SandersGish2026FirstG}}]\label{cor:companion}
+For squarefree $b$ with $\spf(b) = p_{1}$, the smallest $k \ge 1$ for
+which any non-trivial divisor $d \mid b$ satisfies $R(k, d) = 0$
+coincides with the First-G event $k^{\star}(b)$ of
+\cite[Theorem~3.1]{SandersGish2026FirstG}.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:layered}(ii), the smallest such $k$ equals
+$p_{1} = \spf(b)$. By \cite[Theorem~3.1]{SandersGish2026FirstG},
+$k^{\star}(b) = \spf(b)$.
+\end{proof}
+
+\begin{remark}[Non-squarefree extension]\label{rem:nonsf}
+If $b$ is not squarefree, write $b = \rad(b) \cdot m$ with $m > 1$.
+Theorem~\ref{thm:layered} then applies to $\rad(b)$; the count
+$2^{j} - 1$ at the $j$-th primorial divisor of $\rad(b)$ remains exact,
+but the divisor lattice of $b$ itself acquires multiplicities (the
+divisors $d \mid b$ are no longer in bijection with subsets of the
+prime factors). The full non-squarefree count appears not to admit a
+closed form as compact as $2^{j} - 1$; we do not pursue it here.
+\end{remark}
+
+%% -------- section 5: asymptotic average --------
+\section{Asymptotic average across the corridor}\label{sec:asymptotic}
+
+We close the substantive content with the asymptotic average of
+$R(\cdot, f)$ across the corridor $k \in \{1, \ldots, f-1\}$. The
+limit is the sine-integral constant $\Si(2\pi)/\pi$, where
+\[
+  \Si(x) = \int_{0}^{x} \frac{\sin(t)}{t}\, dt.
+\]
+
+\begin{theorem}[Asymptotic average]\label{thm:asymptotic}
+\[
+  \lim_{f \to \infty} \frac{1}{f-1} \sum_{k=1}^{f-1} R(k, f)
+  = \int_{0}^{1} \sinc^{2}(t)\, dt
+  = \frac{\Si(2\pi)}{\pi}
+  \approx 0.4514.
+\]
+\end{theorem}
+
+\begin{proof}
+By the closed form \eqref{eq:Rdef} and the discrete-to-continuum
+identity \cite[Theorem~6.1]{SandersGish2026FirstG}, $R(k, f) \to
+\sinc^{2}(k/f)$ pointwise as $f \to \infty$ with $k/f$ fixed. The
+sum
+\[
+  \frac{1}{f-1} \sum_{k=1}^{f-1} R(k, f)
+  = \frac{1}{f-1} \sum_{k=1}^{f-1} \sinc^{2}(k/f)
+  + O\!\left(\frac{1}{f^{2}}\right)
+\]
+is a Riemann sum for $\int_{0}^{1} \sinc^{2}(t)\, dt$ over the
+partition $\{1/f, 2/f, \ldots, (f-1)/f\}$ of step $1/f$. Since
+$\sinc^{2}$ is continuous (in fact $C^{\infty}$) on $[0, 1]$ and the
+$O(1/f^{2})$ correction vanishes uniformly in $k$, the Riemann sum
+converges to the integral as $f \to \infty$:
+\[
+  \frac{1}{f-1} \sum_{k=1}^{f-1} R(k, f)
+  \longrightarrow \int_{0}^{1} \sinc^{2}(t)\, dt.
+\]
+The integral evaluates as follows. Substituting $u = \pi t$,
+\[
+  \int_{0}^{1} \sinc^{2}(t)\, dt
+  = \int_{0}^{1} \frac{\sin^{2}(\pi t)}{\pi^{2} t^{2}}\, dt
+  = \frac{1}{\pi} \int_{0}^{\pi} \frac{\sin^{2}(u)}{u^{2}}\, du.
+\]
+Integration by parts with $dv = du/u^{2}$ (i.e., $v = -1/u$) and
+$w = \sin^{2}(u)$, $dw = 2 \sin(u)\cos(u)\, du = \sin(2u)\, du$ gives
+\[
+  \int_{0}^{\pi} \frac{\sin^{2}(u)}{u^{2}}\, du
+  = \left[-\frac{\sin^{2}(u)}{u}\right]_{0}^{\pi}
+    + \int_{0}^{\pi} \frac{\sin(2u)}{u}\, du
+  = 0 + \int_{0}^{2\pi} \frac{\sin(t)}{t}\, dt
+  = \Si(2\pi),
+\]
+where the boundary term vanishes (at $u = 0$ via $\sin^{2}(u)/u =
+O(u)$, at $u = \pi$ via $\sin(\pi) = 0$) and we substituted $t = 2u$
+in the remaining integral. Hence
+\[
+  \int_{0}^{1} \sinc^{2}(t)\, dt = \frac{\Si(2\pi)}{\pi}
+  \approx 0.45141.
+\qedhere
+\]
+\end{proof}
+
+\begin{remark}[Numerical value]
+$\Si(2\pi) = 1.41815\ldots$, so $\Si(2\pi)/\pi = 0.45141\ldots$. This
+constant is non-elementary but classical: it is the value of the sine
+integral at $2\pi$, available in standard mathematical software
+(\texttt{scipy.special.sici}, \texttt{mpmath.si}). The value
+$\sinc^{2}(1/2) = 4/\pi^{2} = 0.40528\ldots$ at the corridor midpoint
+is strictly less than the corridor average $\Si(2\pi)/\pi$, as
+expected since $\sinc^{2}$ is concave on a neighborhood of $1/2$.
+\end{remark}
+
+%% -------- section 6: verification --------
+\section{Verification}\label{sec:verify}
+
+The verification script \texttt{proof\_d25\_loop\_closure.py}
+exercises four checks at exact arithmetic where possible and
+double-precision floating point where the asymptotic bound is the
+relevant standard. Total runtime is under five seconds on a 2024
+consumer laptop; the script exits with the line
+\texttt{ALL ASSERTIONS PASSED} when every assertion holds.
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item \textbf{Lemma~\ref{lem:basic} (basic biconditional).} For every
+prime $p \in \{3, 5, 7, 11, 13, \ldots, 199\}$ (45 primes) and every
+$k \in \{1, \ldots, p\}$: $R(k, p) = 0 \iff p \mid k$. Verified via
+exact integer divisibility plus floating-point evaluation. Zero
+counterexamples in 4{,}225 $(p, k)$ pairs.
+
+\item \textbf{Theorem~\ref{thm:fullperiod} (full-period cancellation).}
+For $f \in \{2, 3, \ldots, 30\}$ and $m \in \{1, 2, 3, 4, 5\}$: at
+$k = f \cdot m$, $|R(k, f)| < 10^{-12}$ (i.e., zero up to floating-point
+noise). Zero counterexamples in 145 $(f, m)$ pairs.
+
+\item \textbf{Theorem~\ref{thm:layered} (layered closure).} For $50$
+squarefree $b \in \{6, 10, 14, 15, 21, 22, 26, 30, \ldots, 210\}$:
+the smallest $k$ at which any non-trivial divisor $d \mid b$ satisfies
+$R(k, d) = 0$ is exactly $\spf(b)$; the count at $k = b_{2} = p_{1}
+p_{2}$ is exactly $2^{2} - 1 = 3$; for $b$ with $\omega(b) \ge 3$,
+the count at $k = b_{3} = p_{1} p_{2} p_{3}$ is exactly $2^{3} - 1
+= 7$. Zero counterexamples.
+
+\item \textbf{Theorem~\ref{thm:asymptotic} (asymptotic average).}
+Numerical Riemann sum $\frac{1}{f-1} \sum_{k=1}^{f-1} R(k, f)$
+evaluated at $f \in \{50, 100, 500, 1000\}$. Convergence to the
+target $\Si(2\pi)/\pi \approx 0.45141$ within $10^{-3}$ at $f = 1000$.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+$f$ & $\frac{1}{f-1}\sum_{k=1}^{f-1} R(k,f)$ & $\Si(2\pi)/\pi$ & deviation \\
+\midrule
+$50$   & $0.4510$ & $0.4514$ & $4.0 \times 10^{-4}$ \\
+$100$  & $0.4511$ & $0.4514$ & $3.4 \times 10^{-4}$ \\
+$500$  & $0.4513$ & $0.4514$ & $9.2 \times 10^{-5}$ \\
+$1000$ & $0.4514$ & $0.4514$ & $4.8 \times 10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The convergence is consistent with the Riemann-sum error term and the
+$O(1/f^{2})$ pointwise correction of $R(k, f)$ relative to
+$\sinc^{2}(k/f)$; deviation drops by an order of magnitude as $f$
+ranges over $\{50, 100, 500, 1000\}$.
+
+%% -------- section 7: scope --------
+\section{Scope and limitations}\label{sec:scope}
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item \textbf{What is proved.} Three theorems --- full-period
+cancellation (Theorem~\ref{thm:fullperiod}), squarefree layered
+closure with the explicit count $2^{j} - 1$ at the $j$-th primorial
+divisor (Theorem~\ref{thm:layered}), and the asymptotic average
+$\to \Si(2\pi)/\pi$ (Theorem~\ref{thm:asymptotic}) --- and one
+companion-relation corollary (Corollary~\ref{cor:companion}).
+
+\item \textbf{What is verified.} Four computational checks via
+\texttt{proof\_d25\_loop\_closure.py}: $4{,}225$ $(p, k)$ pairs for
+the basic biconditional, $145$ $(f, m)$ pairs for full-period
+cancellation, $50$ squarefree $b$ for the layered closure, and four
+$f$-values for the asymptotic average. Zero counterexamples in the
+exact-arithmetic portions; deviation $\le 5 \times 10^{-5}$ at
+$f = 1000$ for the asymptotic average.
+
+\item \textbf{Squarefree restriction.} The basic biconditional
+(Lemma~\ref{lem:basic}) and full-period cancellation
+(Theorem~\ref{thm:fullperiod}) are uniform in $b$ resp.\ $f$ and do
+not require squarefree-ness. The squarefree restriction enters only in
+Theorem~\ref{thm:layered}, where the divisor lattice is Boolean and the
+count $2^{j} - 1$ is exact. For non-squarefree $b$, the layered count
+at the $j$-th primorial divisor of $\rad(b)$ remains $2^{j} - 1$;
+the count over divisors of $b$ itself acquires multiplicities
+(Remark~\ref{rem:nonsf}).
+
+\item \textbf{What is \emph{not} claimed.} No statement about the
+analytic continuation of $\zeta(s)$; no consequence for the Riemann
+hypothesis; no implication for the distribution of primes in
+arithmetic progressions; no polynomial-time factoring algorithm. The
+identity $\sinc^{2}(1/2) = (2/3)/\zeta(2)$ is a one-line consequence
+of $\zeta(2) = \pi^{2}/6$, cited as structural rhyme only.
+
+\item \textbf{Finite-range verification.} The exhaustive checks are
+on the stated finite ranges. The theorems themselves are proved in
+full generality; the finite verification is reassurance, not a
+pillar of the result.
+\end{enumerate}
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{Apostol1976}
+T.~M.~Apostol.
+\newblock \emph{Introduction to Analytic Number Theory}.
+\newblock Undergraduate Texts in Mathematics. Springer, New York, 1976.
+
+\bibitem{Erdos1959}
+P.~Erd\H{o}s.
+\newblock On the distribution of the smallest prime factor of $n$.
+\newblock \emph{Mathematika}, 6:1--6, 1959.
+
+\bibitem{Fejer1900}
+L.~Fej\'{e}r.
+\newblock Sur les fonctions born\'{e}es et int\'{e}grables.
+\newblock \emph{Comptes Rendus de l'Acad\'{e}mie des Sciences, Paris},
+131:984--987, 1900.
+
+\bibitem{HardyWright2008}
+G.~H.~Hardy and E.~M.~Wright.
+\newblock \emph{An Introduction to the Theory of Numbers}, 6th edition.
+\newblock Revised by D.~R.~Heath-Brown and J.~H.~Silverman.
+\newblock Oxford University Press, Oxford, 2008.
+
+\bibitem{IwaniecKowalski2004}
+H.~Iwaniec and E.~Kowalski.
+\newblock \emph{Analytic Number Theory}.
+\newblock American Mathematical Society Colloquium Publications 53.
+\newblock American Mathematical Society, Providence, RI, 2004.
+
+\bibitem{Tenenbaum2015}
+G.~Tenenbaum.
+\newblock \emph{Introduction to Analytic and Probabilistic Number Theory},
+3rd edition.
+\newblock Cambridge Studies in Advanced Mathematics 46. Cambridge
+University Press, Cambridge, 2015.
+
+\bibitem{Zygmund2002}
+A.~Zygmund.
+\newblock \emph{Trigonometric Series}, 3rd edition.
+\newblock With a foreword by R.~A.~Fefferman.
+\newblock Cambridge University Press, Cambridge, 2002.
+
+%% -- companion papers ------------------------
+\bibitem{SandersGish2026FirstG}
+B.~R.~Sanders and M.~Gish.
+\newblock The First-G Event and a Discrete $\sinc^{2}$ Identity.
+\newblock Submitted to \emph{Integers --- Electronic Journal of
+Combinatorial Number Theory}, 2026; J-series J03.
+
+\bibitem{SandersGish2026Sigma}
+B.~R.~Sanders and M.~Gish.
+\newblock Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$.
+\newblock Preprint, 2026; J-series J01.
+
+\end{thebibliography}
+
+\end{document}

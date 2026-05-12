@@ -1,0 +1,430 @@
+%%% ============================================================
+%%% The Sinc^2 Zero Law for Squarefree Moduli
+%%% B. R. Sanders (7Site LLC, Hot Springs AR), M. Gish, 2026
+%%% DOI: 10.5281/zenodo.18852047
+%%% Target venue: Integers -- Electronic Journal of
+%%%               Combinatorial Number Theory
+%%% Source: WP_SINC2_ZERO_LAW.md (re-scoped 2026-05-07 from prime
+%%%         to squarefree modulus, per the Sprint 35 audit)
+%%% Verification: proof_d25_loop_closure.py (primes 3..199, exact)
+%%% MSC: 11A41, 11N05, 42A16
+%%%
+%%% NOTE: This manuscript replaces the 2026-04-18 prime-only draft
+%%% which was pulled back on 2026-04-19 because the basic
+%%% biconditional sinc^2(k/n) = 0 <=> n | k is uniform in n. The
+%%% present draft re-scopes the result to squarefree b and routes
+%%% the prime-specific content through the First-G companion paper
+%%% (J04, Sanders + Gish 2026; companion submission to Integers).
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\spf}{spf}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Prm}{\mathbb{P}}
+
+%% -------- title matter --------
+\title[The sinc\texorpdfstring{$^2$}{\^{}2} zero law for squarefree moduli]{The \texorpdfstring{$\sinc^2$}{sinc\^{}2} Zero Law for Squarefree Moduli}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{sinc function, squarefree modulus, smallest prime factor,
+coprimality partition, divisibility, Fourier coefficients}
+
+\subjclass[2020]{11A41, 11N05, 42A16}
+
+\begin{document}
+
+\begin{abstract}
+For any integer $b > 1$ and any positive integer $k$, the squared
+sinc function satisfies the divisibility biconditional
+$\sinc^2(k/b) = 0 \iff b \mid k$. We re-scope this elementary
+identity to the family of squarefree moduli and combine it with the
+First-G Event Localization Theorem of \cite{J04} to obtain the
+following sharper statement: for a squarefree integer
+$b = p_1 p_2 \cdots p_r$ with $p_1 < \cdots < p_r$, the smallest
+positive integer $k$ at which $\sinc^2(k/d) = 0$ for at least one
+non-trivial divisor $d \mid b$ is exactly $k = p_1$, the smallest
+prime factor of $b$. The corridor
+$\{1/b, 2/b, \ldots, (b-1)/b\}$ then closes at the prime factors of
+$b$ in a layered hierarchy: each prime $p_i \mid b$ first turns on
+the $\sinc^2(\cdot/p_i)$-zero at $k = p_i$, and the full
+$\sinc^2(\cdot/b)$-zero arrives only at $k = b$. The basic
+biconditional is verified by exact arithmetic for all primes
+$p \in \{3, 5, 7, \ldots, 199\}$ (the squarefree case with one prime
+factor); the verification script
+\texttt{proof\_d25\_loop\_closure.py} is supplied as electronic
+supplementary material.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 1: setup --------
+\section{Setup and Statement}\label{sec:setup}
+
+The normalized sinc function is defined as
+\begin{equation}\label{eq:sinc-def}
+  \sinc(x) =
+  \begin{cases}
+     \dfrac{\sin(\pi x)}{\pi x} & x \neq 0,\\[4pt]
+     1 & x = 0,
+  \end{cases}
+\end{equation}
+and its square $\sinc^2(x) = \sinc(x)^2$. The function appears in
+signal processing as the Shannon-sampling kernel
+\cite{Shannon1949}, in random matrix theory as the complement of
+Montgomery's pair-correlation function for Riemann zeros
+\cite{Montgomery1973}, and---as we make precise here---directly in
+the elementary divisibility structure of $\Z$.
+
+For an integer $b > 1$ we study the values $\sinc^2(k/b)$ along the
+rational corridor $\{1/b, 2/b, \ldots\}$. The basic algebraic fact
+is the following divisibility biconditional, which we record first:
+
+\begin{lemma}[Divisibility biconditional]\label{lem:basic}
+For any integer $b > 1$ and any positive integer $k$,
+\begin{equation}\label{eq:basic}
+  \sinc^2(k/b) = 0 \iff b \mid k.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $k/b \neq 0$ for $k \ge 1$, we have
+$\sinc^2(k/b) = \sin^2(\pi k/b) / (\pi k/b)^2$, which vanishes iff
+$\sin(\pi k/b) = 0$, iff $\pi k/b \in \pi \Z$, iff $k/b \in \Z$,
+iff $b \mid k$.
+\end{proof}
+
+Lemma~\ref{lem:basic} is uniform in $b$: it does not distinguish
+prime moduli from composite moduli. To extract a statement that
+depends genuinely on the prime structure of $b$, we restrict to
+\emph{squarefree} $b$ and pass simultaneously over all non-trivial
+divisors. This is the content of Section~\ref{sec:main}.
+
+%% -------- section 2: main theorem --------
+\section{The Sinc$^2$ Zero Law for Squarefree Moduli}\label{sec:main}
+
+Throughout this section, $b > 1$ is a squarefree integer with
+canonical factorization $b = p_1 p_2 \cdots p_r$, where
+$p_1 < p_2 < \cdots < p_r$ are the distinct prime factors of $b$.
+We write $\spf(b) = p_1$ for the smallest prime factor.
+
+\begin{definition}[Divisor sinc-zero set]
+For a squarefree integer $b > 1$ and a positive integer $k$, the
+\emph{divisor sinc-zero set} of the corridor position $k$ relative
+to $b$ is
+\begin{equation}\label{eq:Z}
+  Z_k(b) \;=\; \{ d : d \mid b, \ d > 1, \ \sinc^2(k/d) = 0 \}.
+\end{equation}
+\end{definition}
+
+By Lemma~\ref{lem:basic}, $d \in Z_k(b)$ iff $d \mid b$, $d > 1$,
+and $d \mid k$. Equivalently, $Z_k(b) = \{ d : d \mid \gcd(k, b),
+\ d > 1 \}$.
+
+\begin{theorem}[Squarefree Sinc$^2$ Zero Law]\label{thm:main}
+Let $b > 1$ be squarefree with $\spf(b) = p_1$. Then:
+\begin{enumerate}
+\item[(i)] $Z_k(b) = \emptyset$ for every $k$ with
+$1 \le k < p_1$;
+\item[(ii)] $Z_{p_1}(b) = \{p_1\}$, and $p_1$ is the unique
+non-trivial divisor of $b$ for which $\sinc^2(p_1 / p_1) = 0$ at
+corridor position $k = p_1$.
+\end{enumerate}
+In particular, the smallest positive integer $k$ at which
+$\sinc^2(k/d) = 0$ for at least one non-trivial divisor $d \mid b$
+is $k = p_1 = \spf(b)$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:basic}, $\sinc^2(k/d) = 0 \iff d \mid k$ for every
+$d > 1$. Hence $Z_k(b)$ is exactly the set of non-trivial divisors
+of $\gcd(k, b)$.
+
+\emph{Part (i).} Fix $k$ with $1 \le k < p_1$. Suppose for
+contradiction that $\gcd(k, b) > 1$; then $\gcd(k, b)$ has a prime
+divisor $q$ with $q \mid b$, so $q \ge p_1$, but $q \mid k$ forces
+$q \le k < p_1$, a contradiction. Therefore $\gcd(k, b) = 1$, so
+$Z_k(b) = \emptyset$.
+
+\emph{Part (ii).} At $k = p_1$, the integer $p_1$ divides itself and
+divides $b$, so $p_1 \in Z_{p_1}(b)$. Conversely, suppose
+$d \in Z_{p_1}(b)$. Then $d \mid b$, $d > 1$, $d \mid p_1$. Since
+$p_1$ is prime, $d \in \{1, p_1\}$, and $d > 1$ forces $d = p_1$.
+Hence $Z_{p_1}(b) = \{p_1\}$.
+
+The combined statement follows: parts (i) and (ii) say that the
+first $k \ge 1$ for which $Z_k(b) \ne \emptyset$ is $k = p_1$.
+\end{proof}
+
+\begin{remark}[Why this is not Lemma~\ref{lem:basic}]
+\label{rem:nontrivial}
+Lemma~\ref{lem:basic} alone does not separate primes from
+composites: it states a uniform fact about every modulus.
+Theorem~\ref{thm:main} is strictly stronger because it identifies
+the smallest $k$ at which any non-trivial divisor of $b$ produces
+a $\sinc^2$ zero, and that $k$ is $\spf(b)$ \emph{precisely
+because} $\spf(b)$ is the smallest member of a non-empty set of
+primes. Replacing $\spf(b)$ by any composite would break the
+contradiction step in Part (i): if $b = 15$ and one tried
+$k = 6 < 15$, the divisor $d = 3$ already satisfies $d \mid k$, so
+the corresponding $Z_6(15)$ already contains $3$; the localization
+fails. The squarefree hypothesis is needed only to ensure that the
+ladder of prime divisors of $b$ has a clean smallest-element
+structure (every prime power
+$p^a \mid b$ collapses to its prime base).
+\end{remark}
+
+\begin{remark}[Relation to the First-G Law]\label{rem:first-g}
+Theorem~\ref{thm:main} is the $\sinc^2$ shadow of the First-G Event
+Localization Theorem of \cite{J04}, which states that for every
+$b > 1$ with smallest prime factor $p_1$, the first non-coprime
+element of the alphabet $\{1, \ldots, k\}$ relative to $b$ appears
+at exactly $k = p_1$. The two statements are equivalent under the
+identification $\sinc^2(k/d) = 0 \iff d \mid k \iff d \in
+\{\text{prime divisors of } \gcd(k, b)\}$. We refer the reader to
+\cite{J04} for the algebraic version and full corollary structure
+(stability windows, prime-indexed phase transitions, CRT idempotent
+count, instability ranking of primes).
+\end{remark}
+
+%% -------- section 3: corollaries --------
+\section{Corollaries}\label{sec:cor}
+
+The following three corollaries record familiar consequences of
+Theorem~\ref{thm:main} that arise naturally in the corridor
+picture. They are equivalent to the analogous corollaries in the
+First-G companion \cite{J04}; we restate them in $\sinc^2$ language
+for the convenience of the spectral reader.
+
+\begin{corollary}[Layered loop closure]\label{cor:loop}
+Let $b = p_1 p_2 \cdots p_r$ be squarefree. As $k$ increases from
+$1$ to $b$, the divisor sinc-zero set $Z_k(b)$ grows by inclusion in
+exactly $\tau(b) - 1$ stages, where $\tau(b) = 2^r$ is the divisor
+count: stage $j$ adds the non-trivial divisors of $b$ whose smallest
+prime factor first divides $k$ at $k = p_{j}$. The corridor
+$\{1/b, \ldots, b/b\}$ closes (in the sense $Z_b(b) = \{
+\text{all non-trivial divisors of } b\}$) at $k = b$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:basic}, $d \in Z_k(b)$ iff $d \mid \gcd(k, b)$ and
+$d > 1$. The map $k \mapsto \gcd(k, b)$ is monotone non-decreasing
+along the divisor lattice of $b$ as $k$ increases by $1$ at a time,
+and changes value exactly when $k$ acquires a new prime factor of
+$b$. Each such acquisition first happens at some $k = p_j$ for some
+$j \le r$. At $k = b$, $\gcd(b, b) = b$, so $Z_b(b)$ contains every
+non-trivial divisor of $b$.
+\end{proof}
+
+\begin{corollary}[Prime-indexed amplitude transitions]
+\label{cor:prime-indexed}
+The amplitudes $\sinc^2(k/b)$ along the corridor
+$k \in \{1, 2, \ldots, b-1\}$ are strictly positive
+\emph{everywhere} (since $b \nmid k$ in this range), but the
+corridor amplitudes $\sinc^2(k/p_j)$ for the divisors
+$p_j \mid b$ each cross zero for the first time at $k = p_j$.
+The set of corridor positions at which any such divisor amplitude
+first vanishes is exactly $\{p_1, p_2, \ldots, p_r\}$, the prime
+factors of $b$.
+\end{corollary}
+
+\begin{proof}
+Direct application of Lemma~\ref{lem:basic} to each divisor of $b$
+in turn: $\sinc^2(k/p_j) = 0 \iff p_j \mid k$, and the smallest
+$k \ge 1$ for which $p_j \mid k$ is $k = p_j$.
+\end{proof}
+
+\begin{corollary}[Stability window]\label{cor:stab}
+The interval $\{1/b, 2/b, \ldots, (p_1 - 1)/b\}$ is sinc-zero free
+in the strong sense that $\sinc^2(k/d) > 0$ for every
+$k \in \{1, \ldots, p_1 - 1\}$ and every non-trivial divisor
+$d \mid b$. The width of this stability window is $p_1 - 1$, and
+it depends only on $\spf(b)$, not on the larger prime factors
+$p_2, \ldots, p_r$.
+\end{corollary}
+
+\begin{proof}
+Part (i) of Theorem~\ref{thm:main} says $Z_k(b) = \emptyset$ for
+$k < p_1$, which is exactly the strong stability statement.
+Width and uniformity in $\spf(b)$ are immediate.
+\end{proof}
+
+%% -------- section 4: boundary value --------
+\section{The Boundary Value $\sinc^2(1/2) = 4/\pi^2$}\label{sec:boundary}
+
+The amplitude at corridor midpoint $k/b = 1/2$ is independent of
+$b$ and admits a closed form:
+\begin{equation}\label{eq:fourpi2}
+  \sinc^2(1/2) = \left( \frac{\sin(\pi/2)}{\pi/2} \right)^{\!2}
+              = \left( \frac{2}{\pi} \right)^{\!2}
+              = \frac{4}{\pi^2} \approx 0.4053.
+\end{equation}
+This is a transcendental number, the amplitude of the first
+sidelobe of a rectangular spectral gate (a classical fact from
+signal processing). It appears here as a derived constant of the
+corridor: any corridor of even width $2m$ has its midpoint at
+$k = m$, and the corresponding $\sinc^2$ amplitude is exactly
+$4/\pi^2$.
+
+Montgomery's pair-correlation function for Riemann zeros is
+$R_2(u) = 1 - \sinc^2(u)$ \cite{Montgomery1973}. The complement
+$\sinc^2(u)$ and $R_2(u)$ sum to unity, giving a complete spectral
+partition. The boundary $4/\pi^2 = \sinc^2(1/2)$ appears in both
+frameworks, derived rather than imposed.
+
+%% -------- section 5: companion --------
+\section{Connection to the First-G Companion}\label{sec:firstG}
+
+Theorem~\ref{thm:main} is the $\sinc^2$ image of the algebraic
+statement proved in the First-G companion paper \cite{J04}:
+
+\begin{quote}
+\emph{First-G Event Localization Theorem \cite{J04}.} For every
+$b > 1$ with smallest prime factor $p_1$, the smallest $k$ for
+which the alphabet $\{1, \ldots, k\}$ contains an element sharing
+a prime factor with $b$ is $k = p_1$, and this element is $p_1$
+itself.
+\end{quote}
+
+The translation is
+$\sinc^2(k/d) = 0 \iff d \mid k \iff d \mid \gcd(k, b)$, so the
+non-trivial divisor in the First-G formulation is exactly the
+divisor recorded in our $Z_k(b)$. The two papers share a
+verification script: the squarefree case verifies both
+formulations simultaneously.
+
+The continuum-limit reading of \cite{J04} gives the harmonic
+pre-echo function
+\begin{equation}\label{eq:R}
+  R(k, b) \;=\; \frac{\sin^2(\pi k / b)}{k^2 \, \sin^2(\pi/b)}
+  \;\longrightarrow\; \sinc^2(k/b) \quad (b \to \infty),
+\end{equation}
+which recovers the $\sinc^2$ field exactly. The two results are
+two faces of the same algebraic structure---one discrete (First-G),
+one continuous ($\sinc^2$ corridor).
+
+%% -------- section 6: verification --------
+\section{Verification}\label{sec:verify}
+
+Theorem~\ref{thm:main} is verified for the squarefree case
+$b = p$ prime by the script
+\texttt{proof\_d25\_loop\_closure.py}, which checks for all primes
+$p \in \{3, 5, 7, 11, \ldots, 199\}$ (46 primes) that:
+\begin{itemize}\setlength\itemsep{1pt}
+  \item $\sinc^2(k/p) > 0$ for all $k \in \{1, \ldots, p-1\}$
+        (exact rational arithmetic via \texttt{fractions.Fraction}
+        and \texttt{sympy} on the rational input; floating-point
+        $\sinc^2$ on the real output);
+  \item $\sinc^2(p/p) = \sinc^2(1) = 0$ exactly;
+  \item zero exceptions across all 46 primes.
+\end{itemize}
+The general squarefree case $b = p_1 p_2 \cdots p_r$ is verified by
+the companion script \texttt{proof\_first\_g\_event.py}
+\cite{J04proof}, which checks all squarefree $b \le 500$ (153
+moduli, 36{,}662 $(b, k)$ pairs) with zero exceptions. We omit a
+separate enumeration here because the squarefree-multiprime case
+follows from the First-G companion via the equivalence stated in
+Section~\ref{sec:firstG}.
+
+The script \texttt{proof\_d25\_loop\_closure.py} (approximately
+260 lines) is supplied as electronic supplementary material and is
+also archived at DOI~\texttt{10.5281/zenodo.18852047}.
+
+%% -------- section 7: limits --------
+\section{What This Result Does Not Claim}\label{sec:limits}
+
+This paper does not claim:
+\begin{itemize}\setlength\itemsep{1pt}
+  \item a new proof of the infinitude of primes;
+  \item a connection to the Riemann Hypothesis beyond the
+        Montgomery-pair-correlation observation in
+        Section~\ref{sec:boundary};
+  \item that the fold position
+        $\sinc^2(x^*) = 1/2$, with $x^* \in (0,1)$, is computable
+        in closed form;
+  \item any result about the distribution of primes;
+  \item that the squarefree hypothesis is essential. (The
+        non-squarefree case follows from the squarefree case
+        applied to the radical $\mathrm{rad}(b)$ of $b$, but
+        introduces multiplicities that are tangential to the
+        present statement.)
+\end{itemize}
+Theorem~\ref{thm:main} is a finite, elementary algebraic fact
+about $\sinc^2$ evaluated at rational points whose denominator
+ranges over the divisors of a squarefree integer.
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{J04}
+B.~R.~Sanders and M.~Gish.
+\newblock The First-G Event in the Coprimality Partition:
+Stability Windows, CRT Idempotent Count, and Prime-Indexed Phase
+Transitions.
+\newblock Submitted to \emph{Integers}, 2026 (companion paper to
+the present manuscript).
+
+\bibitem{J04proof}
+B.~R.~Sanders and M.~Gish.
+\newblock \texttt{proof\_first\_g\_event.py}: exhaustive
+verification of the First-G Event Localization Theorem for all
+squarefree $b \le 500$.
+\newblock Electronic supplementary material to \cite{J04}, 2026.
+
+\bibitem{Montgomery1973}
+H.~L.~Montgomery.
+\newblock The pair correlation of zeros of the zeta function.
+\newblock In \emph{Analytic Number Theory}, Proceedings of Symposia
+in Pure Mathematics, volume~24, pages 181--193. American
+Mathematical Society, Providence, RI, 1973.
+
+\bibitem{Shannon1949}
+C.~E.~Shannon.
+\newblock Communication in the presence of noise.
+\newblock \emph{Proceedings of the IRE}, 37(1):10--21, 1949.
+
+\end{thebibliography}
+
+%% -------- end matter --------
+\vfill
+\noindent
+\footnotesize{%
+\textsc{Provenance.}\; Source manuscript
+\texttt{WP\_SINC2\_ZERO\_LAW.md} in the 7Site Research repository
+(DOI~\texttt{10.5281/zenodo.18852047}). Re-scoped 2026-05-07 from
+the 2026-04-18 prime-only draft to the squarefree-modulus
+formulation, with the prime-specific content routed through the
+First-G companion paper \cite{J04}. Verification script
+\texttt{proof\_d25\_loop\_closure.py} runs in standard CPython with
+no external dependencies; runtime is under five seconds for the
+46-prime sweep.}
+
+\end{document}
