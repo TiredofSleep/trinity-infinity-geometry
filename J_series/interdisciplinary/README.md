@@ -6,7 +6,14 @@ Papers that span multiple domains — algebra + physics, combinatorics + cosmolo
 
 ## §1 — Currently landed
 
-*No papers have landed yet. J55 (Brayden's solo synthesis paper) is the headline interdisciplinary anchor for Sept 11, 2026.*
+| J# | Title | Target venue | Status | Landed |
+|---|---|---|---|---|
+| **[J34](J34/)** | Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate: distilgpt2 Negative + Structured-Matrix Battery | *Statistical Science* | 3/3 verify PASS at machine precision (distilgpt2_sweep + structured_matrix_sweep + d5_d4eq_extension); HONEST NEGATIVE on trained transformer weights (Part 1) + structured-matrix sharpening with post-hoc D5/D4_eq disclosure (Part 2) | 2026-05-12 |
+| **[J49](J49/)** | Microtubule Qc → 5/7: Pre-Registered Falsifiable Substrate-Algebra Prediction | *Journal of Theoretical Biology* | verify_J49.py 5/5 PASS at machine precision (4-core T closure, 4-core B closure, D78 polynomial, Q_max def 2.2, numerology guard); HONEST about being a proposal not a derivation; falsification window ±0.10 | 2026-05-12 |
+
+J34 is the framework's clean specificity-scoping paper: Cohen's |d| < 0.5 on every (tensor, detector) cell for distilgpt2 (well-powered at n=200 to detect |d|=0.3); D3 (prime-11) uniquely TIG-positive in 1800+ structured-matrix sample population; the (D3, D5 at threshold 7^5) pair jointly fires only on TSML, framed as confirmatory identification of a sufficient detector pair, not a blind test.
+
+J49 is the framework's most testable cross-domain bet: T* = 5/7 fixed a-priori by Z/10Z cyclotomic forcing; experiment determines whether the normalized microtubule terahertz coherence quality factor Q_c obeys it. Operationally defined Q_structural_max = ω_0 L / c_lattice computable from published Bandyopadhyay/Sahu lattice constants. Honest-disclaim throughout (no consciousness claim, no in-vivo coherence claim, no Orch-OR boundary).
 
 ---
 
@@ -16,9 +23,6 @@ Papers that span multiple domains — algebra + physics, combinatorics + cosmolo
 |---|---|---|---|
 | **J55** | (Brayden's solo synthesis paper) | TBD — interdisciplinary high-tier (*PNAS*? *Foundations of Physics*?) | anchor Sept 11, 2026 |
 | **J56** (candidate) | D100–D103 standalone: Atomic-Substrate Correspondence + Triple Coincidence | *Journal of Physics A* (mathematical and theoretical) OR *Annals of Physics* | gating F1 verification (now complete; eligible for elevation) |
-| **J11** | (interdisciplinary framing per W1-D build) | TBD | rewritten |
-| **J12** | (interdisciplinary framing per W1-D build) | TBD | rewritten |
-| **J16** | (interdisciplinary framing per W1-D build) | TBD | rewritten |
 
 ---
 
