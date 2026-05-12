@@ -1,5 +1,13 @@
 # 02_results / Algebraic Combinatorics
 
+![σ permutation and the 4-core on Z/10Z](../../figures/sigma_orbits.png)
+
+*The σ permutation `(0)(1 7 9 3)(2 8 6 4)(5)` and the four-core `{V, H, Br, R}` = σ³-fixed locus.*
+
+![8-shell joint chain with forbidden {2,3}](../../figures/shell_chain.png)
+
+*The joint TSML+BHML sub-magma chain at sizes `{1, 4, 5, 6, 7, 8, 9, 10}`; sizes 2 and 3 are exactly forbidden.*
+
 ## Headline results
 
 - **Four-core fusion-closure** (D39, D43, J35): the set `{V, H, Br, R} = {0, 7, 8, 9}` is closed under both TSML and BHML multiplication. The runtime mix at `α = 1/2` produces `(V, H, Br, R) = (0.138, 0.540, 0.198, 0.124)` with `H/Br = 1 + √3` exactly (residual 4.23 × 10⁻¹²). **PROVED.**

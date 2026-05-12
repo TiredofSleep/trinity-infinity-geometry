@@ -1,5 +1,9 @@
 # 02_results / Dynamics
 
+![α=1/2 attractor convergence — H/Br → 1+√3](../../figures/attractor_convergence.png)
+
+*Iteration of the α=1/2 joint operator starting from uniform 4-core support, converging to `H/Br = 1+√3` at machine precision (50-digit mpmath).*
+
 ## Headline results
 
 - **Universal four-core attractor at α = 1/2** (D43, D58, J35): on the joint TSML+BHML structure on Z/10Z, the runtime mix at α = 1/2 has a **closed-form attractor**

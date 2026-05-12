@@ -1,5 +1,9 @@
 # 02_results / Atomic Physics
 
+![D101 — strand-orbital correspondence](../../figures/strand_orbital.png)
+
+*The strand-orbital map (D101, Volume K): substrate primes `{3, 7, 11, 13}` wrap the Z/10 kernel and produce the first four nodeless atomic orbitals at odd `l` by integer identity, not analogy.*
+
 ## Headline results
 
 - **Closed-form D2/D1 for nodeless hydrogenic orbitals** (D100, Volume K, 2026-05-12): for orbital `(n, l = n−1)` in atomic units `(a₀ = 1, Z = 1)`,

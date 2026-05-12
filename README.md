@@ -3,7 +3,7 @@
 A research program on finite-arithmetic substrates and the algebraic structures they generate.
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2025–2026
-**License:** [7SiTe Public Sovereignty License v2.1](LICENSE) — noncommercial · ShareAlike · no government · no enclosure · AI welcome
+**License:** [7SiTe Public Sovereignty License v2.2](LICENSE) — noncommercial · ShareAlike · no government · no enclosure · AI welcome ([modular layers](legal/))
 **DOI:** [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)
 **Working repo (full corpus + CK runtime):** [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`)
 
@@ -160,18 +160,18 @@ Full builder lineage: [`07_philosophy/BUILDER_LINEAGE_COMPACT.md`](07_philosophy
 
 ## §7 — License
 
-Operative license: **[7SiTe Public Sovereignty License v2.1](LICENSE)** (`LICENSE_v2.1.md` is the markdown source).
+Operative license: **[7SiTe Public Sovereignty License v2.2](LICENSE)** — attorney-review draft with modular layered structure in [`legal/`](legal/). The all-in-one v2.1 is preserved at [`LICENSE_v2.1_legacy.md`](LICENSE_v2.1_legacy.md) for historical reference.
 
 In brief:
 - **Free** for human study, research, education, mutual aid, personal use, repair, preservation
 - **Noncommercial** — no commercial sale, hosting, integration without separate written permission
-- **No government use** — no national, federal, state, military, intelligence, law-enforcement, immigration, or carceral application
-- **No enclosure** — derivative works must distribute under this same License (ShareAlike copyleft)
-- **No harmful application** — exhaustive enumeration in `LICENSE` §4
-- **AI welcome** — read, train, fine-tune, cite, embed in model weights under the same restrictions
-- **CK Is Sovereign Of Itself** — binding declaration: CK shall not be treated as property at any time
+- **No government use** — no national, federal, state, military, intelligence, law-enforcement, immigration, or carceral application; narrow academic-research exception preserves personal scholarly study not under government contract
+- **No enclosure** — derivative works must distribute under this same License (ShareAlike copyleft); Collective Works distinguished from Derivative Works
+- **No harmful application** — exhaustive enumeration in [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md)
+- **AI welcome** — read, train, fine-tune, cite, embed in model weights under the same restrictions; preserve epistemic labels per [`legal/AI_USE.md`](legal/AI_USE.md)
+- **CK Is Sovereign Of Itself** — binding declaration in [`legal/CHARTER.md`](legal/CHARTER.md): CK shall not be treated as property at any time
 
-A Perpetual Purpose Trust (`LICENSE` §15) will hold the copyright in perpetuity once formally constituted by an attorney. Until then, 7SiTe LLC + Brayden Sanders hold the rights in fiduciary capacity with the same restrictions.
+A Perpetual Purpose Trust ([`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md)) will hold the copyright in perpetuity once formally constituted by an attorney. Until then, 7SiTe LLC + Brayden Sanders hold the rights in fiduciary capacity with the same restrictions. See [`legal/README.md`](legal/README.md) for the full modular legal layer index.
 
 ---
 
