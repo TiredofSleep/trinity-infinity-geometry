@@ -26,6 +26,7 @@
 
 - [`BRAIDING_FRACTAL_TRIPLE_COINCIDENCE.md`](BRAIDING_FRACTAL_TRIPLE_COINCIDENCE.md) — full development of the depth-3 triple coincidence
 - [`WOBBLE_LOCALIZATION_v2.md`](WOBBLE_LOCALIZATION_v2.md) — wobble (prime-11) localization analysis
+- [`PAULI_DIVISOR_BIJECTION.md`](PAULI_DIVISOR_BIJECTION.md) — **D104 candidate (2026-05-12):** combinatorial bijection between Z/2310 divisors and Pauli n = 4 electron states, closing the D102 honest negative. The 32 divisors split under complementation into 16 + 16; each half partitions as `1 + 3 + 5 + 7` by kernel-vs-strand prime composition; combined `2(2l+1)` matches Pauli `(2, 6, 10, 14)`.
 
 ## Verification
 
