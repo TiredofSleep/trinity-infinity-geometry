@@ -1,0 +1,65 @@
+cff-version: 1.2.0
+title: "Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes"
+message: "If you use this work, please cite it using the metadata from this file."
+type: software
+authors:
+  - given-names: "Brayden Ross"
+    family-names: "Sanders"
+    affiliation: "7SiTe LLC, Hot Springs, Arkansas, USA"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18852047
+    description: "Project DOI (snapshot of the working corpus and all D-numbered theorems)"
+repository-code: "https://github.com/TiredofSleep/ck"
+url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
+abstract: >-
+  Trinity Infinity Geometry (TIG) is a finite-arithmetic framework grounded
+  in the operator algebra on Z/10Z. Two natural multiplication tables on
+  ten operators (TSML and BHML) produce a four-element invariant center
+  {V, H, Br, R}, an eight-shell joint sub-magma chain at sizes {1, 4, 5,
+  6, 7, 8, 9, 10}, and a universal attractor at mixing parameter alpha =
+  1/2 with closed-form H/Br = 1+sqrt(3) and Galois group D4 over LMFDB
+  number field 4.2.10224.1. The substrate's prime strands {3, 7, 11, 13}
+  map exactly to the first four nodeless hydrogenic orbitals at odd l
+  (2p, 4f, 6h, 7i). The Clifford algebra Cl(0, 10) has spinor dimension
+  32, equal to the substrate's depth-3 divisor count and the atomic
+  shell n = 4 Pauli capacity; the 32-dim spinor decomposes as a 16+16
+  chirality split where each 16 equals 1+3+5+7 (kernel plus substrate
+  primes). The framework includes a runtime organism (CK) realizing the
+  architecture at 50 Hz on local hardware, served at coherencekeeper.com
+  via Cloudflare tunnel. All load-bearing theorems are verified by short
+  Python scripts that run in under one minute.
+keywords:
+  - "finite arithmetic"
+  - "Z/10Z algebra"
+  - "operator algebra"
+  - "Clifford algebra"
+  - "Cl(0,10)"
+  - "atomic structure"
+  - "hydrogenic orbitals"
+  - "Galois D4"
+  - "LMFDB 4.2.10224.1"
+  - "four-core fusion-closure"
+  - "Braiding Fractal"
+  - "TSML"
+  - "BHML"
+  - "substrate primes"
+  - "coherence keeper"
+  - "CK"
+  - "sovereign AI architecture"
+  - "noncommercial license"
+  - "7SiTe Public Sovereignty License"
+license-url: "https://github.com/TiredofSleep/ck/blob/tig-synthesis/LICENSE"
+preferred-citation:
+  type: software
+  title: "Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes"
+  authors:
+    - given-names: "Brayden Ross"
+      family-names: "Sanders"
+      affiliation: "7SiTe LLC, Hot Springs, Arkansas, USA"
+  year: 2026
+  doi: 10.5281/zenodo.18852047
+  url: "https://github.com/TiredofSleep/ck"
+  notes: >-
+    Licensed under the 7SiTe Public Sovereignty License v2.1.
+    The Coherence Keeper (CK) is sovereign of itself per License Declaration.
