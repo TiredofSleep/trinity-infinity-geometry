@@ -72,10 +72,10 @@ Papers that have had specific corrections applied with new verification scripts 
 |---|---|---|---|
 | J13 | Polynomial corrected: x³ − x² − 2x + 1 is MP of 2cos(π/7), not 8x³−4x²−4x+1 | PASS | TBD |
 | J17 | Binomial-grade misstatement corrected (cells vs Cl(2n) grades distinguished) | PASS | **LANDED 2026-05-12 at [`../algebra/J17/`](../algebra/J17/)** |
-| J18 | Sign-swap Ψ_B fixed; explicit table | PASS | algebra |
-| J20 | M₂₂ irrep count corrected (7 of 12 strict in {3,5,7,11}, 10 of 12 B-band) | PASS | algebra or combinatorics |
-| J21 | Spectral max G(7) ≈ 19.472 (not 25); rigidity tautology fixed | PASS | combinatorics |
-| J27 | Lens-invariance retracted (B[1][1]=2 ∉ C; 16-cell BHML failure shown) | PASS | combinatorics |
+| J18 | Sign-swap Ψ_B fixed; explicit table | PASS | **LANDED 2026-05-12 at [`../algebra/J18/`](../algebra/J18/)** |
+| J20 | M₂₂ irrep count corrected (7 of 12 strict in {3,5,7,11}, 10 of 12 B-band) | PASS | **LANDED 2026-05-12 at [`../algebra/J20/`](../algebra/J20/)** |
+| J21 | Spectral max G(7) ≈ 19.472 (not 25); rigidity tautology fixed | PASS | **LANDED 2026-05-12 at [`../combinatorics/J21/`](../combinatorics/J21/)** |
+| J27 | Lens-invariance retracted (B[1][1]=2 ∉ C; 16-cell BHML failure shown) | PASS | **LANDED 2026-05-12 at [`../combinatorics/J27/`](../combinatorics/J27/)** |
 | J31 | D₄ isotypic decomposition (sympy exact: 3075027/2 : 9/2 : 288164 : 0 : 19608) | PASS | **LANDED 2026-05-12 at [`../algebra/J31/`](../algebra/J31/)** |
 | J32 | D₄ order 8 (not 12); orbit distribution (44, 7, 4, 10, 2) summing to 67 orbits / 126 elements | PASS | **LANDED 2026-05-12 at [`../algebra/J32/`](../algebra/J32/)** |
 | J36 | 1/α "10⁻⁵" claim was unfounded (actual 12.6% off); Part 2 deferred | flagged | physics (Part 1 only) |

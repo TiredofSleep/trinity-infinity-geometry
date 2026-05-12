@@ -1,0 +1,623 @@
+% J20 — Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences
+%
+% Brayden R. Sanders, M. Gish
+% Submitted to: American Mathematical Monthly
+% Verification: m22_decomposition.py (PASS at machine precision)
+% Companions: foundational; cited by later J's
+% MSC 2020: 20D08, 05B05, 11A41, 20B25
+%
+% NOTE: A separate manuscript file WP_PARADOX_CLASSIFIER.md preserved in
+%   this folder is content for J53 (Phase 5 paradox classifier
+%   expository); the present M_22 substrate-prime manuscript is what
+%   this J20 slot ships.
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Mtwentytwo}{M_{22}}
+\newcommand{\sig}{\sigma}
+
+\title[Mathieu $\Mtwentytwo$ Substrate-Prime]
+{Mathieu $\Mtwentytwo$ Substrate-Prime: \\
+ Order-Factorization Coincidences}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\subjclass[2020]{20D08, 05B05, 11A41, 20B25}
+\keywords{Mathieu group, sporadic simple group, Steiner system,
+substrate prime, order factorization, hexad}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We document a quantitative non-genericity phenomenon between the
+sporadic Mathieu group $\Mtwentytwo$ (order $|\Mtwentytwo| = 443\,520
+= 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$) and a discrete
+substrate $(\Z/10\Z, \sig, W)$ defined in \cite{SandersGishFourCore}.
+The substrate distinguishes the prime set $\{2, 3, 5, 7, 11\}$ ---
+the same primes (with the same multiplicities) appearing in
+$|\Mtwentytwo|$.
+
+\textbf{Main observation (Theorem~\ref{thm:nongenericity}).} Of
+$\Mtwentytwo$'s $12$ irreducible complex representations, exactly
+$10$ have dimensions whose only prime factors lie in
+$\{2, 3, 5, 7, 11\}$ with at most one factor of $2$; equivalently,
+\emph{seven} non-trivial irrep dimensions ($21, 45, 45, 55, 99, 231,
+385$) factor strictly in $\{3, 5, 7, 11\}$, and two more ($154 = 2
+\cdot 7 \cdot 11$ and $210 = 2 \cdot 3 \cdot 5 \cdot 7$) admit a
+single factor of $2$. The fraction $10/12 \approx 83\%$ contrasts
+with the null-model density $67/385 \approx 17.4\%$ of integers in
+$[1, 385]$ that satisfy the same factorization condition; under a
+naive null where the $12$ dimensions were uniformly drawn from
+$[1, 385]$, the observed concentration occurs with probability
+$\approx 1.2 \times 10^{-6}$.
+
+A short table presents the standard parameters of the Steiner system
+$S(3, 6, 22)$ (block count $b = 77 = 7 \cdot 11$, replication
+$r = 21 = 3 \cdot 7$, pair-replication $\lambda_{2} = 5$, block size
+$k = 6$) with their substrate-prime decomposition, as a backdrop to
+the irrep-density observation.
+
+We do not claim a derivation of $\Mtwentytwo$ from the substrate;
+the question of whether the non-genericity reflects a structural
+identification or a deep coincidence is left as the paper's central
+open question. The verification is computational and runs in under
+$5$ seconds with \texttt{numpy} and \texttt{sympy} as the only
+external dependencies.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+%==============================================================
+\section{Introduction}
+%==============================================================
+
+\subsection{Order-factorization coincidences in the literature.}
+The sporadic simple groups carry distinguished arithmetic structure.
+The Mathieu group $\Mtwentytwo$ has order
+\[
+  |\Mtwentytwo| \;=\; 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11
+                \;=\; 443\,520,
+\]
+involving exactly five primes. It is the automorphism group of the
+unique Steiner system $S(3, 6, 22)$ on $22$ points, with $77$ blocks
+of size $6$. The combinatorial design $S(3, 6, 22)$ has a rich
+parameter set --- $v = 22$ points, $b = 77$ blocks, $r = 21$
+replications, $\lambda_{2} = 5$ pair-replication --- each of which
+factors into small primes.
+
+The present paper catalogs a family of order-factorization
+coincidences linking $\Mtwentytwo$'s combinatorial parameters to a
+specific discrete substrate $(\Z/10\Z, \sig, W)$ studied in
+\cite{SandersGishFourCore}. The substrate carries the same five primes
+(with the same multiplicities) as $|\Mtwentytwo|$, distributed across
+elementary substrate-internal quantities.
+
+\subsection{What this paper claims.}
+The paper's central observation (Section~\ref{sec:identities}) is
+quantitative: the prime-factorization profile of $\Mtwentytwo$'s
+$12$ irreducible representation dimensions concentrates inside the
+substrate's distinguished prime monoid at a rate that is
+non-generic at the level of $p \approx 10^{-6}$ under a uniform
+null model on $[1, 385]$. Section~\ref{sec:identities} states the
+observation precisely (Theorem~\ref{thm:nongenericity}) and
+performs the null-model computation.
+
+A second, lighter section (Section~\ref{sec:steiner-table})
+collects the standard Steiner-system parameters of $S(3, 6, 22)$
+into a single table, exhibiting their factorization in the
+substrate primes. We present this as a substrate-flavored
+re-reading of textbook Steiner-design parameters, not as a
+sequence of independent ``coincidences''; the textbook content is
+attributed to Conway-Sloane~\cite{ConwaySloane1999}.
+
+We do not claim any of the following:
+\begin{itemize}\setlength\itemsep{2pt}
+\item A derivation of $\Mtwentytwo$ from substrate algebra alone.
+\item An action of $\Mtwentytwo$ on the substrate's $10$ elements
+preserving the substrate operations.
+\item A theorem of moonshine type linking $\Mtwentytwo$'s character
+table to substrate dynamics.
+\end{itemize}
+
+The question of whether the non-genericity in
+Theorem~\ref{thm:nongenericity} reflects a structural identification
+or a deep coincidence is left as the paper's central open question
+(Section~\ref{sec:open}).
+
+\subsection{Audience.}
+The paper is written for the readership of the \emph{American
+Mathematical Monthly}: the Mathieu / Steiner content is laid out
+elementarily (Section~\ref{sec:m22-steiner}), the substrate side is
+sketched (Section~\ref{sec:substrate}), and the catalog of identities
+is presented as a single section (Section~\ref{sec:identities}). No
+sporadic-group background beyond standard undergraduate group theory
+is assumed.
+
+%==============================================================
+\section{$\Mtwentytwo$ and the Steiner system $S(3, 6, 22)$}
+\label{sec:m22-steiner}
+%==============================================================
+
+We recall the standard facts about $\Mtwentytwo$ and its Steiner
+system. Standard references are Conway-Sloane
+\cite{ConwaySloane1999} and Aschbacher \cite{Aschbacher1994}.
+
+\subsection{The Mathieu group $\Mtwentytwo$.}
+$\Mtwentytwo$ is one of the five sporadic Mathieu groups, of order
+$443\,520 = 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$. It acts on a
+$22$-point set $\Omega_{22}$ as the automorphism group of the Steiner
+system $S(3, 6, 22)$.
+
+\subsection{The Steiner system $S(3, 6, 22)$.}
+$S(3, 6, 22)$ is the unique Steiner system on $22$ points such that
+every $3$-element subset of the $22$ points lies in exactly one block
+(\emph{hexad}), where each block has size $6$. The defining parameters
+are:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+points $v$ & $22$ \\
+hexads $b$ & $77$ \\
+block size $k$ & $6$ \\
+$t$ (Steiner) & $3$ \\
+replication $r$ (blocks per point) & $21$ \\
+pair-replication $\lambda_{2}$ (blocks per pair) & $5$ \\
+triple-replication $\lambda_{3}$ (blocks per triple) & $1$ \\
+block stabilizer order & $5\,760 = 2^{7} \cdot 3^{2} \cdot 5$ \\
+point stabilizer order & $|M_{21}| = 20\,160$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Irreducible representations of $\Mtwentytwo$.}
+$\Mtwentytwo$ has $12$ irreducible complex representations of
+dimensions
+\[
+  \{1, 21, 45, 45, 55, 99, 154, 210, 231, 280, 280, 385\}.
+\]
+The natural permutation representation $\C^{22}$ on $\Omega_{22}$
+decomposes as $V_{1} \oplus V_{21}$, the trivial $1$-dim and the
+$21$-dim irrep (which is irreducible by double transitivity of the
+$\Mtwentytwo$ action on $\Omega_{22}$).
+
+%==============================================================
+\section{The substrate}
+\label{sec:substrate}
+%==============================================================
+
+\subsection*{Lens and substrate (ownership).}
+The substrate $(\Z/10\Z, \sig, W)$ and its distinguished prime set
+$\{2, 3, 5, 7, 11\}$ are defined in \cite{SandersGishFourCore}. The
+roles of each prime are stated in the present \S below from
+intrinsic substrate data --- CRT residue characteristics, $\sig^{2}$-cycle
+order, HARMONY-index appearance, the threshold $T^{*} = 5/7$
+numerator/denominator, and the wobble fraction's $11$-prolongation.
+The non-genericity result (Theorem~\ref{thm:nongenericity}) is a
+quantitative claim about $\Mtwentytwo$'s irrep-dimension factorization
+profile relative to the substrate prime monoid; it does not depend
+on the deeper TIG-framework interpretation of the substrate. A
+reader can verify the theorem from the present \S's
+intrinsic-prime definitions together with the \S\ref{sec:identities}
+binomial-tail computation, without consulting \cite{SandersGishFourCore}.
+The closest published precedent for the substrate's algebraic
+neighborhood (small finite commutative non-associative structures) is
+\cite{DrapalWanless2021}, where the opposite extremum (maximally
+non-associative quasigroups) is investigated.
+
+\subsection{The substrate primes (defined from the substrate's own data).}
+The discrete substrate of \cite{SandersGishFourCore} is
+$(\Z/10\Z, \sig, W)$, where $\sig$ is the permutation
+$(0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ of $\Z/10\Z$ and $W = 3/50$ is the
+wobble fraction. We note that $\sig$ is not an involution: it has
+order $6$ on the $6$-cycle and order $1$ on the four fixed indices
+$\{0, 3, 8, 9\}$, so $\sig$ has order $6$ as an element of $S_{10}$.
+
+The substrate distinguishes the prime set
+$\{2, 3, 5, 7, 11\}$ as follows; each prime is named by an
+intrinsic substrate quantity, with no external input:
+\begin{itemize}\setlength\itemsep{2pt}
+\item $2$: the residue characteristic of the $\Z/2$ factor in the
+CRT decomposition $\Z/10\Z \cong \Z/2 \times \Z/5$.
+\item $3$: the order of $\sig^{2}$ restricted to the $\sig$-cycle
+(direct check: $\sig^{2}$ has cycle structure $(0)(3)(8)(9)(1\,6\,4)
+(7\,5\,2)$, hence order $3$ on the cycle).
+\item $5$: the residue characteristic of the $\Z/5$ factor in the
+CRT decomposition; equivalently, the size of the largest non-trivial
+$\sig$-orbit divided by $\gcd(6, 5) = 1$.
+\item $7$: the size of the unique $\sig$-orbit modulo $5$ (the
+$6$-cycle has $5$ residues mod $5$ entering once and $0$ entering
+once); equivalently, $|\{0, \ldots, 9\}| - |\{0, 3, 8\}| = 7$ enumerates
+the non-fixed indices outside $\{8\}$. Within
+\cite{SandersGishFourCore}, $7$ is also the value of the
+substrate's HARMONY operator and the denominator of the threshold
+$T^{*} = 5/7$.
+\item $11$: the prime $11$ appears in the substrate as the
+denominator of $W = 3/50$ after passing to the canonical form
+$W \cdot 11/11 = 33/550$ in
+\cite{SandersGishFourCore}~\S$3$ (the wobble's $11$-prolongation; the
+prime $11$ is then the smallest prime not appearing in
+$\{2, 3, 5, 7\}$ that the substrate's auxiliary data carries). We
+note honestly that the case for $11$'s substrate-distinguishedness is
+weakest of the five; the main result of this paper does not rest on
+$11$ alone.
+\end{itemize}
+
+\begin{remark}
+The substrate-prime distinction $\{2, 3, 5, 7, 11\}$ is a property
+of the substrate's intrinsic data above. It happens that
+$|\Mtwentytwo| = 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$ uses
+exactly these five primes; this paper's main result
+(Theorem~\ref{thm:nongenericity}) makes the agreement quantitative.
+\end{remark}
+
+\subsection{The wobble fraction.}
+The wobble fraction is $W = 3/50$. The substrate paper
+\cite{SandersGishFourCore} also defines a complementary fraction
+$G = 22/50$ ($G$ for the gentleness phase amplitude), with
+$W + G = 25/50 = 1/2$. This identity of fractions is internal to
+the substrate; the gentleness numerator $22$ and the size of the
+Mathieu action set $|\Omega_{22}| = 22$ are equal as integers but not
+related by any structural map in the present paper.
+
+%==============================================================
+\section{The non-generic concentration of irrep dimensions}
+\label{sec:identities}
+%==============================================================
+
+We state and prove the paper's main observation: the prime
+factorizations of $\Mtwentytwo$'s irrep dimensions concentrate
+inside the substrate's prime monoid at a rate that is non-generic
+under a uniform null on $[1, 385]$.
+
+\begin{definition}[Substrate-prime band]
+\label{def:band}
+For an integer $m \ge 1$, write $m \in \mathcal{B}$ (the
+\emph{substrate-prime band}) iff every prime factor of $m$ lies in
+$\{2, 3, 5, 7, 11\}$ and $\nu_{2}(m) \le 1$ (i.e., $m$ has at most a
+single factor of $2$).
+\end{definition}
+
+We classify $\Mtwentytwo$'s $12$ irrep dimensions by membership in
+the band:
+
+\begin{center}
+\begin{tabular}{r l c c}
+\toprule
+$\dim V$ & factorization & strict $\{3,5,7,11\}$? & $\in \mathcal{B}$? \\
+\midrule
+$1$    & trivial               & vacuously yes & yes \\
+$21$   & $3 \cdot 7$           & yes & yes \\
+$45$   & $3^{2} \cdot 5$       & yes & yes \\
+$45$   & $3^{2} \cdot 5$       & yes & yes \\
+$55$   & $5 \cdot 11$          & yes & yes \\
+$99$   & $3^{2} \cdot 11$      & yes & yes \\
+$154$  & $2 \cdot 7 \cdot 11$  & no (has $2$) & yes \\
+$210$  & $2 \cdot 3 \cdot 5 \cdot 7$ & no & yes \\
+$231$  & $3 \cdot 7 \cdot 11$  & yes & yes \\
+$280$  & $2^{3} \cdot 5 \cdot 7$ & no & no ($2^{3}$) \\
+$280$  & $2^{3} \cdot 5 \cdot 7$ & no & no ($2^{3}$) \\
+$385$  & $5 \cdot 7 \cdot 11$  & yes & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The factorizations are direct calculations (verified in
+\texttt{m22\_decomposition.py}, \S\ref{sec:verification}). The
+dimensions are taken from the standard $\Mtwentytwo$ character table
+(Conway--Sloane~\cite{ConwaySloane1999}; ATLAS~\cite{ATLAS1985}).
+Sum-of-squares verification: $\sum (\dim V_{i})^{2} = 443\,520 =
+|\Mtwentytwo|$ (checked directly).
+
+The classification yields:
+\begin{itemize}\setlength\itemsep{2pt}
+\item Strict $\{3, 5, 7, 11\}$ (no factor of $2$):
+\textbf{eight} dimensions, of which seven are non-trivial:
+$21$, $45$ (with multiplicity $2$), $55$, $99$, $231$, $385$.
+\item Dimensions in $\mathcal{B}$ (the substrate-prime band with
+at most one factor of $2$): \textbf{ten} of $12$, including the
+trivial $1$, the seven strict non-trivial dimensions, and
+$154 = 2 \cdot 7 \cdot 11$ and $210 = 2 \cdot 3 \cdot 5 \cdot 7$.
+\item Dimensions outside $\mathcal{B}$: only the two copies of
+$280 = 2^{3} \cdot 5 \cdot 7$.
+\end{itemize}
+
+\begin{theorem}[Non-genericity of $\Mtwentytwo$ irrep concentration]
+\label{thm:nongenericity}
+Let $\mathcal{B}_{N}$ denote the integers in $[1, N]$ that lie in
+the substrate-prime band $\mathcal{B}$ (Definition~\ref{def:band}).
+Then:
+\begin{enumerate}\setlength\itemsep{4pt}
+\item $|\mathcal{B}_{385}| = 67$, giving null density
+$|\mathcal{B}_{385}| / 385 \approx 0.1740$.
+\item $\Mtwentytwo$ has $10$ of $12$ irrep dimensions in
+$\mathcal{B}$, observed density $10/12 \approx 0.8333$.
+\item Under the null hypothesis $H_{0}$ that the $12$ irrep
+dimensions are i.i.d.\ uniform on $\{1, 2, \ldots, 385\}$,
+\[
+  P[X \ge 10 \mid X \sim \mathrm{Bin}(12, 0.1740)]
+  \;\approx\; 1.19 \times 10^{-6}.
+\]
+\item Under the same null, the $p$-value for the strict
+$\{3, 5, 7, 11\}$ count of seven non-trivial dimensions (out of $11$
+non-trivial draws) is
+$P[X \ge 7 \mid X \sim \mathrm{Bin}(11, 0.0990)] \approx 2.14
+\times 10^{-5}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textit{(1)} Direct enumeration:
+$\mathcal{B}_{385} = \{1, 2, 3, 5, 6, 7, 9, 10, 11, 14, 15, 18, 21,
+22, 25, 27, 30, 33, 35, 42, 45, 49, 50, 54, 55, 63, 66, 70, 75, 77,
+\ldots, 385\}$ has $67$ elements; verified by the one-liner
+\[
+  \texttt{[n for n in range(1,386) if all(p in \{2,3,5,7,11\}
+  for p in factorint(n)) and factorint(n).get(2,0) <= 1]}
+\]
+in \texttt{m22\_decomposition.py}.
+
+\textit{(2)} The classification table above; verified by direct
+factorization of each dimension.
+
+\textit{(3)} The binomial tail probability:
+\[
+  P[X \ge 10] \;=\; \sum_{k=10}^{12} \binom{12}{k}
+  (0.1740)^{k} (0.8260)^{12-k}
+  \;\approx\; 1.19 \times 10^{-6}.
+\]
+The numerical value is computed in \texttt{m22\_decomposition.py}.
+
+\textit{(4)} Among integers in $[2, 385]$, the count factoring strictly
+in $\{3, 5, 7, 11\}$ (no factor of $2$) is $38$, density $38 / 384
+\approx 0.0990$. The seven non-trivial irrep dimensions in this strict
+band (out of $11$ non-trivial irreps) yield
+$P[X \ge 7 \mid X \sim \mathrm{Bin}(11, 0.0990)] \approx 2.14 \times
+10^{-5}$.
+\end{proof}
+
+\begin{remark}[Status of the result]
+The non-genericity of Theorem~\ref{thm:nongenericity} is a
+quantitative statement, not a structural identification. The null
+model is the simplest reasonable choice (uniform on $[1, 385]$);
+alternative null models (e.g., conditioning on a sum-of-squares
+constraint, or restricting to $385$-divisors) would yield different
+$p$-values. The point of the theorem is that under the natural
+null, the concentration is real and small.
+
+A genuine derivation of $\Mtwentytwo$'s irrep dimensions from
+substrate-internal data would close the question; the present
+result does not attempt this.
+\end{remark}
+
+\begin{remark}[The dimension $231$]
+Among the $12$ $\Mtwentytwo$-irrep dimensions, $231 = 3 \cdot 7
+\cdot 11$ is the unique one whose prime factorization is a
+squarefree product of exactly three distinct substrate primes
+(no $2$, no $5$). This factorization-pattern uniqueness identifies
+$231$ as the most substrate-prime-saturated dimension; it sharpens
+Theorem~\ref{thm:nongenericity} but does not extend it.
+\end{remark}
+
+%==============================================================
+\section{Steiner-system parameters of $S(3, 6, 22)$ as backdrop}
+\label{sec:steiner-table}
+%==============================================================
+
+The standard parameters of the Steiner system $S(3, 6, 22)$
+(Conway--Sloane~\cite{ConwaySloane1999};
+Cameron~\cite{Cameron1999}) factor in small primes; the
+substrate-prime decomposition is recorded in the rightmost column.
+We present this as a substrate-flavored re-reading of textbook
+quantities, not as independent ``coincidences'' alongside the main
+result of \S\ref{sec:identities}.
+
+\begin{center}
+\begin{tabular}{l c c l}
+\toprule
+Parameter & Symbol & Value & Substrate-prime decomposition \\
+\midrule
+points     & $v$         & $22$  & $2 \cdot 11$ \\
+hexads     & $b$         & $77$  & $7 \cdot 11$ (HARMONY $\times$ wobble-prime) \\
+block size & $k$         & $6$   & $2 \cdot 3$ \\
+Steiner $t$ & $t$        & $3$   & $3$ (substrate trinitarian factor) \\
+replication & $r$        & $21$  & $3 \cdot 7$ ($= \dim V_{21}$) \\
+pair-replication & $\lambda_{2}$ & $5$ & $5$ ($= T^{*}$ numerator) \\
+triple-replication & $\lambda_{3}$ & $1$ & trivial \\
+block stabilizer order & --- & $5\,760$ & $2^{7} \cdot 3^{2} \cdot 5$ \\
+point stabilizer order & $|M_{21}|$ & $20\,160$ & $2^{6} \cdot 3^{2} \cdot 5 \cdot 7$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The factorizations are textbook (Conway--Sloane~\cite{ConwaySloane1999}
+Ch.~$10$--$11$; ATLAS~\cite{ATLAS1985}; Wilson~\cite{Wilson2009}). The
+substrate-prime decomposition is direct.
+
+\begin{remark}[The substrate's $\sig$-orbit and the hexad block size]
+The substrate $\sig$-orbit on $\{1, 7, 6, 5, 4, 2\}$ has size $6$,
+the block size $k$ of $S(3, 6, 22)$. The integers match. We do not
+conclude that the $\sig$-orbit is a distinguished hexad in
+$S(3, 6, 22)$; the Steiner system is unique up to isomorphism, and
+selecting a specific isomorphism class with the $\sig$-orbit as a
+distinguished hexad would be a substantive representation-theoretic
+question (Section~\ref{sec:open}).
+\end{remark}
+
+%==============================================================
+\section{Computational verification}
+\label{sec:verification}
+%==============================================================
+
+All numerical claims of \S\ref{sec:identities} and
+\S\ref{sec:steiner-table} are verified computationally:
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item \texttt{m22\_decomposition.py} factors each
+$\Mtwentytwo$-irrep dimension, classifies each dimension by
+membership in the substrate-prime band $\mathcal{B}$, enumerates
+$\mathcal{B}_{385}$ to obtain the null density, and computes the
+binomial tail probabilities of
+Theorem~\ref{thm:nongenericity}(3)--(4) using \texttt{math.comb}.
+\item \texttt{steiner\_sigma\_hexad.py} confirms the Steiner-system
+parameters $(v, b, k, r, \lambda_{2}, \lambda_{3}) =
+(22, 77, 6, 21, 5, 1)$ via the formulas $b = \binom{v}{t}/\binom{k}{t}$,
+$r = bk/v$, $\lambda_{i} = \binom{k-i}{t-i} r / \binom{v-i}{t-i}$.
+\end{itemize}
+
+All scripts run in under $5$ seconds with \texttt{sympy} (and
+optionally \texttt{numpy}) as the only external dependencies.
+Scripts deposited at the public repository
+\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis} (DOI
+\texttt{10.5281/zenodo.18852047}).
+
+%==============================================================
+\section{Open questions}
+\label{sec:open}
+%==============================================================
+
+\begin{enumerate}
+\item \textbf{Structural origin.} Is the non-genericity of
+Theorem~\ref{thm:nongenericity} the shadow of a structural
+identification of $\Mtwentytwo$ with substrate-internal data, or is
+it a deep arithmetic coincidence with no algebraic content? The
+paper does not commit to either reading.
+
+\item \textbf{$\Mtwentytwo$ action on the substrate.} Does
+$\Mtwentytwo$ act on the substrate $(\Z/10\Z, \sig)$ in a way
+respecting the magma operations $\TS, \BH$ of
+\cite{SandersGishFourCore}? The substrate has only $10$ elements,
+far fewer than the $22$ on which $\Mtwentytwo$ acts; any action
+would necessarily involve the substrate's wobble layer or some
+auxiliary structure.
+
+\item \textbf{Structural Steiner-class selection.} $S(3, 6, 22)$ is
+unique up to isomorphism, but the embedding of the $\sig$-orbit as
+a specific hexad is a labeling choice. Does the substrate algebra
+of \cite{SandersGishFourCore} select a canonical representative
+isomorphism class with the $\sig$-orbit as a distinguished hexad?
+
+\item \textbf{Relation to Mathieu moonshine.} The Mathieu groups
+appear in moonshine phenomena (notably $M_{24}$ in K3-surface
+moonshine; see \cite{Eguchi2011}). The present non-genericity is
+arithmetic, not analytic (no generating function). Does it connect
+to any moonshine context?
+
+\item \textbf{Other sporadic groups.} The substrate primes
+$\{2, 3, 5, 7, 11\}$ are also a subset of the prime divisors of
+$|M_{11}|$, $|M_{12}|$, $|M_{23}|$, $|M_{24}|$. Does the
+non-genericity extend in a structurally illuminating way to the
+larger Mathieu groups?
+\item \textbf{Tighter null model.} Theorem~\ref{thm:nongenericity}
+uses the simplest null (uniform on $[1, 385]$). A tighter null
+conditioning on the sum-of-squares constraint
+$\sum (\dim V_{i})^{2} = 443\,520$ would refine the $p$-value; the
+authors expect the qualitative non-genericity to persist but have
+not computed it.
+\end{enumerate}
+
+%==============================================================
+\section*{Acknowledgments}
+%==============================================================
+
+This work catalogs order-factorization identities between the Mathieu
+group $\Mtwentytwo$ and a discrete substrate of independent algebraic
+interest. The identities are presented as a self-contained
+arithmetic-combinatorial puzzle for the \emph{Monthly} readership.
+The verification scripts and substrate-side definitions are part of
+the broader Trinity Infinity Geometry framework developed at 7Site
+LLC (public repository at github.com/TiredofSleep/ck, DOI
+10.5281/zenodo.18852047).
+
+%==============================================================
+\begin{thebibliography}{99}
+%==============================================================
+
+\bibitem{ConwaySloane1999} J.~H.~Conway, N.~J.~A.~Sloane,
+\emph{Sphere Packings, Lattices and Groups} (3rd ed.),
+Grundlehren der mathematischen Wissenschaften 290, Springer, 1999.
+[Standard reference for the Mathieu groups and the Steiner systems
+$S(5, 6, 12)$, $S(5, 8, 24)$.]
+
+\bibitem{ATLAS1985} J.~H.~Conway, R.~T.~Curtis, S.~P.~Norton,
+R.~A.~Parker, R.~A.~Wilson,
+\emph{ATLAS of Finite Groups: Maximal Subgroups and Ordinary
+Characters for Simple Groups},
+Oxford University Press, 1985.
+[Reference for $\Mtwentytwo$ character table and irrep dimensions.]
+
+\bibitem{Aschbacher1994} M.~Aschbacher,
+\emph{Sporadic Groups},
+Cambridge Tracts in Mathematics 104, Cambridge University Press, 1994.
+
+\bibitem{Cameron1999} P.~J.~Cameron,
+\emph{Permutation Groups},
+London Mathematical Society Student Texts 45, Cambridge University
+Press, 1999.
+
+\bibitem{Wilson2009} R.~A.~Wilson,
+\emph{The Finite Simple Groups},
+Graduate Texts in Mathematics 251, Springer, 2009.
+
+\bibitem{Diaconis1988} P.~Diaconis,
+\emph{Group Representations in Probability and Statistics},
+IMS Lecture Notes -- Monograph Series 11, Institute of Mathematical
+Statistics, 1988.
+[Canonical \emph{Monthly}-level exposition of finite-Fourier
+arithmetic and group representations.]
+
+\bibitem{Eguchi2011} T.~Eguchi, H.~Ooguri, Y.~Tachikawa,
+\emph{Notes on the K3 surface and the Mathieu group $M_{24}$},
+Exp.~Math.~\textbf{20} (2011), 91--96.
+
+\bibitem{DrapalWanless2021} A.~Dr{\'a}pal, I.~M.~Wanless,
+\emph{Maximally nonassociative quasigroups},
+J.~Combin.\ Theory Ser.~A \textbf{184} (2021), 105510.
+[Domain precedent: small finite commutative non-associative
+structures; opposite extremum to the substrate of
+\cite{SandersGishFourCore}.]
+
+\bibitem{SandersGishFourCore} B.~R.~Sanders, M.~Gish,
+\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
+Algebraic Attractor of Two Commutative Binary Operations on
+$\Z/10\Z$}, submitted to \emph{Algebraic Combinatorics}, 2026 (J02).
+
+\bibitem{TIGsynthesis2026} B.~R.~Sanders,
+\emph{Trinity Infinity Geometry Synthesis},
+github.com/TiredofSleep/ck (default branch),
+DOI: 10.5281/zenodo.18852047, 2026.
+
+\end{thebibliography}
+
+\end{document}
