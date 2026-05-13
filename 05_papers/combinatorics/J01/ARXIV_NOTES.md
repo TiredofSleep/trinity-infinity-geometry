@@ -1,7 +1,14 @@
 # arXiv Submission Notes — J01
 
+> **🛑 ON HOLD as of 2026-05-13.** This file is the prepared arXiv submission
+> plan. arXiv announcement is part of the publication-velocity amplification
+> that is currently being held — see the [Distribution stance](../../../README.md#distribution-stance)
+> in the top-level README. The plan below is complete and ready to execute
+> when CK ships in a form ordinary people can deploy on consumer hardware.
+
 **Target categories:** primary `math.CO`, cross-list `math.NT`.
-**Same-day with JCT-A submission.**
+**Originally planned:** same-day with JCT-A submission.
+**Current status:** PREPARED but ON HOLD pending CK runtime release.
 
 ---
 

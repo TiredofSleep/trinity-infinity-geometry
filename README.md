@@ -8,7 +8,7 @@ A research program on finite-arithmetic substrates and the algebraic structures 
 **Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **Working repo (full corpus + CK runtime):** [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`)
 
-**Status**: unrefereed research program. The first 29 J-series papers have completed referee-readiness scrutiny and are publicly visible in [`05_papers/`](05_papers/). Journal submission rollout begins 2026; this repository presents the framework's architecture and key results in advance of publication, for review by researchers in adjacent fields.
+**Status**: unrefereed research program, **journal/arXiv submission on hold by author's choice**. The mathematics is verified at machine precision and publicly visible in this repository under the sovereignty license; what we are deliberately *not* doing yet is pushing it through the amplification channels (arXiv math.CO daily mailings, peer-reviewed journals, citation databases). See [Distribution stance](#distribution-stance) below for why. The first 36+ J-series manuscripts are publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
 
 ---
 
@@ -111,6 +111,43 @@ The framework does *not*:
 6. Substitute for empirical confirmation of its physics predictions. The dark-sector triple `(Ω_b, Ω_DM, Ω_Λ) = (49, 264, 687)/1000` is a structural prediction; empirical fit to DESI/Planck data is open.
 
 Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md`](04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md).
+
+---
+
+<a name="distribution-stance"></a>
+## §3.5 — Distribution stance: why submissions are on hold
+
+The mathematics in this repository is verified, runnable, and free for inspection or
+derivative work under the sovereignty license. What this repository is *not* doing yet:
+
+- pushing the J-series papers through **arXiv** (math.CO / math.NT / physics) for the daily-mailing announcement boost,
+- submitting them to **peer-reviewed journals** (JCT-A, Algebraic Combinatorics, Integers, etc.) for the credentialing step,
+- indexing them in **citation databases** (Google Scholar's structured layer, MathSciNet, Web of Science).
+
+These amplification channels matter for academic visibility — and they matter equally
+for the well-resourced actors (national labs, AI labs with massive compute, intelligence
+services) who can extract value from raw mathematics faster than ordinary people can
+build with it. Releasing a publication-velocity amplification before the runtime
+([`06_runtime/`](06_runtime/) — the Coherence Keeper) is usable on ordinary hardware
+would asymmetrically benefit exactly the actors the sovereignty license is meant to
+keep out.
+
+The hold is on **amplification, not access.** The math is in this repository, the Zenodo
+DOI ([10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)) is minted, every
+verification script runs in seconds on a stock Python install, the [`legal/`](legal/)
+layer is fully spelled out, and anyone reading this can clone, run, extend, or fork under
+the license terms. Motivated actors who crawl public repositories will find the work.
+What waits is the publication moment — and when it arrives, it arrives as
+*"and here is the math, and here is the running product anyone can deploy"* rather than
+*"and now the well-resourced get a head start."*
+
+J01, J02, J03 are submission-ready (audit-cleared, 5/5, 6/6, 11/11 verifications PASS
+respectively, cover letters drafted, submission checklists prepared at [`05_papers/combinatorics/J01/SUBMISSION_CHECKLIST.md`](05_papers/combinatorics/J01/SUBMISSION_CHECKLIST.md)
+etc.). They will be submitted when CK ships in a form ordinary people can use. The
+manuscripts, verification scripts, cover letters, highlights, and arXiv preparation
+materials are all visible in [`05_papers/`](05_papers/) — anyone who wants to take this
+math through peer review themselves, or build on it independently, can do so under the
+license terms today.
 
 ---
 

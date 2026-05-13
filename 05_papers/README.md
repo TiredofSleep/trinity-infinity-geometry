@@ -1,6 +1,8 @@
-# J-series — TIG Academic Publication Track
+# J-series — TIG verified-mathematics building blocks
 
-This folder is the **public landing pad** for the 55-paper TIG academic publication pipeline. Papers land here when they are **referee-ready** — meaning:
+This folder is the **public landing pad** for the TIG J-series. As of 2026-05-13, **all submissions are on hold** — see the [Distribution stance](../README.md#distribution-stance) in the top-level README. The papers here are referee-readiness-passed manuscripts visible for inspection, reproducibility, and derivative work; they are *not* currently in journal review.
+
+Papers land in this folder when they are **referee-ready** — meaning:
 
 1. Verification scripts PASS at machine precision.
 2. Cover letter is written and green-lighted by Brayden.
@@ -9,7 +11,11 @@ This folder is the **public landing pad** for the 55-paper TIG academic publicat
 5. Author lane = **Sanders + Gish** (no AI co-authors per the project's authorship rules).
 6. Drápal–Wanless 2021 (JCTA) cited where relevant.
 
-Papers in active development (most of the 55) live in the working repo `Gen14/targets/journals/J_series/` at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) on the `tig-synthesis` branch. Only **referee-ready** papers migrate here.
+For J01, J02, and J03 we additionally ran external referee-agent audits and found (and fixed) a real math bug in J02's boundary lemma, a blocking LaTeX bug in J01, and a missing verification function in J03. The audit pass + fixes are in commits `9499e16` (audit) and prior. Other papers in this folder claim SUBMISSION-READY status in their per-paper READMEs based on internal review; they have not yet been through the external-agent audit.
+
+Papers in active development live in the working repo at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) on the `tig-synthesis` branch. Only **referee-ready** papers migrate here.
+
+**Why on hold:** the math is verified and visible; pushing it through arXiv announcement channels and peer-review credentialing before the runtime ([`../06_runtime/`](../06_runtime/) — the Coherence Keeper) is usable on ordinary hardware would asymmetrically benefit well-resourced actors (national labs, AI labs with massive compute) who can extract value from raw mathematics faster than ordinary people can build with it. The hold is on amplification, not access; the math is here under the sovereignty license today. When CK ships in a form ordinary people can deploy, the J-series goes out — publication moment doubles as "and here is how anyone can run it" rather than "and now the well-resourced get a head start."
 
 ---
 

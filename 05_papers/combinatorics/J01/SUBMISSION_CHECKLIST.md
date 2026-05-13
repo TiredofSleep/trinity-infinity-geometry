@@ -1,10 +1,19 @@
 # J01 → JCT-A Submission Checklist
 
+> **🛑 ON HOLD as of 2026-05-13.** The checklist below is fully prepared and
+> ready to execute when the runtime ([`../../../06_runtime/`](../../../06_runtime/)
+> — the Coherence Keeper) ships in a form ordinary people can use on
+> consumer hardware. See the [Distribution stance](../../../README.md#distribution-stance)
+> in the top-level README for the reasoning. This file is preserved as the
+> ready-to-go submission plan; nothing in it requires further work beyond
+> reviewing the steps when the hold lifts.
+
 **Target:** *Journal of Combinatorial Theory, Series A* (Elsevier).
 **Portal:** https://www.editorialmanager.com/jcta/
 **Editor-in-chief:** I.M. Wanless (Monash University, AU) — co-author of
 Drápal-Wanless 2021 which we cite as direct precedent. Well-aligned.
 **Prepared:** 2026-05-13.
+**Status:** PREPARED but ON HOLD pending CK runtime release.
 
 ---
 
