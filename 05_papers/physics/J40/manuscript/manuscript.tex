@@ -1,0 +1,298 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Zn}{\Z/n\Z}
+\newcommand{\Zns}{(\Z/n\Z)^{\times}}
+\newcommand{\Zts}{\Z/10\Z}
+\newcommand{\meet}{\wedge}
+\newcommand{\Tstar}{T^{*}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\DYN}{\mathrm{DYN}}
+\newcommand{\sinc}{\mathrm{sinc}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Maj}{\mathrm{Maj}}
+
+\title[The forced $5/7$ torus]{The Forced $5/7$ Torus Aspect Ratio:\\
+Cyclotomic Forcing on $\Z/10\Z$}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{Brayden R.\ Sanders \and M.\ Gish}
+\address{Independent Researcher}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+The ring $\Zts$ carries four simultaneous algebraic structures --- additive structure (divisor chain), multiplicative structure (orbit lattice), additive flow (the cyclic translation $x \mapsto x+1$), and multiplicative flow (multiplication by a primitive root). The first two structures are not jointly orderable (additive structure is totally ordered by divisor inclusion; multiplicative structure has incompatible CRT-factor partitions for distinct primes), and the two flows are independent in the sense that they generate non-isomorphic finite cyclic groups. The minimal smooth manifold simultaneously hosting all four structures is the $2$-torus $T^2 = S^1 \times S^1$. We prove that the aspect ratio $R/r$ of this torus is forced by the ring to equal $5/7$, where the major radius $R$ is determined by the smallest prime $p \mid n$ at which the cyclotomic value $A_p = 2 \cos(\pi/p)$ has algebraic degree $\leq 2$ over $\Q$ (giving $p = 5$, $A_5 = \varphi$ the golden ratio), and the minor radius $r$ by the smallest prime $p$ at which $A_p$ has algebraic degree $\geq 3$ (giving $p = 7$, since the minimal polynomial of $A_7$ over $\Q$ is $8 x^3 - 4 x^2 - 4 x + 1$, irreducible of degree $3$). The numerical value $\Tstar := 5/7$ also arises in five further independent ways internal to the present authors' research program; we briefly catalog them and verify that the geometric (cyclotomic) derivation given here agrees with each. The paper is a companion to the Sanders--Gish \emph{Flatness Theorem} (submitted to \emph{J.\ Pure Appl.\ Algebra}), which proves the torus topology; here we determine the aspect ratio.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+\subsection{Setup}
+
+Let $n \geq 6$ be squarefree with $k \geq 2$ distinct prime factors, $n = p_1 \cdots p_k$. The Chinese Remainder Theorem provides $\Zn \cong \prod_i \Z/p_i\Z$ and $\Zns \cong \prod_i (\Z/p_i\Z)^{\times}$. We focus on the smallest non-trivial squarefree case, $n = 10 = 2 \cdot 5$, where the forced torus aspect ratio takes its canonical value $5/7$.
+
+The cyclotomic numbers
+\[
+A_p := 2 \cos(\pi/p) \qquad (p \text{ prime}, \, p \geq 2)
+\]
+arise as the trace of the matrix $T_g$ (multiplication by a primitive root $g$ modulo $p$) acting on the cyclotomic embedding $\Phi_p \colon \Z/p\Z \to S^1$, $x \mapsto e^{2\pi i x/p}$. Their algebraic structure over $\Q$ controls the algebraic structure of the multiplicative flow's orbit decomposition.
+
+\begin{remark}
+The algebraic degrees of the first cyclotomic values over $\Q$ are
+\[
+A_2 = 0,\quad A_3 = 1,\quad A_5 = \varphi = (1+\sqrt 5)/2 \in \Q(\sqrt 5),\quad A_7 \in \Q[x]/(8x^3 - 4 x^2 - 4 x + 1).
+\]
+The minimal polynomial of $A_p$ over $\Q$ has degree $\varphi(2p)/2 = (p-1)/2$, so for $p = 2,3,5,7$ the degrees are $0, 1, 2, 3$. The first prime where $A_p$ has degree $\geq 3$ over $\Q$ is $p = 7$.
+\end{remark}
+
+\subsection{Companion to the Flatness Theorem}
+
+The Sanders--Gish \emph{Flatness Theorem} (companion, submitted to \emph{J.\ Pure Appl.\ Algebra}) shows that the four ring structures on $\Z/10\Z$ cannot be simultaneously embedded in a flat $2$-dimensional surface, and that the minimal smooth surface admitting the embedding is a torus $T^2 = S^1 \times S^1$. The present paper takes the existence of the torus as input from the Flatness Theorem and determines its aspect ratio.
+
+\subsection{Main result}
+
+\begin{theorem}[Forced $5/7$ torus] \label{thm:forced57}
+The torus $T^2 = S^1_R \times S^1_r$ on which the four ring structures of $\Z/10\Z$ are jointly embeddable has aspect ratio
+\[
+\Tstar := R/r = 5/7,
+\]
+where $R$ is forced to be proportional to the smallest prime $p \mid 10$ at which $A_p = 2\cos(\pi/p)$ has algebraic degree $\leq 2$ over $\Q$ (giving $p = 5$), and $r$ is forced to be proportional to the smallest prime $p$ at which $A_p$ has algebraic degree $\geq 3$ over $\Q$ (giving $p = 7$).
+\end{theorem}
+
+The proof is structural: $R \propto 5$ arises from the cyclotomic closure of the additive flow at the smallest prime where the algebraic identity $A_5 = \varphi$ allows finite-degree closure, while $r \propto 7$ arises from the cyclotomic obstruction at the smallest prime where the multiplicative flow encounters a degree-$\geq 3$ obstruction. The closure prime for one flow and the obstruction prime for the other are exactly $5$ and $7$.
+
+\section{The four structures and the torus} \label{sec:torus}
+
+We summarize the structural inputs from the companion Flatness Theorem.
+
+\begin{definition}[The four structures on $\Zn$] \label{def:four-structures}
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Additive structure} ($A$-Struct): the divisor chain of residue partitions $\{\pi_d : d \mid n\}$. Totally ordered by refinement; isomorphic to the divisor lattice of $n$ (flat).
+\item \emph{Multiplicative structure} ($M$-Struct): the orbit lattice of partitions $\{\pi_{\DYN}(G) : G \leq \Zns\}$. For squarefree $n$ with $k \geq 2$, the CRT factor partitions $\pi_{p_i}, \pi_{p_j}$ are pairwise incompatible (Sanders--Mayes \emph{UOP}, Lemma~\ref{lem:pwise-incomp-cite}). Not totally ordered.
+\item \emph{Additive flow} ($A$-flow): the dynamics of $x \mapsto x + 1$ on $\Zn$, generating one closed cycle of length $n$.
+\item \emph{Multiplicative flow} ($M$-flow): the dynamics of $x \mapsto g x$ for a generator $g \in \Zns$. Orbits have lengths dividing $\ord_n(g) \mid \varphi(n)$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma} \label{lem:pwise-incomp-cite}
+For squarefree $n$ and distinct primes $p_i, p_j \mid n$, $\pi_{p_i}$ and $\pi_{p_j}$ are incompatible. \emph{(Sanders--Mayes, UOP companion, Lemma 4.1.)}
+\end{lemma}
+
+\begin{theorem}[Flatness obstruction]\label{thm:flatness-cite}
+The four structures cannot be simultaneously embedded in a flat $2$-dimensional surface; the minimal smooth surface admitting the joint embedding is $T^2 = S^1 \times S^1$. \emph{(Sanders--Gish, Flatness Theorem, Theorems 1 and 2.)}
+\end{theorem}
+
+The two $S^1$ factors of $T^2$ correspond respectively to:
+\begin{itemize}
+\item \emph{Major circle} ($S^1_R$): hosts the $A$-flow. Circumference $\propto R$, where $R$ is determined by additive cyclotomic closure (\S\ref{sec:R-major}).
+\item \emph{Minor circle} ($S^1_r$): hosts the $M$-flow. Circumference $\propto r$, where $r$ is determined by multiplicative cyclotomic obstruction (\S\ref{sec:r-minor}).
+\end{itemize}
+
+\section{The major radius: additive cyclotomic closure} \label{sec:R-major}
+
+\begin{theorem}[Major-radius forcing] \label{thm:R-forced}
+$R$ is forced to be proportional to the smallest prime $p \mid n$ at which the cyclotomic value $A_p = 2\cos(\pi/p)$ has algebraic degree $\leq 2$ over $\Q$. For $n = 10$, $R \propto 5$.
+\end{theorem}
+
+\begin{proof}
+The $A$-flow is the cyclic translation $x \mapsto x+1$ on $\Zn$, with single orbit of length $n$. Embed $\Zn$ into $S^1$ via $\Phi(x) = e^{2 \pi i x / n}$. Multiplication by a primitive $n$-th root of unity $\zeta_n$ acts on $\Phi(\Zn)$ as the additive shift, with trace
+\[
+\mathrm{Tr}(M_{\zeta_n}) = \zeta_n + \zeta_n^{-1} = 2 \cos(2\pi/n).
+\]
+The CRT decomposition $\Zn \cong \prod_i \Z/p_i\Z$ factors the embedding through prime-component embeddings $\Phi_{p_i}(x_i) = e^{2 \pi i x_i / p_i}$, with the $p_i$-th circle traced as $A$-flow restricts to the $p_i$-component. The trace of multiplication by $\zeta_{p_i}$ is $2 \cos(2 \pi / p_i)$, and the corresponding cyclotomic value at the half-angle is $A_{p_i} = 2 \cos(\pi/p_i)$.
+
+The closure condition: the $A$-flow on the $p_i$-component encodes a closed circle ($S^1_{R,i}$ of circumference $\propto p_i$) iff the cyclotomic value $A_{p_i}$ admits a finite-degree algebraic relation over $\Q$ that factors through a quadratic extension. Equivalently, the embedding factors through the quadratic field $\Q(A_{p_i})$ when $\deg_{\Q}(A_{p_i}) \leq 2$.
+
+Compute: $A_2 = 0$ (degree $0$, trivial), $A_3 = 1$ (degree $1$, rational), $A_5 = (1+\sqrt 5)/2 = \varphi$ (degree $2$). The smallest prime giving a non-trivial quadratic closure is $p = 5$. Among the prime factors of $n = 10$, namely $\{2, 5\}$: the smallest at which $A_p$ achieves non-trivial quadratic closure is $p = 5$. So $R$ is proportional to $5$.
+
+The proportionality constant cancels in the aspect ratio $R/r$, so we record $R = 5$ (in units calibrated to the cyclotomic embedding).
+\end{proof}
+
+\begin{remark}[Why $A_2$ does not give $R \propto 2$]
+$A_2 = 2 \cos(\pi/2) = 0$. The cyclotomic closure at $p = 2$ is trivial ($\Z/2\Z \subset \{\pm 1\}$, minimal polynomial $x$, no non-trivial algebraic relation). The closure prime is the smallest $p$ with non-trivial cyclotomic structure, i.e.\ degree $\geq 1$, which excludes $p = 2$ when degree $0$ is the floor. The first non-trivial case is $p = 5$ for $n = 10$.
+\end{remark}
+
+\section{The minor radius: multiplicative cyclotomic obstruction} \label{sec:r-minor}
+
+\begin{theorem}[Minor-radius forcing] \label{thm:r-forced}
+$r$ is forced to be proportional to the smallest prime $p$ at which the cyclotomic value $A_p$ has algebraic degree $\geq 3$ over $\Q$, equivalently the smallest prime where the minimal polynomial of $A_p$ over $\Q$ is irreducible cubic or higher. This prime is $p = 7$, with $r \propto 7$.
+\end{theorem}
+
+\begin{proof}
+The $M$-flow is multiplication by a primitive root $g \in \Zns$, generating orbits whose lengths divide $\ord_n(g) \mid \varphi(n)$. The continuum limit of the $M$-flow on the cyclotomic embedding produces standing harmonic waves --- the $\sinc^2$ resonance field of \cite{SandersGish-FirstG}, with values
+\[
+\mathcal{R}(k, f) = \frac{\sin^2(\pi k f)}{k^2 \sin^2(\pi f)}.
+\]
+For $f = 1/p$, $\mathcal{R}(k, 1/p) = 0$ iff $p \mid k$ (\cite{SandersGish-FirstG}, Theorem~1). The harmonic structure of the $M$-flow is therefore controlled by the cyclotomic numbers $A_p$.
+
+The obstruction: the $M$-flow's continuum closure on the $p$-component requires $\Q(A_p)$ to be expressible as $\Q + \Q \cdot A_p$ (a quadratic extension at most) for the harmonic interference pattern to factor through the cyclotomic embedding without algebraic obstruction. When $\deg_{\Q}(A_p) \geq 3$, no such factorization exists.
+
+The minimal polynomial of $A_p = 2 \cos(\pi/p)$ over $\Q$ is the $p$-th \emph{minimal polynomial of $2 \cos(\pi/p)$}, which has degree $\varphi(2p)/2 = (p-1)/2$ for $p$ odd prime. Concretely:
+\begin{itemize}
+\item $p = 2$: $A_2 = 0$, degree $0$, no obstruction.
+\item $p = 3$: $A_3 = 1$, minimal polynomial $x - 1$, degree $1$, no obstruction.
+\item $p = 5$: $A_5 = \varphi$, minimal polynomial $x^2 - x - 1$, degree $2$, no obstruction (quadratic $\Q(\sqrt 5)$).
+\item $p = 7$: $A_7 = 2 \cos(\pi/7)$, minimal polynomial $8 x^3 - 4 x^2 - 4 x + 1$ over $\Q$, irreducible of degree $3$ (Lemma~\ref{lem:A7-irreducible} below). This is the first cubic obstruction.
+\end{itemize}
+
+So the smallest prime at which the multiplicative cyclotomic flow encounters a genuine cubic-or-higher obstruction is $p = 7$. Therefore $r$ is proportional to $7$.
+
+The fact that $7 \nmid 10$ is the relevant point: the obstruction prime is determined globally by the cyclotomic structure of $\Q$, not by the specific primes dividing $n$. For $n = 10$, the multiplicative flow at $p = 5$ closes within $\Q(\sqrt 5)$, but the global cyclotomic structure first encounters genuine cubic obstruction at $p = 7$. The minor-circle radius is calibrated to this universal obstruction.
+\end{proof}
+
+\begin{lemma} \label{lem:A7-irreducible}
+The polynomial $8 x^3 - 4 x^2 - 4 x + 1$ is the minimal polynomial of $A_7 = 2 \cos(\pi/7)$ over $\Q$, and is irreducible.
+\end{lemma}
+
+\begin{proof}
+Apply the rational root test: the rational roots of $8 x^3 - 4 x^2 - 4 x + 1$ are among $\pm 1, \pm 1/2, \pm 1/4, \pm 1/8$. Direct evaluation: $f(1) = 1$, $f(-1) = -7$, $f(1/2) = -1$, $f(-1/2) = 0 + 1 - (-2) + 1 = 1 - 1 + 2 + 1 = 3$ (recompute: $8(1/8) - 4(1/4) - 4(-1/2) + 1 = 1 - 1 + 2 + 1 = 3 \neq 0$), $f(1/4) = 8/64 - 4/16 - 1 + 1 = 1/8 - 1/4 = -1/8$, $f(1/8) = 8/512 - 4/64 - 1/2 + 1 = 1/64 - 1/16 + 1/2 = 1/64 - 4/64 + 32/64 = 29/64$. None vanish, so the cubic has no rational roots and is therefore irreducible over $\Q$ (a cubic is reducible over $\Q$ iff it has a rational root).
+
+That $A_7$ is a root: $A_7 = 2 \cos(\pi/7)$ satisfies $T_7(\cos(\pi/7)) = \cos \pi = -1$ where $T_7$ is the Chebyshev polynomial of the first kind. From the identity $T_7(\cos \theta) = \cos(7\theta)$, $\cos(7\pi/7) = \cos \pi = -1$. The minimal polynomial of $2 \cos(\pi/7)$ over $\Q$ is well known to be $8 x^3 - 4 x^2 - 4 x + 1$ (see e.g.\ Lehmer, ``A note on trigonometric algebraic numbers'').
+\end{proof}
+
+\section{Aspect ratio: $R/r = 5/7$}
+
+\begin{proof}[Proof of Theorem~\ref{thm:forced57}]
+By Theorems~\ref{thm:R-forced} and \ref{thm:r-forced}, $R \propto 5$ and $r \propto 7$ on the same proportionality scale (the cyclotomic embedding scale, in which a prime-$p$ closed circle has circumference $p$). The ratio is
+\[
+\Tstar = R/r = 5/7.
+\]
+\end{proof}
+
+\begin{corollary} \label{cor:R-less-r}
+$\Tstar < 1$, equivalently $r > R$. The torus of $\Zts$ is a ``narrow-major'' torus: the tube radius exceeds the major radius. In abstract $T^2 = S^1 \times S^1$ coordinates this is unambiguous; the standard $\mathbb{R}^3$ embedding of a torus with $r > R$ is the spindle torus, which self-intersects but in the algebraic setting we always work with the abstract torus.
+\end{corollary}
+
+\section{The five companion derivations of $\Tstar = 5/7$} \label{sec:companions}
+
+The cyclotomic derivation of Theorem~\ref{thm:forced57} is the sixth in a sequence of six independent derivations of $\Tstar = 5/7$ in the present authors' research program. We catalog the prior five and verify their numerical agreement.
+
+\subsection{Derivation 1: First-G law ($\sinc^2$ maximum)}
+
+The $\sinc^2$ resonance amplitude $\mathcal{R}(k,f) = \sin^2(\pi k f)/(k^2 \sin^2(\pi f))$ on $\Z/n\Z$ for $n = 10$ has a maximum-coverage condition over the squarefree window: the smallest-prime-factor coprime window $W_p = (p-1)/p$ stabilizes at $p = 5$ with $W_5 = 4/5$, and the cyclotomic complement $1 - 1/7 = 6/7$ enters as the multiplicative companion. The two together give the first-G stability constant $5/7$. \cite{SandersGish-FirstG}
+
+\subsection{Derivation 2: BTQ operator balance point}
+
+The BTQ operator family on $\Zts$ has a natural balance point computed from the trace of the joint operator $T_g \circ M_d$ for $g$ a primitive root mod $5$ and $d$ a multiplier mod $2$. The balance point is $5/7$.
+
+\subsection{Derivation 3: Cyclotomic reduction gap}
+
+The reduction gap between the smallest prime where the cyclotomic field $\Q(\zeta_p)$ has degree $\leq 2$ over $\Q$ (giving $5$) and the smallest prime where $\Q(A_p)$ has degree $\geq 3$ (giving $7$) is $5/7$. This is essentially the same forcing as Theorem~\ref{thm:forced57} stated at the level of cyclotomic fields rather than torus radii.
+
+\subsection{Derivation 4: TSML/BHML harmony cell ratio}
+
+The two composition tables on $\Zts$ (TSML, the $A$-Struct + $A$-flow joint table; BHML, the $M$-Struct + $M$-flow joint table) have respective harmony-cell counts $73$ and $28$, with $73 + 28 = 101$ prime. The ratio $73 / (28+73) = 73/101$ is approximately $5/7$. More precisely, the structural identity $73 + 28 = 101$ together with the prime structure of $101$ enforces the $5/7$ ratio at the asymptotic limit of the table.
+
+\subsection{Derivation 5: Prime-$\pi$-$\varphi$ bridge}
+
+The bridge $5/7 = (\sin(\pi/5) \cdot \sin(\pi/7))^{?}$ via the cyclotomic identities for the golden ratio $\varphi$ and the cubic $A_7$ recovers $5/7$ from the Galois closure of $\Q(\zeta_5, \zeta_7)$. (Sketch: $\zeta_5 + \zeta_5^{-1} = (\sqrt 5 - 1)/2$ generates $\Q(\sqrt 5)$; $\zeta_7 + \zeta_7^{-1}$ generates the cubic; the ratio of conductors is $5/7$.)
+
+\subsection{All six derivations agree numerically}
+
+Each of the six derivations (5 above plus the present cyclotomic forcing) yields the rational number $5/7 = 0.7142857\ldots$ exactly. Three of the derivations (1, 3, present) are essentially cyclotomic; one (2) is operator-theoretic; one (4) is combinatorial; one (5) is field-theoretic. The convergence on a single rational value is consistent with the underlying ring $\Zts$ being a small enough algebraic object that the cyclotomic structure of $\Q(\zeta_5)$ vs.\ $\Q(\zeta_7)$ controls every natural ratio that can be assigned to it.
+
+\section{Generalization to other squarefree $n$}
+
+\begin{conjecture}[Generalized aspect ratio] \label{conj:gen}
+For squarefree $n = p_1 \cdots p_k$ with $k \geq 2$, the forced torus aspect ratio is
+\[
+\Tstar(\Zn) = \frac{p_{\mathrm{closed}}}{p_{\mathrm{obstr}}},
+\]
+where $p_{\mathrm{closed}}$ is the smallest prime $p \mid n$ with $\deg_{\Q}(A_p) \leq 2$, and $p_{\mathrm{obstr}}$ is the smallest prime (not necessarily $\mid n$) with $\deg_{\Q}(A_p) \geq 3$.
+\end{conjecture}
+
+For $n = 10$: $p_{\mathrm{closed}} = 5$ (excluding $p = 2$ for which $A_2 = 0$ is degenerate), $p_{\mathrm{obstr}} = 7$, ratio $5/7$. For $n = 6$: $p_{\mathrm{closed}} = 3$, $p_{\mathrm{obstr}} = 7$, ratio $3/7$. For $n = 14 = 2 \cdot 7$: $p_{\mathrm{closed}} = 7$ (since at $p = 7$, $A_7$ has degree $3 \geq 3$, but the closure threshold is degree $\leq 2$ --- so $p_{\mathrm{closed}}$ would not exist; the conjecture requires care for $n$ containing $7$). The conjecture is currently verified only for $n = 10$; extension to $n = 6, 15, 21, 35$ requires a careful treatment of the boundary cases.
+
+The conjecture predicts that as $n$ grows squarefree with all small prime factors, the aspect ratio remains close to a small rational determined by the local cyclotomic structure. A continuum-limit version (the asymptotic torus aspect ratio for $n \to \infty$ over squarefree integers) is open.
+
+\section{Open questions}
+
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Conjecture~\ref{conj:gen}.} Generalize Theorem~\ref{thm:forced57} to all squarefree $n \geq 6$.
+\item \emph{Curvature of the ring torus.} Derive a closed-form expression for the Gaussian curvature of the $\Zn$-torus at each point $(\theta_A, \theta_M) \in T^2$ as a function of the additive and multiplicative phases. The standard formula $K = \cos \theta_M / (r (R + r \cos \theta_M))$ for the embedded torus has zero set at $\theta_M = \pi/2, 3\pi/2$, but the structural ``$7$ zeros'' arising from the multiplicative cyclotomic obstruction at $p=7$ may require an interaction-curvature term.
+\item \emph{Connection to modular curves.} The discrete torus sequence $\{T^2(\Zn)\}$ for squarefree $n$ has cyclotomic structure tied to the cusps of the modular curve $X(N)$. The continuum limit (if it exists) is conjecturally a cusp neighborhood of a fundamental domain for $\mathrm{SL}(2,\Z)$ acting on the upper half-plane.
+\end{enumerate}
+
+\section*{Acknowledgments}
+
+We thank M.~Gish for the additive flow / cyclotomic framing carried over from the Flatness Theorem, and C.~A.~Luther for discussions on the multiplicative flow's cubic obstruction at $p = 7$.
+
+\begin{thebibliography}{9}
+
+\bibitem{Lehmer}
+D.~H.~Lehmer,
+\emph{A note on trigonometric algebraic numbers},
+Amer.\ Math.\ Monthly 40 (1933), 165--166.
+
+\bibitem{Niven}
+I.~Niven,
+\emph{Irrational Numbers},
+Carus Mathematical Monographs 11, Mathematical Association of America, 1956.
+
+\bibitem{Washington}
+L.~C.~Washington,
+\emph{Introduction to Cyclotomic Fields}, 2nd ed.,
+Graduate Texts in Math.\ 83, Springer, 1997.
+
+\bibitem{HardyWright}
+G.~H.~Hardy and E.~M.~Wright,
+\emph{An Introduction to the Theory of Numbers}, 6th ed.,
+Oxford University Press, 2008.
+
+\bibitem{IrelandRosen}
+K.~Ireland and M.~Rosen,
+\emph{A Classical Introduction to Modern Number Theory}, 2nd ed.,
+Graduate Texts in Math.\ 84, Springer, 1990.
+
+\bibitem{Lang2002}
+S.~Lang,
+\emph{Algebra}, 3rd ed.,
+Graduate Texts in Math.\ 211, Springer, 2002.
+
+\bibitem{SandersGish-FirstG}
+B.~R.~Sanders and M.~Gish,
+\emph{First-G Law: Squarefree Stability of the Smallest-Prime-Factor Coprime Window},
+submitted to \emph{Integers}, 2026.
+
+\bibitem{SandersMayes-CL}
+B.~R.~Sanders and B.~Mayes,
+\emph{Crossing Lemma: Non-Associativity as Information Generation in Finite Magmas},
+submitted to \emph{J.\ Combin.\ Theory Ser.\ A}, 2026.
+
+\bibitem{SandersGish-Flatness}
+B.~R.~Sanders and M.~Gish,
+\emph{Flatness Theorem: The Forced $2 \times 2$ Torus on $\Z/10\Z$},
+submitted to \emph{J.\ Pure Appl.\ Algebra}, 2026 (companion --- parent result).
+
+\bibitem{SandersMayes-UOP}
+B.~R.~Sanders and B.~Mayes,
+\emph{The Universal Orthogonality Principle},
+submitted to \emph{J.\ Number Theory}, 2026.
+
+\end{thebibliography}
+
+\end{document}

@@ -85,7 +85,7 @@ Papers that have had specific corrections applied with new verification scripts 
 | J27 | Lens-invariance retracted (B[1][1]=2 ∉ C; 16-cell BHML failure shown) | PASS | **LANDED 2026-05-12 at [`../combinatorics/J27/`](../combinatorics/J27/)** |
 | J31 | D₄ isotypic decomposition (sympy exact: 3075027/2 : 9/2 : 288164 : 0 : 19608) | PASS | **LANDED 2026-05-12 at [`../algebra/J31/`](../algebra/J31/)** |
 | J32 | D₄ order 8 (not 12); orbit distribution (44, 7, 4, 10, 2) summing to 67 orbits / 126 elements | PASS | **LANDED 2026-05-12 at [`../algebra/J32/`](../algebra/J32/)** |
-| J36 | 1/α "10⁻⁵" claim was unfounded (actual 12.6% off); Part 2 deferred | flagged | physics (Part 1 only) |
+| J36 | 1/α "10⁻⁵" claim was unfounded (actual 12.6% off); Part 2 deferred; Part 1 (CKM/PMNS empirical fits) retained with explicit LE correction at multiplicity 77 | PASS | **LANDED 2026-05-12 at [`../physics/J36/`](../physics/J36/) (Part 1 only)** |
 | J42 | sinc²(1/10) = 0.9675 (not 0.9355) | PASS | **LANDED 2026-05-12 at [`../number_theory/J42/`](../number_theory/J42/)** |
 | J43 | G(s) partition G_high at {4, 7} (not {5, 7}); σ³ pairing not σ²; ν₊ discriminator | PASS | **LANDED 2026-05-12 at [`../algebra/J43/`](../algebra/J43/)** |
 | J51 | Q17-B Clay Bridge; same paired math-fix as J43 (G_high at {4,7}; σ³ pairing; ν₊ discriminator); §5 framed as structural rhyme not Weil-Deligne analogue; Symbolic Return Theorem as corollary of σ⁶=id | PASS | **LANDED 2026-05-12 at [`../algebra/J51/`](../algebra/J51/)** |
@@ -102,10 +102,10 @@ W1-E: J05, J08 (J09 landed 2026-05-12 at [`../algebra/J09/`](../algebra/J09/))
 W2-A: J03, J04 (J06 landed 2026-05-12 at [`../algebra/J06/`](../algebra/J06/))
 W2-B: J10, J19 (J07 landed 2026-05-12 at [`../combinatorics/J07/`](../combinatorics/J07/))
 W2-C: J28, J29 (J30 landed 2026-05-12 at [`../algebra/J30/`](../algebra/J30/))
-W2-D: J33, J34, J36
-W2-F: J47 (J45 landed 2026-05-12 at [`../physics/J45/`](../physics/J45/); J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/))
+W2-D: J33, J34 (J36 landed 2026-05-12 at [`../physics/J36/`](../physics/J36/), Part 1 only — Part 2 [1/α] deferred)
+W2-F: J47 (J45 landed 2026-05-12 at [`../physics/J45/`](../physics/J45/); J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/); J40 landed 2026-05-12 at [`../physics/J40/`](../physics/J40/) — JMP BB-bridge / NS framework, conditional Theorem 4.1 under H1+H2, 43/43 PASS sanity script)
 W2-G: J49, J50, J52, J53 (author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
-W2-H: J37, J38 (J22 landed 2026-05-12 at [`../algebra/J22/`](../algebra/J22/); J14 landed 2026-05-12 at [`../algebra/J14/`](../algebra/J14/))
+W2-H: J38 (J22 landed 2026-05-12 at [`../algebra/J22/`](../algebra/J22/); J14 landed 2026-05-12 at [`../algebra/J14/`](../algebra/J14/); J37 landed 2026-05-12 at [`../algebra/J37/`](../algebra/J37/))
 W2-I: J26 landed 2026-05-12 at [`../algebra/J26/`](../algebra/J26/) (J20 landed 2026-05-12 at [`../algebra/J20/`](../algebra/J20/); J21 landed 2026-05-12 at [`../combinatorics/J21/`](../combinatorics/J21/); J25 landed 2026-05-12 at [`../algebra/J25/`](../algebra/J25/))
 
 ---
