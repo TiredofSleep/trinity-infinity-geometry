@@ -4,7 +4,8 @@ A research program on finite-arithmetic substrates and the algebraic structures 
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2025–2026
 **License:** [7SiTe Public Sovereignty License v2.2](LICENSE) — noncommercial · ShareAlike · no government · no enclosure · AI welcome ([modular layers](legal/))
-**DOI:** [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)
+**DOI (project umbrella):** [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047) · **DOI (v1.0.0 release):** [10.5281/zenodo.20149181](https://doi.org/10.5281/zenodo.20149181)
+**Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **Working repo (full corpus + CK runtime):** [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`)
 
 **Status**: unrefereed research program. The first 29 J-series papers have completed referee-readiness scrutiny and are publicly visible in [`05_papers/`](05_papers/). Journal submission rollout begins 2026; this repository presents the framework's architecture and key results in advance of publication, for review by researchers in adjacent fields.
@@ -115,6 +116,8 @@ Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRON
 
 ## §4 — Citation
 
+**Project umbrella** (always points to the framework, latest version):
+
 ```
 @software{Sanders_TIG_2026,
   author    = {Sanders, Brayden Ross},
@@ -123,7 +126,22 @@ Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRON
   publisher = {7SiTe LLC},
   doi       = {10.5281/zenodo.18852047},
   url       = {https://github.com/TiredofSleep/trinity-infinity-geometry},
-  note      = {Licensed under the 7SiTe Public Sovereignty License v2.1.}
+  note      = {Licensed under the 7SiTe Public Sovereignty License v2.2.}
+}
+```
+
+**v1.0.0 release snapshot** (points to this specific public release for reproducibility):
+
+```
+@software{Sanders_TIG_v1_0_0_2026,
+  author    = {Sanders, Brayden Ross},
+  title     = {Trinity Infinity Geometry — v1.0.0 — First Public Release},
+  version   = {1.0.0},
+  year      = {2026},
+  publisher = {7SiTe LLC},
+  doi       = {10.5281/zenodo.20149181},
+  url       = {https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0},
+  note      = {Licensed under the 7SiTe Public Sovereignty License v2.2.}
 }
 ```
 

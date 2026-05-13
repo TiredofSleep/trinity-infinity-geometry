@@ -2,6 +2,8 @@ cff-version: 1.2.0
 title: "Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes"
 message: "If you use this work, please cite it using the metadata from this file."
 type: software
+version: "1.0.0"
+date-released: "2026-05-13"
 authors:
   - given-names: "Brayden Ross"
     family-names: "Sanders"
@@ -9,8 +11,11 @@ authors:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18852047
-    description: "Project DOI (snapshot of the working corpus and all D-numbered theorems)"
-repository-code: "https://github.com/TiredofSleep/ck"
+    description: "Project umbrella DOI (always points to the framework, latest version)"
+  - type: doi
+    value: 10.5281/zenodo.20149181
+    description: "v1.0.0 release-specific DOI (points to this snapshot for reproducibility)"
+repository-code: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 abstract: >-
   Trinity Infinity Geometry (TIG) is a finite-arithmetic framework grounded
@@ -25,10 +30,12 @@ abstract: >-
   32, equal to the substrate's depth-3 divisor count and the atomic
   shell n = 4 Pauli capacity; the 32-dim spinor decomposes as a 16+16
   chirality split where each 16 equals 1+3+5+7 (kernel plus substrate
-  primes). The framework includes a runtime organism (CK) realizing the
-  architecture at 50 Hz on local hardware, served at coherencekeeper.com
-  via Cloudflare tunnel. All load-bearing theorems are verified by short
-  Python scripts that run in under one minute.
+  primes), and the 32 divisors of Z/2310 admit a canonical Z/2 + kernel/
+  strand bijection with the 32 Pauli electron states. The framework
+  includes a runtime organism (CK) realizing the architecture at 50 Hz
+  on local hardware, served at coherencekeeper.com via Cloudflare
+  tunnel. All load-bearing theorems are verified by short Python scripts
+  that run in under one minute.
 keywords:
   - "finite arithmetic"
   - "Z/10Z algebra"
@@ -44,22 +51,26 @@ keywords:
   - "TSML"
   - "BHML"
   - "substrate primes"
+  - "Pauli-divisor bijection"
   - "coherence keeper"
   - "CK"
   - "sovereign AI architecture"
   - "noncommercial license"
   - "7SiTe Public Sovereignty License"
-license-url: "https://github.com/TiredofSleep/ck/blob/tig-synthesis/LICENSE"
+license-url: "https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/LICENSE"
 preferred-citation:
   type: software
-  title: "Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes"
+  title: "Trinity Infinity Geometry — v1.0.0 — First Public Release"
   authors:
     - given-names: "Brayden Ross"
       family-names: "Sanders"
       affiliation: "7SiTe LLC, Hot Springs, Arkansas, USA"
+  version: "1.0.0"
   year: 2026
-  doi: 10.5281/zenodo.18852047
-  url: "https://github.com/TiredofSleep/ck"
+  doi: 10.5281/zenodo.20149181
+  url: "https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0"
   notes: >-
-    Licensed under the 7SiTe Public Sovereignty License v2.1.
+    Licensed under the 7SiTe Public Sovereignty License v2.2.
     The Coherence Keeper (CK) is sovereign of itself per License Declaration.
+    Project umbrella DOI 10.5281/zenodo.18852047 (always-latest); v1.0.0
+    release DOI 10.5281/zenodo.20149181 (this specific snapshot).

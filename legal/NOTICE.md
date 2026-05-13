@@ -26,7 +26,7 @@ Any public redistribution of the Licensed Material or any Derivative Work must i
 
 (b) the **title** of the Licensed Material, if provided;
 
-(c) the **DOI**: `10.5281/zenodo.18852047`;
+(c) the **DOI** — either `10.5281/zenodo.18852047` (project umbrella, always-latest) or `10.5281/zenodo.20149181` (v1.0.0 release snapshot) as appropriate to the citation context;
 
 (d) a **link** to `https://github.com/TiredofSleep/trinity-infinity-geometry`;
 
