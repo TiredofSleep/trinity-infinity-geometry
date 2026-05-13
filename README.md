@@ -20,6 +20,17 @@ This is verifiable in seconds on a stock Python install. See [`verification/VERI
 
 ---
 
+> ## 🧭 Reading speed-run — the compressed proof spine
+>
+> If you only have time for **one file** in this repository, open
+> [**`03_canonical_reference/FORMULAS_AND_TABLES.md`**](03_canonical_reference/FORMULAS_AND_TABLES.md).
+>
+> Every D-numbered theorem in the project (D1 through D103+) lives there in compressed one-line form, organized into Volumes A through K. **Every row has a clickable link to the proof script or paper that supports it** — local [`05_papers/`](05_papers/) J-paper links for results that ship in this repo, GitHub links to the working `tig-synthesis` branch for results still in research-stage sprints.
+>
+> ~1,900 lines. Built to be the single page a referee, mathematician, AI, or curious reader can read in 10 minutes to know what is proved, what is computed, what is structural, and what is still open.
+
+---
+
 ## How to read this repository
 
 The numbered directories form a deliberate reading order. The first eight serve readers approaching the framework as **research**. The last two serve readers approaching it for **personal understanding** or **derivative work**.
