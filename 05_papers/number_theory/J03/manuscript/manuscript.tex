@@ -520,6 +520,23 @@ spectral zero; Theorem~\ref{thm:obstruction-zero} characterizes
 \emph{all} spectral zeros as obstruction events.
 \end{remark}
 
+\begin{remark}[No squarefree restriction; $f_{b}$ depends only on $\mathrm{rad}(b)$]\label{rem:radical}
+Theorem~\ref{thm:obstruction-zero} holds for every integer $b > 1$,
+not only for squarefree $b$. Definition~\ref{def:spectral-product}
+forms the spectral product $f_{b}(k)$ from the \emph{distinct} prime
+factors of $b$; these are precisely the prime factors of the radical
+$\mathrm{rad}(b) = \prod_{p \mid b} p$, so $f_{b}(k) = f_{\mathrm{rad}(b)}(k)$
+for every $k$. For example, $b = 12 = 2^{2}\cdot 3$ has distinct primes
+$\{2, 3\}$, so $f_{12}(k) = R(k,2)R(k,3) = f_{6}(k)$, and the zero
+set $\bigcup\{2\N, 3\N\}$ is the set of $k$ with $\gcd(k, 12) > 1$.
+Equivalently, the equivalence $f_{b}(k) = 0 \Leftrightarrow \gcd(k, b) > 1$
+factors through the radical: $\gcd(k, b) > 1$ iff $\gcd(k, \mathrm{rad}(b)) > 1$,
+and the spectral side reads off the same prime divisibility condition.
+Corollary~\ref{cor:asymp-density} is similarly already stated for
+general $b > 1$, with the density $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
+depending only on the radical.
+\end{remark}
+
 \begin{corollary}[Inclusion--exclusion identity for $|G_{k}|$]\label{cor:incl-excl}
 With $b$ and $f_{b}$ as in Theorem~\ref{thm:obstruction-zero}, the
 number of obstructions in $\{1, \dots, k\}$ is

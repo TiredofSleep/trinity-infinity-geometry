@@ -104,7 +104,7 @@ def verify_closed_form():
     print("=" * 60)
     print("Theorem 2: closed form for R(k,f)")
     print("=" * 60)
-    primes = [3, 5, 7, 11, 13, 17, 19, 23]
+    primes = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
     max_err = 0.0
     n_checked = 0
     for f in primes:
