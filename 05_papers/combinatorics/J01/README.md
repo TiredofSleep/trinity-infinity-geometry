@@ -42,11 +42,13 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 ## §5 — Notes
 
-Round-3 audited; 4/4 PASS. Major-revisions per JCT-A referee (May 2026) — **all three items addressed in the 2026-05-13 referee-readiness pass**:
+Round-3 audited; **5/5 PASS** (was 4/4). Major-revisions per JCT-A referee (May 2026) — all three items addressed in the 2026-05-13 referee-readiness pass; **2026-05-13 substance upgrade** adds **Lemma 3.X (E_h closed form via Fibonacci's polynomial)** and extends the σ-bound verification range from N ≤ 100 to N ≤ 200.
 
-- ✅ **Notation unification.** Remark `rem:notation` in §2 enumerates $h:=N-1$, $\varphi(N)$, $\DIS$/$\ECHO$, $E(N)/E_h(N)$, $\varepsilon(N)$, and the three rules $\HARM$/$\VOID$/$\ECHO$ in one place. The residual count $\varepsilon(N)$ is now explicitly defined as the Case-3 count with the bound $0\le\varepsilon(N)\le 2\varphi(N)$ stated up front and proved in §\ref{sec:rate}.
-- ✅ **Subcase (1f) density.** Compressed from 8 lines to 3 lines: the key insight (both inner and outer compositions reduce to $0$ via $\VOID$ because $b,c \ne h$ blocks $\HARM$ on the inner and $m \ne h$ blocks $\HARM$ on the outer) is now stated as a single chain of three $\VOID$ applications instead of the previous case-by-case rewrite.
-- ✅ **`Four-rule' framing clarity.** Remark `rem:three-rules` after Definition~\ref{def:cl} makes the four-case display vs.\ three-rule structure explicit: there are three rules ($\HARM$, $\VOID$, $\ECHO$) in priority order, with the fourth case in the display being a fall-through default to $\HARM$ rather than a separate rule. The abstract, introduction, and cover letter all use the "three-rule" wording consistently.
+- ✅ **Notation unification.** Remark `rem:notation` in §2 enumerates $h:=N-1$, $\varphi(N)$, $\DIS$/$\ECHO$, $E(N)/E_h(N)$, $\varepsilon(N)$, and the three rules $\HARM$/$\VOID$/$\ECHO$ in one place.
+- ✅ **Subcase (1f) density.** Compressed from 8 lines to 3 lines.
+- ✅ **`Four-rule' framing clarity.** Remark `rem:three-rules` makes the four-case display vs. three-rule structure explicit.
+- ✅ **NEW (2026-05-13): Lemma 3.X (E_h closed form via Fibonacci's polynomial).** The residual count $E_h(N)$ that appears in Case 1 of the proof of Theorem 4.1 admits the explicit closed form $E_h(N) = \#\{b \in \Z/N\Z : b^2 + b - 1 \equiv 0 \pmod{N}\}$. By CRT and quadratic reciprocity (since $5 \equiv 1 \pmod{4}$), $E_h(N) = \prod_{p \mid N} E_h(p)$ with $E_h(2) = 0$, $E_h(5) = 1$, $E_h(p) = 2$ iff $p \equiv \pm 1 \pmod{5}$ (else 0). Consequently $E_h(N) = 0$ for every even $N$ and for every $N$ with a prime factor $p \equiv \pm 2 \pmod 5$, including the entire test set $\{10, 15, 21, 30, 35, 42, 66, 77, 91, 105, 154, 210\}$. This sharpens the loose $E_h \le \varphi$ inequality used in the original proof to an exact value depending only on the prime factorization of $N$. The Lemma is verified at three-way agreement (direct enumeration, polynomial root count, Legendre-symbol product) for every squarefree $N \in [3, 200]$ in the extended `verify_sigma_rate.py`.
+- ✅ **NEW (2026-05-13): Extended σ-bound verification.** The direct-enumeration test of $\sigma(N) < 2/N$ now covers every squarefree $N$ in $[3, 200]$ (was $[3, 100]$). Total runtime ~60-90 s; zero counterexamples; the showcase table in `verify_sigma_rate.py` displays values at N ∈ {3, 5, 6, 10, 15, 21, 30, 35, 42, 51, 66, 77, 91, 95, 99, 105, 110, 130, 154, 165, 182, 195}.
 
 ### Lens-ownership paragraph (insert in manuscript §0)
 

@@ -273,6 +273,88 @@ Let $\rho_N=\#\{(a,b)\in(\ZN)^{2}:\DIS(a,b)=0\}/N^{2}$. Then
 The inequality is strict for every squarefree $N>1$.
 \end{corollary}
 
+The residual count $E_{h}(N)$ that appears in Case~1 of the proof of
+Theorem~\ref{thm:rate} (the inner-$\ECHO$ output landing at $h$) admits a
+closed form via the splitting behaviour of a degree-2 polynomial.
+
+\begin{lemma}[Closed form for $E_{h}(N)$ via Fibonacci's polynomial]\label{lem:Eh}
+For squarefree $N\ge 3$, define
+\begin{equation}\label{eq:Ehdef-lemma}
+  E_{h}(N) \;:=\; \#\bigl\{(b,c)\in\{1,\dots,N-2\}^{2} :
+                          (b-1)(c-1)\equiv 1\pmod N
+                          \text{ and } b+c\equiv -1\pmod N\bigr\}.
+\end{equation}
+Then $E_{h}(N)$ equals the number of roots of
+$b^{2}+b-1\equiv 0\pmod N$ in $\Z/N\Z$.
+By the Chinese Remainder Theorem,
+\[
+  E_{h}(N) \;=\; \prod_{p\mid N} E_{h}(p),
+\]
+where for each prime $p\mid N$,
+\[
+  E_{h}(p) \;=\;
+  \begin{cases}
+    0 & \text{if } p=2,\\
+    1 & \text{if } p=5,\\
+    2 & \text{if } p \text{ is odd, } p>5, \text{ and } \left(\tfrac{5}{p}\right)=+1,\\
+    0 & \text{if } p \text{ is odd, } p>5, \text{ and } \left(\tfrac{5}{p}\right)=-1.
+  \end{cases}
+\]
+By quadratic reciprocity, for odd prime $p\ne 5$,
+$\left(\tfrac{5}{p}\right)=+1 \iff p\equiv\pm 1\pmod 5$. Consequently
+$E_{h}(N)=0$ whenever $N$ is even or has a prime factor $p\equiv\pm 2\pmod 5$.
+\end{lemma}
+
+\begin{proof}
+By~\eqref{eq:Ehdef-lemma}, $E_{h}(N)$ counts pairs
+$(b,c)\in\{1,\dots,N-2\}^{2}$ with $(b-1)(c-1)\equiv 1\pmod N$ and
+$b+c\equiv -1\pmod N$. Substituting
+$c\equiv -1-b\pmod N$ into the first relation,
+\[
+  (b-1)(c-1)
+  =(b-1)(-2-b)
+  =-(b^{2}+b-2)
+  \equiv 1\pmod N
+  \;\Longleftrightarrow\;
+  b^{2}+b-1\equiv 0\pmod N.
+\]
+The boundary conditions $b\in\{1,\dots,N-2\}$ and
+$c=(-1-b)\bmod N\in\{1,\dots,N-2\}$ exclude exactly $b\in\{0,N-1\}$,
+neither of which is a root of $b^{2}+b-1\pmod N$ (at $b=0$ the value
+is $-1$; at $b=N-1\equiv -1$ the value is $-1$ as well). Hence
+$E_{h}(N)$ equals the total number of roots of $b^{2}+b-1\equiv 0\pmod N$
+in $\Z/N\Z$.
+
+For squarefree $N$, the Chinese Remainder Theorem decomposes
+$\Z/N\Z\cong\prod_{p\mid N}\F_{p}$, and the root count factors as a
+product over primes. Modulo each prime $p\mid N$, the polynomial
+$b^{2}+b-1$ has discriminant $1+4=5$. For $p=2$: $b^{2}+b-1$ takes
+values $\{-1,1\}$ on $\F_{2}$, neither $0$. For $p=5$:
+$b^{2}+b-1\equiv (b-2)^{2}\pmod 5$, so the unique root is $b\equiv 2$.
+For odd prime $p>5$: $b^{2}+b-1$ has two distinct roots iff its
+discriminant $5$ is a quadratic residue modulo $p$; by quadratic
+reciprocity (and the fact that $5\equiv 1\pmod 4$),
+$\left(\tfrac{5}{p}\right)=\left(\tfrac{p}{5}\right)$, which is $+1$
+iff $p\equiv\pm 1\pmod 5$.
+\end{proof}
+
+\begin{remark}\label{rem:Eh-empirical}
+Lemma~\ref{lem:Eh} gives the explicit value $E_{h}(N)=0$ for every
+even $N$ and for every odd $N$ with a prime factor
+$p\equiv\pm 2\pmod 5$. In particular, on the test set
+$\{10,15,21,30,35,42,66,77,91,105,154,210\}$ of $\S\ref{sec:verify}$,
+every $N$ either is even (giving $E_{h}=0$) or has a prime factor
+in $\{3,7,13,\dots\}$ with $\left(\tfrac{5}{p}\right)=-1$ (giving
+$E_{h}=0$). For odd $N$ all of whose prime factors lie in
+$\{5\}\cup\{p:p\equiv\pm 1\pmod 5\}$ --- the smallest examples are
+$N\in\{5,11,19,29,31,41,55,59,\dots\}$ --- the count
+$E_{h}(N)=\prod_{p\mid N} E_{h}(p)$ is positive and gives the exact
+Case~1 correction term $E(N)-E_{h}(N)$ in the proof of
+Theorem~\ref{thm:rate}. The loose bound
+$E_{h}(N)\le\varphi(N)$ used in the proof remains valid; the
+present lemma sharpens it to the exact value.
+\end{remark}
+
 %% -------- section 4: rate theorem --------
 \section{The rate theorem}\label{sec:rate}
 
@@ -345,6 +427,15 @@ Then the count is $(N-2)^{2}-E(N)+E_{h}(N)$, giving the two-sided bound
   (N-2)^{2}-\varphi(N)\;\le\;\#\,\text{Case 1}\;\le\;(N-2)^{2},
 \end{equation}
 since $0\le E_{h}(N)\le E(N)\le\varphi(N)$ by Lemma~\ref{lem:echo}.
+By Lemma~\ref{lem:Eh}, $E_{h}(N)$ admits the closed form
+$E_{h}(N)=\prod_{p\mid N}E_{h}(p)$ with $E_{h}(p)\in\{0,1,2\}$
+explicit from the splitting of $b^{2}+b-1$ modulo $p$, and in
+particular $E_{h}(N)=0$ for every even $N$ and for every $N$ with a
+prime factor $p\equiv\pm 2\pmod 5$. The bound~\eqref{eq:case1-bounds}
+is therefore typically far from tight: on the test set
+$\{10,15,21,30,35,42,66,77,91,105,154,210\}$ of \S\ref{sec:verify},
+every $N$ satisfies $E_{h}(N)=0$ exactly, and the Case~1 count
+collapses to $(N-2)^{2}-E(N)$.
 
 \medskip
 \noindent\textbf{Case 2 ($c=0$, $a\neq 0$).} The substitution

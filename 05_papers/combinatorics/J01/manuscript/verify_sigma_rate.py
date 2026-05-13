@@ -11,10 +11,14 @@ Verifies, by exact enumeration:
   Echo count lemma: |{(a,b): a+b == a*b mod N}| = phi(N)
   Residual bound: epsilon(N) <= 2 phi(N)
   Asymptotic: N sigma(N) -> 2 from below as N -> infinity along squarefree N
+  Lemma E_h closed form: E_h(N) = #roots of b^2 + b - 1 = 0 (mod N)
+                         = product over p | N of E_h(p), where
+                         E_h(2)=0, E_h(5)=1, E_h(p>5)=2 iff (5/p)=+1
+  Higher-N range: sigma bound and Echo lemma extended to N <= 200.
 
 Direct enumeration of the binary operation CL_N is feasible for
-squarefree N up to a few hundred; we cap at N <= 210 for the full
-N^3 enumeration and at N <= 1000 for the lighter (Echo, sigma) checks.
+squarefree N up to a few hundred; we cap at N <= 200 for the full
+N^3 enumeration and at N <= 250 for the lighter (Echo, E_h) checks.
 
 Usage:
   python3 verify_sigma_rate.py
@@ -101,24 +105,120 @@ def verify_sigma_bound():
     print("=" * 72)
     print(f"  {'N':>5} {'sigma(N)':>14} {'2/N':>10} {'N*sigma':>10} {'within bound?':>16}")
     fails = 0
-    test_Ns = [n for n in range(3, 211) if is_squarefree(n)]
+    # Range extended to N <= 200 (was 100). Direct enumeration is O(N^3);
+    # at N = 200 each call is ~8e6 cell evaluations, ~100 squarefree N total,
+    # so total runtime is roughly 60-90 seconds on a modern laptop.
+    test_Ns = [n for n in range(3, 201) if is_squarefree(n)]
+    showcase = {3, 5, 6, 10, 15, 21, 30, 35, 42, 51, 66, 77, 91, 95, 99,
+                105, 110, 130, 154, 165, 182, 195}
     for N in test_Ns:
-        # Skip very large N for direct enumeration; cap at 100 here
-        if N > 100:
-            continue
         count, total = sigma_direct(N)
         s = count / total
         bound = 2.0 / N
         Ns = N * s
-        ok = (s < bound) or (N == 2)  # N=2 is excluded by hypothesis (squarefree N>=3)
+        ok = (s < bound) or (N == 2)
         if not ok:
             fails += 1
-        if N in {3, 5, 6, 10, 15, 21, 30, 35, 42, 51, 66, 77, 91, 95, 99}:
+        if N in showcase:
             marker = "OK" if ok else "FAIL"
             print(f"  {N:>5} {s:>14.10f} {bound:>10.6f} {Ns:>10.6f} {marker:>16}")
-    print(f"  ... (additional squarefree N up to 100 checked silently)")
-    print(f"  squarefree N tested: {len([n for n in test_Ns if n <= 100])}")
+    print(f"  ... (additional squarefree N up to 200 checked silently)")
+    print(f"  squarefree N tested: {len(test_Ns)}")
     print(f"  counterexamples:     {fails}")
+    print(f"  result: {'PASS' if fails == 0 else 'FAIL'}")
+    print()
+    return fails == 0
+
+
+# ---------------------------------------------------------------------
+# Verification: E_h closed form via Fibonacci polynomial b^2 + b - 1
+# ---------------------------------------------------------------------
+def E_h_direct(N: int) -> int:
+    """Direct enumeration of E_h(N) per equation (Ehdef-lemma)."""
+    count = 0
+    for b in range(1, N - 1):
+        for c in range(1, N - 1):
+            if ((b - 1) * (c - 1)) % N == 1 and (b + c) % N == (N - 1):
+                count += 1
+    return count
+
+
+def E_h_via_polynomial(N: int) -> int:
+    """Count roots of b^2 + b - 1 = 0 (mod N) by direct enumeration."""
+    return sum(1 for b in range(N) if (b * b + b - 1) % N == 0)
+
+
+def E_h_via_legendre(N: int) -> int:
+    """
+    E_h(N) via the factored formula: product over distinct primes p | N of
+    E_h(p), where E_h(2) = 0, E_h(5) = 1, E_h(p) = 2 iff (5/p) = +1.
+    By quadratic reciprocity (5 ≡ 1 mod 4), (5/p) = (p/5) for odd p.
+    """
+    if N <= 1:
+        return 1 if N == 1 else 0
+    # Factor N (squarefree assumption: each prime appears once)
+    pf = []
+    m = N
+    p = 2
+    while p * p <= m:
+        if m % p == 0:
+            pf.append(p)
+            while m % p == 0:
+                m //= p
+        p += 1
+    if m > 1:
+        pf.append(m)
+    result = 1
+    for p in pf:
+        if p == 2:
+            return 0  # E_h(2) = 0 forces product to 0
+        elif p == 5:
+            result *= 1
+        else:
+            # Odd p > 5: (5/p) = (p/5) by QR
+            r = p % 5
+            if r == 0:
+                # impossible for p prime and p > 5
+                return 0
+            # QRs mod 5 are {1, 4}; non-residues are {2, 3}
+            if r in (1, 4):
+                result *= 2
+            else:
+                return 0
+    return result
+
+
+def verify_eh_closed_form():
+    """
+    Cross-check three independent computations of E_h(N) for squarefree
+    N in [3, 200]:
+      (a) direct (b,c) enumeration per the definition,
+      (b) root-count of b^2 + b - 1 = 0 (mod N) (Lemma 3.X intermediate),
+      (c) factored formula via Legendre symbols (Lemma 3.X final form).
+    All three must agree on every squarefree N.
+    """
+    print("=" * 72)
+    print("Lemma E_h: three independent computations of E_h(N) must agree")
+    print("=" * 72)
+    print(f"  {'N':>5} {'direct':>8} {'roots':>8} {'legendre':>10} {'match?':>8}")
+    fails = 0
+    showcase = {5, 6, 10, 11, 15, 19, 29, 30, 31, 41, 55, 59, 105, 121, 155, 195}
+    n_checked = 0
+    for N in range(3, 201):
+        if not is_squarefree(N):
+            continue
+        n_checked += 1
+        eh_d = E_h_direct(N)
+        eh_p = E_h_via_polynomial(N)
+        eh_l = E_h_via_legendre(N)
+        match = (eh_d == eh_p == eh_l)
+        if not match:
+            fails += 1
+        if N in showcase:
+            marker = "OK" if match else "FAIL"
+            print(f"  {N:>5} {eh_d:>8} {eh_p:>8} {eh_l:>10} {marker:>8}")
+    print(f"  squarefree N tested: {n_checked} (range 3 to 200)")
+    print(f"  three-way mismatches: {fails}")
     print(f"  result: {'PASS' if fails == 0 else 'FAIL'}")
     print()
     return fails == 0
@@ -221,6 +321,7 @@ if __name__ == "__main__":
     print()
     results = [
         verify_echo_lemma(),
+        verify_eh_closed_form(),
         verify_sigma_bound(),
         verify_epsilon_bound(),
         verify_asymptotic(),
