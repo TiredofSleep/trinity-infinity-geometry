@@ -1,23 +1,30 @@
 %%% ============================================================
-%%% The First-G Event and a Discrete Sinc^2 Identity
+%%% The Discrete Fejer Quotient on Squarefree Moduli:
+%%%   Spectral Characterization, Layered Divisors, and the
+%%%   Asymptotic Corridor Average
 %%%
-%%% B.R. Sanders, M. Gish (2026)
+%%% B. R. Sanders, M. Gish (2026)
 %%% Target venue: Integers -- Electronic Journal of Combinatorial
 %%%               Number Theory
+%%% Backup venue: AMM Notes, Math. Magazine, Math. Intelligencer
 %%% MSC: 11A41, 11N05, 11A51, 11Y05, 42A16
+%%% DOI of bundle: 10.5281/zenodo.18852047
 %%%
-%%% DOI for verification scripts: 10.5281/zenodo.18852047
+%%% Merge history (2026-05-13): this manuscript consolidates the
+%%% previously separate J03 ("The First-G Event and a Discrete
+%%% Sinc^2 Identity") and J04 ("Full-Period Cancellation of R(k,f)
+%%% and the spf-Localization for Squarefree Moduli") into a single
+%%% Integers submission. Both prior manuscripts addressed the
+%%% zero structure of the discrete Fejer quotient R(k,f) on
+%%% squarefree moduli from complementary vantage points (smallest
+%%% spectral zero vs full-period cancellation; prime-product vs
+%%% divisor-product). The circular citation pattern and the
+%%% per-quarter cap concern made consolidation the right move.
+%%% The J04 manuscript is preserved per never-delete at
+%%%   05_papers/number_theory/J04/manuscript/manuscript.tex
+%%% with a clear pointer to this consolidated version.
 %%%
-%%% Source: Fork A restoration of held draft
-%%%   first_g_sinc2_FINAL.tex (private corpus, _held_first_g)
-%%% Surgical additions:
-%%%   - lens-ownership preamble (§0)
-%%%   - PROVEN/COMPUTED/RHYME/OPEN tier-discipline paragraph (§1)
-%%%   - bibliography expansion (Erdos, Pomerance, Tenenbaum,
-%%%     Iwaniec-Kowalski, Friedlander-Iwaniec)
 %%% Author lane: Sanders + Gish only.
-%%% Ported to public repo 2026-05-13 at
-%%%   05_papers/number_theory/J03/manuscript/manuscript.tex
 %%% ============================================================
 
 \documentclass[11pt,reqno]{amsart}
@@ -27,10 +34,11 @@
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{microtype}
 \usepackage{enumitem}
+\usepackage{booktabs}
 
 %% -------- theorem environments --------
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -39,20 +47,25 @@
 \newtheorem{definition}[theorem]{Definition}
 
 \theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 
 %% -------- macros --------
 \DeclareMathOperator{\spf}{spf}
 \DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Si}{Si}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Prm}{\mathbb{P}}
-\newcommand{\Zb}{\Z/b\Z}
 
 %% -------- title matter --------
-\title[The First-G event and a discrete sinc${}^{2}$ identity]%
-{The First-G Event and a Discrete Sinc${}^{2}$ Identity}
+\title[The discrete Fej\'{e}r quotient on squarefree moduli]%
+{The Discrete Fej\'{e}r Quotient on Squarefree Moduli:\\
+ Spectral Characterization, Layered Divisors, and the\\
+ Asymptotic Corridor Average}
 
 \author{B.~R.~Sanders}
 \address{7Site LLC, Hot Springs, Arkansas, USA}
@@ -64,235 +77,314 @@
 
 \date{\today}
 
-\keywords{coprimality partition, smallest prime factor, Euler totient,
-sieve of Eratosthenes, Fej\'{e}r kernel, sinc function, discrete Fourier
-identity, rectangular pulse spectrum}
+\keywords{discrete Fej\'{e}r quotient, smallest prime factor, coprimality
+partition, full-period cancellation, squarefree moduli, layered divisor
+lattice, Boolean divisor lattice, sinc function, sine integral, spectral
+product, obstruction-zero correspondence}
 
 \subjclass[2020]{11A41, 11N05, 11A51, 11Y05, 42A16}
 
 \begin{document}
 
 \begin{abstract}
-For an integer $b > 1$ and a growing alphabet $\{1,\dots,k\}$, the
-\emph{coprimality partition} of the alphabet relative to $b$ separates
-the units $C_{k}(b) = \{x : \gcd(x,b) = 1\}$ from the obstructions
-$G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b)$. We establish a spectral
-characterization of the obstruction sequence by means of a discrete
-Fej\'{e}r-type quotient
-$R(k,f) = \sin^{2}(\pi k/f)/(k^{2}\sin^{2}(\pi/f))$. The
-\emph{spectral product} $f_{b}(k) := \prod_{p\mid b,\, p \text{ prime}}
-R(k,p)$, defined as the product over the distinct prime factors of
-$b$, vanishes at an integer $k \ge 1$ if and only if $\gcd(k,b) > 1$
-(Theorem~\ref{thm:obstruction-zero}). The integer zero set of $f_{b}$
-is therefore exactly the union of arithmetic progressions
-$\bigcup_{p\mid b} p\,\N$, and $f_{b}$ acts as a continuous-in-$k$
-indicator function for the obstruction event. The smallest zero
-localizes at $k = \spf(b)$, recovering the First-G localization
-theorem $k^{\star}(b) = \spf(b)$ as a corollary
-(Theorem~\ref{thm:sync}); the asymptotic zero density of $f_{b}$
-recovers the Euler product $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
-(Corollary~\ref{cor:asymp-density}). The closed form for $R(k,f)$
-itself is the standard Fej\'{e}r-type calculation, included for
-completeness; the synchronization at $k = \spf(b)$ and the spectral
-characterization of the full obstruction sequence are the
-contributions of this note. The continuum limit
-$R(k,f) \to \sinc^{2}(k/f)$ as $f \to \infty$ is recorded as
-context~(Theorem~\ref{thm:limit}).
-The proofs are elementary throughout. Verification includes every
-squarefree $b$ in $[2,500]$ (22{,}367 $(b,k)$ pairs, zero
-counterexamples) and every prime $f$ in $[3,23]$ together with the
-spectral-product zero locus over squarefree $b \in [2,100]$ at
-exact integer arithmetic, with zero exceptions.
+For an integer $f \ge 2$ and an integer $k \ge 1$, the
+\emph{discrete Fej\'{e}r quotient}
+$R(k, f) = \sin^{2}(\pi k/f) / (k^{2} \sin^{2}(\pi/f))$ is the
+squared modulus of the $k$-element average of the geometric progression
+$e^{2\pi i j/f}$ ($j = 1, \dots, k$). We organize the zero structure of
+$R$ on squarefree moduli via three complementary results.
+\emph{(i)~Full-period cancellation} (Theorem~\ref{thm:fullperiod}):
+$R(k, f) = 0$ if and only if $f \mid k$, uniformly in $f \ge 2$.
+\emph{(ii)~Spectral characterization of the obstruction sequence}
+(Theorem~\ref{thm:obstruction-zero}): for every integer $b > 1$ with
+distinct prime factors $p_{1}, \dots, p_{r}$, the spectral product
+$f_{b}(k) := \prod_{j=1}^{r} R(k, p_{j})$ vanishes at $k \in \N$
+exactly when $\gcd(k, b) > 1$. The synchronization at the smallest
+spectral zero (Theorem~\ref{thm:sync}) localizes the First-G event of
+the coprimality partition at $k = \spf(b)$, and the asymptotic zero
+density of $f_{b}$ is the Euler product
+$1 - \varphi(\rad(b))/\rad(b)$ (Corollary~\ref{cor:asymp-density}).
+\emph{(iii)~Layered-divisor structure} (Theorem~\ref{thm:layered}):
+for squarefree $b = p_{1} \cdots p_{r}$ and the $j$-th primorial
+divisor $b_{j} = p_{1} \cdots p_{j}$, exactly $2^{j} - 1$ non-trivial
+divisors $d \mid b$ satisfy $R(b_{j}, d) = 0$. The number-theoretic
+content is bridged to the harmonic side: the discrete Fej\'{e}r
+quotient converges to the continuum
+$\sinc^{2}(k/f)$ as $f \to \infty$ with $k/f$ fixed
+(Theorem~\ref{thm:limit}), and the corridor average converges to
+the sine-integral constant
+$\frac{1}{f-1}\sum_{k=1}^{f-1} R(k, f) \to \Si(2\pi)/\pi
+\approx 0.4514$ (Theorem~\ref{thm:asymptotic}). All claims are
+verified at exact integer arithmetic or machine precision: 22{,}367
+$(b, k)$ pairs for the First-G localization, 4{,}225 $(p, k)$ pairs
+for the basic biconditional, 900 cells for the obstruction-zero
+correspondence, the Euler-product density matched to within
+$7 \times 10^{-6}$ for $b$ up to 2310, and Riemann-sum convergence
+to $\Si(2\pi)/\pi$ within $5 \times 10^{-5}$ at $f = 1000$.
 \end{abstract}
 
 \maketitle
 
-%% -------- section 0: lens and substrate (per SAVE_PLAN J03 §5) --------
+%% -------- section 0: lens and substrate --------
 \section*{Lens and substrate}\label{sec:lens}
 
-This note works on $\Z$ (no specialized substrate) with the standard
-objects: smallest prime factor $\spf(b)$, the discrete Fej\'{e}r
-quotient $R(k, f)$, and the continuum $\sinc^{2}$ function. The objects
-are not derived from a framework reading; they are the elementary
-discrete-Fourier and divisibility structures of the integers. The
-substantive contribution is the spectral characterization of the
-obstruction sequence (Theorem~\ref{thm:obstruction-zero}); the
-synchronization theorem (Theorem~\ref{thm:sync}) is the special case
-at the smallest spectral zero.
-We choose the harmonic-content presentation (smallest prime factor
-$\times$ discrete Fej\'{e}r quotient on $\Z$) over a pure
-$\Z/N\Z$-algebraic framing because the obstruction-zero correspondence
-is a statement about integers and their prime divisibility, with the
-spectral product $f_{b}$ supplying a single naturally-defined Fourier
-indicator for $\gcd(k, b) > 1$. The natural setting is $\Z$, not
-$\Z/N\Z$ with operator-labeled tables; no magma structure is required
-for the present results, and the divisibility lattice of
-$\mathrm{rad}(b)$ enters directly through the zero loci of the factors
-$R(\cdot, p_{j})$. Subsequent companion papers in our program (the
-Sanders--Gish $\sigma$-rate paper and the four-core fusion-closure
-paper~\cite{SandersGish2026Sigma,SandersGish2026FourCore}) work over
+This paper works on $\Z$ (no specialized substrate) with the standard
+objects: smallest prime factor $\spf(b)$, the radical $\rad(b)$, the
+discrete Fej\'{e}r quotient $R(k, f)$, and the continuum
+$\sinc^{2}$ function. The objects are not derived from a framework
+reading; they are the elementary discrete-Fourier and divisibility
+structures of the integers. The substantive contribution is the joint
+treatment of three complementary structural results on the zero set of
+$R(\cdot, \cdot)$ on squarefree moduli: a uniform-in-$f$ full-period
+cancellation theorem, a spectral characterization of the obstruction
+sequence by means of a product of Fej\'{e}r quotients, and a layered
+closure on the divisor lattice of squarefree $b$. We choose the
+harmonic-content presentation (smallest prime factor $\times$ discrete
+Fej\'{e}r quotient on $\Z$) over a $\Z/N\Z$-algebraic framing because
+the obstruction-zero correspondence is a statement about integers and
+their prime divisibility, with the spectral product $f_{b}$ supplying
+a single naturally-defined Fourier indicator for $\gcd(k, b) > 1$.
+The natural setting is $\Z$, not $\Z/N\Z$ with operator-labeled tables;
+no magma structure is required for the present results, and the
+divisibility lattice of $\rad(b)$ enters directly through the zero loci
+of the factors $R(\cdot, p_{j})$. Companion papers in our wider
+program~\cite{SandersGish2026Sigma,SandersGish2026FourCore} work over
 $\Z/N\Z$ with operator-labeled tables; the present paper does not
 require any of that machinery and stands alone.
 
 %% -------- section 1: introduction --------
 \section{Introduction}\label{sec:intro}
 
-The sieve of Eratosthenes marks, for each integer $b > 1$ and each
-alphabet size $k$, the elements of $\{1,\dots,k\}$ that share a prime
-factor with $b$. Following standard usage \cite{Apostol1976,
-HardyWright2008}, we organize the marking around the alphabet-size
-parameter $k$ via the coprimality partition
-\[
-  C_{k}(b) = \{x\in\{1,\dots,k\}:\gcd(x,b)=1\},
-  \qquad
-  G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b),
-\]
-and call the smallest $k$ with $|G_{k}(b)|>0$ the \emph{First-G event}
-of $b$. Section~\ref{sec:firstg} establishes that this $k$ is exactly
-the smallest prime factor $p_{1} = \spf(b)$
-(Theorem~\ref{thm:firstg}); the proof is one line of gcd reasoning.
+The discrete Fej\'{e}r quotient at integer parameters $k \ge 1$ and
+$f \ge 2$,
+\begin{equation}\label{eq:Rdef}
+  R(k, f) \;=\; \frac{\sin^{2}(\pi k/f)}{k^{2}\,\sin^{2}(\pi/f)},
+\end{equation}
+is the standard specialization of the Fej\'{e}r
+kernel~\cite{Fejer1900,Zygmund2002} to rational arguments and arises
+as the squared modulus of the $k$-element average of the geometric
+progression $e^{2\pi i j/f}$ ($j = 1, \dots, k$):
+\begin{equation}\label{eq:Rgeom}
+  R(k, f)
+  \;=\;
+  \left|\,\frac{1}{k}\sum_{j=1}^{k} e^{2\pi i j/f}\,\right|^{2}.
+\end{equation}
+The closed form~\eqref{eq:Rdef} is elementary, but the zero structure
+of $R$ has direct content for the divisibility lattice on $\Z$.
+This paper records seven theorems organizing that structure on
+squarefree moduli.
 
-Section~\ref{sec:harmonic} treats the harmonic counterpart. For an
-integer parameter $f \ge 2$, we form the unit-alphabet exponential
-sum at frequency $1/f$,
-\[
-  S(k,f) = \frac{1}{k}\sum_{j=1}^{k} e^{2\pi i j/f},
-\]
-and study its squared modulus $R(k,f) = |S(k,f)|^{2}$. This is a
-discrete analogue of the Fej\'{e}r kernel \cite{Fejer1900,Zygmund2002},
-the squared magnitude of a normalized finite exponential sum. We show
-(Theorem~\ref{thm:closedform}) that $R(k,f)$ admits the closed form
-\[
-  R(k,f) = \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)},
-\]
-and we record three immediate corollaries: $R(k,f)$ is strictly
-decreasing on $\{1,\dots,f-1\}$, takes the value $1/(f-1)^{2}$ at
-$k=f-1$, and vanishes at $k=f$.
+\paragraph{The seven theorems.} The closed form for $R$
+(Theorem~\ref{thm:closedform}) gives the underlying identity. The
+full-period cancellation $R(k, f) = 0 \Leftrightarrow f \mid k$
+(Theorem~\ref{thm:fullperiod}) is uniform in $f \ge 2$. The First-G
+localization $k^{\star}(b) = \spf(b)$ (Theorem~\ref{thm:firstg})
+identifies the smallest non-unit residue index. The spectral
+characterization (Theorem~\ref{thm:obstruction-zero}) and the
+synchronization at the smallest spectral zero
+(Theorem~\ref{thm:sync}) connect the obstruction sequence to the
+zero set of the product $f_{b}(k) = \prod_{p \mid b} R(k, p)$. The
+layered-divisor structure (Theorem~\ref{thm:layered}) on squarefree
+$b$ gives the exact count $2^{j} - 1$ of non-trivial divisors of $b$
+whose Fej\'{e}r quotient vanishes at the $j$-th primorial $b_{j}$.
+The continuum limit (Theorem~\ref{thm:limit}) reads $R(k, f)$ as a
+discrete approximant to $\sinc^{2}(k/f)$, and the asymptotic average
+across the corridor $\{1, \dots, f-1\}$ converges to the sine-integral
+constant $\Si(2\pi)/\pi \approx 0.4514$
+(Theorem~\ref{thm:asymptotic}).
 
-Section~\ref{sec:sync} states the synchronization theorem
-(Theorem~\ref{thm:sync}): for $f = p_{1} = \spf(b)$, the First-G
-event of Theorem~\ref{thm:firstg} occurs at the same alphabet-size
-value $k = p_{1}$ as the first integer zero of $R(k,p_{1})$ from
-Theorem~\ref{thm:closedform}. The two events colocalize.
+\paragraph{Positioning and contribution.} The closed form for $R$
+(Theorem~\ref{thm:closedform}) and the continuum limit
+(Theorem~\ref{thm:limit}) are classical Fej\'{e}r-kernel material,
+included to make the paper self-contained. The full-period
+cancellation (Theorem~\ref{thm:fullperiod}) and the First-G
+localization (Theorem~\ref{thm:firstg}) follow each from one line of
+elementary algebra. The substantive contributions are
+\emph{(i)} the spectral characterization of the obstruction sequence
+(Theorem~\ref{thm:obstruction-zero}): for every $b > 1$ with distinct
+prime factors $p_{1}, \dots, p_{r}$, the spectral product
+$f_{b}(k) = \prod_{j} R(k, p_{j})$ acts as a continuous-in-$k$
+indicator function for $\gcd(k, b) > 1$, with the divisibility lattice
+of $\rad(b)$ entering directly through the zero loci of the factors;
+\emph{(ii)} the layered-divisor count $2^{j} - 1$ at the $j$-th
+primorial divisor (Theorem~\ref{thm:layered}), built on the Boolean
+divisor lattice of squarefree $b$ and the uniform full-period
+cancellation; and \emph{(iii)} the closed-form evaluation of the
+corridor average as $\Si(2\pi)/\pi$ via Riemann-sum
+$\to \int_{0}^{1} \sinc^{2}(t)\, dt$ followed by integration by parts
+(Theorem~\ref{thm:asymptotic}). The asymptotic zero density of $f_{b}$
+(Corollary~\ref{cor:asymp-density}) recovers the Euler product
+$1 - \varphi(\rad(b))/\rad(b)$ as a corollary of the spectral
+characterization. Related classical work on the distribution of the
+smallest prime factor~\cite{Erdos1959,Pomerance1985,Tenenbaum2015}
+and sieve-theoretic treatments~\cite{IwaniecKowalski2004,FriedlanderIwaniec2010}
+provide the analytic-number-theory context.
 
-Section~\ref{sec:limit} treats the continuum limit: as $f\to\infty$
-with $t = k/f$ fixed, $R(k,f) \to \sinc^{2}(t)$ where
-$\sinc(t) = \sin(\pi t)/(\pi t)$ is the normalized sinc function
-\cite{Shannon1949,OppenheimSchafer2010}. This identifies $R(k,f)$
-as a discrete approximant to the rectangular-pulse power spectrum.
+\paragraph{Tier discipline.} The seven theorems all PROVE the claims
+asserted; we COMPUTE verifications via two scripts at exact integer
+arithmetic or machine-precision floating point (Section~\ref{sec:verify}).
+The exact identity $\sinc^{2}(1/2) = (2/3)/\zeta(2)$ at the corridor
+midpoint is one-line from $\zeta(2) = \pi^{2}/6$ and is cited as
+STRUCTURAL RHYME, not theorem. The corridor-midpoint substrate
+question (why $t = 1/2$ makes this identity structurally relevant) is
+OPEN, as is the question of whether $f_{b}$ admits a Ramanujan-sum or
+character-sum form beyond the inclusion-exclusion identity in
+Corollary~\ref{cor:incl-excl}.
 
-\paragraph{Tier discipline.} This paper PROVES (Theorem~\ref{thm:sync})
-the synchronization of the First-G arithmetic event with the first
-integer zero of $R(\cdot, \spf(b))$, and PROVES
-(Theorem~\ref{thm:limit}) that $R(k,f) \to \sinc^{2}(k/f)$ as
-$f \to \infty$. We COMPUTE the verifications: $22{,}367$ $(b,k)$ pairs
-over squarefree $b \le 500$ for the First-G localization (script
-\texttt{proof\_first\_g\_event.py}, runtime under $3$ s), and
-machine-precision evaluation of the closed form for $8$ primes
-(maximum deviation $4.44 \times 10^{-16}$, script
-\texttt{verify\_J03.py}). The exact identity
-$\sinc^{2}(1/2) = (2/3)/\zeta(2)$ is cited as STRUCTURAL RHYME, not
-theorem --- it follows in one line from $\zeta(2) = \pi^{2}/6$. The
-theorem-shaped question of why the corridor midpoint at $t = 1/2$
-makes this identity structurally relevant is OPEN and is the natural
-next paper.
-
-\paragraph{Positioning and contribution.} The First-G localization
-(Theorem~\ref{thm:firstg}) and the closed form for $R(k,f)$
-(Theorem~\ref{thm:closedform}) are elementary in isolation: the first
-unpacks the definition of $\spf(b)$ via a one-line gcd argument, and
-the second is a Fej\'{e}r-type calculation in finite Fourier
-analysis~\cite{Zygmund2002,OppenheimSchafer2010}. The
-$\sinc^{2}$-continuum limit (Theorem~\ref{thm:limit}) is similarly a
-direct asymptotic. The substantive content of the present note lies
-in the \emph{spectral characterization of the obstruction sequence}
-(Theorem~\ref{thm:obstruction-zero} and
-Corollaries~\ref{cor:incl-excl},~\ref{cor:asymp-density}): for every
-$b > 1$ with distinct prime factors $p_{1}, \dots, p_{r}$, the
-product
-\[
-  f_{b}(k) = \prod_{j=1}^{r} R(k, p_{j})
-\]
-of discrete Fej\'{e}r quotients vanishes at $k \in \N$ precisely
-when $\gcd(k, b) > 1$, and the synchronization theorem
-(Theorem~\ref{thm:sync}) is the special case identifying the
-\emph{smallest} such $k$ as $\spf(b)$. The spectral product $f_{b}$
-acts as a continuous-in-$k$ indicator for the obstruction event, with
-the divisibility lattice of $\mathrm{rad}(b)$ entering through the
-zero loci of the factors. The asymptotic zero density of $f_{b}$
-recovers the Euler product
-$\varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
-(Corollary~\ref{cor:asymp-density}). The contribution is therefore
-the explicit Fourier-side encoding of the divisibility structure of
-$b$ by a single, naturally-defined product spectral function, not
-merely the synchronization at one value of $k$. Related classical
-work on the distribution of the smallest prime factor
-\cite{Erdos1959,Pomerance1985,Tenenbaum2015} and sieve-theoretic
-treatments \cite{IwaniecKowalski2004,FriedlanderIwaniec2010} provide
-the analytic-number-theory context. The present note also bridges
-related work on operator-substrate composition tables over $\Zb$
-\cite{SandersGish2026Sigma} and on dimensionless scalar-field models
-with logarithmic potentials~\cite{SandersGishJohnson2026JCAP}.
-
-\paragraph{Verification.} All numerical claims are verified by exact
-computation. The First-G localization is checked for every squarefree
-$b$ in $[2,500]$ ($305$ values, $22{,}367$ $(b,k)$ pairs, zero
-counterexamples); Theorem~\ref{thm:firstg} itself does not require
-squarefree-ness and the test set is chosen for convenience and
-compatibility with the companion paper~\cite{SandersGish2026Sigma}.
-The closed form for $R(k,f)$ is checked for every prime
-$f \in \{3,5,7,11,13,17,19,23\}$ and every $k\in\{1,\dots,f+1\}$,
-with maximum closed-form deviation below machine epsilon
-($4.44\times 10^{-16}$). Verification scripts are documented in
-Section~\ref{sec:verify}.
+\paragraph{Organization.} Section~\ref{sec:setup} gives the setup.
+Section~\ref{sec:fullperiod} establishes the closed form
+(Theorem~\ref{thm:closedform}) and full-period cancellation
+(Theorem~\ref{thm:fullperiod}). Section~\ref{sec:firstg} proves the
+First-G localization (Theorem~\ref{thm:firstg}).
+Section~\ref{sec:spectral} establishes the spectral characterization
+(Theorem~\ref{thm:obstruction-zero}), records the synchronization
+(Theorem~\ref{thm:sync}) as a special case, and derives the
+inclusion-exclusion identity and asymptotic zero density
+(Corollaries~\ref{cor:incl-excl},~\ref{cor:asymp-density}).
+Section~\ref{sec:layered} proves the layered-divisor structure
+(Theorem~\ref{thm:layered}). Section~\ref{sec:asymptotic} proves the
+continuum limit (Theorem~\ref{thm:limit}) and the corridor-average
+identity (Theorem~\ref{thm:asymptotic}). Section~\ref{sec:verify}
+reports the verification. Section~\ref{sec:scope} lists scope and
+limitations.
 
 %% -------- section 2: setup --------
-\section{Setup and Notation}\label{sec:setup}
+\section{Setup and notation}\label{sec:setup}
 
-Throughout, $b$ is an integer with $b > 1$. Write $b = p_{1}^{a_{1}}
-\cdots p_{r}^{a_{r}}$ with $p_{1} < p_{2} < \cdots < p_{r}$ the
-distinct prime factors of $b$, so that $p_{1} = \spf(b)$ is the
-smallest prime factor.
-
-\begin{definition}[Coprimality partition]\label{def:partition}
-For $b > 1$ and $k \ge 1$, the coprimality partition of the alphabet
-$\{1,\dots,k\}$ relative to $b$ is the ordered pair
+Throughout, $b > 1$ is an integer with prime factorization
+$b = p_{1}^{a_{1}} \cdots p_{r}^{a_{r}}$, distinct primes
+$p_{1} < p_{2} < \cdots < p_{r}$, $\spf(b) = p_{1}$, and
+$\rad(b) = p_{1} p_{2} \cdots p_{r}$. The integer $b$ is
+\emph{squarefree} iff $b = \rad(b)$, equivalently every $a_{i} = 1$.
+The normalized sinc function is
 \[
-  C_{k}(b) = \{x \in \{1,\dots,k\} : \gcd(x,b) = 1\},
+  \sinc(x) =
+  \begin{cases}
+    \sin(\pi x)/(\pi x) & x \ne 0 \\
+    1 & x = 0
+  \end{cases},
   \qquad
-  G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b).
+  \sinc^{2}(x) = \sinc(x)^{2}.
+\]
+The discrete Fej\'{e}r quotient $R(k, f)$ is defined in~\eqref{eq:Rdef}.
+
+\begin{definition}[Coprimality partition; First-G event]\label{def:partition}
+For $b > 1$ and $k \ge 1$, the \emph{coprimality partition} of the
+alphabet $\{1, \dots, k\}$ relative to $b$ is the ordered pair
+\[
+  C_{k}(b) = \{x \in \{1, \dots, k\} : \gcd(x, b) = 1\},
+  \qquad
+  G_{k}(b) = \{1, \dots, k\} \setminus C_{k}(b).
 \]
 The \emph{First-G event} of $b$ is the integer
-\[
-  k^{\star}(b) = \min\{k \ge 1 : |G_{k}(b)| > 0\}.
-\]
+$k^{\star}(b) := \min\{k \ge 1 : |G_{k}(b)| > 0\}$.
 \end{definition}
 
-The map $b \mapsto k^{\star}(b)$ is well-defined for every $b > 1$
-because $b \in G_{b}(b)$. The main theorem of
-Section~\ref{sec:firstg} identifies $k^{\star}(b)$ explicitly.
-
-\begin{definition}[Harmonic resonance]\label{def:resonance}
-For an integer $f \ge 2$ and $k \ge 1$, define the unit-alphabet
-exponential sum at frequency $1/f$ and its squared modulus by
-\[
-  S(k,f) = \frac{1}{k}\sum_{j=1}^{k} e^{2\pi i j/f},
-  \qquad
-  R(k,f) = |S(k,f)|^{2}.
-\]
+\begin{definition}[Spectral product]\label{def:spectral-product}
+For $b > 1$ with distinct prime factors $p_{1} < \cdots < p_{r}$, the
+\emph{spectral product} of $b$ is
+\begin{equation}\label{eq:spectral-product}
+  f_{b}(k) \;:=\; \prod_{j=1}^{r} R(k, p_{j}), \qquad k \ge 1.
+\end{equation}
 \end{definition}
 
-The function $R(k,f)$ is the squared magnitude of the average of
-the first $k$ terms of the geometric progression $e^{2\pi i j/f}$;
-in finite Fourier analysis it is recognized as a discrete relative
-of the Fej\'{e}r kernel~\cite{Fejer1900,Zygmund2002}, evaluated at
-unit-alphabet sample sizes.
+By~\eqref{eq:Rdef}, $f_{b}$ has the closed form
+\[
+  f_{b}(k) \;=\; \frac{1}{k^{2r}}
+                 \prod_{j=1}^{r}
+                 \frac{\sin^{2}(\pi k/p_{j})}{\sin^{2}(\pi/p_{j})}.
+\]
 
-%% -------- section 3: First-G --------
-\section{First-G Event Localization}\label{sec:firstg}
+%% -------- section 3: full-period cancellation --------
+\section{The closed form and full-period cancellation}\label{sec:fullperiod}
+
+\begin{theorem}[Discrete Fej\'{e}r identity]\label{thm:closedform}
+For every integer $f \ge 2$ and every integer $k \ge 1$,
+\begin{equation}\label{eq:closedform}
+  R(k, f) \;=\; \frac{\sin^{2}(\pi k/f)}{k^{2}\,\sin^{2}(\pi/f)}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The geometric-series formula gives
+\[
+  \sum_{j=1}^{k} e^{2\pi i j/f}
+  \;=\;
+  e^{2\pi i/f} \cdot \frac{1 - e^{2\pi i k/f}}{1 - e^{2\pi i/f}}.
+\]
+Taking the squared modulus of $(1/k)$ times this sum and applying
+$|1 - e^{i\theta}|^{2} = 4 \sin^{2}(\theta/2)$,
+\[
+  R(k, f)
+  = \frac{1}{k^{2}}\,
+    \frac{|1 - e^{2\pi i k/f}|^{2}}{|1 - e^{2\pi i/f}|^{2}}
+  = \frac{1}{k^{2}}\,
+    \frac{4 \sin^{2}(\pi k/f)}{4 \sin^{2}(\pi/f)}
+  = \frac{\sin^{2}(\pi k/f)}{k^{2} \sin^{2}(\pi/f)}.
+\qedhere
+\]
+\end{proof}
+
+\begin{theorem}[Full-period cancellation]\label{thm:fullperiod}
+For every $f \ge 2$ and every $k \ge 1$,
+\[
+  R(k, f) = 0 \;\Longleftrightarrow\; f \mid k.
+\]
+\end{theorem}
+
+\begin{proof}
+By~\eqref{eq:closedform}, the denominator $k^{2} \sin^{2}(\pi/f)$ is
+strictly positive for every $k \ge 1$ and $f \ge 2$, so the zero set
+of $R(\cdot, f)$ is determined entirely by the numerator
+$\sin^{2}(\pi k/f)$. Now $\sin^{2}(\pi k/f) = 0 \Leftrightarrow
+\sin(\pi k/f) = 0 \Leftrightarrow \pi k/f \in \pi \Z \Leftrightarrow
+k/f \in \Z \Leftrightarrow f \mid k$.
+\end{proof}
+
+Theorem~\ref{thm:fullperiod} is the \emph{full-period} statement: the
+zeros of $R(\cdot, f)$ form the arithmetic progression
+$\{f, 2f, 3f, \dots\}$ for every $f \ge 2$, prime or composite.
+
+\begin{corollary}[Endpoint values and monotonicity]\label{cor:endpoints}
+For every $f \ge 2$:
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $R(1, f) = 1$ (full resonance at $k = 1$);
+\item $R(f - 1, f) = 1/(f - 1)^{2}$, the last positive value before
+      the first zero;
+\item $R(f, f) = 0$ (exact zero at $k = f$, per
+      Theorem~\ref{thm:fullperiod});
+\item $R(k, f)$ is strictly decreasing on $\{1, \dots, f - 1\}$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\emph{(i)} Direct from~\eqref{eq:closedform}: at $k = 1$,
+$R(1, f) = \sin^{2}(\pi/f) / \sin^{2}(\pi/f) = 1$.
+\emph{(iii)} At $k = f$, $\sin(\pi) = 0$.
+\emph{(ii)} At $k = f - 1$, $\sin(\pi(f-1)/f) = \sin(\pi - \pi/f)
+= \sin(\pi/f)$, so $R(f-1, f) = \sin^{2}(\pi/f) / ((f-1)^{2}
+\sin^{2}(\pi/f)) = 1/(f-1)^{2}$.
+\emph{(iv)} Factor~\eqref{eq:closedform} as
+$R(k, f) = (\pi/f)^{2} \sin^{-2}(\pi/f) \cdot (\sin(\pi k/f)/(\pi k/f))^{2}$.
+The first factor is constant in $k$. For $1 \le k \le f - 1$,
+$\pi k/f \in (0, \pi)$, and the function $x \mapsto \sin(x)/x$ is
+strictly decreasing on $(0, \pi)$ (its derivative
+$(x \cos x - \sin x)/x^{2}$ is negative on $(0, \pi)$ via
+$h(x) := \sin x - x \cos x$, $h(0) = 0$, $h'(x) = x \sin x > 0$ on
+$(0, \pi)$). The square of a positive strictly decreasing function
+is strictly decreasing.
+\end{proof}
+
+%% -------- section 4: First-G localization --------
+\section{First-G event localization}\label{sec:firstg}
+
+The number-theoretic side of the synchronization is the First-G
+localization theorem: the First-G event of $b$ is the smallest prime
+factor of $b$. The proof is one line of $\gcd$ reasoning and does not
+require squarefree-ness.
 
 \begin{theorem}[First-G localization]\label{thm:firstg}
-Let $b > 1$ be an integer with smallest prime factor $p_{1}=\spf(b)$.
+Let $b > 1$ be an integer with smallest prime factor $p_{1} = \spf(b)$.
 Then $k^{\star}(b) = p_{1}$. More precisely:
 \begin{enumerate}[label={\upshape(\roman*)}]
 \item $|G_{k}(b)| = 0$ for every $k$ with $1 \le k < p_{1}$, and
@@ -301,188 +393,44 @@ Then $k^{\star}(b) = p_{1}$. More precisely:
 \end{theorem}
 
 \begin{proof}
-\textit{(i)} Fix $k < p_{1}$ and $x \in \{1,\dots,k\}$. If
-$\gcd(x,b) = d > 1$, then $d$ has a prime divisor $q$ with $q\mid b$;
+\emph{(i)} Fix $k < p_{1}$ and $x \in \{1, \dots, k\}$. If
+$\gcd(x, b) = d > 1$, then $d$ has a prime divisor $q$ with $q \mid b$;
 hence $q \ge p_{1}$ by definition of $p_{1}$. But $q \mid x$ forces
-$q \le x \le k < p_{1}$, a contradiction. Therefore $\gcd(x,b) = 1$
+$q \le x \le k < p_{1}$, a contradiction. Therefore $\gcd(x, b) = 1$
 and $G_{k}(b) = \emptyset$.
-
-\textit{(ii)} At $k = p_{1}$, the element $p_{1}$ enters the alphabet,
-and $\gcd(p_{1},b) = p_{1} > 1$ since $p_{1}\mid b$, so
-$p_{1}\in G_{p_{1}}(b)$. For any $x \in \{1,\dots,p_{1}\}$ with
-$x \ne p_{1}$ we have $x < p_{1}$, so part (i) gives $\gcd(x,b)=1$.
-Thus $G_{p_{1}}(b) = \{p_{1}\}$.
+\emph{(ii)} At $k = p_{1}$, the element $p_{1}$ enters the alphabet,
+and $\gcd(p_{1}, b) = p_{1} > 1$ since $p_{1} \mid b$, so
+$p_{1} \in G_{p_{1}}(b)$. For any $x \in \{1, \dots, p_{1}\}$ with
+$x \ne p_{1}$ we have $x < p_{1}$, so part~(i) gives $\gcd(x, b) = 1$.
 \end{proof}
 
-\begin{remark}
-The proof uses only the definitions of $p_{1}$ and $\gcd$.
-Squarefree-ness of $b$ is not required. Although the proof goes
-through verbatim for non-squarefree $b$ (e.g., for $b = 12$,
-$\spf(b) = 2$ and $G_{2}(12) = \{2\}$ in the same way as
-$G_{2}(6) = \{2\}$), we restrict the verification sample to squarefree
-$b$ because that is the regime where the companion First-G application
-program lives.
+\begin{remark}\label{rem:nonsqfree}
+Theorem~\ref{thm:firstg} uses only the definitions of $p_{1}$ and
+$\gcd$; squarefree-ness of $b$ is not required. For example, at
+$b = 12$, $\spf(b) = 2$ and $G_{2}(12) = \{2\}$ in the same way as
+$G_{2}(6) = \{2\}$. The verification sample below restricts to
+squarefree $b$ for convenience only, as that is the regime where the
+companion layered-closure theorem (Theorem~\ref{thm:layered}) earns
+its keep.
 \end{remark}
 
-\begin{corollary}[Stability window]\label{cor:stability}
-For every $b > 1$ with $\spf(b) = p_{1}$, the interval
-$\{1,\dots,p_{1}-1\}$ lies entirely in $C_{p_{1}-1}(b)$. The width of
-this interval is $p_{1}-1$, and it is uniform across the family of
-all integers with the same smallest prime factor.
-\end{corollary}
-
-\begin{corollary}[Phase-transition set]\label{cor:phase}
-The image of $b\mapsto k^{\star}(b)$ over integers $b > 1$ is exactly
-the set $\Prm$ of primes.
-\end{corollary}
-
-\begin{proof}
-By Theorem~\ref{thm:firstg}, $k^{\star}(b) = \spf(b) \in \Prm$ for
-every $b > 1$. Conversely, for any prime $p$, taking $b = p$ gives
-$k^{\star}(p) = p$. Hence the image is $\Prm$.
-\end{proof}
-
-%% -------- section 4: closed form --------
-\section{The Closed Form for $R(k,f)$}\label{sec:harmonic}
-
-\begin{theorem}[Discrete sinc${}^{2}$ identity]\label{thm:closedform}
-For every integer $f \ge 2$ and every integer $k \ge 1$,
-\begin{equation}\label{eq:closedform}
-  R(k,f) \;=\; \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)}.
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-The geometric-series formula gives
-\[
-  \sum_{j=1}^{k}e^{2\pi i j/f}
-  \;=\; e^{2\pi i/f}\,\frac{1-e^{2\pi i k/f}}{1-e^{2\pi i/f}}.
-\]
-Taking the squared modulus of $(1/k)$ times this sum and applying
-the elementary identity $|1-e^{i\theta}|^{2} = 4\sin^{2}(\theta/2)$,
-\[
-  R(k,f)
-  = \frac{1}{k^{2}}\,
-    \frac{|1-e^{2\pi i k/f}|^{2}}{|1-e^{2\pi i/f}|^{2}}
-  = \frac{1}{k^{2}}\,
-    \frac{4\sin^{2}(\pi k/f)}{4\sin^{2}(\pi/f)}
-  = \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)}.
-\qedhere
-\]
-\end{proof}
-
-\begin{corollary}[Endpoint values and monotonicity]\label{cor:endpoints}
-For every prime $f \ge 2$:
-\begin{enumerate}[label={\upshape(\roman*)}]
-\item $R(1,f) = 1$ (full resonance at $k = 1$);
-\item $R(f-1,f) = 1/(f-1)^{2}$, the last positive value of
-      $R(\cdot,f)$ before the first zero at $k=f$;
-\item $R(f,f) = 0$ (exact zero at $k=f$);
-\item $R(k,f)$ is strictly decreasing on $\{1,\dots,f-1\}$.
-\end{enumerate}
-\end{corollary}
-
-\begin{proof}
-\textit{(i)}\ Direct from \eqref{eq:closedform}: at $k=1$,
-$R(1,f) = \sin^{2}(\pi/f)/\sin^{2}(\pi/f) = 1$.
-
-\textit{(iii)}\ At $k=f$: $\sin(\pi f/f) = \sin(\pi) = 0$, so
-$R(f,f) = 0$ exactly.
-
-\textit{(ii)}\ At $k=f-1$: $\sin(\pi(f-1)/f) = \sin(\pi - \pi/f)
-= \sin(\pi/f)$, so $R(f-1,f) = \sin^{2}(\pi/f)/((f-1)^{2}
-\sin^{2}(\pi/f)) = 1/(f-1)^{2}$.
-
-\textit{(iv)}\ Factor the closed form \eqref{eq:closedform} as
-\[
-  R(k,f) = \left(\frac{\pi/f}{\sin(\pi/f)}\right)^{2}
-           \left(\frac{\sin(\pi k/f)}{\pi k/f}\right)^{2}.
-\]
-The first factor is constant in $k$. For $1\le k\le f-1$ we have
-$\pi k/f\in(0,\pi)$, and the function $x \mapsto \sin x/x$ is strictly
-decreasing on $(0,\pi)$: its derivative is
-$(x\cos x - \sin x)/x^{2}$, and the function
-$h(x):= \sin x - x\cos x$ satisfies $h(0)=0$ and
-$h'(x) = x\sin x > 0$ for $x\in(0,\pi)$, hence $h(x) > 0$ throughout
-$(0,\pi)$, so $x\cos x - \sin x < 0$ and the derivative of
-$\sin x/x$ is negative. The square of a positive
-strictly decreasing function is strictly decreasing, so $R(k,f)$ is
-strictly decreasing on $\{1,\dots,f-1\}$.
-\end{proof}
-
-\begin{remark}[Connection to Fej\'{e}r-type identities]\label{rem:fejer}
-Writing $T_{k}(\theta) = \sum_{j=1}^{k}e^{ij\theta}$ for the
-one-sided partial geometric sum evaluated at $\theta = 2\pi/f$,
-\eqref{eq:closedform} is equivalent to
-$|T_{k}(\theta)|^{2}/k^{2} = \sin^{2}(k\theta/2)/(k^{2}
-\sin^{2}(\theta/2))$. This is the standard Fej\'{e}r-type
-identity~\cite{Fejer1900,Zygmund2002}, specialized to rational
-arguments $\theta/2\pi = 1/f$.
-\end{remark}
-
-%% -------- section 5: synchronization --------
-\section{Synchronization of the First-G Event and the First Integer Zero of $R$}\label{sec:sync}
-
-The First-G event of Theorem~\ref{thm:firstg} and the first integer
-zero of $R(k,f)$ from Corollary~\ref{cor:endpoints} coincide for the
-canonical choice $f = p_{1} = \spf(b)$.
-
-\begin{theorem}[Synchronization]\label{thm:sync}
-For every integer $b > 1$ with smallest prime factor $p_{1}=\spf(b)$,
-the First-G event $k^{\star}(b)$ and the first integer zero of
-$R(k,p_{1})$ in the range $\{1,\dots,p_{1}\}$ coincide:
-\[
-  k^{\star}(b) \;=\; \min\{k \in \{1,\dots,p_{1}\} : R(k,p_{1}) = 0\}
-  \;=\; p_{1}.
-\]
-\end{theorem}
-
-\begin{proof}
-Theorem~\ref{thm:firstg} gives $k^{\star}(b) = p_{1}$. By
-Theorem~\ref{thm:closedform},
-\[
-  R(k,p_{1}) = \frac{\sin^{2}(\pi k/p_{1})}{k^{2}\sin^{2}(\pi/p_{1})}.
-\]
-For $1 \le k < p_{1}$, $p_{1}$ is prime and $p_{1}\nmid k$, so
-$\pi k/p_{1}\notin\pi\Z$ and $\sin(\pi k/p_{1})\neq 0$; hence
-$R(k,p_{1}) > 0$. At $k = p_{1}$, $\sin(\pi) = 0$, so
-$R(p_{1},p_{1}) = 0$. The first integer zero of $R(\cdot,p_{1})$ in
-$\{1,\dots,p_{1}\}$ therefore occurs at $k = p_{1}$, equal to
-$k^{\star}(b)$.
-\end{proof}
-
-The synchronization is the joint observation that a single integer
-$k = p_{1}$ simultaneously witnesses two phenomena: the arithmetic
-event ``the alphabet first contains an obstruction modulo $b$'' and
-the harmonic event ``the unit-alphabet exponential sum at frequency
-$1/p_{1}$ first vanishes.''
+%% -------- section 5: spectral characterization --------
+\section{Spectral characterization of the obstruction sequence}\label{sec:spectral}
 
 The synchronization at $k = p_{1}$ extends to the entire obstruction
-sequence via a product spectral function, which we now establish.
-
-\begin{definition}[Spectral product]\label{def:spectral-product}
-Let $b > 1$ be an integer with distinct prime factors $p_{1} < p_{2}
-< \cdots < p_{r}$. The \emph{spectral product} of $b$ is
-\begin{equation}\label{eq:spectral-product}
-  f_{b}(k) \;:=\; \prod_{j=1}^{r} R(k, p_{j}), \qquad k \ge 1.
-\end{equation}
-By Theorem~\ref{thm:closedform} this has the closed form
-\[
-  f_{b}(k) \;=\; \frac{1}{k^{2r}}\,
-                 \prod_{j=1}^{r}\frac{\sin^{2}(\pi k/p_{j})}
-                                    {\sin^{2}(\pi/p_{j})}.
-\]
-\end{definition}
+sequence via the spectral product $f_{b}$ of
+Definition~\ref{def:spectral-product}.
 
 \begin{theorem}[Obstruction--zero correspondence]\label{thm:obstruction-zero}
-Let $b > 1$ with distinct prime factors $p_{1} < \cdots < p_{r}$, and
-let $f_{b}$ be the spectral product of Definition~\ref{def:spectral-product}.
-Then for every integer $k \ge 1$,
+Let $b > 1$ with distinct prime factors $p_{1} < \cdots < p_{r}$,
+and let $f_{b}$ be the spectral product of
+Definition~\ref{def:spectral-product}. Then for every integer
+$k \ge 1$,
 \begin{equation}\label{eq:obstruction-zero}
-  f_{b}(k) \;=\; 0
-  \quad\Longleftrightarrow\quad
+  f_{b}(k) = 0
+  \;\Longleftrightarrow\;
   \gcd(k, b) > 1
-  \quad\Longleftrightarrow\quad
+  \;\Longleftrightarrow\;
   k \in G_{k}(b).
 \end{equation}
 Equivalently, the zero set of $f_{b}$ in $\N$ is
@@ -494,47 +442,43 @@ distinct prime factor of $b$.
 \end{theorem}
 
 \begin{proof}
-By Theorem~\ref{thm:closedform},
-$R(k, p_{j}) = \sin^{2}(\pi k/p_{j})/(k^{2}\sin^{2}(\pi/p_{j}))$.
-For every $j$ the denominator $k^{2}\sin^{2}(\pi/p_{j})$ is strictly
-positive (since $k \ge 1$ and $p_{j} \ge 2$), so
-\[
-  R(k, p_{j}) = 0
-  \;\Longleftrightarrow\; \sin(\pi k/p_{j}) = 0
-  \;\Longleftrightarrow\; p_{j} \mid k.
-\]
-The product $f_{b}(k)$ vanishes iff some factor $R(k, p_{j})$
-vanishes iff $p_{j} \mid k$ for some $j$ iff $\gcd(k, b) > 1$
-(since the distinct prime factors of $b$ are exactly the $p_{j}$).
-The final equivalence $\gcd(k, b) > 1 \Leftrightarrow k \in G_{k}(b)$
-is Definition~\ref{def:partition}.
+By Theorem~\ref{thm:fullperiod}, $R(k, p_{j}) = 0 \Leftrightarrow
+p_{j} \mid k$. The product $f_{b}(k)$ vanishes iff some factor
+$R(k, p_{j})$ vanishes iff $p_{j} \mid k$ for some $j$ iff
+$\gcd(k, b) > 1$. The final equivalence is Definition~\ref{def:partition}.
 \end{proof}
 
-\begin{remark}\label{rem:5.1-as-special-case}
-Theorem~\ref{thm:sync} is the special case of
-Theorem~\ref{thm:obstruction-zero} at the smallest zero of $f_{b}$.
-The smallest $k \ge 1$ with $f_{b}(k) = 0$ is the smallest element
-of $\bigcup_{j} p_{j}\N$, which is $p_{1} = \spf(b)$. The
-synchronization theorem therefore localizes the \emph{first}
-spectral zero; Theorem~\ref{thm:obstruction-zero} characterizes
-\emph{all} spectral zeros as obstruction events.
-\end{remark}
+\begin{theorem}[Synchronization at the smallest spectral zero]\label{thm:sync}
+For every integer $b > 1$ with $p_{1} = \spf(b)$, the First-G event
+$k^{\star}(b)$ and the smallest integer zero of $f_{b}$ coincide at
+$k = p_{1}$:
+\[
+  k^{\star}(b)
+  \;=\;
+  \min\{k \ge 1 : f_{b}(k) = 0\}
+  \;=\;
+  p_{1}.
+\]
+\end{theorem}
 
-\begin{remark}[No squarefree restriction; $f_{b}$ depends only on $\mathrm{rad}(b)$]\label{rem:radical}
+\begin{proof}
+By Theorem~\ref{thm:firstg}, $k^{\star}(b) = p_{1}$. By
+Theorem~\ref{thm:obstruction-zero}, the zero set of $f_{b}$ is
+$\bigcup_{j} p_{j} \N$; its smallest element is $p_{1}$, the smallest
+prime factor of $b$. Both quantities equal $p_{1}$.
+\end{proof}
+
+\begin{remark}[No squarefree restriction; $f_{b}$ depends only on $\rad(b)$]\label{rem:radical}
 Theorem~\ref{thm:obstruction-zero} holds for every integer $b > 1$,
 not only for squarefree $b$. Definition~\ref{def:spectral-product}
-forms the spectral product $f_{b}(k)$ from the \emph{distinct} prime
-factors of $b$; these are precisely the prime factors of the radical
-$\mathrm{rad}(b) = \prod_{p \mid b} p$, so $f_{b}(k) = f_{\mathrm{rad}(b)}(k)$
-for every $k$. For example, $b = 12 = 2^{2}\cdot 3$ has distinct primes
-$\{2, 3\}$, so $f_{12}(k) = R(k,2)R(k,3) = f_{6}(k)$, and the zero
-set $\bigcup\{2\N, 3\N\}$ is the set of $k$ with $\gcd(k, 12) > 1$.
-Equivalently, the equivalence $f_{b}(k) = 0 \Leftrightarrow \gcd(k, b) > 1$
-factors through the radical: $\gcd(k, b) > 1$ iff $\gcd(k, \mathrm{rad}(b)) > 1$,
-and the spectral side reads off the same prime divisibility condition.
-Corollary~\ref{cor:asymp-density} is similarly already stated for
-general $b > 1$, with the density $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
-depending only on the radical.
+forms $f_{b}(k)$ from the \emph{distinct} prime factors of $b$, which
+are precisely the prime factors of $\rad(b)$, so
+$f_{b}(k) = f_{\rad(b)}(k)$ for every $k$. For example,
+$b = 12 = 2^{2} \cdot 3$ has distinct primes $\{2, 3\}$, so
+$f_{12}(k) = R(k, 2)\, R(k, 3) = f_{6}(k)$, and the zero set
+$\bigcup\{2\N, 3\N\}$ is the set of $k$ with $\gcd(k, 12) > 1$.
+Corollary~\ref{cor:asymp-density} below is similarly stated for
+general $b > 1$.
 \end{remark}
 
 \begin{corollary}[Inclusion--exclusion identity for $|G_{k}|$]\label{cor:incl-excl}
@@ -542,188 +486,319 @@ With $b$ and $f_{b}$ as in Theorem~\ref{thm:obstruction-zero}, the
 number of obstructions in $\{1, \dots, k\}$ is
 \[
   |G_{k}(b)|
-  \;=\; \#\{\,j \in \{1, \dots, k\} : f_{b}(j) = 0\,\}
-  \;=\; -\sum_{\substack{d \mid \mathrm{rad}(b)\\ d > 1}}
-              \mu(d)\,\lfloor k/d \rfloor,
+  \;=\; \#\{j \in \{1, \dots, k\} : f_{b}(j) = 0\}
+  \;=\; -\sum_{\substack{d \mid \rad(b)\\ d > 1}}
+              \mu(d)\,\lfloor k/d \rfloor.
 \]
-where $\mathrm{rad}(b) = p_{1}\cdots p_{r}$ is the radical of $b$.
 \end{corollary}
 
 \begin{proof}
 The first equality is Theorem~\ref{thm:obstruction-zero}. The second
 is the standard inclusion-exclusion count of integers in $[1, k]$
 divisible by at least one $p_{j}$, applied to the squarefree integer
-$\mathrm{rad}(b)$ (whose divisors $d$ are squarefree products of the
-$p_{j}$, and which has $\mu(d) = (-1)^{\omega(d)}$ where $\omega(d)$
-is the number of distinct prime factors).
+$\rad(b)$ (whose divisors $d$ are squarefree products of the $p_{j}$,
+$\mu(d) = (-1)^{\omega(d)}$).
 \end{proof}
 
 \begin{corollary}[Asymptotic zero density of $f_{b}$]\label{cor:asymp-density}
 For every $b > 1$ with distinct prime factors $p_{1}, \dots, p_{r}$,
 \begin{equation}\label{eq:asymp-density}
-  \lim_{k \to \infty}
-  \frac{1}{k}\,\#\{\,j \in \{1, \dots, k\} : f_{b}(j) = 0\,\}
+  \lim_{K \to \infty}
+  \frac{1}{K}\,\#\{j \in \{1, \dots, K\} : f_{b}(j) = 0\}
   \;=\; 1 - \prod_{j=1}^{r}\!\left(1 - \frac{1}{p_{j}}\right)
-  \;=\; 1 - \frac{\varphi(\mathrm{rad}(b))}{\mathrm{rad}(b)}.
+  \;=\; 1 - \frac{\varphi(\rad(b))}{\rad(b)}.
 \end{equation}
 \end{corollary}
 
 \begin{proof}
-By Theorem~\ref{thm:obstruction-zero} and
-Corollary~\ref{cor:incl-excl}, the LHS equals
-$\lim_{k\to\infty} |G_{k}(b)|/k$. The set $G_{k}(b)$ is the
-complement in $\{1, \dots, k\}$ of the set of integers coprime to
-$\mathrm{rad}(b)$; the latter has multiplicative density
-$\varphi(\mathrm{rad}(b))/\mathrm{rad}(b) =
-\prod_{j}(1-1/p_{j})$ by the Euler product
-\cite{HardyWright2008,Apostol1976}. Hence the asymptotic obstruction
-density is $1 - \prod_{j}(1-1/p_{j})$.
+By Theorem~\ref{thm:obstruction-zero} and Corollary~\ref{cor:incl-excl},
+the LHS equals $\lim_{K \to \infty} |G_{K}(b)|/K$, which by the Euler
+product for the multiplicative density of integers coprime to
+$\rad(b)$~\cite{HardyWright2008,Apostol1976} equals
+$1 - \prod_{j}(1 - 1/p_{j})$.
 \end{proof}
 
-\begin{remark}[The contribution]\label{rem:contribution}
-The classical content of Corollary~\ref{cor:incl-excl} (the
-inclusion-exclusion count of obstructions) and
-Corollary~\ref{cor:asymp-density} (the Euler-product density)
-is well-known. The contribution of
-Theorem~\ref{thm:obstruction-zero} is the \emph{spectral
-characterization}: the obstruction sequence is identified with the
-zero set of an explicit product of discrete Fej\'{e}r quotients,
-giving a Fourier-side encoding of the divisibility structure of
-$b$ that goes beyond the synchronization at a single $k$. The
-spectral product $f_{b}$ acts as a continuous (in $k$) indicator
-function for $\gcd(k, b) > 1$, with the divisibility lattice of
-$\mathrm{rad}(b)$ entering through the zero loci of the factors
-$R(\cdot, p_{j})$.
+%% -------- section 6: layered-divisor structure --------
+\section{Layered-divisor structure on squarefree moduli}\label{sec:layered}
+
+Theorem~\ref{thm:obstruction-zero} states that $f_{b}(k) = 0$ iff
+\emph{some} prime factor of $b$ divides $k$. The layered-divisor
+structure of this section refines the observation to a count: at the
+$j$-th primorial divisor of squarefree $b$, exactly $2^{j} - 1$ of the
+non-trivial divisors of $b$ produce $R(k, d) = 0$.
+
+For squarefree $b = p_{1} p_{2} \cdots p_{r}$ with
+$p_{1} < \cdots < p_{r}$, the divisor lattice is the Boolean lattice
+on $\{p_{1}, \dots, p_{r}\}$: divisors of $b$ are exactly the products
+$\prod_{i \in S} p_{i}$ for subsets $S \subseteq \{1, \dots, r\}$, with
+the non-trivial divisors ($> 1$) corresponding to non-empty subsets.
+
+\begin{theorem}[Squarefree layered-divisor structure]\label{thm:layered}
+Let $b = p_{1} p_{2} \cdots p_{r}$ be squarefree with
+$p_{1} < \cdots < p_{r}$. The set
+\[
+  Z(b)
+  \;:=\;
+  \{k \in \{1, \dots, b\} : R(k, d) = 0
+   \text{ for at least one non-trivial divisor } d \mid b\}
+\]
+satisfies the following three statements.
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $Z(b) = \{k \in \{1, \dots, b\} : \gcd(k, b) > 1\}$.
+\item The smallest element of $Z(b)$ is $k = p_{1} = \spf(b)$.
+\item For each $j \in \{1, \dots, r\}$, set $b_{j} = p_{1} p_{2}
+\cdots p_{j}$ (the $j$-th primorial divisor of $b$). The number of
+non-trivial divisors $d \mid b$ for which $R(b_{j}, d) = 0$ is exactly
+$2^{j} - 1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(i)} By Theorem~\ref{thm:fullperiod}, $R(k, d) = 0 \Leftrightarrow
+d \mid k$. So $k \in Z(b)$ iff some non-trivial divisor $d \mid b$
+satisfies $d \mid k$, iff $\gcd(k, b)$ has a non-trivial divisor, iff
+$\gcd(k, b) > 1$.
+\emph{(ii)} By~(i), the smallest element of $Z(b)$ is the smallest
+$k \in \{1, \dots, b\}$ with $\gcd(k, b) > 1$, which by
+Theorem~\ref{thm:firstg} is $\spf(b) = p_{1}$.
+\emph{(iii)} Fix $j$ and write $b_{j} = p_{1} \cdots p_{j}$. A
+non-trivial divisor $d \mid b$ is of the form $d = \prod_{i \in S} p_{i}$
+for some non-empty subset $S \subseteq \{1, \dots, r\}$. By
+Theorem~\ref{thm:fullperiod}, $R(b_{j}, d) = 0 \Leftrightarrow d \mid b_{j}$.
+A divisor $d = \prod_{i \in S} p_{i}$ divides $b_{j} = \prod_{i=1}^{j}
+p_{i}$ iff $S \subseteq \{1, \dots, j\}$ (here we use squarefree-ness
+of $b$, which makes the divisor lattice Boolean). The number of
+non-empty subsets of $\{1, \dots, j\}$ is $2^{j} - 1$.
+\end{proof}
+
+\begin{remark}[Non-squarefree extension]\label{rem:layered-nonsf}
+If $b$ is not squarefree, write $b = \rad(b) \cdot m$ with $m \ge 1$.
+Theorem~\ref{thm:layered} then applies to $\rad(b)$, and the count
+$2^{j} - 1$ at the $j$-th primorial divisor of $\rad(b)$ remains
+exact. The divisor lattice of $b$ itself acquires multiplicities, and
+the full non-squarefree count appears not to admit a closed form as
+compact as $2^{j} - 1$.
 \end{remark}
 
-%% -------- section 6: continuum limit --------
-\section{The Continuum Limit and the Rectangular Pulse}\label{sec:limit}
+%% -------- section 7: continuum + asymptotic --------
+\section{Continuum and asymptotic limits}\label{sec:asymptotic}
 
-\begin{theorem}[$\sinc^{2}$ continuum limit]\label{thm:limit}
-Let $\sinc(t) = \sin(\pi t)/(\pi t)$ for $t \ne 0$ and $\sinc(0)=1$.
-Then for every $t \in \R$ with $t > 0$,
+The harmonic side of the picture is completed by two limit statements:
+a pointwise continuum limit identifying $R(k, f)$ with a discrete
+approximant of $\sinc^{2}(k/f)$, and an averaged limit identifying the
+corridor mean of $R(\cdot, f)$ with $\Si(2\pi)/\pi$.
+
+\begin{theorem}[Continuum limit; rectangular-pulse spectrum]\label{thm:limit}
+For every $t \in \R$ with $t > 0$,
 \[
-  \lim_{f\to\infty,\ k/f \to t}
-  R(k,f) \;=\; \sinc^{2}(t).
+  \lim_{f \to \infty,\ k/f \to t} R(k, f) \;=\; \sinc^{2}(t).
 \]
 \end{theorem}
 
 \begin{proof}
-From \eqref{eq:closedform}, $R(k,f) = \sin^{2}(\pi k/f)/(k^{2}
-\sin^{2}(\pi/f))$. As $f \to \infty$ with $k/f \to t$ fixed,
-$k \cdot \sin(\pi/f) = (\pi/f)\cdot k \cdot (1 + O(1/f^{2}))
-\to \pi t$, so $k^{2}\sin^{2}(\pi/f) \to \pi^{2} t^{2}$. The
-numerator satisfies $\sin^{2}(\pi k/f) \to \sin^{2}(\pi t)$.
-Hence
-\[
-  R(k,f) \;\to\; \frac{\sin^{2}(\pi t)}{\pi^{2}t^{2}} \;=\; \sinc^{2}(t).
-  \qedhere
-\]
+From~\eqref{eq:closedform}, $R(k, f) = \sin^{2}(\pi k/f) /
+(k^{2} \sin^{2}(\pi/f))$. As $f \to \infty$ with $k/f \to t$ fixed,
+$k \cdot \sin(\pi/f) = (\pi/f) \cdot k \cdot (1 + O(1/f^{2}))
+\to \pi t$, so $k^{2} \sin^{2}(\pi/f) \to \pi^{2} t^{2}$. The
+numerator satisfies $\sin^{2}(\pi k/f) \to \sin^{2}(\pi t)$. Hence
+$R(k, f) \to \sin^{2}(\pi t)/(\pi^{2} t^{2}) = \sinc^{2}(t)$.
 \end{proof}
 
-\begin{remark}[Rectangular pulse spectrum]\label{rem:rectangular}
-The function $\sinc^{2}(t)$ is the power spectral density of the
-rectangular pulse $\mathbf{1}_{[0,1]}$, by direct evaluation of the
-Fourier transform~\cite{Shannon1949,OppenheimSchafer2010}.
-Theorem~\ref{thm:limit} therefore identifies $R(k,f)$ as a discrete
-approximant to the rectangular-pulse spectrum sampled at rational
-arguments $k/f$. The first integer zero of the discrete approximant
-$R(\cdot,f)$, which by Corollary~\ref{cor:endpoints}(iii) sits at
-$k = f$, is the discrete analogue of the first zero of $\sinc^{2}$
-at $t = 1$.
-\end{remark}
-
 \begin{remark}[Specific exact values; structural rhyme]\label{rem:exactvalues}
-Two evaluations of $\sinc^{2}$ that arise naturally as continuum
-limits of $R(k,f)$ at rational arguments:
+Two exact evaluations of $\sinc^{2}$ that arise as continuum limits of
+$R(k, f)$ at rational arguments:
 \begin{align*}
   \sinc^{2}(1/2) &= \frac{4}{\pi^{2}} = \frac{2/3}{\zeta(2)}, \\
   \sinc^{2}(1/10) &= \frac{25(\sqrt{5}-1)^{2}}{4\pi^{2}}.
 \end{align*}
-The first identity follows from $\sin(\pi/2) = 1$ together with
-$\zeta(2) = \pi^{2}/6$ (one-line consequence). It is cited here as a
-\emph{structural rhyme}, not as a theorem of the present paper: the
-question of why the corridor midpoint at $t = 1/2$ makes this
-identity structurally relevant is open. The second identity follows
-from $\sin(\pi/10) = (\sqrt{5}-1)/4$. Discrete approximants
-$R(k,f)$ with $k/f$ near these rational arguments converge to the
-displayed exact values as $f \to \infty$.
+The first follows from $\sin(\pi/2) = 1$ together with
+$\zeta(2) = \pi^{2}/6$; the second from $\sin(\pi/10) = (\sqrt{5}-1)/4$.
+Both are cited as structural rhymes, not theorems.
 \end{remark}
 
-%% -------- section 7: verification --------
+\begin{theorem}[Asymptotic corridor average]\label{thm:asymptotic}
+\[
+  \lim_{f \to \infty}
+  \frac{1}{f - 1} \sum_{k=1}^{f-1} R(k, f)
+  \;=\;
+  \int_{0}^{1} \sinc^{2}(t)\, dt
+  \;=\;
+  \frac{\Si(2\pi)}{\pi}
+  \;\approx\; 0.4514,
+\]
+where $\Si(x) = \int_{0}^{x} \sin(t)/t\, dt$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:limit}, $R(k, f) \to \sinc^{2}(k/f)$ pointwise as
+$f \to \infty$ with $k/f$ fixed. The sum
+\[
+  \frac{1}{f - 1} \sum_{k=1}^{f-1} R(k, f)
+  \;=\;
+  \frac{1}{f - 1} \sum_{k=1}^{f-1} \sinc^{2}(k/f)
+  + O\!\left(\frac{1}{f^{2}}\right)
+\]
+is a Riemann sum for $\int_{0}^{1} \sinc^{2}(t)\, dt$ on the partition
+$\{1/f, 2/f, \dots, (f-1)/f\}$ of step $1/f$. Since $\sinc^{2}$ is
+$C^{\infty}$ on $[0, 1]$ and the $O(1/f^{2})$ pointwise correction
+vanishes uniformly in $k$, the Riemann sum converges to the integral.
+
+The integral evaluates by integration by parts. Substituting
+$u = \pi t$,
+\[
+  \int_{0}^{1} \sinc^{2}(t)\, dt
+  = \frac{1}{\pi} \int_{0}^{\pi} \frac{\sin^{2}(u)}{u^{2}}\, du.
+\]
+With $dv = du/u^{2}$ (so $v = -1/u$), $w = \sin^{2}(u)$,
+$dw = \sin(2u)\, du$,
+\[
+  \int_{0}^{\pi} \frac{\sin^{2}(u)}{u^{2}}\, du
+  = \left[ -\frac{\sin^{2}(u)}{u} \right]_{0}^{\pi}
+  + \int_{0}^{\pi} \frac{\sin(2u)}{u}\, du
+  = 0 + \int_{0}^{2\pi} \frac{\sin(t)}{t}\, dt
+  = \Si(2\pi),
+\]
+where the boundary term vanishes at $u = 0$ via $\sin^{2}(u)/u = O(u)$
+and at $u = \pi$ via $\sin(\pi) = 0$, and we substituted $t = 2u$ in
+the remaining integral. Hence
+$\int_{0}^{1} \sinc^{2}(t)\, dt = \Si(2\pi)/\pi$.
+\end{proof}
+
+\begin{remark}[Numerical value]\label{rem:siNumerical}
+$\Si(2\pi) = 1.41815\dots$, so $\Si(2\pi)/\pi = 0.45141\dots$. The
+corridor-midpoint value $\sinc^{2}(1/2) = 4/\pi^{2} = 0.40528\dots$
+sits strictly below the corridor average, as expected since
+$\sinc^{2}$ is concave on a neighborhood of $1/2$.
+\end{remark}
+
+%% -------- section 8: verification --------
 \section{Verification}\label{sec:verify}
 
-The First-G localization (Theorem~\ref{thm:firstg}) is verified by
-exact integer arithmetic for every squarefree $b$ in $[2,500]$ via
-the script \texttt{proof\_first\_g\_event.py}. The total computational
-load is $305$ squarefree $b$ values, $22{,}367$ $(b,k)$ pairs (each
-$b$ contributes $\spf(b)$ pairs: $\spf(b)-1$ pairs for part (i) and
-one pair for part (ii)), with zero counterexamples and runtime under
-three seconds.
-
-The closed form of Theorem~\ref{thm:closedform} is verified by
-floating-point evaluation against the literal geometric sum for every
-prime $f \in \{3,5,7,11,13,17,19,23\}$ and every $k \in
-\{1,\dots,f+1\}$. The maximum deviation is $4.44 \times 10^{-16}$,
-i.e., machine epsilon. The minimum-value identity $R(f-1,f) =
-1/(f-1)^{2}$ from Corollary~\ref{cor:endpoints}(ii) is checked
-directly:
-
-\begin{center}
-\begin{tabular}{c|c|c|c}
-$f$ & $R(f-1,f)$ measured & $1/(f-1)^{2}$ & deviation\\
-\hline
-$3$ & $0.250000000$ & $0.250000000$ & $5.55\times 10^{-17}$\\
-$5$ & $0.062500000$ & $0.062500000$ & $2.78\times 10^{-17}$\\
-$7$ & $0.027777778$ & $0.027777778$ & $3.47\times 10^{-18}$\\
-$11$ & $0.010000000$ & $0.010000000$ & $1.39\times 10^{-17}$\\
-$13$ & $0.006944444$ & $0.006944444$ & $1.91\times 10^{-17}$\\
-$17$ & $0.003906250$ & $0.003906250$ & $9.54\times 10^{-18}$\\
-$19$ & $0.003086420$ & $0.003086420$ & $1.30\times 10^{-18}$\\
-$23$ & $0.002066116$ & $0.002066116$ & $1.73\times 10^{-18}$\\
-\end{tabular}
-\end{center}
-
-The synchronization theorem (Theorem~\ref{thm:sync}) is a direct
-combination of the two preceding theorems, and the numerical checks
-above are consistent with that synchronization.
-
-%% -------- section 8: scope --------
-\section{Scope and Limitations}\label{sec:scope}
-
-We summarize what the present note does and does not claim.
+All claims are verified by two scripts archived at Zenodo bundle
+DOI~\texttt{10.5281/zenodo.18852047}: \texttt{proof\_first\_g\_event.py}
+(exhaustive integer enumeration for Theorem~\ref{thm:firstg}) and
+\texttt{verify\_J03.py} (machine-precision checks for the remaining
+theorems and corollaries). Total runtime is under five seconds on a
+2024 consumer laptop.
 
 \begin{enumerate}[label={\upshape(\arabic*)}]
-\item The First-G event $k^{\star}(b)$ of Definition~\ref{def:partition}
-      equals $\spf(b)$ for every $b > 1$
-      (Theorem~\ref{thm:firstg}); this is an elementary one-line gcd
-      argument and does not require squarefree-ness.
+\item \textbf{Theorem~\ref{thm:firstg} (First-G localization).} For
+every squarefree $b$ in $[2, 500]$ (305 values), $k^{\star}(b)$ is
+computed by direct $\gcd$ enumeration and matched against $\spf(b)$.
+Total: 22{,}367 $(b, k)$ pairs, zero counterexamples.
 
-\item The closed form $R(k,f) = \sin^{2}(\pi k/f)/
-      (k^{2}\sin^{2}(\pi/f))$ holds for every integer $f \ge 2$ and
-      every integer $k \ge 1$ (Theorem~\ref{thm:closedform}). The
-      proof is the standard Fej\'{e}r-type calculation in finite
-      Fourier analysis~\cite{Fejer1900,Zygmund2002}; we make no
-      claim of novelty for the identity itself, only for its
-      synchronization with the First-G event.
+\item \textbf{Theorem~\ref{thm:closedform} (closed form).} For every
+prime $f \in \{3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47\}$
+and every $k \in \{1, \dots, f + 1\}$, the closed form is checked
+against the literal geometric sum~\eqref{eq:Rgeom}. Maximum deviation
+$4.44 \times 10^{-16}$, i.e., machine epsilon.
 
-\item The synchronization (Theorem~\ref{thm:sync}) is stated for
-      $f = \spf(b)$. We do not claim a synchronization for other
-      values of $f$, and we do not claim that the
-      synchronization characterizes $b$ beyond its smallest prime
-      factor.
+\item \textbf{Theorem~\ref{thm:fullperiod} (full-period cancellation).}
+For every prime $p \in \{3, 5, 7, 11, 13, \dots, 199\}$ (45 primes) and
+every $k \in \{1, \dots, p\}$, $R(k, p) = 0 \Leftrightarrow p \mid k$
+is verified via exact integer divisibility cross-checked with the
+floating-point evaluation. Zero counterexamples in 4{,}225 $(p, k)$
+pairs.
 
-\item The continuum limit (Theorem~\ref{thm:limit}) is a direct
-      asymptotic. We do not claim any analytic-number-theory
-      consequence: no statement about the distribution of primes in
-      arithmetic progressions, no zero-free region for $\zeta(s)$,
-      no consequence for the Riemann hypothesis, and no implication
-      for cryptographic factoring difficulty.
+\item \textbf{Theorem~\ref{thm:sync} (synchronization).} For
+$b \in \{10, 30, 35, 77, 105, 210, 1001, 2310\}$, the equality
+$k^{\star}(b) = \spf(b)$ is matched against $R(\spf(b), \spf(b)) = 0$
+to machine precision.
 
-\item The verification in Section~\ref{sec:verify} is exhaustive on
-      the stated finite ranges. The theorems themselves are proved
-      for all relevant $b$ and $f$, so the finite verification is
-      a confirmation, not a pillar of the result.
+\item \textbf{Theorem~\ref{thm:obstruction-zero} (obstruction--zero
+correspondence).} For every squarefree $b \in [2, 50]$ (30 values)
+and every $k \in [1, 30]$, the boolean equivalence
+$f_{b}(k) = 0 \Leftrightarrow \gcd(k, b) > 1$ is verified at exact
+integer arithmetic via the factor-level test
+$|\sin(\pi k/p_{j})| < 10^{-12}$. Total: 900 cells, 900/900 matches.
+
+\item \textbf{Corollary~\ref{cor:asymp-density} (asymptotic density).}
+For $b \in \{2, 6, 10, 15, 30, 42, 105, 210, 2310\}$, the integer
+obstruction count $(1/K)\,|G_{K}(b)|$ at $K = 100{,}000$ is matched
+against the Euler product $1 - \varphi(\rad(b))/\rad(b)$. Maximum
+deviation: $6.67 \times 10^{-6}$.
+
+\item \textbf{Theorem~\ref{thm:layered} (squarefree layered closure).}
+For 50 squarefree $b \in \{6, 10, 14, 15, 21, 22, \dots, 210\}$: the
+smallest $k$ at which any non-trivial divisor $d \mid b$ satisfies
+$R(k, d) = 0$ is exactly $\spf(b)$; the count at the second primorial
+$b_{2} = p_{1} p_{2}$ is exactly $2^{2} - 1 = 3$; for $b$ with
+$\omega(b) \ge 3$, the count at the third primorial $b_{3}$ is
+exactly $2^{3} - 1 = 7$. Zero counterexamples.
+
+\item \textbf{Theorem~\ref{thm:limit} (continuum limit).} Scaling
+$f \in \{10, 100, 1000, 10000\}$ at $t = 1/2$ and $f \in \{4, 40, 400,
+4000\}$ at $t = 1/4$, the difference $|R(k, f) - \sinc^{2}(t)|$ decays
+as $O(1/f^{2})$ and is below $2 \times 10^{-9}$ at $f = 10{,}000$.
+
+\item \textbf{Theorem~\ref{thm:asymptotic} (corridor average).}
+Numerical Riemann sums at $f \in \{50, 100, 500, 1000\}$ converge to
+$\Si(2\pi)/\pi \approx 0.45141$:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+$f$ & $\frac{1}{f-1}\sum_{k=1}^{f-1} R(k, f)$ & $\Si(2\pi)/\pi$ & deviation \\
+\midrule
+$50$   & $0.4510$ & $0.4514$ & $4.0 \times 10^{-4}$ \\
+$100$  & $0.4511$ & $0.4514$ & $3.4 \times 10^{-4}$ \\
+$500$  & $0.4513$ & $0.4514$ & $9.2 \times 10^{-5}$ \\
+$1000$ & $0.4514$ & $0.4514$ & $4.8 \times 10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The convergence is consistent with the Riemann-sum error term and the
+$O(1/f^{2})$ pointwise correction; deviation drops by an order of
+magnitude as $f$ ranges over $\{50, 100, 500, 1000\}$.
+\end{enumerate}
+
+%% -------- section 9: scope --------
+\section{Scope and limitations}\label{sec:scope}
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item \textbf{What is proved.} Seven theorems
+(\ref{thm:closedform}--\ref{thm:asymptotic}) and two corollaries
+(\ref{cor:incl-excl},~\ref{cor:asymp-density}): closed form, full-period
+cancellation, First-G localization, obstruction-zero correspondence,
+synchronization, layered-divisor structure, continuum limit, and
+corridor average. The proofs are elementary throughout.
+
+\item \textbf{What is verified.} Two scripts, nine checks, exact
+arithmetic where possible and machine-precision floating point
+otherwise. Zero counterexamples in the integer-arithmetic portions;
+deviation below $5 \times 10^{-5}$ at $f = 1000$ for the asymptotic
+average; deviation $6.67 \times 10^{-6}$ at $K = 100{,}000$ for the
+density corollary.
+
+\item \textbf{Squarefree restriction.} Closed form, full-period
+cancellation, First-G localization, obstruction-zero correspondence,
+and synchronization are uniform in $b$ and do not require
+squarefree-ness; for $f_{b}$, only the distinct prime factors of $b$
+enter (Remark~\ref{rem:radical}). The squarefree restriction
+genuinely enters only in Theorem~\ref{thm:layered}, where the divisor
+lattice is Boolean and the count $2^{j} - 1$ is exact. For
+non-squarefree $b$, the layered count at the $j$-th primorial divisor
+of $\rad(b)$ remains $2^{j} - 1$, but the count over divisors of $b$
+itself acquires multiplicities (Remark~\ref{rem:layered-nonsf}).
+
+\item \textbf{What is \emph{not} claimed.} No statement about the
+analytic continuation of $\zeta(s)$; no consequence for the Riemann
+hypothesis; no implication for primes in arithmetic progressions; no
+polynomial-time factoring algorithm. The identity $\sinc^{2}(1/2) =
+(2/3)/\zeta(2)$ is one line from $\zeta(2) = \pi^{2}/6$ and is cited
+as structural rhyme only.
+
+\item \textbf{Open questions.} (a)~Why does the corridor midpoint at
+$t = 1/2$ make $\sinc^{2}(1/2) = (2/3)/\zeta(2)$ structurally
+relevant beyond its one-line derivation? (b)~Does the spectral product
+$f_{b}$ admit a Ramanujan-sum or character-sum form beyond the
+inclusion-exclusion identity of Corollary~\ref{cor:incl-excl}? (c)~Is
+there a closed-form non-squarefree count refining
+Remark~\ref{rem:layered-nonsf}?
+
+\item \textbf{Finite-range verification.} The exhaustive integer
+checks are on the stated finite ranges. The theorems themselves are
+proved in full generality; the finite verification is reassurance,
+not a pillar of the result.
 \end{enumerate}
 
 %% -------- references --------
@@ -763,21 +838,16 @@ H.~Iwaniec and E.~Kowalski.
 \newblock American Mathematical Society Colloquium Publications 53.
 \newblock American Mathematical Society, Providence, RI, 2004.
 
-\bibitem{Lang2002}
-S.~Lang.
-\newblock \emph{Algebra}, 3rd edition.
-\newblock Graduate Texts in Mathematics 211. Springer, New York, 2002.
-
 \bibitem{OppenheimSchafer2010}
 A.~V.~Oppenheim and R.~W.~Schafer.
 \newblock \emph{Discrete-Time Signal Processing}, 3rd edition.
-\newblock Prentice Hall, Upper Saddle River, NJ, 2010.
+\newblock Pearson, Upper Saddle River, NJ, 2010.
 
 \bibitem{Pomerance1985}
 C.~Pomerance.
-\newblock On the distribution of round numbers.
-\newblock In \emph{Number Theory (Ootacamund 1984)}, Lecture Notes in
-Mathematics 1122, pages 173--200. Springer, Berlin, 1985.
+\newblock The role of smooth numbers in number-theoretic algorithms.
+\newblock \emph{Proc.\ Int.\ Congr.\ Math.}\ (Z\"{u}rich, 1994),
+volume~1, pages 411--422. Birkh\"{a}user, 1995.
 
 \bibitem{Shannon1949}
 C.~E.~Shannon.
@@ -794,27 +864,23 @@ University Press, Cambridge, 2015.
 \bibitem{Zygmund2002}
 A.~Zygmund.
 \newblock \emph{Trigonometric Series}, 3rd edition.
-\newblock With a foreword by R.~A.~Fefferman.
-Cambridge University Press, Cambridge, 2002.
+\newblock Cambridge University Press, Cambridge, 2002.
 
 %% -- companion papers ------------------------
 \bibitem{SandersGish2026Sigma}
 B.~R.~Sanders and M.~Gish.
 \newblock Non-Associativity Decay in Binary Composition Tables over
 $\mathbb{Z}/N\mathbb{Z}$.
-\newblock Preprint, 2026.
+\newblock Preprint, 2026; J-series J01.
+\newblock Archived in shared deposit DOI 10.5281/zenodo.18852047.
 
 \bibitem{SandersGish2026FourCore}
 B.~R.~Sanders and M.~Gish.
-\newblock Joint Closure and a Closed-Form Algebraic Attractor of Two
-Commutative Binary Operations on $\mathbb{Z}/10\mathbb{Z}$.
-\newblock Preprint, 2026.
-
-\bibitem{SandersGishJohnson2026JCAP}
-B.~R.~Sanders, M.~Gish, and H.~J.~Johnson.
-\newblock Logarithmic Quintessence: A Dimensionless Scalar Dark Energy
-Model with an Analytic Vacuum.
-\newblock Preprint, 2026.
+\newblock Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
+Algebraic Attractor of Two Commutative Binary Operations on
+$\mathbb{Z}/10\mathbb{Z}$.
+\newblock Preprint, 2026; J-series J02.
+\newblock Archived in shared deposit DOI 10.5281/zenodo.18852047.
 
 \end{thebibliography}
 

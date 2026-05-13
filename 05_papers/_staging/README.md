@@ -53,14 +53,15 @@ differentiation; author lane Sanders + Gish; Drápal-Wanless cited).
 - **Gating:** decision on journal — *Journal of Physics A* (mathematical and theoretical, closer fit, 8K word limit) vs *Annals of Physics* (broader audience, longer manuscript permitted, higher prestige). Brayden's call.
 - **When chosen:** J56 → `J_series/interdisciplinary/J56/` (likely).
 
-### J03 — First-G Law — LANDED 2026-05-13 (Fork A)
+### J03 — MERGED with J04, LANDED 2026-05-13 (Fork A + J04 absorption + Theorem 5.2 substance upgrade)
 
-- **LANDED 2026-05-13 at [`../number_theory/J03/`](../number_theory/J03/) under Fork A** (harmonic-content restoration from the held draft `first_g_sinc2_FINAL.tex`).
-- Title: *The First-G Event and a Discrete Sinc² Identity*. Target venue: *Integers*. Author lane: Sanders + Gish.
-- **Verification:** `verify_J03.py` 5/5 PASS at machine precision (max closed-form deviation 4.44 × 10⁻¹⁶ across 12 primes); `proof_first_g_event.py` zero counterexamples over 305 squarefree b ∈ [2, 500] (22,367 (b,k) pairs).
-- **What's proved:** Theorem 3.1 (First-G localization $k^{*}(b) = \mathrm{spf}(b)$), Theorem 4.2 (closed form $R(k,f) = \sin^2(\pi k/f)/(k^2 \sin^2(\pi/f))$), Theorem 5.1 (synchronization), Theorem 6.1 (continuum limit $R(k,f) \to \mathrm{sinc}^2(k/f)$).
-- **What's pending:** Brayden's referee-rigor pass; arXiv same-day upload at submission; *Integers* style-file pass if amsart isn't accepted on first submission.
-- Fork B (Z/10 algebraic emphasis) and Fork C (experimental-mathematics framing) preserved as alternative paths in the private corpus per never-delete; not actively pursued.
+- **LANDED 2026-05-13 at [`../number_theory/J03/`](../number_theory/J03/) as a merged Integers submission**. Title: *The Discrete Fejér Quotient on Squarefree Moduli: Spectral Characterization, Layered Divisors, and the Asymptotic Corridor Average*. Target venue: *Integers*. Author lane: Sanders + Gish. ~25 pages amsart, 7 theorems + 2 corollaries.
+- **Merger history (same day, 2026-05-13):** initial Fork A port at commit `8ea58e9`; Theorem 5.2 substance upgrade at `76b5308`; Grok's minor items + extra primes at `449dfba`/`45a0bb5`; J04 consolidation into J03 at the current commit. The pre-merger J04 manuscript is preserved at `05_papers/number_theory/J04/` per never-delete with a clear MERGED notice at the top of `J04/README.md`.
+- **Verification:** `verify_J03.py` **10/10 PASS** at machine precision (closed form 4.44 × 10⁻¹⁶ across 14 primes; full-period cancellation in prime AND composite cases; obstruction-zero 900/900 cells; asymptotic zero density 6.67 × 10⁻⁶ for b up to 2310; layered $2^j-1$ count for 50 squarefree b; corridor average 4.8 × 10⁻⁵ at f = 1000); `proof_first_g_event.py` zero counterexamples over 305 squarefree b ∈ [2, 500] (22,367 (b,k) pairs).
+- **What's proved (7 theorems + 2 corollaries):** Theorem 3.1 (closed form), 3.2 (full-period cancellation, uniform in $f \ge 2$), 4.1 (First-G localization), 5.1 (synchronization), 5.2 (obstruction-zero correspondence — central new contribution), 6.1 (squarefree $2^j-1$ layered count — from absorbed J04), 7.1 (continuum limit), 7.2 (corridor average $\to \mathrm{Si}(2\pi)/\pi$ — from absorbed J04); Cor 3.3 (endpoint values), Cor 5.4 (asymptotic zero density via Euler product).
+- **What's pending:** Brayden's final referee-rigor pass; arXiv same-day upload at submission; *Integers* style-file pass if amsart isn't accepted on first submission.
+- **Per-quarter cap concern resolved:** one Integers submission (merged J03) instead of two simultaneous ones (pre-merger J03 + J04).
+- Fork B (Z/10 algebraic emphasis) and Fork C (experimental-mathematics framing) remain in the private corpus per never-delete; not pursued.
 
 ### J55 — Brayden's solo synthesis
 

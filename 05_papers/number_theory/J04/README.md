@@ -1,6 +1,25 @@
-# J04 — Full-Period Cancellation of R(k, f) and the spf-Localization for Squarefree Moduli
+# J04 — [MERGED into J03 on 2026-05-13]
 
-**Status:** SAVE-PLAN IMPLEMENTED (manuscript rewritten 2026-05-08; Theorem 1.A + Theorem 2 + Theorem 3 in place)
+> **🔀 ABSORBED INTO J03.** This paper's content (full-period cancellation Theorem 1.A, squarefree layered-divisor structure Theorem 2, and asymptotic corridor average Theorem 3) has been consolidated into the merged J03 manuscript:
+>
+> **`05_papers/number_theory/J03/manuscript/manuscript.tex`** (renamed *"The Discrete Fejér Quotient on Squarefree Moduli: Spectral Characterization, Layered Divisors, and the Asymptotic Corridor Average"*, ~25 pages, 7 theorems + 2 corollaries, 10/10 verification PASS).
+>
+> **Why merged:** The two papers were circularly cross-citing the same underlying object $R(k, f)$ on the same domain (squarefree moduli) for the same venue (*Integers*). The merger removes the circular citation, consolidates the substance into a single richer paper, and resolves the per-quarter cap concern that two simultaneous Integers submissions would have raised.
+>
+> **What's in the merged paper that came from this folder:**
+> - **Theorem 3.2 (full-period cancellation):** $R(k, f) = 0 \Leftrightarrow f \mid k$, uniform in $f \ge 2$. (Was J04 Theorem 1.A.)
+> - **Theorem 6.1 (squarefree layered-divisor structure):** for squarefree $b = p_1 \cdots p_r$, exactly $2^j - 1$ non-trivial divisors $d \mid b$ satisfy $R(b_j, d) = 0$ at the $j$-th primorial $b_j$. (Was J04 Theorem 2.)
+> - **Theorem 7.2 (asymptotic corridor average):** $\frac{1}{f-1}\sum_{k=1}^{f-1} R(k, f) \to \mathrm{Si}(2\pi)/\pi$ as $f \to \infty$. (Was J04 Theorem 3.)
+>
+> **What's preserved in this folder per never-delete:** the pre-merger J04 manuscript (`manuscript/manuscript.tex`), verification scripts (`proof_d25_loop_closure.py`, `verify_prime_phase_transition.py`), working-paper notes (WP34, WP35, WP_SINC2_ZERO_LAW), and cover-letter template are kept as-is. Nothing was deleted. The pre-merger files are the historical record of the J04 line of development; the live submission file is the merged J03.
+>
+> **Submitting:** do **not** submit this J04 manuscript separately. Submit the merged J03 instead. The bibliography in the merged J03 absorbs J04's references and adds the cross-program references that were unique to J03.
+
+---
+
+## Pre-merger metadata (preserved for historical record)
+
+**Status (pre-merger 2026-05-08):** SAVE-PLAN IMPLEMENTED (manuscript rewritten; Theorem 1.A + Theorem 2 + Theorem 3 in place)
 **Phase:** Phase 1 (Triadic Launch companion to J03)
 **Target venue:** Integers
 **Author lane:** Sanders + Gish
