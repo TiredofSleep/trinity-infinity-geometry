@@ -175,6 +175,18 @@ For $a,b\in\ZN$, define
 \end{equation}
 \end{definition}
 
+\begin{remark}[Three rules in priority order; four-case display]\label{rem:three-rules}
+Equation~\eqref{eq:cl-def} displays $\CL_N$ as four cases, but the underlying
+structure is \emph{three rules} applied in priority order: the two absorbing
+rules ($\HARM$ taking priority over $\VOID$), followed by the arithmetic
+rule $\ECHO$; cells unresolved by these three rules default to the $\HARM$
+value $N-1$. The fourth case in~\eqref{eq:cl-def} is therefore a
+fall-through, not a separate rule; throughout the paper we refer to
+$\CL_N$ as a \emph{three-rule family} ($\HARM$, $\VOID$, $\ECHO$) with a
+default. Each of the three rules is symmetric in $(a,b)$, so $\CL_N$ is
+commutative.
+\end{remark}
+
 Two auxiliary functions on $(\ZN)^{2}$ will be used:
 \begin{equation}\label{eq:dis-def}
   \DIS(a,b)=\bigl((a+b)-(a\cdot b)\bigr)\bmod N,
@@ -185,6 +197,28 @@ The set on which the $\ECHO$ rule applies is exactly
 $\{\DIS=0\}\setminus(\{a=0\}\cup\{b=0\}\cup\{a=N-1\}\cup\{b=N-1\})$;
 the boundary cases are absorbed by the earlier rules of
 Definition~\ref{def:cl}.
+
+\begin{remark}[Notation summary]\label{rem:notation}
+For ease of reference, the symbols used throughout the proof of
+Theorem~\ref{thm:rate} are:
+\begin{itemize}\setlength\itemsep{0pt}
+\item $h := N-1$ \;---\; the $\HARM$ absorber.
+\item $\varphi(N)$ \;---\; Euler's totient.
+\item $\DIS(a,b), \ECHO(a,b)$ \;---\; the auxiliary functions of
+  \eqref{eq:dis-def}; $\ECHO(a,b)=1$ exactly when the $\ECHO$ rule
+  fires at the interior of $(\ZN)^{2}$.
+\item $E(N), E_{h}(N)$ \;---\; the interior $\ECHO$ counts
+  defined in \eqref{eq:Edef}--\eqref{eq:Ehdef}; $E(N)\le\varphi(N)$
+  by Lemma~\ref{lem:echo}.
+\item $\varepsilon(N)$ \;---\; the residual non-associative-triple
+  count from Case~3 of the case analysis of \S\ref{sec:rate}
+  (those triples with $a\neq 0$ and $c\neq 0$); satisfies
+  $0\le\varepsilon(N)\le 2\varphi(N)$, proved below.
+\item $\HARM, \VOID, \ECHO$ \;---\; the three rules of
+  Definition~\ref{def:cl}, in priority order, as discussed in
+  Remark~\ref{rem:three-rules}.
+\end{itemize}
+\end{remark}
 
 %% -------- section 3: enumeration --------
 \section{Enumeration of the $\ECHO$ rule}\label{sec:enum}
@@ -279,17 +313,15 @@ $\bullet=\CL_N(0,b)$ is $h$ if $b=h$ and $0$ otherwise. Six subcases:
 \item[(1e)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)=h$:
   $\CL_N(\CL_N(0,b),c)=\CL_N(0,c)=0$, while
   $\CL_N(0,\CL_N(b,c))=\CL_N(0,h)=h$. \textbf{Non-associative.}
-\item[(1f)] $b,c\notin\{0,h\}$ and $\CL_N(b,c)\neq h$: write
-  $m := \CL_N(b,c)$. By hypothesis $m \neq h$. The left bracketing
-  is $\CL_N(\CL_N(0,b),c) = \CL_N(0,c) = 0$ by two applications
-  of the $\VOID$ rule (since $b\neq h$ gives $\CL_N(0,b)=0$, and
-  $c\neq h$ gives $\CL_N(0,c)=0$). The right bracketing is
-  $\CL_N(0,m)$; since $m \neq h$ the $\HARM$ rule does not fire,
-  so the $\VOID$ rule (with $a=0$) gives output $0$. Both
-  bracketings return $0$; associative. The argument uses neither
-  the squarefree hypothesis nor any restriction on the value of
-  $m \in \ZN\setminus\{h\}$.
+\item[(1f)] $b,c\notin\{0,h\}$ and $m := \CL_N(b,c) \neq h$. The
+  hypothesis $b,c \neq h$ blocks $\HARM$ from firing on either inner
+  composition, and the hypothesis $m \neq h$ blocks $\HARM$ from
+  firing on $\CL_N(0,m)$; so all three relevant compositions
+  ($\CL_N(0,b)$, $\CL_N(0,c)$, $\CL_N(0,m)$) reduce to $0$ by
+  $\VOID$. Both bracketings therefore equal $0$. Associative.
 \end{itemize}
+The argument for (1f) uses neither the squarefree hypothesis nor any
+restriction on the value of $m\in\ZN\setminus\{h\}$.
 Subcase (1e) is the $\VOID$--$\HARM$ disagreement: the inner $\VOID$
 on the left bracketing returns $0$ which the outer $\VOID$ propagates,
 but on the right bracketing the inner produces $h$, which the outer

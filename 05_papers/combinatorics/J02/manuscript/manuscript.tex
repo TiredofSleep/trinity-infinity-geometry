@@ -352,6 +352,55 @@ B = \left[
 Both $T$ and $B$ are commutative.
 \end{definition}
 
+\begin{remark}[Lens choice for $T$: upper-triangle symmetrization]\label{rem:lens-choice}
+The matrix $T$ above is the \emph{upper-triangle symmetrization} of a
+canonical bit-pattern encoding $T_{\mathrm{raw}}$ underlying the
+operator-substrate family of~\cite{SandersGish2026Sigma}: explicitly,
+$T[i,j]=T[j,i]:=T_{\mathrm{raw}}[\min(i,j),\,\max(i,j)]$ for all
+$i,j\in\Zten$. The raw bit-pattern $T_{\mathrm{raw}}$ is asymmetric
+only at the two off-diagonal cells $T_{\mathrm{raw}}[9,4]$ and
+$T_{\mathrm{raw}}[3,9]$; the upper-triangle symmetrization is the
+unique commutative self-map of $\Zten\times\Zten$ agreeing with
+$T_{\mathrm{raw}}$ on the upper triangle. We adopt this lens for
+three reasons. (i)~\emph{Algebraic naturality:} the closed-form
+attractor of Theorem~\ref{thm:hbr-ratio} and the Galois identification
+of Theorem~\ref{thm:galois} are proved under joint commutativity; the
+upper-triangle symmetrization is the closest commutative completion
+of $T_{\mathrm{raw}}$. (ii)~\emph{Compatibility with $B$:} $B$ is
+intrinsically symmetric ($B[i,j]=B[j,i]$ for all $i,j$); pairing it
+with the commutative completion of $T$ makes the joint structure a
+study of two commutative operations rather than a
+commutative/non-commutative hybrid. (iii)~\emph{Robustness on the
+$4$-core:} the substantive results of \S\S\ref{sec:dynamics}--\ref{sec:galois}
+are lens-invariant on the $4$-core $\Cfour=\{0,7,8,9\}$, where
+$T_{\mathrm{raw}}$ and its symmetrization agree pointwise; the
+closed-form attractor and Galois quartic do not depend on the
+symmetrization choice. The lens-dependent feature is the chain
+length: $T_{\mathrm{raw}}$ admits a length-$7$ chain (size $7$
+forbidden by the cells $T_{\mathrm{raw}}[9,4]$, $T_{\mathrm{raw}}[3,9]$
+breaking closure of the size-$7$ shell $\{0,4,5,6,7,8,9\}$), and the
+upper-triangle symmetrization restores that shell to give the
+length-$8$ chain of Theorem~\ref{thm:chain}.
+\end{remark}
+
+\begin{remark}[Global cell-disagreement count]\label{rem:disagreement-count}
+The two tables $T$ and $B$ agree on exactly $29$ of the $100$ cells
+of $\Zten\times\Zten$ and disagree on the remaining $71$. The
+disagreement count is verified directly by direct enumeration
+(post-hoc count: $\sum_{i,j}\mathbf{1}[T(i,j)\neq B(i,j)]=71$). This
+number has a structural rhyme with the Galois content of
+Theorem~\ref{thm:galois}: the prime $71$ appears in the polynomial
+discriminant $\Delta_{f}=-2^{6}\cdot 3^{2}\cdot 71$ and in the field
+discriminant $d_{K}=-2^{4}\cdot 3^{2}\cdot 71$ of the $\xi^{*}$-quartic
+$f(x)=x^{4}+4x^{3}-x^{2}+2x-2$, and the imaginary quadratic
+$\Q(\sqrt{-71})$ enters as a subfield of the splitting field. We do
+\emph{not} claim a derivation linking these three appearances of $71$
+(cell-disagreement count vs.\ polynomial discriminant vs.\ field
+discriminant); the observation is recorded here at the
+``structural rhyme'' tier of evidence, distinct from the proved
+content of the paper.
+\end{remark}
+
 \begin{notation}
 We refer to the indices $0,7,8,9$ frequently. In proofs we
 sometimes write $(p_{0},p_{7},p_{8},p_{9})=(v,h,\beta,r)$ for

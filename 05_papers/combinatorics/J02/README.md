@@ -42,7 +42,11 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 ## §5 — Notes
 
-6/6 PASS. Major-revisions per AlgComb referee (May 2026): correct '93 of 100' → '71 of 100' disagreement count; name symmetrization choice for T; consider lifting closed-form fixed-point as Theorem 3.
+6/6 PASS (+ 71-cell check). Major-revisions per AlgComb referee (May 2026) — **all three items addressed in the 2026-05-13 referee-readiness pass**:
+
+- ✅ **Disagreement count.** Remark `rem:disagreement-count` in §2 states the direct enumeration ($T$ and $B$ agree on $29/100$ cells, disagree on $71/100$) and flags the structural rhyme with the prime $71$ in $\Delta_{f}$, $d_{K}$, and $\Q(\sqrt{-71})\subset$ splitting field of the $\xi^*$-quartic. The 71-cell count is now also a check in `4core_verification.py` (Check 1 extension), so the post-hoc claim in the manuscript is script-verified.
+- ✅ **Symmetrization choice for $T$.** Remark `rem:lens-choice` in §2 explicitly names the lens (upper-triangle symmetrization of the bit-pattern $T_{\mathrm{raw}}$), enumerates the three reasons for adopting it (algebraic naturality / compatibility with $B$ / $4$-core robustness), and flags the lens-dependence of the chain length (length-$7$ on $T_{\mathrm{raw}}$, length-$8$ on the symmetrization) while noting that the $4$-core results of §§\ref{sec:dynamics}--\ref{sec:galois} are lens-invariant.
+- ✅ **Closed-form fixed-point as standalone theorem.** Already done in the consolidated draft: $h/\beta = 1+\sqrt{3}$ at $\alpha=\tfrac12$ is `Theorem~\ref{thm:hbr-ratio}` in §7 (own section, own theorem environment), not buried in the alpha-sweep PSLQ.
 
 ### Family-Structure framing (per FAMILY_STRUCTURE_v1.md, adopt in §1)
 

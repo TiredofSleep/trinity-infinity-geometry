@@ -101,7 +101,15 @@ def check_chain():
     for S in jc:
         print(f"    |S|={len(S):2d}: {S}")
 
-    return matches and chain_strict
+    # -- Global cell-disagreement count (Remark rem:disagreement-count) --
+    disagree = sum(1 for i in range(10) for j in range(10) if T[i][j] != B[i][j])
+    agree = 100 - disagree
+    disagree_ok = (disagree == 71) and (agree == 29)
+    print()
+    print(f"  Global cell-disagreement: T,B agree on {agree}/100, disagree on {disagree}/100")
+    print(f"  Matches Remark rem:disagreement-count (29 agree, 71 disagree): {disagree_ok}")
+
+    return matches and chain_strict and disagree_ok
 
 
 # === Check 2: normalizer identity ===
