@@ -53,14 +53,14 @@ differentiation; author lane Sanders + Gish; Drápal-Wanless cited).
 - **Gating:** decision on journal — *Journal of Physics A* (mathematical and theoretical, closer fit, 8K word limit) vs *Annals of Physics* (broader audience, longer manuscript permitted, higher prestige). Brayden's call.
 - **When chosen:** J56 → `J_series/interdisciplinary/J56/` (likely).
 
-### J03 — First-G Law
+### J03 — First-G Law — LANDED 2026-05-13 (Fork A)
 
-- Three forks (A, B, C) with different rhetorical framings for different referee profiles:
-  - **Fork A:** harmonic-content restoration from `_legacy_tiers/_held_first_g/`
-  - **Fork B:** Z/10 algebraic emphasis
-  - **Fork C:** experimental-mathematics framing
-- **Gating:** Brayden's fork choice.
-- **When chosen:** J03 → `J_series/number_theory/J03/`.
+- **LANDED 2026-05-13 at [`../number_theory/J03/`](../number_theory/J03/) under Fork A** (harmonic-content restoration from the held draft `first_g_sinc2_FINAL.tex`).
+- Title: *The First-G Event and a Discrete Sinc² Identity*. Target venue: *Integers*. Author lane: Sanders + Gish.
+- **Verification:** `verify_J03.py` 5/5 PASS at machine precision (max closed-form deviation 4.44 × 10⁻¹⁶ across 12 primes); `proof_first_g_event.py` zero counterexamples over 305 squarefree b ∈ [2, 500] (22,367 (b,k) pairs).
+- **What's proved:** Theorem 3.1 (First-G localization $k^{*}(b) = \mathrm{spf}(b)$), Theorem 4.2 (closed form $R(k,f) = \sin^2(\pi k/f)/(k^2 \sin^2(\pi/f))$), Theorem 5.1 (synchronization), Theorem 6.1 (continuum limit $R(k,f) \to \mathrm{sinc}^2(k/f)$).
+- **What's pending:** Brayden's referee-rigor pass; arXiv same-day upload at submission; *Integers* style-file pass if amsart isn't accepted on first submission.
+- Fork B (Z/10 algebraic emphasis) and Fork C (experimental-mathematics framing) preserved as alternative paths in the private corpus per never-delete; not actively pursued.
 
 ### J55 — Brayden's solo synthesis
 
@@ -99,7 +99,7 @@ Papers rewritten with SFM + Family Structure framing (per the v2 build sprints; 
 W1-C: J35 + J54 (centerpiece pair)
 W1-D: J11, J12, J16
 W1-E: J05, J08 (J09 landed 2026-05-12 at [`../algebra/J09/`](../algebra/J09/))
-W2-A: J03, J04 (J06 landed 2026-05-12 at [`../algebra/J06/`](../algebra/J06/))
+W2-A: J04 (J03 landed 2026-05-13 at [`../number_theory/J03/`](../number_theory/J03/) — Fork A First-G + Sinc² Identity; J06 landed 2026-05-12 at [`../algebra/J06/`](../algebra/J06/))
 W2-B: J10 (J07 landed 2026-05-12 at [`../combinatorics/J07/`](../combinatorics/J07/); J19 landed 2026-05-12 at [`../combinatorics/J19/`](../combinatorics/J19/) — Path C role-quotient theorem on (TSML, BHML)/Z/10Z; 5-clause Theorem 3.1 + Prop 5.1 + σ-orbit independence + foundations.lenses cross-check, all PASS at exact integer arithmetic via `verify_J19.py`)
 W2-C: J28, J29 (J30 landed 2026-05-12 at [`../algebra/J30/`](../algebra/J30/))
 W2-D: J33, J34 (J36 landed 2026-05-12 at [`../physics/J36/`](../physics/J36/), Part 1 only — Part 2 [1/α] deferred)

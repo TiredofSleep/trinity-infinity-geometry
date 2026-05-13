@@ -1,0 +1,643 @@
+%%% ============================================================
+%%% The First-G Event and a Discrete Sinc^2 Identity
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Integers -- Electronic Journal of Combinatorial
+%%%               Number Theory
+%%% MSC: 11A41, 11N05, 11A51, 11Y05, 42A16
+%%%
+%%% DOI for verification scripts: 10.5281/zenodo.18852047
+%%%
+%%% Source: Fork A restoration of held draft
+%%%   first_g_sinc2_FINAL.tex (private corpus, _held_first_g)
+%%% Surgical additions:
+%%%   - lens-ownership preamble (§0)
+%%%   - PROVEN/COMPUTED/RHYME/OPEN tier-discipline paragraph (§1)
+%%%   - bibliography expansion (Erdos, Pomerance, Tenenbaum,
+%%%     Iwaniec-Kowalski, Friedlander-Iwaniec)
+%%% Author lane: Sanders + Gish only.
+%%% Ported to public repo 2026-05-13 at
+%%%   05_papers/number_theory/J03/manuscript/manuscript.tex
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\spf}{spf}
+\DeclareMathOperator{\sinc}{sinc}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prm}{\mathbb{P}}
+\newcommand{\Zb}{\Z/b\Z}
+
+%% -------- title matter --------
+\title[The First-G event and a discrete sinc${}^{2}$ identity]%
+{The First-G Event and a Discrete Sinc${}^{2}$ Identity}
+
+\author{B.~R.~Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.~Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{coprimality partition, smallest prime factor, Euler totient,
+sieve of Eratosthenes, Fej\'{e}r kernel, sinc function, discrete Fourier
+identity, rectangular pulse spectrum}
+
+\subjclass[2020]{11A41, 11N05, 11A51, 11Y05, 42A16}
+
+\begin{document}
+
+\begin{abstract}
+For an integer $b > 1$ and a growing alphabet $\{1,\dots,k\}$, the
+\emph{coprimality partition} of the alphabet relative to $b$ separates
+the units $C_{k}(b) = \{x : \gcd(x,b) = 1\}$ from the obstructions
+$G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b)$. We prove two elementary
+results and a synchronization between them. First, the
+\emph{First-G localization theorem}: the smallest $k\ge 1$ at which
+$|G_{k}(b)|>0$ is exactly the smallest prime factor $p_{1}=\spf(b)$,
+and $G_{p_{1}}(b) = \{p_{1}\}$. Second, the \emph{harmonic identity}:
+the squared modulus of the unit-alphabet exponential sum at frequency
+$1/f$ admits the closed form
+$R(k,f) = \sin^{2}(\pi k/f)/(k^{2}\sin^{2}(\pi/f))$, a discrete
+$\sinc^{2}$-type function whose value is $0$ at $k=f$ and $1/(f-1)^{2}$
+at $k=f-1$, and which converges to $\sinc^{2}(k/f)$ as $f\to\infty$.
+The synchronization theorem records that, for $f = p_{1}$, the First-G
+event and the first integer zero of $R(k,p_{1})$ coincide at $k=p_{1}$.
+The proofs are elementary: a one-line gcd argument for the
+First-G theorem, the geometric-series identity
+$|1-e^{i\theta}|^{2} = 4\sin^{2}(\theta/2)$ for the harmonic identity,
+and direct substitution for the synchronization. Verification includes
+every squarefree $b$ in $[2,500]$ and every prime $f$ in $[3,23]$,
+with zero exceptions.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 0: lens and substrate (per SAVE_PLAN J03 §5) --------
+\section*{Lens and substrate}\label{sec:lens}
+
+This note works on $\Z$ (no specialized substrate) with the standard
+objects: smallest prime factor $\spf(b)$, the discrete Fej\'{e}r
+quotient $R(k, f)$, and the continuum $\sinc^{2}$ function. The objects
+are not derived from a framework reading; they are the elementary
+discrete-Fourier and divisibility structures of the integers. The
+synchronization theorem (Theorem~\ref{thm:sync}) is the contribution:
+two independently classical events coincide at $k = \spf(b)$.
+Subsequent companion papers in our program (the Sanders--Gish
+$\sigma$-rate paper and the four-core fusion-closure paper
+\cite{SandersGish2026Sigma,SandersGish2026FourCore}) work over
+$\Z/N\Z$ with operator-labeled tables; the present paper does not
+require any of that machinery and stands alone.
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+The sieve of Eratosthenes marks, for each integer $b > 1$ and each
+alphabet size $k$, the elements of $\{1,\dots,k\}$ that share a prime
+factor with $b$. Following standard usage \cite{Apostol1976,
+HardyWright2008}, we organize the marking around the alphabet-size
+parameter $k$ via the coprimality partition
+\[
+  C_{k}(b) = \{x\in\{1,\dots,k\}:\gcd(x,b)=1\},
+  \qquad
+  G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b),
+\]
+and call the smallest $k$ with $|G_{k}(b)|>0$ the \emph{First-G event}
+of $b$. Section~\ref{sec:firstg} establishes that this $k$ is exactly
+the smallest prime factor $p_{1} = \spf(b)$
+(Theorem~\ref{thm:firstg}); the proof is one line of gcd reasoning.
+
+Section~\ref{sec:harmonic} treats the harmonic counterpart. For an
+integer parameter $f \ge 2$, we form the unit-alphabet exponential
+sum at frequency $1/f$,
+\[
+  S(k,f) = \frac{1}{k}\sum_{j=1}^{k} e^{2\pi i j/f},
+\]
+and study its squared modulus $R(k,f) = |S(k,f)|^{2}$. This is a
+discrete analogue of the Fej\'{e}r kernel \cite{Fejer1900,Zygmund2002},
+the squared magnitude of a normalized finite exponential sum. We show
+(Theorem~\ref{thm:closedform}) that $R(k,f)$ admits the closed form
+\[
+  R(k,f) = \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)},
+\]
+and we record three immediate corollaries: $R(k,f)$ is strictly
+decreasing on $\{1,\dots,f-1\}$, takes the value $1/(f-1)^{2}$ at
+$k=f-1$, and vanishes at $k=f$.
+
+Section~\ref{sec:sync} states the synchronization theorem
+(Theorem~\ref{thm:sync}): for $f = p_{1} = \spf(b)$, the First-G
+event of Theorem~\ref{thm:firstg} occurs at the same alphabet-size
+value $k = p_{1}$ as the first integer zero of $R(k,p_{1})$ from
+Theorem~\ref{thm:closedform}. The two events colocalize.
+
+Section~\ref{sec:limit} treats the continuum limit: as $f\to\infty$
+with $t = k/f$ fixed, $R(k,f) \to \sinc^{2}(t)$ where
+$\sinc(t) = \sin(\pi t)/(\pi t)$ is the normalized sinc function
+\cite{Shannon1949,OppenheimSchafer2010}. This identifies $R(k,f)$
+as a discrete approximant to the rectangular-pulse power spectrum.
+
+\paragraph{Tier discipline.} This paper PROVES (Theorem~\ref{thm:sync})
+the synchronization of the First-G arithmetic event with the first
+integer zero of $R(\cdot, \spf(b))$, and PROVES
+(Theorem~\ref{thm:limit}) that $R(k,f) \to \sinc^{2}(k/f)$ as
+$f \to \infty$. We COMPUTE the verifications: $22{,}367$ $(b,k)$ pairs
+over squarefree $b \le 500$ for the First-G localization (script
+\texttt{proof\_first\_g\_event.py}, runtime under $3$ s), and
+machine-precision evaluation of the closed form for $8$ primes
+(maximum deviation $4.44 \times 10^{-16}$, script
+\texttt{verify\_J03.py}). The exact identity
+$\sinc^{2}(1/2) = (2/3)/\zeta(2)$ is cited as STRUCTURAL RHYME, not
+theorem --- it follows in one line from $\zeta(2) = \pi^{2}/6$. The
+theorem-shaped question of why the corridor midpoint at $t = 1/2$
+makes this identity structurally relevant is OPEN and is the natural
+next paper.
+
+\paragraph{Positioning.} None of the underlying facts is new in
+isolation. The First-G localization is a one-line consequence of the
+definition of $\spf(b)$; the closed form for $R(k,f)$ is the standard
+Fej\'{e}r calculation in finite Fourier analysis~\cite{Zygmund2002,
+OppenheimSchafer2010}; the $\sinc^{2}$ continuum limit is a standard
+observation. The contribution of the present note is the packaging:
+a single elementary statement that synchronizes the arithmetic
+First-G event with the harmonic zero of a discrete $\sinc^{2}$-type
+function, valid for every $b > 1$ via $f = \spf(b)$. Related work on
+the distribution of the smallest prime factor is classical
+\cite{Erdos1959,Pomerance1985,Tenenbaum2015}, and sieve-theoretic
+treatments \cite{IwaniecKowalski2004,FriedlanderIwaniec2010} provide
+broader context for the coprimality-partition viewpoint adopted here.
+This packaging provides a convenient bridge to related work on
+composition tables over $\Zb$ \cite{SandersGish2026Sigma} and on
+dimensionless scalar field models with logarithmic potentials
+\cite{SandersGishJohnson2026JCAP}.
+
+\paragraph{Verification.} All numerical claims are verified by exact
+computation. The First-G localization is checked for every squarefree
+$b$ in $[2,500]$ ($305$ values, $22{,}367$ $(b,k)$ pairs, zero
+counterexamples); Theorem~\ref{thm:firstg} itself does not require
+squarefree-ness and the test set is chosen for convenience and
+compatibility with the companion paper~\cite{SandersGish2026Sigma}.
+The closed form for $R(k,f)$ is checked for every prime
+$f \in \{3,5,7,11,13,17,19,23\}$ and every $k\in\{1,\dots,f+1\}$,
+with maximum closed-form deviation below machine epsilon
+($4.44\times 10^{-16}$). Verification scripts are documented in
+Section~\ref{sec:verify}.
+
+%% -------- section 2: setup --------
+\section{Setup and Notation}\label{sec:setup}
+
+Throughout, $b$ is an integer with $b > 1$. Write $b = p_{1}^{a_{1}}
+\cdots p_{r}^{a_{r}}$ with $p_{1} < p_{2} < \cdots < p_{r}$ the
+distinct prime factors of $b$, so that $p_{1} = \spf(b)$ is the
+smallest prime factor.
+
+\begin{definition}[Coprimality partition]\label{def:partition}
+For $b > 1$ and $k \ge 1$, the coprimality partition of the alphabet
+$\{1,\dots,k\}$ relative to $b$ is the ordered pair
+\[
+  C_{k}(b) = \{x \in \{1,\dots,k\} : \gcd(x,b) = 1\},
+  \qquad
+  G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b).
+\]
+The \emph{First-G event} of $b$ is the integer
+\[
+  k^{\star}(b) = \min\{k \ge 1 : |G_{k}(b)| > 0\}.
+\]
+\end{definition}
+
+The map $b \mapsto k^{\star}(b)$ is well-defined for every $b > 1$
+because $b \in G_{b}(b)$. The main theorem of
+Section~\ref{sec:firstg} identifies $k^{\star}(b)$ explicitly.
+
+\begin{definition}[Harmonic resonance]\label{def:resonance}
+For an integer $f \ge 2$ and $k \ge 1$, define the unit-alphabet
+exponential sum at frequency $1/f$ and its squared modulus by
+\[
+  S(k,f) = \frac{1}{k}\sum_{j=1}^{k} e^{2\pi i j/f},
+  \qquad
+  R(k,f) = |S(k,f)|^{2}.
+\]
+\end{definition}
+
+The function $R(k,f)$ is the squared magnitude of the average of
+the first $k$ terms of the geometric progression $e^{2\pi i j/f}$;
+in finite Fourier analysis it is recognized as a discrete relative
+of the Fej\'{e}r kernel~\cite{Fejer1900,Zygmund2002}, evaluated at
+unit-alphabet sample sizes.
+
+%% -------- section 3: First-G --------
+\section{First-G Event Localization}\label{sec:firstg}
+
+\begin{theorem}[First-G localization]\label{thm:firstg}
+Let $b > 1$ be an integer with smallest prime factor $p_{1}=\spf(b)$.
+Then $k^{\star}(b) = p_{1}$. More precisely:
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $|G_{k}(b)| = 0$ for every $k$ with $1 \le k < p_{1}$, and
+\item $|G_{p_{1}}(b)| = 1$, with $G_{p_{1}}(b) = \{p_{1}\}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textit{(i)} Fix $k < p_{1}$ and $x \in \{1,\dots,k\}$. If
+$\gcd(x,b) = d > 1$, then $d$ has a prime divisor $q$ with $q\mid b$;
+hence $q \ge p_{1}$ by definition of $p_{1}$. But $q \mid x$ forces
+$q \le x \le k < p_{1}$, a contradiction. Therefore $\gcd(x,b) = 1$
+and $G_{k}(b) = \emptyset$.
+
+\textit{(ii)} At $k = p_{1}$, the element $p_{1}$ enters the alphabet,
+and $\gcd(p_{1},b) = p_{1} > 1$ since $p_{1}\mid b$, so
+$p_{1}\in G_{p_{1}}(b)$. For any $x \in \{1,\dots,p_{1}\}$ with
+$x \ne p_{1}$ we have $x < p_{1}$, so part (i) gives $\gcd(x,b)=1$.
+Thus $G_{p_{1}}(b) = \{p_{1}\}$.
+\end{proof}
+
+\begin{remark}
+The proof uses only the definitions of $p_{1}$ and $\gcd$.
+Squarefree-ness of $b$ is not required. Although the proof goes
+through verbatim for non-squarefree $b$ (e.g., for $b = 12$,
+$\spf(b) = 2$ and $G_{2}(12) = \{2\}$ in the same way as
+$G_{2}(6) = \{2\}$), we restrict the verification sample to squarefree
+$b$ because that is the regime where the companion First-G application
+program lives.
+\end{remark}
+
+\begin{corollary}[Stability window]\label{cor:stability}
+For every $b > 1$ with $\spf(b) = p_{1}$, the interval
+$\{1,\dots,p_{1}-1\}$ lies entirely in $C_{p_{1}-1}(b)$. The width of
+this interval is $p_{1}-1$, and it is uniform across the family of
+all integers with the same smallest prime factor.
+\end{corollary}
+
+\begin{corollary}[Phase-transition set]\label{cor:phase}
+The image of $b\mapsto k^{\star}(b)$ over integers $b > 1$ is exactly
+the set $\Prm$ of primes.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:firstg}, $k^{\star}(b) = \spf(b) \in \Prm$ for
+every $b > 1$. Conversely, for any prime $p$, taking $b = p$ gives
+$k^{\star}(p) = p$. Hence the image is $\Prm$.
+\end{proof}
+
+%% -------- section 4: closed form --------
+\section{The Closed Form for $R(k,f)$}\label{sec:harmonic}
+
+\begin{theorem}[Discrete sinc${}^{2}$ identity]\label{thm:closedform}
+For every integer $f \ge 2$ and every integer $k \ge 1$,
+\begin{equation}\label{eq:closedform}
+  R(k,f) \;=\; \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The geometric-series formula gives
+\[
+  \sum_{j=1}^{k}e^{2\pi i j/f}
+  \;=\; e^{2\pi i/f}\,\frac{1-e^{2\pi i k/f}}{1-e^{2\pi i/f}}.
+\]
+Taking the squared modulus of $(1/k)$ times this sum and applying
+the elementary identity $|1-e^{i\theta}|^{2} = 4\sin^{2}(\theta/2)$,
+\[
+  R(k,f)
+  = \frac{1}{k^{2}}\,
+    \frac{|1-e^{2\pi i k/f}|^{2}}{|1-e^{2\pi i/f}|^{2}}
+  = \frac{1}{k^{2}}\,
+    \frac{4\sin^{2}(\pi k/f)}{4\sin^{2}(\pi/f)}
+  = \frac{\sin^{2}(\pi k/f)}{k^{2}\sin^{2}(\pi/f)}.
+\qedhere
+\]
+\end{proof}
+
+\begin{corollary}[Endpoint values and monotonicity]\label{cor:endpoints}
+For every prime $f \ge 2$:
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $R(1,f) = 1$ (full resonance at $k = 1$);
+\item $R(f-1,f) = 1/(f-1)^{2}$, the last positive value of
+      $R(\cdot,f)$ before the first zero at $k=f$;
+\item $R(f,f) = 0$ (exact zero at $k=f$);
+\item $R(k,f)$ is strictly decreasing on $\{1,\dots,f-1\}$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\textit{(i)}\ Direct from \eqref{eq:closedform}: at $k=1$,
+$R(1,f) = \sin^{2}(\pi/f)/\sin^{2}(\pi/f) = 1$.
+
+\textit{(iii)}\ At $k=f$: $\sin(\pi f/f) = \sin(\pi) = 0$, so
+$R(f,f) = 0$ exactly.
+
+\textit{(ii)}\ At $k=f-1$: $\sin(\pi(f-1)/f) = \sin(\pi - \pi/f)
+= \sin(\pi/f)$, so $R(f-1,f) = \sin^{2}(\pi/f)/((f-1)^{2}
+\sin^{2}(\pi/f)) = 1/(f-1)^{2}$.
+
+\textit{(iv)}\ Factor the closed form \eqref{eq:closedform} as
+\[
+  R(k,f) = \left(\frac{\pi/f}{\sin(\pi/f)}\right)^{2}
+           \left(\frac{\sin(\pi k/f)}{\pi k/f}\right)^{2}.
+\]
+The first factor is constant in $k$. For $1\le k\le f-1$ we have
+$\pi k/f\in(0,\pi)$, and the function $x \mapsto \sin x/x$ is strictly
+decreasing on $(0,\pi)$: its derivative is
+$(x\cos x - \sin x)/x^{2}$, and the function
+$h(x):= \sin x - x\cos x$ satisfies $h(0)=0$ and
+$h'(x) = x\sin x > 0$ for $x\in(0,\pi)$, hence $h(x) > 0$ throughout
+$(0,\pi)$, so $x\cos x - \sin x < 0$ and the derivative of
+$\sin x/x$ is negative. The square of a positive
+strictly decreasing function is strictly decreasing, so $R(k,f)$ is
+strictly decreasing on $\{1,\dots,f-1\}$.
+\end{proof}
+
+\begin{remark}[Connection to Fej\'{e}r-type identities]\label{rem:fejer}
+Writing $T_{k}(\theta) = \sum_{j=1}^{k}e^{ij\theta}$ for the
+one-sided partial geometric sum evaluated at $\theta = 2\pi/f$,
+\eqref{eq:closedform} is equivalent to
+$|T_{k}(\theta)|^{2}/k^{2} = \sin^{2}(k\theta/2)/(k^{2}
+\sin^{2}(\theta/2))$. This is the standard Fej\'{e}r-type
+identity~\cite{Fejer1900,Zygmund2002}, specialized to rational
+arguments $\theta/2\pi = 1/f$.
+\end{remark}
+
+%% -------- section 5: synchronization --------
+\section{Synchronization of the First-G Event and the First Integer Zero of $R$}\label{sec:sync}
+
+The First-G event of Theorem~\ref{thm:firstg} and the first integer
+zero of $R(k,f)$ from Corollary~\ref{cor:endpoints} coincide for the
+canonical choice $f = p_{1} = \spf(b)$.
+
+\begin{theorem}[Synchronization]\label{thm:sync}
+For every integer $b > 1$ with smallest prime factor $p_{1}=\spf(b)$,
+the First-G event $k^{\star}(b)$ and the first integer zero of
+$R(k,p_{1})$ in the range $\{1,\dots,p_{1}\}$ coincide:
+\[
+  k^{\star}(b) \;=\; \min\{k \in \{1,\dots,p_{1}\} : R(k,p_{1}) = 0\}
+  \;=\; p_{1}.
+\]
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:firstg} gives $k^{\star}(b) = p_{1}$. By
+Theorem~\ref{thm:closedform},
+\[
+  R(k,p_{1}) = \frac{\sin^{2}(\pi k/p_{1})}{k^{2}\sin^{2}(\pi/p_{1})}.
+\]
+For $1 \le k < p_{1}$, $p_{1}$ is prime and $p_{1}\nmid k$, so
+$\pi k/p_{1}\notin\pi\Z$ and $\sin(\pi k/p_{1})\neq 0$; hence
+$R(k,p_{1}) > 0$. At $k = p_{1}$, $\sin(\pi) = 0$, so
+$R(p_{1},p_{1}) = 0$. The first integer zero of $R(\cdot,p_{1})$ in
+$\{1,\dots,p_{1}\}$ therefore occurs at $k = p_{1}$, equal to
+$k^{\star}(b)$.
+\end{proof}
+
+The synchronization is the joint observation that a single integer
+$k = p_{1}$ simultaneously witnesses two phenomena: the arithmetic
+event ``the alphabet first contains an obstruction modulo $b$'' and
+the harmonic event ``the unit-alphabet exponential sum at frequency
+$1/p_{1}$ first vanishes.''
+
+%% -------- section 6: continuum limit --------
+\section{The Continuum Limit and the Rectangular Pulse}\label{sec:limit}
+
+\begin{theorem}[$\sinc^{2}$ continuum limit]\label{thm:limit}
+Let $\sinc(t) = \sin(\pi t)/(\pi t)$ for $t \ne 0$ and $\sinc(0)=1$.
+Then for every $t \in \R$ with $t > 0$,
+\[
+  \lim_{f\to\infty,\ k/f \to t}
+  R(k,f) \;=\; \sinc^{2}(t).
+\]
+\end{theorem}
+
+\begin{proof}
+From \eqref{eq:closedform}, $R(k,f) = \sin^{2}(\pi k/f)/(k^{2}
+\sin^{2}(\pi/f))$. As $f \to \infty$ with $k/f \to t$ fixed,
+$k \cdot \sin(\pi/f) = (\pi/f)\cdot k \cdot (1 + O(1/f^{2}))
+\to \pi t$, so $k^{2}\sin^{2}(\pi/f) \to \pi^{2} t^{2}$. The
+numerator satisfies $\sin^{2}(\pi k/f) \to \sin^{2}(\pi t)$.
+Hence
+\[
+  R(k,f) \;\to\; \frac{\sin^{2}(\pi t)}{\pi^{2}t^{2}} \;=\; \sinc^{2}(t).
+  \qedhere
+\]
+\end{proof}
+
+\begin{remark}[Rectangular pulse spectrum]\label{rem:rectangular}
+The function $\sinc^{2}(t)$ is the power spectral density of the
+rectangular pulse $\mathbf{1}_{[0,1]}$, by direct evaluation of the
+Fourier transform~\cite{Shannon1949,OppenheimSchafer2010}.
+Theorem~\ref{thm:limit} therefore identifies $R(k,f)$ as a discrete
+approximant to the rectangular-pulse spectrum sampled at rational
+arguments $k/f$. The first integer zero of the discrete approximant
+$R(\cdot,f)$, which by Corollary~\ref{cor:endpoints}(iii) sits at
+$k = f$, is the discrete analogue of the first zero of $\sinc^{2}$
+at $t = 1$.
+\end{remark}
+
+\begin{remark}[Specific exact values; structural rhyme]\label{rem:exactvalues}
+Two evaluations of $\sinc^{2}$ that arise naturally as continuum
+limits of $R(k,f)$ at rational arguments:
+\begin{align*}
+  \sinc^{2}(1/2) &= \frac{4}{\pi^{2}} = \frac{2/3}{\zeta(2)}, \\
+  \sinc^{2}(1/10) &= \frac{25(\sqrt{5}-1)^{2}}{4\pi^{2}}.
+\end{align*}
+The first identity follows from $\sin(\pi/2) = 1$ together with
+$\zeta(2) = \pi^{2}/6$ (one-line consequence). It is cited here as a
+\emph{structural rhyme}, not as a theorem of the present paper: the
+question of why the corridor midpoint at $t = 1/2$ makes this
+identity structurally relevant is open. The second identity follows
+from $\sin(\pi/10) = (\sqrt{5}-1)/4$. Discrete approximants
+$R(k,f)$ with $k/f$ near these rational arguments converge to the
+displayed exact values as $f \to \infty$.
+\end{remark}
+
+%% -------- section 7: verification --------
+\section{Verification}\label{sec:verify}
+
+The First-G localization (Theorem~\ref{thm:firstg}) is verified by
+exact integer arithmetic for every squarefree $b$ in $[2,500]$ via
+the script \texttt{proof\_first\_g\_event.py}. The total computational
+load is $305$ squarefree $b$ values, $22{,}367$ $(b,k)$ pairs (each
+$b$ contributes $\spf(b)$ pairs: $\spf(b)-1$ pairs for part (i) and
+one pair for part (ii)), with zero counterexamples and runtime under
+three seconds.
+
+The closed form of Theorem~\ref{thm:closedform} is verified by
+floating-point evaluation against the literal geometric sum for every
+prime $f \in \{3,5,7,11,13,17,19,23\}$ and every $k \in
+\{1,\dots,f+1\}$. The maximum deviation is $4.44 \times 10^{-16}$,
+i.e., machine epsilon. The minimum-value identity $R(f-1,f) =
+1/(f-1)^{2}$ from Corollary~\ref{cor:endpoints}(ii) is checked
+directly:
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$f$ & $R(f-1,f)$ measured & $1/(f-1)^{2}$ & deviation\\
+\hline
+$3$ & $0.250000000$ & $0.250000000$ & $5.55\times 10^{-17}$\\
+$5$ & $0.062500000$ & $0.062500000$ & $2.78\times 10^{-17}$\\
+$7$ & $0.027777778$ & $0.027777778$ & $3.47\times 10^{-18}$\\
+$11$ & $0.010000000$ & $0.010000000$ & $1.39\times 10^{-17}$\\
+$13$ & $0.006944444$ & $0.006944444$ & $1.91\times 10^{-17}$\\
+$17$ & $0.003906250$ & $0.003906250$ & $9.54\times 10^{-18}$\\
+$19$ & $0.003086420$ & $0.003086420$ & $1.30\times 10^{-18}$\\
+$23$ & $0.002066116$ & $0.002066116$ & $1.73\times 10^{-18}$\\
+\end{tabular}
+\end{center}
+
+The synchronization theorem (Theorem~\ref{thm:sync}) is a direct
+combination of the two preceding theorems, and the numerical checks
+above are consistent with that synchronization.
+
+%% -------- section 8: scope --------
+\section{Scope and Limitations}\label{sec:scope}
+
+We summarize what the present note does and does not claim.
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item The First-G event $k^{\star}(b)$ of Definition~\ref{def:partition}
+      equals $\spf(b)$ for every $b > 1$
+      (Theorem~\ref{thm:firstg}); this is an elementary one-line gcd
+      argument and does not require squarefree-ness.
+
+\item The closed form $R(k,f) = \sin^{2}(\pi k/f)/
+      (k^{2}\sin^{2}(\pi/f))$ holds for every integer $f \ge 2$ and
+      every integer $k \ge 1$ (Theorem~\ref{thm:closedform}). The
+      proof is the standard Fej\'{e}r-type calculation in finite
+      Fourier analysis~\cite{Fejer1900,Zygmund2002}; we make no
+      claim of novelty for the identity itself, only for its
+      synchronization with the First-G event.
+
+\item The synchronization (Theorem~\ref{thm:sync}) is stated for
+      $f = \spf(b)$. We do not claim a synchronization for other
+      values of $f$, and we do not claim that the
+      synchronization characterizes $b$ beyond its smallest prime
+      factor.
+
+\item The continuum limit (Theorem~\ref{thm:limit}) is a direct
+      asymptotic. We do not claim any analytic-number-theory
+      consequence: no statement about the distribution of primes in
+      arithmetic progressions, no zero-free region for $\zeta(s)$,
+      no consequence for the Riemann hypothesis, and no implication
+      for cryptographic factoring difficulty.
+
+\item The verification in Section~\ref{sec:verify} is exhaustive on
+      the stated finite ranges. The theorems themselves are proved
+      for all relevant $b$ and $f$, so the finite verification is
+      a confirmation, not a pillar of the result.
+\end{enumerate}
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{Apostol1976}
+T.~M.~Apostol.
+\newblock \emph{Introduction to Analytic Number Theory}.
+\newblock Undergraduate Texts in Mathematics. Springer, New York, 1976.
+
+\bibitem{Erdos1959}
+P.~Erd\H{o}s.
+\newblock On the distribution of the smallest prime factor of $n$.
+\newblock \emph{Mathematika}, 6:1--6, 1959.
+
+\bibitem{Fejer1900}
+L.~Fej\'{e}r.
+\newblock Sur les fonctions born\'{e}es et int\'{e}grables.
+\newblock \emph{Comptes Rendus de l'Acad\'{e}mie des Sciences, Paris},
+131:984--987, 1900.
+
+\bibitem{FriedlanderIwaniec2010}
+J.~Friedlander and H.~Iwaniec.
+\newblock \emph{Opera de Cribro}.
+\newblock American Mathematical Society Colloquium Publications 57.
+\newblock American Mathematical Society, Providence, RI, 2010.
+
+\bibitem{HardyWright2008}
+G.~H.~Hardy and E.~M.~Wright.
+\newblock \emph{An Introduction to the Theory of Numbers}, 6th edition.
+\newblock Revised by D.~R.~Heath-Brown and J.~H.~Silverman.
+\newblock Oxford University Press, Oxford, 2008.
+
+\bibitem{IwaniecKowalski2004}
+H.~Iwaniec and E.~Kowalski.
+\newblock \emph{Analytic Number Theory}.
+\newblock American Mathematical Society Colloquium Publications 53.
+\newblock American Mathematical Society, Providence, RI, 2004.
+
+\bibitem{Lang2002}
+S.~Lang.
+\newblock \emph{Algebra}, 3rd edition.
+\newblock Graduate Texts in Mathematics 211. Springer, New York, 2002.
+
+\bibitem{OppenheimSchafer2010}
+A.~V.~Oppenheim and R.~W.~Schafer.
+\newblock \emph{Discrete-Time Signal Processing}, 3rd edition.
+\newblock Prentice Hall, Upper Saddle River, NJ, 2010.
+
+\bibitem{Pomerance1985}
+C.~Pomerance.
+\newblock On the distribution of round numbers.
+\newblock In \emph{Number Theory (Ootacamund 1984)}, Lecture Notes in
+Mathematics 1122, pages 173--200. Springer, Berlin, 1985.
+
+\bibitem{Shannon1949}
+C.~E.~Shannon.
+\newblock Communication in the presence of noise.
+\newblock \emph{Proceedings of the IRE}, 37(1):10--21, 1949.
+
+\bibitem{Tenenbaum2015}
+G.~Tenenbaum.
+\newblock \emph{Introduction to Analytic and Probabilistic Number Theory},
+3rd edition.
+\newblock Cambridge Studies in Advanced Mathematics 46. Cambridge
+University Press, Cambridge, 2015.
+
+\bibitem{Zygmund2002}
+A.~Zygmund.
+\newblock \emph{Trigonometric Series}, 3rd edition.
+\newblock With a foreword by R.~A.~Fefferman.
+Cambridge University Press, Cambridge, 2002.
+
+%% -- companion papers ------------------------
+\bibitem{SandersGish2026Sigma}
+B.~R.~Sanders and M.~Gish.
+\newblock Non-Associativity Decay in Binary Composition Tables over
+$\mathbb{Z}/N\mathbb{Z}$.
+\newblock Preprint, 2026.
+
+\bibitem{SandersGish2026FourCore}
+B.~R.~Sanders and M.~Gish.
+\newblock Joint Closure and a Closed-Form Algebraic Attractor of Two
+Commutative Binary Operations on $\mathbb{Z}/10\mathbb{Z}$.
+\newblock Preprint, 2026.
+
+\bibitem{SandersGishJohnson2026JCAP}
+B.~R.~Sanders, M.~Gish, and H.~J.~Johnson.
+\newblock Logarithmic Quintessence: A Dimensionless Scalar Dark Energy
+Model with an Analytic Vacuum.
+\newblock Preprint, 2026.
+
+\end{thebibliography}
+
+\end{document}
