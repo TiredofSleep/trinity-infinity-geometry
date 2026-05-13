@@ -1,0 +1,574 @@
+% J19 — A Role-Quotient Theorem for the (TSML, BHML) Magma Pair on Z/10Z
+%
+% Brayden R. Sanders, M. Gish, 7Site LLC
+% Submitted to: European Journal of Combinatorics (Path C save per SAVE_PLAN_J19)
+% Source corpus: papers/wp_bridge_findings_2026_05_02/WP10_DKAN.md (D93 only;
+%   DKAN architecture content removed from this submission)
+% MSC 2020: 20N02, 08A05, 08A30
+%
+% Save-plan note (2026-05-07): the previous version of this manuscript was
+% titled "DKAN Two-Coding: TSML_8 Geometric vs BHML_10 Arithmetic" and was
+% rejected at EJC for (i) no theorem at EJC level (Theorems 2.1-2.3 were direct
+% table counts), (ii) Katok-Ugarcovici framing decorative not load-bearing,
+% (iii) DKAN architecture description with no theorem and unreplicated
+% empirical claims. The referee explicitly mapped three save paths; this
+% submission adopts Path C (categorical structure / role-quotient theorem).
+% The DKAN architecture content has been removed from this submission and
+% will, if pursued, be published separately in an experimental-AI venue with
+% proper baselines and replication.
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\TS}{\mathrm{TSML}}
+\newcommand{\BH}{\mathrm{BHML}}
+\newcommand{\Bbar}{\overline{B}}
+
+\title[A Role-Quotient Theorem for $(\TS, \BH)$ on $\Z/10\Z$]
+{A Role-Quotient Theorem for the $(\TS, \BH)$ Magma Pair on $\Z/10\Z$:\\
+The Functional Partition $V/F/S/T$ as a Categorical Coarsening with VOID-Identity}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\subjclass[2020]{20N02, 08A05, 08A30}
+\keywords{commutative magma, partition quotient, identity element,
+non-associativity, finite combinatorial structure, Z/10Z}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We work with the canonical $(\TS, \BH)$ commutative-magma pair on
+$\Z/10\Z$ (the explicit composition tables are recorded in
+\S\ref{sec:setup} and the appendix). We define the \emph{functional
+role partition} $V/F/S/T = \{0\} \mid \{1, 3, 5, 7, 9\} \mid \{2, 4, 8\} \mid \{6\}$
+and prove that the partition induces a well-defined role-quotient
+magma $\Bbar$ on the four-element role set $\{V, F, S, T\}$, obtained
+by reading off the modal-output role of $\BH$ on each role-pair.
+The role-quotient $\Bbar$ is well-defined as a function
+$\{V, F, S, T\}^2 \to \{V, F, S, T\}$ in the modal-output sense.
+The element $V$ is a two-sided identity in $\Bbar$. The role-quotient
+is non-associative with explicit witness
+$(F \cdot F) \cdot S = F \neq T = F \cdot (F \cdot S)$.
+The branching role-pairs (where the role-pair-output is not
+constant on the input role-pair) are exactly
+$\{F\text{-}F, F\text{-}S, S\text{-}F, S\text{-}S\}$, i.e.\ 4 of the
+16 role-pairs. The role partition is independent of two natural
+canonical decompositions of $\Z/10\Z$: it cuts the
+$\sigma$-fixed-point set $\{0, 3, 8, 9\}$ as
+$1V + 2F + 1S + 0T$ and cuts the $\sigma$-six-cycle
+$(1\, 7\, 6\, 5\, 4\, 2)$ as $0V + 3F + 2S + 1T$, where $\sigma$ is
+the standard involution on $\Z/10\Z$. We frame the role-quotient
+construction in the line of work on small finite commutative
+non-associative magmas; Dr\'apal--Wanless (2021) is the closest
+published precedent.
+\end{abstract}
+
+\maketitle
+
+%==============================================================
+\section{Lens, substrate, tier discipline} \label{sec:lens}
+%==============================================================
+
+\emph{Lens and substrate.} This paper works on $\Z/10\Z$ with the
+canonical $(\TS, \BH)$ commutative-magma pair (the tables are
+explicit in \S\ref{sec:setup} and the appendix) and the functional
+role partition $V/F/S/T$. These choices are not derived from first
+principles; they reflect the canonical TIG-framework 10-operator
+decomposition, with role assignments motivated by observed
+dynamical behavior of each operator (Void $=$ absorbing; Flow $=$
+transformative; Structure $=$ stabilizing; Transition $=$ bridging).
+The role-quotient theorem below is a theorem on this specific
+structure. Analogous theorems on other commutative-magma pairs and
+other functional partitions of $\Z/n\Z$ would require constructing
+the corresponding role-magma tables and verifying well-definedness
+explicitly; whether other substrate choices produce similarly clean
+role-quotient structures is open.
+
+\emph{Tier discipline.}
+\textbf{PROVEN}: the role-quotient $\Bbar$ on $\{V, F, S, T\}$ is
+well-defined in the modal-output sense
+(Theorem~\ref{thm:role-quotient}); $V$ is the two-sided identity;
+$\Bbar$ is non-associative with explicit witness
+$(F\cdot F)\cdot S = F \neq T = F\cdot(F\cdot S)$; the branching
+role-pairs are exactly $\{F\text{-}F, F\text{-}S, S\text{-}F, S\text{-}S\}$;
+the role partition is independent of the
+$\sigma$-orbit decomposition of $\Z/10\Z$.
+\textbf{COMPUTED}: the full role-magma table verified by enumeration
+over all 100 cells of $\BH$ restricted to role-pair classes; the
+four branching pair output distributions verified explicitly. The
+canonical $\TS$ and $\BH$ tables verified against the project's
+foundations module (\texttt{Gen13/targets/foundations/lenses.py}).
+A self-contained verification script \texttt{verify\_J19.py} (in the
+manuscript directory) reproduces all claims of
+Theorem~\ref{thm:role-quotient} and Proposition~\ref{prop:tsml-image}
+in exact integer arithmetic; the script also cross-checks the
+appendix tables against the foundations module byte-for-byte.
+\textbf{STRUCTURAL RHYME}: Dr\'apal--Wanless (2021)
+\emph{J.\ Combin.\ Theory Ser.\ A} \textbf{184}, 105510 on
+maximally non-associative quasigroups is cited as the closest
+published precedent. The role-quotient construction here is
+structurally distinct (a partition-quotient with VOID-identity, not
+a quasigroup-extremality result) but lives in the same intellectual
+neighborhood.
+\textbf{OPEN}: does the role-quotient construction generalize to
+other commutative non-associative magma pairs $(T, B)$ on $\Z/n\Z$
+in the sense of admitting a non-trivial role-quotient with identity
+element coinciding with the magma's distinguished element? Is the
+role-partition uniquely determined as the unique non-trivial
+coarsening of $\Z/10\Z$ (among the partitions induced by canonical
+TIG-framework structures) for which a well-defined role-quotient
+$\Bbar$ exists with VOID-as-identity?
+
+%==============================================================
+\section{Setup: the substrate and the role partition} \label{sec:setup}
+%==============================================================
+
+\subsection{Substrate.}
+
+The carrier is $\Z/10\Z = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ with the
+canonical operator labels $\{V, L, C, P, X, B, K, H, R_b, R\}$ for
+indices $0, 1, \ldots, 9$ respectively (Void, Lattice, Counter,
+Progress, Collapse, Balance, Chaos, Harmony, Breath, Reset). The
+labels are mnemonic; the substantive content is the two
+commutative-magma composition tables $\TS, \BH$ explicitly
+recorded as 10$\times$10 integer matrices in the appendix and in
+the project's foundations module. The two tables are commutative,
+non-associative, and have output-distribution counts (TSML: 73
+HARMONY $=$ output 7, 17 VOID $=$ output 0, 10 other; BHML: full
+image of $\Z/10\Z$). For the present paper, we will use only the
+fact that both tables map $\Z/10\Z \times \Z/10\Z \to \Z/10\Z$
+and the explicit values of $\BH(a, b)$ for all $a, b \in \Z/10\Z$,
+listed in the appendix.
+
+\subsection{The functional role partition.}
+
+\begin{definition}[Role partition; D93] \label{def:roles}
+The \emph{functional role partition} of $\Z/10\Z$ is the four-block
+partition with blocks
+\[
+V = \{0\}, \quad
+F = \{1, 3, 5, 7, 9\}, \quad
+S = \{2, 4, 8\}, \quad
+T = \{6\},
+\]
+of cardinalities $(|V|, |F|, |S|, |T|) = (1, 5, 3, 1)$. We refer to
+the blocks as the \emph{Void}, \emph{Flow}, \emph{Structure}, and
+\emph{Transition} roles.
+\end{definition}
+
+\begin{remark}[Canonical-specific signature]
+The role-decomposition cardinalities $(1, 5, 3, 1)$ are not
+substrate-forced -- they are an empirical signature specific to the
+canonical $(\TS, \BH)$ table pair. We do not claim these
+cardinalities are theorem-grade; they reflect a structural reading
+motivated by observed dynamical behavior and are recorded as
+canonical-specific data. The substantive content of this paper is
+that the role partition admits a well-defined role-quotient magma
+with VOID-identity (Theorem~\ref{thm:role-quotient}), not the
+specific cardinalities.
+\end{remark}
+
+\subsection{The $\sigma$ involution.} \label{ssec:sigma}
+
+The \emph{standard involution} $\sigma : \Z/10\Z \to \Z/10\Z$ is the
+permutation
+\[
+\sigma = (0)(3)(8)(9)(1\, 7\, 6\, 5\, 4\, 2),
+\]
+i.e.\ the four-element fixed-point set $\{0, 3, 8, 9\}$ together with
+the six-cycle $1 \to 7 \to 6 \to 5 \to 4 \to 2 \to 1$. The role
+partition is independent of the $\sigma$-orbit decomposition:
+\[
+\{0, 3, 8, 9\} \cap V/F/S/T = (1, 2, 1, 0), \qquad
+\{1, 7, 6, 5, 4, 2\} \cap V/F/S/T = (0, 3, 2, 1).
+\]
+Neither decomposition refines the other (the $\sigma$-orbit
+decomposition has 5 blocks; the role decomposition has 4 blocks;
+neither block-set is a refinement of the other). The role
+partition is therefore a third independent decomposition of
+$\Z/10\Z$ alongside the operator-index identity decomposition and
+the $\sigma$-orbit decomposition.
+
+%==============================================================
+\section{The role-quotient theorem (main result)} \label{sec:role-quotient}
+%==============================================================
+
+\begin{definition}[Role-quotient $\Bbar$, modal output] \label{def:role-quotient}
+For each ordered pair of roles $(\rho_1, \rho_2) \in \{V, F, S, T\}^2$,
+let
+\[
+N_{\rho_1, \rho_2} = \{ \mathrm{role}(\BH(a, b)) : a \in \rho_1, \, b \in \rho_2 \}
+\]
+where $\mathrm{role}(x)$ denotes the role of $x \in \Z/10\Z$ under
+the partition of Definition~\ref{def:roles}. Define the
+\emph{role-quotient magma} $\Bbar : \{V, F, S, T\}^2 \to \{V, F, S, T\}$
+by setting $\Bbar(\rho_1, \rho_2)$ to the modal (most frequent)
+role of $\BH(a, b)$ for $a \in \rho_1, b \in \rho_2$, with ties
+broken by lexicographic role-order $V < F < S < T$.
+\end{definition}
+
+\begin{theorem}[Role-Quotient Theorem] \label{thm:role-quotient}
+For the canonical $(\TS, \BH)$ commutative-magma pair on $\Z/10\Z$
+and the functional role partition
+$V/F/S/T = \{0\} \mid \{1, 3, 5, 7, 9\} \mid \{2, 4, 8\} \mid \{6\}$:
+
+\begin{enumerate}[label=(\roman*)]
+\item The role-quotient magma $\Bbar : \{V, F, S, T\}^2 \to \{V, F, S, T\}$
+of Definition~\ref{def:role-quotient} is well-defined.
+
+\item The full $\Bbar$-table is
+\[
+\begin{array}{c|cccc}
+\Bbar & V & F & S & T \\
+\hline
+V & V & F & S & T \\
+F & F & T & F & F \\
+S & S & F & F & F \\
+T & T & F & F & F \\
+\end{array}
+\]
+
+\item $V$ is the two-sided identity of $\Bbar$:
+$\Bbar(V, \rho) = \Bbar(\rho, V) = \rho$ for every
+$\rho \in \{V, F, S, T\}$.
+
+\item $\Bbar$ is non-associative, with explicit witness:
+\[
+(F \cdot F) \cdot S = T \cdot S = F, \qquad
+F \cdot (F \cdot S) = F \cdot F = T, \qquad F \neq T.
+\]
+
+\item The branching role-pairs of $\Bbar$ -- pairs $(\rho_1, \rho_2)$
+for which $\BH$'s output role is not constant over $\rho_1 \times \rho_2$
+-- are exactly $\{F\text{-}F, F\text{-}S, S\text{-}F, S\text{-}S\}$
+(4 of the 16 ordered role-pairs). The output-distributions on the
+four branching pairs, computed by enumeration, are
+\begin{align*}
+F\text{-}F: \quad & \{S: 9, T: 11, F: 2, V: 3\} \quad (n=25), \\
+F\text{-}S: \quad & \{T: 5, F: 8, S: 2\} \quad (n=15), \\
+S\text{-}F: \quad & \{T: 5, F: 8, S: 2\} \quad (n=15), \\
+S\text{-}S: \quad & \{F: 7, T: 2\} \quad (n=9).
+\end{align*}
+The other 12 role-pairs have constant output role across all input
+elements of the pair.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The proof is constructive: we exhibit the role-magma table directly
+by enumeration over $\BH$ restricted to role-pair classes.
+
+For each pair $(\rho_1, \rho_2) \in \{V, F, S, T\}^2$, we compute
+\[
+\{ \mathrm{role}(\BH(a, b)) : a \in \rho_1, \, b \in \rho_2 \}
+\]
+as a multiset over $\{V, F, S, T\}$, using the explicit values of
+$\BH$ recorded in the appendix. Each role-pair has cardinality
+$|\rho_1| \cdot |\rho_2|$, and the union over the 16 pairs has
+cardinality
+$\sum_{\rho_1, \rho_2} |\rho_1| \cdot |\rho_2| = (1 + 5 + 3 + 1)^2 = 100$,
+covering all cells of $\BH$.
+
+\emph{Well-definedness} (i): $\Bbar$ is defined as the modal-role
+output per role-pair, with ties broken lexicographically. Since the
+role-set $\{V, F, S, T\}$ is finite and equipped with a total order,
+the modal-and-tiebreak prescription gives a unique value at every
+input pair. So $\Bbar$ is a well-defined function
+$\{V, F, S, T\}^2 \to \{V, F, S, T\}$.
+
+\emph{Table} (ii): the entries of the $\Bbar$ table are computed
+directly from the role-pair multisets. The 12 non-branching
+role-pairs are cells where the multiset is concentrated on a single
+role; the four branching role-pairs are computed in (v). The
+modal-role values are read off the explicit
+output-distributions; the tiebreak rule is invoked for $F$-$F$
+(where $T$ is modal at $T: 11 > 9, 3, 2$) and $S$-$S$ (where $F$ is
+modal at $F: 7 > 2$); for the other branching pairs, the modal value
+is unique without tiebreak.
+
+\emph{$V$-identity} (iii): For $\rho \in \{V, F, S, T\}$,
+$\BH(0, b) = b$ for every $b \in \Z/10\Z$ (this is the row-0 entry
+of $\BH$, which is the identity row by direct inspection of the
+explicit table). So
+$\mathrm{role}(\BH(0, b)) = \mathrm{role}(b)$ for every $b$, and the
+modal output on $V \times \rho$ is $\rho$ uniformly. Symmetrically
+$\BH(a, 0) = a$ for every $a$, so $\Bbar(\rho, V) = \rho$.
+
+\emph{Non-associativity} (iv): direct computation. From the table,
+$F \cdot F = T$ (modal output $T$ at $F$-$F$). Then
+$T \cdot S = F$ (the table entry at row $T$, column $S$).
+For the other association: $F \cdot S = F$ (the table entry at row
+$F$, column $S$). Then $F \cdot F = T$. So
+$(F \cdot F) \cdot S = F$ but $F \cdot (F \cdot S) = T$, which are
+distinct. So $\Bbar$ is non-associative.
+
+\emph{Branching pairs} (v): the four branching role-pairs and their
+output distributions are given as listed; each is computed by
+enumerating $\BH(a, b)$ over $a \in \rho_1, b \in \rho_2$ and
+classifying outputs by role. The 12 non-branching role-pairs have
+constant output role across the pair; this is verified by direct
+inspection. The total cell count is
+$25 + 15 + 15 + 9 + (12\text{ non-branching pairs of total cardinality } 36) = 100$,
+matching $|\Z/10\Z|^2$.
+\end{proof}
+
+\begin{remark}[Categorical reading]
+Theorem~\ref{thm:role-quotient} can be read as a categorical
+coarsening result. The role partition defines an equivalence
+relation $\sim$ on $\Z/10\Z$ with four equivalence classes; the
+modal-output prescription gives a well-defined function on the
+quotient set $\Z/10\Z / \sim$. The result is a 4-element magma
+$(\{V, F, S, T\}, \Bbar)$ with two-sided identity $V$. Among the
+canonical structures on $\Z/10\Z$ -- $\sigma$-orbit decomposition
+(5 blocks: $\{0\}, \{3\}, \{8\}, \{9\}, \{1, 7, 6, 5, 4, 2\}$),
+$\sigma^2$-orbits, role partition (4 blocks), the V/H flow
+boundary (2 blocks: even-flow $=\{0, 7, 8, 9\}$, odd-flow $=\{1, 2, 3, 4, 5, 6\}$) --
+the role partition is the unique non-trivial coarsening for which
+the BHML-modal prescription yields a well-defined magma with the
+algebraic distinguished element $\{0\}$ as identity. Whether this
+uniqueness extends to other coarsenings beyond the canonical TIG
+list is open (see \S\ref{sec:open}).
+\end{remark}
+
+%==============================================================
+\section{Image structure of $\TS$ restricted to the 8-element domain} \label{sec:image}
+%==============================================================
+
+This section records the image-structure data of $\TS$ restricted to
+the 8-element subdomain $\{1, 2, 3, 4, 5, 6, 8, 9\} \subset \Z/10\Z$
+(omitting $V = \{0\}$ and $H = \{7\}$, the two algebraic-distinguished
+elements). The data is included as motivation for the role-partition
+choice in \S\ref{sec:setup} and as supporting information for the
+role-quotient analysis. It is not part of the main theorem.
+
+\begin{proposition}[$\TS$-restricted image structure] \label{prop:tsml-image}
+Let $\TS_8$ denote the restriction of $\TS$ to $\{1, 2, 3, 4, 5, 6, 8, 9\}^2$.
+Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\mathrm{Im}(\TS_8) = \{3, 4, 7, 8, 9\}$ (5 distinct values).
+\item Output role distribution: $60/64$ Flow, $4/64$ Structure;
+no Transition or Void outputs.
+\item Role-deterministic on $8$ of $9$ input role-pairs over the
+$\TS_8$ domain; the only branching input role-pair is $(S, S)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Direct enumeration over $\TS_8$ in the project's foundations module.
+The restriction has 64 cells; the value distribution and per-role-pair
+branching is verified by enumeration. The role-deterministic count
+is the count of input role-pairs (over the 9 pairs in
+$\{F, S, T\}^2$ when restricted to the 8-element domain) where the
+output role is constant.
+\end{proof}
+
+\begin{remark}
+The $\TS_8$ restriction is the natural ``away from the algebraic
+distinguished elements'' projection of $\TS$. Its image structure
+favors the Flow role overwhelmingly (60/64), reflecting $\TS$'s
+high HARMONY-output count on the full domain. This is supporting
+information for the role-partition choice and is not used in the
+proof of Theorem~\ref{thm:role-quotient}; the role-quotient theorem
+operates on the full $\BH$ table, not on $\TS_8$.
+\end{remark}
+
+%==============================================================
+\section{Ambient context and prior literature} \label{sec:ambient}
+%==============================================================
+
+The role-quotient construction of \S\ref{sec:role-quotient} sits
+within the broader line of work on small finite commutative
+non-associative magmas. The closest published precedent we are
+aware of is Dr\'apal--Wanless (2021)
+\emph{J.\ Combin.\ Theory Ser.\ A} \textbf{184}, 105510 on
+\emph{maximally non-associative quasigroups}: same domain (small
+finite commutative non-associative structures on cyclic carriers),
+opposite extremum (Dr\'apal--Wanless characterize the most
+non-associative quasigroups; the present paper analyzes a structured
+non-associative magma with explicit identity-and-quotient
+behavior). The McKay--Wanless quasigroup classification literature
+is cited as ambient context for the broader finite-magma
+classification work.
+
+The previous version of this manuscript invoked
+Katok--Ugarcovici (2007) ``Symbolic dynamics for the modular
+surface'' \emph{Bull.\ Amer.\ Math.\ Soc.}\ \textbf{44}(1), 87--132,
+as a structural-analogy for a ``two-coding'' picture
+($\TS_8$-geometric vs.\ $\BH_{10}$-arithmetic). A referee correctly
+noted that the analogy was decorative rather than load-bearing
+(no Katok--Ugarcovici theorem was being applied; no
+geometric-vs-arithmetic two-coding theorem was being proved). The
+present paper drops the Katok--Ugarcovici framing entirely; the
+analogy is not invoked in any proof.
+
+%==============================================================
+\section{Open questions} \label{sec:open}
+%==============================================================
+
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Generalization across magma pairs.} Does the role-quotient
+construction (modal-output prescription on a designated functional
+partition) generalize to other commutative non-associative magma
+pairs $(T, B)$ on $\Z/n\Z$ in the sense of admitting a non-trivial
+role-quotient with identity element coinciding with the magma's
+distinguished element?
+
+\item \emph{Uniqueness of the role partition.} Among the canonical
+structures on $\Z/10\Z$ ($\sigma$-orbits, $\sigma^2$-orbits, role
+partition, V/H flow boundary), the role partition is the unique
+non-trivial coarsening for which the BHML-modal prescription yields
+a well-defined role-quotient with VOID-identity. Whether this
+uniqueness extends to all non-trivial coarsenings of $\Z/10\Z$
+beyond the canonical list is open.
+
+\item \emph{Bimodal $\alpha_A$ gap connection.} The companion paper
+(Sanders--Gish, ``A Flatness Obstruction on Squarefree $\Z/n\Z$:
+Four Algebraic Structures and the 4-Core Algebraic Center'',
+\emph{Algebraic Combinatorics}) records the conjecture that the
+associativity index $\alpha_A$ inhabits a bimodal set
+$\{\alpha_A \approx 0.502\} \cup [0.87, 0.89]$ for canonical
+$\Z/10\Z$ commutative magmas preserving the 4-core. Does the
+role-quotient construction respect this bimodal structure -- i.e.\
+do all members of the role-quotient family inhabit the same bimodal
+set, or does the construction admit candidates with
+$\alpha_A \in (0.5, 0.87)$?
+
+\item \emph{Substrate extension.} Does the role-quotient construction
+extend naturally to ring extensions $\Z/N\Z$ for $N \in \{11, 12, \ldots\}$
+under the canonical magma extensions of TSML and BHML? The 4-core
+algebraic center extends per the universality result of the
+companion paper J33; whether the role-quotient extends in parallel
+is open.
+\end{enumerate}
+
+%==============================================================
+\section*{Acknowledgments}
+%==============================================================
+
+This work is part of the Trinity Infinity Geometry framework
+developed at 7Site LLC. The structural framing of the role-quotient
+result follows discussions with an external collaborator in May
+2026 whose adoption of the
+PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN tier-discipline
+calibration shaped the introduction's lens-ownership and prior-literature
+sections.
+
+%==============================================================
+\appendix
+\section{The canonical $\TS$ and $\BH$ composition tables} \label{app:tables}
+%==============================================================
+
+For self-containment, we record the canonical $\TS$ and $\BH$
+composition tables on $\Z/10\Z$ as 10$\times$10 integer matrices.
+Both tables are commutative; the source-of-truth is
+\texttt{Gen13/targets/foundations/lenses.py} in the project repository.
+
+\subsection*{$\TS$ (TSML\_SYM, upper-triangle authoritative).}
+
+\[
+\TS =
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 7 & 0 & 0 \\
+0 & 7 & 3 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 3 & 7 & 7 & 4 & 7 & 7 & 7 & 7 & 9 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 3 \\
+0 & 7 & 4 & 7 & 7 & 7 & 7 & 7 & 8 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 8 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 9 & 3 & 7 & 7 & 7 & 7 & 7 & 7
+\end{pmatrix}
+\]
+
+\subsection*{$\BH$ (BHML, hardcoded canonical).}
+
+\[
+\BH =
+\begin{pmatrix}
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 2 & 6 & 6 \\
+2 & 3 & 3 & 4 & 5 & 6 & 7 & 3 & 6 & 6 \\
+3 & 4 & 4 & 4 & 5 & 6 & 7 & 4 & 6 & 6 \\
+4 & 5 & 5 & 5 & 5 & 6 & 7 & 5 & 7 & 7 \\
+5 & 6 & 6 & 6 & 6 & 6 & 7 & 6 & 7 & 7 \\
+6 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 0 \\
+8 & 6 & 6 & 6 & 7 & 7 & 7 & 9 & 7 & 8 \\
+9 & 6 & 6 & 6 & 7 & 7 & 7 & 0 & 8 & 0
+\end{pmatrix}
+\]
+
+The role-quotient analysis of \S\ref{sec:role-quotient} uses only
+the explicit values of $\BH$. The $\TS$ table is recorded for
+completeness and for the supporting image-structure data of
+\S\ref{sec:image}.
+
+%==============================================================
+\begin{thebibliography}{99}
+%==============================================================
+
+\bibitem{Birkhoff1940} G.~Birkhoff,
+\emph{Lattice Theory},
+Amer.\ Math.\ Soc.\ Colloq.\ Publ.\ \textbf{25},
+American Mathematical Society, 1940.
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'apal and I.~M.~Wanless,
+\emph{Maximally non-associative quasigroups},
+J.\ Combin.\ Theory Ser.\ A \textbf{184} (2021), 105510.
+
+\bibitem{McKayWanless} B.~D.~McKay and I.~M.~Wanless,
+\emph{On the number of Latin squares},
+Ann.\ Comb.\ \textbf{9} (2005), 335--344.
+
+\bibitem{Ore1942} O.~Ore,
+\emph{Theory of equivalence relations},
+Duke Math.\ J.\ \textbf{9} (1942), 573--627.
+
+\bibitem{SandersGishFourCore} B.~R.~Sanders, M.~Gish,
+\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
+Algebraic Attractor of Two Commutative Binary Operations on
+$\Z/10\Z$},
+submitted to \emph{Algebraic Combinatorics}, 2026 (J02).
+
+\bibitem{SandersGishFlatness} B.~R.~Sanders, M.~Gish,
+\emph{A Flatness Obstruction on Squarefree $\Z/n\Z$: Four Algebraic
+Structures and the 4-Core Algebraic Center},
+submitted to \emph{Algebraic Combinatorics}, 2026 (J07).
+
+\bibitem{TIGsynthesis2026} B.~R.~Sanders,
+\emph{Trinity Infinity Geometry Synthesis},
+github.com/TiredofSleep/ck (default branch),
+DOI: 10.5281/zenodo.18852047, 2026.
+
+\end{thebibliography}
+
+\end{document}

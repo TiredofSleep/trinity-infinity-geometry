@@ -100,11 +100,11 @@ W1-C: J35 + J54 (centerpiece pair)
 W1-D: J11, J12, J16
 W1-E: J05, J08 (J09 landed 2026-05-12 at [`../algebra/J09/`](../algebra/J09/))
 W2-A: J03, J04 (J06 landed 2026-05-12 at [`../algebra/J06/`](../algebra/J06/))
-W2-B: J10, J19 (J07 landed 2026-05-12 at [`../combinatorics/J07/`](../combinatorics/J07/))
+W2-B: J10 (J07 landed 2026-05-12 at [`../combinatorics/J07/`](../combinatorics/J07/); J19 landed 2026-05-12 at [`../combinatorics/J19/`](../combinatorics/J19/) — Path C role-quotient theorem on (TSML, BHML)/Z/10Z; 5-clause Theorem 3.1 + Prop 5.1 + σ-orbit independence + foundations.lenses cross-check, all PASS at exact integer arithmetic via `verify_J19.py`)
 W2-C: J28, J29 (J30 landed 2026-05-12 at [`../algebra/J30/`](../algebra/J30/))
 W2-D: J33, J34 (J36 landed 2026-05-12 at [`../physics/J36/`](../physics/J36/), Part 1 only — Part 2 [1/α] deferred)
 W2-F: J47 (J45 landed 2026-05-12 at [`../physics/J45/`](../physics/J45/); J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/); J40 landed 2026-05-12 at [`../physics/J40/`](../physics/J40/) — JMP BB-bridge / NS framework, conditional Theorem 4.1 under H1+H2, 43/43 PASS sanity script)
-W2-G: J49, J50, J52, J53 (author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
+W2-G: J49, J50, J52 (J53 landed 2026-05-12 at [`../interdisciplinary/J53/`](../interdisciplinary/J53/) — author-lane flipped to Sanders+Gish; verify_J53.py 5/5 PASS; algebraic classifier on category $\mathcal{M}$; literature engagement complete) (J50, J52 author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
 W2-H: J38 (J22 landed 2026-05-12 at [`../algebra/J22/`](../algebra/J22/); J14 landed 2026-05-12 at [`../algebra/J14/`](../algebra/J14/); J37 landed 2026-05-12 at [`../algebra/J37/`](../algebra/J37/))
 W2-I: J26 landed 2026-05-12 at [`../algebra/J26/`](../algebra/J26/) (J20 landed 2026-05-12 at [`../algebra/J20/`](../algebra/J20/); J21 landed 2026-05-12 at [`../combinatorics/J21/`](../combinatorics/J21/); J25 landed 2026-05-12 at [`../algebra/J25/`](../algebra/J25/))
 
