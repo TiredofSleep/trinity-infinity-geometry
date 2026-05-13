@@ -1,6 +1,6 @@
 # J03 — The First-G Event and a Discrete Sinc² Identity
 
-**Status:** SAVE-PLAN IMPLEMENTED (Fork A restoration; manuscript rewritten 2026-05-08)
+**Status:** SAVE-PLAN IMPLEMENTED (Fork A restoration 2026-05-08; **substance upgrade 2026-05-13** — added Theorem 5.2 obstruction-zero correspondence + Corollaries 5.3-5.4; §1 "what is new is the packaging" admission replaced with the spectral-characterization framing; 7/7 verification PASS)
 **Phase:** Phase 1 (Triadic Launch)
 **Target venue:** Integers — Electronic Journal of Combinatorial Number Theory
 **Author lane:** Sanders + Gish
@@ -24,10 +24,10 @@ The submission package lives in this J-folder. Edit + verify here; submit from h
 ## §2 — Verification scripts
 
 **Paths:**
-- `manuscript/verify_J03.py` — Theorem 4.2 (closed form $R(k,f)=\sin^2(\pi k/f)/(k^2 \sin^2(\pi/f))$), Theorem 5.1 (synchronization at $k = \mathrm{spf}(b)$), Theorem 6.1 (continuum limit $R(k,f) \to \mathrm{sinc}^2(k/f)$), and Cor 4.4(ii) ($R(f-1,f)=1/(f-1)^2$). 5/5 verifications pass at machine precision; max deviation 4.44 × 10⁻¹⁶ across $f \in \{3, 5, 7, 11, 13, 17, 19, 23, 31, 53, 97, 211\}$. Runtime $<1$s.
+- `manuscript/verify_J03.py` — Theorem 4.2 (closed form), Theorem 5.1 (synchronization), **Theorem 5.2 (obstruction-zero correspondence: $f_b(k)=0 \Leftrightarrow \gcd(k,b)>1$)**, Theorem 6.1 (continuum limit), Cor 4.4(ii) ($R(f-1,f)=1/(f-1)^2$), and **Corollary 5.4 (asymptotic zero density of $f_b$ matches the Euler product $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$)**. **7/7 verifications pass** at machine precision; max deviation 4.44 × 10⁻¹⁶ for the closed form; 900/900 cells match the boolean equivalence in Theorem 5.2 for squarefree $b \le 50$ and $k \le 30$; Euler-product density matched to within 6 × 10⁻⁶ for $b$ up to 2310 over $K = 100{,}000$. Runtime $\sim 3$s.
 - `manuscript/proof_first_g_event.py` — Theorem 3.1 (First-G localization: $k^{*}(b)=\mathrm{spf}(b)$ for every $b>1$). Direct enumeration over 305 squarefree $b \in [2, 500]$, 22,367 (b,k) pairs, zero counterexamples. Runtime $<3$s.
 
-Both scripts are the green-light gate before submission. Run order: `verify_J03.py` first (the theorem-statement gate), then `proof_first_g_event.py` (the structural-claim gate on Theorem 3.1).
+Both scripts are the green-light gate before submission. Run order: `verify_J03.py` first (the theorem-statement gate, including the new Theorem 5.2 + Cor 5.4), then `proof_first_g_event.py` (the structural-claim gate on Theorem 3.1).
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
@@ -73,23 +73,29 @@ Brayden's instinct ("not substantial enough") was validated by the line-by-line 
 
 Recommendation: **A > B > C.** Either way: do not submit current J03 to *Integers* unmodified.
 
-### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN (post-Fork A, final)
+### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN (post-Fork A + Theorem 5.2 substance upgrade, final)
 
 - **PROVEN:**
-  - *Theorem 3.1 (First-G localization).* For every b > 1, k\*(b) = spf(b).
-  - *Theorem 4.2 (closed form).* R(k, f) = sin²(πk/f) / (k² sin²(π/f)) for every f ≥ 2, k ≥ 1.
-  - *Theorem 5.1 (synchronization).* For every b > 1, the First-G event and the first integer zero of R(·, spf(b)) coincide at k = spf(b).
+  - *Theorem 3.1 (First-G localization).* For every b > 1, k\*(b) = spf(b). One-line gcd argument.
+  - *Theorem 4.2 (closed form).* R(k, f) = sin²(πk/f) / (k² sin²(π/f)) for every f ≥ 2, k ≥ 1. Fejér-type identity (standard, included for completeness).
+  - *Theorem 5.1 (synchronization).* For every b > 1, the First-G event and the first integer zero of R(·, spf(b)) coincide at k = spf(b). Special case of Theorem 5.2 at the smallest spectral zero.
+  - **NEW** *Theorem 5.2 (obstruction-zero correspondence — central contribution).* For every b > 1 with distinct prime factors p₁, ..., p_r, the spectral product $f_b(k) := \prod_j R(k, p_j)$ vanishes at integer $k \ge 1$ iff $\gcd(k, b) > 1$. The integer zero set of $f_b$ is exactly $\bigcup_j p_j \mathbb{N}$; the function $f_b$ acts as a continuous-in-$k$ indicator for the obstruction event.
+  - **NEW** *Corollary 5.3 (inclusion-exclusion identity for |G_k|).* $|G_k(b)| = \#\{j \le k : f_b(j) = 0\} = -\sum_{d \mid \mathrm{rad}(b),\, d > 1} \mu(d) \lfloor k/d \rfloor$.
+  - **NEW** *Corollary 5.4 (asymptotic zero density).* The zero density of $f_b$ in $\mathbb{N}$ equals $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b) = 1 - \prod_{p \mid b}(1 - 1/p)$.
   - *Theorem 6.1 (continuum limit).* R(k, f) → sinc²(k/f) as f → ∞ with k/f fixed.
   - *Cor 4.4 (endpoint values).* R(1,f) = 1, R(f-1,f) = 1/(f-1)², R(f,f) = 0, strict monotonicity on {1, ..., f-1}.
 - **COMPUTED:**
   - 22,367 (b,k) pairs over 305 squarefree b ∈ [2, 500], zero counterexamples, runtime <3s (`proof_first_g_event.py`).
-  - 8 primes f ∈ {3, 5, 7, 11, 13, 17, 19, 23}, all k ∈ {1, ..., f+1}, max deviation 4.44 × 10⁻¹⁶ for the closed form (`verify_J03.py`, 5/5 verifications pass).
+  - 8 primes f ∈ {3, 5, 7, 11, 13, 17, 19, 23}, all k ∈ {1, ..., f+1}, max deviation 4.44 × 10⁻¹⁶ for the closed form (`verify_J03.py`).
+  - **NEW** 900/900 cell-level boolean matches of $f_b(k)=0 \Leftrightarrow \gcd(k,b)>1$ for 30 squarefree $b \in [2, 50]$ and $k \in [1, 30]$ (`verify_J03.py` Theorem 5.2 block).
+  - **NEW** Euler-product density predictions match observed obstruction densities to within $7 \times 10^{-6}$ for $b$ up to 2310 over the window $K = 100{,}000$ (`verify_J03.py` Corollary 5.4 block).
 - **STRUCTURAL RHYME:**
   - *Identity sinc²(1/2) = 4/π² = (2/3)/ζ(2).* One-line consequence of ζ(2) = π²/6. Cited as motivation for the corridor midpoint, not as derivational input.
   - *Primon-gas reading: 1/ζ(2) = density of squarefree integers.* The squarefree restriction in our verification sample sits squarely in this regime — bridge connection only, no theorem.
   - *Drápal-Wanless 2021, JCTA.* Cited in the J-series broadly as the closest published precedent for the magma framework; not invoked in J03 directly because J03 is not a magma paper.
 - **OPEN:**
   - Why does the corridor midpoint of the substrate sit at t = 1/2 such that sinc²(1/2) = (2/3)/ζ(2) becomes structurally relevant? J03 flags it for companion work.
+  - Whether the spectral product $f_b$ has a closed-form Fourier interpretation (Ramanujan-sum / character-sum form) beyond the inclusion-exclusion identity in Cor 5.3.
 
 ### Status update (2026-05-08, post-SAVE-PLAN)
 

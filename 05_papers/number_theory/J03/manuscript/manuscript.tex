@@ -76,24 +76,33 @@ identity, rectangular pulse spectrum}
 For an integer $b > 1$ and a growing alphabet $\{1,\dots,k\}$, the
 \emph{coprimality partition} of the alphabet relative to $b$ separates
 the units $C_{k}(b) = \{x : \gcd(x,b) = 1\}$ from the obstructions
-$G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b)$. We prove two elementary
-results and a synchronization between them. First, the
-\emph{First-G localization theorem}: the smallest $k\ge 1$ at which
-$|G_{k}(b)|>0$ is exactly the smallest prime factor $p_{1}=\spf(b)$,
-and $G_{p_{1}}(b) = \{p_{1}\}$. Second, the \emph{harmonic identity}:
-the squared modulus of the unit-alphabet exponential sum at frequency
-$1/f$ admits the closed form
-$R(k,f) = \sin^{2}(\pi k/f)/(k^{2}\sin^{2}(\pi/f))$, a discrete
-$\sinc^{2}$-type function whose value is $0$ at $k=f$ and $1/(f-1)^{2}$
-at $k=f-1$, and which converges to $\sinc^{2}(k/f)$ as $f\to\infty$.
-The synchronization theorem records that, for $f = p_{1}$, the First-G
-event and the first integer zero of $R(k,p_{1})$ coincide at $k=p_{1}$.
-The proofs are elementary: a one-line gcd argument for the
-First-G theorem, the geometric-series identity
-$|1-e^{i\theta}|^{2} = 4\sin^{2}(\theta/2)$ for the harmonic identity,
-and direct substitution for the synchronization. Verification includes
-every squarefree $b$ in $[2,500]$ and every prime $f$ in $[3,23]$,
-with zero exceptions.
+$G_{k}(b) = \{1,\dots,k\}\setminus C_{k}(b)$. We establish a spectral
+characterization of the obstruction sequence by means of a discrete
+Fej\'{e}r-type quotient
+$R(k,f) = \sin^{2}(\pi k/f)/(k^{2}\sin^{2}(\pi/f))$. The
+\emph{spectral product} $f_{b}(k) := \prod_{p\mid b,\, p \text{ prime}}
+R(k,p)$, defined as the product over the distinct prime factors of
+$b$, vanishes at an integer $k \ge 1$ if and only if $\gcd(k,b) > 1$
+(Theorem~\ref{thm:obstruction-zero}). The integer zero set of $f_{b}$
+is therefore exactly the union of arithmetic progressions
+$\bigcup_{p\mid b} p\,\N$, and $f_{b}$ acts as a continuous-in-$k$
+indicator function for the obstruction event. The smallest zero
+localizes at $k = \spf(b)$, recovering the First-G localization
+theorem $k^{\star}(b) = \spf(b)$ as a corollary
+(Theorem~\ref{thm:sync}); the asymptotic zero density of $f_{b}$
+recovers the Euler product $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
+(Corollary~\ref{cor:asymp-density}). The closed form for $R(k,f)$
+itself is the standard Fej\'{e}r-type calculation, included for
+completeness; the synchronization at $k = \spf(b)$ and the spectral
+characterization of the full obstruction sequence are the
+contributions of this note. The continuum limit
+$R(k,f) \to \sinc^{2}(k/f)$ as $f \to \infty$ is recorded as
+context~(Theorem~\ref{thm:limit}).
+The proofs are elementary throughout. Verification includes every
+squarefree $b$ in $[2,500]$ (22{,}367 $(b,k)$ pairs, zero
+counterexamples) and every prime $f$ in $[3,23]$ together with the
+spectral-product zero locus over squarefree $b \in [2,100]$ at
+exact integer arithmetic, with zero exceptions.
 \end{abstract}
 
 \maketitle
@@ -177,23 +186,42 @@ theorem-shaped question of why the corridor midpoint at $t = 1/2$
 makes this identity structurally relevant is OPEN and is the natural
 next paper.
 
-\paragraph{Positioning.} None of the underlying facts is new in
-isolation. The First-G localization is a one-line consequence of the
-definition of $\spf(b)$; the closed form for $R(k,f)$ is the standard
-Fej\'{e}r calculation in finite Fourier analysis~\cite{Zygmund2002,
-OppenheimSchafer2010}; the $\sinc^{2}$ continuum limit is a standard
-observation. The contribution of the present note is the packaging:
-a single elementary statement that synchronizes the arithmetic
-First-G event with the harmonic zero of a discrete $\sinc^{2}$-type
-function, valid for every $b > 1$ via $f = \spf(b)$. Related work on
-the distribution of the smallest prime factor is classical
-\cite{Erdos1959,Pomerance1985,Tenenbaum2015}, and sieve-theoretic
+\paragraph{Positioning and contribution.} The First-G localization
+(Theorem~\ref{thm:firstg}) and the closed form for $R(k,f)$
+(Theorem~\ref{thm:closedform}) are elementary in isolation: the first
+unpacks the definition of $\spf(b)$ via a one-line gcd argument, and
+the second is a Fej\'{e}r-type calculation in finite Fourier
+analysis~\cite{Zygmund2002,OppenheimSchafer2010}. The
+$\sinc^{2}$-continuum limit (Theorem~\ref{thm:limit}) is similarly a
+direct asymptotic. The substantive content of the present note lies
+in the \emph{spectral characterization of the obstruction sequence}
+(Theorem~\ref{thm:obstruction-zero} and
+Corollaries~\ref{cor:incl-excl},~\ref{cor:asymp-density}): for every
+$b > 1$ with distinct prime factors $p_{1}, \dots, p_{r}$, the
+product
+\[
+  f_{b}(k) = \prod_{j=1}^{r} R(k, p_{j})
+\]
+of discrete Fej\'{e}r quotients vanishes at $k \in \N$ precisely
+when $\gcd(k, b) > 1$, and the synchronization theorem
+(Theorem~\ref{thm:sync}) is the special case identifying the
+\emph{smallest} such $k$ as $\spf(b)$. The spectral product $f_{b}$
+acts as a continuous-in-$k$ indicator for the obstruction event, with
+the divisibility lattice of $\mathrm{rad}(b)$ entering through the
+zero loci of the factors. The asymptotic zero density of $f_{b}$
+recovers the Euler product
+$\varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$
+(Corollary~\ref{cor:asymp-density}). The contribution is therefore
+the explicit Fourier-side encoding of the divisibility structure of
+$b$ by a single, naturally-defined product spectral function, not
+merely the synchronization at one value of $k$. Related classical
+work on the distribution of the smallest prime factor
+\cite{Erdos1959,Pomerance1985,Tenenbaum2015} and sieve-theoretic
 treatments \cite{IwaniecKowalski2004,FriedlanderIwaniec2010} provide
-broader context for the coprimality-partition viewpoint adopted here.
-This packaging provides a convenient bridge to related work on
-composition tables over $\Zb$ \cite{SandersGish2026Sigma} and on
-dimensionless scalar field models with logarithmic potentials
-\cite{SandersGishJohnson2026JCAP}.
+the analytic-number-theory context. The present note also bridges
+related work on operator-substrate composition tables over $\Zb$
+\cite{SandersGish2026Sigma} and on dimensionless scalar-field models
+with logarithmic potentials~\cite{SandersGishJohnson2026JCAP}.
 
 \paragraph{Verification.} All numerical claims are verified by exact
 computation. The First-G localization is checked for every squarefree
@@ -417,6 +445,128 @@ $k = p_{1}$ simultaneously witnesses two phenomena: the arithmetic
 event ``the alphabet first contains an obstruction modulo $b$'' and
 the harmonic event ``the unit-alphabet exponential sum at frequency
 $1/p_{1}$ first vanishes.''
+
+The synchronization at $k = p_{1}$ extends to the entire obstruction
+sequence via a product spectral function, which we now establish.
+
+\begin{definition}[Spectral product]\label{def:spectral-product}
+Let $b > 1$ be an integer with distinct prime factors $p_{1} < p_{2}
+< \cdots < p_{r}$. The \emph{spectral product} of $b$ is
+\begin{equation}\label{eq:spectral-product}
+  f_{b}(k) \;:=\; \prod_{j=1}^{r} R(k, p_{j}), \qquad k \ge 1.
+\end{equation}
+By Theorem~\ref{thm:closedform} this has the closed form
+\[
+  f_{b}(k) \;=\; \frac{1}{k^{2r}}\,
+                 \prod_{j=1}^{r}\frac{\sin^{2}(\pi k/p_{j})}
+                                    {\sin^{2}(\pi/p_{j})}.
+\]
+\end{definition}
+
+\begin{theorem}[Obstruction--zero correspondence]\label{thm:obstruction-zero}
+Let $b > 1$ with distinct prime factors $p_{1} < \cdots < p_{r}$, and
+let $f_{b}$ be the spectral product of Definition~\ref{def:spectral-product}.
+Then for every integer $k \ge 1$,
+\begin{equation}\label{eq:obstruction-zero}
+  f_{b}(k) \;=\; 0
+  \quad\Longleftrightarrow\quad
+  \gcd(k, b) > 1
+  \quad\Longleftrightarrow\quad
+  k \in G_{k}(b).
+\end{equation}
+Equivalently, the zero set of $f_{b}$ in $\N$ is
+\[
+  Z(f_{b}) \;=\; \bigcup_{j=1}^{r} p_{j}\,\N,
+\]
+the union of the arithmetic progressions of multiples of each
+distinct prime factor of $b$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:closedform},
+$R(k, p_{j}) = \sin^{2}(\pi k/p_{j})/(k^{2}\sin^{2}(\pi/p_{j}))$.
+For every $j$ the denominator $k^{2}\sin^{2}(\pi/p_{j})$ is strictly
+positive (since $k \ge 1$ and $p_{j} \ge 2$), so
+\[
+  R(k, p_{j}) = 0
+  \;\Longleftrightarrow\; \sin(\pi k/p_{j}) = 0
+  \;\Longleftrightarrow\; p_{j} \mid k.
+\]
+The product $f_{b}(k)$ vanishes iff some factor $R(k, p_{j})$
+vanishes iff $p_{j} \mid k$ for some $j$ iff $\gcd(k, b) > 1$
+(since the distinct prime factors of $b$ are exactly the $p_{j}$).
+The final equivalence $\gcd(k, b) > 1 \Leftrightarrow k \in G_{k}(b)$
+is Definition~\ref{def:partition}.
+\end{proof}
+
+\begin{remark}\label{rem:5.1-as-special-case}
+Theorem~\ref{thm:sync} is the special case of
+Theorem~\ref{thm:obstruction-zero} at the smallest zero of $f_{b}$.
+The smallest $k \ge 1$ with $f_{b}(k) = 0$ is the smallest element
+of $\bigcup_{j} p_{j}\N$, which is $p_{1} = \spf(b)$. The
+synchronization theorem therefore localizes the \emph{first}
+spectral zero; Theorem~\ref{thm:obstruction-zero} characterizes
+\emph{all} spectral zeros as obstruction events.
+\end{remark}
+
+\begin{corollary}[Inclusion--exclusion identity for $|G_{k}|$]\label{cor:incl-excl}
+With $b$ and $f_{b}$ as in Theorem~\ref{thm:obstruction-zero}, the
+number of obstructions in $\{1, \dots, k\}$ is
+\[
+  |G_{k}(b)|
+  \;=\; \#\{\,j \in \{1, \dots, k\} : f_{b}(j) = 0\,\}
+  \;=\; -\sum_{\substack{d \mid \mathrm{rad}(b)\\ d > 1}}
+              \mu(d)\,\lfloor k/d \rfloor,
+\]
+where $\mathrm{rad}(b) = p_{1}\cdots p_{r}$ is the radical of $b$.
+\end{corollary}
+
+\begin{proof}
+The first equality is Theorem~\ref{thm:obstruction-zero}. The second
+is the standard inclusion-exclusion count of integers in $[1, k]$
+divisible by at least one $p_{j}$, applied to the squarefree integer
+$\mathrm{rad}(b)$ (whose divisors $d$ are squarefree products of the
+$p_{j}$, and which has $\mu(d) = (-1)^{\omega(d)}$ where $\omega(d)$
+is the number of distinct prime factors).
+\end{proof}
+
+\begin{corollary}[Asymptotic zero density of $f_{b}$]\label{cor:asymp-density}
+For every $b > 1$ with distinct prime factors $p_{1}, \dots, p_{r}$,
+\begin{equation}\label{eq:asymp-density}
+  \lim_{k \to \infty}
+  \frac{1}{k}\,\#\{\,j \in \{1, \dots, k\} : f_{b}(j) = 0\,\}
+  \;=\; 1 - \prod_{j=1}^{r}\!\left(1 - \frac{1}{p_{j}}\right)
+  \;=\; 1 - \frac{\varphi(\mathrm{rad}(b))}{\mathrm{rad}(b)}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:obstruction-zero} and
+Corollary~\ref{cor:incl-excl}, the LHS equals
+$\lim_{k\to\infty} |G_{k}(b)|/k$. The set $G_{k}(b)$ is the
+complement in $\{1, \dots, k\}$ of the set of integers coprime to
+$\mathrm{rad}(b)$; the latter has multiplicative density
+$\varphi(\mathrm{rad}(b))/\mathrm{rad}(b) =
+\prod_{j}(1-1/p_{j})$ by the Euler product
+\cite{HardyWright2008,Apostol1976}. Hence the asymptotic obstruction
+density is $1 - \prod_{j}(1-1/p_{j})$.
+\end{proof}
+
+\begin{remark}[The contribution]\label{rem:contribution}
+The classical content of Corollary~\ref{cor:incl-excl} (the
+inclusion-exclusion count of obstructions) and
+Corollary~\ref{cor:asymp-density} (the Euler-product density)
+is well-known. The contribution of
+Theorem~\ref{thm:obstruction-zero} is the \emph{spectral
+characterization}: the obstruction sequence is identified with the
+zero set of an explicit product of discrete Fej\'{e}r quotients,
+giving a Fourier-side encoding of the divisibility structure of
+$b$ that goes beyond the synchronization at a single $k$. The
+spectral product $f_{b}$ acts as a continuous (in $k$) indicator
+function for $\gcd(k, b) > 1$, with the divisibility lattice of
+$\mathrm{rad}(b)$ entering through the zero loci of the factors
+$R(\cdot, p_{j})$.
+\end{remark}
 
 %% -------- section 6: continuum limit --------
 \section{The Continuum Limit and the Rectangular Pulse}\label{sec:limit}

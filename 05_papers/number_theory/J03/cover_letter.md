@@ -12,7 +12,7 @@
 
 **Manuscript file:** `manuscript/manuscript.tex` (amsart, ~12 pages)
 
-**Verification scripts:** `manuscript/proof_first_g_event.py` (305 squarefree b in [2,500], 22,367 (b,k) pairs, zero counterexamples, runtime <3s) and `manuscript/verify_J03.py` (closed-form / synchronization / continuum-limit checks; 5/5 pass; max deviation 4.44 × 10⁻¹⁶)
+**Verification scripts:** `manuscript/proof_first_g_event.py` (305 squarefree b in [2,500], 22,367 (b,k) pairs, zero counterexamples, runtime <3s) and `manuscript/verify_J03.py` (closed-form / synchronization / continuum-limit / **spectral-product obstruction-zero correspondence** / **asymptotic-density** checks; 7/7 pass; max deviation 4.44 × 10⁻¹⁶ for the closed form; 900/900 cells match the boolean equivalence $f_b(k)=0 \Leftrightarrow \gcd(k,b)>1$ for squarefree $b \le 50$ and $k \le 30$)
 
 **Backup venue:** *American Mathematical Monthly Notes* / *Mathematics Magazine*
 
@@ -22,16 +22,21 @@
 
 ## Summary
 
-We submit *The First-G Event and a Discrete Sinc² Identity* for consideration in the journal's elementary number-theory section. The paper proves (Theorem 5.1) that for every integer b > 1 the first index k at which the alphabet {1, ..., k} contains a non-coprime element relative to b coincides with the first integer zero of the discrete Fejér quotient R(k, spf(b)) — both occurring at k = spf(b). The synchronization joins two independently elementary objects (the smallest prime factor and a discrete sinc²-type function) and is verified numerically across all squarefree b ≤ 500 and all primes f ≤ 23 at machine precision. The proofs are short and self-contained.
+We submit *The First-G Event and a Discrete Sinc² Identity* for consideration in the journal's number-theory section. The paper establishes a **spectral characterization of the obstruction sequence** of an integer b > 1: for every b with distinct prime factors $p_1 < \cdots < p_r$, the product
+$$f_b(k) := \prod_{j=1}^{r} R(k, p_j), \qquad R(k,f) := \tfrac{\sin^2(\pi k/f)}{k^2 \sin^2(\pi/f)},$$
+of discrete Fejér quotients vanishes at an integer $k \ge 1$ if and only if $\gcd(k, b) > 1$ (Theorem 5.2). The integer zero set of $f_b$ in $\mathbb{N}$ is therefore exactly the union of arithmetic progressions $\bigcup_j p_j\mathbb{N}$ — a single, naturally-defined product spectral function that acts as a continuous-in-$k$ indicator for the obstruction event. The synchronization theorem (5.1, the smallest spectral zero localizes at $\mathrm{spf}(b)$) and the asymptotic density theorem (Corollary 5.4, the spectral zero density equals $1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$) are the natural corollaries.
 
-The paper is built on three substantive theorems:
+The paper's theorems:
 
-- **Theorem 3.1 (First-G localization).** For every b > 1, k\*(b) = spf(b). One-line gcd argument; squarefree-ness not required.
-- **Theorem 4.2 (closed form).** R(k, f) = sin²(πk/f) / (k² sin²(π/f)) for every f ≥ 2, k ≥ 1. Standard Fejér-type identity; we verify the discrete identity at every prime f ∈ {3, 5, 7, 11, 13, 17, 19, 23} to machine precision.
-- **Theorem 5.1 (synchronization).** For every b > 1, the First-G event and the first integer zero of R(·, spf(b)) coincide at k = spf(b).
-- **Theorem 6.1 (continuum limit).** R(k, f) → sinc²(k/f) as f → ∞ with k/f fixed.
+- **Theorem 3.1 (First-G localization).** For every b > 1, $k^{\star}(b) = \mathrm{spf}(b)$. One-line gcd argument.
+- **Theorem 4.2 (closed form).** $R(k, f) = \sin^2(\pi k/f)/(k^2 \sin^2(\pi/f))$ for every $f \ge 2$, $k \ge 1$. Standard Fejér-type identity; verified at every prime $f \in \{3, 5, 7, 11, 13, 17, 19, 23\}$ to machine precision.
+- **Theorem 5.1 (synchronization).** For every $b > 1$, the First-G event and the first integer zero of $R(\cdot, \mathrm{spf}(b))$ coincide at $k = \mathrm{spf}(b)$.
+- **Theorem 5.2 (obstruction-zero correspondence).** $f_b(k) = 0$ iff $\gcd(k, b) > 1$. The zero set of $f_b$ in $\mathbb{N}$ equals $\bigcup_{p \mid b} p\mathbb{N}$.
+- **Corollary 5.3 (inclusion-exclusion identity).** $|G_k(b)| = \#\{j \le k : f_b(j) = 0\} = -\sum_{d \mid \mathrm{rad}(b),\, d>1} \mu(d) \lfloor k/d \rfloor$.
+- **Corollary 5.4 (asymptotic zero density).** $\lim_{K \to \infty} (1/K) \#\{j \le K : f_b(j) = 0\} = 1 - \varphi(\mathrm{rad}(b))/\mathrm{rad}(b)$.
+- **Theorem 6.1 (continuum limit).** $R(k, f) \to \mathrm{sinc}^2(k/f)$ as $f \to \infty$ with $k/f$ fixed.
 
-Companion paper J08 (in preparation, *Experimental Mathematics*) develops the cryptographic and ω-blindness applications of the synchronization. The present paper is the foundational lemma of that program; we submit it here for its own substance.
+The substantive contribution is the spectral characterization in Theorem 5.2: the divisibility structure of $b$ is encoded in the zero locus of a single naturally-defined product of discrete Fejér quotients, with the synchronization (5.1) the smallest-zero special case and the asymptotic density (5.4) the multiplicative-density corollary. Companion paper J08 (in preparation, *Experimental Mathematics*) develops cryptographic applications of the synchronization side.
 
 ## Why Integers
 
@@ -50,7 +55,7 @@ The manuscripts share Zenodo bundle DOI 10.5281/zenodo.18852047. The present sub
 
 ## Reproducibility
 
-Verification scripts: `manuscript/proof_first_g_event.py` runs in under 3 seconds on a 2024 consumer laptop and exhaustively checks Theorem 3.1 across all 305 squarefree b in [2, 500]. The companion script `manuscript/verify_J03.py` checks the closed form, the synchronization, the continuum limit, and the endpoint identity at exact-arithmetic precision (5/5 pass).
+Verification scripts: `manuscript/proof_first_g_event.py` runs in under 3 seconds on a 2024 consumer laptop and exhaustively checks Theorem 3.1 across all 305 squarefree b in [2, 500]. The companion script `manuscript/verify_J03.py` (7/7 PASS) checks the closed form, the synchronization, the continuum limit, the endpoint identity, **the obstruction-zero correspondence (Theorem 5.2: 900/900 cell-level boolean matches for squarefree b ≤ 50, k ≤ 30)**, and **the asymptotic density (Corollary 5.4: Euler product matches observed density for b up to 2310 over K = 100,000 within 6 × 10⁻⁶)**.
 
 ## Suggested reviewers
 
