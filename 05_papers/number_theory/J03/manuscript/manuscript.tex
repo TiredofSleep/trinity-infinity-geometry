@@ -655,13 +655,14 @@ $dw = \sin(2u)\, du$,
   \int_{0}^{\pi} \frac{\sin^{2}(u)}{u^{2}}\, du
   = \left[ -\frac{\sin^{2}(u)}{u} \right]_{0}^{\pi}
   + \int_{0}^{\pi} \frac{\sin(2u)}{u}\, du
-  = 0 + \int_{0}^{2\pi} \frac{\sin(t)}{t}\, dt
+  = 0 + \int_{0}^{2\pi} \frac{\sin(s)}{s}\, ds
   = \Si(2\pi),
 \]
 where the boundary term vanishes at $u = 0$ via $\sin^{2}(u)/u = O(u)$
-and at $u = \pi$ via $\sin(\pi) = 0$, and we substituted $t = 2u$ in
-the remaining integral. Hence
-$\int_{0}^{1} \sinc^{2}(t)\, dt = \Si(2\pi)/\pi$.
+and at $u = \pi$ via $\sin(\pi) = 0$, and we substituted $s = 2u$ in
+the remaining integral (using $s$ rather than $t$ to avoid reusing
+the outer integration variable from~$\int_{0}^{1}\sinc^{2}(t)\, dt$).
+Hence $\int_{0}^{1} \sinc^{2}(t)\, dt = \Si(2\pi)/\pi$.
 \end{proof}
 
 \begin{remark}[Numerical value]\label{rem:siNumerical}
@@ -838,21 +839,11 @@ H.~Iwaniec and E.~Kowalski.
 \newblock American Mathematical Society Colloquium Publications 53.
 \newblock American Mathematical Society, Providence, RI, 2004.
 
-\bibitem{OppenheimSchafer2010}
-A.~V.~Oppenheim and R.~W.~Schafer.
-\newblock \emph{Discrete-Time Signal Processing}, 3rd edition.
-\newblock Pearson, Upper Saddle River, NJ, 2010.
-
 \bibitem{Pomerance1985}
 C.~Pomerance.
 \newblock The role of smooth numbers in number-theoretic algorithms.
 \newblock \emph{Proc.\ Int.\ Congr.\ Math.}\ (Z\"{u}rich, 1994),
 volume~1, pages 411--422. Birkh\"{a}user, 1995.
-
-\bibitem{Shannon1949}
-C.~E.~Shannon.
-\newblock Communication in the presence of noise.
-\newblock \emph{Proceedings of the IRE}, 37(1):10--21, 1949.
 
 \bibitem{Tenenbaum2015}
 G.~Tenenbaum.

@@ -389,6 +389,61 @@ SI_2PI_OVER_PI = 0.4514120029017365
 
 
 # ---------------------------------------------------------------------
+# Theorem 3.2 (prime case via Lemma): R(k, p) = 0 iff p | k
+# ---------------------------------------------------------------------
+def _is_prime(n):
+    if n < 2:
+        return False
+    if n < 4:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+
+def verify_full_period_prime():
+    """
+    For every prime p in {3, 5, 7, ..., 199} and every k in {1, ..., p}:
+    R(k, p) = 0 iff p | k. This is the prime-case full-period
+    cancellation, equivalent to the Lemma's basic divisibility
+    biconditional and the prime-restricted Theorem 3.2.
+
+    Exact integer divisibility (p | k) is cross-checked against the
+    floating-point evaluation of R(k, p) at machine precision (threshold
+    1e-10). The Lemma's mathematical statement is uniform-in-p
+    (Theorem 3.2 extends to composite f); this prime-case check is the
+    one cited in the abstract/cover-letter as "4,225 (p, k) pairs".
+    """
+    print("=" * 60)
+    print("Theorem 3.2 (prime case): R(k, p) = 0  iff  p | k")
+    print("=" * 60)
+    primes = [p for p in range(3, 200) if _is_prime(p)]
+    n_pairs = 0
+    fails = 0
+    for p in primes:
+        for k in range(1, p + 1):
+            n_pairs += 1
+            r = R_closed(k, p)
+            divides = (k % p == 0)
+            iszero = (abs(r) < 1e-10)
+            if divides != iszero:
+                fails += 1
+                if fails <= 3:
+                    print(f"  FAIL p={p}, k={k}: R={r:.3e}, p|k={divides}")
+    print(f"  primes tested:        {len(primes)} (3..199)")
+    print(f"  (p, k) pairs checked: {n_pairs}")
+    print(f"  counterexamples:      {fails}")
+    print(f"  result: {'PASS' if fails == 0 else 'FAIL'}")
+    print()
+    return fails == 0
+
+
+# ---------------------------------------------------------------------
 # Theorem 3.2 (composite case): full-period cancellation for composite f
 # ---------------------------------------------------------------------
 def verify_full_period_composite():
@@ -527,6 +582,7 @@ if __name__ == "__main__":
     results = [
         verify_first_g(),               # Theorem 4.1
         verify_closed_form(),           # Theorem 3.1
+        verify_full_period_prime(),     # Theorem 3.2 (prime case, 4225 (p,k) pairs)
         verify_full_period_composite(), # Theorem 3.2 (composite case)
         verify_synchronization(),       # Theorem 5.1
         verify_continuum_limit(),       # Theorem 7.1

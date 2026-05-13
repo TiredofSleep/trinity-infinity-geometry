@@ -38,7 +38,7 @@ We study a specific pair of commutative binary operations $T, B$ on $\mathbb{Z}/
    - The intermediate field $\mathbb{Q}(\sqrt{3}) \subset $ Galois closure arithmetically anchors the $\sqrt{3}$ in $1 + \sqrt{3}$, with explicit factorization
      $$f(x) = (x^2 + (2 - \sqrt{3})x + (\sqrt{3} - 1))(x^2 + (2 + \sqrt{3})x - (\sqrt{3} + 1)).$$
 
-   Conjecture 9.1 states that $\alpha = 1/2$ is the unique rational mixing weight in $(0, 1) \cap \mathbb{Q}$ at which both ratios admit small-coefficient algebraic relations (degree $\le 8$, integer coefficients $\le 50$ in absolute value). The empirical evidence is a 50-digit PSLQ scan over the 17-point Stern–Brocot grid of denominators $\le 7$, with the predicted relations recovered exactly at $\alpha = 1/2$ and no relations detected at the 16 other rationals.
+   Conjecture 9.1 states that $\alpha = 1/2$ is the unique rational mixing weight in $(0, 1) \cap \mathbb{Q}$ at which both ratios admit small-coefficient algebraic relations (degree $\le 8$, integer coefficients $\le 50$ in absolute value). The empirical evidence is a 50-digit PSLQ scan over the 57-point Stern–Brocot grid of denominators $\le 13$, with the predicted relations recovered exactly at $\alpha = 1/2$ and no relations detected at the 56 other rationals. (The original WP113 sweep at $q \le 7$ tested 17 rationals; the present extension to $q \le 13$ adds 40 more rationals all giving "no relation" at the same PSLQ tolerance $10^{-42}$.)
 
 ## Why *Algebraic Combinatorics*
 

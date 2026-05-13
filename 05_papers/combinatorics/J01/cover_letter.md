@@ -52,15 +52,18 @@ theorem.
 ## Reproducibility
 
 The accompanying script `manuscript/verify_sigma_rate.py` (CC-BY-4.0) runs in
-under one minute on a standard laptop using only the Python standard library
-(`math`), and reports `OVERALL: 4/4 verifications passed` across:
+roughly 60-90 seconds on a standard laptop using only the Python standard
+library (`math`), and reports `OVERALL: 5/5 verifications passed` across:
 
 1. **Echo count lemma** $|\{(a,b) : a+b \equiv ab \pmod N\}| = \varphi(N)$ over all
    squarefree $N \in [2, 250]$;
-2. **Rate bound** $\sigma(N) < 2/N$ over all squarefree $N \in [3, 100]$ (direct
-   $N^3$ enumeration);
-3. **Residual bound** $\varepsilon(N) \le 2\varphi(N)$ over the test set;
-4. **Asymptotic** $N\sigma(N) \to 2$ from below along the squarefree ladder.
+2. **$E_h$ closed form via Fibonacci's polynomial** (Lemma 3.X, 2026-05-13): three-way
+   cross-check (direct enumeration, root count of $b^2+b-1 \equiv 0 \pmod N$,
+   Legendre-symbol product) agrees on every squarefree $N \in [3, 200]$;
+3. **Rate bound** $\sigma(N) < 2/N$ over all squarefree $N \in [3, 200]$ (direct
+   $N^3$ enumeration; extended from the original $N \le 100$ range);
+4. **Residual bound** $\varepsilon(N) \le 2\varphi(N)$ over the test set;
+5. **Asymptotic** $N\sigma(N) \to 2$ from below along the squarefree ladder.
 
 ## Suggested reviewers
 

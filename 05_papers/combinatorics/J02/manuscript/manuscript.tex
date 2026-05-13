@@ -126,11 +126,13 @@ $-2^{4}\cdot 3^{2}\cdot 71$, and $\Q(\sqrt{3})$ is a genuine
 subfield of the splitting field, anchoring the $\sqrt{3}$ in
 $1+\sqrt{3}$ arithmetically.
 
-A high-precision PSLQ scan over the $17$-point Stern--Brocot grid
-of rationals $p/q\in(0,1)$ with $q\le 7$ confirms that
+A high-precision PSLQ scan over the $57$-point Stern--Brocot grid
+of rationals $p/q\in(0,1)$ with $q\le 13$ confirms that
 $\alpha=\tfrac12$ is the \emph{unique} rational in this grid at
 which both ratios admit small-coefficient algebraic relations
-(degree $\le 8$, coefficient $\le 50$);
+(degree $\le 8$, coefficient $\le 50$). The original $17$-point
+sweep with $q\le 7$ (WP113, 2026-04-26) and the present $57$-point
+extension agree on the uniqueness verdict;
 Conjecture~\ref{conj:alpha-unique} states the corresponding
 uniqueness over $\Q\cap(0,1)$ as an open question.
 
@@ -241,13 +243,15 @@ $\sqrt{3}$ in the closed-form $h/\beta = 1+\sqrt{3}$:
 
 \paragraph{$\alpha$-uniqueness on the Stern--Brocot grid
 (Conjecture~\ref{conj:alpha-unique}).} A high-precision PSLQ
-scan~\cite{FergusonBailey1999} over the $17$-point Stern--Brocot
-grid of rationals $p/q\in(0,1)$ with $q\le 7$ confirms that
+scan~\cite{FergusonBailey1999} over the $57$-point Stern--Brocot
+grid of rationals $p/q\in(0,1)$ with $q\le 13$ confirms that
 $\alpha=\tfrac12$ is the only rational in this grid at which both
 $h/\beta$ and $r/\beta$ admit small-coefficient algebraic
 relations (degree $\le 8$, integer coefficients $\le 50$ in
-absolute value). The corresponding uniqueness over
-$\Q\cap(0,1)$ is stated as Conjecture~\ref{conj:alpha-unique}.
+absolute value). The original $17$-point sweep at $q\le 7$ and
+the present $57$-point sweep at $q\le 13$ agree on the verdict;
+the corresponding uniqueness over $\Q\cap(0,1)$ is stated as
+Conjecture~\ref{conj:alpha-unique}.
 
 \paragraph{The pair $(T,B)$ is not independent.} Both Cayley
 tables arise from a common operator-substrate construction in
@@ -822,20 +826,31 @@ vertices, and the four triangular faces. We classify boundary
 fixed points of $F_{\alpha}$ for $\alpha\in[0,1]$.
 
 \begin{lemma}[Boundary fixed points of $F_{\alpha}$]\label{lem:boundary}
-For $\alpha\in[0, 1]$:
+The following hold:
 \begin{enumerate}\setlength\itemsep{0pt}
 \item[(a)] $e_{0}$ is a fixed point of $F_{\alpha}$ for every
-$\alpha$. For $\alpha\in(0, 1)$, $e_{0}$ is a repellor: the
-spectral radius of $DF_{\alpha}(e_{0})$ is strictly greater
+$\alpha\in[0,1]$. For $\alpha\in(0, 1)$, $e_{0}$ is a repellor:
+the spectral radius of $DF_{\alpha}(e_{0})$ is strictly greater
 than $1$.
 \item[(b)] $e_{7}$ is a fixed point of $F_{\alpha}$ if and only if
 $\alpha = 1$.
 \item[(c)] Neither $e_{8}$ nor $e_{9}$ is a fixed point of
 $F_{\alpha}$ for any $\alpha\in[0,1]$.
-\item[(d)] No edge or face fixed point exists in
-$\partial\Delta^{3}_{\Cfour}$ for any $\alpha\in[0, 1]$ other
-than the four vertices listed above.
+\item[(d)] For $\alpha\in(0, 1)$, no edge or face fixed point exists
+in $\partial\Delta^{3}_{\Cfour}$ other than the vertex $e_{0}$.
 \end{enumerate}
+At the closed-interval endpoints $\alpha\in\{0, 1\}$ the situation is
+degenerate: at $\alpha = 1$, every probability vector supported on
+$\Cfour$ with $T$-fixed support yields a fixed point of $F_{1}=\Tfuse$;
+at $\alpha = 0$, the boundary point $(\tfrac12, 0, 0, \tfrac12)$ on
+the edge between $e_{0}$ and $e_{9}$ is a fixed point of
+$F_{0}=\Bfuse$ (direct check using
+Proposition~\ref{prop:fuse-data}: $\Bfuse((\tfrac12,0,0,\tfrac12))_{0}
+= (\tfrac12)^{2}+0+(\tfrac12)^{2} = \tfrac12$ and
+$\Bfuse(\cdot)_{9} = 2\cdot\tfrac12\cdot\tfrac12 + 0 = \tfrac12$).
+These endpoint degeneracies do not affect the interior-existence
+result of Theorem~\ref{thm:attractor}, which is stated for the open
+interval $\alpha\in(0,1)$.
 \end{lemma}
 
 \begin{proof}
@@ -887,47 +902,56 @@ $F_{\alpha}(e_{8}) = e_{7}\neq e_{8}$. At $e_{9}$:
 $T(9, 9) = 7$, $B(9, 9) = 0$; so $F_{\alpha}(e_{9}) =
 \alpha e_{7} + (1-\alpha)e_{0}\neq e_{9}$.
 
-\textbf{(d)} We rule out edge and face fixed points by checking
-each codimension-$1$ face of $\Delta^{3}_{\Cfour}$.
+\textbf{(d)} Fix $\alpha\in(0, 1)$. We rule out edge and face fixed
+points by checking each codimension-$1$ face of $\Delta^{3}_{\Cfour}$.
 \begin{itemize}\setlength\itemsep{0pt}
 \item Face $\{v = 0\}$, i.e., $h + \beta + r = 1$. From
 Proposition~\ref{prop:fuse-data}, $\Tfuse(p)_{0} = 0$ and
 $\Bfuse(p)_{0} = r^{2} + 2hr$, so $F_{\alpha}(p)_{0} =
 (1-\alpha)(r^{2} + 2hr)$. Fixed-point condition forces
 $(1-\alpha)(r^{2} + 2hr) = 0$, i.e., $r(r + 2h) = 0$ for
-$\alpha\in[0, 1)$. Since $r, h\geq 0$, this gives $r = 0$.
-Reducing to $h + \beta = 1$ (the edge $\{v = r = 0\}$,
-analyzed below).
+$\alpha\in(0, 1)$ (where $1-\alpha > 0$). Since $r, h\geq 0$,
+this gives $r = 0$. Reducing to $h + \beta = 1$ (the edge
+$\{v = r = 0\}$, analyzed below).
 \item Face $\{h = 0\}$. $\Tfuse(p)_{7} = \beta^{2} + 2\beta r +
 r^{2}$ and $\Bfuse(p)_{7} = \beta^{2}$, so $F_{\alpha}(p)_{7} =
 \alpha(\beta^{2} + 2\beta r + r^{2}) + (1-\alpha)\beta^{2}$.
 Fixed-point condition $h = F_{\alpha}(p)_{7}$ with $h = 0$
 gives $\alpha(\beta^{2} + 2\beta r + r^{2}) +
 (1-\alpha)\beta^{2} = 0$. All three terms are non-negative for
-$\alpha\in[0, 1]$; the equation forces $\beta = 0$ and
-$\alpha r^{2} = 0$ (so $r = 0$ if $\alpha > 0$). Reducing to
-$\{h = \beta = r = 0\}$, the vertex $e_{0}$.
+$\alpha\in(0, 1)$; the equation forces $\beta = 0$ and
+$\alpha r^{2} = 0$, hence $r = 0$ since $\alpha > 0$. Reducing
+to $\{h = \beta = r = 0\}$, the vertex $e_{0}$.
 \item Face $\{\beta = 0\}$. $\Tfuse(p)_{8} = 0$ identically, so
 $F_{\alpha}(p)_{8} = (1-\alpha)\Bfuse(p)_{8} =
 (1-\alpha)(2v\beta + h^{2} + 2\beta r) =
 (1-\alpha)h^{2}$ on $\{\beta = 0\}$. Fixed-point condition
 $\beta = (1-\alpha)h^{2}$ with $\beta = 0$ forces $h = 0$ for
-$\alpha\in[0, 1)$, reducing to $\{h = \beta = 0\}$ on which
-$F_{\alpha}(p)_{9} = (1-\alpha)(2vr + 2h\beta) =
-2(1-\alpha)vr$ and $r = 2(1-\alpha)vr$. With $v = 1 - r$ this
-gives $r = 0$ or $r = (2(1-\alpha) - 1)/(2(1-\alpha))$; the
-second value is $< 0$ for $\alpha > 1/2$ and $\geq 1$ for
-$\alpha \leq 0$, so ruled out for $\alpha\in[0, 1]$. Reducing
-to $e_{0}$.
+$\alpha\in(0, 1)$, reducing to the edge $\{h = \beta = 0\}$
+on which $F_{\alpha}(p)_{9} = (1-\alpha)(2vr + 2h\beta) =
+2(1-\alpha)vr$. The fixed-point condition $r = 2(1-\alpha)vr$
+with $v = 1 - r$ gives $r = 0$ or $r =
+\bigl(2(1-\alpha) - 1\bigr)/\bigl(2(1-\alpha)\bigr) =
+(1 - 2\alpha)/\bigl(2(1-\alpha)\bigr)$. For
+$\alpha\in(0, 1)$ the second value is positive only when
+$\alpha < 1/2$, in which case it lies in $(0, 1/2)$; but the
+corresponding boundary point $(v, h, \beta, r) =
+((1+2\alpha)/(2(1-\alpha)), 0, 0, (1-2\alpha)/(2(1-\alpha)))$
+fails $v\le 1$ for $\alpha > 0$ (direct computation shows $v >
+1$ when $\alpha > 0$). Hence on the open interval $r = 0$ is
+forced, reducing to $e_{0}$. At the closed-interval endpoint
+$\alpha = 0$ the second value evaluates to $r = 1/2$, $v = 1/2$,
+giving the boundary fixed point $(\tfrac12, 0, 0, \tfrac12)$
+recorded in the lemma statement above.
 \item Face $\{r = 0\}$. Symmetric to $\{\beta = 0\}$ by exchange
 of $\beta\leftrightarrow r$: $F_{\alpha}(p)_{9} = 2(1-\alpha)
 v r + 2(1-\alpha) h\beta$, vanishing on $\{r = 0\}$ iff
 $h\beta = 0$, reducing to one of the analyzed faces.
 \end{itemize}
 The codimension-$2$ edge cases reduce to vertices by the same
-arguments. Hence no boundary fixed point exists in
-$\partial\Delta^{3}_{\Cfour}$ for any $\alpha\in[0, 1]$ other
-than $e_{0}$ (always) and $e_{7}$ (at $\alpha = 1$).
+arguments. Hence for $\alpha\in(0, 1)$ no boundary fixed point
+exists in $\partial\Delta^{3}_{\Cfour}$ other than $e_{0}$
+(always).
 \end{proof}
 
 \subsection{Existence at every $\alpha$; uniqueness at
@@ -957,19 +981,20 @@ least one fixed point in the interior.
 We do not prove that the interior fixed point of
 Theorem~\ref{thm:attractor} is unique for every
 $\alpha\in(0, 1)$, nor that the iteration globally attracts to
-it. Numerical verification
-(\texttt{04\_bridge\_attractor.py}, \S\ref{sec:verify}) confirms
-both properties at $19$ sampled values
-$\alpha\in[0.05, 0.95]$: at each, the spectral radius of
-$DF_{\alpha}(p^*(\alpha))$ is strictly less than $1$ and
-iteration from random Dirichlet seeds converges to a single
-limit. A structural proof of global uniqueness and global
-attraction (for instance, via a contraction argument in the
+it. The PSLQ sweep
+\texttt{verification/alpha\_pslq\_sweep.py} (\S\ref{sec:verify})
+iterates to numerical convergence at every $\alpha\in\mathcal{G}_{\le 13}$
+($57$ rationals) from a uniform-on-4-core seed and finds a single
+limit point in each case; the algebraic uniqueness statement of
+Conjecture~\ref{conj:alpha-unique} is consistent with these
+numerics. A structural proof of global uniqueness and global
+attraction --- for instance, via a contraction argument in the
 Hilbert (Birkhoff) projective metric on
-$\Delta^{3}_{\Cfour}^{\circ}$~\cite{Birkhoff1957, Bushell1973})
-is open. The
-results of \S\S\ref{sec:hbr}--\ref{sec:alpha-unique} require only
-existence (Theorem~\ref{thm:attractor}) and uniqueness at
+$\Delta^{3}_{\Cfour}^{\circ}$~\cite{Birkhoff1957, Bushell1973}, or
+a direct spectral-radius computation $\rho(DF_{\alpha}(p^*(\alpha)))
+< 1$ over a fine $\alpha$-grid --- is open. The results of
+\S\S\ref{sec:hbr}--\ref{sec:alpha-unique} require only existence
+(Theorem~\ref{thm:attractor}) and uniqueness at
 $\alpha = \tfrac12$, which we prove in
 Theorem~\ref{thm:attractor-half} below.
 \end{remark}
@@ -1352,10 +1377,13 @@ to LMFDB's defining polynomial $x^{4} - 7x^{2} - 12x - 8$.
 
 \item \texttt{alpha\_pslq\_sweep.py} (\S\ref{sec:alpha-unique}):
 $50$-digit \texttt{mpmath} iteration to fixed point at each
-$\alpha\in\mathcal{G}_{\le 7}$; PSLQ scan at degrees $2$--$8$
-with coefficient bound $50$; recovery of the quadratic and
-quartic at $\alpha = \tfrac12$, no detection at the other $16$
-rationals.
+$\alpha\in\mathcal{G}_{\le 13}$ (default depth; the original
+$q\le 7$ specialization is also supported via \texttt{--depth 7});
+PSLQ scan at degrees $2$--$8$ with coefficient bound $50$;
+recovery of the quadratic and quartic at $\alpha = \tfrac12$, no
+detection at the other $56$ rationals in $\mathcal{G}_{\le 13}$
+(equivalently, no detection at the other $16$ rationals in
+$\mathcal{G}_{\le 7}$).
 \end{enumerate}
 
 All scripts run on \texttt{numpy}~+~\texttt{sympy}~+~\texttt{mpmath} alone;
@@ -1383,7 +1411,7 @@ property inherited from joint closure.
 \item that the closed-form ratio $h/\beta = 1+\sqrt{3}$ at
 $\alpha = \tfrac12$ generalizes to other rational mixing
 weights or to other natural pairs of operations on $\Zten$. The
-PSLQ Stern--Brocot scan over $\mathcal{G}_{\le 7}$ (\S\ref{sec:alpha-unique})
+PSLQ Stern--Brocot scan over $\mathcal{G}_{\le 13}$ (\S\ref{sec:alpha-unique})
 empirically suggests $\alpha = \tfrac12$ is privileged within the
 present pair, but a structural proof of
 Conjecture~\ref{conj:alpha-unique} is open.
