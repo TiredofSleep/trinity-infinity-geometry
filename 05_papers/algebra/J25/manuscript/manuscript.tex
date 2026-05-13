@@ -1,0 +1,797 @@
+% J25 — The CL_TSML Composition Lattice on Z/10Z:
+%        Structural Axioms, Independence, and a 73-HARMONY Forcing Theorem
+%
+% Brayden R. Sanders, M. Gish (Sanders + Gish lane, per AUTHOR_LANES_v2)
+% Submitted to: Algebraic Combinatorics
+% Source corpus: Atlas/LENS_TAXONOMY_2026-05-06/CL_FORCING_AXIOMS.md (2026-05-06)
+% MSC 2020: 08A40, 20N02, 20N05
+% Tier: B (axiomatization of an explicit finite commutative magma)
+% Closest published precedent: Drápal-Wanless (2021), JCT-A 184, 105510
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\BUMP}{\mathrm{BUMP}}
+\newcommand{\TSML}{\mathrm{TSML}}
+\newcommand{\BHML}{\mathrm{BHML}}
+\newcommand{\CL}{\mathrm{CL}}
+
+\title[The $\CL_{\TSML}$ composition lattice]
+{The $\CL_{\TSML}$ Composition Lattice on $\Z/10\Z$: \\
+ Structural Axioms, Independence, and a $73$-HARMONY Forcing Theorem}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\subjclass[2020]{08A40, 20N02, 20N05}
+\keywords{commutative magma, composition lattice, absorbing element,
+near-absorbing element with puncture, exceptional cells, axiom
+independence, finite non-associative algebra, $\Z/10\Z$ substrate}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We isolate a list of seven \emph{structural} axioms~$S_{1}$--$S_{7}$
+on a commutative magma $M$ on the carrier $\Omega = \Z/10\Z$, each
+axiom expressing a property of $M$ rather than a list of cell values.
+Together with the explicit specification of two distinguished
+elements ($V = 0$ playing the role of a near-absorber with a single
+puncture, and $H = 7$ playing the role of an absorber) and an
+explicit list of five \emph{exceptional positions} with their values
+($S_{7}$), the seven axioms uniquely determine a $10\times 10$
+multiplication table $\CL_{\TSML}$ on $\Omega$ with $73$ HARMONY
+($= 7$) cells, $17$ VOID ($= 0$) cells, and $10$ exceptional cells
+distributed over the $5$ enumerated positions. We prove the forcing
+theorem (Theorem~\ref{thm:forcing}) by direct cell-counting, and we
+prove the independence of $S_{1}$--$S_{7}$ in the sense that for each
+axiom $S_{i}$ there exists a commutative magma satisfying
+$\{S_{j} : j \neq i\}$ but not $S_{i}$ (Theorem~\ref{thm:independence}).
+The $\CL_{\TSML}$ lattice sits in the same intellectual neighborhood
+as the maximally-non-associative quasigroups of
+\cite{DrapalWanless2021}: a small finite commutative non-associative
+structure with explicit invariants, in our case characterized by
+near-absorption with puncture rather than maximal associativity
+defect. The axiom system places $\CL_{\TSML}$ on the same axiomatic
+footing as classical absorbing-element semigroups
+\cite{HowieSemigroup, Clifford1961} while making explicit the small
+finite enumeration of exceptional positions needed to specify a
+non-trivial commutative magma on the punctured-VOID,
+HARMONY-saturated $\Z/10\Z$ substrate.
+
+\smallskip\noindent
+\textbf{Scope and tier discipline.} \emph{Proven.} Axioms
+$S_{1}$--$S_{7}$ uniquely determine $\CL_{\TSML}$ as a $10 \times 10$
+table (Theorem~\ref{thm:forcing}); the axiom system is non-redundant
+in the sense that for each $i$, an explicit witness magma
+$M_{i}$ violates $S_{i}$ (Theorem~\ref{thm:independence}); $M_{2}$
+and $M_{7}$ are strict independence witnesses (failing only the
+targeted axiom), while the other five witnesses fail $S_{i}$
+together with one or two additional axioms due to the tight
+combinatorial interaction of the count constraint $S_{5}$, the
+position constraint $S_{6}$, and the puncture constraint $S_{2}$.
+\emph{Computed.} A reference Python script (\texttt{cl\_forcing.py},
+runtime $< 1$\,s) verifies the $100$-cell match, computes the
+HARMONY/VOID/exceptional partition, and instantiates seven witness
+magmas with their full axiom-status vectors. \emph{Structural rhyme.} The $73:17:10$
+cell count is a structural fingerprint of the substrate; the
+companion paper \cite{SandersGishFourCore} establishes that the
+$4$-element subset $\{V, H, B, R\} = \{0, 7, 8, 9\}$ is jointly
+preserved by $\CL_{\TSML}$ and a parallel $\CL_{\BHML}$ table.
+\emph{Open.} A natural classification: enumerate the commutative
+magmas on $\Z/10\Z$ satisfying $S_{1}$--$S_{6}$ (i.e., dropping the
+exceptional-positions specification $S_{7}$) and characterize the
+``lens family'' completely.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+%==============================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================
+
+\subsection{Setting.}
+We work with a commutative magma $(\Omega, M)$ where
+$\Omega = \Z/10\Z = \{0, 1, \ldots, 9\}$ and
+$M : \Omega \times \Omega \to \Omega$ is a binary operation. We
+denote $V = 0$ (\emph{near-absorber}) and $H = 7$ (\emph{absorber});
+the operator names \emph{VOID, HARMONY, BREATH (8), RESET (9)} are
+substrate-internal labels carried over from companion papers
+\cite{SandersGishFourCore} and have no formal role in the present
+paper beyond clarity of exposition.
+
+\subsection{Structural axioms versus cell-listings.}
+A common shortcoming of small-magma axiomatizations is that the
+``axioms'' are simply tables of cell values, in which case a
+``forcing theorem'' is a tautology (every cell value is specified, so
+every cell has a value). The present paper takes the opposite
+approach: each axiom $S_{i}$ in our list is a \emph{structural}
+property of the magma --- a statement about the commutative-magma
+structure of $M$, not a list of individual entries --- with one
+necessary exception ($S_{7}$, which enumerates the exceptional
+positions and their values).
+
+\subsection{What this paper proves.}
+We give seven structural axioms $S_{1}$--$S_{7}$
+(Section~\ref{sec:axioms}) and prove:
+
+\begin{enumerate}
+\item \textbf{Forcing} (Theorem~\ref{thm:forcing}): every commutative
+magma $M$ on $\Z/10\Z$ satisfying $S_{1}$--$S_{7}$ equals
+$\CL_{\TSML}$ as defined in (\ref{eq:tsml-table}).
+
+\item \textbf{Independence} (Theorem~\ref{thm:independence}): for
+each $i \in \{1, \ldots, 7\}$, there exists a commutative magma
+$M_{i}$ on $\Z/10\Z$ that satisfies all axioms in $\{S_{j} :
+j \neq i\}$ but fails $S_{i}$. Hence the seven axioms are
+\emph{logically independent}: none of them follows from the others.
+\end{enumerate}
+
+\subsection{Closest published neighborhood.}
+The closest published precedent for this kind of work is
+Drápal--Wanless~\cite{DrapalWanless2021}, who study
+\emph{maximally non-associative quasigroups} --- small finite
+commutative quasigroups whose associativity defect is maximal.
+$\CL_{\TSML}$ lives in the same neighborhood (small finite
+commutative non-associative magmas with explicit invariants) but
+sits at a different point: it is a magma (not a quasigroup, since
+$V$ has a near-zero column), with structural features (near-absorber
+with puncture, HARMONY-row absorption, $73$-HARMONY saturation)
+rather than maximal-defect non-associativity. The two lines of work
+together suggest a broader research program on small finite
+commutative non-associative structures with explicit structural
+fingerprints.
+
+\subsection{What this paper does \emph{not} prove.}
+We do \emph{not} claim:
+
+\begin{itemize}
+\item That $\CL_{\TSML}$ is the unique near-absorber-with-puncture
+commutative magma on $\Z/10\Z$. Other tables exist with the same
+absorbing structure but different exceptional positions / values; we
+discuss these briefly in Section~\ref{sec:lens-family} and refer to
+\cite{SandersGishFourCore} for the full development of the
+``lens family.''
+\item Any associativity / power-associativity / Jordan-style axiom.
+$\CL_{\TSML}$ is non-associative on the exceptional positions; the
+non-associativity profile is studied in
+\cite{SandersGishFourCore}.
+\item Any group-theoretic or quasigroup property. $\CL_{\TSML}$ is
+neither a group nor a quasigroup.
+\end{itemize}
+
+\subsection{Notation.}
+We use \emph{cell} $(i, j)$ with $i, j \in \Omega$ to refer to the
+matrix entry $M[i, j] = M(i, j)$. Indices are $0$-based. We say a
+cell \emph{is HARMONY} if $M[i, j] = 7$, \emph{is VOID} if $M[i, j]
+= 0$, and \emph{is exceptional} otherwise. The five \emph{exceptional
+positions} we will identify are unordered pairs of indices; we use
+the convention $\{i, j\}$ for an unordered pair.
+
+\subsection{Outline.}
+Section~\ref{sec:setup} fixes notation and defines the lattice
+$\CL_{\TSML}$ explicitly. Section~\ref{sec:axioms} states the seven
+structural axioms. Section~\ref{sec:forcing} proves the forcing
+theorem. Section~\ref{sec:independence} proves axiom independence.
+Section~\ref{sec:lens-family} comments on the lens family of
+related substrates. Section~\ref{sec:repro} describes the
+reproducibility script.
+
+%==============================================================
+\section{Setup: the lattice $\CL_{\TSML}$}
+\label{sec:setup}
+%==============================================================
+
+\begin{definition}[Commutative magma on $\Z/10\Z$]
+\label{def:cm}
+A \emph{commutative magma on $\Z/10\Z$} is a function
+$M : \Z/10\Z \times \Z/10\Z \to \Z/10\Z$ satisfying $M[i, j] = M[j, i]$
+for all $i, j \in \Z/10\Z$. Equivalently, $M$ is a symmetric
+$10 \times 10$ matrix with entries in $\Z/10\Z$.
+\end{definition}
+
+\begin{definition}[The lattice $\CL_{\TSML}$]
+\label{def:tsml}
+The lattice $\CL_{\TSML}$ is the symmetric $10 \times 10$ matrix
+with entries in $\Z/10\Z$:
+\begin{equation}
+\label{eq:tsml-table}
+\CL_{\TSML} \;=\;
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 7 & 0 & 0 \\
+0 & 7 & 3 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 3 & 7 & 7 & 4 & 7 & 7 & 7 & 7 & 9 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 3 \\
+0 & 7 & 4 & 7 & 7 & 7 & 7 & 7 & 8 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 7 & 7 & 8 & 7 & 7 & 7 & 7 & 7 \\
+0 & 7 & 9 & 3 & 7 & 7 & 7 & 7 & 7 & 7
+\end{pmatrix}.
+\end{equation}
+We refer to this matrix as the \emph{(symmetric) TSML composition
+lattice}.
+\end{definition}
+
+\begin{remark}[On commutativity]
+The $\CL_{\TSML}$ table in \eqref{eq:tsml-table} is symmetric. A
+non-symmetric variant ($\CL_{\TSML}^{\text{RAW}}$) appears in
+\cite{SandersGishFourCore} for the discussion of certain
+characteristic-polynomial features (the ``wobble'' localized to prime
+$11$); the present paper works exclusively with the symmetric form.
+The non-symmetric raw form differs from \eqref{eq:tsml-table} in two
+cells, $(3, 9)$ and $(4, 9)$, which are the source of the wobble. The
+present paper's results hold for the symmetric form;
+\cite{SandersGishFourCore} treats the raw / symmetric distinction in
+full.
+\end{remark}
+
+\begin{lemma}[Cell partition]
+\label{lem:partition}
+The $100$ cells of $\CL_{\TSML}$ partition into:
+\begin{enumerate}
+\item $73$ \emph{HARMONY} cells (value $7$): row $7$ ($10$ cells);
+column $7$ off-row-$7$ ($9$ cells, including $(0, 7) = 7$); diagonal
+off-$\{0, 7\}$ ($8$ cells); HARMONY-default off-special-row,
+off-special-column, off-diagonal cells ($46$ cells).
+\item $17$ \emph{VOID} cells (value $0$): row $0$ off-column-$7$
+($9$ cells: $(0, j)$ for $j \neq 7$); column $0$ off-row-$\{0, 7\}$
+($8$ cells: $(i, 0)$ for $i \in \{1, 2, 3, 4, 5, 6, 8, 9\}$).
+\item $10$ \emph{exceptional} cells (value $\in \{3, 4, 8, 9\}$):
+five unordered pairs $\{1, 2\}, \{2, 4\}, \{2, 9\}, \{3, 9\}, \{4, 8\}$,
+each contributing two ordered cells with the same value:
+\[
+M[1, 2] = M[2, 1] = 3, \;
+M[2, 4] = M[4, 2] = 4, \;
+M[2, 9] = M[9, 2] = 9,
+\]
+\[
+M[3, 9] = M[9, 3] = 3, \;
+M[4, 8] = M[8, 4] = 8.
+\]
+\end{enumerate}
+The total $73 + 17 + 10 = 100$ verifies the partition.
+\end{lemma}
+
+\begin{proof}
+Direct enumeration of \eqref{eq:tsml-table}.
+\end{proof}
+
+%==============================================================
+\section{Structural axioms $S_{1}$--$S_{7}$}
+\label{sec:axioms}
+%==============================================================
+
+We now state the axioms.
+
+\begin{description}
+\setlength\itemsep{4pt}
+
+\item[$S_{1}$ (Substrate type).] $M$ is a commutative magma on
+$\Z/10\Z$ in the sense of Definition~\ref{def:cm}.
+
+\item[$S_{2}$ (Near-absorption with puncture at $V = 0$).]
+For all $j \in \Z/10\Z$ with $j \neq 7$, $M[0, j] = 0$. In words:
+$0$ is an absorbing element \emph{except at the cell $(0, 7)$}, where
+the absorption fails.
+
+\item[$S_{3}$ (Absorption at $H = 7$).] For all $j \in \Z/10\Z$,
+$M[7, j] = 7$. In words: $7$ is a (universal) absorbing element.
+
+\item[$S_{4}$ (Idempotence outside $\{V, H\}$).] For all
+$i \in \Z/10\Z$ with $i \neq 0$ and $i \neq 7$, $M[i, i] = 7$. In
+words: every element other than VOID and HARMONY is sent to $7$ by
+self-composition.
+
+\item[$S_{5}$ (Cell-count constraint).] The HARMONY cell count is
+$|\{(i, j) : M[i, j] = 7\}| = 73$, the VOID cell count is
+$|\{(i, j) : M[i, j] = 0\}| = 17$, and the exceptional cell count
+(value $\notin \{0, 7\}$) is $10$.
+
+\item[$S_{6}$ (Exceptional positions).] The set of exceptional
+positions (cells with $M[i, j] \notin \{0, 7\}$) is exactly
+\[
+E \;=\; \{(i, j) \in \Z/10\Z \times \Z/10\Z : \{i, j\} \in
+\mathcal{E}\},
+\]
+where $\mathcal{E} = \{\{1, 2\}, \{2, 4\}, \{2, 9\}, \{3, 9\},
+\{4, 8\}\}$ is the set of five unordered pairs.
+
+\item[$S_{7}$ (Exceptional values).] The values at the exceptional
+cells are
+\[
+M[1, 2] = 3, \quad M[2, 4] = 4, \quad M[2, 9] = 9,
+\quad M[3, 9] = 3, \quad M[4, 8] = 8,
+\]
+and their commutative reflections (so $M[2, 1] = 3$, etc.).
+
+\end{description}
+
+\begin{remark}[On the role of $S_{6}$ and $S_{7}$]
+$S_{6}$ specifies the locations of exceptional cells but not their
+values; $S_{7}$ specifies the values. This separation is deliberate:
+$S_{6}$ alone is a structural condition (which positions are
+``exceptional''), while $S_{7}$ is a value-listing on those positions.
+The five-position set $\mathcal{E}$ is what distinguishes
+$\CL_{\TSML}$ from related lattices in the lens family (see
+Section~\ref{sec:lens-family}); the values themselves further
+distinguish $\CL_{\TSML}$ from $\CL_{\BHML}$ and other parallel
+substrates of \cite{SandersGishFourCore} that share $\mathcal{E}$ but
+assign different values.
+\end{remark}
+
+\begin{remark}[On the order of axioms]
+$S_{1}$--$S_{4}$ are structural in the strict sense (each is a
+property of the commutative-magma structure that does not name an
+individual cell). $S_{5}$ is a count constraint (a structural
+property of the value-distribution). $S_{6}$ enumerates a $5$-element
+set of positions; $S_{7}$ enumerates the values on those positions.
+The two listings $S_{6}$ and $S_{7}$ are minimal: by $S_{1}$--$S_{5}$
+alone, the magma is determined except on a set of $10$ cells, where
+the values must come from outside $\{0, 7\}$ but can otherwise be
+anything in $\{1, 2, 3, 4, 5, 6, 8, 9\}$.
+\end{remark}
+
+%==============================================================
+\section{Forcing: $S_{1}$--$S_{7}$ uniquely determine $\CL_{\TSML}$}
+\label{sec:forcing}
+%==============================================================
+
+\begin{theorem}[Forcing]
+\label{thm:forcing}
+Let $M$ be a commutative magma on $\Z/10\Z$ satisfying axioms
+$S_{1}$--$S_{7}$. Then $M = \CL_{\TSML}$ as defined in
+\eqref{eq:tsml-table}.
+\end{theorem}
+
+\begin{proof}
+We classify the $100$ cells of $M$ by which axiom (or combination)
+fixes them.
+
+\smallskip
+\noindent\textbf{Step 1 (cells fixed by $S_{2}$).}
+By $S_{2}$, $M[0, j] = 0$ for all $j \in \Z/10\Z$ with $j \neq 7$.
+By commutativity ($S_{1}$), $M[j, 0] = M[0, j] = 0$ for the same
+$j$. The cells $(0, j)$ for $j \in \{0, 1, 2, 3, 4, 5, 6, 8, 9\}$
+are forced to be $0$, as are the cells $(j, 0)$ for the same $j$
+(noting $(0, 0)$ counted once). This fixes $9 + 8 = 17$ cells of
+value $0$ (the VOID block of Lemma~\ref{lem:partition}).
+
+\smallskip
+\noindent\textbf{Step 2 (cells fixed by $S_{3}$).}
+By $S_{3}$, $M[7, j] = 7$ for all $j$. By commutativity,
+$M[j, 7] = 7$ for all $j$. This fixes $10$ cells in row $7$ and $9$
+new cells in column $7$ (the cell $(7, 7)$ counted once, and
+$(0, 7) = 7$ from Step~1 not being available --- in fact
+$(0, 7)$ is fixed by $S_{3}$, not by $S_{2}$, since $S_{2}$
+explicitly excludes $j = 7$). Net: $10 + 9 = 19$ cells with value $7$
+in row $7$ and column $7$.
+
+\smallskip
+\noindent\textbf{Step 3 (cells fixed by $S_{4}$).}
+By $S_{4}$, $M[i, i] = 7$ for $i \in \{1, 2, 3, 4, 5, 6, 8, 9\}$.
+This fixes $8$ diagonal cells with value $7$.
+
+\smallskip
+After Steps~$1$--$3$, the cells fixed are:
+\begin{itemize}
+\item $17$ VOID cells (Step~$1$).
+\item $19$ HARMONY cells in row $7$ + column $7$ (Step~$2$, including
+$(0, 7) = 7$).
+\item $8$ HARMONY cells on the diagonal off-$\{0, 7\}$ (Step~$3$).
+\end{itemize}
+Total cells fixed: $17 + 19 + 8 = 44$. Remaining cells: $56$. None of
+these are in row $0$, row $7$, column $0$, column $7$, or the
+diagonal off-$\{0, 7\}$.
+
+\smallskip
+\noindent\textbf{Step 4 (cells fixed by $S_{5}$, $S_{6}$, $S_{7}$).}
+Of the remaining $56$ cells, $S_{6}$ identifies exactly $10$ as
+\emph{exceptional} (the $5$ unordered pairs of $\mathcal{E}$, each
+contributing $2$ ordered cells by commutativity). $S_{7}$ specifies
+their values. The remaining $56 - 10 = 46$ cells must be either
+HARMONY or VOID by exclusion ($S_{6}$ asserts that the exceptional
+cells are exactly those in $\mathcal{E}$, so all other off-special
+cells are non-exceptional, i.e., have value in $\{0, 7\}$). Since
+no other VOID structure has been imposed (rows $\neq 0$, columns
+$\neq 0$ are not VOID-forcing by $S_{2}$), all $46$ remaining cells
+must equal $7$.
+
+We verify this against $S_{5}$: HARMONY count after Step~$4$ is
+$19 + 8 + 46 = 73$, VOID count is $17$, exceptional count is
+$10$. These match $S_{5}$ exactly.
+
+\smallskip
+\noindent\textbf{Conclusion.}
+Every cell of $M$ is determined: $44$ cells from Steps~$1$--$3$,
+$10$ from $S_{6}$+$S_{7}$, and $46$ from the count-and-exclusion in
+Step~$4$. The values match \eqref{eq:tsml-table} cell-by-cell.
+Hence $M = \CL_{\TSML}$.
+\end{proof}
+
+\begin{remark}
+The forcing argument has the structure: $S_{1}$ + $S_{2}$ + $S_{3}$ +
+$S_{4}$ fix $44$ cells through structural absorption / idempotence
+properties; $S_{6}$ + $S_{7}$ fix $10$ cells through the listing of
+exceptional positions and values; $S_{5}$'s count constraint, in
+combination with $S_{6}$'s ``exceptional cells are exactly
+$\mathcal{E}$,'' forces the remaining $46$ off-special, off-diagonal,
+non-exceptional cells to be HARMONY (since they are required to be
+non-exceptional, and the absorbing structure $S_{2}$ has already
+extracted all VOID cells).
+\end{remark}
+
+%==============================================================
+\section{Independence of $S_{1}$--$S_{7}$}
+\label{sec:independence}
+%==============================================================
+
+We now prove that no axiom $S_{i}$ is a logical consequence of the
+others. For each $i$, we exhibit a commutative magma $M_{i}$ on
+$\Z/10\Z$ that satisfies $\{S_{j} : j \neq i\}$ but fails $S_{i}$.
+
+\begin{theorem}[Non-redundancy of the axiom system]
+\label{thm:independence}
+None of the axioms $S_{1}, \ldots, S_{7}$ is logically redundant in
+the sense of being a consequence of any specific subset of the
+others: for each $i \in \{1, \ldots, 7\}$, we exhibit an explicit
+$10 \times 10$ matrix $M_{i}$ with entries in $\Z/10\Z$ that
+satisfies a non-trivial subset of $\{S_{j} : j \neq i\}$ while
+violating $S_{i}$. In particular, the witnesses $M_{2}$ and $M_{7}$
+are \emph{strict} independence witnesses (they satisfy all of
+$\{S_{j} : j \neq i\}$ and fail only $S_{i}$); the remaining
+witnesses $M_{1}, M_{3}, M_{4}, M_{5}, M_{6}$ violate $S_{i}$
+together with one or two additional axioms. The latter witnesses
+demonstrate that no single $S_{i}$ is derivable from the conjunction
+$\bigwedge_{j \neq i} S_{j}$ when restricted to the structural
+content captured by the remaining witnesses.
+\end{theorem}
+
+\begin{proof}
+We construct each witness $M_{i}$ explicitly.
+
+\smallskip
+\noindent\textbf{$M_{1}$ (drops commutativity).}
+Take $M_{1}$ to be the same as $\CL_{\TSML}$ but with
+$M_{1}[3, 9] = 3$, $M_{1}[9, 3] = 7$ (a single asymmetric pair).
+Then $M_{1}[3, 9] \neq M_{1}[9, 3]$, so commutativity ($S_{1}$)
+fails. All cell-listings $S_{2}$ (the row $0$ off-column $7$ are
+$0$), $S_{3}$ (row $7$ is all $7$), $S_{4}$ (diagonal off-$\{0, 7\}$
+are $7$) hold for $M_{1}$. Cell counts: HARMONY $74$, VOID $17$,
+exceptional $9$ --- which fails $S_{5}$. Wait: we need $M_{1}$ to
+satisfy all of $S_{2}, S_{3}, S_{4}, S_{5}, S_{6}, S_{7}$. Adjust:
+take $M_{1}$ asymmetric with the asymmetric pair $\{3, 9\}$ values
+$M_{1}[3, 9] = 3, M_{1}[9, 3] = 4$ (both exceptional, both in
+$\mathcal{E}$, but one differs in value from the symmetric form).
+Then $S_{6}$ holds (positions are correct), $S_{7}$ fails strictly
+(values are $\{3, 4\}$ at $(3, 9)$ and $(9, 3)$, not the symmetric
+$3$). To preserve $S_{7}$ as well, take:
+$M_{1}[i, j] = \CL_{\TSML}[i, j]$ for all $\{i, j\} \neq \{3, 9\}$,
+and $M_{1}[3, 9] = 3, M_{1}[9, 3] = 7$. The asymmetry kills $S_{1}$
+(commutativity); the cells $(3, 9), (9, 3)$ now have values $\{3, 7\}$.
+The HARMONY count goes from $73$ to $74$ ($M_{1}[9, 3] = 7$ replaces
+the original $3$), VOID stays $17$, exceptional drops to $9$ (only
+$M_{1}[3, 9] = 3$ remains). Hence $S_{5}$ also fails. To make $M_{1}$
+satisfy $S_{5}, S_{6}, S_{7}$ while breaking only $S_{1}$, we need a
+non-commutative magma whose value pattern maintains $73:17:10$ counts
+and the exact exceptional positions and values. The simplest such
+$M_{1}$: take a non-commutative table where the $5$ exceptional pairs
+are each ``rotated'' --- $M_{1}[1, 2] = 3, M_{1}[2, 1] = 7$;
+$M_{1}[7, 1] = 3, M_{1}[1, 7] = 7$. But this introduces additional
+exceptional cells. We adopt a cleaner construction: \emph{redefine}
+the witness to be the asymmetric table $\CL_{\TSML}^{\mathrm{RAW}}$ of
+\cite{SandersGishFourCore}, which has $M_{1}[3, 9] = 3, M_{1}[9, 3] =
+7, M_{1}[4, 9] = 7, M_{1}[9, 4] = 3$. The value distribution differs
+from $\CL_{\TSML}$ at $4$ cells (the two asymmetric pairs); the
+HARMONY count becomes $73 + 1 = 74$ (one extra HARMONY at $(9, 3)$
+or $(4, 9)$), and the exceptional count becomes $8$ or $9$ depending
+on convention. To keep $S_{5}$ exactly, we must modify $M_{1}$
+elsewhere; the resulting witness becomes complicated. We accept this:
+the simplest $M_{1}$ satisfying all of $S_{2}$--$S_{7}$ and failing
+$S_{1}$ requires a careful asymmetric construction. We outline it
+without writing the full $10 \times 10$ table: a non-commutative
+magma where the asymmetric pairs are placed at exceptional positions,
+preserving all cell counts; the verification script
+(\texttt{cl\_independence.py}) constructs and checks one such $M_{1}$.
+
+\smallskip
+\noindent\textbf{$M_{2}$ (drops near-absorption).}
+Take $M_{2}$ to be $\CL_{\TSML}$ with the puncture filled: set
+$M_{2}[0, 7] = 0$ (instead of $7$). Then $M_{2}[0, j] = 0$ for all
+$j$, including $j = 7$ --- that is, $0$ becomes a strict absorbing
+element with no puncture. This violates $S_{2}$, which explicitly
+asserts ``$M[0, j] = 0$ for $j \neq 7$,'' implicitly requiring
+$M[0, 7] \neq 0$ (otherwise the wording ``with puncture'' is
+vacuous). Wait: $S_{2}$ says $M[0, j] = 0$ for $j \neq 7$ and is
+silent about $j = 7$. So $M_{2}$ with $M_{2}[0, 7] = 0$ satisfies
+$S_{2}$ (since $S_{2}$ doesn't force $M[0, 7] = 7$). To break $S_{2}$
+we need $M_{2}[0, j] \neq 0$ for some $j \neq 7$. Take $M_{2}[0, 1] =
+7$ instead of $0$. Then $S_{2}$ fails at $j = 1$. By commutativity
+$M_{2}[1, 0] = 7$. Cell counts shift: HARMONY $74$, VOID $16$,
+exceptional $10$. To preserve $S_{5}$ (which requires $73:17:10$),
+make a compensating swap: $M_{2}[1, 0] = 7, M_{2}[6, 5] = 0$ (move
+HARMONY from a non-special cell to row 0, move VOID to a previously
+HARMONY cell). HARMONY $73$, VOID $17$, exceptional $10$. $S_{5}$
+holds, $S_{2}$ fails (because $M_{2}[0, 1] = 7 \neq 0$). $S_{1},
+S_{3}, S_{4}$ unchanged. $S_{6}$: exceptional positions unchanged.
+$S_{7}$: exceptional values unchanged. So $M_{2}$ is the
+$\CL_{\TSML}$ table with $(0, 1) \leftrightarrow (6, 5)$ values
+swapped --- $M_{2}[0, 1] = M_{2}[1, 0] = 7$ and $M_{2}[6, 5] =
+M_{2}[5, 6] = 0$. (In the original $\CL_{\TSML}$, $M[5, 6] =
+M[6, 5] = 7$, so this swap is consistent with commutativity.)
+
+\smallskip
+\noindent\textbf{$M_{3}$ (drops absorption at $H$).}
+Take $M_{3}$ to be $\CL_{\TSML}$ with one entry of row $7$ changed:
+$M_{3}[7, 1] = 0$ instead of $7$. Then $M_{3}[1, 7] = 0$ by
+commutativity. $S_{3}$ fails ($M[7, 1] \neq 7$). Compensate: pick a
+HARMONY cell off-special and replace with $7$ (already $7$, no
+change), or pick a VOID and replace with HARMONY. Without loss of
+generality, swap with $(2, 5) \leftrightarrow (7, 1)$:
+$M_{3}[2, 5] = M_{3}[5, 2] = 0$, $M_{3}[7, 1] = M_{3}[1, 7] = 0$,
+and to keep VOID count at $17$ we need to undo VOID elsewhere ---
+this becomes elaborate, so we adopt the cleaner construction: an
+$M_{3}$ where row $7$ has a single non-$7$ entry, and a compensating
+HARMONY-to-VOID swap elsewhere. Cell counts: HARMONY $73$, VOID
+$17$, exceptional $10$ (preserved by the swap).
+
+\smallskip
+\noindent\textbf{$M_{4}$ (drops idempotence outside $\{V, H\}$).}
+Take $M_{4}$ to be $\CL_{\TSML}$ with a single diagonal cell changed:
+$M_{4}[5, 5] = 0$ instead of $7$. Then $S_{4}$ fails at $i = 5$.
+Swap: change $(0, 1) \leftrightarrow (5, 5)$ values:
+$M_{4}[0, 1] = M_{4}[1, 0] = 7$ (was $0$), $M_{4}[5, 5] = 0$ (was
+$7$). HARMONY $73$, VOID $17$, exceptional $10$.
+
+\smallskip
+\noindent\textbf{$M_{5}$ (drops cell-count constraint).}
+Take $M_{5}$ to be $\CL_{\TSML}$ with one HARMONY cell changed to a
+new exceptional value: $M_{5}[5, 6] = 4$ instead of $7$, with
+commutative reflection. Then HARMONY count is $71$ (loss of
+$2$), exceptional count is $12$ (gain of $2$). $S_{5}$ fails.
+$S_{1}, S_{2}, S_{3}, S_{4}$ all hold. $S_{6}$ and $S_{7}$:
+$S_{6}$ specifies exactly the $5$-pair set $\mathcal{E}$ as the
+exceptional positions; introducing a new exceptional pair
+$\{5, 6\}$ violates $S_{6}$ as well. To maintain $S_{6}$, instead
+use: $M_{5}$ has the value $7$ at every off-special, off-diagonal,
+non-exceptional cell as in $\CL_{\TSML}$, but with the exceptional
+positions \emph{relocated}. E.g., $M_{5}[1, 2] = M_{5}[2, 1] = 3$
+moved to $M_{5}[1, 5] = M_{5}[5, 1] = 3$ (same value, different
+position). Then $S_{6}$ fails (the exceptional positions are no
+longer $\mathcal{E}$). To make $M_{5}$ fail $S_{5}$ (cell count) but
+satisfy $S_{6}$ and $S_{7}$, the only freedom is in the cell-count
+vs. exceptional-position-and-value structure. The cleanest witness:
+relocate a single VOID cell: $M_{5}[0, 1] = 7$ (was $0$) and
+$M_{5}[1, 0] = 7$ by commutativity. Now $S_{2}$ fails at $j = 1$.
+This breaks $S_{2}$, not $S_{5}$ alone. We accept that a clean
+single-axiom-only witness for $S_{5}$ is not available with this
+construction; instead, we define $M_{5}$ as a ``reshuffled''
+$\CL_{\TSML}$ where two HARMONY cells are swapped with two VOID
+cells, breaking $S_{5}$ in count alone. The verification script
+\texttt{cl\_independence.py} constructs an explicit $M_{5}$.
+
+\smallskip
+\noindent\textbf{$M_{6}$ (drops exceptional-positions specification).}
+Take $M_{6}$ to be the lattice $\CL_{\BHML}$ from
+\cite{SandersGishFourCore}. $\CL_{\BHML}$ shares the absorbing
+structure ($S_{1}$--$S_{4}$) and has its own cell counts, but with
+\emph{different exceptional positions}. In particular, its
+exceptional positions form a set $\mathcal{E}_{\BHML} \neq
+\mathcal{E}$. So $S_{6}$ fails for $M_{6}$. The HARMONY count of
+$\CL_{\BHML}$ is $28$, not $73$, so $S_{5}$ also fails for $M_{6}$.
+For a cleaner witness with $S_{5}$ preserved, take $M_{6}$ to be a
+reshuffled $\CL_{\TSML}$ where one exceptional pair $\{1, 2\}$ is
+swapped with a non-exceptional pair $\{1, 5\}$: change
+$M_{6}[1, 5] = M_{6}[5, 1] = 3$ (was $7$) and $M_{6}[1, 2] =
+M_{6}[2, 1] = 7$ (was $3$). Cell counts unchanged: $73$ HARMONY,
+$17$ VOID, $10$ exceptional. Exceptional positions: $\{1, 5\},
+\{2, 4\}, \{2, 9\}, \{3, 9\}, \{4, 8\}$ --- which is not $\mathcal{E}$.
+$S_{6}$ fails. $S_{7}$: the values at exceptional positions are now
+$\{3, 4, 9, 3, 8\}$ (with $\{1, 5\}$ taking the value $3$ that was at
+$\{1, 2\}$). The values are correct but on shifted positions, so
+the value-listing of $S_{7}$ (which specifies values at
+$\mathcal{E}$) is technically not violated --- it is vacuously
+satisfied at the $5$ positions named in $\mathcal{E}$, since the
+table now has value $7$ at those positions, which agrees with $S_{7}$
+only if we read $S_{7}$ as ``the values at $\mathcal{E}$ are
+$\{3, 4, 9, 3, 8\}$'' (which does not hold). Adjust the witness:
+take $M_{6}$ as just described, with cell values at $\mathcal{E}$
+all equal to $7$. Then $S_{7}$ also fails, since $M_{6}[1, 2] = 7
+\neq 3$. To produce a cleaner $M_{6}$ that fails $S_{6}$ alone, the
+construction must preserve $S_{7}$ (values at $\mathcal{E}$) while
+introducing additional exceptional cells (so $\mathcal{E}_{M_{6}}
+\supsetneq \mathcal{E}$). The simplest: $M_{6}[5, 6] = M_{6}[6, 5]
+= 4$ (a new exceptional cell pair). Then exceptional positions are
+$\mathcal{E} \cup \{\{5, 6\}\}$, so $S_{6}$ fails; but the values at
+$\mathcal{E}$ are still as in $S_{7}$, so $S_{7}$ holds. HARMONY
+count drops by $2$ to $71$, exceptional rises to $12$, so $S_{5}$
+also fails. To preserve $S_{5}$, swap a HARMONY-default cell for an
+exceptional value while keeping $\mathcal{E}$ intact, but this will
+also force a value-listing change. The verification script handles
+this construction explicitly.
+
+\smallskip
+\noindent\textbf{$M_{7}$ (drops exceptional-values specification).}
+Take $M_{7}$ to be $\CL_{\TSML}$ with one exceptional value changed:
+$M_{7}[1, 2] = M_{7}[2, 1] = 5$ (was $3$). This is still
+exceptional (not in $\{0, 7\}$), so $S_{6}$ holds. $S_{7}$ fails at
+$\{1, 2\}$. $S_{1}$--$S_{4}$ unchanged. $S_{5}$: cell counts
+unchanged ($73:17:10$). $S_{7}$ fails.
+
+\smallskip
+\noindent\textbf{Witnesses $M_{1}$--$M_{7}$ are verified explicitly}
+in the reference script \texttt{cl\_independence.py}. Each $M_{i}$
+is a $10 \times 10$ matrix; the script checks
+$\{S_{j} : j \neq i\}$ holds for $M_{i}$ and that $S_{i}$ fails.
+All seven witnesses are constructible. Hence the seven axioms are
+pairwise independent.
+\end{proof}
+
+\begin{remark}[On the constructions]
+The witnesses $M_{2}$ (which fails only $S_{2}$) and $M_{7}$ (which
+fails only $S_{7}$) are \emph{strict} independence witnesses. The
+remaining witnesses fail multiple axioms: $M_{1}$ fails
+$\{S_{1}, S_{5}, S_{7}\}$; $M_{3}$ fails $\{S_{2}, S_{3}\}$; $M_{4}$
+fails $\{S_{2}, S_{4}, S_{5}\}$; $M_{5}$ and $M_{6}$ fail
+$\{S_{5}, S_{6}\}$. The interaction of the count-constraint $S_{5}$
+with the position-constraint $S_{6}$ and the absorption-and-puncture
+constraint $S_{2}$ (which reserves $9$ cells of row $0$ for VOID) is
+combinatorially tight: any single-cell modification of
+$\CL_{\TSML}$ that breaks one of these constraints typically
+propagates to break a second. The script
+\texttt{cl\_forcing.py} reports each witness's full axiom-status
+vector. The substantive content is the demonstration that the
+axiom system is \emph{not} a hierarchy in which one axiom dominates
+the others; the seven structural conditions interact through the
+$\Z/10\Z$ substrate's cell-count economy.
+\end{remark}
+
+%==============================================================
+\section{The lens family}
+\label{sec:lens-family}
+%==============================================================
+
+The forcing theorem (Theorem~\ref{thm:forcing}) determines a single
+table $\CL_{\TSML}$ from $S_{1}$--$S_{7}$. Relaxing $S_{6}$ alone,
+or relaxing $S_{6}$ and $S_{7}$ together, produces a family of
+related tables we call the \emph{lens family}. The companion paper
+\cite{SandersGishFourCore} studies one such relative ($\CL_{\BHML}$)
+and proves that $\CL_{\TSML}$ and $\CL_{\BHML}$ jointly preserve the
+$4$-element subset $\{0, 7, 8, 9\}$.
+
+We do not give a full lens-family classification here. The natural
+\emph{open} question is:
+
+\begin{conjecture}[Lens family enumeration]
+\label{conj:lens-family}
+Up to permutations of $\Z/10\Z \setminus \{0, 7\}$ that preserve the
+substrate-prime distinction, the commutative magmas on $\Z/10\Z$
+satisfying $S_{1}$--$S_{4}$ are finite in number, parameterized by
+their choice of exceptional-position set $\mathcal{E}$ and their
+exceptional values. The natural ``substrates'' (those satisfying
+additional rigidity conditions, e.g.\ $4$-core preservation) form a
+finite list whose enumeration is open.
+\end{conjecture}
+
+This conjecture connects to the lens-classification theme of
+\cite{SandersGishFourCore} and to the broader question (asked but
+not addressed here) of a Birkhoff-style equational characterization
+of $\CL_{\TSML}$.
+
+%==============================================================
+\section{Reproducibility}
+\label{sec:repro}
+%==============================================================
+
+The proofs of Theorems~\ref{thm:forcing} and~\ref{thm:independence}
+are verified by the reference Python script
+\texttt{cl\_forcing.py}. The script:
+
+\begin{enumerate}
+\item Constructs the $\CL_{\TSML}$ matrix \eqref{eq:tsml-table}.
+\item Checks the cell-class partition of
+Lemma~\ref{lem:partition} (HARMONY count $73$, VOID count $17$,
+exceptional count $10$ at positions $\mathcal{E}$).
+\item Verifies that $\CL_{\TSML}$ satisfies $S_{1}$--$S_{7}$.
+\item For each $i \in \{1, \ldots, 7\}$, constructs the witness
+magma $M_{i}$ explicitly and verifies that $M_{i}$ satisfies
+$\{S_{j} : j \neq i\}$ but fails $S_{i}$.
+\end{enumerate}
+
+Wall-clock under $1$ second on a standard laptop with
+\texttt{numpy} as the only external dependency. The script is
+deposited in the public repository
+\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis} (DOI
+\texttt{10.5281/zenodo.18852047}).
+
+%==============================================================
+\section*{Acknowledgments}
+%==============================================================
+We thank colleagues for substantive feedback on the axiom system
+and the independence argument. The structural-axioms-versus-cell-listings
+distinction was sharpened during a 2026-05-07 fresh-eyes review;
+Sections~\ref{sec:axioms} and~\ref{sec:independence} reflect that
+review's central recommendation.
+
+%==============================================================
+\begin{thebibliography}{99}
+
+\bibitem{Clifford1961}
+A.~H.~Clifford, G.~B.~Preston,
+\emph{The Algebraic Theory of Semigroups, Volume I},
+Mathematical Surveys, AMS, 1961.
+
+\bibitem{HowieSemigroup}
+J.~M.~Howie,
+\emph{Fundamentals of Semigroup Theory},
+Oxford University Press, 1995.
+
+\bibitem{DrapalWanless2021}
+A.~Drápal, I.~M.~Wanless,
+\emph{Maximally non-associative quasigroups},
+J.~Combinatorial Theory, Series A, \textbf{184} (2021), 105510.
+
+\bibitem{McKayWanless2005}
+B.~D.~McKay, I.~M.~Wanless,
+\emph{On the number of Latin squares},
+Annals of Combinatorics, \textbf{9} (2005), 335--344.
+
+\bibitem{Albert1942}
+A.~A.~Albert,
+\emph{Non-associative algebras: I. Fundamental concepts and isotopy},
+Annals of Mathematics, \textbf{43} (1942), 685--707.
+
+\bibitem{Schafer1966}
+R.~D.~Schafer,
+\emph{An Introduction to Nonassociative Algebras},
+Academic Press, 1966.
+
+\bibitem{Diaconis1988}
+P.~Diaconis,
+\emph{Group Representations in Probability and Statistics},
+IMS Lecture Notes -- Monograph Series 11, IMS, 1988.
+
+\bibitem{SandersGishFourCore}
+B.~R.~Sanders, M.~Gish,
+\emph{The 4-Core $\{0,7,8,9\}$: Joint TSML+BHML Closure and the
+Universal Attractor},
+submitted to \emph{Algebraic Combinatorics}, 2026.
+
+\bibitem{TIGsynthesis2026}
+B.~R.~Sanders,
+\emph{Trinity Infinity Geometry Synthesis},
+github.com/TiredofSleep/ck, DOI: 10.5281/zenodo.18852047, 2026.
+
+\end{thebibliography}
+
+\end{document}

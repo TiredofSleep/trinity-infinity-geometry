@@ -98,15 +98,15 @@ Papers rewritten with SFM + Family Structure framing (per the v2 build sprints; 
 
 W1-C: J35 + J54 (centerpiece pair)
 W1-D: J11, J12, J16
-W1-E: J05, J08, J09
-W2-A: J03, J04, J06
-W2-B: J07, J10, J19
+W1-E: J05, J08 (J09 landed 2026-05-12 at [`../algebra/J09/`](../algebra/J09/))
+W2-A: J03, J04 (J06 landed 2026-05-12 at [`../algebra/J06/`](../algebra/J06/))
+W2-B: J10, J19 (J07 landed 2026-05-12 at [`../combinatorics/J07/`](../combinatorics/J07/))
 W2-C: J28, J29 (J30 landed 2026-05-12 at [`../algebra/J30/`](../algebra/J30/))
 W2-D: J33, J34, J36
 W2-F: J47 (J45 landed 2026-05-12 at [`../physics/J45/`](../physics/J45/); J48 landed 2026-05-12 at [`../physics/J48/`](../physics/J48/))
 W2-G: J49, J50, J52, J53 (author-lane post-fix pending — currently shows Mayes/Johnson, must flip to Sanders+Gish)
 W2-H: J37, J38 (J22 landed 2026-05-12 at [`../algebra/J22/`](../algebra/J22/); J14 landed 2026-05-12 at [`../algebra/J14/`](../algebra/J14/))
-W2-I: J20, J21, J25, J26
+W2-I: J26 landed 2026-05-12 at [`../algebra/J26/`](../algebra/J26/) (J20 landed 2026-05-12 at [`../algebra/J20/`](../algebra/J20/); J21 landed 2026-05-12 at [`../combinatorics/J21/`](../combinatorics/J21/); J25 landed 2026-05-12 at [`../algebra/J25/`](../algebra/J25/))
 
 ---
 

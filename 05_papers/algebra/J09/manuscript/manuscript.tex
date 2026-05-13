@@ -1,0 +1,695 @@
+% J09 — A Small Commutative Non-Associative Magma on Z/10Z with
+%        Role-Deterministic Boundary Behavior
+%
+% Brayden R. Sanders, M. Gish (2026)
+% Submitted to: Algebra Universalis
+% MSC 2020: 20N02, 08A05, 20N05
+% License (this paper + bundled tables): CC-BY-4.0
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\TS}{\mathrm{TSML}}
+\newcommand{\BH}{\mathrm{BHML}}
+\newcommand{\sig}{\sigma}
+\newcommand{\Zten}{\Z/10\Z}
+
+\title[A small role-deterministic magma on $\Zten$]
+{A Small Commutative Non-Associative Magma on $\Zten$\\
+ with Role-Deterministic Boundary Behavior}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\subjclass[2020]{20N02, 08A05, 20N05}
+\keywords{commutative magma, finite non-associative algebra,
+$\Z/10\Z$, role partition, semi-factorization, role-deterministic
+boundary, Dr\'apal--Wanless neighborhood}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We study a small commutative non-associative magma $M_R$ on the
+four-element set $\{V, F, S, T\}$, obtained as the role-mode
+reduction of a specific commutative binary operation $\BH$ on
+$\Zten$ along the four-block partition
+$F = \{1, 3, 5, 7, 9\}$, $S = \{2, 4, 8\}$, $T = \{6\}$,
+$V = \{0\}$. The operation $\BH$ is given explicitly by an
+elementary four-zone rule (Definition~\ref{def:BH}), so that the
+paper is self-contained: the reader can verify every claim by
+inspecting the $10 \times 10$ table.
+
+We prove: (i) $M_R$ is commutative, has $V$ as two-sided identity,
+and is non-associative, with explicit witness
+$M_R(M_R(F, F), S) = F \neq T = M_R(F, M_R(F, S))$
+(Theorems~\ref{thm:V-identity} and \ref{thm:role-magma-non-assoc}).
+(ii) $\BH$ is \emph{role-deterministic on the boundary}: for every
+input pair $(a, b) \in \Zten \times \Zten$ with at least one of
+$a, b$ in $V \cup T$, the output role is determined by the input
+roles alone, independently of the operator-level identity of $a$
+and $b$. This determinism fails on the role-pairs in $\{F, S\}^2$,
+where the output role distribution is non-trivial; we list the
+exact distributions in Theorem~\ref{thm:semi-fact}. (iii) The
+$\BH$-self-orbit period function on $\{1, \ldots, 6\}$ is the
+linear function $\mathrm{period}(n) = 7 - n$, with boundary
+values $4, 3, 2, 1$ at $n = 7, 8, 9, 0$
+(Lemma~\ref{lem:bh-diagonal-period}).
+
+As a side observation, we record one $\Z$-valued row statistic
+$\Psi(n)$ on the pair of tables $(\TS, \BH)$ whose row sum is
+$\Psi(\Zten) = 21 = T_6$, the sixth triangular number, and we
+record its decomposition along $\sig$-fixed and $\sig$-cycle
+index sets ($\{-1, 22\}$). The integer $21$ is not interpreted
+here; we merely verify the row sum and note the orbit-type
+decomposition.
+
+We do not claim that $M_R$ exhibits a knot-theoretic structure
+or that it implements a Crossing Lemma or a Rademacher invariant.
+Such suggestive scaffolding appears in adjacent companion work
+\cite{FourCore} and is not invoked here. The present paper is a
+study of $M_R$ as a small finite commutative non-associative
+algebra in the Dr\'apal--Wanless~\cite{DrapalWanless2021}
+neighborhood, with role-deterministic boundary behavior as its
+distinguishing property.
+\end{abstract}
+
+\maketitle
+
+%==============================================================
+\section*{0. Lens, substrate, and tier discipline}
+%==============================================================
+
+\noindent
+\textsc{Lens and substrate.}
+The substrate is $\Zten$ with two specific commutative binary
+tables $\BH$ and $\TS$ defined explicitly by elementary rules in
+Section~\ref{sec:tables}; the four-block role partition
+$F, S, T, V$ is a labeling-by-fiat motivated by an interpretive
+reading not used in the proofs. Whether some other small
+commutative magma on $\Zten$ admits an analogous role-mode
+reduction is open; the present paper records the structure of
+$M_R$ for the specific choice $\BH$.
+
+\medskip\noindent
+\textsc{Tier discipline.}
+\begin{itemize}\setlength\itemsep{2pt}
+\item \emph{PROVEN.} The role-magma $M_R$ is commutative, has
+$V$ as two-sided identity, and is non-associative
+(Theorems~\ref{thm:V-identity}, \ref{thm:role-magma-non-assoc}).
+$\BH$ is role-deterministic on every input pair containing $V$
+or $T$, with the exact role-output distributions on
+$\{F, S\}^2$ given in Theorem~\ref{thm:semi-fact}. The
+$\BH$-self-orbit period function on $\{1, \ldots, 6\}$ is
+linear, $\mathrm{period}(n) = 7 - n$
+(Lemma~\ref{lem:bh-diagonal-period}).
+\item \emph{COMPUTED.} The script
+\texttt{verify\_role\_magma.py} (bundled with the manuscript)
+verifies the $4 \times 4$ role-mode table from $\BH$ in
+$<0.1$\,s; it also re-derives the period function
+on $\{0, 1, \ldots, 9\}$ and the row-asymmetry computation
+of Section~\ref{sec:row-asymmetry}.
+\item \emph{STRUCTURAL RHYME.} The row-asymmetry function $\Psi$
+of Section~\ref{sec:row-asymmetry} sums to $\Psi(\Zten) = 21
+= T_6$ (the sixth triangular number) on the full $\Zten$, and
+splits as $\Psi(\sig\text{-fixed}) + \Psi(\sig\text{-cycle}) =
+-1 + 22 = 21$ along $\sig$-orbit type. We record the
+total and the orbit decomposition as numerical observations;
+neither is asserted as a structural theorem.
+\item \emph{OPEN.} A characterization of the role partition
+$\{V, F, S, T\}$ as a congruence of some derived structure
+(it is not a congruence of $\BH$ itself). Whether
+analogous role-deterministic-boundary algebras exist on
+$\Z/14\Z$ or $\Z/18\Z$ is open. The closest published
+precedent is the
+Dr\'apal--Wanless~\cite{DrapalWanless2021} neighborhood
+of small finite commutative non-associative structures.
+\end{itemize}
+
+%==============================================================
+\section{The two binary operations on $\Zten$}
+\label{sec:tables}
+%==============================================================
+
+We define two commutative binary operations on
+$\Zten = \{0, 1, \ldots, 9\}$ explicitly. The reader can verify
+every claim of the paper by inspecting the $10 \times 10$ tables
+in Tables~\ref{tab:BH} and \ref{tab:TS} below.
+
+\begin{definition}[The operation $\BH$]\label{def:BH}
+The commutative binary operation $\BH : \Zten \times \Zten
+\to \Zten$ is defined by the four-zone rule:
+\begin{enumerate}\setlength\itemsep{2pt}
+\item[\rm (R$_A$)] \textbf{$0$-row and $0$-column.} For all $j$,
+$\BH(0, j) = j$ and $\BH(i, 0) = i$.
+\item[\rm (R$_B$)] \textbf{Core zone.} For
+$i, j \in \{1, \ldots, 6\}$, $\BH(i, j) = \max(i, j) + 1$.
+\item[\rm (R$_7$)] \textbf{$7$-row and $7$-column.} For
+$j \ge 1$, $\BH(7, j) = (j + 1) \bmod 10$, and symmetrically
+$\BH(i, 7) = (i + 1) \bmod 10$ for $i \ge 1$.
+\item[\rm (R$_{89}$)] \textbf{Boundary zone.} The remaining
+$32$ cells (with $i \in \{8, 9\}$ or $j \in \{8, 9\}$ and
+the prior zones excluded) take the values listed
+explicitly in Table~\ref{tab:BH}.
+\end{enumerate}
+\end{definition}
+
+\begin{table}[h]
+\caption{The full $\BH$ table, $\BH(i, j) =$ entry at row $i$,
+column $j$. Rows and columns indexed $0, 1, \ldots, 9$.
+Symmetric: $\BH(i, j) = \BH(j, i)$.}
+\label{tab:BH}
+\centering
+\begin{tabular}{c|cccccccccc}
+$\BH$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\ \hline
+$0$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\
+$1$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $2$ & $6$ & $6$ \\
+$2$ & $2$ & $3$ & $3$ & $4$ & $5$ & $6$ & $7$ & $3$ & $6$ & $6$ \\
+$3$ & $3$ & $4$ & $4$ & $4$ & $5$ & $6$ & $7$ & $4$ & $6$ & $6$ \\
+$4$ & $4$ & $5$ & $5$ & $5$ & $5$ & $6$ & $7$ & $5$ & $7$ & $7$ \\
+$5$ & $5$ & $6$ & $6$ & $6$ & $6$ & $6$ & $7$ & $6$ & $7$ & $7$ \\
+$6$ & $6$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$7$ & $7$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $0$ \\
+$8$ & $8$ & $6$ & $6$ & $6$ & $7$ & $7$ & $7$ & $9$ & $7$ & $8$ \\
+$9$ & $9$ & $6$ & $6$ & $6$ & $7$ & $7$ & $7$ & $0$ & $8$ & $0$ \\
+\end{tabular}
+\end{table}
+
+\begin{definition}[The operation $\TS$]\label{def:TS}
+The commutative binary operation $\TS : \Zten \times \Zten
+\to \Zten$ is defined by:
+\begin{enumerate}\setlength\itemsep{2pt}
+\item[\rm (V0)] \textbf{Row $0$.} For all $j$, $\TS(0, j) = 0$
+if $j \neq 7$, and $\TS(0, 7) = 7$.
+\item[\rm (V1)] \textbf{Column $0$.} Symmetric to (V0).
+\item[\rm (E)] \textbf{Echo cells.} The five symmetric pairs
+$\{(1,2), (2,4), (2,9), (3,9), (4,8)\}$ together with their
+transposes take the values listed in Table~\ref{tab:TS}.
+\item[\rm (D)] \textbf{Default.} Every cell not in (V0), (V1),
+(E) takes the value $7$.
+\end{enumerate}
+\end{definition}
+
+\begin{table}[h]
+\caption{The full $\TS$ table. Symmetric: $\TS(i, j) = \TS(j, i)$.}
+\label{tab:TS}
+\centering
+\begin{tabular}{c|cccccccccc}
+$\TS$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ \\ \hline
+$0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $7$ & $0$ & $0$ \\
+$1$ & $0$ & $7$ & $3$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$2$ & $0$ & $3$ & $7$ & $7$ & $4$ & $7$ & $7$ & $7$ & $7$ & $9$ \\
+$3$ & $0$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $3$ \\
+$4$ & $0$ & $7$ & $4$ & $7$ & $7$ & $7$ & $7$ & $7$ & $8$ & $7$ \\
+$5$ & $0$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$6$ & $0$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$8$ & $0$ & $7$ & $7$ & $7$ & $8$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+$9$ & $0$ & $7$ & $9$ & $3$ & $7$ & $7$ & $7$ & $7$ & $7$ & $7$ \\
+\end{tabular}
+\end{table}
+
+\subsection*{The permutation $\sig$.}
+
+We define the permutation
+\[
+  \sig = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2) \in S_{10},
+\]
+a single $6$-cycle on $\{1, 2, 4, 5, 6, 7\}$ together with four
+fixed points on $\{0, 3, 8, 9\}$. Note that $\sig$ has order
+$6$, not $2$; hence $\sig$ is a permutation, not an
+involution. We use the explicit involution
+\[
+  \sig^3 = (1\,5)(2\,6)(4\,7)(0)(3)(8)(9)
+\]
+(the cube of $\sig$, of order $2$) at one place in
+Section~\ref{sec:row-asymmetry}; otherwise we use the
+$\sig$-orbit structure directly.
+
+\subsection*{Closest published precedent.}
+
+The two operations $\BH$ and $\TS$ are commutative non-associative
+magmas on a $10$-element set with explicit elementary rules. The
+closest published precedent for this neighborhood is
+Dr\'apal--Wanless~\cite{DrapalWanless2021}, on maximally
+non-associative quasigroups of small order. Both $\BH$ and $\TS$
+are far from maximally non-associative; both are commutative
+(Dr\'apal--Wanless 2021's quasigroups need not be); both
+preserve the $4$-element subset $\{0, 7, 8, 9\}$ (a load-bearing
+property of companion work~\cite{FourCore}). The intellectual
+neighborhood is the same; the specific structural conditions
+differ.
+
+%==============================================================
+\section{The role partition and the role magma $M_R$}
+\label{sec:role-magma}
+%==============================================================
+
+\subsection*{The four-block partition.}
+
+We partition $\Zten = \{0, 1, \ldots, 9\}$ into four blocks:
+\[
+  V := \{0\}, \quad F := \{1, 3, 5, 7, 9\}, \quad
+  S := \{2, 4, 8\}, \quad T := \{6\}.
+\]
+Sizes $|V| = 1$, $|F| = 5$, $|S| = 3$, $|T| = 1$. The partition
+is a labeling-by-fiat motivated by interpretive reading; we do
+\emph{not} claim it is a congruence of $\BH$ (it is not, because
+$\BH$ is not coarsenable to $\{V, F, S, T\}$ uniformly; see
+Theorem~\ref{thm:semi-fact} below for the failure on
+$\{F, S\}^2$).
+
+We write $\rho : \Zten \to \{V, F, S, T\}$ for the role function:
+$\rho(0) = V$, $\rho(1) = \rho(3) = \rho(5) = \rho(7) = \rho(9)
+= F$, $\rho(2) = \rho(4) = \rho(8) = S$, $\rho(6) = T$.
+
+\subsection*{The role-mode reduction.}
+
+For each input role-pair $(r_a, r_b) \in \{V, F, S, T\}^2$, we
+form the multiset of output roles
+\[
+  \mathcal{O}(r_a, r_b) := \{\rho(\BH(a, b)) : a \in \rho^{-1}(r_a),
+  \ b \in \rho^{-1}(r_b)\}
+\]
+and define $M_R(r_a, r_b)$ as the \emph{mode} (most frequent
+element) of this multiset. The full role-mode table is:
+
+\begin{equation*}
+\begin{array}{c|cccc}
+M_R & V & F & S & T \\ \hline
+V & V & F & S & T \\
+F & F & T & F & F \\
+S & S & F & F & F \\
+T & T & F & F & F
+\end{array}
+\end{equation*}
+
+The output-role distributions on $\{F, S\}^2$ are:
+\begin{itemize}\setlength\itemsep{2pt}
+\item $\mathcal{O}(F, F) = \{F: 2,\ S: 9,\ T: 11,\ V: 3\}$ (size
+$25$, mode $T$).
+\item $\mathcal{O}(F, S) = \mathcal{O}(S, F) = \{T: 5,\ F: 8,\
+S: 2\}$ (size $15$, mode $F$).
+\item $\mathcal{O}(S, S) = \{F: 7,\ T: 2\}$ (size $9$, mode $F$).
+\end{itemize}
+
+The remaining nine role-pairs (containing $V$ or $T$) have
+\emph{singleton} output distributions: $\mathcal{O}(V, V) =
+\{V\}$, $\mathcal{O}(V, F) = \{F: 5\}$, $\mathcal{O}(V, S) =
+\{S: 3\}$, $\mathcal{O}(V, T) = \{T\}$, $\mathcal{O}(F, T) =
+\{F: 5\}$, $\mathcal{O}(S, T) = \{F: 3\}$, $\mathcal{O}(T, T)
+= \{F\}$, plus the symmetric mirrors. In each of these nine
+cases, the output role is uniquely determined by the role-pair
+of inputs.
+
+\subsection{Properties of $M_R$}
+
+\begin{theorem}[$V$ is a two-sided identity in $M_R$]
+\label{thm:V-identity}
+For every $r \in \{V, F, S, T\}$,
+$M_R(V, r) = M_R(r, V) = r$. Moreover,
+$M_R(V, V) = V$ is the unique idempotent.
+\end{theorem}
+
+\begin{proof}
+By direct inspection of the role-mode table: $M_R(V, V) = V$,
+$M_R(V, F) = F$, $M_R(V, S) = S$, $M_R(V, T) = T$. Symmetric for
+the column. The unique idempotent: from the $4 \times 4$ table,
+the cells with $M_R(r, r) = r$ are $r = V$ ($M_R(V, V) = V$);
+$r = F$ has $M_R(F, F) = T \neq F$; $r = S$ has $M_R(S, S) = F
+\neq S$; $r = T$ has $M_R(T, T) = F \neq T$. So $V$ is the unique
+idempotent.
+\end{proof}
+
+\begin{theorem}[Commutativity, non-associativity]
+\label{thm:role-magma-non-assoc}
+$M_R$ is commutative: $M_R(r_a, r_b) = M_R(r_b, r_a)$ for all
+$r_a, r_b$. $M_R$ is non-associative; an explicit witness is
+\[
+  M_R(M_R(F, F), S)
+  = M_R(T, S) = F
+  \neq T = M_R(F, F) = M_R(F, M_R(F, S)).
+\]
+\end{theorem}
+
+\begin{proof}
+Commutativity: by direct inspection of the role-mode table, the
+matrix is symmetric. (Equivalently: $\BH$ is commutative, so the
+output-role multiset $\mathcal{O}(r_a, r_b)$ is invariant under
+swapping the inputs.)
+
+Non-associativity: from the role-mode table,
+$M_R(F, F) = T$, $M_R(T, S) = F$. So
+$M_R(M_R(F, F), S) = M_R(T, S) = F$. Separately,
+$M_R(F, S) = F$, so $M_R(F, M_R(F, S)) = M_R(F, F) = T$. Since
+$F \neq T$, $M_R$ is non-associative.
+\end{proof}
+
+\subsection{Role-deterministic boundary, branching interior}
+
+\begin{theorem}[Role-deterministic boundary]
+\label{thm:semi-fact}
+Let $a, b \in \Zten$ with $\rho(a), \rho(b) \in \{V, F, S, T\}$.
+The output role $\rho(\BH(a, b))$ depends only on the input
+roles $\rho(a), \rho(b)$ when at least one of $\rho(a), \rho(b)$
+is $V$ or $T$. Concretely:
+\begin{enumerate}\setlength\itemsep{2pt}
+\item For every $(r_a, r_b) \in \{V, F, S, T\}^2$ with
+$V \in \{r_a, r_b\}$ or $T \in \{r_a, r_b\}$, the multiset
+$\mathcal{O}(r_a, r_b)$ is supported on a single role
+(``role-deterministic''):
+\begin{align*}
+\mathcal{O}(V, V) &= \{V\}, \quad
+\mathcal{O}(V, F) = \{F : 5\}, \quad
+\mathcal{O}(V, S) = \{S : 3\}, \\
+\mathcal{O}(V, T) &= \{T\}, \quad
+\mathcal{O}(F, T) = \{F : 5\}, \quad
+\mathcal{O}(S, T) = \{F : 3\}, \quad
+\mathcal{O}(T, T) = \{F\},
+\end{align*}
+plus the symmetric pairs.
+
+\item For $(r_a, r_b) \in \{F, S\}^2$, the multiset
+$\mathcal{O}(r_a, r_b)$ is non-trivially supported on at least
+two roles (``role-branching''), with the explicit distributions
+$\mathcal{O}(F, F)$, $\mathcal{O}(F, S) = \mathcal{O}(S, F)$,
+$\mathcal{O}(S, S)$ given immediately above.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Direct verification on the table $\BH$ in Table~\ref{tab:BH},
+restricted to the rows/columns prescribed by each role-pair.
+The script \texttt{verify\_role\_magma.py} bundled with the
+manuscript carries out the enumeration in $<0.1$\,s.
+
+For the $V$-row and $V$-column the $\BH$ rules (R$_A$) give
+$\BH(0, j) = j$ and $\BH(i, 0) = i$, so the output role equals
+the role of the non-$V$ input; this gives the four $V$-distributions.
+For $T = \{6\}$, the row $\BH(6, j)$ is $\{6, 7, 7, 7, 7, 7, 7,
+7, 7, 7\}$, so $\BH(T, F)$ takes value $7 \in F$ for the five
+$F$-inputs $j \in \{1, 3, 5, 7, 9\}$ (giving $\mathcal{O}(T, F)
+= \{F : 5\}$); for $S$-inputs $j \in \{2, 4, 8\}$, the values are
+$\{7, 7, 7\}$, giving $\mathcal{O}(T, S) = \{F : 3\}$; for the
+single $T$-input $j = 6$, $\BH(6, 6) = 7$, giving
+$\mathcal{O}(T, T) = \{F\}$. The $V \cdot T$ cell is $\BH(0, 6)
+= 6 \in T$, giving $\mathcal{O}(V, T) = \{T\}$.
+
+For the $\{F, S\}^2$ block: by symmetric enumeration over the
+$5 \cdot 5 = 25$ cells in $F \times F$, $5 \cdot 3 = 15$ cells in
+$F \times S$, and $3 \cdot 3 = 9$ cells in $S \times S$, we get
+the listed role-output distributions. These are non-trivial
+multi-element multisets, hence the failure of role-determinism on
+$\{F, S\}^2$.
+\end{proof}
+
+\begin{remark}[Reading: a $4$-block partition of $\Zten$ that is
+not a congruence of $\BH$]
+The role partition $\{V, F, S, T\}$ is a congruence of $\BH$
+restricted to inputs containing $V$ or $T$, but it fails to be a
+congruence on $\{F, S\}^2$. The role-mode reduction $M_R$
+``forgets'' the role-multiplicities on $\{F, S\}^2$, projecting
+each multiset to its mode. This is a lossy reduction: the
+distribution $\{F : 2, S : 9, T : 11, V : 3\}$ is not recoverable
+from the mode value $T$ alone. The role-mode reduction $M_R$ is
+therefore not a quotient algebra in the sense of universal
+algebra; it is a small algebra obtained from $\BH$ by a
+mode-projection, and it inherits commutativity and an identity
+element, but not associativity.
+\end{remark}
+
+%==============================================================
+\section{The $\BH$-self-orbit period function}
+\label{sec:periods}
+%==============================================================
+
+For each $n \in \Zten$, define the $\BH$-self-orbit by iterated
+diagonal: $n_0 := n$, $n_{k+1} := \BH(n_k, n_k)$. Define the
+\emph{period} of $n$ as the smallest $p \ge 1$ such that the
+sequence $(n_k)_{k \ge 0}$ enters a cycle of length $p$, with
+$\mathrm{period}(n) := p$.
+
+\begin{lemma}[Linear first-passage time to $7$ on
+$\{1, \ldots, 6\}$]
+\label{lem:bh-diagonal-period}
+Let $\tau(n) := \min\{k \ge 0 : n_k = 7\}$ denote the
+first-passage time of the $\BH$-self-orbit at $n$ to the value
+$7$, with the convention $\tau(n) = \infty$ if no such $k$
+exists. Then
+\[
+  \tau(n) = 7 - n \qquad \text{for } n \in \{1, 2, \ldots, 7\},
+\]
+$\tau(8) = 1$, and $\tau(0) = \tau(9) = \infty$ (the orbits at
+$0$ and $9$ both fall into the absorbing fixed point $0$ and
+never reach $7$).
+\end{lemma}
+
+\begin{proof}
+By direct iteration on the diagonal of $\BH$ (Table~\ref{tab:BH}).
+The diagonal values are $\BH(0, 0) = 0$, $\BH(n, n) = n + 1$ for
+$n \in \{1, \ldots, 6\}$, $\BH(7, 7) = 8$, $\BH(8, 8) = 7$,
+$\BH(9, 9) = 0$. The orbit at $n \in \{1, \ldots, 6\}$ is
+$n, n + 1, n + 2, \ldots, 6, 7$, hitting $7$ at step $7 - n$.
+The orbit at $n = 7$ has $\tau(7) = 0$ trivially. The orbit at
+$n = 8$: $\BH(8, 8) = 7$, so $\tau(8) = 1$. The orbit at
+$n = 9$: $\BH(9, 9) = 0$, then $\BH(0, 0) = 0$, so the
+orbit becomes $9, 0, 0, \ldots$ and never reaches $7$, giving
+$\tau(9) = \infty$. Similarly $\tau(0) = \infty$.
+\end{proof}
+
+\begin{remark}[Cycle structure on $\{1, \ldots, 8\}$]
+\label{rem:cycle-78}
+The eventual cycle structure of the $\BH$-self-orbit dynamics is:
+each input $n \in \{1, 2, \ldots, 8\}$ eventually enters the
+$2$-cycle $\{7 \leftrightarrow 8\}$; the inputs $\{0, 9\}$
+instead fall into the fixed-point $\{0\}$. The dynamics
+therefore have two attractor basins (a $2$-cycle and a
+fixed-point), and the linear first-passage time
+$\tau(n) = 7 - n$ on $\{1, \ldots, 6\}$ is a natural statistic
+of the dominant basin's transient.
+\end{remark}
+
+%==============================================================
+\section{Row-asymmetry and the integer $21$}
+\label{sec:row-asymmetry}
+%==============================================================
+
+We compute one $\Z$-valued row-statistic of the pair $(\TS, \BH)$
+whose row sum is $21 = T_6$, the sixth triangular number.
+
+\begin{definition}[Row-asymmetry function]\label{def:row-asym}
+For $n \in \Zten$, let
+\[
+  \Psi(n) := \#\{j \in \Zten : \TS(n, j) > \BH(n, j)\}
+            - \#\{j \in \Zten : \BH(n, j) > \TS(n, j)\}.
+\]
+\end{definition}
+
+By direct computation from Tables~\ref{tab:BH} and \ref{tab:TS}:
+\begin{center}
+\begin{tabular}{c|cccccccccc|c}
+$n$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & total \\ \hline
+$\Psi(n)$ & $-8$ & $6$ & $4$ & $5$ & $4$ & $5$ & $-1$ & $4$ & $1$ & $1$ & $21$ \\
+\end{tabular}
+\end{center}
+
+(The row-by-row counts are reproduced by
+\texttt{verify\_role\_magma.py}; the total $\sum_n \Psi(n) = 21$
+is a finite check.)
+
+\begin{proposition}[$\sig$-orbit decomposition]
+\label{prop:triangular}
+Let $\Psi$ be the row-asymmetry function of
+Definition~\ref{def:row-asym}. Then
+\[
+  \sum_{n \in \{0,3,8,9\}} \Psi(n)
+  = -8 + 5 + 1 + 1 = -1,
+  \qquad
+  \sum_{n \in \{1, 2, 4, 5, 6, 7\}} \Psi(n)
+  = 6 + 4 + 4 + 5 - 1 + 4 = 22,
+\]
+so $\Psi(\text{$\sig$-fixed indices}) + \Psi(\text{$\sig$-cycle
+indices}) = -1 + 22 = 21 = T_6$, the sixth triangular number.
+\end{proposition}
+
+\begin{proof}
+Direct addition of the explicit $\Psi$-values listed above.
+\end{proof}
+
+\begin{remark}[On stronger numerical patterns]\label{rem:no-fibonacci}
+We considered finer decompositions of the integer $21$ along the
+$\sig$-orbit structure or the role partition (e.g., a Fibonacci
+or fine-triangular decomposition). The $\Psi$-values do
+\emph{not} reproduce a clean Fibonacci or fine-triangular
+decomposition on the full $\Zten$:
+\begin{align*}
+\sum_{n \in F} \Psi(n) &= \Psi(1) + \Psi(3) + \Psi(5) + \Psi(7)
++ \Psi(9) = 6 + 5 + 5 + 4 + 1 = 21, \\
+\sum_{n \in S} \Psi(n) &= \Psi(2) + \Psi(4) + \Psi(8) = 4 + 4 + 1
+= 9, \\
+\sum_{n \in T} \Psi(n) &= \Psi(6) = -1, \\
+\sum_{n \in V} \Psi(n) &= \Psi(0) = -8.
+\end{align*}
+These do not match the Fibonacci pair $(F_7, F_6) = (13, 8)$ or
+any structurally clean sum-decomposition we have identified. We
+record the row-sum total $\Psi(\Zten) = 21 = T_6$ and the
+$\sig$-orbit decomposition $\{-1, 22\}$ as the only structurally
+robust observations of this section. Whether $\Psi$ admits a
+finer Fibonacci-type decomposition under a sign-and-convention
+adjustment we have not explored is an open question, related to
+the period-to-trace lifts discussed in adjacent companion
+notes~\cite{FourCore}; it is not invoked or used in the present
+paper.
+\end{remark}
+
+%==============================================================
+\section{Verification}
+%==============================================================
+
+A short Python script
+\texttt{verify\_role\_magma.py} (bundled with the manuscript)
+verifies, in under $0.1$ second on a standard laptop:
+\begin{itemize}\setlength\itemsep{2pt}
+\item The $4 \times 4$ role-mode table $M_R$ from $\BH$ via the
+explicit role partition (Theorem~\ref{thm:V-identity},
+\ref{thm:role-magma-non-assoc}).
+\item The role-output multiset distributions
+$\mathcal{O}(r_a, r_b)$ for all $16$ role-pairs
+(Theorem~\ref{thm:semi-fact}).
+\item The $\BH$-self-orbit period function on
+$\{0, 1, \ldots, 9\}$ (Lemma~\ref{lem:bh-diagonal-period}).
+\item The row-asymmetry function $\Psi$ and its
+$\sig$-orbit-type and role-partition decompositions
+(Section~\ref{sec:row-asymmetry}).
+\end{itemize}
+
+The script imports the tables $\BH$ and $\TS$ from a self-contained
+local module \texttt{ck\_tables.py}, also bundled, licensed under
+CC-BY-4.0. No external data dependencies.
+
+%==============================================================
+\section{What this paper does not claim}
+%==============================================================
+
+We make explicit the limits of the present paper:
+\begin{itemize}\setlength\itemsep{2pt}
+\item We do \emph{not} claim that $M_R$ exhibits a knot-theoretic
+structure. The companion working paper~\cite{FourCore} discusses
+analogies with the modular surface
+\cite{KatokUgarcovici2007}, with knots-and-primes
+\cite{Morishita2024}, and with Rademacher symbols
+\cite{MatsusakaUeki2023, Burrin2024}; these analogies are
+\emph{conceptual scaffolding}, not theorems of the present paper.
+\item We do \emph{not} claim that the integer $21$ has a
+PSL$(2, \Z)$-Rademacher interpretation. Five lifts to PSL$(2,
+\Z)$ words from the $\BH$-self-orbits have been tested and none
+produces $\pm 21$ as an exact group-theoretic invariant. The
+period-to-trace bridge under a chosen $2 \times 2$ representative
+gives $-21$ numerically, but it is one choice of lift among many
+and we do not derive it.
+\item We do \emph{not} introduce a class of ``paradoxical
+information algebras'' as defined algebraic objects. The phrase
+appears in some companion notes as descriptive language for the
+role-deterministic-vs-branching dichotomy of
+Theorem~\ref{thm:semi-fact}; defining a class of algebraic
+structures sharing this property is left to future work and is
+\emph{not} done here.
+\item We do \emph{not} introduce a ``trefoil characterization''
+predicated on a runtime processor. Earlier internal drafts
+contained such a characterization, but the predicate
+``trefoil-equivalent'' depends on a computational assignment we
+do not make formal in the present paper. The relevant section
+has been excised.
+\end{itemize}
+
+%==============================================================
+\section{Open questions}
+%==============================================================
+
+\begin{enumerate}\setlength\itemsep{2pt}
+\item Is the role partition $\{V, F, S, T\}$ a congruence of any
+derived structure (e.g., a $\BH$-iterated derivative, a
+restriction to a sub-magma)? The role-mode reduction $M_R$ is a
+finite commutative magma; whether it embeds canonically into
+$\BH$ via a quotient construction is open.
+\item Does an analogous role-mode reduction exist for $\BH$
+restricted to a 4-element subset like $\{0, 7, 8, 9\}$?
+\item Do analogous role-deterministic-boundary algebras exist on
+$\Z/14\Z$, $\Z/12\Z$, $\Z/8\Z$? The companion paper~\cite{FourCore}
+records ring-extension scaling for the joint
+$\{V, H, B, R\}$-preservation property; whether the
+role-deterministic-boundary property scales similarly is not
+addressed here.
+\end{enumerate}
+
+%==============================================================
+\section*{Acknowledgments}
+%==============================================================
+
+This work is a self-contained algebraic-combinatorial study;
+familiarity with adjacent companion work~\cite{FourCore} is not
+required.
+
+%==============================================================
+\begin{thebibliography}{99}
+%==============================================================
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'apal, I.~M.~Wanless, \emph{Maximally non-associative
+quasigroups}, J.\ Combin.\ Theory Ser.\ A \textbf{184} (2021),
+105510.
+
+\bibitem{FourCore} B.~R.~Sanders, M.~Gish,
+\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
+Algebraic Attractor of Two Commutative Binary Operations on
+$\Z/10\Z$}, manuscript in preparation, 2026.
+
+\bibitem{KatokUgarcovici2007} S.~Katok, I.~Ugarcovici,
+\emph{Symbolic dynamics for the modular surface},
+Bull.\ AMS \textbf{44} (2007), 87--132.
+
+\bibitem{Morishita2024} M.~Morishita,
+\emph{Knots and Primes}, 2nd ed., Springer, 2024.
+
+\bibitem{MatsusakaUeki2023} T.~Matsusaka, J.~Ueki,
+\emph{Rademacher symbols for triangle groups}, 2023.
+
+\bibitem{Burrin2024} C.~Burrin, F.~von Essen,
+\emph{Cusp winding and the Rademacher symbol}, 2024.
+
+\bibitem{Smith2007} J.~D.~H.~Smith,
+\emph{An Introduction to Quasigroups and Their Representations},
+Chapman \& Hall / CRC, 2007.
+
+\bibitem{Pflugfelder1990} H.~O.~Pflugfelder,
+\emph{Quasigroups and Loops: Introduction}, Heldermann, 1990.
+
+\end{thebibliography}
+
+\end{document}

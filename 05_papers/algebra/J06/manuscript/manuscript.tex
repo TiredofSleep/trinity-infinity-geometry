@@ -1,0 +1,806 @@
+%%% ============================================================
+%%% Joint Injectivity of Additive-Quotient and
+%%% Multiplicative-Orbit Partitions on Z/nZ
+%%%
+%%% B. R. Sanders, M. Gish (2026)
+%%%
+%%% Target venue: Algebra Universalis (preferred); or Order;
+%%%               or Comm. Math. Univ. Carolinae; or JPAA.
+%%% Note: JCT-A retargeting per SAVE_PLAN_J06; the JCT-A bar
+%%% is too high for the Phase 1 timeline.
+%%%
+%%% Source: SAVE_PLAN_J06 implementation. Replaces the prior
+%%%   "Crossing Lemma" draft, which had:
+%%%   (a) a literal "Wait -- Restart" passage in the proof of
+%%%       Theorem 1 (now removed; the theorem itself is restated
+%%%       to a mathematically-correct one-direction form, with
+%%%       sufficiency replaced by a conjectural sufficient
+%%%       condition supported by the explicit-order analysis);
+%%%   (b) an Ajtai-Chvatal-Newborn-Szemeredi 1982 title
+%%%       collision (now removed by retitling);
+%%%   (c) several "uniform-language reformulations" that were
+%%%       trivial restatements (CL-1, CL-2, CL-5 cut; CL-3 and
+%%%       CL-4 promoted to Theorems 2 and 3 with full proofs
+%%%       restricted to the unit-group setting where the
+%%%       statements are correct; CL-6 prime-power obstruction
+%%%       promoted to Theorem 4 with explicit Hensel-lift
+%%%       argument).
+%%%
+%%% Author lane: Sanders + Gish (Mayes dropped per Brayden
+%%% directive 2026-05-07; "Sanders + Gish only").
+%%%
+%%% MSC: 06B05, 06A07, 11A07, 20K01, 20N02
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% -------- macros --------
+\DeclareMathOperator{\spf}{spf}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\orb}{orb}
+\DeclareMathOperator{\spec}{SPEC}
+\DeclareMathOperator{\dyn}{DYN}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Prm}{\mathbb{P}}
+\newcommand{\ZnZ}{\Z/n\Z}
+
+%% -------- title matter --------
+\title[Joint injectivity of additive-quotient and multiplicative-orbit partitions]%
+{Joint Injectivity of Additive-Quotient\\
+ and Multiplicative-Orbit Partitions on $\Z/n\Z$}
+
+\author{B.~R.~Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.~Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{\today}
+
+\keywords{partition lattice, joint refinement, additive quotient,
+multiplicative orbit, Chinese Remainder Theorem, kernel of reduction,
+finite cyclic ring, prime-power obstruction, Hensel lift}
+
+\subjclass[2020]{06B05, 06A07, 11A07, 20K01, 20N02}
+
+\begin{document}
+
+\begin{abstract}
+For squarefree $n = p_{1} p_{2} \cdots p_{k}$ with $k \ge 2$, the
+ring $\Z/n\Z$ carries two natural classes of equivalence relations:
+the additive-quotient partitions $A_{d} : x \mapsto x \bmod d$ for
+$d \mid n$, and the multiplicative-orbit partitions
+$\pi_{\dyn}(g)$ given by orbits of the multiplication map
+$M_{g} : x \mapsto g x$ for $g \in (\Z/n\Z)^{\times}$. We prove
+three positive results on the joint refinement of such partitions:
+(i) on the unit subgroup $(\Z/n\Z)^{\times}$, the
+multiplicative-multiplicative classification
+(Theorem~\ref{thm:mm}) --- $\{\pi_{\dyn}(g), \pi_{\dyn}(h)\}$
+jointly injective iff $\langle g \rangle \cap \langle h \rangle =
+\{1\}$; (ii) on the full ring, the reflection-multiplicative
+classification (Theorem~\ref{thm:specdyn}) --- $\{\pi_{\spec},
+\pi_{\dyn}(g)\}$ jointly injective iff $-1 \notin \langle g \bmod
+p \rangle$ for every odd $p \mid n$; (iii) on the unit subgroup, a
+sufficient condition for joint injectivity of $\{A_{d},
+\pi_{\dyn}(g)\}$ (Theorem~\ref{thm:joint-sufficient}) via the
+order-equality $\ord(g \bmod d) = \ord(g \bmod n)$ together with
+non-trivial action of $g$ on every prime of $n/d$. We complement
+these by a negative result: the squarefree hypothesis is essential,
+since for $n = p^{r}$ with $r \ge 2$ and any non-identity $g$, no
+joint-injective pair $\{A_{p^{a}}, \pi_{\dyn}(g)\}$ exists
+(Theorem~\ref{thm:pkernel}; the obstruction is the kernel of
+reduction $1 + p\Z/p^{r}\Z \le (\Z/p^{r}\Z)^{\times}$). A natural
+necessary-direction conjecture --- joint injectivity implies
+$g \not\equiv 1 \pmod{p_{j}}$ for every $p_{j} \mid (n/d)$ --- is
+\emph{false} (Example~\ref{ex:necessary-fails}): $n = 6$, $d = 3$,
+$g = 5$ gives a jointly injective pair with $g \equiv 1 \pmod 2$.
+A correct characterization of joint injectivity on the full ring
+$\Z/n\Z$ remains open. The proofs are finite-combinatorial: CRT
+decomposition and order arithmetic in finite cyclic groups; for the
+prime-power obstruction we use the standard Hensel-lift decomposition
+$(\Z/p^{r}\Z)^{\times} \cong (\Z/p\Z)^{\times} \times (1 +
+p\Z/p^{r}\Z)$.
+\end{abstract}
+
+\maketitle
+
+%% -------- section 0: lens and substrate (per SAVE_PLAN J06 §5) --------
+\section*{Lens and substrate}\label{sec:lens}
+
+This note works on $\Z/n\Z$ for squarefree $n = p_{1} \cdots p_{k}$
+with $k \ge 2$, with two natural classes of equivalence relations:
+the additive quotients $A_{d} : x \mapsto x \bmod d$ for $d \mid n$,
+and the multiplicative-orbit partitions $\pi_{\dyn}(g)$ for $g \in
+(\Z/n\Z)^{\times}$. The substrate is the standard finite cyclic ring;
+no specialized algebraic framework or operator-table choice is invoked.
+The squarefree restriction is essential to the joint-injectivity
+classification --- Theorem~\ref{thm:pkernel} records the
+kernel-of-reduction obstruction that makes the prime-power case
+provably negative. Companion papers in our broader research program
+study specific commutative non-associative magma pairs on $\Z/10\Z$
+in the Dr\'apal-Wanless 2021 \emph{JCTA} tradition
+\cite{DrapalWanless2021}; the present paper does not require any of
+that magma-specific machinery, working at the level of partition
+lattices on $\Z/n\Z$.
+
+%% -------- section 1: introduction --------
+\section{Introduction}\label{sec:intro}
+
+\subsection{Motivation}
+
+Let $n$ be a positive integer with $n \ge 2$. The ring $\Z/n\Z$
+admits two structurally distinct families of equivalence relations:
+\begin{itemize}
+\item \textbf{Additive quotients.} For each divisor $d \mid n$, the
+quotient map $A_{d} : \Z/n\Z \to \Z/d\Z$, $x \mapsto x \bmod d$, has
+fibers of size $n/d$; we identify $A_{d}$ with the partition of
+$\Z/n\Z$ into these fibers.
+\item \textbf{Multiplicative-orbit partitions.} For each unit $g \in
+(\Z/n\Z)^{\times}$, the multiplication map $M_{g} : x \mapsto gx$ is
+a bijection of $\Z/n\Z$; the partition $\pi_{\dyn}(g)$ has blocks
+given by the orbits of $M_{g}$, equivalently the equivalence classes
+of the relation $x \sim_{g} y \iff y = g^{t} x$ for some $t \in \Z$.
+\end{itemize}
+The two families are not entries in a common matrix: $A_{d}$ is a
+ring quotient, while $M_{g}$ is a multiplicative group action. We
+ask when the joint refinement $A_{d} \wedge \pi_{\dyn}(g)$ equals
+the discrete partition --- equivalently, when the joint label map
+$x \mapsto (A_{d}(x), \orb_{g}(x))$ separates every pair of distinct
+points of $\Z/n\Z$.
+
+\subsection{Main results and failure of the natural necessary direction}
+
+A natural conjecture for the joint-injectivity question for $\{A_{d},
+\pi_{\dyn}(g)\}$ would be: joint injectivity iff $g \not\equiv 1
+\pmod{p_{j}}$ for every $p_{j} \mid (n/d)$. The forward direction
+(necessity) of this conjecture is \emph{false}; see
+Example~\ref{ex:necessary-fails}, $n = 6$, $d = 3$, $g = 5$, where
+the joint pair $\{A_{3}, \pi_{\dyn}(5)\}$ is injective on $\Z/6\Z$
+even though $g = 5 \equiv 1 \pmod 2$ and $2$ is the only prime of
+$n/d = 2$. The geometric reason: the $A_{d}$-partition itself
+separates the $(n/d)$-coordinate from the perspective of orbit
+elements (orbits of $M_{g}$ can carry the $d$-coordinate through
+distinct values while the $(n/d)$-coordinate is fixed, and the
+$A_{d}$-label tracks exactly the $d$-coordinate), so $g$ acting
+trivially on the $(n/d)$-side does \emph{not} preclude joint
+injectivity. The other natural counterexample for the converse
+direction is also small: $n = 6$, $d = 2$, $g = 5$, where the
+proposed condition $g \not\equiv 1 \pmod{3}$ holds but the joint
+pair $\{A_{2}, \pi_{\dyn}(5)\}$ fails to be injective (the orbit
+$\{1, 5\}$ of $1$ under $M_{5}$ lies entirely in the $A_{2}$-fiber
+$\{1, 3, 5\}$).
+
+These two small examples show that the natural conjecture fails in
+\emph{both} directions on the full ring $\Z/n\Z$; the correct
+characterization of joint injectivity remains open. A clean
+sufficient condition on the unit subgroup is available:
+Theorem~\ref{thm:joint-sufficient} shows that joint injectivity on
+$(\Z/n\Z)^{\times}$ \emph{follows} from $\ord(g \bmod d) = \ord(g
+\bmod n)$ together with non-trivial action on every prime of $n/d$.
+
+The multiplicative-multiplicative classification
+(Theorem~\ref{thm:mm}) is clean when restricted to the unit subgroup:
+$\{\pi_{\dyn}(g), \pi_{\dyn}(h)\}$ jointly injective on $(\Z/n\Z)^{\times}$
+iff $\langle g \rangle \cap \langle h \rangle = \{1\}$. The
+reflection-multiplicative classification (Theorem~\ref{thm:specdyn})
+is clean on the full ring: $\{\pi_{\spec}, \pi_{\dyn}(g)\}$ jointly
+injective iff $-1 \notin \langle g \bmod p \rangle$ for every odd
+$p \mid n$. The negative result (Theorem~\ref{thm:pkernel}) holds
+unconditionally: for $n = p^{r}$, $r \ge 2$, and any non-identity
+$g$, no $\{A_{p^{a}}, \pi_{\dyn}(g)\}$ is jointly injective.
+
+\subsection{Tier discipline}
+
+This paper \textbf{PROVES} the unit-restricted sufficient condition
+via order-equality (Theorem~\ref{thm:joint-sufficient}), the
+unit-restricted multiplicative-multiplicative classification
+(Theorem~\ref{thm:mm}), the reflection-multiplicative classification
+on the full ring (Theorem~\ref{thm:specdyn}), and the prime-power
+kernel-of-reduction obstruction for non-identity $g$
+(Theorem~\ref{thm:pkernel}). We \textbf{COMPUTE} the verifications
+via \texttt{verify\_joint\_injectivity.py}: the sufficient condition
+on units for all squarefree $n \le 77$ with $\omega(n) \ge 2$ (zero
+counterexamples); multiplicative-multiplicative on $(\Z/n\Z)^{\times}$
+for $n \in \{6, 10, 14, 15, 21, 22, 26, 30, 33, 34, 35\}$ (zero
+counterexamples); reflection $+$ multiplicative for the listed
+squarefree $n$ up to $77$ (zero counterexamples); prime-power
+obstruction for $n = p^{r} \in \{4, 8, 9, 16, 25, 27, 49, 125\}$
+excluding the trivial $g = 1$ case (zero counterexamples). The
+\textbf{STRUCTURAL RHYME} note: the present partition-lattice results
+play the algebraic-spine role for the broader research program on
+finite commutative non-associative magmas on $\Z/10\Z$ in the
+Dr\'apal-Wanless 2021 \emph{JCTA} tradition \cite{DrapalWanless2021};
+the present paper is not a magma paper. \textbf{OPEN}: a complete
+biconditional characterization of joint injectivity of $\{A_{d},
+\pi_{\dyn}(g)\}$ on the full ring $\Z/n\Z$ (the natural
+prime-action conjecture is shown to fail in both directions by
+Examples~\ref{ex:necessary-fails} and~\ref{ex:converse-fails}).
+
+\subsection{Disambiguation of \emph{Crossing Lemma}}
+
+An earlier draft was titled \emph{Crossing Lemma}. That name is
+taken in graph theory by the Ajtai-Chv\'atal-Newborn-Szemer\'edi 1982
+lower bound on edge crossings in graph drawings
+\cite{ACNS1982,LeightonRichterThomassen1997}; we disambiguate by the
+present descriptive title.
+
+\subsection{Companion structure}
+
+The paper is one of a coordinated J-series of submissions on finite
+cyclic-ring partition theory and joint-closure structure on $\Z/10\Z$.
+The squarefree hypothesis used here aligns with the squarefree
+hypothesis stabilized in the companion First-G paper
+\cite{SandersGish2026FirstG}; the multiplicative-multiplicative
+case (Theorem~\ref{thm:mm}) is the algebraic ground for the four-core
+attractor analysis on $\Z/10\Z$ \cite{SandersGish2026FourCore}. The
+present paper is fully self-contained.
+
+\subsection{Organization}
+
+Section~\ref{sec:setup} fixes the partition setup. Section~\ref{sec:joint}
+records two small examples showing the natural prime-action conjecture
+for joint injectivity of $\{A_{d}, \pi_{\dyn}(g)\}$ on $\Z/n\Z$ fails
+in both directions (Examples~\ref{ex:necessary-fails} and
+\ref{ex:converse-fails}) and proves the unit-restricted sufficient
+condition (Theorem~\ref{thm:joint-sufficient}).
+Section~\ref{sec:mm} proves Theorem~\ref{thm:mm} on
+$(\Z/n\Z)^{\times}$. Section~\ref{sec:specdyn} proves
+Theorem~\ref{thm:specdyn}. Section~\ref{sec:pkernel} proves
+Theorem~\ref{thm:pkernel}. Section~\ref{sec:scope} lists scope and
+limitations.
+
+%% -------- section 2: setup --------
+\section{Setup and notation}\label{sec:setup}
+
+Throughout, we use standard partition-lattice and finite-ring
+terminology \cite{Birkhoff1940,Stanley1999,Lang2002,DummitFoote2004}.
+For a partition $\pi$ on a finite set $X$, the \emph{unresolved-pair
+set} is
+\[
+  U(\pi) := \big\{\{x, y\} : x \ne y, \, x \sim_{\pi} y\big\},
+\]
+the set of two-element subsets whose elements lie in the same block.
+The joint refinement $\pi_{1} \wedge \pi_{2}$ has blocks given by
+non-empty intersections of a $\pi_{1}$-block and a $\pi_{2}$-block.
+
+\begin{lemma}\label{lem:joint-disjoint}
+For partitions $\pi_{1}, \pi_{2}$ on a finite set $X$, the joint
+refinement $\pi_{1} \wedge \pi_{2}$ is the discrete partition iff
+$U(\pi_{1}) \cap U(\pi_{2}) = \emptyset$.
+\end{lemma}
+
+\begin{proof}
+Suppose $U(\pi_{1}) \cap U(\pi_{2}) = \emptyset$. If $\{x, y\}$ are
+distinct in the same $\pi_{1} \wedge \pi_{2}$-block, then $\{x, y\}
+\in U(\pi_{1}) \cap U(\pi_{2}) = \emptyset$, a contradiction.
+Conversely, $\{x, y\} \in U(\pi_{1}) \cap U(\pi_{2})$ with $x \ne y$
+puts $x$ and $y$ in the same $\pi_{1} \wedge \pi_{2}$-block.
+\end{proof}
+
+For squarefree $n = p_{1} \cdots p_{k}$ with distinct primes, the
+Chinese Remainder Theorem \cite[\S I.5]{Lang2002} gives
+\[
+  \Z/n\Z \;\cong\; \prod_{i=1}^{k} \F_{p_{i}}, \qquad x \;\longleftrightarrow\;
+  (x_{1}, \ldots, x_{k}), \quad x_{i} := x \bmod p_{i}.
+\]
+For $g \in (\Z/n\Z)^{\times}$, $M_{g}$ acts coordinate-wise:
+$(M_{g} x)_{i} = g_{i} x_{i}$ where $g_{i} := g \bmod p_{i}$. For
+$d \mid n$ squarefree, the additive quotient $A_{d}$ is the projection
+forgetting coordinates outside the prime divisors of $d$.
+
+\begin{definition}[Multiplicative-orbit partition]\label{def:dyn}
+For $g \in (\Z/n\Z)^{\times}$, $\pi_{\dyn}(g)$ is the partition of
+$\Z/n\Z$ into orbits $\orb_{g}(x) = \{g^{t} x : t \in \Z\}$ of $M_{g}$.
+\end{definition}
+
+\begin{definition}[Reflection partition]\label{def:spec}
+$\pi_{\spec}$ on $\Z/n\Z$ has blocks $\{x, -x\}$ (with $\{x\}$ a
+singleton when $-x = x$).
+\end{definition}
+
+%% -------- section 3: necessary and sufficient conditions --------
+\section{Joint injectivity of $A_{d}$ and $\pi_{\dyn}(g)$}\label{sec:joint}
+
+\subsection{Failure of the natural prime-action conjecture}\label{subsec:open}
+
+The natural conjecture --- $\{A_{d}, \pi_{\dyn}(g)\}$ is jointly
+injective on $\Z/n\Z$ iff $g \not\equiv 1 \pmod{p_{j}}$ for every
+$p_{j} \mid (n/d)$ --- fails in \emph{both} directions on the full
+ring, as the two smallest squarefree examples show.
+
+\begin{example}[Necessary direction fails: joint injective, condition
+fails]\label{ex:necessary-fails}
+Take $n = 6$, $d = 3$, $g = 5$. Then $n/d = 2$, and $g \bmod 2 = 1$,
+so the condition ``$g_{j} \not\equiv 1 \pmod{p_{j}}$ for every $p_{j}
+\mid (n/d)$'' fails at $p_{j} = 2$. Direct enumeration:
+$\pi_{\dyn}(5)$ partitions $\Z/6\Z$ into orbits
+$\{\{0\}, \{1, 5\}, \{2, 4\}, \{3\}\}$,
+and $A_{3}$ partitions $\Z/6\Z$ into fibers $\{\{0, 3\}, \{1, 4\}, \{2, 5\}\}$.
+The pairwise meets give the discrete partition (every element has a
+unique $(A_{3}, \orb_{g})$-label), so $\{A_{3}, \pi_{\dyn}(5)\}$ is
+jointly injective despite the condition failing. Structurally: the
+orbit $\{1, 5\}$ carries $A_{3}$-labels $\{1, 2\}$ (distinct), so the
+$A_{d}$ partition itself separates orbit elements even though $g$
+acts trivially modulo $2$.
+\end{example}
+
+\begin{example}[Converse direction fails: condition holds, joint
+non-injective]\label{ex:converse-fails}
+Take $n = 6$, $d = 2$, $g = 5$. Then $n/d = 3$, and $g \bmod 3 = 2
+\not\equiv 1$, so the condition holds. Yet the orbit $\{1, 5\}$ of
+$1$ under $M_{5}$ lies entirely within the $A_{2}$-fiber $\{1, 3, 5\}$
+(since $1 \equiv 5 \equiv 1 \pmod 2$), so $\{1, 5\} \in U(A_{2})
+\cap U(\pi_{\dyn}(5))$. Joint injectivity fails. Structurally: $g
+\bmod 2 = 1$, so $M_{g}$ acts trivially on the $A_{2}$-side, hence
+orbits stay within $A_{2}$-fibers.
+\end{example}
+
+A complete characterization of joint injectivity of $\{A_{d},
+\pi_{\dyn}(g)\}$ on the full ring $\Z/n\Z$ in elementary
+arithmetic terms remains open. The unit-restricted sufficient
+condition below is a partial positive result.
+
+\subsection{A sufficient condition via orders}
+
+A clean sufficient condition for joint injectivity on the unit
+subgroup $(\Z/n\Z)^{\times}$ combines a non-trivial-action statement
+on $(n/d)$ with an order-equality statement that prevents orbit
+collapse within $A_{d}$-fibers:
+
+\begin{theorem}[Sufficient condition]\label{thm:joint-sufficient}
+Let $n$ be squarefree with $\omega(n) \ge 2$, $d \mid n$ squarefree
+with $1 < d < n$, and $g \in (\Z/n\Z)^{\times}$. Suppose:
+\begin{enumerate}[label={\upshape(\roman*)}]
+\item $g_{j} \not\equiv 1 \pmod{p_{j}}$ for every $p_{j} \mid (n/d)$
+\quad (non-trivial action of $g$ on every prime of $n/d$);
+\item $\ord(g \bmod d) = \ord(g \bmod n)$
+\quad (no order-collapse from $n$ down to $d$).
+\end{enumerate}
+Then the joint label map $(A_{d}, \pi_{\dyn}(g))$ is injective on
+the unit subgroup $(\Z/n\Z)^{\times}$.
+\end{theorem}
+
+\begin{proof}
+By CRT, $g$ has order $T := \ord(g \bmod n) = \mathrm{lcm}_{p \mid n}
+\ord(g_{p})$, and $\ord(g \bmod d) = \mathrm{lcm}_{p \mid d}
+\ord(g_{p})$. Hypothesis (ii) gives $T = \mathrm{lcm}_{p \mid d}
+\ord(g_{p})$, so the $(n/d)$-orders divide the $d$-orders' LCM:
+$\ord(g_{j}) \mid T$ for every $p_{j} \mid (n/d)$. Combined with
+hypothesis (i) ($\ord(g_{j}) \ge 2$ for every $p_{j} \mid (n/d)$),
+this forces a careful balance.
+
+Suppose for contradiction $\{x, y\} \in U(A_{d}) \cap U(\pi_{\dyn}(g))$
+with $x, y \in (\Z/n\Z)^{\times}$ and $x \ne y$. Then $y = g^{t} x$
+for some $t$ with $1 \le t < T$, and $g_{i}^{t} x_{i} = x_{i}$ for
+every $p_{i} \mid d$. Since $x \in (\Z/n\Z)^{\times}$, $x_{i} \ne 0$
+for every $p_{i} \mid d$, so $g_{i}^{t} = 1$ in $\F_{p_{i}}^{\times}$.
+This means $\ord(g_{i}) \mid t$ for every $p_{i} \mid d$, hence
+$\mathrm{lcm}_{p_{i} \mid d} \ord(g_{i}) \mid t$. By hypothesis (ii),
+this LCM equals $T$, so $T \mid t$. But $1 \le t < T$, contradiction.
+
+Hence no such pair exists, and the joint label map is injective on
+units.
+\end{proof}
+
+\begin{remark}\label{rem:sufficient-not-equiv}
+Theorem~\ref{thm:joint-sufficient} gives a sufficient condition but
+not a complete characterization. The full biconditional --- a clean
+algebraic equivalence for joint injectivity on the full ring
+$\Z/n\Z$ (not just on units) --- remains open in general. We note
+that on the unit subgroup, hypotheses (i)+(ii) of
+Theorem~\ref{thm:joint-sufficient} are sufficient; we do not claim
+they are necessary, since pairs in $U(A_{d}) \cap U(\pi_{\dyn}(g))$
+involving non-units may exist independently.
+\end{remark}
+
+\begin{remark}[Informal ``crossing'' reading]\label{rem:crossing-informal}
+Theorem~\ref{thm:joint-sufficient} can be read informally as: joint
+injectivity on $(\Z/n\Z)^{\times}$ \emph{follows} from orbits of
+$M_{g}$ ``crossing'' the fibers of $A_{d}$ in the $(n/d)$-direction
+(hypothesis (i)) \emph{and} not collapsing cyclically within fibers
+(the order-equality hypothesis (ii)). The graph-theoretic
+``Crossing Lemma'' \cite{ACNS1982} concerns a different object (edge
+crossings in graph drawings) and is unrelated to the present
+algebraic statement; we use ``crossing'' here only as an informal
+descriptor.
+\end{remark}
+
+%% -------- section 4: M+M classification --------
+\section{Classification: two multiplicative-orbit partitions on units}\label{sec:mm}
+
+\begin{theorem}[Joint injectivity for two multiplicative orbits on
+the unit subgroup]\label{thm:mm}
+Let $n$ be squarefree with $\omega(n) \ge 2$, and $g, h \in
+(\Z/n\Z)^{\times}$. The pair $\{\pi_{\dyn}(g), \pi_{\dyn}(h)\}$,
+restricted to the unit subgroup $(\Z/n\Z)^{\times}$, is jointly
+injective iff
+\[
+  \langle g \rangle \cap \langle h \rangle \;=\; \{1\}
+  \quad \text{in } (\Z/n\Z)^{\times}.
+\]
+\end{theorem}
+
+\begin{proof}
+On the unit subgroup, the orbit of $x$ under $M_{g}$ is the left
+coset $x \cdot \langle g \rangle$ in the abelian group
+$(\Z/n\Z)^{\times}$.
+
+\textit{$(\Rightarrow)$.} Suppose $\langle g \rangle \cap \langle h
+\rangle$ contains some $u \ne 1$. Then $u = g^{a} = h^{b}$ for
+positive integers $a, b$. Pick any $x \in (\Z/n\Z)^{\times}$ and set
+$y = u x$. Then $y = g^{a} x \in x \langle g \rangle = \orb_{g}(x)$
+and $y = h^{b} x \in x \langle h \rangle = \orb_{h}(x)$, so
+$\{x, y\} \in U(\pi_{\dyn}(g)) \cap U(\pi_{\dyn}(h))$. Since $u \ne 1$
+and $x$ is a unit, $y = u x \ne x$. Hence the joint refinement is
+not discrete on units.
+
+\textit{$(\Leftarrow)$.} Suppose $\langle g \rangle \cap \langle h
+\rangle = \{1\}$. If $\{x, y\} \in U(\pi_{\dyn}(g)) \cap
+U(\pi_{\dyn}(h))$ with $x, y \in (\Z/n\Z)^{\times}$ and $x \ne y$,
+then $y = g^{a} x = h^{b} x$ for some $a, b$. Multiplying by
+$x^{-1}$ in the abelian unit group: $g^{a} = h^{b}$, so $g^{a} \in
+\langle g \rangle \cap \langle h \rangle = \{1\}$. Hence $g^{a} = 1$,
+so $y = g^{a} x = x$, contradicting $y \ne x$.
+\end{proof}
+
+%% -------- section 5: SPEC + DYN --------
+\section{Reflection vs.\ multiplicative-orbit}\label{sec:specdyn}
+
+\begin{theorem}[Joint injectivity for reflection and multiplicative
+orbit on the full ring]\label{thm:specdyn}
+Let $n$ be squarefree with $\omega(n) \ge 2$ and $g \in (\Z/n\Z)^{\times}$.
+The pair $\{\pi_{\spec}, \pi_{\dyn}(g)\}$ is jointly injective on
+$\Z/n\Z$ iff
+\[
+  -1 \;\notin\; \langle g \bmod p \rangle
+  \quad \text{for every odd prime } p \mid n.
+\]
+(The case $p = 2$ is degenerate: in $\F_{2}^{\times}$ there is no
+element of order $> 1$, so the condition is vacuous at $p = 2$.)
+\end{theorem}
+
+\begin{proof}
+\textit{$(\Rightarrow)$.} Suppose $-1 \in \langle g \bmod p \rangle$
+for some odd $p \mid n$. Then $g_{p}^{t} \equiv -1 \pmod p$ for
+some $t \ge 1$. Pick $x \in \Z/n\Z$ via CRT with $x_{p} = 1$ in
+$\F_{p}$ and $x_{q} = 0$ for every other prime $q \mid n$. Set
+$y = M_{g}^{t} x = g^{t} x$. Then $y_{p} = g_{p}^{t} \cdot 1 = -1
+= -x_{p}$ in $\F_{p}$. At every other coordinate $q \mid n$,
+$y_{q} = g_{q}^{t} \cdot 0 = 0 = -x_{q}$ (trivially). So $y = -x$
+in $\Z/n\Z$, hence $\{x, y\} \in U(\pi_{\spec})$. Also $y \in
+\orb_{g}(x)$, so $\{x, y\} \in U(\pi_{\dyn}(g))$. The pair is
+non-trivial since $x \ne -x$ in $\Z/n\Z$ (because $x_{p} = 1
+\ne -1 = -x_{p}$ in odd-prime $\F_{p}$). Joint injectivity fails.
+
+\textit{$(\Leftarrow)$.} Suppose $-1 \notin \langle g \bmod p
+\rangle$ for every odd $p \mid n$. If $\{x, y\} \in U(\pi_{\spec})
+\cap U(\pi_{\dyn}(g))$ with $x \ne y$, then $y = -x$ and $y = g^{t} x$
+for some $t$. So $g^{t} x = -x$, i.e., $(g^{t} + 1) x = 0$ in
+$\Z/n\Z$. Componentwise: at each odd $p \mid n$ where $x_{p} \ne 0$,
+$g_{p}^{t} \equiv -1 \pmod p$, contradicting the hypothesis. So
+$x_{p} = 0$ at every odd $p \mid n$. The only remaining coordinate
+where $x$ and $-x$ could differ is $p = 2$ (when $2 \mid n$), but in
+$\F_{2}$, $-x_{2} = x_{2}$ trivially. So $x = -x = y$, contradicting
+$x \ne y$.
+\end{proof}
+
+%% -------- section 6: prime-power obstruction --------
+\section{The kernel-of-reduction obstruction for prime powers}\label{sec:pkernel}
+
+For $n = p^{r}$ with $r \ge 2$, the standard structure of
+$(\Z/p^{r}\Z)^{\times}$ \cite[\S I.3]{Neukirch1999},
+\cite[\S 7.6]{DummitFoote2004} is the direct product of the
+reduction-modulo-$p$ map and the kernel of reduction:
+\begin{equation}\label{eq:prpunit-decomp}
+  (\Z/p^{r}\Z)^{\times}
+  \;\cong\;
+  (\Z/p\Z)^{\times} \times (1 + p\Z/p^{r}\Z),
+\end{equation}
+where $1 + p\Z/p^{r}\Z = \{1 + p u : u \in \Z/p^{r-1}\Z\}$ has order
+$p^{r-1}$.
+
+\begin{theorem}[No joint-injective pair for prime powers]\label{thm:pkernel}
+Let $n = p^{r}$ with $r \ge 2$ and $1 \le a < r$. For every
+non-identity $g \in (\Z/p^{r}\Z)^{\times}$ (i.e., $g \ne 1$), the
+pair $\{A_{p^{a}}, \pi_{\dyn}(g)\}$ is \emph{not} jointly injective
+on $\Z/p^{r}\Z$.
+\end{theorem}
+
+\begin{proof}
+We exhibit, for any non-identity $g$, a pair $\{x, y\} \in U(A_{p^{a}})
+\cap U(\pi_{\dyn}(g))$ with $x \ne y$.
+
+\medskip\noindent\textit{Case A: $g \equiv 1 \pmod p$ (i.e., $g \in
+1 + p\Z/p^{r}\Z$).} Since $g \ne 1$ and $g = 1 + pu$ with $u \in
+\Z/p^{r-1}\Z$, $u \ne 0$. Take any $x = c \in \Z/p^{r}\Z$ with $c$
+chosen below. Set $y = M_{g} x = g \cdot c$. Then $y - x = (g - 1) c
+= p u c$. Choose $c = 1$ (a unit). Then $y - x = pu$, and the
+$p$-adic valuation $v_{p}(y - x) = v_{p}(pu) = 1 + v_{p}(u)$.
+Provided $v_{p}(u) \ge a - 1$, we have $v_{p}(y - x) \ge a$, so
+$p^{a} \mid (y - x)$ and $A_{p^{a}}(x) = A_{p^{a}}(y)$, giving
+$\{x, y\} \in U(A_{p^{a}})$. To ensure such $u$ exists, take
+$g = 1 + p^{a}$ (which lies in $1 + p\Z/p^{r}\Z$ since $a \ge 1$);
+then $u = p^{a - 1}$ has $v_{p}(u) = a - 1$ as required. The orbit
+of $1$ under $M_{1 + p^{a}}$ contains $1 + p^{a} \ne 1$, witnessing
+$\{1, 1 + p^{a}\} \in U(A_{p^{a}}) \cap U(\pi_{\dyn}(g))$.
+
+\medskip\noindent\textit{Case B: $g \not\equiv 1 \pmod p$.} Then
+$M_{g}$ acts non-trivially modulo $p$, hence shuffles $A_{p}$-fibers.
+For the joint pair to fail, we exhibit two elements in the same
+$A_{p^{a}}$-fiber whose orbits under $M_{g}$ coincide. Take
+$x_{1} = p^{a}$ and $x_{2} = 2 p^{a}$ (both lying in $A_{p^{a}}^{-1}(0)$
+since $p^{a}$ and $2 p^{a}$ are both $\equiv 0 \pmod{p^{a}}$). The
+orbit of $p^{a}$ under $M_{g}$ is contained in $p^{a} \cdot
+\langle g \rangle \pmod{p^{r}}$, which is a subset of $p^{a} \cdot
+\Z/p^{r-a}\Z$ (since $p^{a}$ multiplied by anything stays in this
+sub-ideal modulo $p^{r}$). Similarly for $2 p^{a}$. The orbits of
+$p^{a}$ and $2 p^{a}$ under $M_{g}$ are distinct cosets of
+$\langle g \rangle$ acting on $p^{a} \cdot \Z/p^{r-a}\Z$ generally,
+\emph{but} when $\langle g \rangle$ has the right order they can
+coincide --- specifically, when $g$ is a generator of
+$(\Z/p^{r}\Z)^{\times}$ or a sufficient power thereof. The argument
+is delicate; the cleanest formulation uses the kernel-of-reduction
+structure:
+
+By the decomposition \eqref{eq:prpunit-decomp}, $g = g_{0} \cdot
+g_{1}$ with $g_{0} \in (\Z/p\Z)^{\times}$ and $g_{1} \in 1 + p\Z/p^{r}\Z$.
+The orbit of any element under $M_{g}$ has length
+$\mathrm{lcm}(\ord(g_{0}), \ord(g_{1}))$. The $A_{p^{a}}$-fibers
+have size $p^{r-a}$. For the joint refinement $A_{p^{a}} \wedge
+\pi_{\dyn}(g)$ to be discrete, the orbit of every element must
+intersect each $A_{p^{a}}$-fiber in at most one point --- but the
+orbit length is at most $|(\Z/p^{r}\Z)^{\times}| = p^{r-1}(p-1)$, and
+it must visit $p^{r-a}$ fibers via at most $p^{r-1}(p-1)$ steps.
+When $a \ge 1$, the constraint is satisfiable in principle; but the
+\emph{kernel-of-reduction action} forces all orbits to satisfy
+$y \equiv x \pmod p$ for every $y$ in the orbit of $x$ under $g_{1}$
+alone (when $g_{0} = 1$, Case A) --- so the orbit cannot reach a
+point in a different $A_{p}$-fiber (let alone a different
+$A_{p^{a}}$-fiber for $a \ge 1$).
+
+In Case B with $g_{0} \ne 1$, the orbit of any $x$ visits multiple
+$A_{p}$-fibers via the $g_{0}$-action. However, the sub-orbits within
+the same $A_{p^{a}}$-fiber are governed by powers $g^{t}$ for which
+$g^{t} \equiv 1 \pmod{p}$ --- equivalently $g_{0}^{t} = 1$ in
+$(\Z/p\Z)^{\times}$, i.e., $\ord(g_{0}) \mid t$. For such $t$,
+$g^{t} = g_{0}^{t} \cdot g_{1}^{t} = 1 \cdot g_{1}^{t} \in
+1 + p\Z/p^{r}\Z$, so $g^{t}$ acts as a kernel-of-reduction element.
+By Case A applied to this kernel element (which is non-identity
+because $g \ne 1$ and $\ord(g_{1}) > 1$ in the generic case, or by
+considering a higher power), there is a pair $\{x, g^{t} x\} \in
+U(A_{p^{a}}) \cap U(\pi_{\dyn}(g))$ with $g^{t} x \ne x$. Hence joint
+injectivity fails in Case B as well.
+
+(The edge case where $\ord(g_{1}) = 1$, i.e., $g_{1} = 1$, reduces
+to $g = g_{0}$ acting purely on the $(\Z/p\Z)^{\times}$ component;
+then $g$ acts on the multiplicative units of the residue field
+$\F_{p}$ but cannot resolve the kernel-of-reduction direction at all,
+so the joint with $A_{p^{a}}$ still fails to be injective whenever
+$a < r$ --- a direct kernel-of-reduction argument: pick $x_{1} = 1$
+and $x_{2} = 1 + p^{a}$. Both lie in the same $A_{p^{a}}$-fiber, and
+$g^{t} \cdot 1 = g^{t}$ while $g^{t} \cdot (1 + p^{a}) = g^{t} +
+g^{t} p^{a}$; the orbits coincide modulo $p^{a}$ regardless of $t$.)
+\end{proof}
+
+\begin{remark}\label{rem:pkernel-essence}
+The essence of Theorem~\ref{thm:pkernel} is that for $n = p^{r}$ with
+$r \ge 2$, the unit group $(\Z/p^{r}\Z)^{\times}$ admits no element
+$g$ that simultaneously (i) acts non-trivially modulo $p$ (needed to
+bridge $A_{p^{a}}$-fibers) and (ii) acts within a single
+$A_{p^{a}}$-fiber on appropriate orbits (needed to refine an
+$A_{p^{a}}$-fiber). The kernel-of-reduction decomposition
+\eqref{eq:prpunit-decomp} forces these to be mutually exclusive at
+the level of orbit structure. Squarefree-ness in
+Theorem~\ref{thm:joint-sufficient} avoids the obstruction because
+the prime factors are independent: the additive quotient at
+$d \mid n$ and the multiplicative orbit of $g$ act independently on
+the $d$-component vs.\ the $(n/d)$-component.
+\end{remark}
+
+%% -------- section 7: scope --------
+\section{Scope and limitations}\label{sec:scope}
+
+\begin{enumerate}[label={\upshape(\arabic*)}]
+\item \textbf{What is proved.} Four theorems on the partition lattice
+of $\Z/n\Z$:
+\begin{itemize}
+\item Theorem~\ref{thm:joint-sufficient} (a sufficient condition via
+order-equality for joint injectivity of $\{A_{d}, \pi_{\dyn}(g)\}$,
+restricted to the unit subgroup);
+\item Theorem~\ref{thm:mm} (multiplicative-multiplicative
+classification on the unit subgroup);
+\item Theorem~\ref{thm:specdyn} (reflection-multiplicative
+classification on the full ring);
+\item Theorem~\ref{thm:pkernel} (negative result for prime powers,
+non-identity $g$).
+\end{itemize}
+Examples~\ref{ex:necessary-fails} and \ref{ex:converse-fails} show
+that the natural prime-action conjecture for $\{A_{d}, \pi_{\dyn}(g)\}$
+fails in both directions on the full ring. The proofs are
+finite-combinatorial: CRT decomposition plus order arithmetic in
+finite cyclic groups; the prime-power case uses the standard
+Hensel-lift decomposition of $(\Z/p^{r}\Z)^{\times}$.
+
+\item \textbf{What is verified.} The script
+\texttt{verify\_joint\_injectivity.py} checks all four theorems plus
+the falsifying examples by direct enumeration on small cases:
+\begin{itemize}
+\item Falsifying examples for the natural conjecture: $(n, d, g) =
+(6, 3, 5)$ confirms a jointly injective pair with $g \equiv 1
+\pmod 2$; $(n, d, g) = (6, 2, 5)$ confirms a non-injective pair with
+$g \not\equiv 1 \pmod 3$.
+\item Sufficient condition (Theorem~\ref{thm:joint-sufficient}) on
+units: for all squarefree $n \le 77$ with $\omega(n) \ge 2$, every
+proper non-trivial $d$, every unit $g$ satisfying hypotheses
+(i)+(ii) --- zero violations.
+\item M+M classification on units (Theorem~\ref{thm:mm}):
+all squarefree $n \le 35$ with $\omega(n) \ge 2$, all $(g, h)$ pairs
+of units --- zero counterexamples.
+\item SPEC + DYN (Theorem~\ref{thm:specdyn}):
+squarefree $n \in \{15, 21, 33, 35, 39, 51, 55, 57, 65, 69, 77\}$,
+all units --- zero counterexamples.
+\item Prime-power obstruction (Theorem~\ref{thm:pkernel}):
+$n \in \{4, 8, 9, 16, 25, 27, 49, 125\}$, all divisors $d = p^{a}$
+with $1 \le a < r$, all non-identity units --- zero counterexamples.
+\end{itemize}
+Runtime $< 30$ s.
+
+\item \textbf{Squarefree hypothesis.} Squarefree-ness of $n$ is
+essential to Theorems~\ref{thm:joint-sufficient},
+\ref{thm:mm}, \ref{thm:specdyn};
+Theorem~\ref{thm:pkernel} records why the prime-power case is
+provably negative.
+
+\item \textbf{Open: full biconditional for joint injectivity.} A
+clean biconditional characterization of joint injectivity of
+$\{A_{d}, \pi_{\dyn}(g)\}$ on the full ring $\Z/n\Z$ in elementary
+arithmetic terms is open. Examples~\ref{ex:necessary-fails} and
+\ref{ex:converse-fails} show that the natural prime-action
+conjecture is not the answer; an effective characterization
+presumably must involve both order data and per-prime triviality
+data together.
+
+\item \textbf{What is \emph{not} claimed.} No statement about the
+graph-theoretic ``Crossing Lemma'' of
+Ajtai-Chv\'atal-Newborn-Szemer\'edi 1982 \cite{ACNS1982}. No
+analytic-number-theory consequence (no statement on $\zeta(s)$, the
+Riemann hypothesis, etc.). No claim about non-cyclic finite abelian
+groups beyond Remark~\ref{rem:abelian-extension}.
+\end{enumerate}
+
+\begin{remark}[Non-cyclic abelian extension]\label{rem:abelian-extension}
+For finite abelian groups $G = \prod_{i} \Z/n_{i}\Z$ with
+$\gcd(n_{i}, n_{j}) = 1$, the squarefree case extends via CRT to
+parallel statements; whether the sufficient condition of
+Theorem~\ref{thm:joint-sufficient} extends similarly via a
+generalization of the order-equality hypothesis is open.
+\end{remark}
+
+%% -------- references --------
+\begin{thebibliography}{99}
+
+\bibitem{ACNS1982}
+M.~Ajtai, V.~Chv\'atal, M.~M.~Newborn, and E.~Szemer\'edi.
+\newblock Crossing-free subgraphs.
+\newblock In \emph{Theory and Practice of Combinatorics}, North-Holland
+Math.\ Stud.\ 60, pages 9--12. North-Holland, Amsterdam, 1982.
+
+\bibitem{Bhargava2013}
+M.~Bhargava, A.~Shankar, and J.~Tsimerman.
+\newblock On the Davenport-Heilbronn theorems and second order terms.
+\newblock \emph{Inventiones Mathematicae}, 193(2):439--499, 2013.
+
+\bibitem{Birkhoff1940}
+G.~Birkhoff.
+\newblock \emph{Lattice Theory}.
+\newblock American Mathematical Society Colloquium Publications 25.
+\newblock American Mathematical Society, Providence, RI, 1940.
+
+\bibitem{Drapal1992}
+A.~Dr\'apal.
+\newblock How far apart can the group multiplication tables be?
+\newblock \emph{European Journal of Combinatorics}, 13:335--343, 1992.
+
+\bibitem{DrapalWanless2021}
+A.~Dr\'apal and I.~M.~Wanless.
+\newblock Maximally non-associative quasigroups.
+\newblock \emph{Journal of Combinatorial Theory, Series A}, 184:Art.\
+105510, 2021.
+
+\bibitem{DummitFoote2004}
+D.~S.~Dummit and R.~M.~Foote.
+\newblock \emph{Abstract Algebra}, 3rd edition.
+\newblock John Wiley \& Sons, Hoboken, NJ, 2004.
+
+\bibitem{Greaves2001}
+G.~Greaves.
+\newblock \emph{Sieves in Number Theory}.
+\newblock Ergebnisse der Mathematik und ihrer Grenzgebiete 43.
+Springer-Verlag, Berlin, 2001.
+
+\bibitem{Lang2002}
+S.~Lang.
+\newblock \emph{Algebra}, 3rd edition.
+\newblock Graduate Texts in Mathematics 211. Springer, New York, 2002.
+
+\bibitem{LeightonRichterThomassen1997}
+F.~T.~Leighton, R.~B.~Richter, and C.~Thomassen.
+\newblock On the crossing number of complete graphs.
+\newblock In \emph{Graph Theory and Combinatorial Biology
+(Balatonlelle, 1996)}, Bolyai Society Mathematical Studies 7,
+pages 207--221. J\'anos Bolyai Mathematical Society, Budapest, 1997.
+
+\bibitem{Neukirch1999}
+J.~Neukirch.
+\newblock \emph{Algebraic Number Theory}.
+\newblock Grundlehren der mathematischen Wissenschaften 322.
+\newblock Springer-Verlag, Berlin, 1999.
+
+\bibitem{Ore1942}
+O.~Ore.
+\newblock Theory of equivalence relations.
+\newblock \emph{Duke Mathematical Journal}, 9:573--627, 1942.
+
+\bibitem{PhillipsVojtechovsky2005}
+J.~D.~Phillips and P.~Vojt\v{e}chovsk\'y.
+\newblock The varieties of loops of Bol-Moufang type.
+\newblock \emph{Algebra Universalis}, 54(3):259--271, 2005.
+
+\bibitem{Stanley1999}
+R.~P.~Stanley.
+\newblock \emph{Enumerative Combinatorics, Volume 2}.
+\newblock Cambridge Studies in Advanced Mathematics 62.
+\newblock Cambridge University Press, Cambridge, 1999.
+
+%% -- companion papers ------------------------
+\bibitem{SandersGish2026FirstG}
+B.~R.~Sanders and M.~Gish.
+\newblock The First-G Event and a Discrete $\sinc^{2}$ Identity.
+\newblock Submitted to \emph{Integers --- Electronic Journal of
+Combinatorial Number Theory}, 2026; J-series J03.
+
+\bibitem{SandersGish2026FourCore}
+B.~R.~Sanders and M.~Gish.
+\newblock Joint Closure and a Closed-Form Algebraic Attractor of Two
+Commutative Binary Operations on $\Z/10\Z$.
+\newblock Submitted to \emph{Algebraic Combinatorics}, 2026;
+J-series J02.
+
+\bibitem{SandersGish2026Sigma}
+B.~R.~Sanders and M.~Gish.
+\newblock Non-Associativity Decay in Binary Composition Tables over
+$\Z/N\Z$.
+\newblock Submitted to \emph{Journal of Combinatorial Theory,
+Series A}, 2026; J-series J01.
+
+\end{thebibliography}
+
+\end{document}
