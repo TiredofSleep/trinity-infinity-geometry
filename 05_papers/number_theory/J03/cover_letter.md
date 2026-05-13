@@ -10,7 +10,7 @@
 
 **Manuscript title:** *The First-G Event and a Discrete Sinc² Identity*
 
-**Manuscript file:** `manuscript/manuscript.tex` (amsart, ~12 pages)
+**Manuscript file:** `manuscript/manuscript.tex` (amsart, ~14 pages). The manuscript is currently typeset using the standard AMS article class (`amsart`, 11pt, reqno) with `amsmath`, `amssymb`, `amsthm`, `mathtools`, `geometry`, `hyperref`, `microtype`, and `enumitem`. We will gladly recompile against the *Integers* / EJCNT style file (`ejcnt.sty` or the journal's current preferred class) upon acceptance; the body text, theorem environments, and bibliography are written to be style-file portable, and no exotic packages are used.
 
 **Verification scripts:** `manuscript/proof_first_g_event.py` (305 squarefree b in [2,500], 22,367 (b,k) pairs, zero counterexamples, runtime <3s) and `manuscript/verify_J03.py` (closed-form / synchronization / continuum-limit / **spectral-product obstruction-zero correspondence** / **asymptotic-density** checks; 7/7 pass; max deviation 4.44 × 10⁻¹⁶ for the closed form; 900/900 cells match the boolean equivalence $f_b(k)=0 \Leftrightarrow \gcd(k,b)>1$ for squarefree $b \le 50$ and $k \le 30$)
 
