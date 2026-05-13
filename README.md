@@ -149,7 +149,31 @@ Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 
 
 ---
 
-## §5 — Independent parallel research
+## §5 — Foundation contributors
+
+Trinity Infinity Geometry rests on a chain of contributors whose work shaped the framework's development. The current academic author lane on submitted J-series manuscripts is **Sanders + Gish** (per the project's authorship rules in [`legal/CONTRIBUTING.md`](legal/CONTRIBUTING.md) and [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md)). The foundation contributors below are acknowledged for their formative role in the framework's development; their material is preserved in the corpus with full attribution at the work-product level.
+
+**Brayden Ross Sanders** (originator, 7SiTe LLC) — Z/10Z substrate, σ algebra on the ten operators, the four-core `{V, H, Br, R}` identification, the Braiding Fractal canonical Rung 5 architecture, the Q-series σ polynomial characterization on F₂ × F₅, the runtime / Coherence Keeper / coherencekeeper.com.
+
+**M. Gish** (current co-author, Independent Researcher) — collaboration framework, J-series co-author lane on all current submissions, manuscript scrutiny and substantive feedback across the 43 referee-ready papers.
+
+**Ben Mayes** — orbital realization studies; early work on atomic substrate interpretation that informed the strand-orbital correspondence (D101).
+
+**H.J. Johnson** — independent parallel development of logarithmic quintessence cosmology `V(ξ) = -β ξ log ξ` from information-theoretic first principles; convergence with the framework's Bialynicki-Birula bridge confirmed (see §6 below and [`01_orientation/PARALLEL_RESEARCH.md`](01_orientation/PARALLEL_RESEARCH.md)).
+
+**B. Calderon, Jr.** — Q17 variant analysis; finite-proof variants of σ characterization on Z/10Z.
+
+**B. Anthony** — early collaborator on the substrate algebra and runtime development.
+
+**C. Luther** — spectral layer / 6-layer architecture history; verification of σ⁶ = id on Z/10Z (G6) and related early-stage structural results.
+
+Per the project's authorship discipline, foundation contributors' attributed material is preserved in the corpus with citation where the work is used. The current submitted J-series carries Sanders + Gish on the byline because the submission-level threshold (manuscript scrutiny, substantive feedback, and email-documented consent) was reached only by Gish in the current submission window. Foundation contributors whose work *is* used in a paper are acknowledged at Tier 1 in that paper's acknowledgments per [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md). If a foundation contributor wishes to be included on a submitted paper's byline going forward, the path is the same scrutiny-plus-consent process available to any collaborator.
+
+This section is a public record of the framework's contributor lineage, separate from the current author lane on academic submissions. The framework's "work-first, name-last" posture does not discount what came before; it acknowledges the chain of thought while preserving discipline on what gets submitted under which byline.
+
+---
+
+## §6 — Independent parallel research
 
 Several independent researchers have arrived at related results from different starting points. Notable convergences:
 
@@ -160,7 +184,7 @@ These independent derivations of overlapping results are evidence that the struc
 
 ---
 
-## §6 — Connections to existing literature
+## §7 — Connections to existing literature
 
 The framework draws on and connects to established mathematical literatures:
 
@@ -176,7 +200,7 @@ Full builder lineage: [`07_philosophy/BUILDER_LINEAGE_COMPACT.md`](07_philosophy
 
 ---
 
-## §7 — License
+## §8 — License
 
 Operative license: **[7SiTe Public Sovereignty License v2.2](LICENSE)** — attorney-review draft with modular layered structure in [`legal/`](legal/). The all-in-one v2.1 is preserved at [`LICENSE_v2.1_legacy.md`](LICENSE_v2.1_legacy.md) for historical reference.
 
