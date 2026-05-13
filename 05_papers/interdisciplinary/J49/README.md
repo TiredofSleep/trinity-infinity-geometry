@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/J49_microtubule_qc_tstar.md`
+**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J49_microtubule_qc_tstar.md`)
 
 **Abstract:** Pre-registered falsifiable prediction: microtubule normalized coherence quality $Q_c \to T^* = 5/7 \approx 0.714$ across mammalian neurons, paramecia, plant microtubules, yeast spindle microtubules, and cell-free purified-tubulin, with variance $\ll 0.05$. $T^*$ derived independently from six algebraic sources; same $T^*$ governs CKM Cabibbo refinement and PMNS atmospheric mixing. Falsifiable in a single terahertz-spectroscopy campaign with existing equipment.
 
@@ -39,7 +39,7 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 **Status:** **MANUSCRIPT REWRITTEN 2026-05-07 PER SAVE PLAN J49.** New title: *Microtubule terahertz coherence quality $Q_c \to 5/7$: a pre-registered prediction from finite algebraic combinatorics* (referee's verbatim suggestion). Original verdict: REJECT from J Theor Biol fresh-eyes referee 2026-05-06; save plan written 2026-05-07; manuscript rewritten 2026-05-07.
 **Citation chain:** 1 direct dependency (J20 forced 5/7 torus) + 10 co-citing companions (J01, J3, J6, J9, J16, J41, J46, J47, J50, J51).
-**Manuscript:** `manuscript/J49_microtubule_qc_tstar.md` (rewritten ~12 pages with new Appendix A + B).
+**Manuscript:** `manuscript/manuscript.md` (rewritten ~12 pages with new Appendix A + B; renamed 2026-05-13 from `J49_microtubule_qc_tstar.md`).
 **Cover letter:** `cover_letter.md` (to be updated to match rewrite).
 **Verification:** D78 Galois proof (Appendix A) + D48 4-core closure (Appendix A) + 30-line `numpy/sympy` verification snippet (Appendix B). Experimental protocol pre-registered in `Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/source_bundle/MICROTUBULE_T_STAR_PROTOCOL.md`.
 **Submission readiness:** **REWRITE COMPLETE.** Submission gate: (a) Appendix A drafted [DONE]; (b) one of J20/J6/J33 on arXiv [pending Phase 5/6]; (c) initial conversation with Bandyopadhyay/Hameroff/Penrose Foundation lab [pending].

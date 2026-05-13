@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/J51_spectral_layer_consolidation.md`
+**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J51_spectral_layer_consolidation.md` — the legacy filename retained the J51 prefix from earlier J-numbering and is now superseded by the canonical generic name)
 
 **Abstract:** Consolidation paper establishing the canonical reference for three spectral results on the canonical $\sigma$-permutation on $\mathbb{Z}/10\mathbb{Z}$: $G_6$ ($\sigma^6 = \mathrm{id}$, Tier-A), $G_7$ (period distribution bimodal $P(\tau=1)=2/5$, $P(\tau=6)=3/5$; mean $4$, variance $6$; Tier-B), $G_8$ (three-valued spectral coherence integral $G(s)$ with corrected partition: zero on $\{0,3,8,9\}$, low ≈ 1.872 on $\{1,2,5,6\}$, high ≈ 9.389 on $\{4,7\}$; Tier-B). Together they form Layer 4 of the 6-layer Q-series architecture (Layers 5, 6 deferred to companions).
 
@@ -41,7 +41,7 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 - **Architecture framing scope-tightened.** §1 now states up-front that the paper covers Layers 1, 3, 4 (Layer 2 trivial; Layers 5, 6 deferred to companions).
 
 **Citation chain:** foundational paper citing 4 prior J-companions (J01, J05, J21, J33) + 5 cross-references (J48, J51, J49, J31, J32). Cited downstream by many later J-papers as canonical G₆/G₇/G₈ reference.
-**Manuscript:** `manuscript/J51_spectral_layer_consolidation.md` (~10 pages; revised 2026-05-07). Filename retains `J51_*` for now; rename to `J43_*` at camera-ready.
+**Manuscript:** `manuscript/manuscript.md` (~10 pages; revised 2026-05-07; renamed from `J51_spectral_layer_consolidation.md` to canonical `manuscript.md` on 2026-05-13 for discoverability across the repo's J-paper folders).
 **Cover letter:** `cover_letter.md` (finalized).
 **Per-venue cap warning:** 3rd EJC submission of the J-series — fallback to *LinAlgApps* or *PLOS ONE* if needed (per `J_SERIES_ORDERING.md` §5).
 **Verification:** `manuscript/verify_G6_G7_G8.py` runs all three theorems.

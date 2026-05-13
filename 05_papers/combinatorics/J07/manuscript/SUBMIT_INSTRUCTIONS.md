@@ -13,7 +13,7 @@
 
 ## Papers in This Folder
 
-1. **WP51_FLATNESS_THEOREM.md** — The submission manuscript. The four-structure flatness obstruction on squarefree Z/nZ (Theorem 1) + configuration-space topology (Theorem 2), with Appendix A on the 4-core algebraic center (D48 joint closure + D78 closed-form 1+√3 attractor) on Z/10Z with (TSML, BHML).
+1. **manuscript.md** — The submission manuscript (renamed 2026-05-13 from `WP51_FLATNESS_THEOREM.md`). The four-structure flatness obstruction on squarefree Z/nZ (Theorem 1) + configuration-space topology (Theorem 2), with Appendix A on the 4-core algebraic center (D48 joint closure + D78 closed-form 1+√3 attractor) on Z/10Z with (TSML, BHML).
 2. **WP52_D2_AS_RING_CURVATURE.md** — Preserved per "never delete" discipline; NOT part of submission.
 3. **WP57_CROSSING_LEMMA.md** — Preserved per "never delete" discipline; NOT part of submission.
 4. **verify_J07.py** — Verification script (CC-BY-4.0). 4/4 PASS at machine / 50-digit mpmath precision. Runtime < 2 seconds.

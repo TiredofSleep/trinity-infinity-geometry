@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/J52_tsml_lens_family.md`
+**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J52_tsml_lens_family.md`)
 
 **Abstract:** Pedagogical exposition organizing the 12+ variants of the canonical TSML table on $\mathbb{Z}/10\mathbb{Z}$ — three parallel substrates (CL\_TSML / CL\_BHML / CL\_STD) × three lens-symmetrization projections (RAW / SYM\_upper / SYM\_lower) × $\sigma^2$-triadic rotations and sub-magma restrictions — into one walking-tour for the working mathematician. Three reader exercises illustrate the lens family in action.
 
@@ -33,7 +33,7 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 **Status:** **MANUSCRIPT REWRITTEN 2026-05-07 PER SAVE PLAN J52.** All six majors (M1–M6) implemented. Original verdict: REJECT R&R from Math Intelligencer fresh-eyes referee 2026-05-07 (~10% acceptance in present form, 40–55% with M1–M6 addressed); save plan written 2026-05-07; manuscript rewritten 2026-05-07.
 **Citation chain:** 2 direct dependencies (J32 chain enumeration, J47 6-DOF synthesis) + 10 co-citing companions (J9, J31, J33, J34, J35, J38, J39, J41, J43, J44).
-**Manuscript:** `manuscript/J52_tsml_lens_family.md` (rewritten ~16 pages with §1 tables in full, §2 axioms A1–A9 stated, §6 catalog populated, §7 punch-line facts absorbed inline).
+**Manuscript:** `manuscript/manuscript.md` (rewritten ~16 pages with §1 tables in full, §2 axioms A1–A9 stated, §6 catalog populated, §7 punch-line facts absorbed inline; renamed 2026-05-13 from `J52_tsml_lens_family.md`).
 **Cover letter:** `cover_letter.md` (to be updated to match rewrite).
 **Per-venue cap:** 2nd *Math Intelligencer* submission of the J-series after J32 — at maximum permitted. Coordinate with VENUE_SCHEDULE.md.
 **Verification:** Appendix A 30-line `numpy` snippet reproduces Exercise 7.1 (126 / 128 / 122 non-assoc triples in three lenses); §7.2 wobble localization at $c_2 = 33$ in TSML_RAW verified by sympy char poly.

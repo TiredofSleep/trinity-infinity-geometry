@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/J54_foundation_paper.md`
+**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J54_foundation_paper.md`)
 
 **Retitled:** *"Forcing Axioms and the Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$ Preserving a Designated 4-Core"*
 

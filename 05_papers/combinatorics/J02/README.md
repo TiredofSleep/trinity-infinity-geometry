@@ -11,18 +11,17 @@
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/four_core_consolidated.tex`
+**Local path:** `manuscript/manuscript.tex` (canonical submission LaTeX; renamed 2026-05-13 from `four_core_consolidated.tex`)
 
 Files in this J-folder's `manuscript/`:
 
-- `4core_verification.py`
-- `four_core_consolidated.tex`
-- `four_core_consolidated_cover_letter.md`
-- `four_core_seed.tex`
-- `HOLD_PENDING_AUDIT.md`
-- `master/` (subfolder)
-- `SUBMISSION_LOG.md`
-- `verification/` (subfolder)
+- `manuscript.tex` (canonical submission LaTeX)
+- `four_core_seed.tex` (earlier seed-paper version; preserved per never-delete)
+- `four_core_consolidated_cover_letter.md` (paper-specific cover letter)
+- `4core_verification.py` (verification script — green-light gate, 6/6 PASS)
+- `verification/` (additional verification scripts: `04_bridge_attractor.py`, `06_attractor_closed_form.py`, `07_full_closed_form.py`, `alpha_pslq_sweep.py`)
+- `HOLD_PENDING_AUDIT.md`, `SUBMISSION_LOG.md` (submission housekeeping)
+- `master/` (historical full-bundle archive: `four_core_FINAL_BUNDLED_v_review_round_3.tex`, etc.)
 
 The submission package lives in this J-folder. Edit + verify here; submit from here.
 
@@ -82,7 +81,7 @@ Same domain (small finite commutative non-associative structures); opposite extr
 
 ## §6 — Submission checklist
 
-- [x] Manuscript .tex finalized (`manuscript/four_core_consolidated.tex`; single author block; Drápal-Wanless 184:105510 citation)
+- [x] Manuscript .tex finalized (`manuscript/manuscript.tex`; single author block; Drápal-Wanless 184:105510 citation)
 - [x] Verification script green (6/6 PASS via `manuscript/4core_verification.py`; 4 additional verification scripts in `manuscript/verification/` also PASS at machine precision)
 - [x] Tier-classified central claim explicit (PROVEN: chain + per-coordinate fuse + closed-form attractor + Galois $D_4$; COMPUTED: 6/6 PASS; OPEN: Conjecture 9.1 $\alpha$-uniqueness)
 - [x] Lens-scope annotation (TSML_SYM is the canonical symmetrized lens; TSML_RAW 7-element chain noted in abstract)

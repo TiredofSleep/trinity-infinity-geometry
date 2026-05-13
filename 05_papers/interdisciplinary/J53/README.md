@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/J53_paradox_classifier_uop.md`
+**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J53_paradox_classifier_uop.md`)
 
 **Abstract:** Diagnostic exposition of the Unified Orthogonality Principle (UOP) as an algebraic classifier for paradoxes. Four types: Type I (Injectivity, solvable, score 1.0), Type II (Missing Invariant, structurally blocked, score 0-0.8), Type III (Admissibility Failure, ill-founded domain, score 0), Type IV (Time-Consistency Failure, score 0.3-0.6). Five-step algorithmic decision procedure; eight worked examples (Russell, Liar, Monty Hall, CH, Newcomb, Sorites, Gödel, Twin Paradox).
 
@@ -33,7 +33,7 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 **Status:** **MANUSCRIPT REWRITTEN 2026-05-07 PER SAVE PLAN J53.** Fresh-eyes referee verdict at AMM: REJECT (under 5% acceptance). Save plan written 2026-05-07; rewrite implements all directives 2026-05-07 with retarget to *Mathematical Intelligencer* (35–45% per referee).
 **Citation chain:** 1 direct dependency (J17 UOP Theorem 0) + 4 cross-references (J18, J19, J47, J52).
-**Manuscript:** `manuscript/J53_paradox_classifier_uop.md` (rewritten ~13 pages with category $\mathcal{M}$ + literature engagement + revised examples).
+**Manuscript:** `manuscript/manuscript.md` (rewritten ~13 pages with category $\mathcal{M}$ + literature engagement + revised examples; renamed 2026-05-13 from `J53_paradox_classifier_uop.md`).
 **Cover letter:** `cover_letter.md` (to be updated to match rewrite).
 **Per-venue cap:** retarget *Math Intelligencer* (will be 3rd Math Intelligencer of J-series after J32 and J52; coordinate via VENUE_SCHEDULE.md). Alternate venue: *Philosophia Mathematica* (40–50% with full literature engagement).
 **Verification:** algorithmic procedure (50-line Python in Appendix A); live demo at coherencekeeper.com/paradox.html.

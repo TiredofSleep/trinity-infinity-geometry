@@ -11,14 +11,15 @@
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/WP51_FLATNESS_THEOREM.md`
+**Local path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `WP51_FLATNESS_THEOREM.md`)
 
 Files in this J-folder's `manuscript/`:
 
-- `SUBMIT_INSTRUCTIONS.md`
-- `WP51_FLATNESS_THEOREM.md` (rewritten 2026-05-07 per SAVE_PLAN_J07: new title, new venue, Theorems 1+2 retained with the partition-incompatibility 3-line proof inlined and the configuration-space rewrite of Theorem 2; Appendix A entirely replaced with D48 + D78; §5–§7 dropped; §A.4 numerical verification at 50-digit `mpmath`; full PROVEN/COMPUTED/STRUCTURAL RHYME/OPEN tier discipline; lens-ownership paragraph in §0.1.)
+- `manuscript.md` (canonical J07 submission; rewritten 2026-05-07 per SAVE_PLAN_J07: new title, new venue, Theorems 1+2 retained with the partition-incompatibility 3-line proof inlined and the configuration-space rewrite of Theorem 2; Appendix A entirely replaced with D48 + D78; §5–§7 dropped; §A.4 numerical verification at 50-digit `mpmath`; full PROVEN/COMPUTED/STRUCTURAL RHYME/OPEN tier discipline; lens-ownership paragraph in §0.1.)
 - `WP52_D2_AS_RING_CURVATURE.md` (preserved per "never delete" discipline; not part of submission)
 - `WP57_CROSSING_LEMMA.md` (preserved per "never delete" discipline; not part of submission)
+- `verify_J07.py` (verification script — 4/4 PASS)
+- `SUBMIT_INSTRUCTIONS.md`
 
 The submission package lives in this J-folder. Edit + verify here; submit from here.
 

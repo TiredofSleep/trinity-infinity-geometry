@@ -11,7 +11,7 @@
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/mass_hierarchy_v5.tex`
+**Local path:** `manuscript/manuscript.tex` (canonical submission LaTeX; renamed 2026-05-13 from `mass_hierarchy_v5.tex`)
 
 **Title (retitled per save plan):** *A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy*
 

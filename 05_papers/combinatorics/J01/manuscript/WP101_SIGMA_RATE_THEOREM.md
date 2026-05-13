@@ -5,7 +5,7 @@
 **Sprint**: 15 — σ Mutation (Rate Theorem)
 **Authors**: Brayden Ross Sanders / 7Site LLC · M. Gish
 
-> **AUTHOR-LANE NOTE (2026-05-12):** The submitted JCT-A manuscript (`sigma_rate_theorem.tex`) carries the canonical Sanders + Gish author lane. Earlier WP101 working drafts cite additional internal co-authors who contributed to the WP100s tower bookkeeping but who are not authors of the JCT-A submission per the v3 author-lane policy.
+> **AUTHOR-LANE NOTE (2026-05-12; canonical-naming pass 2026-05-13):** The submitted JCT-A manuscript (`manuscript.tex`, renamed 2026-05-13 from `sigma_rate_theorem.tex`) carries the canonical Sanders + Gish author lane. Earlier WP101 working drafts cite additional internal co-authors who contributed to the WP100s tower bookkeeping but who are not authors of the JCT-A submission per the v3 author-lane policy.
 
 > **CORRECTION NOTICE (2026-04-27, post chat-Claude self-audited applications-pass):** The ECHO mechanism in §3-4 of this doc is **empirically false** (99.97% of non-assoc triples at N=210 have ZERO inner ECHO compositions). The actual mechanism is **VOID–HARM rule disagreement at outer composition sites**. Corrected closed-form bound: $\sigma(N) \le 2(N-2)^2/N^3 + \varepsilon(N)/N^3$ giving $\sigma(N) \le 2/N$ rigorously and $N\sigma(N) \to 2$ from below — sharpens the original "$C \in [2, 3]$" to **$C = 2$ exactly**. The corrected proof is in `sigma_rate_theorem.tex` (Theorem 4.1) and FORMULAS D71. Verification scripts in `Atlas/applications_pass_2026_04_27/code/`. This original framing preserved per never-delete; do not submit externally.
 

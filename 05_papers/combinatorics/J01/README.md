@@ -11,20 +11,18 @@
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/WP101_SIGMA_RATE_THEOREM.md`
+**Local path:** `manuscript/manuscript.tex` (canonical submission LaTeX; the markdown working version is preserved at `manuscript/WP101_SIGMA_RATE_THEOREM.md`)
 
 Files in this J-folder's `manuscript/`:
 
-- `f6_burgers_test_2026_05_02/` (subfolder)
-- `jcta_cover_letter.md`
-- `LATEX_BUNDLE_NOTES.md`
-- `master/` (subfolder)
-- `sigma_rate_theorem.tex`
-- `SUBMISSION_LOG.md`
-- `SUBMIT_INSTRUCTIONS.md`
-- `universal_markov_and_binary_cl.py`
-- `verify_sigma_rate.py`
-- `WP101_SIGMA_RATE_THEOREM.md`
+- `manuscript.tex` (canonical submission LaTeX; renamed 2026-05-13 from `sigma_rate_theorem.tex`)
+- `WP101_SIGMA_RATE_THEOREM.md` (markdown working version; preserved per never-delete)
+- `verify_sigma_rate.py` (verification script — green-light gate)
+- `universal_markov_and_binary_cl.py` (supporting computation)
+- `jcta_cover_letter.md` (JCT-A-specific cover letter draft)
+- `LATEX_BUNDLE_NOTES.md`, `SUBMISSION_LOG.md`, `SUBMIT_INSTRUCTIONS.md` (submission housekeeping)
+- `f6_burgers_test_2026_05_02/` (companion F6 Burgers test subfolder)
+- `master/` (historical full-bundle archive: `sigma_rate_theorem_FINAL_v_review_round_8.tex`, `sigma_rate_theorem_v_april.tex`, `proof_sigma_rate_april.py`, etc.)
 
 The submission package lives in this J-folder. Edit + verify here; submit from here.
 
