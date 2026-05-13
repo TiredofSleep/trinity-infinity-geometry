@@ -1229,28 +1229,19 @@ small coefficients. We ask: is $\alpha = \tfrac12$ the unique
 rational mixing weight with this property?
 
 \subsection{Stern--Brocot scan.}
-Let $\mathcal{G}_{\le 7} = \{p/q\in(0,1)\cap\Q : \gcd(p, q) = 1,
-\, q\le 7\}$ denote the $17$-point Stern--Brocot grid of
-rationals with denominator at most $7$:
-\[
-  \mathcal{G}_{\le 7} = \bigl\{
-    \tfrac{1}{7}, \tfrac{1}{6}, \tfrac{1}{5}, \tfrac{1}{4},
-    \tfrac{2}{7}, \tfrac{1}{3}, \tfrac{2}{5}, \tfrac{3}{7},
-    \tfrac{1}{2}, \tfrac{4}{7}, \tfrac{3}{5}, \tfrac{2}{3},
-    \tfrac{5}{7}, \tfrac{3}{4}, \tfrac{4}{5}, \tfrac{5}{6},
-    \tfrac{6}{7}
-  \bigr\}.
-\]
-For each $\alpha\in\mathcal{G}_{\le 7}$ we compute
-$p^*(\alpha)$ to $50$-digit precision (\texttt{mpmath}) and apply
-the PSLQ algorithm of Ferguson--Bailey~\cite{FergusonBailey1999}
-to the bases
-$\{1, x, x^{2}, \dots, x^{d}\}$ for $d\in\{2, \dots, 8\}$, with
-coefficient bound $|c_{i}|\le 50$ and tolerance
-$10^{-42}$. The script
-\texttt{alpha\_pslq\_sweep.py} (\S\ref{sec:verify}) reports the
-lowest-degree relation found (or no relation, if PSLQ does not
-detect any).
+For each integer $Q\ge 2$, let
+$\mathcal{G}_{\le Q} = \{p/q\in(0,1)\cap\Q : \gcd(p, q) = 1,\, q\le Q\}$
+denote the Stern--Brocot grid of rationals with denominator at most
+$Q$. For each $\alpha\in\mathcal{G}_{\le Q}$ we compute the interior
+fixed point $p^{*}(\alpha)$ to $50$-digit precision (\texttt{mpmath})
+and apply the PSLQ algorithm of Ferguson--Bailey~\cite{FergusonBailey1999}
+to the bases $\{1, x, x^{2}, \dots, x^{d}\}$ for $d\in\{2,\dots,8\}$,
+with coefficient bound $|c_{i}|\le 50$ and tolerance $10^{-42}$. The
+script \texttt{alpha\_pslq\_sweep.py} (\S\ref{sec:verify}) reports the
+lowest-degree relation found (or no relation, if PSLQ does not detect
+any). The depth-$13$ grid $\mathcal{G}_{\le 13}$ has $57$ rationals;
+the $17$-point grid $\mathcal{G}_{\le 7}$ used in the original WP113
+sweep is the depth-$7$ specialization.
 
 \subsection{Result.}
 At $\alpha = \tfrac12$, PSLQ recovers exactly:
@@ -1261,10 +1252,16 @@ At $\alpha = \tfrac12$, PSLQ recovers exactly:
     (\text{degree }4,\ \sup|c_{i}| = 4),
 \end{align*}
 matching Theorems~\ref{thm:hbr-ratio} and~\ref{thm:galois}
-exactly. At each of the other $16$ rationals
-$\alpha\in\mathcal{G}_{\le 7}\setminus\{\tfrac12\}$, PSLQ finds
+exactly. At each of the other $56$ rationals
+$\alpha\in\mathcal{G}_{\le 13}\setminus\{\tfrac12\}$, PSLQ finds
 \emph{no} integer-coefficient polynomial relation at degree
-$\le 8$ with $|c_{i}| \le 50$ in either ratio.
+$\le 8$ with $|c_{i}| \le 50$ in either ratio. The original
+$17$-point scan over $\mathcal{G}_{\le 7}$ (WP113, 2026-04-26) gave
+the same verdict; the present sweep extends from $17$ rationals
+(denominators $\le 7$) to $57$ rationals (denominators $\le 13$),
+sharpening the empirical uniqueness statement by an additional $40$
+rational points without finding any further low-degree algebraic
+relation.
 
 \begin{remark}[Algebraicity is automatic; degree is the question]
 \label{rem:degree-bounded}
@@ -1275,8 +1272,8 @@ fixed-point system is polynomial with rational coefficients
 question is therefore not algebraicity but \emph{minimal-polynomial
 degree}: at $\alpha = \tfrac12$ the ratios $h/\beta$ and $r/\beta$
 have minimal polynomials of degree $2$ and $4$ respectively over
-$\Q$, with small integer coefficients, while at the other $16$
-rationals in $\mathcal{G}_{\le 7}$ no relation of degree $\le 8$
+$\Q$, with small integer coefficients, while at the other $56$
+rationals in $\mathcal{G}_{\le 13}$ no relation of degree $\le 8$
 with coefficients $\le 50$ is detected by PSLQ at $50$-digit
 precision.
 \end{remark}
@@ -1290,8 +1287,8 @@ over $\Q$ of degree at most $4$ and integer coefficients of
 absolute value at most $50$.
 \end{conjecture}
 
-The above scan over $\mathcal{G}_{\le 7}$ is the empirical
-evidence; a structural proof remains open. The natural strategy
+The above scan over $\mathcal{G}_{\le 13}$ ($57$ rationals) is the
+empirical evidence; a structural proof remains open. The natural strategy
 would be to derive, for general rational $\alpha = p/q$, the
 fixed-point polynomial system in $(v, h, \beta, r, p, q)$ and
 characterize specializations $(p, q)$ for which the resulting

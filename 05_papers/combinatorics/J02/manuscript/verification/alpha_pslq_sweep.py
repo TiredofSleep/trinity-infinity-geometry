@@ -158,8 +158,8 @@ def main():
                         help="mpmath decimal precision (default 50)")
     parser.add_argument("--max-degree", type=int, default=8)
     parser.add_argument("--max-coeff", type=int, default=50)
-    parser.add_argument("--depth", type=int, default=7,
-                        help="Max denominator in Stern-Brocot grid (default 7)")
+    parser.add_argument("--depth", type=int, default=13,
+                        help="Max denominator in Stern-Brocot grid (default 13; 57 rationals)")
     args = parser.parse_args()
 
     mp.mp.dps = args.precision
