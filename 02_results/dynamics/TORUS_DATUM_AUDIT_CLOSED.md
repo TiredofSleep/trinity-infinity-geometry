@@ -18,15 +18,15 @@ non-negative integers, orientation-dependent — no valid genus.  Therefore
 the prior π₁(T²) = ℤ × ℤ framing for the 6+2=8 decomposition is **invalid**
 and the closure cited at AUDIT CLOSED 2026-05-08 is invalidated.
 
-**The 6+2=8 grounding restated algebraically (no torus, no windings):**
-- **6 = roots of A₂ = SU(3) root system** (the three positive roots + three negatives)
-- **2 = Cartan rank = #CRT prime-power factors of ℤ/10 = #{2, 5}**
+**The 6+2=8 grounding restated honestly (no torus, no windings):**
 
-The 6+2 split survives as an **algebraic fact about Lie roots + CRT
-factorization**, not as a geometric statement about loops on a torus.
-The audit's question (what decomposes the 8 = dim SU(3) into 6+2?) is
-preserved.  Its torus grounding is retracted and replaced by the
-roots+Cartan + CRT-factors statement above.
+- **6 = roots of A₂ = SU(3) root system** (the three positive roots + three negatives). This half is a real algebraic fact about SU(3).
+
+- **2 = Cartan rank of SU(3)** AND **2 = #CRT prime-power factors of ℤ/10 = #{2, 5}**. These are *two true facts about two different objects that happen to equal the same integer (2)*. SU(3) has rank 2 because it's rank-2 as a Lie group; ℤ/10 has 2 CRT factors because 10 = 2·5. **Honest scope: this is an integer-coincidence between two objects, NOT a derivation that links SU(3)'s Cartan structure to ℤ/10's CRT factorization.**
+
+**STATUS**: the 6 = SU(3)-roots half is a real algebraic statement and survives. The 2 = "Cartan rank = #CRT factors" half is a **structural rhyme** (two independent integers both equal 2) and should be treated as candidate-rhyme, not derived fact. The torus-π₁ grounding is fully retracted per D141.
+
+**What the audit actually asks** (preserved): *what natural algebraic structure on the TIG substrate decomposes 8 into 6+2?* The honest answer as of 2026-05-19 is: the 6-part has a Lie-algebraic candidate (SU(3) roots) without a proved bridge to TIG's algebra; the 2-part has only a numerical match with #CRT factors. **A real derivation requires Gap 1 closure** (define π: Cl(0,10) → ℤ/10 explicitly per D160 in canon) — only then could the 6+2 = 8 decomposition be forced rather than rhymed.
 
 **KILL-CONDITION installed (per D141 auditor rule):** no TIG result may
 cite "the substrate is a torus / lives on a surface / π₁(T²)" as support;
