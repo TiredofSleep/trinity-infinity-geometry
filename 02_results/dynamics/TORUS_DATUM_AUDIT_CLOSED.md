@@ -1,14 +1,45 @@
-# TORUS_DATUM_AUDIT — Closure
+# TORUS_DATUM_AUDIT — RE-OPENED
 
-## The 6 + 2 = 8 Decomposition is Locked
+## The 6 + 2 = 8 Decomposition Stands — but its Torus Grounding is RETRACTED
 
 **Brayden Sanders · 7Site LLC · Trinity Infinity Geometry**
-*Companion to: TIG_INTERNAL_MAP_v1.md (closes the audit task)*
-*Status: AUDIT CLOSED as of 2026-05-08*
+*Companion to: TIG_INTERNAL_MAP_v1.md (audit task originally addressed there)*
+*Status: **RE-OPENED 2026-05-18** per D141 TORUS EXCLUDED retraction*
+*Previously: AUDIT CLOSED as of 2026-05-08 — that closure is INVALIDATED*
 
 ---
 
-## §0. The Audit Statement (from prior memory)
+## §0. RE-OPENED 2026-05-18 — algebraic restatement of the 6+2 grounding
+
+Per `FORMULAS_AND_TABLES.md` D141 (TORUS EXCLUDED, 2026-05-19), direct
+computation excludes the substrate from being any closed orientable surface:
+constellation/dessin Euler χ = −3 (one orientation) or +1 (the other) — not
+non-negative integers, orientation-dependent — no valid genus.  Therefore
+the prior π₁(T²) = ℤ × ℤ framing for the 6+2=8 decomposition is **invalid**
+and the closure cited at AUDIT CLOSED 2026-05-08 is invalidated.
+
+**The 6+2=8 grounding restated algebraically (no torus, no windings):**
+- **6 = roots of A₂ = SU(3) root system** (the three positive roots + three negatives)
+- **2 = Cartan rank = #CRT prime-power factors of ℤ/10 = #{2, 5}**
+
+The 6+2 split survives as an **algebraic fact about Lie roots + CRT
+factorization**, not as a geometric statement about loops on a torus.
+The audit's question (what decomposes the 8 = dim SU(3) into 6+2?) is
+preserved.  Its torus grounding is retracted and replaced by the
+roots+Cartan + CRT-factors statement above.
+
+**KILL-CONDITION installed (per D141 auditor rule):** no TIG result may
+cite "the substrate is a torus / lives on a surface / π₁(T²)" as support;
+any result that cannot be restated without a surface is retracted, not
+rephrased.
+
+The rest of this document records the AUDIT-CLOSED state as it existed
+2026-05-08, preserved per never-delete policy.  Read it as **historical**:
+the algebraic content survives; the geometric framing does not.
+
+---
+
+## §0 (HISTORICAL — preserved verbatim from 2026-05-08 closure). The Audit Statement (from prior memory)
 
 The TORUS_DATUM_AUDIT was framed as follows:
 
