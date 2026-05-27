@@ -55,9 +55,10 @@ TIER = {
     "interdisciplinary/J53": (2, "draft (REWRITTEN per SAVE PLAN; scope-narrowed to algebra)"),
     "combinatorics/J54":(2, "draft (foundation paper; SFM Q6 + FAMILY_STRUCTURE_v1 applied)"),
     "algebra/J58":      (2, "draft (verification PASS; awaiting referee-rigor pass)"),
-    "algebra/J59":      (2, "draft (three rigidity theorems PROVED; awaiting referee-rigor pass)"),
-    "algebra/J60":      (2, "draft (uses ETP-verified data; awaiting referee-rigor pass)"),
-    "algebra/J61":      (2, "draft (universal-algebra-grounded methodology; most novel)"),
+    "algebra/J59":      (1, "ship-ready (Semigroup Forum; 4/4 PASS in ~3s; PROMOTED 2026-05-27)"),
+    "algebra/J60":      (1, "ship-ready (Experimental Mathematics; 4/4 PASS in ~7s; PROMOTED 2026-05-27)"),
+    "algebra/J61":      (1, "ship-ready (Journal of Symbolic Computation; 5/5 PASS in ~13s; PROMOTED 2026-05-27, **most novel**)"),
+    "number_theory/J62_RH_short_note": (1, "ship-ready (Mathematical Intelligencer short note; 2 theorems + Conjecture Z.5; 5-line numpy verifier PASS; 2026-05-27)"),
     "algebra/J_qseries_merged": (2, "CONSOLIDATED DRAFT 2026-05-27 (merger of J21+J43+J51); awaiting prose polish"),
     "algebra/J_Fp_merged":       (2, "CONSOLIDATED DRAFT 2026-05-27 (merger of J14+J16); awaiting prose polish"),
 

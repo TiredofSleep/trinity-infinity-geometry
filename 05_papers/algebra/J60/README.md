@@ -4,7 +4,7 @@
 **Alternative venues:** *Journal of Symbolic Computation* (Elsevier), *Communications in Algebra*, *Algebra Universalis*
 **Status:** DRAFT — uses ETP-verified data; awaiting Brayden green-light
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (uses ETP-verified data; awaiting referee-rigor pass))
+**Tier:** 1 (ship-ready (Experimental Mathematics; 4/4 PASS in ~7s; PROMOTED 2026-05-27))
 **Source:** ETP verification pass on `overnight_handoff_2026-05-27` (cloned 2026-05-27)
 
 ---

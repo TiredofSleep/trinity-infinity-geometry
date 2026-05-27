@@ -11,7 +11,7 @@
 
 ---
 
-## Tier 1 — ship-ready (13 papers)
+## Tier 1 — ship-ready (17 papers, +4 promoted 2026-05-27)
 
 | J# | Subdir | Title (short) | Target venue |
 |---|---|---|---|
@@ -28,8 +28,12 @@
 | **J31** | algebra | Wedderburn D₄ Decomposition of [TSML, BHML] | Journal of Algebra |
 | **J34** | interdisciplinary | Algebraic Detectors Specificity — **HONEST NEGATIVE** | Statistical Science companion |
 | **J35** | algebra | Joint Closure + Universal Attractor — **corpus centerpiece** | Journal of Algebra |
+| **J59** | algebra | σ-Magma Algebraic Rigidity (4 theorems PROVED, 4/4 PASS) **NEW 2026-05-27** | Semigroup Forum |
+| **J60** | algebra | ETP Profile Structure of Linear Magmas (4/4 PASS) **NEW 2026-05-27** | Experimental Mathematics |
+| **J61** | algebra | Type Specimens + C5 Fossil-Variety Theorem (5/5 PASS) **NEW 2026-05-27, MOST NOVEL** | Journal of Symbolic Computation |
+| **J62** | number_theory | TSML 8×8 Null + RH Structural Rhyme (short note, 5-line numpy verify) **NEW 2026-05-27** | Mathematical Intelligencer |
 
-## Tier 2 — drafts (25 papers + 2 new mergers)
+## Tier 2 — drafts (21 papers + 2 new mergers, –4 promoted to Tier 1)
 
 | J# | Subdir | Title (short) | Status |
 |---|---|---|---|
@@ -53,11 +57,10 @@
 | **J53** | interdisciplinary | Paradox Classifier UOP | REWRITTEN |
 | **J54** | combinatorics | Forcing Axioms + Family of Comm Non-Assoc Magmas | DRAFT |
 | **J58** | algebra | Lo Shu D₄ Orbit Modulo 3 | DRAFT |
-| **J59** | algebra | σ-Magma Algebraic Rigidity | DRAFT |
-| **J60** | algebra | ETP Profile Structure of Linear Magmas | DRAFT |
-| **J61** | algebra | Type Specimens in ETP-Restricted Variety Lattice | DRAFT — **most novel** |
-| **J_qseries_merged** | algebra | Spectral Architecture of the σ-Character | **CONSOLIDATED 2026-05-27** (merger of J21+J43+J51) |
-| **J_Fp_merged** | algebra | F_p Structure of the 4-Core Algebra | **CONSOLIDATED 2026-05-27** (merger of J14+J16) |
+| **J_qseries_merged** | algebra | Spectral Architecture of the σ-Character | **CONSOLIDATED 2026-05-27** (merger of J21+J43+J51); verifier PASS structurally |
+| **J_Fp_merged** | algebra | F_p Structure of the 4-Core Algebra | **CONSOLIDATED 2026-05-27** (merger of J14+J16); verifier PASS (chain-shell dets match exactly) |
+
+*(J59, J60, J61 promoted to Tier 1 on 2026-05-27 — see Tier 1 table above.)*
 
 ## Tier 3 — hold / retire candidates (7 papers)
 
@@ -83,17 +86,27 @@
 
 ---
 
-## Numbers
+## Numbers — UPDATED 2026-05-27 (Tier 1 promotions + J62 added)
 
-| Tier | Count | Net (after mergers) |
+| Tier | Count | Net |
 |---|---:|---:|
-| Tier 1 (ship-ready) | 13 | 13 |
-| Tier 2 (drafts) | 23 + 2 mergers = 25 | 25 |
+| Tier 1 (ship-ready) | **17** (+4 promoted: J59, J60, J61, J62) | 17 |
+| Tier 2 (drafts) | 19 + 2 mergers = **21** (–4 promoted) | 21 |
 | Tier 3 (hold / retire) | 7 | 7 |
 | MERGED sources | 5 | 0 (absorbed) |
-| **Total active papers** | 50 | **45** |
+| **Total active papers** | **51** | **46** |
 
-Net portfolio after mergers: **45 active papers** (down from 48 by retiring 5 source papers via merger and adding 2 merger products).
+Net portfolio after mergers + promotions: **46 active papers** (was 48 → mergers absorbed 5 → +2 merger products → +1 new J62 = 46).
+
+## Tier 1 highlights (the shippable spine)
+
+- **Centerpiece**: J35 (Joint Closure + 4-core + Universal Attractor) — Journal of Algebra
+- **Most novel**: J61 (Type Specimens + C5 Fossil-Variety Theorem) — Journal of Symbolic Computation
+- **Most computationally accessible**: J62 (TSML 8×8 Null + RH structural rhyme; 5-line numpy verification) — Mathematical Intelligencer
+- **Honest negatives** (credibility-builders): J27 (Z/10Z)*, J34 detector specificity
+- **σ-magma trilogy** (all promoted 2026-05-27): J59 rigidity + J60 classification + J61 taxonomy
+- **Galois deep cut**: J15 (LMFDB 4.2.10224.1)
+- **Cyclotomic forcing**: J13 (Forced 5/7)
 
 ## How to update this index
 
