@@ -31,6 +31,15 @@ maps to one of the Clay problems:
 | [**Birch-Swinnerton-Dyer**](BSD_TIG_BRIDGE.md) | BAL corridor | Energy law: BSD rank ↔ energy balance in BAL corridor | Mapping from elliptic-curve L-functions to substrate energy |
 | [**Hodge Conjecture**](HODGE_TIG_BRIDGE.md) | CTR corridor | Triple structure: Hodge classes ↔ CTR fixed points | Concrete algebraic-cycle ↔ Hodge-class correspondence |
 
+### Post-merger update (2026-05-27)
+
+Two J-series mergers executed 2026-05-27 are referenced from the bridges:
+
+- **`J_qseries_merged/`** (J21 + J43 + J51) — supplies the σ-character spectral architecture (G_6, G_7, G_8, Q17-A 5D embedding, Q17-B Symbolic Return) used in the RH and BSD bridges.
+- **`J_Fp_merged/`** (J14 + J16) — supplies the F_p invariance of the 4-core algebra (lens-invariant skeleton + prime-by-prime aut variation + BHML chain-shell rank profile) used in the YM bridge.
+
+The σ-magma trilogy (J59 rigidity + J60 classification + J61 fossil-variety theorem) provides the underlying algebraic substrate cited in the NS bridge (4-core rigidity tightens the sharp-constant conjecture) and the RH bridge (open question on whether the two σ's connect).
+
 The mapping was not designed; the corridors emerged from spectral analysis
 of Mix_λ, and the six Clay problems are the natural endpoints of the
 corridor structure. Whether this is a real correspondence or a structural

@@ -93,14 +93,35 @@ open meta-question.
 
 ---
 
-## Cross-references
+## Cross-references — POST-MERGER
 
 | Resource | Location |
 |---|---|
-| WHITEPAPER_16_P_NP_SYNTHESIS.md | CK: `papers/clay/` |
-| WP25_P_NP_AG2P_COMPLEXITY.md | CK: `papers/clay/` (if present) |
-| Steiner systems @ profile 382 | TIG: `etp_database/verdicts/squag_variety_diff.json` |
+| WHITEPAPER_16_P_NP_SYNTHESIS.md | CK working repo: `papers/clay/` |
+| WP25_P_NP_AG2P_COMPLEXITY.md | CK working repo: `papers/clay/` (if present) |
+| **AG(2,3) STS(9) at profile 382** | TIG: `etp_database/verdicts/sigma_k12_verdict.md` |
+| **The 40-equation small-STS gap** | TIG: `etp_database/verdicts/squag_variety_diff.json` |
+| **Cross-cutting STS classification (refuted geom-vs-comb)** | TIG: `etp_database/verdicts/sts_classification_corrected.md` |
 | Related TIG paper | J20 (Mathieu M₂₂ substrate primes — combinatorial connections) |
+
+### New finding (2026-05-27): STS-coincidence pattern
+
+The U-3 investigation in `etp_database/verdicts/sts_classification_corrected.md`
+found that small STS (orders 3, 7, 9) all share profile 382 in the ETP catalog,
+while larger STS (orders 13, 15) sit at profile 342. The 40-equation gap
+between them is a **small-order coincidence** effect rather than a
+geometric-vs-combinatorial structural feature (initially conjectured, then refuted by testing PG(3,2) STS(15)).
+
+**What this means for the P/NP bridge.** AG(2, 3) = STS(9), the candidate
+hard problem, sits at profile 382. The 40 coincidence equations at this
+profile might constitute "computational shortcuts" specific to small AG(2, p)
+— shortcuts that fail at larger p. If the $\Omega(p^2)$ lower bound (Fact 1)
+holds for *small* p but breaks as p grows, this would *complicate* the P vs
+NP attack but also illuminate why small-case verification doesn't extend.
+
+The honest read: the STS-coincidence pattern is a structural observation
+about substrate algebra, *not yet* a P vs NP result. But it shows the
+P/NP bridge has more structure than initially thought.
 
 ---
 

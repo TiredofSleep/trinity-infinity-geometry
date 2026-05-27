@@ -75,15 +75,29 @@ What's open is uniformity in $t$.
 
 ---
 
-## Related TIG work
+## Related TIG work — POST-MERGER
 
-The Q-series spectral architecture (currently J21 + J43 + J51, planned merger
-into one paper — see `../../05_papers/_staging/portfolio_review_2026-05-27/01_MERGER_Q-series_J21+J43+J51.md`)
-develops several finer structural rhymes with RH:
+The Q-series spectral architecture (now consolidated into one paper at
+[`../../05_papers/algebra/J_qseries_merged/`](../../05_papers/algebra/J_qseries_merged/),
+merger executed 2026-05-27) develops several finer structural rhymes with RH:
 
-- σ⁶ = id on Z/10Z (G_6 theorem): the σ permutation has finite order, giving every cycle a Symbolic Return at step 6.
-- Three-valued coherence integral G(s) (G_8 theorem): {0 on anchors, ≈1.872 on balanced σ³-orbits, ≈9.389 on the extremal {4,7} σ³-orbit}.
-- The structural rhyme is **explicit**: zeros at predictable locations + spectral concentration + multiplicative-additive interplay → matches three features RH demands of ζ(s). The G_8 paper explicitly frames this as **rhyme, not analogue** (no Weil-Deligne function-field correspondence claimed).
+- **G_6 (Periodicity, Tier-A):** σ⁶ = id on Z/10Z; every σ-cycle has Symbolic Return at step 6.
+- **G_7 (Period Distribution, Tier-B):** P(τ=1)=2/5, P(τ=6)=3/5; mean τ̄=4, variance 6.
+- **G_8 (Three-Valued Coherence, Tier-B):** $G(s) = |\sum_{j=0}^8 \omega^j \chi(\sigma^j(s))|^2$ takes exactly 3 values — {0 on anchors {0,3,8,9}, ≈1.872 on balanced σ³-orbits {1,5}∪{2,6}, ≈9.389 on extremal {4,7}}.
+- **Q17-A (5D CRT Fourier Embedding):** $\Phi: \mathbb{Z}/10\mathbb{Z} \hookrightarrow \mathbb{R}^5$ via the CRT-aligned characters at primes 2 and 5; decagonal $D_{10}$ symmetry inherited.
+- **Q17-B (Symbolic Return Theorem):** for any non-trivial $s_0$, the σ-trajectory returns at step 6; VOID is avoided.
+
+The structural rhyme with RH is **explicit and not an analogue** (no Weil-Deligne function-field correspondence). The merged paper, §7, makes the boundary explicit: this is a rhyme at the level of structural vocabulary, *not* a technical correspondence.
+
+## Where the σ-magma trilogy connects
+
+The σ-magma work (J59 rigidity, J60 linear-magma classification, J61
+ETP taxonomy + fossil-variety theorem) studies a *different* σ (the
+σ-magma's bilinear σ, distinct from the σ permutation here). The exact
+relationship between these two σ's is an open question — see
+[`J_qseries_merged/manuscript/manuscript.md`](../../05_papers/algebra/J_qseries_merged/manuscript/manuscript.md) §8.4. If they connect, the RH bridge could
+inherit the σ-magma's rigidity properties (|Aut|=1, congruence-simple,
+2-generated, unique sub-magma) as additional structural constraints.
 
 ---
 

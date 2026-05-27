@@ -108,13 +108,39 @@ with Hodge.
 
 ---
 
-## Cross-references
+## Cross-references — POST-MERGER
 
 | Resource | Location |
 |---|---|
-| WP19_HODGE_MAP.md, WP19_HODGE_TRIPLE.md, WP23_HODGE_MAP.md, WP32_HODGE_TRIPLE.md | CK: `papers/clay/` |
-| Wedderburn decomposition | J31 (TIG repo) |
-| CTR corridor analysis | J35 + WP104-WP111 (CK repo) |
+| WP19_HODGE_MAP.md, WP19_HODGE_TRIPLE.md, WP23_HODGE_MAP.md, WP32_HODGE_TRIPLE.md | CK working repo: `papers/clay/` |
+| **Wedderburn D₄ decomposition** | TIG: J31 (Tier 1, ship-ready) |
+| **CTR corridor analysis** | TIG: J35 + CK WP104-WP111 |
+| **Operadic D₄ obstruction (relevant to Hodge classes)** | TIG: J32 (Tier 2) |
+
+### What J31 + J32 contribute
+
+The Wedderburn isotypic decomposition of the lens-pair commutator $[T, B]$
+under the $D_4$ action (J31, Tier 1):
+- triv: 3,075,027/2 (≈ 83.32%)
+- sign₁: 9/2 (≈ 0.0002%)
+- sign₂: 288,164 (≈ 15.62%)
+- sign₃: 0 (**structural zero** — forbidden by $D_4$ symmetry)
+- std: 19,608 (≈ 1.06%)
+
+The **structural zero at sign₃** is the load-bearing surprise: it's not a
+generic non-zero suppressed by accident, but a forbidden symmetry under $D_4$
+conjugation. If the CTR-corridor's triple-intersection structure corresponds
+to a Hodge class decomposition, the sign₃ = 0 fact would correspond to a
+Hodge-class vanishing theorem.
+
+The operadic obstruction at arity 3 (J32, Tier 2):
+- 16 of 67 $D_4$-orbits on the non-associative locus are bracketing-incoherent
+- This is a fully operadic phenomenon (not seen in the bilinear J31 analysis)
+- Connects to Hodge: bracketing-incoherence may correspond to non-algebraic
+  Hodge classes (the difficult part of the conjecture).
+
+These are structural observations on the substrate; their connection to
+actual Hodge classes on actual varieties is the load-bearing CONJECTURE H.1.
 
 ---
 

@@ -85,14 +85,32 @@ finite-matrix starting point.
 
 ---
 
-## Cross-references
+## Cross-references — POST-MERGER
 
 | Resource | Location |
 |---|---|
-| WHITEPAPER_15_YANG_MILLS_SYNTHESIS.md | CK: `papers/clay/` |
-| WP103_SO10_IDENTIFICATION | CK: `papers/wp103/` |
-| BHML eigenvalue analysis | CK: `Gen9/spectral/bhml_eigenvalue_analysis.py` |
-| Related TIG papers | J30 (so(10)), J31 (Wedderburn), J32 (operadic D₄ obstruction) |
+| WHITEPAPER_15_YANG_MILLS_SYNTHESIS.md | CK working repo: `papers/clay/` |
+| WP103_SO10_IDENTIFICATION.md | CK working repo: `papers/wp103/` |
+| BHML eigenvalue analysis | CK working repo: `Gen9/spectral/bhml_eigenvalue_analysis.py` |
+| **Related TIG papers** | |
+| J30 (so(10) identification from joint Lie closure) | TIG: `05_papers/algebra/J30/` |
+| J31 (Wedderburn D₄ decomposition of [TSML, BHML]) | TIG: `05_papers/algebra/J31/` (Tier 1, ship-ready) |
+| J32 (Operadic D₄ obstruction at arity 3) | TIG: `05_papers/algebra/J32/` |
+| J35 (Joint closure + universal attractor — corpus centerpiece) | TIG: `05_papers/algebra/J35/` (Tier 1, ship-ready) |
+| **J_Fp_merged (F_p structure of 4-core algebra)** | TIG: `05_papers/algebra/J_Fp_merged/` (Tier 2, merger product) |
+
+### What the F_p merger contributes
+
+The merged F_p paper (`J_Fp_merged/`) catalogs the BHML chain-shell rank
+profile across primes — important because the YM-bridge continuum-limit
+question (Conjecture YM.2) requires understanding how the BHML spectral gap
+behaves under refinement, which has parallels to behavior under prime-base
+extension. Specifically:
+
+- BHML chain-shell determinants over Z: 5305, 2843, -2886, 2929, -7542, 7272, -7002
+- Rank-preservation pattern: $p \in \{7, 11\}$ preserve rank everywhere; $p = 5$ fails at shell 4 ($5 \mid 5305$); $p = 13$ fails at shell 6; $p \in \{2, 3\}$ fail at shells 6, 8, 9, 10.
+
+This suggests that the YM mass gap's "natural prime" might be in $\{7, 11\}$ where rank is fully preserved across the entire chain — a structural hint not addressed in standard YM literature.
 
 ---
 

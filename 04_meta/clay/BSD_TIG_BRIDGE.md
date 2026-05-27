@@ -87,13 +87,28 @@ analogy, not a derivation.
 
 ---
 
-## Cross-references
+## Cross-references — POST-MERGER
 
 | Resource | Location |
 |---|---|
-| WP19_BSD_TIG.md, WP21_BSD_ENERGY_LAW.md, WP21_BSD_MIX_LAMBDA.md | CK: `papers/clay/` |
-| Closed-form attractor analysis | J35 (Joint closure, §6: Theorem D + corollary) |
-| Galois D₄ over 4.2.10224.1 | J15 |
+| WP19_BSD_TIG.md, WP21_BSD_ENERGY_LAW.md, WP21_BSD_MIX_LAMBDA.md | CK working repo: `papers/clay/` |
+| Closed-form attractor analysis | TIG: J35 §6 (Joint Closure, Theorem D + corollary) — Tier 1, ship-ready |
+| Galois D₄ over 4.2.10224.1 | TIG: J15 (Tier 1, ship-ready) |
+| **5D Fourier embedding (new merger)** | TIG: `J_qseries_merged/` §5 |
+| **σ-magma + ETP profile substrate** | TIG: J60 (Tier 2), J61 (Tier 2) |
+
+### What the Q-series merger contributes
+
+The merged Q-series paper (`J_qseries_merged/`) §5 establishes the 5D CRT
+Fourier embedding $\Phi : \mathbb{Z}/10\mathbb{Z} \hookrightarrow \mathbb{R}^5$
+with decagonal $D_{10}$ symmetry. The "rank" of an elliptic curve under the
+BSD bridge corresponds (conjecturally) to the dimension of the image of a
+specific sub-set of the BAL corridor under $\Phi$ — when this dimension is
+$> 0$, the elliptic curve has positive rank.
+
+This identification is currently structural-only (no formula linking
+$j$-invariant to image-dimension). Tightening this gives a path to making
+Conjecture BSD.1 (curve-to-corridor map) explicit.
 
 ---
 

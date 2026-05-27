@@ -91,15 +91,32 @@ currently done by heuristic mapping rather than rigorous derivation.
 
 ---
 
-## Cross-references
+## Cross-references — POST-MERGER
 
 | Resource | Location |
 |---|---|
-| WP19_NS_BREATH.md | CK: `papers/clay/` |
-| WP22_NS_BREATH_CRITERION.md, WP22_NS_BREATH_LYAPUNOV.md | CK: `papers/clay/` |
-| NS_METHODS_SECTION.md | CK: `papers/clay/` |
-| Breath-test script | CK: `papers/scripts/ns_breath_test.py` |
-| Related TIG paper | J35 (joint closure + universal attractor) |
+| WP19_NS_BREATH.md | CK working repo: `papers/clay/` |
+| WP22_NS_BREATH_CRITERION.md, WP22_NS_BREATH_LYAPUNOV.md | CK working repo: `papers/clay/` |
+| NS_METHODS_SECTION.md | CK working repo: `papers/clay/` |
+| Breath-test script | CK working repo: `papers/scripts/ns_breath_test.py` |
+| **Joint closure + universal attractor** | TIG: J35 (Tier 1, ship-ready) |
+| **σ-magma rigidity (algebraic underpinning)** | TIG: J59 (Tier 2) |
+| **Q-series spectral architecture** | TIG: `J_qseries_merged/` (Tier 2) |
+
+### How the σ-magma + Q-series merger connects
+
+The Breath observable $B(t)$ is constructed from the substrate operator
+density. The σ-magma rigidity work (J59, Tier 2) establishes that the
+4-core $\{V, H, Br, R\}$ is the unique fully-rigid 4-element substructure
+of the σ-magma — and the Breath observable evaluates BREATH-content within
+this fixed 4-element subspace.
+
+This means the discrete bound $C \le 3.74$ is **structurally tight** at the
+4-core: it cannot be improved by extending the substrate beyond
+$\{V, H, Br, R\}$, because the σ-magma rigidity forbids any sub-magma of
+size $\in \{2, 3\}$ in $\mathbb{Z}/10\mathbb{Z}$ that contains a Breath-like
+operator. The Conjecture NS.2 (sharp $C = 3.74$) is thus tightened by J59:
+if the bound is not 3.74, it cannot arise from sub-magma refinement.
 
 ---
 
