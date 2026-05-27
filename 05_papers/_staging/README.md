@@ -10,6 +10,16 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J59 v5 — DRAFT (σ-magma + 23 profile-14 families enumeration, *Semigroup Forum*)
+
+**v5 ETP ENUMERATION (2026-05-27):** Analyzed all 1,355 magmas in ETP's tabulated data (`equational_theories/Generated/`). Found **24 magmas with profile = 14, forming 22 distinct equation sets**. Plus σ-magma's Family C (commutativity-anchored) = **at least 23 distinct profile-14 families known**.
+
+The 22 ETP-tabulated families are anchored on **single-variable power identities** (depth 3-5 of $x$). Only Family C uses a **2-variable anchor** (equation 43, commutativity).
+
+**Refined conjecture**: among COMMUTATIVE quasigroups of any order ≥ 5, Family C is the unique achievable profile-14 family. The σ-magma is the **unique commutative-magma representative** of profile 14 (conjecturally), not the unique profile-14 magma overall.
+
+This makes the σ-magma's "extremality" claim more precise: 14 is universal across many non-commutative families AND is the commutativity-forced floor; the σ-magma sits at the intersection.
+
 ### J59 v4 — DRAFT (σ-magma rigidity + Family C/R discovery, *Semigroup Forum*)
 
 **v4 ETP DISCOVERY (2026-05-27):** While running order-7 linear classification through ETP, found a non-commutative magma $(5x + 3y + 6) \bmod 7$ that ALSO satisfies exactly 14 ETP equations — but a **completely different 14** from the σ-magma's. Profile 14 is realized by at least two structurally distinct families:
