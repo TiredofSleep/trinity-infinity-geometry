@@ -10,6 +10,12 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J59 v2 — DRAFT (σ-magma algebraic rigidity + ETP profile VERIFIED, *Semigroup Forum*)
+
+**ETP UPDATE (2026-05-27):** After cloning Tao's Equational Theories Project repo, ran the σ-magma through `scripts/explore_magma.py`. **The 14-equation claim is CONFIRMED at machine precision** — equation IDs `[1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442, 4482, 4531, 4544, 4635, 4677]`. Also confirmed: every numerical claim in OPEN_FRONTIERS §§64-65 (Lo Shu D₄ profiles {60, 179, 313}, 179 ∩ 313 = 63, -(x+y) mod 4 = 294, 179-magma non-commutative).
+
+**MAJOR REFINEMENT:** BHML and CL_STD (J35's B and S tables) ALSO satisfy exactly the same 14 ETP equations as the σ-magma. The σ-magma is NOT the unique 14-equation magma at order 10 — it's the unique **identity-free** member of the trio {σ-magma, BHML, CL_STD}, all of which realize the "commutativity-forced minimum." The four rigidity theorems still distinguish σ-magma from BHML/CL_STD in non-ETP invariants (rigidity, simplicity, sub-magma structure, generation).
+
 ### J59 — DRAFT (σ-magma algebraic rigidity, *Semigroup Forum*)
 
 - **Status:** **DRAFT.** Four rigidity theorems PROVED by exhaustive computational search; `verify_J59.py` 4/4 PASS at machine precision in ~3 seconds; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J59/`.
