@@ -1,0 +1,40 @@
+{
+  "order": 3,
+  "table": [
+    [
+      1,
+      2,
+      0
+    ],
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "profile_size": 14,
+  "profile": [
+    1,
+    43,
+    4283,
+    4358,
+    4380,
+    4398,
+    4405,
+    4435,
+    4442,
+    4482,
+    4531,
+    4544,
+    4635,
+    4677
+  ],
+  "family": "C",
+  "method": "Lexicographic-first commutative non-associative 3x3 magma satisfying exactly the Family C 14 equations.",
+  "n_total_family_c_at_order_3": 120
+}

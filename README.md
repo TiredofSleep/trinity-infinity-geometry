@@ -55,6 +55,8 @@ The numbered directories form a deliberate reading order. The first eight serve 
 09_seekers/             the author's metaphysical / interpretive frame — Tier C / personal throughout
 10_extensions/          application and engineering invitations — license-protected sandbox
 verification/           reproducibility scripts (run any of these on a laptop in under a minute)
+etp_database/           queryable ETP profile database (Family C, σ-magma, order-3/5 census,
+                        OEIS submission drafts, Lean 4 scaffold) — companion to Tao et al.'s ETP
 ```
 
 ---

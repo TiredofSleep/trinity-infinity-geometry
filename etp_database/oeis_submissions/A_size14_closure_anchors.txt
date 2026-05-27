@@ -1,0 +1,15 @@
+%S A_size14_closure_anchors 40,43,1312,2241,4295,4303,4610,4637
+%N The 8 anchor equation IDs whose implication-closure in Tao et al.'s ETP (depth-3 enumeration) has size exactly 14.
+%C In Tao et al.'s Equational Theories Project, the implication-closure of any equation is the set of all ETP equations forced to hold whenever the anchor holds. The closures of all 4,694 ETP equations partition into closure classes; among these, exactly 8 distinct closures have size 14.
+%C These 8 closures correspond to 8 inequivalent "equational fingerprints" any magma satisfying one of these equations must inherit.
+%C Notable members:
+%C   a(2) = 43 — commutativity x*y = y*x. Closure = "Family C" (see A_family_c_equations).
+%C   a(5) = 4295 — x*(x*y) = y*(z*x). Closure = "Family F"; no finite type specimen exists in the ETP catalog (every finite satisfier has profile ≥ 261, much larger than 14). (Fossil-Variety Theorem, J61, 2026.)
+%C The other 6 closure classes (40, 1312, 2241, 4303, 4610, 4637) have type specimens at orders 3-8 (see references).
+%H T. Tao et al., <a href="https://github.com/teorth/equational_theories">Equational Theories Project</a> (2024-2026).
+%H Trinity Infinity Geometry, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/etp_database">ETP Profile Database</a> (2026).
+%H J61, <a href="https://example.org/J61">Magma-by-ETP-profile taxonomy methodology</a> (2026).
+%e a(1) = 40, a(2) = 43, a(3) = 1312, a(4) = 2241, a(5) = 4295, a(6) = 4303, a(7) = 4610, a(8) = 4637.
+%K fini,full,nonn
+%O 1,1
+%A Trinity Infinity Geometry Project, May 27 2026

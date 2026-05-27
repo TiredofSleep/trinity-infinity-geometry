@@ -1,0 +1,36 @@
+{
+  "name": "Family C",
+  "definition": "Implication-closure of equation 43 (commutativity) in Tao et al.'s Equational Theories Project (ETP).",
+  "anchor_equation_id": 43,
+  "anchor_equation": "x ⋄ y = y ⋄ x",
+  "closure_size": 14,
+  "closure_verification": "Computed via ETP's 22M-entry implication graph. See trinity-infinity-geometry/etp_database/scripts/verify_family_c.py",
+  "equations": [
+    {"id": 1, "expr": "x = x", "type": "reflexivity"},
+    {"id": 43, "expr": "x ⋄ y = y ⋄ x", "type": "commutativity (anchor)"},
+    {"id": 4283, "expr": "x ⋄ (x ⋄ y) = x ⋄ (y ⋄ x)", "type": "comm applied to inner"},
+    {"id": 4358, "expr": "x ⋄ (y ⋄ z) = x ⋄ (z ⋄ y)", "type": "comm applied to inner"},
+    {"id": 4380, "expr": "x ⋄ (x ⋄ x) = (x ⋄ x) ⋄ x", "type": "power-associativity (3rd power)"},
+    {"id": 4398, "expr": "x ⋄ (x ⋄ y) = (x ⋄ y) ⋄ x", "type": "flexibility-like"},
+    {"id": 4405, "expr": "x ⋄ (x ⋄ y) = (y ⋄ x) ⋄ x", "type": "comm-derivative"},
+    {"id": 4435, "expr": "x ⋄ (y ⋄ x) = (x ⋄ y) ⋄ x", "type": "flexibility variant"},
+    {"id": 4442, "expr": "x ⋄ (y ⋄ x) = (y ⋄ x) ⋄ x", "type": "comm-derivative"},
+    {"id": 4482, "expr": "x ⋄ (y ⋄ y) = (y ⋄ y) ⋄ x", "type": "comm of x with y^2"},
+    {"id": 4531, "expr": "x ⋄ (y ⋄ z) = (y ⋄ z) ⋄ x", "type": "comm of x with (y ⋄ z)"},
+    {"id": 4544, "expr": "x ⋄ (y ⋄ z) = (z ⋄ y) ⋄ x", "type": "mixed comm"},
+    {"id": 4635, "expr": "(x ⋄ y) ⋄ x = (y ⋄ x) ⋄ x", "type": "comm in outer"},
+    {"id": 4677, "expr": "(x ⋄ y) ⋄ z = (y ⋄ x) ⋄ z", "type": "comm in outer (general)"}
+  ],
+  "structural_interpretation": "12 commutativity-derived equations + reflexivity + the commutativity axiom. Each derived equation is obtained by applying commutativity at a single position in an expression of depth ≤ 3 (the '1-step deductive closure' of commutativity in ETP's depth-3 enumeration scheme).",
+  "uniqueness_claim": "Family C is the unique commutative-magma equational profile of size 14 at orders 3 and 5 (theorem, by exhaustive enumeration). Conjecturally unique at all orders ≥ 5.",
+  "uniqueness_evidence": {
+    "order_3": {"total_commutative_magmas": 729, "with_profile_14": 120, "in_Family_C": 120, "non_Family_C": 0},
+    "order_5": {"total_symmetric_latin_squares": 720, "with_profile_14": 480, "in_Family_C": 480, "non_Family_C": 0}
+  },
+  "realizers": {
+    "smallest_known": {"order": 3, "table": [[1,2,0],[2,0,0],[0,0,0]], "note": "Lex-first commutative non-associative 3x3 magma satisfying exactly the Family C 14 equations. Verified by find_smallest_family_c_realizer.py. There are 120 such order-3 realizers total."},
+    "canonical_order_10": {"name": "σ-magma", "sigma": [0,7,1,3,2,4,5,6,8,9], "definition": "x ⋄ y = σ((x+y) mod 10)", "source": "Trinity Infinity Geometry; J59"},
+    "other_known": ["BHML", "CL_STD", "σ_10^min", "σ_n^min for n≥5", "σ_n^TIG for n≥6"]
+  },
+  "cite": ["J60 (Sigma-magma rigidity)", "J61 (Magma-by-ETP-profile taxonomy)"]
+}

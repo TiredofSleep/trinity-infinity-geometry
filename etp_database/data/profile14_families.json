@@ -1,0 +1,43 @@
+{
+  "title": "Known equational profiles of size 14 in ETP",
+  "date_freeze": "2026-05-27",
+  "n_families": 23,
+  "scope": "All distinct equational profiles E ⊆ {ETP equation IDs} such that |E| = 14, for which at least one finite realizer is currently known. Sources: ETP tabulated magma data (orders 2-13) + σ-magma + linear classification at orders 3-10.",
+  "families": [
+    {"id": 1,  "anchor_id": 23,   "anchor_expr": "x = (x · x) · x",                       "smallest_order": 3, "realizer_table": [[0,0,2],[2,2,0],[1,1,0]], "name": "P_{23}_a"},
+    {"id": 2,  "anchor_id": 23,   "anchor_expr": "x = (x · x) · x",                       "smallest_order": 4, "realizer_table": [[2,1,3,3],[2,3,2,3],[0,2,1,3],[0,1,2,3]], "name": "P_{23}_b"},
+    {"id": 3,  "anchor_id": 47,   "anchor_expr": "x = x · (x · (x · x))",                 "smallest_order": 4, "realizer_table": [[2,0,1,1],[3,1,1,1],[3,2,2,2],[3,3,3,3]], "name": "P_{47}_a"},
+    {"id": 4,  "anchor_id": 47,   "anchor_expr": "x = x · (x · (x · x))",                 "smallest_order": 4, "realizer_table": [[0,2,1,3],[3,0,0,1],[3,0,2,2],[2,3,3,0]], "name": "P_{47}_b"},
+    {"id": 5,  "anchor_id": 47,   "anchor_expr": "x = x · (x · (x · x))",                 "smallest_order": 6, "realizer_table": null, "realizer_source": "ETP cancellative-manual order 6", "name": "P_{47}_c"},
+    {"id": 6,  "anchor_id": 47,   "anchor_expr": "x = x · (x · (x · x))",                 "smallest_order": 9, "realizer_table": null, "realizer_source": "ETP cancellative-manual order 9 (Latin square)", "name": "P_{47}_d"},
+    {"id": 7,  "anchor_id": 99,   "anchor_expr": "x = x · ((x · x) · x)",                 "smallest_order": 4, "realizer_table": [[3,2,0,1],[3,0,1,2],[3,0,2,1],[2,0,3,1]], "name": "P_{99}_a"},
+    {"id": 8,  "anchor_id": 99,   "anchor_expr": "x = x · ((x · x) · x)",                 "smallest_order": 4, "realizer_table": [[1,3,0,1],[2,1,3,1],[1,1,1,2],[2,3,3,3]], "name": "P_{99}_b"},
+    {"id": 9,  "anchor_id": 99,   "anchor_expr": "x = x · ((x · x) · x)",                 "smallest_order": 7, "realizer_table": null, "realizer_source": "ETP vampire-generated order 7", "name": "P_{99}_c"},
+    {"id": 10, "anchor_id": 203,  "anchor_expr": "x = (x · (x · x)) · x",                 "smallest_order": 4, "realizer_table": [[1,2,1,1],[3,3,3,2],[0,1,2,3],[2,0,0,0]], "name": "P_{203}_a"},
+    {"id": 11, "anchor_id": 203,  "anchor_expr": "x = (x · (x · x)) · x",                 "smallest_order": 8, "realizer_table": null, "realizer_source": "ETP vampire-generated order 8", "name": "P_{203}_b"},
+    {"id": 12, "anchor_id": 203,  "anchor_expr": "x = (x · (x · x)) · x",                 "smallest_order": 7, "realizer_table": null, "realizer_source": "Linear magma x·y = (5x+3y+6) mod 7", "name": "Family R (right-cancellation-centered)", "alias": "Family R"},
+    {"id": 13, "anchor_id": 255,  "anchor_expr": "x = ((x · x) · x) · x",                 "smallest_order": 6, "realizer_table": null, "realizer_source": "ETP vampire-generated order 6", "name": "P_{255}"},
+    {"id": 14, "anchor_id": 307,  "anchor_expr": "x · x = x · (x · x)",                   "smallest_order": 3, "realizer_table": [[0,0,1],[0,0,0],[0,1,2]], "name": "P_{307} (SMALLEST profile-14 realizer in ETP)"},
+    {"id": 15, "anchor_id": 359,  "anchor_expr": "x · x = (x · x) · x",                   "smallest_order": 4, "realizer_table": [[2,0,1,0],[1,3,1,1],[2,2,3,2],[3,3,3,3]], "name": "P_{359}"},
+    {"id": 16, "anchor_id": 411,  "anchor_expr": "x = x · (x · (x · (x · x)))",           "smallest_order": 8, "realizer_table": null, "realizer_source": "ETP cancellative-manual order 8", "name": "P_{411}"},
+    {"id": 17, "anchor_id": 1629, "anchor_expr": "x = (x · x) · ((x · x) · x)",           "smallest_order": 4, "realizer_table": [[1,1,2,3],[2,3,0,1],[3,2,1,0],[1,0,3,2]], "name": "P_{1629}_a"},
+    {"id": 18, "anchor_id": 1629, "anchor_expr": "x = (x · x) · ((x · x) · x)",           "smallest_order": 4, "realizer_table": [[1,1,1,1],[2,2,0,3],[2,2,1,3],[2,2,1,3]], "name": "P_{1629}_b"},
+    {"id": 19, "anchor_id": 1629, "anchor_expr": "x = (x · x) · ((x · x) · x)",           "smallest_order": 8, "realizer_table": null, "realizer_source": "3 magmas at order 8 in this family (ETP)", "name": "P_{1629}_c"},
+    {"id": 20, "anchor_id": 1832, "anchor_expr": "x = (x · (x · x)) · (x · x)",           "smallest_order": 4, "realizer_table": [[2,0,1,3],[3,0,0,2],[0,2,3,1],[1,3,2,0]], "name": "P_{1832}"},
+    {"id": 21, "anchor_id": 3253, "anchor_expr": "x · x = x · (x · (x · x))",             "smallest_order": 4, "realizer_table": [[0,0,0,3],[3,3,3,0],[3,3,3,3],[2,2,2,2]], "name": "P_{3253}"},
+    {"id": 22, "anchor_id": 3862, "anchor_expr": "x · x = (x · (x · x)) · x",             "smallest_order": 5, "realizer_table": null, "realizer_source": "ETP vampire-generated order 5", "name": "P_{3862}"},
+    {"id": 23, "anchor_id": 43,   "anchor_expr": "x · y = y · x",                         "smallest_order": 3, "realizer_table": null, "realizer_source": "Order-10 σ-magma + BHML + CL_STD + every commutative QG at orders ≥ 5", "name": "Family C (commutativity-centered)", "alias": "Family C"}
+  ],
+  "structural_classes": {
+    "single_variable_power_identities": [23, 47, 99, 203, 255, 411],
+    "self_power_equalities": [307, 359, 3253, 3862],
+    "depth_4_power_identities": [1629, 1832],
+    "two_variable": [43]
+  },
+  "key_observations": [
+    "Of the 23 known profile-14 anchor equations, only equation 43 (commutativity) involves 2 distinct variables. All other anchors are single-variable power identities.",
+    "Family C is the unique commutative profile-14 family at orders 3 and 5 (theorem, by exhaustive enumeration of 729 + 720 candidates).",
+    "Of the 22 single-variable-anchor families in ETP tabulated data: 0 are commutative.",
+    "Of the 47 commutative magmas in ETP tabulated data: smallest profile is 29 (small-order coincidences push above 14)."
+  ]
+}

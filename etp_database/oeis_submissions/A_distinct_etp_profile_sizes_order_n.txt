@@ -1,0 +1,14 @@
+%S A_distinct_etp_profile_sizes_order_n ?,?,158
+%N Number of distinct ETP equational profile *sizes* (= cardinalities of Eq_ETP(T)) realized by some magma T of order n.
+%C For a magma T of order n, define Eq_ETP(T) = { id : T satisfies the equation with ETP id }. The profile size is |Eq_ETP(T)|.
+%C a(n) counts the number of distinct values of |Eq_ETP(T)| as T ranges over all n^(n^2) raw magma tables of order n.
+%C a(3) = 158, verified by exhaustive enumeration of all 19,683 = 3^9 order-3 magma tables (Trinity Infinity Geometry T-3 enumeration, 2026).
+%C Order-3 profile sizes range from 1 (universe) to 1556 (degenerate-constant satisfying many trivialities).
+%C a(1), a(2) computable but not yet computed.
+%C Sequence grows rapidly with n.
+%H T. Tao et al., <a href="https://github.com/teorth/equational_theories">Equational Theories Project</a> (2024-2026).
+%H Trinity Infinity Geometry, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/etp_database">ETP Profile Database, order-3 census</a> (2026).
+%K nonn,more
+%O 1,3
+%A Trinity Infinity Geometry Project, May 27 2026
+%E PARTIAL — only a(3) verified.

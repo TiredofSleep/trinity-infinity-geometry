@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ETP Profile Database</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 920px; margin: 2em auto; padding: 0 1em; color: #222; line-height: 1.5; }
+  h1, h2, h3 { color: #111; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { text-align: left; padding: 0.4em 0.6em; border-bottom: 1px solid #ddd; }
+  th { background: #f5f5f5; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; font-family: "JetBrains Mono", Menlo, Consolas, monospace; }
+  pre { background: #f4f4f4; padding: 0.8em; border-radius: 6px; overflow-x: auto; }
+  .anchor { background: #fff8d6; padding: 0.05em 0.2em; border-radius: 2px; }
+  .verified { color: #2a7; font-weight: 600; }
+  nav a { margin-right: 1em; }
+  details { margin: 0.5em 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  .small { font-size: 0.9em; color: #666; }
+</style>
+</head>
+<body>
+
+<h1>ETP Profile Database</h1>
+
+<p>A queryable companion dataset to Tao et&nbsp;al.'s
+<a href="https://github.com/teorth/equational_theories">Equational Theories Project</a>:
+for every magma we have classified, here is its equational profile (the set of ETP equation
+IDs it satisfies) together with structural metadata.</p>
+
+<p class="small">Data freeze: 2026-05-27 &nbsp;|&nbsp; Companion to J60, J61
+&nbsp;|&nbsp; <a href="README.md">Full README</a></p>
+
+<nav><a href="#family-c">Family C</a> <a href="#profile14">Profile 14 families</a>
+<a href="#order3">Order 3 census</a> <a href="#order5">Order 5 census</a>
+<a href="#oeis">OEIS submissions</a> <a href="#query">CLI usage</a></nav>
+
+<hr>
+
+<h2 id="family-c">Family C — the closure of commutativity</h2>
+
+<p><strong>Definition.</strong> Family C is the implication-closure of ETP equation 43
+(<code>x ⋄ y = y ⋄ x</code>, commutativity) under the ETP depth-3 equation enumeration.
+The closure has exactly 14 members. <span class="verified">Verified</span> against ETP's
+8.18M-edge proved-implication graph (<a href="scripts/verify_family_c.py">verify_family_c.py</a>).</p>
+
+<table>
+<tr><th>ETP ID</th><th>Equation</th><th>Type</th></tr>
+<tr><td class="num">1</td><td><code>x = x</code></td><td>reflexivity</td></tr>
+<tr><td class="num anchor">43</td><td><code>x ⋄ y = y ⋄ x</code></td><td>commutativity (anchor)</td></tr>
+<tr><td class="num">4283</td><td><code>x ⋄ (x ⋄ y) = x ⋄ (y ⋄ x)</code></td><td>comm applied to inner</td></tr>
+<tr><td class="num">4358</td><td><code>x ⋄ (y ⋄ z) = x ⋄ (z ⋄ y)</code></td><td>comm applied to inner</td></tr>
+<tr><td class="num">4380</td><td><code>x ⋄ (x ⋄ x) = (x ⋄ x) ⋄ x</code></td><td>power-associativity (cubic)</td></tr>
+<tr><td class="num">4398</td><td><code>x ⋄ (x ⋄ y) = (x ⋄ y) ⋄ x</code></td><td>flexibility-like</td></tr>
+<tr><td class="num">4405</td><td><code>x ⋄ (x ⋄ y) = (y ⋄ x) ⋄ x</code></td><td>comm-derivative</td></tr>
+<tr><td class="num">4435</td><td><code>x ⋄ (y ⋄ x) = (x ⋄ y) ⋄ x</code></td><td>flexibility variant</td></tr>
+<tr><td class="num">4442</td><td><code>x ⋄ (y ⋄ x) = (y ⋄ x) ⋄ x</code></td><td>comm-derivative</td></tr>
+<tr><td class="num">4482</td><td><code>x ⋄ (y ⋄ y) = (y ⋄ y) ⋄ x</code></td><td>comm of x with y²</td></tr>
+<tr><td class="num">4531</td><td><code>x ⋄ (y ⋄ z) = (y ⋄ z) ⋄ x</code></td><td>comm of x with (y ⋄ z)</td></tr>
+<tr><td class="num">4544</td><td><code>x ⋄ (y ⋄ z) = (z ⋄ y) ⋄ x</code></td><td>mixed comm</td></tr>
+<tr><td class="num">4635</td><td><code>(x ⋄ y) ⋄ x = (y ⋄ x) ⋄ x</code></td><td>comm in outer</td></tr>
+<tr><td class="num">4677</td><td><code>(x ⋄ y) ⋄ z = (y ⋄ x) ⋄ z</code></td><td>comm in outer (general)</td></tr>
+</table>
+
+<details>
+<summary>Realizers</summary>
+<ul>
+  <li><strong>Smallest (lex-first commutative non-associative)</strong> at order 3:
+      <code>[[1,2,0],[2,0,0],[0,0,0]]</code> &nbsp;<span class="small">(1 of 120 commutative order-3 realizers)</span></li>
+  <li><strong>σ-magma</strong> at order 10: <code>x ⋄ y = σ((x+y) mod 10)</code>,
+      σ = <code>[0,7,1,3,2,4,5,6,8,9]</code></li>
+  <li>BHML, CL_STD, σ<sub>10</sub><sup>min</sup>, σ<sub>n</sub><sup>min</sup> for n ≥ 5
+      <span class="small">(Trinity Infinity Geometry, J59 / J60)</span></li>
+</ul>
+</details>
+
+<details>
+<summary>Uniqueness (Theorem at orders 3, 5)</summary>
+<p>Family C is the unique commutative profile-14 equational class at orders 3 and 5.</p>
+<table>
+<tr><th>Order</th><th>Commutative magmas / Latin squares</th><th>Profile-14</th><th>Non-Family-C</th></tr>
+<tr><td>3</td><td class="num">729</td><td class="num">120</td><td class="num">0</td></tr>
+<tr><td>5</td><td class="num">720</td><td class="num">480</td><td class="num">0</td></tr>
+</table>
+<p class="small">Conjecturally unique at all orders ≥ 5 (Conjecture 1, J60 / J61).</p>
+</details>
+
+<hr>
+
+<h2 id="profile14">All known profile-14 equational classes</h2>
+
+<p>Profile size 14 is the smallest equational profile achievable by a commutative magma
+at orders ≥ 5 (the "commutativity-forced minimum"). It is <em>also</em> achieved by at
+least 22 distinct non-commutative families, each anchored on a single-variable power
+identity. The 23 known families:</p>
+
+<table>
+<tr><th>#</th><th>Anchor</th><th>Equation</th><th>Min order</th><th>Notes</th></tr>
+<tr><td>1</td><td>23</td><td><code>x = (x · x) · x</code></td><td>3</td><td>P<sub>23a</sub></td></tr>
+<tr><td>3</td><td>47</td><td><code>x = x · (x · (x · x))</code></td><td>4</td><td>P<sub>47</sub> (4 distinct)</td></tr>
+<tr><td>7</td><td>99</td><td><code>x = x · ((x · x) · x)</code></td><td>4</td><td>P<sub>99</sub> (3 distinct)</td></tr>
+<tr><td>10</td><td>203</td><td><code>x = (x · (x · x)) · x</code></td><td>4</td><td>P<sub>203</sub> (3 distinct, incl. <strong>Family R</strong>)</td></tr>
+<tr><td>13</td><td>255</td><td><code>x = ((x · x) · x) · x</code></td><td>6</td><td>—</td></tr>
+<tr><td>14</td><td>307</td><td><code>x · x = x · (x · x)</code></td><td>3</td><td>smallest profile-14 realizer in ETP</td></tr>
+<tr><td>15</td><td>359</td><td><code>x · x = (x · x) · x</code></td><td>4</td><td>—</td></tr>
+<tr><td>16</td><td>411</td><td><code>x = x · (x · (x · (x · x)))</code></td><td>8</td><td>—</td></tr>
+<tr><td>17</td><td>1629</td><td><code>x = (x · x) · ((x · x) · x)</code></td><td>4</td><td>P<sub>1629</sub> (3+ distinct)</td></tr>
+<tr><td>20</td><td>1832</td><td><code>x = (x · (x · x)) · (x · x)</code></td><td>4</td><td>—</td></tr>
+<tr><td>21</td><td>3253</td><td><code>x · x = x · (x · (x · x))</code></td><td>4</td><td>—</td></tr>
+<tr><td>22</td><td>3862</td><td><code>x · x = (x · (x · x)) · x</code></td><td>5</td><td>—</td></tr>
+<tr><td>23</td><td class="anchor">43</td><td><code>x · y = y · x</code></td><td>3</td><td><strong>Family C</strong> — only 2-variable anchor</td></tr>
+</table>
+
+<p class="small">Full table with realizer magmas:
+<a href="data/profile14_families.json">profile14_families.json</a></p>
+
+<hr>
+
+<h2 id="order3">Order 3 census (all 19,683 magmas)</h2>
+
+<p>Every order-3 magma table (3<sup>9</sup> = 19,683), classified by ETP equational
+profile. <a href="data/order3_profile_distribution.json">Full JSON</a>.</p>
+
+<table>
+<tr><th>Profile size</th><th># magmas</th><th># distinct equation sets</th><th># commutative</th></tr>
+<tr><td>1</td><td class="num">588</td><td class="num">1</td><td class="num">0</td></tr>
+<tr><td>14</td><td class="num">660</td><td class="num">82</td><td class="num">120 (all in Family C)</td></tr>
+<tr><td>1556</td><td class="num">3</td><td class="num">1</td><td class="num">3</td></tr>
+</table>
+
+<p class="small">158 distinct profile sizes total. Range 1–1556.</p>
+
+<hr>
+
+<h2 id="order5">Order 5 census (commutative quasigroups)</h2>
+
+<p>All 720 symmetric 5×5 Latin squares (= commutative order-5 quasigroups), classified
+by ETP profile. <a href="data/order5_commutative_qg.json">Full JSON</a>.</p>
+
+<table>
+<tr><th>Profile size</th><th># magmas</th></tr>
+<tr><td>14 (Family C)</td><td class="num verified">480 — all in Family C</td></tr>
+<tr><td>15</td><td class="num">120</td></tr>
+<tr><td>32</td><td class="num">30</td></tr>
+<tr><td>89</td><td class="num">24</td></tr>
+<tr><td>90</td><td class="num">30</td></tr>
+<tr><td>176</td><td class="num">6</td></tr>
+<tr><td>294</td><td class="num">30</td></tr>
+</table>
+
+<p class="verified">All 480 profile-14 cases are in Family C — Conjecture 1 verified at order 5.</p>
+
+<hr>
+
+<h2 id="oeis">OEIS submission drafts</h2>
+
+<p>Draft submissions for sequences we believe are novel
+(<a href="oeis_submissions/">oeis_submissions/</a>):</p>
+
+<ul>
+  <li><a href="oeis_submissions/A_family_c_equations.txt">A_family_c_equations</a>:
+      the 14 ETP IDs of Family C — 1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442, 4482, 4531, 4544, 4635, 4677</li>
+  <li><a href="oeis_submissions/A_size14_closure_anchors.txt">A_size14_closure_anchors</a>:
+      8 anchor IDs of size-14 ETP closure classes — 40, 43, 1312, 2241, 4295, 4303, 4610, 4637</li>
+  <li><a href="oeis_submissions/A_commutative_profile14_at_order_n.txt">A_commutative_profile14_at_order_n</a>:
+      number of order-n commutative magmas with profile = Family C; partial (n=3:120, n=5:480)</li>
+  <li><a href="oeis_submissions/A_distinct_etp_profile_sizes_order_n.txt">A_distinct_etp_profile_sizes_order_n</a>:
+      number of distinct ETP profile sizes at order n; partial (n=3:158)</li>
+</ul>
+
+<hr>
+
+<h2 id="query">Command-line query</h2>
+
+<pre><code>python scripts/query.py stats                 # summary
+python scripts/query.py family C              # Family C contents
+python scripts/query.py equation 43           # closure containing equation 43
+python scripts/query.py profile 14            # everything at profile size 14
+python scripts/query.py magma "[[0,1,2],[1,2,0],[2,0,1]]"  # profile of a table</code></pre>
+
+<p>JSON output via <code>--json</code>. Magma profile lookup requires ETP's
+<code>explore_magma.py</code> (set <code>ETP_PATH</code>).</p>
+
+<hr>
+
+<h2>Citation</h2>
+
+<pre><code>@misc{tig_etp_database_2026,
+  title  = {ETP Profile Database: Equational Profiles of Classified Magmas},
+  author = {Trinity Infinity Geometry Project},
+  year   = {2026},
+  url    = {https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/etp_database},
+  note   = {Companion to Tao et al., Equational Theories Project}
+}</code></pre>
+
+</body>
+</html>

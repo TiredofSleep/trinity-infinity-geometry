@@ -1,0 +1,20 @@
+%S A_family_c_equations 1,43,4283,4358,4380,4398,4405,4435,4442,4482,4531,4544,4635,4677
+%N The 14 equation IDs of Family C: the implication-closure of x*y = y*x (equation 43, commutativity) in the depth-3 enumeration of magma equations of Tao et al.'s Equational Theories Project (ETP).
+%C This is a finite sequence of length 14.
+%C In Tao et al.'s ETP (Tao, Anthony, Kim, et al. 2024-2025), the equation x*y = y*x is assigned the ID 43 under the canonical depth-≤3 enumeration of magma equations on the alphabet {x, y, z, ...}. The implication-closure of equation 43 — the set of all ETP equations forced to hold whenever commutativity holds — is exactly this 14-element set.
+%C The 12 derived equations (4283 through 4677) are precisely the equations obtained by applying commutativity at a single position in an expression of depth ≤ 3. They include the cubic power-associativity (4380), several flexibility-like identities (4398, 4435), and the general "comm-in-outer" rule (4677).
+%C This 14-element set is the smallest equational profile achievable by a commutative magma at orders ≥ 5 (the "commutativity-forced minimum"). Conjecturally — verified at orders 3 and 5 by exhaustive enumeration — it is the unique 14-element equational closure containing equation 43 over magmas with ≥ 5 elements.
+%C Realizers include the σ-magma at order 10 (x ⋄ y = σ((x+y) mod 10) with σ = [0,7,1,3,2,4,5,6,8,9]) and 120 commutative non-associative magmas at order 3 (Trinity Infinity Geometry, J60, J61).
+%C The closure is verified via ETP's 22-million-edge implication graph.
+%H T. Tao et al., <a href="https://github.com/teorth/equational_theories">Equational Theories Project</a> (2024-2026).
+%H Trinity Infinity Geometry, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/etp_database">ETP Profile Database</a> (2026).
+%H J60, <a href="https://example.org/J60">Sigma-magma rigidity and the commutativity-forced minimum</a> (2026).
+%H J61, <a href="https://example.org/J61">Magma-by-ETP-profile: a taxonomy methodology</a> (2026).
+%e a(1) = 1 (reflexivity, x = x).
+%e a(2) = 43 (commutativity, x*y = y*x).
+%e a(3) = 4283 (x*(x*y) = x*(y*x), commutativity applied inside).
+%e a(14) = 4677 ((x*y)*z = (y*x)*z, commutativity in the outer position).
+%K fini,full,nonn
+%O 1,2
+%A Trinity Infinity Geometry Project, May 27 2026
+%E See trinity-infinity-geometry/etp_database/data/family_c.json for the full equation texts and structural types.

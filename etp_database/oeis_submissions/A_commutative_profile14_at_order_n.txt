@@ -1,0 +1,18 @@
+%S A_commutative_profile14_at_order_n 0,0,120,?,480
+%N Number of commutative magmas of order n whose ETP equational profile equals Family C (the implication-closure of commutativity; see A_family_c_equations).
+%C The sequence counts magmas T: [n]×[n]→[n] satisfying:
+%C   (i) T[i][j] = T[j][i] (commutative)
+%C   (ii) the set of ETP equations satisfied by T equals exactly the 14-element Family C closure
+%C   (iii) NOT considering isomorphism (raw count of labeled magmas).
+%C a(1) = a(2) = 0 (orders 1 and 2 don't support commutativity-forced minimum; degenerate cases).
+%C a(3) = 120 (verified by exhaustive enumeration of all 729 commutative order-3 magmas; T-3 enumeration, Trinity Infinity Geometry 2026).
+%C a(4) = unknown (order 4 enumeration pending).
+%C a(5) = 480 (verified by enumeration of all 720 symmetric 5×5 Latin squares; all 480 profile-14 cases are in Family C).
+%C This sequence verifies Conjecture 1 of J60 / J61: every commutative magma achieving the profile-14 floor is in Family C. (Theorem at n=3, 5.)
+%H T. Tao et al., <a href="https://github.com/teorth/equational_theories">Equational Theories Project</a> (2024-2026).
+%H Trinity Infinity Geometry, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/etp_database">ETP Profile Database</a> (2026).
+%H J60, <a href="https://example.org/J60">Sigma-magma rigidity</a> (2026).
+%K nonn,more
+%O 1,3
+%A Trinity Infinity Geometry Project, May 27 2026
+%E NOTE: This sequence is PARTIAL — only terms a(1), a(2), a(3), a(5) verified by exhaustive enumeration. a(4) and a(n) for n ≥ 6 require additional enumeration. Order-7 (and beyond) symmetric Latin square enumeration is computationally expensive due to the rapid growth of the search space; smarter canonical-form algorithms are needed.

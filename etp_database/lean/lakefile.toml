@@ -1,0 +1,10 @@
+name = "Fossil4295"
+defaultTargets = ["Fossil4295"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+version = "git#master"
+
+[[lean_lib]]
+name = "Fossil4295"
