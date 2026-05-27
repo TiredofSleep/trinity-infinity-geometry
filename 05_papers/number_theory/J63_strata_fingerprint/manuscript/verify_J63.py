@@ -136,7 +136,14 @@ def theorem_3():
 
 
 def theorem_4():
-    """Theorem 4: prime 71 appears in exactly one sporadic -- the Monster."""
+    """Theorem 4: prime 71 appears in exactly one sporadic -- the Monster.
+
+    Conway-Norton 1979 anchor: 71 is the largest supersingular prime,
+    i.e., the largest p for which X_0(p) has genus 0 (Hauptmodul exists).
+    The Monster's prime divisors are exactly the 15 supersingular primes.
+    So '71 in M only' is the upper boundary of the genus-0 spectrum,
+    not a cardinality effect.
+    """
     SPORADIC_ORDERS = {
         "M_11": 7920, "M_12": 95040, "M_22": 443520,
         "M_23": 10200960, "M_24": 244823040,

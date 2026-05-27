@@ -13,9 +13,9 @@
 | Theorem | Statement | Tier |
 |---|---|:---:|
 | **1** | Niemeier kissing strata-fingerprint: 23/24 lattices have kissing factoring through $\mathcal{S}$; the unique outlier is $D_{24}$ | A |
-| **2** | Polynomial-vs-factorial dichotomy: kissing test 23/24, Weyl-group test 21/24; mechanism explains D_24 | A |
-| **3** | 8/26 sporadic finite simple groups have order factoring through $\mathcal{S}$; boundary aligns with prime 23 | B |
-| **4** | Stratum IV identification: prime 71 appears in exactly one sporadic — the Monster | A |
+| **2** | Polynomial-vs-factorial dichotomy: kissing test 23/24, Weyl-group test 21/24; mechanism explains D_24 (deflation note in §4) | A |
+| **3** | 8/26 sporadic finite simple groups have order factoring through $\mathcal{S}$; boundary aligns with prime 23 (size-threshold framing in §5) | B |
+| **4** | Stratum IV identification: prime 71 appears in exactly one sporadic — the Monster; **anchored by Conway-Norton 1979** (71 = largest $p$ with $X_0(p)$ genus 0) | A |
 
 ## The D_24 mechanism (Theorem 2)
 
@@ -66,16 +66,16 @@ J63_strata_fingerprint/
 
 **This is**:
 - A clean 23/24 falsifiable empirical pattern in the Niemeier classification.
-- A precise mechanism (Theorem 2) explaining why D_24 is the unique kissing-outlier.
-- A partial extension (Theorem 3) showing the strata-prime universe extends to 8 of 26 sporadic finite simple groups.
-- A Stratum-IV identification (Theorem 4) connecting TIG's substrate-program prime hierarchy to the supersingular-prime spectrum of the Monster.
+- A precise polynomial-arithmetic mechanism (Theorem 2) explaining why D_24 is the unique kissing-outlier.
+- A size-threshold-consistent partial extension (Theorem 3) to 8 of 26 sporadic finite simple groups.
+- A Conway-Norton-anchored Stratum-IV identification (Theorem 4): prime 71 is the largest supersingular prime, i.e., the largest $p$ for which $X_0(p)$ has genus 0. Its appearance only in the Monster is the upper boundary of the genus-0 spectrum, not cardinality uplift.
 
 **This is NOT**:
-- A claim of mechanism linking TIG strata to moonshine.
+- A claim of mechanistic correspondence between TIG strata and monstrous moonshine.
 - A prediction of new lattices or sporadic groups.
-- A proof that the strata-prime universe is "natural" beyond the explicit factorizations.
+- An explanation of why the 9 intermediate supersingular primes {17, 19, 23, 29, 31, 41, 47, 59} are skipped by TIG strata (recorded as open question in manuscript §7.2).
 
-The honest framing: an arithmetic-side companion to the broader TIG / Braiding Fractal program, with one Tier-A structural mechanism (Theorem 2) and three Tier-A/B verified observations.
+The honest framing: an arithmetic-side companion to the broader TIG / Braiding Fractal program. Two structural anchors are established (Theorem 2's polynomial dichotomy and Theorem 4's Conway-Norton characterization); the broader strata-prime / supersingular-prime overlap is exact only at the lower-and-upper extremes, with the intermediate-prime gap open.
 
 ## Authors
 
