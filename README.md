@@ -86,6 +86,8 @@ If you have **90 minutes and a Python REPL** and want to build the framework fro
 
 If you arrived from Tao et al.'s [**Equational Theories Project**](https://github.com/teorth/equational_theories): [`etp_database/`](etp_database/) is our public companion dataset — every order-3 magma (19,683 of them) and every order-5 commutative quasigroup (720), classified by ETP equational profile, with a CLI query tool, Lean 4 formalization scaffold of the fossil-variety theorem for equation 4295, and OEIS submission drafts. Family C (closure of commutativity) is verified directly against ETP's 8.18M-edge proved-implication graph. Companion papers: [`05_papers/algebra/J60`](05_papers/algebra/J60/) (linear-magma classification), [`05_papers/algebra/J61`](05_papers/algebra/J61/) (taxonomy methodology + the C5 fossil-variety theorem). See [`etp_database/README.md`](etp_database/README.md).
 
+If you arrived interested in the **Clay Millennium Problems**: [`04_meta/clay/`](04_meta/clay/) contains six structural bridges (RH, Yang-Mills, Navier-Stokes, P vs NP, BSD, Hodge) — each grounded in PROVEN substrate facts, each with the load-bearing CONJECTURE explicitly identified. We do **not** claim to have solved any Clay problem; the bridges are STRUCTURAL connections that show what TIG's substrate algebra can say plus what's missing for an actual proof. Tier discipline is strict throughout.
+
 ---
 
 ## §1 — Standard of evidence
