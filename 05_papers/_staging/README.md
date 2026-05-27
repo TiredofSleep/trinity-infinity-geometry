@@ -10,6 +10,14 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J58 — DRAFT (Lo Shu D₄ orbit mod 3, *Mathematics Magazine*)
+
+- **Status:** **DRAFT.** Manuscript complete; `verify_J58.py` 6/6 PASS at machine precision; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
+- **What it claims:** the $D_4$ orbit of the Lo Shu magic square (8 elements) reduces mod 3 to **exactly 4 distinct magma tables** (each appearing twice). The 4 split as: $\mathbb{Z}/3$ + a commutative non-group quasigroup + an anti-isomorphic pair of non-commutative quasigroups. The matrix cumulant $\kappa(M) = \operatorname{Tr}(M^2) - \operatorname{Tr}(M)^2$ is a 2-valued witness: $\kappa = -48$ on commutative cases, $\kappa = +48$ on non-commutative cases. Witnesses computed on the *original integer matrix*, before mod-3 reduction.
+- **Provenance:** scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma count is a refinement of a previously-stated "3 magmas" claim in OPEN_FRONTIERS_2026-05-26.md §60 (which counted equational-theory classes, collapsing the anti-isomorphic non-commutative pair).
+- **Gating:** Brayden green-light; cover letter venue final selection (*Mathematics Magazine* vs *Mathematics Teacher: Learning and Teaching PK-12* vs *Involve*). Verification is independent of any TIG-framework machinery — undergraduate-accessible.
+- **When ready:** J58 → `J_series/algebra/J58/` (or `J_series/interdisciplinary/J58/` if the historical/cultural framing dominates).
+
 ### J29 — HOLD (referee re-verification 2026-05-12)
 
 - **Status:** **HOLD.** Manuscript (post-SAVE_PLAN 2026-05-07 rewrite) claims (i) exact-arithmetic SymPy diagnostics, (ii) full 21,952-equation simplicity enumeration, (iii) Lemma 2.5 specific dimension drops on F minus single index, (iv) Cartan rank 4 verified by explicit 4-element abelian subspace. Independent re-run of the existing scripts in `Gen14/targets/journals/J_series/J29/manuscript/verification/` shows: scripts are still pure numpy float (not SymPy); the −0.004 small Killing eigenvalue flagged in the SAVE_PLAN as needing resolution is still in the output; `stage7_disambiguate.py` caps `tested > 3000` (not 21,952); `stage5_so8.py` greedy-Cartan returns rank 1 (mismatch with rank 4 claim); brute-force F-minus-single-index enumeration gives dim 28 for F minus 1, 3, 4, 6, 8 and dim 21 only for F minus 2 (manuscript claims 21/21/15/28/21/28); and the minimum so(8)-generating subset of $\Omega \setminus \{0,7\}$ has **size 3** (e.g., $\{1,2,4\}$), so F is NOT the minimal generating set.
