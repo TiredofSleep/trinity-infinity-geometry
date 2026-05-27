@@ -10,6 +10,19 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J59 — DRAFT (σ-magma algebraic rigidity, *Semigroup Forum*)
+
+- **Status:** **DRAFT.** Four rigidity theorems PROVED by exhaustive computational search; `verify_J59.py` 4/4 PASS at machine precision in ~3 seconds; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J59/`.
+- **What it proves:**
+  1. **|Aut(σ-magma)| = 1**: exhaustive search over $S_{10}$ confirms only the identity is a magma automorphism.
+  2. **Congruence-simple**: exhaustive search over Bell(10) = 115,975 partitions finds only the trivial (identity + universal) magma congruences. No non-trivial homomorphic image exists.
+  3. **Exactly 5 sub-magmas**: $\{0\}, \{1\}, \{2\}$ (idempotents), $\{1, 6\} \cong \mathbb{Z}/2$ (unique non-trivial proper), and the full magma. NEGATIVE: J35's 4-core $\{0, 7, 8, 9\}$ is NOT a sub-magma; nor is σ's fixed-point set $\{0, 3, 8, 9\}$.
+  4. **2-generated, $\{1, 6\}$ the unique non-generating pair**: every other pair generates the full magma in ≤ 4 steps.
+- **Significance:** The four properties together make the σ-magma a "maximally indecomposable" commutative quasigroup of order 10. This is a strong necessary condition for the OPEN_FRONTIERS §64 claim that the σ-magma satisfies exactly 14 ETP equations.
+- **Provenance:** Extended scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26), following Brayden's directive: "the negatives are the most interesting information."
+- **Gating:** Brayden green-light; venue final selection.
+- **When ready:** J59 → `J_series/algebra/J59/`.
+
 ### J58 — DRAFT v3 (Lo Shu D₄ orbit mod 3 + Dürer extension + Diagonal Lemma, *Mathematics Magazine*)
 
 - **Status:** **DRAFT v3.** Manuscript complete with TWO structural theorems PROVED (V₄′-coset preserves κ + Diagonal Lemma forcing non-commutativity), Dürer 4×4 extension added; `verify_J58.py` **10/10 PASS at machine precision** (was 6/6 in v1, 8/8 in v2); cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
