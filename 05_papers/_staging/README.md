@@ -10,11 +10,19 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
-### J59 v2 — DRAFT (σ-magma algebraic rigidity + ETP profile VERIFIED, *Semigroup Forum*)
+### J59 v3 — DRAFT (σ-magma rigidity + ETP profile VERIFIED + uniqueness REFUTED, *Semigroup Forum*)
 
-**ETP UPDATE (2026-05-27):** After cloning Tao's Equational Theories Project repo, ran the σ-magma through `scripts/explore_magma.py`. **The 14-equation claim is CONFIRMED at machine precision** — equation IDs `[1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442, 4482, 4531, 4544, 4635, 4677]`. Also confirmed: every numerical claim in OPEN_FRONTIERS §§64-65 (Lo Shu D₄ profiles {60, 179, 313}, 179 ∩ 313 = 63, -(x+y) mod 4 = 294, 179-magma non-commutative).
+**ETP UPDATE (2026-05-27):** After cloning Tao's Equational Theories Project repo, ran the σ-magma and many related magmas through `scripts/explore_magma.py`. Key findings:
 
-**MAJOR REFINEMENT:** BHML and CL_STD (J35's B and S tables) ALSO satisfy exactly the same 14 ETP equations as the σ-magma. The σ-magma is NOT the unique 14-equation magma at order 10 — it's the unique **identity-free** member of the trio {σ-magma, BHML, CL_STD}, all of which realize the "commutativity-forced minimum." The four rigidity theorems still distinguish σ-magma from BHML/CL_STD in non-ETP invariants (rigidity, simplicity, sub-magma structure, generation).
+1. **σ-magma 14-equation claim CONFIRMED** at machine precision — IDs `[1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442, 4482, 4531, 4544, 4635, 4677]`. All §65 numerical claims also verified.
+
+2. **BHML and CL_STD ALSO satisfy exactly the same 14 equations** as σ-magma. The σ-magma is the unique IDENTITY-FREE member of this trio.
+
+3. **σ_10^min ALSO satisfies the same 14 equations**, AND is identity-free + |Aut|=1 + has unique non-trivial proper sub-magma (= {4, 9}). So σ-magma is NOT uniquely characterized by identity-freeness + the four rigidity theorems. σ-magma's distinguishing invariants are (3 idempotents, 5 sub-magmas) vs σ_10^min's (2 idempotents, 4 sub-magmas).
+
+4. **The 14 equations are the COMMUTATIVITY-FORCED MINIMUM at all n ≥ 5.** Every σ_n^TIG analog (n ∈ {6,...,10}) and σ_n^min analog (n ∈ {5,...,10}) hits exactly 14. The minimum is universal across orders, not unique to TIG's σ.
+
+5. **Strong uniqueness conjecture REFUTED.** Refined: σ-magma is distinguished by (#idempotents, #sub-magmas) = (3, 5) — full classification of order-10 commutative quasigroups with these invariants is OPEN.
 
 ### J59 — DRAFT (σ-magma algebraic rigidity, *Semigroup Forum*)
 
