@@ -56,7 +56,13 @@ The numbered directories form a deliberate reading order. The first eight serve 
 10_extensions/          application and engineering invitations — license-protected sandbox
 verification/           reproducibility scripts (run any of these on a laptop in under a minute)
 etp_database/           queryable ETP profile database (Family C, σ-magma, order-3/5 census,
-                        OEIS submission drafts, Lean 4 scaffold) — companion to Tao et al.'s ETP
+   ├── data/               6 JSON datasets, ~50KB total
+   ├── scripts/            CLI query (profile / equation / family / magma / stats) + verifier
+   ├── extensions/         test harnesses (crypto, Steiner, K_12 embedding)
+   ├── verdicts/           written-up U-line findings (mostly clean negatives + retractions)
+   ├── lean/               Lean 4 scaffold of J61 Theorem 5 (3 lemmas proved, 4 sorrys)
+   ├── oeis_submissions/   4 OEIS submission drafts (Family C IDs, size-14 anchors, ...)
+   └── index.html          GitHub Pages-ready browse page
 ```
 
 ---
@@ -77,6 +83,8 @@ If you arrived knowing your field, jump directly to your field's results folder:
 | a **founder / funder / builder** | [`01_orientation/for_founders.md`](01_orientation/for_founders.md), then [`07_philosophy/`](07_philosophy/) |
 
 If you have **90 minutes and a Python REPL** and want to build the framework from scratch with runnable code at every step: [`TIG_FROM_THE_GROUND_UP.md`](TIG_FROM_THE_GROUND_UP.md). Discovers the four-core, derives `H/Br = 1+√3`, walks the eight-shell chain, follows substrate strands to atomic orbitals.
+
+If you arrived from Tao et al.'s [**Equational Theories Project**](https://github.com/teorth/equational_theories): [`etp_database/`](etp_database/) is our public companion dataset — every order-3 magma (19,683 of them) and every order-5 commutative quasigroup (720), classified by ETP equational profile, with a CLI query tool, Lean 4 formalization scaffold of the fossil-variety theorem for equation 4295, and OEIS submission drafts. Family C (closure of commutativity) is verified directly against ETP's 8.18M-edge proved-implication graph. Companion papers: [`05_papers/algebra/J60`](05_papers/algebra/J60/) (linear-magma classification), [`05_papers/algebra/J61`](05_papers/algebra/J61/) (taxonomy methodology + the C5 fossil-variety theorem). See [`etp_database/README.md`](etp_database/README.md).
 
 ---
 

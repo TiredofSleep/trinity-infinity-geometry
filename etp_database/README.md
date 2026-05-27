@@ -9,16 +9,43 @@ A queryable companion dataset to Tao et al.'s [Equational Theories Project (ETP)
 
 ## What is here
 
+```
+etp_database/
+├── data/                   raw JSON datasets (~50K total)
+├── scripts/                CLI query + verification harness
+├── extensions/             test scripts for U-line investigations (crypto, Steiner, K_12)
+├── verdicts/               written-up findings from U-line (mostly negatives + retractions)
+├── lean/                   Lean 4 formalization scaffold of J61 Theorem 5
+├── oeis_submissions/       4 draft OEIS sequences ready for submission
+├── index.html              GitHub Pages-ready browse page
+├── README.md               this file
+└── VERIFICATION_LOG.md     5/5 PASS end-to-end audit
+```
+
+### `data/`
+
 | Dataset | Rows | Description |
 |---|---:|---|
-| `data/order3_profile_distribution.json` | 19,683 | every order-3 magma, indexed by profile size and equation set |
-| `data/order5_commutative_qg.json` | 720 | every order-5 commutative quasigroup (symmetric Latin square), with profile |
-| `data/family_c.json` | 14 | the 14 equation IDs of Family C (closure of commutativity) |
-| `data/profile14_families.json` | 23 | the 23 known equational profiles of size 14 in ETP, with anchor + smallest realizer |
-| `data/linear_magmas.json` | 729 | every linear magma x·y = (a·x + b·y + c) mod n, orders 3–5, with profile |
-| `data/sigma_magma.json` | 1 | the order-10 σ-magma: table, profile (size 14, Family C), structural certificate |
+| `order3_profile_distribution.json` | 19,683 | every order-3 magma, indexed by profile size and equation set |
+| `order5_commutative_qg.json` | 720 | every order-5 commutative quasigroup (symmetric Latin square), with profile |
+| `family_c.json` | 14 | the 14 equation IDs of Family C (closure of commutativity) |
+| `profile14_families.json` | 23 | the 23 known equational profiles of size 14 in ETP, with anchor + smallest realizer |
+| `sigma_magma.json` | 1 | the order-10 σ-magma: table, profile (size 14, Family C), structural certificate |
+| `smallest_family_c_realizer.json` | 1 | the lex-first order-3 Family C realizer, verified by enumeration |
 
-All JSON files are reproducible from the scripts in `../10_extensions/` and `scripts/`.
+### `verdicts/` and `extensions/` (U-line findings)
+
+Written-up answers to "is the σ-magma a crypto primitive / Steiner system / lattice subobject"
+(spoiler: no, no, no — see `verdicts/README.md` for the mechanistic explanations). The
+test scripts that generated each verdict live in `extensions/`.
+
+### `lean/`
+
+A Lean 4 scaffold of J61 Theorem 5 (the C5 fossil-variety theorem). Three substantive
+lemmas fully proved; structural dichotomy and empirical profile bound documented as
+`sorry`s pending Mathlib4 infrastructure. See `lean/README.md`.
+
+All JSON files are reproducible from the scripts in `scripts/` and `extensions/`.
 
 ## Query interface
 
