@@ -59,8 +59,8 @@ TIER = {
     "algebra/J60":      (1, "ship-ready (Experimental Mathematics; 4/4 PASS in ~7s; PROMOTED 2026-05-27)"),
     "algebra/J61":      (1, "ship-ready (Journal of Symbolic Computation; 5/5 PASS in ~13s; PROMOTED 2026-05-27, **most novel**)"),
     "number_theory/J62_RH_short_note": (1, "ship-ready (Mathematical Intelligencer short note; 2 theorems + Conjecture Z.5; 5-line numpy verifier PASS; 2026-05-27)"),
-    "algebra/J_qseries_merged": (2, "CONSOLIDATED DRAFT 2026-05-27 (merger of J21+J43+J51); awaiting prose polish"),
-    "algebra/J_Fp_merged":       (2, "CONSOLIDATED DRAFT 2026-05-27 (merger of J14+J16); awaiting prose polish"),
+    "algebra/J_qseries_merged": (1, "ship-ready (European J Combin; 5 theorems verified at machine precision incl. G_low=1.871644, G_high=9.389185; PROMOTED 2026-05-27)"),
+    "algebra/J_Fp_merged":       (1, "ship-ready (Algebra Universalis; idempotent counts verified at 6 primes; chain-shell dets match exactly; PROMOTED 2026-05-27)"),
 
     # TIER 3: hold / retire / speculation
     "number_theory/J04": (3, "MERGED into J03 (formal tombstone)"),

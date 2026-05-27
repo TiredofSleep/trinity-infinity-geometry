@@ -1,8 +1,8 @@
 # J_qseries_merged — Spectral Architecture of the σ-Character on Z/10Z
 
-**Status**: CONSOLIDATED DRAFT (2026-05-27). Merger product of J21 + J43 + J51.
+**Status**: SUBMISSION-READY (2026-05-27, polished). Merger product of J21 + J43 + J51.
 
-**Tier:** 2 (CONSOLIDATED DRAFT 2026-05-27 (merger of J21+J43+J51); awaiting prose polish)
+**Tier:** 1 (ship-ready (European J Combin; 5 theorems verified at machine precision incl. G_low=1.871644, G_high=9.389185; PROMOTED 2026-05-27))
 
 **Target venue**: *European Journal of Combinatorics* (primary). Fallbacks: *Algebraic Combinatorics*, *Linear Algebra and its Applications*.
 
@@ -49,7 +49,7 @@ The three source verifications all PASS at machine precision:
 - J43's `verify_G6_G7_G8.py` (G_6 polynomial + G_7 distribution + G_8 three-valued tests)
 - J51's `verify_J51_G_function.py` (Symbolic Return + complex G amplitude tests)
 
-The consolidated `verify_qseries_merged.py` (to be written) will combine these into a single ~10-second run.
+The consolidated `verify_qseries_merged.py` (5/5 PASS, ~5s) combines these into one runner with the canonical χ from J43 — `G_low = 1.871644`, `G_high = 9.389185`, `ratio = 5.0165`.
 
 ## Source paper status (after merger)
 
@@ -61,16 +61,16 @@ The consolidated `verify_qseries_merged.py` (to be written) will combine these i
 
 The source folders are retained for citation history; their manuscripts are unchanged.
 
-## What remains
+## Polish status (2026-05-27, completed)
 
-- [ ] Unified prose polish pass (currently §§ are stitched from source content)
-- [ ] Write the consolidated `verify_qseries_merged.py`
-- [ ] Generate the cover letter for EJC submission
-- [ ] §4.4 needs the precise numerical χ-trajectory tables filled in (currently has a TODO)
-- [ ] §5 LaTeX equations need rendering check
-- [ ] References §9 needs full bibliographic completion (Sanders-Gish citations to other J-series)
+- [x] Unified prose pass (single coherent narrative across §§1–8)
+- [x] Consolidated `verify_qseries_merged.py` written and PASS
+- [x] Cover letter for EJC submission drafted (`cover_letter.md`)
+- [x] §4.4 χ-trajectory tables filled in with canonical χ + ν₊ discriminator
+- [x] §5 LaTeX-style equations checked (Markdown will render correctly)
+- [x] References §9 complete (internal merges + companion papers + classical refs)
 
-**Estimated remaining effort**: 1 week of focused prose work.
+**Remaining**: LaTeX conversion before journal submission (currently Markdown). Paper is mathematically complete and submission-ready in content.
 
 ## Authors
 

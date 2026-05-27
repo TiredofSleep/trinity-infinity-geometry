@@ -94,18 +94,20 @@ def check_idempotents(mul, p):
 
 
 def check_T1_invariant_skeleton(V_table):
-    print("[Theorem 1 Lens-Invariant Skeleton] -- STRUCTURAL CHECK at primes 2, 3, 5, 7")
-    idempotent_counts = {}
-    for p in [2, 3, 5, 7]:
+    print("[Theorem 1 Lens-Invariant Skeleton]")
+    # Canonical idempotent counts per §2.1 of the merged paper:
+    EXPECTED = {2: 4, 3: 6, 5: 4, 7: 4, 11: 6, 13: 8}  # total (incl. 0)
+    EXPECTED_NZ = {2: 3, 3: 5, 5: 3, 7: 3, 11: 5, 13: 7}  # nonzero
+    print("       Idempotent counts (canonical V_p):")
+    print(f"       {'p':<4}  {'total':<7}  {'nonzero':<8}  {'expected nz'}")
+    for p in [2, 3, 5, 7, 11, 13]:
         mul = V_mul_in_Fp(V_table, p)
-        n_idem = check_idempotents(mul, p)
-        idempotent_counts[p] = n_idem
-    print(f"       Total idempotent counts (including 0): {idempotent_counts}")
-    # All primes should have >= 2 idempotents (0 and at least one nonzero)
-    for p, n in idempotent_counts.items():
-        assert n >= 2, f"V_{p} has only {n} idempotents (expected >= 2)"
-    print("       Each F_p has >= 2 idempotents: PASS")
-    print("       (Full lens-invariant skeleton check requires the upstream verify_J14.py)\n")
+        n_total = check_idempotents(mul, p)
+        n_nz = n_total - 1  # subtract 0 idempotent
+        match = "OK" if n_nz == EXPECTED_NZ[p] else "MISMATCH"
+        print(f"       {p:<4}  {n_total:<7}  {n_nz:<8}  {EXPECTED_NZ[p]} -- {match}")
+        assert n_total == EXPECTED[p], f"p={p} total {n_total} != {EXPECTED[p]}"
+    print("       PASS\n")
 
 
 # ============================================================

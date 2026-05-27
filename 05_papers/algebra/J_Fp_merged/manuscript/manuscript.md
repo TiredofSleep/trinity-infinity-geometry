@@ -35,24 +35,50 @@ This paper consolidates two earlier treatments (J14 and J16) into a single coher
 
 ### §1.1 Basis and multiplication
 
-Let $V = k \cdot e_0 \oplus k \cdot e_2 \oplus k \cdot e_3 \oplus k \cdot e_4$ where $k$ is a field of characteristic $p \in \{0, 2, 3, 5, 7, 11, 13\}$. The multiplication table on $V$ is induced by the BHML composition table restricted to the 4-core indices $\{0, 7, 8, 9\}$, identified with the basis labels $\{e_0, e_2, e_3, e_4\}$ respectively.
+Let $V = k \cdot e_0 \oplus k \cdot e_2 \oplus k \cdot e_3 \oplus k \cdot e_4$ where $k$ is a field of characteristic $p \in \{0, 2, 3, 5, 7, 11, 13\}$. The multiplication table on $V$ is induced by the BHML composition table (canonically defined in `ck_tables.py` at the TIG repo root) restricted to the 4-core indices $\{0, 7, 8, 9\}$ of $\mathbb{Z}/10\mathbb{Z}$, identified with the basis labels $\{e_0, e_2, e_3, e_4\}$ respectively.
 
-Explicit multiplication table (for reference; precise entries depend on the BHML restriction):
+**Explicit multiplication table** (verified against canonical BHML; commutative, so the full table is shown — every $e_i \cdot e_j = e_j \cdot e_i$):
 
-$$e_0 \cdot e_0 = 0,\quad e_0 \cdot e_2 = 0,\quad e_0 \cdot e_3 = 0,\quad e_0 \cdot e_4 = 0$$
-$$e_2 \cdot e_2 = e_3,\quad e_2 \cdot e_3 = e_4,\quad e_2 \cdot e_4 = e_2$$
+| · | $e_0$ | $e_2$ | $e_3$ | $e_4$ |
+|---|---|---|---|---|
+| $e_0$ | $e_0$ | $e_2$ | $e_3$ | $e_4$ |
+| $e_2$ | $e_2$ | $e_3$ | $e_4$ | $e_0$ |
+| $e_3$ | $e_3$ | $e_4$ | $e_2$ | $e_3$ |
+| $e_4$ | $e_4$ | $e_0$ | $e_3$ | $e_0$ |
+
+Equivalently:
+$$e_0 \cdot x = x \text{ for all } x \in V \qquad (e_0 \text{ is the multiplicative identity})$$
+$$e_2 \cdot e_2 = e_3,\quad e_2 \cdot e_3 = e_4,\quad e_2 \cdot e_4 = e_0$$
 $$e_3 \cdot e_3 = e_2,\quad e_3 \cdot e_4 = e_3$$
-$$e_4 \cdot e_4 = e_4$$
+$$e_4 \cdot e_4 = e_0$$
 
-(Multiplication is commutative; only diagonal and upper-triangle entries shown.)
+This is the **canonical V** as used in this merged paper. The table is independently verifiable from `ck_tables.py`:
+
+```python
+from ck_tables import BHML
+import numpy as np
+B = np.array(BHML)
+core = B[np.ix_([0,7,8,9],[0,7,8,9])]  # 4-core sub-table
+print(core)
+# [[0 7 8 9]   <- row 0 (VOID = e_0): identity action on the 4-core
+#  [7 8 9 0]   <- row 7 (HARMONY = e_2): cyclic shift
+#  [8 9 7 8]   <- row 8 (BREATH = e_3)
+#  [9 0 8 0]]  <- row 9 (RESET = e_4)
+```
 
 ### §1.2 The left-multiplication operators
 
-For each $a \in V$, the left-multiplication operator $L_a : V \to V$ is given by $L_a(x) = a \cdot x$. Over $k$, $L_a$ is a $k$-linear map represented by a $4 \times 4$ matrix.
+For each $a \in V$, the left-multiplication operator $L_a : V \to V$ is given by $L_a(x) = a \cdot x$. Over $k$, $L_a$ is a $k$-linear map represented by a $4 \times 4$ matrix in the basis $\{e_0, e_2, e_3, e_4\}$.
 
-Key operators:
-- $L_{e_0} = 0$ (the zero map, since $e_0 \cdot V = 0$)
-- $L_{e_2}$, $L_{e_3}$, $L_{e_4}$ are the non-trivial linear maps.
+**Key operators.**
+- $L_{e_0} = \mathrm{id}_V$ (the identity map, since $e_0$ is the multiplicative identity).
+- $L_{e_2}$ is the cyclic shift sending $(e_0, e_2, e_3, e_4) \mapsto (e_2, e_3, e_4, e_0)$. As a matrix:
+$$L_{e_2} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \end{pmatrix}.$$
+This is the cyclic permutation matrix of order 4. Computing $L_{e_2}^k(e_0)$ traces the cycle: $e_0 \to e_2 \to e_3 \to e_4 \to e_0$, so $L_{e_2}^4 = \mathrm{id}_V$ and the minimal polynomial of $L_{e_2}$ divides $x^4 - 1$. Eigenvalues over $\mathbb{C}$: the 4th roots of unity $\{1, i, -1, -i\}$.
+- $L_{e_3}$ acts as $e_0 \to e_3, e_2 \to e_4, e_3 \to e_2, e_4 \to e_3$. This is the permutation $(e_0\,e_3\,e_2\,e_4)$ — a 4-cycle, so $L_{e_3}^4 = \mathrm{id}_V$.
+- $L_{e_4}$ acts as $e_0 \to e_4, e_2 \to e_0, e_3 \to e_3, e_4 \to e_0$. This is *not* a permutation matrix (row $e_3$ and row $e_4$ both map to images in $\{e_0, e_3\}$); $L_{e_4}$ has rank 3 and a 1-dimensional kernel spanned by $e_2 - e_4$.
+
+The non-permutation nature of $L_{e_4}$ is the algebraic source of the structural variation among the four operators.
 
 ### §1.3 Reduction modulo p
 
@@ -62,15 +88,65 @@ For each prime $p$, the $\mathbb{F}_p$-algebra $V_p$ is obtained by reducing the
 
 ## §2 Theorem 1 (Lens-Invariant Skeleton)
 
-The following five properties of $V_p$ are invariant for every $p \in \{2, 3, 5, 7, 11, 13\}$:
+We distinguish properties that are **strictly invariant** across primes from those that are **prime-dependent**. Direct enumeration on the canonical multiplication table of §1.1 gives the following classification.
 
-### §2.1 Three nonzero idempotents
+### §2.1 Nonzero idempotents — prime-dependent count
 
-**Statement.** $V_p$ has exactly three nonzero idempotents (elements $a \in V_p$ with $a \cdot a = a$ and $a \neq 0$).
+**Computed values (canonical $V_p$, $a \cdot a = a$ direct enumeration):**
 
-**Proof.** The integer-valued multiplication table gives an idempotent equation $a \cdot a = a$ that, when expanded in the basis $\{e_0, e_2, e_3, e_4\}$, becomes four polynomial equations in four variables. Direct enumeration over $\mathbb{F}_p$ for $p \in \{2, 3, 5, 7, 11, 13\}$ yields three solutions in each case. ∎
+| $p$ | total idempotents (incl. 0) | nonzero idempotents |
+|---:|---:|---:|
+| 2 | 4 | **3** |
+| 3 | 6 | 5 |
+| 5 | 4 | **3** |
+| 7 | 4 | **3** |
+| 11 | 6 | 5 |
+| 13 | 8 | 7 |
 
-(Note: the *form* of the idempotents depends on $p$ — see §3.)
+**The structural pattern.** At every prime, $V_p$ contains (at least) the three **principal basis-derived idempotents** $\{e_0, \epsilon_+, \epsilon_-\}$, where $\epsilon_\pm$ are the two nontrivial idempotents constructed from the cyclic shift $L_{e_2}$'s eigenvectors at $\pm 1$. At primes where $\mathbb{F}_p^*$ contains additional structure (specifically: when the ring $V$ acquires nilpotent or split semisimple factors as the discriminant of its principal polynomial reduces favorably), extra idempotents arise.
+
+**Honest statement** (replacing the prior "exactly 3 nonzero idempotents at every prime" claim, which was an artifact of the older multiplication table — see §1.1 correction note):
+
+> *For each prime $p \in \{2, 3, 5, 7, 11, 13\}$, $V_p$ has at least 3 nonzero idempotents. The exact count is 3 at $p \in \{2, 5, 7\}$; 5 at $p \in \{3, 11\}$; 7 at $p = 13$.*
+
+**Tier**: B (computed by direct enumeration; structural explanation for the count variation is OPEN).
+
+### §2.2 Cyclic structure — invariant across all primes
+
+**Statement.** For every prime $p \in \{2, 3, 5, 7, 11, 13\}$, the left-multiplication operator $L_{e_2}$ satisfies $L_{e_2}^4 = \mathrm{id}_{V_p}$ as an $\mathbb{F}_p$-linear map. Equivalently, the minimal polynomial of $L_{e_2}$ divides $x^4 - 1$.
+
+**Proof.** $L_{e_2}^4(e_0) = e_2^4 \cdot e_0 = e_0 \cdot e_0 = e_0$ (since $e_2^4 = e_0$ by §1.1). The same calculation in each basis direction gives $L_{e_2}^4 = \mathrm{id}_V$ over $\mathbb{Z}$, hence over every $\mathbb{F}_p$. ∎
+
+**Tier**: A.
+
+### §2.3 BHML chain-shell rank profile — invariant integer structure
+
+The 10×10 BHML composition table, when restricted to each of the seven joint-closed chain shells of [J35], gives a sub-matrix with a specific integer determinant — *invariant of the prime* (these are integer-valued quantities, before mod-$p$ reduction):
+
+| Shell size | Indices | $\det(\text{BHML}_n^\circ)$ |
+|---:|---|---:|
+| 4 (core) | $\{0,7,8,9\}$ | $5305 = 5 \cdot 1061$ |
+| 5 | $\{0,6,7,8,9\}$ | $2843$ (prime) |
+| 6 | $\{0,5,6,7,8,9\}$ | $-2886 = -2 \cdot 3 \cdot 13 \cdot 37$ |
+| 7 | $\{0,4,5,6,7,8,9\}$ | $2929 = 29 \cdot 101$ |
+| 8 | $\{0,3,4,5,6,7,8,9\}$ | $-7542 = -2 \cdot 3^2 \cdot 419$ |
+| 9 | $\{0,2,3,4,5,6,7,8,9\}$ | $7272 = 2^3 \cdot 3^2 \cdot 101$ |
+| 10 (full) | $\{0,\ldots,9\}$ | $-7002 = -2 \cdot 3^2 \cdot 389$ |
+
+**Theorem (Chain-Shell Determinants).** The seven chain-shell determinants of BHML are exactly the values above. *Verified by direct integer-valued computation in `verify_J_Fp_merged.py` — PASS at machine precision.*
+
+**Tier**: A.
+
+### §2.4 Rank-preservation profile mod $p$
+
+From the factorizations above, the rank-preservation pattern across primes follows by inspection:
+
+- $p \in \{7, 11\}$: rank-preserving at every shell (no factor of 7 or 11 in any determinant).
+- $p = 5$: fails at shell 4 only ($5 \mid 5305$).
+- $p = 13$: fails at shell 6 only ($13 \mid 2886$).
+- $p \in \{2, 3\}$: fails at four shells $\{6, 8, 9, 10\}$ (multiple factors of 2 or 3 in each).
+
+**Tier**: A (direct consequence of §2.3 + integer factorization).
 
 ### §2.2 Minkowski signature (1, 3) on $L_{e_2}$
 

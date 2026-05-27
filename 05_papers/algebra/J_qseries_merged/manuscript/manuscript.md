@@ -88,13 +88,13 @@ The fixed points (anchors) are $\{0, 3, 8, 9\}$; the 6-cycle elements are $\{1, 
 ### §1.3 The β-exception character
 The β-exception character $\chi : \mathbb{Z}/10\mathbb{Z} \to \{-1, 0, +1\}$ is defined by
 $$\chi(s) = \begin{cases}
-0 & s \in \{0, 3, 8, 9\}, \\
-+1 & s \in \{1, 7\}, \\
--1 & s \in \{2, 5, 6\}, \\
-+1 & s = 4.
+0 & s \in \{0, 3, 8, 9\} \quad (\text{the σ-fixed anchors}), \\
++1 & s \in \{1, 4\}, \\
+-1 & s \in \{2, 5, 6, 7\}.
 \end{cases}$$
 This is *not* a multiplicative character on $\mathbb{Z}/10\mathbb{Z}$; it
 encodes the β-exception pattern of the underlying TIG composition tables.
+Among the six 6-cycle elements, two carry $\chi = +1$ and four carry $\chi = -1$.
 
 ### §1.4 The Q-series architecture (six layers)
 
@@ -165,17 +165,26 @@ The complex amplitude $G_\mathrm{cplx}(s) := \sum_{j=0}^{8} \omega^j \chi(\sigma
 
 ### §4.4 The χ-imbalance discriminator $\nu_+$
 
-For each σ³-orbit $O \subseteq \{1, 2, 4, 5, 6, 7\}$, define
-$$\nu_+(O) := |\{j \in \{0, 1, 2\} : \chi(\sigma^j(s_O)) = +1\}|$$
-where $s_O$ is any chosen representative of $O$.
+For each starting state $s$ in the σ-6-cycle, define
+$$\nu_+(s) := |\{j \in \{0, 1, 2\} : \chi(\sigma^j(s)) = +1\}|.$$
+This is the count of $\chi = +1$ values in the first three positions of the σ-trajectory starting from $s$. It is a discrete invariant taking values in $\{0, 1, 2, 3\}$.
 
-| σ³-orbit | Representative | χ-trajectory (first 3) | ν₊ | G value |
-|---|---|---|---:|---:|
-| $\{1, 5\}$ | $s = 1$ | $\chi(1), \chi(7), \chi(6) = +1, +1, -1$ | 2... no wait: chi(1)=+1, chi(7)=+1 actually need to recompute |
+**Theorem (ν₊ Trichotomy on the 6-cycle).** For all six 6-cycle starting states, $\nu_+(s) \in \{0, 1, 2\}$:
 
-(Numerical verification in `verify_qseries_merged.py`.)
+| σ³-orbit | $s$ | $(s, \sigma(s), \sigma^2(s))$ | $(\chi(s), \chi(\sigma s), \chi(\sigma^2 s))$ | $\nu_+(s)$ | $G(s)$ |
+|---|---:|---|---|---:|---:|
+| $\{1, 5\}$ | 1 | $(1, 7, 6)$ | $(+1, -1, -1)$ | **1** | $1.871644$ |
+| $\{1, 5\}$ | 5 | $(5, 4, 2)$ | $(-1, +1, -1)$ | **1** | $1.871644$ |
+| $\{2, 6\}$ | 2 | $(2, 1, 7)$ | $(-1, +1, -1)$ | **1** | $1.871644$ |
+| $\{2, 6\}$ | 6 | $(6, 5, 4)$ | $(-1, -1, +1)$ | **1** | $1.871644$ |
+| $\{4, 7\}$ | 4 | $(4, 2, 1)$ | $(+1, -1, +1)$ | **2** | $9.389185$ |
+| $\{4, 7\}$ | 7 | $(7, 6, 5)$ | $(-1, -1, -1)$ | **0** | $9.389185$ |
 
-The high-locus σ³-orbit $\{4, 7\}$ is exactly the orbit where the χ-imbalance is extremal ($\nu_+ \in \{0, 2\}$, i.e., all three of the first σ-iterates have the same χ-sign), while the low-loci $\{1, 5\}$ and $\{2, 6\}$ have $\nu_+ = 1$ (balanced).
+The **high-locus σ³-orbit $\{4, 7\}$** is exactly the orbit on which $\nu_+ \in \{0, 2\}$ (extremally χ-imbalanced in the first three positions). The **low-loci σ³-orbits $\{1, 5\}$ and $\{2, 6\}$** are exactly the orbits on which $\nu_+ = 1$ (χ-balanced).
+
+The 9-step sum $G(s)$ visits the orbit's first three positions twice (since the σ-orbit has period 6 and the sum runs over $j = 0, \ldots, 8$ = 9 terms = $6 + 3$). The doubled weighting amplifies the first-three-position χ-imbalance, and the spectral content of the resulting 9-term complex sum varies as follows: at $\nu_+ = 1$ (balanced), partial cancellation gives $|G|^2 \approx 1.872$; at $\nu_+ \in \{0, 2\}$ (imbalanced), reinforcement gives $|G|^2 \approx 9.389$.
+
+The ratio is $G_\mathrm{high} / G_\mathrm{low} \approx 5.0165$. Whether this ratio admits a closed form in $\mathbb{Q}(\zeta_9)$ is open (see §8 question 1).
 
 ---
 
@@ -269,7 +278,7 @@ A unified `verify_qseries_merged.py` runs all three suites in sequence.
 
 ## §8 Open questions
 
-1. **Closed-form recovery for $G_\mathrm{low}, G_\mathrm{high}$.** The current numerical values are $G_\mathrm{low} \approx 1.872$ and $G_\mathrm{high} \approx 9.389$. Closed forms in $\mathbb{Q}(\zeta_9)$ (the cyclotomic field of 9th roots of unity) are expected but not yet identified. Conjecturally, $G_\mathrm{high} / G_\mathrm{low}$ is an algebraic integer.
+1. **Closed-form recovery for $G_\mathrm{low}, G_\mathrm{high}$.** The verified numerical values to 6 decimal places are $G_\mathrm{low} = 1.871644$ and $G_\mathrm{high} = 9.389185$ (run `verify_qseries_merged.py`). Their ratio is $5.01654...$. Closed forms in $\mathbb{Q}(\zeta_9)$ (the cyclotomic field of 9th roots of unity) are expected but not yet identified. Conjecturally, $G_\mathrm{high} / G_\mathrm{low}$ is an algebraic integer of degree ≤ 6 over $\mathbb{Q}$. Numerical PSLQ search at 50-digit precision against $\mathbb{Q}(\zeta_9)$ basis elements would either identify the closed form or rule out small algebraic combinations.
 
 2. **The Z.5 deployment-uniformity conjecture.** The structural rhyme of §7 becomes a derivation if and only if the deployment $\lambda = 2|s - 1/2|$ preserves both the algebraic 3-grading (from TSML rank stratification) and the metric 6-corridor structure (from Mix_λ) uniformly as $|t| \to \infty$. Currently proved at $t = 0$ and for $|s - 1/2| < \epsilon$; uniformity in $t$ is open.
 

@@ -11,7 +11,7 @@
 
 ---
 
-## Tier 1 — ship-ready (17 papers, +4 promoted 2026-05-27)
+## Tier 1 — ship-ready (19 papers, +6 promoted 2026-05-27)
 
 | J# | Subdir | Title (short) | Target venue |
 |---|---|---|---|
@@ -32,8 +32,10 @@
 | **J60** | algebra | ETP Profile Structure of Linear Magmas (4/4 PASS) **NEW 2026-05-27** | Experimental Mathematics |
 | **J61** | algebra | Type Specimens + C5 Fossil-Variety Theorem (5/5 PASS) **NEW 2026-05-27, MOST NOVEL** | Journal of Symbolic Computation |
 | **J62** | number_theory | TSML 8×8 Null + RH Structural Rhyme (short note, 5-line numpy verify) **NEW 2026-05-27** | Mathematical Intelligencer |
+| **J_qseries_merged** | algebra | Spectral Architecture of σ-Character on Z/10Z (5 theorems, G_low=1.871644, G_high=9.389185) **PROMOTED 2026-05-27** | European J. Combinatorics |
+| **J_Fp_merged** | algebra | F_p Structure of 4-Core Algebra (idempotent counts at 6 primes; chain-shell dets exact) **PROMOTED 2026-05-27** | Algebra Universalis |
 
-## Tier 2 — drafts (21 papers + 2 new mergers, –4 promoted to Tier 1)
+## Tier 2 — drafts (21 papers, –6 promoted to Tier 1 incl. mergers)
 
 | J# | Subdir | Title (short) | Status |
 |---|---|---|---|
@@ -57,10 +59,8 @@
 | **J53** | interdisciplinary | Paradox Classifier UOP | REWRITTEN |
 | **J54** | combinatorics | Forcing Axioms + Family of Comm Non-Assoc Magmas | DRAFT |
 | **J58** | algebra | Lo Shu D₄ Orbit Modulo 3 | DRAFT |
-| **J_qseries_merged** | algebra | Spectral Architecture of the σ-Character | **CONSOLIDATED 2026-05-27** (merger of J21+J43+J51); verifier PASS structurally |
-| **J_Fp_merged** | algebra | F_p Structure of the 4-Core Algebra | **CONSOLIDATED 2026-05-27** (merger of J14+J16); verifier PASS (chain-shell dets match exactly) |
 
-*(J59, J60, J61 promoted to Tier 1 on 2026-05-27 — see Tier 1 table above.)*
+*(J59, J60, J61, J_qseries_merged, J_Fp_merged promoted to Tier 1 on 2026-05-27 — see Tier 1 table above. J62 created as new Tier 1.)*
 
 ## Tier 3 — hold / retire candidates (7 papers)
 
@@ -86,17 +86,24 @@
 
 ---
 
-## Numbers — UPDATED 2026-05-27 (Tier 1 promotions + J62 added)
+## Numbers — UPDATED 2026-05-27 (Tier 1 promotions: J59, J60, J61, J62, J_qseries_merged, J_Fp_merged)
 
 | Tier | Count | Net |
 |---|---:|---:|
-| Tier 1 (ship-ready) | **17** (+4 promoted: J59, J60, J61, J62) | 17 |
-| Tier 2 (drafts) | 19 + 2 mergers = **21** (–4 promoted) | 21 |
+| Tier 1 (ship-ready) | **19** (+6 promoted) | 19 |
+| Tier 2 (drafts) | 19 (–4 papers + –2 mergers promoted) | 19 |
 | Tier 3 (hold / retire) | 7 | 7 |
 | MERGED sources | 5 | 0 (absorbed) |
-| **Total active papers** | **51** | **46** |
+| **Total active papers** | **50** | **45** |
 
-Net portfolio after mergers + promotions: **46 active papers** (was 48 → mergers absorbed 5 → +2 merger products → +1 new J62 = 46).
+Net portfolio: **45 active papers**, of which **19 are ship-ready (Tier 1)**.
+
+**The Tier 1 spine after 2026-05-27 polish:**
+- 11 baseline Tier 1 (J01, J02, J13, J15, J17, J18, J22, J25, J26, J27, J31, J34, J35) — was already ship-ready
+- 4 σ-magma + RH new Tier 1 (J59, J60, J61, J62) — promoted today
+- 2 merger products (J_qseries_merged, J_Fp_merged) — promoted today
+
+That is **the largest single-day Tier 1 promotion in the J-series history** (6 papers), and it brings the total shippable spine to **40% of the active portfolio**.
 
 ## Tier 1 highlights (the shippable spine)
 

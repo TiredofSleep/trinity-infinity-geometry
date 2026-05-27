@@ -24,8 +24,8 @@ from cmath import exp, pi
 SIGMA = {0: 0, 3: 3, 8: 8, 9: 9,
          1: 7, 7: 6, 6: 5, 5: 4, 4: 2, 2: 1}
 
-# chi: Z/10Z -> {-1, 0, +1} (beta-exception character)
-CHI = {0: 0, 1: +1, 2: -1, 3: 0, 4: +1, 5: -1, 6: -1, 7: +1, 8: 0, 9: 0}
+# chi: Z/10Z -> {-1, 0, +1} (beta-exception character, canonical from J43)
+CHI = {0: 0, 3: 0, 8: 0, 9: 0, 1: +1, 4: +1, 2: -1, 5: -1, 6: -1, 7: -1}
 
 
 def sigma_iter(s, k):
@@ -92,15 +92,10 @@ def G(s):
 
 
 def check_G8():
-    """Structural check only -- precise G values depend on the exact chi
-    used in J43's verify_G6_G7_G8.py. Here we verify only:
-      (1) Anchors {0,3,8,9} give G = 0 (since chi vanishes there)
-      (2) sigma^3 pairing is order-2 on the 6-cycle: {1,5}, {2,6}, {4,7}
-      (3) Within each sigma^3 orbit, |G|^2 values are equal
-    """
-    print("[G_8 Three-Valued Coherence Integral] -- STRUCTURAL CHECK")
-    values = {s: round(G(s), 4) for s in range(10)}
-    print(f"       G values (with this script's chi): {values}")
+    """Full check using canonical chi from J43."""
+    print("[G_8 Three-Valued Coherence Integral]")
+    values = {s: round(G(s), 6) for s in range(10)}
+    print(f"       G values: {values}")
     # (1) Anchors give G = 0
     for s in [0, 3, 8, 9]:
         assert G(s) < 1e-9, f"G({s}) != 0"
@@ -110,13 +105,19 @@ def check_G8():
     assert SIGMA[SIGMA[SIGMA[2]]] == 6, "sigma^3(2) != 6"
     assert SIGMA[SIGMA[SIGMA[4]]] == 7, "sigma^3(4) != 7"
     print("       (2) sigma^3 pairing {1,5}, {2,6}, {4,7}: PASS")
-    # (3) Within each sigma^3-orbit, G is constant
+    # (3) Three-valued: LOW on {1,2,5,6}, HIGH on {4,7}
+    g_low = G(1)
+    g_high = G(4)
+    assert abs(g_low - 1.871644) < 1e-4, f"G_low {g_low} != 1.871644"
+    assert abs(g_high - 9.389185) < 1e-4, f"G_high {g_high} != 9.389185"
+    print(f"       (3) G_low (orbits {{1,5}},{{2,6}}) = {g_low:.6f}")
+    print(f"       (3) G_high (orbit {{4,7}}) = {g_high:.6f}")
+    print(f"           ratio G_high / G_low = {g_high / g_low:.4f}")
     for orbit in [{1, 5}, {2, 6}, {4, 7}]:
-        g_orbit = {round(G(s), 6) for s in orbit}
-        assert len(g_orbit) == 1, f"G not constant on {orbit}: {g_orbit}"
-    print("       (3) G constant on each sigma^3-orbit: PASS")
-    print("       NOTE: precise G values depend on chi (see J43 verify script for canonical)")
-    print()
+        for s in orbit:
+            ref = g_low if orbit != {4, 7} else g_high
+            assert abs(G(s) - ref) < 1e-9, f"G({s}) != {ref}"
+    print("       PASS\n")
 
 
 # ============================================================
