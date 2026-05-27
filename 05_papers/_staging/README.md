@@ -10,12 +10,16 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
-### J58 — DRAFT (Lo Shu D₄ orbit mod 3, *Mathematics Magazine*)
+### J58 — DRAFT v2 (Lo Shu D₄ orbit mod 3 + Dürer extension, *Mathematics Magazine*)
 
-- **Status:** **DRAFT.** Manuscript complete; `verify_J58.py` 6/6 PASS at machine precision; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
-- **What it claims:** the $D_4$ orbit of the Lo Shu magic square (8 elements) reduces mod 3 to **exactly 4 distinct magma tables** (each appearing twice). The 4 split as: $\mathbb{Z}/3$ + a commutative non-group quasigroup + an anti-isomorphic pair of non-commutative quasigroups. The matrix cumulant $\kappa(M) = \operatorname{Tr}(M^2) - \operatorname{Tr}(M)^2$ is a 2-valued witness: $\kappa = -48$ on commutative cases, $\kappa = +48$ on non-commutative cases. Witnesses computed on the *original integer matrix*, before mod-3 reduction.
-- **Provenance:** scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma count is a refinement of a previously-stated "3 magmas" claim in OPEN_FRONTIERS_2026-05-26.md §60 (which counted equational-theory classes, collapsing the anti-isomorphic non-commutative pair).
-- **Gating:** Brayden green-light; cover letter venue final selection (*Mathematics Magazine* vs *Mathematics Teacher: Learning and Teaching PK-12* vs *Involve*). Verification is independent of any TIG-framework machinery — undergraduate-accessible.
+- **Status:** **DRAFT v2.** Manuscript complete with structural theorem PROVED and Dürer 4×4 extension added; `verify_J58.py` **8/8 PASS at machine precision** (was 6/6 in v1); cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
+- **What v1 claimed (Lo Shu):** The $D_4$ orbit of the Lo Shu magic square reduces mod 3 to **exactly 4 distinct magma tables** (each appearing twice). The 4 split as: $\mathbb{Z}/3$ + a commutative non-group quasigroup + an anti-isomorphic pair of non-commutative quasigroups. The cumulant $\kappa(M) = \operatorname{Tr}(M^2) - \operatorname{Tr}(M)^2$ is a 2-valued witness: $\kappa = -48$ on commutative cases, $\kappa = +48$ on non-commutative cases.
+- **What v2 adds:**
+  1. **V₄′-coset invariance of κ is now PROVED as a general 3×3 theorem.** For any 3×3 real matrix $M$, the subgroup $V_4' = \{e, R^2, T, T_a\} \subset D_4$ preserves κ, because trace and trace-of-square are invariant under transpose and under conjugation by the reversal matrix. Therefore κ takes at most 2 distinct values across the $D_4$ orbit of *any* 3×3 matrix.
+  2. **Dürer 4×4 at mod 3 satisfies the same pattern.** Albrecht Dürer's *Melencolia I* magic square has $D_4$ orbit that mod-3-reduces to 4 distinct tables (each appearing twice), 2 commutative + 2 non-commutative, with $\kappa = \pm 128$ as the witness. The κ-coset invariance generalizes verbatim to 4×4.
+  3. **Mod 3 is the unique modulus** at which both Lo Shu and Dürer exhibit the dichotomy. Every other modulus tested produces uniformly commutative or uniformly non-commutative reductions. Open question.
+- **Provenance:** scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma count is a refinement of the previously-stated "3 magmas" claim in OPEN_FRONTIERS_2026-05-26.md §60 (which counted equational-theory classes).
+- **Gating:** Brayden green-light; cover letter venue final selection (*Mathematics Magazine* vs *Mathematics Teacher: Learning and Teaching PK-12* vs *Involve*).
 - **When ready:** J58 → `J_series/algebra/J58/` (or `J_series/interdisciplinary/J58/` if the historical/cultural framing dominates).
 
 ### J29 — HOLD (referee re-verification 2026-05-12)
