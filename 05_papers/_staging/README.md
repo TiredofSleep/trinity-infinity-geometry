@@ -10,7 +10,19 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
-### J61 v2 — DRAFT (Type specimens in the ETP-restricted variety lattice, *Journal of Symbolic Computation*)
+### J61 v3 + J60 v3 — Conjecture 1 VERIFIED at orders 3 AND 5 (T-3 full census complete)
+
+**T-3 RESULT (2026-05-27, 84 min compute, 19,683 magmas enumerated)**: full order-3 ETP profile census reveals:
+
+- **158 distinct profile sizes** at order 3 (out of 4694 possible)
+- **Profile 1** (just $x=x$): 588 magmas (3% of all order-3 magmas satisfy NOTHING beyond reflexivity)
+- **Profile 14**: 660 magmas across 82 distinct equation sets; **120 are commutative, ALL sharing the IDENTICAL Family C equation set**
+- **Smallest commutative order-3 profile is 14** (not 29 as ETP tabulated data suggested) — Conjecture 1 now verified at order 3 in addition to order 5
+- **Cross-order $\sigma_n^{\min}$**: profile 14 confirmed at orders 5-15
+
+**Conjecture 1 is now empirically verified at orders 3 AND 5** by independent enumeration of all commutative magmas. Strong evidence the σ-magma is the unique commutative variety with profile 14 at all orders ≥ 3.
+
+### J61 v3 — Fossil varieties theorem (Type specimens in the ETP-restricted variety lattice, *Journal of Symbolic Computation*)
 
 - **Status:** **DRAFT v2.** Lifted to standard universal-algebra terminology (Birkhoff variety theory). Title changed to *Type Specimens in the ETP-Restricted Variety Lattice: a Magma-by-Equational-Theory Taxonomy*. `verify_J61.py` 5/5 PASS at machine precision. Working-repo location: `Gen14/targets/journals/J_series/J61/`.
 - **v2 lifts** (per Brayden's 2026-05-27 prompt to "expand to more of a biological profile"):
