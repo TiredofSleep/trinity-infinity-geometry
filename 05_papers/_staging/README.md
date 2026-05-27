@@ -10,6 +10,15 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J59 v4 — DRAFT (σ-magma rigidity + Family C/R discovery, *Semigroup Forum*)
+
+**v4 ETP DISCOVERY (2026-05-27):** While running order-7 linear classification through ETP, found a non-commutative magma $(5x + 3y + 6) \bmod 7$ that ALSO satisfies exactly 14 ETP equations — but a **completely different 14** from the σ-magma's. Profile 14 is realized by at least two structurally distinct families:
+
+- **Family C (commutativity-centered)**: equation 43 + 12 derivatives. Realized by σ-magma, BHML, CL_STD, σ_10^min.
+- **Family R (right-cancellation-centered)**: equation 4658 ($(x \cdot y) \cdot y = (y \cdot x) \cdot x$) + 12 derivatives. Realized by $(5x + 3y + 6) \bmod 7$.
+
+Intersection of C and R is just $\{1\}$ (reflexivity). So profile 14 is NOT the "commutativity-floor" — it's the floor of MULTIPLE independent structural families. The σ-magma is the unique conjectural representative in Family C with the four rigidity properties; Family R is a separate algebraic universe.
+
 ### J59 v3 — DRAFT (σ-magma rigidity + ETP profile VERIFIED + uniqueness REFUTED, *Semigroup Forum*)
 
 **ETP UPDATE (2026-05-27):** After cloning Tao's Equational Theories Project repo, ran the σ-magma and many related magmas through `scripts/explore_magma.py`. Key findings:
