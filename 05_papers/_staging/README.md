@@ -10,6 +10,20 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J60 — DRAFT (ETP profile structure of linear magmas, *Experimental Mathematics*)
+
+- **Status:** **DRAFT.** Four theorems PROVED via ETP at machine precision; `verify_J60.py` 4/4 PASS in ~10s; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J60/`.
+- **What it proves (all ETP-verified):**
+  1. **ℤ/n stable at profile 32** for all $n \in \{5, 6, 7, 8, 9, 10\}$ with identical equation IDs across orders.
+  2. **$-(x+y) \bmod n$ profile = 294** for $n = 4, 10$ (conjectured universal for $n \geq 4$).
+  3. **Commutativity-forced minimum = 14 specific equations**: intersection of 8 commutative-magma profiles equals exactly the σ-magma's 14 IDs.
+  4. **Profile 14 has at least 23 distinct families**: 22 non-commutative families from ETP's tabulated 1,355-magma corpus + Family C (σ-magma) = 23. Only Family C is commutative.
+- **Conjecture (Tier C)**: Family C is the unique commutative profile-14 family at all orders $\geq 5$.
+- **Bundle**: includes `etp_engineering_toolkit_v2.py` with commands `find_profile`, `list_families`, `test_linear`, `classify_table`, etc., for reproducible profile-lookups.
+- **Provenance:** Linear classification work from the overnight scrutiny + extension pass on `overnight_handoff_2026-05-27` (2026-05-27), after cloning ETP.
+- **Gating:** Brayden green-light; venue final selection.
+- **When ready:** J60 → `J_series/algebra/J60/` or `J_series/interdisciplinary/J60/`.
+
 ### J59 v5 — DRAFT (σ-magma + 23 profile-14 families enumeration, *Semigroup Forum*)
 
 **v5 ETP ENUMERATION (2026-05-27):** Analyzed all 1,355 magmas in ETP's tabulated data (`equational_theories/Generated/`). Found **24 magmas with profile = 14, forming 22 distinct equation sets**. Plus σ-magma's Family C (commutativity-anchored) = **at least 23 distinct profile-14 families known**.
