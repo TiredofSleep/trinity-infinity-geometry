@@ -10,6 +10,13 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J60 v2 — DRAFT (ETP profile structure + closure-graph + order-5 verification, *Experimental Mathematics*)
+
+**v2 ADDITIONS (2026-05-27):**
+1. **Theorem 3.bis (PROVED via ETP graph)**: Family C's 14 IDs = $\{1\} \cup \mathrm{closure}_{ETP}(43)$. Uses ETP's 44,471 verified pairwise implications.
+2. **Conjecture 1 VERIFIED at order 5**: enumerated all 720 symmetric 5×5 Latin squares. 480 have profile 14 — ALL with the identical Family C equation set. No non-Family-C profile-14 commutative magma exists at order 5.
+3. **8 distinct implication-closures of size 14** in the ETP catalog (across 19 anchors). Family C is one. The other 7 are anchored on $x \cdot x = y \cdot y$, depth-5 single-variable identities, and depth-3 two-variable identities. Open whether magmas realize the other 7.
+
 ### J60 — DRAFT (ETP profile structure of linear magmas, *Experimental Mathematics*)
 
 - **Status:** **DRAFT.** Four theorems PROVED via ETP at machine precision; `verify_J60.py` 4/4 PASS in ~10s; cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J60/`.
