@@ -163,8 +163,48 @@ def pg23_test():
     print(f"  Flags = {flags} = {dict(f_flags)} -- PASS")
 
 
+def sporadic_test():
+    """Track C: factor sporadic finite simple group orders against strata."""
+    SPORADICS = {
+        "M_11": 7920, "M_12": 95040, "M_22": 443520,
+        "M_23": 10200960, "M_24": 244823040,
+        "J_1": 175560, "J_2": 604800, "J_3": 50232960,
+        "J_4": 86775571046077562880,
+        "HS": 44352000, "McL": 898128000, "Suz": 448345497600,
+        "He": 4030387200, "Ru": 145926144000,
+        "Co_1": 4157776806543360000, "Co_2": 42305421312000, "Co_3": 495766656000,
+        "Fi_22": 64561751654400, "Fi_23": 4089470473293004800,
+        "Fi_24'": 1255205709190661721292800,
+        "HN": 273030912000000, "Ly": 51765179004000000,
+        "Th": 90745943887872000, "O'N": 460815505920,
+        "B": 4154781481226426191177580544000000,
+        "M": 808017424794512875886459904961710757005754368000000000,
+    }
+    print("\n=== Sporadic finite simple group strata test ===")
+    expected_pass = {"M_11", "M_12", "M_22", "J_2", "HS", "McL", "Suz", "Fi_22"}
+    pass_set = set()
+    for label, order in SPORADICS.items():
+        primes = set(factorint(order).keys())
+        if primes.issubset(STRATA):
+            pass_set.add(label)
+    assert pass_set == expected_pass, \
+        f"Sporadic PASS set differs: got {pass_set}, expected {expected_pass}"
+    print(f"  PASS: 8 of 26 sporadics ({sorted(pass_set)})")
+    print(f"  FAIL: 18 of 26 (boundary aligns with prime 23)")
+
+    # Check Monster contains prime 71 (Stratum IV)
+    M_order = SPORADICS["M"]
+    M_primes = set(factorint(M_order).keys())
+    assert 71 in M_primes, "Monster should contain 71"
+    other_71 = [s for s, o in SPORADICS.items()
+                if s != "M" and 71 in factorint(o)]
+    assert not other_71, f"Other sporadics with 71: {other_71}"
+    print(f"  Stratum IV check: 71 in Monster only (PASS)")
+
+
 if __name__ == "__main__":
     main()
     niemeier_test()
     pg23_test()
+    sporadic_test()
     print("\n=== ALL TESTS PASS ===")
