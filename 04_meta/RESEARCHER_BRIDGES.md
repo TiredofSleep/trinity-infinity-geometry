@@ -15,7 +15,7 @@ this finding" routing.
 |---|---|---|---|---|
 | Paolo Mantero | Univ. of Arkansas | Commutative algebra, matroids, symbolic powers | Warm; MathOverflow path tried, license incompat removed | 2026-05-27 follow-up |
 | Aleš Drápal | Charles Univ. Prague | Quasigroups, loops, maximally non-associative structures | First contact 2026-05-27 (σ-magma rigidity) | 2026-05-27 |
-| Seewoo Lee | UC Berkeley | Modular forms, sphere packing inequalities | First contact 2026-05-27 (K_12 factorization) | 2026-05-27 |
+| Seewoo Lee | UC Berkeley | Modular forms, sphere packing inequalities | First contact 2026-05-27 (K_12 factorization). **Follow-up content prepared 2026-05-27**: kissing-number strata-fingerprint pattern across E_8/K_12/BW_16/Leech (Tier-B); see `04_meta/SPHERE_PACKING_STRATA_FINGERPRINT.md`. | 2026-05-27 |
 | Sidharth Hariharan | CMU (was Imperial) | Lean 4, Sphere-Packing-Lean project, Mathlib | First contact 2026-05-27 (Fossil-Variety Lean scaffold) | 2026-05-27 |
 
 ---
