@@ -10,6 +10,16 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
+### J61 — DRAFT (magma-by-ETP-profile taxonomy methodology, *Journal of Symbolic Computation*)
+
+- **Status:** **DRAFT.** Synthesis paper drawing on J58 + J59 + J60. `verify_J61.py` 5/5 PASS at machine precision in 18s. Cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J61/`.
+- **What it proposes:** Three-step taxonomy methodology — profile cataloging + closure-realizer identification + uniqueness analysis — for systematically classifying finite magmas by their ETP equation profile.
+- **Four case studies bundled**: Lo Shu D₄ orbit mod 3 (J58), σ-magma at order 10 (J59), linear $(ax+by+c) \bmod n$ family (J60), and the 8 size-14 implication-closures in the ETP catalog.
+- **Outside-research scan (2026-05-27)**: confirmed this magma-by-profile taxonomy approach is genuinely novel. ETP provides infrastructure but doesn't do magma cataloging; the "Latent space of equational theories" paper does the inverse direction; Schröder-990 revival works on equation relationships; Drápal-Wanless and Latin-square enumeration focus on combinatorial classification. Our work fills the gap.
+- **Bundle**: includes the `etp_engineering_toolkit_v2.py` (also in J60). Toolkit + methodology together form a reproducible framework.
+- **Gating:** Brayden green-light; this is a methodology/survey paper, so review-cycle expectations are different from the case-study papers.
+- **When ready:** J61 → `J_series/interdisciplinary/J61/` or `J_series/algebra/J61/`.
+
 ### J60 v2 — DRAFT (ETP profile structure + closure-graph + order-5 verification, *Experimental Mathematics*)
 
 **v2 ADDITIONS (2026-05-27):**
