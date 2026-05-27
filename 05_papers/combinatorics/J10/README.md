@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue (new):** *European Journal of Combinatorics* (per referee §9 explicit recommendation). Backup: *Discrete Mathematics*.
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (SAVE-PLAN APPLIED; coverage criteria restructured))
 **WP source:** WP58 + WP64
 
 ---

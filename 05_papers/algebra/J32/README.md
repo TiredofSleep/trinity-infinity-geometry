@@ -4,7 +4,7 @@
 **Phase:** Phase 3.
 **Target venue:** *Journal of Algebra* (lead). Fallback (in priority order): *Communications in Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
 **Author lane:** Sanders + Gish only.
-**Tier:** B (forced by direct enumeration on a 1000-triple set under a 8-element group action).
+**Tier:** 2 (draft (REWRITE 2026-05-12; operadic D4 obstruction))
 **WP source:** WP109 (operad $D_4$ obstruction) + WP112 (P$_{56}$ canonical fuse).
 
 ---

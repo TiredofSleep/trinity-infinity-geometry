@@ -1,10 +1,12 @@
 # J51 — Q17-B Clay Bridge: A Finite Gauss Sum (Trajectory Coherence Integral) and the Symbolic Return Theorem
 
-**Status:** DRAFT
+> **MERGED 2026-05-27** into [`J_qseries_merged/`](../J_qseries_merged/) — see that paper for the unified treatment. The Symbolic Return Theorem and the Q17-B Clay-bridge framing are now §§6-7 of the merged paper. The Clay-bridge content is also referenced from [`04_meta/clay/RH_TIG_BRIDGE.md`](../../../04_meta/clay/RH_TIG_BRIDGE.md).
+
+**Status:** MERGED (was DRAFT)
 **Phase:** Phase 5
 **Target venue:** L'Enseignement Math
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** -- (MERGED 2026-05-27 into J_qseries_merged)
 **WP source:** (Q17 bundle)
 
 ---

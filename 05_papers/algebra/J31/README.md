@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** *Journal of Algebra* (retargeted from *Adv Math* per `SAVE_PLAN_J31.md`)
 **Author lane:** Sanders + Gish only
-**Tier:** B
+**Tier:** 1 (ship-ready (Journal of Algebra, READY))
 **WP source:** WP104 + SFM v1.1 §10 corrected $D_4$ decomposition
 **Lens scope:** TSML_SYM (annotated; SFM v1.1 framing prominent)
 

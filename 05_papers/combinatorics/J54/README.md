@@ -4,7 +4,7 @@
 **Phase:** Phase 5
 **Target venue:** *Algebraic Combinatorics* (primary)
 **Author lane:** Sanders + Gish
-**Tier:** A/B
+**Tier:** 2 (draft (foundation paper; SFM Q6 + FAMILY_STRUCTURE_v1 applied))
 **WP source:** (foundation paper) + SFM 2026-05-08 Q6 (3-substrate chain) + FAMILY_STRUCTURE_v1.md
 
 ---

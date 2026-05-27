@@ -1,10 +1,12 @@
 # J16 — A Commutative Non-Associative 4-Algebra over F_5 with Rigid Idempotent Decomposition
 
-**Status:** REVISED (post fresh-eyes referee, 2026-05-08)
+> **MERGED 2026-05-27** into [`J_Fp_merged/`](../J_Fp_merged/) — see that paper for the unified treatment combining J14 and J16. The F_5 Rigid Idempotent Decomposition theorem is now §4 of the merged paper.
+
+**Status:** MERGED (was REVISED)
 **Phase:** Phase 2
 **Target venue:** *Algebras and Representation Theory*
 **Author lane:** Sanders + Gish
-**Tier:** B (PROVEN structural theorem)
+**Tier:** -- (MERGED 2026-05-27 into J_Fp_merged)
 **WP source:** WP117 (Sprint 18 corpus)
 
 ---

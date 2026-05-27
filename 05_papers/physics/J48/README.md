@@ -4,7 +4,7 @@
 **Phase:** Phase 5
 **Target venue:** Notices AMS (fallback: Adv. Math or J. Pure Appl. Algebra)
 **Author lane:** Sanders + Gish
-**Tier:** B (synthesis-class; lead theorem from [J40] is Tier-A)
+**Tier:** 3 (RETIRE candidate -- duplicates J32 operadic obstruction)
 **WP source:** WP109 (operad obstruction), WP111 (synthesis), WP112 (P_56 canonical fuse)
 
 ---

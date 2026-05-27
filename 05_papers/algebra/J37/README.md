@@ -4,7 +4,7 @@
 **Phase:** Phase 4
 **Target venue:** *Linear Algebra and Its Applications* (LAA) — RETARGETED from PRD per `SAVE_PLAN_J37.md`
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (RETARGETED to LAA; LinAlgApps target))
 **WP source:** WP107 (rewritten as LAA short note; TIG terminology stripped)
 **Lens scope:** $T_{\mathrm{RAW}}$ (10×10 integer matrix, non-symmetric, rank 8); the prime-11 pattern does NOT appear on $T_{\mathrm{SYM}}$ (the upper-triangle authoritative symmetrization, rank 7) at the coefficient level — $c_2(f_{\mathrm{SYM}}) = -23$ (Theorem 4.1 lens-dependence)
 

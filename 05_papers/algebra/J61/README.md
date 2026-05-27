@@ -4,7 +4,7 @@
 **Alternative venues:** *Algebra Universalis* (Springer), *International Journal of Algebra and Computation*, *Mathematics of Computation*
 **Status:** DRAFT — universal-algebra-grounded methodology paper drawing on J58, J59, J60 + outside-research positioning
 **Author lane:** Sanders + Gish
-**Tier:** A (methodology paper, all worked examples verified at machine precision via ETP)
+**Tier:** 2 (draft (universal-algebra-grounded methodology; most novel))
 **Source:** ETP-cloned + outside-research scan + universal-algebra terminology lift (2026-05-27)
 
 ---

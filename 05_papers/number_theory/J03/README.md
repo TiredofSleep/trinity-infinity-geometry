@@ -4,7 +4,7 @@
 **Phase:** Phase 1 (Triadic Launch)
 **Target venue:** Integers — Electronic Journal of Combinatorial Number Theory
 **Author lane:** Sanders + Gish
-**Tier:** A (seven theorems + two corollaries; substantive contribution is the spectral characterization in Theorem 5.2 plus the layered $2^j-1$ count in Theorem 6.1)
+**Tier:** 2 (draft (Integers; J03 absorbed J04, needs final consolidation pass))
 **WP source:** WP34 (First-G Law) + WP35 (Prime Phase Transition) + held draft `_held_first_g/first_g_sinc2_FINAL.tex`
 
 ---

@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** *European Journal of Combinatorics*
 **Author lane:** Sanders + Gish
-**Tier:** B (PROVEN)
+**Tier:** 2 (draft (REVISED post fresh-eyes referee))
 **WP source:** WP64 (Sprint 12 corpus)
 
 ---

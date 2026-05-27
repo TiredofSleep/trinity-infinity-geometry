@@ -4,7 +4,7 @@
 **Phase:** Phase 4
 **Target venue:** *Journal of Algebra*
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Journal of Algebra, SUBMISSION-READY -- corpus centerpiece))
 **WP source:** WP110 (4-core fusion-closure) + WP105 (closed-form attractor) + WP113 (PSLQ uniqueness) + SFM 2026-05-08 Q6 (3-substrate chain)
 **Lens scope:** LENS-INVARIANT on the 4-core $\mathcal{C} = \{0, 7, 8, 9\}$ — closure holds across TSML, BHML, AND CL_STD (the third-substrate strengthening from SFM Q6, 2026-05-08).
 

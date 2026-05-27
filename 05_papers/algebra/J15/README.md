@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** *Communications in Algebra*
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Communications in Algebra, SUBMISSION-READY))
 **WP source:** WP105 (closed-form attractor) + WP113 (PSLQ uniqueness); Galois content of J35's Theorem D extracted into its own self-contained treatment
 **Lens scope:** LENS-INVARIANT in the sense relevant to a Galois paper — the polynomial `f(x) = x^4 + 4x^3 - x^2 + 2x - 2` and its number field are algebraic objects independent of the TSML/BHML lens choice; the lens enters only in the *route* from `(T, B)` on `Z/10Z` to `f`.
 

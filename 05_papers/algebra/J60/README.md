@@ -4,7 +4,7 @@
 **Alternative venues:** *Journal of Symbolic Computation* (Elsevier), *Communications in Algebra*, *Algebra Universalis*
 **Status:** DRAFT — uses ETP-verified data; awaiting Brayden green-light
 **Author lane:** Sanders + Gish
-**Tier:** A (every claim verified via Tao's Equational Theories Project at machine precision)
+**Tier:** 2 (draft (uses ETP-verified data; awaiting referee-rigor pass))
 **Source:** ETP verification pass on `overnight_handoff_2026-05-27` (cloned 2026-05-27)
 
 ---

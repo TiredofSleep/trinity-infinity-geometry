@@ -4,7 +4,7 @@
 **Phase:** Phase 4.
 **Target venue:** *Statistical Science* companion (after revisions; fallback to *Foundations of Physics* if per-venue cap binds).
 **Author lane:** Sanders + Gish.
-**Tier:** B (with explicit "empirical-fits paper" framing for the Part 1 fits themselves).
+**Tier:** 3 (HOLD pending particle-physics collaborator OR reframe as observation)
 **WP source:** WP123 (CKM/PMNS fits) + WP124 (1/α; deferred).
 
 ---

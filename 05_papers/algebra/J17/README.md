@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** *Linear Algebra and its Applications*
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (LinAlgApps, SUBMISSION-READY))
 **WP source:** WP119 (Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/journals/WP119_journal_clean.tex)
 **Lens scope:** LENS-DEPENDENT in a controlled way — the coarse two-summand decomposition of `V` is one of three possible 2+2 partitions of the four basis lines; the choice is recorded in §0 (Lens) and Remark 2.1. The refined four-summand decomposition is the canonical `F_5`-line decomposition determined by the named basis. Total-dimension and refined-cell statements are basis-level; no claim depends on a representation-theoretic choice.
 

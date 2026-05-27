@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** Communications in Algebra
 **Author lane:** Sanders + Gish
-**Tier:** B (honest-negative + clean closure result)
+**Tier:** 1 (ship-ready (HONEST NEGATIVE, important for credibility))
 **Type:** **HONEST-NEGATIVE PAPER** — central new content is the formal retraction of an earlier lens-invariance claim; the surviving positive content (C is TSML-closed; the joint 4-core is uniquely jointly closed at size 4) is precisely stated.
 
 ---

@@ -4,7 +4,7 @@
 **Phase:** Phase 4
 **Target venue:** Journal of Mathematical Physics
 **Author lane:** Sanders + Gish (R0 had H.J. Johnson; harmonized in R1 per Brayden directive)
-**Tier:** B (Tier 4 framework-paper per central-claim classification)
+**Tier:** 2 (draft (R1 revised; could submit to JMP standalone))
 **WP source:** WP90 (literature & unification paths) + WP91 (NS separability bridge)
 **Title change in R1:** R0 was "The Bialynicki-Birula Bridge: Logarithmic Nonlinearity Forced by Separability"; R1 reflects actual content (BB constrains log lifts; NS sits as a non-example, not a derivation).
 

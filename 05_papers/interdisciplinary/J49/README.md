@@ -4,7 +4,7 @@
 **Phase:** Phase 5
 **Target venue:** J Theor Biol
 **Author lane:** Sanders + Gish
-**Tier:** C
+**Tier:** 3 (HOLD pending terahertz microtubule experimentalist)
 **WP source:** WP127
 
 ---

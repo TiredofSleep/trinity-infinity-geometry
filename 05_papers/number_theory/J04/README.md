@@ -23,7 +23,7 @@
 **Phase:** Phase 1 (Triadic Launch companion to J03)
 **Target venue:** Integers
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 3 (MERGED into J03 (formal tombstone))
 **WP source:** (full-period cancellation; formerly "sinc² zero law" — renamed 2026-05-07 per external collaborator calibration; "Zero Law" implied prime-specific structure but R(k,f) = sin²(πk/f)/(k² sin²(π/f)) vanishes at k = f for ANY f via sin²(π) = 0)
 
 ---

@@ -1,10 +1,12 @@
 # J43 — Spectral Layer Consolidation: G6 + G7 + G8 from Q-series Architecture
 
-**Status:** DRAFT
+> **MERGED 2026-05-27** into [`J_qseries_merged/`](../J_qseries_merged/) — see that paper for the unified treatment. This README + manuscript retained for citation history. The G_6, G_7, G_8 theorems are now §§2-4 of the merged paper.
+
+**Status:** MERGED (was DRAFT)
 **Phase:** Phase 4
 **Target venue:** European J Combin (3rd EJC submission this quarter; fallback: LinAlgApps or PLOS ONE)
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** -- (MERGED 2026-05-27 into J_qseries_merged)
 **WP source:** Q-series spectral catalog (G6 / G7 / G8 working papers)
 
 ---

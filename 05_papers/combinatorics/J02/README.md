@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** Algebraic Combinatorics
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Algebraic Combinatorics, SUBMISSION-READY))
 **WP source:** (four-core consolidated)
 
 ---

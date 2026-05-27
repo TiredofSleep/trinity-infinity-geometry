@@ -4,7 +4,7 @@
 **Phase:** Phase 5
 **Target venue:** PRD (Physical Review D)
 **Author lane:** Sanders + Gish
-**Tier:** Forced FN power + measured anchor (Tier-B)
+**Tier:** 3 (RETIRE candidate -- Tier-C structural rhyme without theorem)
 **WP source:** WP122 (Sprint 18 Bridge-Dirac, 2026-05-04)
 
 ---

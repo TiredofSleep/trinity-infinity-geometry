@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** *Communications in Mathematical Physics* (FALLBACK: *Journal of Mathematical Physics*; secondary fallback *Annals of Physics*)
 **Author lane:** Sanders + Gish
-**Tier:** A (structural identification: P_56 = σ_outer in the spinor rep) + B (the 9-vector direction and the (-4)^15 ⊕ (0)^1 Killing-form computation)
+**Tier:** 2 (draft (manuscript stable; Volume K cross-reference added))
 **WP source:** WP104 §2 (Cl(0,10) construction + P_56 ↔ σ_outer + BHML's 54-irrep direction) + WP103 (so(10) closure prerequisite) + Volume K D101–D102 (atomic-substrate refinement; chirality 16 = 1+3+5+7)
 **Lens scope:** TSML_SYM throughout the Cl(0,10) construction; the literal-bit-pattern TSML_RAW differs in the σ_outer-fixed sector only and does not change the chirality identification or the 9-vector direction (BHML's σ_outer-broken content is independent of TSML's lens).
 

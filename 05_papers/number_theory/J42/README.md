@@ -4,7 +4,7 @@
 **Phase:** Phase 4
 **Target venue:** Journal of Mathematical Physics (preferred); *Letters in Mathematical Physics* / *J Phys A* / *Comm Math Phys* as fallbacks
 **Author lane:** Sanders + Gish
-**Tier:** B (Tier 1/2 fully proved)
+**Tier:** 2 (draft (with venue fallback flagged))
 **WP source:** Discrete sinc² identity (Theorem 3.1 in `first_g_sinc2_FINAL.tex`); QM application is novel framing
 
 ---

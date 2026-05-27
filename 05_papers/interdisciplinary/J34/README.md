@@ -4,7 +4,7 @@
 **Phase:** Phase 4.
 **Target venue:** *Statistical Science*.
 **Author lane:** Sanders + Gish.
-**Tier:** B.
+**Tier:** 1 (ship-ready (HONEST NEGATIVE on detector specificity, REVISED))
 **WP source:** WP106 + WP114 (BUNDLED).
 
 ---

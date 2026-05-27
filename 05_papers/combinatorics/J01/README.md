@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** JCT-A
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (JCT-A, SUBMISSION-READY, 6/6 PASS))
 **WP source:** WP101
 
 ---

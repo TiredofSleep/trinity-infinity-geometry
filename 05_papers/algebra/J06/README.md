@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** JCT-A OR JPAA (theorem rigor)
 **Author lane:** Sanders + Gish
-**Tier:** A/B
+**Tier:** 2 (draft (DRAFT-FINALIZED; rigor pass pending))
 **WP source:** WP57
 
 ---

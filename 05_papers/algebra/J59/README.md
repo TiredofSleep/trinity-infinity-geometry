@@ -4,7 +4,7 @@
 **Alternative venues:** *Communications in Algebra* (Taylor & Francis), *Algebra Universalis* (Springer), *Algebraic Combinatorics* (Centre Mersenne)
 **Status:** DRAFT — three independent rigidity theorems PROVED by exhaustive computation; awaiting Brayden green-light
 **Author lane:** Sanders + Gish
-**Tier:** A (all results PROVED, all computations exhaustive at machine precision)
+**Tier:** 2 (draft (three rigidity theorems PROVED; awaiting referee-rigor pass))
 **Source:** scrutiny + extension pass on `overnight_handoff_2026-05-27` (2026-05-26).
 
 ---

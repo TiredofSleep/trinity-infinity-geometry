@@ -4,7 +4,7 @@
 **Alternative venues**: *College Mathematics Journal* (MAA), *Involve* (a journal of mathematics), *PRIMUS*
 **Status**: DRAFT — verification PASS, awaiting Brayden green-light + cover letter
 **Author lane**: Sanders + Gish
-**Tier**: B (didactic note; all theorems COMPUTED at machine precision; one classical observation about ℤ/3 already known)
+**Tier:** 2 (draft (verification PASS; awaiting referee-rigor pass))
 **Source**: scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma refinement is a correction-via-strengthening of an earlier "3 magmas" claim in `OPEN_FRONTIERS_2026-05-26.md` §60.
 
 ---

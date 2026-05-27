@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** Israel Journal of Mathematics (primary)
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (REWRITTEN per SAVE_PLAN; D2-D5 corollary diagnostic))
 **WP source:** WP103
 **Lens scope:** TSML_SYM + BHML (annotated; uses upper-triangle authoritative symmetrization jointly with the canonical Becoming-lens companion)
 

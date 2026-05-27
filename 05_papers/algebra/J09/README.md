@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** Algebra Universalis
 **Author lane:** Sanders + Gish
-**Tier:** B (small finite commutative non-associative magma; role-mode reduction)
+**Tier:** 2 (draft (REVISED; Path-B rewrite per fresh-eyes referee))
 
 ---
 

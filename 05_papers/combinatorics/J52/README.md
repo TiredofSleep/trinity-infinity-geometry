@@ -4,7 +4,7 @@
 **Phase:** Phase 6
 **Target venue:** Mathematical Intelligencer
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; pedagogical exposition))
 **WP source:** (lens-taxonomy expository)
 
 ---

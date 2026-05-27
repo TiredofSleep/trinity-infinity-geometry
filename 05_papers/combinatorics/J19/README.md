@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue (kept):** *European Journal of Combinatorics*. Backup: *Discrete Mathematics*.
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (SAVE-PLAN APPLIED; Path-C role-quotient))
 **WP source:** WP10 (D93 only; the DKAN architecture portion of WP10 is deferred to a separate experimental-AI venue with proper baselines and replication)
 
 ---

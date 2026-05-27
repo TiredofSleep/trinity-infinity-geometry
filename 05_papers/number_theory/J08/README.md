@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** Experimental Mathematics
 **Author lane:** Sanders + Gish
-**Tier:** B (recovered as clean 8-10 page Exp Math note per fresh-eyes referee)
+**Tier:** 2 (draft (REVISED; major referee fixes applied))
 
 ---
 

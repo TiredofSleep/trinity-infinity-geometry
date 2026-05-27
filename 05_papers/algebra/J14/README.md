@@ -1,10 +1,12 @@
 # J14 — F$_p$ Structural Invariance of a Commutative Non-Associative 4-Algebra Arising from the 4-Core of Z/10Z
 
-**Status:** DRAFT — defensive-exposition rewrite complete (2026-05-07); awaits Brayden's referee-rigor pass.
+> **MERGED 2026-05-27** into [`J_Fp_merged/`](../J_Fp_merged/) — see that paper for the unified treatment combining J14 and J16. The Lens-Invariant Skeleton and Aut Variation theorems are now §§2-3 of the merged paper.
+
+**Status:** MERGED (was DRAFT)
 **Phase:** Phase 2
 **Target venue:** *Algebra Universalis* (retained per save plan; venue fit is correct, the rewrite is exposition-level)
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** -- (MERGED 2026-05-27 into J_Fp_merged)
 **WP source:** WP118 (revised 2026-05-07 per `SAVE_PLAN_J14.md`)
 
 ---

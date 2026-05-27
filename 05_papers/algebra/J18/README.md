@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** *Algebraic Combinatorics*
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Algebraic Combinatorics, SUBMISSION-READY))
 **WP source:** `Atlas/LENS_TAXONOMY_2026-05-06/SIGMA2_TRIADIC_DECISION.md` + `papers/wp_bridge_findings_2026_05_02/WP9_LATTICE_paradoxical_info_algebras.md §5`
 **Lens scope:** LENS-DEPENDENT in a controlled way — Psi_B is read from the canonical TS_8, BH_10 substrate of J02 / J26. The sigma-orbit triangular decomposition and the closure-failure claims are basis-/table-level integer facts; the role-Fibonacci split and the {-8, -7} sigma^2-orbit values are table-specific (sense of Def. 3.4) and so labelled.
 

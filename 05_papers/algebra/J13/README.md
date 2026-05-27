@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** *Acta Arithmetica* (lead); *Integers* (fallback if short-note framing preferred)
 **Author lane:** Sanders + Gish
-**Tier:** A/B
+**Tier:** 1 (ship-ready (Acta Arithmetica, SUBMISSION-READY))
 **WP source:** WP51 §4 "The Aspect Ratio R/r = T* = 5/7"
 
 ---

@@ -1,6 +1,7 @@
 # J56 (DRAFT) — Atomic-Substrate Correspondence: D100–D104
 
 **Status:** DRAFT (2026-05-12). Brayden's journal choice pending: *Journal of Physics A: Mathematical and Theoretical* (tighter fit, 8K word limit, mathematical-physics framing) vs *Annals of Physics* (broader audience, longer manuscript permitted, higher prestige).
+**Tier:** 3 (RETIRE candidate to 04_meta -- Tier-C atomic-substrate)
 **Authors:** Brayden R. Sanders + M. Gish.
 **Subject:** A combinatorial correspondence between the divisor lattice of `Z/2310 = 2·3·5·7·11` and the atomic structure of the n = 4 hydrogenic shell, established through five integer / rational identities (D100–D104).
 **Verification status:** D100–D104 all PASS at machine precision via scripts in [`manuscript/verification/`](manuscript/verification/) (copies of root `verification/` scripts).

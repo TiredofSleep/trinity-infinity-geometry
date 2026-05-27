@@ -4,7 +4,7 @@
 **Phase:** Phase 5/6
 **Target venue:** **Mathematical Intelligencer** (retargeted from AMM per fresh-eyes referee §7; alternate: *Philosophia Mathematica* with full literature engagement)
 **Author lane:** Sanders + Gish (per Brayden directive 2026-05-07)
-**Tier:** B
+**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; scope-narrowed to algebra))
 **WP source:** (paradox classifier expository)
 
 ---

@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** *JCT-A*
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (JCT-A, SUBMISSION-READY))
 **WP source:** D97 (Volume J §J HARMONY ladder), `Gen13/targets/foundations/tables/harmony_ladder.py`
 
 ---

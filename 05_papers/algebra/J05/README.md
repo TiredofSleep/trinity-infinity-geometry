@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** Experimental Mathematics
 **Author lane:** Sanders + Gish
-**Tier:** B (lens-invariant; cell-count tier)
+**Tier:** 2 (draft (REVISED 2026-05-08; SFM framing applied))
 
 ---
 

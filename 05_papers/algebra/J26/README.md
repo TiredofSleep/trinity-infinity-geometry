@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** Comm Algebra
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Communications in Algebra, READY))
 **WP source:** Variant Catalog "TSML F_p extensions" (Atlas/LENS_TAXONOMY_2026-05-06/VARIANT_CATALOG.md) + WP118 (Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/WP118_FP_UNIVERSALITY.md) + GAP_AUDIT.md
 
 ---

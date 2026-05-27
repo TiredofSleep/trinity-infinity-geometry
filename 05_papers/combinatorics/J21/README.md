@@ -1,10 +1,12 @@
 # J21 — Q17-A: 5D Force Vector as CRT Fourier Embedding of Z/10Z into R^5
 
-**Status:** DRAFT (manuscript finalized 2026-05-07; awaiting referee-rigor pass)
+> **MERGED 2026-05-27** into [`../../algebra/J_qseries_merged/`](../../algebra/J_qseries_merged/) — see that paper for the unified treatment. The 5D Fourier embedding is now §5 of the merged paper.
+
+**Status:** MERGED (was DRAFT)
 **Phase:** Phase 2
 **Target venue:** AMM
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** -- (MERGED 2026-05-27 into J_qseries_merged)
 **WP source:** `papers/Q17_5D_RIGOROUS.md`
 
 ---

@@ -4,7 +4,7 @@
 **Phase:** Phase 2
 **Target venue:** AMM
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (defensive-exposition pass complete))
 **WP source:** (M_22 substrate-prime)
 
 ---

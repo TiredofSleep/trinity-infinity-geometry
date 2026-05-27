@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue (new):** *Algebraic Combinatorics* (preferred) OR *Discrete Mathematics*. Backup: *Integers* / *Math. Magazine* for compressed Theorem-1-only note.
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 2 (draft (SAVE-PLAN APPLIED; restructured))
 **WP source:** WP51
 
 ---

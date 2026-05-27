@@ -4,7 +4,7 @@
 **Phase:** Phase 4
 **Target venue:** PRA
 **Author lane:** Sanders + Gish
-**Tier:** C (Tier 3 partner-then-submit per central-claim classification)
+**Tier:** 3 (HOLD pending NV-center experimentalist)
 **WP source:** WP73-WP77 (bundled)
 **Acceptance probability:** ~70-80% after revisions per referee
 

@@ -4,7 +4,7 @@
 **Phase:** Phase 3
 **Target venue:** Algebraic Combinatorics
 **Author lane:** Sanders + Gish
-**Tier:** B
+**Tier:** 1 (ship-ready (Algebraic Combinatorics, READY, cover letter finalized))
 **WP source:** Atlas/LENS_TAXONOMY_2026-05-06/CL_FORCING_AXIOMS.md (2026-05-06)
 
 ---
