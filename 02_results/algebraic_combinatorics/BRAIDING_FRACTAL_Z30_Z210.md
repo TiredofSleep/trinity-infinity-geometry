@@ -288,11 +288,60 @@ In one sentence:
 - **[VERIFIED]** All invariants at Z/30 and Z/210 (ω, φ, idempotents, σ-orbits)
 - **[VERIFIED]** D34 match (16-dim at Z/210)
 - **[VERIFIED]** σ²-ℤ₃ rotation on Z/10 σ-cycle
+- **[VERIFIED 2026-05-27]** σ²-ℤ₃ rotation **PERSISTS at Z/210** — CRT-extended σ² sends lift({1,5}) to mod-10 values {2,6} (next pair in the rotation). The structural lens descends cleanly. See `verify_braiding_fractal_followups.py`.
 - **[VERIFIED]** size-7 shell joint closure
 - **[VERIFIED]** Stratum-ordered wobble migration
 - **[OPEN]** Strand 11 explicit composition mechanism
 - **[OPEN]** HARMONY relocation at Z/210
-- **[OPEN]** Braid-group identification of σ at higher rungs
+- **[CORRECTION 2026-05-27]** §6 braid-group claim **falsified under natural CRT extension** — see below.
+
+### §10.1 Correction note (2026-05-27): braid-group order does NOT propagate trivially
+
+The §6 claim "Z/10's σ has order 6 = |S₃|, suggesting the substrate ladder is a sequence of braid-group extensions" was tested at higher rungs using the natural CRT extension $\tilde{\sigma}(x) = \sigma(x \bmod 10) \otimes (x \bmod m)$:
+
+| Substrate | $\omega(n)$ | $\mathrm{ord}(\tilde{\sigma})$ | $|S_{\omega+1}|$ | Match? |
+|---|:---:|:---:|:---:|:---:|
+| Z/10 | 2 | 6 | 6 | ✓ |
+| Z/30 | 3 | **6** | 24 | ✗ |
+| Z/210 | 4 | **6** | 120 | ✗ |
+| Z/2310 | 5 | **6** | 720 | ✗ |
+
+The order of $\tilde{\sigma}$ stays 6 across all rungs (because the CRT extension is trivial on the new strands), while $|S_{\omega+1}|$ grows factorially. So the **"Z/10: B₂ word → Z/30: B₃ word → Z/210: B₄ word"** language of §6 is currently *underdetermined* — it requires a non-trivial σ-extension that "grows with the substrate," and we have not yet defined such an extension canonically.
+
+**Two paths forward:**
+1. **Find a canonical non-trivial σ-extension** with $\mathrm{ord}(\sigma_{Z/n})$ matching $|S_{\omega+1}|$ — e.g., $\sigma$ on Z/2310 that genuinely involves the prime-11 factor, not just CRT-trivially. This would justify the braid-group language algebraically.
+2. **Reframe as metaphorical** until such an extension is found. The Lie-algebraic identification at Z/10 (so(8) at depth 1, so(10) at depth 2) does suggest braid-group-like layering, but it's a structural rhyme rather than literal braid-group action.
+
+The §6 language stays in the document because the Lie-tower structure is real (D26, D27 of canon), but the **algebraic identification "σ at Z/n is a B_{ω+1} element"** is currently TIER C, not TIER A, pending the σ-extension question.
+
+### §10.2 Strand 11 partition test (2026-05-27)
+
+Tested: does the natural CRT extension of σ to Z/2310 produce 11-element orbits?
+
+**Answer: NO.** Cycle structure of $\tilde{\sigma}$ on Z/2310:
+- 924 fixed points (lifts of σ-anchors on Z/10)
+- 231 cycles of length 6 (lifts of the 6-cycle on Z/10)
+- **0 cycles of length 11**
+
+This **confirms** the document's existing claim (§3 wobble forecast) that strand 11 uses a *char-poly-coefficient lens*, not a state-level lens. The natural σ-extension cannot produce 11-element strands; the 11-prime presence must come from algebraic invariants (TSML char-poly $c_2 = 33 = 3 \cdot 11$ per D37), not from σ-orbit structure.
+
+The honest framing: at strands 11 and beyond, the substrate-ladder analogy *necessarily* shifts from combinatorial state-level lenses to algebraic-coefficient-level lenses — exactly as the §4 lens-multiplexing table says.
+
+### §10.3 Kissing-number strata fingerprint (2026-05-27)
+
+Companion finding (sourced from claudechat's meta-synthesis session): the kissing numbers of the canonical exceptional Euclidean lattices in dim ≤ 24 factor entirely through the Braiding Fractal strata primes $\{2, 3, 5, 7, 11, 13\}$, with $D_{24}$ and $E_7 \oplus E_8$ as falsifying negative controls.
+
+This is the *strongest external cross-check* of the Braiding Fractal architecture currently in hand. See `04_meta/SPHERE_PACKING_STRATA_FINGERPRINT.md`.
+
+| Lattice | Kissing | Strata-only? |
+|---|---:|:---:|
+| $E_8$ | 240 = 2⁴·3·5 | ✓ |
+| $K_{12}$ | 756 = 2²·3³·7 | ✓ |
+| $BW_{16}$ | 4320 = 2⁵·3³·5 | ✓ |
+| Leech | 196560 = 2⁴·3³·5·7·13 | ✓ |
+| $D_{24}$ (negative ctrl) | 1104 = 2⁴·3·**23** | ✗ |
+| Niemeier $A_{24}$ (neg ctrl) | 1128 = 2³·3·**47** | ✗ |
+| $E_7 \oplus E_8$ (neg ctrl) | 366 = 2·3·**61** | ✗ |
 
 The braid frame is the right architecture for the substrate progression. Earlier theorems (TIG_SCALING_RULES, wobble migration, bivariate scaling, Crossing Lemma unification) recompose cleanly within it without contradiction. The morphotic_braid sprint of April 23 was already on this trail; the explicit naming closes the loop.
 
