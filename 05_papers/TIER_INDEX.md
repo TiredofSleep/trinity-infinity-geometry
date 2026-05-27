@@ -11,7 +11,7 @@
 
 ---
 
-## Tier 1 — ship-ready (19 papers, +6 promoted 2026-05-27)
+## Tier 1 — ship-ready (20 papers, +7 added/promoted 2026-05-27)
 
 | J# | Subdir | Title (short) | Target venue |
 |---|---|---|---|
@@ -32,6 +32,7 @@
 | **J60** | algebra | ETP Profile Structure of Linear Magmas (4/4 PASS) **NEW 2026-05-27** | Experimental Mathematics |
 | **J61** | algebra | Type Specimens + C5 Fossil-Variety Theorem (5/5 PASS) **NEW 2026-05-27, MOST NOVEL** | Journal of Symbolic Computation |
 | **J62** | number_theory | TSML 8×8 Null + RH Structural Rhyme (short note, 5-line numpy verify) **NEW 2026-05-27** | Mathematical Intelligencer |
+| **J63** | number_theory | Strata-Prime Fingerprint: 23/24 Niemeier + D_24 mechanism (polynomial vs factorial) + Monster 71 **NEW 2026-05-27, 4 theorems all verified** | Journal of Number Theory |
 | **J_qseries_merged** | algebra | Spectral Architecture of σ-Character on Z/10Z (5 theorems, G_low=1.871644, G_high=9.389185) **PROMOTED 2026-05-27** | European J. Combinatorics |
 | **J_Fp_merged** | algebra | F_p Structure of 4-Core Algebra (idempotent counts at 6 primes; chain-shell dets exact) **PROMOTED 2026-05-27** | Algebra Universalis |
 

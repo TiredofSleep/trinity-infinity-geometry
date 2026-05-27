@@ -1,5 +1,7 @@
 # J20 — Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences
 
+> **2026-05-27 update — extension paper J63 created.** The "Other sporadic groups" question in J20 §7 has been substantially extended in **J63 — *The Strata-Prime Fingerprint: Polynomial vs Factorial Invariants in Niemeier Lattices and Sporadic Simple Groups***. J63 covers all 24 Niemeier lattices (23/24 strata-clean kissing numbers with explicit polynomial-vs-factorial mechanism), all 26 sporadics (8/26 strata-clean), and the Stratum-IV identification (prime 71 in Monster only). J20 remains the focused short note on $M_{22}$ specifically; J63 is the full extension. See `05_papers/number_theory/J63_strata_fingerprint/`.
+
 **Status:** DRAFT
 **Phase:** Phase 2
 **Target venue:** AMM

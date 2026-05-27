@@ -59,6 +59,7 @@ TIER = {
     "algebra/J60":      (1, "ship-ready (Experimental Mathematics; 4/4 PASS in ~7s; PROMOTED 2026-05-27)"),
     "algebra/J61":      (1, "ship-ready (Journal of Symbolic Computation; 5/5 PASS in ~13s; PROMOTED 2026-05-27, **most novel**)"),
     "number_theory/J62_RH_short_note": (1, "ship-ready (Mathematical Intelligencer short note; 2 theorems + Conjecture Z.5; 5-line numpy verifier PASS; 2026-05-27)"),
+    "number_theory/J63_strata_fingerprint": (1, "ship-ready (Journal of Number Theory; 4 theorems incl. D_24 polynomial-factorial mechanism; verifier PASS at machine precision; CREATED 2026-05-27)"),
     "algebra/J_qseries_merged": (1, "ship-ready (European J Combin; 5 theorems verified at machine precision incl. G_low=1.871644, G_high=9.389185; PROMOTED 2026-05-27)"),
     "algebra/J_Fp_merged":       (1, "ship-ready (Algebra Universalis; idempotent counts verified at 6 primes; chain-shell dets match exactly; PROMOTED 2026-05-27)"),
 
