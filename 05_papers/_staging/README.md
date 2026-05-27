@@ -10,14 +10,17 @@ When a paper here completes the §4 criteria from `../README.md`, it moves out o
 
 (Most-recent first.)
 
-### J58 — DRAFT v2 (Lo Shu D₄ orbit mod 3 + Dürer extension, *Mathematics Magazine*)
+### J58 — DRAFT v3 (Lo Shu D₄ orbit mod 3 + Dürer extension + Diagonal Lemma, *Mathematics Magazine*)
 
-- **Status:** **DRAFT v2.** Manuscript complete with structural theorem PROVED and Dürer 4×4 extension added; `verify_J58.py` **8/8 PASS at machine precision** (was 6/6 in v1); cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
+- **Status:** **DRAFT v3.** Manuscript complete with TWO structural theorems PROVED (V₄′-coset preserves κ + Diagonal Lemma forcing non-commutativity), Dürer 4×4 extension added; `verify_J58.py` **10/10 PASS at machine precision** (was 6/6 in v1, 8/8 in v2); cover letter drafted. Working-repo location: `Gen14/targets/journals/J_series/J58/`.
 - **What v1 claimed (Lo Shu):** The $D_4$ orbit of the Lo Shu magic square reduces mod 3 to **exactly 4 distinct magma tables** (each appearing twice). The 4 split as: $\mathbb{Z}/3$ + a commutative non-group quasigroup + an anti-isomorphic pair of non-commutative quasigroups. The cumulant $\kappa(M) = \operatorname{Tr}(M^2) - \operatorname{Tr}(M)^2$ is a 2-valued witness: $\kappa = -48$ on commutative cases, $\kappa = +48$ on non-commutative cases.
-- **What v2 adds:**
-  1. **V₄′-coset invariance of κ is now PROVED as a general 3×3 theorem.** For any 3×3 real matrix $M$, the subgroup $V_4' = \{e, R^2, T, T_a\} \subset D_4$ preserves κ, because trace and trace-of-square are invariant under transpose and under conjugation by the reversal matrix. Therefore κ takes at most 2 distinct values across the $D_4$ orbit of *any* 3×3 matrix.
-  2. **Dürer 4×4 at mod 3 satisfies the same pattern.** Albrecht Dürer's *Melencolia I* magic square has $D_4$ orbit that mod-3-reduces to 4 distinct tables (each appearing twice), 2 commutative + 2 non-commutative, with $\kappa = \pm 128$ as the witness. The κ-coset invariance generalizes verbatim to 4×4.
-  3. **Mod 3 is the unique modulus** at which both Lo Shu and Dürer exhibit the dichotomy. Every other modulus tested produces uniformly commutative or uniformly non-commutative reductions. Open question.
+- **What v2 added:**
+  1. **V₄′-coset invariance of κ is now PROVED as a general 3×3 theorem.** For any 3×3 real matrix $M$, the subgroup $V_4' = \{e, R^2, T, T_a\} \subset D_4$ preserves κ, because trace and trace-of-square are invariant under transpose and under conjugation by the reversal matrix.
+  2. **Dürer 4×4 at mod 3 satisfies the same pattern.** Albrecht Dürer's *Melencolia I* magic square has $D_4$ orbit that mod-3-reduces to 4 distinct tables (each appearing twice), 2 commutative + 2 non-commutative, with $\kappa = \pm 128$ as the witness.
+  3. **Mod 3 is the unique modulus** at which both Lo Shu and Dürer exhibit the dichotomy.
+- **What v3 adds:**
+  4. **Diagonal Lemma PROVED**: no 3×3 magma table on $\{0,1,2\}$ that is both commutative AND a quasigroup has a repeated diagonal entry (exhaustively: 6 such tables exist; all 6 have diagonal $\{0,1,2\}$ as a multiset).
+  5. **Corollary PROVED**: Lo Shu's diagonal mod 3 is $\{2,2,2\}$ (constant). Since $V_4'$ preserves diagonal multisets, every $V_4'$-coset image of Lo Shu has constant mod-3 diagonal. By the Diagonal Lemma, *no* such image can be a commutative quasigroup. Combined with the quasigroup property (Theorem D), all 4 $V_4'$-coset images are *forced* non-commutative. This proves the κ = +48 → non-commutative half of the commutativity correlation structurally.
 - **Provenance:** scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma count is a refinement of the previously-stated "3 magmas" claim in OPEN_FRONTIERS_2026-05-26.md §60 (which counted equational-theory classes).
 - **Gating:** Brayden green-light; cover letter venue final selection (*Mathematics Magazine* vs *Mathematics Teacher: Learning and Teaching PK-12* vs *Involve*).
 - **When ready:** J58 → `J_series/algebra/J58/` (or `J_series/interdisciplinary/J58/` if the historical/cultural framing dominates).
