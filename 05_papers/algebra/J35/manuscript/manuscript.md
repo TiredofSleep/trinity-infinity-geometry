@@ -35,9 +35,9 @@ $$
 
 **Theorem E** (Universal attractor on chain shells). For any chain shell $S_k$ of size $k \in \{4, 5, 6, 7, 8, 9, 10\}$, the iteration $F_{1/2}$ initialized with uniform mass on $S_k$ converges to the same attractor described in Theorem D, with mass-outside-$\mathcal{C}$ vanishing to numerical zero. The 4-core attractor is *globally attracting* on every chain-supported initialization.
 
-**Theorem F** (Algebraic mixing-point: partial uniqueness + open conjecture). For $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$ tested by integer-PSLQ search at coefficient bound $20$ and 50-digit precision, only $\alpha = 1/2$ admits a small-coefficient quadratic relation between $p_7$ and $p_8$ at the attractor: the relation $y^2 - 2y - 2 = 0$. Verified empirically. We conjecture (Conjecture 1.1) that $\alpha = 1/2$ is the unique value in $\mathbb{Q} \cap (0, 1)$ at which $p_7/p_8$ admits an algebraic relation in any bounded degree-and-coefficient class. The general $\alpha$ symbolic uniqueness proof is open.
+**Proposition F** (Algebraic mixing-point — finite-test partial uniqueness, **deliberately labelled Proposition rather than Theorem to signal its lower confidence level**). For $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$ tested by integer-PSLQ search at coefficient bound $20$ and 50-digit precision, only $\alpha = 1/2$ admits a small-coefficient quadratic relation between $p_7$ and $p_8$ at the attractor: the relation $y^2 - 2y - 2 = 0$. Verified empirically. We conjecture (Conjecture 1.1) that $\alpha = 1/2$ is the unique value in $\mathbb{Q} \cap (0, 1)$ at which $p_7/p_8$ admits an algebraic relation in any bounded degree-and-coefficient class. The general $\alpha$ symbolic uniqueness proof is open. **PSLQ establishes "no small-coefficient algebraic relation found within the tested precision," not algebraic-uniqueness proper; we therefore restrict the claim to the finite test set and demote the label from Theorem to Proposition.**
 
-The companion verification script `4core_verification.py` reproduces Theorems A through F at machine precision (Python 3.11+, numpy, sympy, mpmath; 4-second runtime). All six independent structural facts converge on the same four-element set $\mathcal{C}$.
+The companion verification script `4core_verification.py` reproduces **Theorems A through E and Proposition F** at machine precision (Python 3.11+, numpy, sympy, mpmath; 4-second runtime). The five Tier-A theorems (A-E) carry the load-bearing content; Proposition F is a finite-test empirical observation supporting the open Conjecture 1.1.
 
 ---
 
@@ -47,7 +47,7 @@ This paper works on $\mathbb{Z}/10\mathbb{Z}$ with a specific pair of commutativ
 
 The framing follows the Drápal & Wanless (2021, *J. Combin. Theory Ser. A* **184**, 105510) line of work on small finite commutative non-associative structures. Drápal-Wanless treat *maximally* non-associative quasigroups (an extremum at the high end of the non-associativity spectrum); the present pair $(T, B)$ inhabits the same intellectual neighborhood at a structurally distinct point — non-associative but not maximally so, with rational-and-algebraic invariants producing the closed-form attractor of Theorem D.
 
-**Centerpiece framing.** The four-element set $\mathcal{C}$ plays the role of the algebraic *center* of this magma family. The relationship between $\mathcal{C}$ and the present pair $(T, B, S)$ is structurally analogous to the relationship between the unit circle $S^1$ and the group $U(1)$: $\mathcal{C}$ is the privileged invariant locus on which all of $T$, $B$, $S$ agree (Theorems A, B), where the rational-function dynamical system collapses to a polynomial system (Theorem C), where the closed-form algebraic attractor lives (Theorem D), where every chain-supported initial condition converges (Theorem E), and at which the unique algebraic mixing weight $\alpha = 1/2$ produces small-coefficient relations (Theorem F). Six independent structural facts (Theorems A, B, C, D, E, F plus the universality across $F_p$ ring extensions noted in the parent framework's Volume H D74) converge on this same four-element set.
+**Centerpiece framing.** The four-element set $\mathcal{C}$ plays the role of the algebraic *center* of this magma family. The relationship between $\mathcal{C}$ and the present pair $(T, B, S)$ is structurally analogous to the relationship between the unit circle $S^1$ and the group $U(1)$: $\mathcal{C}$ is the privileged invariant locus on which all of $T$, $B$, $S$ agree (Theorems A, B), where the rational-function dynamical system collapses to a polynomial system (Theorem C), where the closed-form algebraic attractor lives (Theorem D), and where every chain-supported initial condition converges (Theorem E). **Five Tier-A theorems (A through E)** converge on this same four-element set. A sixth result, **Proposition F (algebraic mixing-point)**, is a finite-test partial-uniqueness statement that empirically singles out $\alpha = 1/2$ among five tested values as the unique value admitting a small-coefficient algebraic relation between $p_7$ and $p_8$; the full-uniqueness claim is recorded as Conjecture 1.1 and remains open.
 
 **Tier discipline (PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN).**
 
@@ -312,11 +312,11 @@ The 4-core attractor is therefore not just one fixed point of $F_{1/2}$; it is t
 
 ---
 
-## §7 Algebraic mixing-point: Theorem F + Conjecture 1.1
+## §7 Algebraic mixing-point: Proposition F + Conjecture 1.1
 
 WP105's original framing claimed the unique algebraic structure at $\alpha = 1/2$ as an open uniqueness statement. We sharpen the framing to *partial-uniqueness* + *open conjecture*.
 
-**Theorem 7.1** (Theorem F: Partial uniqueness on a finite test set). *Among $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, only $\alpha = 1/2$ admits a small-coefficient quadratic relation $a y^2 + b y + c = 0$ with $|a|, |b|, |c| \le 20$ at the attractor ratio $y = p_7/p_8$. The relation is $y^2 - 2y - 2 = 0$.*
+**Proposition 7.1** (Proposition F: Partial uniqueness on a finite test set). *Among $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, only $\alpha = 1/2$ admits a small-coefficient quadratic relation $a y^2 + b y + c = 0$ with $|a|, |b|, |c| \le 20$ at the attractor ratio $y = p_7/p_8$. The relation is $y^2 - 2y - 2 = 0$. **(Labelled Proposition rather than Theorem: PSLQ establishes "no small-coefficient algebraic relation found within the tested precision," not algebraic uniqueness proper.)***
 
 *Proof.* Direct integer-PSLQ search at coefficient bound $20$, 50-digit mpmath precision (`4core_verification.py` Check 6). At $\alpha = 1/2$ the search finds $y^2 - 2y - 2 = 0$ to residual $< 10^{-25}$. At $\alpha \in \{0, 1/4, 3/4\}$ no relation is found within the bounds: the non-degenerate attractors have ratios $\approx 0.585, 1.462, 5.039$ respectively. At $\alpha = 1$ the iteration collapses to $\delta_H$ (no defined ratio). $\square$
 
@@ -368,7 +368,7 @@ The convex-combination iteration $F_\alpha$ is structurally analogous to a *repl
 
 ## §10 What this paper does NOT establish
 
-(i) **Conjecture 1.1 ($\alpha = 1/2$ uniqueness across $\mathbb{Q} \cap (0, 1)$) is open.** Theorem F establishes partial uniqueness on the finite test set $\{0, 1/4, 1/2, 3/4, 1\}$. The full symbolic uniqueness proof is sketched in §7 but not carried out; the natural next step is a Gröbner-basis discriminant analysis at general $\alpha$ via Maple or Mathematica.
+(i) **Conjecture 1.1 ($\alpha = 1/2$ uniqueness across $\mathbb{Q} \cap (0, 1)$) is open.** Proposition F establishes partial uniqueness on the finite test set $\{0, 1/4, 1/2, 3/4, 1\}$. The full symbolic uniqueness proof is sketched in §7 but not carried out; the natural next step is a Gröbner-basis discriminant analysis at general $\alpha$ via Maple or Mathematica.
 
 (ii) **No physical-model claim.** The paper makes no phenomenological prediction; the substrate's connection to the parent framework's broader claims (cosmology, gauge theory, etc.) is not invoked. The results stand or fall on the displayed tables, the chain enumeration, the normalizer identity, and the Galois argument.
 
@@ -400,7 +400,7 @@ Expected output: six green-light "OK" results. Total runtime under 5 seconds (Py
 
 **Check 5 (Theorem D Galois):** verify irreducibility of $x^4 + 4x^3 - x^2 + 2x - 2$ over $\mathbb{Q}$; compute polynomial discriminant $-40896 = -2^6 \cdot 3^2 \cdot 71$; verify resolvent cubic factorization $z^3 + z^2 + 16z + 36 = (z + 2)(z^2 - z + 18)$; verify factorization over $\mathbb{Q}(\sqrt{3})$; confirm field discriminant matches LMFDB 4.2.10224.1.
 
-**Check 6 (Theorem F):** at each $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, iterate $F_\alpha$ to convergence at 50-digit precision; brute-force search for integer-quadratic relations $a y^2 + b y + c = 0$ at $|a|, |b|, |c| \le 20$ with $\gcd = 1$. Confirm only $\alpha = 1/2$ admits a relation, and the relation is $y^2 - 2y - 2 = 0$.
+**Check 6 (Proposition F):** at each $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, iterate $F_\alpha$ to convergence at 50-digit precision; brute-force search for integer-quadratic relations $a y^2 + b y + c = 0$ at $|a|, |b|, |c| \le 20$ with $\gcd = 1$. Confirm only $\alpha = 1/2$ admits a relation, and the relation is $y^2 - 2y - 2 = 0$.
 
 All six checks PASS at machine precision on the script's reference platform.
 
