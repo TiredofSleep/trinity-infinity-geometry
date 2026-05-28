@@ -22,11 +22,9 @@ The integer match `32 = 32` is real. But the natural groupings differ:
 
 `priority1_pauli_divisor_attempt.py` tries three natural bijection candidates (Hamming weight, max-prime, prime-as-l-label) and fails on all three.
 
-**Either:**
-- A finer combinatorial structure exists (σ-orbit class? lens-pair class?) and we haven't found it yet
-- Or the 32=32 match is a Pascal-type coincidence (in which case stating it sharply would still be useful)
+**Status as of 2026-05-27 (closed by Frontier F2):** 37 hand-built structural candidates plus brute-force enumeration of 730 000+ functions across five natural classes (linear-mod-4, linear+permutation, symmetric `g(omega)`, 2/3-bit dictators) found **zero matches** in any natural class. Coincidence bound: a uniformly random `f: {0,1}^5 → {0,1,2,3}` matches `(2, 6, 10, 14)` with probability ≈ `3.13×10⁻⁵` (1 in ~32 000); the hit-rate within natural-low-complexity function families is precisely 0, below random.
 
-This is OPEN.
+**Reframe**: the `(1, 5, 10, 10, 5, 1)` distribution is `dim Λ^k(R^5)` (exterior algebra); `(2, 6, 10, 14)` is the subshell capacity `2(2l+1)` for `l = 0, 1, 2, 3`. The two partitions of 32 are **independent**. The 32 = 32 equality is now closed as a Pascal-type coincidence with a rigorous bound. See `frontiers_2026-05-27/F2_32_32_bijection.md`.
 
 ### 1.2 The fine-structure constant 1/α
 
@@ -36,15 +34,30 @@ J42 Part 2 in the working corpus has been **deferred entirely**. If 1/α has a c
 
 ### 1.3 F_p universality
 
-The "universal F_p" framing fails generically. Only **p ∈ {7, 11}** preserve rank under the framework's lift. Other primes show signature variation, idempotent-count variation, etc.
+The "universal F_p" framing fails generically. Earlier framing said "only p ∈ {7, 11} preserve rank" but this is misleading.
 
-This is **structural data**, not noise — different primes carry different structural information. But the naive "universal F_p" claim is wrong, and saying so is more useful than papering over.
+**Replacement framing (Frontier F4, 2026-05-27)**: among primes < 200, the rank-preserving set is **39 primes** (7, 11, 17, 19, 23, 31, 41, ...) — not just {7, 11}. The set is exactly those primes that do not divide any of the 7 chain-shell determinants `{5305, 2843, −2886, 2929, −7542, 7272, −7002}`. The {7, 11} distinction was an artifact of small-prime restriction.
+
+**Two new closed forms discovered in F4**:
+
+1. **Idempotent count formula**: `|idem(V^BHML over F_p)| = p + 3` for odd p (2 at p=2). Verified at p ∈ {3, 5, 7, 11, 13}: counts are 6, 8, 10, 14, 16.
+
+2. **Automorphism formula**: `|Aut(V_p)| = p(p² − 1) = |GL_2(F_p)|` at every prime EXCEPT p=5. At p=5, the substrate index collapse `{7, 8, 9} ≡ {2, 3, 4} (mod 5)` reduces Aut from 120 to 40.
+
+**p=5 is the genuinely anomalous prime**, not {7, 11}. The framework's posture should be: "automorphisms are GL_2(F_p) generically; p=5 is structurally anomalous because of the 4-core index collapse." See `frontiers_2026-05-27/F4_Fp_variation_pattern.md`. This is a candidate for a new short Algebra Universalis / Linear Algebra Apps paper.
 
 ### 1.4 T* = 5/7 as an algebraic theorem
 
-T\* shows up in six independent contexts: torus aspect ratio, cyclotomic ratio, basin-handoff threshold, FPGA timing, σ-rate constant, attractor edge. All six converge on 5/7.
+T\* = 5/7 shows up across six contexts. **Refined accounting (Frontier F3, 2026-05-27)**: of the six, only **two are genuinely independent** (J13 cyclotomic forcing + WP35 unit_frac at minimal strong semiprime b=35); the other four are reformulations, near-agreements, or structural rhymes per J13's own §6 self-audit. The earlier "six independent derivations" framing was over-counted.
 
-But **no single closed-form theorem** produces T\* = 5/7 from first principles. The framework treats T\* as an **operational coherence threshold** observed across multiple distinct contexts, not as a derived constant.
+**Hypotheses tested for a common algebraic root**:
+- Cyclotomic Q(ζ_10) quotient: REFUTED. |1−ζ¹⁰⁵|/|1−ζ¹⁰⁷| = φ (golden ratio), not 5/7.
+- Z/10Z 2×2 sub-magma forcing: gives the prime pair (5, 7); the ratio comes from different operations across the contexts.
+- LMFDB 4.2.10224.1 discriminant: no 5/7 substructure.
+
+**Genuine unifier (partial)**: each derivation independently identifies "5 = smallest non-degenerate prime" and "7 = smallest obstruction prime" under unrelated operations. The **prime pair** (5, 7) is shared; the operations producing it are not.
+
+The framework still treats T\* as an **operational coherence threshold** rather than as a derived constant — that posture is unchanged, but now stated more honestly: two derivations, four rhymes, one shared prime pair. See `frontiers_2026-05-27/F3_T_star_unification.md`.
 
 ### 1.5 Eigenvalue-as-transcendental claims (audit 2026-04-25)
 
@@ -60,7 +73,11 @@ The audit document `CL_EIGENVALUES_AUDIT_2026_04_25` (in the working corpus) wal
 
 D57 shows: across a 17-point Stern-Brocot rational grid with PSLQ at deg ≤ 8 and coeff bound ≤ 50, α = 1/2 is uniquely the rational where algebraic relations exist between attractor moments `(H/Br, r/br)`.
 
-**Conjecture 4.2 (OPEN):** α = 1/2 is the unique **real** (not just rational) for which any non-trivial polynomial relation exists between attractor moments. Tightening to a proof closes one architectural ambiguity.
+**Frontier F1 (2026-05-27) extension**: tested an additional 17 REAL values (algebraic irrationals 1/√2, 1/√3, √2−1, 1/φ; transcendentals 1/e, π/4, ln(2), 1/π; decimals clustered near 1/2: 0.49, 0.499, 0.5001, 0.501, 0.51) at 50, 100, and 200-digit precision with PSLQ at (deg ≤ 8, |c| ≤ 50) and (deg ≤ 12, |c| ≤ 100). **Only α = 1/2 yields a relation** (`x² − 2x − 2 = 0` for H/Br at residual 6.5×10⁻²⁰¹). The relation is a strict point feature, not a basin.
+
+**Combined empirical record**: ~58 unique real α values tested (this push + D57 + May-12 41-candidate scan). Zero counterexamples.
+
+**Conjecture 4.2 (OPEN, but empirically strengthened):** α = 1/2 is the unique **real** value for which any non-trivial polynomial relation exists between attractor moments. Empirical support is now strong; a structural proof closes one architectural ambiguity. See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md`.
 
 ### 2.2 The Clay-Millennium reformulations
 
