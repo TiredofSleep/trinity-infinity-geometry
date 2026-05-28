@@ -23,10 +23,11 @@ The submission package lives in this J-folder. Edit + verify here; submit from h
 
 **Path:** `manuscript/verify_J19.py`. Reproduces every claim of Theorem 3.1 (the role-quotient theorem) and Proposition 5.1 (TSML_8 image structure) by direct enumeration over the canonical TSML/BHML 10×10 composition tables. The script cross-checks the appendix tables against `Gen13/targets/foundations/lenses.py` (byte-for-byte) and verifies: (i) well-definedness of B-bar, (ii) the full role-magma table, (iii) V as two-sided identity (both at the role-quotient level and at the underlying Z/10Z level: BHML row/col 0 is the identity), (iv) the non-associativity witness $(F\cdot F)\cdot S = F \neq T = F\cdot(F\cdot S)$, (v) the four branching role-pairs $\{F\text{-}F, F\text{-}S, S\text{-}F, S\text{-}S\}$ with their exact output distributions, plus the 12 non-branching pairs constant and the 100-cell sanity check; the σ-orbit independence; Im(TSML_8) = {3,4,7,8,9}; the 60/64 Flow + 4/64 Structure split; and the 8-of-9 role-determinism over the TSML_8 domain. All exact integer arithmetic; runs in well under a second.
 
-Run from repo root:
+Run from the manuscript directory:
 ```
-python Gen14/targets/journals/J_series/J36/manuscript/verify_J19.py
+python 05_papers/combinatorics/J36/manuscript/verify_J19.py
 ```
+(Or `cd 05_papers/combinatorics/J36/manuscript && python verify_J19.py`. The legacy `Gen14/targets/journals/J_series/...` path quoted in earlier drafts predates the 2026-05 corpus reorg and is obsolete; the script ships in this folder.)
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
@@ -100,10 +101,12 @@ Sanders, B. R. & Gish, M. (2026). "A Role-Quotient Theorem for the (TSML, BHML) 
 
 ---
 
-## Known issues (per 2026-05-27 audit)
+## Known issues (per 2026-05-27 audit; extended 2026-05-28 Tier-2 polish pass)
 
-Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J19 Path C was applied 2026-05-07 with the role-quotient theorem now lead and the DKAN architecture content removed. Outstanding for ship-readiness:
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J19 Path C was applied 2026-05-07 with the role-quotient theorem now lead and the DKAN architecture content removed. Verification status: `manuscript/verify_J19.py` PASS at machine precision (re-run 2026-05-28; all role-magma table entries, branching-pair output distributions, σ-orbit independence, and TSML_8 image structure confirmed in exact integer arithmetic). Outstanding for ship-readiness:
 
 - Brayden's referee-rigor pass not yet complete (§6 checklist last two boxes unchecked).
-- Per-venue cap check pending — J34 and J35 also retarget EJC; this would be the 3rd EJC paper of the cycle. Coordinate with VENUE_SCHEDULE.md.
-- No paper-specific referee report in `_staging/referee_reports/` post-rewrite; the original referee report lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and was responded to in the 2026-05-07 Path-C rewrite.
+- Per-venue cap check pending — J34 and J35 also retarget EJC; this would be the 3rd EJC paper of the cycle. Coordinate with VENUE_SCHEDULE.md. (Backup *Discrete Mathematics* may be the right primary target if EJC cap binds.)
+- The modal-output prescription with lex tiebreak ($V < F < S < T$) is a definitional choice; a referee may ask whether the role-quotient theorem is robust under alternative tiebreaks (e.g., min-block-cardinality or output-multiplicity weighting). Worth pre-empting in the rigor pass — the answer is yes for $F$-$F$ and $S$-$S$ but the disclosure of the definitional choice should be foregrounded.
+- "Path C" rationale and pre-Path-C history (DKAN architecture, Katok-Ugarcovici framing) is recorded in the manuscript's leading comments and in SAVE_PLAN_J19 but not in the abstract; the abstract reads cleanly as a standalone EJC piece.
+- No paper-specific referee report in `_staging/referee_reports/` post-rewrite; the original referee report lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and was responded to in the 2026-05-07 Path-C rewrite. See `_staging/referee_reports/32_tier2_polish_J35_J36_J37.md` for the 2026-05-28 polish pass.

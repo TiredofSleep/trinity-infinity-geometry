@@ -552,62 +552,71 @@ then $u = p^{a - 1}$ has $v_{p}(u) = a - 1$ as required. The orbit
 of $1$ under $M_{1 + p^{a}}$ contains $1 + p^{a} \ne 1$, witnessing
 $\{1, 1 + p^{a}\} \in U(A_{p^{a}}) \cap U(\pi_{\dyn}(g))$.
 
-\medskip\noindent\textit{Case B: $g \not\equiv 1 \pmod p$.} Then
-$M_{g}$ acts non-trivially modulo $p$, hence shuffles $A_{p}$-fibers.
-For the joint pair to fail, we exhibit two elements in the same
-$A_{p^{a}}$-fiber whose orbits under $M_{g}$ coincide. Take
-$x_{1} = p^{a}$ and $x_{2} = 2 p^{a}$ (both lying in $A_{p^{a}}^{-1}(0)$
-since $p^{a}$ and $2 p^{a}$ are both $\equiv 0 \pmod{p^{a}}$). The
-orbit of $p^{a}$ under $M_{g}$ is contained in $p^{a} \cdot
-\langle g \rangle \pmod{p^{r}}$, which is a subset of $p^{a} \cdot
-\Z/p^{r-a}\Z$ (since $p^{a}$ multiplied by anything stays in this
-sub-ideal modulo $p^{r}$). Similarly for $2 p^{a}$. The orbits of
-$p^{a}$ and $2 p^{a}$ under $M_{g}$ are distinct cosets of
-$\langle g \rangle$ acting on $p^{a} \cdot \Z/p^{r-a}\Z$ generally,
-\emph{but} when $\langle g \rangle$ has the right order they can
-coincide --- specifically, when $g$ is a generator of
-$(\Z/p^{r}\Z)^{\times}$ or a sufficient power thereof. The argument
-is delicate; the cleanest formulation uses the kernel-of-reduction
-structure:
+\medskip\noindent\textit{Case B: $g \not\equiv 1 \pmod p$.} By the
+decomposition \eqref{eq:prpunit-decomp}, write $g = g_{0} \cdot g_{1}$
+with $g_{0} \in (\Z/p^{r}\Z)^{\times}$ the canonical (Teichm\"uller)
+lift of $g \bmod p \in (\Z/p\Z)^{\times}$ and $g_{1} \in 1 +
+p\Z/p^{r}\Z$. The Case B hypothesis $g \not\equiv 1 \pmod p$ is
+equivalent to $g_{0} \ne 1$. Since $\ord(g_{0}) \mid p - 1$ and
+$\ord(g_{1}) \mid p^{r-1}$, the orders are coprime, so
+\begin{equation}\label{eq:order-product}
+  \ord(g) \;=\; \mathrm{lcm}(\ord(g_{0}), \ord(g_{1}))
+  \;=\; \ord(g_{0}) \cdot \ord(g_{1}).
+\end{equation}
+We split into two sub-cases on $\ord(g_{1})$.
 
-By the decomposition \eqref{eq:prpunit-decomp}, $g = g_{0} \cdot
-g_{1}$ with $g_{0} \in (\Z/p\Z)^{\times}$ and $g_{1} \in 1 + p\Z/p^{r}\Z$.
-The orbit of any element under $M_{g}$ has length
-$\mathrm{lcm}(\ord(g_{0}), \ord(g_{1}))$. The $A_{p^{a}}$-fibers
-have size $p^{r-a}$. For the joint refinement $A_{p^{a}} \wedge
-\pi_{\dyn}(g)$ to be discrete, the orbit of every element must
-intersect each $A_{p^{a}}$-fiber in at most one point --- but the
-orbit length is at most $|(\Z/p^{r}\Z)^{\times}| = p^{r-1}(p-1)$, and
-it must visit $p^{r-a}$ fibers via at most $p^{r-1}(p-1)$ steps.
-When $a \ge 1$, the constraint is satisfiable in principle; but the
-\emph{kernel-of-reduction action} forces all orbits to satisfy
-$y \equiv x \pmod p$ for every $y$ in the orbit of $x$ under $g_{1}$
-alone (when $g_{0} = 1$, Case A) --- so the orbit cannot reach a
-point in a different $A_{p}$-fiber (let alone a different
-$A_{p^{a}}$-fiber for $a \ge 1$).
+\smallskip\noindent\textit{Sub-case B1: $\ord(g_{1}) > 1$
+(equivalently $g_{1} \ne 1$).} Set
+\[
+  t \;:=\; \ord(g_{0}).
+\]
+Then $g^{t} = g_{0}^{t} \cdot g_{1}^{t} = 1 \cdot g_{1}^{t} = g_{1}^{t}
+\in 1 + p\Z/p^{r}\Z$, so $g^{t}$ is a kernel-of-reduction element. By
+\eqref{eq:order-product}, $\ord(g) = t \cdot \ord(g_{1})$; since
+$\ord(g_{1}) > 1$, we have $\ord(g) > t$, hence $g^{t} \ne 1$. Write
+$g^{t} = 1 + p u^{*}$ with $u^{*} \in \Z/p^{r-1}\Z$, $u^{*} \ne 0$,
+and set $v := v_{p}(u^{*}) \in \{0, 1, \ldots, r-2\}$. Choose
+\[
+  c \;:=\;
+  \begin{cases}
+    1 & \text{if } v \ge a-1, \\
+    p^{a-1-v} & \text{if } v < a-1,
+  \end{cases}
+\]
+and set $x := c$, $y := g^{t} \cdot c$. Then $y - x = (g^{t} - 1) c
+= p u^{*} c$, so $v_{p}(y - x) = 1 + v + v_{p}(c)$. In both branches
+$1 + v + v_{p}(c) \ge a$ (the first because $v \ge a-1$ and $v_{p}(c)
+= 0$; the second because $v + v_{p}(c) = v + (a-1-v) = a-1$), so
+$p^{a} \mid (y - x)$ and hence $A_{p^{a}}(x) = A_{p^{a}}(y)$. In
+both branches $1 + v + v_{p}(c) \le r-1 < r$ (the first because $v
+\le r-2$ and $v_{p}(c) = 0$; the second because $v + v_{p}(c) = a-1
+\le r-2$), so $y - x \ne 0$ in $\Z/p^{r}\Z$, i.e., $y \ne x$.
+Finally, $y = g^{t} x = g^{t} \cdot c$ lies in $\orb_{g}(x)$ because
+$g^{t} \in \langle g \rangle$. Hence $\{x, y\} \in U(A_{p^{a}}) \cap
+U(\pi_{\dyn}(g))$ with $x \ne y$.
 
-In Case B with $g_{0} \ne 1$, the orbit of any $x$ visits multiple
-$A_{p}$-fibers via the $g_{0}$-action. However, the sub-orbits within
-the same $A_{p^{a}}$-fiber are governed by powers $g^{t}$ for which
-$g^{t} \equiv 1 \pmod{p}$ --- equivalently $g_{0}^{t} = 1$ in
-$(\Z/p\Z)^{\times}$, i.e., $\ord(g_{0}) \mid t$. For such $t$,
-$g^{t} = g_{0}^{t} \cdot g_{1}^{t} = 1 \cdot g_{1}^{t} \in
-1 + p\Z/p^{r}\Z$, so $g^{t}$ acts as a kernel-of-reduction element.
-By Case A applied to this kernel element (which is non-identity
-because $g \ne 1$ and $\ord(g_{1}) > 1$ in the generic case, or by
-considering a higher power), there is a pair $\{x, g^{t} x\} \in
-U(A_{p^{a}}) \cap U(\pi_{\dyn}(g))$ with $g^{t} x \ne x$. Hence joint
-injectivity fails in Case B as well.
+\smallskip\noindent\textit{Sub-case B2: $\ord(g_{1}) = 1$
+(equivalently $g_{1} = 1$, so $g = g_{0}$).} In this sub-case
+$\ord(g) = \ord(g_{0})$ divides $p-1$, which is coprime to $p$. In
+particular, no positive power of $g$ lies in the kernel of reduction
+$1 + p\Z/p^{r}\Z$ except $g^{\ord(g)} = 1$, so the B1 reduction does
+not apply. Instead we exhibit the witness pair directly in the
+$p^{r-1}$-sub-ideal. Set
+\[
+  x \;:=\; p^{r-1}, \qquad y \;:=\; g \cdot p^{r-1}.
+\]
+Since $a \le r - 1$, we have $p^{a} \mid p^{r-1}$, so both $x$ and
+$y - x = (g - 1) p^{r-1}$ are divisible by $p^{a}$ (the latter
+because $p^{a} \mid p^{r-1}$). Hence $A_{p^{a}}(x) = 0 =
+A_{p^{a}}(y)$. The Case B hypothesis $g \not\equiv 1 \pmod p$ gives
+$v_{p}(g - 1) = 0$, so $v_{p}((g - 1) p^{r-1}) = r - 1 < r$;
+therefore $y - x \ne 0$ in $\Z/p^{r}\Z$ and $y \ne x$. By
+construction $y = g \cdot x \in \orb_{g}(x)$. Hence $\{x, y\} \in
+U(A_{p^{a}}) \cap U(\pi_{\dyn}(g))$ with $x \ne y$.
 
-(The edge case where $\ord(g_{1}) = 1$, i.e., $g_{1} = 1$, reduces
-to $g = g_{0}$ acting purely on the $(\Z/p\Z)^{\times}$ component;
-then $g$ acts on the multiplicative units of the residue field
-$\F_{p}$ but cannot resolve the kernel-of-reduction direction at all,
-so the joint with $A_{p^{a}}$ still fails to be injective whenever
-$a < r$ --- a direct kernel-of-reduction argument: pick $x_{1} = 1$
-and $x_{2} = 1 + p^{a}$. Both lie in the same $A_{p^{a}}$-fiber, and
-$g^{t} \cdot 1 = g^{t}$ while $g^{t} \cdot (1 + p^{a}) = g^{t} +
-g^{t} p^{a}$; the orbits coincide modulo $p^{a}$ regardless of $t$.)
+\smallskip
+In each sub-case of Case B we have exhibited the required
+unresolved pair, completing the proof.
 \end{proof}
 
 \begin{remark}\label{rem:pkernel-essence}

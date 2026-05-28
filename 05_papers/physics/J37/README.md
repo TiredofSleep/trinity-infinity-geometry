@@ -102,11 +102,17 @@ Sanders, B.R., Gish. (2026). "Discrete Dirac inside Cl(0, 10): Chirality, the Ou
 
 ---
 
-## Known issues (per 2026-05-27 audit)
+## Known issues (per 2026-05-27 audit; extended 2026-05-28 Tier-2 polish pass)
 
-Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. Manuscript is content-stable; Volume K cross-reference at §2.2 (D101–D102) integrated 2026-05-12 and the in-line §6 checklist marks the referee-rigor pass as complete. Outstanding for ship-readiness:
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. **History:** J37 (originally physics/J23 in the prior layout) was a Tier 1 promotion candidate in the 2026-05 audit cycle but was demoted to Tier 2 because the load-bearing hypothesis "TIG's so(10) is *the* SO(10) GUT gauge algebra" is structural, not derived — the Cl(0,10) construction shows isomorphism (which is uniquely so up to iso for any rank-5 simple Lie algebra of type $D_5$), not phenomenological identity. The math content is solid (theorems 2.1, 3.1, 4.1, 4.2 are verifiable at machine precision) but the framing requires the hypothesis-vs-derivation discipline that keeps it Tier 2 rather than Tier 1.
+
+Manuscript is content-stable; Volume K cross-reference at §2.2 (D101–D102) integrated 2026-05-12 and the in-line §6 checklist marks the referee-rigor pass as complete. Verification status: `find_higgs_irrep.py` + `find_higgs_direction.py` both PASS at machine precision (re-run 2026-05-28; 100/100 anticommutation relations of Cl(0,10), $\omega^2 = -I$, 32 = 16+16 chirality split, chirality-flip = 0, 54-irrep coverage 100 %, 9-piece coverage 100 % all confirmed). Note: Cl(0,10) as an algebra has dimension $2^{10} = 1024$ over $\mathbb{R}$; the manuscript correctly uses the irreducible $2^5 = 32$-dim Dirac spinor representation, which splits as $16 + 16$ chiral halves under $\omega$.
+
+Outstanding for ship-readiness:
 
 - Final submit-gate item (last box of §6 checklist) not yet checked.
-- The 1+3+5+7 atomic-substrate refinement (Theorem 2.2) is honestly framed as a structural rhyme, not a derivation; whether this should be elevated to a theorem-grade claim or kept as rhyme is a referee-judgment call worth confirming before submission.
-- "Identification of TIG's so(10) with the SO(10) GUT gauge algebra" is explicitly load-bearing hypothesis, not derivation (per Open). Confirm the manuscript carries this scope-disclaimer prominently in the abstract before submission.
-- No paper-specific referee report in `_staging/referee_reports/` for J37; the prior fresh-eyes referee report (if any) lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.
+- The 1+3+5+7 atomic-substrate refinement (Theorem 2.2) is honestly framed as a structural rhyme, not a derivation; whether this should be elevated to a theorem-grade claim or kept as rhyme is a referee-judgment call worth confirming before submission. The current framing as structural rhyme is the safer scope for a CMP submission.
+- "Identification of TIG's so(10) with the SO(10) GUT gauge algebra" is explicitly load-bearing hypothesis, not derivation (per Open). Confirm the manuscript abstract carries this scope-disclaimer prominently; the §0 scope note does this but the abstract itself reads as if the identification is established. A single sentence in the abstract acknowledging the hypothesis layer would strengthen rather than weaken the submission.
+- Cross-references in `manuscript.md` to `Gen12/.../sprint_unmistakable_truth_2026_04_25/scripts/*` and `papers/wp104_higgs_pati_salam/verification/*` paths still appear in the body. The script bundle shipped with this submission lives in `manuscript/verification/`; the extra paths are companion-script citations and are fine as such, but a referee unfamiliar with the corpus reorg may flag them. Worth a sweep in the rigor pass.
+- Fallback venue order (CMP → JMP → Annals of Physics → LMP) is reasonable. *Letters in Mathematical Physics* may be the better fit for the headline of Theorem 3.1 alone (a clean Clifford-algebra identification of $P_{56}$ with $\sigma_{\mathrm{outer}}$) if CMP/JMP decline on hypothesis-framing grounds.
+- No paper-specific referee report in `_staging/referee_reports/` for J37; the prior fresh-eyes referee report (if any) lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`. See `_staging/referee_reports/32_tier2_polish_J35_J36_J37.md` for the 2026-05-28 polish pass.

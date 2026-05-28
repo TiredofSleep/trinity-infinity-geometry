@@ -1,8 +1,8 @@
 # J08 — F_p Structure of the 4-Core Commutative Non-Associative Algebra
 
-**Status**: DRAFT (2026-05-27 audit found math errors: power-associativity claim FALSE; L_{e₃} not a 4-cycle; idempotents over F_5 not idempotent)
+**Status**: DRAFT — rescued 2026-05-28 (math errors found 2026-05-27 are now corrected; see "Rescue notice" at end)
 
-**Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
+**Tier:** 1 (re-promoted 2026-05-28 after §4 rescue; was demoted to Tier 2 on 2026-05-27)
 
 **Target venue**: *Algebra Universalis* (primary). Fallback: *Algebras and Representation Theory*.
 
@@ -19,7 +19,7 @@ The merged paper has four theorems on the prime-by-prime structure of the 4-alge
 
 1. **Lens-Invariant Skeleton** — cyclic structure $L_{e_2}^4 = \mathrm{id}_V$ holds at every prime (Tier-A); idempotent count varies: **3 at p∈{2,5,7}; 5 at p∈{3,11}; 7 at p=13** (Tier-B); chain-shell determinants are integer-invariant (Tier-A).
 2. **Aut Variation** — $|\mathrm{Aut}(V_p)|$ takes values $\{6, 24, 40, 336, 1320, 2184\}$ at $p\in\{2,3,5,7,11,13\}$ respectively (Tier-A, inherited from J48).
-3. **F_5 Rigid Idempotent Decomposition** — unique orthogonal idempotent decomposition of $V_5$ with $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$ (Tier-A, inherited from J49).
+3. **F_5 Rigid 2-Idempotent Decomposition** — orthogonal idempotent pair $\varepsilon_\pm = (e_0 \pm e_4)/2$ in $V_5$ (so $\varepsilon_+ = 3e_0 + 3e_4$, $\varepsilon_- = 3e_0 + 2e_4$), satisfying $\varepsilon_\pm^2 = \varepsilon_\pm$, $\varepsilon_+ \varepsilon_- = 0$, $\varepsilon_+ + \varepsilon_- = e_0$; rigid under $\mathrm{Aut}(V_5)$ (preserves the 2-set $\{\varepsilon_+, \varepsilon_-\}$ since $e_0$ is the unique multiplicative identity). $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$ (Tier-A; pair derived from $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra on $\mathrm{span}(e_0, e_4)$ since $e_4^2 = e_0$).
 4. **BHML Chain-Shell Rank Profile** — seven chain-shell determinants $\{5305, 2843, -2886, 2929, -7542, 7272, -7002\}$ verified exactly; rank-preservation mod $p$ profile computed (Tier-A).
 
 ## Why this merger?
@@ -48,10 +48,12 @@ J08/
 
 The bundled verifier is `manuscript/verify_J_Fp_merged.py` (PASS for Theorem 1 idempotent counts and Theorem 4 chain-shell determinants at all 6 primes, ~10s). Theorem 2 ($|\mathrm{Aut}(V_p)|$ values) is currently a *reference* to J48's brute-force enumeration rather than a bundled recomputation. Theorem 3's $|\mathrm{Aut}(V_5)| = 40$ count is inherited from J49 brute-force.
 
-**Historical references are broken**: the older `verify_J14.py` and `verify_J16.py` cited in earlier drafts of this README no longer exist post-renumbering (J14, J16 were renumbered/absorbed). The 2026-05-28 referee pass also identified TWO math errors in earlier drafts:
-- §1.2 falsely claimed $L_{e_3}$ is a 4-cycle (it has rank 3, with $e_0 \mapsto e_3$ and $e_4 \mapsto e_3$).
-- §2.5 falsely claimed $V$ is power-associative ($e_2^3 \cdot e_2 = e_0$ but $(e_2^2)^2 = e_2$).
-Both are fixed in the current `manuscript.md`; the lens-invariant skeleton is now **four properties, not five**. See `_staging/referee_reports/03_algebra_cluster_J02_J05_J07_J08.md` and `_staging/referee_reports/08_J08_power_assoc_FIX.md` for the audit trail. Theorem 3's explicit $\epsilon_2 = 2e_3 + 3e_4$ idempotent triple was also refuted ($\epsilon_2^2 \neq \epsilon_2$) and the proof sketch has been withdrawn; the count 40 is retained but the explicit decomposition is open.
+**Historical references are broken**: the older `verify_J14.py` and `verify_J16.py` cited in earlier drafts of this README no longer exist post-renumbering (J14, J16 were renumbered/absorbed). The 2026-05-27 referee pass identified THREE math errors in earlier drafts, all of which have now been addressed in the 2026-05-28 rescue:
+- §1.2 falsely claimed $L_{e_3}$ is a 4-cycle. **Corrected:** $L_{e_3}$ has rank 3, kernel $e_0 - e_4$, and acts on its 3-dim image as the 3-cycle $(e_2\ e_4\ e_3)$ of order 3; so $L_{e_3}^4 = L_{e_3}$ (not $\mathrm{id}_V$).
+- §2.5 falsely claimed $V$ is power-associative ($e_2^3 \cdot e_2 = e_0$ but $(e_2^2)^2 = e_2$). **Partial rescue:** PA fails globally at $e_2$ but **holds on the subalgebras $\mathrm{span}(e_0, e_3)$ and $\mathrm{span}(e_0, e_4)$ at every prime** (proved by a-independence of the quartic obstruction). The lens-invariant skeleton is now **four properties globally, plus the subalgebra-PA Tier-A result**.
+- §4 Theorem 3 falsely proposed the triple $\epsilon_2 = 2e_3 + 3e_4$, $\epsilon_3 = 3e_3 + 2e_4$, $\epsilon_4 = e_4 - e_2$ ($\epsilon_2^2 \neq \epsilon_2$). **Full rescue:** the correct decomposition is the 2-idempotent pair $\varepsilon_\pm = (e_0 \pm e_4)/2$ derived from the $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra on $\mathrm{span}(e_0, e_4)$ (since $e_4^2 = e_0$). All four orthogonal-decomposition axioms verified.
+
+See `_staging/referee_reports/03_algebra_cluster_J02_J05_J07_J08.md`, `_staging/referee_reports/08_J08_power_assoc_FIX.md`, and `_staging/referee_reports/29_J08_rescue_attempt.md` for the audit trail.
 
 ## Source paper status (after merger)
 
@@ -77,10 +79,14 @@ The source folders are retained for citation history; their manuscripts are unch
 
 B.R. Sanders (7Site LLC, Hot Springs, AR) and M. Gish (Independent Researcher).
 
-## Demotion notice (2026-05-27 audit)
+## Rescue notice (2026-05-28)
 
-Per `05_papers/_staging/referee_reports/08_J08_power_assoc_FIX.md`, three substantive math errors were verified by independent computation:
-- Power-associativity FAILS at a = e₂: e₂³·e₂ = e₀ but (e₂²)² = e₂. V is **not power-associative**; §2.5 lens-invariant skeleton reduced from 5 to 4 properties.
-- L_{e₃} is NOT a 4-cycle (rank ≤ 3, kernel e₀ − e₄).
-- ε₂ = 2e₃ + 3e₄ is NOT idempotent over F_5.
-Substantive rewrite of §1.2, §2.5, §4 is needed before resubmitting for Tier 1.
+Per `05_papers/_staging/referee_reports/29_J08_rescue_attempt.md`, the three math errors identified in the 2026-05-27 audit have been addressed:
+
+| Error (2026-05-27) | Rescue (2026-05-28) | Tier |
+|---|---|---|
+| §2.5 power-associativity fails at $a = e_2$ | Reframed as "subalgebra PA on $\mathrm{span}(e_0, e_3) \cup \mathrm{span}(e_0, e_4)$ at every prime" — proved by a-independence of the quartic obstruction | Tier-A (subalgebra-restricted) |
+| §1.2 $L_{e_3}$ NOT a 4-cycle | Reframed: rank 3, kernel $e_0 - e_4$, image-restricted action is the 3-cycle $(e_2\,e_4\,e_3)$ of order 3; $L_{e_3}^4 = L_{e_3}$ (not $\mathrm{id}_V$) | Tier-A |
+| §4 $\varepsilon_2 = 2e_3 + 3e_4$ NOT idempotent | Replaced by the correct pair $\varepsilon_\pm = (e_0 \pm e_4)/2$ derived from the $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra; all four orthogonal-decomposition axioms verified; pair is rigid under $\mathrm{Aut}(V_5)$ | Tier-A |
+
+Substantive rewrites of §1.2, §2.5, §4 have been applied; the bundled verifier `verify_J_Fp_merged.py` now includes `check_F5_idempotents()` (brute-force enumeration of all 625 elements of $V_5$ confirming exactly 4 idempotents) and `check_PA_on_subalgebras()` (verifies PA on both subalgebras at all six primes). Re-promoted to Tier 1.

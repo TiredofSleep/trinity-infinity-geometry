@@ -49,9 +49,9 @@ A standalone script `harmony_ladder_disc_check.py` runs the snippet plus all fiv
 
 ## Companion submissions
 
-The TIG/CK research program is shipping a coordinated J-series. The paper most relevant as already-submitted companion to this manuscript is:
+The TIG/CK research program is shipping a coordinated J-series. The paper most relevant as load-bearing companion to this manuscript is:
 
-- J32 (Sanders & Mayes), *Crossing Lemma: Non-Associativity as Information Generation in Finite Magmas*, submitted to *J. Combin. Theory A*, 2026 (the 73-rung's full disjoint-class proof is in J32).
+- J32 (Sanders & Gish), *TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the $\mathbb{Z}/10\mathbb{Z}$ Composition Lattice*, target venue *Experimental Mathematics*. Companion paper J32 (lens-invariant cell counts) is available as a Zenodo preprint at DOI [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047); the J32 manuscript will be posted to arXiv concurrent with this submission to *JCT-A*. The 73-rung's full disjoint-class proof (the `proof_d10_tsml_73_cells.py` enumeration of the 200-cell witness) is in J32; the J22 manuscript cites J32 for that proof in §3.
 
 The closest published precedent is Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510.
 

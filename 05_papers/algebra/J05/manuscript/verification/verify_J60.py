@@ -1,4 +1,4 @@
-"""verify_J60.py -- machine-precision verification of J60's four theorems
+"""verify_J60.py -- machine-precision verification of J60's six checks
 via ETP scripts.
 
 CC-BY-4.0. (c) 2026 Brayden Ross Sanders / 7Site LLC. M. Gish co-author.
@@ -8,14 +8,23 @@ the ETP_PATH defined below. Reads its 4694-equation catalog and uses
 its test_equation function.
 
 Verifies:
-  Theorem 1: Z/n has profile 32 for n in {5, 6, 7, 8, 9, 10}, with
+  C1 (Theorem 1): Z/n has profile 32 for n in {5, 6, 7, 8, 9, 10}, with
              identical equation IDs across orders.
-  Theorem 2: -(x+y) mod n has profile 294 for n = 4 and 10.
-  Theorem 3: 8 commutative magmas' profile intersection = 14 specific IDs.
-  Theorem 4: (5x + 3y + 6) mod 7 has profile 14 with different IDs from
+  C2 (Theorem 2): -(x+y) mod n has profile 294 for n = 4 and 10.
+  C3 (Theorem 3): 8 commutative magmas' profile intersection = 14 specific IDs.
+  C4 (Theorem 4): (5x + 3y + 6) mod 7 has profile 14 with different IDs from
              the sigma-magma's (verifies Family R distinct from Family C).
+  C5 (Section 4.7, order 3): exhaustive enumeration of all 729 = 3^6
+             commutative order-3 magmas (symmetric 3x3 tables). Asserts:
+             120 have profile 14; all 120 share the IDENTICAL Family C
+             equation set; 0 have profile < 14.
+  C6 (Section 4.7, order 5): exhaustive enumeration of all 720 symmetric
+             5x5 Latin squares (commutative quasigroups of order 5).
+             Asserts: 480 have profile 14; all 480 share the IDENTICAL
+             Family C equation set; profile distribution matches
+             {14:480, 15:120, 32:30, 89:24, 90:30, 176:6, 294:30}.
 
-Runtime ~30 seconds.
+Runtime ~5-6 minutes total (C5 ~2.5 min, C6 ~2.5 min, others <1 min).
 """
 import sys, os, time
 from itertools import product
@@ -133,6 +142,163 @@ def main():
     print(f"  Different from sigma-magma: {family_R_profile != sigma_profile}")
     print(f"  Intersection with sigma-magma: {family_R_profile & sigma_profile}")
     checks.append(("Theorem 4 (profile 14 has multiple families)", t4_ok))
+    print()
+
+    # Family C's canonical 14-equation set (used by C5 + C6)
+    FAMILY_C = {1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442,
+                4482, 4531, 4544, 4635, 4677}
+
+    # C5 (Section 4.7, order 3): exhaustive enumeration of all 729 = 3^6
+    # commutative order-3 magmas (symmetric 3x3 tables). Manuscript claims:
+    #   - 120 have profile 14, ALL sharing Family C
+    #   - 0 have profile < 14
+    #   - 609 have profile > 14
+    print("C5 (Section 4.7, order 3): all 729 commutative magmas")
+    print("  Enumerating 3^6 = 729 symmetric 3x3 tables...")
+    n3 = 3
+    ut_cells = [(i, j) for i in range(n3) for j in range(i, n3)]
+    assert len(ut_cells) == 6 and n3**len(ut_cells) == 729
+
+    profile_dist_n3 = {}
+    profile14_sets_n3 = []
+    total_n3 = 0
+    t_start_c5 = time.time()
+    for vals in product(range(n3), repeat=len(ut_cells)):
+        table = [[0]*n3 for _ in range(n3)]
+        for (i, j), v in zip(ut_cells, vals):
+            table[i][j] = v
+            table[j][i] = v
+        prof = profile_set(table)
+        sz = len(prof)
+        profile_dist_n3[sz] = profile_dist_n3.get(sz, 0) + 1
+        if sz == 14:
+            profile14_sets_n3.append(frozenset(prof))
+        total_n3 += 1
+        if total_n3 % 100 == 0:
+            print(f"    {total_n3}/729 ({time.time()-t_start_c5:.1f}s)")
+    print(f"  Total enumerated: {total_n3} (expected 729)")
+    print(f"  Distinct profile sizes observed: {len(profile_dist_n3)}")
+    smallest_n3 = min(profile_dist_n3)
+    n_at_14_n3 = profile_dist_n3.get(14, 0)
+    n_below_14_n3 = sum(c for s, c in profile_dist_n3.items() if s < 14)
+    n_above_14_n3 = sum(c for s, c in profile_dist_n3.items() if s > 14)
+    print(f"  Smallest profile size: {smallest_n3} (manuscript: 14)")
+    print(f"  Count at profile 14: {n_at_14_n3} (manuscript: 120)")
+    print(f"  Count below profile 14: {n_below_14_n3} (manuscript: 0)")
+    print(f"  Count above profile 14: {n_above_14_n3} (manuscript: 609)")
+    distinct_14_n3 = set(profile14_sets_n3)
+    print(f"  Distinct equation sets among profile-14 magmas: "
+          f"{len(distinct_14_n3)} (manuscript: 1, = Family C)")
+    if len(distinct_14_n3) == 1:
+        the_set = next(iter(distinct_14_n3))
+        is_family_c = (set(the_set) == FAMILY_C)
+        print(f"  Profile-14 equation set == Family C: {is_family_c}")
+    else:
+        is_family_c = False
+    c5_ok = (total_n3 == 729
+             and smallest_n3 == 14
+             and n_at_14_n3 == 120
+             and n_below_14_n3 == 0
+             and n_above_14_n3 == 609
+             and len(distinct_14_n3) == 1
+             and is_family_c)
+    checks.append(("C5 (order-3 enumeration: 729 magmas, 120 hit Family C)",
+                   c5_ok))
+    print()
+
+    # C6 (Section 4.7, order 5): exhaustive enumeration of all 720 symmetric
+    # 5x5 Latin squares (commutative quasigroups of order 5). Manuscript
+    # claims distribution: 14:480, 15:120, 32:30, 89:24, 90:30, 176:6, 294:30.
+    # All 480 at profile 14 share Family C's equation set.
+    print("C6 (Section 4.7, order 5): all 720 symmetric Latin squares")
+    print("  Enumerating symmetric 5x5 Latin squares via backtracking...")
+    n5 = 5
+
+    def enumerate_sym_latin_squares(n):
+        """Yield each symmetric n x n Latin square as a list-of-lists.
+        A symmetric Latin square has L[i][j]=L[j][i], every row a
+        permutation of {0,...,n-1}, every column likewise. We backtrack
+        over the upper-triangular cells in row-major order, mirroring
+        each off-diagonal placement to the lower triangle."""
+        L = [[-1]*n for _ in range(n)]
+        # precompute per-row and per-column used-value bitmasks for speed
+        row_used = [0]*n
+        col_used = [0]*n
+
+        def back(idx):
+            # idx counts cells in row-major upper-triangular order:
+            # (0,0),(0,1),...,(0,n-1),(1,1),(1,2),...,(n-1,n-1)
+            if idx == n*(n+1)//2:
+                yield [row[:] for row in L]
+                return
+            # decode idx -> (i,j) with i<=j
+            r = idx
+            i = 0
+            while r >= n - i:
+                r -= n - i
+                i += 1
+            j = i + r
+            for v in range(n):
+                bit = 1 << v
+                if row_used[i] & bit: continue
+                if col_used[j] & bit: continue
+                if i != j:
+                    if row_used[j] & bit: continue
+                    if col_used[i] & bit: continue
+                # place
+                L[i][j] = v
+                row_used[i] |= bit
+                col_used[j] |= bit
+                if i != j:
+                    L[j][i] = v
+                    row_used[j] |= bit
+                    col_used[i] |= bit
+                yield from back(idx + 1)
+                # unplace
+                L[i][j] = -1
+                row_used[i] &= ~bit
+                col_used[j] &= ~bit
+                if i != j:
+                    L[j][i] = -1
+                    row_used[j] &= ~bit
+                    col_used[i] &= ~bit
+
+        yield from back(0)
+
+    profile_dist_n5 = {}
+    profile14_sets_n5 = []
+    total_n5 = 0
+    t_start_c6 = time.time()
+    for table in enumerate_sym_latin_squares(n5):
+        prof = profile_set(table)
+        sz = len(prof)
+        profile_dist_n5[sz] = profile_dist_n5.get(sz, 0) + 1
+        if sz == 14:
+            profile14_sets_n5.append(frozenset(prof))
+        total_n5 += 1
+        if total_n5 % 60 == 0:
+            print(f"    {total_n5}/720 ({time.time()-t_start_c6:.1f}s)")
+    print(f"  Total enumerated: {total_n5} (expected 720)")
+    print(f"  Profile distribution:")
+    for sz in sorted(profile_dist_n5):
+        print(f"    profile {sz}: {profile_dist_n5[sz]} magmas")
+    expected_dist_n5 = {14: 480, 15: 120, 32: 30, 89: 24,
+                        90: 30, 176: 6, 294: 30}
+    distinct_14_n5 = set(profile14_sets_n5)
+    print(f"  Distinct equation sets among profile-14 magmas: "
+          f"{len(distinct_14_n5)} (manuscript: 1, = Family C)")
+    if len(distinct_14_n5) == 1:
+        the_set5 = next(iter(distinct_14_n5))
+        is_family_c5 = (set(the_set5) == FAMILY_C)
+        print(f"  Profile-14 equation set == Family C: {is_family_c5}")
+    else:
+        is_family_c5 = False
+    c6_ok = (total_n5 == 720
+             and profile_dist_n5 == expected_dist_n5
+             and len(distinct_14_n5) == 1
+             and is_family_c5)
+    checks.append(("C6 (order-5 enumeration: 720 LS, 480 hit Family C)",
+                   c6_ok))
     print()
 
     # Summary

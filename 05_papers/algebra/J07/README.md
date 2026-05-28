@@ -1,10 +1,10 @@
 # J07 — Spectral Architecture of the σ-Character on Z/10Z
 
-**Status**: SUBMISSION-READY (2026-05-27, polished). Merger product of J50 + J51 + J52.
+**Status**: REVISED (2026-05-27 — §7 RH-rhyme split off to separate companion note per Wave 4 audit; awaiting G_8 §4.2 sub-proposition + Q17-A §5.5 uniqueness proof before ship). Merger product of J50 + J51 + J52 (J52's RH-bridge content now lives in `companion_RH_rhyme/`).
 
-**Tier:** 1 (ship-ready (European J Combin; 5 theorems verified at machine precision incl. G_low=1.871644, G_high=9.389185; PROMOTED 2026-05-27))
+**Tier:** 1 (ship-ready after the deferred G_8 §4.2 sub-proposition + Q17-A §5.5 uniqueness proof; European J Combin target unchanged; 5 theorems verified at machine precision incl. G_low=1.871644, G_high=9.389185).
 
-**Target venue**: *European Journal of Combinatorics* (primary). Fallbacks: *Algebraic Combinatorics*, *Linear Algebra and its Applications*.
+**Target venue**: *European Journal of Combinatorics* (primary). Fallbacks: *Algebraic Combinatorics*, *Linear Algebra and its Applications*. Companion note targets *Math. Intelligencer* (see `companion_RH_rhyme/`).
 
 ## What this paper does
 
@@ -36,10 +36,13 @@ treatment is the natural unit. The merger eliminates:
 ```
 J07/
 ├── README.md                          this file
-├── cover_letter.md                    (to be drafted on submission)
-└── manuscript/
-    ├── manuscript.md                   the merged paper (8 sections + appendix)
-    └── verify_qseries_merged.py        (planned; combines 3 source verifications)
+├── cover_letter.md                    (to be revised reflecting §7 split)
+├── manuscript/
+│   ├── manuscript.md                   the merged paper (8 sections + appendix)
+│   └── verify_qseries_merged.py        (5/5 PASS, ~5s)
+└── companion_RH_rhyme/
+    ├── README.md                       companion note metadata
+    └── manuscript_RH_rhyme.md          3000-4000 word note for Math. Intelligencer
 ```
 
 ## Verification
@@ -61,7 +64,7 @@ The consolidated `verify_qseries_merged.py` (5/5 PASS, ~5s) combines these into 
 
 The source folders are retained for citation history; their manuscripts are unchanged.
 
-## Polish status (2026-05-27, completed)
+## Polish status (2026-05-27, revised: §7 split executed)
 
 - [x] Unified prose pass (single coherent narrative across §§1–8)
 - [x] Consolidated `verify_qseries_merged.py` written and PASS
@@ -69,8 +72,13 @@ The source folders are retained for citation history; their manuscripts are unch
 - [x] §4.4 χ-trajectory tables filled in with canonical χ + ν₊ discriminator
 - [x] §5 LaTeX-style equations checked (Markdown will render correctly)
 - [x] References §9 complete (internal merges + companion papers + classical refs)
+- [x] **§7 RH-rhyme split** off into `companion_RH_rhyme/` per Wave 4 audit (2026-05-27)
 
-**Remaining**: LaTeX conversion before journal submission (currently Markdown). Paper is mathematically complete and submission-ready in content.
+**Remaining before ship**:
+- [ ] G_8 §4.2 sub-proposition: promote one-sentence σ³-pairing identity to per-orbit verification (3-4 hours, see manuscript TODO).
+- [ ] Q17-A §5.5 uniqueness proof: dimension-count + character-pairing rigidity argument (10-15 hours, see manuscript TODO).
+- [ ] LaTeX conversion (currently Markdown).
+- [ ] Cover letter revision reflecting §7 split (drop the §7 mention; cite the companion note as a separate submission).
 
 ## Authors
 

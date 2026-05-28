@@ -8,7 +8,7 @@ For the recommended **release sequence** (which is not the same as the tier ladd
 
 - **Tier 1** (J01-J31) — ship-ready *spine*: SUBMISSION-READY or READY for the centerpiece papers; the rest are within a rigor pass of submission. The tier marks the intended next-step ladder, not "all 31 simultaneously submittable today."
 - **Tier 2** (J32-J40) — drafts needing referee-rigor pass before submission. Content stable; needs polish.
-- **Tier 3** (J41-J47) — hold / retire candidates. NOT ready to ship. Either awaiting experimental collaborator, scope reframe, or formal retirement to `04_meta/`.
+- **Tier 3** (J41-J47) — hold / retire candidates. NOT ready to ship. Either awaiting experimental collaborator, scope reframe, or formal retirement to `04_meta/`. As of 2026-05-27, J44/J45/J47 have been **RETIRED** to `04_meta/retired_J_papers/` with tombstone redirects.
 - **MERGED** (J48-J52) — absorbed into a merger product; the source paper folder is retained for citation history.
 
 ## Numbering scheme (since 2026-05-27 renumbering)
@@ -22,7 +22,7 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 | **J23-J29** | Tier 2→Tier 1 promotions 2026-05-27 (subject to rigor pass) |
 | **J30-J31** | Honest negatives (credibility-builders) |
 | **J32-J40** | Tier 2 active drafts |
-| **J41-J47** | Tier 3 hold / retire |
+| **J41-J47** | Tier 3 hold / retire (J44, J45, J47 retired to `04_meta/` 2026-05-27) |
 | **J48-J52** | MERGED tombstones |
 
 ---
@@ -111,17 +111,19 @@ Newly demoted from Tier 1 by 2026-05-27 audit (J-number unchanged; classificatio
 
 ---
 
-## Tier 3 — hold / retire candidates (7 papers, J41-J47)
+## Tier 3 — hold / retire candidates (4 papers after 2026-05-27 retirements; 3 RETIRED)
+
+After the 2026-05-27 status-hygiene pass, **J44, J45, J47 were RETIRED to `04_meta/retired_J_papers/`**. Source folders retain only a tombstone redirect README. Tier 3 active set is now J41-J43 + J46.
 
 | J# | Subdir | Title (short) | Hold reason |
 |---|---|---|---|
 | **J41** | number_theory | [MERGED into J24] | Formal tombstone (Discrete Fejér source) |
 | **J42** | physics | Empirical CKM/PMNS Mixing Fits | HOLD: needs particle-physics collaborator OR reframe |
 | **J43** | physics | NV S₄ Synthesis on Qutrit | HOLD: needs NV-center experimentalist |
-| **J44** | physics | FN Pattern λ=10/49 with SU(5) Indexing | RETIRE candidate: Tier-C structural rhyme |
-| **J45** | physics | Operadic Obstruction Synthesis | RETIRE candidate: duplicates J10 |
+| ~~**J44**~~ | physics | FN Pattern λ=10/49 with SU(5) Indexing | **RETIRED to `04_meta/retired_J_papers/J44_FN_Pattern/` (2026-05-27)**: Tier-C structural rhyme; numerical coincidence, not derivation. |
+| ~~**J45**~~ | physics | Operadic Obstruction Synthesis | **RETIRED to `04_meta/retired_J_papers/J45_Operadic_Obstruction/` (2026-05-27)**: duplicates J10's operadic D₄ obstruction content. |
 | **J46** | interdisciplinary | Microtubule Q_c = T* Prediction | HOLD: needs terahertz experimentalist |
-| **J47** | interdisciplinary | Atomic-Substrate D100-D104 | RETIRE candidate to `04_meta/` |
+| ~~**J47**~~ | interdisciplinary | Atomic-Substrate D100-D104 | **RETIRED to `04_meta/retired_J_papers/J47_Atomic_Substrate/` (2026-05-27)**: Tier-C atomic-substrate correspondence; D100-D104 are integer/rational identities, not theorems. |
 
 ---
 
@@ -140,15 +142,16 @@ Original J48-J52 + J25 (newly merged in 2026-05-27 audit):
 
 ---
 
-## Numbers — UPDATED 2026-05-27 (post-audit)
+## Numbers — UPDATED 2026-05-27 (post-audit + J44/J45/J47 retirements)
 
 | Tier | Members | Count |
 |---|---|---:|
 | Tier 1 (ship-ready spine) | J01-J07, J09-J22, J24, J26-J27, J30-J31 | **26** |
 | Tier 2 (drafts + 4 demoted) | J08, J23, J28, J29, J32-J40 | **13** |
-| Tier 3 (hold / retire) | J41-J47 | **7** |
+| Tier 3 (hold) | J41, J42, J43, J46 | **4** |
+| Retired to `04_meta/retired_J_papers/` | J44, J45, J47 | **3** |
 | MERGED tombstones | J25, J48-J52 | **6** |
-| **Total numbered J-papers** | | **52** (51 distinct ship-targets; J25 now a tombstone) |
+| **Total numbered J-papers** | | **52** (48 active ship-targets; J25 + J44 + J45 + J47 now tombstones) |
 
 Net portfolio: **52 numbered papers**, of which **31 are the Tier 1 spine**, of which **~13 are submission-ready today**. The remaining 18 Tier 1 papers need a rigor pass before submission.
 

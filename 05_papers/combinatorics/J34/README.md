@@ -102,7 +102,7 @@ Sanders, B. R. & Gish, M. (2026). "Coordinate Coverage and Joint-Injectivity Cri
 
 ---
 
-## Known issues (per 2026-05-27 audit)
+## Known issues (per 2026-05-27 audit; extended 2026-05-28 polish pass)
 
 Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J10 was applied 2026-05-07 with Theorem 6.1 (Coordinate Coverage) elevated to lead and UOP demoted to Lemma 2.1. Outstanding for ship-readiness:
 
@@ -110,3 +110,10 @@ Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.
 - Per-venue cap check for EJC pending — J36 also retargets to EJC; coordinate with VENUE_SCHEDULE.md.
 - Necessity direction of Theorem 4.1 (Coordinate Coverage characterization) is open and currently only the sufficient direction is proven; either tighten or explicitly leave as an open question.
 - No paper-specific referee report in `_staging/referee_reports/` for J34 post-rewrite; the original fresh-eyes report lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.
+
+### Polish-pass observations (2026-05-28)
+
+- **Verify script green.** `manuscript/verify_J10.py` PASSES all three claim families: (A) n=15 counterexample to "φ injective" is necessary-not-sufficient; (B) MVJN(Z/30Z) = 1 with two explicit witness pairs {π_6, π_15} and {π_DYN(7), π_DYN(11)}; (C) Theorem D small-n sanity (lcm-characterization on n ∈ {6, 30}). Runtime is sub-second.
+- **README §2 description fix.** The previous §2 referenced `pi_SPEC` for the first MVJN witness; the verify script and manuscript actually use π_6 (the residue-6 partition) as the first witness, matching `verify_J10.py` output. Manuscript Theorem 5.1 / §8 also uses π_SPEC (a "signed parity-3-residue" formulation) — slight notation mismatch between manuscript and verify-script flagged in §2 of this README. Flagged for harmonization before submission.
+- **Theorem 4.1 sufficient-direction proof.** The proof at lines 276–291 of `manuscript/manuscript.tex` is sound; the converse (necessity) is honestly flagged as open in Remark 3.4 and again in §9 (Open Questions). No math errors of the J08 type. Theorem B and Theorem C are honestly framed: Theorem C is the corrected version after the n=15 counterexample of §6 refuted the previously-asserted "φ injective" condition.
+- **Lemma 2.1 attribution.** Joint-fiber characterization is correctly attributed to Birkhoff (1940) and Ore (1942), with the substantive content of the paper located in the per-class D_h computation rather than in the meet equivalence. This is the right framing.

@@ -8,14 +8,24 @@ p in {2, 3, 5, 7, 11, 13}:
     been corrected to four. Power-associativity (the original fifth property)
     FAILS at a = e_2: a^3 . a = e_0 but a^2 . a^2 = e_2; these are not equal.
     See `check_power_associativity_at_e2()` below which records the FAILURE
-    as an audit witness rather than a passing test.
+    as an audit witness rather than a passing test. A partial-PA rescue
+    holds: PA on span(e_0, e_3) U span(e_0, e_4) at every prime; see
+    `check_PA_on_subalgebras()`.
 
   Theorem 2 (Aut Variation): |Aut(V_p)| takes values {6, 24, 40, 336, 1320, 2184}
     -- inherited from J48 brute-force; this script only references, does not recompute.
-  Theorem 3 (F_5 Rigid Idempotent Decomposition): |Aut(V_5)| = 40 = F_20 x Z/2
-    -- inherited from J49 brute-force. The explicit idempotent triple in
-       manuscript §4 (eps_2 = 2e_3 + 3e_4, etc.) was REFUTED on referee
-       check; the count 40 stands but the explicit decomposition is open.
+
+  Theorem 3 (F_5 Rigid 2-Idempotent Decomposition): the correct decomposition
+    is the orthogonal pair eps_+ = 3e_0 + 3e_4 = (e_0+e_4)/2 and
+    eps_- = 3e_0 + 2e_4 = (e_0-e_4)/2, satisfying eps_+^2 = eps_+,
+    eps_-^2 = eps_-, eps_+ . eps_- = 0, eps_+ + eps_- = e_0. The earlier
+    triple {eps_2 = 2e_3 + 3e_4, eps_3 = 3e_3 + 2e_4, eps_4 = e_4 - e_2}
+    was REFUTED on referee check (2026-05-28) and has been REPLACED by
+    the pair above. The pair comes from the F_5[Z/2] group-algebra
+    sub-structure on span(e_0, e_4) since e_4^2 = e_0. See
+    `check_F5_idempotents()` for brute-force verification.
+    |Aut(V_5)| = 40 = F_20 x Z/2 -- inherited from J49 brute-force.
+
   Theorem 4 (BHML Chain-Shell Rank Profile): determinants 5305, 2843, ...
 
 Dependencies: numpy + sympy. Runtime: ~10 seconds.
@@ -167,6 +177,102 @@ def check_T2_aut_variation():
     print("       (Not recomputed in this script -- see J48 archive.)\n")
 
 
+def check_F5_idempotents(V_table):
+    """Theorem 3 rescued (2026-05-28): the correct F_5 decomposition is the
+    orthogonal 2-idempotent pair eps_+ = 3e_0 + 3e_4 and eps_- = 3e_0 + 2e_4
+    (equivalently (e_0 +/- e_4)/2). Brute-force enumerate all 625 elements
+    of V_5, confirm exactly 4 idempotents {0, e_0, eps_+, eps_-}, and check
+    all four orthogonal-decomposition axioms."""
+    print("[Theorem 3 F_5 Rigid 2-Idempotent Decomposition (rescued 2026-05-28)]")
+    p = 5
+    mul = V_mul_in_Fp(V_table, p)
+    # Brute-force enumeration
+    idems = []
+    for a in product(range(p), repeat=4):
+        if mul(a, a) == a:
+            idems.append(a)
+    print(f"       Brute-force idempotents over F_5 (a^2 = a, 625 elements scanned):")
+    for x in idems:
+        nz = [(i, x[i]) for i in range(4) if x[i] != 0]
+        if not nz:
+            print(f"         {x}  =  0")
+        else:
+            labels = ['e_0', 'e_2', 'e_3', 'e_4']
+            s = ' + '.join(f"{c}*{labels[i]}" for i, c in nz)
+            print(f"         {x}  =  {s}")
+    assert len(idems) == 4, f"Expected exactly 4 idempotents over F_5, got {len(idems)}"
+    # The four are {0, e_0, eps_+, eps_-} in some order.
+    eps_plus = (3, 0, 0, 3)  # (e_0 + e_4)/2 = 3*(e_0 + e_4)
+    eps_minus = (3, 0, 0, 2)  # (e_0 - e_4)/2 = 3*(e_0 - e_4) = 3 e_0 - 3 e_4 = 3 e_0 + 2 e_4 mod 5
+    e0 = (1, 0, 0, 0)
+    zero = (0, 0, 0, 0)
+    assert eps_plus in idems, f"eps_+ = {eps_plus} not found in idempotent set"
+    assert eps_minus in idems, f"eps_- = {eps_minus} not found in idempotent set"
+    assert e0 in idems, f"e_0 not found in idempotent set"
+    assert zero in idems, f"0 not found in idempotent set"
+    # Check all four axioms
+    def add_p(a, b):
+        return tuple((a[i] + b[i]) % p for i in range(4))
+    assert mul(eps_plus, eps_plus) == eps_plus, "eps_+^2 != eps_+"
+    assert mul(eps_minus, eps_minus) == eps_minus, "eps_-^2 != eps_-"
+    assert mul(eps_plus, eps_minus) == zero, "eps_+ . eps_- != 0"
+    assert add_p(eps_plus, eps_minus) == e0, "eps_+ + eps_- != e_0"
+    print(f"       Verified axioms (all four):")
+    print(f"         eps_+^2 = eps_+  ({eps_plus})")
+    print(f"         eps_-^2 = eps_-  ({eps_minus})")
+    print(f"         eps_+ . eps_- = 0")
+    print(f"         eps_+ + eps_- = e_0")
+    print("       PASS\n")
+
+
+def check_PA_on_subalgebras(V_table):
+    """Partial rescue of power-associativity: although PA fails globally
+    at a = e_2, it holds on the two 2-dim subalgebras span(e_0, e_3) and
+    span(e_0, e_4) at every prime. The proof is algebraic: when the e_2
+    component (b) of x is zero, the obstruction D(b,c,d) reduces to
+    expressions in c, d each containing the factor c*d, so D vanishes
+    when c=0 or d=0. Verify this brute-force at all primes."""
+    print("[Partial Power-Associativity Rescue: span(e_0, e_3) and span(e_0, e_4)]")
+    for p in [2, 3, 5, 7, 11, 13]:
+        mul = V_mul_in_Fp(V_table, p)
+        # Check span(e_0, e_3): all (a, 0, c, 0)
+        all_pa_e3 = True
+        for a in range(p):
+            for c in range(p):
+                x = (a, 0, c, 0)
+                x2 = mul(x, x)
+                x3 = mul(x2, x)
+                if mul(x3, x) != mul(x2, x2):
+                    all_pa_e3 = False
+                    break
+            if not all_pa_e3:
+                break
+        # Check span(e_0, e_4): all (a, 0, 0, d)
+        all_pa_e4 = True
+        for a in range(p):
+            for d in range(p):
+                x = (a, 0, 0, d)
+                x2 = mul(x, x)
+                x3 = mul(x2, x)
+                if mul(x3, x) != mul(x2, x2):
+                    all_pa_e4 = False
+                    break
+            if not all_pa_e4:
+                break
+        # And confirm e_2 itself FAILS PA
+        e2 = (0, 1, 0, 0)
+        e2_2 = mul(e2, e2)
+        e2_3 = mul(e2_2, e2)
+        pa_fails_at_e2 = (mul(e2_3, e2) != mul(e2_2, e2_2))
+        flag_e3 = "OK" if all_pa_e3 else "FAIL"
+        flag_e4 = "OK" if all_pa_e4 else "FAIL"
+        flag_e2 = "OK (correctly fails)" if pa_fails_at_e2 else "UNEXPECTED (PA holds!)"
+        print(f"       p={p:<3}: span(e_0,e_3) PA={flag_e3}, span(e_0,e_4) PA={flag_e4}, e_2 PA-fail={flag_e2}")
+        assert all_pa_e3, f"PA failed on span(e_0, e_3) at p={p}"
+        assert all_pa_e4, f"PA failed on span(e_0, e_4) at p={p}"
+    print("       PASS (subalgebra-PA holds at all primes; global PA correctly fails at e_2)\n")
+
+
 # ============================================================
 # Theorem 4: BHML chain-shell rank profile
 # ============================================================
@@ -227,13 +333,17 @@ def main():
         print(f"  e_{i} * (e_0..e_3) = {row}")
     print()
     check_power_associativity_at_e2(V_table)
+    check_PA_on_subalgebras(V_table)
     check_T1_invariant_skeleton(V_table)
     check_T2_aut_variation()
+    check_F5_idempotents(V_table)
     check_T4_chain_shell_dets()
     print("=" * 55)
     print("  Verification complete.")
-    print("  (Theorems 2 and 3 retain references to J48/J49 source brute-force enumeration;")
-    print("   the explicit eps_2 idempotent in manuscript §4 was REFUTED on referee check.)")
+    print("  (Theorem 2: still references J48 brute-force.")
+    print("   Theorem 3: RESCUED 2026-05-28 with the correct 2-idempotent pair")
+    print("              eps_+ = 3e_0 + 3e_4, eps_- = 3e_0 + 2e_4 from F_5[Z/2].")
+    print("   Theorem 4: still log-and-continue on mismatch.)")
     print("=" * 55)
 
 
