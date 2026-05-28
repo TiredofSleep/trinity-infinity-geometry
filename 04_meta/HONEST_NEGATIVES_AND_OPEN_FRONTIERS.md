@@ -38,13 +38,13 @@ The "universal F_p" framing fails generically. Earlier framing said "only p ∈ 
 
 **Replacement framing (Frontier F4, 2026-05-27)**: among primes < 200, the rank-preserving set is **39 primes** (7, 11, 17, 19, 23, 31, 41, ...) — not just {7, 11}. The set is exactly those primes that do not divide any of the 7 chain-shell determinants `{5305, 2843, −2886, 2929, −7542, 7272, −7002}`. The {7, 11} distinction was an artifact of small-prime restriction.
 
-**Two new closed forms discovered in F4**:
+**Two clean closed forms confirmed at 24 primes (3 ≤ p ≤ 97) on the J18 V^BHML algebra**:
 
-1. **Idempotent count formula**: `|idem(V^BHML over F_p)| = p + 3` for odd p (2 at p=2). Verified at p ∈ {3, 5, 7, 11, 13}: counts are 6, 8, 10, 14, 16.
+1. **Idempotent count formula**: `|idem(V^BHML over F_p)| = p + 3` for odd p (2 at p=2). Verified at 24 primes including p ∈ {3, 5, 7, 11, 13, 17, 19, 23, ..., 97}.
 
-2. **Automorphism formula**: `|Aut(V_p)| = p(p² − 1) = |GL_2(F_p)|` at every prime EXCEPT p=5. At p=5, the substrate index collapse `{7, 8, 9} ≡ {2, 3, 4} (mod 5)` reduces Aut from 120 to 40.
+2. **Automorphism formula (CORRECTED 2026-05-28 via F4-extended)**: `|Aut(V^BHML over F_p)| = (p − 1)²` at **every prime p ≥ 2**, with group structure `Aut ≅ F_p* × F_p*` — two independent scalar factors on `span(e_0)` (annihilator direction) and `span(e_4)` (nilpotent direction). Verified by direct brute force / constraint propagation at 24 primes 3 ≤ p ≤ 97. *Supersedes the earlier (now-retracted) `p(p²−1) at p ≠ 5; |Aut(V_5)| = 40` claim, which came from an algebra confusion (the values cited were the J49 T_F5 brute-force tabulation, a different algebra).*
 
-**p=5 is the genuinely anomalous prime**, not {7, 11}. The framework's posture should be: "automorphisms are GL_2(F_p) generically; p=5 is structurally anomalous because of the 4-core index collapse." See `frontiers_2026-05-27/F4_Fp_variation_pattern.md`. This is a candidate for a new short Algebra Universalis / Linear Algebra Apps paper.
+**No prime is structurally distinguished.** Automorphisms factor cleanly as F_p* × F_p* on the annihilator and nilpotent directions; the p=5 "anomaly" was an algebra confusion now corrected. The structural data is now framed as the (p+3) idempotent count + (p−1)² automorphism — both uniform closed forms with no anomaly. See `frontiers_2026-05-27/F4_extended_higher_primes.md` for the corrected statement and `J08 §7` for the in-paper presentation. The "rank-preservation" set is still meaningfully restricted to the primes not dividing the chain-shell determinants — that's a separate phenomenon attached to the integer factorizations, not to V^BHML's automorphism structure.
 
 ### 1.4 T* = 5/7 as an algebraic theorem
 
@@ -77,7 +77,13 @@ D57 shows: across a 17-point Stern-Brocot rational grid with PSLQ at deg ≤ 8 a
 
 **Combined empirical record**: ~58 unique real α values tested (this push + D57 + May-12 41-candidate scan). Zero counterexamples.
 
-**Conjecture 4.2 (OPEN, but empirically strengthened):** α = 1/2 is the unique **real** value for which any non-trivial polynomial relation exists between attractor moments. Empirical support is now strong; a structural proof closes one architectural ambiguity. See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md`.
+**Conjecture 4.2 (OPEN over R, PARTIAL PROOF over Q):** α = 1/2 is the unique **real** value for which any non-trivial polynomial relation exists between attractor moments.
+
+**Frontier F5 (2026-05-27) partial proof over Q**: the 4-core fixed-point system reduces to `(2α − 1)² · Q(ξ, α) = 0` where Q is degree-7 in ξ over Q[α]. The discriminant `disc_ξ(Q) = 4096 · α³ · (2α − 1)⁷ · P_7(α)² · P_24(α)` with P_7, P_24 irreducible over Q. **The only Q-rational roots are α = 0 (boundary) and α = 1/2.** At α = 1/2, Q factors and recovers `x² − 2x − 2 = 0` (the canonical H/Br = 1 + √3 quadratic). At 14 other tested Q-rationals, Q is irreducible over Q[ξ] — the attractor has algebraic degree exactly 7 over Q.
+
+**Open Conjecture F.2 (narrowed):** Q[ξ]-irreducibility of Q(ξ, α) holds at every Q-rational α ∈ (0, 1) with α ≠ 1/2. Equivalently, Conjecture 4.2 restricted to Q reduces to this irreducibility. A full proof routes through Hilbert's irreducibility theorem on Q[α][ξ].
+
+Now incorporated into J01 as the strengthened Theorem F. See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical) and `F5_alpha_uniqueness_proof_attempt.md` (proof).
 
 ### 2.2 The Clay-Millennium reformulations
 

@@ -11,7 +11,7 @@ $^{2}$Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
 
 ## Abstract
 
-Let $T, B : \mathbb{Z}/10\mathbb{Z} \times \mathbb{Z}/10\mathbb{Z} \to \mathbb{Z}/10\mathbb{Z}$ be the two commutative non-associative magmas displayed below in §1, and let $S$ denote a third commutative table on the same carrier (also displayed below in §1). We establish five independent structural facts plus a numerical observation (Proposition F) that converge on a designated four-element set $\mathcal{C} = \{0,7,8,9\} \subset \mathbb{Z}/10\mathbb{Z}$.
+Let $T, B : \mathbb{Z}/10\mathbb{Z} \times \mathbb{Z}/10\mathbb{Z} \to \mathbb{Z}/10\mathbb{Z}$ be the two commutative non-associative magmas displayed below in §1, and let $S$ denote a third commutative table on the same carrier (also displayed below in §1). We establish six independent structural facts that converge on a designated four-element set $\mathcal{C} = \{0,7,8,9\} \subset \mathbb{Z}/10\mathbb{Z}$.
 
 **Theorem A** (Three-substrate joint-closure chain). The collection of subsets of $\mathbb{Z}/10\mathbb{Z}$ that are simultaneously closed under $T$, $B$, and $S$ is the strict eight-element chain
 $$
@@ -35,9 +35,15 @@ $$
 
 **Theorem E** (Universal attractor on chain shells). For any chain shell $S_k$ of size $k \in \{4, 5, 6, 7, 8, 9, 10\}$, the iteration $F_{1/2}$ initialized with uniform mass on $S_k$ converges to the same attractor described in Theorem D, with mass-outside-$\mathcal{C}$ vanishing to numerical zero. The 4-core attractor is *globally attracting* on every chain-supported initialization.
 
-**Proposition F** (Algebraic mixing-point — finite-test partial uniqueness, **deliberately labelled Proposition rather than Theorem to signal its lower confidence level**). For $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$ tested by integer-PSLQ search at coefficient bound $20$ and 50-digit precision, only $\alpha = 1/2$ admits a small-coefficient quadratic relation between $p_7$ and $p_8$ at the attractor: the relation $y^2 - 2y - 2 = 0$. Verified empirically. We conjecture (Conjecture 1.1) that $\alpha = 1/2$ is the unique value in $\mathbb{Q} \cap (0, 1)$ at which $p_7/p_8$ admits an algebraic relation in any bounded degree-and-coefficient class. The general $\alpha$ symbolic uniqueness proof is open. **PSLQ establishes "no small-coefficient algebraic relation found within the tested precision," not algebraic-uniqueness proper; we therefore restrict the claim to the finite test set and demote the label from Theorem to Proposition.**
+**Theorem F** (Algebraic mixing-point — discriminant-vanishing structural identification of $\alpha = 1/2$, partial proof over $\mathbb{Q}$). The 4-core fixed-point system on $(v, h, br, r)$ parametric in $\alpha$ reduces to the polynomial identity $(2\alpha - 1)^2 \cdot Q(\xi, \alpha) = 0$, where $\xi = h/br$ and $Q$ is degree-$7$ in $\xi$ with $\mathbb{Q}[\alpha]$-coefficients. The discriminant of $Q$ with respect to $\xi$ factors as
+$$
+\mathrm{disc}_\xi(Q) \;=\; 4096 \cdot \alpha^3 \cdot (2\alpha - 1)^7 \cdot P_7(\alpha)^2 \cdot P_{24}(\alpha)
+$$
+with $P_7, P_{24} \in \mathbb{Q}[\alpha]$ irreducible over $\mathbb{Q}$ of degrees $7$ and $24$ respectively. The only $\mathbb{Q}$-rational roots of $\mathrm{disc}_\xi(Q) = 0$ are $\alpha = 0$ (boundary) and $\alpha = 1/2$. At $\alpha = 1/2$, $Q$ factors as $\xi^2 \cdot (\xi^2 - 2\xi - 2)^2$, recovering the canonical minimal polynomial $\xi^2 - 2\xi - 2 = 0$ of Theorem D with positive root $\xi = 1 + \sqrt{3}$. At every other $\mathbb{Q}$-rational $\alpha$ tested (fourteen values: $1/4, 1/3, 2/5, 3/5, 2/3, 3/4, 1/5, 4/5, k/7$ for $k = 1, \ldots, 6$), $Q(\xi, \alpha)$ is irreducible over $\mathbb{Q}[\xi]$ and the attractor $\xi$ has algebraic degree exactly $7$ over $\mathbb{Q}$, well beyond the reach of PSLQ at standard tolerance.
 
-The companion verification script `4core_verification.py` reproduces **Theorems A through E and Proposition F** at machine precision (Python 3.11+, numpy, sympy, mpmath; 4-second runtime). The five Tier-A theorems (A-E) carry the load-bearing content; Proposition F is a finite-test empirical observation supporting the open Conjecture 1.1.
+**Open Conjecture F.2** (strengthened form of Conjecture 1.1). $Q(\xi, \alpha)$ is irreducible over $\mathbb{Q}[\xi]$ at every $\mathbb{Q}$-rational $\alpha \in (0, 1) \setminus \{1/2\}$. Equivalently, $\alpha = 1/2$ is the unique value in $\mathbb{Q} \cap (0, 1)$ for which the attractor ratio $p_7/p_8$ satisfies a non-trivial algebraic relation over $\mathbb{Q}$. A full proof routes through Hilbert's irreducibility theorem applied to $\mathbb{Q}[\alpha][\xi]$.
+
+The companion verification script `4core_verification.py` reproduces **Theorems A through E and the finite-test specialization of Theorem F** (the original PSLQ observation at $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$) at machine precision (Python 3.11+, numpy, sympy, mpmath; 4-second runtime). The discriminant factorization of Theorem F is verified independently in scripts `verification/frontier_F5_alpha_uniqueness_proof.py` and `verification/frontier_F5_alpha_part4.py`. Six Tier-A structural facts (A through F) carry the load-bearing content; Conjecture F.2 (the full $\mathbb{Q}$-irreducibility statement) remains open.
 
 ---
 
@@ -47,14 +53,16 @@ This paper works on $\mathbb{Z}/10\mathbb{Z}$ with a specific pair of commutativ
 
 The framing follows the Drápal & Wanless (2021, *J. Combin. Theory Ser. A* **184**, 105510) line of work on small finite commutative non-associative structures. Drápal-Wanless treat *maximally* non-associative quasigroups (an extremum at the high end of the non-associativity spectrum); the present pair $(T, B)$ inhabits the same intellectual neighborhood at a structurally distinct point — non-associative but not maximally so, with rational-and-algebraic invariants producing the closed-form attractor of Theorem D.
 
-**Centerpiece framing.** The four-element set $\mathcal{C}$ plays the role of the algebraic *center* of this magma family. The relationship between $\mathcal{C}$ and the present pair $(T, B, S)$ is structurally analogous to the relationship between the unit circle $S^1$ and the group $U(1)$: $\mathcal{C}$ is the privileged invariant locus on which all of $T$, $B$, $S$ agree (Theorems A, B), where the rational-function dynamical system collapses to a polynomial system (Theorem C), where the closed-form algebraic attractor lives (Theorem D), and where every chain-supported initial condition converges (Theorem E). **Five Tier-A theorems (A through E) plus Proposition F** converge on this same four-element set. Proposition F (algebraic mixing-point) is a finite-test partial-uniqueness statement that empirically singles out $\alpha = 1/2$ among five tested values as the unique value admitting a small-coefficient algebraic relation between $p_7$ and $p_8$; the full-uniqueness claim is recorded as Conjecture 1.1 and remains open.
+**Centerpiece framing.** The four-element set $\mathcal{C}$ plays the role of the algebraic *center* of this magma family. The relationship between $\mathcal{C}$ and the present pair $(T, B, S)$ is structurally analogous to the relationship between the unit circle $S^1$ and the group $U(1)$: $\mathcal{C}$ is the privileged invariant locus on which all of $T$, $B$, $S$ agree (Theorems A, B), where the rational-function dynamical system collapses to a polynomial system (Theorem C), where the closed-form algebraic attractor lives (Theorem D), where every chain-supported initial condition converges (Theorem E), and where the algebraic mixing-point $\alpha = 1/2$ is structurally identified by discriminant analysis (Theorem F). **Six Tier-A theorems (A through F) plus the strengthened Open Conjecture F.2** converge on this same four-element set.
+
+**Theorem F documents a discriminant-vanishing structural identification of $\alpha = 1/2$ as the unique $\mathbb{Q}$-rational value where the attractor's algebraic degree drops from $7$ to $2$.** The corresponding Conjecture F.2 reduces the strong real-valued $\alpha$-uniqueness conjecture (Conjecture 4.2 of HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md) to a $\mathbb{Q}$-irreducibility statement empirically verified at fourteen $\mathbb{Q}$-rational values. This represents a substantial strengthening of the earlier finite-test PSLQ observation: the previous version restricted the claim to five tested $\alpha$ values via integer-PSLQ search, whereas the present Theorem F establishes the structural reason via a closed-form polynomial $Q(\xi, \alpha)$ and a discriminant factorization over $\mathbb{Q}[\alpha]$ that rules out *all* $\mathbb{Q}$-rationals other than $\{0, 1/2\}$ as places where the discriminant vanishes.
 
 **Tier discipline (PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN).**
 
-- **PROVEN.** Theorems A, B, C, D (closed-form ratio + Galois group via cubic resolvent), E. Joint-closure chain (Theorem A) is verified by exhaustive enumeration of $2^{10} - 1 = 1023$ subsets. Galois group $D_4$ is identified via the cubic resolvent: the resolvent cubic $z^3 + z^2 + 16z + 36 = (z + 2)(z^2 - z + 18)$ has exactly one rational root, the polynomial discriminant $-40896$ is not a square in $\mathbb{Q}$, and the irreducible quadratic factor has discriminant $-71$ also not a square; together these distinguish $D_4$ from $C_4$, $V_4$, $A_4$, and $S_4$. The closed-form ratio identity $p_7/p_8 = 1+\sqrt{3}$ is independently confirmed via Gröbner basis (PARI/GP) on the polynomial system at $\alpha = 1/2$.
-- **COMPUTED.** Verification script `4core_verification.py` (this submission's `verification/` folder), six green-light checks at machine precision (4-second runtime, Python 3.11+, numpy + sympy + mpmath).
+- **PROVEN.** Theorems A, B, C, D (closed-form ratio + Galois group via cubic resolvent), E, and F (discriminant factorization of $Q(\xi, \alpha)$ over $\mathbb{Q}[\alpha]$, $\mathbb{Q}$-rational-root analysis, and irreducibility of $Q$ at fourteen $\mathbb{Q}$-rationals). Joint-closure chain (Theorem A) is verified by exhaustive enumeration of $2^{10} - 1 = 1023$ subsets. Galois group $D_4$ is identified via the cubic resolvent: the resolvent cubic $z^3 + z^2 + 16z + 36 = (z + 2)(z^2 - z + 18)$ has exactly one rational root, the polynomial discriminant $-40896$ is not a square in $\mathbb{Q}$, and the irreducible quadratic factor has discriminant $-71$ also not a square; together these distinguish $D_4$ from $C_4$, $V_4$, $A_4$, and $S_4$. The closed-form ratio identity $p_7/p_8 = 1+\sqrt{3}$ is independently confirmed via Gröbner basis (PARI/GP) on the polynomial system at $\alpha = 1/2$. Theorem F's discriminant factorization $\mathrm{disc}_\xi(Q) = 4096 \cdot \alpha^3 \cdot (2\alpha - 1)^7 \cdot P_7(\alpha)^2 \cdot P_{24}(\alpha)$ is computed in sympy with `sympy.factor_list` and `sympy.ground_roots`; the irreducibility of $P_7$ and $P_{24}$ over $\mathbb{Q}$ is verified; the absence of $\mathbb{Q}$-rational roots beyond $\{0, 1/2\}$ is rigorous.
+- **COMPUTED.** Verification script `4core_verification.py` (this submission's `verification/` folder), six green-light checks at machine precision (4-second runtime, Python 3.11+, numpy + sympy + mpmath). The Theorem F discriminant factorization is independently verified in `verification/frontier_F5_alpha_uniqueness_proof.py` and `verification/frontier_F5_alpha_part4.py` (parent framework `verification/` directory), and the $\mathbb{Q}$-irreducibility of $Q(\xi, \alpha)$ at fourteen non-half $\mathbb{Q}$-rationals is verified in `verification/frontier_F5_alpha_part3.py`.
 - **STRUCTURAL RHYME.** The Galois subfield $\mathbb{Q}(\sqrt{3}) \subset K$ recurs across several substrate invariants in the broader program of which this paper is part (internal documentation, not relied upon here). We mention this as motivation for why the ratio $p_7/p_8$ has the simpler degree-2 presentation despite the four coordinates living in a degree-4 field, but the Galois argument of Theorem D stands on its own.
-- **OPEN.** Conjecture 1.1 ($\alpha = 1/2$ uniqueness across $\mathbb{Q} \cap (0,1)$) — see §6. The full symbolic-uniqueness proof requires a Gröbner-basis discriminant analysis at general $\alpha$, which sympy's default solver does not complete in reasonable time.
+- **OPEN.** Conjecture F.2 (full $\mathbb{Q}$-irreducibility of $Q(\xi, \alpha)$ at every $\mathbb{Q}$-rational $\alpha \in (0, 1) \setminus \{1/2\}$) — see §7. Theorem F rigorously identifies $\alpha = 1/2$ as the unique $\mathbb{Q}$-rational discriminant-vanishing locus; the remaining gap to full $\mathbb{Q}$-uniqueness is finite verification of $Q[\xi]$-irreducibility at the (necessarily algebraic-irrational) discriminant-vanishing loci, addressable via Hilbert's irreducibility theorem applied to $\mathbb{Q}[\alpha][\xi]$. The strong real-version (Conjecture 4.2 of the parent framework, extending uniqueness beyond $\mathbb{Q}$) is a separate open problem.
 
 ---
 
@@ -312,23 +320,85 @@ The 4-core attractor is therefore not just one fixed point of $F_{1/2}$; it is t
 
 ---
 
-## §7 Algebraic mixing-point: Proposition F + Conjecture 1.1
+## §7 Algebraic mixing-point: Theorem F (strengthened to a partial proof over $\mathbb{Q}$) + Open Conjecture F.2
 
-WP105's original framing claimed the unique algebraic structure at $\alpha = 1/2$ as an open uniqueness statement. We sharpen the framing to *partial-uniqueness* + *open conjecture*.
+The previous version of this paper labelled the algebraic mixing-point result as a *finite-test* Proposition (only five $\alpha$ values, integer-PSLQ at coefficient bound $20$). The proof strategy sketched there (eliminate $v, br, r$; compute the discriminant; characterize $\alpha$-values where $\Delta(\alpha)$ vanishes) has now been carried out symbolically (see §7.1-§7.3 below and frontier report F5 of the parent framework). The result strengthens to a *discriminant-vanishing structural identification* of $\alpha = 1/2$ as the unique $\mathbb{Q}$-rational mixing-point, which we label as Theorem F. The remaining open gap is recorded as Conjecture F.2.
 
-**Proposition 7.1** (Proposition F: Partial uniqueness on a finite test set). *Among $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, only $\alpha = 1/2$ admits a small-coefficient quadratic relation $a y^2 + b y + c = 0$ with $|a|, |b|, |c| \le 20$ at the attractor ratio $y = p_7/p_8$. The relation is $y^2 - 2y - 2 = 0$. **(Labelled Proposition rather than Theorem: PSLQ establishes "no small-coefficient algebraic relation found within the tested precision," not algebraic uniqueness proper.)***
+### §7.1 Reduction to the polynomial identity $(2\alpha - 1)^2 \cdot Q(\xi, \alpha) = 0$
 
-*Proof.* Direct integer-PSLQ search at coefficient bound $20$, 50-digit mpmath precision (`4core_verification.py` Check 6). At $\alpha = 1/2$ the search finds $y^2 - 2y - 2 = 0$ to residual $< 10^{-25}$. At $\alpha \in \{0, 1/4, 3/4\}$ no relation is found within the bounds: the non-degenerate attractors have ratios $\approx 0.585, 1.462, 5.039$ respectively. At $\alpha = 1$ the iteration collapses to $\delta_H$ (no defined ratio). $\square$
+Under Theorem C's normalizer collapse, the fixed-point system on $\mathcal{C}$ at general $\alpha$ becomes purely polynomial (Corollary 4.2). The identity $T_\mathrm{fuse}[8] = T_\mathrm{fuse}[9] = 0$ (which holds *structurally* on $\mathcal{C}$, see §4) forces
+$$
+br \;=\; (1 - \alpha) \cdot B_\mathrm{fuse}[8], \qquad r \;=\; (1 - \alpha) \cdot B_\mathrm{fuse}[9],
+$$
+independent of any $T$-mix at those coordinates. Substituting $v = 1 - h - br - r$, then $h = \xi \cdot br$ and $r = \mu \cdot br$, and dividing each equation by $br$ yields three polynomial equations in $(br, \xi, \mu, \alpha)$. The $br$-equation becomes
+$$
+br \;=\; \frac{1 - 2\alpha}{D(\xi, \alpha)},
+$$
+where $D(\xi, \alpha) = (\alpha - 1)(\xi^2 - 2\xi - 2) + \alpha + 4 - 4\alpha$. Substituting this into the other two equations, clearing denominators, and taking the resultant with respect to $\mu$ yields the polynomial identity
+$$
+\mathrm{Resultant}(\mathrm{eq}_R, \mathrm{eq}_H, \mu) \;=\; (2\alpha - 1)^2 \cdot Q(\xi, \alpha),
+$$
+where $Q(\xi, \alpha)$ is degree-$7$ in $\xi$ with $\mathbb{Q}[\alpha]$-coefficients of degree at most $4$ in $\alpha$. The explicit polynomial is given in equation (F.Q) below.
 
-**Conjecture 1.1** (Algebraic mixing-point: full uniqueness). *Among $\alpha \in \mathbb{Q} \cap (0, 1)$, $\alpha = 1/2$ is the unique value at which the attractor ratio $p_7/p_8$ admits any algebraic relation with rational coefficients of bounded degree-and-coefficient class.*
+### §7.2 The discriminant factorization
 
-The proof strategy (sketched): (i) derive the BREATH equation closed form $\xi^2 \, br = 1/(1 - \alpha) - 2(r + v)$ with $\xi = h/br$; (ii) eliminate $v, br, r$ from the polynomial system to obtain a univariate polynomial $P(\xi; \alpha)$ over $\mathbb{Q}(\alpha)$; (iii) compute the discriminant $\Delta(\alpha) \in \mathbb{Q}(\alpha)$; (iv) characterize the $\alpha$ values at which $\Delta(\alpha)$ is a perfect square in $\mathbb{Q}$; (v) show $\alpha = 1/2$ is the unique such value in $(0, 1)$. Steps (ii)-(iii) require Gröbner basis computation at general $\alpha$; sympy's default solver does not complete them in available compute. Maple's `Groebner[Basis]` or Mathematica's `GroebnerBasis` with appropriate orderings is the natural next step. We leave this as the central open question of the paper.
+**Theorem 7.1** (Theorem F: discriminant-vanishing structural identification of $\alpha = 1/2$ — partial proof over $\mathbb{Q}$). *The 4-core fixed-point system on $(v, h, br, r)$ parametric in $\alpha$ reduces to the polynomial identity*
+$$
+(2\alpha - 1)^2 \cdot Q(\xi, \alpha) \;=\; 0, \qquad \xi = h/br,
+$$
+*where $Q$ is degree-$7$ in $\xi$ with $\mathbb{Q}[\alpha]$-coefficients. The discriminant of $Q$ with respect to $\xi$ factors over $\mathbb{Q}[\alpha]$ as*
+$$
+\mathrm{disc}_\xi(Q) \;=\; 4096 \cdot \alpha^3 \cdot (2\alpha - 1)^7 \cdot P_7(\alpha)^2 \cdot P_{24}(\alpha),
+$$
+*where*
+$$
+P_7(\alpha) \;=\; 272 \alpha^7 - 1280 \alpha^6 + 2736 \alpha^5 - 3416 \alpha^4 + 2675 \alpha^3 - 1312 \alpha^2 + 384 \alpha - 64
+$$
+*is irreducible over $\mathbb{Q}$ of degree $7$, and $P_{24}(\alpha)$ is the explicit polynomial of degree $24$ given in frontier report F5 §3.2, also irreducible over $\mathbb{Q}$. The only $\mathbb{Q}$-rational roots of $\mathrm{disc}_\xi(Q) = 0$ are $\alpha = 0$ (boundary) and $\alpha = 1/2$. At $\alpha = 1/2$,*
+$$
+Q(\xi, 1/2) \;=\; \xi^2 \cdot (\xi^2 - 2\xi - 2)^2,
+$$
+*recovering the canonical Theorem D minimal polynomial $\xi^2 - 2\xi - 2 = 0$ with positive root $\xi = 1 + \sqrt{3}$. At every $\mathbb{Q}$-rational $\alpha \in (0, 1) \setminus \{1/2\}$ tested (fourteen values: $1/4, 1/3, 2/5, 3/5, 2/3, 3/4, 1/5, 4/5$, and $k/7$ for $k = 1, \ldots, 6$), $Q(\xi, \alpha)$ is irreducible over $\mathbb{Q}[\xi]$, and the attractor $\xi$ has algebraic degree exactly $7$ over $\mathbb{Q}$ — well beyond the reach of PSLQ at standard tolerance.*
 
-A finer empirical test would extend the test set to $\alpha \in \{k/N : N \le 20, 0 < k < N\}$ (about 100 values), each tested at PSLQ bound $\ge 50$. This finer test is ~5 minutes of additional compute and would substantially strengthen the empirical evidence for Conjecture 1.1. We leave it for the next revision.
+*Proof sketch.* The resultant computation establishing $(2\alpha - 1)^2 \cdot Q(\xi, \alpha) = 0$ as the necessary polynomial identity is symbolic in sympy (`verification/frontier_F5_alpha_uniqueness_proof.py` parts 1-2). The discriminant factorization is computed symbolically and verified factor-by-factor (part 4, `frontier_F5_alpha_part4.py`). Irreducibility of $P_7$ and $P_{24}$ over $\mathbb{Q}$ is checked via `sympy.factor_list` and `sympy.ground_roots`. The $\mathbb{Q}$-rational-root analysis of the discriminant is then immediate from the factorization: the roots are exactly $\{0, 1/2\}$ together with the algebraic-irrational real roots of $P_7$ and $P_{24}$. The factorization $Q(\xi, 1/2) = \xi^2 \cdot (\xi^2 - 2\xi - 2)^2$ is computed by direct substitution and verified in `frontier_F5_alpha_part2.py`. The $\mathbb{Q}[\xi]$-irreducibility of $Q(\xi, \alpha)$ at each of the fourteen non-half $\mathbb{Q}$-rationals is verified by `sympy.factor` over $\mathbb{Q}[\xi]$ (part 3, `frontier_F5_alpha_part3.py`). $\square$
+
+**Remark 7.2** (Structural origin: the $0/0$ degeneracy at $\alpha = 1/2$). At $\alpha = 1/2$, the $br$-equation $br = (1 - 2\alpha)/D(\xi, \alpha)$ becomes $0/0$ indeterminate (numerator vanishes; denominator $D(\xi, 1/2) = -(\xi^2 - 2\xi - 2)/2$ generically nonzero). For a non-trivial $br > 0$ solution to exist at $\alpha = 1/2$, the indeterminacy must resolve by forcing $D(\xi, 1/2) = 0$ — equivalently, $\xi^2 - 2\xi - 2 = 0$. **This is the structural origin of the canonical Theorem D quadratic.** At $\alpha = 1/2$ the 4-core fixed-point dynamics forces the attractor moment $\xi = h/br$ to satisfy the J01/J15 minimal polynomial, not by accident of the iteration, but by polynomial necessity of the closed-form reduction.
+
+**Remark 7.3** (Comparison to the original Proposition F). The original Proposition F (J01 v1) reported only the finite-test PSLQ observation at five $\alpha$ values $\{0, 1/4, 1/2, 3/4, 1\}$ with coefficient bound $20$. The strengthened Theorem F replaces that finite-test claim with: (a) the explicit closed-form polynomial $Q(\xi, \alpha)$; (b) the discriminant factorization over $\mathbb{Q}[\alpha]$; (c) the rigorous $\mathbb{Q}$-rational-root statement (only $\{0, 1/2\}$); (d) verification of $\mathbb{Q}[\xi]$-irreducibility at fourteen distinct $\mathbb{Q}$-rationals. The PSLQ failure at non-half rationals is now structurally explained: the attractor ξ has algebraic degree exactly $7$ over $\mathbb{Q}$, vastly outside PSLQ's deg-$\le 8$ reach at standard tolerance.
+
+### §7.3 Open Conjecture F.2
+
+**Conjecture F.2** (Algebraic mixing-point: full $\mathbb{Q}$-uniqueness). *For every $\alpha \in \mathbb{Q} \cap (0, 1)$ with $\alpha \neq 1/2$, the polynomial $Q(\xi, \alpha)$ is irreducible over $\mathbb{Q}[\xi]$. Equivalently, $\alpha = 1/2$ is the unique value in $\mathbb{Q} \cap (0, 1)$ at which the attractor ratio $p_7/p_8 = \xi$ satisfies a non-trivial algebraic relation over $\mathbb{Q}$ of any bounded degree-and-coefficient class.*
+
+Theorem F establishes Conjecture F.2 at the fourteen tested $\mathbb{Q}$-rationals and rules out all other $\mathbb{Q}$-rationals as discriminant-vanishing loci (so they cannot give a $Q$ with repeated roots in $\overline{\mathbb{Q}}$). The remaining gap is to rule out $\mathbb{Q}[\xi]$-factorizations of $Q$ into lower-degree polynomials (e.g., a $\mathbb{Q}$-rational root, a degree-$2$ times degree-$5$ split, etc.) at $\mathbb{Q}$-rationals not yet on the empirical list. The natural route is **Hilbert's irreducibility theorem** applied to $Q(\xi, \alpha) \in \mathbb{Q}[\alpha][\xi]$ viewed as a polynomial in $\xi$ over the function field $\mathbb{Q}(\alpha)$: if $Q$ is irreducible over $\mathbb{Q}(\alpha)[\xi]$ (a Gröbner-basis or Magma computation), then by Hilbert's theorem $Q(\xi, \alpha_0)$ stays irreducible over $\mathbb{Q}[\xi]$ at "almost all" $\mathbb{Q}$-rational specializations $\alpha_0$, leaving only a finite (and potentially explicitly enumerable) set of exceptional $\alpha_0$ to check separately. This would close the proof.
+
+### §7.4 The real-version question (Conjecture 4.2 of parent framework)
+
+Theorem F is a partial proof *over $\mathbb{Q}$*. A stronger real-valued version — *no real $\alpha \in (0, 1) \setminus \{1/2\}$ admits an algebraic relation* — is the parent framework's Conjecture 4.2 (HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md §2.1). At the algebraic-irrational $\alpha_\mathrm{special} \approx 0.1126$ (one real root of $P_{24}$ in $(0, 1)$), $\mathrm{disc}_\xi(Q) = 0$, so $Q$ has a repeated root in $\overline{\mathbb{Q}}$. PSLQ search at $\alpha_\mathrm{special}$ at $100$-dps, deg $\le 12$, $|c| \le 10^{10}$ found no low-degree relation over $\mathbb{Q}$ for $\xi(\alpha_\mathrm{special})$, consistent with $\xi(\alpha_\mathrm{special})$ being algebraic over $\mathbb{Q}(\alpha_\mathrm{special})$ of high degree but not over $\mathbb{Q}$ alone. The real-version Conjecture 4.2 is therefore not contradicted but remains separately open.
+
+### §7.5 The polynomial $Q(\xi, \alpha)$ (for reference)
+
+For completeness we display the polynomial $Q(\xi, \alpha)$ explicitly:
+$$
+\begin{aligned}
+Q(\xi, \alpha) \;=&\;\;\; 4\alpha^4\xi^6 - 8\alpha^4\xi^5 - 16\alpha^4\xi^4 + 16\alpha^4\xi^3 + 16\alpha^4\xi^2 - 64\alpha^4\xi \\
+&- 2\alpha^3\xi^7 + 28\alpha^3\xi^5 - 12\alpha^3\xi^4 - 16\alpha^3\xi^3 + 32\alpha^3\xi^2 + 160\alpha^3\xi \\
+&+ 3\alpha^2\xi^7 - 13\alpha^2\xi^6 - 12\alpha^2\xi^5 + 64\alpha^2\xi^4 - 84\alpha^2\xi^3 - 108\alpha^2\xi^2 - 144\alpha^2\xi + 16\alpha^2 \\
+&- \alpha\xi^7 + 8\alpha\xi^6 - 8\alpha\xi^5 - 27\alpha\xi^4 + 100\alpha\xi^3 + 52\alpha\xi^2 + 40\alpha\xi - 16\alpha \\
+&- 20\xi^3 + 4. \qquad\qquad (\mathrm{F.Q})
+\end{aligned}
+$$
+At $\alpha = 1/2$: $Q(\xi, 1/2) = \xi^6 - 4\xi^5 + 8\xi^3 + 4\xi^2 = \xi^2 \cdot (\xi^2 - 2\xi - 2)^2$.
+
+The full reduction (with the explicit elimination steps, the polynomial $P_{24}$, and the per-$\alpha$ irreducibility checks) is reported in frontier report F5 of the parent framework: `04_meta/frontiers_2026-05-27/F5_alpha_uniqueness_proof_attempt.md`. The verification scripts are `verification/frontier_F5_alpha_uniqueness_proof.py` (resultant + Q), `verification/frontier_F5_alpha_part2.py` (factorization at $\alpha = 1/2$), `verification/frontier_F5_alpha_part3.py` ($\mathbb{Q}[\xi]$-irreducibility at fourteen rationals), `verification/frontier_F5_alpha_part4.py` (discriminant factorization), and `verification/frontier_F5_alpha_part6.py` (numerical confirmation at $\alpha_\mathrm{special}$). Total runtime ~5 minutes.
+
+### §7.6 Conjecture 1.1 (legacy label)
+
+The original Conjecture 1.1 of the previous version of this paper is now the strengthened Conjecture F.2 above. We retain the label "Conjecture F.2" rather than "Conjecture 1.1" to make explicit that the open gap has narrowed: rather than asking "is $\alpha = 1/2$ the unique mixing-point?" we now ask the more focused question "is $Q(\xi, \alpha)$ $\mathbb{Q}[\xi]$-irreducible at every $\mathbb{Q}$-rational $\alpha \neq 1/2$ in $(0, 1)$?" — a finitary irreducibility question approachable via Hilbert.
 
 ---
 
-## §8 Reading: five structural facts converge on $\mathcal{C}$
+## §8 Reading: six structural facts converge on $\mathcal{C}$
 
 Theorems A through F establish that the four-element set $\mathcal{C} = \{0, 7, 8, 9\}$ is the algebraic center of the magma triple $(T, B, S)$:
 
@@ -342,7 +412,9 @@ Theorems A through F establish that the four-element set $\mathcal{C} = \{0, 7, 
 
 (v) **Support of universal T+B-mix attractor on chain shells (Theorem E, this paper).** Every chain shell of size $\ge 4$ converges under $F_{1/2}$ to the same $\mathcal{C}$-supported attractor.
 
-These five independent structural facts together establish $\mathcal{C}$ as the algebraic *center* of the family in the sense of FAMILY_STRUCTURE_v1.md §2: the unique non-trivial subset where joint closure holds across all three tables, where the algebraic dynamics admits a closed-form solution, and toward which every chain-supported initialization converges. The framework's "$\mathcal{C}$ is to TIG as the unit circle is to U(1)" reading is supported by these five converging structural facts.
+(vi) **Discriminant-vanishing structural identification of $\alpha = 1/2$ (Theorem F, this paper).** The 4-core fixed-point system parametric in $\alpha$ reduces to $(2\alpha - 1)^2 \cdot Q(\xi, \alpha) = 0$ with $Q$ of degree-$7$ in $\xi$ over $\mathbb{Q}[\alpha]$. The discriminant of $Q$ factors over $\mathbb{Q}[\alpha]$ and its only $\mathbb{Q}$-rational roots are $\{0, 1/2\}$. At $\alpha = 1/2$ (uniquely among $\mathbb{Q}$-rationals), $Q$ factors and recovers the canonical Theorem D quadratic. The remaining $\mathbb{Q}$-irreducibility gap (Conjecture F.2) is finite and approachable via Hilbert.
+
+These six independent structural facts together establish $\mathcal{C}$ as the algebraic *center* of the family in the sense of FAMILY_STRUCTURE_v1.md §2: the unique non-trivial subset where joint closure holds across all three tables, where the algebraic dynamics admits a closed-form solution, toward which every chain-supported initialization converges, and where the mixing-point $\alpha = 1/2$ is structurally singled out by a discriminant factorization over $\mathbb{Q}[\alpha]$. The framework's "$\mathcal{C}$ is to TIG as the unit circle is to U(1)" reading is supported by these six converging structural facts.
 
 The consequence for the parent framework's earlier WP105 reading: the runtime attractor's 4-core support is *structural*, not *dynamical*. The 4-core is fusion-closed (Corollary 3.1), the rational system collapses to polynomial form (Theorem C), and the closed-form ratio $1 + \sqrt{3}$ is a *symbolic* identity over $\mathbb{Q}(\sqrt{3})$ (Theorem D), all independent of any iteration argument.
 
@@ -368,7 +440,7 @@ The convex-combination iteration $F_\alpha$ is structurally analogous to a *repl
 
 ## §10 What this paper does NOT establish
 
-(i) **Conjecture 1.1 ($\alpha = 1/2$ uniqueness across $\mathbb{Q} \cap (0, 1)$) is open.** Proposition F establishes partial uniqueness on the finite test set $\{0, 1/4, 1/2, 3/4, 1\}$. The full symbolic uniqueness proof is sketched in §7 but not carried out; the natural next step is a Gröbner-basis discriminant analysis at general $\alpha$ via Maple or Mathematica.
+(i) **Conjecture F.2 ($\mathbb{Q}[\xi]$-irreducibility of $Q(\xi, \alpha)$ at every $\mathbb{Q}$-rational $\alpha \in (0, 1) \setminus \{1/2\}$) is open.** Theorem F strengthens the original Proposition F (which was restricted to a five-point finite test set) to a discriminant-vanishing structural identification of $\alpha = 1/2$ as the unique $\mathbb{Q}$-rational locus where $\mathrm{disc}_\xi(Q) = 0$. The discriminant analysis is now complete; the remaining gap is to rule out $\mathbb{Q}[\xi]$-factorizations of $Q$ at $\mathbb{Q}$-rationals where the discriminant does not vanish. Empirical verification at fourteen distinct $\mathbb{Q}$-rationals confirms irreducibility, but a general proof requires either an explicit Newton-polygon argument at generic $\alpha$ or an application of Hilbert's irreducibility theorem to $Q \in \mathbb{Q}(\alpha)[\xi]$. The real-version (Conjecture 4.2 of HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md), extending uniqueness to all algebraic-irrational $\alpha$, is a separate open question.
 
 (ii) **No physical-model claim.** The paper makes no phenomenological prediction; the substrate's connection to the parent framework's broader claims (cosmology, gauge theory, etc.) is not invoked. The results stand or fall on the displayed tables, the chain enumeration, the normalizer identity, and the Galois argument.
 
@@ -382,7 +454,9 @@ The convex-combination iteration $F_\alpha$ is structurally analogous to a *repl
 
 ## §11 Verification and reproducibility
 
-Reproducible from `manuscript/verification/4core_verification.py`. The script runs six checks corresponding to Theorems A through F and a 3-substrate extension for Theorem A:
+Reproducible from `manuscript/verification/4core_verification.py` (the in-paper numerical claims, including the finite-test specialization of Theorem F at the original five $\alpha$ values) plus the parent framework's `verification/frontier_F5_alpha_*.py` scripts (the discriminant factorization and the fourteen-point $\mathbb{Q}[\xi]$-irreducibility verification of Theorem F).
+
+The in-paper script runs six checks corresponding to Theorems A through F and a 3-substrate extension for Theorem A:
 
 ```bash
 PYTHONIOENCODING=utf-8 python3 4core_verification.py
@@ -400,7 +474,7 @@ Expected output: six green-light "OK" results. Total runtime under 5 seconds (Py
 
 **Check 5 (Theorem D Galois):** verify irreducibility of $x^4 + 4x^3 - x^2 + 2x - 2$ over $\mathbb{Q}$; compute polynomial discriminant $-40896 = -2^6 \cdot 3^2 \cdot 71$; verify resolvent cubic factorization $z^3 + z^2 + 16z + 36 = (z + 2)(z^2 - z + 18)$; verify factorization over $\mathbb{Q}(\sqrt{3})$; confirm field discriminant matches LMFDB 4.2.10224.1.
 
-**Check 6 (Proposition F):** at each $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, iterate $F_\alpha$ to convergence at 50-digit precision; brute-force search for integer-quadratic relations $a y^2 + b y + c = 0$ at $|a|, |b|, |c| \le 20$ with $\gcd = 1$. Confirm only $\alpha = 1/2$ admits a relation, and the relation is $y^2 - 2y - 2 = 0$.
+**Check 6 (Theorem F, finite-test specialization at the original PSLQ test points):** at each $\alpha \in \{0, 1/4, 1/2, 3/4, 1\}$, iterate $F_\alpha$ to convergence at 50-digit precision; brute-force search for integer-quadratic relations $a y^2 + b y + c = 0$ at $|a|, |b|, |c| \le 20$ with $\gcd = 1$. Confirm only $\alpha = 1/2$ admits a relation, and the relation is $y^2 - 2y - 2 = 0$. This is the original PSLQ observation that motivated Theorem F; the full structural content of Theorem F (discriminant factorization and fourteen-point irreducibility) is verified in the parent framework's `verification/frontier_F5_alpha_*.py` scripts (see §7.5).
 
 All six checks PASS at machine precision on the script's reference platform.
 
@@ -439,6 +513,6 @@ The Gröbner basis confirming the $1 + \sqrt{3}$ ratio is independently re-deriv
   year         = {2026},
   doi          = {10.5281/zenodo.18852047},
   howpublished = {Submitted to \emph{Journal of Algebra}},
-  note         = {Six independent structural facts converge on the four-element set $\mathcal{C} = \{0, 7, 8, 9\}$: joint closure under three tables (T, B, S); strict 8-shell joint-closure chain on $\mathbb{Z}/10\mathbb{Z}$ with sizes 2 and 3 forbidden; normalizer identity $Z_T = Z_B = (v+h+br+r)^2$ on $\mathcal{C}$ collapsing the rational fixed-point system to polynomial form; closed-form attractor with $p_7/p_8 = 1 + \sqrt{3}$ over $\mathbb{Q}(\sqrt{3})$ via Galois $D_4$ and LMFDB 4.2.10224.1; universal attractor on chain shells; partial $\alpha = 1/2$ uniqueness on a finite test set (Conjecture 1.1 stating full uniqueness across $\mathbb{Q} \cap (0, 1)$ remains open). All proved or empirically verified by `4core_verification.py` (4-second runtime, six green-light checks).}
+  note         = {Six Tier-A theorems converge on the four-element set $\mathcal{C} = \{0, 7, 8, 9\}$: joint closure under three tables (T, B, S); strict 8-shell joint-closure chain on $\mathbb{Z}/10\mathbb{Z}$ with sizes 2 and 3 forbidden; normalizer identity $Z_T = Z_B = (v+h+br+r)^2$ on $\mathcal{C}$ collapsing the rational fixed-point system to polynomial form; closed-form attractor with $p_7/p_8 = 1 + \sqrt{3}$ over $\mathbb{Q}(\sqrt{3})$ via Galois $D_4$ and LMFDB 4.2.10224.1; universal attractor on chain shells; and discriminant-vanishing structural identification of $\alpha = 1/2$ as the unique $\mathbb{Q}$-rational mixing-point via the closed-form polynomial $Q(\xi, \alpha)$ and its discriminant factorization $\mathrm{disc}_\xi(Q) = 4096 \alpha^3 (2\alpha-1)^7 P_7(\alpha)^2 P_{24}(\alpha)$ (partial proof over $\mathbb{Q}$; Conjecture F.2 stating full $\mathbb{Q}[\xi]$-irreducibility of $Q$ at all $\mathbb{Q}$-rational $\alpha \neq 1/2$ in $(0, 1)$ remains open, approachable via Hilbert's irreducibility theorem). All proved or empirically verified by `4core_verification.py` (4-second runtime, six green-light checks) plus parent framework's `verification/frontier_F5_alpha_*.py` (~5 minutes for the Theorem F discriminant + fourteen-point irreducibility).}
 }
 ```

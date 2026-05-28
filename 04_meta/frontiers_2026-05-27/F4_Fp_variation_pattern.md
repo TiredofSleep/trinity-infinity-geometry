@@ -1,9 +1,11 @@
 # F4 — F_p Variation Pattern Across the BHML 4-Core Algebra
 
+> **2026-05-28 update (CORRECTION NOTICE):** the F4-extended verification (`F4_extended_higher_primes.md`) corrected the |Aut| formula. The structural finding is `|Aut(V^BHML_F_p)| = (p−1)²` for ALL primes (no p=5 anomaly). The earlier `p(p²−1)` claim with a p=5 anomaly (Facts/H5/§4 item 2 below) came from an algebra confusion: the cited brute-force values `{6, 24, 40, 336, 1320, 2184}` came from the J49 T_F5 algebra (a different algebra), and direct brute force on the canonical J18 T^BHML algebra at primes 3 through 97 gives `(p−1)²` uniformly. This document is preserved for the historical record; please consult `F4_extended_higher_primes.md` and J08 §7 for the current statement.
+
 **Frontier:** F_p universality fails generically; only p ∈ {7, 11} preserve rank under the framework's lift. What distinguishes {7, 11} from {2, 3, 5, 13}?
 
 **Date:** 2026-05-27 / 2026-05-28
-**Status:** EMPIRICAL-ONLY (with one clean closed form). See §4.
+**Status:** EMPIRICAL-ONLY. **|Aut| closed form CORRECTED** to `(p−1)²` uniformly via F4-extended (see top-of-file notice). See §4.
 **Inputs:** `05_papers/algebra/J08/manuscript/verify_J_Fp_merged.py`, `05_papers/algebra/J18/manuscript/bhml_fp_universality.py`, `05_papers/algebra/J18/manuscript/bhml_chain_shells.py`, J18 manuscript, J08 manuscript.
 
 ---

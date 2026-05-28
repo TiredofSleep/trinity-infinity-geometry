@@ -28,6 +28,24 @@ p in {2, 3, 5, 7, 11, 13}:
 
   Theorem 4 (BHML Chain-Shell Rank Profile): determinants 5305, 2843, ...
 
+  Theorem 5 (Idempotent count closed form, ADDED 2026-05-28 from frontier F4):
+    For the companion algebra V^BHML (J18 Theorem 3.1, non-unital table where
+    e_0 is the zero map), |idem(V^BHML over F_p)| = p + 3 at every odd prime,
+    = 2 at p = 2. See `check_idempotent_count_formula()` for brute-force
+    verification at p in {2, 3, 5, 7, 11, 13}.
+    Source: `04_meta/frontiers_2026-05-27/F4_Fp_variation_pattern.md`.
+
+  Theorem 6 (Automorphism formula for V^BHML, CORRECTED 2026-05-28 from
+    F4-extended): |Aut(V^BHML over F_p)| = (p - 1)^2 at every prime p >= 2.
+    The group structure is Aut ≅ F_p* × F_p* — two independent scalar factors
+    on span(e_0) (annihilator direction) and span(e_4) (nilpotent direction).
+    There is NO p = 5 anomaly; the earlier p(p^2-1) formulation with a
+    p = 5 exception (added 2026-05-28 from F4) was retracted because the
+    values came from a different algebra (J49 T_F5) and were not
+    independently reproducible by brute force on V^BHML at p != 5.
+    See `check_automorphism_F_p_star_squared()`. Verified at 24 primes
+    3 ≤ p ≤ 97 via the companion script F4_extended_verify.py.
+
 Dependencies: numpy + sympy. Runtime: ~10 seconds.
 """
 import sys
@@ -318,6 +336,223 @@ def check_T4_chain_shell_dets():
 
 
 # ============================================================
+# Theorem 5 / Theorem 6: F4 closed forms (added 2026-05-28)
+# ============================================================
+#
+# Closed forms discovered in frontier F4 (2026-05-27):
+#   04_meta/frontiers_2026-05-27/F4_Fp_variation_pattern.md
+#
+# Theorem 5 (Idempotent count formula).
+#   For the companion algebra V^BHML (J18 Theorem 3.1, non-unital table where
+#   e_0 acts as the zero map), |idem(V^BHML over F_p)| = p + 3 at every odd
+#   prime p, and = 2 at p = 2.
+#
+# Theorem 6 (Automorphism group formula for V^BHML, CORRECTED 2026-05-28).
+#   For the companion algebra V^BHML (J18 §3, non-unital, where e_0 acts as
+#   the zero map and the rest of the table is as in T_BHML_J18 below),
+#   |Aut(V^BHML over F_p)| = (p - 1)^2 at every prime p >= 2. There is NO
+#   p = 5 anomaly: the formula holds uniformly at all 24 primes 3 <= p <= 97
+#   (verified by brute force / constraint propagation in
+#   `04_meta/frontiers_2026-05-27/F4_extended_verify.py`). The group
+#   structure is Aut ≅ F_p* × F_p*: an F_p*-scaling on span(e_0) (the
+#   annihilator direction) and an independent F_p*-scaling on span(e_4)
+#   (the nilpotent direction). The main subalgebra span(e_2, e_3) is rigid.
+#
+#   RETRACTION NOTICE: an earlier version of this theorem stated
+#   |Aut(V_p)| = p(p^2 - 1) = |GL_2(F_p)| at every prime p != 5 with a
+#   p = 5 anomaly reducing the count to 40. That statement has been
+#   retracted: the cited values {6, 24, 40, 336, 1320, 2184} appear to
+#   have come from the J49 T_F5 algebra (DIFFERENT from V^BHML), and
+#   were not independently reproducible by brute force at p != 5 on
+#   either V (the J08 §1.1 unital algebra) or V^BHML (J18). See
+#   `04_meta/frontiers_2026-05-27/F4_extended_higher_primes.md`.
+#
+# NOTE: the J08 V_p (unital, §1.1) and the companion V^BHML (J18, non-unital)
+# are DIFFERENT algebras sharing a BHML lineage. Both the idempotent count
+# formula p + 3 (Theorem 5) and the corrected automorphism formula (p-1)^2
+# (Theorem 6) apply to V^BHML. The closed-form structure of |Aut(V_p)| for
+# the unital V remains an open empirical question.
+
+# J18's T^BHML 4x4 multiplication table (non-unital; e_0 is the zero map).
+# T_BHML_J18[i][j] is a length-4 list of basis-vector coefficients for e_i*e_j.
+T_BHML_J18 = [
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],  # e_0 row (zero map)
+    [[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]],  # e_2 row
+    [[0, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]],  # e_3 row
+    [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 1], [0, 0, 0, 0]],  # e_4 row
+]
+
+
+def mul_VBHML_in_Fp(x, y, p):
+    """Multiplication in J18's V^BHML over F_p (bilinear extension)."""
+    out = [0, 0, 0, 0]
+    for i in range(4):
+        if x[i] == 0:
+            continue
+        for j in range(4):
+            if y[j] == 0:
+                continue
+            cij = T_BHML_J18[i][j]
+            for k in range(4):
+                out[k] = (out[k] + x[i] * y[j] * cij[k]) % p
+    return tuple(out)
+
+
+def check_idempotent_count_formula():
+    """Theorem 5: |idem(V^BHML over F_p)| = p + 3 for all odd primes p;
+    = 2 at p = 2.
+
+    Verifies the closed form against direct brute-force enumeration over F_p
+    for p in {2, 3, 5, 7, 11, 13}.
+    """
+    print("[Theorem 5 Idempotent count formula |idem(V^BHML over F_p)| = p+3]")
+    EXPECTED = {2: 2, 3: 6, 5: 8, 7: 10, 11: 14, 13: 16}
+    print(f"       p   observed   expected   formula")
+    for p in [2, 3, 5, 7, 11, 13]:
+        count = 0
+        for a in product(range(p), repeat=4):
+            if mul_VBHML_in_Fp(a, a, p) == a:
+                count += 1
+        if p == 2:
+            formula = 2
+            formula_str = "2 (at p=2)"
+        else:
+            formula = p + 3
+            formula_str = f"p+3 = {formula}"
+        ok = (count == EXPECTED[p] == formula)
+        flag = "OK" if ok else "MISMATCH"
+        print(f"       {p:<3} {count:>8}   {EXPECTED[p]:>8}   {formula_str:<12}  -- {flag}")
+        assert count == EXPECTED[p], f"|idem(V^BHML/F_{p})| = {count} != {EXPECTED[p]}"
+        assert count == formula, f"|idem(V^BHML/F_{p})| = {count} != formula value {formula}"
+    print("       PASS (closed form |idem(V^BHML/F_p)| = p+3 for odd p verified at p in {3,5,7,11,13};")
+    print("        and = 2 at p=2)\n")
+
+
+def _count_VBHML_automorphisms(p):
+    """Brute-force enumerate |Aut(V^BHML over F_p)| via constraint propagation.
+
+    Algorithm: an automorphism phi is determined by phi(e_0), phi(e_2),
+    phi(e_3), phi(e_4) subject to the multiplication-preservation constraints
+    of V^BHML (see T_BHML_J18). We enumerate the image of each basis element
+    over F_p^4, filter by the algebraic relations, and require det != 0.
+
+    The structural derivation in F4_extended_higher_primes.md §4.2 reduces
+    this to (p-1) * (p-1) = (p-1)^2: phi(e_0) = alpha*e_0 for alpha in F_p*,
+    phi(e_2) = e_2 (forced), phi(e_3) = e_3 (forced, with -e_3 collapsing
+    to singular at odd p), phi(e_4) = beta*e_4 for beta in F_p*. We verify
+    by direct constraint search.
+    """
+    # Enumerate phi(e_3) = (a, b, c, d) in F_p^4 (p^4 candidates).
+    # For each, compute phi(e_2) := phi(e_3)^2 (must equal phi(e_2)).
+    # Filter by phi(e_2)^2 == phi(e_2), phi(e_2)*phi(e_3) == phi(e_3),
+    # then enumerate phi(e_4) over F_p^4 with phi(e_4)^2 == 0,
+    # phi(e_2)*phi(e_4) == 0, phi(e_3)*phi(e_4) == phi(e_4).
+    # Finally check det != 0 of the 4x4 matrix [phi(e_0)|phi(e_2)|phi(e_3)|phi(e_4)].
+
+    count = 0
+    # phi(e_0) lies in the annihilator span(e_0): phi(e_0) = alpha*e_0, alpha in F_p*.
+    # We just count: there are p-1 valid alphas. We enumerate the (phi(e_2),
+    # phi(e_3), phi(e_4)) triples and multiply by (p-1) at the end.
+
+    # phi(e_2), phi(e_3), phi(e_4) live in span(e_2, e_3, e_4) (the image of mu).
+    # So their e_0-coordinate is 0.
+
+    # Enumerate phi(e_3) = (0, b, c, d) for b, c, d in F_p.
+    triple_count = 0
+    for b in range(p):
+        for c in range(p):
+            for d in range(p):
+                phi_e3 = (0, b, c, d)
+                # Compute phi(e_3)^2 in V^BHML via T_BHML_J18
+                phi_e3_sq = mul_VBHML_in_Fp(phi_e3, phi_e3, p)
+                phi_e2 = phi_e3_sq  # forced by e_3^2 = e_2
+
+                # Check phi(e_2)^2 == phi(e_2)
+                if mul_VBHML_in_Fp(phi_e2, phi_e2, p) != phi_e2:
+                    continue
+                # Check phi(e_2)*phi(e_3) == phi(e_3)
+                if mul_VBHML_in_Fp(phi_e2, phi_e3, p) != phi_e3:
+                    continue
+                # phi(e_2) must lie in span(e_2, e_3, e_4)
+                if phi_e2[0] != 0:
+                    continue
+
+                # Enumerate phi(e_4) = (0, x, y, z)
+                for x in range(p):
+                    for y in range(p):
+                        for z in range(p):
+                            phi_e4 = (0, x, y, z)
+                            # phi(e_4)^2 = 0
+                            if mul_VBHML_in_Fp(phi_e4, phi_e4, p) != (0, 0, 0, 0):
+                                continue
+                            # phi(e_2)*phi(e_4) = 0
+                            if mul_VBHML_in_Fp(phi_e2, phi_e4, p) != (0, 0, 0, 0):
+                                continue
+                            # phi(e_3)*phi(e_4) = phi(e_4)
+                            if mul_VBHML_in_Fp(phi_e3, phi_e4, p) != phi_e4:
+                                continue
+                            # phi(e_4) != 0 (must be in span(e_4) by structure, but
+                            # the constraints alone permit phi(e_4) = 0 if det check
+                            # were absent)
+                            if phi_e4 == (0, 0, 0, 0):
+                                continue
+
+                            # Check det != 0 of [phi(e_0)=alpha*e_0 | phi(e_2) | phi(e_3) | phi(e_4)]
+                            # Use alpha=1 for the determinant test; the (p-1) scaling
+                            # multiplies the count linearly later.
+                            # Matrix columns are basis-vector coefficients.
+                            M = [
+                                [1, phi_e2[0], phi_e3[0], phi_e4[0]],
+                                [0, phi_e2[1], phi_e3[1], phi_e4[1]],
+                                [0, phi_e2[2], phi_e3[2], phi_e4[2]],
+                                [0, phi_e2[3], phi_e3[3], phi_e4[3]],
+                            ]
+                            det_val = int(Matrix(M).det()) % p
+                            if det_val == 0:
+                                continue
+                            triple_count += 1
+    # Multiply by (p-1) for the choice of alpha in F_p*
+    count = triple_count * (p - 1)
+    return count
+
+
+def check_automorphism_F_p_star_squared():
+    """Theorem 6 (CORRECTED 2026-05-28): |Aut(V^BHML over F_p)| = (p - 1)^2
+    at every prime p >= 2. The group structure is F_p* × F_p*: scalar factors
+    on span(e_0) (annihilator) and span(e_4) (nilpotent direction).
+
+    Verified by direct constraint-propagation brute force at p in {2, 3, 5, 7,
+    11, 13} (this script), and at all 19 further primes 17 <= p <= 97 via
+    `04_meta/frontiers_2026-05-27/F4_extended_verify.py`.
+
+    There is NO p = 5 anomaly. The earlier `check_automorphism_GL2()`
+    function (p(p^2-1) with p=5 exception, value 40) has been retracted:
+    the underlying values came from the J49 T_F5 algebra, which is a
+    DIFFERENT algebra from V^BHML.
+    """
+    print("[Theorem 6 Automorphism formula |Aut(V^BHML over F_p)| = (p-1)^2 (CORRECTED)]")
+    print(f"       p    |Aut|(brute)   (p-1)^2    match")
+    for p in [2, 3, 5, 7, 11, 13]:
+        formula = (p - 1) * (p - 1)
+        # For small p (<=13), brute-force enumerate directly.
+        # Skip p=2 brute force (p^7 = 128 ok, but constraints differ in char 2);
+        # at p=2 the formula gives (p-1)^2 = 1 which matches the trivial automorphism.
+        if p == 2:
+            # Direct check: only automorphism in char 2 is identity (alpha=beta=1).
+            # We verify by enumeration anyway.
+            observed = _count_VBHML_automorphisms(p)
+        else:
+            observed = _count_VBHML_automorphisms(p)
+        match = (observed == formula)
+        flag = "OK" if match else "MISMATCH"
+        print(f"       {p:<4} {observed:>12}    {formula:>7}     {flag}")
+        assert observed == formula, f"|Aut(V^BHML over F_{p})| = {observed} != (p-1)^2 = {formula}"
+    print("       PASS (corrected closed form |Aut(V^BHML over F_p)| = (p-1)^2 verified")
+    print("        at p in {2, 3, 5, 7, 11, 13}; F4-extended_verify.py confirms at 24 primes 3 <= p <= 97;")
+    print("        no p=5 anomaly — the earlier p(p^2-1) claim is retracted)\n")
+
+
+# ============================================================
 # Master harness
 # ============================================================
 
@@ -338,12 +573,18 @@ def main():
     check_T2_aut_variation()
     check_F5_idempotents(V_table)
     check_T4_chain_shell_dets()
+    check_idempotent_count_formula()
+    check_automorphism_F_p_star_squared()
     print("=" * 55)
     print("  Verification complete.")
     print("  (Theorem 2: still references J48 brute-force.")
     print("   Theorem 3: RESCUED 2026-05-28 with the correct 2-idempotent pair")
     print("              eps_+ = 3e_0 + 3e_4, eps_- = 3e_0 + 2e_4 from F_5[Z/2].")
-    print("   Theorem 4: still log-and-continue on mismatch.)")
+    print("   Theorem 4: still log-and-continue on mismatch.")
+    print("   Theorem 5: NEW 2026-05-28 -- |idem(V^BHML/F_p)| = p+3 (odd p), 2 (p=2)")
+    print("   Theorem 6: CORRECTED 2026-05-28 -- |Aut(V^BHML/F_p)| = (p-1)^2,")
+    print("              uniformly at all primes p>=2; no p=5 anomaly.")
+    print("              Earlier p(p^2-1) framing retracted.)")
     print("=" * 55)
 
 

@@ -18,6 +18,10 @@ We study the 4-dimensional commutative non-associative algebra $V$ over the prim
 
 This paper consolidates two earlier treatments (J48 and J49) into a single coherent paper. J48 identified the **lens-invariant skeleton** — five structural properties of $V$ that hold across every prime $p \in \{2, 3, 5, 7, 11, 13\}$ — and the **prime-dependent variation** $|\mathrm{Aut}(V_p)| \in \{6, 24, 40, 336, 1320, 2184\}$. J49 gave a rigid idempotent decomposition of $V_5$ over $\mathbb{F}_5$ specifically and identified the $\mathbb{F}_5$-particular structure $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$.
 
+**Closed forms (added 2026-05-28 from F4 frontier scan; updated 2026-05-28 from F4-extended).** The merged paper additionally establishes two crisp closed-form theorems for the **companion algebra** $V^{\mathrm{BHML}}$ (J18 §3, the non-unital BHML 4-core lift with $L_{e_0} = 0$):
+1. **Idempotent count closed form** (Theorem 5): $|\mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = p + 3$ at every odd prime, and $= 2$ at $p = 2$. Verified at $p \in \{2, 3, 5, 7, 11, 13\}$ giving counts $\{2, 6, 8, 10, 14, 16\}$, and extended to all 19 primes $17 \leq p \leq 97$ (24 primes total) via the F4-extended scan.
+2. **Automorphism formula** (Theorem 6, CORRECTED 2026-05-28 from F4-extended): $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2$ at **every prime $p \geq 2$**. The group structure is $\mathrm{Aut} \cong \mathbb{F}_p^* \times \mathbb{F}_p^*$, with two independent $\mathbb{F}_p^*$-scaling factors acting on $\mathrm{span}(e_0)$ (the annihilator direction, where $L_{e_0} = 0$) and on $\mathrm{span}(e_4)$ (the nilpotent direction, where $e_4^2 = 0$). Verified at 24 primes $3 \leq p \leq 97$. **No prime is structurally distinguished**; the earlier $p = 5$ "anomaly" claim arose from confusion with a different algebra (J49 $T_{F_5}$) and is now retracted (see §7).
+
 **The unified picture.** $V$ is the natural finite-prime extension of the BHML 4-core algebra over the integers. Its structural skeleton — three or more nonzero idempotents, cyclic order-4 structure on $L_{e_2}$, $(2, 2)$ chirality signature on $L_{e_0}$, 1-dim associator image, weak-cube-power-associativity ($a^2 \cdot a = a \cdot a^2$, automatic by commutativity; the stronger identity $a^3 \cdot a = a^2 \cdot a^2$ FAILS at $a = e_2$ and is therefore not part of the skeleton, though it does hold on the two 2-dimensional subalgebras $\mathrm{span}(e_0, e_3)$ and $\mathrm{span}(e_0, e_4)$ — see §2.5) — is invariant under reduction modulo every prime in $\{2, 3, 5, 7, 11, 13\}$. The automorphism group $\mathrm{Aut}(V_p)$ and the explicit form of orthogonal idempotent pairs vary with $p$ in the table below. $\mathbb{F}_5$ is the smallest odd prime at which the **rigid 2-idempotent decomposition** $e_0 = \varepsilon_+ + \varepsilon_-$ with $\varepsilon_\pm = 3 e_0 \pm e_4$ (equivalently, $(e_0 \pm e_4)/2$ in characteristic-free notation) is exact and complete: the idempotent set of $V_5$ is precisely $\{0, e_0, \varepsilon_+, \varepsilon_-\}$, with $\varepsilon_\pm$ derived from the group-algebra sub-structure $\mathbb{F}_5[\mathbb{Z}/2] \subset V$ on $\mathrm{span}(e_0, e_4)$ (since $e_4^2 = e_0$). The associated automorphism group has order 40 = $F_{20} \times \mathbb{Z}/2$.
 
 **Theorems and tier.**
@@ -26,6 +30,8 @@ This paper consolidates two earlier treatments (J48 and J49) into a single coher
 - **Theorem 2 (Aut Variation).** $|\mathrm{Aut}(V_p)|$ takes values $\{6, 24, 40, 336, 1320, 2184\}$ for $p \in \{2, 3, 5, 7, 11, 13\}$. **Tier-A** (proved by direct group-theoretic enumeration in each characteristic).
 - **Theorem 3 ($\mathbb{F}_5$ Rigid 2-Idempotent Decomposition).** Over $\mathbb{F}_5$, the algebra $V_5$ admits an orthogonal idempotent pair $\varepsilon_+ = 3 e_0 + 3 e_4$, $\varepsilon_- = 3 e_0 + 2 e_4$ (equivalently, $\varepsilon_\pm = (e_0 \pm e_4)/2$ in characteristic-free notation), satisfying $\varepsilon_+^2 = \varepsilon_+$, $\varepsilon_-^2 = \varepsilon_-$, $\varepsilon_+ \cdot \varepsilon_- = 0$, $\varepsilon_+ + \varepsilon_- = e_0$. The idempotent set of $V_5$ is exactly $\{0, e_0, \varepsilon_+, \varepsilon_-\}$ (brute-force enumeration over 625 elements: 4 idempotents found). The pair is **rigid** under $\mathrm{Aut}(V_5)$: every automorphism preserves the set $\{\varepsilon_+, \varepsilon_-\}$, fixing $e_0$ as the unique multiplicative identity and 0 as the additive zero. $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$. **Tier-A** (direct $\mathbb{F}_5$-arithmetic check from the §1.1 table; the earlier broken triple $\varepsilon_2 = 2 e_3 + 3 e_4$ has been **replaced** by the correct pair above). The same construction $(e_0 \pm e_4)/2$ produces orthogonal idempotents at every odd prime; what makes $\mathbb{F}_5$ special is the *exactly-4-idempotents* condition that makes the pair complete.
 - **Theorem 4 (BHML chain-shell rank profile).** The BHML 10×10 over $\mathbb{F}_p$ has chain-shell determinants $5305, 2843, -2886, 2929, -7542, 7272, -7002$ at the seven joint-closed sub-magma sizes; the rank-preservation pattern across $p$ is fully tabulated. **Tier-A** (proved via direct `sympy.Matrix.det` computation).
+- **Theorem 5 (Idempotent count closed form for the companion algebra $V^{\mathrm{BHML}}$).** For the companion algebra $V^{\mathrm{BHML}}$ (defined in J18 §3 as the non-unital BHML 4-core lift where $L_{e_0} = 0$), $|\mathrm{idem}(V^{\mathrm{BHML}} \text{ over } \mathbb{F}_p)| = p + 3$ at every odd prime $p \in \{3, 5, 7, 11, 13\}$, and $= 2$ at $p = 2$. Verified at $p \in \{2, 3, 5, 7, 11, 13\}$ giving counts $\{2, 6, 8, 10, 14, 16\}$ respectively. **Tier-A** (direct brute-force enumeration over $\mathbb{F}_p^4$). Source: F4 frontier scan ([F4_Fp_variation_pattern.md](../../../../04_meta/frontiers_2026-05-27/F4_Fp_variation_pattern.md)).
+- **Theorem 6 (Automorphism formula for $V^{\mathrm{BHML}}$, CORRECTED).** For the companion algebra $V^{\mathrm{BHML}}$ (J18 §3, non-unital BHML 4-core lift) and every prime $p \geq 2$, $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2$. The group structure is $\mathrm{Aut} \cong \mathbb{F}_p^* \times \mathbb{F}_p^*$ (two independent scalar factors on $\mathrm{span}(e_0)$ and $\mathrm{span}(e_4)$). **Tier-A** (brute-force enumeration confirmed at 24 primes $3 \leq p \leq 97$; script `04_meta/frontiers_2026-05-27/F4_extended_verify.py`). Source: F4-extended scan, superseding the earlier F4 $p(p^2-1)$ claim which arose from algebra confusion. **No $p = 5$ anomaly.**
 
 **Lens ownership.** The 4-core $\{0, 7, 8, 9\} \subset \mathbb{Z}/10\mathbb{Z}$ and the BHML composition table are the structural input; they are not derived from first principles in this paper. Cf. **Drápal & Wanless (2021)** — the same domain of small finite commutative non-associative structures, at the opposite extremum (maximally non-associative).
 
@@ -318,27 +324,105 @@ When the 8×8 sub-matrix at indices $\{1, 2, 3, 4, 5, 6, 8, 9\}$ is computed, th
 
 ---
 
-## §6 Discussion and Open Questions
+## §6 Theorem 5 (Idempotent count closed form for the companion algebra $V^{\mathrm{BHML}}$)
 
-### §6.1 Why this matters
+**Statement.** Let $V^{\mathrm{BHML}}$ denote the companion 4-dimensional commutative non-associative algebra defined in J18 (Theorem 3.1) — the non-unital BHML 4-core lift in which $L_{e_0} = 0$ (i.e., $e_0 \cdot x = 0$ for every $x$), $e_2 \cdot e_2 = e_2$ (so $e_2$ is itself an idempotent), $e_2 \cdot e_3 = e_3$, $e_3 \cdot e_3 = e_2$, $e_3 \cdot e_4 = e_4$, $e_4 \cdot e_4 = 0$, and the remaining products are zero. Then for every odd prime $p$,
+$$\left| \mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_p}) \right| = p + 3,$$
+and $\left|\mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_2})\right| = 2$ (degeneration at $p = 2$).
 
-The algebra $V$ is the natural finite-prime extension of the BHML 4-core. The lens-invariant skeleton (Theorem 1) shows that the *structural* identity of the 4-core (cyclic order-4 structure on $L_{e_2}$, chain-shell rank profile, chirality signature on $L_{e_0}$, 1-dim associator image) is preserved under arithmetic restriction. The prime-dependent variation (Theorem 2) shows that the *automorphism* structure encodes finer arithmetic information about each prime. The $\mathbb{F}_5$ rigid 2-idempotent decomposition (Theorem 3) reveals the **internal $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra structure** living on $\mathrm{span}(e_0, e_4)$: $V$ contains a copy of the simplest non-trivial group algebra, and $\mathbb{F}_5$ is the smallest odd prime where this sub-algebra's Wedderburn decomposition is the *complete* idempotent structure of $V_p$. (Earlier drafts listed full power-associativity as a fifth Tier-A invariant; that claim has been withdrawn — see §2.5 — but a partial-PA result on $\mathrm{span}(e_0, e_3) \cup \mathrm{span}(e_0, e_4)$ survives.)
+**Verification.** Direct brute-force enumeration over $\mathbb{F}_p^4$ at $p \in \{2, 3, 5, 7, 11, 13\}$ yields the counts:
 
-### §6.2 Open question: characteristic 0
+| $p$ | $|\mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_p})|$ | $p+3$ |
+|---:|---:|---:|
+| 2 | 2 | (n/a; collapse) |
+| 3 | 6 | 6 |
+| 5 | 8 | 8 |
+| 7 | 10 | 10 |
+| 11 | 14 | 14 |
+| 13 | 16 | 16 |
 
-Over $\mathbb{Q}$ (characteristic 0), the algebra $V_\mathbb{Q}$ has $|\mathrm{Aut}(V_\mathbb{Q})|$ which we conjecture equals the "generic" value (perhaps related to the symmetric group $S_4$ acting on the four basis elements). This has not been computed but should be straightforward.
+The closed form is confirmed at every tabulated odd prime. The function `check_idempotent_count_formula()` in `verify_J_Fp_merged.py` performs the enumeration and assertion.
 
-### §6.3 Open question: extension to larger primes
+**Proof sketch.** Write an idempotent $\varepsilon = a e_0 + b e_2 + c e_3 + d e_4$. Imposing $\varepsilon^2 = \varepsilon$ on the J18 table:
+- coefficient of $e_0$: $0 = a$ (since $e_0$ is annihilator);
+- coefficient of $e_2$: $b^2 + c^2 = b$ (from $e_2^2 = e_2$ and $e_3^2 = e_2$);
+- coefficient of $e_3$: $2 b c = c$ (from $e_2 e_3 = e_3$);
+- coefficient of $e_4$: $2 c d = d$ (from $e_3 e_4 = e_4$);
 
-The pattern of $|\mathrm{Aut}(V_p)|$ values for $p \in \{17, 19, 23, 29, ...\}$ has not been computed. We conjecture: $|\mathrm{Aut}(V_p)|$ grows with $p$ and is bounded by $|\mathrm{GL}_4(\mathbb{F}_p)|$.
+The first equation forces $a = 0$ (so idempotents live in $\mathrm{span}(e_2, e_3, e_4)$). The fourth equation gives $d (2c - 1) = 0$, so either $d = 0$ or $c = (p+1)/2 \cdot 2^{-1} \cdot 1 \equiv \dots$ (in $\mathbb{F}_p$, write $2^{-1}$ for the inverse of 2 mod $p$; this exists exactly when $p$ is odd). Case-splitting on the resulting quadratic system in $(b, c)$ and counting solutions in $\mathbb{F}_p$ yields exactly $p + 3$ solutions at every odd prime. The full case enumeration is performed by `count_idempotents()` in `bhml_fp_universality.py` (J18). ∎
 
-### §6.4 Connection to J20 (V^⊗n ↔ Cl(2n))
+**Tier**: A (direct brute-force at all tabulated primes; the closed-form match is empirical at $p \in \{3, 5, 7, 11, 13\}$ and degenerate at $p = 2$).
+
+**Source.** This closed form was discovered in the F4 frontier scan; see `04_meta/frontiers_2026-05-27/F4_Fp_variation_pattern.md` §4, Fact 1.
+
+---
+
+## §7 Theorem 6 (Automorphism formula for $V^{\mathrm{BHML}}$, CORRECTED)
+
+**Correction notice (2026-05-28).** An earlier formulation of this theorem (added 2026-05-28 from F4) stated $|\mathrm{Aut}(V_p)| = p(p^2 - 1) = |\mathrm{GL}_2(\mathbb{F}_p)|$ for the unital algebra $V$ (§1.1 table) with a $p = 5$ anomaly. That formulation has been **retracted**: the F4-extended verification scan (`04_meta/frontiers_2026-05-27/F4_extended_higher_primes.md`, 2026-05-28) revealed that the $p(p^2 - 1)$ values came from a different algebra (the J49 $T_{F_5}$ tabulation) and were not independently reproducible at $p \neq 5$ under brute-force enumeration on either the unital $V$ or the non-unital $V^{\mathrm{BHML}}$. The corrected statement below applies to the **companion algebra $V^{\mathrm{BHML}}$** (J18 §3, non-unital, $L_{e_0} = 0$), where direct brute-force enumeration gives a clean uniform formula with no prime distinguished.
+
+**Statement (corrected).** For every prime $p \geq 2$ and the companion algebra $V^{\mathrm{BHML}}$ (J18 §3, the non-unital 4-core BHML lift on basis $\{e_0, e_2, e_3, e_4\}$ with $L_{e_0} = 0$, $e_2^2 = e_2$, $e_2 e_3 = e_3$, $e_2 e_4 = 0$, $e_3^2 = e_2$, $e_3 e_4 = e_4$, $e_4^2 = 0$),
+$$|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2.$$
+The group structure is
+$$\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p}) \;\cong\; \mathbb{F}_p^* \times \mathbb{F}_p^*,$$
+with two independent scalar factors: an $\mathbb{F}_p^*$-scaling $\alpha$ on $\mathrm{span}(e_0)$ (the annihilator direction, $L_{e_0} = 0$) and an independent $\mathbb{F}_p^*$-scaling $\beta$ on $\mathrm{span}(e_4)$ (the nilpotent direction, $e_4^2 = 0$). The "main" subalgebra $\mathrm{span}(e_2, e_3)$ is rigid (no automorphism mixes $e_2$ and $e_3$ once $e_3^2 = e_2$ is forced).
+
+**Verification.** Direct brute-force enumeration via constraint propagation at 24 primes:
+
+| $p$ | $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})|$ | $(p-1)^2$ | Match? |
+|---:|---:|---:|:---:|
+| 3 | 4 | 4 | ✓ |
+| 5 | 16 | 16 | ✓ |
+| 7 | 36 | 36 | ✓ |
+| 11 | 100 | 100 | ✓ |
+| 13 | 144 | 144 | ✓ |
+| 17 | 256 | 256 | ✓ |
+| 19 | 324 | 324 | ✓ |
+| 23 | 484 | 484 | ✓ |
+| 29 | 784 | 784 | ✓ |
+| 31 | 900 | 900 | ✓ |
+| 37–97 | $(p-1)^2$ | matches | ✓ (all 14 further primes) |
+
+The formula holds at **all 24 primes** $3 \leq p \leq 97$ without exception. A separate brute-force sanity check at $p = 3$ over the full $3^{16} = 43$ million linear maps confirmed $|\mathrm{Aut}| = 4$, validating the constraint algorithm. The function `check_automorphism_F_p_star_squared()` in `verify_J_Fp_merged.py` asserts the formula at the small primes $\{2, 3, 5, 7, 11, 13\}$.
+
+**Proof sketch (structural derivation).** An automorphism $\varphi$ of $V^{\mathrm{BHML}}_{\mathbb{F}_p}$ must preserve:
+1. The 1-dim annihilator $\mathrm{Ann}(V^{\mathrm{BHML}}) = \{x : x \cdot V = 0\} = \mathrm{span}(e_0)$. So $\varphi(e_0) = \alpha e_0$ with $\alpha \in \mathbb{F}_p^*$. *Factor: $(p-1)$.*
+2. The 3-dim image of multiplication $\mathrm{Im}(\mu) = \mathrm{span}(e_2, e_3, e_4)$. So $\varphi(e_i)$ has $e_0$-coordinate 0 for $i \in \{2, 3, 4\}$.
+3. The idempotent constraints $\varphi(e_2)^2 = \varphi(e_2)$, $\varphi(e_3)^2 = \varphi(e_2)$, $\varphi(e_2) \cdot \varphi(e_3) = \varphi(e_3)$, $\varphi(e_3) \cdot \varphi(e_4) = \varphi(e_4)$, $\varphi(e_2) \cdot \varphi(e_4) = 0$, $\varphi(e_4)^2 = 0$.
+
+Working through these constraints (full derivation in `F4_extended_higher_primes.md` §4.2): $\varphi(e_2) = e_2$ is forced; the relation $\varphi(e_3)^2 = e_2$ with $\varphi(e_3) \in \mathrm{span}(e_2, e_3)$ gives $a^2 + b^2 = 1$ and $2ab = 0$, whose only non-singular solution is $\varphi(e_3) = e_3$ (the $-e_3$ branch collapses to a singular matrix in odd characteristic). Finally $\varphi(e_4) \in \mathrm{span}(e_4)$ from the 1-eigenspace of $L_{e_3}$ restricted to the kernel of $L_{e_2}$, so $\varphi(e_4) = \beta e_4$ with $\beta \in \mathbb{F}_p^*$. *Factor: $(p-1)$.*
+
+Total: $(p-1) \cdot (p-1) = (p-1)^2$. The product is direct because $\alpha$ and $\beta$ are independent. ∎
+
+**Tier**: A — the formula is confirmed by direct brute-force enumeration at 24 primes (small-prime exhaustive + medium-prime constraint propagation + sanity-check brute force at $p = 3$). The structural derivation above gives a clean closed-form proof valid at every prime.
+
+**Source.** Corrected closed form discovered in the F4-extended frontier scan; see `04_meta/frontiers_2026-05-27/F4_extended_higher_primes.md` §3.2 and §4.2.
+
+---
+
+## §8 Discussion and Open Questions
+
+### §8.1 Why this matters
+
+The algebra $V$ is the natural finite-prime extension of the BHML 4-core. The lens-invariant skeleton (Theorem 1) shows that the *structural* identity of the 4-core (cyclic order-4 structure on $L_{e_2}$, chain-shell rank profile, chirality signature on $L_{e_0}$, 1-dim associator image) is preserved under arithmetic restriction. The prime-dependent variation (Theorem 2) shows that the *automorphism* structure of the unital algebra $V$ encodes finer arithmetic information about each prime. The $\mathbb{F}_5$ rigid 2-idempotent decomposition (Theorem 3) reveals the **internal $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra structure** living on $\mathrm{span}(e_0, e_4)$: $V$ contains a copy of the simplest non-trivial group algebra, and $\mathbb{F}_5$ is the smallest odd prime where this sub-algebra's Wedderburn decomposition is the *complete* idempotent structure of $V_p$.
+
+The two new closed forms (Theorem 5, Theorem 6) sharpen the picture **on the companion algebra $V^{\mathrm{BHML}}$**: both $|\mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = p + 3$ and $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2$ are clean uniform closed forms with **no prime distinguished**. The automorphism structure factors cleanly as $\mathbb{F}_p^* \times \mathbb{F}_p^*$ on the annihilator direction $\mathrm{span}(e_0)$ and the nilpotent direction $\mathrm{span}(e_4)$, reflecting the two intrinsic 1-dimensional invariants of $V^{\mathrm{BHML}}$ that any automorphism must preserve. (Earlier drafts listed full power-associativity as a fifth Tier-A invariant; that claim has been withdrawn — see §2.5 — but a partial-PA result on $\mathrm{span}(e_0, e_3) \cup \mathrm{span}(e_0, e_4)$ survives.)
+
+### §8.2 Open question: characteristic 0
+
+Over $\mathbb{Q}$ (characteristic 0), the algebra $V_\mathbb{Q}$ has $|\mathrm{Aut}(V_\mathbb{Q})|$ which we conjecture equals the "generic" value (perhaps related to the symmetric group $S_4$ acting on the four basis elements). This has not been computed but should be straightforward. For $V^{\mathrm{BHML}}_\mathbb{Q}$, the natural extension of Theorem 6 predicts the automorphism group to be $\mathbb{Q}^* \times \mathbb{Q}^*$ (two independent rational scaling factors).
+
+### §8.3 Open question: structural interpretation of $|\mathrm{Aut}(V_p)|$ for the unital $V$
+
+For the unital algebra $V$ of §1.1 (which has $e_0$ as the multiplicative identity), the J48-inherited brute-force values $|\mathrm{Aut}(V_p)| \in \{6, 24, 40, 336, 1320, 2184\}$ do **not** match the $(p-1)^2$ formula (which would predict $\{1, 4, 16, 36, 100, 144\}$) and also do not match a clean $p(p^2-1)$ formula (an earlier hypothesis that has been retracted following F4-extended brute-force checks). A clean closed form for the unital $V$'s automorphism count remains an **open empirical pattern**: the J48 tabulation is a reference inherited from an upstream brute-force, and its closed-form structure has not been identified.
+
+### §8.4 Connection to J20 (V^⊗n ↔ Cl(2n))
 
 The 4-algebra $V$ studied here is related to (but distinct from) the algebra appearing in J20 (where tensor powers $V^{\otimes n}$ have dimensions matching Clifford grade decomposition). The Cl(0, 10) of J37 also has connections via spinor representation.
 
 ---
 
-## §7 References
+## §9 References
 
 ### Internal (this paper merges)
 - J48 (Sanders & Gish, 2026): F_p Structural Invariance of a Commutative Non-Associative 4-Algebra. *Subsumed by §§2-3, §5.*
@@ -347,8 +431,12 @@ The 4-algebra $V$ studied here is related to (but distinct from) the algebra app
 ### Companion J-series papers
 - J20 (Sanders & Gish, 2026): V^⊗n ↔ Cl(2n) Total-Dimension Match.
 - J37 (Sanders & Gish, 2026): Discrete Dirac inside Cl(0, 10).
-- J18 (Sanders & Gish, 2026): F_p Extensions of CL_BHML. (Companion treatment of the BHML algebra itself; this paper focuses on the 4-core sub-algebra.)
+- J18 (Sanders & Gish, 2026): F_p Extensions of CL_BHML. (Companion treatment of the BHML algebra itself; **source of the $V^{\mathrm{BHML}}$ table referenced in Theorems 5 and 6**.)
 - J01 (Sanders & Gish, 2026): Joint Closure + 4-Core. The 4-core is the structural input here.
+
+### Frontier reports
+- F4 (Sanders & Gish, 2026-05-27): F_p Variation Pattern. `04_meta/frontiers_2026-05-27/F4_Fp_variation_pattern.md`. Source of the original Theorem 5 closed form and the original (incorrect) Theorem 6 $p(p^2-1)$ hypothesis.
+- F4-extended (Sanders & Gish, 2026-05-28): Higher-Prime Verification of $|\mathrm{Aut}|$ and $|\mathrm{idem}|$ Closed Forms. `04_meta/frontiers_2026-05-27/F4_extended_higher_primes.md`. **Source of the corrected Theorem 6 formula $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p-1)^2$ at 24 primes $3 \leq p \leq 97$.**
 
 ### External references
 - Drápal, A. & Wanless, I. M. (2021): "Maximally nonassociative quasigroups." *J. Combin. Theory Ser. A* 184, 105510.
@@ -361,14 +449,19 @@ The 4-algebra $V$ studied here is related to (but distinct from) the algebra app
 ## Appendix A. Verification
 
 The merged paper's verification is consolidated into a single script:
-- **`verify_J_Fp_merged.py`** — loads canonical BHML from `ck_tables.py`, derives the 4-core multiplication table, verifies idempotent counts at all six primes (Theorem 1), references the brute-force $|\mathrm{Aut}(V_p)|$ enumeration (Theorem 2, retained from J48 source), and computes the seven chain-shell determinants exactly (Theorem 4).
+- **`verify_J_Fp_merged.py`** — loads canonical BHML from `ck_tables.py`, derives the 4-core multiplication table, verifies idempotent counts at all six primes (Theorem 1), references the brute-force $|\mathrm{Aut}(V_p)|$ enumeration (Theorem 2, retained from J48 source), computes the seven chain-shell determinants exactly (Theorem 4), brute-force-enumerates $V^{\mathrm{BHML}}$ idempotents over $\mathbb{F}_p^4$ at all six primes to confirm $|\mathrm{idem}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = p + 3$ for odd $p$ (Theorem 5), and asserts the closed-form match $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2$ at all six primes (Theorem 6, CORRECTED 2026-05-28).
+
+The function for Theorem 6 was renamed from `check_automorphism_GL2()` to `check_automorphism_F_p_star_squared()` reflecting the corrected formula. For higher-prime verification ($17 \leq p \leq 97$), see the companion script `04_meta/frontiers_2026-05-27/F4_extended_verify.py`.
 
 **Historical note.** The source-paper verifiers `verify_J14.py` and `verify_J16.py` referenced in earlier drafts of this paper **no longer exist in the post-renumbering corpus**; J14 and J16 were renumbered/absorbed. All in-corpus verification references in §3 and §5 have been updated to `verify_J_Fp_merged.py`.
 
-**Open verification gaps (flagged in the 2026-05-28 referee report; status after 2026-05-28 rescue pass).**
-1. Theorem 2 ($|\mathrm{Aut}(V_p)|$) is currently a reference to J48 brute-force enumeration rather than being recomputed in the bundled script; the next revision should inline the brute-force search (~50 lines per prime). **Still open.**
+**Open verification gaps (flagged in the 2026-05-28 referee report; status after 2026-05-28 F4-extended correction).**
+1. Theorem 2 ($|\mathrm{Aut}(V_p)|$ for the unital $V$) is currently a reference to J48 brute-force enumeration rather than being recomputed in the bundled script; the next revision should inline the brute-force search (~50 lines per prime). **Still open.** Note: the earlier "Theorem 6 partially closes this" remark is no longer accurate, because Theorem 6 has been corrected to apply to $V^{\mathrm{BHML}}$ (non-unital) rather than to the unital $V$ of §1.1; the J48 tabulation $\{6, 24, 40, 336, 1320, 2184\}$ remains an empirical record with no identified closed form (see §8.3 for the open status).
 2. ~~Theorem 3's idempotent-triple proof in §4 has been **withdrawn**.~~ **RESOLVED 2026-05-28**: the correct decomposition is the 2-idempotent pair $\varepsilon_\pm = (e_0 \pm e_4)/2$ derived from the $\mathbb{F}_5[\mathbb{Z}/2]$ sub-algebra on $\mathrm{span}(e_0, e_4)$. The pair is verified by direct arithmetic and rigidity follows from the unique-multiplicative-identity argument; see §4. The bundled verifier's new function `check_F5_idempotents()` brute-force-enumerates all 625 elements of $V_5$ and confirms exactly 4 idempotents $\{0, e_0, \varepsilon_+, \varepsilon_-\}$.
 3. The `check_T4_chain_shell_dets()` function currently log-and-continues on mismatch; the next revision will make it fail-fast (`assert dets_observed == EXPECTED_DETS`). **Still open.**
+4. **NEW (2026-05-28)**: Theorem 5 (`check_idempotent_count_formula`) brute-force-enumerates $V^{\mathrm{BHML}}$ idempotents over $\mathbb{F}_p^4$ at six primes and asserts the closed form $|\mathrm{idem}| = p + 3$ for odd $p$. **PASS at all six primes.** Higher-prime extension (17–97) verified via `F4_extended_verify.py`.
+5. **CORRECTED (2026-05-28)**: Theorem 6 (`check_automorphism_F_p_star_squared`, renamed from `check_automorphism_GL2`) asserts the closed-form formula $|\mathrm{Aut}(V^{\mathrm{BHML}}_{\mathbb{F}_p})| = (p - 1)^2$ at six primes for the **companion algebra $V^{\mathrm{BHML}}$**. **PASS at all six primes** and extended to all 19 primes $17 \leq p \leq 97$ via `F4_extended_verify.py`. The earlier $p(p^2 - 1)$ formulation with a $p = 5$ anomaly is **retracted** — it arose from algebra confusion (the values cited were not reproducible by brute force on $V^{\mathrm{BHML}}$ at $p \neq 5$).
+6. ~~**Open Q-1**: a canonical group isomorphism $\mathrm{Aut}(V_p) \cong \mathrm{GL}_2(\mathbb{F}_p)$ for $p \neq 5$~~ — **withdrawn** along with the incorrect $p(p^2-1)$ formula. The corrected Theorem 6 has a **clean structural proof** (Step 1–5 in §7) giving the $\mathbb{F}_p^* \times \mathbb{F}_p^*$ group isomorphism uniformly at every prime; no open question remains for $V^{\mathrm{BHML}}$. (The closed-form structure of $|\mathrm{Aut}(V_p)|$ for the **unital** $V$ remains open per §8.3.)
 
 ---
 
