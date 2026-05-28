@@ -102,7 +102,7 @@ open meta-question.
 | **AG(2,3) STS(9) at profile 382** | TIG: `etp_database/verdicts/sigma_k12_verdict.md` |
 | **The 40-equation small-STS gap** | TIG: `etp_database/verdicts/squag_variety_diff.json` |
 | **Cross-cutting STS classification (refuted geom-vs-comb)** | TIG: `etp_database/verdicts/sts_classification_corrected.md` |
-| Related TIG paper | J20 (Mathieu M₂₂ substrate primes — combinatorial connections) |
+| Related TIG paper | J23 (Mathieu M₂₂ substrate primes — combinatorial connections) |
 
 ### New finding (2026-05-27): STS-coincidence pattern
 

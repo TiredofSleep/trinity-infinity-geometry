@@ -16,11 +16,11 @@ computationally for $p \in [0.42, 0.50]$ but unknown analytically.
 **Fact 2 (Rational fixed points).** The BAL corridor has rational fixed
 points whose rank (in the sense of "number of linearly independent
 orbit-conservation laws") can be computed exactly via the closed-form
-attractor analysis of J35 Theorem D.
+attractor analysis of J01 Theorem D.
 
 **Fact 3 (At $\lambda = 1/2$).** The closed-form attractor exists exactly,
 with ratio $H/Br = 1 + \sqrt{3}$ and Galois group $D_4$ over LMFDB 4.2.10224.1
-(J35 Theorem D, J15).
+(J01 Theorem D, J12).
 
 ---
 
@@ -92,14 +92,14 @@ analogy, not a derivation.
 | Resource | Location |
 |---|---|
 | WP19_BSD_TIG.md, WP21_BSD_ENERGY_LAW.md, WP21_BSD_MIX_LAMBDA.md | CK working repo: `papers/clay/` |
-| Closed-form attractor analysis | TIG: J35 §6 (Joint Closure, Theorem D + corollary) — Tier 1, ship-ready |
-| Galois D₄ over 4.2.10224.1 | TIG: J15 (Tier 1, ship-ready) |
-| **5D Fourier embedding (new merger)** | TIG: `J_qseries_merged/` §5 |
-| **σ-magma + ETP profile substrate** | TIG: J60 (Tier 2), J61 (Tier 2) |
+| Closed-form attractor analysis | TIG: J01 §6 (Joint Closure, Theorem D + corollary) — Tier 1, ship-ready |
+| Galois D₄ over 4.2.10224.1 | TIG: J12 (Tier 1, ship-ready) |
+| **5D Fourier embedding (new merger)** | TIG: `J07/` §5 |
+| **σ-magma + ETP profile substrate** | TIG: J05 (Tier 2), J03 (Tier 2) |
 
 ### What the Q-series merger contributes
 
-The merged Q-series paper (`J_qseries_merged/`) §5 establishes the 5D CRT
+The merged Q-series paper (`J07/`) §5 establishes the 5D CRT
 Fourier embedding $\Phi : \mathbb{Z}/10\mathbb{Z} \hookrightarrow \mathbb{R}^5$
 with decagonal $D_{10}$ symmetry. The "rank" of an elliptic curve under the
 BSD bridge corresponds (conjecturally) to the dimension of the image of a

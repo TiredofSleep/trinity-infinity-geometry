@@ -1,104 +1,98 @@
-# J32 — Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
+# J32 — TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice
 
-**Status:** REWRITE 2026-05-12 — promotes the operadic $D_4$ orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26; corrected 2026-05-07 for the $D_4$ order-$8$ and the $(44,7,4,10,2)$ orbit distribution) to the central theorem. Standalone, self-contained `verify_J32_d4_orbits.py` added; all 6 claims PASS at machine precision in $<1$ s.
-**Phase:** Phase 3.
-**Target venue:** *Journal of Algebra* (lead). Fallback (in priority order): *Communications in Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
-**Author lane:** Sanders + Gish only.
-**Tier:** 2 (draft (REWRITE 2026-05-12; operadic D4 obstruction))
-**WP source:** WP109 (operad $D_4$ obstruction) + WP112 (P$_{56}$ canonical fuse).
+**Status:** REVISED (2026-05-08; SFM family-structure framing applied)
+**Phase:** Phase 1
+**Target venue:** Experimental Mathematics
+**Author lane:** Sanders + Gish
+**Tier:** 2 (draft (REVISED 2026-05-08; SFM framing applied))
 
 ---
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/manuscript.md`.
+**Local path:** `manuscript/tsml_bhml_cell_counts.tex`
 
-**Central theorem (Theorem A).** The diagonal action of $D_4=\langle P_{56},\sigma^3\rangle$ (order $8$) on the non-associative locus $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ of the canonical TSML_RAW table partitions $\mathcal{N}$ into exactly $\mathbf{67}$ restricted orbits, with size distribution $(44,7,4,10,2)$ at sizes $(1,2,3,4,8)$; size-weighted sum $44+14+12+40+16=126=|\mathcal{N}|$.
+Files in `manuscript/`:
 
-**Theorem B (obstruction).** Exactly $\mathbf{16}$ of the $67$ orbits fail bracketing-pair coherence. Hence no $\{a,b,c,L,R\}$-valued $D_4$-equivariant assignment $\Phi:\mathcal{N}\to\mathbb{Z}/10\mathbb{Z}$ exists.
-
-**Theorem C ($\langle P_{56}\rangle$ sharpening).** Under $\langle P_{56}\rangle$ alone, $\mathcal{N}$ partitions into $\mathbf{98}$ orbits ($70$ singletons + $28$ doubletons), all coherent. The structural obstruction is therefore located precisely at the $\sigma^3$ generator.
-
-**Theorem D (4-core arity-3 closure).** The $4$-core $\mathcal{C}=\{0,7,8,9\}$ is closed under both arity-$3$ bracketings $L,R$ on all $4^3=64$ triples of $\mathcal{C}^3$; $8$ of the $64$ are non-associative.
+- `tsml_bhml_cell_counts.tex` (main submission file; amsart)
+- `proof_d10_tsml_73_cells.py` (TSML = 73, ALL ASSERTIONS PASSED)
+- `proof_d16_bhml_28_cells.py` (BHML = 28, ALL ASSERTIONS PASSED)
+- `proof_fourier_bridge.py` (supplementary; not required for J32)
+- `ck_tables.py` (canonical tables, CC-BY-4.0)
+- `SUBMIT_INSTRUCTIONS.md` (submission notes)
+- `WP35_PRIME_PHASE_TRANSITION.md` (corpus archival, J25-relevant)
+- `WP_OPERATOR_RING_PARTITION.md` (corpus archival, J32-relevant)
 
 ## §2 — Verification scripts
 
-**Primary (standalone):** `manuscript/verification/verify_J32_d4_orbits.py` — pure standard-library Python; runtime $<1$ s; deterministic; CC-BY-4.0 license header. Covers all 6 load-bearing claims:
+Both verification scripts run from the manuscript folder in <0.1 s and end with `ALL ASSERTIONS PASSED`:
+- `proof_d10_tsml_73_cells.py` — verifies TSML = 73 harmony cells
+- `proof_d16_bhml_28_cells.py` — verifies BHML = 28 harmony cells
 
-1. $|\mathcal{N}|=126$ (with optional cross-check against bundled `manuscript/nonassoc_triples.json`).
-2. $|D_4|=|\langle P_{56},\sigma^3\rangle|=8$ with the correct order spectrum $\{1:1,\,2:5,\,4:2\}$.
-3. $67$ restricted orbits with size distribution $(44,7,4,10,2)$, size-weighted sum $126$.
-4. Exactly $16$ bracketing-pair incoherent orbits among the $67$.
-5. $98$ $\langle P_{56}\rangle$-orbits ($70$ singletons + $28$ doubletons), all coherent.
-6. $4$-core arity-$3$ closure: $64$ in-core / $0$ out-of-core / $8$ non-associative.
+`ck_tables.py` is bundled in the manuscript folder; the proof scripts import it locally (no PYTHONPATH gymnastics).
 
-**Secondary (legacy, retained for the WP-source audit trail):**
+## §3 — Dependencies (companion citations)
 
-- `manuscript/verification/d4_orbit_decomposition.py` — original $D_4$ orbit decomposition with bracketing-coherence test (WP109 reproduction).
-- `manuscript/verification/p56_canonical_fuse.py` — original $\langle P_{56}\rangle$ orbit decomposition with the canonical Family-H fuse-table construction (WP112 reproduction).
-- `manuscript/verification/rule_families.py` — 8-family rule survey (P$_{56}$ vs $\sigma^3$ equivariance breakdown).
-- `manuscript/verification/fuse_table.py` — module-level TSML table, bracketing functions, $P_{56}$ / $\sigma^3$ permutation definitions.
-
-Run all four legacy scripts plus the primary standalone for full reproduction of the WP109 + WP112 figures.
-
-## §3 — Dependencies (J-papers cited as already-submitted companions)
-
-- **J35** (Sanders + Gish 2026, *J. Algebra*) — binary joint-closure / closed-form attractor / Galois-$D_4$ centerpiece; cited in §1, §5, §6.
-- **J15** (Sanders + Gish 2026, *Comm. Alg.*) — standalone Galois proof on the quartic; cited in §6.
-- **J31** (Sanders + Gish 2026, *J. Algebra*) — Wedderburn $D_4$-isotypic decomposition of $[T,B]\in M_{10}(\mathbb{Z})$; cited in §6.
-- **J48** (Sanders + Gish 2026, *Comm. Alg.*) — operadic $\langle P_{56}\rangle$-equivariant fuse-rule survey; cited in §1, §7.
+- **Companion four-core paper (Sanders + Gish, manuscript in preparation):** establishes the joint $\{0,7,8,9\}$-preservation property and the membership conditions (C1–C5) that locate $\TSML$ and $\BHML$ as canonical members of the family. Cited in §5 of the J32 manuscript.
+- **Drápal & Wanless (2021), JCTA 184 (2021), 105510:** closest published precedent for the small commutative non-associative magma neighborhood. Cited in §0 (Lens) and §5 of the J32 manuscript.
 
 ## §4 — Cover letter
 
-See `cover_letter.md` in this folder. Target *J. Algebra*; per-venue cap transparency explicit (this is the **4th** *J. Algebra* submission of the 2026 cycle, following J35, J31, and J15-into-*Comm.-Alg.*); fallback priority order documented (*Comm. Alg.* → *Algebraic Combinatorics* → *Algebras and Representation Theory*).
+See `cover_letter.md` in this folder. Updated to reference family-structure framing and SFM context.
 
-## §5 — Notes
+## §5 — Notes (post-revision 2026-05-08)
 
-- **Status (2026-05-12 rewrite):** SUBMISSION-READY. Manuscript rewritten end-to-end as the operadic $D_4$ orbit-structure paper. Standalone verification script bundled (`verify_J32_d4_orbits.py`); all 6 PASS at machine precision in $<1$ s.
-- **Per-venue cap:** $\mathbf{4}$th *J. Algebra* paper of the 2026 cycle. Explicit fallback priority order in cover letter. Honest disclosure to editor.
-- **Tier classification:** Tier-B forced by direct enumeration on $1000$ triples and the $8$ elements of $D_4$.
-- **Lens scope:** TSML_RAW (the canonical asymmetric table); TSML_SYM has $128$ non-associative triples instead of $126$ and is not addressed here. The $4$-core arity-$3$ closure is lens-invariant.
-- **Differentiation from companion papers:** J35 is binary joint closure + binary attractor + Galois bundle; J32 is arity-3 orbit decomposition (no overlap). J31 is matrix decomposition of $[T,B]$; J32 is set-partition combinatorics on $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ (no overlap). J15 is the standalone Galois proof; J32 is a finite-group-action result on a combinatorial subset (no overlap).
-- **Math-fix lineage:** The corrected $D_4$ order ($8$, not $12$) and corrected orbit distribution $(44,7,4,10,2)$ replace the prior draft that had reported $(5,35,19,3)$ summing to $175$ — an error in the WP109 working draft that was traced to confusing the *full* orbit decomposition in $(\mathbb{Z}/10\mathbb{Z})^3$ with the *restricted* orbit decomposition on $\mathcal{N}$. Both numbers are now reported correctly: $203$ full orbits summing to $1000$, and $67$ restricted orbits summing to $126$. The standalone verifier confirms both directly.
+**Status: REVISED to address J32 fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J05_ExpMath_FreshEyes.md`).**
 
-### Family-Structure framing (per Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md)
+The major referee critique was *"TSML/BHML introduced from nowhere"* — i.e., the manuscript's failure to motivate the two specific tables among $10^{100}$ candidates. The revised manuscript addresses this by:
 
-This paper sits within the TIG family of finite commutative non-associative magmas on $\mathbb{Z}/10\mathbb{Z}$. The family is defined by 5 conjoint membership criteria; the 4-core $\{V, H, Br, R\} = \{0, 7, 8, 9\}$ at $\alpha_M=1/2$ is the algebraic center. The closest published precedent for this neighborhood is **Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510** — same domain (small finite commutative non-associative structures on $\mathbb{Z}/n\mathbb{Z}$), opposite extremum (theirs maximally non-associative; ours specifically structured with $12.6\%$ non-associative density).
+1. **§5 family-structure section.** Explicit five-criterion (C1–C5) membership conditions for the TIG family, identifying $\TSML$ and $\BHML$ as canonical members; the joint $\{0,7,8,9\}$-preservation property as the load-bearing structural fact. Drápal–Wanless 2021 cited as closest published precedent.
+2. **§0 Lens-ownership paragraph.** Honestly frames the choice of substrate $\Zten$ and the choice of value $7$ as labeling-by-fiat motivated by an interpretive scheme used elsewhere in the research program; the theorems below are theorems on this specific structure.
+3. **PROVEN/COMPUTED/STRUCTURAL RHYME/OPEN tier discipline.** Boilerplate paragraph in §0 making explicit which claims are theorems, which are script-verified, which are structural rhymes, and which are open. Adopted per `Atlas/META_PLAN_2026-05-06/J_PAPER_BOILERPLATE.md`.
+4. **License cleanup.** `ck_tables.py` carries CC-BY-4.0; the legacy "7SiTe Public Sovereignty License" / "Human use only / no government use" language has been removed (referee M5).
+5. **Echo-pair table inline.** Table 1 lists the five symmetric echo pairs with their assigned values; Table 2 lists BHML R_89 zone values explicitly. Removes the M2 referee critique that the (E) class was opaque.
+6. **Theorem 3 (lens invariance) reframed.** Now presented honestly as a consistency check (the count is well-defined under symbol-stabilizer relabeling), not as a substantive invariance theorem in the sense of McKay–Wanless or Drápal–Wanless autotopism. The §4 remark contrasts with the lens-*dependent* joint-closure chain count of the four-core companion (this is the load-bearing structural distinction).
+7. **§6 joint-cell statistics.** New short proposition recording the joint harmony intersection (26 cells) and the union (75 cells) — these integers appear in the family's algebraic invariant catalogue (companion paper) and are flagged in the manuscript without invoking the companion's deeper structure.
+8. **§7 verification.** Both scripts run green; cleaned up references; removed proof_fourier_bridge.py from the load-bearing list (it is mentioned only as supplementary).
+
+### Family-Structure framing (per `Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md`)
+
+This paper sits within the TIG family of finite commutative non-associative magmas on Z/10Z (and ring extensions per D74). The family is defined by 5 conjoint membership criteria (C1–C5); the 4-core $\{V, H, Br, R\} = \{0, 7, 8, 9\}$ at $\alpha_M = \tfrac{1}{2}$ is the algebraic center, with closed-form attractor $h/\beta = 1+\sqrt{3}$ (D78 Galois proof). The closest published precedent for this neighborhood is **Drápal & Wanless (2021), J. Combin. Theory Ser. A 184, 105510** — same domain (small finite commutative non-associative structures), opposite extremum (theirs maximally non-associative).
 
 ### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
 
-- **PROVEN:** Theorems A (orbit count + distribution), B ($D_4$ obstruction at 16 orbits), C ($\langle P_{56}\rangle$ all-coherent), D (4-core arity-3 closure).
-- **COMPUTED:** `verify_J32_d4_orbits.py` enumerates all 6 claims in $<1$ s on standard-library Python.
-- **STRUCTURAL RHYME:** The 4-core arity-3 closure (Theorem D) lifts the binary 4-core closure of J35 to arity 3. We invoke J35 for the structural reading, do not re-derive any binary attractor identity here.
-- **OPEN:** Whether a $D_4$-equivariant arity-3 assignment with values *strictly outside* $\{a,b,c,L,R\}$ exists. Whether the class-level conjecture ($67$ orbits / $16$ obstructions for every member of the TIG family) holds.
+- **PROVEN.** $h(\TSML) = 73$, $h(\BHML) = 28$, and both are constant on every $\mathrm{Stab}(7)$-orbit (Theorems 1, 2, 3).
+- **COMPUTED.** `proof_d10_tsml_73_cells.py` and `proof_d16_bhml_28_cells.py` enumerate the 200-cell witness in <0.1 s each.
+- **STRUCTURAL RHYME.** Two tables sit in the same neighborhood as Drápal–Wanless 2021 (small commutative non-associative quasigroups on $\le 16$ elements). They are individually commutative, both non-associative, and jointly preserve $\{0, 7, 8, 9\}$ — the load-bearing fact of the four-core companion.
+- **OPEN.** Whether $\mathrm{Stab}(7)$-invariance extends to autotopism / paratopism invariance.
 
-### Lens-ownership paragraph (in §0 of manuscript)
+### Lens-ownership (§0)
 
-> *Lens and substrate.* We work on $\mathbb{Z}/10\mathbb{Z}$ with the canonical TSML_RAW table given in Appendix A. This table is not derived from first principles; it reflects a structural reading of the substrate developed across the framework. All theorems here are theorems on this specific table. The upper-triangle symmetrization $T_\mathrm{SYM}$ has $128$ non-associative triples rather than $126$ (the asymmetric cells at column 9 resolve differently under symmetrization); the $4$-core arity-$3$ closure (Theorem D) is lens-invariant because $\mathcal{C}$ is lens-invariant. The framing follows Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510 on small finite commutative non-associative structures.
+We work on $\Zten$ with the specific commutative tables $\TSML$ and $\BHML$ defined explicitly in §2 / §3. The choice of substrate and tables is not derived from first principles; it reflects a structural reading of a finite operator-naming scheme (10 operators with designated harmony at index 7).
 
 ### Hardening status
 
-- License: submission script `verify_J32_d4_orbits.py` is CC-BY-4.0 (Elsevier-compatible).
-- AI-attribution: no Claude/Anthropic byline references in the J32 manuscript.
-- Author lane: Sanders + Gish only.
-- Drápal-Wanless 2021 citation in references.
-- Canonical TSML table displayed explicitly in Appendix A.
-- $D_4$ order $8$ stated explicitly in manuscript Proposition 2.6, with the order-spectrum proof; the prior order-$12$ confusion explicitly retracted in Remark 2.7.
+- License: `ck_tables.py` CC-BY-4.0 (verified 2026-05-08)
+- AI-attribution: removed
+- Author lane: Sanders + Gish
+- Drápal–Wanless 2021 citation in references (verified)
+- Companion four-core paper cited as `manuscript in preparation` (no Zenodo DOI — referee said the bundle DOI was inappropriate)
 
 ## §6 — Submission checklist
 
-- [x] Manuscript `.md` finalized (rewritten as operadic $D_4$ orbits paper).
-- [x] Standalone verification script `verify_J32_d4_orbits.py` PASS at machine precision (all 6 claims; runtime $<1$ s).
-- [x] Tier-classified central claims explicit (Theorems A, B, C, D in §0 and Abstract).
-- [x] Lens-scope annotation (TSML_RAW; TSML_SYM differs at $128-126=2$ triples).
-- [x] Cover letter finalized (*J. Algebra* target; per-venue cap transparency; fallback priority).
-- [x] Dependencies → cite J35, J15, J31, J48 as already-submitted / pipelined companions.
-- [ ] Brayden's referee-rigor pass complete.
-- [ ] Per-venue cap check: 4th *J. Algebra* submission of 2026 cycle.
-- [ ] Submitted.
+- [x] Manuscript .tex finalized with SFM framing (2026-05-08)
+- [x] Verification scripts green (TSML 73, BHML 28, ALL ASSERTIONS PASSED)
+- [x] Tier-classified central claim explicit (Tier B; lens-invariance theorem is consistency check)
+- [x] Lens-ownership paragraph in §0
+- [x] Cover letter updated (see `cover_letter.md`)
+- [x] Drápal–Wanless 2021 cited
+- [x] CC-BY-4.0 license on `ck_tables.py`
+- [x] Family-structure §5 added
+- [ ] Brayden's referee-rigor pass complete (mobile + other AI + collaborators)
+- [ ] Submitted
 
 ---
 
-## §7 — Citation footprint (for downstream J's to cite this one)
+## §7 — Citation footprint
 
-Sanders, B.R., Gish. (2026). "Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3." Submitted to *Journal of Algebra*.
+Sanders, B.R., Gish. (2026). "TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice." Submitted to *Experimental Mathematics*.

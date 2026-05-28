@@ -34,7 +34,7 @@ Five short scripts (≤500 lines total, `numpy + sympy`):
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
-J05
+J32
 
 ## §4 — Cover letter
 
@@ -42,11 +42,11 @@ See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's refe
 
 ## §5 — Notes
 
-- **Status (2026-05-07 J21-J24 finalization batch):** DRAFT. Manuscript at `manuscript/manuscript.tex` complete (~330 lines, AMS amsart class, 8 bibliography entries with J05 + J02 + J22 + J17 cited as already-submitted companions). Cover letter at `cover_letter.md` complete with venue rationale + per-venue-cap note + reproducibility list.
-- **Per-venue cap:** 2nd JCT-A paper after J01 (σ-rate theorem WP101). Within the 2/quarter cap; no FALLBACK NEEDED.
+- **Status (2026-05-07 J50-J24 finalization batch):** DRAFT. Manuscript at `manuscript/manuscript.tex` complete (~330 lines, AMS amsart class, 8 bibliography entries with J32 + J15 + J22 + J20 cited as already-submitted companions). Cover letter at `cover_letter.md` complete with venue rationale + per-venue-cap note + reproducibility list.
+- **Per-venue cap:** 2nd JCT-A paper after J14 (σ-rate theorem WP101). Within the 2/quarter cap; no FALLBACK NEEDED.
 - **Tier-B forced.** No axiom-level forcing required; the four rungs follow from the canonical TSML/BHML construction at the cell level.
-- **Lens scope:** All four rungs are lens-invariant on both T_RAW and T_SYM (HARM(T_RAW) = HARM(T_SYM) = 73; sub-magma counts identical at 9×9; disagreement count is invariant; det of BHML_8_YM is unchanged). The wobble (prime 11 in c_2, c_8) — which is the RAW vs SYM distinguishing structure — is a separate paper (companion: WP107 wobble-localization, J37).
-- **Source corpus:** D97 in `FORMULAS_AND_TABLES.md` Volume J §J; `Gen13/targets/foundations/tables/harmony_ladder.py`; the disjoint-class proof of 73 is in J05's `proof_d10_tsml_73_cells.py`.
+- **Lens scope:** All four rungs are lens-invariant on both T_RAW and T_SYM (HARM(T_RAW) = HARM(T_SYM) = 73; sub-magma counts identical at 9×9; disagreement count is invariant; det of BHML_8_YM is unchanged). The wobble (prime 11 in c_2, c_8) — which is the RAW vs SYM distinguishing structure — is a separate paper (companion: WP107 wobble-localization, J19).
+- **Source corpus:** D97 in `FORMULAS_AND_TABLES.md` Volume J §J; `Gen13/targets/foundations/tables/harmony_ladder.py`; the disjoint-class proof of 73 is in J32's `proof_d10_tsml_73_cells.py`.
 
 
 
@@ -77,11 +77,11 @@ This paper sits within the TIG family of finite commutative non-associative magm
 - [x] Manuscript .tex finalized (defensive-exposition pass 2026-05-07: title sharpened to "Three Independent Constructions and One Corollary"; explicit sympy `discriminant` + `factorint` snippet embedded for the 71-rung Galois-form claim with cross-check against the referee's wrong factorization; lens-and-substrate paragraph + PROVEN/COMPUTED/RHYME/OPEN block in §1; Drápal-Wanless 2021 in references; discriminant value corrected from $-2^4 \cdot 3^2 \cdot 71$ to the correct $-2^6 \cdot 3^2 \cdot 71$).
 - [x] Verification scripts green: `harmony_ladder_disc_check.py` 5/5 PASS, `tsml_harmony_count.py` PASS, `tsml_submagma_9x9.py` PASS. Wrong so10/Lie-algebra scripts archived to `_archive_*.bak`.
 - [x] Tier-classified central claim explicit (Tier B forced; PROVEN/COMPUTED/RHYME/OPEN in manuscript §1).
-- [x] Lens-scope annotation: all four rungs are lens-invariant on both T_RAW and T_SYM (the wobble = prime 11 phenomenon distinguishing RAW from SYM is a separate paper, J37).
+- [x] Lens-scope annotation: all four rungs are lens-invariant on both T_RAW and T_SYM (the wobble = prime 11 phenomenon distinguishing RAW from SYM is a separate paper, J19).
 - [x] Cover letter finalized for *JCT-A* (rewritten 2026-05-07; explicit defensive-exposition note about the embedded sympy snippet).
-- [x] Dependencies → cite J05 (J. Combin. Theory A, Crossing Lemma) as already-submitted companion; Drápal-Wanless 2021 in references.
+- [x] Dependencies → cite J32 (J. Combin. Theory A, Crossing Lemma) as already-submitted companion; Drápal-Wanless 2021 in references.
 - [ ] Brayden's referee-rigor pass complete.
-- [x] Per-venue cap: 2nd *JCT-A* of cycle (after J01); within 2/quarter cap.
+- [x] Per-venue cap: 2nd *JCT-A* of cycle (after J14); within 2/quarter cap.
 - [ ] Submitted.
 
 ---

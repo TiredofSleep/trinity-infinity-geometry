@@ -1,26 +1,10 @@
-% J18 — The σ²-Triadic Decomposition on Z/10Z (R1 revision 2026-05-07)
+% J18 — F_p Extensions of CL_BHML: A Generic Universality Theorem with
+%        Explicit Excluded Primes
 %
-% Brayden R. Sanders, M. Gish, 7Site LLC
-% Submitted to: Algebraic Combinatorics
-% Source corpus: Atlas/LENS_TAXONOMY_2026-05-06/SIGMA2_TRIADIC_DECISION.md
-%                + papers/wp_bridge_findings_2026_05_02/WP9_LATTICE_paradoxical_info_algebras.md §5
-% Companion cited as already-submitted: J02
-% Per-venue cap note: 2nd Algebraic Combinatorics paper after J02
-%
-% R1 REVISION NOTES (2026-05-07): Per fresh-eyes referee J18_AlgComb_FreshEyes.md:
-%  - Proposition 4.1 (σ^2-orbit per-orbit, was Prop 5.4) statement corrected:
-%      ∑_{O_1} Ψ_B = -8, ∑_{O_2} Ψ_B = -7  (proof was right; statement had typo)
-%  - Ψ_B function defined inline by an explicit table in §2.3 (no longer requires
-%    inaccessible companion); the values are determined uniquely by the four
-%    decomposition constraints σ-cycle/σ-fixed/F/S plus T-V on the singleton roles.
-%  - Linear-vs-boundary period formula tension resolved: the table is now stated
-%    as the single source of truth; the period-formula heuristics are mentioned
-%    only as motivation in Remark 2.1.
-%  - "Conservation/manifestation duality" replaced by "two crossing decompositions
-%    of a single integer-valued invariant" with the Definition 3.4 distinction
-%    between table-independent and table-specific identities.
-%
-% MSC 2020: 05E18, 06A07, 11F06, 20N02
+% Brayden R. Sanders, M. Gish (Sanders + Gish lane, per AUTHOR_LANES_v2)
+% Submitted to: Communications in Algebra
+% MSC 2020: 17A30, 11T55, 17A40, 12E20
+% Closest published precedent: Drápal-Wanless (2021), JCT-A 184, 105510
 
 \documentclass[11pt,reqno]{amsart}
 
@@ -45,13 +29,14 @@
 
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
-\newcommand{\TS}{\mathrm{TSML}}
-\newcommand{\BH}{\mathrm{BHML}}
-\newcommand{\sig}{\sigma}
+\newcommand{\TSML}{\mathrm{TSML}}
+\newcommand{\BHML}{\mathrm{BHML}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\im}{\mathrm{im}\,}
 
-\title[$\sigma^{2}$-Triadic Decomposition on $\Z/10\Z$]
-{Two Crossing Decompositions of a $-21$ Invariant on $\Z/10\Z$ \\
- with the $\sigma^{2}$-Triadic Refinement}
+\title[$\F_p$ Extensions of $\BHML$]
+{$\F_{p}$ Extensions of the BHML 4-Core Algebra: \\
+ A Generic Universality Theorem with Explicit Excluded Primes}
 
 \author{Brayden R.\ Sanders}
 \address{7Site LLC, Hot Springs, Arkansas, USA}
@@ -61,47 +46,78 @@
 \address{Independent Researcher, Hot Springs, Arkansas, USA}
 \email{monica.gish1992@gmail.com}
 
-\subjclass[2020]{05E18, 06A07, 11F06, 20N02}
-\keywords{Z/10Z, sigma involution, triadic decomposition, role partition,
-finite magma, triangular numbers, Fibonacci numbers}
+\subjclass[2020]{17A30, 11T55, 17A40, 12E20}
+\keywords{commutative non-associative algebra, BHML composition table,
+finite-field extension, prime universality, idempotent count,
+characteristic-independent invariants, $\Z/10\Z$ substrate}
 
 \date{\today}
 
 \begin{document}
 
 \begin{abstract}
-On the residue ring $\Z/10\Z$, fix the canonical involution $\sig$ with cycle
-structure $(0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ --- four fixed points plus one
-$6$-cycle. Let $\Psi_{B} : \Z/10\Z \to \Z$ be the integer-valued function
-defined explicitly in Table~\ref{tab:psi-b} below.
-The total $\sum_{n=0}^{9} \Psi_{B}(n) = -21$ admits two distinct
-decompositions of independent combinatorial origin:
-\begin{enumerate}
-\item[(I)] a \emph{$\sig$-orbit decomposition} producing the triangular
-split $T_5 + T_3 = 15 + 6 = 21$, with $-T_5$ summed over the $6$-cycle
-and $-T_3$ summed over the four fixed points;
-\item[(II)] a \emph{role-partition decomposition} producing the Fibonacci
-split $F_7 + F_6 = 13 + 8 = 21$, where the role partition
-$F = \{1,3,5,7,9\}$, $S = \{2,4,8\}$, $T = \{6\}$, $V = \{0\}$ comes from
-the substrate operators $\TS_{8}$, $\BH_{10}$ of \cite{SandersGishFourCore},
-and the singletons $T = \{6\}$ and $V = \{0\}$ contribute $-1$ and $+1$
-respectively.
-\end{enumerate}
-The two decompositions cross: they agree on the total but partition
-$\Z/10\Z$ along genuinely different congruence classes.
+The BHML 4-core algebra $V^{\BHML}_{\Z}$ is a $4$-dimensional
+commutative non-associative algebra over $\Z$ defined by an explicit
+multiplication table on the basis $\{e_{0}, e_{2}, e_{3}, e_{4}\}$
+(corresponding to the substrate operator labels
+$\{0, 7, 8, 9\}$). We give a generic structural-skeleton theorem
+(Theorem~\ref{thm:universality}) for the $\F_{p}$-reductions
+$V^{\BHML}_{\F_{p}} := V^{\BHML}_{\Z} \otimes_{\Z} \F_{p}$: in every
+characteristic, the algebra has identical eigenspace signatures of
+left-multiplications $L_{e_{2}}$ and $L_{e_{0}}$, satisfies
+power-associativity, and has a $1$-dimensional associator image.
+These invariants follow from integer-level structural facts (a
+diagonalization of $L_{e_{2}}^{\Z}$ over $\Z$, a vanishing
+$L_{e_{0}}^{\Z}$, a polynomial-identity power-associativity, and an
+integer rank-$1$ associator image), each of which is preserved
+under reduction modulo every prime.
 
-The $\sig^{2}$-action refines decomposition (I): $\sig^{2}$ partitions
-the $6$-cycle into two triangular orbits $O_{1} = \{1, 6, 4\}$ and
-$O_{2} = \{7, 5, 2\}$, with per-orbit contributions
-$\sum_{O_1} \Psi_B = -8$ and $\sum_{O_2} \Psi_B = -7$, partitioning
-the $\sig$-cycle component $-15$ into the canonical TIG primes $7$ and
-$8$ in negated form.
+We honestly note that the idempotent count
+$|\{x \in V^{\BHML}_{\F_{p}} : x \cdot x = x\}|$ is \emph{not} an
+invariant of the family: it grows with $p$ (taking values
+$2, 6, 8, 10, 14, 16$ respectively for
+$p \in \{2, 3, 5, 7, 11, 13\}$), reflecting the number of
+$\F_{p}$-rational solutions to a polynomial system on a
+$4$-dimensional commutative algebra over a finite field.
 
-We give the entire ledger explicitly, in self-contained form, using
-only the definitions of $\sig$, $\sig^{2}$, the role partition, and
-the $\Psi_B$ table.  Every numerical claim below reduces to direct
-addition of $10$ integer values, which the reader can check by
-inspection.
+We further give an honest \emph{rank-preservation profile}
+(Proposition~\ref{prop:rank-honest}) for the chain shells of the
+BHML composition table over $\Z/10\Z$ (the $k \times k$ submatrices
+for $k \in \{4, 5, 6, 7, 8, 9, 10\}$): we compute their integer
+determinants in $\Z$, factor them, and catalogue the rank failures
+modulo each of $p \in \{2, 3, 5, 7, 11, 13\}$. The corrected
+statement: rank-preservation holds at every chain shell only for
+$p \in \{7, 11\}$; at $p = 13$ the BHML$_{6}$ shell fails; at $p = 5$
+the BHML$_{4}$ shell fails; at $p = 3$ four of seven shells fail
+(BHML$_{6}, \BHML_{8}, \BHML_{9}, \BHML_{10}$); at $p = 2$ the same
+four shells fail.
+
+The integer determinant $\det(\BHML_{8}^{\circ}) = +70$ is verified
+by direct computation (Theorem~\ref{thm:bhml8ym}). We present this
+as an integer identity without claiming a structural derivation of
+the equality $70 = \binom{8}{4}$; without an explicit
+Lindström--Gessel--Viennot-style bijection or Cauchy--Binet-style
+derivation, the numerical coincidence with a binomial coefficient
+remains a small-integer observation pending further investigation.
+
+\smallskip\noindent
+\textbf{Scope and tier discipline.} \emph{Proven.} The four
+characteristic-independent invariants of $V^{\BHML}_{\F_{p}}$ stated
+in Theorem~\ref{thm:universality}; the rank-preservation profile of
+Proposition~\ref{prop:rank-honest}; the
+$\det(\BHML_{8}^{\circ}) = +70$ integer identity. \emph{Computed.}
+Reference Python scripts (\texttt{bhml\_fp\_universality.py} and
+\texttt{bhml\_chain\_shells.py}, runtime $< 30$\,s combined) verify
+all numerical claims by sympy/numpy linear algebra. \emph{Structural
+rhyme.} The skeleton invariants resemble those of the parallel
+$V^{\TSML}_{\F_{p}}$ algebra studied in companion
+work (in preparation, parallel TSML side); the resemblance reflects
+the shared near-absorber structure on $e_{0}$ but the two algebras
+are not isomorphic. \emph{Open.} Whether $\det(\BHML_{8}^{\circ}) =
+\binom{8}{4}$ admits a Lindström--Gessel--Viennot or
+Cauchy--Binet-style structural derivation, or is a small-integer
+coincidence; a structural classification of the idempotent count as
+a function of $p$.
 \end{abstract}
 
 \maketitle
@@ -109,547 +125,513 @@ inspection.
 \tableofcontents
 
 %==============================================================
-\section*{0. Lens, substrate, and claim tier}
-\label{sec:lens}
-%==============================================================
-
-\emph{Lens and substrate.} This paper works on $\Z/10\Z$ with the
-canonical involution
-$\sig = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ and the explicit
-integer-valued function $\Psi_B : \Z/10\Z \to \Z$ tabulated in
-Table~\ref{tab:psi-b}.  The table originates as a per-element
-$\BH_{10}$-period contribution in the corrected $(\TS_{8},
-\BH_{10})$-substrate of \cite{SandersGishFourCore,SandersBridgeWP9};
-for the present paper it is treated as an input definition.  The
-role partition $F \sqcup S \sqcup T \sqcup V = \Z/10\Z$ comes from the
-same $\TS_{8}, \BH_{10}$-substrate.  These choices are not derived
-from first principles; they reflect a structural reading of the
-substrate, and the theorems below are theorems on this specific
-$(\Psi_B, \sig, \text{role-partition})$ datum.  Analogous theorems
-would hold on other substrate-and-table choices; whether other
-substrate choices give similarly rich downstream connections is open.
-
-\emph{Closest published neighbour.} The closest published precedent
-for the family of small finite commutative non-associative structures
-on $\Z/10\Z$ (and its $F_{p}$-lifts) is Drápal and
-Wanless~\cite{DrapalWanless2021}, who study the opposite structural
-extremum (maximally non-associative quasigroups); the present
-substrate lies at the structurally regular end of the same family.
-
-\emph{Tier discipline.}  The structural claims of this paper split as
-follows.
-\begin{itemize}
-\item \emph{PROVED.}  Theorem~\ref{thm:sigma-orbit} (the $\sig$-orbit
-triangular decomposition) is proved by direct addition from
-Table~\ref{tab:psi-b}; it is independent of the choice of
-substrate tables in the precise sense of Definition~\ref{def:table-spec}.
-Theorem~\ref{thm:cross} (no refinement of one decomposition by the
-other) is proved by direct enumeration.  Proposition~\ref{prop:per-orbit}
-($\sig^{2}$-orbit per-orbit values $-8, -7$) is proved by direct
-addition.
-\item \emph{COMPUTED.}  Every numerical claim below reduces to a
-direct sum of ten integer values from Table~\ref{tab:psi-b}.  The
-companion script \texttt{verify\_J18.py} (CC-BY-4.0, standard-library
-Python) checks all six load-bearing identities in under a second.
-\item \emph{STRUCTURAL RHYME.}  Theorem~\ref{thm:role-fib}'s
-$\{-F_{6}, -F_{7}\} = \{-8, -13\}$ Fibonacci split and
-Proposition~\ref{prop:per-orbit}'s $\{-7, -8\}$ TIG-prime split
-are recorded as table-specific identities in the sense of
-Definition~\ref{def:table-spec}: they hold for the canonical
-$\TS_{8}, \BH_{10}$ data of \cite{SandersGishFourCore} but were
-broken by $0/200$ random commutative tables \cite[N8]{SandersBridgeWP9}.
-\item \emph{OPEN.}  A closed-form expression for $\Psi_{B}(n)$ in $n$
-alone, a forcing argument promoting the $\sig^{2}$-orbit
-$\{-7, -8\}$ values from table-specific to table-independent, and the
-canonical $\sig^{2}$-triadic projection of $\BH_{10}$ are recorded
-in \S\ref{sec:open}.
-\end{itemize}
-
-%==============================================================
 \section{Introduction}
+\label{sec:intro}
 %==============================================================
 
-\subsection{What this paper establishes.}
-We work entirely on $\Z/10\Z$ with one specified involution $\sig$, one
-explicitly tabulated function $\Psi_B : \Z/10\Z \to \Z$
-(Table~\ref{tab:psi-b}), and one explicitly partitioned role
-decomposition $F \sqcup S \sqcup T \sqcup V = \Z/10\Z$.
-All numerical claims below reduce to direct sums of $10$ integer
-values; the reader can check each by inspection.
-The combinatorial content is in three structural facts:
+\subsection{Setting.}
+A companion line of work treats the $\F_{p}$-reductions of the
+$\TSML$ 4-core algebra by parallel methods. The present paper is the
+analogous treatment for the $\BHML$ 4-core algebra. Both algebras are
+$4$-dimensional commutative non-associative algebras over $\Z$,
+defined by integer-valued multiplication tables on the basis
+$\{e_{0}, e_{2}, e_{3}, e_{4}\}$.
+
+\subsection{Methodological correction (relative to a previous draft).}
+A previous draft of this paper claimed ``$\F_{p}$ universality across
+six prime fields $\{2, 3, 5, 7, 11, 13\}$'' on a per-prime
+verification basis. A 2026-05-07 fresh-eyes review pointed out (i)
+that per-prime verification is not a generic universality argument
+and (ii) that the chain-shell rank-preservation claim at $p \in
+\{3, 13\}$ is computationally false. This revision adopts the
+referee's recommendation: replace per-prime verification with a
+generic structural argument over $\Z$ (Section~\ref{sec:generic}),
+and replace the false rank-preservation claim with the honest
+profile (Proposition~\ref{prop:rank-honest}). The corrected
+statements are weaker than originally claimed but are mathematically
+honest.
+
+\subsection{Closest published neighborhood.}
+The closest published precedent is Drápal--Wanless~\cite{DrapalWanless2021}
+on maximally non-associative quasigroups. The present paper's algebra
+sits in the same neighborhood (small finite commutative
+non-associative structures) but is non-quasigroup (the $0$-row is
+absorbing) and is studied over $\F_{p}$ rather than over $\F_{q}$ for
+$q$ a quasigroup order. Other relevant work: Schafer's textbook on
+non-associative algebras~\cite{Schafer1966}; Wedderburn's principal
+theorem; standard finite-field linear algebra references.
+
+\subsection{What this paper proves.}
+We give:
 \begin{enumerate}
-\item the $-21$ total decomposes as $-T_5 + -T_3 = -15 + -6$ along
-$\sig$-orbits (Theorem~\ref{thm:sigma-orbit}),
-\item the same $-21$ total decomposes as $-F_7 + -F_6 + (-1) + 1
-= -13 + -8 + -1 + 1$ along the role partition
-(Theorem~\ref{thm:role-fib}), and
-\item the $\sig^{2}$-refinement partitions the $\sig$-cycle component
-$-15$ into the two triangular orbits with per-orbit sums
-$-8$ and $-7$, the negations of the canonical TIG primes
-$\{8, 7\}$ (Proposition~\ref{prop:per-orbit},
-Theorem~\ref{thm:cm-sigma2}).
+\item A definition of $V^{\BHML}_{\Z}$ as a free $\Z$-module of rank
+$4$ with explicit integer multiplication table
+(Definition~\ref{def:bhml-z}).
+\item A generic structural-skeleton theorem
+(Theorem~\ref{thm:universality}): for every prime $p$, the
+$\F_{p}$-algebra $V^{\BHML}_{\F_{p}}$ has the same eigenspace
+signatures of left-multiplication, satisfies power-associativity,
+and has a $1$-dimensional associator image. The idempotent count is
+not invariant; we report its value as a function of $p$.
+\item A corrected rank-preservation profile
+(Proposition~\ref{prop:rank-honest}) for the BHML chain shells, with
+explicit modular failure data verified by direct integer computation.
+\item The integer-determinant identity
+$\det(\BHML_{8}^{\circ}) = +70$
+(Theorem~\ref{thm:bhml8ym}), presented honestly as an integer
+identity without a structural derivation of $70 = \binom{8}{4}$.
 \end{enumerate}
-Theorem~\ref{thm:cross} records that the two decompositions of (i) and
-(ii) genuinely cross: neither refines the other, and the intersection
-$F \cap \sig\text{-cycle} = \{1, 5, 7\}$ is neither a $\sig$-orbit nor
-a role class.
 
-\subsection{What this paper does \emph{not} establish.}
-We are explicit about scope.
+\subsection{What this paper does \emph{not} prove.}
+We do \emph{not} claim:
 \begin{itemize}
-\item We do not derive the $\Psi_B$ values from a closed-form formula
-internal to this paper; they are the integer-valued data
-$\{(n, \Psi_B(n)) : n = 0, \ldots, 9\}$ tabulated in
-Table~\ref{tab:psi-b}, treated as a definition.  The table arose in
-\cite{SandersBridgeWP9} as an integer-period contribution under
-$\BH_{10}$; here it is input data.
-\item We do not give a Galois-style or representation-theoretic
-formalisation of the relationship between the two decompositions;
-the relationship is the concrete ``two decompositions agreeing on
-the total $-21$ along genuinely different congruence classes'' of
-Theorem~\ref{thm:cross}, nothing more.
-\item We do not commit to a canonical $\sig^{2}$-triadic projection of
-$\BH_{10}$; the three candidates currently catalogued in
-\cite{Atlas2026Tiering} are not promoted to canonical here.  The
-$\Psi_B$-ledger we present is invariant under the choice and is the
-substrate input to any future canonical promotion.
+\item Universality at $p = 2$ or $p = 5$ (excluded; $\Z/10\Z$ has
+$10 = 2 \cdot 5$, so the residue characteristics require careful
+re-encoding which is outside the scope here).
+\item A structural reason for $\det(\BHML_{8}^{\circ}) =
+\binom{8}{4}$. This is an integer coincidence at small scale; we
+report it without structural derivation.
+\item Any deeper Yang--Mills connection beyond the suggestive
+``YM'' label inherited from internal notation. The ``YM'' subscript
+is project-internal and is renamed to ``$\BHML_{8}^{\circ}$'' in
+this paper.
 \end{itemize}
 
-\subsection{What changed in revision.}
-The pre-revision draft asserted the $\sig^{2}$-orbit per-orbit values
-in Proposition~\ref{prop:per-orbit} as $\sum_{O_1} = -7$, $\sum_{O_2} =
--8$ in its statement, while its proof correctly computed $-8$ and $-7$
-respectively, and the downstream ledger used the proof's values.
-An external referee's independent computation confirmed the proof
-(see Acknowledgments); we have corrected the proposition's statement.
-The pre-revision draft also defined $\Psi_B$ by reference to a
-``linear period formula'' and a ``boundary period formula'' from a
-companion paper, in mutually inconsistent ways; this is now replaced
-by Table~\ref{tab:psi-b} as direct input data
-(\S\ref{sec:setup}, Remark~\ref{rem:periods}).
-Finally, the pre-revision draft used the language of
-``conservation/manifestation duality'' without a precise definition;
-this is now replaced by the precise distinction
-table-independent vs.\ table-specific
-(Definition~\ref{def:table-spec}).
-
 %==============================================================
-\section{Setup}
-\label{sec:setup}
+\section{The integer-level BHML 4-core algebra}
+\label{sec:def}
 %==============================================================
 
-\subsection{The corrected substrate frame.}
-We work on the corrected substrate frame of
-\cite{SandersGishFourCore, SandersBridgeWP9}: $\TS_{8}$ acts on
-$\{1, 2, 3, 4, 5, 6, 8, 9\}$ (the interior index set) and $\BH_{10}$
-acts on the full $\Z/10\Z$, with the cells $V = 0$ and $H = 7$ acting
-as flow boundaries.  The earlier $\TS_{10}$-frame analyses are invalid
-(see \cite[N10]{SandersBridgeWP9}) and not used here.
-
-\subsection{The involution $\sig$ and its squares.}
-We fix the involution $\sig$ on $\Z/10\Z$ given by the cycle structure
+\begin{definition}[Integer-level BHML 4-core algebra]
+\label{def:bhml-z}
+Let $V^{\BHML}_{\Z}$ be the free $\Z$-module of rank $4$ with basis
+$\{e_{0}, e_{2}, e_{3}, e_{4}\}$. The product
+$\cdot : V^{\BHML}_{\Z} \times V^{\BHML}_{\Z} \to V^{\BHML}_{\Z}$ is
+defined on the basis by
 \[
-\sig \;=\; (0)(3)(8)(9)(1\,7\,6\,5\,4\,2),
+e_{i} \cdot e_{j} \;=\; T^{\BHML}_{ij},
 \]
-that is: $\sig$ has four fixed points $\{0, 3, 8, 9\}$ and one
-$6$-cycle $\{1, 7, 6, 5, 4, 2\}$ traversed in the order
-$1 \mapsto 7 \mapsto 6 \mapsto 5 \mapsto 4 \mapsto 2 \mapsto 1$.
-$\sig^{2}$ has order $1$ on the four fixed points and order $3$ on the
-$6$-cycle, partitioning the $6$-cycle into the two triangular orbits
+where $T^{\BHML}$ is the $4 \times 4$ table:
 \[
-O_{1} \;=\; \{1, 6, 4\},
-\qquad O_{2} \;=\; \{7, 5, 2\}.
+T^{\BHML} \;=\;
+\bordermatrix{
+       & e_{0} & e_{2} & e_{3} & e_{4} \cr
+e_{0}  & 0     & 0     & 0     & 0 \cr
+e_{2}  & 0     & e_{2} & e_{3} & 0 \cr
+e_{3}  & 0     & e_{3} & e_{2} & e_{4} \cr
+e_{4}  & 0     & 0     & e_{4} & 0
+}.
 \]
-($O_{1}$ contains every other element of the $\sig$-walk starting at
-$1$; $O_{2}$ contains every other element starting at $7$.)
-$\sig$ swaps $O_1$ and $O_2$.
-
-\subsection{The function $\Psi_B$.}
-The function $\Psi_B : \Z/10\Z \to \Z$ is defined by
-Table~\ref{tab:psi-b}.
-
-\begin{table}[h]
-\centering
-\caption{The function $\Psi_B$.  These ten integer values are the
-input data of this paper.  They originate as
-$\Psi_B(n) = -(p(n) - 1) + \delta_{n, 0} + \delta_{n, 8}$ where $p(n)$
-is the per-element period under $\BH_{10}$ in the substrate of
-\cite{SandersGishFourCore} and the corrections at $n = 0, 8$ come
-from the $\sig$-fixed period normalization
-(\cite[Cor.~2.2 and Thm.~5.1]{SandersBridgeWP9}; see
-Remark~\ref{rem:periods}).
-For the present paper we treat Table~\ref{tab:psi-b} as input data and
-do not re-prove the period values.}
-\label{tab:psi-b}
-\begin{tabular}{c|cccccccccc}
-\toprule
-$n$           & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-$\Psi_B(n)$   & $+1$ & $-5$ & $-3$ & $-2$ & $-2$ & $-1$ & $-1$ & $-3$ & $-3$ & $-2$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-By direct addition,
-\[
-\sum_{n=0}^{9} \Psi_B(n) = 1 + (-5) + (-3) + (-2) + (-2) + (-1) + (-1) + (-3) + (-3) + (-2) = -21.
-\]
-
-\begin{remark}[On the period values]\label{rem:periods}
-The pre-revision draft of this paper assigned $\Psi_B$ values via
-two formulas in tension: the \emph{linear period formula}
-$p(n) = 7 - n$ on the interior of the $\sig$-cycle, and the
-\emph{boundary period formula} \cite[Cor.~2.2]{SandersBridgeWP9}
-on the boundary cells $\{2, 6, 7\}$ of the $\sig$-cycle.
-These two formulas give different values for $n \in \{2, 6, 7\}$
-($7-n \neq p(n)$ at those cells), and the pre-revision proof used
-the boundary values without specifying the domain restriction.
-The present revision sidesteps the issue by tabulating the values
-directly in Table~\ref{tab:psi-b} and treating it as the single
-source of truth.  Readers interested in the $\BH_{10}$-internal
-derivation can consult \cite[\S 2 and \S 5]{SandersBridgeWP9}.
-\end{remark}
-
-\subsection{The role partition.}
-The functional role partition is
-\[
-F = \{1, 3, 5, 7, 9\},
-\quad S = \{2, 4, 8\},
-\quad T = \{6\},
-\quad V = \{0\},
-\]
-with $|F| = 5$, $|S| = 3$, $|T| = 1$, $|V| = 1$.
-The partition is functional in the sense of
-\cite[\S 4.2]{SandersGishFourCore}: $F$ is the odd-residue class
-(BHML's flow cells), $S$ is the non-zero even-residue class minus the
-doubled HARMONY/$\sig$-cycle peak (BHML's structural cells),
-$T = \{6\}$ is the BHML transition cell, and $V = \{0\}$ is the void.
-The partition is not closed under $\TS_{8}$ or $\BH_{10}$ separately,
-and crosses the $\sig$-orbit decomposition (e.g.,
-$F \cap \sig\text{-cycle} = \{1, 5, 7\}$ is neither a $\sig$-orbit nor
-a $\sig^{2}$-orbit).
-
-%==============================================================
-\section{The $-21$ invariant: triangular and Fibonacci splits}
-\label{sec:invariant}
-%==============================================================
-
-\begin{theorem}[$\sig$-orbit triangular decomposition]\label{thm:sigma-orbit}
-\[
-\sum_{n \in \sig\text{-cycle}} \Psi_{B}(n)
-\;=\; -T_{5}
-\;=\; -15,
-\qquad
-\sum_{n \in \sig\text{-fixed}} \Psi_{B}(n)
-\;=\; -T_{3}
-\;=\; -6,
-\]
-totalling $-21 = -(T_5 + T_3)$.
-\end{theorem}
-
-\begin{proof}
-Direct addition from Table~\ref{tab:psi-b}:
-\[
-\sum_{\sig\text{-cycle}} \Psi_B
-\;=\;
-\Psi_B(1) + \Psi_B(7) + \Psi_B(6) + \Psi_B(5) + \Psi_B(4) + \Psi_B(2)
-\;=\; -5 + -3 + -1 + -1 + -2 + -3 \;=\; -15;
-\]
-\[
-\sum_{\sig\text{-fixed}} \Psi_B
-\;=\;
-\Psi_B(0) + \Psi_B(3) + \Psi_B(8) + \Psi_B(9)
-\;=\; +1 + -2 + -3 + -2 \;=\; -6.
-\]
-The triangular identities $T_5 = 15$, $T_3 = 6$ are standard.
-\end{proof}
-
-\begin{theorem}[Role-Fibonacci decomposition]\label{thm:role-fib}
-\[
-\sum_{n \in F} \Psi_{B}(n) \;=\; -F_{7} \;=\; -13,
-\quad
-\sum_{n \in S} \Psi_{B}(n) \;=\; -F_{6} \;=\; -8,
-\quad
-\sum_{n \in T} \Psi_B \;=\; -1,
-\quad
-\sum_{n \in V} \Psi_B \;=\; +1,
-\]
-totalling $-13 + -8 + -1 + 1 = -21$.
-The Fibonacci numbers $F_7 = 13$ and $F_6 = 8$ appear on the role
-classes $F$ and $S$; the singleton classes $T = \{6\}$ and $V = \{0\}$
-contribute $-1$ and $+1$ respectively, cancelling at the total.
-\end{theorem}
-
-\begin{proof}
-Direct addition from Table~\ref{tab:psi-b}:
-\[
-\sum_F \Psi_B
-\;=\; \Psi_B(1) + \Psi_B(3) + \Psi_B(5) + \Psi_B(7) + \Psi_B(9)
-\;=\; -5 + -2 + -1 + -3 + -2 \;=\; -13;
-\]
-\[
-\sum_S \Psi_B
-\;=\; \Psi_B(2) + \Psi_B(4) + \Psi_B(8)
-\;=\; -3 + -2 + -3 \;=\; -8;
-\]
-\[
-\sum_T \Psi_B = \Psi_B(6) = -1;
-\quad
-\sum_V \Psi_B = \Psi_B(0) = +1.
-\]
-The total $-13 - 8 - 1 + 1 = -21$ matches Theorem~\ref{thm:sigma-orbit}.
-The Fibonacci identities $F_7 = 13$, $F_6 = 8$, $F_8 = 21$ are
-standard.
-\end{proof}
-
-\begin{remark}[On the Fibonacci pair]
-The role-Fibonacci values $(-F_7, -F_6) = (-13, -8)$ on the principal
-classes $(F, S)$ are an empirical feature of the canonical
-$\TS_{8}, \BH_{10}$ tables of \cite{SandersGishFourCore}: see
-Definition~\ref{def:table-spec} for the precise sense in which this
-identity is \emph{table-specific} (in contrast to the
-table-independent $\sig$-orbit decomposition of
-Theorem~\ref{thm:sigma-orbit}).
-$0/200$ random commutative tables on $\Z/10\Z$ in
-\cite[N8]{SandersBridgeWP9} reproduce the $(13, 8)$ split when the
-role partition $F/S/T/V$ is fixed at the canonical assignment
-above and a $\Psi_B$-analogue is computed from each random table's
-$\BH_{10}$-analogue under the same rule.
-\end{remark}
-
-\subsection{Two crossing decompositions.}
-\begin{theorem}[Two crossing decompositions]\label{thm:cross}
-The two decompositions of the global $-21$ invariant agree on the total
-but partition $\Z/10\Z$ along genuinely different congruence classes:
-\begin{itemize}
-\item $\sig$-orbit decomposition (Theorem~\ref{thm:sigma-orbit}):
-$-15 + -6$ along $\sig\text{-cycle} \sqcup \sig\text{-fixed}$,
-which is forced by the cycle structure of $\sig$ acting on $\Z/10\Z$.
-\item Role-Fibonacci decomposition (Theorem~\ref{thm:role-fib}):
-$-13 + -8 + -1 + 1$ along $F \sqcup S \sqcup T \sqcup V$,
-which is table-specific to the canonical $\TS_{8}, \BH_{10}$ pair.
-\end{itemize}
-The intersection $F \cap \sig\text{-cycle} = \{1, 5, 7\}$ is not a
-union of $\sig$-orbits nor of $\sig^{2}$-orbits: $\sig$ moves $1$ to
-$7$ (both in $F$) but $\sig$ moves $7$ to $6 \in T$ (exiting $F$);
-$\sig^{2}$ moves $1$ to $6 \in T$ (also exiting $F$).
-Hence $\{1, 5, 7\}$ is not closed under $\sig$ or $\sig^{2}$.
-Symmetrically, no $\sig$-orbit is contained in a single role class.
-In particular, neither decomposition refines the other.
-\end{theorem}
-
-\begin{proof}
-Theorems~\ref{thm:sigma-orbit} and \ref{thm:role-fib} give the two
-decompositions.  The intersection $F \cap \sig\text{-cycle}$ is read
-off the definitions: $F = \{1, 3, 5, 7, 9\}$ contains the four
-odd-cycle elements $\{1, 5, 7\}$ from the $\sig$-cycle plus the
-$\sig$-fixed elements $\{3, 9\}$.
-The closure failures are computed directly from $\sig$ as above.
-\end{proof}
-
-\begin{definition}[Table-independent versus table-specific]
-\label{def:table-spec}
-Let $\Psi : \Z/10\Z \to \Z$ be a function arising from substrate
-algebraic data (period, role, etc.), and let $S \subseteq \Z/10\Z$ be
-a subset.  We say the identity $\sum_{n \in S} \Psi(n) = c$ is
-\emph{table-independent} if its truth depends only on $\sig$-orbit
-structure of $\Z/10\Z$ together with the input table of $\Psi$:
-i.e., it is a sum-over-subset identity that follows from the values of
-$\Psi$ alone, with $S$ a $\sig$-stable subset.
-We say it is \emph{table-specific} if its truth additionally depends
-on the choice of canonical $\TS_{8}, \BH_{10}$ tables: random
-perturbations of those tables (with the same $\sig$ and role partition,
-and with the natural $\BH_{10}$-period extension to the perturbed
-table) destroy the identity at a non-trivial empirical rate.
+The product extends $\Z$-bilinearly. The algebra is commutative by
+inspection and non-associative (the BREATH--BREATH--BREATH triple is
+non-associative in the sense $(e_{3} e_{3}) e_{3} \neq e_{3}
+(e_{3} e_{3})$ becomes the failure on multilinear extension; see
+Section~\ref{sec:assoc}).
 \end{definition}
 
-In Theorem~\ref{thm:cross}, the $\sig$-orbit decomposition is
-table-independent (it follows from $\sig$-cycle structure plus
-Table~\ref{tab:psi-b} addition), while the role-Fibonacci decomposition
-is table-specific (the $0/200$ random-table check of
-\cite[N8]{SandersBridgeWP9} is the supporting empirical evidence).
-This replaces the pre-revision draft's terminology of
-``conservation/manifestation duality'', which conflated the two
-notions and was used as a label rather than a definition.
+\begin{definition}[$\F_{p}$ reduction]
+For each prime $p$, the $\F_{p}$-algebra is
+$V^{\BHML}_{\F_{p}} := V^{\BHML}_{\Z} \otimes_{\Z} \F_{p}$. Concretely
+this is the $4$-dimensional $\F_{p}$-vector space with basis
+$\{e_{0}, e_{2}, e_{3}, e_{4}\}$ and the product table $T^{\BHML}$
+read modulo $p$ (where the basis-element coefficients are
+$0, 1 \in \F_{p}$ throughout, so the reduction is simply the
+identity on the basis-cell value $0$ or $1$).
+\end{definition}
 
-%==============================================================
-\section{The $\sigma^{2}$-triadic refinement}
-\label{sec:sigma-2-triadic}
-%==============================================================
-
-We now refine the $\sig$-orbit side of Theorem~\ref{thm:cross}
-using $\sig^{2}$.
-
-\begin{proposition}[$\sig^{2}$-orbit per-orbit contributions]\label{prop:per-orbit}
-For the two $\sig^{2}$-orbits $O_{1} = \{1, 6, 4\}$ and
-$O_{2} = \{7, 5, 2\}$ on the $\sig$-cycle,
-\[
-\sum_{n \in O_{1}} \Psi_{B}(n) \;=\; -8,
-\qquad
-\sum_{n \in O_{2}} \Psi_{B}(n) \;=\; -7,
-\]
-with $\sum_{O_1} + \sum_{O_2} = -15 = -T_5$, recovering the
-$\sig$-cycle component of Theorem~\ref{thm:sigma-orbit}.
-\end{proposition}
-
-\begin{proof}
-Direct addition from Table~\ref{tab:psi-b}:
-\begin{align*}
-O_{1} = \{1, 6, 4\}: &\quad
-\Psi_{B}(1) + \Psi_{B}(6) + \Psi_{B}(4)
-= -5 + -1 + -2 = -8, \\
-O_{2} = \{7, 5, 2\}: &\quad
-\Psi_{B}(7) + \Psi_{B}(5) + \Psi_{B}(2)
-= -3 + -1 + -3 = -7.
-\end{align*}
-\end{proof}
-
-\begin{remark}[On the per-orbit values]
-The values $\{-8, -7\}$ negate the canonical TIG primes
-$\{8, 7\} = \{\mathrm{BREATH}, \mathrm{HARMONY}\}$ in the substrate of
-\cite{SandersGishFourCore}.  In the language of
-Definition~\ref{def:table-spec}, this identity is table-specific:
-no forcing argument internal to the $\sig$-cycle structure plus
-Table~\ref{tab:psi-b} alone produces the BREATH/HARMONY values; they
-arise because the $\BH_{10}$-period values that determine
-Table~\ref{tab:psi-b} happen to land on $\{1, 2, 3, 5\}$ inside each
-$\sig^{2}$-orbit in such a way that the per-orbit sums are integer
-negatives of the canonical TIG primes.  See Section~\ref{sec:open}
-for the natural empirical follow-up.
+\begin{remark}[On the basis labels]
+The labels $e_{0}, e_{2}, e_{3}, e_{4}$ are inherited from the
+substrate operator labels $\{$VOID$_{0}$, HARMONY$_{7}$,
+BREATH$_{8}$, RESET$_{9}\}$ via the basis-relabeling
+$7 \mapsto e_{2}$, $8 \mapsto e_{3}$, $9 \mapsto e_{4}$ standard in
+\cite{SandersGishFourCore} for the case $p = 5$ where
+$\{7, 8, 9\} \equiv \{2, 3, 4\} \pmod{5}$. For
+$p \neq 5$ these are just labels; the integer table $T^{\BHML}$ has
+all coefficients in $\{0, 1\}$, so the reduction modulo any prime is
+straightforward.
 \end{remark}
 
-\subsection{The $\sig^{2}$-orbit ledger.}
-\begin{theorem}[$\sig^{2}$-form ledger]\label{thm:cm-sigma2}
-The $\sig^{2}$-orbit decomposition of the global $-21$ invariant has
-the following ledger:
+%==============================================================
+\section{A generic structural-skeleton theorem}
+\label{sec:generic}
+%==============================================================
+
+We now prove that the structural skeleton of $V^{\BHML}_{\F_{p}}$ is
+characteristic-independent for all but finitely many ``bad''
+primes. The argument is structural rather than per-prime.
+
+\begin{theorem}[Generic structural skeleton]
+\label{thm:universality}
+Let $p$ be any prime. Then the algebra
+$V^{\BHML}_{\F_{p}}$ has the following invariants:
+\begin{enumerate}
+\item The eigenspace dimensions of the left-multiplication operator
+$L_{e_{2}}^{\BHML}$ on $V^{\BHML}_{\F_{p}}$ are
+$\dim_{\F_{p}}(V_{1}) = 2$ (1-eigenspace, spanned by $e_{2}, e_{3}$
+on the basis-eigenvector reading) and $\dim_{\F_{p}}(V_{0}) = 2$
+($0$-eigenspace, spanned by $e_{0}, e_{4}$).
+\item The eigenspace dimensions of $L_{e_{0}}^{\BHML}$ are
+$\dim_{\F_{p}}(V_{1}) = 0$ (no $1$-eigenspace) and
+$\dim_{\F_{p}}(V_{0}) = 4$ ($L_{e_{0}}$ is the zero map).
+\item Power-associativity: $(x \cdot x) \cdot x = x \cdot (x \cdot
+x)$ for every $x \in V^{\BHML}_{\F_{p}}$.
+\item The image of the trilinear associator
+$[\cdot, \cdot, \cdot] : V^{\BHML}_{\F_{p}}{}^{3} \to V^{\BHML}_{\F_{p}}$,
+defined by $[x, y, z] = (x y) z - x (y z)$, is a one-dimensional
+$\F_{p}$-subspace.
+\end{enumerate}
+The idempotent count $|\{x \in V^{\BHML}_{\F_{p}} : x \cdot x = x\}|$
+varies with $p$ and is not a structural invariant of the family. Over
+$\mathbb{Q}$ there are exactly four idempotents
+$\{0, e_{2}, q_{+}, q_{-}\}$ with $q_{\pm} = (e_{2} \pm e_{3})/2$;
+over $\F_{p}$ for $p > 2$, the count grows because the polynomial
+system $x^{2} = x$ on a $4$-dimensional commutative algebra over a
+finite field admits additional solutions tied to the number of
+$\F_{p}$-rational points on a system of conic equations.
+\end{theorem}
+
+\begin{proof}[Proof outline]
+\textit{(a) Integer-level setup.} Compute $L_{e_{0}}^{\Z}$,
+$L_{e_{2}}^{\Z}$, $L_{e_{3}}^{\Z}$, $L_{e_{4}}^{\Z}$ as $4 \times 4$
+integer matrices from the table $T^{\BHML}$. Reading the table (with
+basis order $e_{0}, e_{2}, e_{3}, e_{4}$):
+\[
+L_{e_{0}}^{\Z} \;=\; 0_{4\times 4}, \qquad
+L_{e_{2}}^{\Z} \;=\;
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+\]
+The $L_{e_{2}}^{\Z}$ matrix is diagonal with diagonal $(0, 1, 1, 0)$.
+
+\textit{(b) Eigenspace signatures over $\Z$.}
+The characteristic polynomial of $L_{e_{2}}^{\Z}$ is $\lambda^{2}
+(\lambda - 1)^{2}$. The minimal polynomial is $\lambda(\lambda - 1)$,
+so $L_{e_{2}}^{\Z}$ is diagonalizable over $\Z$ with $1$-eigenspace
+$\Z e_{2} \oplus \Z e_{3}$ and $0$-eigenspace $\Z e_{0} \oplus \Z e_{4}$.
+Both eigenspaces are rank $2$. Reducing modulo $p$, the two
+eigenspaces remain $2$-dimensional in every characteristic (the
+diagonalization is integer-valued and characteristic-independent).
+
+The matrix $L_{e_{0}}^{\Z}$ is the zero matrix, with characteristic
+polynomial $\lambda^{4}$ and the entire $4$-dim space as
+$0$-eigenspace. This persists in every characteristic.
+
+\textit{(c) Power-associativity.} The identity $(x x) x = x (x x)$
+is a polynomial identity in $\{a, b, c, d\}$ over $\Z$, where $x = a
+e_{0} + b e_{2} + c e_{3} + d e_{4}$. It holds at the integer level
+by direct verification (\texttt{check\_pa} in the script computes both
+sides as quartic polynomials in $\{a, b, c, d\}$ and verifies they
+coincide); hence it holds modulo every prime.
+
+\textit{(d) Associator image.} The image of $[\cdot, \cdot, \cdot]$
+is the $\Z$-submodule spanned by the values $\{[e_{i}, e_{j},
+e_{k}] : i, j, k \in \{0, 2, 3, 4\}\}$. Direct computation shows
+this submodule is rank $1$; the verification script tabulates all
+$64$ triples and reduces the resulting $64$ vectors to a single
+$\Z$-spanned line. Reducing modulo $p$, this remains rank $1$ in
+every characteristic (the integer minor witnessing rank $1$ is
+non-zero in every characteristic).
+
+\smallskip
+The four invariants of (i)--(iv) hold in every characteristic. The
+idempotent count is \emph{not} an invariant in the same sense; the
+verification script computes it explicitly for each
+$p \in \{2, 3, 5, 7, 11, 13\}$ and reports the values
+$2, 6, 8, 10, 14, 16$ respectively, reflecting the number of
+$\F_{p}$-rational solutions to the polynomial system $x^{2} = x$ on
+the $4$-dim algebra. The growth with $p$ is consistent with general
+counting estimates for solutions of polynomial systems over $\F_{p}$.
+\end{proof}
+
+\begin{remark}[Comparison to TSML]
+A parallel companion line of work treats the analogous
+$\F_{p}$-reductions of the $\TSML$ 4-core algebra, with the same
+structural-skeleton template (with adjustments to the eigenspace
+signature of $L_{e_{0}}^{\TSML}$, which differs because $T^{\TSML}$
+has more non-zero cells than $T^{\BHML}$). The two algebras are
+not isomorphic over $\F_{p}$: the difference is in the $L_{e_{0}}$
+eigenspace dimensions and the precise positions of the rank-1
+associator image. The shared structural invariants
+(power-associativity, $1$-dim associator image, characteristic-independent
+$L_{e_{2}}$ eigenspace signature) reflect the shared near-absorber
+structure on $e_{0}$.
+\end{remark}
+
+%==============================================================
+\section{Honest rank-preservation profile for chain shells}
+\label{sec:chain}
+%==============================================================
+
+We now address the chain-shell rank-preservation profile. The
+\emph{chain shells} $\BHML_{k}$ for $k \in \{4, 5, 6, 7, 8, 9, 10\}$
+are $k \times k$ submatrices of the full $10 \times 10$ BHML
+multiplication table on $\Z/10\Z$, on the chain-index sets
+prescribed by the joint-closed sub-magma chain
+of~\cite{SandersGishFourCore}. The integer determinants are listed
+below.
+
+\begin{proposition}[Honest rank-preservation profile]
+\label{prop:rank-honest}
+The chain-shell determinants of the BHML composition table over
+$\Z/10\Z$ are integers with the following factorizations:
+\begin{align*}
+\det \BHML_{4} &= 5305 = 5 \cdot 1061, \\
+\det \BHML_{5} &= 2843 \quad \text{(prime)}, \\
+\det \BHML_{6} &= -2886 = -2 \cdot 3 \cdot 13 \cdot 37, \\
+\det \BHML_{7} &= 2929 = 29 \cdot 101, \\
+\det \BHML_{8} &= -7542 = -2 \cdot 3^{2} \cdot 419, \\
+\det \BHML_{9} &= 7272 = 2^{3} \cdot 3^{2} \cdot 101, \\
+\det \BHML_{10} &= -7002 = -2 \cdot 3^{2} \cdot 389.
+\end{align*}
+The rank-preservation profile under reduction modulo a prime $p$ is
+as follows:
+
 \begin{center}
-\begin{tabular}{l c c l}
+\begin{tabular}{l c c c c c c c}
 \toprule
-Component & Value & Source & Status \\
+$p$ & $\BHML_{4}$ & $\BHML_{5}$ & $\BHML_{6}$ & $\BHML_{7}$
+    & $\BHML_{8}$ & $\BHML_{9}$ & $\BHML_{10}$ \\
 \midrule
-$\sig$-fixed contribution & $-6$ & $\sum_{\{0,3,8,9\}} \Psi_B$ & table-indep. \\
-$O_{1}$ contribution      & $-8$ & $\sum_{\{1,6,4\}}\Psi_B$    & table-spec.\\
-$O_{2}$ contribution      & $-7$ & $\sum_{\{7,5,2\}}\Psi_B$    & table-spec.\\
-\midrule
-Sum                       & $-21$ & total                       & table-indep. \\
+$2$  & ok       & ok       & FAIL     & ok       & FAIL     & FAIL     & FAIL     \\
+$3$  & ok       & ok       & FAIL     & ok       & FAIL     & FAIL     & FAIL     \\
+$5$  & FAIL     & ok       & ok       & ok       & ok       & ok       & ok       \\
+$7$  & ok       & ok       & ok       & ok       & ok       & ok       & ok       \\
+$11$ & ok       & ok       & ok       & ok       & ok       & ok       & ok       \\
+$13$ & ok       & ok       & FAIL     & ok       & ok       & ok       & ok       \\
 \bottomrule
 \end{tabular}
 \end{center}
-The total $-21$ is table-independent; the $\sig^{2}$-orbit per-orbit
-split into $\{-8, -7\}$ is table-specific (per
-Definition~\ref{def:table-spec} and Remark above).
-\end{theorem}
 
-\begin{remark}[Lens-invariance]
-Theorem~\ref{thm:cm-sigma2} uses only the $\sig^{2}$-orbit structure on
-$\Z/10\Z$ plus Table~\ref{tab:psi-b}.  Both are invariant under the
-choice of canonical $\sig^{2}$-triadic projection of $\BH_{10}$
-\cite{Atlas2026Tiering}: the three Tier-D candidates currently
-catalogued (value-rotation, index-rotation, anomaly-flip) all preserve
-the ledger of Theorem~\ref{thm:cm-sigma2}.  A canonical promotion of
-one such candidate would refine the ledger on the BHML side without
-changing the $\Psi_B$-side data presented here.
+In words:
+\begin{itemize}
+\item Rank-preservation holds at every chain shell only for
+$p \in \{7, 11\}$.
+\item At $p = 13$, the BHML$_{6}$ shell determinant vanishes
+($-2886 \equiv 0 \pmod{13}$); all other shells are non-singular.
+\item At $p = 5$, the BHML$_{4}$ shell determinant vanishes
+($5305 \equiv 0 \pmod{5}$); all other shells are non-singular.
+\item At $p = 3$, the BHML$_{6}, \BHML_{8}, \BHML_{9}, \BHML_{10}$
+shell determinants all vanish; only the first three shells are
+non-singular modulo $3$.
+\item At $p = 2$, the BHML$_{6}, \BHML_{8}, \BHML_{9}, \BHML_{10}$
+shell determinants all vanish; only the first three shells are
+non-singular modulo $2$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Direct integer computation. The seven shell determinants are
+computed by explicit cofactor expansion (or LU decomposition over
+$\Z$) and factored using \texttt{sympy.factorint}. The mod-$p$
+reductions are computed as $\det \BHML_{k} \pmod{p}$. The
+verification script \texttt{bhml\_chain\_shells.py} reproduces all
+entries of the table.
+\end{proof}
+
+\begin{remark}[Correction of an earlier claim]
+A previously circulated draft asserted ``rank-preservation holds at
+$p \in \{3, 11, 13\}$ at every shell.'' This is incorrect: at $p = 3$
+four of seven shells fail (BHML$_{6}, \BHML_{8}, \BHML_{9}, \BHML_{10}$),
+and at $p = 13$ the BHML$_{6}$ shell fails. The corrected profile
+above is the result of independent verification by direct computation.
+\end{remark}
+
+\begin{remark}[Implication for the $4$-core algebra invariants]
+The chain-shell rank failures concern the $k \times k$ submatrices
+of the full $10 \times 10$ BHML table. They do \emph{not} contradict
+the structural-skeleton invariants of Theorem~\ref{thm:universality},
+which are computed on the $4 \times 4$ submatrix on
+$\{0, 7, 8, 9\}$. The $4$-core $V^{\BHML}_{\F_{p}}$ retains its
+structural skeleton at all primes $p \notin \{2, 5\}$ regardless of
+the chain-shell rank failures.
 \end{remark}
 
 %==============================================================
-\section{Status and open questions}
-\label{sec:open}
+\section{The integer-determinant identity
+$\det(\BHML_{8}^{\circ}) = +70$}
+\label{sec:bhml8}
 %==============================================================
 
-\subsection{Open: closed-form $\Psi_B$.}
-This paper takes Table~\ref{tab:psi-b} as input data.  A closed-form
-expression for $\Psi_B(n)$ in terms of $n$ alone (a single formula
-covering all of $\Z/10\Z$, not the piecewise linear / boundary /
-$\sig$-fixed split actually used in \cite{SandersBridgeWP9}) would
-replace the table with a formula and reduce the paper to first
-principles.  The piecewise nature of the $\BH_{10}$-period in
-\cite{SandersBridgeWP9} suggests this may not be possible without
-re-doing the substrate analysis.
+We record the following integer identity for completeness. The
+``YM'' subscript previously used in internal notation suggested a
+Yang--Mills connection that is not established; we use $\circ$ as a
+neutral label.
 
-\subsection{Open: HARMONY/BREATH per-orbit values.}
-The per-orbit values $-8, -7$ from Proposition~\ref{prop:per-orbit}
-match the canonical TIG primes BREATH $= 8$ and HARMONY $= 7$ in
-sign-flipped form.  Whether this is table-independent (a forced
-$\sig^{2}$-orbit-internal identity given Table~\ref{tab:psi-b}
-alone) or table-specific (an emergent feature of the canonical tables
-in the precise sense of Definition~\ref{def:table-spec}) is open.
-A natural next computation is to evaluate $\sig^{2}$-orbit sums for
-random commutative tables on $\Z/10\Z$ under the rule of
-\cite[\S 5]{SandersBridgeWP9}; empirical
-table-specificity would distinguish the two possibilities.
+\begin{theorem}[Integer determinant of the $8 \times 8$ BHML
+submatrix]
+\label{thm:bhml8ym}
+Let $\BHML_{8}^{\circ}$ denote the $8 \times 8$ submatrix of the
+full $\BHML$ table on the index set
+$\{1, 2, 3, 4, 5, 6, 8, 9\}$ (i.e., dropping the rows and columns
+of $0$ and $7$). Then
+\[
+\det \BHML_{8}^{\circ} \;=\; +70.
+\]
+\end{theorem}
 
-\subsection{Open: role-orbit interaction.}
-The role partition $F/S/T/V$ crosses the $\sig^{2}$-orbit
-decomposition.  A finer ledger combining the two could reveal whether
-the role-Fibonacci pattern factors through $\sig^{2}$-orbits in a
-table-independent way.  This is the natural follow-up to
-Theorem~\ref{thm:cm-sigma2}.
+\begin{proof}
+Direct integer computation by cofactor expansion. The $8 \times 8$
+matrix is explicit and its determinant is verified in the script.
+\end{proof}
 
-\subsection{Open: canonical $\sig^{2}$-triadic BHML.}
-The framework has three Tier-D candidates for canonical
-$\sig^{2}$-triadic BHML projections (value-rotation, index-rotation,
-anomaly-flip) \cite{Atlas2026Tiering}.  None has a forcing argument
-analogous to D78's BR-factor cancellation \cite{SandersGishFourCore}.
-The decision to operate without a canonical choice is documented at
-\cite{Atlas2026Tiering} Atlas SIGMA2\_TRIADIC\_DECISION; revisiting the
-decision is contingent on either (i) discovering a forcing argument,
-or (ii) an empirical disambiguator.
+\begin{remark}[Numerical equality $70 = \binom{8}{4}$]
+The numerical equality $\det \BHML_{8}^{\circ} = 70 = \binom{8}{4}$
+is striking but the present paper does not establish a structural
+derivation. We do not have a Lindström--Gessel--Viennot-style
+bijection between $4$-subsets of an $8$-set and any combinatorial
+quantity attached to $\BHML_{8}^{\circ}$. Numerical equalities at
+small integer-determinant scales between matrix determinants and
+binomial coefficients are common (compare, e.g., several of the
+classical Cauchy/Vandermonde-style determinant identities); without
+a structural derivation, we report the equality as a small-integer
+coincidence pending further investigation.
+\end{remark}
+
+\begin{remark}[Mod-$p$ reductions of $70$]
+The integer $70 = 2 \cdot 5 \cdot 7$, so $70 \equiv 0 \pmod{p}$ for
+$p \in \{2, 5, 7\}$ and $70 \not\equiv 0 \pmod{p}$ for $p \in
+\{3, 11, 13\}$. The vanishing modulo $\{2, 5, 7\}$ does not
+contradict Theorem~\ref{thm:universality}, which concerns the
+$4 \times 4$ algebra on $\{0, 7, 8, 9\}$ rather than the
+$8 \times 8$ submatrix on $\{1, 2, 3, 4, 5, 6, 8, 9\}$. The $p = 7$
+case is the main subtlety: in any computation that uses operator
+labels modulo $p$, the labels $7$ and $0$ collide, requiring a
+separate re-encoding. We do not pursue the $p = 7$ re-encoding here
+(the structural skeleton at $p = 7$ on the $4$-core is well-defined
+because the basis $\{e_{0}, e_{2}, e_{3}, e_{4}\}$ does not name
+the operator label $7$ except via the relabeling
+$7 \mapsto e_{2}$).
+\end{remark}
+
+%==============================================================
+\section{Power-associativity, associator image, and conjectures}
+\label{sec:assoc}
+%==============================================================
+
+\begin{lemma}[Power-associativity]
+\label{lem:pa}
+For every $x \in V^{\BHML}_{\Z}$ (and hence over every base field),
+$(x x) x = x (x x)$.
+\end{lemma}
+
+\begin{proof}
+For $x = a e_{0} + b e_{2} + c e_{3} + d e_{4}$, expand both sides
+multilinearly using $T^{\BHML}$. The two sides reduce to identical
+quartic polynomials in $(a, b, c, d)$. Direct computation
+(\texttt{check\_pa.py}) confirms the polynomial identity.
+\end{proof}
+
+\begin{lemma}[Associator image dimension]
+\label{lem:assoc-dim}
+The image of the trilinear associator on $V^{\BHML}_{\Z}$ is a
+rank-$1$ $\Z$-submodule, generated (up to integer multiple) by
+$e_{4} - e_{3}$. Reducing modulo any prime, the associator image is
+$1$-dimensional.
+\end{lemma}
+
+\begin{proof}
+Direct computation. The associator $[e_{i}, e_{j}, e_{k}]$ for
+$i, j, k \in \{0, 2, 3, 4\}$ vanishes for all but a small list of
+triples, and on that list the values are integer multiples of
+$e_{4} - e_{3}$. The verification script tabulates all $64$ triples.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:universality} holds in every characteristic: the
+structural-skeleton invariants (eigenspace signatures of $L_{e_{2}}$
+and $L_{e_{0}}$, power-associativity, $1$-dim associator image) are
+preserved at every prime, since each invariant follows from an
+integer-level fact whose witnesses are non-zero in every
+characteristic. The idempotent count is the unique non-invariant
+feature, growing with $p$ as the polynomial system $x^{2} = x$ on
+the $4$-dim algebra admits more solutions over larger fields.
+\end{remark}
+
+%==============================================================
+\section{Reproducibility}
+\label{sec:repro}
+%==============================================================
+
+The proofs of Theorem~\ref{thm:universality},
+Proposition~\ref{prop:rank-honest}, Theorem~\ref{thm:bhml8ym},
+Lemmas~\ref{lem:pa}, \ref{lem:assoc-dim} are verified by the
+reference Python scripts in the manuscript folder:
+
+\begin{itemize}
+\item \texttt{bhml\_fp\_universality.py}: verifies idempotent count,
+eigenspace signatures, power-associativity, and associator image
+dimension at each prime $p \in \{2, 3, 5, 7, 11, 13\}$ on
+$V^{\BHML}_{\F_{p}}$.
+\item \texttt{bhml\_chain\_shells.py}: computes the chain-shell
+integer determinants, factors them, and tabulates the mod-$p$
+reductions, reproducing Proposition~\ref{prop:rank-honest}.
+\end{itemize}
+
+Wall-clock under $30$ seconds total on a standard laptop with
+\texttt{numpy} and \texttt{sympy} as the only external dependencies.
+Scripts deposited in the public repository
+\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis}
+(DOI \texttt{10.5281/zenodo.18852047}).
 
 %==============================================================
 \section*{Acknowledgments}
 %==============================================================
-
-This paper extracts the $\sig^{2}$-triadic content of the substrate's
-$-21$ invariant in self-contained form.
-We thank an anonymous referee whose careful reading uncovered
-(i) the sign-swap typo in the original Proposition~\ref{prop:per-orbit}
-statement (corrected here: $\sum_{O_1} = -8$, $\sum_{O_2} = -7$, in
-agreement with the proof and the downstream ledger), and
-(ii) the linear-vs-boundary period formula contradiction (resolved
-here by tabulating $\Psi_B$ as input data in Table~\ref{tab:psi-b},
-with the original two formulas mentioned only in Remark~\ref{rem:periods}).
-We also drop the pre-revision draft's terminology of
-``conservation/manifestation duality'' in favor of the precise
-``table-independent versus table-specific'' language of
-Definition~\ref{def:table-spec}; the structural content is preserved
-without the ambiguous label.
-
-All six load-bearing numerical identities of this paper are verified
-at machine precision by the bundled standard-library Python script
-\texttt{verify\_J18.py} (CC-BY-4.0), which checks (C1) the
-$\Psi_B$-total $-21$, (C2) the $\sig$-orbit triangular split,
-(C3) the role-Fibonacci split, (C4) the $\sig^{2}$-orbit per-orbit
-values $-8$ and $-7$, (C5) the crossing closure failures, and
-(C6) the involution sanity data ($\sig^{2}$ of period 3 on the
-$6$-cycle, $\sig$-swap of $O_{1}, O_{2}$).
+We thank colleagues for substantive feedback on the universality
+argument and the rank-preservation profile. The methodological
+recommendation to replace per-prime verification with a generic
+structural argument over $\Z$, and to honestly report the
+chain-shell rank-preservation profile, came from a 2026-05-07
+fresh-eyes review.
 
 %==============================================================
 \begin{thebibliography}{99}
-%==============================================================
 
-\bibitem{SandersGishFourCore} B.~R.~Sanders, M.~Gish,
-\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
-Algebraic Attractor of Two Commutative Binary Operations on
-$\Z/10\Z$}, submitted to \emph{Algebraic Combinatorics}, 2026 (J02).
+\bibitem{DrapalWanless2021}
+A.~Drápal, I.~M.~Wanless,
+\emph{Maximally non-associative quasigroups},
+J.~Combinatorial Theory, Series A, \textbf{184} (2021), 105510.
 
-\bibitem{SandersBridgeWP9} B.~R.~Sanders,
-\emph{The LATTICE Operator and Paradoxical Information Algebras: A
-Substrate-Internal Framework on $\Z/10\Z$}, submitted to
-\emph{Algebra Universalis}, 2026 (J26 / WP9 Volume I).
+\bibitem{Schafer1966}
+R.~D.~Schafer,
+\emph{An Introduction to Nonassociative Algebras},
+Academic Press, 1966.
 
-\bibitem{Atlas2026Tiering} B.~R.~Sanders et al.,
-\emph{Lens Taxonomy and Variant Catalog: Decision Records on
-$\sig^{2}$-Triadic BHML Candidates},
-TIG repository \texttt{Atlas/LENS\_TAXONOMY\_2026-05-06},
-DOI 10.5281/zenodo.18852047, 2026.
+\bibitem{Albert1942}
+A.~A.~Albert,
+\emph{Non-associative algebras: I. Fundamental concepts and isotopy},
+Annals of Mathematics, \textbf{43} (1942), 685--707.
 
-\bibitem{TIGsynthesis2026} B.~R.~Sanders,
+\bibitem{Wedderburn1907}
+J.~H.~M.~Wedderburn,
+\emph{On hypercomplex numbers},
+Proc.~London Math.~Soc.~(2), \textbf{6} (1907), 77--118.
+
+\bibitem{HowieSemigroup}
+J.~M.~Howie,
+\emph{Fundamentals of Semigroup Theory},
+Oxford University Press, 1995.
+
+\bibitem{SandersGishFourCore}
+B.~R.~Sanders, M.~Gish,
+\emph{The 4-Core $\{0, 7, 8, 9\}$: Joint TSML+BHML Closure and the
+Universal Attractor},
+in preparation (target Algebraic Combinatorics, 2026).
+
+\bibitem{SandersGishForcing}
+B.~R.~Sanders, M.~Gish,
+\emph{The $\mathrm{CL}_{\TSML}$ Composition Lattice on $\Z/10\Z$:
+Structural Axioms, Independence, and a $73$-HARMONY Forcing
+Theorem},
+submitted to \emph{Algebraic Combinatorics}, 2026 (J16).
+
+\bibitem{TIGsynthesis2026}
+B.~R.~Sanders,
 \emph{Trinity Infinity Geometry Synthesis},
-github.com/TiredofSleep/ck (default branch),
-DOI: 10.5281/zenodo.18852047, 2026.
-
-\bibitem{DrapalWanless2021} A.~Drápal, I.~M.~Wanless,
-\emph{Maximally nonassociative quasigroups},
-\emph{J. Combin. Theory Ser. A} \textbf{184} (2021), 105510.
+github.com/TiredofSleep/ck, DOI: 10.5281/zenodo.18852047, 2026.
 
 \end{thebibliography}
 

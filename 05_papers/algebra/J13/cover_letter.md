@@ -39,7 +39,7 @@ All claims are verified by the included script `manuscript/verify_J13.py` (6 / 6
 
 - The paper is a self-contained algebraic forcing argument over `Q(zeta_p)`, with the central technical input being the irreducibility of the cubic `x^3 - x^2 - 2 x + 1` over `Q` (Lehmer 1933 in the equivalent `cos(pi/7)` form; Watkins-Zeitlin 1993 for the general degree formula).
 - *Acta Arithmetica* regularly publishes short notes establishing rigidity properties of cyclotomic structures — the calibration-conditional 5/7 forcing is exactly such a result.
-- The companion (J07, *Flatness Theorem*) is targeted at *J. Pure Appl. Algebra*; this paper is the cyclotomic appendix that does not fit the JPAA scope.
+- The companion (J33, *Flatness Theorem*) is targeted at *J. Pure Appl. Algebra*; this paper is the cyclotomic appendix that does not fit the JPAA scope.
 
 If the editors judge a shorter-note venue more appropriate (the result is calibration-conditional rather than unconditional), we would welcome a redirect to *Integers* as a secondary target.
 
@@ -47,10 +47,10 @@ If the editors judge a shorter-note venue more appropriate (the result is calibr
 
 The TIG / CK research program is shipping a coordinated multi-paper sequence over Summer 2026. Papers cited as already-submitted companions are:
 
-- J07 (Sanders-Gish, *Flatness Theorem*, submitted to *J. Pure Appl. Algebra*) — the parent result. The present paper is the cyclotomic / aspect-ratio sequel.
-- J03 (Sanders-Gish, *First-G Law*, submitted to *Integers*) — provides the `sinc^2` framework cited in the catalog of companion appearances (§6).
-- J06 (Sanders-Mayes, *Crossing Lemma*, submitted to *J. Combin. Theory Ser. A*) — provides the structural input on pairwise incompatibilities of CRT factor partitions (Lemma 2.2).
-- J10 (Sanders-Mayes, *Universal Orthogonality Principle*, submitted to *J. Number Theory*) — provides the cited pairwise-incompatibility lemma.
+- J33 (Sanders-Gish, *Flatness Theorem*, submitted to *J. Pure Appl. Algebra*) — the parent result. The present paper is the cyclotomic / aspect-ratio sequel.
+- J24 (Sanders-Gish, *First-G Law*, submitted to *Integers*) — provides the `sinc^2` framework cited in the catalog of companion appearances (§6).
+- J27 (Sanders-Mayes, *Crossing Lemma*, submitted to *J. Combin. Theory Ser. A*) — provides the structural input on pairwise incompatibilities of CRT factor partitions (Lemma 2.2).
+- J34 (Sanders-Mayes, *Universal Orthogonality Principle*, submitted to *J. Number Theory*) — provides the cited pairwise-incompatibility lemma.
 
 ## Reproducibility
 

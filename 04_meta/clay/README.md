@@ -35,10 +35,10 @@ maps to one of the Clay problems:
 
 Two J-series mergers executed 2026-05-27 are referenced from the bridges:
 
-- **`J_qseries_merged/`** (J21 + J43 + J51) — supplies the σ-character spectral architecture (G_6, G_7, G_8, Q17-A 5D embedding, Q17-B Symbolic Return) used in the RH and BSD bridges.
-- **`J_Fp_merged/`** (J14 + J16) — supplies the F_p invariance of the 4-core algebra (lens-invariant skeleton + prime-by-prime aut variation + BHML chain-shell rank profile) used in the YM bridge.
+- **`J07/`** (J50 + J51 + J52) — supplies the σ-character spectral architecture (G_6, G_7, G_8, Q17-A 5D embedding, Q17-B Symbolic Return) used in the RH and BSD bridges.
+- **`J08/`** (J48 + J49) — supplies the F_p invariance of the 4-core algebra (lens-invariant skeleton + prime-by-prime aut variation + BHML chain-shell rank profile) used in the YM bridge.
 
-The σ-magma trilogy (J59 rigidity + J60 classification + J61 fossil-variety theorem) provides the underlying algebraic substrate cited in the NS bridge (4-core rigidity tightens the sharp-constant conjecture) and the RH bridge (open question on whether the two σ's connect).
+The σ-magma trilogy (J04 rigidity + J05 classification + J03 fossil-variety theorem) provides the underlying algebraic substrate cited in the NS bridge (4-core rigidity tightens the sharp-constant conjecture) and the RH bridge (open question on whether the two σ's connect).
 
 The mapping was not designed; the corridors emerged from spectral analysis
 of Mix_λ, and the six Clay problems are the natural endpoints of the
@@ -85,7 +85,7 @@ to upgrade the structural connection to a proof.
 ```
 04_meta/clay/
 ├── README.md                  this file
-├── RH_TIG_BRIDGE.md           Riemann Hypothesis bridge (cite J21+J43+J51 + WP17)
+├── RH_TIG_BRIDGE.md           Riemann Hypothesis bridge (cite J50+J51+J52 + WP17)
 ├── YM_TIG_BRIDGE.md           Yang-Mills mass gap bridge (BHML spectral gap)
 ├── NS_TIG_BRIDGE.md           Navier-Stokes Breath Criterion
 ├── PNP_TIG_BRIDGE.md          P vs NP AG(2,p) hardness

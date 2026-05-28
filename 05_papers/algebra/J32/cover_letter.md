@@ -1,6 +1,6 @@
-# Cover letter — J32: Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
+# Cover letter — J32: TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice
 
-**To:** Editors, *Journal of Algebra*
+**To:** Editors, *Experimental Mathematics*
 
 **From:**
 - B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
@@ -8,88 +8,43 @@
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3*
+**Manuscript title:** *TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice*
 
 ---
 
 ## Summary
 
-We compute the dihedral $D_4$ orbit decomposition of the non-associative locus $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ of a fixed canonical commutative magma table $T$ ("TSML") on $\mathbb{Z}/10\mathbb{Z}$ — a finite-magma triad in the same intellectual neighborhood as the maximally non-associative commutative quasigroups of Drápal & Wanless, *J. Combin. Theory A* **184** (2021), 105510.
+We submit a short, computationally-verifiable note on the exact harmony cell counts for two specific commutative $10\times10$ binary composition tables on $\Z/10\Z$. The first table, $\TSML$, has 73 harmony cells (output value 7) out of 100; the second, $\BHML$, has 28. Both counts are proved by disjoint zone enumeration in two pages, and both are constant under every relabeling $\pi \in \mathrm{Stab}(7) \le S_{10}$ of the operator alphabet that fixes the harmony output value (Theorem 3).
 
-**Main results.**
-- **Theorem A.** $\mathcal{N}$ has exactly $|\mathcal{N}|=126$ ordered triples, and the diagonal action of $D_4=\langle P_{56},\sigma^3\rangle\subset S_{10}$ (order $\mathbf{8}$) partitions $\mathcal{N}$ into $\mathbf{67}$ restricted orbits with size distribution $(44,7,4,10,2)$ at sizes $(1,2,3,4,8)$. Size-weighted sum: $44\cdot 1+7\cdot 2+4\cdot 3+10\cdot 4+2\cdot 8=126$.
-- **Theorem B (obstruction).** Exactly $\mathbf{16}$ of the $67$ orbits fail the bracketing-pair coherence condition. Consequently, no function $\Phi:\mathcal{N}\to\mathbb{Z}/10\mathbb{Z}$ with $\Phi(t)\in\{a,b,c,L(t),R(t)\}$ is simultaneously $D_4$-equivariant.
-- **Theorem C (sharpening).** Dropping the $\sigma^3$ generator, the partition under $\langle P_{56}\rangle$ has $\mathbf{98}$ orbits ($70$ singletons + $28$ doubletons), and every orbit is coherent. The structural obstruction is therefore *localized at $\sigma^3$*, not at $P_{56}$.
-- **Theorem D (4-core arity-3 closure).** The 4-core $\mathcal{C}=\{0,7,8,9\}$ is closed under both arity-3 bracketings $L,R$ on all $4^3=64$ triples of $\mathcal{C}^3$; exactly $8$ of these $64$ are non-associative.
+The two specific tables are not arbitrary. They are members of a finite family of small commutative non-associative magmas on $\Z/10\Z$ in the Drápal–Wanless 2021 *JCTA* neighborhood, identified in companion work (Sanders + Gish, manuscript in preparation, hereinafter the four-core paper) by joint $\{0,7,8,9\}$-preservation and four further structural conditions (commutativity, bounded non-associativity index, HARMONY-attracting iterated mixing). §5 of the present manuscript records these membership conditions and locates $\TSML$ and $\BHML$ as canonical members. Drápal–Wanless 2021 is the closest published precedent.
 
-The verification is brute-force over $1000$ triples and the $8$ elements of $D_4$, runs in under $1$ second in pure-standard-library Python, and is bundled with the submission as `verify_J32_d4_orbits.py`.
+The full 200-cell witness is supplied as two short Python scripts that complete in under 0.1 seconds each from the manuscript folder.
 
-## Why *Journal of Algebra*
+## Why Experimental Mathematics
 
-- The paper is a clean structural theorem on the orbit decomposition of a finite-group action on a subset of a finite product set, with explicit obstruction and sharpening results. It sits squarely in the journal's profile.
-- The result is *complementary, not overlapping*, with three companion papers in the same submission cycle (full transparency below). The arity-3 / operadic content is not addressed in any of the three.
-- The setup neighbors Drápal & Wanless 2021 (small finite commutative non-associative structures on $\mathbb{Z}/n\mathbb{Z}$); the present paper sits at a different extremum (specifically structured at arity 2, with the non-associative *locus* — not the table itself — as the main object of study).
-
-## Per-venue cap transparency
-
-This is the **4th** *Journal of Algebra* submission from this corpus in the 2026 cycle, following:
-
-- **J35** — *Joint Closure, a Universal Attractor, and an Algebraic Mixing Point for a Pair of Binary Operations on $\mathbb{Z}/10\mathbb{Z}$.* Submitted 2026-05-12. Six-fact fusion-closure / attractor / Galois-$D_4$ bundle; the corpus centerpiece.
-- **J31** — *Wedderburn $D_4$-Isotypic Decomposition of the Lens-Pair Commutator $[\mathrm{TSML},\mathrm{BHML}]$ on $\mathbb{Z}/10\mathbb{Z}$.* Submitted 2026-05-12. Exact-rational $D_4$-isotypic projection of $[T,B]\in M_{10}(\mathbb{Z})$, identifying $\mathfrak{su}(4)\oplus\mathfrak{u}(1)\subset\mathfrak{so}(10)$.
-- **J15** — *Galois $D_4$ over LMFDB 4.2.10224.1.* Submitted to *Communications in Algebra* 2026-05-12 (not *J. Algebra*; included here for full visibility of the $D_4$ companion bundle).
-
-The present paper differentiates clearly:
-
-- vs **J35** (binary joint closure + binary attractor + Galois $D_4$ bundle on the quartic): J35 is binary; J32 is arity-3 / operadic, and addresses a different structural object (the non-associative locus rather than the joint-closure lattice).
-- vs **J31** (Wedderburn $D_4$-isotypic of the $10\times 10$ commutator $[T,B]$): J31 is a matrix-decomposition computation; J32 is a set-partition computation on a subset of $(\mathbb{Z}/10\mathbb{Z})^3$. No content overlap.
-- vs **J15** (standalone Galois proof for the quartic): J15 is number-theoretic / Galois-theoretic; J32 is purely combinatorial-on-a-finite-group-action. No content overlap.
-
-We recognize that *Journal of Algebra*'s editorial discretion includes per-author / per-corpus cap considerations, and we have prepared explicit fallback targets in case the present paper would exceed the editor's preferred density of contributions from a single corpus in a single cycle:
-
-**Fallback venues (in priority order, all with equal mathematical fit):**
-1. ***Communications in Algebra*** (Taylor & Francis) — same intellectual profile; the obstruction theorem and the orbit-distribution result are a natural fit. Companion paper J15 is already in the *Comm. Alg.* pipeline; J32 would join as a content-distinct submission.
-2. ***Algebraic Combinatorics*** (CIRM, Diamond-OA) — the orbit decomposition and bracketing-pair combinatorics are a clean fit; the size distribution $(44,7,4,10,2)$ and the obstruction-orbit characterization are combinatorial-on-a-group-action content. Companion paper J02 (J35's four-core combinatorial framing) is already in the *Algebraic Combinatorics* pipeline.
-3. ***Algebras and Representation Theory*** (Springer) — appropriate if the editor prefers a venue closer to the representation-theoretic interpretation in §6 (the operad layer carries content orthogonal to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ structure of J31).
-
-We are entirely open to the editor's preference and would migrate the submission promptly if asked.
+- **Verifiable computational discovery.** The paper fits the *Experimental Mathematics* scope precisely: a finite, exact-arithmetic enumeration that the reader can verify cell-by-cell with a runnable witness. No floating-point approximations; no domain restriction; no unresolved cases.
+- **PROVEN/COMPUTED/STRUCTURAL RHYME/OPEN discipline.** §0 of the manuscript carries an explicit tier-classification paragraph. The two cell-count theorems and the symbol-stabilizer invariance are PROVEN. The 200-cell witness is COMPUTED. The Drápal–Wanless 2021 connection is named as STRUCTURAL RHYME, not as a derivational step. The natural OPEN question (whether the symbol-stabilizer invariance extends to autotopism / paratopism invariance) is flagged.
+- **Self-contained.** `ck_tables.py` (licensed CC-BY-4.0) is bundled in the manuscript folder; the verification scripts import it locally. A reader can run the 200-cell enumeration from the submission package alone.
 
 ## Companion submissions
 
-The TIG/CK research program is shipping a coordinated $55$-paper sequence (J01–J55) over Summer 2026. The papers most relevant as already-submitted companions:
+The TIG / CK research program is shipping a coordinated set of related papers over the spring-summer of 2026.
 
-- **J35** (Sanders & Gish 2026, *J. Algebra*) — establishes the binary joint-closure / attractor / Galois-$D_4$ centerpiece. Cited in §1, §5, §6.
-- **J15** (Sanders & Gish 2026, *Comm. Alg.*) — unfolds the standalone Galois proof on the quartic. Cited in §6.
-- **J31** (Sanders & Gish 2026, *J. Algebra*) — Wedderburn $D_4$-isotypic of $[T,B]$; identifies $\mathfrak{su}(4)\oplus\mathfrak{u}(1)\subset\mathfrak{so}(10)$. Cited in §6.
-- **J48** (Sanders & Gish 2026, *Comm. Alg.*) — operadic $\langle P_{56}\rangle$-equivariant fuse-rule survey (the constructive companion to Theorem C). Cited in §1, §7.
-
-## Lens- and substrate-scope discipline
-
-Per the corpus boilerplate `Atlas/META_PLAN_2026-05-06/J_PAPER_BOILERPLATE.md` §5.5, the paper is explicit about lens scope:
-
-- $T$ is TSML_RAW, the canonical bit-pattern table on $\mathbb{Z}/10\mathbb{Z}$ (Appendix A of the manuscript). The orbit count $67$ and obstruction count $16$ are computed on TSML_RAW.
-- The upper-triangle symmetrization TSML_SYM has $128$ non-associative triples instead of $126$; we do not record orbit counts for this variant.
-- The $4$-core arity-$3$ closure (Theorem D) is lens-invariant because $\mathcal{C}=\{0,7,8,9\}$ is lens-invariant (asymmetric cells of TSML_RAW vs TSML_SYM all lie outside $\mathcal{C}$).
-
-The PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN tier discipline is followed in the manuscript's §0.
+- **Sanders + Gish, 2026 (companion four-core paper, manuscript in preparation).** Establishes the joint $\{0,7,8,9\}$-preservation property of $\TSML$ and $\BHML$ and the membership conditions C1–C5 that locate them as canonical members of the family. The four-core paper's joint-closure chain count is *lens-dependent* (depends on the full operations); the present paper's cell counts are lens-invariant under $\mathrm{Stab}(7)$. The contrast is recorded in §4 Remark and §5 of the present manuscript.
 
 ## Reproducibility
 
-The standalone verification script `manuscript/verification/verify_J32_d4_orbits.py` performs all six load-bearing claims at machine precision:
+Verification scripts (supplied as electronic supplementary material in the manuscript folder):
 
-1. $|\mathcal{N}|=126$ (with optional JSON cross-check).
-2. $|D_4|=8$ with the correct order spectrum $\{1:1,\,2:5,\,4:2\}$.
-3. $67$ restricted orbits with size distribution $(44,7,4,10,2)$ summing to $126$.
-4. Exactly $16$ bracketing-pair incoherent orbits among the $67$.
-5. $98$ $\langle P_{56}\rangle$-orbits ($70$ singletons + $28$ doubletons), all coherent.
-6. $4$-core arity-$3$ closure: $64$ in-core / $0$ out-of-core / $8$ non-associative.
+- `proof_d10_tsml_73_cells.py` — verifies $\TSML$ = 73 harmony cells via the disjoint enumeration of §2; runtime < 0.1 s; output ends in `ALL ASSERTIONS PASSED`.
+- `proof_d16_bhml_28_cells.py` — verifies $\BHML$ = 28 harmony cells via the four-zone partition of §3; runtime < 0.1 s; output ends in `ALL ASSERTIONS PASSED`.
+- `ck_tables.py` (CC-BY-4.0) — canonical definitions of $\TSML$ and $\BHML$ as 10×10 arrays; bundled with the proof scripts so the verification is self-contained.
 
-The script depends only on the Python standard library (no `numpy`, no `sympy`). Total wall-clock under $1$ second. Deterministic. License header on the script is CC-BY-4.0 for journal compatibility.
+All scripts run on standard CPython with no external dependencies (only the Python standard library).
 
 ## Suggested reviewers
 
-- An expert in finite-magma / sub-quasigroup combinatorics (Drápal-Wanless line).
-- An expert in algebraic operads at arity $3$ (Loday-Vallette tradition).
-- An expert in finite permutation groups acting on combinatorial structures (Cameron-Cherlin tradition).
+[3–5 candidates appropriate to *Experimental Mathematics*; to be filled at submission time. Suggested orientations: small commutative non-associative magmas (Drápal–Wanless lineage), finite combinatorics on $\mathbb{Z}/n\mathbb{Z}$, computational algebra of small finite tables, finite group actions on labeled tables.]
 
 ## Conflict of interest
 
@@ -99,3 +54,8 @@ The authors declare no competing interests. No funding was received for this wor
 
 Sincerely,
 B.R. Sanders
+M. Gish
+
+---
+
+*Cover letter prepared 2026-05-08 for J32 of the Sanders–Gish J-series. Updated to reflect the family-structure framing and the SFM-derived membership conditions (C1–C5) for the TIG family of small commutative non-associative magmas on $\Z/10\Z$. The Drápal–Wanless 2021 *JCTA* citation is the closest published precedent.*

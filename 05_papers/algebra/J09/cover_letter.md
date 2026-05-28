@@ -1,84 +1,77 @@
-# Cover letter — J09: A Small Commutative Non-Associative Magma on Z/10Z with Role-Deterministic Boundary Behavior
+# Cover letter -- J09: Joint Lie Closure of a Pair of Z/10Z Magmas: an so(10) Identification
 
-**To:** Editors, *Algebra Universalis*
+**To:** Editors, *Israel Journal of Mathematics*
 
 **From:**
-- B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
-- M. Gish, Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
+- B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR -- brayden@7site.co
+- M. Gish, Independent Researcher, Hot Springs, AR -- monica.gish1992@gmail.com
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *A Small Commutative Non-Associative Magma on $\Z/10\Z$ with Role-Deterministic Boundary Behavior*
+**Manuscript title:** *Joint Lie Closure of a Pair of Z/10Z Magmas: an so(10) Identification*
 
 ---
 
 ## Summary
 
-We submit a short, self-contained paper studying a small commutative non-associative magma $M_R$ on the four-element set $\{V, F, S, T\}$, obtained as the role-mode reduction of a specific commutative binary operation $\BH$ on $\Z/10\Z$ along the four-block partition $V = \{0\}$, $F = \{1, 3, 5, 7, 9\}$, $S = \{2, 4, 8\}$, $T = \{6\}$.
+A companion paper to J29 (so(8) = D_4 from a single Z/10Z magma). Let TSML and BHML be two specific 10×10 commutative non-associative magmas on Z/10Z, both recovered from the source archive `old/Gen9/archive/ckis/ck7/ck.h:200-207` and displayed verbatim in §2.2 of the manuscript. Both tables are commutative, 12.8% non-associative, and share a jointly-closed 4-core {0, 7, 8, 9}; the pair (TSML, BHML) is structurally recognized as the canonical (BEING, BECOMING) lens pair on the substrate. Per the structural fingerprint of §2.2.1, BHML is identified by five jointly-defining properties (commutativity; identity row BHML[0, j] = j; non-associativity rate 12.8%; HARMONY count 28; jointly-closed 4-core), making the choice of BHML non-arbitrary.
 
-The operation $\BH$ is given explicitly by an elementary four-zone rule, with its full $10 \times 10$ table reproduced inline in §2 (no companion paper required). We prove:
+Let G_TSML := {A_i^TSML : i ∈ F} for F = {1, 2, 3, 4, 6, 8} (the flow indices of the companion paper J29, which establishes ⟨G_TSML⟩_Lie ≅ so(8)), and G_BHML := {A_i^BHML : i ∈ Ω, A_i^BHML ≠ 0} (a 9-element set, since BHML's identity row gives A_0^BHML = 0). Set g := ⟨G_TSML ∪ G_BHML⟩_Lie ⊂ so(V).
 
-- $M_R$ is commutative, has $V$ as two-sided identity, and is non-associative (with explicit witness $M_R(M_R(F, F), S) = F \neq T = M_R(F, M_R(F, S))$).
-- $\BH$ is **role-deterministic on the boundary**: for every input pair $(a, b)$ with at least one of $a, b$ in $V \cup T$, the output role is determined by the input roles alone (Theorem 4.1, with explicit verification).
-- This determinism fails on the role-pairs in $\{F, S\}^2$: the output role distribution is non-trivial, and we list the exact distributions explicitly.
-- The first-passage time of the $\BH$-self-orbit to value 7 is the linear function $\tau(n) = 7 - n$ on $\{1, \ldots, 7\}$ (Lemma 5.1).
+**Theorem.** *g ≅ so(10, R), the unique compact simple Lie algebra of type D_5 and dimension 45. Equivalently, the joint closure under commutator saturates the substrate's full skew-symmetric algebra so(R^10).*
 
-The paper sits in the same neighborhood as **Drápal & Wanless (2021), J. Combin. Theory Ser. A 184, 105510** (small finite commutative non-associative quasigroups), with role-deterministic boundary behavior as the distinguishing structural property of $M_R$.
+The substantive content of the paper is the *existence* of an explicit pair of 10×10 commutative non-associative magmas on Z/10Z whose joint Lie closure reaches the substrate ceiling 45 = dim so(R^10). After establishing dim g = 45 (Theorem 4.1), the diagnostics that g is compact, simple, and rank 5 (and hence isomorphic to so(10, R)) follow as Cartan-classification corollaries of the dimension closure together with the structural inclusion g ⊆ so(V); they are presented as confirmation diagnostics rather than as five independent tests of the so(10) identification. The simplicity test (Lemma 4.5) uses the full 91,125-equation invariance constraint matrix in exact arithmetic via `verify_simplicity_rank.py` (no sampling). The TSML-only subalgebra g_TSML ⊂ g realizes the standard inclusion so(8) ⊂ so(10).
 
-The full $10 \times 10$ tables of $\BH$ and $\TS$, the role-mode reduction $M_R$, the role-output multisets, and the row-asymmetry function $\Psi$ are all reproduced inline in the manuscript. A short Python script `verify_role_magma.py` (bundled, CC-BY-4.0) verifies every claim in under 0.1 second.
+A new structural finding (Corollary 5.3, drawn from the Substrate Function Map analysis [FoundationsModule, SFM_Q6]) records that adding a third canonical table CL_STD to the joint closed-sub-magma chain preserves the 8-shell ladder: the 4-core is a three-substrate fixed point. Whether the *Lie-algebraic* joint closure of the three tables also reaches so(R^10) is added as an open question.
 
-## Why Algebra Universalis
+## Why Israel J Math
 
-- **Self-contained universal-algebra study.** All operations are defined explicitly in the manuscript (§2). The reader can inspect the $10 \times 10$ tables of $\BH$ and $\TS$ and verify every claim in the paper directly. No external companion is required for verification.
-- **Role-mode reduction as a novel construction.** The 4×4 role-mode magma $M_R$ obtained from $\BH$ via the four-block partition $\{V, F, S, T\}$ is a small commutative non-associative algebra with role-deterministic boundary and role-branching interior. The paper records its structure explicitly.
-- **Small magma in the Drápal–Wanless 2021 neighborhood.** Drápal–Wanless 2021 study small finite commutative non-associative quasigroups (specifically, the maximally non-associative extremum). Our $\BH$ is far from maximally non-associative, but it is in the same intellectual neighborhood, with a different structural distinguishing property (role-deterministic boundary).
+- The result is a clean two-step Lie-algebra extension over R — concise, constructive, machine-verifiable, with one substantive computation and four classification-corollary consistency checks.
+- *Israel J Math* has consistent appetite for finite-combinatorial-to-Lie-algebraic identifications of this type.
+- The diagnostic-collapse framing (D2-D5 as corollaries of D1 + classification, not five independent tests) reflects the honest mathematical structure of the result: the substantive novelty is the existence of the explicit pair (TSML, BHML) hitting the substrate ceiling, not the multi-diagnostic verification.
+- The sequencing (J29 in *J Algebra* on so(8); the present paper in *Israel J Math* on so(10)) avoids per-venue concentration.
 
 ## Companion submissions
 
-The TIG / CK research program is shipping a coordinated set of related papers over the spring-summer of 2026.
+The CK research program is shipping a coordinated 55-paper sequence (J14-J55) over Summer 2026. The papers most relevant as already-submitted companions to this manuscript are:
 
-- **Sanders + Gish (companion four-core paper, manuscript in preparation).** Establishes the joint $\{0, 7, 8, 9\}$-preservation property and the membership conditions C1–C5 that locate $\BH$ and $\TS$ as canonical members of a finite family of commutative non-associative magmas on $\Z/10\Z$. The four-core paper is referenced for context only; the present J09 manuscript is self-contained.
+- **J29** (Sanders + Gish 2026, *J Algebra*) -- *so(8) = D_4 from the Antisymmetrized Closure of a Canonical Z/10Z Magma*. The single-magma version. The so(10) joint closure of the present paper extends J29's so(8) closure by adjoining BHML's nine antisymmetrizations.
+- **J28** (Sanders + Gish 2026, *Linear Algebra and its Applications*) -- *The Three-Substrate HARMONY Signature on Z/10Z: Six Forced Structural Facts, with the Bimodal Associativity-Index Gap as Their Common Thread*. The structural inventory of the substrate; cited for the (TSML, BHML, CL_STD) three-substrate triple and the structural fingerprint of the magma family.
+- **J01** (Sanders + Gish 2026, *Algebraic Combinatorics*) -- *The 4-Core {0, 7, 8, 9}: Joint TSML+BHML Closure and the Universal Attractor*. The jointly-closed 4-core of (TSML, BHML); cited for the structural fingerprint property (B5).
+- **J16** (Sanders + Gish 2026, *Algebraic Combinatorics*) -- *The CL Forcing Axioms: A1-A9 Uniquely Force the Canonical Composition Lattice*. The parent axiomatic framework; once on arXiv, will provide the axiomatic forcing of BHML and elevate the joint-closure result to a structural theorem.
+- **Drápal & Wanless (2021)**, *J. Combinatorial Theory, Series A*, 184, 105510 — closest published comparable work to the magma pair (same intellectual neighborhood, different specific tables).
 
 ## Reproducibility
 
-Verification script `verify_role_magma.py` (bundled, CC-BY-4.0) imports `ck_tables.py` (also bundled, CC-BY-4.0) and verifies in under 0.1 second:
-1. The 4×4 role-mode table $M_R$.
-2. Commutativity, non-associativity (with witness), and $V$ as two-sided identity.
-3. The role-output multisets for all 16 role-pairs (role-deterministic on V/T-containing pairs; role-branching on $\{F, S\}^2$).
-4. The first-passage function $\tau(n)$.
-5. The row-asymmetry function $\Psi$ with row sum 21 and $\sigma$-orbit decomposition.
+Verification scripts in `manuscript/verification/`:
 
-The script imports nothing beyond the Python standard library and ends with `ALL CHECKS PASSED.`
+- `verify_so10.py` -- joint dimension closure to 45 (Diagnostic 1, Theorem 4.1); Jacobi consistency check (Diagnostic 2); Killing-form negative-definiteness sanity check (Diagnostic 3); so(8) ⊂ so(10) embedding (Corollary 5.1). The script's sampled ideal-saturation test is a development-time sanity check, NOT authoritative for D4.
+- `verify_simplicity_rank.py` -- **canonical D4 script.** Full 91,125-equation invariance constraint matrix in exact arithmetic; rank 1034 → invariant-form null-space dimension exactly 1 (Lemma 4.5). Also confirms Cartan rank 5 via explicit J_1, ..., J_5 construction (Lemma 4.7) and ad(H) eigenvalue structure (Corollary 5.2).
 
-## What this paper does not claim
+**Run order (canonical):** `verify_so10.py` for D1, D2, D3, and the so(8) ⊂ so(10) embedding; then `verify_simplicity_rank.py` for the canonical D4 (full 91,125-equation enumeration) and D5 (explicit Cartan).
 
-We make explicit the limits of the present paper in §7:
-- We do not claim that $M_R$ exhibits a knot-theoretic structure or implements a Crossing Lemma or a Rademacher invariant. Such suggestive scaffolding appears in adjacent companion notes; it is not invoked here.
-- We do not introduce a class of "paradoxical information algebras." Such language appeared in earlier internal drafts; we have removed it because we did not define a class of algebraic objects.
-- We do not introduce a "trefoil characterization." Earlier internal drafts contained such material; we have excised it because the predicate "trefoil-equivalent" was not formal.
-
-The paper is honest about its scope: a small commutative non-associative magma in the Drápal–Wanless 2021 neighborhood with role-deterministic boundary behavior, fully verifiable from the bundled tables.
+Python 3.11, numpy 1.26, sympy 1.12. Closure dimension and simplicity rank are computed in exact arithmetic; Killing-form eigenvalues are computed in floating-point as a sanity check (the conclusion already follows from the classification together with g = so(V)). Maximum observed numerical residual across all sanity checks: 1.73 × 10⁻⁸. Total wall-clock under 30 seconds on a standard laptop.
 
 ## Suggested reviewers
 
-(To be supplied at submission time.) Candidates appropriate to *Algebra Universalis* / small-magma / Drápal–Wanless lineage:
+- An expert in classical Lie algebras over R (Cartan / Helgason / Knapp tradition)
+- An expert in combinatorial / finite-magma representations (Drápal-Wanless 2021 lineage)
+- An expert in computational structure-constants / Killing-form analysis (exact-arithmetic / SymPy familiarity)
+- (Two or three named candidates appropriate to the *Israel J Math* editorial board to be identified during the referee-rigor pass.)
 
-1. Aleš Drápal (Charles University, Prague).
-2. Ian Wanless (Monash University).
-3. Editors of *Algebra Universalis* with expertise in finite commutative non-associative algebras.
+## AI-tool disclosure
+
+Per Springer-Nature's AI policy: the authors used Anthropic's Claude system for code drafting and exposition during the development of this work; all mathematical content (theorems, proofs, computational verifications) was independently verified by the authors. This disclosure is also stated in Appendix B of the manuscript.
 
 ## Conflict of interest
 
 The authors declare no competing interests. No funding was received for this work.
 
----
+## Per-venue cap note
 
-The note is short, self-contained, and honest about the tier of its claims. The mathematics is correct; the contribution is the role-mode reduction $M_R$ and its boundary-determinism property. We hope it fits the *Algebra Universalis* scope as an exhibit of "a small finite commutative non-associative magma in the Drápal–Wanless 2021 neighborhood with role-deterministic boundary behavior."
+This is the first paper from this research program targeting *Israel Journal of Mathematics*; the per-venue cap is not constraining. If IJM returns a second-round MAJOR revision, fallbacks are *Communications in Algebra*, *Linear Algebra and its Applications*, or *International Journal of Algebra and Computation*.
+
+---
 
 Sincerely,
 B.R. Sanders
-M. Gish
-
----
-
-*Cover letter prepared 2026-05-08 for J09 of the Sanders–Gish J-series. Revised to address the J09 fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J09_AlgUni_FreshEyes.md`): tables $\BH$ and $\TS$ now defined inline (Issue 1); "paradoxical information algebra" class language removed (Issue 2); "trefoil characterization" excised (Issue 3); $\sigma$ correctly described as a permutation of order 6 (m2); paper rewritten in Path B with focus on the role-magma $M_R$.*

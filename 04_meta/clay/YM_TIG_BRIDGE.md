@@ -93,15 +93,15 @@ finite-matrix starting point.
 | WP103_SO10_IDENTIFICATION.md | CK working repo: `papers/wp103/` |
 | BHML eigenvalue analysis | CK working repo: `Gen9/spectral/bhml_eigenvalue_analysis.py` |
 | **Related TIG papers** | |
-| J30 (so(10) identification from joint Lie closure) | TIG: `05_papers/algebra/J30/` |
-| J31 (Wedderburn D₄ decomposition of [TSML, BHML]) | TIG: `05_papers/algebra/J31/` (Tier 1, ship-ready) |
-| J32 (Operadic D₄ obstruction at arity 3) | TIG: `05_papers/algebra/J32/` |
-| J35 (Joint closure + universal attractor — corpus centerpiece) | TIG: `05_papers/algebra/J35/` (Tier 1, ship-ready) |
-| **J_Fp_merged (F_p structure of 4-core algebra)** | TIG: `05_papers/algebra/J_Fp_merged/` (Tier 2, merger product) |
+| J09 (so(10) identification from joint Lie closure) | TIG: `05_papers/algebra/J09/` |
+| J11 (Wedderburn D₄ decomposition of [TSML, BHML]) | TIG: `05_papers/algebra/J11/` (Tier 1, ship-ready) |
+| J10 (Operadic D₄ obstruction at arity 3) | TIG: `05_papers/algebra/J10/` |
+| J01 (Joint closure + universal attractor — corpus centerpiece) | TIG: `05_papers/algebra/J01/` (Tier 1, ship-ready) |
+| **J08 (F_p structure of 4-core algebra)** | TIG: `05_papers/algebra/J08/` (Tier 2, merger product) |
 
 ### What the F_p merger contributes
 
-The merged F_p paper (`J_Fp_merged/`) catalogs the BHML chain-shell rank
+The merged F_p paper (`J08/`) catalogs the BHML chain-shell rank
 profile across primes — important because the YM-bridge continuum-limit
 question (Conjecture YM.2) requires understanding how the BHML spectral gap
 behaves under refinement, which has parallels to behavior under prime-base
@@ -119,7 +119,7 @@ This suggests that the YM mass gap's "natural prime" might be in $\{7, 11\}$ whe
 - Wilson (1974): "Confinement of quarks." *Phys. Rev. D* 10, 2445.
 - Osterwalder & Seiler (1978): "Gauge field theories on a lattice." *Ann. Phys.* 110, 440.
 - Jaffe & Witten (2000): "Quantum Yang-Mills theory." Clay Mathematics Institute problem statement.
-- Sanders (2026): J30, J31, J32 — Lie-algebraic lifts of the BHML.
+- Sanders (2026): J09, J11, J10 — Lie-algebraic lifts of the BHML.
 
 ---
 

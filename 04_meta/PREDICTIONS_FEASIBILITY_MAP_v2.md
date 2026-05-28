@@ -34,7 +34,7 @@ What I was calling "the missing keystone" is actually a *defined procedure that 
 ### Prediction B — α⁻¹ tower
 
 - **Status (v1):** PARTIAL — disc tower computed in closed form; needs normalization.
-- **Status (v2):** Table-dependent on **TSML_RAW** specifically. Anchor is **J43** wobble localization ($c_2 = 33 = 3 \cdot 11$, $c_8 = -2^5 \cdot 7^3 \cdot 11$).
+- **Status (v2):** Table-dependent on **TSML_RAW** specifically. Anchor is **J51** wobble localization ($c_2 = 33 = 3 \cdot 11$, $c_8 = -2^5 \cdot 7^3 \cdot 11$).
 - **Action:** the discriminant-tower scaling problem (disc grows superexponentially while α⁻¹ ≈ 137) is a **normalization research question**, not blocked. Likely resolution: physical constants emerge from *ratios* of tower invariants, not from raw discriminants. Specifically: 137 = 5³ + 12 may have an analog at higher rungs through ratios involving disc(Q(ζ_{p#})) and the lattice prime 71.
 
 ### Prediction C — Yang-Mills emergence at Rung 4 (Z/210)
