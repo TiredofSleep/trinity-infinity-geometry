@@ -174,14 +174,17 @@ The closest published neighbor on small finite commutative non-associative magma
 
 ## §7 Reproducibility
 
-Theorem 3.1 (TSML closure), Proposition 4.1 (BHML non-closure), Theorem 4.3 (size-4 enumeration), and Theorem 5.1 (generator selection) are direct integer-arithmetic checks. The script `manuscript/verification/4core_verification.py` includes:
+Theorem 3.1 (TSML closure), Proposition 4.1 (BHML non-closure), Theorem 4.3 (size-4 enumeration), and Theorem 5.1 (generator selection) are direct integer-arithmetic checks. The primary J30-specific verification script is `manuscript/verification/verify_J30.py` (Python stdlib only; runtime << 1 second; 9/9 PASS). It contains:
 
 - the 10 × 10 tables CL_TSML and CL_BHML explicitly;
 - a closure check `is_closed(S, table)`;
-- enumeration of all 78 TSML-closed 4-subsets and the unique BHML-closed 4-subset {0, 7, 8, 9};
-- additional joint-chain checks supporting the contextualization in §4 (chain enumeration, normalizer identity, attractor at α = 1/2, universality across the chain, Galois D₄ of x⁴ + 4x³ − x² + 2x − 2, α-sweep PSLQ).
+- the 16-cell extractions of CL_TSML | C×C (image {3, 7}, 14 + 2 distribution, PROGRESS cells at (3, 9), (9, 3)) and CL_BHML | C×C (image {0, 2, 4, 6, 8}, 3+3+5+4+1 distribution, witness CL_BHML[1][1] = 2);
+- exhaustive enumeration over the 210 size-4 subsets of Z/10Z giving 78 TSML-closed (all containing HARMONY = 7), exactly 1 BHML-closed and 1 jointly closed (= {0, 7, 8, 9}); confirmation that C is among the 78 TSML-closed;
+- the contrast checks C ∩ joint = {7, 9}, C \ joint = {1, 3}, joint \ C = {0, 8};
+- the generator-selection arithmetic 3³ ≡ 7 vs 7³ ≡ 3 (mod 10), with the element orders 1 → 1, 3 → 4, 7 → 4, 9 → 2 confirming primitive roots {3, 7};
+- the CREATION orbit 1 → 3 → 9 → 7 → 1 and DISSOLUTION orbit 2 → 6 → 8 → 4 → 2 under × 3 (Remark 2.3).
 
-Run with `/c/ck_venv/lora312/Scripts/python.exe`. Runtime < 3 seconds. All 6 checks PASS at machine precision.
+A companion script `manuscript/verification/4core_verification.py` (6 checks supporting the joint-4-core context of Theorem 4.3: joint-closure chain enumeration, normalizer identity Z_T = Z_B = (v+h+br+r)², closed-form attractor h/br = 1+√3 at α = 1/2, universality across the chain, Galois D₄ of x⁴ + 4x³ − x² + 2x − 2, α-sweep PSLQ) is retained for cross-reference to the companion paper J15/J01; it is not the J30 primary verification.
 
 ---
 

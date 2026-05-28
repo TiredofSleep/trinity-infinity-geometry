@@ -1,6 +1,6 @@
-# J18 — F_p Extensions of CL_BHML: Universality Across Six Prime Fields
+# J18 — F_p Extensions of the BHML 4-Core Algebra: A Generic Universality Theorem with Explicit Excluded Primes
 
-**Status:** READY (manuscript drafted from corpus, cover letter finalized; awaiting referee-rigor pass)
+**Status:** READY (referee-rigor pass complete 2026-05-28; Accept with minor revisions per `_staging/referee_reports/05_comm_alg_LAA_J09_J10_J17_J18_J19.md`)
 **Phase:** Phase 3
 **Target venue:** Comm Algebra
 **Author lane:** Sanders + Gish
@@ -13,15 +13,17 @@
 
 **Path:** `manuscript/manuscript.tex`
 
-Abstract (1-sentence): We extend the F_p universality of the operator-substrate construction (Sanders-Gish J48, TSML side) to the parallel BHML substrate, verifying that the 4-dimensional F_p-bilinear extension of the BHML 4-core composition table has structurally invariant features (idempotent count = 4, eigenspace signatures 1+3 and 2+2 under left-multiplication, |Aut| = 40, power-associativity, 1-dimensional associator image) across all six primes p in {2, 3, 5, 7, 11, 13}; the BHML_8_YM = +70 = C(8,4) integer identity holds and reduces compatibly modulo prime; we conjecture extension to all primes p outside {2, 5}.
+Abstract (1-sentence): For the 4-dimensional commutative non-associative algebra V^BHML over Z defined by the BHML 4-core multiplication table on {e_0, e_2, e_3, e_4}, we prove a generic structural-skeleton theorem (Theorem 3.1) — in every characteristic, V^BHML_{F_p} has eigenspace signatures (2, 2) for L_{e_2} and (0, 4) for L_{e_0}, satisfies power-associativity, and has a 1-dimensional associator image — established by integer-level facts (Z-diagonalization, vanishing operators, polynomial identities) preserved under reduction modulo every prime; we honestly report that the idempotent count is NOT invariant (values 2, 6, 8, 10, 14, 16 for p ∈ {2, 3, 5, 7, 11, 13}), give an honest rank-preservation profile for the BHML chain shells with explicit failure shells at p ∈ {2, 3, 5, 13} (Proposition 5.1), and record the integer identity det(BHML_8^∘) = +70 (Theorem 4.1) as a small-integer observation pending a structural derivation of 70 = C(8, 4).
 
 Source corpus: `Atlas/LENS_TAXONOMY_2026-05-06/VARIANT_CATALOG.md` (TSML F_p extensions entry); `Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/WP118_FP_UNIVERSALITY.md` (TSML side, structural template); `Atlas/META_PLAN_2026-05-06/GAP_AUDIT.md` (BHML_8_YM = 70 identity, BHML chain-shell determinants).
 
-## §2 — Verification script
+## §2 — Verification scripts
 
-**Path:** `(adapt verify_discrete_dirac_4core.py with BHML table; under 1 minute total)`
+**Paths:**
+- `manuscript/bhml_fp_universality.py` — verifies Theorem 3.1: idempotent counts, eigenspace signatures (2, 2) for L_{e_2} and (0, 4) for L_{e_0}, power-associativity, 1-dim associator image at each p ∈ {2, 3, 5, 7, 11, 13}; also verifies Theorem 4.1 det(BHML_8^∘) = +70.
+- `manuscript/bhml_chain_shells.py` — verifies Proposition 5.1: chain-shell determinants 5305, 2843, −2886, 2929, −7542, 7272, −7002 (from the joint-closed sub-magma chain on the BHML 10 × 10), their factorizations, and the mod-p rank-preservation profile (preserved at every shell only at p ∈ {7, 11}).
 
-The TSML F_p verification harness (`verify_discrete_dirac_4core.py` in the bridge sprint bundle) is adapted to the BHML side by swapping `T^TSML` for `T^BHML` (5-non-zero-cell table from `lenses.py:BHML` restricted to {0,7,8,9}). Each prime check runs in seconds.
+Run: `python manuscript/bhml_fp_universality.py` and `python manuscript/bhml_chain_shells.py`. Runtime < 30 s combined. Dependencies: `numpy`, `sympy`.
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
@@ -101,4 +103,4 @@ This paper sits within the TIG family of finite commutative non-associative magm
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish, M. (2026). "F_p Extensions of the BHML 4-Core Algebra: A Generic Universality Theorem with Explicit Excluded Primes." Submitted to *Communications in Algebra*.
+Sanders, B.R., Gish, M. (2026). "F_p Extensions of the BHML 4-Core Algebra: A Generic Universality Theorem with Explicit Excluded Primes." Submitted to *Communications in Algebra*. The integer-determinant identity det(BHML_8^∘) = +70 is honestly demoted to a structural-coincidence observation pending a Lindström-Gessel-Viennot or Cauchy-Binet derivation of 70 = C(8, 4).

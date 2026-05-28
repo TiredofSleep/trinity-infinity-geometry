@@ -43,11 +43,13 @@ All claims are verified by the included script `manuscript/verify_J13.py` (6 / 6
 
 If the editors judge a shorter-note venue more appropriate (the result is calibration-conditional rather than unconditional), we would welcome a redirect to *Integers* as a secondary target.
 
-## Companion submissions
+## Companion submissions and conditionality on J33
+
+**Conditionality flag (please note).** This work is conditional on the companion paper J33 (*Flatness Obstruction on Squarefree* `Z/nZ`, currently Tier 2 in our portfolio) being available as a preprint at the time of consideration. J33 supplies the cyclotomic-embedding calibration (Definition 2.5 / Remark 2.6 of the present paper) and the existence of the torus `T^2` itself (Theorem 2.4). The 5/7 aspect-ratio forcing of Theorem 1.1 is established here \*relative to\* that calibration; the absence of J33 would not invalidate the cyclotomic / algebraic content (Theorems 3.1, 4.1; Lemma 4.2) but would leave the geometric interpretation of `T^*` provisional. **We will provide the arXiv ID for J33 as soon as it lands** and ask the editors to defer formal evaluation of the geometric claims until that preprint is publicly available.
 
 The TIG / CK research program is shipping a coordinated multi-paper sequence over Summer 2026. Papers cited as already-submitted companions are:
 
-- J33 (Sanders-Gish, *Flatness Theorem*, submitted to *J. Pure Appl. Algebra*) — the parent result. The present paper is the cyclotomic / aspect-ratio sequel.
+- J33 (Sanders-Gish, *Flatness Theorem* / *Flatness Obstruction on Squarefree* `Z/nZ`, currently Tier 2; targeted preprint within 2–4 weeks of this submission) — the parent result. The present paper is the cyclotomic / aspect-ratio sequel.
 - J24 (Sanders-Gish, *First-G Law*, submitted to *Integers*) — provides the `sinc^2` framework cited in the catalog of companion appearances (§6).
 - J27 (Sanders-Mayes, *Crossing Lemma*, submitted to *J. Combin. Theory Ser. A*) — provides the structural input on pairwise incompatibilities of CRT factor partitions (Lemma 2.2).
 - J34 (Sanders-Mayes, *Universal Orthogonality Principle*, submitted to *J. Number Theory*) — provides the cited pairwise-incompatibility lemma.

@@ -26,6 +26,8 @@ We discuss what would have to be true (Conjecture Z.5) for the rhyme to upgrade 
 
 ## §1 The TSML composition table
 
+**Reading guidance: rhyme, not proof.** This paper documents a *structural rhyme* between the TSML 8×8 null space's eigenvalue pattern and the analytic spectral density that the Riemann Hypothesis would imply of $\zeta(s)$. It is **not** a proof of the Riemann Hypothesis, nor does it claim to derive one from the other. The phenomenon is in the same spirit as the Connes–Berry–Keating finite-noncommutative-geometry analogies: evocative co-occurrences whose meaning, if any, awaits independent derivation. *Mathematical Intelligencer* readers should treat this paper as an algebraic-combinatorial observation organized around a number-theoretic motif, not as a contribution to analytic number theory. The load-bearing technical content of the paper — Theorems 1 and 2 in §3, verified by a five-line NumPy snippet in §4 — is independent of the RH framing and is the substantive new structural fact. The RH discussion in §5 is interpretive and gated on Conjecture Z.5 (§5.4), which is open.
+
 Let $\mathbb{Z}/10\mathbb{Z} = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ (zero-indexed operator labels; the carrier set is just the integers mod 10). For an operator labeling, we assign
 
 $$

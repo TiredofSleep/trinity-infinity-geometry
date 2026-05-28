@@ -120,7 +120,10 @@ $(b, k)$ pairs for the First-G localization, 4{,}225 $(p, k)$ pairs
 for the basic biconditional, 900 cells for the obstruction-zero
 correspondence, the Euler-product density matched to within
 $7 \times 10^{-6}$ for $b$ up to 2310, and Riemann-sum convergence
-to $\Si(2\pi)/\pi$ within $5 \times 10^{-5}$ at $f = 1000$.
+to $\Si(2\pi)/\pi$ within $5 \times 10^{-5}$ at $f = 1000$. An
+appendix records five harmonic-side companion observations from the
+merged J25 corpus (712-check harness, Montgomery's remark
+connection, $\omega$-blindness corollary).
 \end{abstract}
 
 \maketitle
@@ -247,6 +250,17 @@ continuum limit (Theorem~\ref{thm:limit}) and the corridor-average
 identity (Theorem~\ref{thm:asymptotic}). Section~\ref{sec:verify}
 reports the verification. Section~\ref{sec:scope} lists scope and
 limitations.
+
+\paragraph{Appendix.} An Appendix~\ref{sec:appendix-j25} records
+five harmonic-side companion observations folded in from the
+merged J25 corpus: an $\omega$-blindness corollary
+(Corollary~\ref{cor:appA-omegablind}), a ring-structure-detection
+remark (Remark~\ref{rem:appA-omega-detection}), a complementary
+712-check verification harness, a Montgomery rectangular-window
+remark, and an open question on a dual GUE-side sum
+(Remark~\ref{rem:appA-open-bridge}). None of the appendix material
+is required for the seven body theorems; it is preserved as
+auxiliary harmonic-side observation.
 
 %% -------- section 2: setup --------
 \section{Setup and notation}\label{sec:setup}
@@ -802,6 +816,144 @@ proved in full generality; the finite verification is reassurance,
 not a pillar of the result.
 \end{enumerate}
 
+%% -------- Appendix A: harmonic-side companion observations from J25 corpus --------
+\section{Appendix: Harmonic-side companion observations from the J25 corpus}\label{sec:appendix-j25}
+
+This appendix records five harmonic-side companion observations
+that originated in the merged J25 corpus (see merge history at the
+top of this manuscript and the merger plan at
+\texttt{05\_papers/\_staging/referee\_reports/15\_J25\_to\_J24\_merger\_plan.md}).
+None of the observations are required for any of the seven body
+theorems (\ref{thm:closedform}--\ref{thm:asymptotic}) or the two
+body corollaries (\ref{cor:incl-excl},~\ref{cor:asymp-density});
+they are preserved here as auxiliary remarks that may be useful to
+a reader thinking about the harmonic-side coordinatization.
+
+\subsection*{A.1.\ $\omega$-blindness of the harmonic resonance}
+
+\begin{corollary}[$\omega$-blindness of the harmonic resonance]
+\label{cor:appA-omegablind}
+For a fixed prime $p$, the function $k \mapsto R(k, p)$ depends
+only on $k$ and $p$ and not on any integer $b$ with $p \mid b$,
+regardless of the ring structure $\omega(b)$ (number of distinct
+prime factors of $b$). Concretely: if $p \mid b_{1}$ and $p \mid
+b_{2}$ for two integers $b_{1}, b_{2}$, then $R(k, p)$ has the
+same value at $b = b_{1}$ and $b = b_{2}$ for every $k \ge 1$.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:closedform},
+$R(k, p) = \sin^{2}(\pi k / p) / (k^{2} \sin^{2}(\pi/p))$, which is
+a function of $k$ and $p$ alone. The integer $b$ does not appear
+in the closed form.
+\end{proof}
+
+\subsection*{A.2.\ Consequence for ring-structure detection}
+
+\begin{remark}[Consequence for ring-structure detection]
+\label{rem:appA-omega-detection}
+An observer with access only to the harmonic resonance signal
+$R(k, p)$ for $k = 1, \ldots, p-1$ at a fixed prime $p$ cannot
+distinguish $b = p^{2}$ from $b = p \cdot q$ from $b = p \cdot q
+\cdot r$ (Corollary~\ref{cor:appA-omegablind}). To detect
+$\omega(b)$ from the alphabet, one must observe an additional
+signal beyond the single-prime harmonic resonance; the spectral
+product $f_{b}$ of Definition~\ref{def:spectral-product} carries
+that information through its full set of distinct-prime factors.
+In short: a single-prime harmonic resonance gives the prime; the
+full spectral product (or an algebraic-side closure-defect
+statistic) gives the ring.
+\end{remark}
+
+\subsection*{A.3.\ Complementary 712-check harmonic verification harness}
+
+The seven body theorems are verified by the harness reported in
+Section~\ref{sec:verify} (22{,}367+ pairs across the nine checks
+of the body). A complementary harness focused specifically on the
+harmonic side of the synchronization --- the closed form for
+$R(k, f)$, the smallest-spectral-zero localization, the
+$\omega$-blindness corollary, and the continuum limit --- was
+developed in the merged J25 corpus and is preserved at
+\texttt{05\_papers/number\_theory/J25/manuscript/verify\_prime\_phase\_transition.py}
+per the never-delete provenance discipline. The 712 algebraic
+checks of that harness are distributed as follows:
+
+\begin{center}
+\begin{tabular}{l|c}
+\toprule
+Check class & Algebraic checks \\
+\midrule
+Closed form (Theorem~\ref{thm:closedform}) at 8 primes
+& $106$ \\
+Synchronization (Theorem~\ref{thm:sync}) at 187 semiprimes
+& $561$ \\
+$\omega$-blindness (Corollary~\ref{cor:appA-omegablind}) at 6 rings
+& $42$ \\
+Continuum (Theorem~\ref{thm:limit}) at 3 large primes
+& $3$ \\
+\midrule
+Total
+& $\mathbf{712}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Maximum deviation across all $712$ checks: $1.11 \times 10^{-16}$
+(machine epsilon). Zero exceptions; runtime under three minutes on
+a 2024 consumer laptop. The harness is complementary to the body
+verification of Section~\ref{sec:verify}: it provides additional
+witness coverage for the harmonic side of the synchronization but
+does not exercise the layered-divisor structure
+(Theorem~\ref{thm:layered}) or the corridor average
+(Theorem~\ref{thm:asymptotic}), which are covered by the body
+harness \texttt{proof\_first\_g\_event.py} + \texttt{verify\_J03.py}.
+
+\subsection*{A.4.\ Montgomery rectangular-window remark}
+
+We close the appendix with a brief observation on a coincidence of
+basis functions. Montgomery~\cite{Montgomery1973} proved (assuming
+the Riemann hypothesis, for the relevant range of test parameters)
+that the pair correlation of normalized non-trivial zeros of
+$\zeta(s)$ satisfies
+\[
+  R_{2}(u) = 1 - \left(\frac{\sin(\pi u)}{\pi u}\right)^{2}
+  = 1 - \sinc^{2}(u).
+\]
+Theorem~\ref{thm:limit} of the present paper, on the discrete
+arithmetic side, gives $R(k, f) \to \sinc^{2}(t)$ as $f \to \infty$
+along $k/f \to t$. At the half-period $t = u = 1/2$, both
+functions involve the same constant: $\sinc^{2}(1/2) = 4/\pi^{2}$
+and $1 - \sinc^{2}(1/2) = 1 - 4/\pi^{2}$.
+
+The shared appearance of $\sinc^{2}$ in the two contexts reflects
+the universality of the rectangular spectral window: $\sinc^{2}$
+is the power spectrum of the indicator of an interval
+\cite{Shannon1949,OppenheimSchafer2010}, which appears in
+arithmetic (the alphabet $\{1, \ldots, k\}$ in the present paper)
+and in spectral statistics (the test function in Montgomery's pair
+correlation, where it is the rectangular window in the explicit
+formula). This is a common rectangular-window origin, not a
+connection between the two arithmetic phenomena. We do not claim
+Theorem~\ref{thm:limit} bears on the Riemann hypothesis, on the
+analytic continuation of $\zeta$, or on any aspect of GUE-type
+spectral statistics for zeta zeros (cf. §9 ``What is not claimed'').
+
+\subsection*{A.5.\ Open question on a dual GUE-side sum}
+
+\begin{remark}[Open dual sum]\label{rem:appA-open-bridge}
+The discrete sum $\sum_{k=1}^{f-1} R(k, f) \cdot g(k/f)$ for a
+smooth test function $g$ converges in the limit $f \to \infty$ to
+$\int_{0}^{1} \sinc^{2}(x) g(x)\, dx$ by the Riemann-sum
+interpretation of Theorem~\ref{thm:limit}. Whether the appropriate
+dual sum
+$\sum_{|\gamma| \le T} R_{2}(\gamma/(2\pi)) \cdot \tilde{g}(\gamma)$
+over Riemann zeros admits an analogous closed-form approximation
+in some scaling regime is an open question we leave to future work
+(cf. \cite{Odlyzko1987} for numerical evidence on the pair
+correlation of zeros). We make no claim here that such an
+approximation exists or that the present paper bears on it.
+\end{remark}
+
 %% -------- references --------
 \begin{thebibliography}{99}
 
@@ -839,11 +991,34 @@ H.~Iwaniec and E.~Kowalski.
 \newblock American Mathematical Society Colloquium Publications 53.
 \newblock American Mathematical Society, Providence, RI, 2004.
 
+\bibitem{Montgomery1973}
+H.~L.~Montgomery.
+\newblock The pair correlation of zeros of the zeta function.
+\newblock In \emph{Analytic Number Theory} (Proc.\ Sympos.\ Pure
+Math., St.~Louis, 1972), volume~24, pages 181--193. American
+Mathematical Society, Providence, RI, 1973.
+
+\bibitem{Odlyzko1987}
+A.~M.~Odlyzko.
+\newblock On the distribution of spacings between zeros of the zeta
+function.
+\newblock \emph{Math.\ Comp.}, 48(177):273--308, 1987.
+
+\bibitem{OppenheimSchafer2010}
+A.~V.~Oppenheim and R.~W.~Schafer.
+\newblock \emph{Discrete-Time Signal Processing}, 3rd edition.
+\newblock Prentice Hall, Upper Saddle River, NJ, 2010.
+
 \bibitem{Pomerance1985}
 C.~Pomerance.
 \newblock The role of smooth numbers in number-theoretic algorithms.
 \newblock \emph{Proc.\ Int.\ Congr.\ Math.}\ (Z\"{u}rich, 1994),
 volume~1, pages 411--422. Birkh\"{a}user, 1995.
+
+\bibitem{Shannon1949}
+C.~E.~Shannon.
+\newblock Communication in the presence of noise.
+\newblock \emph{Proc.\ IRE}, 37(1):10--21, 1949.
 
 \bibitem{Tenenbaum2015}
 G.~Tenenbaum.

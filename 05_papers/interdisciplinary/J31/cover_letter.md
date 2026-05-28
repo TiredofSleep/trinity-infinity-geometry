@@ -1,4 +1,4 @@
-# Cover letter — J31: Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate (REVISED 2026-05-07)
+# Cover letter — J31: Specificity Scoping of Algebraic Detectors (REVISED 2026-05-28)
 
 **To:** Editors, *Statistical Science*
 
@@ -8,7 +8,7 @@
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate: A Negative Result on Trained Transformer Weights and a Structured-Matrix Sharpening.*
+**Manuscript title:** *Specificity Scoping of Algebraic Detectors: A Negative on distilgpt2 Weights and a Post-Hoc Sufficient Pair on Structured Matrices.*
 
 ---
 
@@ -26,9 +26,12 @@ We submit a bundled empirical-scoping paper with two complementary parts.
 * The methodology emphasis (power analysis, $z$-score language for single-sample comparisons, look-elsewhere context, post-hoc detector framing) is appropriate for the venue's audience.
 * The negative result on distilgpt2 is reproducible from the included `distilgpt2_sweep.py` script; the structured-matrix battery is reproducible from `structured_matrix_sweep.py`.
 
-## Revisions from the previous draft (per fresh-eyes referee report 2026-05-07)
+## Revisions from the previous draft (per fresh-eyes referee report 2026-05-07 + cluster-07 honest-negatives review 2026-05-28)
 
-This is a substantially-revised submission. The previous draft was gated on a missing distilgpt2 sweep script (referee M1) and had several methodology framing issues (M2-M6). The revisions address each:
+This is a substantially-revised submission. The previous draft was gated on a missing distilgpt2 sweep script (referee M1) and had several methodology framing issues (M2-M6); the cluster-07 review flagged a residual title-vs-scope tension (cluster-07 MAJOR-2). The revisions address each:
+
+* **Title sharpened (cluster-07 MAJOR-2).** Previous title — *"Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate: A Negative Result on Trained Transformer Weights and a Structured-Matrix Sharpening"* — was flagged as overpromising relative to what the paper delivers. New title — *"Specificity Scoping of Algebraic Detectors: A Negative on distilgpt2 Weights and a Post-Hoc Sufficient Pair on Structured Matrices"* — names the two delivered pieces (a scoping negative + a post-hoc sufficient pair) and drops the "substrate test" framing that suggested a broader claim.
+* **§0 scope-of-contribution paragraph added.** A new opening §0 explicitly states "We report negative results" and itemizes the two delivered pieces (negative scoping on distilgpt2 + post-hoc sufficient pair) up-front, before §1. The honest-negative framing is now visible from the first paragraph.
 
 * **M1 (CRITICAL — gating issue): RESOLVED.** The WP106 distilgpt2 sweep script `verification/distilgpt2_sweep.py` is now included. It loads distilgpt2 via HuggingFace's `transformers.AutoModel.from_pretrained("distilgpt2")`, extracts the 16 listed weight tensors, partitions each into 200 random $10 \times 10$ sub-matrices, computes the four detectors against scale-matched Gaussian baseline, and prints the per-tensor Cohen's $d$ table plus a verdict and power statement. Wall-clock $\sim 60$-$120$ s after one-time HuggingFace model download. Verified output: $0/64$ cells reach $|d| \ge 0.5$, max observed $|d| \approx 0.45$.
 * **M2 — Power analysis added.** §2.6 of the manuscript states the achieved power ($\sim 0.94$ for $|d| = 0.3$ at $n = 200$); the verification script prints the same statement.

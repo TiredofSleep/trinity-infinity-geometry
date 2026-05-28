@@ -1,4 +1,4 @@
-# Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate: A Negative Result on Trained Transformer Weights and a Structured-Matrix Sharpening
+# Specificity Scoping of Algebraic Detectors: A Negative on distilgpt2 Weights and a Post-Hoc Sufficient Pair on Structured Matrices
 
 **Authors:** Brayden Ross Sanders$^1$ · M. Gish$^2$
 $^1$ 7Site LLC, Hot Springs, AR — brayden@7site.co
@@ -22,6 +22,18 @@ We define four algebraic detectors on $10 \times 10$ real matrices — D1 (Lie/J
 **Discipline summary.** Cohen's $d$ values for single-sample TSML / BHML against a 200-sample Gaussian baseline are *$z$-scores*, not standard Cohen's $d$ between two distributions; we report them as such. Look-elsewhere correction for the 64 (tensor, detector) cells of Part 1 is stated explicitly. The post-hoc nature of D5 / $D_4^{\mathrm{eq}}$ is stated explicitly. The "specificity boundary" framing is reduced to the more conservative "specificity scoping result on this one family of trained transformer weights."
 
 **Keywords:** specificity scoping, transformer weights, finite magma, algebraic detectors, prime-11 structural signature, post-hoc analysis.
+
+---
+
+## §0 Scope of contribution: an honest negative and a post-hoc sufficient pair
+
+**We report negative results.** This paper does *not* claim that the four algebraic detectors of §1.2 — designed against an explicit pair of $10 \times 10$ integer matrices (TSML, BHML) from a separate finite-magma research program — generalize as a universal "substrate-structure" probe on arbitrary linear-algebraic data. Two specific things are delivered:
+
+1. **A clean specificity-scoping negative** on one family of trained transformer weights (distilgpt2): across 16 weight tensors and 4 detectors (64 cells), Cohen's $|d| < 0.5$ at $n = 200$, with the two-sample test powered $\approx 0.94$ to detect $|d| = 0.3$. The detectors discriminate TSML from a Gaussian baseline at single-sample $z$-scores up to $\approx -9$, but they do *not* discriminate distilgpt2 sub-matrices from a scale-matched Gaussian baseline. We frame this honestly as a scoping result on this one transformer family, not as a general "TIG-structure absence" indicator across architectures.
+
+2. **A post-hoc confirmatory identification of a sufficient detector pair** for TSML in a 9-family structured-matrix battery: among D1-D4, only D3 (prime-11 in the integer characteristic polynomial coefficients) is uniquely TIG-positive; the other three are family-structural. Two further detectors D5 (prime-7 in the squarefree discriminant) and $D_4^{\mathrm{eq}}$ ($D_4$-orbit-averaged Higgs) are introduced *in light of TSML's known algebraic structure*; the joint test "D3 = 1 AND D5 at $7^5$ = 1" fires only on TSML in the 1800+ sample structured population. **Because D5 and $D_4^{\mathrm{eq}}$ are post-hoc, this is a confirmatory identification, not a blind test.** Out-of-sample validation on a held-out family designed disjointly from the present battery is recommended as follow-up (§3.5).
+
+The paper is an empirical-scoping note (no theorems are proven); the honest-negative framing is load-bearing, the post-hoc disclosure is load-bearing, and the "specificity boundary" rhetoric of an earlier draft has been reduced throughout to the more conservative "specificity scoping result on this one family of trained transformer weights."
 
 ---
 
