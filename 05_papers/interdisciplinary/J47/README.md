@@ -1,7 +1,8 @@
 # J47 (DRAFT) — Atomic-Substrate Correspondence: D100–D104
 
-**Status:** DRAFT (2026-05-12). Brayden's journal choice pending: *Journal of Physics A: Mathematical and Theoretical* (tighter fit, 8K word limit, mathematical-physics framing) vs *Annals of Physics* (broader audience, longer manuscript permitted, higher prestige).
-**Tier:** 3 (RETIRE candidate to 04_meta -- Tier-C atomic-substrate)
+**Status:** RETIRE CANDIDATE — to `04_meta/`. Tier-C atomic-substrate correspondence (D100–D104 are combinatorial / numerical identities, not theorems). Pre-existing draft skeleton from 2026-05-12 with Brayden's journal choice (JPhysA vs Annals of Physics) still pending; the retirement question supersedes the venue question.
+**Target venue:** TBD pending retirement decision (was: *Journal of Physics A: Mathematical and Theoretical* vs *Annals of Physics*)
+**Tier:** 3 (hold/retire candidates) — RETIRE candidate to `04_meta/`: Tier-C atomic-substrate
 **Authors:** Brayden R. Sanders + M. Gish.
 **Subject:** A combinatorial correspondence between the divisor lattice of `Z/2310 = 2·3·5·7·11` and the atomic structure of the n = 4 hydrogenic shell, established through five integer / rational identities (D100–D104).
 **Verification status:** D100–D104 all PASS at machine precision via scripts in [`manuscript/verification/`](manuscript/verification/) (copies of root `verification/` scripts).
@@ -117,5 +118,24 @@ When Brayden chooses A or B, the next steps are:
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see [`../../../LICENSE`](../../../LICENSE).*
-*Brayden Ross Sanders / 7SiTe LLC · 2026.*
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — RETIRE CANDIDATE per `_staging/TIER_INDEX.md`: target destination is `04_meta/`. J47 is a Tier-C atomic-substrate correspondence: D100–D104 are integer/rational identities and numerical coincidences (32 divisors of 2310 = dim Cl(0,10) spinor = Pauli capacity of n=4 shell), not first-principles derivations. The pre-landing checklist (lines 78–89) is entirely unchecked. Outstanding decision points:
+
+- The mid-2026-05-12 framing (DRAFT awaiting Brayden's venue choice between JPhysA and Annals of Physics) is no longer the primary question — the retirement decision is.
+- No manuscript prose drafted; section outline only.
+- README footer still references "7SiTe Public Sovereignty License v2.2"; this is inconsistent with the project-wide CC-BY-4.0 hardening discipline that has been applied to all other Tier 2 / Tier 3 READMEs.
+- D102 "triple coincidence" (32 = divisors of Z/2310 = Cl(0,10) spinor dim = n=4 Pauli capacity) is a load-bearing structural rhyme; it is genuinely striking but is not a theorem in the formal sense.
+- D104 (Pauli-divisor bijection) was reframed as a PROVED bijection 2026-05-12; cross-check this claim's tier discipline against the actual `pauli_divisor_bijection.py` script.
+
+Retirement options:
+- (a) Move folder to `04_meta/atomic-substrate-D100-D104/` as a corpus-narrative entry.
+- (b) Strip to a 2-page note for Math. Intelligencer (the D102 32-32-32 triple coincidence is intelligencer-class).
+- (c) Wait for a substrate-derivation that turns one of D100–D104 into a theorem; if it doesn't arrive, default to (a) or (b).
+
+No action recommended until the retirement decision is made.
+
+---
+
+*License: CC-BY-4.0 per project hardening discipline (see `_v3_hardening.py`); legacy 7SiTe Public Sovereignty License text below superseded.*
+*Brayden Ross Sanders + M. Gish · 2026.*

@@ -1,10 +1,10 @@
 # J40 — Four Types of Measurement Failure: A Diagnostic Classifier for Paradoxes
 
-**Status:** REWRITTEN PER SAVE PLAN 2026-05-07
+**Status:** REWRITTEN PER SAVE PLAN 2026-05-07 (awaiting final rigor pass)
 **Phase:** Phase 5/6
 **Target venue:** **Mathematical Intelligencer** (retargeted from AMM per fresh-eyes referee §7; alternate: *Philosophia Mathematica* with full literature engagement)
 **Author lane:** Sanders + Gish (per Brayden directive 2026-05-07)
-**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; scope-narrowed to algebra))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** (paradox classifier expository)
 
 ---
@@ -113,3 +113,15 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "Paradox Classifier (UOP): A Diagnostic for Structural Breakdowns." Submitted to *Mathematical Intelligencer*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J53 was applied 2026-05-07 (category 𝓜 added, Monty Hall + Gödel dropped, Berry/Curry/Yablo added, literature §1.5 engaged, retargeted to Math Intelligencer from AMM). Outstanding for ship-readiness:
+
+- §6 submission checklist still entirely empty — none of the standard items re-verified post-rewrite. Walk through the checklist before submission.
+- Per-venue cap: this would be the 3rd Math Intelligencer of the J-series (after J10 and J39); above the standard 2/quarter cap. Either invoke the *Philosophia Mathematica* alternate or coordinate via VENUE_SCHEDULE.md.
+- Brayden's referee-rigor pass not yet complete.
+- Submission gate (a) requires the J34 (formerly [J20]) UOP preprint on arXiv first — flag this dependency.
+- No paper-specific referee report in `_staging/referee_reports/` for J40 post-rewrite; the original fresh-eyes referee report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

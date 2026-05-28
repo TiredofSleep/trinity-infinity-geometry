@@ -1,10 +1,10 @@
 # J33 — A Flatness Obstruction on Squarefree Z/nZ: Four Algebraic Structures and the 4-Core Algebraic Center
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07 (retitled, retargeted, restructured around D48 + D78; T*=5/7 derivation removed)
+**Status:** SAVE-PLAN APPLIED 2026-05-07 (retitled, retargeted, restructured around D48 + D78; T*=5/7 derivation removed; awaiting rigor pass)
 **Phase:** Phase 1
 **Target venue (new):** *Algebraic Combinatorics* (preferred) OR *Discrete Mathematics*. Backup: *Integers* / *Math. Magazine* for compressed Theorem-1-only note.
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (SAVE-PLAN APPLIED; restructured))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP51
 
 ---
@@ -103,3 +103,13 @@ The full paragraph identifies (i) Theorem 1 + 2 as substrate-independent (any sq
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B. R. & Gish, M. (2026). "A Flatness Obstruction on Squarefree Z/nZ: Four Algebraic Structures and the 4-Core Algebraic Center." Submitted to *Algebraic Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J07 was applied 2026-05-07 with manuscript restructured around D48 + D78; T*=5/7 derivation explicitly abandoned. Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass (mobile + other AI + collaborators) not yet complete (§6 checklist last two boxes unchecked).
+- Per-venue cap check vs J15 (also targeting Algebraic Combinatorics) pending — coordinate with VENUE_SCHEDULE.md.
+- No new fresh-eyes referee report has been issued post-rewrite; the original referee report (pre-save-plan) lives at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and the save plan response is the 2026-05-07 manuscript rewrite. A second-pass referee read may surface new issues.

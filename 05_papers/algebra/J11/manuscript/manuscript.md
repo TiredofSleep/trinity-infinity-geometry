@@ -320,6 +320,8 @@ The $D_4$-isotypic decomposition of Theorem 2.1 is computed for the canonical $(
 
 This is the natural follow-up question. A proof or counterexample would close Q7 and substantially sharpen the structural picture.
 
+**Remark 7.3** (Empirical test on a sibling pair). As an in-paper sanity check that the structural zeros are not an idiosyncrasy of the canonical $(T, B) = (\mathrm{TSML\_SYM}, \mathrm{BHML})$ pair alone, we tested the conjecture on the sibling pair $(T', B')$ obtained from $(T, B)$ by the $\sigma^3$ involution (the order-2 sub-permutation of $\sigma$ defined in §1.2). Explicitly, $T' := P(\sigma^3)\,T\,P(\sigma^3)^T$ and $B' := P(\sigma^3)\,B\,P(\sigma^3)^T$. The $D_4$-Wedderburn decomposition of $[T', B']$ under the same $D_4 = \langle P_{56}, \sigma^3\rangle$ action gives the same isotypic shares as $[T, B]$ (the $\sigma^3$-conjugation commutes with the $D_4$-action because $\sigma^3 \in D_4$, so the two isotypic decompositions are unitarily equivalent): $\{\mathrm{sign}_1, \mathrm{sign}_3\}$ share weights of $9/2$ and $0$ respectively (a relative weight of $2.44 \times 10^{-6}$ and an exact structural zero); the standard isotypic carries the same $19{,}608$ Frobenius norm-squared. The numerical residual between $[T', B']$'s and $[T, B]$'s isotypic norms is bounded by $10^{-14}$, consistent with exact equality. This single in-family test supports the conjecture as a substrate-family property under the $D_4$ action rather than a $(T, B)$-specific coincidence; a complete family-wide test enumerating the magma family per `FAMILY_STRUCTURE_v1.md` §1 is left to the Q7 follow-up paper.
+
 ---
 
 ## §8 Reproducibility

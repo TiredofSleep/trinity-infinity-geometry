@@ -1,10 +1,10 @@
 # J45 — An Operadic Obstruction in a Bilinear-Closed Magma on $\mathbb{Z}/10\mathbb{Z}$: A Synthesis
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07
+**Status:** RETIRE CANDIDATE — duplicates J10 operadic obstruction. Save plan was applied 2026-05-07 (Operad D_4 obstruction promoted to lead theorem; Lie/Jordan/Clifford collapsed to bilinear-closure DOF; restructured to 10-page synthesis). The Operad obstruction is genuinely from WP109 / J10's lineage, raising the question of duplicative content.
 **Phase:** Phase 5
-**Target venue:** Notices AMS (fallback: Adv. Math or J. Pure Appl. Algebra)
+**Target venue:** Notices AMS (fallback: Adv. Math or J. Pure Appl. Algebra) — pending retirement decision
 **Author lane:** Sanders + Gish
-**Tier:** 3 (RETIRE candidate -- duplicates J10 operadic obstruction)
+**Tier:** 3 (hold/retire candidates) — RETIRE candidate: duplicates J10 operadic obstruction
 **WP source:** WP109 (operad obstruction), WP111 (synthesis), WP112 (P_56 canonical fuse)
 
 ---
@@ -146,3 +146,21 @@ This paper situates the WP100s tower's algebraic content as structures on or aro
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "An Operadic Obstruction in a Bilinear-Closed Magma on $\Z/10\Z$: A Synthesis." Submitted to *Notices of the American Mathematical Society*. Synthesis of J01, J19, J38, J43, J38, J44.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — RETIRE CANDIDATE per `_staging/TIER_INDEX.md`: duplicates J10 (Operadic D₄ Orbits on the Non-Associative Locus). Save plan was applied 2026-05-07 with the Operad D_4 obstruction promoted to lead theorem; the question is whether the lead-theorem content is genuinely independent from J10 or merely a re-presentation. Outstanding decision points:
+
+- The §3 dependency list refers to companions under old numbering ("J29-J01", "J19-J44"); these need re-mapping under the 2026-05-27 renumbering before any submission attempt.
+- Manuscript file is named `J48_operadic_obstruction.md` (legacy numbering) — would need rename.
+- The "synthesis of four axes" framing was honestly acknowledged by save plan to be soft ("we organize the algebraic content into 4 structural axes that have not been observed to reduce to one another"); not a uniqueness theorem.
+- Multiple cross-references to "J19/J38/J43/J38/J44" (note duplicate J38) suggest the dependency labels need a thorough renumbering pass.
+
+Retirement options:
+- (a) Move to `04_meta/` if J10's operadic obstruction subsumes the lead theorem.
+- (b) Retain only the SFM Q6 D_4 isotypic decomposition (84.25/14.68/1.07) as a standalone short note for a specialty venue.
+- (c) Re-evaluate post-J10 final-form to determine whether J45 carries any independent theorem-grade content.
+
+No action recommended until the retirement decision is made.

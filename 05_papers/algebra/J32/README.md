@@ -1,10 +1,10 @@
 # J32 — TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice
 
-**Status:** REVISED (2026-05-08; SFM family-structure framing applied)
+**Status:** REVISED (2026-05-08; SFM family-structure framing applied; awaiting rigor pass)
 **Phase:** Phase 1
 **Target venue:** Experimental Mathematics
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REVISED 2026-05-08; SFM framing applied))
+**Tier:** 2 (drafts needing rigor pass)
 
 ---
 
@@ -96,3 +96,13 @@ We work on $\Zten$ with the specific commutative tables $\TSML$ and $\BHML$ defi
 ## §7 — Citation footprint
 
 Sanders, B.R., Gish. (2026). "TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice." Submitted to *Experimental Mathematics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. Content stable from the 2026-05-08 SFM revision (cell counts proven, scripts green, family-structure §5 added). Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass (mobile + other AI + collaborators) is not yet complete (see §6 checklist; final two boxes unchecked).
+- Theorem 3 (lens-invariance) is honestly framed as a consistency check rather than an autotopism/paratopism invariance theorem; whether the Stab(7)-invariance extends to autotopism/paratopism is open and should be addressed (or left as an open question with a one-paragraph remark) before submission.
+- No paper-specific referee report in `_staging/referee_reports/` for J32; the prior fresh-eyes referee report lives at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J05_ExpMath_FreshEyes.md` and the SFM-derived response was applied 2026-05-08.

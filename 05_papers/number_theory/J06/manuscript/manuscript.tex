@@ -69,7 +69,7 @@ We identify the six-prime set $\mathcal{S} = \{2, 3, 5, 7, 11, 13\}$ --- the fir
 
 The combination of Theorems 1–4 confirms a layered structural picture: $\mathcal{S}$ is the "small-prime universe" of the Niemeier lattice classification and a substantial-but-restricted sub-universe of sporadic-group orders, with prime $71$ acting as the extreme Stratum-IV identifier for the Monster.
 
-\textbf{Tier discipline.} Theorems 1, 2, 4 are Tier A. Theorem 3 is Tier B (precise empirical claim with explicit failure analysis). Theorem 2 explains \textit{why} the Niemeier kissing-number pattern shows up (polynomial arithmetic at rank 24); it does not establish a deep correspondence between independent objects. Theorem 4 is anchored by the Conway-Norton characterization of supersingular primes --- 71 is the \textit{largest} prime $p$ for which $X_0(p)$ has genus 0, not merely the largest prime in the Monster by cardinality. Theorem 3's 8/26 boundary tracks group order rather than structural type; it is consistent with the polynomial-arithmetic interpretation of Theorem 2.
+\textbf{Tier discipline.} Theorems 1, 2, 4 are Tier A. Theorem 3 is Tier B (precise empirical claim with explicit failure analysis). Theorem 2 explains \textit{why} the Niemeier kissing-number pattern shows up (polynomial arithmetic at rank 24); it does not establish a deep correspondence between independent objects. Theorem 4 is anchored by the Ogg (1975) characterization of supersingular primes --- 71 is the \textit{largest} prime $p$ for which $X_0(p)^+$ (the Atkin--Lehner quotient curve) has genus 0, not merely the largest prime in the Monster by cardinality. Conway-Norton (1979) subsequently connected this characterization to monstrous moonshine; Borcherds (1992) proved monstrous moonshine. Theorem 3's 8/26 boundary tracks group order rather than structural type; it is consistent with the polynomial-arithmetic interpretation of Theorem 2.
 
 \textbf{Closest published precedent}: Conway \& Sloane, \textit{Sphere Packings, Lattices and Groups} (3rd ed., 1999) for the Niemeier classification + lattice arithmetic; Conway-Curtis-Norton-Parker-Wilson, \textit{Atlas of Finite Groups} (1985), for sporadic-group orders.
 
@@ -88,37 +88,37 @@ The strata-clean condition is a natural arithmetic restriction: it excludes 17, 
 
 The 24 Niemeier lattices (Niemeier 1973, classified independently by Venkov 1980) are the 24 distinct even unimodular Euclidean lattices in 24 dimensions, up to isomorphism. They are uniquely characterized by their root system (a root sub-system in the lattice of vectors of norm-squared 2), with the constraint that the root system spans the full 24-dimensional space and has all components of equal Coxeter number $h$.
 
-The 24 root systems (listed by ascending |R|):
+The 24 root systems (listed by \textbf{ascending Coxeter number $h$}, following Conway--Sloane \textit{SPLAG} Table 16.1; the Leech lattice is the exceptional root-free case and is listed last):
 
 \begin{center}
 \begin{tabular}{llllllll}
 \toprule
 # & Niemeier & Root system & rank & h & Kissing & R &  \\
 \midrule
-1 & Leech & (none) & 0 & – & 196560 &  &  \\
-2 & $A_1^{24}$ & 24 $A_1$ & 24 & 2 & 48 &  &  \\
-3 & $A_2^{12}$ & 12 $A_2$ & 24 & 3 & 72 &  &  \\
-4 & $A_3^8$ & 8 $A_3$ & 24 & 4 & 96 &  &  \\
-5 & $A_4^6$ & 6 $A_4$ & 24 & 5 & 120 &  &  \\
-6 & $D_4^6$ & 6 $D_4$ & 24 & 6 & 144 &  &  \\
-7 & $A_5^4 D_4$ & 4 $A_5$ + 1 $D_4$ & 24 & 6 & 144 &  &  \\
-8 & $A_6^4$ & 4 $A_6$ & 24 & 7 & 168 &  &  \\
-9 & $A_7^2 D_5^2$ & 2 $A_7$ + 2 $D_5$ & 24 & 8 & 192 &  &  \\
-10 & $A_8^3$ & 3 $A_8$ & 24 & 9 & 216 &  &  \\
-11 & $D_6^4$ & 4 $D_6$ & 24 & 10 & 240 &  &  \\
-12 & $A_9^2 D_6$ & 2 $A_9$ + 1 $D_6$ & 24 & 10 & 240 &  &  \\
-13 & $E_6^4$ & 4 $E_6$ & 24 & 12 & 288 &  &  \\
-14 & $A_{11} D_7 E_6$ & mixed & 24 & 12 & 288 &  &  \\
-15 & $A_{12}^2$ & 2 $A_{12}$ & 24 & 13 & 312 &  &  \\
-16 & $D_8^3$ & 3 $D_8$ & 24 & 14 & 336 &  &  \\
-17 & $A_{15} D_9$ & mixed & 24 & 16 & 384 &  &  \\
-18 & $A_{17} E_7$ & mixed & 24 & 18 & 432 &  &  \\
-19 & $D_{10} E_7^2$ & mixed & 24 & 18 & 432 &  &  \\
+1 & $A_1^{24}$ & 24 $A_1$ & 24 & 2 & 48 &  &  \\
+2 & $A_2^{12}$ & 12 $A_2$ & 24 & 3 & 72 &  &  \\
+3 & $A_3^8$ & 8 $A_3$ & 24 & 4 & 96 &  &  \\
+4 & $A_4^6$ & 6 $A_4$ & 24 & 5 & 120 &  &  \\
+5 & $D_4^6$ & 6 $D_4$ & 24 & 6 & 144 &  &  \\
+6 & $A_5^4 D_4$ & 4 $A_5$ + 1 $D_4$ & 24 & 6 & 144 &  &  \\
+7 & $A_6^4$ & 4 $A_6$ & 24 & 7 & 168 &  &  \\
+8 & $A_7^2 D_5^2$ & 2 $A_7$ + 2 $D_5$ & 24 & 8 & 192 &  &  \\
+9 & $A_8^3$ & 3 $A_8$ & 24 & 9 & 216 &  &  \\
+10 & $D_6^4$ & 4 $D_6$ & 24 & 10 & 240 &  &  \\
+11 & $A_9^2 D_6$ & 2 $A_9$ + 1 $D_6$ & 24 & 10 & 240 &  &  \\
+12 & $E_6^4$ & 4 $E_6$ & 24 & 12 & 288 &  &  \\
+13 & $A_{11} D_7 E_6$ & mixed & 24 & 12 & 288 &  &  \\
+14 & $A_{12}^2$ & 2 $A_{12}$ & 24 & 13 & 312 &  &  \\
+15 & $D_8^3$ & 3 $D_8$ & 24 & 14 & 336 &  &  \\
+16 & $A_{15} D_9$ & mixed & 24 & 16 & 384 &  &  \\
+17 & $A_{17} E_7$ & mixed & 24 & 18 & 432 &  &  \\
+18 & $D_{10} E_7^2$ & mixed & 24 & 18 & 432 &  &  \\
+19 & $D_{12}^2$ & 2 $D_{12}$ & 24 & 22 & 528 &  &  \\
 20 & $A_{24}$ & 1 $A_{24}$ & 24 & 25 & 600 &  &  \\
-21 & $D_{12}^2$ & 2 $D_{12}$ & 24 & 22 & 528 &  &  \\
-22 & $E_8^3$ & 3 $E_8$ & 24 & 30 & 720 &  &  \\
-23 & $D_{16} E_8$ & 1 $D_{16}$ + 1 $E_8$ & 24 & 30 & 720 &  &  \\
-24 & $D_{24}$ & 1 $D_{24}$ & 24 & 46 & 1104 &  &  \\
+21 & $E_8^3$ & 3 $E_8$ & 24 & 30 & 720 &  &  \\
+22 & $D_{16} E_8$ & 1 $D_{16}$ + 1 $E_8$ & 24 & 30 & 720 &  &  \\
+23 & $D_{24}$ & 1 $D_{24}$ & 24 & 46 & 1104 &  &  \\
+24 & Leech ($\Lambda_{24}$) & (none) & 0 & – & 196560 &  &  \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -135,39 +135,41 @@ For Niemeier lattices, the kissing number equals the number of roots in the unde
 
 \textbf{Proof.} Direct factorization of each kissing number against the prime set $\mathcal{S}$. Computational verification: \texttt{verify_J63.py}, all 24 lattices, runs in <1 second. The 23 passing cases factor as:
 
+(Listed in the same order as the §2 table, i.e. by ascending Coxeter number $h$, with Leech last; entries shown are the 23 kissing-strata-clean Niemeiers.)
+
 \begin{center}
 \begin{tabular}{llll}
 \toprule
 # & Niemeier & Kissing & Factorization \\
 \midrule
-1 & Leech & 196560 & $2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13$ \\
-2 & $A_1^{24}$ & 48 & $2^4 \cdot 3$ \\
-3 & $A_2^{12}$ & 72 & $2^3 \cdot 3^2$ \\
-4 & $A_3^8$ & 96 & $2^5 \cdot 3$ \\
-5 & $A_4^6$ & 120 & $2^3 \cdot 3 \cdot 5$ \\
-6 & $D_4^6$ & 144 & $2^4 \cdot 3^2$ \\
-7 & $A_5^4 D_4$ & 144 & $2^4 \cdot 3^2$ \\
-8 & $A_6^4$ & 168 & $2^3 \cdot 3 \cdot 7$ \\
-9 & $A_7^2 D_5^2$ & 192 & $2^6 \cdot 3$ \\
-10 & $A_8^3$ & 216 & $2^3 \cdot 3^3$ \\
-11 & $D_6^4$ & 240 & $2^4 \cdot 3 \cdot 5$ \\
-12 & $A_9^2 D_6$ & 240 & $2^4 \cdot 3 \cdot 5$ \\
-13 & $E_6^4$ & 288 & $2^5 \cdot 3^2$ \\
-14 & $A_{11} D_7 E_6$ & 288 & $2^5 \cdot 3^2$ \\
-15 & $A_{12}^2$ & 312 & $2^3 \cdot 3 \cdot 13$ \\
-16 & $D_8^3$ & 336 & $2^4 \cdot 3 \cdot 7$ \\
-17 & $A_{15} D_9$ & 384 & $2^7 \cdot 3$ \\
-18 & $A_{17} E_7$ & 432 & $2^4 \cdot 3^3$ \\
-19 & $D_{10} E_7^2$ & 432 & $2^4 \cdot 3^3$ \\
+1 & $A_1^{24}$ & 48 & $2^4 \cdot 3$ \\
+2 & $A_2^{12}$ & 72 & $2^3 \cdot 3^2$ \\
+3 & $A_3^8$ & 96 & $2^5 \cdot 3$ \\
+4 & $A_4^6$ & 120 & $2^3 \cdot 3 \cdot 5$ \\
+5 & $D_4^6$ & 144 & $2^4 \cdot 3^2$ \\
+6 & $A_5^4 D_4$ & 144 & $2^4 \cdot 3^2$ \\
+7 & $A_6^4$ & 168 & $2^3 \cdot 3 \cdot 7$ \\
+8 & $A_7^2 D_5^2$ & 192 & $2^6 \cdot 3$ \\
+9 & $A_8^3$ & 216 & $2^3 \cdot 3^3$ \\
+10 & $D_6^4$ & 240 & $2^4 \cdot 3 \cdot 5$ \\
+11 & $A_9^2 D_6$ & 240 & $2^4 \cdot 3 \cdot 5$ \\
+12 & $E_6^4$ & 288 & $2^5 \cdot 3^2$ \\
+13 & $A_{11} D_7 E_6$ & 288 & $2^5 \cdot 3^2$ \\
+14 & $A_{12}^2$ & 312 & $2^3 \cdot 3 \cdot 13$ \\
+15 & $D_8^3$ & 336 & $2^4 \cdot 3 \cdot 7$ \\
+16 & $A_{15} D_9$ & 384 & $2^7 \cdot 3$ \\
+17 & $A_{17} E_7$ & 432 & $2^4 \cdot 3^3$ \\
+18 & $D_{10} E_7^2$ & 432 & $2^4 \cdot 3^3$ \\
+19 & $D_{12}^2$ & 528 & $2^4 \cdot 3 \cdot 11$ \\
 20 & $A_{24}$ & 600 & $2^3 \cdot 3 \cdot 5^2$ \\
-21 & $D_{12}^2$ & 528 & $2^4 \cdot 3 \cdot 11$ \\
-22 & $E_8^3$ & 720 & $2^4 \cdot 3^2 \cdot 5$ \\
-23 & $D_{16} E_8$ & 720 & $2^4 \cdot 3^2 \cdot 5$ \\
+21 & $E_8^3$ & 720 & $2^4 \cdot 3^2 \cdot 5$ \\
+22 & $D_{16} E_8$ & 720 & $2^4 \cdot 3^2 \cdot 5$ \\
+23 & Leech ($\Lambda_{24}$) & 196560 & $2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The single failure:
+The single failure (the §2 table's slot \#23, the rank-24 single-component $D$-type Niemeier; the only Niemeier with $h = 46$):
 
 | 24 | $D_{24}$ | \textbf{1104} | $2^4 \cdot 3 \cdot \mathbf{23}$ |
 
@@ -262,35 +264,37 @@ So Theorem 3 should be read as \textbf{"the boundary between strata-PASS and str
 
 A natural worry: \textit{the Monster is enormously larger than any other sporadic, so it naturally accumulates more primes; "71 in M only" might be a cardinality effect, not a structural fact.}
 
-This worry is \textbf{addressed by the Conway-Norton characterization of supersingular primes} (Conway-Norton 1979, "Monstrous Moonshine," \textit{Bull. London Math. Soc.} 11, 308).
+This worry is \textbf{addressed by the Ogg--Conway--Norton characterization of supersingular primes} (Ogg 1975 posed the conjecture and offered the prize; Conway-Norton 1979 connected it to monstrous moonshine; Borcherds 1992 proved monstrous moonshine).
 
-\textbf{Conway-Norton Theorem (1979).} *The 15 primes dividing the Monster's order are exactly the primes $p$ for which the modular curve $X_0(p)$ has genus $0$ --- equivalently, the primes for which $\Gamma_0(p) \subset \mathrm{PSL}_2(\mathbb{Z})$ admits a Hauptmodul.*
+\textbf{Theorem 4 (Ogg 1975; the supersingular-prime characterization).} *A prime $p$ divides the order of the Monster $M$ if and only if the Atkin--Lehner quotient $X_0(p)^+$ has genus $0$ --- equivalently, $p \in \{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71\}$. (Ogg 1975 posed the conjecture before monstrous moonshine; Conway-Norton 1979 connected it to the Monster's irreducible representations.)*
 
 These 15 primes are
 $$\mathrm{Supersingular}(M) = \{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71\}.$$
 
-\textbf{Crucially}: $71$ is the \textbf{largest} prime $p$ for which $X_0(p)$ has genus $0$. For every prime $p > 71$, the modular curve $X_0(p)$ has positive genus, and consequently no Hauptmodul exists (and Conway-Norton's Monster characterization fails to extend).
+\textbf{Remark on the $X_0(p)$ vs $X_0(p)^+$ distinction.} Ogg's statement involves the Atkin--Lehner quotient $X_0(p)^+ = X_0(p)/\langle w_p \rangle$, not $X_0(p)$ plain. For the 15 supersingular primes both curves do have genus 0, but for some larger primes (e.g., 37, 43, 53, 61, 67, 73, 79, 83, 89, 101, 113, 131) the distinction is nontrivial: the precise statement is "$p$ supersingular $\iff X_0(p)^+$ has genus 0," equivalently "$\iff$ the normalizer $N(\Gamma_0(p))$ in $\mathrm{PSL}_2(\mathbb{R})$ admits a Hauptmodul."
+
+\textbf{Crucially}: $71$ is the \textbf{largest} prime $p$ for which $X_0(p)^+$ has genus $0$. For every prime $p > 71$, $X_0(p)^+$ has positive genus, and consequently no Hauptmodul exists (and the Ogg--Conway--Norton Monster characterization fails to extend).
 
 This gives a \textbf{structural reason} for "71 in M only":
 \begin{itemize}
-\item 71 is the unique largest supersingular prime --- the \textit{upper limit} of the genus-0 spectrum.
-\item The Monster's prime divisors are exactly the supersingular primes (Conway-Norton 1979).
+\item 71 is the unique largest supersingular prime --- the \textit{upper limit} of the genus-0 $X_0(p)^+$ spectrum.
+\item The Monster's prime divisors are exactly the supersingular primes (Ogg 1975; cited by Conway-Norton 1979 and proved as part of the moonshine program by Borcherds 1992).
 \item No sporadic group of order strictly bounded by the Monster has 71 as a prime divisor (verified by direct factorization).
 \end{itemize}
 
-So "71 appears only in the Monster" is \textbf{the precise upper limit of the supersingular spectrum}, not "M happens to be large enough." The Conway-Norton characterization anchors Stratum IV's prime $71$ in the Hauptmodul structure of $\mathrm{PSL}_2(\mathbb{Z})$.
+So "71 appears only in the Monster" is \textbf{the precise upper limit of the supersingular spectrum}, not "M happens to be large enough." The Ogg characterization anchors Stratum IV's prime $71$ in the Hauptmodul structure of $\mathrm{PSL}_2(\mathbb{R})$.
 
 \subsection{The Stratum IV designation}
 
 This validates the four-stratum decomposition of the Braiding Fractal program:
 \begin{itemize}
 \item Strata I-III: $\{2, 3, 5, 7, 11, 13\}$ --- the kissing-number / Niemeier universe + 8 of 26 sporadics. These are \textit{small} polynomial-arithmetic primes per Theorem 2.
-\item Stratum IV: $\{71\}$ --- the unique Monster-only prime; \textbf{anchored by Conway-Norton as the largest genus-0 supersingular prime}.
+\item Stratum IV: $\{71\}$ --- the unique Monster-only prime; \textbf{anchored by Ogg (1975) as the largest genus-0 supersingular prime (Atkin-Lehner quotient $X_0(p)^+$)}.
 \end{itemize}
 
-Among the 15 supersingular primes $\{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71\}$, TIG strata pick out exactly the lower-and-upper extremes: the first six ($\mathcal{S}$) plus the last ($71$), skipping the middle 9 intermediate primes. The lower bound $\mathcal{S}$ has the polynomial-arithmetic explanation of Theorem 2; the upper bound $\{71\}$ has the Conway-Norton-moonshine explanation of §6.1.
+Among the 15 supersingular primes $\{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71\}$, TIG strata pick out exactly the lower-and-upper extremes: the first six ($\mathcal{S}$) plus the last ($71$), skipping the middle 9 intermediate primes. The lower bound $\mathcal{S}$ has the polynomial-arithmetic explanation of Theorem 2; the upper bound $\{71\}$ has the Ogg / monstrous-moonshine explanation of §6.1.
 
-The 9 intermediate primes $\{17, 19, 23, 29, 31, 41, 47, 59\}$ are not absent from TIG strata by accident --- they are precisely the primes appearing in sporadic-group orders without occupying either extreme. They have no Braiding-Fractal-side structural anchor; they appear in the Monster (and other sporadics) but not in TIG's substrate-program prime hierarchy. \textbf{This intermediate-prime gap is itself an open question} --- it's not explained by Theorem 2 or by Conway-Norton.
+The 9 intermediate primes $\{17, 19, 23, 29, 31, 41, 47, 59\}$ are not absent from TIG strata by accident --- they are precisely the primes appearing in sporadic-group orders without occupying either extreme. They have no Braiding-Fractal-side structural anchor; they appear in the Monster (and other sporadics) but not in TIG's substrate-program prime hierarchy. \textbf{This intermediate-prime gap is itself an open question} --- it's not explained by Theorem 2 or by Ogg's characterization.
 
 \section{Discussion}
 
@@ -307,11 +311,11 @@ The Steiner system $S(5, 8, 24)$ underlying $M_{24}$ has automorphism group of o
 
 \subsection{Connection to the Monster moonshine}
 
-The 15 supersingular primes (Conway-Norton 1979) are exactly the primes dividing the Monster's order, and equivalently the primes $p$ for which $X_0(p)$ has genus 0 (Hauptmodul existence). TIG strata I-III + IV = $\{2, 3, 5, 7, 11, 13, 71\}$ form a specific 7-element subset of the 15 supersingular primes --- the \textbf{lower-and-upper extremes}:
+The 15 supersingular primes (Ogg 1975; Conway-Norton 1979 in the moonshine context) are exactly the primes dividing the Monster's order, and equivalently the primes $p$ for which $X_0(p)^+$ has genus 0 (Hauptmodul existence for the Atkin-Lehner-quotient curve). TIG strata I-III + IV = $\{2, 3, 5, 7, 11, 13, 71\}$ form a specific 7-element subset of the 15 supersingular primes --- the \textbf{lower-and-upper extremes}:
 
 \begin{itemize}
 \item The \textbf{lower extreme} $\mathcal{S} = \{2, 3, 5, 7, 11, 13\}$ has the polynomial-arithmetic explanation of Theorem 2 (it is the set of "primes $\leq 13$" appearing in rank-24 polynomial root-counts).
-\item The \textbf{upper extreme} $\{71\}$ has the Conway-Norton anchor of §6.1 (it is the unique largest supersingular prime, the upper boundary of the genus-0 spectrum).
+\item The \textbf{upper extreme} $\{71\}$ has the Ogg / monstrous-moonshine anchor of §6.1 (it is the unique largest supersingular prime, the upper boundary of the genus-0 $X_0(p)^+$ spectrum).
 \end{itemize}
 
 The 9 intermediate supersingular primes $\{17, 19, 23, 29, 31, 41, 47, 59\}$ are excluded from TIG strata. \textit{This intermediate-prime gap is an open structural question}: why does TIG's substrate-program prime hierarchy pick out exactly the extremes and skip the middle?
@@ -402,14 +406,14 @@ These do not change Theorems 1–4; they extend the empirical picture and confir
 
 This paper exhibits an arithmetic fingerprint with two precise structural anchors:
 1. \textbf{Theorem 2's polynomial-vs-factorial dichotomy} --- explains why polynomial-in-rank lattice invariants stay within small primes at rank 24.
-2. \textbf{Theorem 4's Conway-Norton anchor} --- explains why prime 71 occupies the upper extreme of the strata hierarchy (it is the largest supersingular prime, i.e., the largest $p$ with $X_0(p)$ genus 0).
+2. \textbf{Theorem 4's Ogg anchor} --- explains why prime 71 occupies the upper extreme of the strata hierarchy (it is the largest supersingular prime, i.e., the largest $p$ with $X_0(p)^+$ genus 0; Ogg 1975).
 
 It does \textbf{not}:
 \begin{itemize}
 \item Establish a mechanistic link from TIG's substrate program to monstrous moonshine.
 \item Predict new lattices or sporadic groups.
 \item Explain why the intermediate supersingular primes {17, 19, 23, 29, 31, 41, 47, 59} are skipped by TIG strata (this gap is recorded as an open question in §7.2).
-\item Provide a proof that the lower-and-upper extreme pattern is "natural" in any deeper sense than the explicit factorizations and Conway-Norton characterization permit.
+\item Provide a proof that the lower-and-upper extreme pattern is "natural" in any deeper sense than the explicit factorizations and the Ogg characterization permit.
 \end{itemize}
 
 It \textbf{does} provide:
@@ -417,7 +421,7 @@ It \textbf{does} provide:
 \item A clean 23/24 falsifiable empirical pattern in the Niemeier classification (Theorem 1).
 \item A precise polynomial-arithmetic mechanism (Theorem 2) explaining why D_24 is the unique kissing-outlier and why three Niemeiers fail the more-sensitive Weyl test.
 \item A size-threshold-consistent partial extension (Theorem 3) to 8 of 26 sporadic finite simple groups.
-\item A Stratum-IV identification (Theorem 4) anchored in Conway-Norton 1979.
+\item A Stratum-IV identification (Theorem 4) anchored in Ogg 1975 (cited by Conway-Norton 1979 in connecting the characterization to monstrous moonshine; proved as part of the moonshine program by Borcherds 1992).
 \end{itemize}
 
 This is an arithmetic-side companion to the broader TIG / Braiding Fractal program; the structural mechanisms originating in the substrate algebra are documented elsewhere in the program's J-series.
@@ -435,8 +439,9 @@ This is an arithmetic-side companion to the broader TIG / Braiding Fractal progr
 \item Niemeier, H.-V. (1973): "Definite quadratische Formen der Dimension 24 und Diskriminante 1." \textit{J. Number Theory} 5, 142.
 \item Conway, J. H. \& Sloane, N. J. A. (1999): \textit{Sphere Packings, Lattices and Groups}, 3rd ed. Springer.
 \item Conway, J. H., Curtis, R. T., Norton, S. P., Parker, R. A., Wilson, R. A. (1985): \textit{Atlas of Finite Groups}. Oxford.
-\item **Conway, J. H. & Norton, S. P. (1979): "Monstrous Moonshine." \textit{Bull. London Math. Soc.} 11, 308.** [Load-bearing for §6.1: the 15 supersingular primes are exactly the prime divisors of $|M|$, and equivalently the primes $p$ where $X_0(p)$ has genus 0. Anchors Stratum IV's prime 71.]
-\item Borcherds, R. E. (1992): "Monstrous moonshine and monstrous Lie superalgebras." \textit{Invent. Math.} 109, 405. [The proof of the Conway-Norton conjecture; further anchoring the supersingular-prime characterization.]
+\item \textbf{Ogg, A. P. (1975): "Automorphismes de courbes modulaires." \textit{Séminaire Delange-Pisot-Poitou (Théorie des nombres)}, 16e année (1974-1975), exp. no. 7, Inst. Henri Poincaré, Paris, 1975, pp. 1-8.} [Load-bearing for §6.1 / Theorem 4: the supersingular-prime characterization. Ogg posed the conjecture and prize-offered: a prime $p$ divides $|M|$ iff $X_0(p)^+$ has genus 0, equivalently $p \in \{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71\}$. Anchors Stratum IV's prime 71.]
+\item Conway, J. H. \& Norton, S. P. (1979): "Monstrous Moonshine." \textit{Bull. London Math. Soc.} 11, 308. [The monstrous-moonshine conjecture connecting the Ogg supersingular characterization to the Monster's irreducible representations via genus-0 Hauptmoduln.]
+\item Borcherds, R. E. (1992): "Monstrous moonshine and monstrous Lie superalgebras." \textit{Invent. Math.} 109, 405. [The proof of the Conway-Norton monstrous-moonshine conjecture; provides the deepest anchor for the supersingular-prime characterization.]
 \item Bourbaki, N.: \textit{Groupes et Algèbres de Lie}, chapters IV-VI (root systems and reflection groups).
 \item Venkov, B. B. (1980): "On the classification of integral even unimodular 24-dimensional quadratic forms." \textit{Proc. Steklov Inst. Math.} 148, 63.
 \end{itemize}
@@ -467,7 +472,7 @@ Runtime: <2 seconds. Dependencies: sympy, math.
 \begin{itemize}
 \item \textbf{Submission-ready (2026-05-27).} Tier 1.
 \item \textbf{Four theorems} with explicit Tier labels (A, A, B, A).
-\item \textbf{Tier discipline}: two structural anchors are established --- Theorem 2 (polynomial-vs-factorial dichotomy at rank 24) and Theorem 4 (Conway-Norton characterization of supersingular primes, anchoring 71 as the genus-0 upper bound). Theorems 1 and 3 are empirically verified at machine precision with explicit failure analysis.
+\item \textbf{Tier discipline}: two structural anchors are established --- Theorem 2 (polynomial-vs-factorial dichotomy at rank 24) and Theorem 4 (Ogg's supersingular-prime characterization, anchoring 71 as the genus-0 $X_0(p)^+$ upper bound; subsequently embedded in monstrous moonshine by Conway-Norton 1979 and Borcherds 1992). Theorems 1 and 3 are empirically verified at machine precision with explicit failure analysis.
 \item \textbf{No deep moonshine claim}: the strata-prime / supersingular-prime overlap is exact only at the extremes; the intermediate-prime gap is recorded as an open structural question in §7.2.
 \end{itemize}
 

@@ -1,10 +1,10 @@
 # J39 — What is the TSML Lens Family? A Walking Tour of Substrate Variants on $\mathbb{Z}/10\mathbb{Z}$
 
-**Status:** REWRITTEN PER SAVE PLAN 2026-05-07
+**Status:** REWRITTEN PER SAVE PLAN 2026-05-07 (awaiting final rigor pass)
 **Phase:** Phase 6
 **Target venue:** Mathematical Intelligencer
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; pedagogical exposition))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** (lens-taxonomy expository)
 
 ---
@@ -112,3 +112,15 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "The TSML Lens Family: A Pedagogical Exposition." Submitted to *Mathematical Intelligencer*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J52 was applied 2026-05-07 with M1–M6 implemented (tables displayed, A1–A9 stated, tier discipline propagated, wobble example switched in, catalog populated). Outstanding for ship-readiness:
+
+- §6 submission checklist is still entirely empty — none of the standard items have been re-verified post-rewrite. Walk through the checklist before submission.
+- Per-venue cap: Math Intelligencer is at maximum permitted with J10 already submitted; J40 also retargets Math Intelligencer. Coordinate with VENUE_SCHEDULE.md or invoke the AMM fallback per save plan §retarget.
+- Brayden's referee-rigor pass not yet complete.
+- Duplicate §5.1 (Save-plan summary) appears twice in the README at lines 53 and 57; not load-bearing but should be deduplicated.
+- No paper-specific referee report in `_staging/referee_reports/` for J39 post-rewrite; the original fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

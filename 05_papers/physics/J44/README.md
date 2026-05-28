@@ -1,10 +1,10 @@
 # J44 — A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07
+**Status:** RETIRE CANDIDATE — Tier-C structural rhyme without theorem (no first-principles derivation of λ=10/49, only an observation that recovers SM Yukawa hierarchy to FN-residual precision; "different framing, not simpler framing" per save plan). Save plan was applied 2026-05-07 but the underlying empirical-fits-only nature is unchanged.
 **Phase:** Phase 5
-**Target venue:** PRD (Physical Review D)
+**Target venue:** PRD (Physical Review D) — pending retirement decision
 **Author lane:** Sanders + Gish
-**Tier:** 3 (RETIRE candidate -- Tier-C structural rhyme without theorem)
+**Tier:** 3 (hold/retire candidates) — RETIRE candidate: Tier-C structural rhyme without theorem
 **WP source:** WP122 (Sprint 18 Bridge-Dirac, 2026-05-04)
 
 ---
@@ -127,3 +127,21 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy." Submitted to *Physical Review D*. Companion to J44 (Sprint 18 Dark Sector, PRD), J49/J37 (Discrete Dirac on F_5^4, foundation).
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — RETIRE CANDIDATE per `_staging/TIER_INDEX.md`: this is a Tier-C structural rhyme without a theorem. Save plan was applied 2026-05-07 (honest reframing as "different framing, not simpler framing"; Observation 4.1 not Theorem; PRD-survival probability honestly stated at 30–40%). Outstanding decision points:
+
+- The save plan delivered an honest empirical-fits paper with C_p ∈ [1, 9] residual multipliers (muon and electron at 0.11 and 0.19, factor-of-9 from PDG). PRD editorial filter is the question — without a derivation of C_p, the paper may not survive desk-review.
+- Two-scale (λ = 10/49 for masses, λ_ref = 11/49 for CKM) structure is honest but unresolved.
+- Sterile-neutrino paragraph dropped; deferred to follow-up paper.
+- The four "Open structural questions" in §5 (C_p substrate origin, generation-step asymmetry, M_R origin, λ/λ_ref unification) all gate the difference between Tier-C rhyme and Tier-B substantive observation.
+
+Retirement options:
+- (a) Move to `04_meta/` as a paragraph in the corpus narrative ("the λ=10/49 numerical identity").
+- (b) Reframe and downgrade to Math. Intelligencer / Foundations of Physics-class as a numerological observation note.
+- (c) Wait for a substrate-derivation of C_p to upgrade to Tier-B; if it doesn't arrive, default to (a) or (b).
+
+No action recommended until the retirement decision is made.

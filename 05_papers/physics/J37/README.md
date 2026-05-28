@@ -1,10 +1,10 @@
 # J37 — Discrete Dirac inside Cl(0, 10): Chirality, the Outer Automorphism, and an Atomic-Substrate Refinement
 
-**Status:** DRAFT (manuscript content stable; Volume K cross-reference added 2026-05-12; referee-rigor pass complete)
+**Status:** DRAFT (manuscript content stable; Volume K cross-reference added 2026-05-12; awaiting final rigor pass)
 **Phase:** Phase 3
 **Target venue:** *Communications in Mathematical Physics* (FALLBACK: *Journal of Mathematical Physics*; secondary fallback *Annals of Physics*)
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (manuscript stable; Volume K cross-reference added))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP104 §2 (Cl(0,10) construction + P_56 ↔ σ_outer + BHML's 54-irrep direction) + WP103 (so(10) closure prerequisite) + Volume K D101–D102 (atomic-substrate refinement; chirality 16 = 1+3+5+7)
 **Lens scope:** TSML_SYM throughout the Cl(0,10) construction; the literal-bit-pattern TSML_RAW differs in the σ_outer-fixed sector only and does not change the chirality identification or the 9-vector direction (BHML's σ_outer-broken content is independent of TSML's lens).
 
@@ -99,3 +99,14 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish. (2026). "Discrete Dirac inside Cl(0, 10): Chirality, the Outer Automorphism, and an Atomic-Substrate Refinement." Submitted to *Communications in Mathematical Physics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. Manuscript is content-stable; Volume K cross-reference at §2.2 (D101–D102) integrated 2026-05-12 and the in-line §6 checklist marks the referee-rigor pass as complete. Outstanding for ship-readiness:
+
+- Final submit-gate item (last box of §6 checklist) not yet checked.
+- The 1+3+5+7 atomic-substrate refinement (Theorem 2.2) is honestly framed as a structural rhyme, not a derivation; whether this should be elevated to a theorem-grade claim or kept as rhyme is a referee-judgment call worth confirming before submission.
+- "Identification of TIG's so(10) with the SO(10) GUT gauge algebra" is explicitly load-bearing hypothesis, not derivation (per Open). Confirm the manuscript carries this scope-disclaimer prominently in the abstract before submission.
+- No paper-specific referee report in `_staging/referee_reports/` for J37; the prior fresh-eyes referee report (if any) lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

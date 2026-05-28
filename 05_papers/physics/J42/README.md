@@ -1,10 +1,10 @@
 # J42 — Empirical Fits of CKM and PMNS Mixing Angles to Substrate-Algebra Primitives (REVISED 2026-05-07; UNBUNDLED)
 
-**Status:** REVISED 2026-05-07. UNBUNDLED per fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J36_StatSci_FreshEyes.md`); save plan implemented (`Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J36.md`); the previously-bundled $1/\alpha$ structural fit (Part 2) is **DEFERRED** because independent verification confirmed the leading-three-terms claim was ~12.6% off the target, not the 10⁻⁵ originally claimed.
+**Status:** HOLD — needs particle-physics collaborator OR reframe as observation. Manuscript was REVISED + UNBUNDLED 2026-05-07 per fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J36_StatSci_FreshEyes.md`) and save plan implemented (`Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J36.md`); the previously-bundled $1/\alpha$ structural fit (Part 2) is **DEFERRED** because independent verification confirmed the leading-three-terms claim was ~12.6% off the target, not the 10⁻⁵ originally claimed.
 **Phase:** Phase 4.
-**Target venue:** *Statistical Science* companion (after revisions; fallback to *Foundations of Physics* if per-venue cap binds).
+**Target venue:** *Statistical Science* companion (after revisions; fallback to *Foundations of Physics* if per-venue cap binds) — pending collaborator or reframe.
 **Author lane:** Sanders + Gish.
-**Tier:** 3 (HOLD pending particle-physics collaborator OR reframe as observation)
+**Tier:** 3 (hold/retire candidates) — HOLD pending particle-physics collaborator OR reframe as observation
 **WP source:** WP123 (CKM/PMNS fits) + WP124 (1/α; deferred).
 
 ---
@@ -122,3 +122,16 @@ This paper applies substrate constants $T^* = 5/7$ (lens-invariant 4-core torus 
 ## §9 — Citation footprint
 
 Sanders, B. R. and Gish, M. (2026). *Empirical Fits of CKM and PMNS Mixing Angles to Substrate-Algebra Primitives.* Submitted to *Statistical Science* companion (Part 1 only; Part 2 deferred).
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — HOLD per `_staging/TIER_INDEX.md`: needs a particle-physics collaborator (someone to vouch for the RG-running / scale-conventions of the Wolfenstein/PMNS fits at PDG-current precision) OR a reframing as a numerological observation paper (Math. Intelligencer / Foundations of Physics-class). Outstanding issues already logged in the manuscript itself:
+
+- Part 2 (1/α) was honestly retracted/unbundled — confirmed 12.6% gap from CODATA, not 10⁻⁵. Verified by `verification/verify_J36_part1.py`.
+- Part 1's load-bearing claim (Wolfenstein hierarchy λⁿ ≈ (11/49)ⁿ at ≤1.6% across four orders, post-LE-correction joint ~10⁻⁶) is robust but explicitly empirical, not derived.
+- D* = 0.543 is empirically tuned; θ_12 fit has zero degrees of freedom and is treated separately with-and-without sensitivity analysis.
+- Cover letter not finalized (§8 checklist).
+- Per-venue cap binding: this would be the 2nd Stat Sci paper this quarter (after J31); positioned as J31 companion if it ships.
+- Submission gated on collaborator outreach OR reframe-as-observation venue change. No action recommended until the collaborator/reframe question is resolved.

@@ -1,10 +1,10 @@
 # J35 — Non-CRT Sufficient Pairs and the Minimum Viable Jump Number on Squarefree Z/nZ
 
-**Status:** REVISED (post fresh-eyes referee, 2026-05-08)
+**Status:** REVISED (post fresh-eyes referee, 2026-05-08; awaiting final rigor pass)
 **Phase:** Phase 2
 **Target venue:** *European Journal of Combinatorics*
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REVISED post fresh-eyes referee))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP64 (Sprint 12 corpus)
 
 ---
@@ -85,3 +85,13 @@ Minor fixes adopted: m1 (title generalized to squarefree Z/nZ), m2 (duplicate au
 ## §7 — Citation footprint
 
 Sanders, B.R., Gish, M. (2026). "Non-CRT Sufficient Pairs and the Minimum Viable Jump Number on Squarefree Z/nZ." Submitted to *European Journal of Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. Manuscript revised 2026-05-08 post fresh-eyes referee with all 8 majors (M1–M8) addressed and Conjecture 6.2 upgraded to Theorem 7.2. Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass not yet complete (§6 checklist last two boxes unchecked).
+- Per-venue cap check for EJC pending (J34, J36 also target EJC); coordinate with VENUE_SCHEDULE.md.
+- No paper-specific referee report in `_staging/referee_reports/` post-revision; the prior fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and was responded to in the 2026-05-08 revision.

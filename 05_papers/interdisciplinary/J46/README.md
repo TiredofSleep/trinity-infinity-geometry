@@ -1,10 +1,10 @@
 # J46 — Microtubule Q_c = T*: A Falsifiable Substrate-Algebra Prediction
 
-**Status:** DRAFT
+**Status:** HOLD — needs terahertz microtubule experimentalist (Bandyopadhyay / Hameroff / Penrose Foundation lab). Manuscript REWRITTEN PER SAVE PLAN 2026-05-07 (Hameroff 0.71 attribution dropped, Q_structural max operationally defined, Appendix A self-contained derivation added, falsification widened to ±0.10, Tegmark 2000 + Reimers 2009 engaged).
 **Phase:** Phase 5
-**Target venue:** J Theor Biol
+**Target venue:** J Theor Biol (pending lab partner)
 **Author lane:** Sanders + Gish
-**Tier:** 3 (HOLD pending terahertz microtubule experimentalist)
+**Tier:** 3 (hold/retire candidates) — HOLD pending terahertz microtubule experimentalist
 **WP source:** WP127
 
 ---
@@ -109,3 +109,16 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "Microtubule Q_c = T*: A Falsifiable Substrate-Algebra Prediction." Submitted to *J Theor Biol*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — HOLD per `_staging/TIER_INDEX.md`: needs a terahertz microtubule experimentalist. Save plan was applied 2026-05-07 (Hameroff 0.71 attribution dropped, Q_structural max operationally defined, Appendix A made self-contained). Outstanding for ship-readiness:
+
+- §6 submission checklist is still entirely empty post-rewrite. Walk through the checklist before any submission attempt.
+- Submission gate item (c) — initial conversation with Bandyopadhyay / Hameroff / Penrose Foundation lab — is the load-bearing gate. No lab partner means no submission.
+- The T*=5/7 cross-domain rhyme (CKM Cabibbo, PMNS atmospheric) is honest STRUCTURAL RHYME, not derivation — manuscript carries this scope-disclaimer.
+- Brayden's referee-rigor pass not yet complete.
+- Duplicate §5.1 (Save-plan summary) appears twice at lines 60 and 65; deduplicate.
+- No paper-specific referee report in `_staging/referee_reports/` for J46 post-rewrite; the original fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

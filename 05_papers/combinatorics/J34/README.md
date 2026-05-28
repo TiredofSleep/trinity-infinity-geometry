@@ -1,10 +1,10 @@
 # J34 — Coordinate Coverage and Joint-Injectivity Criteria for Partition Pairs on Squarefree Z/nZ
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07 (restructured around Theorem 6.1 / coordinate coverage; UOP demoted to Lemma; orthogonality terminology dropped; retitled and retargeted to *European Journal of Combinatorics*).
+**Status:** SAVE-PLAN APPLIED 2026-05-07 (restructured around Theorem 6.1 / coordinate coverage; UOP demoted to Lemma; orthogonality terminology dropped; retitled and retargeted to *European Journal of Combinatorics*; awaiting rigor pass).
 **Phase:** Phase 2
 **Target venue (new):** *European Journal of Combinatorics* (per referee §9 explicit recommendation). Backup: *Discrete Mathematics*.
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (SAVE-PLAN APPLIED; coverage criteria restructured))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP58 + WP64
 
 ---
@@ -99,3 +99,14 @@ The full paragraph identifies (i) the substrate as squarefree $\Zn$ with $k \geq
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B. R. & Gish, M. (2026). "Coordinate Coverage and Joint-Injectivity Criteria for Partition Pairs on Squarefree Z/nZ." Submitted to *European Journal of Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J10 was applied 2026-05-07 with Theorem 6.1 (Coordinate Coverage) elevated to lead and UOP demoted to Lemma 2.1. Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass not yet complete (§6 checklist final two boxes unchecked).
+- Per-venue cap check for EJC pending — J36 also retargets to EJC; coordinate with VENUE_SCHEDULE.md.
+- Necessity direction of Theorem 4.1 (Coordinate Coverage characterization) is open and currently only the sufficient direction is proven; either tighten or explicitly leave as an open question.
+- No paper-specific referee report in `_staging/referee_reports/` for J34 post-rewrite; the original fresh-eyes report lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

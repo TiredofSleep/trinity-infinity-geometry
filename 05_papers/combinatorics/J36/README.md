@@ -1,10 +1,10 @@
 # J36 — A Role-Quotient Theorem for the (TSML, BHML) Magma Pair on Z/10Z: The Functional Partition V/F/S/T as a Categorical Coarsening with VOID-Identity
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07 (Path C — role-quotient theorem; manuscript rewritten around D93; DKAN architecture content removed; KU framing dropped).
+**Status:** SAVE-PLAN APPLIED 2026-05-07 (Path C — role-quotient theorem; manuscript rewritten around D93; DKAN architecture content removed; KU framing dropped; awaiting rigor pass).
 **Phase:** Phase 2
 **Target venue (kept):** *European Journal of Combinatorics*. Backup: *Discrete Mathematics*.
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (SAVE-PLAN APPLIED; Path-C role-quotient))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP10 (D93 only; the DKAN architecture portion of WP10 is deferred to a separate experimental-AI venue with proper baselines and replication)
 
 ---
@@ -97,3 +97,13 @@ The full paragraph identifies (i) the substrate (Z/10Z + canonical (TSML, BHML) 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B. R. & Gish, M. (2026). "A Role-Quotient Theorem for the (TSML, BHML) Magma Pair on Z/10Z: The Functional Partition V/F/S/T as a Categorical Coarsening with VOID-Identity." Submitted to *European Journal of Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J19 Path C was applied 2026-05-07 with the role-quotient theorem now lead and the DKAN architecture content removed. Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass not yet complete (§6 checklist last two boxes unchecked).
+- Per-venue cap check pending — J34 and J35 also retarget EJC; this would be the 3rd EJC paper of the cycle. Coordinate with VENUE_SCHEDULE.md.
+- No paper-specific referee report in `_staging/referee_reports/` post-rewrite; the original referee report lives under `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and was responded to in the 2026-05-07 Path-C rewrite.

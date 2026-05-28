@@ -19,11 +19,11 @@
 
 ## Pre-merger metadata (preserved for historical record)
 
-**Status (pre-merger 2026-05-08):** SAVE-PLAN IMPLEMENTED (manuscript rewritten; Theorem 1.A + Theorem 2 + Theorem 3 in place)
-**Phase:** Phase 1 (Triadic Launch companion to J24)
-**Target venue:** Integers
+**Status (current 2026-05-27):** MERGED into J24 — formal tombstone; do not submit separately. Pre-merger status (preserved for historical record): SAVE-PLAN IMPLEMENTED (manuscript rewritten; Theorem 1.A + Theorem 2 + Theorem 3 in place).
+**Phase:** Phase 1 (was Triadic Launch companion to J24; now absorbed)
+**Target venue:** *Integers* (now reached via the merged J24 manuscript)
 **Author lane:** Sanders + Gish
-**Tier:** 3 (MERGED into J24 (formal tombstone))
+**Tier:** 3 (hold/retire candidates) — MERGED tombstone for J24
 **WP source:** (full-period cancellation; formerly "sinc² zero law" — renamed 2026-05-07 per external collaborator calibration; "Zero Law" implied prime-specific structure but R(k,f) = sin²(πk/f)/(k² sin²(π/f)) vanishes at k = f for ANY f via sin²(π) = 0)
 
 ---
@@ -164,3 +164,11 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish. (2026). "Full-Period Cancellation of R(k, f): The Integer-Multiple Zero of the Discrete Fejér Quotient (Squarefree Case)." Submitted to *Integers*.
+
+> **NOTE:** The J41 content has been MERGED into J24 — cite J24's manuscript (`05_papers/number_theory/J24/manuscript/manuscript.tex`) rather than this pre-merger J41 file. The pre-merger J41 manuscript is preserved here only as the historical record per the "never delete" discipline.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — MERGED tombstone per `_staging/TIER_INDEX.md`. The merger executed 2026-05-13 (see `_staging/referee_reports/16_J25_to_J24_merger_EXECUTED.md` for the broader merger discipline). All three J41 theorems (full-period cancellation, squarefree layered-divisor structure, asymptotic corridor average) now live as numbered theorems in the merged J24 manuscript. The tombstone banner at the top of this README is the correct redirect; nothing else to do here.

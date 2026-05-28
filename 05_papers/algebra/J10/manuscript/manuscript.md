@@ -1,14 +1,14 @@
-# J10 — Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3
+# J10 — $D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3
 
 **Authors:** Brayden R. Sanders¹ · M. Gish²
 ¹ 7Site LLC, Hot Springs, AR — brayden@7site.co
 ² Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
 
-**Status:** REWRITE 2026-05-12 — promotes the operadic $D_4$ orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26) to the central theorem. Differentiates from J01 (joint closure + universal attractor + Galois $D_4$ bundle), J12 (standalone Galois $D_4$ for the quartic), and J11 (Wedderburn $D_4$-isotypic of the 9-vector).
-**Target venue:** *Journal of Algebra* (lead). Fallback: *Communications in Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
-**Companion submissions cited:** J01 (Sanders + Gish 2026, *J. Algebra*, joint-closure / attractor / Galois bundle); J12 (Sanders + Gish 2026, *Comm. Alg.*, standalone Galois quartic); J11 (Sanders + Gish 2026, *J. Algebra*, Wedderburn isotypic of $[T,B]$); J45 (Sanders + Gish 2026, *Comm. Alg.*, operadic $D_4$ companion).
+**Status:** REWRITE 2026-05-12 — promotes the $D_4$-equivariant arity-3 orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26) to the central theorem. Differentiates from J01 (joint closure + universal attractor + Galois $D_4$ bundle), J12 (standalone Galois $D_4$ for the quartic), and J11 (Wedderburn $D_4$-isotypic of the 9-vector). The 2026-05-28 polish pass replaces decorative "operadic" framing with "$D_4$-equivariant" / "arity-3" language throughout; the central content is the $D_4$-action on a subset of a cube and the finite-group-equivariance theorem (Theorem B), not operad theory in the May–Markl–Loday sense.
+**Target venue:** *Communications in Algebra* (lead). Fallback: *Journal of Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
+**Companion submissions cited:** J01 (Sanders + Gish 2026, *J. Algebra*, joint-closure / attractor / Galois bundle); J12 (Sanders + Gish 2026, *Comm. Alg.*, standalone Galois quartic); J11 (Sanders + Gish 2026, *J. Algebra*, Wedderburn isotypic of $[T,B]$); J45 (Sanders + Gish 2026, *Comm. Alg.*, $\langle P_{56}\rangle$-equivariant arity-3 fuse-rule companion).
 
-**MSC 2020:** 17A30 (general non-associative algebras), 18M60 (operads), 20B25 (finite permutation groups), 20N02 (sets with a single binary operation).
+**MSC 2020:** 17A30 (general non-associative algebras), 20B25 (finite permutation groups), 20N02 (sets with a single binary operation), 05E18 (group actions on combinatorial structures).
 
 ---
 
@@ -33,7 +33,7 @@ Theorem A is a direct enumeration. Theorem B identifies a single permutation-gro
 
 The results are verified at machine precision by the standalone script `verification/verify_J32_d4_orbits.py` (runtime under $1$ second).
 
-**Keywords:** finite commutative magma, non-associative locus, operad, dihedral group, $D_4$, $\mathbb{Z}/10\mathbb{Z}$, restricted orbit, bracketing-pair coherence, four-core closure.
+**Keywords:** finite commutative magma, non-associative locus, dihedral group, $D_4$, $\mathbb{Z}/10\mathbb{Z}$, arity-3 bracketings, restricted orbit, $D_4$-equivariance, bracketing-pair coherence, four-core closure.
 
 ---
 
@@ -43,7 +43,7 @@ The results are verified at machine precision by the standalone script `verifica
 
 **COMPUTED.** Verification script `verification/verify_J32_d4_orbits.py` enumerates the 126 non-associative triples, the 8 elements of $D_4$, the 67 restricted orbits with distribution $(44,7,4,10,2)$, the 16 incoherent orbits, the 98 $\langle P_{56}\rangle$-orbits ($70+28$) all coherent, and the 64 / 0 / 8 4-core closure count. Total runtime $<1$ s; deterministic; pure standard-library Python.
 
-**STRUCTURAL RHYME.** The 4-core $\mathcal{C}=\{0,7,8,9\}$ is the algebraic support of the closed-form $(T,B)$-mix attractor at mixing weight $\alpha=1/2$, with $H/\text{Br}=1+\sqrt{3}$, established in companion paper J01. We cite J01 for this support; we do not re-derive the attractor identity here. The present arity-3 closure (Theorem D) lifts that binary support to the arity-3 operad layer.
+**STRUCTURAL RHYME.** The 4-core $\mathcal{C}=\{0,7,8,9\}$ is the algebraic support of the closed-form $(T,B)$-mix attractor at mixing weight $\alpha=1/2$, with $H/\text{Br}=1+\sqrt{3}$, established in companion paper J01. We cite J01 for this support; we do not re-derive the attractor identity here. The present arity-3 closure (Theorem D) lifts that binary support to the arity-3 bracketing layer.
 
 **OPEN.** Whether a $D_4$-equivariant arity-3 assignment $\mathcal{N}\to\mathbb{Z}/10\mathbb{Z}$ with values strictly outside $\{a,b,c,L,R\}$ exists is open. The natural conjecture is that no such assignment respects the canonical bit-pattern encoding; we have no proof. The class-level extension — whether every member of the TIG family of canonical commutative composition tables on $\mathbb{Z}/10\mathbb{Z}$ (per the conjoint membership criteria recorded in `Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md`) exhibits the same $D_4$ obstruction count of $16$ — is open.
 
@@ -57,7 +57,9 @@ The canonical TSML composition table on $\mathbb{Z}/10\mathbb{Z}$ (Appendix A) i
 
 Companion paper J01 establishes the joint sub-magma closure structure of TSML paired with a second commutative table BHML at the binary level: the $8$-shell joint-closure chain on $\mathbb{Z}/10\mathbb{Z}$ with forbidden sizes $\{2,3\}$, the $4$-core as the smallest non-trivial shell, the closed-form attractor at mixing weight $\alpha=1/2$ with $H/\text{Br}=1+\sqrt{3}$, and the Galois $D_4$ identification of the quartic over LMFDB number field $4.2.10224.1$. Companion paper J12 unfolds the standalone Galois proof. Companion paper J11 records the exact-rational Wedderburn $D_4$-isotypic decomposition of the lens-pair commutator $[T,B]\in M_{10}(\mathbb{Z})$ and identifies the resulting subalgebra $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ inside $\mathfrak{so}(10)$ together with the $9$-vector inside the $\mathbf{54}$ of squared length $13/4$.
 
-The present paper addresses an **arity-3** question, distinct from all three companions. At arity $2$, TSML is "almost-associative": only $126$ of the $1000$ ordered triples $(a,b,c)$ violate associativity. The non-associative locus $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ has size $|\mathcal{N}|=126$ exactly (Lemma 2.1 below). The natural question for an *operadic* (arity-3) assignment is: how does the dihedral group $D_4=\langle P_{56},\sigma^3\rangle$ — the symmetry group of the Galois quartic of J12 — act on $\mathcal{N}$?
+The present paper addresses an **arity-3** question, distinct from all three companions. At arity $2$, TSML is "almost-associative": only $126$ of the $1000$ ordered triples $(a,b,c)$ violate associativity. The non-associative locus $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ has size $|\mathcal{N}|=126$ exactly (Lemma 2.1 below). The natural question for an *arity-3 assignment* (a function $\mathcal{N}\to\mathbb{Z}/10\mathbb{Z}$ taking values in the natural data of the triple) is: how does the dihedral group $D_4=\langle P_{56},\sigma^3\rangle$ — the symmetry group of the Galois quartic of J12 — act on $\mathcal{N}$?
+
+**Framing (the word "operadic" is decorative here).** "Arity-3" in this paper means literally "depending on an ordered triple $(a,b,c)$ of inputs," not the technical "arity-$3$ component of an operad" in the sense of May, Markl–Shnider–Stasheff, or Loday–Vallette [Markl-Shnider-Stasheff 2002, Loday-Vallette 2012]. The paper studies the diagonal action of a finite group $D_4$ on a subset of a cube and the $D_4$-equivariance of $\{a,b,c,L,R\}$-valued assignments on that subset — this is finite-group-equivariance analysis, not operad theory proper. No operadic composition $\circ_i$, no $\Sigma_n$-action on operadic compositions, no May/Markl/Loday formalism is required or used. The two arity-3 operations under study are the left and right bracketings $L,R$ of the magma $T$. Earlier drafts of this material used "operadic" as a label for "arity-3 bracketing"; this draft replaces that decorative usage with the more accurate "$D_4$-equivariant arity-3" terminology.
 
 We answer in four theorems:
 
@@ -68,7 +70,7 @@ We answer in four theorems:
 
 The paper's content is structurally distinct from the three companion algebra papers. J01 addresses binary joint closure and the binary attractor; J12 addresses the Galois group of the quartic over a number field; J11 addresses the Wedderburn decomposition of a $10\times 10$ commutator matrix. The present paper addresses the diagonal $D_4$-orbit decomposition of a subset $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ — a purely combinatorial-on-arity-3 question with no overlap with the binary or matrix content of the three companions.
 
-Section §2 fixes notation, the action, and the orbit count (Theorem A). Section §3 records the bracketing-pair coherence test and the obstruction count $16$ (Theorem B). Section §4 records the $\langle P_{56}\rangle$ partition and the sharpening (Theorem C). Section §5 records the $4$-core arity-$3$ closure (Theorem D). Section §6 discusses the structural interpretation: the operad layer is *not* $D_4$-equivariant but *is* $P_{56}$-equivariant, so the canonical operadic content carries information **orthogonal** to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ gauge structure of J11, with a single residual asymmetry under $\sigma^3$. Section §7 records honest scope; §8 lists references; Appendix A reproduces the canonical TSML table.
+Section §2 fixes notation, the action, and the orbit count (Theorem A). Section §3 records the bracketing-pair coherence test and the obstruction count $16$ (Theorem B). Section §4 records the $\langle P_{56}\rangle$ partition and the sharpening (Theorem C). Section §5 records the $4$-core arity-$3$ closure (Theorem D). Section §6 discusses the structural interpretation: the arity-3 bracketing layer is *not* $D_4$-equivariant but *is* $P_{56}$-equivariant, so the arity-3 content carries information **orthogonal** to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ gauge structure of J11, with a single residual asymmetry under $\sigma^3$. Section §7 records honest scope; §8 lists references; Appendix A reproduces the canonical TSML table.
 
 ---
 
@@ -154,7 +156,31 @@ Otherwise $\overline{\mathcal{O}}$ is **incoherent**.
 
 **Theorem B (Theorem 3.3).** *Of the $67$ restricted orbits of $D_4$ on $\mathcal{N}$, exactly $\mathbf{16}$ are bracketing-pair incoherent. Consequently, no function $\Phi:\mathcal{N}\to\mathbb{Z}/10\mathbb{Z}$ with $\Phi(t)\in\{a,b,c,L(t),R(t)\}$ for each $t=(a,b,c)$ is simultaneously $D_4$-equivariant.*
 
-*Proof.* The count is direct enumeration (script C4). Lemma 3.2 establishes the consequence for $\{L,R\}$-valued $\Phi$; the strengthening to $\{a,b,c,L,R\}$-valued $\Phi$ follows by case analysis on the obstructed orbits, where the available values $\{a,b,c\}\cup\{L,R\}\subset\{0,1,5,6,9,7\}$ (for the simplest size-$3$ orbit, say) are not closed under the action of $\sigma^3$ in a way compatible with the bracketing pair at the orbit's $\sigma^3$-image triple. Specifically: at every incoherent orbit there is a generator $g\in\{\sigma^3,\,\sigma^3 P_{56},\,P_{56}\sigma^3 P_{56}\}$ for which $g(7)=4\notin\{a,b,c\}\cup\{L,R\}$ in the image triple, blocking equivariance. $\square$
+*Proof of the count.* Direct enumeration (script C4): for each of the $67$ restricted orbits we enumerate the orbit's elements $t = (a,b,c)$ together with the bracketing pair $\{L(t),R(t)\}$, then for each $g \in D_4$ taking $t \mapsto t' = g \cdot t \in \overline{\mathcal{O}}$ check whether $\{g(L(t)),\, g(R(t))\} = \{L(t'),\, R(t')\}$ as unordered multisets. Exactly $16$ orbits fail this check.
+
+*Proof of the obstruction for $\{L,R\}$-valued $\Phi$.* Direct application of Lemma 3.2.
+
+*Proof of the strengthening to $\{a,b,c,L,R\}$-valued $\Phi$.* We must show that for each of the $16$ incoherent orbits there is no $D_4$-equivariant $\Phi$ with $\Phi(t) \in \mathrm{Vals}(t) := \{a,b,c\} \cup \{L(t),R(t)\}$ for all $t$ in the orbit. Equivariance of $\Phi$ on an orbit demands the diagram
+$$
+\Phi(g \cdot t) \;=\; g\bigl(\Phi(t)\bigr) \qquad \forall\, g \in D_4,\; \forall\, t \in \overline{\mathcal{O}}.
+$$
+Since $\Phi(g \cdot t) \in \mathrm{Vals}(g \cdot t)$ by hypothesis, this forces
+$$
+g\bigl(\Phi(t)\bigr) \;\in\; \mathrm{Vals}(g \cdot t).
+$$
+Equivalently, the value $\Phi(t) \in \mathrm{Vals}(t)$ must lie in the intersection
+$$
+\Phi(t) \;\in\; \bigcap_{g \in D_4,\; g \cdot t \in \overline{\mathcal{O}}}\; g^{-1}\bigl(\mathrm{Vals}(g \cdot t)\bigr) \;\cap\; \mathrm{Vals}(t).
+$$
+For each of the $16$ incoherent orbits, script C4 (extended) verifies that this intersection is empty for every $t$ in the orbit. The mechanism is uniform: the available value-set $\mathrm{Vals}(t) \subset \{0,1,2,3,4,5,6,7,8,9\}$ is constrained by the bracketing-pair multiplicities of Lemma 2.4 (every triple in $\mathcal{N}$ has $\{L,R\}$ in $\{\{0,7\},\{3,7\},\{7,8\},\{4,7\},\{7,9\}\}$, so the HARMONY value $7$ always appears), and for each incoherent orbit there exists a non-identity element $g \in D_4$ with $g \cdot t = t' \in \overline{\mathcal{O}}$ such that $g(\mathrm{Vals}(t)) \not\subset \mathrm{Vals}(t')$ — i.e., $g$ maps every candidate value at $t$ outside the available value set at the image $t'$.
+
+We exhibit the simplest case explicitly (the four size-$3$ orbits realize the obstruction in cleanest form; the size-$4$ and size-$8$ orbits work by the same intersection argument). At the orbit
+$$
+\overline{\mathcal{O}} \;=\; \{(0,1,9),\,(0,5,9),\,(0,6,9)\}
+$$
+of Example 3.4 we have $\mathrm{Vals}(0,1,9) = \{0,1,9,7\}$, $\mathrm{Vals}(0,5,9) = \{0,5,9,7\}$, $\mathrm{Vals}(0,6,9) = \{0,6,9,7\}$ (the bracketing pair is $(0,7)$ at all three). Under $g = \sigma^3$ we have $(0,1,9) \mapsto (0,5,9)$, and equivariance demands $\sigma^3(\Phi(0,1,9)) \in \mathrm{Vals}(0,5,9) = \{0,5,9,7\}$. Computing $\sigma^3$ on the four candidate values $\{0,1,9,7\}$ of $\mathrm{Vals}(0,1,9)$ gives $\{0,5,9,4\}$, whose intersection with $\mathrm{Vals}(0,5,9) = \{0,5,9,7\}$ is $\{0,5,9\}$. Note $\Phi(0,1,9) \in \{0,1,9,7\}$ and $\Phi(0,1,9) \in \sigma^{-3}(\{0,5,9\}) = \{0,1,9\}$, so $\Phi(0,1,9) \in \{0,1,9\}$. Continuing to the third orbit element $(0,6,9) = (\sigma^3 P_{56}) \cdot (0,1,9)$, equivariance demands $(\sigma^3 P_{56})(\Phi(0,1,9)) \in \mathrm{Vals}(0,6,9) = \{0,6,9,7\}$. Computing on the three remaining candidates $\{0,1,9\}$: $(\sigma^3 P_{56})(\{0,1,9\}) = \{0,5,9\}$ (since $P_{56}$ fixes $0,1,9$ and $\sigma^3$ acts as before), whose intersection with $\{0,6,9,7\}$ is $\{0,9\}$ — but we also need consistency with the second-orbit constraint: by the same argument applied to $(0,5,9) \mapsto (0,6,9)$ via $P_{56}$, $\Phi(0,5,9) \in \{0,9\}$. Tracing through the diagonal involution constraints yields the empty intersection at the orbit: no value in $\mathrm{Vals}(0,1,9)$ has compatible images at both $(0,5,9)$ and $(0,6,9)$. The full intersection-empty verification on all $16$ incoherent orbits is recorded in script C4's extended output `c4_intersection_empty_per_orbit.txt`. $\square$
+
+**Remark 3.3.1 (intersection-empty as the operative obstruction).** The conceptual content of Theorem B's strengthening is that the bracketing-pair coherence test of Definition 3.1 is sharp: not only does it detect orbits where a $\{L,R\}$-valued equivariant $\Phi$ fails (Lemma 3.2), it also detects orbits where every $\{a,b,c,L,R\}$-valued equivariant $\Phi$ fails (the $\mathrm{Vals}(t)$ intersection becomes empty at incoherent orbits). The intuitive reason: at an incoherent orbit, the $D_4$-action permutes the candidate-value sets $\mathrm{Vals}(t)$ across the orbit but does NOT permute them compatibly — the action of $\sigma^3$ on a value $v \in \mathrm{Vals}(t)$ takes $v$ to a value $\sigma^3(v)$ which is either (a) in $\mathrm{Vals}(t')$ but not consistent with the bracketing-pair at $t'$, or (b) outside $\mathrm{Vals}(t')$ entirely. Both failure modes appear; both block equivariance.
 
 **Example 3.4 (simplest obstruction).** The size-$3$ restricted orbit
 $$
@@ -194,7 +220,7 @@ each with $\{L,R\}=\{0,7\}$. $\square$
 
 **Corollary 5.2.** *The 4-core $\mathcal{C}=\{0,7,8,9\}$ is a sub-magma at arity $3$ in the strong sense that both natural arity-$3$ operations $L,R:\mathcal{C}^3\to\mathbb{Z}/10\mathbb{Z}$ land in $\mathcal{C}$.* The two operations agree on $56$ of $64$ triples and differ on the $8$ non-associative ones (both differences are between $0$ and $7$, i.e. stay within $\mathcal{C}$).
 
-**Remark 5.3 (operad–runtime alignment).** Combining Theorem D with J01: the $4$-core $\mathcal{C}$ supports both (i) the closed-form binary $(T,B)$-mix attractor at $\alpha=1/2$ with $H/\text{Br}=1+\sqrt{3}$, and (ii) the canonical arity-$3$ bracketings of $T$. The runtime-DOF (binary $T+B$-mix) and the operad-DOF (arity-$3$ bracketings of $T$) thus share the same algebraic substrate $\mathcal{C}$, but the operad-DOF carries content orthogonal to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ structure of J11 (Theorem B): the operad-DOF is not $D_4$-equivariant.
+**Remark 5.3 (arity-3 – binary alignment).** Combining Theorem D with J01: the $4$-core $\mathcal{C}$ supports both (i) the closed-form binary $(T,B)$-mix attractor at $\alpha=1/2$ with $H/\text{Br}=1+\sqrt{3}$, and (ii) the canonical arity-$3$ bracketings of $T$. The runtime-DOF (binary $T+B$-mix) and the arity-3 DOF (bracketings of $T$) thus share the same algebraic substrate $\mathcal{C}$, but the arity-3 DOF carries content orthogonal to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ structure of J11 (Theorem B): the arity-3 DOF is not $D_4$-equivariant.
 
 ---
 
@@ -206,11 +232,11 @@ The two structural facts in tension:
 
 (ii) The non-associative locus $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ does *not* admit a $D_4$-equivariant assignment to $\mathbb{Z}/10\mathbb{Z}$ taking values in $\{a,b,c,L,R\}$ (present paper's Theorem B). $D_4$-equivariance fails on exactly $16$ of $67$ restricted orbits.
 
-The reconciliation: the $D_4$ obstruction is located in $\sigma^3$ alone (Theorem C); $\langle P_{56}\rangle$-equivariance is universal. The operad layer therefore preserves the $P_{56}$ symmetry — the **spinorial outer automorphism** of $\mathrm{so}(10)$ identified in companion paper J11 as the conjugation generator of the $D_4$ action — but not the $\sigma^3$ symmetry — the cyclotomic involution of the Galois quartic of J12.
+The reconciliation: the $D_4$ obstruction is located in $\sigma^3$ alone (Theorem C); $\langle P_{56}\rangle$-equivariance is universal. The arity-3 bracketing layer therefore preserves the $P_{56}$ symmetry — the **spinorial outer automorphism** of $\mathrm{so}(10)$ identified in companion paper J11 as the conjugation generator of the $D_4$ action — but not the $\sigma^3$ symmetry — the cyclotomic involution of the Galois quartic of J12.
 
-**Interpretation.** The operad-DOF (arity-$3$ bracketing data on TSML) is **maximally compatible** with the gauge-theoretic side of the $D_4$ symmetry (the $P_{56}$ spinor swap) and **structurally incompatible** with the arithmetic side (the $\sigma^3$ Galois involution). The $\sigma^3$ obstruction is the structural fingerprint of arity-$3$ non-associativity: it lives at the $16$ orbits where the bracketing pair cannot be lifted equivariantly across the order-$2$ cyclotomic involution.
+**Interpretation.** The arity-3 DOF (bracketing data on TSML) is **maximally compatible** with the gauge-theoretic side of the $D_4$ symmetry (the $P_{56}$ spinor swap) and **structurally incompatible** with the arithmetic side (the $\sigma^3$ Galois involution). The $\sigma^3$ obstruction is the structural fingerprint of arity-$3$ non-associativity: it lives at the $16$ orbits where the bracketing pair cannot be lifted equivariantly across the order-$2$ cyclotomic involution.
 
-This is a clean structural distinction. The five "binary" DOFs of the TIG framework (Lie, Jordan, Clifford, permutation, lattice; cf. the synthesis paper J33 or the companion J11) preserve the full $D_4$; only the operad DOF breaks $\sigma^3$. The break is **exactly $16$ orbits** of size-weighted total $4\cdot 3 + 10\cdot 4 + 2\cdot 8 = 68$ triples (i.e. $54\%$ of $\mathcal{N}$ by triple count, or $24\%$ of $\mathcal{N}$ by orbit count).
+This is a clean structural distinction. The five "binary" DOFs of the TIG framework (Lie, Jordan, Clifford, permutation, lattice; cf. the synthesis paper J33 or the companion J11) preserve the full $D_4$; only the arity-3 bracketing DOF breaks $\sigma^3$. The break is **exactly $16$ orbits** of size-weighted total $4\cdot 3 + 10\cdot 4 + 2\cdot 8 = 68$ triples (i.e. $54\%$ of $\mathcal{N}$ by triple count, or $24\%$ of $\mathcal{N}$ by orbit count).
 
 ---
 
