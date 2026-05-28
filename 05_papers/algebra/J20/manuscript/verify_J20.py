@@ -1,6 +1,6 @@
 """
-verify_J17.py
-Self-contained verification of J17:
+verify_J20.py
+Self-contained verification of J20 (formerly J17):
   "Total-Dimension Match Between Tensor Powers of a Finite-Field 4-Algebra
    and Real Clifford Algebras Cl(2n), with a Refined-Cell Grading"
 
@@ -173,7 +173,7 @@ def check_C6_n5_gut_distribution() -> tuple[bool, str]:
 
 def main() -> int:
     print("=" * 72)
-    print("J17 verification — total-dimension match + refined-cell grading")
+    print("J20 verification — total-dimension match + refined-cell grading")
     print("=" * 72)
 
     checks = [

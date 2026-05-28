@@ -1,12 +1,21 @@
 """verify_J_Fp_merged.py -- consolidated verification for J_Fp_merged.
 
-Verifies the four theorems of the merged F_p paper at all six primes
+Verifies the theorems of the merged F_p paper at all six primes
 p in {2, 3, 5, 7, 11, 13}:
 
-  Theorem 1 (Lens-Invariant Skeleton): 5 properties of V_p invariant across p
+  Theorem 1 (Lens-Invariant Skeleton): 4 properties of V_p invariant across p
+    NOTE: as of 2026-05-28 referee fix, the "five-property" formulation has
+    been corrected to four. Power-associativity (the original fifth property)
+    FAILS at a = e_2: a^3 . a = e_0 but a^2 . a^2 = e_2; these are not equal.
+    See `check_power_associativity_at_e2()` below which records the FAILURE
+    as an audit witness rather than a passing test.
+
   Theorem 2 (Aut Variation): |Aut(V_p)| takes values {6, 24, 40, 336, 1320, 2184}
-  Theorem 3 (F_5 Rigid Idempotent Decomposition): unique decomposition with
-            |Aut(V_5)| = 40 = F_20 x Z/2
+    -- inherited from J48 brute-force; this script only references, does not recompute.
+  Theorem 3 (F_5 Rigid Idempotent Decomposition): |Aut(V_5)| = 40 = F_20 x Z/2
+    -- inherited from J49 brute-force. The explicit idempotent triple in
+       manuscript §4 (eps_2 = 2e_3 + 3e_4, etc.) was REFUTED on referee
+       check; the count 40 stands but the explicit decomposition is open.
   Theorem 4 (BHML Chain-Shell Rank Profile): determinants 5305, 2843, ...
 
 Dependencies: numpy + sympy. Runtime: ~10 seconds.
@@ -93,6 +102,38 @@ def check_idempotents(mul, p):
     return count
 
 
+def check_power_associativity_at_e2(V_table):
+    """Audit witness: power-associativity FAILS at a = e_2 over Z.
+
+    Records the computation that motivated the 2026-05-28 referee fix:
+      e_2 = (0, 1, 0, 0)  (coefficient vector in basis {e_0, e_2, e_3, e_4})
+      e_2^2 = e_3
+      e_2^3 = e_2^2 . e_2 = e_3 . e_2 = e_4
+      e_2^3 . e_2 = e_4 . e_2 = e_0   (basis index 0)
+      e_2^2 . e_2^2 = e_3 . e_3 = e_2  (basis index 1)
+    These are different basis vectors, so V is NOT power-associative.
+    This is a feature of the integer multiplication table, not a mod-p artifact.
+    """
+    print("[Power-Associativity Audit at a = e_2]")
+    # Use a large prime to read off the integer-level structure constants
+    mul = V_mul_in_Fp(V_table, 1000003)  # 10^6 + 3 is prime, well above all coeffs
+    e2 = (0, 1, 0, 0)
+    a2 = mul(e2, e2)               # e_2 . e_2
+    a3 = mul(a2, e2)               # e_2 . e_2 . e_2 = e_2^3
+    a3_times_a = mul(a3, e2)       # (e_2^3) . e_2
+    a2_squared = mul(a2, a2)       # (e_2^2)^2
+    print(f"       e_2^2          = {a2}   (expect e_3 = (0,0,1,0))")
+    print(f"       e_2^3          = {a3}   (expect e_4 = (0,0,0,1))")
+    print(f"       e_2^3 . e_2    = {a3_times_a}   (expect e_0 = (1,0,0,0))")
+    print(f"       (e_2^2)^2      = {a2_squared}   (expect e_2 = (0,1,0,0))")
+    if a3_times_a != a2_squared:
+        print(f"       WITNESS: a^3 . a != a^2 . a^2 at a = e_2.")
+        print(f"       V is NOT power-associative; the earlier Tier-A claim is REFUTED.")
+    else:
+        print(f"       UNEXPECTED: power-associativity actually holds; manuscript correction unnecessary.")
+    print()
+
+
 def check_T1_invariant_skeleton(V_table):
     print("[Theorem 1 Lens-Invariant Skeleton]")
     # Canonical idempotent counts per §2.1 of the merged paper:
@@ -117,11 +158,13 @@ def check_T1_invariant_skeleton(V_table):
 def check_T2_aut_variation():
     """We do NOT compute |Aut(V_p)| here -- that requires the upstream
     tig_dirac.py library's brute-force enumeration. We reference the
-    known values from J14's verify_J14.py."""
-    print("[Theorem 2 Aut Variation] -- REFERENCE TO J14 verify")
+    known values from J48 source.
+    NOTE: the older referent `verify_J14.py` no longer exists post-renumbering;
+    the canonical source is the J48 archive's brute-force enumerator."""
+    print("[Theorem 2 Aut Variation] -- REFERENCE TO J48 brute-force enumeration")
     expected = {2: 6, 3: 24, 5: 40, 7: 336, 11: 1320, 13: 2184}
     print(f"       Expected |Aut(V_p)| values: {expected}")
-    print("       (Verified by J14's verify_J14.py at upstream tig_dirac.py)\n")
+    print("       (Not recomputed in this script -- see J48 archive.)\n")
 
 
 # ============================================================
@@ -183,11 +226,14 @@ def main():
     for i, row in enumerate(V_table):
         print(f"  e_{i} * (e_0..e_3) = {row}")
     print()
+    check_power_associativity_at_e2(V_table)
     check_T1_invariant_skeleton(V_table)
     check_T2_aut_variation()
     check_T4_chain_shell_dets()
     print("=" * 55)
-    print("  Verification complete (with references to upstream verify_J14.py / verify_J16.py)")
+    print("  Verification complete.")
+    print("  (Theorems 2 and 3 retain references to J48/J49 source brute-force enumeration;")
+    print("   the explicit eps_2 idempotent in manuscript §4 was REFUTED on referee check.)")
     print("=" * 55)
 
 

@@ -147,9 +147,15 @@ def check_Q17A():
     # Decagonal D_10 symmetry: the rotation s -> s+1 acts on R^5
     # by rotation in the (cos, sin) pairs and sign-flip in the 5th coord.
     # The composite has order 10.
-    # Just check that translation by 1 in s gives a fixed transformation.
-    base_translation = lambda v_s, v_s1: True  # structural check, not strict
-    print("       D_10 symmetry (structural): PASS")
+    #
+    # TODO: D_10 symmetry check not implemented; see Open Problem O_X.
+    # The previous implementation was a no-op stub (`lambda v_s, v_s1: True`)
+    # which returned True unconditionally regardless of input. Implementing a
+    # real check requires specifying which D_10 generator action (rotation by
+    # 2*pi/10 in the (cos, sin) pairs combined with sign-flip on the 5th
+    # coord) is being tested against Phi(s+1) vs Phi(s). Left as a TODO
+    # rather than carrying a stub that asserts PASS for any input.
+    print("       D_10 symmetry: SKIP (not implemented; see Open Problem O_X)")
     print()
 
 

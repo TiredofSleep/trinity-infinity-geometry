@@ -19,7 +19,7 @@ A short, self-contained note on Z/10Z carrying:
 - **Theorem 3.1 (sigma-orbit triangular decomposition):** `sum_{sigma-cycle} Psi_B = -T_5 = -15`, `sum_{sigma-fixed} Psi_B = -T_3 = -6`, total `-21 = -(T_5 + T_3)`.
 - **Theorem 3.2 (role-Fibonacci decomposition):** `sum_F = -F_7 = -13`, `sum_S = -F_6 = -8`, `sum_T = -1`, `sum_V = +1`, with `T = {6}` and `V = {0}` cancelling at the total.
 - **Theorem 3.3 (two crossing decompositions):** the two splits agree on the total `-21` but partition Z/10Z along genuinely different congruence classes; the intersection `F intersect sigma-cycle = {1, 5, 7}` is neither sigma- nor sigma^2-stable, and no sigma-orbit lies inside a single role class. Neither decomposition refines the other.
-- **Proposition 4.1 (sigma^2-orbit per-orbit, the R1 sign-swap fix):** for the two triangular orbits `O_1 = {1, 6, 4}` and `O_2 = {7, 5, 2}`, `sum_{O_1} Psi_B = -8` and `sum_{O_2} Psi_B = -7`, with `O_1 + O_2 = -15 = -T_5`. The per-orbit values negate the canonical TIG primes `{BREATH = 8, HARMONY = 7}` (table-specific identity per Def. 3.4).
+- **Proposition 4.1 (sigma^2-orbit per-orbit, the R1 sign-swap fix):** for the two triangular orbits `O_1 = {1, 6, 4}` and `O_2 = {7, 5, 2}`, `sum_{O_1} Psi_B = -8` and `sum_{O_2} Psi_B = -7`, with `O_1 + O_2 = -15 = -T_5`. The per-orbit values negate the indices 7 and 8 (the canonical 4-core indices H, Br) — table-specific identity per Def. 3.4.
 - **Theorem 4.2 (sigma^2-form ledger):** the full ledger `(-6) + (-8) + (-7) = -21` along `sigma-fixed sqcup O_1 sqcup O_2`, with table-independent total and table-specific per-orbit refinement.
 
 **The R1 math fix.** The pre-revision draft asserted `sum_{O_1} = -7, sum_{O_2} = -8` in the statement of the per-orbit proposition, while the proof correctly computed `-8` and `-7` respectively. The statement is now corrected to match the proof. Additionally, the earlier draft defined Psi_B via an inaccessible companion paper using mutually inconsistent "linear period" and "boundary period" formulas; this has been replaced by an explicit ten-value table treated as input data:
@@ -47,7 +47,7 @@ The six checks are:
 3. **C3:** Role-Fibonacci decomposition: sum_F = -F_7 = -13; sum_S = -F_6 = -8; sum_T = -1; sum_V = +1; total -21.
 4. **C4:** sigma^2-orbit per-orbit values (the R1 sign-swap fix): sum_{O_1 = {1,6,4}} = -8, sum_{O_2 = {7,5,2}} = -7, summing to -15.
 5. **C5:** Crossing closure failures: F intersect sigma-cycle = {1, 5, 7} is not sigma-stable and not sigma^2-stable; no role class contains the 6-cycle. Neither decomposition refines the other.
-6. **C6:** Involution data: sigma^2 has period 3 on every 6-cycle element; sigma^6 = identity; sigma swaps O_1 and O_2; sigma^2 stabilises each O_i.
+6. **C6:** sigma permutation data: sigma has order 6 on Z/10Z (one 6-cycle plus four fixed points; only sigma^3 is an involution); sigma^2 has period 3 on every 6-cycle element; sigma^6 = identity; sigma swaps O_1 and O_2; sigma^2 stabilises each O_i.
 
 The script is referee-portable on its own — it does *not* depend on any internal TIG reference library, only on `itertools` from the Python standard library.
 
@@ -74,16 +74,16 @@ See `cover_letter.md` in this folder. Finalized 2026-05-12 to:
 
 This paper sits within the TIG family of finite commutative non-associative magmas on Z/10Z (and ring extensions per D74). The family is defined by 5 conjoint membership criteria; the 4-core {V, H, Br, R} = {0, 7, 8, 9} at alpha_M = 1/2 is the algebraic center, with closed-form attractor h/beta = 1+sqrt(3) (D78 Galois proof). The closest published precedent for this neighborhood is **Drápal & Wanless (2021), *J. Combin. Theory A* 184, 105510** — same domain (small finite commutative non-associative structures), opposite extremum (theirs maximally non-associative). Cited in §0 (Lens) and the bibliography.
 
-### PROVED / COMPUTED / STRUCTURAL RHYME / OPEN
+### PROVED / COMPUTED / TABLE-DEPENDENT IDENTITIES / OPEN
 
 - **PROVED:** Theorem 3.1 (sigma-orbit triangular split, table-independent), Theorem 3.3 (no refinement), Proposition 4.1 (sigma^2 per-orbit values), Theorem 4.2 (sigma^2 ledger). Proofs are elementary direct-addition.
 - **COMPUTED:** Theorem 3.2 (role-Fibonacci split) and Proposition 4.1 (sigma^2 per-orbit values) verified by direct addition; the full ladder in `verify_J18.py` (6/6 PASS).
-- **STRUCTURAL RHYME:** The Fibonacci pair `{-F_6, -F_7} = {-8, -13}` on the role classes `(S, F)` and the TIG-prime pair `{-7, -8} = {-HARMONY, -BREATH}` on the sigma^2-orbits `(O_2, O_1)` are recorded as table-specific identities (Def. 3.4) supported by the `0/200` random-table check, **not** as table-independent forced identities.
+- **TABLE-DEPENDENT IDENTITIES (Def. 3.4):** The Fibonacci pair `{-F_6, -F_7} = {-8, -13}` on the role classes `(S, F)` and the index pair `{-7, -8} = {-H, -Br}` on the sigma^2-orbits `(O_2, O_1)` are recorded as table-specific empirical observations supported by the `0/200` random-table check, **not** as table-independent forced identities.
 - **OPEN:** O1 (closed-form Psi_B(n) in n alone), O2 (whether `{-7, -8}` is table-independent given Psi_B), O3 (role-orbit interaction), O4 (canonical sigma^2-triadic BH_10 projection). All confined to §5.
 
 ### Lens-ownership paragraph
 
-> *Lens and substrate.* This paper works on Z/10Z with the canonical involution sigma and the explicit integer-valued function Psi_B tabulated in Table 1. The table originates as a per-element BH_10-period contribution in the corrected (TS_8, BH_10)-substrate of J15/J18; for the present paper it is treated as an input definition. The role partition F sqcup S sqcup T sqcup V = Z/10Z comes from the same TS_8, BH_10-substrate. These choices are not derived from first principles; they reflect a structural reading of the substrate, and the theorems below are theorems on this specific (Psi_B, sigma, role-partition) datum. The closest published precedent for the family of small finite commutative non-associative structures is Drápal-Wanless (2021); they sit at the maximally non-associative extremum, the present substrate at the structurally regular end. The output of this paper is four integer-addition theorems on a fixed ten-value table; analogous theorems would hold on other substrate-and-table choices.
+> *Lens and substrate.* This paper works on Z/10Z with the canonical order-6 permutation sigma (cycle structure (0)(3)(8)(9)(1 7 6 5 4 2); only sigma^3 is an involution) and the explicit integer-valued function Psi_B tabulated in Table 1. The table originates as a per-element BH_10-period contribution in the corrected (TS_8, BH_10)-substrate of J15/J18; for the present paper it is treated as an input definition. The role partition F sqcup S sqcup T sqcup V = Z/10Z comes from the same TS_8, BH_10-substrate. These choices are not derived from first principles; they reflect a structural reading of the substrate, and the theorems below are theorems on this specific (Psi_B, sigma, role-partition) datum. The closest published precedent for the family of small finite commutative non-associative structures is Drápal-Wanless (2021); they sit at the maximally non-associative extremum, the present substrate at the structurally regular end. The output of this paper is four integer-addition theorems on a fixed ten-value table; analogous theorems would hold on other substrate-and-table choices.
 
 (The same paragraph appears in the manuscript as §0 "Lens, substrate, and claim tier.")
 

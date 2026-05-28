@@ -62,7 +62,7 @@
 \email{monica.gish1992@gmail.com}
 
 \subjclass[2020]{05E18, 06A07, 11F06, 20N02}
-\keywords{Z/10Z, sigma involution, triadic decomposition, role partition,
+\keywords{Z/10Z, sigma permutation, triadic decomposition, role partition,
 finite magma, triangular numbers, Fibonacci numbers}
 
 \date{\today}
@@ -70,9 +70,10 @@ finite magma, triangular numbers, Fibonacci numbers}
 \begin{document}
 
 \begin{abstract}
-On the residue ring $\Z/10\Z$, fix the canonical involution $\sig$ with cycle
-structure $(0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ --- four fixed points plus one
-$6$-cycle. Let $\Psi_{B} : \Z/10\Z \to \Z$ be the integer-valued function
+On the residue ring $\Z/10\Z$, fix the canonical order-$6$ permutation
+$\sig$ with cycle structure $(0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ --- four
+fixed points plus one $6$-cycle (so $\sig$ has order $\mathrm{lcm}(1,6)
+= 6$; only $\sig^{3}$ is an involution). Let $\Psi_{B} : \Z/10\Z \to \Z$ be the integer-valued function
 defined explicitly in Table~\ref{tab:psi-b} below.
 The total $\sum_{n=0}^{9} \Psi_{B}(n) = -21$ admits two distinct
 decompositions of independent combinatorial origin:
@@ -94,8 +95,8 @@ The $\sig^{2}$-action refines decomposition (I): $\sig^{2}$ partitions
 the $6$-cycle into two triangular orbits $O_{1} = \{1, 6, 4\}$ and
 $O_{2} = \{7, 5, 2\}$, with per-orbit contributions
 $\sum_{O_1} \Psi_B = -8$ and $\sum_{O_2} \Psi_B = -7$, partitioning
-the $\sig$-cycle component $-15$ into the canonical TIG primes $7$ and
-$8$ in negated form.
+the $\sig$-cycle component $-15$ into the indices $7$ and $8$ (the
+canonical $4$-core indices $H$ and $\mathrm{Br}$) in negated form.
 
 We give the entire ledger explicitly, in self-contained form, using
 only the definitions of $\sig$, $\sig^{2}$, the role partition, and
@@ -114,8 +115,9 @@ inspection.
 %==============================================================
 
 \emph{Lens and substrate.} This paper works on $\Z/10\Z$ with the
-canonical involution
-$\sig = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ and the explicit
+canonical order-$6$ permutation
+$\sig = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ (only $\sig^{3}$ is an
+involution) and the explicit
 integer-valued function $\Psi_B : \Z/10\Z \to \Z$ tabulated in
 Table~\ref{tab:psi-b}.  The table originates as a per-element
 $\BH_{10}$-period contribution in the corrected $(\TS_{8},
@@ -151,11 +153,11 @@ addition.
 direct sum of ten integer values from Table~\ref{tab:psi-b}.  The
 companion script \texttt{verify\_J18.py} (CC-BY-4.0, standard-library
 Python) checks all six load-bearing identities in under a second.
-\item \emph{STRUCTURAL RHYME.}  Theorem~\ref{thm:role-fib}'s
-$\{-F_{6}, -F_{7}\} = \{-8, -13\}$ Fibonacci split and
-Proposition~\ref{prop:per-orbit}'s $\{-7, -8\}$ TIG-prime split
-are recorded as table-specific identities in the sense of
-Definition~\ref{def:table-spec}: they hold for the canonical
+\item \emph{TABLE-DEPENDENT IDENTITIES (Definition~\ref{def:table-spec}).}
+Theorem~\ref{thm:role-fib}'s $\{-F_{6}, -F_{7}\} = \{-8, -13\}$
+Fibonacci split and Proposition~\ref{prop:per-orbit}'s
+$\{-7, -8\}$ split on the indices $H, \mathrm{Br}$ are recorded
+as empirical observations: they hold for the canonical
 $\TS_{8}, \BH_{10}$ data of \cite{SandersGishFourCore} but were
 broken by $0/200$ random commutative tables \cite[N8]{SandersBridgeWP9}.
 \item \emph{OPEN.}  A closed-form expression for $\Psi_{B}(n)$ in $n$
@@ -170,8 +172,8 @@ in \S\ref{sec:open}.
 %==============================================================
 
 \subsection{What this paper establishes.}
-We work entirely on $\Z/10\Z$ with one specified involution $\sig$, one
-explicitly tabulated function $\Psi_B : \Z/10\Z \to \Z$
+We work entirely on $\Z/10\Z$ with one specified order-$6$ permutation
+$\sig$, one explicitly tabulated function $\Psi_B : \Z/10\Z \to \Z$
 (Table~\ref{tab:psi-b}), and one explicitly partitioned role
 decomposition $F \sqcup S \sqcup T \sqcup V = \Z/10\Z$.
 All numerical claims below reduce to direct sums of $10$ integer
@@ -185,8 +187,9 @@ $\sig$-orbits (Theorem~\ref{thm:sigma-orbit}),
 (Theorem~\ref{thm:role-fib}), and
 \item the $\sig^{2}$-refinement partitions the $\sig$-cycle component
 $-15$ into the two triangular orbits with per-orbit sums
-$-8$ and $-7$, the negations of the canonical TIG primes
-$\{8, 7\}$ (Proposition~\ref{prop:per-orbit},
+$-8$ and $-7$, the negations of the indices $\mathrm{Br}$ and $H$
+($=8$ and $7$ respectively, the canonical $4$-core indices)
+(Proposition~\ref{prop:per-orbit},
 Theorem~\ref{thm:cm-sigma2}).
 \end{enumerate}
 Theorem~\ref{thm:cross} records that the two decompositions of (i) and
@@ -246,14 +249,18 @@ acts on the full $\Z/10\Z$, with the cells $V = 0$ and $H = 7$ acting
 as flow boundaries.  The earlier $\TS_{10}$-frame analyses are invalid
 (see \cite[N10]{SandersBridgeWP9}) and not used here.
 
-\subsection{The involution $\sig$ and its squares.}
-We fix the involution $\sig$ on $\Z/10\Z$ given by the cycle structure
+\subsection{The permutation $\sig$ and its powers.}
+We fix the permutation $\sig$ on $\Z/10\Z$ given by the cycle structure
 \[
 \sig \;=\; (0)(3)(8)(9)(1\,7\,6\,5\,4\,2),
 \]
 that is: $\sig$ has four fixed points $\{0, 3, 8, 9\}$ and one
 $6$-cycle $\{1, 7, 6, 5, 4, 2\}$ traversed in the order
 $1 \mapsto 7 \mapsto 6 \mapsto 5 \mapsto 4 \mapsto 2 \mapsto 1$.
+The order of $\sig$ is $\mathrm{lcm}(1, 1, 1, 1, 6) = 6$; in particular
+$\sig$ itself is \emph{not} an involution, $\sig^{2}$ has order $3$ on
+the $6$-cycle, and only $\sig^{3}$ (the cube) is an involution on
+$\Z/10\Z$.
 $\sig^{2}$ has order $1$ on the four fixed points and order $3$ on the
 $6$-cycle, partitioning the $6$-cycle into the two triangular orbits
 \[
@@ -321,7 +328,7 @@ with $|F| = 5$, $|S| = 3$, $|T| = 1$, $|V| = 1$.
 The partition is functional in the sense of
 \cite[\S 4.2]{SandersGishFourCore}: $F$ is the odd-residue class
 (BHML's flow cells), $S$ is the non-zero even-residue class minus the
-doubled HARMONY/$\sig$-cycle peak (BHML's structural cells),
+doubled $H$-index ($n = 7$) / $\sig$-cycle peak (BHML's structural cells),
 $T = \{6\}$ is the BHML transition cell, and $V = \{0\}$ is the void.
 The partition is not closed under $\TS_{8}$ or $\BH_{10}$ separately,
 and crosses the $\sig$-orbit decomposition (e.g.,
@@ -504,16 +511,16 @@ O_{2} = \{7, 5, 2\}: &\quad
 \end{proof}
 
 \begin{remark}[On the per-orbit values]
-The values $\{-8, -7\}$ negate the canonical TIG primes
-$\{8, 7\} = \{\mathrm{BREATH}, \mathrm{HARMONY}\}$ in the substrate of
+The values $\{-8, -7\}$ negate the indices $\{8, 7\} =
+\{\mathrm{Br}, H\}$, the canonical $4$-core indices in the substrate of
 \cite{SandersGishFourCore}.  In the language of
 Definition~\ref{def:table-spec}, this identity is table-specific:
 no forcing argument internal to the $\sig$-cycle structure plus
-Table~\ref{tab:psi-b} alone produces the BREATH/HARMONY values; they
+Table~\ref{tab:psi-b} alone produces the $\mathrm{Br}/H$ values; they
 arise because the $\BH_{10}$-period values that determine
 Table~\ref{tab:psi-b} happen to land on $\{1, 2, 3, 5\}$ inside each
 $\sig^{2}$-orbit in such a way that the per-orbit sums are integer
-negatives of the canonical TIG primes.  See Section~\ref{sec:open}
+negatives of the canonical $4$-core indices.  See Section~\ref{sec:open}
 for the natural empirical follow-up.
 \end{remark}
 
@@ -565,9 +572,9 @@ principles.  The piecewise nature of the $\BH_{10}$-period in
 \cite{SandersBridgeWP9} suggests this may not be possible without
 re-doing the substrate analysis.
 
-\subsection{Open: HARMONY/BREATH per-orbit values.}
+\subsection{Open: $\mathrm{Br}/H$ per-orbit values.}
 The per-orbit values $-8, -7$ from Proposition~\ref{prop:per-orbit}
-match the canonical TIG primes BREATH $= 8$ and HARMONY $= 7$ in
+match the canonical $4$-core indices $\mathrm{Br} = 8$ and $H = 7$ in
 sign-flipped form.  Whether this is table-independent (a forced
 $\sig^{2}$-orbit-internal identity given Table~\ref{tab:psi-b}
 alone) or table-specific (an emergent feature of the canonical tables
@@ -619,8 +626,8 @@ at machine precision by the bundled standard-library Python script
 $\Psi_B$-total $-21$, (C2) the $\sig$-orbit triangular split,
 (C3) the role-Fibonacci split, (C4) the $\sig^{2}$-orbit per-orbit
 values $-8$ and $-7$, (C5) the crossing closure failures, and
-(C6) the involution sanity data ($\sig^{2}$ of period 3 on the
-$6$-cycle, $\sig$-swap of $O_{1}, O_{2}$).
+(C6) the $\sig$-permutation sanity data ($\sig^{2}$ of period 3 on
+the $6$-cycle, $\sig$-swap of $O_{1}, O_{2}$).
 
 %==============================================================
 \begin{thebibliography}{99}

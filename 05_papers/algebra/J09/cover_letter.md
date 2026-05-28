@@ -1,6 +1,6 @@
 # Cover letter -- J09: Joint Lie Closure of a Pair of Z/10Z Magmas: an so(10) Identification
 
-**To:** Editors, *Israel Journal of Mathematics*
+**To:** Editors, *Communications in Algebra*
 
 **From:**
 - B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR -- brayden@7site.co
@@ -24,12 +24,12 @@ The substantive content of the paper is the *existence* of an explicit pair of 1
 
 A new structural finding (Corollary 5.3, drawn from the Substrate Function Map analysis [FoundationsModule, SFM_Q6]) records that adding a third canonical table CL_STD to the joint closed-sub-magma chain preserves the 8-shell ladder: the 4-core is a three-substrate fixed point. Whether the *Lie-algebraic* joint closure of the three tables also reaches so(R^10) is added as an open question.
 
-## Why Israel J Math
+## Why Communications in Algebra
 
 - The result is a clean two-step Lie-algebra extension over R — concise, constructive, machine-verifiable, with one substantive computation and four classification-corollary consistency checks.
-- *Israel J Math* has consistent appetite for finite-combinatorial-to-Lie-algebraic identifications of this type.
+- *Communications in Algebra* has consistent appetite for finite-combinatorial-to-Lie-algebraic identifications of this type.
 - The diagnostic-collapse framing (D2-D5 as corollaries of D1 + classification, not five independent tests) reflects the honest mathematical structure of the result: the substantive novelty is the existence of the explicit pair (TSML, BHML) hitting the substrate ceiling, not the multi-diagnostic verification.
-- The sequencing (J29 in *J Algebra* on so(8); the present paper in *Israel J Math* on so(10)) avoids per-venue concentration.
+- The sequencing (J29 in *J Algebra* on so(8); the present paper in *Communications in Algebra* on so(10)) avoids per-venue concentration.
 
 ## Companion submissions
 
@@ -57,7 +57,7 @@ Python 3.11, numpy 1.26, sympy 1.12. Closure dimension and simplicity rank are c
 - An expert in classical Lie algebras over R (Cartan / Helgason / Knapp tradition)
 - An expert in combinatorial / finite-magma representations (Drápal-Wanless 2021 lineage)
 - An expert in computational structure-constants / Killing-form analysis (exact-arithmetic / SymPy familiarity)
-- (Two or three named candidates appropriate to the *Israel J Math* editorial board to be identified during the referee-rigor pass.)
+- (Two or three named candidates appropriate to the *Communications in Algebra* editorial board to be identified during the referee-rigor pass.)
 
 ## AI-tool disclosure
 
@@ -69,7 +69,7 @@ The authors declare no competing interests. No funding was received for this wor
 
 ## Per-venue cap note
 
-This is the first paper from this research program targeting *Israel Journal of Mathematics*; the per-venue cap is not constraining. If IJM returns a second-round MAJOR revision, fallbacks are *Communications in Algebra*, *Linear Algebra and its Applications*, or *International Journal of Algebra and Computation*.
+This is the first paper from this research program targeting *Communications in Algebra*; the per-venue cap is not constraining. If *Communications in Algebra* returns a second-round MAJOR revision, fallbacks are *Linear Algebra and its Applications* or *International Journal of Algebra and Computation*.
 
 ---
 

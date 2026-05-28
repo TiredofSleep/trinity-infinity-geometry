@@ -1,4 +1,4 @@
-# J16 — The CL Forcing Axioms: A1-A9 Uniquely Force the Canonical Composition Lattice
+# J16 — Structural Axioms for the CL_TSML Composition Lattice on Z/10Z
 
 **Status:** READY (manuscript drafted from corpus, cover letter finalized; awaiting referee-rigor pass)
 **Phase:** Phase 3
@@ -13,7 +13,7 @@
 
 **Path:** `manuscript/manuscript.tex`
 
-Abstract (1-sentence): We isolate nine axioms A1-A9 on a 10x10 multiplication table over Z/10Z and prove (by direct cell-counting) that they uniquely force the canonical TSML composition lattice (the 73-HARMONY substrate); the axioms partition into Tier-A substrate-defining rules (A2-A4 absorbing structure, A7 diagonal HARMONY, A9 BUMP values) and Tier-B forced rules (A5/A6 by commutativity, A8 by HARMONY-default, A9 BUMP positions by BDC entropy extremum), giving a clean mechanism for the parallel-substrate (lens) family.
+Abstract: We isolate seven structural axioms S_1–S_7 on a 10x10 commutative magma on Z/10Z and prove (by direct cell-counting and explicit witness construction) that they uniquely force the canonical CL_TSML composition lattice (the 73-HARMONY substrate). The axioms partition into substrate-defining absorption rules (S_1–S_4), the cell-count constraint (S_5), and minimal listings of exceptional positions and values (S_6, S_7). For each S_i we construct a witness magma demonstrating independence; M_2 and M_7 are strict independence witnesses (failing only the targeted axiom), while M_1, M_3, M_4, M_5, M_6 are partial witnesses failing S_i together with one or two additional axioms (see §5 Remark 5.3). Construction of strict witnesses for the remaining five axioms is an open problem.
 
 Source corpus: `Atlas/LENS_TAXONOMY_2026-05-06/CL_FORCING_AXIOMS.md`. The manuscript adapts the cell-by-cell forcing argument from §3 of the corpus and the Tier classification of §4-§6 into a venue-ready theorem-driven structure.
 

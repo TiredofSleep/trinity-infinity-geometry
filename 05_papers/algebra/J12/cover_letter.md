@@ -25,7 +25,7 @@ The number field K is catalogued and not new; what is novel is the route. We rec
 ## Why Communications in Algebra
 
 - **Subject fit.** Explicit Galois-group computation, explicit irreducibility argument, cubic resolvent classification, number-field identification with LMFDB — all squarely within Comm Algebra's scope.
-- **Self-contained presentation.** Approximately 12 pages, with verification reduced to a single sympy script (`verify_J15_galois.py`) carrying six independent checks corresponding one-to-one to the theorem's claims; runtime approximately two seconds, sympy the only dependency. Independent reproducibility in PARI/GP via `polgalois(f)` and the LMFDB record is immediate.
+- **Self-contained presentation.** Approximately 12 pages, with verification reduced to a single sympy script (`verify_J12_galois.py`) carrying six independent checks corresponding one-to-one to the theorem's claims; runtime approximately two seconds, sympy the only dependency. Independent reproducibility in PARI/GP via `polgalois(f)` and the LMFDB record is immediate.
 - **The combinatorial-to-arithmetic route.** The origin of f as the algebra of fixed-point coordinates of a fuse iteration on a finite commutative non-associative magma is unusual; we believe it is worth recording in the *Comm Algebra* literature as a "new route to a known number field" entry.
 
 ## Companion submissions and differentiation
@@ -36,7 +36,7 @@ The number field K is catalogued and not new; what is novel is the route. We rec
 
 ## Reproducibility
 
-A single sympy script `verify_J15_galois.py` (CC-BY-4.0) bundled with the manuscript performs six checks:
+A single sympy script `verify_J12_galois.py` (CC-BY-4.0) bundled with the manuscript performs six checks:
 
 1. Irreducibility of f over Q (case-by-case + mod-7 cross-check; mod-5 reducible counterexample recorded).
 2. Polynomial discriminant `Δ_f = -40896 = -2^6 · 3^2 · 71`.

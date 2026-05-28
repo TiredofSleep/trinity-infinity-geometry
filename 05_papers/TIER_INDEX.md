@@ -1,6 +1,8 @@
 # J-Series Tier Index — what is ready to ship
 
-**Last updated**: 2026-05-27. **Comprehensive renumbering applied** — all 52 papers now occupy a contiguous J01-J52 scheme aligned with tier.
+**Last updated**: 2026-05-27 (post-audit). **Comprehensive renumbering applied** — all 52 papers now occupy a J01-J52 scheme. After the line-by-line referee pass (`_staging/referee_reports/`), four papers were demoted from Tier 1 to Tier 2, and J25 was approved for merger into J24.
+
+For the recommended **release sequence** (which is not the same as the tier ladder — a Tier 1 paper with substantive issues sits later than a Tier 2-promoted paper that is ready), see [`RELEASE_ORDER.md`](RELEASE_ORDER.md).
 
 ## Quick legend
 
@@ -25,7 +27,9 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 ---
 
-## Tier 1 — ship-ready spine (31 papers, J01-J31)
+## Tier 1 — ship-ready spine (26 papers after 2026-05-27 audit)
+
+Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to Tier 2**; **J25 merged into J24**. Net Tier 1 spine is now 26 papers.
 
 ### J01-J08: Flagship / new promotions / σ-magma trilogy / strata
 
@@ -38,7 +42,7 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 | **J05** | algebra | ETP Profile of Linear Magmas (ax+by+c) mod n | Experimental Mathematics | SUBMISSION-READY |
 | **J06** | number_theory | Strata-Prime Fingerprint (Niemeier 23/24, D_24 mechanism, Monster 71) | Journal of Number Theory | SUBMISSION-READY (4 theorems PASS) |
 | **J07** | algebra | Spectral Architecture of the σ-Character on Z/10Z (5 theorems; G_low / G_high) | European J. Combinatorics | SUBMISSION-READY (merger of q-series papers) |
-| **J08** | algebra | F_p Structure of the 4-Core Commutative Non-Associative Algebra | Algebra Universalis | SUBMISSION-READY (merger of F_p papers) |
+| ~~**J08**~~ | algebra | F_p Structure of the 4-Core Commutative Non-Assoc Algebra | Algebra Universalis | **→ Tier 2 (demoted 2026-05-27 audit: power-associativity claim verified false; L_{e₃} not a 4-cycle; idempotents over F_5 not idempotent. See `_staging/referee_reports/08_J08_power_assoc_FIX.md`.)** |
 
 ### J09-J22: Established proven Tier 1 (substrate + Galois + HARMONY)
 
@@ -63,13 +67,13 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 | J# | Subdir | Title (short) | Target venue | Status |
 |---|---|---|---|---|
-| **J23** | algebra | Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences | TBD | DRAFT (rigor pending) |
-| **J24** | number_theory | Discrete Fejér Quotient on Squarefree Moduli (absorbed J41) | TBD | MERGED 2026-05-13 |
-| **J25** | number_theory | First-Coprime-Failure + Discrete Fejér Kernel | TBD | REVISED |
+| ~~**J23**~~ | algebra | Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences | TBD | **→ Tier 2 (demoted 2026-05-27 audit: single-observation; reverse-engineered substrate-prime set; no robustness null model)** |
+| **J24** | number_theory | Discrete Fejér Quotient on Squarefree Moduli (absorbed J41 + **J25 merger pending 2026-05-27**) | Journal of Number Theory | READY — recommended Wave 1 ship target |
+| ~~**J25**~~ | number_theory | First-Coprime-Failure + Discrete Fejér Kernel | — | **→ MERGED into J24 (audit 2026-05-27): theorems are coordinate-translations of J24; distinct content (712-check + Montgomery + ω-blindness) fits as 2-3 page J24 appendix** |
 | **J26** | number_theory | Discrete sinc² Identity in Finite-D QM | TBD | DRAFT |
 | **J27** | algebra | Crossing Lemma: Non-Assoc as Information Generation | TBD | DRAFT-FINALIZED |
-| **J28** | algebra | Small Comm Non-Assoc Magma w/ Role-Boundary Behavior | TBD | REVISED |
-| **J29** | algebra | Lo Shu D₄ Orbit Modulo 3 | TBD | DRAFT |
+| ~~**J28**~~ | algebra | Small Comm Non-Assoc Magma w/ Role-Boundary Behavior | TBD | **→ Tier 2 (demoted 2026-05-27 audit: no characterization theorem; role partition labelled by fiat)** |
+| ~~**J29**~~ | algebra | Lo Shu D₄ Orbit Modulo 3 | Math Magazine | **→ Tier 2 (demoted 2026-05-27 audit: pedagogical undergraduate-classroom material, not Tier 1)** |
 
 ### J30-J31: Honest negatives (credibility-builders)
 
@@ -80,7 +84,9 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 ---
 
-## Tier 2 — drafts needing rigor pass (9 papers, J32-J40)
+## Tier 2 — drafts needing rigor pass (13 papers — 9 original + 4 demoted 2026-05-27 audit)
+
+Original J32-J40:
 
 | J# | Subdir | Title (short) | Status |
 |---|---|---|---|
@@ -93,6 +99,15 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 | **J38** | physics | Logarithmic Nonlinearity (BB reading, NS limits) | R1 |
 | **J39** | combinatorics | TSML Lens Family — pedagogical walking tour | REWRITTEN |
 | **J40** | interdisciplinary | Paradox Classifier UOP (Four Measurement-Failure Types) | REWRITTEN |
+
+Newly demoted from Tier 1 by 2026-05-27 audit (J-number unchanged; classification only):
+
+| J# | Subdir | Title (short) | Demotion reason |
+|---|---|---|---|
+| **J08** | algebra | F_p Structure of the 4-Core Comm Non-Assoc Algebra | Power-associativity FALSE; L_{e₃} not a 4-cycle; idempotents-over-F_5 claim FALSE. Rewrite §1.2, §2.5, §4 needed. |
+| **J23** | algebra | Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences | Single-observation; reverse-engineered substrate-prime set; sum-of-squares null model not computed. *Math. Intelligencer*-class note. |
+| **J28** | algebra | Small Comm Non-Assoc Magma w/ Role-Boundary Behavior | No characterization theorem; role partition labelled by fiat. |
+| **J29** | algebra | Lo Shu D₄ Orbit Modulo 3 | Pedagogical undergraduate-classroom material; *Math. Magazine* would fit. |
 
 ---
 
@@ -110,10 +125,13 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 ---
 
-## MERGED tombstones (5 source papers, J48-J52)
+## MERGED tombstones (6 source papers)
+
+Original J48-J52 + J25 (newly merged in 2026-05-27 audit):
 
 | J# | Subdir | Title (short) | Merged into |
 |---|---|---|---|
+| **J25** | number_theory | First-Coprime-Failure + Discrete Fejér Kernel | `J24/` (audit 2026-05-27 — every theorem is a coordinate-translation of J24's content) |
 | **J48** | algebra | F_p Structural Invariance of 4-Algebra | `J08/` |
 | **J49** | algebra | F_5 Rigid Idempotent Decomposition | `J08/` |
 | **J50** | combinatorics | Q17-A: 5D Force Vector as CRT Fourier | `J07/` |
@@ -122,15 +140,15 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 ---
 
-## Numbers — UPDATED 2026-05-27
+## Numbers — UPDATED 2026-05-27 (post-audit)
 
-| Tier | Range | Count | Of those, SUBMISSION-READY |
-|---|---|---:|---:|
-| Tier 1 (ship-ready spine) | J01-J31 | **31** | ~13 (J01, J02, J03, J04, J05, J06, J07, J08, J11, J12, J13, J14, J15, J16, J18, J20, J21, J22, J30, J31 — rough count) |
-| Tier 2 (drafts) | J32-J40 | **9** | 0 |
-| Tier 3 (hold / retire) | J41-J47 | **7** | 0 |
-| MERGED sources | J48-J52 | **5** | 0 (absorbed) |
-| **Total active papers** | | **52** | **47** (excluding 5 merged tombstones) |
+| Tier | Members | Count |
+|---|---|---:|
+| Tier 1 (ship-ready spine) | J01-J07, J09-J22, J24, J26-J27, J30-J31 | **26** |
+| Tier 2 (drafts + 4 demoted) | J08, J23, J28, J29, J32-J40 | **13** |
+| Tier 3 (hold / retire) | J41-J47 | **7** |
+| MERGED tombstones | J25, J48-J52 | **6** |
+| **Total numbered J-papers** | | **52** (51 distinct ship-targets; J25 now a tombstone) |
 
 Net portfolio: **52 numbered papers**, of which **31 are the Tier 1 spine**, of which **~13 are submission-ready today**. The remaining 18 Tier 1 papers need a rigor pass before submission.
 

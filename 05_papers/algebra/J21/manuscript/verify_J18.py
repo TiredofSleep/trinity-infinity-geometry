@@ -21,9 +21,11 @@ Six checks mapped one-to-one to the manuscript's load-bearing claims:
         F intersect sigma-cycle = {1, 5, 7} is not sigma-stable;
         F intersect sigma-cycle is not sigma^2-stable;
         no sigma-orbit lies inside a single role class.
-  C6  sigma involution data: sigma is an involution on the cycle component
-        in the order-2 sense (sigma^2 has order 3 on the 6-cycle, identity
-        on fixed points); O_1 and O_2 are sigma-swapped.
+  C6  sigma permutation data: sigma has order 6 on Z/10Z (cycle structure
+        (0)(3)(8)(9)(1 7 6 5 4 2), so order = lcm(1, 6) = 6 -- sigma is
+        NOT an involution; only sigma^3 is). sigma^2 has order 3 on the
+        6-cycle and is identity on fixed points; O_1 and O_2 are
+        sigma-swapped.
 
 Author lane: B.R. Sanders, M. Gish
 License: CC-BY-4.0 (journal-bundled submission script)
@@ -201,8 +203,8 @@ def check_C4_sigma2_per_orbit() -> tuple[bool, str]:
         f"match = {ok_O2}\n"
         f"  O_1 + O_2 = {sO1 + sO2}, expected -T_5 = -{T5}, "
         f"match = {ok_sum}\n"
-        f"  per-orbit values {{-8, -7}} match negated TIG primes "
-        f"{{BREATH=8, HARMONY=7}}: confirmed."
+        f"  per-orbit values {{-8, -7}} match negated 4-core indices "
+        f"{{Br=8, H=7}}: confirmed."
     )
 
 
@@ -247,7 +249,7 @@ def check_C5_crossing_closure() -> tuple[bool, str]:
     )
 
 
-def check_C6_sigma_involution_and_swap() -> tuple[bool, str]:
+def check_C6_sigma_permutation_and_swap() -> tuple[bool, str]:
     """C6: sigma^2 has order 3 on the 6-cycle and identity on fixed points;
     O_1 and O_2 are sigma-swapped.
     """
@@ -309,7 +311,7 @@ def main() -> int:
         ("C3", check_C3_role_fibonacci),
         ("C4", check_C4_sigma2_per_orbit),
         ("C5", check_C5_crossing_closure),
-        ("C6", check_C6_sigma_involution_and_swap),
+        ("C6", check_C6_sigma_permutation_and_swap),
     ]
 
     results = []

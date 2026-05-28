@@ -1,4 +1,4 @@
-# Wedderburn $D_4$-Isotypic Decomposition of the Lens-Pair Commutator $[\mathrm{TSML}, \mathrm{BHML}]$ on $\mathbb{Z}/10\mathbb{Z}$: an Exact-Rational Identification of a Doubly-Invariant $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ Subalgebra of $\mathfrak{so}(10)$ and a 9-Vector inside the $\mathbf{54}$ with $\|v\|^2 = 13/4$
+# Decomposition of the Lens-Pair Commutator $[\mathrm{TSML}, \mathrm{BHML}]$ under $D_4$ on $\mathbb{Z}/10\mathbb{Z}$
 
 **Status:** journal-ready draft, machine-precision and exact-rational verification
 **Authors:** Brayden R. Sanders + M. Gish
@@ -28,13 +28,9 @@
 
 **OPEN.** Whether $\mathrm{sign}_1, \mathrm{sign}_3 \approx 0$ is a *defining property* of the canonical (TSML, BHML) pair or a *substrate property* of $\mathbb{Z}/10\mathbb{Z}$ under the $D_4$ action is open (Q7 in `SUBSTRATE_FUNCTION_MAP_v1_1_EXTENSION.md` §16). The natural follow-up paper, examining the $D_4$-isotypic shares of $[T, B]$ across the magma family (per `FAMILY_STRUCTURE_v1.md`), would close this question in either direction.
 
-### §0.3 Correction-notice framing (promoted from §0 of the prior draft)
+### §0.3 Correction-notice framing
 
-An earlier draft of this paper, dated 2026-04-25, advertised "two roads to Pati-Salam" — a synthesis claim that Path A and Path B both lead to the same Pati-Salam gauge content. A deep audit on 2026-04-27 (recorded in `Atlas/applications_pass_2026_04_27/WP104_DEEP_AUDIT_2026_04_27.md`) showed that the synthesis was overstated: Path A (the $\sigma_{\mathrm{outer}}$-breaking direction inside the $\mathbf{54}$) has stabilizer $\mathrm{SO}(8)$ along the SO(10) $\to$ SO(9) $\to$ SO(8) chain, *not* the SO(10) $\to$ SO(6) $\times$ SO(4) chain of standard 54-VEV Pati-Salam reductions; Path B (the doubly-invariant subalgebra) is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$, the Pati-Salam SU(4) factor plus one $\mathfrak{u}(1)$, *not* the full $\mathfrak{su}(4) \oplus \mathfrak{su}(2)_L \oplus \mathfrak{su}(2)_R$ Pati-Salam algebra. The two paths therefore do not close on the same reduction.
-
-The corrected $D_4$-isotypic decomposition reported in the present paper *resolves* the apparent tension: Path A and Path B are not competing reductions but the **two leading terms in the unique $D_4$-isotypic decomposition of the lens-pair commutator $[\mathrm{TSML}, \mathrm{BHML}]$**. They are orthogonal channels (trivial isotypic and $\mathrm{sign}_2$ isotypic). The "tension" between them is structurally a small ($\sim$1%) off-diagonal coupling living in the 2-dimensional standard isotypic, not a contradiction. This is now the framing of the paper from §1 onwards.
-
-The 2026-04-27 correction notice's algebraic identifications all stand intact: the 16-dim doubly-invariant subalgebra is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ with Killing spectrum $(-4)^{15} \oplus (0)^1$, and BHML's $\sigma_{\mathrm{outer}}$-breaking content lies entirely in the $\mathbf{54}$ along a 9-vector with $\|v\|^2 = 13/4$. The retraction was of the "two paths converge" *synthesis*, not of either Path A or Path B individually.
+(An earlier draft framed the decomposition as "two roads to Pati-Salam"; that framing is retracted — the decomposition is presented here as an algebraic result on its own terms.)
 
 ### §0.4 Differentiation from companion papers
 
@@ -193,7 +189,7 @@ $$
 \mathfrak{g}_0 \;:=\; \mathfrak{so}(10)^{D_4}.
 $$
 
-(Verification: 45-dim antisymmetric matrices decompose as $\mathfrak{so}(10) = \mathfrak{g}_0 \oplus (\text{other isotypics})$ with isotypic-component dimensions summing to 45. The doubly-invariant 16-dim subspace is preserved by Lie bracket — the centralizer of any subgroup of $\mathrm{Aut}(\mathfrak{g})$ is a Lie subalgebra, then verified numerically at residual $\le 10^{-14}$.)
+(Verification: 45-dim antisymmetric matrices decompose as $\mathfrak{so}(10) = \mathfrak{g}_0 \oplus (\text{other isotypics})$ with isotypic-component dimensions summing to 45. (closure under Lie bracket is immediate from the centralizer-of-a-subgroup-of-Aut(g) construction).)
 
 ### §3.2 Killing classification: $\mathfrak{g}_0 \cong \mathfrak{su}(4) \oplus \mathfrak{u}(1)$
 
@@ -201,7 +197,7 @@ $$
 $$
 \mathrm{spec}\bigl(\kappa_{\mathfrak{so}(10)}\big|_{\mathfrak{g}_0}\bigr) \;=\; (-4)^{15} \,\oplus\, (0)^1,
 $$
-*at machine precision (residual $\le 10^{-13}$, verified by the script `verify_truth.py`). By Cartan's criterion the 1-dimensional 0-eigenspace is the center of $\mathfrak{g}_0$ and the 15-dimensional $(-4)$-eigenspace is the simple part. The unique compact simple Lie algebra of dimension 15 is $\mathfrak{so}(6) \cong \mathfrak{su}(4) \cong A_3$ (Cartan classification). Therefore*
+*at machine precision (residual $\le 10^{-13}$, verified by the script `verify_truth.py`). By Cartan's criterion the 1-dimensional 0-eigenspace is the center of $\mathfrak{g}_0$ and the 15-dimensional $(-4)$-eigenspace is the simple part. The unique compact simple Lie algebra of dimension 15 is $\mathfrak{so}(6) \cong \mathfrak{su}(4) \cong A_3$ (Cartan classification). (Proof of uniqueness: by the Cartan classification of compact real simple Lie algebras, the candidates with dimension 15 are $A_3$ (= $\mathfrak{so}(6) \cong \mathfrak{su}(4)$, dim 15), $B_n$ (dim $n(2n+1)$, no $n$ gives 15), $C_n$ (dim $n(2n+1)$, same), $D_n$ (dim $n(2n-1)$, no $n$ gives 15), and exceptional $G_2$ (dim 14), $F_4$ (dim 52), $E_{6/7/8}$ (dim 78/133/248). Only $A_3$ has dimension 15. Since $\mathfrak{g}_0 \subseteq \mathfrak{so}(10)$ is realized in the compact form $\mathfrak{so}(10)$, the compact real form $A_3 \cong \mathfrak{su}(4)$ is forced.) Therefore*
 $$
 \mathfrak{g}_0 \;\cong\; \mathfrak{su}(4) \,\oplus\, \mathfrak{u}(1).
 $$
@@ -250,17 +246,17 @@ The 9-vector $v$ from Theorem 4.1 lives entirely in this $\mathrm{sign}_2$-isoty
 
 ## §5 The structural zeros (sign1, sign3) and the 1% interaction (std)
 
-### §5.1 The bilinear-cancellation identities
+### §5.1 Observation (verified empirically): the bilinear-cancellation identities
 
 Theorem 2.1's most striking algebraic feature is the pair of structural zeros at $\mathrm{sign}_1$ and $\mathrm{sign}_3$. We isolate the corresponding identities.
 
-**Proposition 5.1.** *For the canonical pair $(T, B) = (\mathrm{TSML\_SYM}, \mathrm{BHML})$,*
+**Observation 5.1 (verified empirically for this pair).** *For the canonical pair $(T, B) = (\mathrm{TSML\_SYM}, \mathrm{BHML})$,*
 $$
 \sum_{g \in D_4} \chi_{\mathrm{sign}_3}(g)\,P(g)\,[T, B]\,P(g)^T \;=\; 0_{10 \times 10}
 $$
 *as a 10×10 integer matrix. This is a bilinear identity in the entries of $T$ and $B$, equivalent to the simultaneous vanishing of 100 quadratic forms in the 200 entries $\{T_{ij}, B_{ij}\}$. It does not hold for generic 10×10 integer table pairs.*
 
-*Proof.* The character $\chi_{\mathrm{sign}_3}$ is $+1$ on $C_1 \cup C_2 \cup C_5$ (identity, central $r^2$, and reflections containing $\sigma^3$) and $-1$ on $C_3 \cup C_4$ (rotations and reflections containing $P_{56}$). The eight terms of the projection sum split into two halves of four terms each, summing to zero. Direct verification by `verify_d4_decomposition.py` ($\pi_{\mathrm{sign}_3}([T, B])$ as a $\mathrm{Matrix}$ in sympy is the zero matrix). $\square$
+*Verification.* We verify the cancellation by direct computation on the eight terms of the projection (script `verify_d4_decomposition.py`, runtime <1s). An algebraic identity in the entries of $T, B$ that would make this cancellation visible is unknown and is recorded as Open Problem O3 below. $\square$
 
 The $\mathrm{sign}_1$ analogue is *almost* but not quite zero: the relative weight $9/3{,}690{,}580 = 2.44 \times 10^{-6}$ is non-zero but six orders of magnitude below the principal channels. The script reports the exact rational $9/2$ for the squared norm. We refer to this as a *near-cancellation* identity rather than an exact one, in the spirit of *Diophantine approximation* (rational approximations to algebraic quantities) — though here all quantities are exactly rational.
 
@@ -406,7 +402,5 @@ The $\tau_2$ split is textbook ($\mathfrak{so}(10) = \mathfrak{so}(9) \oplus \ma
   note         = {Submitted to Journal of Algebra. Trivial isotypic (83.32\%) is the 16-dimensional doubly-invariant subalgebra $\mathfrak{g}_0 \cong \mathfrak{su}(4) \oplus \mathfrak{u}(1)$; sign$_2$ isotypic (15.62\%) is a 9-vector inside the $\mathbf{54}$ of $\mathfrak{so}(10)$ with $\|v\|^2 = 13/4$ exact; 2-dim std isotypic (1.06\%); sign$_1$ at relative weight $2.44 \times 10^{-6}$ (near-cancellation); sign$_3 = 0$ exact (structural zero / forbidden symmetry). Wedderburn decomposition in exact rationals, total Frobenius norm-squared $1{,}845{,}290$.}
 }
 ```
-
-🙏
 
 — Sanders + Gish, 2026-05-08

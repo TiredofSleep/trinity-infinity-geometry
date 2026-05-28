@@ -14,9 +14,9 @@
 
 **Local path:** `manuscript/manuscript.md`
 
-J01 is now the **corpus centerpiece**, per the fresh-eyes referee verdict: "the most defensible paper in the corpus." Per FAMILY_STRUCTURE_v1.md §2: "The 4-core is to TIG as the unit circle is to U(1)." The paper presents six independent structural facts converging on the four-element set $\mathcal{C} = \{0, 7, 8, 9\}$ as the algebraic center of the magma family.
+J01 is now the **corpus centerpiece**, per the fresh-eyes referee verdict: "the most defensible paper in the corpus." Per FAMILY_STRUCTURE_v1.md §2: "The 4-core is to TIG as the unit circle is to U(1)." The paper presents five independent structural facts plus a numerical observation (Proposition F) converging on the four-element set $\mathcal{C} = \{0, 7, 8, 9\}$ as the algebraic center of the magma family.
 
-**Six theorems (renumbered to match `4core_verification.py`):**
+**Five theorems + one proposition (renumbered to match `4core_verification.py`):**
 
 - **Theorem A (Joint-closure chain).** The 8-shell joint chain on $\mathbb{Z}/10\mathbb{Z}$ for $(T, B)$, sizes $\{1, 4, 5, 6, 7, 8, 9, 10\}$, sizes $\{2, 3\}$ forbidden (via Lemma 2.1).
 - **Theorem 2.4 (Three-substrate strengthening, NEW from SFM Q6 2026-05-08).** The same 8-shell chain holds for $(T, B, S)$ jointly. Adding CL_STD does not introduce new shells.
@@ -24,7 +24,7 @@ J01 is now the **corpus centerpiece**, per the fresh-eyes referee verdict: "the 
 - **Theorem C (Normalizer identity).** $Z_T = Z_B = (v+h+br+r)^2$ on $\mathcal{C}$ — the rational fixed-point system collapses to polynomial form.
 - **Theorem D (Closed-form attractor + Galois structure).** $p_7/p_8 = 1+\sqrt{3} \in \mathbb{Q}(\sqrt{3})$ exactly at $\alpha = 1/2$; four coordinates in $K = \mathbb{Q}[x]/(x^4 + 4x^3 - x^2 + 2x - 2)$ = LMFDB 4.2.10224.1; Galois $D_4$ via cubic resolvent.
 - **Theorem E (Universality).** The 4-core attractor is globally attracting on every chain shell of size $\ge 4$.
-- **Theorem F (Algebraic mixing-point partial uniqueness).** Only $\alpha = 1/2$ in the test set $\{0, 1/4, 1/2, 3/4, 1\}$ admits a small-coefficient quadratic relation. Conjecture 1.1 (full uniqueness across $\mathbb{Q} \cap (0, 1)$) stated as open.
+- **Proposition F (Algebraic mixing-point partial uniqueness).** Only $\alpha = 1/2$ in the test set $\{0, 1/4, 1/2, 3/4, 1\}$ admits a small-coefficient quadratic relation. Conjecture 1.1 (full uniqueness across $\mathbb{Q} \cap (0, 1)$) stated as open.
 
 **Five independent structural facts converging on $\mathcal{C}$ (per §8 of manuscript):**
 
@@ -45,7 +45,7 @@ Files in this J-folder's `manuscript/`:
 
 **Local path:** `manuscript/verification/4core_verification.py`
 
-Six checks corresponding to Theorems A through F (and the 3-substrate strengthening 2.4). Tested on Python 3.11+ with numpy + sympy + mpmath. **6/6 PASS at machine precision.** Total runtime ~4 seconds.
+Six checks corresponding to Theorems A through E and Proposition F (and the 3-substrate strengthening 2.4). Tested on Python 3.11+ with numpy + sympy + mpmath. **6/6 PASS at machine precision.** Total runtime ~4 seconds.
 
 ```bash
 PYTHONIOENCODING=utf-8 python3 4core_verification.py
@@ -69,13 +69,12 @@ See `cover_letter.md` in this folder. Updated 2026-05-08 to reflect the rewritte
 1. **U(1) / centerpiece framing** in introduction (per FAMILY_STRUCTURE_v1.md §2).
 2. **NEW central Theorem B** — 4-core 3-substrate closure under TSML, BHML, AND CL_STD jointly (SFM Q6 finding 2026-05-08; see `Atlas/META_PLAN_2026-05-06/SUBSTRATE_FUNCTION_MAP/SFM_FINDINGS_v1.md` §2).
 3. **Five independent structural facts** converging on $\mathcal{C}$ (joint closure 3-substrate; normalizer identity D49; Galois D_4 closed-form D78; F_p universality D74; universal attractor D65).
-4. **Renumbered theorems** to match script content (script Checks 1-6 ↔ Theorems A-F).
+4. **Renumbered theorems** to match script content (script Checks 1-6 ↔ Theorems A-E plus Proposition F).
 5. **Lead with $1+\sqrt{3}$ Galois punchline** + LMFDB 4.2.10224.1 number-field identification (per referee M3).
 6. **α-uniqueness reframed** from "open" to "partial verification + open conjecture" (per referee M4); Conjecture 1.1 stated explicitly.
-7. **Drápal-Wanless 2021 cited** as closest published precedent (per boilerplate §1.3).
-8. **Lens-ownership paragraph** added (manuscript §0; per boilerplate §5.5).
-9. **PROVEN/COMPUTED/RHYME/OPEN tier discipline** (per boilerplate §0).
-10. **Verification:** `4core_verification.py` extended to include three-substrate chain enumeration (Theorem 2.4) and explicit 4-core 3-substrate closure check (Theorem B). 6/6 PASS at machine precision; Galois D_4 via cubic resolvent + Gröbner basis.
+7. **Lens-ownership paragraph** added (manuscript §0; per boilerplate §5.5).
+8. **PROVEN/COMPUTED/RHYME/OPEN tier discipline** (per boilerplate §0).
+9. **Verification:** `4core_verification.py` extended to include three-substrate chain enumeration (Theorem 2.4) and explicit 4-core 3-substrate closure check (Theorem B). 6/6 PASS at machine precision; Galois D_4 via cubic resolvent + Gröbner basis.
 
 **Per-venue cap warning:** This is the **2nd J Algebra paper** in this J-series (after J29 so(8)). J Algebra's per-venue cap is conventionally 2/quarter for tightly-related papers; this paper sits at the cap. Submission feasible; further J Algebra submissions in the same quarter would require fallback. Fallback options if J Algebra desk-rejects: *Communications in Algebra* or *Journal of Pure and Applied Algebra*.
 
@@ -108,7 +107,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 
 - [x] Manuscript .md finalized (rewritten 2026-05-08)
 - [x] Verification script green (6/6 PASS at machine precision; verified 2026-05-08)
-- [x] Tier-classified central claim explicit (six theorems A-F)
+- [x] Tier-classified central claim explicit (five theorems A-E plus Proposition F)
 - [x] Lens-scope annotation (LENS-INVARIANT on 4-core, three-substrate)
 - [x] Cover letter finalized
 - [x] Dependencies → cite each J-companion as "submitted to [venue]"

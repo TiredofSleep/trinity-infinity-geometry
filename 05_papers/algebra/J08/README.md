@@ -46,11 +46,12 @@ J08/
 
 ## Verification
 
-Both source verifications PASS at machine precision:
-- J48's `verify_J14.py` (12/12 PASS, ~2s)
-- J49's `verify_J16.py`, `verify_discrete_dirac_4core.py`, `test_tig_dirac.py` (all PASS)
+The bundled verifier is `manuscript/verify_J_Fp_merged.py` (PASS for Theorem 1 idempotent counts and Theorem 4 chain-shell determinants at all 6 primes, ~10s). Theorem 2 ($|\mathrm{Aut}(V_p)|$ values) is currently a *reference* to J48's brute-force enumeration rather than a bundled recomputation. Theorem 3's $|\mathrm{Aut}(V_5)| = 40$ count is inherited from J49 brute-force.
 
-The consolidated `verify_J_Fp_merged.py` (PASS at all 6 primes, ~10s) combines these into one runner — total idempotents at $p\in\{2,3,5,7,11,13\}$ are $\{4, 6, 4, 4, 6, 8\}$ respectively; chain-shell dets exactly match.
+**Historical references are broken**: the older `verify_J14.py` and `verify_J16.py` cited in earlier drafts of this README no longer exist post-renumbering (J14, J16 were renumbered/absorbed). The 2026-05-28 referee pass also identified TWO math errors in earlier drafts:
+- §1.2 falsely claimed $L_{e_3}$ is a 4-cycle (it has rank 3, with $e_0 \mapsto e_3$ and $e_4 \mapsto e_3$).
+- §2.5 falsely claimed $V$ is power-associative ($e_2^3 \cdot e_2 = e_0$ but $(e_2^2)^2 = e_2$).
+Both are fixed in the current `manuscript.md`; the lens-invariant skeleton is now **four properties, not five**. See `_staging/referee_reports/03_algebra_cluster_J02_J05_J07_J08.md` and `_staging/referee_reports/08_J08_power_assoc_FIX.md` for the audit trail. Theorem 3's explicit $\epsilon_2 = 2e_3 + 3e_4$ idempotent triple was also refuted ($\epsilon_2^2 \neq \epsilon_2$) and the proof sketch has been withdrawn; the count 40 is retained but the explicit decomposition is open.
 
 ## Source paper status (after merger)
 

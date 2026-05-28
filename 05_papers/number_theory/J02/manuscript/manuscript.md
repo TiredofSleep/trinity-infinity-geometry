@@ -26,7 +26,7 @@ We discuss what would have to be true (Conjecture Z.5) for the rhyme to upgrade 
 
 ## §1 The TSML composition table
 
-Let $\mathbb{Z}/10\mathbb{Z} = \{0, 1, 2, 3, 4, 5, 6, 8, 9\}$ (we use 8, 9 because we want zero-indexed operator labels; the carrier set is just the integers mod 10). For an operator labeling, we assign
+Let $\mathbb{Z}/10\mathbb{Z} = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ (zero-indexed operator labels; the carrier set is just the integers mod 10). For an operator labeling, we assign
 
 $$
 0 = \mathrm{VOID},\quad 1 = \mathrm{BEING},\quad 2 = \mathrm{DOING},\quad 3 = \mathrm{BECOMING},\quad 4 = \mathrm{COLLAPSE},\quad 5 = \mathrm{CREATE},
@@ -202,7 +202,7 @@ To our knowledge, no comparable concrete substrate has been published.
 
 1. **Z.5 verification.** Numerical verification of the deployment map's grading preservation up to large $|\Im(s)|$. Currently verified to $|\Im(s)| < 50$; extension to $|\Im(s)| < 10^6$ is computationally feasible and would strengthen the conjecture's empirical support.
 
-2. **Connection to the σ-character Q-series spectral architecture** (see [J07]). The σ-permutation $\sigma = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ acts on the same carrier $\mathbb{Z}/10\mathbb{Z}$ and induces a separate spectral architecture (G_6 periodicity, G_8 three-valued coherence). Whether the σ-architecture's CREATE−ASCEND structure (specifically: $\sigma^3$ on indices 5, 6 is the 2-cycle $(5\,4)(2\,7)(1\,6)$ — i.e., $\sigma^3$ swaps 5 and 4, not 5 and 6) maps to TSML_8's CREATE−ASCEND null is open. The two "5-6 structures" (TSML row degeneracy and σ³ orbit structure) appear to be different artifacts of the same carrier.
+2. **Connection to the σ-character Q-series spectral architecture** (see [J07]). The σ-permutation $\sigma = (0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ acts on the same carrier $\mathbb{Z}/10\mathbb{Z}$ and induces a separate spectral architecture (G_6 periodicity, G_8 three-valued coherence). Whether the σ-architecture's CREATE−ASCEND structure (specifically: $\sigma^3 = (1\,5)(7\,4)(6\,2)$, three disjoint transpositions on the non-fixed orbit) maps to TSML_8's CREATE−ASCEND null is open. The two "5-6 structures" (TSML row degeneracy and σ³ orbit structure) appear to be different artifacts of the same carrier.
 
 3. **Generalization to other substrates.** The TSML table is specific to $\mathbb{Z}/10\mathbb{Z}$. Whether an analogous "boundary-stripped null structure" exists for the substrate $\mathbb{Z}/(2^k \cdot 5^l)\mathbb{Z}$ or for non-cyclic substrates is open. If yes, the rhyme generalizes; if no, $\mathbb{Z}/10\mathbb{Z}$ is the privileged substrate.
 

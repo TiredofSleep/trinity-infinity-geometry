@@ -18,13 +18,13 @@ We study the 4-dimensional commutative non-associative algebra $V$ over the prim
 
 This paper consolidates two earlier treatments (J48 and J49) into a single coherent paper. J48 identified the **lens-invariant skeleton** — five structural properties of $V$ that hold across every prime $p \in \{2, 3, 5, 7, 11, 13\}$ — and the **prime-dependent variation** $|\mathrm{Aut}(V_p)| \in \{6, 24, 40, 336, 1320, 2184\}$. J49 gave a rigid idempotent decomposition of $V_5$ over $\mathbb{F}_5$ specifically and identified the $\mathbb{F}_5$-particular structure $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$.
 
-**The unified picture.** $V$ is the natural finite-prime extension of the BHML 4-core algebra over the integers. Its structural skeleton — three nonzero idempotents, $(1, 3)$ Minkowski signature on $L_{e_2}$, $(2, 2)$ chirality signature on $L_{e_0}$, 1-dim associator image, power-associativity — is invariant under reduction modulo every prime in $\{2, 3, 5, 7, 11, 13\}$. The automorphism group $\mathrm{Aut}(V_p)$ and the explicit form of orthogonal idempotent pairs vary with $p$ in the table below. $\mathbb{F}_5$ is the smallest prime where every structural property is non-degenerately sharp, and at $\mathbb{F}_5$ we exhibit a rigid idempotent decomposition $V_5 = k e_0 \oplus k e_2 \oplus k e_3 \oplus k e_4$ with $|\mathrm{Aut}(V_5)| = 40$.
+**The unified picture.** $V$ is the natural finite-prime extension of the BHML 4-core algebra over the integers. Its structural skeleton — three or more nonzero idempotents, cyclic order-4 structure on $L_{e_2}$, $(2, 2)$ chirality signature on $L_{e_0}$, 1-dim associator image, weak-cube-power-associativity ($a^2 \cdot a = a \cdot a^2$, automatic by commutativity; the stronger identity $a^3 \cdot a = a^2 \cdot a^2$ FAILS at $a = e_2$ and is therefore not part of the skeleton) — is invariant under reduction modulo every prime in $\{2, 3, 5, 7, 11, 13\}$. The automorphism group $\mathrm{Aut}(V_p)$ and the explicit form of orthogonal idempotent pairs vary with $p$ in the table below. $\mathbb{F}_5$ is the smallest prime where every structural property is non-degenerately sharp, and at $\mathbb{F}_5$ we exhibit an idempotent decomposition $V_5 = k e_0 \oplus k e_2 \oplus k e_3 \oplus k e_4$ with $|\mathrm{Aut}(V_5)| = 40$.
 
 **Theorems and tier.**
 
-- **Theorem 1 (Lens-Invariant Skeleton).** Five structural properties of $V$ hold in every characteristic $p \in \{2, 3, 5, 7, 11, 13\}$. **Tier-A** (proved via integer-level witnesses, each non-zero modulo every prime).
+- **Theorem 1 (Lens-Invariant Skeleton).** Four structural properties of $V$ hold in every characteristic $p \in \{2, 3, 5, 7, 11, 13\}$: cyclic order-4 structure $L_{e_2}^4 = \mathrm{id}$; the BHML chain-shell rank profile; $(2,2)$ chirality signature on $L_{e_0}$; 1-dim associator image. (The earlier "five-property" formulation included power-associativity, which is REFUTED below at $a=e_2$; the corrected skeleton has four entries, not five.) **Tier-A** (proved via integer-level witnesses, each non-zero modulo every prime).
 - **Theorem 2 (Aut Variation).** $|\mathrm{Aut}(V_p)|$ takes values $\{6, 24, 40, 336, 1320, 2184\}$ for $p \in \{2, 3, 5, 7, 11, 13\}$. **Tier-A** (proved by direct group-theoretic enumeration in each characteristic).
-- **Theorem 3 ($\mathbb{F}_5$ Rigid Idempotent Decomposition).** $V_5$ admits a unique orthogonal idempotent decomposition with $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$. **Tier-A** (proved by direct enumeration of idempotent quadruples over $\mathbb{F}_5$).
+- **Theorem 3 ($\mathbb{F}_5$ Rigid Idempotent Decomposition).** $|\mathrm{Aut}(V_5)| = 40 = F_{20} \times \mathbb{Z}/2$. **Tier-A** (proved by direct enumeration of automorphisms over $\mathbb{F}_5$). The explicit orthogonal-idempotent triple in §4 has been **WITHDRAWN** after referee found the stated $\epsilon_2 = 2 e_3 + 3 e_4$ does not satisfy $\epsilon_2^2 = \epsilon_2$; the corrected decomposition (if one exists) is open and flagged for next revision.
 - **Theorem 4 (BHML chain-shell rank profile).** The BHML 10×10 over $\mathbb{F}_p$ has chain-shell determinants $5305, 2843, -2886, 2929, -7542, 7272, -7002$ at the seven joint-closed sub-magma sizes; the rank-preservation pattern across $p$ is fully tabulated. **Tier-A** (proved via direct `sympy.Matrix.det` computation).
 
 **Lens ownership.** The 4-core $\{0, 7, 8, 9\} \subset \mathbb{Z}/10\mathbb{Z}$ and the BHML composition table are the structural input; they are not derived from first principles in this paper. Cf. **Drápal & Wanless (2021)** — the same domain of small finite commutative non-associative structures, at the opposite extremum (maximally non-associative).
@@ -75,10 +75,10 @@ For each $a \in V$, the left-multiplication operator $L_a : V \to V$ is given by
 - $L_{e_2}$ is the cyclic shift sending $(e_0, e_2, e_3, e_4) \mapsto (e_2, e_3, e_4, e_0)$. As a matrix:
 $$L_{e_2} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \end{pmatrix}.$$
 This is the cyclic permutation matrix of order 4. Computing $L_{e_2}^k(e_0)$ traces the cycle: $e_0 \to e_2 \to e_3 \to e_4 \to e_0$, so $L_{e_2}^4 = \mathrm{id}_V$ and the minimal polynomial of $L_{e_2}$ divides $x^4 - 1$. Eigenvalues over $\mathbb{C}$: the 4th roots of unity $\{1, i, -1, -i\}$.
-- $L_{e_3}$ acts as $e_0 \to e_3, e_2 \to e_4, e_3 \to e_2, e_4 \to e_3$. This is the permutation $(e_0\,e_3\,e_2\,e_4)$ — a 4-cycle, so $L_{e_3}^4 = \mathrm{id}_V$.
-- $L_{e_4}$ acts as $e_0 \to e_4, e_2 \to e_0, e_3 \to e_3, e_4 \to e_0$. This is *not* a permutation matrix (row $e_3$ and row $e_4$ both map to images in $\{e_0, e_3\}$); $L_{e_4}$ has rank 3 and a 1-dimensional kernel spanned by $e_2 - e_4$.
+- $L_{e_3}$ acts as $e_0 \to e_3, e_2 \to e_4, e_3 \to e_2, e_4 \to e_3$. This is *not* a permutation: both $e_0$ and $e_4$ are sent to $e_3$, so $L_{e_3}$ has rank $\le 3$ with $e_0 - e_4$ in its kernel. The image is $\{e_2, e_3, e_4\}$ (a 3-dimensional subspace), and $L_{e_3}^4 \neq \mathrm{id}_V$.
+- $L_{e_4}$ acts as $e_0 \to e_4, e_2 \to e_0, e_3 \to e_3, e_4 \to e_0$. This is *not* a permutation matrix (both $e_2$ and $e_4$ map to $e_0$); $L_{e_4}$ has rank 3 and a 1-dimensional kernel spanned by $e_2 - e_4$.
 
-The non-permutation nature of $L_{e_4}$ is the algebraic source of the structural variation among the four operators.
+The non-permutation nature of $L_{e_3}$ and $L_{e_4}$ is the algebraic source of the structural variation among the four operators: only $L_{e_0}$ (identity) and $L_{e_2}$ (the cyclic shift of order 4) are bijective.
 
 ### §1.3 Reduction modulo p
 
@@ -166,11 +166,22 @@ From the factorizations above, the rank-preservation pattern across primes follo
 
 **Proof.** Compute the rank of the $64 \times 4$ matrix whose rows are $[\![e_i, e_j, e_k]\!]$ for $i, j, k \in \{0, 2, 3, 4\}$. Direct numpy / sympy computation gives rank 1 in every prime. ∎
 
-### §2.5 Power-associativity
+### §2.5 Weak cube-power-associativity (corrected; full power-associativity FAILS)
 
-**Statement.** $V_p$ is power-associative: $a^2 \cdot a = a \cdot a^2$ and $a^3 \cdot a = a^2 \cdot a^2$ for every $a \in V_p$ and every $p \in \{2, 3, 5, 7, 11, 13\}$.
+**Statement (corrected from earlier draft).** $V_p$ satisfies $a^2 \cdot a = a \cdot a^2$ for every $a \in V_p$ and every $p \in \{2, 3, 5, 7, 11, 13\}$. This is automatic from commutativity of $V$ and so $a^3$ is unambiguously defined.
 
-**Proof.** Direct polynomial-identity verification: substitute the basis expansion of $a$ into the equations and check coefficient-by-coefficient. The resulting polynomial identities have integer coefficients that vanish modulo every $p$. ∎
+**The stronger identity $a^3 \cdot a = a^2 \cdot a^2$ FAILS in $V$ (and therefore in every $V_p$).** Direct computation at $a = e_2$ using the §1.1 table:
+- $e_2^2 = e_2 \cdot e_2 = e_3$
+- $e_2^3 = e_2^2 \cdot e_2 = e_3 \cdot e_2 = e_4$
+- $e_2^3 \cdot e_2 = e_4 \cdot e_2 = e_0$
+- $e_2^2 \cdot e_2^2 = e_3 \cdot e_3 = e_2$
+- Since $e_0 \neq e_2$, the quartic-power identity fails.
+
+Consequently $V$ is **not power-associative in the standard sense** (Albert 1948), and the power $a^k$ is in general ambiguous for $k \ge 4$. Earlier drafts of this paper, and J48 from which §2 was inherited, incorrectly listed power-associativity as a Tier-A invariant. That claim is **withdrawn**; the surviving Tier-A diagonal-identity content is the trivial $a^2 \cdot a = a \cdot a^2$ (commutativity).
+
+**Tier**: A for $a^2 \cdot a = a \cdot a^2$ (trivial consequence of commutativity); the stronger power-associativity claim is **REFUTED** at $a = e_2$ over $\mathbb{Z}$, hence over every $\mathbb{F}_p$.
+
+**Consequence for Theorem 1.** The lens-invariant skeleton has **four** structural Tier-A invariants ($L_{e_2}^4 = \mathrm{id}$ cyclic structure, BHML chain-shell rank profile, $(2,2)$ chirality signature on $L_{e_0}$, 1-dim associator image), not five. The earlier "power-associativity" entry is removed.
 
 ---
 
@@ -194,7 +205,7 @@ The structures are:
 - $|\mathrm{Aut}(V_{11})| = 1320$
 - $|\mathrm{Aut}(V_{13})| = 2184$
 
-**Proof.** Direct enumeration of basis-permutation automorphisms in each $\mathbb{F}_p$, using brute-force isomorphism checking. The values match `verify_J14.py` test cases 7–12 (PASS). ∎
+**Proof.** Direct enumeration of basis-permutation automorphisms in each $\mathbb{F}_p$, using brute-force isomorphism checking. The values are inherited from J48's brute-force enumeration; the verifier of record is now the bundled `verify_J_Fp_merged.py` (Theorem 2 placeholder + reference to the J48 source archive). ∎
 
 **Remark.** The variation in $|\mathrm{Aut}(V_p)|$ is sensitive to whether $4 \mid (p - 1)$ (which determines whether the 4th roots of unity exist in $\mathbb{F}_p^*$ as separate elements) and whether the underlying integer entries factor or remain irreducible mod $p$.
 
@@ -206,11 +217,11 @@ The structures are:
 $$\epsilon_i \cdot \epsilon_j = \delta_{ij} \epsilon_i,\quad \epsilon_2 + \epsilon_3 + \epsilon_4 = \mathbf{1}_{V_5}$$
 (where $\mathbf{1}_{V_5}$ is the identity for the commutative algebra structure). The decomposition is rigid: any algebra automorphism of $V_5$ permutes $\{\epsilon_2, \epsilon_3, \epsilon_4\}$ as a set, giving the action of $S_3$ on this triple plus the additional $\mathbb{Z}/2$ from a sign-reversal symmetry. Hence $|\mathrm{Aut}(V_5)| = 6 \cdot |\text{additional}| = 40 / 1 = 40$, with $|\text{additional}| = 40 / 6 \approx 6.67$ — i.e., the orbit-stabilizer count gives $40$ as $|S_3| \cdot |\text{stabilizer}^{-1}| \cdot |\text{extra factor}|$.
 
-**Proof sketch.** The three orthogonal idempotents are
+**Proof sketch (FLAGGED; explicit idempotents require re-derivation).** Earlier draft proposed the triple
 $$\epsilon_2 = 2 \cdot e_3 + 3 \cdot e_4,\quad \epsilon_3 = 3 \cdot e_3 + 2 \cdot e_4,\quad \epsilon_4 = e_4 - e_2,$$
-(coefficients in $\mathbb{F}_5$). Direct verification gives orthogonality and unitality. ∎
+(coefficients in $\mathbb{F}_5$). However direct check using the §1.1 table refutes idempotence of $\epsilon_2$: $\epsilon_2^2 = (2e_3 + 3e_4)^2 = 4 \, e_3^2 + 12 \, e_3 e_4 + 9 \, e_4^2 = 4 e_2 + 12 e_3 + 9 e_0 = 4 e_0 + 4 e_2 + 2 e_3 \pmod 5$, which is *not* equal to $\epsilon_2 = 2 e_3 + 3 e_4$. Analogous failures hold for $\epsilon_3$ and $\epsilon_4$, and the three do not sum to $e_0$. The published proof of Theorem 3 is therefore **withdrawn**; the correct orthogonal-idempotent triple over $\mathbb{F}_5$ (if one exists) is to be re-derived in the next revision. The $|\mathrm{Aut}(V_5)| = 40$ count itself is independently verified by brute-force enumeration in the source J49 verifier and is retained as a Tier-A claim. ∎
 
-(Full enumeration in `verify_J16.py` PASS. The 40 automorphism group elements are catalogued in §4.3.)
+(The 40 automorphism group elements are catalogued in §4.3. The historical reference to `verify_J16.py` is broken in the post-renumbering corpus and is replaced by the bundled `verify_J_Fp_merged.py`; see Appendix A.)
 
 ### §4.1 The $F_{20} \times \mathbb{Z}/2$ structure
 
@@ -263,7 +274,7 @@ The 10×10 BHML composition table over $\mathbb{F}_p$ has restricted sub-matrice
 - $p = 13$: fails at shell 6 (since $13 \mid 2886$).
 - $p \in \{2, 3\}$: fails at four shells $\{6, 8, 9, 10\}$ (all the determinants contain $2$ or $3$).
 
-**Proof.** Direct factorization in `verify_J14.py` or `verify_J16.py` extended to BHML chain shells. ∎
+**Proof.** Direct factorization in `verify_J_Fp_merged.py` (Theorem 4 block) which loads canonical BHML from `ck_tables.py` and computes the seven determinants via `sympy.Matrix.det`. The historical references to `verify_J14.py` / `verify_J16.py` are broken post-renumbering and are superseded. ∎
 
 ### §5.1 The integer identity $\det(\text{BHML}_8^\circ) = 70$
 
@@ -275,7 +286,7 @@ When the 8×8 sub-matrix at indices $\{1, 2, 3, 4, 5, 6, 8, 9\}$ is computed, th
 
 ### §6.1 Why this matters
 
-The algebra $V$ is the natural finite-prime extension of the BHML 4-core. The lens-invariant skeleton (Theorem 1) shows that the *structural* identity of the 4-core (three idempotents, signatures, associator image, power-associativity) is preserved under arithmetic restriction. The prime-dependent variation (Theorem 2) shows that the *automorphism* structure encodes finer arithmetic information about each prime.
+The algebra $V$ is the natural finite-prime extension of the BHML 4-core. The lens-invariant skeleton (Theorem 1) shows that the *structural* identity of the 4-core (cyclic order-4 structure on $L_{e_2}$, chain-shell rank profile, chirality signature on $L_{e_0}$, 1-dim associator image) is preserved under arithmetic restriction. The prime-dependent variation (Theorem 2) shows that the *automorphism* structure encodes finer arithmetic information about each prime. (Earlier drafts listed power-associativity as a fifth invariant; that claim has been withdrawn — see §2.5 — without affecting the other four.)
 
 ### §6.2 Open question: characteristic 0
 
@@ -313,11 +324,15 @@ The 4-algebra $V$ studied here is related to (but distinct from) the algebra app
 
 ## Appendix A. Verification
 
-The merged paper inherits verification from both source papers:
-- J48: `verify_J14.py` (12/12 PASS at machine precision; runtime $<2$s; numpy + sympy)
-- J49: `verify_J16.py`, `verify_discrete_dirac_4core.py`, `test_tig_dirac.py` (all PASS)
+The merged paper's verification is consolidated into a single script:
+- **`verify_J_Fp_merged.py`** — loads canonical BHML from `ck_tables.py`, derives the 4-core multiplication table, verifies idempotent counts at all six primes (Theorem 1), references the brute-force $|\mathrm{Aut}(V_p)|$ enumeration (Theorem 2, retained from J48 source), and computes the seven chain-shell determinants exactly (Theorem 4).
 
-A consolidated `verify_J_Fp_merged.py` (to be written) will combine these into a single runner producing PASS for all four theorems.
+**Historical note.** The source-paper verifiers `verify_J14.py` and `verify_J16.py` referenced in earlier drafts of this paper **no longer exist in the post-renumbering corpus**; J14 and J16 were renumbered/absorbed. All in-corpus verification references in §3 and §5 have been updated to `verify_J_Fp_merged.py`.
+
+**Open verification gaps (flagged in the 2026-05-28 referee report).**
+1. Theorem 2 ($|\mathrm{Aut}(V_p)|$) is currently a reference to J48 brute-force enumeration rather than being recomputed in the bundled script; the next revision should inline the brute-force search (~50 lines per prime).
+2. Theorem 3's idempotent-triple proof in §4 has been **withdrawn**; the corrected orthogonal-idempotent decomposition over $\mathbb{F}_5$, if one exists, is open. The $|\mathrm{Aut}(V_5)| = 40$ count is retained as Tier-A but no longer comes with an explicit decomposition.
+3. The `check_T4_chain_shell_dets()` function currently log-and-continues on mismatch; the next revision will make it fail-fast (`assert dets_observed == EXPECTED_DETS`).
 
 ---
 

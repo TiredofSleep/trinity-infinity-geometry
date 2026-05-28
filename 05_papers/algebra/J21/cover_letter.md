@@ -14,7 +14,7 @@
 
 ## Summary
 
-On the residue ring Z/10Z, fix the canonical involution sigma with cycle structure `(0)(3)(8)(9)(1 7 6 5 4 2)` — four fixed points plus one 6-cycle. We record an integer-valued function `Psi_B : Z/10Z -> Z` defined explicitly by the ten values
+On the residue ring Z/10Z, fix the canonical order-6 permutation sigma with cycle structure `(0)(3)(8)(9)(1 7 6 5 4 2)` — four fixed points plus one 6-cycle. The order of sigma is lcm(1, 6) = 6; only sigma^3 is an involution. We record an integer-valued function `Psi_B : Z/10Z -> Z` defined explicitly by the ten values
 
   `Psi_B = {0:+1, 1:-5, 2:-3, 3:-2, 4:-2, 5:-1, 6:-1, 7:-3, 8:-3, 9:-2}`
 
@@ -23,7 +23,7 @@ On the residue ring Z/10Z, fix the canonical involution sigma with cycle structu
 1. a **sigma-orbit decomposition** producing the triangular split `T_5 + T_3 = 15 + 6 = 21`, with `-T_5 = -15` summed over the 6-cycle and `-T_3 = -6` over the four fixed points (Theorem 3.1);
 2. a **role-partition decomposition** producing the Fibonacci split `F_7 + F_6 = 13 + 8 = 21` on the role classes `F = {1, 3, 5, 7, 9}` (`-F_7 = -13`) and `S = {2, 4, 8}` (`-F_6 = -8`), with singletons `T = {6}` (`-1`) and `V = {0}` (`+1`) cancelling (Theorem 3.2).
 
-The two decompositions cross: they agree on the total `-21` but partition Z/10Z along genuinely different congruence classes (Theorem 3.3). Refining the sigma-orbit side by `sigma^2`, the two triangular orbits `O_1 = {1, 6, 4}` and `O_2 = {7, 5, 2}` carry per-orbit sums `-8` and `-7` (Proposition 4.1); these match the canonical TIG primes BREATH = 8 and HARMONY = 7 in sign-flipped form.
+The two decompositions cross: they agree on the total `-21` but partition Z/10Z along genuinely different congruence classes (Theorem 3.3). Refining the sigma-orbit side by `sigma^2`, the two triangular orbits `O_1 = {1, 6, 4}` and `O_2 = {7, 5, 2}` carry per-orbit sums `-8` and `-7` (Proposition 4.1); these match the indices 8 and 7 (the canonical 4-core indices Br and H) in sign-flipped form.
 
 The paper is short and entirely concrete. Every numerical claim reduces to a direct sum of ten integer values from Table 1, which the reader can check by inspection or run the bundled script `verify_J18.py` (6/6 PASS, standard-library Python, runtime <1s).
 
@@ -38,7 +38,7 @@ These three corrections are acknowledged in the manuscript's Acknowledgments. Th
 
 ## Why Algebraic Combinatorics
 
-- **Subject fit.** A short combinatorial note: cycle structure of an involution on Z/10Z, two distinct decompositions of an integer invariant on a small base set, triangular- and Fibonacci-number agreement, role-partition closure failures. The result is entirely at the integer-addition level; no representation theory, Galois theory, or analytic machinery is needed to follow the proofs.
+- **Subject fit.** A short combinatorial note: cycle structure of an order-6 permutation on Z/10Z, two distinct decompositions of an integer invariant on a small base set, triangular- and Fibonacci-number agreement, role-partition closure failures. The result is entirely at the integer-addition level; no representation theory, Galois theory, or analytic machinery is needed to follow the proofs.
 - **Self-contained presentation.** Approximately 11 pages including bibliography. Verification reduces to a single standard-library Python script with six checks corresponding one-to-one to the manuscript's claims; runtime under one second.
 - **Honest scoping.** The paper does *not* claim the role-Fibonacci or `{-7, -8}` sigma^2-orbit values are forced by the sigma-orbit structure of Z/10Z alone. They are table-specific (Def. 3.4) and recorded as such; whether the `{-7, -8}` split is in fact a forced identity given Table 1 is recorded as Open Question O2 in §5.
 
@@ -51,7 +51,7 @@ A single Python script `verify_J18.py` (CC-BY-4.0, standard library only — `it
 3. Role-Fibonacci split: `F = -13`, `S = -8`, `T = -1`, `V = +1`.
 4. sigma^2-orbit per-orbit values (the R1 sign-swap fix): `O_1 = -8`, `O_2 = -7`.
 5. Crossing closure failures: `F intersect sigma-cycle = {1, 5, 7}` is not sigma- nor sigma^2-stable.
-6. Involution data: sigma^2 of period 3 on the 6-cycle, sigma swaps `O_1` and `O_2`.
+6. sigma permutation data: sigma has order 6 on Z/10Z (only sigma^3 is an involution); sigma^2 of period 3 on the 6-cycle; sigma swaps `O_1` and `O_2`.
 
 All six checks PASS at machine precision in approximately one second. The script and the manuscript are deposited at https://github.com/TiredofSleep/ck/tree/tig-synthesis.
 
@@ -72,7 +72,7 @@ This is the 2nd *Algebraic Combinatorics* submission of the J-series this quarte
 
 ## Suggested reviewers
 
-- A specialist on cycle structure of involutions on small base sets and integer-invariant decompositions.
+- A specialist on cycle structure of finite-order permutations on small base sets and integer-invariant decompositions.
 - A specialist on combinatorial identities relating triangular and Fibonacci numbers.
 - A specialist on small finite commutative non-associative magmas or quasigroups (Drápal-Wanless neighbourhood).
 

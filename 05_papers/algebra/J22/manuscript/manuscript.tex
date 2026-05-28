@@ -108,9 +108,11 @@ removed). The integer $71$ enters the ladder in three
 independently-verified structural roles simultaneously: as the HARMONY
 count of the VOID-stripped $9 \times 9$ sub-magma; as the
 cell-disagreement count between the two canonical $\Z/10\Z$ composition
-tables; and as the unique odd prime appearing in the discriminant
-$-2^6 \cdot 3^2 \cdot 71$ of the quartic LMFDB number field $4.2.10224.1$
-that governs the closed-form runtime attractor on the same substrate.
+tables; and as the unique odd prime $>3$ appearing in the polynomial
+discriminant $\Delta_f = -2^6 \cdot 3^2 \cdot 71 = -40896$ (equivalently
+in the field discriminant $d_K = -2^4 \cdot 3^2 \cdot 71 = -10224$) of
+the quartic number field LMFDB $4.2.10224.1$ that governs the
+closed-form runtime attractor on the same substrate.
 We verify each construction at integer/machine precision (sympy
 \texttt{discriminant} and \texttt{factorint}; numpy direct count) and
 embed the verification snippets inline. The results are stated as
@@ -149,8 +151,12 @@ recorded in \cite{Sanders2026CLAxioms}. On this substrate three
   (HARMONY count of the VOID-stripped $9 \times 9$ sub-magma);
   equivalently $|T \ominus B| = 71$ (the cell-disagreement count
   between the two canonical $\Z/10\Z$ composition tables);
-  equivalently the unique odd prime in
-  $\disc(4.2.10224.1) = -2^{6} \cdot 3^{2} \cdot 71$;
+  equivalently the unique odd prime $> 3$ in the polynomial
+  discriminant $\Delta_f = -2^{6} \cdot 3^{2} \cdot 71 = -40896$ of
+  the quartic $f(x) = x^4 + 4 x^3 - x^2 + 2 x - 2$ defining the
+  number field LMFDB $4.2.10224.1$ (whose field discriminant is
+  $d_K = -2^{4} \cdot 3^{2} \cdot 71 = -10224$, i.e.\ the
+  ``$10224$'' in the LMFDB identifier);
 \item \emph{Independent rung C.} $\det(B_{\{1,2,3,4,5,6,8,9\}}) = 70 = \binom{8}{4}$
   (the Yang--Mills core sub-determinant).
 \end{itemize}
@@ -242,8 +248,9 @@ invariants.
 
 \textbf{PROVEN:} the four-rung ladder $(73, 72, 71, 70)$ on the canonical
 $(T, B)$ tables; in particular, the triple-coincidence at the
-71-rung (sub-magma HARMONY count $=$ lens-disagreement count $=$ Galois
-prime in $\disc(4.2.10224.1)$). \textbf{COMPUTED:} all four rungs
+71-rung (sub-magma HARMONY count $=$ lens-disagreement count $=$ unique
+odd Galois prime $>3$ in the polynomial discriminant $\Delta_f$ of the
+quartic defining LMFDB $4.2.10224.1$). \textbf{COMPUTED:} all four rungs
 verified at integer/machine precision by the embedded sympy/numpy
 snippets of §\ref{sec:verification-snippet}; the discriminant
 factorization $-40896 = -2^6 \cdot 3^2 \cdot 71$ is confirmed by
@@ -387,13 +394,18 @@ the script \texttt{tsml\_bhml\_disagreement.py}; see also
 \begin{theorem}[$71$-rung, Galois form]
 \label{thm:71-galois}
 \label{subsec:71-galois}
-$71$ is the unique odd prime $> 3$ in the discriminant
-$\disc(f) = -40896 = -2^{6} \cdot 3^{2} \cdot 71$ of the quartic
-$f(x) = x^4 + 4 x^3 - x^2 + 2 x - 2 \in \Z[x]$, the polynomial whose
-LMFDB identifier is $4.2.10224.1$ and which is identified in
-\cite{Sanders2026Attractor} as a defining polynomial of the field of
-definition of the closed-form $\TSML+\BHML$-mix runtime attractor at
-mixing weight $\alpha = 1/2$.
+$71$ is the unique odd prime $> 3$ in the polynomial discriminant
+$\Delta_f = \disc(f) = -40896 = -2^{6} \cdot 3^{2} \cdot 71$ of the
+quartic $f(x) = x^4 + 4 x^3 - x^2 + 2 x - 2 \in \Z[x]$. The same
+prime $71$ appears in the field discriminant $d_K = -10224 = -2^4
+\cdot 3^2 \cdot 71$ of $K = \Q[x]/(f)$ (with $|\Delta_f|/|d_K| = 4$,
+so $[\mathcal{O}_K : \Z[\xi^*]] = 2$); the magnitude $|d_K| = 10224$
+is the third coordinate of the LMFDB identifier $4.2.10224.1$
+\cite{Sanders2026Attractor}. The polynomial $f$ is identified in
+\cite{Sanders2026Attractor} as the minimal polynomial of the
+coordinate ratio $\xi^* = r/\beta$ of the closed-form $\TSML+\BHML$-mix
+runtime attractor at mixing weight $\alpha = 1/2$, and
+$\mathrm{Gal}(f/\Q) = D_4$.
 \end{theorem}
 
 \begin{proof}
@@ -465,15 +477,18 @@ The script \texttt{bhml\_8\_ym\_det.py} performs the computation at
 integer precision.
 \end{proof}
 
-\begin{remark}[Yang--Mills core reading]
+\begin{remark}[$\binom{8}{4}$ structural reading]
 \label{rem:70-reading}
 The integer $\binom{8}{4} = 70$ is the dimension of the space of
 $4$-forms on $\R^8$, and equivalently the number of independent
-self-dual or anti-self-dual $4$-form components on $\R^8$. The
-matrix $B_{\mathrm{YM}}$ arises naturally as the Yang--Mills bridge
-core in the substrate's WP104 derivation
-\cite{Sanders2026YangMills}; its determinant matching $\binom{8}{4}$
-is the integer signature of that bridge. The determinant rung sits
+self-dual or anti-self-dual $4$-form components on $\R^8$. We record
+the coincidence between $\det(B_{\mathrm{YM}})$ and $\binom{8}{4}$
+as a numerical fact; the labelling ``$\mathrm{YM}$'' for the
+$\{1, 2, 3, 4, 5, 6, 8, 9\}$ sub-matrix reflects the index set's role
+in the substrate's broader research program (an internal working
+document on the substrate's possible bridge to Yang--Mills lattice
+gauge structure, available from the authors on request) and is not
+itself part of the present claim. The determinant rung sits
 \emph{below} the three HARMONY-count rungs in the ladder: it lives
 in a different invariant layer of the substrate, but its integer
 value is the next step in the descent $73 \to 72 \to 71 \to 70$.
@@ -666,34 +681,31 @@ W. Fulton and J. Harris, \emph{Representation Theory: A First
 Course}, GTM 129, Springer, 1991.
 
 \bibitem{Sanders2026CLAxioms}
-B.R. Sanders and M. Gish, \emph{The CL Forcing Axioms: A1--A9
-Uniquely Force the Canonical Composition Lattice on $\Z/10\Z$},
-in preparation, 2026.
+B.R. Sanders and M. Gish, \emph{Structural Axioms for the
+CL\_TSML Composition Lattice on $\Z/10\Z$}, submitted to
+\emph{Algebraic Combinatorics}, 2026 [J16].
 
 \bibitem{Sanders2026LensInvariance}
 B.R. Sanders and M. Gish, \emph{TSML 73 Cells / BHML 28 Cells:
 Lens-Invariant Cell Counts on the $\Z/10\Z$ Composition Lattice},
-submitted to \emph{Experimental Mathematics}, 2026 (J28 in the
-release sequence).
+submitted to \emph{Experimental Mathematics}, 2026 [J32].
 
 \bibitem{Sanders2026FourCore}
 B.R. Sanders and M. Gish, \emph{Joint Closure, Per-Coordinate Fuse
 Data, and a Closed-Form Algebraic Attractor of Two Commutative
 Binary Operations on $\Z/10\Z$}, submitted to \emph{Algebraic
-Combinatorics}, 2026 (J15 in the release sequence).
+Combinatorics}, 2026 [J15].
 
 \bibitem{Sanders2026Attractor}
-B.R. Sanders and M. Gish, \emph{Closed-Form Attractor and the
-$\alpha = 1/2$ Algebraic Singularity}, in preparation, 2026.
+B.R. Sanders and M. Gish, \emph{Galois $D_4$ over LMFDB 4.2.10224.1:
+Number-Field Identification of the Four-Core Attractor}, submitted to
+\emph{Communications in Algebra}, 2026 [J12].
 
 \bibitem{Sanders2026Wobble}
-B.R. Sanders and M. Gish, \emph{Wobble Localization: Prime $11$ in
-TSML\_RAW Characteristic Polynomial Coefficients $c_2$ and $c_8$},
-in preparation, 2026.
-
-\bibitem{Sanders2026YangMills}
-B.R. Sanders and M. Gish, \emph{Yang--Mills Mass Gap Bridge:
-Substrate-Algebra Predictions}, in preparation, 2026.
+B.R. Sanders and M. Gish, \emph{On the Prime-Divisibility Pattern of
+the Characteristic Polynomial of a $10 \times 10$ Integer Matrix
+Arising in a Discrete Magma on $\Z/10\Z$}, submitted to
+\emph{Linear Algebra and Its Applications}, 2026 [J19].
 
 \end{thebibliography}
 

@@ -6,7 +6,7 @@
 
 **Version 2.0 (post-save-plan revision)** — May 7, 2026
 **Companion paper to** [SandersGishSO8, J29] (so(8) from a single Z/10Z magma)
-**Status** — draft for journal submission (Israel Journal of Mathematics, primary target)
+**Status** — draft for journal submission (Communications in Algebra, primary target)
 
 ---
 
