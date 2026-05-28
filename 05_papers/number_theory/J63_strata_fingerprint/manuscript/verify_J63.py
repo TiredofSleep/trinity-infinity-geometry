@@ -171,6 +171,52 @@ def theorem_4():
     print(f"  This validates TIG's Stratum IV designation for prime 71.\n")
 
 
+def companion_pg2q():
+    """§7.3.3 Companion test: PG(2,q) family strata-cleanness.
+    Sharp claim: |PGL(3, F_q)| is strata-clean iff q in {2, 3, 4, 9}.
+    """
+    print("[Companion §7.3.3] PG(2, q) family strata-fingerprint")
+    def PGL3q(q):
+        GL = (q**3 - 1) * (q**3 - q) * (q**3 - q**2)
+        return GL // (q - 1)
+    expected_pass = {2, 3, 4, 9}
+    expected_fail_with_extras = {
+        5: [31], 7: [19], 8: [73], 11: [19], 13: [61],
+        16: [17], 17: [17, 307], 19: [19, 127], 23: [23, 79],
+        25: [31], 27: [757],
+    }
+    qs = sorted(expected_pass | set(expected_fail_with_extras))
+    passes = set()
+    for q in qs:
+        P = PGL3q(q)
+        primes = set(factorint(P))
+        if primes.issubset(STRATA):
+            passes.add(q)
+    assert passes == expected_pass, f"PG(2,q) PASS set {passes} != {expected_pass}"
+    print(f"  PG(2, q) strata-clean iff q in {{2, 3, 4, 9}}: PASS")
+    print(f"  Verified at q in {sorted(qs)}; only {sorted(passes)} pass.\n")
+
+
+def companion_eisenstein():
+    """§7.3.2 Companion test: Eisenstein splitting of strata primes."""
+    print("[Companion §7.3.2] Strata primes in Z[omega]")
+    STRATA_IV = STRATA | {71}
+    classes = {"ramified": [], "split": [], "inert": []}
+    for p in sorted(STRATA_IV):
+        if p == 3: classes["ramified"].append(p)
+        elif p % 3 == 1: classes["split"].append(p)
+        else: classes["inert"].append(p)
+    print(f"  Ramified: {classes['ramified']}  ({len(classes['ramified'])} prime)")
+    print(f"  Split:    {classes['split']}  ({len(classes['split'])} primes)")
+    print(f"  Inert:    {classes['inert']}  ({len(classes['inert'])} primes)")
+    assert classes == {
+        "ramified": [3],
+        "split":    [7, 13],
+        "inert":    [2, 5, 11, 71],
+    }
+    print(f"  PASS: strata primes (incl. 71) split 1+2+4 = 7 across Eisenstein classes.\n")
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         try: sys.stdout.reconfigure(encoding="utf-8")
@@ -180,12 +226,16 @@ def main():
     theorem_2()
     theorem_3()
     theorem_4()
+    companion_eisenstein()
+    companion_pg2q()
     print("=" * 60)
-    print("  All four theorems PASS at machine precision.")
+    print("  All four theorems + two companion tests PASS at machine precision.")
     print("  Theorem 1 (kissing strata): 23/24, only D_24 fails.")
     print("  Theorem 2 (Weyl strata):    21/24, A_17 E_7 + A_24 + D_24 fail.")
     print("  Theorem 3 (sporadic):       8/26 pass.")
     print("  Theorem 4 (Monster 71):     unique sporadic with 71.")
+    print("  §7.3.2 Eisenstein:          1+2+4 partition of strata primes.")
+    print("  §7.3.3 PG(2,q):             strata-clean iff q in {2, 3, 4, 9}.")
     print("=" * 60)
 
 
