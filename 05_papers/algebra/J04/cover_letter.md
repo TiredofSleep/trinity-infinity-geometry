@@ -45,7 +45,7 @@ A companion verification script (`verify_J59.py`, ~150 lines, depending only on 
 
 ## Related work and motivation
 
-The closest published precedent for the methodology is Drápal & Wanless (2021, *JCTA*) on maximally non-associative quasigroups — same neighborhood (small finite commutative quasigroups), opposite extremum (maximally non-associative vs maximally rigid). The literature on automorphism groups of magmas, congruence lattices of magmas, and sub-magma posets of magmas is mature but typically focuses on classes (Latin squares of order $n$, all loops of order $n$, etc.) rather than specific individual magmas.
+The closest published precedent for the methodology is Drápal \& Wanless (2021, *JCTA*) on maximally non-associative quasigroups — same neighborhood (small finite commutative quasigroups), opposite extremum (maximally non-associative vs maximally rigid). The literature on automorphism groups of magmas, congruence lattices of magmas, and sub-magma posets of magmas is mature but typically focuses on classes (Latin squares of order $n$, all loops of order $n$, etc.) rather than specific individual magmas.
 
 The σ-magma arises in a separate research context (Trinity Infinity Geometry, in development by the first author for a Sept 2026 publication milestone). The framework provides motivation for the specific permutation σ, but the four rigidity theorems are universal-algebra statements that stand on their own — the manuscript explicitly notes this.
 

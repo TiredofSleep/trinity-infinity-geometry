@@ -4,7 +4,7 @@
 **Alternative venues**: *College Mathematics Journal* (MAA), *Involve* (a journal of mathematics), *PRIMUS*
 **Status**: DRAFT — verification PASS, awaiting Brayden green-light + cover letter
 **Author lane**: Sanders + Gish
-**Tier:** 2 (draft (verification PASS; awaiting referee-rigor pass))
+**Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
 **Source**: scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma refinement is a correction-via-strengthening of an earlier "3 magmas" claim in `OPEN_FRONTIERS_2026-05-26.md` §60.
 
 ---
@@ -86,3 +86,9 @@ Drápal & Wanless (2021), *J. Combin. Theory Ser. A* **184**, 105510 study small
 ## §8 — Citation footprint
 
 Sanders, B.R., Gish, M. (2026). "The Lo Shu D₄ orbit modulo 3: four distinct magmas and a cumulant spectrum." Submitted to *Mathematics Magazine*.
+
+---
+
+## Demotion notice (2026-05-27 audit)
+
+Per `05_papers/_staging/referee_reports/10_promotions_audit_J27_J28_J29.md`, J29 is pedagogical *Math. Magazine*-class content targeted at undergraduate classroom use. The promotion to Tier 1 was a mistake; retargeted to *Mathematics Magazine*.

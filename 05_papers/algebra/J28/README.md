@@ -4,7 +4,7 @@
 **Phase:** Phase 1
 **Target venue:** Algebra Universalis
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REVISED; Path-B rewrite per fresh-eyes referee))
+**Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
 
 ---
 
@@ -106,3 +106,9 @@ The substrate is $\Z/10\Z$ with two specific commutative tables $\BH$ and $\TS$ 
 ## §7 — Citation footprint
 
 Sanders, B.R., Gish. (2026). "A Small Commutative Non-Associative Magma on $\Z/10\Z$ with Role-Deterministic Boundary Behavior." Submitted to *Algebra Universalis*.
+
+---
+
+## Demotion notice (2026-05-27 audit)
+
+Per `05_papers/_staging/referee_reports/10_promotions_audit_J27_J28_J29.md`, J28 has no characterization theorem; the role partition {V, F, S, T} is labeled by fiat rather than derived. Every "theorem" reduces to direct table inspection.

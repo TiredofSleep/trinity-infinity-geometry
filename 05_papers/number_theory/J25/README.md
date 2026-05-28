@@ -1,3 +1,9 @@
+# [MERGED INTO J24 on 2026-05-27]
+
+> **This paper has been merged into J24.** Per `05_papers/_staging/referee_reports/09_promotions_audit_J24_J25_J26.md`, J25's three theorems are coordinate-translations of J24's content; the distinct content (712-check harness + Montgomery's remark connection + ω-blindness corollary) will appear as a 2-3 page appendix in J24. The detailed merger plan is at `05_papers/_staging/referee_reports/15_J25_to_J24_merger_plan.md`.
+
+---
+
 # J25 — First-Coprime-Failure and the Discrete Fejér Kernel: A Coordinate Translation across Squarefree Bases
 
 **Status:** REVISED (2026-05-08; major referee fixes + SFM context applied)

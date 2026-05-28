@@ -1,8 +1,8 @@
 # J08 — F_p Structure of the 4-Core Commutative Non-Associative Algebra
 
-**Status**: SUBMISSION-READY (2026-05-27, polished). Merger product of J48 + J49.
+**Status**: DRAFT (2026-05-27 audit found math errors: power-associativity claim FALSE; L_{e₃} not a 4-cycle; idempotents over F_5 not idempotent)
 
-**Tier:** 1 (ship-ready (Algebra Universalis; idempotent counts verified at 6 primes; chain-shell dets match exactly; PROMOTED 2026-05-27))
+**Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
 
 **Target venue**: *Algebra Universalis* (primary). Fallback: *Algebras and Representation Theory*.
 
@@ -76,3 +76,11 @@ The source folders are retained for citation history; their manuscripts are unch
 ## Authors
 
 B.R. Sanders (7Site LLC, Hot Springs, AR) and M. Gish (Independent Researcher).
+
+## Demotion notice (2026-05-27 audit)
+
+Per `05_papers/_staging/referee_reports/08_J08_power_assoc_FIX.md`, three substantive math errors were verified by independent computation:
+- Power-associativity FAILS at a = e₂: e₂³·e₂ = e₀ but (e₂²)² = e₂. V is **not power-associative**; §2.5 lens-invariant skeleton reduced from 5 to 4 properties.
+- L_{e₃} is NOT a 4-cycle (rank ≤ 3, kernel e₀ − e₄).
+- ε₂ = 2e₃ + 3e₄ is NOT idempotent over F_5.
+Substantive rewrite of §1.2, §2.5, §4 is needed before resubmitting for Tier 1.
