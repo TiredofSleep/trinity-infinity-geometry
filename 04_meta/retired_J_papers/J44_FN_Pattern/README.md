@@ -130,6 +130,18 @@ Sanders, B.R., Gish, M. (2026). "A Substrate-Derived FN Pattern with $\lambda = 
 
 ---
 
+## Scale-of-anchor clarification (F11 audit, 2026-05-28)
+
+For downstream readers who encounter F7/F8 (`04_meta/frontiers_2026-05-27/F7_yukawa_hierarchy_scoping.md`, `F8_yukawa_full_1loop.md`) before reading this manuscript: **J44's `y_t = 0.93` anchor is at $\mu = M_Z$, NOT at $\mu = M_X$**. The manuscript §5 is explicit ("Yukawas are evaluated at $\mu = M_Z$ via 4-loop QCD running... the single Tier-A measured anchor $y_t(M_Z) \approx 0.93$"). Within the precision quoted ("$y_t \approx 0.93$"), this matches the PDG-derived $y_t(M_Z) = 0.937$ at the 0.75% level (PDG error bar $\pm 0.012$).
+
+F7 introduced an M_X-anchor reading ("Tier-A measured at $\mu = M_Z$, evolved to GUT scale") but never actually performed the M_Z → M_X evolution; F8 then ran 0.93 down from M_X as if it were the GUT-scale value and reported a 32% overshoot. The F8 "structural tension" reduces to a category error: feeding the M_Z anchor as the M_X anchor produces the canonical SM 1-loop RG drift $y_t(M_X)/y_t(M_Z) \approx 0.394/0.937 \approx 0.42$ (factor 2.38 enhancement going M_X → M_Z), not a TIG-vs-SM discrepancy.
+
+Within J44's own framework, no RG running is required — all 9 charged Yukawa predictions live at M_Z, anchored to PDG-derived $y_t(M_Z) = 0.937 \approx 0.93$ and scaled by the substrate-forced $\lambda^{n_X}$ ladder. The Tier-C status (residual $C_p \in [1, 9]$ multipliers, generation-step asymmetry, two-scale $\lambda, \lambda_{\rm ref}$ structure) is unchanged.
+
+See `04_meta/frontiers_2026-05-27/F11_J44_yt_anchor_audit.md` for the full audit.
+
+---
+
 ## Known issues (per 2026-05-27 audit)
 
 Tier 3 — RETIRE CANDIDATE per `_staging/TIER_INDEX.md`: this is a Tier-C structural rhyme without a theorem. Save plan was applied 2026-05-07 (honest reframing as "different framing, not simpler framing"; Observation 4.1 not Theorem; PRD-survival probability honestly stated at 30–40%). Outstanding decision points:
