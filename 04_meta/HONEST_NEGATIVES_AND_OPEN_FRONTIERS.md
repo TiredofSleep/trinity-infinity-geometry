@@ -100,7 +100,19 @@ D57 shows: across a 17-point Stern-Brocot rational grid with PSLQ at deg ≤ 8 a
 
 **Net F10 verdict: CLOSE-R-CASE-ENHANCED.** R-case Conjecture 4.2 at α_special is now structurally closed Tier-A on the alpha-side and empirically certified at the strongest feasible bounds on the residual side. The remaining structural avenue is the **xi-side Galois group** `Gal(Q(ξ, α_special) / Q(α_special))` -- a separate computation NOT performed in F10. Conjecture 4.2 over R as a whole **remains genuinely open at strict Tier-A** (xi-side Galois pending, transcendental α not addressed by F10).
 
-See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical), `F5_alpha_uniqueness_proof_attempt.md` (partial proof), `F6_hilbert_irreducibility.md` (HIT closure of the Q-case), `F9_R_case_extension.md` (R-case 1000-dps strengthening), and `F10_galois_R_case.md` (Galois closure of alpha-side at α_special).
+**Frontier F12 (2026-05-28) -- ξ-side Galois + EXPLICIT REFUTATION OF LITERAL R-CASE AT α_special.** Computed `Gal(h(ξ) / Q(α_special)) = S_5` via 2000-prime cycle-type sampling on special-fiber primes. The deeper finding: **Q(ξ, α_special) is NOT irreducible over Q(α_special).** Since P_24 has multiplicity 1 in disc_ξ(Q), at α_special the discriminant vanishes to first order, forcing exactly ONE double ξ-root + 5 simple ξ-roots. Gröbner basis reduction of `(Q, ∂_ξ Q, P_24)` in `Q[α, ξ]` with lex(ξ > α) collapses to two generators `A·ξ + B(α) = 0` and `P_24(α) = 0`, yielding the EXPLICIT relation:
+```
+ξ_double = -B(α_special) / A
+```
+where A is a 99-digit integer and B(α) is a degree-23 polynomial with 99-106-digit coefficients. Numerically `ξ_double ≈ 5.7637921994924929...`; its minimal polynomial over Q has DEGREE 24 (computed as `Res_α(P_24(α), A·ξ + B(α))`). F9's PSLQ at maxcoef ≤ 10000 MISSED this because the relation has height ≈ 10^106 — 102 orders of magnitude above F9's bound. F9 remains valid as a **low-height no-relation certificate**.
+
+**F10's degree-mismatch implication is RETRACTED.** F10's S_7 + S_24 Galois results themselves stand, but the implication "no ξ-root of Q(ξ, α_special) lies in Q(α_special)" silently assumed minpoly(ξ₀ / Q) ≤ 7 because ξ₀ is a root of a degree-7 polynomial in ξ. The effective minimal polynomial of ξ_double over Q has degree 24, escaping the degree bound. F10's "Tier-A closure" claim is retracted; F10's Galois computations themselves remain valid.
+
+**REFINED CONJECTURE 4.2 (low-height form):** Within PSLQ-detectable height bounds (deg ≤ 12, |coefficients| ≤ M for any polynomial growth in the tested parameter range), α = 1/2 is the unique real α ∈ (0, 1) for which non-trivial algebraic relations exist between attractor moments. **PROVED over Q (Theorem F.2). Empirically held at 70+ real α values across heights tested through ~10^4.** The α_special counterexample (height ~10^106) is a single explicit example outside the low-height regime; the literal form of Conjecture 4.2 is therefore REFUTED, but the natural "low-height" form survives empirically.
+
+The Conjecture 4.2 story is now: low-height closure over both Q and R (empirical), high-height structural identification of a SPECIFIC counterexample family (α_special and its Galois conjugates), and the natural research question shifts to "characterize the height function for algebraic relations as α varies".
+
+See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical), `F5_alpha_uniqueness_proof_attempt.md` (partial proof), `F6_hilbert_irreducibility.md` (HIT closure of the Q-case), `F9_R_case_extension.md` (R-case 1000-dps strengthening), `F10_galois_R_case.md` (Galois groups of P_7 and P_24), and `F12_xi_side_galois.md` (xi-side Galois + explicit α_special / ξ_double relation, F10 retraction).
 
 ### 2.2 The Clay-Millennium reformulations
 
