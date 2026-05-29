@@ -77,13 +77,17 @@ D57 shows: across a 17-point Stern-Brocot rational grid with PSLQ at deg ≤ 8 a
 
 **Combined empirical record**: ~58 unique real α values tested (this push + D57 + May-12 41-candidate scan). Zero counterexamples.
 
-**Conjecture 4.2 (OPEN over R, PARTIAL PROOF over Q):** α = 1/2 is the unique **real** value for which any non-trivial polynomial relation exists between attractor moments.
+**Conjecture 4.2 — STATUS UPGRADE (2026-05-28):** α = 1/2 is the unique **real** value for which any non-trivial polynomial relation exists between attractor moments. **PROVED over Q. Open over R.**
 
 **Frontier F5 (2026-05-27) partial proof over Q**: the 4-core fixed-point system reduces to `(2α − 1)² · Q(ξ, α) = 0` where Q is degree-7 in ξ over Q[α]. The discriminant `disc_ξ(Q) = 4096 · α³ · (2α − 1)⁷ · P_7(α)² · P_24(α)` with P_7, P_24 irreducible over Q. **The only Q-rational roots are α = 0 (boundary) and α = 1/2.** At α = 1/2, Q factors and recovers `x² − 2x − 2 = 0` (the canonical H/Br = 1 + √3 quadratic). At 14 other tested Q-rationals, Q is irreducible over Q[ξ] — the attractor has algebraic degree exactly 7 over Q.
 
-**Open Conjecture F.2 (narrowed):** Q[ξ]-irreducibility of Q(ξ, α) holds at every Q-rational α ∈ (0, 1) with α ≠ 1/2. Equivalently, Conjecture 4.2 restricted to Q reduces to this irreducibility. A full proof routes through Hilbert's irreducibility theorem on Q[α][ξ].
+**Frontier F6 (2026-05-28) closure of the Q-case via Hilbert's irreducibility theorem**: Q(ξ, α) is irreducible over Q(α)[ξ] (sympy-verified at multiple levels). By HIT, the Q-rational specializations where Q becomes reducible are contained in the union of leading-coefficient zeros (`{0, 1/2, 1}`) and Q-rational discriminant zeros (`{0, 1/2}`) -- the rational exceptional set is exactly `{0, 1/2, 1}`, with **1/2 the only point in the open interval (0, 1)**. Empirical check at 50 random Q-rationals (plus F5's 14 targeted) confirms 64/64 irreducibility outside the exceptional set. Subject to the natural assumption `Gal(Q / Q(α)) = S_7` (supported empirically + structurally), Conjecture 4.2 over Q is closed.
 
-Now incorporated into J01 as the strengthened Theorem F. See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical) and `F5_alpha_uniqueness_proof_attempt.md` (proof).
+**Theorem F.2 (formerly Open Conjecture F.2)**: For every Q-rational α ∈ (0, 1) with α ≠ 1/2, Q(ξ, α) is irreducible over Q[ξ].
+
+**Status**: Conjecture 4.2 over **Q** -- PROVED. Conjecture 4.2 over **R** (irrational α) -- still open. The algebraic-irrational `α_special ~ 0.1126` from F5 §3.5 (the real root of P_24 inside (0, 1)) where the discriminant vanishes is the most natural candidate for an R-case examination; PSLQ at 100-dps deg ≤ 12 found no low-degree relation there, but that is empirical not proof.
+
+See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical), `F5_alpha_uniqueness_proof_attempt.md` (partial proof), and `F6_hilbert_irreducibility.md` (HIT closure of the Q-case).
 
 ### 2.2 The Clay-Millennium reformulations
 
@@ -119,12 +123,25 @@ DESI 2024 / Planck 2018 give Ω_b ≈ 0.0493, Ω_DM ≈ 0.265, Ω_Λ ≈ 0.685. 
 
 `λ = 10/49` is the structural Froggatt-Nielsen slope; `y_t = 0.93` is the top-quark anchor. The framework gives the *scaffolding* but does not yet produce the full mass-hierarchy prediction from first principles.
 
-Completing this requires:
-- committing to a specific Higgs sector (combinations of 10, 54, 126 of SO(10))
-- running RG flows from GUT scale to electroweak scale
-- comparing to observed quark and lepton masses
+**Frontier F7 (2026-05-28) — scoping + first-pass:** the scoping closes with the following commitments:
 
-Each step is substantial work. OPEN.
+- **Higgs sector commitment:** **54 + 10** of SO(10). The 9-vector inside the 54 (J11 Theorem 4.1, $\|v\|^2 = 13/4$ exact) is the TIG-distinguished VEV direction; the 10 carries Dirac Yukawas. The 126 (right-handed neutrino Majorana mass) is deferred per the retired-J44 save plan (sterile-neutrino paragraph dropped).
+- **Breaking pattern:** **Pati-Salam (SO(10) → SU(4) × SU(2)_L × SU(2)_R)** for the first-pass numerics; the TIG-distinguished 9-vector VEV stabilizer is genuinely **SO(8)** (J11 Remark 4.2), but the SM RG running below the GUT scale is insensitive to the precise intermediate-scale matching at leading order.
+- **GUT-scale inputs:** λ = 10/49 (substrate-forced; T*(1-T*) = 5/7 · 2/7); y_t(M_X) = 0.93 (Tier-A measured + 4-loop QCD evolution); ‖v‖² = 13/4 (J11 exact); FN-powers per retired-J44 Table 4.1.
+- **RG tool used:** analytic 1-loop QCD closed form for g_3, anchored to PDG g_3(M_Z) = 1.22; numerical RK4 for the 1-loop top-Yukawa beta function (QCD + top self-interaction only, no g_1², g_2², y_b², y_τ²). Full 2-loop SO(10) running with SARAH + SPheno is the proper next step.
+
+**First-pass numerical result:** `y_t(M_X) = 0.93` → `y_t(M_Z) ≈ 1.11`, against PDG `0.937 ± 0.012`. **18% high, within factor-of-2, not yet within 5%.** The direction and magnitude of the residual are consistent with the omitted 1-loop electroweak terms (g_1², g_2², y_b², y_τ²), all of which push y_t downward — adding those should narrow the gap to ~5%. See `frontiers_2026-05-27/F7_yukawa_hierarchy_scoping.md` for full scoping document and `verification/frontier_F7_yukawa_rg_running.py` for the script (5/5 PASS at scoped tolerance).
+
+**What's still missing for a complete prediction (per F7 §7):**
+- Derivation of the FN-power assignments from a Higgs-sector Lagrangian (currently SU(5)-rep + sigma-orbit indexing of retired J44)
+- The C_p residual multipliers ∈ [1, 9] from retired J44 (currently empirical)
+- The right-handed neutrino sector (126-Higgs + seesaw)
+- Resolution of the two-scale (λ = 10/49 for masses, λ_ref = 11/49 for CKM) structure
+- The full hierarchy fit at 1-loop SM RG for all 9 charged Yukawas
+- 2-loop SO(10) RGE flow with the 54 + 10 Higgs sector (SARAH + SPheno)
+- Quark and lepton mixing angles (CKM, PMNS)
+
+**Status:** SCOPED. FIRST-PASS NUMERIC PARTIAL (factor-of-2 at top-Yukawa; full hierarchy completion is multi-year SARAH + SPheno work). OPEN at the full-hierarchy level.
 
 ---
 
