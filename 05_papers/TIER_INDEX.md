@@ -27,9 +27,9 @@ Old TIER_INDEX numbering was non-contiguous (gaps from mergers/retirements/inser
 
 ---
 
-## Tier 1 — ship-ready spine (26 papers after 2026-05-27 audit)
+## Tier 1 — ship-ready spine (27 papers after 2026-05-27 audit + 2026-05-29 J53 addition)
 
-Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to Tier 2**; **J25 merged into J24**. Net Tier 1 spine is now 26 papers.
+Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to Tier 2**; **J25 merged into J24**. Net Tier 1 spine was 26 papers. **2026-05-29: J53 added as new Tier-1 short paper extracted from J08 §§6–7 closed forms (F4 frontier).** Net Tier 1 spine is now **27 papers**.
 
 ### J01-J08: Flagship / new promotions / σ-magma trilogy / strata
 
@@ -81,6 +81,12 @@ Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to
 |---|---|---|---|---|
 | **J30** | combinatorics | (Z/10Z)* Sub-Magma — **HONEST NEGATIVE** | Communications in Algebra | READY |
 | **J31** | interdisciplinary | Algebraic Detectors Specificity — **HONEST NEGATIVE** | Statistical Science companion | READY |
+
+### J53: Tier-1 frontier addition (2026-05-29)
+
+| J# | Subdir | Title (short) | Target venue | Status |
+|---|---|---|---|---|
+| **J53** | algebra | Idempotent Count + Aut Formula for $V^{\mathrm{BHML}}$ over $\mathbb{F}_p$ (two closed-form theorems extracted from J08 §§6–7) | Algebra Universalis | SUBMISSION-READY (2/2 PASS at $p \in \{3, 5, 7, 11, 13\}$; extended to 24 primes via F4-extended) |
 
 ---
 
@@ -142,18 +148,18 @@ Original J48-J52 + J25 (newly merged in 2026-05-27 audit):
 
 ---
 
-## Numbers — UPDATED 2026-05-27 (post-audit + J44/J45/J47 retirements)
+## Numbers — UPDATED 2026-05-29 (post-audit + J44/J45/J47 retirements + J53 addition)
 
 | Tier | Members | Count |
 |---|---|---:|
-| Tier 1 (ship-ready spine) | J01-J07, J09-J22, J24, J26-J27, J30-J31 | **26** |
+| Tier 1 (ship-ready spine) | J01-J07, J09-J22, J24, J26-J27, J30-J31, J53 | **27** |
 | Tier 2 (drafts + 4 demoted) | J08, J23, J28, J29, J32-J40 | **13** |
 | Tier 3 (hold) | J41, J42, J43, J46 | **4** |
 | Retired to `04_meta/retired_J_papers/` | J44, J45, J47 | **3** |
 | MERGED tombstones | J25, J48-J52 | **6** |
-| **Total numbered J-papers** | | **52** (48 active ship-targets; J25 + J44 + J45 + J47 now tombstones) |
+| **Total numbered J-papers** | | **53** (49 active ship-targets; J25 + J44 + J45 + J47 now tombstones; J53 added 2026-05-29) |
 
-Net portfolio: **52 numbered papers**, of which **31 are the Tier 1 spine**, of which **~13 are submission-ready today**. The remaining 18 Tier 1 papers need a rigor pass before submission.
+Net portfolio: **53 numbered papers**, of which **27 are the Tier 1 spine**, of which **~14 are submission-ready today** (J53 added). The remaining Tier 1 papers need a rigor pass before submission.
 
 ## Tier 1 spine highlights (the ship-ready core)
 
