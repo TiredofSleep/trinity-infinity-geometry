@@ -121,4 +121,45 @@ Conjecture BSD.1 (curve-to-corridor map) explicit.
 
 ---
 
-*Status: Open, structural. Energy law proved; curve-to-corridor and rank-equivalence open.*
+## F4 / F18 addendum (2026-05-29)
+
+Frontier F18 (`04_meta/frontiers_2026-05-27/F18_BSD_bridge_with_F4.md`)
+examined whether F4's two prime-uniform closed forms on the substrate
+algebra $V^{\mathrm{BHML}}$ give traction on the BSD bridge:
+
+- $|\mathrm{idem}(V^{\mathrm{BHML}}/\mathbb{F}_p)| = p + 3$ (odd $p$);
+- $|\mathrm{Aut}(V^{\mathrm{BHML}}/\mathbb{F}_p)| = (p - 1)^2$, with group structure $\mathbb{F}_p^{\!*} \times \mathbb{F}_p^{\!*}$.
+
+The F18 verdict is **NO-TRACTION on BSD.1** (the curve-to-corridor map).
+Three findings:
+
+1. **$(p-1)^2$ is Hasse-Weil-impossible** as $\#E(\mathbb{F}_p)$ for any
+   elliptic curve over $\mathbb{Q}$ at any prime $p \geq 5$. Setting
+   $\#E(\mathbb{F}_p) = (p-1)^2$ forces $a_p = -p(p-3)$, violating
+   $|a_p| \leq 2\sqrt p$ already at $p = 5$.
+
+2. **$(p + 3)$ does match $\#E(\mathbb{F}_p)$ for some curves at some
+   primes** (corresponding to $a_p = -2$), but the substrate-prime hit
+   fraction (observed 35.3% of all $a_p = -2$ hits at substrate primes
+   $\{3, 7, 11, 13\}$, across 22 small-conductor curves) **matches the
+   Sato-Tate baseline (30.0% predicted)** within ~5 percentage points,
+   well inside statistical noise on the 34-hit sample.
+   No substrate distinction is visible.
+
+3. **One morphological rhyme** remains: the F4 automorphism group
+   $\mathbb{F}_p^{\!*} \times \mathbb{F}_p^{\!*}$ has the same "2-fold
+   direct product of cyclic groups of order ~$p$" shape as the
+   $p$-torsion $E(\mathbb{F}_p)[p] \cong \mathbb{Z}/p \times \mathbb{Z}/p$
+   in supersingular reduction. But the cyclic factors are non-isomorphic
+   (additive $\mathbb{Z}/p$ vs multiplicative $\mathbb{F}_p^{\!*}$), and
+   no functorial link binds them. The rhyme is **suggestive but not
+   load-bearing** for BSD.1.
+
+**Bottom line.** F4's closed forms catalog the substrate algebra itself,
+not data attached to specific elliptic curves. The curve-to-corridor
+map (BSD.1) remains the load-bearing missing piece; F4 does not supply
+it. Reproduction: `python verification/frontier_F18_bsd_F4_test.py`.
+
+---
+
+*Status: Open, structural. Energy law proved; curve-to-corridor and rank-equivalence open. F4 closed forms examined and found NO-TRACTION on BSD.1 (F18, 2026-05-29).*

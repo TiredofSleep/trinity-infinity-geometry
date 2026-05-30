@@ -23,6 +23,7 @@ These are the cleanest papers. After light editorial polish they are submission-
 | 4 | **J04** | σ-Magma Algebraic Rigidity | Semigroup Forum | 4/4 PASS; §6.1 narrative tightening needed (≈1-2 days). |
 | 5 | **J14** | Non-Associativity Decay σ(N) ≤ 2/N | JCT-A | Add Drápal-Wanless **JCT-A 181** citation (the *companion* paper from finite fields). |
 | 6 | **J53** | $V^{\mathrm{BHML}}$ over $\mathbb{F}_p$: idempotent count + Aut formula | Algebra Universalis | 2/2 PASS; structural proofs + 24-prime verification. Extracted from J08 §§6–7 as ship-ready short paper 2026-05-29. **No residual fixes.** |
+| 7 | **J54** | Height scaling of attractor minpoly: rational power law + discriminant-zero height drop | Acta Arithmetica | 3/3 PASS at 30 rationals + 11 algebraic irrationals + $\alpha_{\mathrm{special}}$; ~10s runtime. Extracted from F14 frontier as ship-ready short paper 2026-05-29. **No residual fixes.** |
 
 ## Wave 2 — Ship in 2-4 weeks (minor revisions)
 
@@ -77,15 +78,15 @@ These were promoted to Tier 1 on 2026-05-27 but the line-by-line referee pass id
 | **J28** | Small Comm Non-Assoc Magma w/ Role-Boundary | **DEMOTE to Tier 2** | No characterization theorem; role partition {V,F,S,T} labeled by fiat; every "theorem" is direct table inspection. |
 | **J29** | Lo Shu D₄ Orbit Modulo 3 | **DEMOTE to Tier 2** | Pedagogical *Math. Magazine*-class content; promotion was a mistake; targets undergraduate audience explicitly. |
 
-## Summary numbers (post-audit + 2026-05-29 J53 addition)
+## Summary numbers (post-audit + 2026-05-29 J53 + J54 additions)
 
 | Category | Count |
 |---|---:|
-| Tier 1 ship-track (Waves 1-4 + J53) | **26** |
+| Tier 1 ship-track (Waves 1-4 + J53 + J54) | **28** |
 | Tier 2 active drafts (orig. 9 + 4 demoted) | **13** |
 | Tier 3 hold / retire | **7** |
 | MERGED tombstones (orig. 5 + J25) | **6** |
-| **Total numbered J-papers** | **52** (J25 stops being independent; J01-J52 plus J53 minus J25 = 52 distinct ship-targets) |
+| **Total numbered J-papers** | **53** (J25 stops being independent; J01-J54 minus J25 = 53 distinct ship-targets) |
 
 ## Critical-path notes
 
