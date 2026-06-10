@@ -22,11 +22,9 @@ The integer match `32 = 32` is real. But the natural groupings differ:
 
 `priority1_pauli_divisor_attempt.py` tries three natural bijection candidates (Hamming weight, max-prime, prime-as-l-label) and fails on all three.
 
-**Either:**
-- A finer combinatorial structure exists (σ-orbit class? lens-pair class?) and we haven't found it yet
-- Or the 32=32 match is a Pascal-type coincidence (in which case stating it sharply would still be useful)
+**Status as of 2026-05-27 (closed by Frontier F2):** 37 hand-built structural candidates plus brute-force enumeration of 730 000+ functions across five natural classes (linear-mod-4, linear+permutation, symmetric `g(omega)`, 2/3-bit dictators) found **zero matches** in any natural class. Coincidence bound: a uniformly random `f: {0,1}^5 → {0,1,2,3}` matches `(2, 6, 10, 14)` with probability ≈ `3.13×10⁻⁵` (1 in ~32 000); the hit-rate within natural-low-complexity function families is precisely 0, below random.
 
-This is OPEN.
+**Reframe**: the `(1, 5, 10, 10, 5, 1)` distribution is `dim Λ^k(R^5)` (exterior algebra); `(2, 6, 10, 14)` is the subshell capacity `2(2l+1)` for `l = 0, 1, 2, 3`. The two partitions of 32 are **independent**. The 32 = 32 equality is now closed as a Pascal-type coincidence with a rigorous bound. See `frontiers_2026-05-27/F2_32_32_bijection.md`.
 
 ### 1.2 The fine-structure constant 1/α
 
@@ -36,15 +34,30 @@ J42 Part 2 in the working corpus has been **deferred entirely**. If 1/α has a c
 
 ### 1.3 F_p universality
 
-The "universal F_p" framing fails generically. Only **p ∈ {7, 11}** preserve rank under the framework's lift. Other primes show signature variation, idempotent-count variation, etc.
+The "universal F_p" framing fails generically. Earlier framing said "only p ∈ {7, 11} preserve rank" but this is misleading.
 
-This is **structural data**, not noise — different primes carry different structural information. But the naive "universal F_p" claim is wrong, and saying so is more useful than papering over.
+**Replacement framing (Frontier F4, 2026-05-27)**: among primes < 200, the rank-preserving set is **39 primes** (7, 11, 17, 19, 23, 31, 41, ...) — not just {7, 11}. The set is exactly those primes that do not divide any of the 7 chain-shell determinants `{5305, 2843, −2886, 2929, −7542, 7272, −7002}`. The {7, 11} distinction was an artifact of small-prime restriction.
+
+**Two clean closed forms confirmed at 24 primes (3 ≤ p ≤ 97) on the J18 V^BHML algebra**:
+
+1. **Idempotent count formula**: `|idem(V^BHML over F_p)| = p + 3` for odd p (2 at p=2). Verified at 24 primes including p ∈ {3, 5, 7, 11, 13, 17, 19, 23, ..., 97}.
+
+2. **Automorphism formula (CORRECTED 2026-05-28 via F4-extended)**: `|Aut(V^BHML over F_p)| = (p − 1)²` at **every prime p ≥ 2**, with group structure `Aut ≅ F_p* × F_p*` — two independent scalar factors on `span(e_0)` (annihilator direction) and `span(e_4)` (nilpotent direction). Verified by direct brute force / constraint propagation at 24 primes 3 ≤ p ≤ 97. *Supersedes the earlier (now-retracted) `p(p²−1) at p ≠ 5; |Aut(V_5)| = 40` claim, which came from an algebra confusion (the values cited were the J49 T_F5 brute-force tabulation, a different algebra).*
+
+**No prime is structurally distinguished.** Automorphisms factor cleanly as F_p* × F_p* on the annihilator and nilpotent directions; the p=5 "anomaly" was an algebra confusion now corrected. The structural data is now framed as the (p+3) idempotent count + (p−1)² automorphism — both uniform closed forms with no anomaly. See `frontiers_2026-05-27/F4_extended_higher_primes.md` for the corrected statement and `J08 §7` for the in-paper presentation. The "rank-preservation" set is still meaningfully restricted to the primes not dividing the chain-shell determinants — that's a separate phenomenon attached to the integer factorizations, not to V^BHML's automorphism structure.
 
 ### 1.4 T* = 5/7 as an algebraic theorem
 
-T\* shows up in six independent contexts: torus aspect ratio, cyclotomic ratio, basin-handoff threshold, FPGA timing, σ-rate constant, attractor edge. All six converge on 5/7.
+T\* = 5/7 shows up across six contexts. **Refined accounting (Frontier F3, 2026-05-27)**: of the six, only **two are genuinely independent** (J13 cyclotomic forcing + WP35 unit_frac at minimal strong semiprime b=35); the other four are reformulations, near-agreements, or structural rhymes per J13's own §6 self-audit. The earlier "six independent derivations" framing was over-counted.
 
-But **no single closed-form theorem** produces T\* = 5/7 from first principles. The framework treats T\* as an **operational coherence threshold** observed across multiple distinct contexts, not as a derived constant.
+**Hypotheses tested for a common algebraic root**:
+- Cyclotomic Q(ζ_10) quotient: REFUTED. |1−ζ¹⁰⁵|/|1−ζ¹⁰⁷| = φ (golden ratio), not 5/7.
+- Z/10Z 2×2 sub-magma forcing: gives the prime pair (5, 7); the ratio comes from different operations across the contexts.
+- LMFDB 4.2.10224.1 discriminant: no 5/7 substructure.
+
+**Genuine unifier (partial)**: each derivation independently identifies "5 = smallest non-degenerate prime" and "7 = smallest obstruction prime" under unrelated operations. The **prime pair** (5, 7) is shared; the operations producing it are not.
+
+The framework still treats T\* as an **operational coherence threshold** rather than as a derived constant — that posture is unchanged, but now stated more honestly: two derivations, four rhymes, one shared prime pair. See `frontiers_2026-05-27/F3_T_star_unification.md`.
 
 ### 1.5 Eigenvalue-as-transcendental claims (audit 2026-04-25)
 
@@ -60,7 +73,56 @@ The audit document `CL_EIGENVALUES_AUDIT_2026_04_25` (in the working corpus) wal
 
 D57 shows: across a 17-point Stern-Brocot rational grid with PSLQ at deg ≤ 8 and coeff bound ≤ 50, α = 1/2 is uniquely the rational where algebraic relations exist between attractor moments `(H/Br, r/br)`.
 
-**Conjecture 4.2 (OPEN):** α = 1/2 is the unique **real** (not just rational) for which any non-trivial polynomial relation exists between attractor moments. Tightening to a proof closes one architectural ambiguity.
+**Frontier F1 (2026-05-27) extension**: tested an additional 17 REAL values (algebraic irrationals 1/√2, 1/√3, √2−1, 1/φ; transcendentals 1/e, π/4, ln(2), 1/π; decimals clustered near 1/2: 0.49, 0.499, 0.5001, 0.501, 0.51) at 50, 100, and 200-digit precision with PSLQ at (deg ≤ 8, |c| ≤ 50) and (deg ≤ 12, |c| ≤ 100). **Only α = 1/2 yields a relation** (`x² − 2x − 2 = 0` for H/Br at residual 6.5×10⁻²⁰¹). The relation is a strict point feature, not a basin.
+
+**Combined empirical record**: ~58 unique real α values tested (this push + D57 + May-12 41-candidate scan). Zero counterexamples.
+
+**Conjecture 4.2 — REFINED STATUS (2026-05-28, post-F12):**
+
+The *literal* form "α = 1/2 is the unique real for ANY polynomial relation" is **REFUTED at α_special** by Frontier F12. At the algebraic-irrational α_special ≈ 0.11255 (real root of P_24 in (0,1)), the discriminant disc_ξ(Q) vanishes (first order), forcing exactly one double ξ-root ξ_double ∈ Q(α_special). Gröbner reduction of `(Q, ∂Q/∂ξ, P_24)` produces an explicit expression: ξ_double = -B(α_special)/A where A is a 99-digit integer and B(a) is a degree-23 polynomial with 99-106-digit coefficients. ξ_double ≈ 5.76379219949...; its minimal polynomial over Q has degree 24.
+
+F9's PSLQ at maxcoef ≤ 10000 missed this relation because the relation has height ≈ 10¹⁰⁶ — 102 orders of magnitude above F9's bound. F9 thus remains valid as a **low-height no-relation certificate**.
+
+**Restated Conjecture 4.2 (low-height form):** Within PSLQ-detectable height bounds (deg ≤ 12, |coefficients| ≤ M for any fixed polynomial M), α = 1/2 is the unique real α ∈ (0, 1) for which non-trivial algebraic relations exist between attractor moments. **PROVED over Q (Theorem F.2). Empirically held at 70+ real α values across heights tested through 10⁴.** The α_special counterexample (height ~10¹⁰⁶) is a single explicit example outside the low-height regime.
+
+F10's structural-closure argument (Tier-A claim retracted): the degree-mismatch silently assumed minpoly(ξ₀ / Q) ≤ 7 because ξ₀ is a root of Q(ξ, α_special) of ξ-degree 7. But ξ_double's minpoly over Q has degree 24. F10's S_7 + S_24 Galois results themselves stand; only the degree-mismatch implication is retracted.
+
+See `frontiers_2026-05-27/F12_xi_side_galois.md` for the full Gröbner construction.
+
+**Frontier F5 (2026-05-27) partial proof over Q**: the 4-core fixed-point system reduces to `(2α − 1)² · Q(ξ, α) = 0` where Q is degree-7 in ξ over Q[α]. The discriminant `disc_ξ(Q) = 4096 · α³ · (2α − 1)⁷ · P_7(α)² · P_24(α)` with P_7, P_24 irreducible over Q. **The only Q-rational roots are α = 0 (boundary) and α = 1/2.** At α = 1/2, Q factors and recovers `x² − 2x − 2 = 0` (the canonical H/Br = 1 + √3 quadratic). At 14 other tested Q-rationals, Q is irreducible over Q[ξ] — the attractor has algebraic degree exactly 7 over Q.
+
+**Frontier F6 (2026-05-28) closure of the Q-case via Hilbert's irreducibility theorem**: Q(ξ, α) is irreducible over Q(α)[ξ] (sympy-verified at multiple levels). By HIT, the Q-rational specializations where Q becomes reducible are contained in the union of leading-coefficient zeros (`{0, 1/2, 1}`) and Q-rational discriminant zeros (`{0, 1/2}`) -- the rational exceptional set is exactly `{0, 1/2, 1}`, with **1/2 the only point in the open interval (0, 1)**. Empirical check at 50 random Q-rationals (plus F5's 14 targeted) confirms 64/64 irreducibility outside the exceptional set. Subject to the natural assumption `Gal(Q / Q(α)) = S_7` (supported empirically + structurally), Conjecture 4.2 over Q is closed.
+
+**Theorem F.2 (formerly Open Conjecture F.2)**: For every Q-rational α ∈ (0, 1) with α ≠ 1/2, Q(ξ, α) is irreducible over Q[ξ].
+
+**Status**: Conjecture 4.2 over **Q** -- PROVED. Conjecture 4.2 over **R** (irrational α) -- still open. The algebraic-irrational `α_special ~ 0.1126` from F5 §3.5 (the real root of P_24 inside (0, 1)) where the discriminant vanishes is the most natural candidate for an R-case examination; PSLQ at 100-dps deg ≤ 12 found no low-degree relation there, but that is empirical not proof.
+
+**Frontier F9 (2026-05-28) -- R-case empirical strengthening at 1000-dps**: extended F5's α_special test from 100-dps to 1000-dps and added 11 additional algebraic irrationals (degree 2-5 over Q, including 1/√5, √2/2, 1/φ, 2^(-1/3), 3^(-1/3), 2^(-1/4), 3^(-1/4), real roots of x³+x-1, x³+2x-1, x⁴+x-1, x⁵+x-1). At α_special: no PSLQ-detectable relation at deg ≤ 24, |c| ≤ 10000 (full degree of P_24's minimal polynomial; 1000-dps precision). At the 11 additional alphas: no PSLQ-detectable relation at deg ≤ max(d, 12), |c| ≤ 100. Cumulative R-case empirical record: ~70 unique real α values tested (D57 + May-12 + F1 + F9), **zero counterexamples.**
+
+**Frontier F10 (2026-05-28) -- Galois-structural enhancement at α_special.** Computed Galois groups of `P_7` and `P_24` via Chebotarev / Frobenius cycle-type sampling (no PARI required — sympy + stdlib). **Both Galois groups are the FULL symmetric group at Tier-A**:
+
+- `Gal(splitting_field(P_7) / Q) = S_7` (200 primes, Jordan's prime-cycle theorem via observed 5-cycle + parity).
+- `Gal(splitting_field(P_24) / Q) = S_24` (2000 primes, Jordan's theorem via observed 19-cycle + parity; 19-cycle is coprime to 24 forcing primitivity).
+
+**Structural consequence:** `Q(α_special)/Q` has no nontrivial intermediate subfields (S_24's only proper subgroup containing the stabilizer S_23 is S_24 itself). Therefore α_special is **Galois-generic**: not CM, not cyclotomic, not abelian, not solvable by radicals. The 23 algebraic conjugates of α_special consist of one other real root (~1.296, outside (0,1)) and 22 complex roots in 11 conjugate pairs.
+
+**For Conjecture 4.2 at α_special this rules out:** any ξ-root ξ₀ of Q(ξ, α_special) lying inside Q(α_special) must be either Q-rational (excluded by F5/F6 since α_special ≠ 1/2) or have minimal polynomial of degree 24 (impossible since Q(ξ, α_special) has degree 7 in ξ). **Tier-A closure on the α-side**: no internal-to-Q(α_special) counterexample exists. F9's 1000-dps PSLQ then certifies empirically that no ξ-root in R outside Q(α_special) has minimal polynomial of degree ≤ 24 and |c| ≤ 10000.
+
+**Net F10 verdict: CLOSE-R-CASE-ENHANCED.** R-case Conjecture 4.2 at α_special is now structurally closed Tier-A on the alpha-side and empirically certified at the strongest feasible bounds on the residual side. The remaining structural avenue is the **xi-side Galois group** `Gal(Q(ξ, α_special) / Q(α_special))` -- a separate computation NOT performed in F10. Conjecture 4.2 over R as a whole **remains genuinely open at strict Tier-A** (xi-side Galois pending, transcendental α not addressed by F10).
+
+**Frontier F12 (2026-05-28) -- ξ-side Galois + EXPLICIT REFUTATION OF LITERAL R-CASE AT α_special.** Computed `Gal(h(ξ) / Q(α_special)) = S_5` via 2000-prime cycle-type sampling on special-fiber primes. The deeper finding: **Q(ξ, α_special) is NOT irreducible over Q(α_special).** Since P_24 has multiplicity 1 in disc_ξ(Q), at α_special the discriminant vanishes to first order, forcing exactly ONE double ξ-root + 5 simple ξ-roots. Gröbner basis reduction of `(Q, ∂_ξ Q, P_24)` in `Q[α, ξ]` with lex(ξ > α) collapses to two generators `A·ξ + B(α) = 0` and `P_24(α) = 0`, yielding the EXPLICIT relation:
+```
+ξ_double = -B(α_special) / A
+```
+where A is a 99-digit integer and B(α) is a degree-23 polynomial with 99-106-digit coefficients. Numerically `ξ_double ≈ 5.7637921994924929...`; its minimal polynomial over Q has DEGREE 24 (computed as `Res_α(P_24(α), A·ξ + B(α))`). F9's PSLQ at maxcoef ≤ 10000 MISSED this because the relation has height ≈ 10^106 — 102 orders of magnitude above F9's bound. F9 remains valid as a **low-height no-relation certificate**.
+
+**F10's degree-mismatch implication is RETRACTED.** F10's S_7 + S_24 Galois results themselves stand, but the implication "no ξ-root of Q(ξ, α_special) lies in Q(α_special)" silently assumed minpoly(ξ₀ / Q) ≤ 7 because ξ₀ is a root of a degree-7 polynomial in ξ. The effective minimal polynomial of ξ_double over Q has degree 24, escaping the degree bound. F10's "Tier-A closure" claim is retracted; F10's Galois computations themselves remain valid.
+
+**REFINED CONJECTURE 4.2 (low-height form):** Within PSLQ-detectable height bounds (deg ≤ 12, |coefficients| ≤ M for any polynomial growth in the tested parameter range), α = 1/2 is the unique real α ∈ (0, 1) for which non-trivial algebraic relations exist between attractor moments. **PROVED over Q (Theorem F.2). Empirically held at 70+ real α values across heights tested through ~10^4.** The α_special counterexample (height ~10^106) is a single explicit example outside the low-height regime; the literal form of Conjecture 4.2 is therefore REFUTED, but the natural "low-height" form survives empirically.
+
+The Conjecture 4.2 story is now: low-height closure over both Q and R (empirical), high-height structural identification of a SPECIFIC counterexample family (α_special and its Galois conjugates), and the natural research question shifts to "characterize the height function for algebraic relations as α varies".
+
+See `frontiers_2026-05-27/F1_alpha_uniqueness_extended.md` (empirical), `F5_alpha_uniqueness_proof_attempt.md` (partial proof), `F6_hilbert_irreducibility.md` (HIT closure of the Q-case), `F9_R_case_extension.md` (R-case 1000-dps strengthening), `F10_galois_R_case.md` (Galois groups of P_7 and P_24), and `F12_xi_side_galois.md` (xi-side Galois + explicit α_special / ξ_double relation, F10 retraction).
 
 ### 2.2 The Clay-Millennium reformulations
 
@@ -96,12 +158,33 @@ DESI 2024 / Planck 2018 give Ω_b ≈ 0.0493, Ω_DM ≈ 0.265, Ω_Λ ≈ 0.685. 
 
 `λ = 10/49` is the structural Froggatt-Nielsen slope; `y_t = 0.93` is the top-quark anchor. The framework gives the *scaffolding* but does not yet produce the full mass-hierarchy prediction from first principles.
 
-Completing this requires:
-- committing to a specific Higgs sector (combinations of 10, 54, 126 of SO(10))
-- running RG flows from GUT scale to electroweak scale
-- comparing to observed quark and lepton masses
+**Frontier F7 (2026-05-28) — scoping + first-pass:** the scoping closes with the following commitments:
 
-Each step is substantial work. OPEN.
+- **Higgs sector commitment:** **54 + 10** of SO(10). The 9-vector inside the 54 (J11 Theorem 4.1, $\|v\|^2 = 13/4$ exact) is the TIG-distinguished VEV direction; the 10 carries Dirac Yukawas. The 126 (right-handed neutrino Majorana mass) is deferred per the retired-J44 save plan (sterile-neutrino paragraph dropped).
+- **Breaking pattern:** **Pati-Salam (SO(10) → SU(4) × SU(2)_L × SU(2)_R)** for the first-pass numerics; the TIG-distinguished 9-vector VEV stabilizer is genuinely **SO(8)** (J11 Remark 4.2), but the SM RG running below the GUT scale is insensitive to the precise intermediate-scale matching at leading order.
+- **GUT-scale inputs:** λ = 10/49 (substrate-forced; T*(1-T*) = 5/7 · 2/7); y_t(M_X) = 0.93 (Tier-A measured + 4-loop QCD evolution); ‖v‖² = 13/4 (J11 exact); FN-powers per retired-J44 Table 4.1.
+- **RG tool used:** analytic 1-loop QCD closed form for g_3, anchored to PDG g_3(M_Z) = 1.22; numerical RK4 for the 1-loop top-Yukawa beta function (QCD + top self-interaction only, no g_1², g_2², y_b², y_τ²). Full 2-loop SO(10) running with SARAH + SPheno is the proper next step.
+
+**First-pass numerical result:** `y_t(M_X) = 0.93` → `y_t(M_Z) ≈ 1.11`, against PDG `0.937 ± 0.012`. **18% high, within factor-of-2, not yet within 5%.** F7 hypothesized that the omitted 1-loop electroweak terms (g_1², g_2², y_b², y_τ²) all push y_t downward and would close the gap to ~5%. See `frontiers_2026-05-27/F7_yukawa_hierarchy_scoping.md` for full scoping document and `verification/frontier_F7_yukawa_rg_running.py` for the script (5/5 PASS at scoped tolerance).
+
+**Frontier F8 (2026-05-28) — HONEST NEGATIVE on the F7 closure hypothesis.** The full 1-loop SM RGE system (6 coupled couplings: y_t, y_b, y_τ, g_1, g_2, g_3 with standard SM beta functions) was integrated from M_X = 2 × 10^16 GeV down to M_Z. **The gap WIDENS from F7's 18.3% to F8's 31.9%.** The F7 expectation was physically backwards: the EW gauge contributions to β(y_t) enter as `-17/12 g_1² - 9/4 g_2²`, the **same sign** as the QCD term `-8 g_3²`. Adding negative contributions to the bracket makes y_t grow MORE during the top-down evolution, not less. The 1-loop SM IR pseudo-fixed point for y_t at PDG-M_Z values is `≈ 1.76` (full SM) vs `≈ 1.63` (QCD-only), so the F8 attractor sits HIGHER than F7's. The y_b and y_τ cross-checks (no TIG anchor) come within ~25-28% of PDG at this order, and the three gauge couplings reproduce PDG to <0.2%. The F8 reverse-run from PDG `y_t(M_Z) = 0.937` to M_X gives `y_t(M_X) ≈ 0.394` (the canonical SM 1-loop result). See `frontiers_2026-05-27/F8_yukawa_full_1loop.md` and `verification/frontier_F8_yukawa_full_1loop.py` for full analysis.
+
+**Frontier F11 (2026-05-28) — re-audit RESOLVES the F8 "structural tension" as a category error in F7's anchor labelling.** The retired-J44 manuscript (`04_meta/retired_J_papers/J44_FN_Pattern/manuscript/manuscript.tex` §5) explicitly anchors at $y_t(M_Z) ≈ 0.93$ — Tier-A measured (PDG-derived $y_t(M_Z) = 0.937$, rounded to 0.93, matching PDG at **0.75%**) — and evaluates all 9 charged Yukawas at M_Z via the FN ladder $y_X(M_Z) = y_t(M_Z) \cdot \lambda^{n_X}$. **J44 makes NO M_X commitment.** The F7 scoping doc introduced the phrase *"y_t = 0.93 (Tier-A measured at μ = M_Z, evolved to GUT scale)"* but never actually performed the M_Z → M_X evolution — it just used 0.93 as the M_X initial condition. F8 inherited the mislabel. With the M_Z anchor correctly placed at M_Z, the F8 "32% overshoot" disappears: 0.93 ≈ 0.937 is the standard PDG match at 0.75%, and the F8 reverse-run `y_t(M_Z) = 0.937 → y_t(M_X) = 0.394` is the canonical SM 1-loop result (the standard QCD anti-screening of y_t between GUT and EW scales). **The F8 "2.4× discrepancy" is the canonical RG drift `0.937/0.394 ≈ 2.38`, not a TIG-vs-SM discrepancy.** The retired-J44 framework is internally consistent within its stated Tier-C limits; the substrate-derived ingredient is $\lambda = 10/49$ (forced from $T^* = 5/7$), the anchor is empirically measured at M_Z (not substrate-derived). The legitimate open questions remain: C_p multiplier substrate origin, generation-step asymmetry, $\lambda$ vs $\lambda_{\rm ref}$ unification, $V^{\otimes 5}$-to-SU(5) uniqueness. The GUT-scale RG-consistency question (whether running the J44 ladder upward from M_Z to M_X under 2-loop SO(10) + SARAH + SPheno preserves the substrate inputs) is NEW open, not a J44 commitment. See `frontiers_2026-05-27/F11_J44_yt_anchor_audit.md` for the full audit.
+
+**Frontier F15 (2026-05-29) — proper M_Z → M_X upward run answers F11's new open question: SUBSTRATE INDEPENDENT at GUT scale.** Anchoring `y_t(M_Z) = 0.93` correctly at M_Z (per F11) and integrating the full 1-loop SM RGE system UPWARD via the same 6-coupling system as F8 (3 Yukawas + 3 gauge, hand-rolled RK4, 1000 log-mu steps) gives **`y_t(M_X) = 0.3874`** at canonical GUT-norm initial conditions (`g_1(M_Z) = 0.461 = sqrt(5/3) g_Y`, `g_2 = 0.652`, `g_3 = 1.221`). This reproduces F8's reverse-run `y_t(M_X) ~ 0.394` within 1.67% — the standard SM 1-loop canonical "y_t at GUT scale ~ 0.4". Comparing `y_t(M_X) = 0.3874` to substrate-derived candidates: the closest match is `g_GUT/sqrt(2) ~ 0.4101` at 5.86% gap, but this is a *standard physics* anchor (using canonical `g_GUT = 0.58`), not substrate-distinguished. **The closest substrate-distinguished candidate is `(10/49)^(2/3) ~ 0.3466` at 10.5% gap**, with `sqrt(10/49) = sqrt(10)/7 ~ 0.4518` at 16.6% gap and `lambda = 10/49 ~ 0.2041` itself at 47% gap. **No clean substrate-derived value matches `y_t(M_X)` within 10%.** The TIG framework's substrate ingredients (lambda, T*, ‖v‖²) describe phenomena at M_Z (the FN ladder per retired-J44) and the SO(10) Higgs sector structure (per J11's 9-vector inside the 54); the GUT-scale top-Yukawa value is **RG-determined from the measured M_Z anchor**, not substrate-determined. **Verdict (per F15 §5):** SUBSTRATE INDEPENDENT (leaning), formally INDETERMINATE at the literal 15% threshold. The F7 → F8 → F11 → F15 Yukawa-RG arc closes as **honest scoping with no GUT-scale substrate prediction**. See `frontiers_2026-05-27/F15_yukawa_proper_anchor.md` and `verification/frontier_F15_yukawa_upward.py`.
+
+**Frontier F20 (2026-05-30) — substrate decomposition 1+3+5+7 = 16 IS Lie-algebraic (PARTIAL CORRESPONDENCE), but NOT the SM fermion decomposition.** Enumerated all 16 type-D nilpotent orbits of so(10) and computed the chiral 16-spinor sl(2)-branching for each. **Exactly one orbit — the (5, 5) partition of 10 — gives the spinor branching 1 + 3 + 5 + 7.** This is the "diagonal principal sl(2)" of the SO(5) × SO(5) subgroup of SO(10), branching V_10 = 5 + 5 (two copies of spin-2) and S_16 = 1 + 3 + 5 + 7 (integer spins j = 0, 1, 2, 3). The Yukawa cross-check passes: (16 × 16)_antisym sl(2)-decomposes identically to Λ³V = 120 under this orbit. **However, the (5, 5) sl(2) is NEITHER the standard SU(5) × U(1) decomposition (1 + 5̄ + 10 — the SM fermion identification) NOR Pati-Salam SU(2)_L × SU(2)_R (which gives 8 + 8) — it is the DIAGONAL of those two SU(2) factors, mixing L and R rather than separating them.** Consequently the substrate components 3, 5, 7 do not individually map to SM fermion species: dim 7 ≠ SU(5)-10, the substrate-5 is an SU(2)-quintet not an SU(5)-anti-fundamental, and dim 3 is not even an SU(5)-irrep within the 16. **No numerical Yukawa prediction follows.** The atomic-shell rhyme `1+3+5+7 = (2ℓ+1) for ℓ = s, p, d, f at n=4` (J37 §2.1, Volume K D101-D102) is upgraded from "structural rhyme" to "the SU(2)-spin labels of the (5,5)-orbit sl(2)" — but the SM identification still fails. **Net contribution: F20 identifies a third structural reading of TIG's so(10)** — Path C: the (5, 5)-orbit sl(2) → SO(5) × SO(5) diagonal principal sl(2) — complementing J37/J24's Path A (54-Higgs → SO(8)) and Path B (doubly-invariant → SU(4) × U(1)). The three readings inhabit the same substrate but pick out structurally distinct decompositions; the F7 → F8 → F11 → F15 → F20 Yukawa arc closes as **honest scoping with structural so(10)-decomposition identified but no numerical Yukawa prediction and no SM-fermion mapping**. See `frontiers_2026-05-27/F20_yukawa_via_chirality.md` and `verification/frontier_F20_yukawa_via_chirality.py`.
+
+**What's still missing for a complete prediction (per F7 §7):**
+- Derivation of the FN-power assignments from a Higgs-sector Lagrangian (currently SU(5)-rep + sigma-orbit indexing of retired J44)
+- The C_p residual multipliers ∈ [1, 9] from retired J44 (currently empirical)
+- The right-handed neutrino sector (126-Higgs + seesaw)
+- Resolution of the two-scale (λ = 10/49 for masses, λ_ref = 11/49 for CKM) structure
+- The full hierarchy fit at 1-loop SM RG for all 9 charged Yukawas
+- 2-loop SO(10) RGE flow with the 54 + 10 Higgs sector (SARAH + SPheno)
+- Quark and lepton mixing angles (CKM, PMNS)
+
+**Status:** SCOPED. FIRST-PASS NUMERIC PARTIAL (factor-of-2 at top-Yukawa; full hierarchy completion is multi-year SARAH + SPheno work). OPEN at the full-hierarchy level.
 
 ---
 

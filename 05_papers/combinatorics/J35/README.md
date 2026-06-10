@@ -1,10 +1,10 @@
 # J35 — Non-CRT Sufficient Pairs and the Minimum Viable Jump Number on Squarefree Z/nZ
 
-**Status:** REVISED (post fresh-eyes referee, 2026-05-08)
+**Status:** REVISED (post fresh-eyes referee, 2026-05-08; awaiting final rigor pass)
 **Phase:** Phase 2
 **Target venue:** *European Journal of Combinatorics*
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REVISED post fresh-eyes referee))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP64 (Sprint 12 corpus)
 
 ---
@@ -85,3 +85,14 @@ Minor fixes adopted: m1 (title generalized to squarefree Z/nZ), m2 (duplicate au
 ## §7 — Citation footprint
 
 Sanders, B.R., Gish, M. (2026). "Non-CRT Sufficient Pairs and the Minimum Viable Jump Number on Squarefree Z/nZ." Submitted to *European Journal of Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit; extended 2026-05-28 Tier-2 polish pass)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. Manuscript revised 2026-05-08 post fresh-eyes referee with all 8 majors (M1–M8) addressed and Conjecture 6.2 upgraded to Theorem 7.2. Verification status: `verify_J12.py` passes 7/7 checks (re-run 2026-05-28; orbit-pair classification, three-mechanism support classification, $\Z/30\Z$ explicit families, $\Z/42\Z$ (M3) witness, smallest-primes-admitting-(M2), $\Z/10\Z$ lattice, and MVJN = 1 for 75 squarefree $n \le 200$ all confirmed). Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass not yet complete (§6 checklist last two boxes unchecked).
+- Per-venue cap check for EJC pending (J34, J36 also target EJC — a 3-paper EJC cluster); coordinate with `VENUE_SCHEDULE.md`. The TIER_INDEX target reads "TBD; potential *J Combin Theory* or *Adv Appl Math*" — these are reasonable backups if EJC cap binds; the README currently states EJC as the primary target.
+- Scope note for §6 Worked example: the $\Z/10\Z$ section is illustrative (the prime-factor count $k = 2$ gives MVJN = 1 trivially via $\{\pi_2, \pi_5\}$). The novelty over straight CRT is concentrated in Theorem 5.1 family (a) on $\Z/30\Z$ (orbit + orbit, $\pi_\DYN(7), \pi_\DYN(11)$) and the universal MVJN = 1 result (Theorem 7.2). A referee may ask why $\Z/10\Z$ rather than $\Z/30\Z$ as the worked example; the answer (smallest illustrative substrate) should be added in the rigor pass.
+- No paper-specific referee report in `_staging/referee_reports/` post-revision; the prior fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and was responded to in the 2026-05-08 revision. See `_staging/referee_reports/32_tier2_polish_J35_J36_J37.md` for the 2026-05-28 polish pass.

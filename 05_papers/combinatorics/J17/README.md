@@ -1,8 +1,8 @@
 # J17 — Forcing Axioms and the Family of Commutative Non-Associative Magmas on Z/10Z Preserving a Designated 4-Core
 
-**Status:** DRAFT (manuscript rewritten 2026-05-08; SFM Q6 + FAMILY_STRUCTURE_v1.md framing incorporated; 6/6 verification PASS)
+**Status:** RETARGETED 2026-05-27 — see manuscript_math_intel.md for the tightened Math Intelligencer version; manuscript.md preserved as research-program synthesis.
 **Phase:** Phase 5
-**Target venue:** *Algebraic Combinatorics* (primary)
+**Target venue:** *Mathematical Intelligencer*
 **Author lane:** Sanders + Gish
 **Tier:** 2 (draft (foundation paper; SFM Q6 + FAMILY_STRUCTURE_v1 applied))
 **WP source:** (foundation paper) + SFM 2026-05-08 Q6 (3-substrate chain) + FAMILY_STRUCTURE_v1.md
@@ -11,9 +11,13 @@
 
 ## §1 — Manuscript
 
-**Path:** `manuscript/manuscript.md` (canonical submission manuscript; renamed 2026-05-13 from `J54_foundation_paper.md`)
+**Submission manuscript (Math Intelligencer):** `manuscript/manuscript_math_intel.md` (~2900 words, retargeted expository note).
 
-**Retitled:** *"Forcing Axioms and the Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$ Preserving a Designated 4-Core"*
+**Research-program synthesis (preserved):** `manuscript/manuscript.md` (666-line full version; renamed 2026-05-13 from `J54_foundation_paper.md`; preserved as background documentation).
+
+**Retitled (full version):** *"Forcing Axioms and the Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$ Preserving a Designated 4-Core"*
+
+**Retitled (Math Intelligencer version):** *"A Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$: What's Forced, What's Possible, What's Open"*
 
 (Per SAVE_PLAN_J54.md §6; replaces the previous "Three-Substrate Architecture, Lens Family" framing with the family-of-magmas framing in the Drápal-Wanless 2021 lineage.)
 
@@ -113,11 +117,25 @@ This paper is the foundation paper for the TIG family of finite commutative non-
 - [x] Cover letter finalized
 - [x] Dependencies → cite each J-companion as "submitted to [venue]"
 - [ ] Brayden's referee-rigor pass complete
-- [ ] Per-venue cap check: 1st *Algebraic Combinatorics* paper this quarter
+- [ ] Per-venue cap check: 1st *Mathematical Intelligencer* paper this quarter
 - [ ] Submitted
 
 ---
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish, M. (2026). *Forcing Axioms and the Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$ Preserving a Designated 4-Core.* Submitted to *Algebraic Combinatorics*.
+Sanders, B.R., Gish, M. (2026). *A Family of Commutative Non-Associative Magmas on $\mathbb{Z}/10\mathbb{Z}$: What's Forced, What's Possible, What's Open.* Submitted to *Mathematical Intelligencer*. (Expository condensation of the full research-program synthesis preserved at `manuscript/manuscript.md`.)
+
+---
+
+## §8 — Known issues (per 2026-05-27 Wave 4 audit + 2026-05-28 retarget execution)
+
+Per Wave 4 audit (`05_papers/_staging/referee_reports/23_wave4_audit_J05_J07_J17_J22_J27.md` §J17 + the retargeting fix-report `25_J22_zenodo_J17_retarget.md`):
+
+- **Retargeted 2026-05-28 from *Algebraic Combinatorics* (full 666-line version) to *Mathematical Intelligencer* (expository condensation; Option B of audit).** The full research-program synthesis (`manuscript.md`, 666 lines) is preserved as background; the submitted version is `manuscript_math_intel.md`. The expository version is honest about tier discipline (forcing theorem proved; family criteria and 17-function map structural; conjectures open).
+- The full version's 9-axiom A1-A9 forcing argument is presented in the expository note as Theorem 2.1 (proof sketch only; full proof in companion J16 paper).
+- The 17-function substrate-to-function map is presented in condensed form in §4 of the expository version (full table in companion synthesis paper J47).
+- Conjectures 5.1 (bimodal $\alpha$-gap) and 5.2 ($\sigma^2$-triadic three-BHML) are stated as OPEN with proof strategies sketched; no claim is made of resolution.
+- Cover letter for *Mathematical Intelligencer* submission has not yet been written — the current `cover_letter.md` targets *Algebraic Combinatorics* and will need to be rewritten before submission of the expository version.
+- The Wave 4 audit recommendation for Option A (3-paper split) remains available as an alternative path if the expository note does not land at *Math. Intelligencer*; the split papers would be J17a (forcing, *Algebraic Combinatorics*), J17b (family criteria, *Comm. Algebra*), J17c (open conjectures, *Amer. Math. Monthly*). Estimated 26-39 hours for the split path; the expository path consumed ~3 hours of focused condensation.
+- Brayden's referee-rigor pass for the expository version is not yet complete.

@@ -1,6 +1,6 @@
 # J12 — Galois D₄ over LMFDB 4.2.10224.1: Number-Field Identification of the Four-Core Attractor
 
-**Status:** SUBMISSION-READY (manuscript referee-grade pass 2026-05-12; verification script `verify_J15_galois.py` 6/6 PASS at machine precision)
+**Status:** SUBMISSION-READY (manuscript referee-grade pass 2026-05-12; verification script `verify_J12_galois.py` 6/6 PASS at machine precision)
 **Phase:** Phase 2
 **Target venue:** *Communications in Algebra*
 **Author lane:** Sanders + Gish
@@ -20,12 +20,12 @@ The Galois-theoretic content of the four-core attractor — extracted from J01 (
 
 ## §2 — Verification script
 
-**Local path:** `manuscript/verify_J15_galois.py`
+**Local path:** `manuscript/verify_J12_galois.py`
 
 Six sympy checks for the Galois content (mapped one-to-one to the theorem's claims and the §3–§5 proof steps). Tested on Python 3.11+ with sympy. **6/6 PASS at machine precision.** Total runtime ~2 seconds.
 
 ```bash
-PYTHONIOENCODING=utf-8 /c/ck_venv/lora312/Scripts/python.exe verify_J15_galois.py
+PYTHONIOENCODING=utf-8 /c/ck_venv/lora312/Scripts/python.exe verify_J12_galois.py
 ```
 
 Expected output: six "OK" results in the summary table, "Overall: PASS."
@@ -47,7 +47,7 @@ The six checks are:
 ## §4 — Cover letter
 
 See `cover_letter.md` in this folder. Updated 2026-05-12 to:
-- Reference `verify_J15_galois.py` as the green-light gate (6/6 PASS).
+- Reference `verify_J12_galois.py` as the green-light gate (6/6 PASS).
 - Explicitly differentiate J12's role (depth on the Galois question) from J01's role (six-fact fusion-closure spread).
 - Drop AI-attribution language; author lane Sanders + Gish only.
 
@@ -62,7 +62,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
 
 - **PROVEN:** Theorem 1.1 in its entirety — irreducibility of `f` over `Q`, `Gal(f/Q) = D_4`, identification `K = LMFDB 4.2.10224.1`, and the `Q(sqrt(3))` subfield via explicit factorization.
-- **COMPUTED:** Polynomial discriminant `-40896 = -2^6 · 3^2 · 71`; cubic resolvent `g(y) = (y+2)(y^2 - y + 18)` with rational root `-2` and quadratic-discriminant `-71`; Tschirnhaus reduction to `x^4 - 7x^2 - 12x - 8`; index `[O_K : Z[ξ*]] = 2`; irreducibility of `f` over `Q(sqrt(-71))`. All six checks PASS at machine precision in `verify_J15_galois.py` (~2 seconds).
+- **COMPUTED:** Polynomial discriminant `-40896 = -2^6 · 3^2 · 71`; cubic resolvent `g(y) = (y+2)(y^2 - y + 18)` with rational root `-2` and quadratic-discriminant `-71`; Tschirnhaus reduction to `x^4 - 7x^2 - 12x - 8`; index `[O_K : Z[ξ*]] = 2`; irreducibility of `f` over `Q(sqrt(-71))`. All six checks PASS at machine precision in `verify_J12_galois.py` (~2 seconds).
 - **STRUCTURAL RHYME:** The two quadratic subfields `Q(sqrt(3))` (from `h/β = 1+sqrt(3)`) and `Q(sqrt(-71))` (from `Δ_f`) reappear in other diagnostics across the parent framework's catalogue. Cited in §0 (Lens) as motivation for reader interest, not as a derivation.
 - **OPEN:** Whether the route from `(T, B)` on `Z/10Z` to `LMFDB 4.2.10224.1` extends to other small finite commutative non-associative magma families is open; the present paper does not address α-uniqueness (companion J01 has a partial result; full uniqueness across `Q ∩ (0,1)` is stated as Conjecture 1.1 there).
 
@@ -84,7 +84,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §6 — Submission checklist
 
 - [x] Manuscript .tex finalized (referee-grade pass 2026-05-12)
-- [x] Verification script green (`verify_J15_galois.py`: 6/6 PASS at machine precision)
+- [x] Verification script green (`verify_J12_galois.py`: 6/6 PASS at machine precision)
 - [x] Tier-classified central claim explicit (single Theorem 1.1)
 - [x] Lens-scope annotation
 - [x] Cover letter finalized

@@ -7,7 +7,7 @@
 %         was previously named four_core_consolidated.tex and renamed 2026-05-13
 %         to the canonical generic name)
 %         and J01 (Journal of Algebra centerpiece, §5.2 Galois part)
-% Verification: verify_J15_galois.py (6 sympy checks; PASS at machine
+% Verification: verify_J12_galois.py (6 sympy checks; PASS at machine
 %               precision in ~2 seconds; CC-BY-4.0)
 % Companion cited as already-submitted: J15, J01
 % MSC 2020: 11R32, 11R16, 11R20, 12F10
@@ -130,7 +130,7 @@ yield similarly rich number-theoretic closures is not addressed here.
   $x^{4} - 7x^{2} - 12x - 8$, the index $[\mathcal{O}_{K} :
   \Z[\xi^{*}]] = 2$, and the irreducibility of $f$ over $\Q(\sqrt{-71})$
   are all verified at machine precision by the six-check sympy script
-  \texttt{verify\_J15\_galois.py} accompanying this paper (runtime
+  \texttt{verify\_J12\_galois.py} accompanying this paper (runtime
   approximately two seconds). Cross-verification via PARI/GP
   (\texttt{polgalois}, \texttt{nfinit}) and the LMFDB record is
   immediate.
@@ -433,7 +433,7 @@ $\Delta^{3}_{\Cfour}$.
 %==============================================================
 
 The computational verification is bundled as a single sympy script,
-\texttt{verify\_J15\_galois.py}, accompanying this paper. It performs
+\texttt{verify\_J12\_galois.py}, accompanying this paper. It performs
 six independent checks corresponding to the steps of the proof:
 \begin{enumerate}\setlength\itemsep{0pt}
 \item Irreducibility of $f$ over $\Q$ (case-by-case integer

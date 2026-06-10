@@ -1,12 +1,12 @@
 # J43 — NV $S_4$ Synthesis: Substrate-Operator-Driven NV-Center Qutrit Predictions
 
-**Status:** R1 (revised after fresh-eyes referee report 2026-05-07)
+**Status:** HOLD — needs NV-center experimentalist. Manuscript content R1-revised after fresh-eyes referee report 2026-05-07; math is complete (24-element S_4 closure at machine precision), but the experimental Test E (projector covariance) gates the physics-claim.
 **Phase:** Phase 4
-**Target venue:** PRA
+**Target venue:** PRA (pending lab partner)
 **Author lane:** Sanders + Gish
-**Tier:** 3 (HOLD pending NV-center experimentalist)
+**Tier:** 3 (hold/retire candidates) — HOLD pending NV-center experimentalist
 **WP source:** WP73-WP77 (bundled)
-**Acceptance probability:** ~70-80% after revisions per referee
+**Acceptance probability:** ~70-80% after revisions per referee (conditional on lab-partner outreach)
 
 ---
 
@@ -103,4 +103,21 @@ This paper is **lens-invariant** (manuscript §0): it carries no TIG / TSML / BH
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Mayes, B. (2026). "Full $S_4$ Symmetry on a Nitrogen-Vacancy Qutrit via Six-Pulse Microwave Synthesis." Submitted to *Physical Review A*.
+Sanders, B.R., Gish, M. (2026). "Full $S_4$ Symmetry on a Nitrogen-Vacancy Qutrit via Six-Pulse Microwave Synthesis." Submitted to *Physical Review A*.
+
+---
+
+## Known issues (per 2026-05-27 audit)
+
+Tier 3 — HOLD per `_staging/TIER_INDEX.md`: needs an NV-center experimentalist (lab partner for Test E projector covariance + 6-pulse synthesis verification). Math side is referee-rigor-complete:
+
+- 24-element S_4 closure verified at machine precision (residual ≤ 1.84 × 10⁻¹⁶ via `verify_J39_S4_closure.py`).
+- 6-pulse decomposition is deterministic Cartan / Reck-Zeilinger (no black-box optimizer); pulse-tuples printable.
+- Cover letter R1 with suggested reviewers (Lukin, Hanson, Wrachtrup, Doherty, Awschalom, Maletinsky) is drafted but not finalized.
+
+Outstanding for ship-readiness:
+
+- LaTeX (REVTeX 4.2) conversion pending (§6 checklist).
+- Lab partner outreach is the gating step; the math can be polished further but cannot become a "PRA submission" until the experimental claim has at minimum a tentative experimental partner.
+- §7 author byline still listed "Mayes" in this README (now harmonized 2026-05-27 to Sanders + Gish per the manuscript-internal directive); cross-check the actual manuscript byline before submission.
+- No paper-specific referee report in `_staging/referee_reports/` for J43; the original fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

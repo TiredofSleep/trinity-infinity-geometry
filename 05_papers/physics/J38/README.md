@@ -1,10 +1,10 @@
 # J38 — Logarithmic Nonlinearity as a Forcing Principle: A Bialynicki-Birula Reading and Its Limits for Navier-Stokes
 
-**Status:** R1 (revised after fresh-eyes referee report 2026-05-07)
+**Status:** R1 (revised after fresh-eyes referee report 2026-05-07; awaiting final rigor pass)
 **Phase:** Phase 4
 **Target venue:** Journal of Mathematical Physics
 **Author lane:** Sanders + Gish (R0 had H.J. Johnson; harmonized in R1 per Brayden directive)
-**Tier:** 2 (draft (R1 revised; could submit to JMP standalone))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP90 (literature & unification paths) + WP91 (NS separability bridge)
 **Title change in R1:** R0 was "The Bialynicki-Birula Bridge: Logarithmic Nonlinearity Forced by Separability"; R1 reflects actual content (BB constrains log lifts; NS sits as a non-example, not a derivation).
 
@@ -96,4 +96,18 @@ This paper is **lens-invariant** (manuscript §0). The mathematical content is r
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Johnson, H.J. (2026). "The Bialynicki-Birula Bridge: Logarithmic Nonlinearity Forced by Separability." Submitted to *Journal of Mathematical Physics*.
+Sanders, B.R., Gish, M. (2026). "Logarithmic Nonlinearity as a Forcing Principle: A Bialynicki-Birula Reading and Its Limits for Navier-Stokes." Submitted to *Journal of Mathematical Physics*.
+
+---
+
+## Known issues (per 2026-05-28 audit; updated from 2026-05-27)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. R1 revision applied 2026-05-07 (title change, Theorem 4.1 reframed as conditional regularity under H1+H2, §5.4 downgraded to interpretive heuristic). Tier-2-polish pass 2026-05-28 confirmed: Johnson byline absent from manuscript and cover letter (both show Sanders + Gish only); abstract explicitly carries Open Problem 0 (positivity preservation) as the load-bearing hypothesis of Theorem 4.1; verification script PASSes 43/43; cover letter R1 itemizes the revisions correctly. Outstanding for ship-readiness:
+
+- LaTeX (amsart) conversion still pending (§6 checklist).
+- Dependencies → still need cite J14, J46, J27, J41 as "submitted to [venue]" in the manuscript references block (currently lists them as submitted but venue specificity could be tightened).
+- Brayden's post-R1 referee-rigor pass not yet complete.
+- §7 citation footprint at bottom of README harmonized 2026-05-27 to Sanders + Gish; cross-check confirmed clean.
+- No paper-specific referee report in `_staging/referee_reports/` for J38 post-R1 (this current report 33 fills that gap); the original fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.
+- BB-bridge premise (§3.3) explicitly conjectural — appropriate Tier 4 framing, not a flaw, but a referee will want this called out in §1 plan; currently §2.3 carries that role adequately.
+- Referee report `33_tier2_polish_J38_J39_J40.md` records the polish pass.

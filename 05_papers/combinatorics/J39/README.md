@@ -1,10 +1,10 @@
 # J39 — What is the TSML Lens Family? A Walking Tour of Substrate Variants on $\mathbb{Z}/10\mathbb{Z}$
 
-**Status:** REWRITTEN PER SAVE PLAN 2026-05-07
+**Status:** REWRITTEN PER SAVE PLAN 2026-05-07 (awaiting final rigor pass)
 **Phase:** Phase 6
 **Target venue:** Mathematical Intelligencer
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; pedagogical exposition))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** (lens-taxonomy expository)
 
 ---
@@ -50,13 +50,9 @@ The 2026-05-07 rewrite implements all six SAVE_PLAN_J52 majors:
 - **M5 — 62-VARIANT CATALOG POPULATED INLINE.** §6 gives the full catalog organized as CL_TSML family (23) + CL_BHML family (16) + CL_STD family (3) + Joint (8) + Ring extensions (12) = 62 with per-tier reconciliation (Tier-A: 4; Tier-B: 32; Tier-C: 5; Tier-D: 7; Tier-E: 14).
 - **M6 — LENS-DEPENDENCE EXAMPLE SWITCHED TO WOBBLE.** §7.2 (wobble at prime 11, RAW vs SYM) is now the central lens-dependence example; the historical chain-correction is moved to §7.4 *Lens-invariant facts* with the corrected D64 8-element chain stated cleanly.
 
-### §5.1 — Save-plan summary (per `Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J52.md`) — original (kept for reference)
-
-**Save path:** the referee identifies the paper as "a memo to insiders dressed in expository syntax" with 40–55% acceptance probability if M1–M6 are addressed. The mathematical content is real; the rewrite is mechanical. All M1–M6 implemented in the 2026-05-07 rewrite.
-
 ### §5.1 — Save-plan summary (per `Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J52.md`)
 
-**Save path:** the referee identifies the paper as "a memo to insiders dressed in expository syntax" with 40–55% acceptance probability if M1–M6 are addressed. The mathematical content is real; the rewrite is mechanical. Six fixes:
+**Save path:** the referee identifies the paper as "a memo to insiders dressed in expository syntax" with 40–55% acceptance probability if M1–M6 are addressed. The mathematical content is real; the rewrite is mechanical. All M1–M6 implemented in the 2026-05-07 rewrite (see §5.0 above). The pre-rewrite list of six fixes is retained below for the audit trail:
 
 - **M1 (CRITICAL): DISPLAY THE TABLES.** Insert §1.5 *The canonical objects* with the **CL_TSML 10×10 matrix in full** (~half-page boxed display). Show CL_BHML and CL_STD as diff-tables to CL_TSML. Highlight the two asymmetric cells $(3,9)$ and $(4,9)$ (the wobble carriers per FAMILY_STRUCTURE_v1 §3) in a sidebar. Without the tables, Exercises 7.1–7.2 are uncomputable from the page; this is the single most important fix.
 - **M2: STATE A1–A9.** Add §1.5 *Substrate-defining axioms* stating A1–A9 informally but completely; mark the substrate-defining axioms (A7 HARMONY-count, A9-values per FAMILY_STRUCTURE_v1 §1) explicitly. Cite J33 for the formal version.
@@ -112,3 +108,15 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "The TSML Lens Family: A Pedagogical Exposition." Submitted to *Mathematical Intelligencer*.
+
+---
+
+## Known issues (per 2026-05-28 audit; updated from 2026-05-27)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J52 was applied 2026-05-07 with M1–M6 implemented (tables displayed, A1–A9 stated, tier discipline propagated, wobble example switched in, catalog populated). Tier-2-polish pass 2026-05-28 confirmed: the duplicated §5.1 (Save-plan summary) is now deduplicated (one header retained, pre-rewrite six-fixes list preserved under it for audit trail); manuscript abstract clean; verification script PASSes all assertions (126/128/122 non-assoc triples, 73/73 HARMONY count, 4-core closure, c₂(RAW)=33=3·11, c₂(SYM)=17). Outstanding for ship-readiness:
+
+- §6 submission checklist is still entirely empty — none of the standard items have been re-verified post-rewrite. Walk through the checklist before submission.
+- Per-venue cap: Math Intelligencer is at maximum permitted with J10 already submitted; J40 also retargets Math Intelligencer. Coordinate with VENUE_SCHEDULE.md or invoke the AMM fallback per save plan §retarget.
+- Brayden's referee-rigor pass not yet complete.
+- No paper-specific referee report in `_staging/referee_reports/` for J39 post-rewrite was filed pre-this-pass; tier-2-polish pass 2026-05-28 documented in `_staging/referee_reports/33_tier2_polish_J38_J39_J40.md`. The original fresh-eyes report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.
+- Manuscript §6.6 catalog totals: the family-by-family count 23+16+3+8+12 = 62 matches the per-tier 4+32+5+7+14 = 62 by absorbing duplicates of the canonical Z/10Z; a referee may probe the arithmetic, consider tightening on next pass.

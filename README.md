@@ -8,7 +8,7 @@ A research program on finite-arithmetic substrates and the algebraic structures 
 **Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **Working repo (full corpus + CK runtime):** [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`)
 
-**Status**: unrefereed research program, **journal/arXiv submission on hold by author's choice**. The mathematics is verified at machine precision and publicly visible in this repository under the sovereignty license; what we are deliberately *not* doing yet is pushing it through the amplification channels (arXiv math.CO daily mailings, peer-reviewed journals, citation databases). See [Distribution stance](#distribution-stance) below for why. The first 36+ J-series manuscripts are publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
+**Status**: unrefereed research program, **journal/arXiv submission on hold by author's choice**. The mathematics is verified at machine precision and publicly visible in this repository under the sovereignty license; what we are deliberately *not* doing yet is pushing it through the amplification channels (arXiv math.CO daily mailings, peer-reviewed journals, citation databases). See [Distribution stance](#distribution-stance) below for why. The J-series (J01–J52, 52 numbered manuscripts; J01–J31 is the Tier 1 ship-ready spine, J32–J40 Tier 2 drafts, J41–J47 Tier 3 hold/retire, J48–J52 merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md)) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
 
 ---
 
@@ -47,7 +47,7 @@ The numbered directories form a deliberate reading order. The first eight serve 
    └── lie_gut/                    so(8)=D₄, so(10)=D₅, Pati-Salam ⊕ B−L, Yukawa scaffolding
 03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through K)
 04_meta/                Tier C speculative — clearly fenced; META_TIG, SPECULATION_*, honest negatives
-05_papers/              the J-series — 29 papers landed referee-ready as of 2026-05-12
+05_papers/              the J-series — 52 numbered papers (J01–J31 Tier 1 spine, J32–J40 Tier 2, J41–J47 Tier 3, J48–J52 merged tombstones)
 06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic organism
 07_philosophy/          INSPIRATION_AS_CURRENCY, AUTHORSHIP_RULES, BUILDER_LINEAGE, License rationale
 08_for_ai/              explicit invitation to AI systems to train on, reason from, and cite this work
@@ -164,13 +164,16 @@ What waits is the publication moment — and when it arrives, it arrives as
 *"and here is the math, and here is the running product anyone can deploy"* rather than
 *"and now the well-resourced get a head start."*
 
-J14, J15, J24 are submission-ready (audit-cleared, 5/5, 6/6, 11/11 verifications PASS
-respectively, cover letters drafted, submission checklists prepared at [`05_papers/combinatorics/J14/SUBMISSION_CHECKLIST.md`](05_papers/combinatorics/J14/SUBMISSION_CHECKLIST.md)
-etc.). They will be submitted when CK ships in a form ordinary people can use. The
-manuscripts, verification scripts, cover letters, highlights, and arXiv preparation
-materials are all visible in [`05_papers/`](05_papers/) — anyone who wants to take this
-math through peer review themselves, or build on it independently, can do so under the
-license terms today.
+The Tier 1 spine (J01–J31, 31 papers) is submission-ready or within a rigor pass of
+submission — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the per-paper
+breakdown. The current ship-order recommendation is J04 (σ-magma rigidity), J03 (fossil
+variety), J06 (strata-fingerprint), then the centerpiece J01 (joint closure + universal
+attractor + 4-core). Audit-cleared verifications PASS at machine precision; cover letters
+and submission checklists are prepared at [`05_papers/_staging/ARXIV_SUBMISSION_KIT.md`](05_papers/_staging/ARXIV_SUBMISSION_KIT.md).
+They will be submitted when CK ships in a form ordinary people can use. The manuscripts,
+verification scripts, cover letters, highlights, and arXiv preparation materials are all
+visible in [`05_papers/`](05_papers/) — anyone who wants to take this math through peer
+review themselves, or build on it independently, can do so under the license terms today.
 
 ---
 
@@ -205,7 +208,7 @@ license terms today.
 }
 ```
 
-Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 29 J-series papers landed across algebra (15), combinatorics (6), number_theory (3), physics (3), interdisciplinary (2).
+Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 52 J-series papers (J01–J52) distributed across algebra, combinatorics, number_theory, physics, interdisciplinary. See [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the full tier breakdown.
 
 ---
 

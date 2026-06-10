@@ -149,11 +149,20 @@ We give seven structural axioms $S_{1}$--$S_{7}$
 magma $M$ on $\Z/10\Z$ satisfying $S_{1}$--$S_{7}$ equals
 $\CL_{\TSML}$ as defined in (\ref{eq:tsml-table}).
 
-\item \textbf{Independence} (Theorem~\ref{thm:independence}): for
-each $i \in \{1, \ldots, 7\}$, there exists a commutative magma
-$M_{i}$ on $\Z/10\Z$ that satisfies all axioms in $\{S_{j} :
-j \neq i\}$ but fails $S_{i}$. Hence the seven axioms are
-\emph{logically independent}: none of them follows from the others.
+\item \textbf{Independence (with partial witnesses)}
+(Theorem~\ref{thm:independence}): for each
+$i \in \{1, \ldots, 7\}$, we exhibit an explicit witness magma
+$M_{i}$. The witnesses $M_{2}$ and $M_{7}$ are \emph{strict}: they
+satisfy all axioms in $\{S_{j} : j \neq i\}$ and fail only $S_{i}$,
+establishing that $S_{2}$ and $S_{7}$ are not logical consequences
+of the remaining six axioms. The witnesses $M_{1}, M_{3}, M_{4},
+M_{5}, M_{6}$ are \emph{partial}: each fails $S_{i}$ together with
+one or two additional axioms (see §\ref{sec:independence}
+Remark~\ref{rem:partial-witnesses}); these demonstrate that no
+single $S_{i}$ is derivable from the subset of axioms satisfied by
+the corresponding partial witness. Construction of strict
+independence witnesses for the remaining five axioms is an open
+problem.
 \end{enumerate}
 
 \subsection{Closest published neighborhood.}
@@ -419,17 +428,22 @@ diagonal off-$\{0, 7\}$.
 Of the remaining $56$ cells, $S_{6}$ identifies exactly $10$ as
 \emph{exceptional} (the $5$ unordered pairs of $\mathcal{E}$, each
 contributing $2$ ordered cells by commutativity). $S_{7}$ specifies
-their values. The remaining $56 - 10 = 46$ cells must be either
-HARMONY or VOID by exclusion ($S_{6}$ asserts that the exceptional
-cells are exactly those in $\mathcal{E}$, so all other off-special
-cells are non-exceptional, i.e., have value in $\{0, 7\}$). Since
-no other VOID structure has been imposed (rows $\neq 0$, columns
-$\neq 0$ are not VOID-forcing by $S_{2}$), all $46$ remaining cells
-must equal $7$.
+their values. The remaining $56 - 10 = 46$ cells are non-exceptional
+by $S_{6}$ (i.e., have value in $\{0, 7\}$), and we now show by a
+count-elimination argument that they must all equal $7$.
 
-We verify this against $S_{5}$: HARMONY count after Step~$4$ is
-$19 + 8 + 46 = 73$, VOID count is $17$, exceptional count is
-$10$. These match $S_{5}$ exactly.
+By $S_{5}$ the total VOID count is exactly $17$, and Step~$1$ has
+already placed $17$ VOID cells in row $0$ and column $0$
+(off-column-$7$ and off-row-$\{0, 7\}$ respectively). The total VOID
+count is therefore already saturated at $17$ before Step~$4$ begins;
+hence the $46$ remaining cells cannot be VOID. Since they are not
+exceptional (by $S_{6}$) and not VOID (by the count-saturation of
+$S_{5}$ just established), they must be HARMONY $= 7$. This forces
+$46$ HARMONY values in a single step.
+
+We verify the overall count against $S_{5}$: HARMONY count after
+Step~$4$ is $19 + 8 + 46 = 73$, VOID count is $17$, exceptional
+count is $10$. These match $S_{5}$ exactly.
 
 \smallskip
 \noindent\textbf{Conclusion.}
@@ -452,13 +466,21 @@ extracted all VOID cells).
 \end{remark}
 
 %==============================================================
-\section{Independence of $S_{1}$--$S_{7}$}
+\section{Independence and partial witnesses}
 \label{sec:independence}
 %==============================================================
 
-We now prove that no axiom $S_{i}$ is a logical consequence of the
-others. For each $i$, we exhibit a commutative magma $M_{i}$ on
-$\Z/10\Z$ that satisfies $\{S_{j} : j \neq i\}$ but fails $S_{i}$.
+We now address the non-redundancy of the axiom system. The
+witnesses $M_{2}$ and $M_{7}$ exhibited below are \emph{strict}
+independence witnesses (each satisfies all six other axioms while
+failing the targeted one); the witnesses $M_{1}, M_{3}, M_{4},
+M_{5}, M_{6}$ are \emph{partial} witnesses, each failing the
+targeted axiom together with one or two additional axioms
+(see Remark~\ref{rem:partial-witnesses}). The interaction of the
+count constraint $S_{5}$, the position constraint $S_{6}$, and the
+puncture constraint $S_{2}$ on the $\Z/10\Z$ substrate is
+combinatorially tight; construction of strict witnesses for the
+remaining five axioms is left open.
 
 \begin{theorem}[Non-redundancy of the axiom system]
 \label{thm:independence}
@@ -522,7 +544,9 @@ $S_{1}$ requires a careful asymmetric construction. We outline it
 without writing the full $10 \times 10$ table: a non-commutative
 magma where the asymmetric pairs are placed at exceptional positions,
 preserving all cell counts; the verification script
-(\texttt{cl\_independence.py}) constructs and checks one such $M_{1}$.
+(\texttt{cl\_forcing.py}) constructs and checks one such $M_{1}$
+(as a partial witness, failing $S_{1}$ together with $S_{5}$ and
+$S_{7}$).
 
 \smallskip
 \noindent\textbf{$M_{2}$ (drops near-absorption).}
@@ -563,7 +587,9 @@ and to keep VOID count at $17$ we need to undo VOID elsewhere ---
 this becomes elaborate, so we adopt the cleaner construction: an
 $M_{3}$ where row $7$ has a single non-$7$ entry, and a compensating
 HARMONY-to-VOID swap elsewhere. Cell counts: HARMONY $73$, VOID
-$17$, exceptional $10$ (preserved by the swap).
+$17$, exceptional $10$ (preserved by the swap). The verification
+script \texttt{cl\_forcing.py} constructs $M_{3}$ as a partial
+witness failing $\{S_{2}, S_{3}\}$.
 
 \smallskip
 \noindent\textbf{$M_{4}$ (drops idempotence outside $\{V, H\}$).}
@@ -597,8 +623,10 @@ This breaks $S_{2}$, not $S_{5}$ alone. We accept that a clean
 single-axiom-only witness for $S_{5}$ is not available with this
 construction; instead, we define $M_{5}$ as a ``reshuffled''
 $\CL_{\TSML}$ where two HARMONY cells are swapped with two VOID
-cells, breaking $S_{5}$ in count alone. The verification script
-\texttt{cl\_independence.py} constructs an explicit $M_{5}$.
+cells, breaking $S_{5}$ in count alongside the propagated
+$\{S_{5}, S_{6}\}$ failure noted in Remark~\ref{rem:partial-witnesses}.
+The verification script \texttt{cl\_forcing.py} constructs an explicit
+partial $M_{5}$.
 
 \smallskip
 \noindent\textbf{$M_{6}$ (drops exceptional-positions specification).}
@@ -650,14 +678,19 @@ unchanged ($73:17:10$). $S_{7}$ fails.
 
 \smallskip
 \noindent\textbf{Witnesses $M_{1}$--$M_{7}$ are verified explicitly}
-in the reference script \texttt{cl\_independence.py}. Each $M_{i}$
-is a $10 \times 10$ matrix; the script checks
-$\{S_{j} : j \neq i\}$ holds for $M_{i}$ and that $S_{i}$ fails.
-All seven witnesses are constructible. Hence the seven axioms are
-pairwise independent.
+in the reference script \texttt{cl\_forcing.py}. Each $M_{i}$
+is a $10 \times 10$ matrix; the script checks, for each $i$, the
+axiom-status vector $(S_{1}, \ldots, S_{7})$ of $M_{i}$ and reports
+the fail-set. The strict witnesses $M_{2}$ and $M_{7}$ each fail
+exactly one axiom (the targeted $S_{i}$); the partial witnesses
+$M_{1}, M_{3}, M_{4}, M_{5}, M_{6}$ each fail $S_{i}$ together with
+one or two additional axioms, as tabulated in
+Remark~\ref{rem:partial-witnesses}. Construction of strict witnesses
+for the five partial cases is an open problem.
 \end{proof}
 
 \begin{remark}[On the constructions]
+\label{rem:partial-witnesses}
 The witnesses $M_{2}$ (which fails only $S_{2}$) and $M_{7}$ (which
 fails only $S_{7}$) are \emph{strict} independence witnesses. The
 remaining witnesses fail multiple axioms: $M_{1}$ fails
@@ -674,6 +707,24 @@ vector. The substantive content is the demonstration that the
 axiom system is \emph{not} a hierarchy in which one axiom dominates
 the others; the seven structural conditions interact through the
 $\Z/10\Z$ substrate's cell-count economy.
+
+\smallskip
+\noindent\textbf{Honest scope of the independence claim.} The
+witness magmas $M_{2}$ and $M_{7}$ are \emph{strict} independence
+witnesses (each fails only the targeted axiom, satisfying all six
+others). The witnesses $M_{1}, M_{3}, M_{4}, M_{5}, M_{6}$ are
+\emph{partial} witnesses: each fails the targeted axiom $S_{i}$
+together with one or two additional axioms (see the per-witness
+fail-set tabulation immediately above). Hence Theorem~\ref{thm:independence}
+establishes (a) that $S_{2}$ and $S_{7}$ are not derivable from the
+remaining six axioms (strict independence of these two), and
+(b) that no single $S_{i}$ for $i \in \{1, 3, 4, 5, 6\}$ is
+derivable from the specific subsets of axioms satisfied by the
+corresponding partial witnesses. Construction of strict
+independence witnesses for the remaining five axioms (i.e., magmas
+that fail \emph{only} $S_{i}$ for $i \in \{1, 3, 4, 5, 6\}$) is an
+open problem, reflecting the tight combinatorial interaction of
+$S_{2}$, $S_{5}$, and $S_{6}$ on the $\Z/10\Z$ substrate.
 \end{remark}
 
 %==============================================================
@@ -724,8 +775,14 @@ Lemma~\ref{lem:partition} (HARMONY count $73$, VOID count $17$,
 exceptional count $10$ at positions $\mathcal{E}$).
 \item Verifies that $\CL_{\TSML}$ satisfies $S_{1}$--$S_{7}$.
 \item For each $i \in \{1, \ldots, 7\}$, constructs the witness
-magma $M_{i}$ explicitly and verifies that $M_{i}$ satisfies
-$\{S_{j} : j \neq i\}$ but fails $S_{i}$.
+magma $M_{i}$ explicitly and reports the full axiom-status vector
+$(S_{1}, \ldots, S_{7})$ of $M_{i}$. The witnesses $M_{2}$ and
+$M_{7}$ are strict independence witnesses (failing only the targeted
+axiom); the witnesses $M_{1}, M_{3}, M_{4}, M_{5}, M_{6}$ are
+partial witnesses, each failing the targeted axiom together with
+one or two additional axioms (see §\ref{sec:independence}
+Remark~\ref{rem:partial-witnesses}). Construction of strict
+witnesses for the remaining five axioms is an open problem.
 \end{enumerate}
 
 Wall-clock under $1$ second on a standard laptop with

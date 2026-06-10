@@ -1,0 +1,975 @@
+{
+  "primes": [
+    3,
+    5,
+    7,
+    11,
+    13
+  ],
+  "substrate_primes": [
+    3,
+    7,
+    11,
+    13
+  ],
+  "char_data": {
+    "3": {
+      "g": 2,
+      "n_chars": 2,
+      "n_real": 2,
+      "n_even": 1,
+      "n_odd": 1,
+      "n_pairs": 4,
+      "chars": [
+        {
+          "a": 0,
+          "order": 1,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": true,
+          "conductor": 1
+        },
+        {
+          "a": 1,
+          "order": 2,
+          "parity": -1,
+          "is_real": true,
+          "is_principal": false,
+          "conductor": 3
+        }
+      ]
+    },
+    "5": {
+      "g": 2,
+      "n_chars": 4,
+      "n_real": 2,
+      "n_even": 2,
+      "n_odd": 2,
+      "n_pairs": 16,
+      "chars": [
+        {
+          "a": 0,
+          "order": 1,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": true,
+          "conductor": 1
+        },
+        {
+          "a": 1,
+          "order": 4,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 5
+        },
+        {
+          "a": 2,
+          "order": 2,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": false,
+          "conductor": 5
+        },
+        {
+          "a": 3,
+          "order": 4,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 5
+        }
+      ]
+    },
+    "7": {
+      "g": 3,
+      "n_chars": 6,
+      "n_real": 2,
+      "n_even": 3,
+      "n_odd": 3,
+      "n_pairs": 36,
+      "chars": [
+        {
+          "a": 0,
+          "order": 1,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": true,
+          "conductor": 1
+        },
+        {
+          "a": 1,
+          "order": 6,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 7
+        },
+        {
+          "a": 2,
+          "order": 3,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 7
+        },
+        {
+          "a": 3,
+          "order": 2,
+          "parity": -1,
+          "is_real": true,
+          "is_principal": false,
+          "conductor": 7
+        },
+        {
+          "a": 4,
+          "order": 3,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 7
+        },
+        {
+          "a": 5,
+          "order": 6,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 7
+        }
+      ]
+    },
+    "11": {
+      "g": 2,
+      "n_chars": 10,
+      "n_real": 2,
+      "n_even": 5,
+      "n_odd": 5,
+      "n_pairs": 100,
+      "chars": [
+        {
+          "a": 0,
+          "order": 1,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": true,
+          "conductor": 1
+        },
+        {
+          "a": 1,
+          "order": 10,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 2,
+          "order": 5,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 3,
+          "order": 10,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 4,
+          "order": 5,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 5,
+          "order": 2,
+          "parity": -1,
+          "is_real": true,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 6,
+          "order": 5,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 7,
+          "order": 10,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 8,
+          "order": 5,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        },
+        {
+          "a": 9,
+          "order": 10,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 11
+        }
+      ]
+    },
+    "13": {
+      "g": 2,
+      "n_chars": 12,
+      "n_real": 2,
+      "n_even": 6,
+      "n_odd": 6,
+      "n_pairs": 144,
+      "chars": [
+        {
+          "a": 0,
+          "order": 1,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": true,
+          "conductor": 1
+        },
+        {
+          "a": 1,
+          "order": 12,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 2,
+          "order": 6,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 3,
+          "order": 4,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 4,
+          "order": 3,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 5,
+          "order": 12,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 6,
+          "order": 2,
+          "parity": 1,
+          "is_real": true,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 7,
+          "order": 12,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 8,
+          "order": 3,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 9,
+          "order": 4,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 10,
+          "order": 6,
+          "parity": 1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        },
+        {
+          "a": 11,
+          "order": 12,
+          "parity": -1,
+          "is_real": false,
+          "is_principal": false,
+          "conductor": 13
+        }
+      ]
+    }
+  },
+  "L_data": {
+    "3": [
+      {
+        "a": 0,
+        "L_re": -0.6172184400360882,
+        "L_im": 0.0,
+        "abs_L": 0.6172184400360882,
+        "arg_L": 3.141592653589793,
+        "type": "principal"
+      },
+      {
+        "a": 1,
+        "L_re": 0.48086755769682865,
+        "L_im": 1.0325453300623745e-26,
+        "abs_L": 0.48086755769682865,
+        "arg_L": 2.147255129890382e-26,
+        "type": "real"
+      }
+    ],
+    "5": [
+      {
+        "a": 0,
+        "L_re": -0.8072641182202764,
+        "L_im": 0.0,
+        "abs_L": 0.8072641182202764,
+        "arg_L": 3.141592653589793,
+        "type": "principal"
+      },
+      {
+        "a": 1,
+        "L_re": 0.7637478801172869,
+        "L_im": 0.2169647675188607,
+        "abs_L": 0.793967590477195,
+        "arg_L": 0.2767871794485226,
+        "type": "complex"
+      },
+      {
+        "a": 2,
+        "L_re": 0.23175094750401576,
+        "L_im": 2.2882782644139254e-26,
+        "abs_L": 0.23175094750401576,
+        "arg_L": 9.873867999500949e-26,
+        "type": "real"
+      },
+      {
+        "a": 3,
+        "L_re": 0.7637478801172869,
+        "L_im": -0.2169647675188607,
+        "abs_L": 0.793967590477195,
+        "arg_L": -0.2767871794485226,
+        "type": "complex"
+      }
+    ],
+    "7": [
+      {
+        "a": 0,
+        "L_re": -0.9083923864807224,
+        "L_im": 0.0,
+        "abs_L": 0.9083923864807224,
+        "arg_L": 3.141592653589793,
+        "type": "principal"
+      },
+      {
+        "a": 1,
+        "L_re": 0.7139433437683195,
+        "L_im": 0.4749021827713994,
+        "abs_L": 0.8574655569246665,
+        "arg_L": 0.5869739767137878,
+        "type": "complex"
+      },
+      {
+        "a": 2,
+        "L_re": 0.31008936259836767,
+        "L_im": -0.07264193137017791,
+        "abs_L": 0.31848432141920513,
+        "arg_L": -0.23011178724140496,
+        "type": "complex"
+      },
+      {
+        "a": 3,
+        "L_re": 1.1465856669037082,
+        "L_im": 1.3133818265665772e-25,
+        "abs_L": 1.1465856669037082,
+        "arg_L": 1.1454720431952484e-25,
+        "type": "real"
+      },
+      {
+        "a": 4,
+        "L_re": 0.31008936259836767,
+        "L_im": 0.07264193137017791,
+        "abs_L": 0.31848432141920513,
+        "arg_L": 0.23011178724140496,
+        "type": "complex"
+      },
+      {
+        "a": 5,
+        "L_re": 0.7139433437683195,
+        "L_im": -0.4749021827713994,
+        "abs_L": 0.8574655569246665,
+        "arg_L": -0.5869739767137878,
+        "type": "complex"
+      }
+    ],
+    "11": [
+      {
+        "a": 0,
+        "L_re": -1.0200410572982088,
+        "L_im": 0.0,
+        "abs_L": 1.0200410572982088,
+        "arg_L": 3.141592653589793,
+        "type": "principal"
+      },
+      {
+        "a": 1,
+        "L_re": 1.503380081983179,
+        "L_im": 0.2211997697977383,
+        "abs_L": 1.5195660594598455,
+        "arg_L": 0.14608678269241415,
+        "type": "complex"
+      },
+      {
+        "a": 2,
+        "L_re": 0.4586229999233466,
+        "L_im": 0.15506647883378105,
+        "abs_L": 0.4841287730724104,
+        "arg_L": 0.3260462260422772,
+        "type": "complex"
+      },
+      {
+        "a": 3,
+        "L_re": 0.32141640819114264,
+        "L_im": 0.6890281810204217,
+        "abs_L": 0.7603080571023868,
+        "arg_L": 1.1343242001100988,
+        "type": "complex"
+      },
+      {
+        "a": 4,
+        "L_re": 0.3561278323356478,
+        "L_im": 0.17130918968400088,
+        "abs_L": 0.3951883999237279,
+        "arg_L": 0.44835908736809565,
+        "type": "complex"
+      },
+      {
+        "a": 5,
+        "L_re": 0.9915770035816175,
+        "L_im": -5.15105982080432e-26,
+        "abs_L": 0.9915770035816175,
+        "arg_L": -5.194815735135523e-26,
+        "type": "real"
+      },
+      {
+        "a": 6,
+        "L_re": 0.3561278323356478,
+        "L_im": -0.17130918968400088,
+        "abs_L": 0.3951883999237279,
+        "arg_L": -0.44835908736809565,
+        "type": "complex"
+      },
+      {
+        "a": 7,
+        "L_re": 0.32141640819114264,
+        "L_im": -0.6890281810204217,
+        "abs_L": 0.7603080571023868,
+        "arg_L": -1.1343242001100988,
+        "type": "complex"
+      },
+      {
+        "a": 8,
+        "L_re": 0.4586229999233466,
+        "L_im": -0.15506647883378105,
+        "abs_L": 0.4841287730724104,
+        "arg_L": -0.3260462260422772,
+        "type": "complex"
+      },
+      {
+        "a": 9,
+        "L_re": 1.503380081983179,
+        "L_im": -0.2211997697977383,
+        "abs_L": 1.5195660594598455,
+        "arg_L": -0.14608678269241415,
+        "type": "complex"
+      }
+    ],
+    "13": [
+      {
+        "a": 0,
+        "L_re": -1.0553250425120488,
+        "L_im": 0.0,
+        "abs_L": 1.0553250425120488,
+        "arg_L": 3.141592653589793,
+        "type": "principal"
+      },
+      {
+        "a": 1,
+        "L_re": 1.3468137049240638,
+        "L_im": 0.7545968286050153,
+        "abs_L": 1.5438016483706805,
+        "arg_L": 0.5107037375615924,
+        "type": "complex"
+      },
+      {
+        "a": 2,
+        "L_re": 0.5439933202516646,
+        "L_im": 0.14950748000386493,
+        "abs_L": 0.5641641773947865,
+        "arg_L": 0.2682112257003708,
+        "type": "complex"
+      },
+      {
+        "a": 3,
+        "L_re": 1.0808736792607974,
+        "L_im": 0.8020687656259106,
+        "abs_L": 1.3459577316214075,
+        "arg_L": 0.6383975125105564,
+        "type": "complex"
+      },
+      {
+        "a": 4,
+        "L_re": 0.33866628208007915,
+        "L_im": 0.2615970463640641,
+        "abs_L": 0.42793441703647306,
+        "arg_L": 0.6577043884484843,
+        "type": "complex"
+      },
+      {
+        "a": 5,
+        "L_re": 0.4048426516748957,
+        "L_im": -0.42078492171046483,
+        "abs_L": 0.5839156813736406,
+        "arg_L": -0.8047050393353762,
+        "type": "complex"
+      },
+      {
+        "a": 6,
+        "L_re": 0.4395929735090052,
+        "L_im": 1.012073245572176e-26,
+        "abs_L": 0.4395929735090052,
+        "arg_L": 2.3022962298359924e-26,
+        "type": "real"
+      },
+      {
+        "a": 7,
+        "L_re": 0.4048426516748957,
+        "L_im": 0.42078492171046483,
+        "abs_L": 0.5839156813736406,
+        "arg_L": 0.8047050393353762,
+        "type": "complex"
+      },
+      {
+        "a": 8,
+        "L_re": 0.33866628208007915,
+        "L_im": -0.2615970463640641,
+        "abs_L": 0.42793441703647306,
+        "arg_L": -0.6577043884484843,
+        "type": "complex"
+      },
+      {
+        "a": 9,
+        "L_re": 1.0808736792607974,
+        "L_im": -0.8020687656259106,
+        "abs_L": 1.3459577316214075,
+        "arg_L": -0.6383975125105564,
+        "type": "complex"
+      },
+      {
+        "a": 10,
+        "L_re": 0.5439933202516646,
+        "L_im": -0.14950748000386493,
+        "abs_L": 0.5641641773947865,
+        "arg_L": -0.2682112257003708,
+        "type": "complex"
+      },
+      {
+        "a": 11,
+        "L_re": 1.3468137049240638,
+        "L_im": -0.7545968286050153,
+        "abs_L": 1.5438016483706805,
+        "arg_L": -0.5107037375615924,
+        "type": "complex"
+      }
+    ]
+  },
+  "ortho_1d": {
+    "3": {
+      "diag_value": 2.0,
+      "max_off_diag": 1.8806274411915714e-26,
+      "expected_diag": 2
+    },
+    "5": {
+      "diag_value": 4.0,
+      "max_off_diag": 1.1470094066960357e-25,
+      "expected_diag": 4
+    },
+    "7": {
+      "diag_value": 6.0,
+      "max_off_diag": 2.978907201371883e-25,
+      "expected_diag": 6
+    },
+    "11": {
+      "diag_value": 10.0,
+      "max_off_diag": 1.9730721662119378e-24,
+      "expected_diag": 10
+    },
+    "13": {
+      "diag_value": 12.0,
+      "max_off_diag": 1.6843014538032115e-24,
+      "expected_diag": 12
+    }
+  },
+  "ortho_2d": {
+    "3": {
+      "expected_diag": 4,
+      "diag_examples": [
+        {
+          "a": 0,
+          "b": 0,
+          "value": 4.0
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "value": 4.0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "value": 4.0
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "value": 4.0
+        }
+      ],
+      "offdiag_examples": []
+    },
+    "5": {
+      "expected_diag": 16,
+      "diag_examples": [
+        {
+          "a": 0,
+          "b": 0,
+          "value": 16.0
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "value": 16.0
+        },
+        {
+          "a": 0,
+          "b": 2,
+          "value": 16.0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "value": 16.0
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "value": 16.0
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "value": 16.0
+        },
+        {
+          "a": 2,
+          "b": 0,
+          "value": 16.0
+        },
+        {
+          "a": 2,
+          "b": 1,
+          "value": 16.0
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "value": 16.0
+        }
+      ],
+      "offdiag_examples": [
+        {
+          "pair1": [
+            0,
+            0
+          ],
+          "pair2": [
+            1,
+            1
+          ],
+          "value": 3.026440667348471e-51
+        },
+        {
+          "pair1": [
+            0,
+            1
+          ],
+          "pair2": [
+            1,
+            0
+          ],
+          "value": 3.026440667348471e-51
+        }
+      ]
+    },
+    "7": {
+      "expected_diag": 36,
+      "diag_examples": [
+        {
+          "a": 0,
+          "b": 0,
+          "value": 36.0
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "value": 36.0
+        },
+        {
+          "a": 0,
+          "b": 2,
+          "value": 36.0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "value": 36.0
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "value": 36.0
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "value": 36.0
+        },
+        {
+          "a": 2,
+          "b": 0,
+          "value": 36.0
+        },
+        {
+          "a": 2,
+          "b": 1,
+          "value": 36.0
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "value": 36.0
+        }
+      ],
+      "offdiag_examples": [
+        {
+          "pair1": [
+            0,
+            0
+          ],
+          "pair2": [
+            1,
+            1
+          ],
+          "value": 1.675045728781611e-51
+        },
+        {
+          "pair1": [
+            0,
+            1
+          ],
+          "pair2": [
+            1,
+            0
+          ],
+          "value": 1.675045728781611e-51
+        }
+      ]
+    },
+    "11": {
+      "expected_diag": 100,
+      "diag_examples": [
+        {
+          "a": 0,
+          "b": 0,
+          "value": 100.0
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "value": 100.0
+        },
+        {
+          "a": 0,
+          "b": 2,
+          "value": 100.0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "value": 100.0
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "value": 100.0
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "value": 100.0
+        },
+        {
+          "a": 2,
+          "b": 0,
+          "value": 100.0
+        },
+        {
+          "a": 2,
+          "b": 1,
+          "value": 100.0
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "value": 100.0
+        }
+      ],
+      "offdiag_examples": [
+        {
+          "pair1": [
+            0,
+            0
+          ],
+          "pair2": [
+            1,
+            1
+          ],
+          "value": 7.643728575926764e-51
+        },
+        {
+          "pair1": [
+            0,
+            1
+          ],
+          "pair2": [
+            1,
+            0
+          ],
+          "value": 7.643728575926764e-51
+        }
+      ]
+    },
+    "13": {
+      "expected_diag": 144,
+      "diag_examples": [
+        {
+          "a": 0,
+          "b": 0,
+          "value": 144.0
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "value": 144.0
+        },
+        {
+          "a": 0,
+          "b": 2,
+          "value": 144.0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "value": 144.0
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "value": 144.0
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "value": 144.0
+        },
+        {
+          "a": 2,
+          "b": 0,
+          "value": 144.0
+        },
+        {
+          "a": 2,
+          "b": 1,
+          "value": 144.0
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "value": 144.0
+        }
+      ],
+      "offdiag_examples": [
+        {
+          "pair1": [
+            0,
+            0
+          ],
+          "pair2": [
+            1,
+            1
+          ],
+          "value": 2.4273445096399174e-50
+        },
+        {
+          "pair1": [
+            0,
+            1
+          ],
+          "pair2": [
+            1,
+            0
+          ],
+          "value": 2.4273445096399174e-50
+        }
+      ]
+    }
+  },
+  "verdict": "PARTIAL MATCH (tautological)"
+}

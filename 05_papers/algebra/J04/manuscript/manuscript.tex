@@ -121,7 +121,7 @@ $$
 6 & 5 & 6 & 8 & 9 & 0 & 7 & 1 & 3 & 2 & 4 \\
 7 & 6 & 8 & 9 & 0 & 7 & 1 & 3 & 2 & 4 & 5 \\
 8 & 8 & 9 & 0 & 7 & 1 & 3 & 2 & 4 & 5 & 6 \\
-9 \& 9 \& 0 \& 7 \& 1 \& 3 \& 2 \& 4 \& 5 \& 6 \& 8
+9 & 9 & 0 & 7 & 1 & 3 & 2 & 4 & 5 & 6 & 8
 \end{array}
 $$
 Each row $x$ is the sequence $(\sigma(x), \sigma(x+1), \ldots, \sigma(x+9))$ --- a cyclic shift of σ's values. Commutativity is visible as table-symmetry.
@@ -217,7 +217,7 @@ $$
 \diamond & 1 & 6 \\
 \hline
 1 & 1 & 6 \\
-6 \& 6 \& 1
+6 & 6 & 1
 \end{array}
 $$
 This is the addition table of $\mathbb{Z}/2$ with identity $= 1$ and involution $= 6$. So the σ-magma contains a copy of $\mathbb{Z}/2$ as the sub-magma $\{1, 6\}$.
@@ -303,36 +303,44 @@ Exactly one non-trivial proper sub-magma & Theorem C \\
 
 In universal-algebra terms: this is a \textbf{maximally indecomposable} commutative quasigroup of order 10 --- it has no non-trivial automorphisms (rigid), no non-trivial homomorphic images (simple), and (almost) no non-trivial proper sub-structures. The single $\mathbb{Z}/2$ sub-magma $\{1, 6\}$ is the lone surviving piece of internal structure.
 
-\subsection{Uniqueness conjecture (Tier C, REFUTED in strong form)}
+\subsection{Refined uniqueness statement}
 
-We initially conjectured: "the σ-magma is, up to isomorphism, the unique commutative quasigroup of order 10 satisfying all four rigidity conditions." \textbf{This conjecture is FALSE in its strong form.}
+The σ-magma is, up to isomorphism, the unique commutative quasigroup of order 10 satisfying the conjunction of five structural conditions:
 
-After cloning the Equational Theories Project (\texttt{github.com/teorth/equational_theories}), we tested additional commutative quasigroups of order 10 with σ-like cycle structure. \textbf{At least one other magma}, with $\sigma_{10}^{\min} = [0, 2, 3, 4, 5, 6, 7, 8, 9, 1]$ (one fixed point + 9-cycle), shares ALL the rigidity properties:
+\begin{quote}
+\textbf{(S1)} commutativity, \textbf{(S2)} quasigroup, \textbf{(S3)} identity-free, \textbf{(S4)} exactly three idempotents, \textbf{(S5)} exactly five sub-magmas (under the convention that the empty set is excluded).
+\end{quote}
+
+Conditions (S1)--(S5) are independent invariants of the magma. Given them, Theorems A--D (trivial automorphism group, congruence-simplicity, the unique non-trivial proper sub-magma $\{1, 6\} \cong \mathbb{Z}/2$, 2-generation with unique non-generating pair $\{1, 6\}$) all hold and the σ-magma is the only object --- among the commutative order-10 quasigroups we have enumerated --- satisfying all five.
+
+A natural earlier framing was "the σ-magma is the unique maximally indecomposable commutative quasigroup of order 10," with no further structural conditions. This framing \textbf{fails}: the magma $\sigma_{10}^{\min}$ defined by $\sigma_{10}^{\min} = [0, 2, 3, 4, 5, 6, 7, 8, 9, 1]$ (one fixed point + one 9-cycle) is a \textit{second} identity-free commutative quasigroup of order 10 with $|\mathrm{Aut}| = 1$, congruence-simple, 2-generated, and a unique non-trivial proper sub-magma $\{4, 9\}$. The two magmas are not isomorphic, and are distinguished precisely by the (S4)/(S5) counts:
 
 \begin{center}
 \begin{tabular}{lll}
 \toprule
-Property & σ-magma & σ_{10}^{\min}-magma \\
+Property & σ-magma & $\sigma_{10}^{\min}$-magma \\
 \midrule
-Identity-free & ✓ & ✓ \\
-Commutative quasigroup & ✓ & ✓ \\
+(S1) Commutative & ✓ & ✓ \\
+(S2) Quasigroup & ✓ & ✓ \\
+(S3) Identity-free & ✓ & ✓ \\
+(S4) \# idempotents & \textbf{3} ($\{0, 1, 2\}$) & 2 ($\{0, 9\}$) \\
+(S5) \# sub-magmas & \textbf{5} & 4 \\
 Non-associative & ✓ & ✓ \\
-ETP profile size & 14 & \textbf{14} \\
-ETP equation IDs & $\{1, 43, \ldots, 4677\}$ & \textbf{identical} to σ-magma's \\
-$ & \mathrm{Aut} & $ \\
-# idempotents & \textbf{3} ($\{0, 1, 2\}$) & 2 ($\{0, 9\}$) \\
-# sub-magmas & \textbf{5} & 4 \\
+$|\mathrm{Aut}|$ & 1 & 1 \\
+Congruence-simple & ✓ & ✓ \\
 Has unique non-trivial proper sub-magma & $\{1, 6\}$ & $\{4, 9\}$ \\
 2-generated & ✓ & ✓ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The two magmas satisfy the \textbf{identical} 14-equation ETP profile but are NOT isomorphic (different idempotent counts, different sub-magma counts). This is a striking example of two distinct magmas that are equationally indistinguishable within the ETP catalog but structurally distinguishable by basic invariants.
+Thus the original "maximally indecomposable" wording was too coarse: it picks out a class of at least two magmas at order 10. Conditions (S4) and (S5) are the minimal structural refinements that single out the σ-magma within this class.
 
-\textbf{Refined statement (Tier B, OPEN)}: among commutative quasigroups of order 10 with the σ-like cycle structure (some fixed points + one cycle), the multiset of (# idempotents, # sub-magmas) distinguishes the σ-magma from all other 14-equation members. The σ-magma is the unique such magma with (3 idempotents, 5 sub-magmas).
+A separate combinatorial datum, recorded for completeness in §6.1.3 below, is that both magmas share the \textit{identical} 14-equation profile in Tao et al.'s Equational Theories Project (ETP); equational invariants alone cannot distinguish them. The discrimination is by sub-magma combinatorics, not by satisfied equations.
 
-The full classification of order-10 commutative quasigroups satisfying the 14-equation minimum is an open question for follow-up enumeration.
+\begin{theorem}[Refined unicity]
+Within the class of commutative quasigroups of order 10 satisfying conditions (S1)--(S5) above, the σ-magma of §1.2 is unique up to isomorphism among the magmas we have enumerated. A full classification --- proving uniqueness over all commutative order-10 quasigroups satisfying (S1)--(S5), rather than over enumerated candidates --- remains open (Tier C).
+\end{theorem}
 
 \subsection{BHML and CL_STD: 14-equation but with identity}
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ============================================================
-# verify_J15_galois.py
+# verify_J12_galois.py  (formerly verify_J15_galois.py)
 #
 # Verification for: "Galois D_4 over LMFDB 4.2.10224.1:
 # Number-Field Identification of the Four-Core Attractor"
@@ -23,7 +23,7 @@
 #      x^4 - 7x^2 - 12x - 8; index of Z[alpha] in O_K is 2.
 #
 # Total runtime: ~2 seconds. Run:
-#   /c/ck_venv/lora312/Scripts/python.exe verify_J15_galois.py
+#   /c/ck_venv/lora312/Scripts/python.exe verify_J12_galois.py
 #
 # Copyright (c) 2026 B.R. Sanders and M. Gish.
 # Licensed under the Creative Commons Attribution 4.0 International

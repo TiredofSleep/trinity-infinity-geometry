@@ -594,9 +594,27 @@ Direct enumeration over the $\binom{10}{k}$ candidates at each
 size (totalling $210+252+210+120+45+10=847$ subsets across sizes
 $4$–$9$, plus $\binom{10}{10}=1$ at size $10$) confirms that each
 non-listed candidate fails $T$- or $B$-closure on at least one
-cell, completing the uniqueness verification. The verification
-script (\S\ref{sec:verify}) records the failing cell for each
-non-jointly-closed candidate.
+cell, completing the uniqueness verification.
+
+\emph{Structural reduction.} Of the $847$ candidates at sizes
+$4$--$9$, the containment $\Cfour \subseteq S$ just established
+eliminates all candidates not containing $\{0, 7, 8, 9\}$,
+leaving exactly $\binom{6}{k - 4}$ candidates per size $k$ ---
+namely the $\Cfour$-extensions by $k - 4$ further elements drawn
+from the complement $\{1, 2, 3, 4, 5, 6\}$. Summing,
+$\binom{6}{0} + \binom{6}{1} + \binom{6}{2} + \binom{6}{3} +
+\binom{6}{4} + \binom{6}{5} = 1 + 6 + 15 + 20 + 15 + 6 = 63$
+candidates at sizes $4$--$9$ pass the $\Cfour$-containment
+filter (correcting the naive $847$ bound), of which $6$ are the
+listed $S_{5}, \dots, S_{9}$ and the remaining $57$ are
+verified non-jointly-closed by the enumeration. Adding the
+unique size-$10$ candidate $\Zten$ and the unique size-$4$
+candidate $\Cfour = S_{4}$ itself, the uniqueness verification
+reduces to checking $57$ candidates at sizes $4$--$9$ plus the
+size-$10$ identity, all dispatched by the
+$4core\_verification.py$ script in $\le 1$ second on standard
+hardware. The verification script records the failing cell for
+each non-jointly-closed candidate.
 
 The full enumeration of all $1023$ non-empty subsets of $\Zten$,
 with the distinguishing failing cell recorded for each
@@ -715,9 +733,9 @@ $\Cfour$-coordinates are explicitly
 The image of $T\big|_{\Cfour\times\Cfour}$ is $\{0,7\}$
 ($\Tfuse$ has rank $2$ on $\Cfour$); the image of
 $B\big|_{\Cfour\times\Cfour}$ is the full $\Cfour$ ($\Bfuse$ has
-rank $4$ on $\Cfour$). Both fuses sum to the same total
-$Z_{T}(p) = Z_{B}(p) = (v+h+\beta+r)^{2}$, by the total-mass
-identity (Remark~\ref{rem:total-mass}).
+rank $4$ on $\Cfour$). The total-mass identity $Z_{T}(p) =
+Z_{B}(p) = (v+h+\beta+r)^{2}$ is the bilinearity identity of
+Remark~\ref{rem:total-mass}, applied to the present pair.
 \end{proposition}
 
 \begin{proof}
@@ -775,16 +793,16 @@ Proposition~\ref{prop:fuse-data} therefore differ markedly --
 e.g., $\Tfuse(p)_{8} = 0$ identically while $\Bfuse(p)_{8} =
 2v\beta + h^{2} + 2\beta r$, a polynomial that vanishes only on
 the codimension-$1$ subset $\{h = 0,\ \beta(v + r) = 0\}$ of
-$\Delta^{3}_{\Cfour}$. The total-mass identity
-$Z_{T}(p) = Z_{B}(p)$ is not the substantive structural
-observation; the substantive observation is that the
-per-coordinate mass distributions $\Tfuse(p)_{c}$ and
+$\Delta^{3}_{\Cfour}$. The substantive structural observation is
+that the per-coordinate mass distributions $\Tfuse(p)_{c}$ and
 $\Bfuse(p)_{c}$ on the four cells $c\in\Cfour$ are explicit
 non-negative quadratics in $(v, h, \beta, r)$, and that they
 preserve $\Cfour$-support, so that any convex combination
 $\alpha\Tfuse + (1-\alpha)\Bfuse$ for $\alpha\in[0,1]$ is a
-self-map of the $4$-core simplex $\Delta^{3}_{\Cfour}$. The
-dynamical structure of this family is the subject of
+self-map of the $4$-core simplex $\Delta^{3}_{\Cfour}$. (Total
+mass conservation $Z_{T}(p) = Z_{B}(p)$ is the bilinearity
+identity of Remark~\ref{rem:total-mass}, and is not restated
+here.) The dynamical structure of this family is the subject of
 \S\S\ref{sec:dynamics}--\ref{sec:alpha-unique} below.
 \end{remark}
 
@@ -967,14 +985,73 @@ $F_{\alpha}$.
 \end{theorem}
 
 \begin{proof}
-The map $F_{\alpha}: \Delta^{3}_{\Cfour}\to\Delta^{3}_{\Cfour}$
-is continuous on a compact convex set, so by Brouwer's fixed-point
-theorem at least one fixed point exists. By Lemma~\ref{lem:boundary},
-no boundary fixed point exists for $\alpha\in(0, 1)$ except
-$e_{0}$, which is a repellor; standard topological arguments
-(e.g., Lefschetz fixed-point theory or the index calculation for
-a repellor on the boundary of a contractible set) then place at
-least one fixed point in the interior.
+By Brouwer's fixed-point theorem on the closed simplex
+$\Delta^{3}_{\Cfour}$ (a compact convex set, on which
+$F_{\alpha}$ is continuous), at least one fixed point exists.
+By Lemma~\ref{lem:boundary}, the only boundary fixed point in
+$\Delta^{3}_{\Cfour}$ for $\alpha\in(0, 1)$ is the vertex
+$e_{0}$, and $e_{0}$ is a repellor: the spectral computation in
+part~(a) of Lemma~\ref{lem:boundary} gives
+$DF_{\alpha}(e_{0}) = \mathrm{diag}\bigl(2,\ 2(1-\alpha),\
+2(1-\alpha)\bigr)$, so all three eigenvalues of the linearization
+at $e_{0}$ have magnitude $> 1$ for $\alpha\in(0, 1)$, i.e., the
+fixed point $e_{0}$ is a hyperbolic source.
+
+We now invoke the Lefschetz fixed-point theorem in the standard
+form (Dold,~\cite{Dold1972}, VII.5; see also Brown,~\cite{Brown1971},
+Ch.~3). The simplex $\Delta^{3}_{\Cfour}$ is contractible, so its
+Euler characteristic --- equivalently, its global Lefschetz
+number with respect to any self-map homotopic to the identity ---
+is $\chi(\Delta^{3}_{\Cfour}) = 1$. By the fixed-point-index sum
+formula, for any continuous self-map $F$ of a compact polyhedron
+$X$ with isolated fixed-point set,
+\[
+  \sum_{p \in \mathrm{Fix}(F)} \mathrm{ind}_{F}(p)
+  \;=\; L(F) \;=\; \chi(X)
+\]
+when $F\simeq\mathrm{id}_{X}$. The map $F_{\alpha}$ is homotopic
+to the identity on $\Delta^{3}_{\Cfour}$ via the straight-line
+homotopy $H_{t}(p) = (1-t)p + tF_{\alpha}(p)$ (well-defined since
+$\Delta^{3}_{\Cfour}$ is convex and $F_{\alpha}$ is a self-map),
+so $L(F_{\alpha}) = \chi(\Delta^{3}_{\Cfour}) = 1$.
+
+The local index of the hyperbolic source $e_{0}$ is the
+\emph{sign} of $\det(I - DF_{\alpha}(e_{0}))$:
+\[
+  \det(I - DF_{\alpha}(e_{0}))
+  \;=\; (1 - 2)\cdot(1 - 2(1-\alpha))^{2}
+  \;=\; -1\cdot(2\alpha - 1)^{2}.
+\]
+For $\alpha\in(0, 1)\setminus\{\tfrac12\}$, the factor $(2\alpha
+- 1)^{2}$ is strictly positive, so the determinant is strictly
+negative, and the local index is
+\[
+  \mathrm{ind}_{F_{\alpha}}(e_{0})
+  \;=\; \mathrm{sign}\,\det(I - DF_{\alpha}(e_{0}))
+  \;=\; -1.
+\]
+(More generally, for a hyperbolic source in dimension $n$, the
+local fixed-point index equals $(-1)^{n}$ --- here $n = 3$ so
+$(-1)^{3} = -1$, agreeing with the direct computation.)
+
+For $\alpha\in(0, 1)\setminus\{\tfrac12\}$, by the sum formula
+$\sum_{p\in\mathrm{Fix}(F_{\alpha})}\mathrm{ind}_{F_{\alpha}}(p) =
+L(F_{\alpha}) = 1$, the contribution from interior fixed points
+satisfies
+\[
+  \sum_{p \in \mathrm{Fix}(F_{\alpha})\cap\Delta^{3,\circ}_{\Cfour}}
+  \mathrm{ind}_{F_{\alpha}}(p)
+  \;=\; 1 - \mathrm{ind}_{F_{\alpha}}(e_{0})
+  \;=\; 1 - (-1) \;=\; 2 \;\neq\; 0,
+\]
+forcing at least one interior fixed point. At $\alpha =
+\tfrac12$ the linearization at $e_{0}$ is degenerate
+($(2\alpha-1)^{2} = 0$, so $\det(I-DF) = 0$ and the standard
+sign-of-determinant index does not apply); for this value we
+instead invoke the explicit closed-form construction of
+Theorems~\ref{thm:hbr-ratio} and~\ref{thm:galois}, which exhibit
+an interior fixed point directly. This concludes existence on the
+open interval $\alpha \in (0, 1)$.
 \end{proof}
 
 \begin{remark}[On global uniqueness]\label{rem:uniqueness}
@@ -1069,17 +1146,18 @@ $(h/\beta)^{2} - 2(h/\beta) - 2 = 0$, whose positive root is
 $h/\beta = 1 + \sqrt{3}$.
 \end{proof}
 
-\begin{remark}[Numerical check]\label{rem:hbr-numeric}
-Iterating $F_{1/2}$ from the uniform initial condition
-$p_{0} = (1,0,\dots,0,1,1,1)/4$ on $\Cfour$ converges within
-$60$ iterations (double precision) to
-$h^* = 0.540195948486216$, $\beta^* = 0.197725440167385$, with
-$h^*/\beta^* = 2.732050807568878$ and $1+\sqrt{3} =
-2.732050807568877$ (residual $4.4\times 10^{-16}$). The
-verification script \texttt{06\_attractor\_closed\_form.py}
-(\S\ref{sec:verify}) runs the iteration symbolically in
-\texttt{sympy} and confirms the closed form to all algebraic
-orders.
+\begin{remark}[Verification]\label{rem:hbr-numeric}
+The closed form $h^{*}/\beta^{*} = 1 + \sqrt{3}$ is verified
+symbolically by \texttt{06\_attractor\_closed\_form.py}
+(\S\ref{sec:verify}); the script derives the fixed-point quadratic
+$(h/\beta)^{2} - 2(h/\beta) - 2 = 0$ in \texttt{sympy} and
+confirms that residual is identically zero in exact arithmetic.
+For an empirical cross-check, iterating $F_{1/2}$ from the
+uniform initial condition $p_{0} = (1,0,\dots,0,1,1,1)/4$ on
+$\Cfour$ converges within $60$ iterations (double precision) to
+$h^* \approx 0.540196$, $\beta^* \approx 0.197725$, with
+$h^*/\beta^* \approx 2.73205$ in agreement with $1+\sqrt{3} =
+2.732050807568877\ldots$ to all displayed digits.
 \end{remark}
 
 %% -------- section 8: quartic + Galois D_4 --------
@@ -1303,13 +1381,21 @@ with coefficients $\le 50$ is detected by PSLQ at $50$-digit
 precision.
 \end{remark}
 
-\begin{conjecture}[$\alpha$-uniqueness]\label{conj:alpha-unique}
+\begin{conjecture}[$\alpha$-uniqueness, with explicit
+PSLQ-detectability bounds]\label{conj:alpha-unique}
 The mixing weight $\alpha = \tfrac12$ is the unique
 $\alpha\in\Q\cap(0, 1)$ at which both ratios
 $h(\alpha)/\beta(\alpha)$ and $r(\alpha)/\beta(\alpha)$ of an
-interior fixed point of $F_{\alpha}$ have minimal polynomials
-over $\Q$ of degree at most $4$ and integer coefficients of
-absolute value at most $50$.
+interior fixed point of $F_{\alpha}$ admit an integer-coefficient
+polynomial relation \emph{of degree at most $8$ with integer
+coefficients of absolute value at most $50$} (these being exactly
+the PSLQ-detectability bounds used in the Stern--Brocot scan of
+\S\ref{sec:alpha-unique}). At $\alpha = \tfrac12$, both ratios
+in fact satisfy the stronger bound \emph{degree at most $4$,
+absolute coefficient bound $4$}
+(Theorems~\ref{thm:hbr-ratio}~and~\ref{thm:galois}); the weaker
+$(\le 8, \le 50)$ form of the conjecture is the one that aligns
+with the empirical PSLQ-evidence range.
 \end{conjecture}
 
 The above scan over $\mathcal{G}_{\le 13}$ ($57$ rationals) is the
@@ -1547,6 +1633,16 @@ The {LMFDB} Collaboration.
 \newblock Number field 8.0.526936617216.1.
 \newblock The {L}-functions and modular forms database, 2024.
 \newblock \url{https://www.lmfdb.org/NumberField/8.0.526936617216.1}.
+
+\bibitem{Dold1972}
+A.~Dold.
+\newblock \emph{Lectures on Algebraic Topology}.
+\newblock Grundlehren der mathematischen Wissenschaften 200, Springer-Verlag, Berlin, 1972.
+
+\bibitem{Brown1971}
+R.~F.~Brown.
+\newblock \emph{The Lefschetz Fixed Point Theorem}.
+\newblock Scott, Foresman and Company, Glenview, IL, 1971.
 
 \end{thebibliography}
 

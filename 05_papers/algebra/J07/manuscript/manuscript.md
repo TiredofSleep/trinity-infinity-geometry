@@ -8,7 +8,7 @@ $^{2}$Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
 
 **MSC 2020:** 11T22 (cyclotomy), 11T24 (other character sums), 11T55 (character sums and exponential sums), 20B25 (permutation groups, $S_{10}$), 05A15 (combinatorial enumeration), 05E18 (group actions on combinatorial structures).
 
-**Status:** CONSOLIDATED DRAFT (2026-05-27). Merges J50 (Q17-A 5D Fourier embedding), J51 (G_6 + G_7 + G_8 spectral consolidation), and J52 (Q17-B Clay bridge + Symbolic Return Theorem) into one coherent paper. Awaiting unified prose polish + referee-rigor pass.
+**Status:** REVISED DRAFT (2026-05-27 — §7 RH-rhyme split off to a separate *Math. Intelligencer* companion note per Wave 4 audit). Merges J50 (Q17-A 5D Fourier embedding), J51 (G_6 + G_7 + G_8 spectral consolidation), and J52 (Symbolic Return Theorem; the Clay-bridge content of J52 is now in the companion). Awaiting unified prose polish + referee-rigor pass (G_8 §4.2 sub-proposition + Q17-A §5.5 uniqueness proof — see TODO comments in the manuscript).
 
 ---
 
@@ -58,11 +58,10 @@ on $\mathbb{Z}/10\mathbb{Z}$.
 **The architectural reading.** Together, these results form the **spectral
 layer** of the TIG framework's Z/10Z substrate. The σ-character architecture
 is the unique input shared by all five theorems; the substrate is the unique
-output observed. The Q17-B Clay-bridge structural reading (§7) is the
-**rhyme** (in our explicit sense) between this architecture and the analytic
-features RH demands of $\zeta(s)$: zeros at predictable locations, spectral
-concentration, multiplicative-additive interplay. The rhyme is explicit and
-*not* an analogue in the Weil-Deligne function-field sense.
+output observed. An exploratory discussion of structural rhymes between this
+character's spectrum and the Riemann zeros is split off as a separate
+*Math. Intelligencer* companion note (see Sanders & Gish, [J07-companion],
+2026); the present paper is the strict-combinatorics spine.
 
 This paper is the **canonical reference** for the σ-character spectral
 architecture on Z/10Z. Prior papers in this Q-series (working drafts J50,
@@ -70,11 +69,26 @@ J51, J52 from the J-series ordering of 2026) are consolidated here with
 full proofs, the G_8 algebraic-form verification, the 5D embedding
 construction, and the math-fix R1 paired across J51 and J52 applied
 throughout (high-locus partition $\{4, 7\}$, σ³-pairing replacing the prior
-σ²-Galois explanation, $\nu_+$ discriminator).
+σ²-Galois explanation, $\nu_+$ discriminator). The Clay-bridge / RH-rhyme
+material previously contained in J52 (and in earlier drafts of this paper's
+§7) is published separately as a *Math. Intelligencer* companion note
+(Sanders & Gish, [J07-companion], 2026); the present paper contains the
+strict-combinatorics spine only.
 
 ---
 
 ## §1 Setup: substrate, permutation, character
+
+### §1.0 Scoping note
+
+An exploratory discussion of structural rhymes between this character's
+spectrum and the Riemann zeros is split off as a separate *Math.
+Intelligencer* companion note (see Sanders & Gish, [J07-companion], 2026).
+The present paper is the strict-combinatorics treatment of the σ-character
+spectral architecture: periodicity (G_6), period distribution (G_7),
+three-valued spectral coherence integral (G_8), 5-dimensional CRT-Fourier
+embedding (Q17-A), and the Symbolic Return Theorem (Q17-B). No analytic
+number theory appears in the body of this paper.
 
 ### §1.1 Substrate
 The carrier is $\mathbb{Z}/10\mathbb{Z} = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ with the additive group structure. The substrate also carries the multiplicative structure of the ring; multiplication mod 10 will not be used in this paper.
@@ -150,6 +164,15 @@ with
 
 The ratio $G_\mathrm{high} / G_\mathrm{low} \approx 5.0165$.
 
+<!-- TODO (Wave 4 audit, deferred to next revision): The G_8 proof below is
+labeled "Proof sketch" because the σ³-pairing identity invoked in §4.3
+(namely $G_\mathrm{cplx}(\sigma^3(s)) = -G_\mathrm{cplx}(s)$) is stated in
+one sentence rather than verified cell-by-cell across the three σ³-orbits.
+For EJC ship-readiness, promote §4.3's identity to an explicit sub-proposition
+with per-orbit verification (3 cells × symbolic sign check), so this can
+read "Proof" rather than "Proof sketch". Estimated work: 3-4 hours
+(per `_staging/referee_reports/23_wave4_audit_J05_J07_J17_J22_J27.md` §J07 item a). -->
+
 **Proof sketch.** At the anchors, $\chi(\sigma^j(s)) = \chi(s) = 0$ for all $j$ (since σ-fixed implies σ-trajectory is constant, and $\chi$ vanishes on anchors). Hence $G(s) = 0$.
 
 For the six 6-cycle elements, the σ-trajectory cycles through six distinct values, so the sum involves $\chi$-values $\chi(s), \chi(\sigma(s)), \ldots, \chi(\sigma^5(s)), \chi(\sigma^6(s)) = \chi(s), \chi(\sigma(s)), \chi(\sigma^2(s))$ — 9 total terms, with the last 3 repeating the first 3. Computing $G(s)$ at the six 6-cycle starting points and grouping by σ³-orbit gives the three distinct values claimed. Full computation in §4.4 below. ∎
@@ -223,6 +246,15 @@ where $\widehat{\psi} \in \mathbb{R}^5$ is the canonical lift of $\psi$ to the e
 
 ### §5.5 Rigidity
 
+<!-- TODO (Wave 4 audit, deferred to next revision): The uniqueness
+statement below is asserted, not proved. For EJC ship-readiness, write the
+explicit proof: dimension-count of the CRT character system + non-degeneracy
+of the additive character pairing + standard rigidity argument that real-
+coordinate embeddings of $\mathbb{Z}/n$ via characters are unique up to
+$\text{CO}$ orthogonal change. Estimated work: 10-15 hours of careful
+writing (per `_staging/referee_reports/23_wave4_audit_J05_J07_J17_J22_J27.md`
+§J07 item b). -->
+
 The embedding $\Phi$ is *unique up to* rotation and scaling in $\mathbb{R}^5$, given the requirements: (i) preserves additive structure component-wise, (ii) factors through the CRT decomposition, (iii) uses real coordinates. Any other choice of CRT-aligned 5D embedding is related to $\Phi$ by an element of the conformal group $\text{CO}(5)$.
 
 ---
@@ -245,27 +277,7 @@ The embedding $\Phi$ is *unique up to* rotation and scaling in $\mathbb{R}^5$, g
 
 ---
 
-## §7 The Q17-B Clay Bridge — STRUCTURAL RHYME ONLY
-
-### §7.1 The rhyme statement
-
-The Riemann zeta function $\zeta(s)$ has its non-trivial zeros conjectured to lie on the critical line $\text{Re}(s) = 1/2$ (the Riemann Hypothesis, RH). The TIG σ-character architecture's three-valued $G(s)$ rhymes with three structural features RH demands of $\zeta(s)$:
-
-| RH-side feature | σ-character rhyme |
-|---|---|
-| Zeros at predictable locations on the critical line | $G(s) = 0$ at the four anchors $\{0, 3, 8, 9\}$ |
-| Spectral concentration | $G(s)$ takes only three values; no intermediate spectrum |
-| Multiplicative-additive interplay (Euler product) | σ-iteration is additive; χ is "multiplicative-like" through ±1 sign |
-
-### §7.2 What this is and is not
-
-**This is a structural rhyme.** The substrate (σ on Z/10Z) is finite and explicit; the analogue (RH on $\zeta(s)$) is infinite-dimensional and analytic. There is *no* Weil-Deligne function-field correspondence, *no* analytic continuation of the σ-character architecture, *no* Euler product structure on Z/10Z that mirrors $\prod_p (1 - p^{-s})^{-1}$.
-
-**This is not a proof of RH.** Per the tier discipline of the J-series, this paper makes a structural rhyme observation only.
-
-**The bridge to RH.** Under a deployment map $\lambda = 2|s - 1/2|$ from the Dirichlet half-plane to the TIG mixing parameter $\lambda \in [0, 1]$, the BALANCE-CHAOS null direction of TSML (separate result, see §1.1 of `04_meta/clay/RH_TIG_BRIDGE.md`) would correspond to the critical line if the deployment were grading-preserving. Whether the deployment is grading-preserving (Conjecture Z.5) is open.
-
-### §7.3 Independent verification
+## §7 Independent verification
 
 The five theorems of this paper are independently verifiable:
 - G_6, G_7, G_8: `verify_G6_G7_G8.py` (300 lines, ~10s).
@@ -280,11 +292,11 @@ A unified `verify_qseries_merged.py` runs all three suites in sequence.
 
 1. **Closed-form recovery for $G_\mathrm{low}, G_\mathrm{high}$.** The verified numerical values to 6 decimal places are $G_\mathrm{low} = 1.871644$ and $G_\mathrm{high} = 9.389185$ (run `verify_qseries_merged.py`). Their ratio is $5.01654...$. Closed forms in $\mathbb{Q}(\zeta_9)$ (the cyclotomic field of 9th roots of unity) are expected but not yet identified. Conjecturally, $G_\mathrm{high} / G_\mathrm{low}$ is an algebraic integer of degree ≤ 6 over $\mathbb{Q}$. Numerical PSLQ search at 50-digit precision against $\mathbb{Q}(\zeta_9)$ basis elements would either identify the closed form or rule out small algebraic combinations.
 
-2. **The Z.5 deployment-uniformity conjecture.** The structural rhyme of §7 becomes a derivation if and only if the deployment $\lambda = 2|s - 1/2|$ preserves both the algebraic 3-grading (from TSML rank stratification) and the metric 6-corridor structure (from Mix_λ) uniformly as $|t| \to \infty$. Currently proved at $t = 0$ and for $|s - 1/2| < \epsilon$; uniformity in $t$ is open.
+2. **Generalization to other (carrier, σ, χ) triples.** The substrate is Z/10Z. Whether analogous spectral architectures exist for other small finite rings is open. The closest known analog is the (Z/8Z, σ_8, χ_8) triple where the cycle structure is $(1)^2 \cdot (3)^2$; preliminary computation suggests $G_8$-analogs there are 4-valued rather than 3-valued.
 
-3. **Generalization to other (carrier, σ, χ) triples.** The substrate is Z/10Z. Whether analogous spectral architectures exist for other small finite rings is open. The closest known analog is the (Z/8Z, σ_8, χ_8) triple where the cycle structure is $(1)^2 \cdot (3)^2$; preliminary computation suggests $G_8$-analogs there are 4-valued rather than 3-valued.
+3. **Connection to J05+J03 ETP work.** The σ-permutation of this paper is closely related to (but distinct from) the σ used in J05 to define the σ-magma $x \diamond y = \sigma((x+y) \bmod 10)$. The exact relationship — whether the spectral architecture of this paper transfers to the σ-magma — is open and would tighten the J04-J05-J03 σ-magma trilogy.
 
-4. **Connection to J05+J03 ETP work.** The σ-permutation of this paper is closely related to (but distinct from) the σ used in J05 to define the σ-magma $x \diamond y = \sigma((x+y) \bmod 10)$. The exact relationship — whether the spectral architecture of this paper transfers to the σ-magma — is open and would tighten the J04-J05-J03 σ-magma trilogy.
+4. **Companion-note open problem.** A separate exploratory open question about the deployment map $\lambda = 2|s - 1/2|$ and its candidate uniformity (Conjecture Z.5) is recorded in the *Math. Intelligencer* companion note (Sanders & Gish, [J07-companion], 2026). That question is outside the strict-combinatorics scope of the present paper.
 
 ---
 
@@ -293,7 +305,10 @@ A unified `verify_qseries_merged.py` runs all three suites in sequence.
 ### Internal cross-references (this paper merges)
 - J50 (Sanders & Gish, 2026): Q17-A 5D Fourier embedding. *Subsumed by §5.*
 - J51 (Sanders & Gish, 2026): G_6 + G_7 + G_8 spectral consolidation. *Subsumed by §§2-4.*
-- J52 (Sanders & Gish, 2026): Q17-B Clay bridge + Symbolic Return Theorem. *Subsumed by §§6-7.*
+- J52 (Sanders & Gish, 2026): Symbolic Return Theorem. *Subsumed by §6.* The RH-bridge content of J52 is split off into a separate *Math. Intelligencer* companion note (see below).
+
+### Companion note (split off from earlier draft)
+- Sanders, B. R. & Gish, M. (2026): "A Structural Rhyme between the σ-Character Spectrum on Z/10Z and the Riemann Zeros." [J07-companion]. Companion expository note, target *Mathematical Intelligencer*. Contains the structural-rhyme observation that earlier drafts placed in this paper's §7.
 
 ### Companion J-series papers
 - J01 (Sanders & Gish, 2026): Joint Closure + Universal Attractor. The σ-permutation here is the substrate's structural σ; the present paper is its spectral analysis.
@@ -303,8 +318,6 @@ A unified `verify_qseries_merged.py` runs all three suites in sequence.
 ### External / classical references
 - Drápal, A. & Wanless, I. M. (2021): "Maximally nonassociative quasigroups." *J. Combin. Theory Ser. A* 184, 105510.
 - Tao, T. et al. (2024-2026): Equational Theories Project. github.com/teorth/equational_theories.
-- Berry, M. V. & Keating, J. P. (1999): "The Riemann zeros and eigenvalue asymptotics." *SIAM Rev.* 41, 236.
-- Connes, A. (1999): "Trace formula in noncommutative geometry and the zeros of the Riemann zeta function." *Sel. Math. (N.S.)* 5, 29.
 
 ---
 
@@ -331,10 +344,10 @@ Total runtime: ~10 seconds.
 
 ## Status
 
-- **Consolidated draft 2026-05-27.** Theorem statements + proof structures pulled from sources; unified narrative complete; awaiting prose polish + referee-rigor pass.
-- **Targets:** European Journal of Combinatorics (primary; matches both J51 and J50 venue targeting).
-- **Source papers** (J50, J51, J52) marked as MERGED with redirect.
+- **Revised draft 2026-05-27.** Theorem statements + proof structures pulled from sources; unified narrative complete; §7 RH-rhyme content split off to a separate *Math. Intelligencer* companion note (Sanders & Gish, [J07-companion], 2026); awaiting prose polish + referee-rigor pass on G_8 §4.2 sub-proposition and Q17-A §5.5 uniqueness proof (see manuscript TODO comments).
+- **Targets:** European Journal of Combinatorics (primary; matches both J51 and J50 venue targeting). Companion note targets *Mathematical Intelligencer*.
+- **Source papers** (J50, J51, J52) marked as MERGED with redirect; the RH-rhyme content of J52 lives in the companion note.
 
 ---
 
-*This paper supersedes J50, J51, J52 of the J-series. All theorem proofs in this paper are inherited from those sources; verification PASSES in all source scripts.*
+*This paper supersedes J50, J51, J52 of the J-series for their strict-combinatorics content. The RH-rhyme content of J52 is published as a separate companion note for *Math. Intelligencer*. All theorem proofs in this paper are inherited from those sources; verification PASSES in all source scripts.*

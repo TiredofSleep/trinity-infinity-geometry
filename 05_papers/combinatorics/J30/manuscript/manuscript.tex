@@ -625,20 +625,47 @@ left to future work.
 %==============================================================
 
 The closure of Theorem~\ref{thm:closure}, the BHML non-closure of
-Proposition~\ref{prop:bhml-fail}, and the size-$4$ enumeration of
-Theorem~\ref{thm:two-cores-revised} are direct table inspections.
-The accompanying verification script \texttt{verification/4core\_verification.py}
-includes:
+Proposition~\ref{prop:bhml-fail}, the size-$4$ enumeration of
+Theorem~\ref{thm:two-cores-revised}, and the generator-selection
+arithmetic of Theorem~\ref{thm:generator} are direct table
+inspections and elementary mod-$10$ computations. The J30-specific
+verification script \texttt{verification/verify\_J30.py} (Python
+standard library only; runtime $\ll 1$ second; $9/9$ PASS) includes:
 \begin{itemize}
 \item the $10 \times 10$ tables $\mathrm{CL}_\TSML$ and
 $\mathrm{CL}_\BHML$ explicitly;
 \item a closure check
 \texttt{is\_closed(S, table)} returning whether $S$ is closed under
 \texttt{table};
-\item enumeration of all $78$ TSML-closed $4$-subsets and the unique
-BHML-closed $4$-subset $\{0, 7, 8, 9\}$.
+\item the $16$-cell extractions of
+$\mathrm{CL}_\TSML \mid_{C \times C}$ (image $\{3, 7\}$, distribution
+$14$ of $7$ and $2$ of $3$, PROGRESS cells located at $(3, 9)$ and
+$(9, 3)$) and $\mathrm{CL}_\BHML \mid_{C \times C}$ (image
+$\{0, 2, 4, 6, 8\}$, distribution $3$ of $0$, $3$ of $2$, $5$ of $4$,
+$4$ of $6$, $1$ of $8$, witness $\mathrm{CL}_\BHML[1][1] = 2$);
+\item exhaustive enumeration over the $\binom{10}{4} = 210$ size-$4$
+subsets of $\Z/10\Z$ giving $78$ TSML-closed subsets (all containing
+HARMONY $= 7$), the unique BHML-closed subset $\{0, 7, 8, 9\}$, and
+the unique jointly closed subset $\{0, 7, 8, 9\}$;
+\item the contrast checks $C \cap \{0, 7, 8, 9\} = \{7, 9\}$,
+$C \setminus \{0, 7, 8, 9\} = \{1, 3\}$, $\{0, 7, 8, 9\} \setminus C
+= \{0, 8\}$;
+\item the generator-selection arithmetic $3^{3} \equiv 7$ vs
+$7^{3} \equiv 3$ (mod $10$) with the element-order verification
+$1 \mapsto 1$, $9 \mapsto 2$, $3 \mapsto 4$, $7 \mapsto 4$ confirming
+that the primitive roots of $(\Z/10\Z)^{*}$ are exactly $\{3, 7\}$;
+\item the CREATION orbit $1 \to 3 \to 9 \to 7 \to 1$ and DISSOLUTION
+orbit $2 \to 6 \to 8 \to 4 \to 2$ under $\times 3$.
 \end{itemize}
-The script runs in under one second on standard hardware.
+A companion script \texttt{verification/4core\_verification.py} (six
+checks supporting the joint-$4$-core context of
+Theorem~\ref{thm:two-cores-revised}: joint-closure chain enumeration,
+normalizer identity $Z_{T} = Z_{B} = (v + h + br + r)^{2}$, closed-form
+attractor $h/br = 1 + \sqrt{3}$ at $\alpha = 1/2$, universality
+across the chain, Galois $D_{4}$ of $x^{4} + 4x^{3} - x^{2} + 2x - 2$,
+$\alpha$-sweep PSLQ) is retained for cross-reference to the
+companion paper \cite{SandersGishFourCore}; it is not the J30
+primary verification.
 
 %==============================================================
 \section*{Acknowledgments}

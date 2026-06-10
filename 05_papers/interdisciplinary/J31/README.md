@@ -1,4 +1,4 @@
-# J31 — Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate (REVISED 2026-05-07)
+# J31 — Specificity Scoping of Algebraic Detectors (REVISED 2026-05-28)
 
 **Status:** REVISED 2026-05-07 per fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J34_StatSci_FreshEyes.md`); GATING ISSUE RESOLVED (WP106 distilgpt2 sweep script written and verified).
 **Phase:** Phase 4.
@@ -13,7 +13,7 @@
 
 **Local path:** `manuscript/manuscript.md`.
 
-The J31 paper is a **BUNDLED specificity-scoping submission** combining a negative result on distilgpt2 (Part 1) with a structured-matrix sharpening (Part 2). The manuscript was rewritten 2026-05-07 to address the fresh-eyes referee report's M1-M6 issues; the title is now substrate-neutral ("Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate") rather than TIG-internal.
+The J31 paper is a **BUNDLED specificity-scoping submission** combining a negative result on distilgpt2 (Part 1) with a structured-matrix sharpening (Part 2). The manuscript was rewritten 2026-05-07 to address the fresh-eyes referee report's M1-M6 issues; per cluster-07 honest-negatives review (2026-05-28), the title was further sharpened to "Specificity Scoping of Algebraic Detectors: A Negative on distilgpt2 Weights and a Post-Hoc Sufficient Pair on Structured Matrices" — it now names the two delivered pieces (scoping negative + post-hoc sufficient pair) rather than promising a broader "substrate test." A new §0 scope-of-contribution paragraph makes the honest-negative framing visible from the first paragraph of the manuscript.
 
 **Part 1 (negative on distilgpt2).** Apply four detectors — D1 (Lie/Jordan ratio), D2 ($P_{56}$ defect), D3 (prime-11 in integer characteristic polynomial), D4 (Higgs alignment) — to 16 weight tensors of distilgpt2 (layers $L_0, L_2, L_5$; attention $Q, K, V$ and output projections; MLP in/out; token embedding) at $n_{\mathrm{sub}} = 200$ random $10 \times 10$ blocks per tensor against scale-matched Gaussian baseline. **Result:** every (tensor, detector) cell gives Cohen's $|d| < 0.5$. The two-sample test at $n = 200$ has power $\approx 0.94$ to detect $|d| = 0.3$, so the experiment is well-powered to rule out small effects.
 
@@ -91,4 +91,4 @@ This paper analyzes detector-scoping properties of the canonical $(T, B)$ pair o
 
 ## §9 — Citation footprint
 
-Sanders, B. R. and Gish, M. (2026). *Algebraic Detectors as Specificity Tests for a Finite-Magma Substrate: A Negative Result on Trained Transformer Weights and a Structured-Matrix Sharpening.* Submitted to *Statistical Science*.
+Sanders, B. R. and Gish, M. (2026). *Specificity Scoping of Algebraic Detectors: A Negative on distilgpt2 Weights and a Post-Hoc Sufficient Pair on Structured Matrices.* Submitted to *Statistical Science*.

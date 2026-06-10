@@ -29,12 +29,12 @@ An earlier draft conflated the coarse-cell distribution `C(n, k)` (`2^n` total c
 ## Why Linear Algebra and its Applications
 
 - **Subject fit.** A short, elementary linear-algebra note: tensor-power dimensions, basis-cell decompositions, binomial-coefficient identities, and the Hamming-weight grading on a 2n-bit label string. The result is recorded for the literature; no representation-theoretic machinery is invoked.
-- **Self-contained presentation.** Approximately 12 pages including bibliography. Verification reduces to a single standard-library Python script (`verify_J17.py`) with six independent checks corresponding one-to-one to the manuscript's claims; runtime under one second.
+- **Self-contained presentation.** Approximately 12 pages including bibliography. Verification reduces to a single standard-library Python script (`verify_J20.py`) with six independent checks corresponding one-to-one to the manuscript's claims; runtime under one second.
 - **Honest scoping.** The paper does *not* claim a structure-preserving map between `V^{⊗n}` and `Cl(2n)`; it claims a basis-label bijection with a matching Hamming grading. The companion open question (whether such a structure-preserving map exists over a common base ring) is recorded in §6, not in the abstract.
 
 ## Reproducibility
 
-A single Python script `verify_J17.py` (CC-BY-4.0, standard library only — no `numpy`, no `sympy`, no external dependencies) bundled with the manuscript performs six checks:
+A single Python script `verify_J20.py` (CC-BY-4.0, standard library only — no `numpy`, no `sympy`, no external dependencies) bundled with the manuscript performs six checks:
 
 1. Total-dimension match `dim_{F_5} V^{⊗n} = 4^n = 2^{2n} = dim_R Cl(2n)` for `n = 0..5`.
 2. Coarse-cell count `2^n` for `n = 1..5`.

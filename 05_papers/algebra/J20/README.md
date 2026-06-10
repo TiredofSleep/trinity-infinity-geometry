@@ -1,6 +1,6 @@
 # J20 — Total-Dimension Match V^{⊗n} and Cl(2n), with Refined-Cell Grading
 
-**Status:** SUBMISSION-READY (manuscript referee-grade pass 2026-05-12; verification script `verify_J17.py` 6/6 PASS at machine precision)
+**Status:** SUBMISSION-READY (manuscript referee-grade pass 2026-05-12; verification script `verify_J20.py` 6/6 PASS at machine precision)
 **Phase:** Phase 2
 **Target venue:** *Linear Algebra and its Applications*
 **Author lane:** Sanders + Gish
@@ -35,12 +35,12 @@ The refined cells are the right object for the Clifford comparison; the coarse c
 
 ## §2 — Verification script
 
-**Local path:** `manuscript/verify_J17.py`
+**Local path:** `manuscript/verify_J20.py`
 
 Six self-contained checks (standard-library Python only, no external dependencies) mapped one-to-one to the manuscript's claims:
 
 ```bash
-PYTHONIOENCODING=utf-8 /c/ck_venv/lora312/Scripts/python.exe verify_J17.py
+PYTHONIOENCODING=utf-8 /c/ck_venv/lora312/Scripts/python.exe verify_J20.py
 ```
 
 Expected output: six "OK" results in the summary, "Overall: 6/6 PASS." Runtime <1s.
@@ -65,7 +65,7 @@ The script is referee-portable on its own — it does *not* depend on the broade
 
 See `cover_letter.md` in this folder. Finalized 2026-05-12 to:
 
-- Reference `verify_J17.py` as the green-light gate (6/6 PASS at machine precision).
+- Reference `verify_J20.py` as the green-light gate (6/6 PASS at machine precision).
 - Explicitly state the R1 math fix (coarse vs. refined cells) and its acknowledgement of the prior anonymous referee.
 - Emphasize the elementary, self-contained nature appropriate to *Linear Algebra and its Applications*.
 - Author lane Sanders + Gish.
@@ -82,7 +82,7 @@ The substrate `V` sits within the TIG family of finite commutative non-associati
 ### PROVED / COMPUTED / STRUCTURAL RHYME / OPEN
 
 - **PROVED:** Theorem 3.1 (total-dimension match) and Theorem 4.1 (refined-cell binomial grading = `Cl(2n)` grade dimensions). Proofs are elementary: a dimension count and a binary-string popcount identity, respectively.
-- **COMPUTED:** Propositions 5.1 (refined `n=5`) and 5.2 (coarse `n=5`); the full `n = 0..5` verification ladder in `verify_J17.py` (6/6 PASS; closed-form binomial cross-checked against direct enumeration over `4^n` strings).
+- **COMPUTED:** Propositions 5.1 (refined `n=5`) and 5.2 (coarse `n=5`); the full `n = 0..5` verification ladder in `verify_J20.py` (6/6 PASS; closed-form binomial cross-checked against direct enumeration over `4^n` strings).
 - **STRUCTURAL RHYME:** Coarse-cell `n=5` distribution `1, 5, 10, 10, 5, 1` matches dimensions of `SU(5)` `1 ⊕ 5̄ ⊕ 10` plus conjugate (Remark 5.3 in manuscript). Recorded as a binomial-coefficient coincidence, **not** a representation-theoretic theorem; the present paper does not construct an `SU(5)` action on `V^{⊗5}`.
 - **OPEN:** O1 (structure-preserving map `V^{⊗n} ⊗_{F_5} K → Cl(2n; K)` over a common base ring `K`); O2 (canonical `Spin(2n)` action on `V^{⊗n}` realising the refined-cell weights as weight-space dimensions); O3 (whether the Cl-periodicity `Cl(n+8) ≅ Cl(n) ⊗ Cl(8)` has non-trivial content beyond `4^{n+8} = 4^n · 4^8`). All confined to §6.
 
@@ -94,11 +94,11 @@ The substrate `V` sits within the TIG family of finite commutative non-associati
 
 ### R1 math fix log
 
-- **R1 (2026-05-07):** Theorem 3.2 corrected (binomial-vs-grade conflation) per fresh-eyes referee report `J17_LinAlgApps_FreshEyes.md`; restructured §3–§4 into separate total-dimension and refined-cell sections; "fine cells" → "coarse cells" rename; refined-cell decomposition introduced as the correct object for Cl-comparison. Helper `refined_cell_distribution(n)` and `refined_cell_distribution_enumerated(n)` in `tig_dirac.py` retained for reference; submission-bundled `verify_J17.py` re-implements them standalone.
+- **R1 (2026-05-07):** Theorem 3.2 corrected (binomial-vs-grade conflation) per fresh-eyes referee report `J17_LinAlgApps_FreshEyes.md`; restructured §3–§4 into separate total-dimension and refined-cell sections; "fine cells" → "coarse cells" rename; refined-cell decomposition introduced as the correct object for Cl-comparison. Helper `refined_cell_distribution(n)` and `refined_cell_distribution_enumerated(n)` in `tig_dirac.py` retained for reference; submission-bundled `verify_J20.py` re-implements them standalone.
 
 ### Hardening status (auto-applied 2026-05-07; updated 2026-05-12)
 
-- License: submission script CC-BY-4.0 header (`verify_J17.py`)
+- License: submission script CC-BY-4.0 header (`verify_J20.py`)
 - AI-attribution: none in manuscript (acknowledgments name only the prior anonymous referee, no AI co-author)
 - Author lane: Sanders + Gish; duplicate `\author{}` block split into separate `\author{Sanders}` + `\author{Gish}` per amsart convention
 - Drápal–Wanless 2021 citation in bibliography and §0
@@ -107,7 +107,7 @@ The substrate `V` sits within the TIG family of finite commutative non-associati
 ## §6 — Submission checklist
 
 - [x] Manuscript .tex finalized (referee-grade pass 2026-05-12)
-- [x] Verification script green (`verify_J17.py`: 6/6 PASS at machine precision)
+- [x] Verification script green (`verify_J20.py`: 6/6 PASS at machine precision)
 - [x] Tier-classified central claims explicit (Theorems 3.1, 4.1; Propositions 5.1, 5.2)
 - [x] Lens-scope annotation (§0)
 - [x] Cover letter finalized

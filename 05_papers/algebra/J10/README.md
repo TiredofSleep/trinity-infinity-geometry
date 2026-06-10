@@ -1,11 +1,11 @@
-# J10 — Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
+# J10 — $D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
 
-**Status:** REWRITE 2026-05-12 — promotes the operadic $D_4$ orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26; corrected 2026-05-07 for the $D_4$ order-$8$ and the $(44,7,4,10,2)$ orbit distribution) to the central theorem. Standalone, self-contained `verify_J32_d4_orbits.py` added; all 6 claims PASS at machine precision in $<1$ s.
+**Status:** REWRITE 2026-05-12 — promotes the $D_4$-equivariant arity-3 orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26; corrected 2026-05-07 for the $D_4$ order-$8$ and the $(44,7,4,10,2)$ orbit distribution) to the central theorem. Standalone, self-contained `verify_J32_d4_orbits.py` added; all 6 claims PASS at machine precision in $<1$ s. 2026-05-28 polish: title and body language updated from decorative "operadic" framing to "$D_4$-equivariant arity-3" framing (the content is finite-group-action on a subset of a cube + bracketing-pair coherence, not operad theory in the May–Markl–Loday sense); Theorem B's strengthening to $\{a,b,c,L,R\}$-valued $\Phi$ has its proof expanded to a full intersection-empty argument.
 **Phase:** Phase 3.
-**Target venue:** *Journal of Algebra* (lead). Fallback (in priority order): *Communications in Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
+**Target venue:** *Communications in Algebra* (lead, per Wave 4 referee report 05). Fallback (in priority order): *Journal of Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
 **Author lane:** Sanders + Gish only.
-**Tier:** 2 (draft (REWRITE 2026-05-12; operadic D4 obstruction))
-**WP source:** WP109 (operad $D_4$ obstruction) + WP112 (P$_{56}$ canonical fuse).
+**Tier:** 2 (draft (REWRITE 2026-05-12; $D_4$-equivariant arity-3 obstruction))
+**WP source:** WP109 ($D_4$ obstruction) + WP112 (P$_{56}$ canonical fuse).
 
 ---
 
@@ -46,7 +46,7 @@ Run all four legacy scripts plus the primary standalone for full reproduction of
 - **J01** (Sanders + Gish 2026, *J. Algebra*) — binary joint-closure / closed-form attractor / Galois-$D_4$ centerpiece; cited in §1, §5, §6.
 - **J12** (Sanders + Gish 2026, *Comm. Alg.*) — standalone Galois proof on the quartic; cited in §6.
 - **J11** (Sanders + Gish 2026, *J. Algebra*) — Wedderburn $D_4$-isotypic decomposition of $[T,B]\in M_{10}(\mathbb{Z})$; cited in §6.
-- **J45** (Sanders + Gish 2026, *Comm. Alg.*) — operadic $\langle P_{56}\rangle$-equivariant fuse-rule survey; cited in §1, §7.
+- **J45** (Sanders + Gish 2026, *Comm. Alg.*) — $\langle P_{56}\rangle$-equivariant arity-3 fuse-rule survey; cited in §1, §7.
 
 ## §4 — Cover letter
 
@@ -54,8 +54,8 @@ See `cover_letter.md` in this folder. Target *J. Algebra*; per-venue cap transpa
 
 ## §5 — Notes
 
-- **Status (2026-05-12 rewrite):** SUBMISSION-READY. Manuscript rewritten end-to-end as the operadic $D_4$ orbit-structure paper. Standalone verification script bundled (`verify_J32_d4_orbits.py`); all 6 PASS at machine precision in $<1$ s.
-- **Per-venue cap:** $\mathbf{4}$th *J. Algebra* paper of the 2026 cycle. Explicit fallback priority order in cover letter. Honest disclosure to editor.
+- **Status (2026-05-12 rewrite + 2026-05-28 polish):** SUBMISSION-READY. Manuscript rewritten end-to-end as the $D_4$-equivariant arity-3 orbit-structure paper. Standalone verification script bundled (`verify_J32_d4_orbits.py`); all 6 PASS at machine precision in $<1$ s. The 2026-05-28 polish replaces decorative "operadic" framing with "$D_4$-equivariant arity-3" terminology per Wave 4 referee report 05.
+- **Per-venue cap:** Now targeting *Comm. Alg.* (lead) per Wave 4 referee report — *J. Algebra* fallback is still available. Honest disclosure to editor.
 - **Tier classification:** Tier-B forced by direct enumeration on $1000$ triples and the $8$ elements of $D_4$.
 - **Lens scope:** TSML_RAW (the canonical asymmetric table); TSML_SYM has $128$ non-associative triples instead of $126$ and is not addressed here. The $4$-core arity-$3$ closure is lens-invariant.
 - **Differentiation from companion papers:** J01 is binary joint closure + binary attractor + Galois bundle; J10 is arity-3 orbit decomposition (no overlap). J11 is matrix decomposition of $[T,B]$; J10 is set-partition combinatorics on $\mathcal{N}\subset(\mathbb{Z}/10\mathbb{Z})^3$ (no overlap). J12 is the standalone Galois proof; J10 is a finite-group-action result on a combinatorial subset (no overlap).
@@ -87,11 +87,11 @@ This paper sits within the TIG family of finite commutative non-associative magm
 
 ## §6 — Submission checklist
 
-- [x] Manuscript `.md` finalized (rewritten as operadic $D_4$ orbits paper).
+- [x] Manuscript `.md` finalized (rewritten as $D_4$-equivariant arity-3 orbits paper; 2026-05-28 polish for terminology).
 - [x] Standalone verification script `verify_J32_d4_orbits.py` PASS at machine precision (all 6 claims; runtime $<1$ s).
 - [x] Tier-classified central claims explicit (Theorems A, B, C, D in §0 and Abstract).
 - [x] Lens-scope annotation (TSML_RAW; TSML_SYM differs at $128-126=2$ triples).
-- [x] Cover letter finalized (*J. Algebra* target; per-venue cap transparency; fallback priority).
+- [x] Cover letter finalized (*Comm. Alg.* target per Wave 4 referee; *J. Algebra* fallback; per-venue cap transparency; fallback priority).
 - [x] Dependencies → cite J01, J12, J11, J45 as already-submitted / pipelined companions.
 - [ ] Brayden's referee-rigor pass complete.
 - [ ] Per-venue cap check: 4th *J. Algebra* submission of 2026 cycle.
@@ -101,4 +101,4 @@ This paper sits within the TIG family of finite commutative non-associative magm
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish. (2026). "Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3." Submitted to *Journal of Algebra*.
+Sanders, B.R., Gish. (2026). "$D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3." Submitted to *Communications in Algebra*.

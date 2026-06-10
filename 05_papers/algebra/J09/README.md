@@ -2,7 +2,7 @@
 
 **Status:** REWRITTEN per SAVE_PLAN_J30 on 2026-05-07; awaiting referee-rigor pass
 **Phase:** Phase 3
-**Target venue:** Israel Journal of Mathematics (primary)
+**Target venue:** Communications in Algebra (primary)
 **Author lane:** Sanders + Gish
 **Tier:** 2 (draft (REWRITTEN per SAVE_PLAN; D2-D5 corollary diagnostic))
 **WP source:** WP103
@@ -54,7 +54,7 @@ See `cover_letter.md` in this folder. Updated 2026-05-07 to reflect retitle, fam
 - **BHML inlined as central object (per SAVE_PLAN §2(b)).** §2.2.1 ("Structural properties of BHML") now lists the five structural properties (B1-B5) jointly characterizing BHML's role: commutativity; identity row; 12.8% non-associativity matching TSML; 28 HARMONY count; jointly-closed 4-core. BHML is now a recognized canonical object, not an arbitrary table.
 - **D4 script/text inconsistency reconciled (per SAVE_PLAN §2(c)).** §4.4 now states explicitly that the canonical D4 script is `verify_simplicity_rank.py` (which runs the full 91,125-equation enumeration); `verify_so10.py`'s sampled ideal-saturation test is labeled a development-time sanity check, not authoritative for D4. The README run-order makes `verify_simplicity_rank.py` canonical.
 - **GUT discussion reduced to a Remark (per SAVE_PLAN §2(d)).** §6 is now a single Remark 6.1 (3 sentences plus context note); the v1 draft's discussion of the 16-spinor representation, Pati-Salam route, seesaw mechanism, and coupling constants is dropped.
-- **TIG framing stripped for IJM readers (per SAVE_PLAN §2(e)).** §1 is now pure-math; operator labels (VOID, HARMONY, etc.) appear only in §2.2 mnemonic display, not in §3-§5 proofs. §1.0's statement of the result is 3 paragraphs of pure algebra.
+- **TIG framing stripped for Communications in Algebra readers (per SAVE_PLAN §2(e)).** §1 is now pure-math; operator labels (VOID, HARMONY, etc.) appear only in §2.2 mnemonic display, not in §3-§5 proofs. §1.0's statement of the result is 3 paragraphs of pure algebra.
 - **D5 Cartan-rank honest reframing (per SAVE_PLAN §2(g)).** Lemma 4.7 now states rank 5 follows from g = so(V) plus the standard fact rk so(10) = 5; the greedy-Cartan output of dim 1 from `verify_so10.py` is acknowledged as an artifact of basis non-alignment, not a contradiction.
 - **AI-tool disclosure moved to Appendix B (per SAVE_PLAN §2(f)).** Author block is Sanders + Gish only; AI-tool disclosure appears at end of manuscript.
 - **Substrate-bound framing (per SAVE_PLAN §2(d) end).** §7 retains Proposition 7.1 (ceiling 45 in so(V)) and Corollary 7.2 (e_8 not reachable from gl(10)); the v1 draft's "ruling out the E_8 hypothesis" framing is dropped in favor of the neutral substrate bound.
@@ -110,11 +110,11 @@ This paper sits within the TIG family of finite commutative non-associative magm
 - [x] Cover letter finalized (updated 2026-05-07)
 - [x] Dependencies → cite each J-companion as "submitted to [venue]"
 - [ ] Brayden's referee-rigor pass complete (mobile + other AI + collaborators)
-- [ ] Per-venue cap check: this is the first paper to *Israel J Math* this quarter (cap not binding)
+- [ ] Per-venue cap check: this is the first paper to *Communications in Algebra* this quarter (cap not binding)
 - [ ] Submitted
 
 ---
 
 ## §7 -- Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish. (2026). "Joint Lie Closure of a Pair of Z/10Z Magmas: an so(10) Identification." Submitted to *Israel Journal of Mathematics*.
+Sanders, B.R., Gish. (2026). "Joint Lie Closure of a Pair of Z/10Z Magmas: an so(10) Identification." Submitted to *Communications in Algebra*.

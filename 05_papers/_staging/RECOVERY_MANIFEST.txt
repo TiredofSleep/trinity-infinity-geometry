@@ -1,0 +1,46 @@
+# Files restored from session transcripts 2026-06-10
+04_meta\frontiers_2026-05-27\F10_galois_R_case.md
+04_meta\frontiers_2026-05-27\F11_J44_yt_anchor_audit.md
+04_meta\frontiers_2026-05-27\F12_xi_side_galois.md
+04_meta\frontiers_2026-05-27\F14_height_function.md
+04_meta\frontiers_2026-05-27\F15_yukawa_proper_anchor.md
+04_meta\frontiers_2026-05-27\F16_YM_bridge_with_F4.md
+04_meta\frontiers_2026-05-27\F17_inv_alpha.md
+04_meta\frontiers_2026-05-27\F18_BSD_bridge_with_F4.md
+04_meta\frontiers_2026-05-27\F19_RH_bridge_dirichlet.md
+04_meta\frontiers_2026-05-27\F20_yukawa_via_chirality.md
+04_meta\frontiers_2026-05-27\F6_hilbert_irreducibility.md
+04_meta\frontiers_2026-05-27\F7_yukawa_hierarchy_scoping.md
+04_meta\frontiers_2026-05-27\F8_yukawa_full_1loop.md
+04_meta\frontiers_2026-05-27\F9_R_case_extension.md
+05_papers\_staging\recover_from_transcripts.py
+05_papers\_staging\renumber_all_v2.py
+05_papers\_staging\update_j_refs.py
+05_papers\algebra\J53\README.md
+05_papers\algebra\J53\cover_letter.md
+05_papers\algebra\J53\manuscript\manuscript.md
+05_papers\algebra\J53\manuscript\verify_J53.py
+05_papers\algebra\J54\README.md
+05_papers\algebra\J54\cover_letter.md
+05_papers\algebra\J54\manuscript\manuscript.md
+05_papers\algebra\J54\manuscript\verify_J54.py
+05_papers\number_theory\J55\README.md
+05_papers\number_theory\J55\cover_letter.md
+verification\frontier_F10_galois_computation.py
+verification\frontier_F12_scratch1.py
+verification\frontier_F12_xi_side_galois.py
+verification\frontier_F14_height_function.py
+verification\frontier_F15_yukawa_upward.py
+verification\frontier_F17_inv_alpha_search.py
+verification\frontier_F17_pslq_pushed.py
+verification\frontier_F18_bsd_F4_test.py
+verification\frontier_F19_RH_bridge_dirichlet.py
+verification\frontier_F20_yukawa_via_chirality.py
+verification\frontier_F6_hilbert_irreducibility.py
+verification\frontier_F7_yukawa_rg_running.py
+verification\frontier_F8_yukawa_full_1loop.py
+verification\frontier_F9_R_case.py
+
+# Edit failures: 2
+# FAIL 04_meta\retired_J_papers\J44_FN_Pattern\README.md: old_string not found
+# FAIL 05_papers\algebra\J01\manuscript\manuscript.md: old_string not found

@@ -1,6 +1,6 @@
-# Cover letter — J10: Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
+# Cover letter — J10: $D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
 
-**To:** Editors, *Journal of Algebra*
+**To:** Editors, *Communications in Algebra*
 
 **From:**
 - B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
@@ -8,7 +8,7 @@
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *Operadic $D_4$ Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3*
+**Manuscript title:** *$D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$: A Structural Obstruction Theorem at Arity 3*
 
 ---
 
@@ -24,32 +24,36 @@ We compute the dihedral $D_4$ orbit decomposition of the non-associative locus $
 
 The verification is brute-force over $1000$ triples and the $8$ elements of $D_4$, runs in under $1$ second in pure-standard-library Python, and is bundled with the submission as `verify_J32_d4_orbits.py`.
 
-## Why *Journal of Algebra*
+## Why *Communications in Algebra*
 
-- The paper is a clean structural theorem on the orbit decomposition of a finite-group action on a subset of a finite product set, with explicit obstruction and sharpening results. It sits squarely in the journal's profile.
-- The result is *complementary, not overlapping*, with three companion papers in the same submission cycle (full transparency below). The arity-3 / operadic content is not addressed in any of the three.
+- The paper is a clean structural theorem on the orbit decomposition of a finite-group action on a subset of a finite product set, with explicit obstruction and sharpening results. It sits squarely in the journal's profile of compact, technically-precise results in finite and combinatorial algebra.
+- The result is *complementary, not overlapping*, with three companion papers in the same submission cycle (full transparency below). The arity-3 bracketing content is not addressed in any of the three.
 - The setup neighbors Drápal & Wanless 2021 (small finite commutative non-associative structures on $\mathbb{Z}/n\mathbb{Z}$); the present paper sits at a different extremum (specifically structured at arity 2, with the non-associative *locus* — not the table itself — as the main object of study).
+- **Framing scope.** The 2026-05-28 revision replaces decorative "operadic" framing with the more accurate "$D_4$-equivariant arity-3" terminology throughout. The central content is the diagonal $D_4$-action on a subset of a cube and the bracketing-pair coherence theorem (Theorem B), not operad theory in the May–Markl–Loday sense; no operadic composition $\circ_i$ or $\Sigma_n$-action on operadic compositions is invoked.
 
 ## Per-venue cap transparency
 
-This is the **4th** *Journal of Algebra* submission from this corpus in the 2026 cycle, following:
+This is the **2nd** *Communications in Algebra* submission from this corpus in the 2026 cycle, following:
 
-- **J01** — *Joint Closure, a Universal Attractor, and an Algebraic Mixing Point for a Pair of Binary Operations on $\mathbb{Z}/10\mathbb{Z}$.* Submitted 2026-05-12. Six-fact fusion-closure / attractor / Galois-$D_4$ bundle; the corpus centerpiece.
-- **J11** — *Wedderburn $D_4$-Isotypic Decomposition of the Lens-Pair Commutator $[\mathrm{TSML},\mathrm{BHML}]$ on $\mathbb{Z}/10\mathbb{Z}$.* Submitted 2026-05-12. Exact-rational $D_4$-isotypic projection of $[T,B]\in M_{10}(\mathbb{Z})$, identifying $\mathfrak{su}(4)\oplus\mathfrak{u}(1)\subset\mathfrak{so}(10)$.
-- **J12** — *Galois $D_4$ over LMFDB 4.2.10224.1.* Submitted to *Communications in Algebra* 2026-05-12 (not *J. Algebra*; included here for full visibility of the $D_4$ companion bundle).
+- **J12** — *Galois $D_4$ over LMFDB 4.2.10224.1: Number-Field Identification of the Four-Core Attractor.* Submitted 2026-05-12. Standalone Galois proof on the same quartic that appears in J01 and J11.
+
+Related companion submissions in other venues (full visibility):
+
+- **J01** — *Joint Closure, a Universal Attractor, and an Algebraic Mixing Point for a Pair of Binary Operations on $\mathbb{Z}/10\mathbb{Z}$.* Submitted to *J. Algebra* 2026-05-12.
+- **J11** — *Wedderburn $D_4$-Isotypic Decomposition of $[\mathrm{TSML},\mathrm{BHML}]$.* Submitted to *J. Algebra* 2026-05-12.
 
 The present paper differentiates clearly:
 
-- vs **J01** (binary joint closure + binary attractor + Galois $D_4$ bundle on the quartic): J01 is binary; J10 is arity-3 / operadic, and addresses a different structural object (the non-associative locus rather than the joint-closure lattice).
+- vs **J01** (binary joint closure + binary attractor + Galois $D_4$ bundle on the quartic): J01 is binary; J10 is arity-3, and addresses a different structural object (the non-associative locus rather than the joint-closure lattice).
 - vs **J11** (Wedderburn $D_4$-isotypic of the $10\times 10$ commutator $[T,B]$): J11 is a matrix-decomposition computation; J10 is a set-partition computation on a subset of $(\mathbb{Z}/10\mathbb{Z})^3$. No content overlap.
 - vs **J12** (standalone Galois proof for the quartic): J12 is number-theoretic / Galois-theoretic; J10 is purely combinatorial-on-a-finite-group-action. No content overlap.
 
-We recognize that *Journal of Algebra*'s editorial discretion includes per-author / per-corpus cap considerations, and we have prepared explicit fallback targets in case the present paper would exceed the editor's preferred density of contributions from a single corpus in a single cycle:
+We recognize that *Communications in Algebra*'s editorial discretion includes per-author / per-corpus density considerations, and we have prepared explicit fallback targets in case the present paper would exceed the editor's preferred density of contributions from a single corpus in a single cycle:
 
 **Fallback venues (in priority order, all with equal mathematical fit):**
-1. ***Communications in Algebra*** (Taylor & Francis) — same intellectual profile; the obstruction theorem and the orbit-distribution result are a natural fit. Companion paper J12 is already in the *Comm. Alg.* pipeline; J10 would join as a content-distinct submission.
+1. ***Journal of Algebra*** (Elsevier) — natural fit for the structural obstruction theorem; J01 and J11 are already in the *J. Algebra* pipeline.
 2. ***Algebraic Combinatorics*** (CIRM, Diamond-OA) — the orbit decomposition and bracketing-pair combinatorics are a clean fit; the size distribution $(44,7,4,10,2)$ and the obstruction-orbit characterization are combinatorial-on-a-group-action content. Companion paper J15 (J01's four-core combinatorial framing) is already in the *Algebraic Combinatorics* pipeline.
-3. ***Algebras and Representation Theory*** (Springer) — appropriate if the editor prefers a venue closer to the representation-theoretic interpretation in §6 (the operad layer carries content orthogonal to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ structure of J11).
+3. ***Algebras and Representation Theory*** (Springer) — appropriate if the editor prefers a venue closer to the representation-theoretic interpretation in §6 (the arity-3 bracketing layer carries content orthogonal to the doubly-invariant $\mathfrak{su}(4)\oplus\mathfrak{u}(1)$ structure of J11).
 
 We are entirely open to the editor's preference and would migrate the submission promptly if asked.
 
@@ -60,7 +64,7 @@ The TIG/CK research program is shipping a coordinated $55$-paper sequence (J14�
 - **J01** (Sanders & Gish 2026, *J. Algebra*) — establishes the binary joint-closure / attractor / Galois-$D_4$ centerpiece. Cited in §1, §5, §6.
 - **J12** (Sanders & Gish 2026, *Comm. Alg.*) — unfolds the standalone Galois proof on the quartic. Cited in §6.
 - **J11** (Sanders & Gish 2026, *J. Algebra*) — Wedderburn $D_4$-isotypic of $[T,B]$; identifies $\mathfrak{su}(4)\oplus\mathfrak{u}(1)\subset\mathfrak{so}(10)$. Cited in §6.
-- **J45** (Sanders & Gish 2026, *Comm. Alg.*) — operadic $\langle P_{56}\rangle$-equivariant fuse-rule survey (the constructive companion to Theorem C). Cited in §1, §7.
+- **J45** (Sanders & Gish 2026, *Comm. Alg.*) — $\langle P_{56}\rangle$-equivariant arity-3 fuse-rule survey (the constructive companion to Theorem C). Cited in §1, §7.
 
 ## Lens- and substrate-scope discipline
 
@@ -88,8 +92,8 @@ The script depends only on the Python standard library (no `numpy`, no `sympy`).
 ## Suggested reviewers
 
 - An expert in finite-magma / sub-quasigroup combinatorics (Drápal-Wanless line).
-- An expert in algebraic operads at arity $3$ (Loday-Vallette tradition).
 - An expert in finite permutation groups acting on combinatorial structures (Cameron-Cherlin tradition).
+- An expert in non-associative algebra and arity-3 bracketing structures.
 
 ## Conflict of interest
 

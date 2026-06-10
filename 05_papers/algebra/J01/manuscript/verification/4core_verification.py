@@ -6,7 +6,7 @@
 # an Algebraic Mixing Point for a Pair of Binary Operations on
 # Z/10Z" (Sanders, Gish, 2026)
 #
-# Six checks (mapped to manuscript Theorems A-F):
+# Six checks (mapped to manuscript Theorems A-E and Proposition F):
 #   1. Joint-closure enumeration   (Theorems A + 2.4 three-substrate
 #                                   strengthening; Theorem B 4-core
 #                                   3-substrate closure as corollary)
@@ -14,7 +14,7 @@
 #   3. Closed-form attractor       (Theorem D ratio part)
 #   4. Universality across chain   (Theorem E)
 #   5. Galois structure of quartic (Theorem D Galois part)
-#   6. alpha-sweep PSLQ            (Theorem F partial uniqueness)
+#   6. alpha-sweep PSLQ            (Proposition F numerical observation)
 #
 # Runtime: ~4 seconds. Run: python3 4core_verification.py
 #

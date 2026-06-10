@@ -6,7 +6,7 @@
 **Phase:** Phase 2
 **Target venue:** AMM
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (defensive-exposition pass complete))
+**Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
 **WP source:** (M_22 substrate-prime)
 
 ---
@@ -106,3 +106,9 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences." Submitted to *American Mathematical Monthly*.
+
+---
+
+## Demotion notice (2026-05-27 audit)
+
+Per `05_papers/_staging/referee_reports/08_promotions_audit_J17_J23.md`, J23 is a single-observation paper: the substrate-prime set was reverse-engineered from |M₂₂|, and alternative null-hypothesis models (sum-of-squares-conditioned) were not computed. Recommend retargeting as a *Mathematical Intelligencer*-class short note rather than full Tier 1.

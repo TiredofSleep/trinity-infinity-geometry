@@ -1,10 +1,10 @@
 # J40 — Four Types of Measurement Failure: A Diagnostic Classifier for Paradoxes
 
-**Status:** REWRITTEN PER SAVE PLAN 2026-05-07
+**Status:** REWRITTEN PER SAVE PLAN 2026-05-07 (awaiting final rigor pass)
 **Phase:** Phase 5/6
 **Target venue:** **Mathematical Intelligencer** (retargeted from AMM per fresh-eyes referee §7; alternate: *Philosophia Mathematica* with full literature engagement)
 **Author lane:** Sanders + Gish (per Brayden directive 2026-05-07)
-**Tier:** 2 (draft (REWRITTEN per SAVE PLAN; scope-narrowed to algebra))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** (paradox classifier expository)
 
 ---
@@ -23,7 +23,7 @@ The proof script (where applicable) is the green-light gate before submission. I
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
-J34
+J20 (UOP Theorem 0; cross-references: J21, J36, J47, J39). Note: an earlier draft of this README listed "J34" reflecting a pre-renumbering ID; J20 is the canonical interdisciplinary-folder ID for the UOP paper. Harmonized 2026-05-28.
 
 ## §4 — Cover letter
 
@@ -113,3 +113,15 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B.R., Gish, M. (2026). "Paradox Classifier (UOP): A Diagnostic for Structural Breakdowns." Submitted to *Mathematical Intelligencer*.
+
+---
+
+## Known issues (per 2026-05-28 audit; updated from 2026-05-27)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J53 was applied 2026-05-07 (category 𝓜 added, Monty Hall + Gödel dropped, Berry/Curry/Yablo added, literature §1.5 engaged, retargeted to Math Intelligencer from AMM). Tier-2-polish pass 2026-05-28 confirmed: J20 (interdisciplinary) is the canonical UOP paper ID and is consistent across manuscript and README; cover letter was harmonized 2026-05-28 from a stale J34/J11/J35/J45 set to J20/J21/J36/J47/J39; verification script `verify_J53.py` PASSes (mutual exclusion, exhaustiveness on admissible inputs, score ranges per Def 3.2, priority III > IV > I/II); cover letter example count corrected from "eight" to "seven" (Monty Hall and Twin Paradox dropped, Berry/Curry retained, Yablo only in §4.2 alt reading). Outstanding for ship-readiness:
+
+- §6 submission checklist still entirely empty — none of the standard items re-verified post-rewrite. Walk through the checklist before submission.
+- Per-venue cap: this would be the 3rd Math Intelligencer of the J-series (after J10 and J39); above the standard 2/quarter cap. Either invoke the *Philosophia Mathematica* alternate or coordinate via VENUE_SCHEDULE.md.
+- Brayden's referee-rigor pass not yet complete.
+- Submission gate (a) requires the [J20] UOP preprint on arXiv first — flag this dependency.
+- No paper-specific referee report in `_staging/referee_reports/` for J40 post-rewrite was filed pre-this-pass; tier-2-polish pass 2026-05-28 documented in `_staging/referee_reports/33_tier2_polish_J38_J39_J40.md`. The original fresh-eyes referee report is at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/`.

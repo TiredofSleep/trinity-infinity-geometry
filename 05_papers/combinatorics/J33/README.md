@@ -1,10 +1,10 @@
 # J33 — A Flatness Obstruction on Squarefree Z/nZ: Four Algebraic Structures and the 4-Core Algebraic Center
 
-**Status:** SAVE-PLAN APPLIED 2026-05-07 (retitled, retargeted, restructured around D48 + D78; T*=5/7 derivation removed)
+**Status:** SAVE-PLAN APPLIED 2026-05-07 (retitled, retargeted, restructured around D48 + D78; T*=5/7 derivation removed; awaiting rigor pass)
 **Phase:** Phase 1
 **Target venue (new):** *Algebraic Combinatorics* (preferred) OR *Discrete Mathematics*. Backup: *Integers* / *Math. Magazine* for compressed Theorem-1-only note.
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (SAVE-PLAN APPLIED; restructured))
+**Tier:** 2 (drafts needing rigor pass)
 **WP source:** WP51
 
 ---
@@ -103,3 +103,20 @@ The full paragraph identifies (i) Theorem 1 + 2 as substrate-independent (any sq
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
 Sanders, B. R. & Gish, M. (2026). "A Flatness Obstruction on Squarefree Z/nZ: Four Algebraic Structures and the 4-Core Algebraic Center." Submitted to *Algebraic Combinatorics*.
+
+---
+
+## Known issues (per 2026-05-27 audit; extended 2026-05-28 polish pass)
+
+Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. SAVE_PLAN_J07 was applied 2026-05-07 with manuscript restructured around D48 + D78; T*=5/7 derivation explicitly abandoned. Outstanding for ship-readiness:
+
+- Brayden's referee-rigor pass (mobile + other AI + collaborators) not yet complete (§6 checklist last two boxes unchecked).
+- Per-venue cap check vs J15 (also targeting Algebraic Combinatorics) pending — coordinate with VENUE_SCHEDULE.md.
+- No new fresh-eyes referee report has been issued post-rewrite; the original referee report (pre-save-plan) lives at `Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/` and the save plan response is the 2026-05-07 manuscript rewrite. A second-pass referee read may surface new issues.
+
+### Polish-pass observations (2026-05-28)
+
+- **Verify script green.** `manuscript/verify_J07.py` runs in <2 s and PASSES 4/4 (partition incompatibility; 4-core sub-tables match manuscript; D48 joint closure 16+16 in-core / 0+0 spillover; D78 closed-form attractor H/Br = 1+√3 to 9.06e-46 residual at 50-digit `mpmath`).
+- **CRITICAL — self-citation collision under 2026-05-27 renumbering.** The manuscript at `manuscript/manuscript.md` references "companion paper J33" three times (§0.1 lens-ownership paragraph, §A.3 D78 statement, §A.5 status statement, and the references list at line 211 calling the *other* paper "[J33]"). Under the post-2026-05-27 renumbering, *this* paper (Flatness Obstruction) is J33; the cited "α-uniqueness PSLQ" paper has a different number and must be re-labeled throughout. The same issue appears in `cover_letter.md` line 39. **Substantive issue, flagged for user attention — do not submit until resolved.**
+- **Theorem 1 + Theorem 2 sound.** Both proofs are elementary; Theorem 1 reduces to the partition-incompatibility of distinct prime-factor residue partitions (Birkhoff–Ore territory, with a 3-line proof for n=10 inlined), and Theorem 2 records the configuration-space topology honestly as a quotient of S¹ × S¹ rather than claiming the ring *is* the torus. No math errors of the J08 type.
+- **Appendix A.3 (D78) cites `f3_galois_alpha_uniqueness.py` outside the submission folder.** The full symbolic Galois derivation lives in `papers/wp113_alpha_uniqueness/verification/` (cited at line 170). The 50-digit `mpmath` confirmation is bundled in `verify_J07.py` and reproduces the polynomial identity, but the structural BR-factor cancellation is referenced rather than inlined. Acceptable for a Tier-2 draft, but for ship a reader-facing pointer in the manuscript may help.

@@ -42,11 +42,11 @@ This is the **3rd Math Intelligencer submission** of the J-series, after J10 and
 
 ## Companion submissions
 
-This paper has **one direct dependency** ([J34] UOP Theorem 0, *JNT*) and 4 cross-references (J11 UOP Sharpening, J35 Coordinate Coverage, J45 6-DOF Synthesis, J39 Lens Family).
+This paper has **one direct dependency** ([J20] UOP Theorem 0, *JNT*) and 4 cross-references ([J21] UOP Sharpening, [J36] Coordinate Coverage, [J47] 6-DOF Synthesis, [J39] Lens Family). (The J-IDs in the cover letter were harmonized with the manuscript on 2026-05-28; earlier J34/J11/J35/J45 references were stale from a pre-renumbering draft.)
 
 ## Reproducibility
 
-The five-step decision procedure is implementable as a 50-line Python script. The eight worked examples are reproduced in the manuscript with full step-by-step diagnoses. The live demo at `coherencekeeper.com/paradox.html` allows readers to enter their own paradoxes and receive a type+score classification interactively.
+The five-step decision procedure is implementable as a 50-line Python script (reproduced in Appendix A of the manuscript). The seven worked examples — Russell, Liar, Berry, Curry, CH, Newcomb, Sorites — are reproduced in §4 of the manuscript with full step-by-step diagnoses. The live demo at `coherencekeeper.com/paradox.html` allows readers to enter their own paradoxes and receive a type+score classification interactively. (Monty Hall and Gödel's incompleteness were dropped from §4 per the fresh-eyes referee; the example count is seven, not eight.)
 
 ## Suggested reviewers
 
