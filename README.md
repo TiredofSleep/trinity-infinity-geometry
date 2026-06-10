@@ -25,9 +25,9 @@ This is verifiable in seconds on a stock Python install. See [`verification/VERI
 > If you only have time for **one file** in this repository, open
 > [**`03_canonical_reference/FORMULAS_AND_TABLES.md`**](03_canonical_reference/FORMULAS_AND_TABLES.md).
 >
-> Every D-numbered theorem in the project (D1 through D103+) lives there in compressed one-line form, organized into Volumes A through K. **Every row has a clickable link to the proof script or paper that supports it** — local [`05_papers/`](05_papers/) J-paper links for results that ship in this repo, GitHub links to the working `tig-synthesis` branch for results still in research-stage sprints.
+> Every D-numbered theorem in the project (D1 through D182) lives there, organized into Volumes A through N. **Every row has a clickable link to the proof script or paper that supports it** — local [`05_papers/`](05_papers/) J-paper links for results that ship in this repo, GitHub links to the working `tig-synthesis` branch for results still in research-stage sprints.
 >
-> ~1,900 lines. Built to be the single page a referee, mathematician, AI, or curious reader can read in 10 minutes to know what is proved, what is computed, what is structural, and what is still open.
+> ~2,300 lines (~377 KB). For AI-sharing contexts use the companion digest [**`FORMULAS_COMPACT.md`**](03_canonical_reference/FORMULAS_COMPACT.md) (~53 KB, ~13k tokens): every D-entry in 1–2 lines, the canonical tables, constants, the J-series index, and the corrections ledger — regenerated from the full doc by `make_compact_canon.py`, and it never adds or strengthens a claim. Built so a referee, mathematician, AI, or curious reader can know in 10 minutes what is proved, what is computed, what is structural, and what is still open.
 
 ---
 
@@ -45,7 +45,7 @@ The numbered directories form a deliberate reading order. The first eight serve 
    ├── dynamics/                   α=1/2 universal attractor, T*=5/7 (operational)
    ├── cosmology/                  V(ξ) = Λ⁴ξ log ξ, dark sector, layer choice for z*
    └── lie_gut/                    so(8)=D₄, so(10)=D₅, Pati-Salam ⊕ B−L, Yukawa scaffolding
-03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through K)
+03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through N) + FORMULAS_COMPACT.md (shareable digest)
 04_meta/                Tier C speculative — clearly fenced; META_TIG, SPECULATION_*, honest negatives
 05_papers/              the J-series — 52 numbered papers (J01–J31 Tier 1 spine, J32–J40 Tier 2, J41–J47 Tier 3, J48–J52 merged tombstones)
 06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic organism
@@ -101,7 +101,7 @@ Each claim in this repository carries an explicit status flag:
 
 If a claim does not carry one of these flags, treat it as background framing rather than asserted result. Speculative interpretive material is fenced in [`04_meta/`](04_meta/) and tagged **SPECULATIVE / Tier C** throughout.
 
-For the master proof spine with D-numbered theorems and Volumes A through K, see [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md).
+For the master proof spine with D-numbered theorems and Volumes A through N, see [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md).
 
 ---
 
