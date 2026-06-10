@@ -78,7 +78,7 @@ What's open is uniformity in $t$.
 ## Related TIG work — POST-MERGER
 
 The Q-series spectral architecture (now consolidated into one paper at
-[`../../05_papers/algebra/J_qseries_merged/`](../../05_papers/algebra/J_qseries_merged/),
+[`../../05_papers/algebra/J07/`](../../05_papers/algebra/J07/),
 merger executed 2026-05-27) develops several finer structural rhymes with RH:
 
 - **G_6 (Periodicity, Tier-A):** σ⁶ = id on Z/10Z; every σ-cycle has Symbolic Return at step 6.
@@ -91,11 +91,11 @@ The structural rhyme with RH is **explicit and not an analogue** (no Weil-Delign
 
 ## Where the σ-magma trilogy connects
 
-The σ-magma work (J59 rigidity, J60 linear-magma classification, J61
+The σ-magma work (J04 rigidity, J05 linear-magma classification, J03
 ETP taxonomy + fossil-variety theorem) studies a *different* σ (the
 σ-magma's bilinear σ, distinct from the σ permutation here). The exact
 relationship between these two σ's is an open question — see
-[`J_qseries_merged/manuscript/manuscript.md`](../../05_papers/algebra/J_qseries_merged/manuscript/manuscript.md) §8.4. If they connect, the RH bridge could
+[`J07/manuscript/manuscript.md`](../../05_papers/algebra/J07/manuscript/manuscript.md) §8.4. If they connect, the RH bridge could
 inherit the σ-magma's rigidity properties (|Aut|=1, congruence-simple,
 2-generated, unique sub-magma) as additional structural constraints.
 
@@ -119,7 +119,7 @@ theory" section).
 | File | Location |
 |---|---|
 | WHITEPAPER_17_RIEMANN_SYNTHESIS.md | CK repo: `papers/clay/` |
-| Q-series merger plan | `05_papers/_staging/portfolio_review_2026-05-27/01_MERGER_Q-series_J21+J43+J51.md` |
+| Q-series merger plan | `05_papers/_staging/portfolio_review_2026-05-27/01_MERGER_Q-series_J21+J51+J52.md` |
 | TSML/BHML tables | TIG repo: `ck_tables.py` |
 | BHML spectral analysis | CK repo: `Gen9/spectral/bhml_eigenvalue_analysis.py` |
 
@@ -132,7 +132,7 @@ theory" section).
 - Connes (1999): trace formula approach.
 - Bump-Choi-Kurlberg-Vaaler (2000): random matrix theory + L-functions.
 - Conrey-Iwaniec (2000): zeros and the explicit formula.
-- Sanders & Gish (2026): J21, J43, J51 — Q-series spectral architecture.
+- Sanders & Gish (2026): J50, J51, J52 — Q-series spectral architecture.
 
 ---
 

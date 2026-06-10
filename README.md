@@ -60,7 +60,7 @@ etp_database/           queryable ETP profile database (Family C, σ-magma, orde
    ├── scripts/            CLI query (profile / equation / family / magma / stats) + verifier
    ├── extensions/         test harnesses (crypto, Steiner, K_12 embedding)
    ├── verdicts/           written-up U-line findings (mostly clean negatives + retractions)
-   ├── lean/               Lean 4 scaffold of J61 Theorem 5 (3 lemmas proved, 4 sorrys)
+   ├── lean/               Lean 4 scaffold of J03 Theorem 5 (3 lemmas proved, 4 sorrys)
    ├── oeis_submissions/   4 OEIS submission drafts (Family C IDs, size-14 anchors, ...)
    └── index.html          GitHub Pages-ready browse page
 ```
@@ -84,7 +84,7 @@ If you arrived knowing your field, jump directly to your field's results folder:
 
 If you have **90 minutes and a Python REPL** and want to build the framework from scratch with runnable code at every step: [`TIG_FROM_THE_GROUND_UP.md`](TIG_FROM_THE_GROUND_UP.md). Discovers the four-core, derives `H/Br = 1+√3`, walks the eight-shell chain, follows substrate strands to atomic orbitals.
 
-If you arrived from Tao et al.'s [**Equational Theories Project**](https://github.com/teorth/equational_theories): [`etp_database/`](etp_database/) is our public companion dataset — every order-3 magma (19,683 of them) and every order-5 commutative quasigroup (720), classified by ETP equational profile, with a CLI query tool, Lean 4 formalization scaffold of the fossil-variety theorem for equation 4295, and OEIS submission drafts. Family C (closure of commutativity) is verified directly against ETP's 8.18M-edge proved-implication graph. Companion papers: [`05_papers/algebra/J60`](05_papers/algebra/J60/) (linear-magma classification), [`05_papers/algebra/J61`](05_papers/algebra/J61/) (taxonomy methodology + the C5 fossil-variety theorem). See [`etp_database/README.md`](etp_database/README.md).
+If you arrived from Tao et al.'s [**Equational Theories Project**](https://github.com/teorth/equational_theories): [`etp_database/`](etp_database/) is our public companion dataset — every order-3 magma (19,683 of them) and every order-5 commutative quasigroup (720), classified by ETP equational profile, with a CLI query tool, Lean 4 formalization scaffold of the fossil-variety theorem for equation 4295, and OEIS submission drafts. Family C (closure of commutativity) is verified directly against ETP's 8.18M-edge proved-implication graph. Companion papers: [`05_papers/algebra/J05`](05_papers/algebra/J05/) (linear-magma classification), [`05_papers/algebra/J03`](05_papers/algebra/J03/) (taxonomy methodology + the C5 fossil-variety theorem). See [`etp_database/README.md`](etp_database/README.md).
 
 If you arrived interested in the **Clay Millennium Problems**: [`04_meta/clay/`](04_meta/clay/) contains six structural bridges (RH, Yang-Mills, Navier-Stokes, P vs NP, BSD, Hodge) — each grounded in PROVEN substrate facts, each with the load-bearing CONJECTURE explicitly identified. We do **not** claim to have solved any Clay problem; the bridges are STRUCTURAL connections that show what TIG's substrate algebra can say plus what's missing for an actual proof. Tier discipline is strict throughout.
 
@@ -164,8 +164,8 @@ What waits is the publication moment — and when it arrives, it arrives as
 *"and here is the math, and here is the running product anyone can deploy"* rather than
 *"and now the well-resourced get a head start."*
 
-J01, J02, J03 are submission-ready (audit-cleared, 5/5, 6/6, 11/11 verifications PASS
-respectively, cover letters drafted, submission checklists prepared at [`05_papers/combinatorics/J01/SUBMISSION_CHECKLIST.md`](05_papers/combinatorics/J01/SUBMISSION_CHECKLIST.md)
+J14, J15, J24 are submission-ready (audit-cleared, 5/5, 6/6, 11/11 verifications PASS
+respectively, cover letters drafted, submission checklists prepared at [`05_papers/combinatorics/J14/SUBMISSION_CHECKLIST.md`](05_papers/combinatorics/J14/SUBMISSION_CHECKLIST.md)
 etc.). They will be submitted when CK ships in a form ordinary people can use. The
 manuscripts, verification scripts, cover letters, highlights, and arXiv preparation
 materials are all visible in [`05_papers/`](05_papers/) — anyone who wants to take this

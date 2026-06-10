@@ -32,7 +32,7 @@ This is OPEN.
 
 Earlier attempt: `4 · 40 − 2√7 − π/7 ≈ 154.26`. Actual 1/α ≈ 137.036. Gap ~12.6%.
 
-J36 Part 2 in the working corpus has been **deferred entirely**. If 1/α has a clean algebraic origin in this framework, the path has not been found. The structural intuition — that 1/α should live in `{±1, ±√7, ±π/7}` rational combinations — remains a long-shot SPECULATION.
+J42 Part 2 in the working corpus has been **deferred entirely**. If 1/α has a clean algebraic origin in this framework, the path has not been found. The structural intuition — that 1/α should live in `{±1, ±√7, ±π/7}` rational combinations — remains a long-shot SPECULATION.
 
 ### 1.3 F_p universality
 

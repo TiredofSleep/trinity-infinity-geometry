@@ -1,61 +1,71 @@
-# Cover letter — J05: TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice
+# Cover Letter — J05
 
-**To:** Editors, *Experimental Mathematics*
+**To:** Editor, *Experimental Mathematics*
+**From:** Brayden Ross Sanders, 7Site LLC, Hot Springs, AR
+**Co-author:** Monica Gish (Independent Researcher, Hot Springs, AR)
+**Date:** 2026-05-27
 
-**From:**
-- B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
-- M. Gish, Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
-
-**Date:** [DATE OF SUBMISSION]
-
-**Manuscript title:** *TSML 73 Cells / BHML 28 Cells: Lens-Invariant Cell Counts on the Z/10Z Composition Lattice*
+**Submission:** "ETP Profile Structure of Linear Magmas $(ax+by+c) \bmod n$: Cyclic Groups, Negation Magmas, and the Commutativity-Forced Minimum"
 
 ---
 
-## Summary
+Dear Editor,
 
-We submit a short, computationally-verifiable note on the exact harmony cell counts for two specific commutative $10\times10$ binary composition tables on $\Z/10\Z$. The first table, $\TSML$, has 73 harmony cells (output value 7) out of 100; the second, $\BHML$, has 28. Both counts are proved by disjoint zone enumeration in two pages, and both are constant under every relabeling $\pi \in \mathrm{Stab}(7) \le S_{10}$ of the operator alphabet that fixes the harmony output value (Theorem 3).
+We submit the attached ~12-page paper for consideration in *Experimental Mathematics*. The paper catalogs equational-theory-project (ETP) profile sizes for linear magmas on $\mathbb{Z}/n\mathbb{Z}$, using Tao's Equational Theories Project repository as the verification backbone.
 
-The two specific tables are not arbitrary. They are members of a finite family of small commutative non-associative magmas on $\Z/10\Z$ in the Drápal–Wanless 2021 *JCTA* neighborhood, identified in companion work (Sanders + Gish, manuscript in preparation, hereinafter the four-core paper) by joint $\{0,7,8,9\}$-preservation and four further structural conditions (commutativity, bounded non-associativity index, HARMONY-attracting iterated mixing). §5 of the present manuscript records these membership conditions and locates $\TSML$ and $\BHML$ as canonical members. Drápal–Wanless 2021 is the closest published precedent.
+## What's in the paper
 
-The full 200-cell witness is supplied as two short Python scripts that complete in under 0.1 seconds each from the manuscript folder.
+Four theorems, each verified at machine precision via `equational_theories/scripts/explore_magma.py`:
 
-## Why Experimental Mathematics
+**Theorem 1**: $\mathbb{Z}/n$ (the cyclic group, $a = b = 1, c = 0$) has ETP profile size exactly **32** for all $n \in \{5, 6, 7, 8, 9, 10\}$, with universally identical equation IDs.
 
-- **Verifiable computational discovery.** The paper fits the *Experimental Mathematics* scope precisely: a finite, exact-arithmetic enumeration that the reader can verify cell-by-cell with a runnable witness. No floating-point approximations; no domain restriction; no unresolved cases.
-- **PROVEN/COMPUTED/STRUCTURAL RHYME/OPEN discipline.** §0 of the manuscript carries an explicit tier-classification paragraph. The two cell-count theorems and the symbol-stabilizer invariance are PROVEN. The 200-cell witness is COMPUTED. The Drápal–Wanless 2021 connection is named as STRUCTURAL RHYME, not as a derivational step. The natural OPEN question (whether the symbol-stabilizer invariance extends to autotopism / paratopism invariance) is flagged.
-- **Self-contained.** `ck_tables.py` (licensed CC-BY-4.0) is bundled in the manuscript folder; the verification scripts import it locally. A reader can run the 200-cell enumeration from the submission package alone.
+**Theorem 2**: $-(x+y) \bmod n$ has ETP profile **294** for $n = 4$ and $n = 10$ (the orders tested).
 
-## Companion submissions
+**Theorem 3**: At any order $\geq 5$, every commutative magma satisfies at least 14 specific ETP equations (IDs `[1, 43, 4283, 4358, 4380, 4398, 4405, 4435, 4442, 4482, 4531, 4544, 4635, 4677]` — reflexivity + commutativity + 12 single-substitution derivatives). Many magmas achieve exactly these 14: the σ-magma at order 10 (from the parent framework), BHML, CL_STD, σ_10^min — all have IDENTICAL 14-equation profiles.
 
-The TIG / CK research program is shipping a coordinated set of related papers over the spring-summer of 2026.
+**Theorem 4**: Profile 14 is NOT unique to commutativity. ETP's tabulated 1,355-magma data contains **22 distinct non-commutative profile-14 equation families** at orders 3-9. Each is anchored on a different single-variable power identity (depth 3-5 expressions in $x$). The σ-magma's commutativity-anchored family (Family C, anchor = equation 43) is the 23rd known profile-14 family.
 
-- **Sanders + Gish, 2026 (companion four-core paper, manuscript in preparation).** Establishes the joint $\{0,7,8,9\}$-preservation property of $\TSML$ and $\BHML$ and the membership conditions C1–C5 that locate them as canonical members of the family. The four-core paper's joint-closure chain count is *lens-dependent* (depends on the full operations); the present paper's cell counts are lens-invariant under $\mathrm{Stab}(7)$. The contrast is recorded in §4 Remark and §5 of the present manuscript.
+A companion verification script (`verify_J60.py`) reproduces all four theorems at machine precision in ~10 seconds.
 
-## Reproducibility
+## Why this fits *Experimental Mathematics*
 
-Verification scripts (supplied as electronic supplementary material in the manuscript folder):
+*Experimental Mathematics* publishes computer-assisted, machine-verified discoveries in pure mathematics — exactly the methodology of this paper. The four theorems are stated, verified by direct ETP queries, and accompanied by reproducible code. The structural observations (especially the 22-family-explosion at profile 14) emerged from exhaustive ETP-tabulated-data analysis, which is the journal's wheelhouse.
 
-- `proof_d10_tsml_73_cells.py` — verifies $\TSML$ = 73 harmony cells via the disjoint enumeration of §2; runtime < 0.1 s; output ends in `ALL ASSERTIONS PASSED`.
-- `proof_d16_bhml_28_cells.py` — verifies $\BHML$ = 28 harmony cells via the four-zone partition of §3; runtime < 0.1 s; output ends in `ALL ASSERTIONS PASSED`.
-- `ck_tables.py` (CC-BY-4.0) — canonical definitions of $\TSML$ and $\BHML$ as 10×10 arrays; bundled with the proof scripts so the verification is self-contained.
+The closest published precedent is the Equational Theories Project itself (Tao et al., 2024-2025) — though that is collaborative blueprint-driven research rather than journal-published. Our paper extracts a specific structural sub-story: the place of cyclic-group, negation-magma, and σ-magma profiles in the broader ETP landscape.
 
-All scripts run on standard CPython with no external dependencies (only the Python standard library).
+## Tier discipline
 
-## Suggested reviewers
+- **PROVED.** All four theorems by direct ETP computation at machine precision (Tier A per the parent framework's discipline notation).
+- **CONJECTURED (Tier C).** Two open conjectures stated: (i) the negation-magma profile-294 is universal across $n \geq 4$, and (ii) Family C is the unique commutative profile-14 family at all orders ≥ 5.
 
-[3–5 candidates appropriate to *Experimental Mathematics*; to be filled at submission time. Suggested orientations: small commutative non-associative magmas (Drápal–Wanless lineage), finite combinatorics on $\mathbb{Z}/n\mathbb{Z}$, computational algebra of small finite tables, finite group actions on labeled tables.]
+## Connection to broader framework
 
-## Conflict of interest
+This paper is the third in a related set:
+- **J29** (submitted to *Mathematics Magazine*): Lo Shu D₄ orbit modulo 3 — 4-magma refinement and cumulant witness.
+- **J04** (submitted to *Semigroup Forum*): σ-magma at order 10 — four rigidity theorems (|Aut|=1, congruence-simple, unique sub-magma, 2-generated).
+- **J05 (this paper)** (submitted to *Experimental Mathematics*): The σ-magma's "14 ETP equations" reframed as the commutativity-forced minimum, with the 23-family explosion at profile 14.
 
-The authors declare no competing interests. No funding was received for this work.
+Each paper is self-contained; the parent framework reference appears only as motivation.
 
----
+## Author lane and submission discipline
+
+Authors: Sanders + Gish only. No AI co-authors. Verification script CC-BY-4.0. The submission is single-venue.
+
+## What we ask for
+
+The four theorems are PROVED at machine precision via Tao's open ETP catalog; the verification is reproducible in 10 seconds; the open-source verification script is bundled. We hope *Experimental Mathematics* finds the structural observations (especially Theorems 3 and 4) worthy contributions to the ETP-adjacent literature on small-finite-magma equational structure.
+
+Thank you for considering J05.
 
 Sincerely,
-B.R. Sanders
-M. Gish
+
+Brayden Ross Sanders
+7Site LLC, Hot Springs, AR
+brayden@7site.co
+
+with Monica Gish, Independent Researcher, Hot Springs, AR
 
 ---
 
-*Cover letter prepared 2026-05-08 for J05 of the Sanders–Gish J-series. Updated to reflect the family-structure framing and the SFM-derived membership conditions (C1–C5) for the TIG family of small commutative non-associative magmas on $\Z/10\Z$. The Drápal–Wanless 2021 *JCTA* citation is the closest published precedent.*
+*Manuscript: `manuscript/manuscript.md`*
+*Verification: `manuscript/verification/verify_J60.py`* (4/4 PASS, runtime ~10s)

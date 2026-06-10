@@ -10,9 +10,9 @@
 $\lambda \in [0.62, 0.70]$ (the CTR = CENTER corridor), the iteration
 $F_\lambda$ has a distinctive triple-intersection structure: three orbits
 through the 4-core $\mathcal{C} = \{0, 7, 8, 9\}$ meet at exactly three
-points related by the $D_4$ Galois action of J15.
+points related by the $D_4$ Galois action of J12.
 
-**Fact 2 (Triple intersection on the (TSML, BHML) pair).** Theorem F of J35
+**Fact 2 (Triple intersection on the (TSML, BHML) pair).** Theorem F of J01
 identifies a unique algebraic mixing point at $\alpha = 1/2$ with
 small-coefficient relations (Stern-Brocot grid + PSLQ verification at
 50-digit precision). The three corresponding rational fixed points have
@@ -21,7 +21,7 @@ a triple-intersection structure compatible with the CTR-corridor signature.
 **Fact 3 (Hodge-style "centered" structure).** The CTR corridor is the only
 corridor in Mix_λ where the iteration's invariant subspace decomposes
 into three pairwise-orthogonal $D_4$-isotypic blocks. The decomposition
-matches J31's Wedderburn decomposition pattern $(\text{trivial}, \text{sign}_2, \text{std})$.
+matches J11's Wedderburn decomposition pattern $(\text{trivial}, \text{sign}_2, \text{std})$.
 
 ---
 
@@ -98,9 +98,9 @@ Without H.1 made explicit, the bridge is genuinely speculative.
 ## What's PROVEN, narrowly
 
 The triple-intersection structure of the CTR corridor on the (T, B) pair
-on Z/10Z is a real, computationally-verified phenomenon (J35 Theorem F
+on Z/10Z is a real, computationally-verified phenomenon (J01 Theorem F
 and §6 of the universal-attractor analysis). It is also the case that
-this triple structure mirrors $D_4$ Galois symmetries that J31 identifies
+this triple structure mirrors $D_4$ Galois symmetries that J11 identifies
 inside $\mathfrak{so}(10)$.
 
 That's a fact of the substrate. It might or might not have anything to do
@@ -113,14 +113,14 @@ with Hodge.
 | Resource | Location |
 |---|---|
 | WP19_HODGE_MAP.md, WP19_HODGE_TRIPLE.md, WP23_HODGE_MAP.md, WP32_HODGE_TRIPLE.md | CK working repo: `papers/clay/` |
-| **Wedderburn D₄ decomposition** | TIG: J31 (Tier 1, ship-ready) |
-| **CTR corridor analysis** | TIG: J35 + CK WP104-WP111 |
-| **Operadic D₄ obstruction (relevant to Hodge classes)** | TIG: J32 (Tier 2) |
+| **Wedderburn D₄ decomposition** | TIG: J11 (Tier 1, ship-ready) |
+| **CTR corridor analysis** | TIG: J01 + CK WP104-WP111 |
+| **Operadic D₄ obstruction (relevant to Hodge classes)** | TIG: J10 (Tier 2) |
 
-### What J31 + J32 contribute
+### What J11 + J10 contribute
 
 The Wedderburn isotypic decomposition of the lens-pair commutator $[T, B]$
-under the $D_4$ action (J31, Tier 1):
+under the $D_4$ action (J11, Tier 1):
 - triv: 3,075,027/2 (≈ 83.32%)
 - sign₁: 9/2 (≈ 0.0002%)
 - sign₂: 288,164 (≈ 15.62%)
@@ -133,9 +133,9 @@ conjugation. If the CTR-corridor's triple-intersection structure corresponds
 to a Hodge class decomposition, the sign₃ = 0 fact would correspond to a
 Hodge-class vanishing theorem.
 
-The operadic obstruction at arity 3 (J32, Tier 2):
+The operadic obstruction at arity 3 (J10, Tier 2):
 - 16 of 67 $D_4$-orbits on the non-associative locus are bracketing-incoherent
-- This is a fully operadic phenomenon (not seen in the bilinear J31 analysis)
+- This is a fully operadic phenomenon (not seen in the bilinear J11 analysis)
 - Connects to Hodge: bracketing-incoherence may correspond to non-algebraic
   Hodge classes (the difficult part of the conjecture).
 

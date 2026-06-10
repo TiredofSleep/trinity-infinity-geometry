@@ -17,7 +17,7 @@ Cosmology papers from the TIG corpus, covering ξ field freezing quintessence, d
 | **J46** | Cosmology: Freezing Quintessence with z\* | JCAP (Layer 1) / *Annals of Physics* (Layer 2) / *PRD Letters* (Layer 3a) | gating layer choice |
 | **J47** | (cosmology paper, W2-F build) | TBD | rewritten in W2-F; awaiting cover letter |
 
-*Note: J45 (Yukawa Mass Hierarchy, λ = 10/49 + SU(5) indexing) is a pure-physics paper post-SAVE_PLAN 2026-05-07 — the cosmology paragraph was dropped. Landed at [`../physics/J45/`](../physics/J45/) 2026-05-12.*
+*Note: J44 (Yukawa Mass Hierarchy, λ = 10/49 + SU(5) indexing) is a pure-physics paper post-SAVE_PLAN 2026-05-07 — the cosmology paragraph was dropped. Landed at [`../physics/J44/`](../physics/J44/) 2026-05-12.*
 
 ---
 

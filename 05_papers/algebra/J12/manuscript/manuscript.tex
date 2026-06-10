@@ -1,0 +1,535 @@
+% J12 — Galois D_4 over LMFDB 4.2.10224.1: Number-Field Identification
+%        of the Four-Core Attractor
+%
+% Brayden R. Sanders, M. Gish, 7Site LLC
+% Submitted to: Communications in Algebra
+% Source: extracted from J15 (manuscript.tex §8 — Galois D_4; the J15 manuscript
+%         was previously named four_core_consolidated.tex and renamed 2026-05-13
+%         to the canonical generic name)
+%         and J01 (Journal of Algebra centerpiece, §5.2 Galois part)
+% Verification: verify_J15_galois.py (6 sympy checks; PASS at machine
+%               precision in ~2 seconds; CC-BY-4.0)
+% Companion cited as already-submitted: J15, J01
+% MSC 2020: 11R32, 11R16, 11R20, 12F10
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cfour}{\mathcal{C}_{4}}
+\newcommand{\TS}{T}
+\newcommand{\BH}{B}
+
+\title[Galois $D_{4}$ over LMFDB 4.2.10224.1]
+{Galois $D_{4}$ over LMFDB 4.2.10224.1: \\
+ Number-Field Identification of the Four-Core Attractor}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent Researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\subjclass[2020]{11R32, 11R16, 11R20, 12F10}
+\keywords{Galois group, dihedral extension, quartic number field,
+LMFDB, fuse iteration, attractor identification}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We isolate and present in self-contained form the Galois-theoretic
+content of the four-core attractor identified in \cite{SandersGishFourCore}.
+Specifically, the unique interior fixed point $p^{*}$ of the
+symmetric-mixing fuse iteration $F_{1/2}$ on the four-core simplex
+$\Delta^{3}_{\Cfour}$ has its coordinate ratio $\xi^{*} := r/\beta$
+characterized as the unique positive real root of the irreducible monic
+integer quartic
+\[
+  f(x) \;=\; x^{4} + 4x^{3} - x^{2} + 2x - 2.
+\]
+The Galois group of $f$ over $\Q$ is the dihedral group $D_{4}$ of order
+$8$. The number field $K = \Q[x]/(f)$ has polynomial discriminant
+$\Delta_{f} = -2^{6}\cdot 3^{2}\cdot 71 = -40896$, field discriminant
+$d_{K} = -2^{4}\cdot 3^{2}\cdot 71 = -10224$ (so the index
+$[\mathcal{O}_{K} : \Z[\xi^{*}]] = 2$), class number $h_{K} = 1$,
+signature $(2,1)$, regulator $R_{K} \approx 8.617$, and is the catalogued
+field LMFDB~$4.2.10224.1$. The Galois closure
+$L \supset K$ has degree $8$ over $\Q$, signature $(0,4)$, class number
+$14$, discriminant $2^{8}\cdot 3^{4}\cdot 71^{4}$, and is
+LMFDB~$8.0.526936617216.1$. The number field is catalogued and not new;
+what is new is the route: a quartic Galois $D_{4}$ field arising as the
+ring of definition for the fixed-point coordinates of a symmetric-mixing
+iteration on a four-element fusion-closed sub-magma of $\Z/10$.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+%==============================================================
+\section*{Lens, substrate, and claim tier}
+\addcontentsline{toc}{section}{Lens, substrate, and claim tier}
+%==============================================================
+
+\noindent\textit{Lens and substrate.} This paper works on
+$\Z/10\Z$ with two specific commutative non-associative magma tables
+$\TS$ (TSML) and $\BH$ (BHML), introduced and tabulated in the
+companion paper \cite{SandersGishFourCore} (and surveyed alongside
+related ``small finite commutative non-associative magma'' work in
+Dr\'apal--Wanless \cite{DrapalWanless2021}). These tables are
+\emph{not derived from first principles}; they reflect a structural
+reading of $\Z/10\Z$ via a ten-operator decomposition. The four-element
+set $\Cfour = \{0, 7, 8, 9\}$ that produces the quartic of this paper
+arises as the unique fusion-closed sub-magma supporting the
+symmetric-mixing iteration $F_{1/2}$ on $\Z/10\Z$ under the joint
+action of $(\TS, \BH)$; closure across these specific tables is the
+substrate input, the Galois content of the resulting fixed point is
+the present paper's output. Analogous Galois questions on other
+substrate-and-table choices are open; whether other substrate choices
+yield similarly rich number-theoretic closures is not addressed here.
+
+\medskip
+\noindent\textit{Claim tier.}
+\begin{itemize}\setlength\itemsep{0pt}
+\item \textbf{PROVED.} Theorem~\ref{thm:galois} in its entirety: (i)
+  $f(x) = x^{4} + 4x^{3} - x^{2} + 2x - 2$ is irreducible over $\Q$;
+  (ii) $\mathrm{Gal}(f/\Q) = D_{4}$; (iii) $K = \Q[x]/(f)$ is the
+  catalogued field LMFDB~$4.2.10224.1$ with the recorded discriminant,
+  class number, signature, and regulator; (iv) $\Q(\sqrt{3}) \subset K$
+  via the explicit $\Q(\sqrt{3})$-factorization of $f$ displayed in the
+  theorem.
+
+\item \textbf{COMPUTED.} The polynomial discriminant
+  $\Delta_{f} = -40896$, the resolvent cubic
+  $g(y) = (y+2)(y^{2} - y + 18)$ with rational root $-2$ and quadratic
+  discriminant $-71$, the Tschirnhaus reduction
+  $x \mapsto -x - 1$ to LMFDB's canonical defining polynomial
+  $x^{4} - 7x^{2} - 12x - 8$, the index $[\mathcal{O}_{K} :
+  \Z[\xi^{*}]] = 2$, and the irreducibility of $f$ over $\Q(\sqrt{-71})$
+  are all verified at machine precision by the six-check sympy script
+  \texttt{verify\_J15\_galois.py} accompanying this paper (runtime
+  approximately two seconds). Cross-verification via PARI/GP
+  (\texttt{polgalois}, \texttt{nfinit}) and the LMFDB record is
+  immediate.
+
+\item \textbf{STRUCTURAL RHYME.} The two quadratic subfields of the
+  Galois closure --- $\Q(\sqrt{3})$ (from the closed form
+  $h/\beta = 1+\sqrt{3}$ of the companion paper) and $\Q(\sqrt{-71})$
+  (from the polynomial discriminant of $f$) --- echo across other
+  attractor diagnostics in the parent framework. We cite this as
+  motivation for the reader's interest, not as a derivation.
+
+\item \textbf{OPEN.} Whether the route from $(\TS, \BH)$ on $\Z/10\Z$
+  to LMFDB~$4.2.10224.1$ extends to other small finite commutative
+  non-associative magma families remains open. The companion paper
+  \cite{SandersGishFourCore} addresses a partial uniqueness question
+  for the iteration parameter $\alpha$; we make no claims on
+  $\alpha$-uniqueness here.
+\end{itemize}
+
+%==============================================================
+\section{Introduction and statement of result}
+%==============================================================
+
+The four-core sub-magma $\Cfour = \{0, 7, 8, 9\} \subset \Z/10$ is
+fusion-closed under the joint action of the two canonical commutative
+binary operations $\TS, \BH$ on $\Z/10$ (the magma data and joint
+closure are established in \cite{SandersGishFourCore}). The
+symmetric-mixing fuse iteration $F_{1/2}$ on the four-core simplex
+$\Delta^{3}_{\Cfour} = \{(v, h, \beta, r) \in \R_{\geq 0}^{4} :
+v + h + \beta + r = 1\}$ has a unique interior fixed point $p^{*}$.
+The Galois content of $p^{*}$ is captured by two algebraic ratios:
+$h/\beta = 1 + \sqrt{3}$ and $\xi^{*} = r/\beta$.
+
+The first ratio places one quadratic extension $\Q(\sqrt{3}) \subset
+\Q(\xi^{*})$ in the Galois closure. The second ratio is the focus of
+the present paper.
+
+\begin{theorem}[Main result, restated from \cite{SandersGishFourCore} §8]
+\label{thm:galois}
+Let $p^{*}$ be the unique interior fixed point of the
+symmetric-mixing fuse iteration $F_{1/2}$ on the four-core simplex
+$\Delta^{3}_{\Cfour}$. Then the coordinate ratio
+$\xi^{*} = p^{*}_{r}/p^{*}_{\beta}$ is the unique positive real root of
+the irreducible monic integer quartic
+\[
+  f(x) \;=\; x^{4} + 4x^{3} - x^{2} + 2x - 2.
+\]
+The Galois group of $f$ over $\Q$ is the dihedral group $D_{4}$ of
+order $8$. The number field $K = \Q[x]/(f)$ has polynomial discriminant
+$\Delta_{f} = -2^{6}\cdot 3^{2}\cdot 71 = -40896$ and field
+discriminant $d_{K} = -2^{4}\cdot 3^{2}\cdot 71 = -10224$, with index
+$[\mathcal{O}_{K} : \Z[\xi^{*}]] = \sqrt{\Delta_{f}/d_{K}} = 2$.
+The class number is $h_{K} = 1$, the signature is $(2, 1)$, the
+regulator is $R_{K} \approx 8.617$, and $K$ is the catalogued field
+LMFDB~$4.2.10224.1$. The Galois closure $L \supset K$
+has degree $8$ over $\Q$, signature $(0, 4)$, class number $14$,
+discriminant $2^{8}\cdot 3^{4}\cdot 71^{4}$, and is
+LMFDB~$8.0.526936617216.1$. The intermediate field $\Q(\sqrt{3}) \subset
+L$ is a genuine subfield of $L$, with explicit factorization
+\[
+  f(x) \;=\; \bigl(x^{2}+(2-\sqrt{3})x+(\sqrt{3}-1)\bigr)
+             \bigl(x^{2}+(2+\sqrt{3})x-(\sqrt{3}+1)\bigr)
+\]
+in $\Q(\sqrt{3})[x]$.
+\end{theorem}
+
+\subsection{Scope of the present paper, and its relation to the
+\emph{Journal of Algebra} companion.}
+The four-core paper \cite{SandersGishFourCore} establishes
+Theorem~\ref{thm:galois} as part of a wider analysis (joint closure of
+$\TS, \BH$ on the four-core; per-coordinate fuse data; closed-form
+attractor at $\alpha = 1/2$; $\alpha$-uniqueness on the
+Stern-Brocot grid). The companion \emph{Journal of Algebra} submission
+\cite{SandersGishFourCoreJalg} (Theorem~D / Theorem~5.2 there) packages
+the same Galois identification alongside five further structural facts
+about the four-core (3-substrate joint closure; symbolic normalizer
+identity; universal attractor across chain shells; partial
+$\alpha$-uniqueness on the Stern-Brocot grid; $F_{p}$-universality on a
+bounded scan). The present paper has a complementary purpose: it
+extracts the Galois-theoretic content as a self-contained,
+referee-portable result with explicit irreducibility argument,
+resolvent-cubic computation, $D_{4}$-vs-$C_{4}$ distinction, explicit
+$\Q(\sqrt{3})$-factorization, and LMFDB cross-check via Tschirnhaus
+reduction --- the steps that justify the bare assertion
+``$\mathrm{Gal}(f/\Q) = D_{4}$'' that the companion bundles into its
+broader narrative. We assume only the joint fuse data of
+\cite{SandersGishFourCore}, which we recall in
+Section~\ref{sec:setup}; the bulk of the present paper (Sections
+\ref{sec:derivation}--\ref{sec:lmfdb}) reproduces the derivation in
+self-contained form.
+
+%==============================================================
+\section{Setup: the four-core fuse iteration}
+\label{sec:setup}
+%==============================================================
+
+We recall the structural input from \cite{SandersGishFourCore}.
+
+\begin{definition}\label{def:fourcore-iteration}
+Let $V = e_{0}, H = e_{7}, B = e_{8}, R = e_{9}$ be the four basis
+vectors corresponding to the indices in $\Cfour = \{0, 7, 8, 9\}$.
+A point in the four-core simplex is $p = (v, h, \beta, r) \in
+\R_{\geq 0}^{4}$ with $v + h + \beta + r = 1$.
+The (symmetric-mixing) fuse iteration $F_{1/2}: \Delta^{3}_{\Cfour}
+\to \Delta^{3}_{\Cfour}$ is given by
+\[
+  F_{1/2}(p) \;=\; \tfrac12\bigl(\TS_{\rm fuse}(p) + \BH_{\rm fuse}(p)\bigr),
+\]
+where the two fuse operators are the per-coordinate fuse maps tabulated
+in \cite{SandersGishFourCore} Proposition (per-coordinate fuse data).
+\end{definition}
+
+\begin{remark}
+The crucial structural input we use below is the vanishing
+$\TS_{\rm fuse}(p)_{9} = 0$ on the four-core simplex (the four-core is
+fusion-closed under $\TS$ but $r$-coordinate inputs do not appear in the
+$r$-coordinate output of $\TS_{\rm fuse}$). This vanishing, together
+with the $\beta$-coordinate identity
+$\BH_{\rm fuse}(p)_{9} = 2vr + 2h\beta$, is what produces the quadratic
+relation in $\xi$.
+\end{remark}
+
+%==============================================================
+\section{Derivation of the quartic}
+\label{sec:derivation}
+%==============================================================
+
+\subsection{Derivation through $\Q(\sqrt{3})$.}
+
+The fixed-point equation for the $r$-coordinate at $\alpha = \tfrac12$
+gives, using the per-coordinate fuse data of
+\cite{SandersGishFourCore} and the vanishing
+$\TS_{\rm fuse}(p^{*})_{9} = 0$,
+\[
+  r \;=\; \tfrac12\bigl(\TS_{\rm fuse}(p^{*})_{9} + \BH_{\rm fuse}(p^{*})_{9}\bigr)
+        \;=\; \tfrac12(2vr + 2 h\beta)
+        \;=\; vr + h\beta.
+\]
+Substituting $v = 1 - h - \beta - r$ and rearranging,
+\[
+  r^{2} + (h + \beta)\, r \;-\; h\beta \;=\; 0.
+\]
+The closed-form $h/\beta = 1 + \sqrt{3}$ from \cite{SandersGishFourCore}
+gives $h = (1+\sqrt{3})\beta$. Setting $\xi = r/\beta$ and dividing by
+$\beta^{2}$,
+\[
+  \xi^{2} + (2+\sqrt{3})\,\xi \;-\; (1+\sqrt{3}) \;=\; 0
+  \qquad\text{over }\Q(\sqrt{3}).
+\]
+The positive root $\xi^{*} > 0$ is therefore an algebraic number of
+degree $2$ over $\Q(\sqrt{3})$.
+
+\subsection{Norm to $\Q$.}
+
+The minimal polynomial of $\xi^{*}$ over $\Q$ is the product of the
+displayed quadratic with its $\mathrm{Gal}(\Q(\sqrt{3})/\Q)$-conjugate
+(replacing $\sqrt{3}$ with $-\sqrt{3}$):
+\begin{align*}
+  f(x)
+  &= \bigl(x^{2} + (2+\sqrt{3})x - (1+\sqrt{3})\bigr)
+     \bigl(x^{2} + (2-\sqrt{3})x - (1-\sqrt{3})\bigr) \\
+  &= x^{4} + 4x^{3} - x^{2} + 2x - 2.
+\end{align*}
+The factorization is the $\Q(\sqrt{3})$-factorization of $f$,
+exhibited as part of the derivation rather than verified post-hoc.
+
+%==============================================================
+\section{Irreducibility over $\Q$}
+\label{sec:irreducibility}
+%==============================================================
+
+By Gauss's lemma, any factorization of $f$ in $\Q[x]$ gives a
+factorization in $\Z[x]$. Direct evaluation rules out integer roots:
+$f(\pm 1) \in \{4, -8\}$ and $f(\pm 2) \in \{46, -26\}$, none zero.
+For an integer factorization
+$f = (x^{2} + ax + b)(x^{2} + cx + d)$, matching coefficients gives
+\[
+  a + c = 4,\quad ac + b + d = -1,\quad ad + bc = 2,\quad bd = -2.
+\]
+The constraint $bd = -2$ over $\Z$ has solutions
+$(b, d) \in \{(1, -2), (-1, 2), (2, -1), (-2, 1)\}$. In each case the
+linear equation $ad + bc = 2$ together with $c = 4 - a$ determines $a$,
+and the quadratic $ac + b + d = -1$ gives a consistency check:
+\begin{itemize}\setlength\itemsep{0pt}
+\item $(b, d) = (1, -2)$: $-2a + (4 - a) = 2$ gives $a = 2/3 \notin \Z$.
+\item $(b, d) = (-1, 2)$: $2a - (4 - a) = 2$ gives $a = 2 \in \Z$,
+$c = 2$, but then $ac = 4 \neq -2 = -1 - b - d$, contradicting the
+quadratic constraint.
+\item $(b, d) = (2, -1)$: $-a + 2(4 - a) = 2$ gives $a = 2 \in \Z$,
+$c = 2$, again $ac = 4 \neq -2$.
+\item $(b, d) = (-2, 1)$: $a - 2(4 - a) = 2$ gives $a = 10/3 \notin \Z$.
+\end{itemize}
+No integer factorization exists; $f$ is irreducible over $\Z$, hence
+over $\Q$.
+
+\begin{remark}[Reduction-modulo-$p$ alternative]
+$f$ is irreducible mod $7$ (one-line proof). Note that $f$ is
+\emph{reducible} mod $5$ as
+$f \equiv (x^{2} - 2)(x^{2} - x + 1) \pmod{5}$, so reduction-based
+arguments require care in the choice of prime.
+\end{remark}
+
+%==============================================================
+\section{Galois group computation}
+\label{sec:galois}
+%==============================================================
+
+The polynomial discriminant is
+\[
+  \Delta_{f} \;=\; -2^{6}\cdot 3^{2}\cdot 71 \;=\; -40896
+\]
+(computed directly). In particular $\Delta_{f}$ is not a square in
+$\Q$, so $\mathrm{Gal}(f/\Q) \not\subseteq A_{4}$; this rules out
+$V_{4}$ and $A_{4}$ at the outset. The resolvent cubic of $f$, computed
+via the standard formula
+\[
+  g(y) \;=\; y^{3} - c\,y^{2} + (bd - 4e)\,y - (b^{2}e - 4ce + d^{2})
+\]
+for $f = x^{4} + bx^{3} + cx^{2} + dx + e$ with $(b,c,d,e) = (4,-1,2,-2)$,
+is
+\[
+  g(y) \;=\; y^{3} + y^{2} + 16y + 36
+       \;=\; (y + 2)(y^{2} - y + 18),
+\]
+with the unique rational root $y = -2$ and an irreducible quadratic
+factor $y^{2} - y + 18$ of discriminant $1 - 72 = -71$.
+
+By the standard quartic-Galois-group classification (Cohen,
+\textit{A Course in Computational Algebraic Number Theory},
+\S6.3.2~\cite{Cohen1993}), with $f$ irreducible over $\Q$ and
+$\Delta_{f}$ not a square in $\Q^{\times}$, the four possibilities for
+$\mathrm{Gal}(f/\Q)$ are $C_{4}$, $D_{4}$, and $S_{4}$ (the cases
+$V_{4}$ and $A_{4}$ require $\Delta_{f}$ to be a square and are
+already excluded). The number of rational roots of the resolvent cubic
+$g(y)$ distinguishes these:
+\begin{itemize}\setlength\itemsep{0pt}
+\item three rational roots $\Longrightarrow$ $V_{4}$ (excluded);
+\item one rational root $\Longrightarrow$ $C_{4}$ or $D_{4}$;
+\item no rational root $\Longrightarrow$ $S_{4}$ (or $A_{4}$).
+\end{itemize}
+Our resolvent has exactly one rational root, so
+$\mathrm{Gal}(f/\Q) \in \{C_{4}, D_{4}\}$. The two are distinguished by
+whether $f$ remains irreducible over the quadratic field
+$\Q(\sqrt{\Delta_{f}}) = \Q(\sqrt{-71})$: irreducibility there gives
+$D_{4}$, factorization gives $C_{4}$. Direct computation
+(\texttt{sympy.factor(f, extension=[sqrt(-71)])}) returns $f$ itself as
+a single irreducible factor, confirming
+\[
+  \mathrm{Gal}(f/\Q) \;=\; D_{4}.
+\]
+
+\begin{remark}[Visibility of $D_{4}$ from the derivation]
+The $D_{4}$-Galois group is also visible directly from the derivation
+above. The closed form $h/\beta = 1+\sqrt{3}$ generates the quadratic
+subfield $\Q(\sqrt{3})\subset\Q(\xi^{*})$, and the second nontrivial
+quadratic subfield $\Q(\sqrt{-71})$ enters through the discriminant;
+the splitting field is the compositum
+$\Q(\sqrt{3}, \sqrt{-71}, \xi^{*})$, a $D_{4}$-extension of $\Q$.
+\end{remark}
+
+%==============================================================
+\section{Number-field identification with LMFDB}
+\label{sec:lmfdb}
+%==============================================================
+
+The field $K = \Q[x]/(f)$ has degree $4$ and signature $(2, 1)$
+(counting real roots of $f$: two real, one complex conjugate pair).
+The Tschirnhaus substitution $x \mapsto -x - 1$ converts $f$ to
+\[
+  h(x) \;=\; x^{4} - 7x^{2} - 12x - 8,
+\]
+the canonical defining polynomial recorded in LMFDB's
+catalogue~\cite{LMFDB-4-2-10224-1} for the quartic field with
+$d_{K} = -10224 = -2^{4}\cdot 3^{2}\cdot 71$, class number $h_{K} = 1$,
+regulator $R_{K} \approx 8.617$, and Galois group $D_{4}$. Hence
+\[
+  K \;=\; \text{LMFDB}~4.2.10224.1.
+\]
+The Galois closure is the $D_{4}$-extension recorded
+in~\cite{LMFDB-8-0-526936617216-1}; intermediate subfields include
+$\Q(\sqrt{3})$, $\Q(\sqrt{-71})$, and the biquadratic
+$\Q(\sqrt{3}, \sqrt{-71})$.
+
+\begin{remark}[Novelty of the route, not the field]
+The number field $K = $ LMFDB~$4.2.10224.1$ is catalogued and not new;
+what is novel is the derivation. The polynomial form
+$f(x) = x^{4} + 4x^{3} - x^{2} + 2x - 2$ does not appear in OEIS for
+its coefficient sequence $[1, 4, -1, 2, -2]$ as a distinguished
+sequence, and we have not located it as a defining polynomial in a
+published context tied to a finite-magma fuse iteration. The pitch is
+therefore: a new route to a known number field, with the ring of
+definition realized as the fixed-point coordinates of the
+symmetric-mixing-weight iteration $F_{1/2}$ on the four-core simplex
+$\Delta^{3}_{\Cfour}$.
+\end{remark}
+
+%==============================================================
+\section{Verification}
+\label{sec:verification}
+%==============================================================
+
+The computational verification is bundled as a single sympy script,
+\texttt{verify\_J15\_galois.py}, accompanying this paper. It performs
+six independent checks corresponding to the steps of the proof:
+\begin{enumerate}\setlength\itemsep{0pt}
+\item Irreducibility of $f$ over $\Q$ (case-by-case integer
+  factorization over $(b, d) \in \{(1,-2), (-1,2), (2,-1), (-2,1)\}$,
+  cross-checked by irreducibility of $f \bmod 7$). The script also
+  records, for transparency, the reducible reduction
+  $f \equiv (x^{2} - 2)(x^{2} - x + 1) \pmod 5$.
+\item Polynomial discriminant $\Delta_{f} = -40896 = -2^{6}\cdot 3^{2}
+  \cdot 71$.
+\item Resolvent cubic $g(y) = y^{3} + y^{2} + 16y + 36 = (y+2)
+  (y^{2} - y + 18)$, with quadratic-factor discriminant $-71$ and
+  exactly one rational root $y = -2$.
+\item Galois group $D_{4}$ via direct irreducibility of $f$ over
+  $\Q(\sqrt{-71})$ using \texttt{sympy.factor(f, extension=[sqrt(-71)])}.
+\item Explicit $\Q(\sqrt{3})$-factorization of $f$ as the product of
+  two quadratics with conjugate $11 \pm 8\sqrt{3}$ discriminants
+  (norm $11^{2} - 64\cdot 3 = -71$, matching the polynomial
+  discriminant up to the rational square $(2^{3})^{2}$).
+\item LMFDB cross-check via the Tschirnhaus substitution
+  $x \mapsto -x - 1$ to $x^{4} - 7x^{2} - 12x - 8$ (LMFDB's canonical
+  defining polynomial of $4.2.10224.1$), plus the index identity
+  $[\mathcal{O}_{K} : \Z[\xi^{*}]]^{2} = |\Delta_{f}|/|d_{K}| = 4$.
+\end{enumerate}
+
+All six checks complete deterministically in approximately two seconds
+using \texttt{sympy} as the only external dependency. The Galois-group
+identification is independently reproducible in PARI/GP via
+\texttt{polgalois(f)} on $\Z[x]/(f)$ (and the resolvent cubic itself
+via the standard formula for $g(y)$ tabulated above). The verification
+script and the present manuscript are deposited at
+\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis} alongside
+the four-core consolidated paper \cite{SandersGishFourCore} and the
+companion \cite{SandersGishFourCoreJalg} (the latter contains the
+analogous Galois content as part of a six-check bundle on the broader
+fusion-closure picture; the present paper is the deeper standalone
+treatment of the $D_{4}$ identification).
+
+%==============================================================
+\section*{Acknowledgments}
+%==============================================================
+
+This work extracts and presents in self-contained form the
+Galois-theoretic content of the four-core attractor identified in
+\cite{SandersGishFourCore} and surveyed alongside its broader
+fusion-closure context in \cite{SandersGishFourCoreJalg}. The present
+manuscript is self-contained as a Galois-theoretic study of the quartic
+$x^{4} + 4x^{3} - x^{2} + 2x - 2$; familiarity with the broader
+fuse-iteration framework is not required beyond
+Section~\ref{sec:setup}. We thank the LMFDB collaboration for the
+catalogue infrastructure that makes the present number-field
+identification immediate, and Dr\'apal--Wanless~\cite{DrapalWanless2021}
+for the closest published precedent on small finite commutative
+non-associative magmas (the same domain of structures with which the
+input substrate $(\TS, \BH)$ on $\Z/10\Z$ is most naturally compared).
+
+%==============================================================
+\begin{thebibliography}{99}
+%==============================================================
+
+\bibitem{SandersGishFourCore} B.~R.~Sanders, M.~Gish,
+\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
+Algebraic Attractor of Two Commutative Binary Operations on
+$\Z/10$}, submitted to \emph{Algebraic Combinatorics}, 2026 (J15).
+
+\bibitem{SandersGishFourCoreJalg} B.~R.~Sanders, M.~Gish,
+\emph{Joint Closure, a Universal Attractor, and an Algebraic Mixing
+Point for a Pair of Binary Operations on $\Z/10\Z$}, submitted to
+\emph{Journal of Algebra}, 2026 (J01). The Galois identification of
+LMFDB~$4.2.10224.1$ appears there as Theorem~D / Theorem~5.2 within a
+six-check fusion-closure bundle; the present paper is the standalone
+deeper treatment of that identification.
+
+\bibitem{Cohen1993} H.~Cohen,
+\emph{A Course in Computational Algebraic Number Theory},
+Graduate Texts in Mathematics 138, Springer, 1993.
+
+\bibitem{DrapalWanless2021} A.~Dr\'apal and I.~M.~Wanless,
+\emph{Maximally nonassociative quasigroups},
+\textit{Journal of Combinatorial Theory, Series A} \textbf{184} (2021),
+105510, doi:10.1016/j.jcta.2021.105510.
+
+\bibitem{LMFDB-4-2-10224-1} The {LMFDB} Collaboration,
+\emph{Number field 4.2.10224.1},
+The L-functions and Modular Forms Database,
+\url{https://www.lmfdb.org/NumberField/4.2.10224.1}.
+
+\bibitem{LMFDB-8-0-526936617216-1} The {LMFDB} Collaboration,
+\emph{Number field 8.0.526936617216.1},
+The L-functions and Modular Forms Database,
+\url{https://www.lmfdb.org/NumberField/8.0.526936617216.1}.
+
+\bibitem{TIGsynthesis2026} B.~R.~Sanders,
+\emph{Trinity Infinity Geometry Synthesis},
+github.com/TiredofSleep/ck (default branch),
+DOI: 10.5281/zenodo.18852047, 2026.
+
+\end{thebibliography}
+
+\end{document}

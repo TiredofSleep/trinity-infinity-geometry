@@ -272,7 +272,7 @@ script that runs it. Full statements in `papers/MASTER_SPINE.md` and
 
 | ID | name | formula | status / file |
 |----|------|---------|---------------|
-| **D1** | First-G Law | for squarefree b > 1: the first non-coprime element in {1..b} is **k = p₁** = smallest prime factor | PROVED, 22,367 (b,k) pairs over 305 squarefree b, primes ≤ 499, zero counterexamples; [05_papers/number_theory/J03/manuscript/proof_first_g_event.py](../05_papers/number_theory/J03/manuscript/proof_first_g_event.py); WP34 |
+| **D1** | First-G Law | for squarefree b > 1: the first non-coprime element in {1..b} is **k = p₁** = smallest prime factor | PROVED, 22,367 (b,k) pairs over 305 squarefree b, primes ≤ 499, zero counterexamples; [05_papers/number_theory/J24/manuscript/proof_first_g_event.py](../05_papers/number_theory/J24/manuscript/proof_first_g_event.py); WP34 |
 | **D11a/b/c** | Coprime Window Bundle | the coprime window {1..p−1} is the stability window; R(p, p) = 0 forces a sign flip; R(k, f) carries no information about q | PROVED, three one-line corollaries of D1 |
 | **D14** | Corridor Spectral Mean | ∫₀¹ sinc²(t) dt = Si(2π)/π ≈ 0.4514 | PROVED by integration by parts; convergence O(1/p) |
 | **D15** | Coprime Window Invariance | for k < SPF(b), all arithmetic on {1..k} is b-independent | PROVED, pure divisibility |
@@ -344,7 +344,7 @@ WP15 Yang-Mills cross-reference for the D₅ → A₂ chain that meets BHML_8.
 | **D34** | Doubly-invariant content under D₄ = ⟨P₅₆, σ³⟩ | Conjugation by D₄ on so(10) decomposes 45 = 16 (trivial-isotypic) + 1 + 12 + 16 (in 8 copies of 2-dim irrep). The 16-dim trivial-isotypic component **closes as a Lie subalgebra** with Killing-form spectrum exactly $(-4)^{15} \oplus (0)^1$, forcing $\mathfrak{simple}_{15} \oplus \mathfrak{center}_1$. The unique 15-dim simple Lie algebra is $\mathfrak{so}(6) \cong \mathfrak{su}(4)$. **The doubly-invariant subalgebra is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ — Pati-Salam ⊕ B−L.** | PROVED at machine precision; [Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/verify_truth.py](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/verify_truth.py); UNMISTAKABLE_TRUTH.md |
 | **D35** | κ_ξ = 13/(4e) (under GUT-natural identification) | Under the identification $m^2_\xi = \|\mathrm{VEV}\|^2$ (natural in GUT contexts), combined with the BB-vacuum relation $m^2_\xi = \kappa_\xi e$, the inflaton coupling is forced: $\kappa_\xi e = 13/4$, so $\kappa_\xi = 13/(4e) \approx 1.196$. The integer 13 traces to BHML's 26 σ_outer-asymmetric cells (count/2). Closes README §3.5(iii) at structural level. **Honest caveat (strengthened 2026-04-27 per chat-Claude audit):** $\kappa_\xi$ does NOT appear in the field EOM in isolation (it cancels). $\kappa_\xi$ scales the energy density $\rho_\xi$ which feeds into the Friedmann equation, so in the COUPLED FRW system $\kappa_\xi$ DOES affect the trajectory. The fit value $\kappa_\xi \approx 0.5$ in the JCAP submission #07 reflects whatever value reproduces Planck's $\Omega_\xi \approx 0.685$ given the trajectory and initial conditions $(\Xi_i, \dot\Xi_i)$. **Whether $\kappa_\xi = 13/(4e) \approx 1.196$ produces $\Omega_\xi \approx 0.685$ in the coupled solve is the actual falsifiability test, and has not been performed.** If $13/(4e)$ gave a substantially different $\Omega_\xi$ from the Planck observation, the structural prediction would be falsified for this dimensional setup. | STRUCTURAL (verified analytically + at machine precision); [Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/xi_cosmology_tie.py](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/xi_cosmology_tie.py); XI_COSMOLOGY_TIE_FINDING.md; [Atlas/applications_pass_2026_04_27/code/item5_6_frw.py](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Atlas/applications_pass_2026_04_27/code/item5_6_frw.py) |
 | **D36** | First-G IS the first crossing event | For squarefree $b$ with smallest prime factor $p_1$, the First-G stability window $\{1, \dots, p_1 - 1\}$ is exactly the **pre-crossing region** under the Crossing Lemma's joint-map framework. Verified across 13/13 squarefree integers tested. Unifies §7.1 (D1) and §7.4 (Crossing Lemma) **conceptually** (no change to §3.1 cryptographic-complexity status). | PROVED, structural identification; [Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/first_g_crossing_tie.py](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/first_g_crossing_tie.py) |
-| **D37** | Wobble localization (prime-11 in TSML char poly) | TSML's 10×10 multiplication-table characteristic polynomial is $\det(\lambda I - T) = \lambda^{10} - 63\lambda^9 + 33\lambda^8 + 4204\lambda^7 - 3998\lambda^6 - 62510\lambda^5 + 9716\lambda^4 + 54880\lambda^3 - 120736\lambda^2$. Of the nine nonzero coefficients, **exactly two are divisible by 11**: $c_2 = 33 = 3 \cdot 11$ and $c_8 = -120736 = -2^5 \cdot 7^3 \cdot 11$. The discriminant of the 8th-degree polynomial (after factoring out $\lambda^2$) is $2^{16} \cdot 7^7 \cdot 659 \cdot \text{(large primes)}$, **with no factor of 11**. Wobble (11) lives at the **coefficient level** (sums and products of eigenvalues); the doubly-invariant dimension $2^{16}$ and HARMONY⁷ live at the **discriminant level** (separations). The 16-dim doubly-invariant subalgebra is **wobble-free**; the 29-dim complement carries the wobble. | PROVED at integer level via sympy; [05_papers/algebra/J37/manuscript/verification/wobble_check.py](../05_papers/algebra/J37/manuscript/verification/wobble_check.py) (7/7 claims); WOBBLE_FINDING.md |
+| **D37** | Wobble localization (prime-11 in TSML char poly) | TSML's 10×10 multiplication-table characteristic polynomial is $\det(\lambda I - T) = \lambda^{10} - 63\lambda^9 + 33\lambda^8 + 4204\lambda^7 - 3998\lambda^6 - 62510\lambda^5 + 9716\lambda^4 + 54880\lambda^3 - 120736\lambda^2$. Of the nine nonzero coefficients, **exactly two are divisible by 11**: $c_2 = 33 = 3 \cdot 11$ and $c_8 = -120736 = -2^5 \cdot 7^3 \cdot 11$. The discriminant of the 8th-degree polynomial (after factoring out $\lambda^2$) is $2^{16} \cdot 7^7 \cdot 659 \cdot \text{(large primes)}$, **with no factor of 11**. Wobble (11) lives at the **coefficient level** (sums and products of eigenvalues); the doubly-invariant dimension $2^{16}$ and HARMONY⁷ live at the **discriminant level** (separations). The 16-dim doubly-invariant subalgebra is **wobble-free**; the 29-dim complement carries the wobble. | PROVED at integer level via sympy; [05_papers/algebra/J19/manuscript/verification/wobble_check.py](../05_papers/algebra/J19/manuscript/verification/wobble_check.py) (7/7 claims); WOBBLE_FINDING.md |
 
 ### Volume G — Closed-form runtime attractor (Apr 25 bhml_specificity_addendum)
 
@@ -378,8 +378,8 @@ These negatives **strengthen** the picture: TIG structure is *specific* to canon
 |----|------|---------|---------------|
 | **D45** | TIG-detector specificity scope (WP106) | All four detectors (eigenvalue, mode, spectral, structural) score $|d| < 0.5$ across distilgpt2's 16 trained tensors. Generic ML weight matrices have **NO detectable TIG structure**. Promotes the negative-control N1 to a primary entry: TIG structure is **specific** to canonical TSML/BHML, not latent in any trained network. | NEGATIVE, machine-precision; `papers/wp106_tig_detector_scope/WP106_TIG_DETECTOR_SCOPE.md` §3–4; `papers/wp106_tig_detector_scope/verification/scan_distilgpt2.py` |
 | **D46** | Yukawa scaffolding tension (WP108) | The 9-vector VEV (D33) has $v_8 = v_9 = 0$ (BREATH and RESET unbroken), so it stabilizes the SO(8) ⊂ SO(9) ⊂ SO(10) chain rather than the standard Pati-Salam chain SO(10) ⊃ SU(4) × SU(2)_L × SU(2)_R. The 16 spinor decomposes as $\mathbf{16} \to \mathbf{8}_s + \mathbf{8}_c$ under SO(8), **NOT** into the Pati-Salam content $(\mathbf{4},\mathbf{2},\mathbf{1}) + (\bar{\mathbf{4}},\mathbf{1},\mathbf{2})$ expected from WP104 Path B. The two routes (Path A doubly-invariant subalgebra vs Path B Higgs VEV) DO NOT close on the same SU(4) ⊕ SU(2)_L ⊕ SU(2)_R; they sit on different reduction chains in the Lie-algebraic lattice. | STRUCTURAL with flagged tension; `papers/wp108_yukawa_scaffolding/WP108_YUKAWA_SCAFFOLDING.md` §4–6 |
-| **D47** | Operad D₄ obstruction (WP109) | The 126 non-associative TSML triples (the (a,b,c) for which $a*(b*c) \neq (a*b)*c$) partition into **67 orbits** under the action of $D_4 = \langle P_{56}, \sigma^3 \rangle$. Of these, **16 orbits are D₄-incoherent**: no consistent fuse-table value in $\{a, b, c, L, R\}$ (left, right, third, left-fuse, right-fuse) is compatible across the orbit. **Theorem:** no $D_4$-equivariant fuse rule taking values in $\{a,b,c,L,R\}$ exists. The operad-DOF is **orthogonal** to the gauge-symmetry group of the rest of the tower; the recommendation is to preserve the weaker $P_{56}$-equivariance (which IS achievable). | PROVED at integer level; `papers/wp109_operad_d4_obstruction/WP109_OPERAD_D4_OBSTRUCTION.md` §3–5; [05_papers/physics/J48/](../05_papers/physics/J48/) |
-| **D48** | 4-core fusion-closure (WP110, strengthens D38) | The 4-core $\{V, H, Br, R\}$ is closed under **BOTH** TSML and BHML at the algebraic level: 16 + 16 in-core terms (TSML and BHML respectively), 0 + 0 spillover into $\{$LATTICE, COUNTER, PROGRESS, COLLAPSE, BALANCE, CHAOS$\}$. Verified by direct enumeration of all $4^3 = 64$ ordered triples on the 4-core under both tables. | PROVED, machine-precision; `papers/wp110_4core_fusion_closure/WP110_4CORE_FUSION_CLOSURE.md` §3; [05_papers/algebra/J25/manuscript/verification/f3_galois_alpha_uniqueness.py](../05_papers/algebra/J25/manuscript/verification/f3_galois_alpha_uniqueness.py) |
+| **D47** | Operad D₄ obstruction (WP109) | The 126 non-associative TSML triples (the (a,b,c) for which $a*(b*c) \neq (a*b)*c$) partition into **67 orbits** under the action of $D_4 = \langle P_{56}, \sigma^3 \rangle$. Of these, **16 orbits are D₄-incoherent**: no consistent fuse-table value in $\{a, b, c, L, R\}$ (left, right, third, left-fuse, right-fuse) is compatible across the orbit. **Theorem:** no $D_4$-equivariant fuse rule taking values in $\{a,b,c,L,R\}$ exists. The operad-DOF is **orthogonal** to the gauge-symmetry group of the rest of the tower; the recommendation is to preserve the weaker $P_{56}$-equivariance (which IS achievable). | PROVED at integer level; `papers/wp109_operad_d4_obstruction/WP109_OPERAD_D4_OBSTRUCTION.md` §3–5; [05_papers/physics/J45/](../05_papers/physics/J45/) |
+| **D48** | 4-core fusion-closure (WP110, strengthens D38) | The 4-core $\{V, H, Br, R\}$ is closed under **BOTH** TSML and BHML at the algebraic level: 16 + 16 in-core terms (TSML and BHML respectively), 0 + 0 spillover into $\{$LATTICE, COUNTER, PROGRESS, COLLAPSE, BALANCE, CHAOS$\}$. Verified by direct enumeration of all $4^3 = 64$ ordered triples on the 4-core under both tables. | PROVED, machine-precision; `papers/wp110_4core_fusion_closure/WP110_4CORE_FUSION_CLOSURE.md` §3; [05_papers/algebra/J16/manuscript/verification/f3_galois_alpha_uniqueness.py](../05_papers/algebra/J16/manuscript/verification/f3_galois_alpha_uniqueness.py) |
 | **D49** | Symbolic normalizer identity Z_T = Z_B = (v + h + br + r)² (WP110) | Both runtime normalizers (TSML and BHML) restricted to the 4-core simplify symbolically to the **same** quadratic form: $Z_T = Z_B = (v + h + br + r)^2$. This is the structural reason 4-core closure (D48) implies the runtime attractor (D38–D39): when $Z_T = Z_B$, the T+B-mix at any $\alpha$ inherits the closure. | PROVED symbolically (sympy); `papers/wp110_4core_fusion_closure/WP110_4CORE_FUSION_CLOSURE.md` §4; `alpha_uniqueness_symbolic.py` |
 | **D50** | Symbolic 1+√3 confirmation at α = 1/2 (WP110, strengthens D39) | Solving the 4-core fixed-point equations symbolically at $\alpha = 1/2$ recovers $H/Br = 1 + \sqrt{3}$ as a **structural identity** (forced by Z_T = Z_B closure plus normalization), not merely as a numerically-stable dynamical fixed point. Promotes D39 from "verified at machine precision" to **structurally forced by 4-core closure**. | PROVED, symbolic; `papers/wp110_4core_fusion_closure/WP110_4CORE_FUSION_CLOSURE.md` §5 |
 | **D51** | Six-DOF organizing claim (WP111) | The TIG framework engages **six computationally-irreducible algebraic degrees of freedom**: (i) **Lie** (so(8), so(10) closures, WP102–WP103); (ii) **Jordan** (the doubly-invariant su(4) ⊕ u(1) sits in a JC-pair with so(10), WP104); (iii) **Clifford/Dirac** (Cl(0,10) realization where $P_{56} = (\gamma_5 - \gamma_6)/\sqrt{2}$ acts as $\sigma_{\text{outer}}$, WP104); (iv) **Permutation** ($S_{10}$ on operator labels; $\sigma$ has order 6, $\sigma^3$ is the involution paired with $P_{56}$ to generate $D_4$); (v) **Lattice** (the runtime attractor sits in $\mathbb{Q}(\sqrt{3}, \xi)$ with $\xi$ root of LMFDB 4.2.10224.1, WP105); (vi) **Operad** (67 D_4 orbits, 16 incoherent, no D_4-equivariant fuse rule, WP109). **Five DOFs respect $D_4$**; the sixth (Operad) does not — establishing operad-DOF orthogonality to the gauge structure. | SYNTHESIS, no new computation beyond WP102–WP110; `papers/wp111_six_dof_synthesis/WP111_SIX_DOF_SYNTHESIS.md` §3–12 |
@@ -477,7 +477,7 @@ Theorem (Crossing Lemma — proved for squarefree n and d).
 **Reading:** information is generated only when dynamics cross
 partitions. Crossings are exactly failures of separability.
 
-Source: [05_papers/algebra/J06/manuscript/WP57_CROSSING_LEMMA.md](../05_papers/algebra/J06/manuscript/WP57_CROSSING_LEMMA.md),
+Source: [05_papers/algebra/J27/manuscript/WP57_CROSSING_LEMMA.md](../05_papers/algebra/J27/manuscript/WP57_CROSSING_LEMMA.md),
 `papers/proof_d8_cl_operator_encoding.py`.
 
 ### Non-Commutativity Obstruction (WP51 spine — corrected 2026-05-18)
@@ -523,7 +523,7 @@ substrate carrying four pairwise-non-commuting structures admits no
 simultaneous diagonalization.  Proved for Z/10Z; structural conjecture
 elsewhere.  **No surface required, none implied.**
 
-Source: [05_papers/combinatorics/J01/manuscript/manuscript.tex](../05_papers/combinatorics/J01/manuscript/manuscript.tex) (legacy framing); `CANON_CORRECTION_TORUS_EXCLUDED.md` (2026-05-18 correction).
+Source: [05_papers/combinatorics/J14/manuscript/manuscript.tex](../05_papers/combinatorics/J14/manuscript/manuscript.tex) (legacy framing); `CANON_CORRECTION_TORUS_EXCLUDED.md` (2026-05-18 correction).
 
 ### σ Rate Theorem (WP101 spine)
 
@@ -544,7 +544,7 @@ Theorem (σ Rate, WP101).
   approaches separability. σ → 0.
 ```
 
-Source: [05_papers/combinatorics/J01/manuscript/WP101_SIGMA_RATE_THEOREM.md](../05_papers/combinatorics/J01/manuscript/WP101_SIGMA_RATE_THEOREM.md).
+Source: [05_papers/combinatorics/J14/manuscript/WP101_SIGMA_RATE_THEOREM.md](../05_papers/combinatorics/J14/manuscript/WP101_SIGMA_RATE_THEOREM.md).
 
 **Huang-Lehtonen interpretation.** Define α(CL_N) = 1 − σ(N) (Braitt-Silberger 2006, *Quasigroups Related Systems* 14:11–26). The Rate Theorem is equivalent to α(CL_N) → 1 as N → ∞. Operadically: the binary CL is commutative and attains the ac-free maximum $s_n^{\mathrm{ac}} = (2n-3)!!$ (Huang-Lehtonen arXiv:2202.11826, 2022; arXiv:2401.15786, 2024), so the generated symmetric operad is the free commutative magmatic operad $\mathrm{Mag}^{\mathrm{com}}$ on one generator. The Rate Theorem degenerates this operad toward the commutative associative operad $\mathrm{Com}$ as N → ∞; the BB bridge then identifies log-nonlinearity as the unique continuum wave equation compatible with that limit.
 
@@ -575,7 +575,7 @@ Theorem (Bialynicki-Birula & Mycielski 1976, Annals of Physics 100:62-93).
 Produces freezing quintessence with w(z) → −1; falsifiable on DESI BAO.
 Current fit (Sprint 14): χ² = 15.7 vs ΛCDM 14.1 — comparable, not preferred.
 
-Source: [05_papers/algebra/J32/manuscript/WP91_NS_SEPARABILITY_BRIDGE.md](../05_papers/algebra/J32/manuscript/WP91_NS_SEPARABILITY_BRIDGE.md),
+Source: [05_papers/algebra/J10/manuscript/WP91_NS_SEPARABILITY_BRIDGE.md](../05_papers/algebra/J10/manuscript/WP91_NS_SEPARABILITY_BRIDGE.md),
 [Gen12/targets/clay/papers/sprint14_prism_xi_2026_04_10/desi_xi_mcmc.py](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint14_prism_xi_2026_04_10/desi_xi_mcmc.py).
 
 ### Bridge identities (the recurring T\* = 5/7)
@@ -1826,7 +1826,7 @@ python papers/proof_tsml_3layer_tower.py
 # → 100/100 cells match; 92 + 6 + 2 = 100 decomposition;
 #   Lemma 5 (residue empty); Lemma 6 (each layer necessary); domains partition R².
 ```
-Full theorem spine: [[05_papers/algebra/J05/manuscript/manuscript.tex](../05_papers/algebra/J05/manuscript/manuscript.tex)](../05_papers/algebra/J05/manuscript/manuscript.tex).
+Full theorem spine: [[05_papers/algebra/J32/manuscript/manuscript.tex](../05_papers/algebra/J32/manuscript/manuscript.tex)](../05_papers/algebra/J32/manuscript/manuscript.tex).
 
 ---
 
@@ -1900,7 +1900,7 @@ Higher σ = "further from attractor."
 
 For Z/10Z: h_10 = 7. h_14 = 11. h_22 = 19. h_34 = 31. (See §10.)
 
-**Reproducibility:** [05_papers/combinatorics/J19/manuscript/verify_J19.py](../05_papers/combinatorics/J19/manuscript/verify_J19.py).
+**Reproducibility:** [05_papers/combinatorics/J36/manuscript/verify_J19.py](../05_papers/combinatorics/J36/manuscript/verify_J19.py).
 
 ---
 
@@ -1969,7 +1969,7 @@ The empirical Sprint 21 closure {MAX, MIN, ADD} on B-series data is the
 | 34  | 31 | 16    | 132        | 58  | 74  | PASS |
 | 230 | 227| 88    | 4946       |2330 |2616 | PASS |
 
-Full table in [05_papers/combinatorics/J19/](../05_papers/combinatorics/J19/).
+Full table in [05_papers/combinatorics/J36/](../05_papers/combinatorics/J36/).
 
 ---
 
@@ -2245,7 +2245,7 @@ in the two derivation papers above.
 | 14 (PRISM-XI) | [Gen12/targets/clay/papers/sprint14_prism_xi_2026_04_10/](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint14_prism_xi_2026_04_10/) | ξ cosmology, V = ξ log ξ, ξ₀ = e⁻¹, σ rate proved |
 | 15 (closeout) | (frozen, see `memory/project_sprint15_freeze.md`) | WP91-WP97 staged |
 | 16 | [Gen12/targets/clay/papers/sprint16_*](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint16_*) | Basin invariants (Thread C) |
-| 17 (TSML tower) | [05_papers/algebra/J05/](../05_papers/algebra/J05/) | TSML_10 = C₀ ⊕ S_MAX ⊕ S_ADD proved 100/100 |
+| 17 (TSML tower) | [05_papers/algebra/J32/](../05_papers/algebra/J32/) | TSML_10 = C₀ ⊕ S_MAX ⊕ S_ADD proved 100/100 |
 | 18 (B1 NSCG)    | [Gen12/targets/clay/papers/sprint18_b1_nscg_benchmark_2026_04_17/](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint18_b1_nscg_benchmark_2026_04_17/) | B1 generator + 28 honest datasets |
 | 19 (B2 WRG)     | [Gen12/targets/clay/papers/sprint19_b2_wrg_benchmark_2026_04_17/](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint19_b2_wrg_benchmark_2026_04_17/) | B2 generator (no S_ADD) + 11 datasets |
 | 20 (B3 LBTP)    | [Gen12/targets/clay/papers/sprint20_b3_lbtp_benchmark_2026_04_17/](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint20_b3_lbtp_benchmark_2026_04_17/) | B3 honest implementation; structural FAIL on spec |
@@ -2272,13 +2272,13 @@ proof script. From repo root:
 python papers/proof_q10_sigma_polynomial.py    # if present; otherwise see Q10.md table
 
 # §11 — corridor closure {MAX, MIN} for canonical C₀, 23 carriers
-python ../05_papers/combinatorics/J19/manuscript/verify_J19.py
+python ../05_papers/combinatorics/J36/manuscript/verify_J19.py
 
 # §14 — ARI scaling, W3-freq → 1.0 for n ≥ 38
 python https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen12/targets/clay/papers/sprint26_ari_scaling_2026_04_17/impl/ari_scaling.py
 
 # §6 — BHML_10 28 harmony cells (count derivable from §6 table by inspection)
-python ../05_papers/algebra/J05/manuscript/proof_d16_bhml_28_cells.py
+python ../05_papers/algebra/J32/manuscript/proof_d16_bhml_28_cells.py
 ```
 
 All scripts are deterministic. Total runtime for the four above: ~5 sec.

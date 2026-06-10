@@ -35,7 +35,7 @@ this finding" routing.
 
 | # | Researcher | Institution | Connection to TIG |
 |---:|---|---|---|
-| 5 | **Erkko Lehtonen** | Centro de Matemática Univ. do Porto | Clones, Mal'cev classes, Galois connections on terms. Author of "Lehtonen-Waldhauser 2021" cited in J32. |
+| 5 | **Erkko Lehtonen** | Centro de Matemática Univ. do Porto | Clones, Mal'cev classes, Galois connections on terms. Author of "Lehtonen-Waldhauser 2021" cited in J10. |
 | 6 | **Tamás Waldhauser** | Univ. of Szeged (Hungary) | Clones, Galois connections in algebra. Co-author with Lehtonen. |
 | 7 | **George McNulty** | Univ. of South Carolina | Algebraic varieties, Burris-Sankappanavar tradition. Senior. |
 | 8 | **Ralph McKenzie** | Vanderbilt | Universal algebra textbook author. Very senior; might point to a postdoc. |

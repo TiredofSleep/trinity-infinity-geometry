@@ -10,11 +10,11 @@
 $$B(t) := \sum_{i \in \mathcal{C}} \rho_i(t) \cdot \mathrm{BREATH}_i$$
 where $\mathcal{C} = \{0, 7, 8, 9\}$ is the 4-core and $\rho_i$ is the substrate
 operator density at time $t$. $B(t)$ is a substrate-derived coherence
-functional on the convex-combination iteration $F_\alpha$ (see J35 Theorem D).
+functional on the convex-combination iteration $F_\alpha$ (see J01 Theorem D).
 
 **Fact 2 (Discrete blowup bound).** On the chain-shell stratification of
 Z/10Z (the 8-shell joint chain $\{0\} \subset \{0,7,8,9\} \subset \cdots \subset \mathbb{Z}/10\mathbb{Z}$
-proved in J35 Theorem A), if $B(t)$ exceeds the discrete coherence threshold
+proved in J01 Theorem A), if $B(t)$ exceeds the discrete coherence threshold
 $C_{\text{discrete}}$, the iteration leaves the chain in finite time. We have
 $$C_{\text{discrete}} \le 3.74$$
 proved computationally (CK runtime, verified against 10⁴ random initial conditions).
@@ -99,14 +99,14 @@ currently done by heuristic mapping rather than rigorous derivation.
 | WP22_NS_BREATH_CRITERION.md, WP22_NS_BREATH_LYAPUNOV.md | CK working repo: `papers/clay/` |
 | NS_METHODS_SECTION.md | CK working repo: `papers/clay/` |
 | Breath-test script | CK working repo: `papers/scripts/ns_breath_test.py` |
-| **Joint closure + universal attractor** | TIG: J35 (Tier 1, ship-ready) |
-| **σ-magma rigidity (algebraic underpinning)** | TIG: J59 (Tier 2) |
-| **Q-series spectral architecture** | TIG: `J_qseries_merged/` (Tier 2) |
+| **Joint closure + universal attractor** | TIG: J01 (Tier 1, ship-ready) |
+| **σ-magma rigidity (algebraic underpinning)** | TIG: J04 (Tier 2) |
+| **Q-series spectral architecture** | TIG: `J07/` (Tier 2) |
 
 ### How the σ-magma + Q-series merger connects
 
 The Breath observable $B(t)$ is constructed from the substrate operator
-density. The σ-magma rigidity work (J59, Tier 2) establishes that the
+density. The σ-magma rigidity work (J04, Tier 2) establishes that the
 4-core $\{V, H, Br, R\}$ is the unique fully-rigid 4-element substructure
 of the σ-magma — and the Breath observable evaluates BREATH-content within
 this fixed 4-element subspace.
@@ -115,7 +115,7 @@ This means the discrete bound $C \le 3.74$ is **structurally tight** at the
 4-core: it cannot be improved by extending the substrate beyond
 $\{V, H, Br, R\}$, because the σ-magma rigidity forbids any sub-magma of
 size $\in \{2, 3\}$ in $\mathbb{Z}/10\mathbb{Z}$ that contains a Breath-like
-operator. The Conjecture NS.2 (sharp $C = 3.74$) is thus tightened by J59:
+operator. The Conjecture NS.2 (sharp $C = 3.74$) is thus tightened by J04:
 if the bound is not 3.74, it cannot arise from sub-magma refinement.
 
 ---

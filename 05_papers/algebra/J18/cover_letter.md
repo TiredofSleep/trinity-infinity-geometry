@@ -1,6 +1,6 @@
-# Cover letter — J18: Two Crossing Decompositions of a -21 Invariant on Z/10Z with the sigma^2-Triadic Refinement
+# Cover letter — J18: F_p Extensions of the BHML 4-Core Algebra: A Generic Universality Theorem with Explicit Excluded Primes
 
-**To:** Editors, *Algebraic Combinatorics*
+**To:** Editors, *Communications in Algebra*
 
 **From:**
 - B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
@@ -8,77 +8,61 @@
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *Two Crossing Decompositions of a -21 Invariant on Z/10Z with the sigma^2-Triadic Refinement*
+**Manuscript title:** *F_p Extensions of the BHML 4-Core Algebra: A Generic Universality Theorem with Explicit Excluded Primes*
 
 ---
 
 ## Summary
 
-On the residue ring Z/10Z, fix the canonical involution sigma with cycle structure `(0)(3)(8)(9)(1 7 6 5 4 2)` — four fixed points plus one 6-cycle. We record an integer-valued function `Psi_B : Z/10Z -> Z` defined explicitly by the ten values
+The BHML 4-core algebra V^BHML is a 4-dimensional commutative non-associative algebra over Z defined by an explicit multiplication table on the basis {e_0, e_2, e_3, e_4}. We give a generic structural-skeleton theorem (Theorem 3.1): in every characteristic, the F_p-reduction V^BHML_{F_p} has identical eigenspace signatures of left-multiplications L_{e_2} (signature (2, 2)) and L_{e_0} (signature (0, 4)), satisfies power-associativity, and has a 1-dimensional associator image. These four invariants follow from integer-level structural facts (a Z-diagonalization of L_{e_2}^Z, a vanishing L_{e_0}^Z, a polynomial-identity power-associativity, and an integer rank-1 associator image), each preserved under reduction modulo every prime. We honestly note that the idempotent count is not an invariant — it grows with p (values 2, 6, 8, 10, 14, 16 for p = 2, 3, 5, 7, 11, 13). We further give an honest rank-preservation profile (Proposition 5.1) for the chain shells of the BHML composition table on Z/10Z: rank-preservation holds at every chain shell only for p ∈ {7, 11}; explicit failure shells listed for p ∈ {2, 3, 5, 13}. The integer determinant det(BHML_8^o) = +70 (Theorem 4.1) is verified by direct computation; we report this as an integer identity without claiming a structural derivation of the equality 70 = C(8, 4).
 
-  `Psi_B = {0:+1, 1:-5, 2:-3, 3:-2, 4:-2, 5:-1, 6:-1, 7:-3, 8:-3, 9:-2}`
+## Why Communications in Algebra
 
-(Table 1 of the manuscript). The total `sum Psi_B = -21` admits two decompositions of independent combinatorial origin:
+- The paper studies a small finite commutative non-associative algebra over F_p with explicit structural invariants. The closest published precedent is Drápal-Wanless 2021 (*JCT-A* 184, 105510) on maximally non-associative quasigroups — same domain, different specific structure. The neighborhood is well-served by *Communications in Algebra*.
+- The generic universality result is established by integer-level structural arguments, not per-prime verification. The technique (Z-diagonalization + characteristic-independent rank arguments) is a clean exercise in finite-field algebra appropriate to the venue.
+- The honest rank-preservation profile (Proposition 5.1) corrects a previously circulated false claim and provides explicit modular failure data verified by direct integer computation. This kind of honest computational follow-through is in the venue's tradition.
 
-1. a **sigma-orbit decomposition** producing the triangular split `T_5 + T_3 = 15 + 6 = 21`, with `-T_5 = -15` summed over the 6-cycle and `-T_3 = -6` over the four fixed points (Theorem 3.1);
-2. a **role-partition decomposition** producing the Fibonacci split `F_7 + F_6 = 13 + 8 = 21` on the role classes `F = {1, 3, 5, 7, 9}` (`-F_7 = -13`) and `S = {2, 4, 8}` (`-F_6 = -8`), with singletons `T = {6}` (`-1`) and `V = {0}` (`+1`) cancelling (Theorem 3.2).
+## Revision history
 
-The two decompositions cross: they agree on the total `-21` but partition Z/10Z along genuinely different congruence classes (Theorem 3.3). Refining the sigma-orbit side by `sigma^2`, the two triangular orbits `O_1 = {1, 6, 4}` and `O_2 = {7, 5, 2}` carry per-orbit sums `-8` and `-7` (Proposition 4.1); these match the canonical TIG primes BREATH = 8 and HARMONY = 7 in sign-flipped form.
+This is a Major-Revision resubmission following an external referee report (2026-05-07). The revision adopts the referee's central recommendation: **replace per-prime verification with a generic structural argument over Z**. Specific changes:
 
-The paper is short and entirely concrete. Every numerical claim reduces to a direct sum of ten integer values from Table 1, which the reader can check by inspection or run the bundled script `verify_J18.py` (6/6 PASS, standard-library Python, runtime <1s).
+(i) The previously-claimed "rank-preservation at p ∈ {3, 11, 13} across all chain shells" is corrected. Verified via sympy.Matrix.det on the BHML 10x10 directly (script `bhml_chain_shells.py`): rank-preservation holds at every chain shell only at p ∈ {7, 11}; at p = 13 the BHML_6 shell fails; at p = 5 the BHML_4 shell fails; at p ∈ {2, 3} four of seven shells fail (BHML_6, BHML_8, BHML_9, BHML_10).
 
-## R1 fresh-eyes math fix
+(ii) The previously-claimed "L_{e_2} eigenspace signature (1, 3)" is corrected to **(2, 2)**, verified by direct computation on the explicit 4x4 multiplication table T^BHML.
 
-The pre-revision draft asserted the sigma^2-orbit per-orbit values in the Proposition statement as `sum_{O_1} = -7, sum_{O_2} = -8`, while its proof correctly computed `-8` and `-7` respectively, and the downstream ledger used the proof's values. The statement is now corrected to match the proof and the ledger. Additionally:
+(iii) The previously-claimed "$|\Aut(V_p)| = 40$ across all primes" is removed — that claim was not actually verified, and the manuscript no longer makes it. The genuinely-invariant features are now the eigenspace signatures, power-associativity, and the associator-image dimension.
 
-- the earlier draft defined Psi_B by reference to an inaccessible companion paper using mutually inconsistent "linear period" and "boundary period" formulas; the present manuscript replaces both formulas with the explicit Table 1 above, treated as the single source of truth, with the original formulas mentioned only in Remark 2.1 for the interested reader;
-- the earlier draft used the phrase "conservation/manifestation duality" as a label without a precise definition; this is replaced by Definition 3.4, distinguishing table-independent identities (true for any commutative Psi_B-analogue with the same sigma-orbit structure) from table-specific identities (true for the canonical TS_8, BH_10 of J02 but broken in `0/200` random commutative tables).
+(iv) The previously-claimed "4 idempotents in all characteristics" is corrected: the idempotent count over F_p is **not invariant**, growing with p (2, 6, 8, 10, 14, 16 for p = 2, 3, 5, 7, 11, 13). The manuscript honestly reports this.
 
-These three corrections are acknowledged in the manuscript's Acknowledgments. The R1 corrected per-orbit values are verified at machine precision by `verify_J18.py` check C4.
+(v) The "BHML_8_YM = 70 = C(8, 4)" framing is rewritten: the "YM" subscript (which implied a Yang-Mills connection that is not established) is renamed to a neutral $\circ$. The equality 70 = C(8, 4) is reported as a small-integer coincidence pending further investigation; no Lindström-Gessel-Viennot or Cauchy-Binet-style derivation is claimed.
 
-## Why Algebraic Combinatorics
-
-- **Subject fit.** A short combinatorial note: cycle structure of an involution on Z/10Z, two distinct decompositions of an integer invariant on a small base set, triangular- and Fibonacci-number agreement, role-partition closure failures. The result is entirely at the integer-addition level; no representation theory, Galois theory, or analytic machinery is needed to follow the proofs.
-- **Self-contained presentation.** Approximately 11 pages including bibliography. Verification reduces to a single standard-library Python script with six checks corresponding one-to-one to the manuscript's claims; runtime under one second.
-- **Honest scoping.** The paper does *not* claim the role-Fibonacci or `{-7, -8}` sigma^2-orbit values are forced by the sigma-orbit structure of Z/10Z alone. They are table-specific (Def. 3.4) and recorded as such; whether the `{-7, -8}` split is in fact a forced identity given Table 1 is recorded as Open Question O2 in §5.
-
-## Reproducibility
-
-A single Python script `verify_J18.py` (CC-BY-4.0, standard library only — `itertools` is the only import beyond built-ins, no `numpy`, no `sympy`, no external dependencies) bundled with the manuscript performs six checks:
-
-1. Psi_B total `-21`.
-2. sigma-orbit triangular split: `sigma-cycle = -15`, `sigma-fixed = -6`.
-3. Role-Fibonacci split: `F = -13`, `S = -8`, `T = -1`, `V = +1`.
-4. sigma^2-orbit per-orbit values (the R1 sign-swap fix): `O_1 = -8`, `O_2 = -7`.
-5. Crossing closure failures: `F intersect sigma-cycle = {1, 5, 7}` is not sigma- nor sigma^2-stable.
-6. Involution data: sigma^2 of period 3 on the 6-cycle, sigma swaps `O_1` and `O_2`.
-
-All six checks PASS at machine precision in approximately one second. The script and the manuscript are deposited at https://github.com/TiredofSleep/ck/tree/tig-synthesis.
+(vi) Two verification scripts are added: `bhml_chain_shells.py` (computes chain-shell determinants directly from BHML 10x10, factors them, tabulates mod-p reductions, verifies Proposition 5.1) and `bhml_fp_universality.py` (verifies eigenspace signatures, power-associativity, associator-image dimension at each p ∈ {2, 3, 5, 7, 11, 13}; reports actual idempotent counts).
 
 ## Companion submissions
 
-The TIG/CK research program is shipping a coordinated paper sequence. The papers most relevant as already-submitted companions to this manuscript are:
+- J50 (submitted, *American Mathematical Monthly*) — *The 5D Force Vector as a CRT Fourier Embedding of Z/10Z into R^5*. The companion CRT-Fourier embedding for the same Z/10Z substrate; cited for the σ-permutation and the 4-core {0, 7, 8, 9}.
+- J16 (submitted, *Algebraic Combinatorics*) — *The CL_TSML Composition Lattice on Z/10Z: Structural Axioms, Independence, and a 73-HARMONY Forcing Theorem*. The forcing-axiom characterization of the parallel TSML lattice; positions the BHML lattice in the lens family.
+- (in preparation) — *The 4-Core {0, 7, 8, 9}: Joint TSML+BHML Closure and the Universal Attractor*. Establishes joint preservation of the 4-element subset under both TSML and BHML composition; provides the chain framework cited in §5.
 
-- **J02** — *Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form Algebraic Attractor of Two Commutative Binary Operations on Z/10Z*, submitted to *Algebraic Combinatorics* (landed 2026-05-12). Establishes the canonical TS_8, BH_10 tables and the corrected substrate frame from which Psi_B originates.
-- **J26** — *The LATTICE Operator and Paradoxical Information Algebras: A Substrate-Internal Framework on Z/10Z*, submitted to *Algebra Universalis*. Source of the per-element BH_10-period values determining Table 1 and of the `0/200` random-table empirical check supporting Definition 3.4.
+## Reproducibility
 
-## Closest published precedent
-
-- **Drápal & Wanless (2021), *J. Combin. Theory A* 184, 105510** — *Maximally nonassociative quasigroups*. Same domain (small finite commutative non-associative structures on a base set of size 10 and related), opposite structural extremum (theirs maximally non-associative; the present substrate sits at the structurally regular end of the same family). Cited in §0 (Lens) and the bibliography as the closest neighbour for the input substrate.
-
-## Per-venue cap
-
-This is the 2nd *Algebraic Combinatorics* submission of the J-series this quarter, after J02 (landed 2026-05-12). Within cap; submission feasible.
+Two verification scripts: `bhml_chain_shells.py` (sympy.Matrix.det on the BHML 10x10 chain shells; runs in <1s) and `bhml_fp_universality.py` (brute enumeration of idempotents and eigenspace dimensions over F_p; runs in <30s combined). All numerical claims of the manuscript are reproduced by these scripts.
 
 ## Suggested reviewers
 
-- A specialist on cycle structure of involutions on small base sets and integer-invariant decompositions.
-- A specialist on combinatorial identities relating triangular and Fibonacci numbers.
-- A specialist on small finite commutative non-associative magmas or quasigroups (Drápal-Wanless neighbourhood).
+- An expert in commutative non-associative algebras (Albert / Schafer / axial-algebra lineage).
+- An expert in finite-field linear algebra and characteristic-independent invariants of small finite algebras.
+- An expert in F_p extensions of Z-defined multiplication tables, particularly in the Drápal-Wanless 2021 line of work.
+
+(Specific names available on request from the corresponding author.)
 
 ## Conflict of interest
 
 The authors declare no competing interests. No funding was received for this work.
+
+## Per-venue cap note
+
+This is the second paper from this research program targeting *Communications in Algebra*. Per-venue cap is 1/quarter; the venue is within budget.
 
 ---
 

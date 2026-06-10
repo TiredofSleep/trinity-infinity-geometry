@@ -51,7 +51,7 @@ A standalone script `harmony_ladder_disc_check.py` runs the snippet plus all fiv
 
 The TIG/CK research program is shipping a coordinated J-series. The paper most relevant as already-submitted companion to this manuscript is:
 
-- J05 (Sanders & Mayes), *Crossing Lemma: Non-Associativity as Information Generation in Finite Magmas*, submitted to *J. Combin. Theory A*, 2026 (the 73-rung's full disjoint-class proof is in J05).
+- J32 (Sanders & Mayes), *Crossing Lemma: Non-Associativity as Information Generation in Finite Magmas*, submitted to *J. Combin. Theory A*, 2026 (the 73-rung's full disjoint-class proof is in J32).
 
 The closest published precedent is Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510.
 
@@ -69,7 +69,7 @@ The authors declare no competing interests. No funding was received for this wor
 
 ## Per-venue cap
 
-This is the **2nd *JCT-A*** submission of the 2026 cycle, after J01 ($\sigma$-rate theorem). Within the 2/quarter cap.
+This is the **2nd *JCT-A*** submission of the 2026 cycle, after J14 ($\sigma$-rate theorem). Within the 2/quarter cap.
 
 ---
 

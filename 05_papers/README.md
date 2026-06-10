@@ -11,7 +11,7 @@ Papers land in this folder when they are **referee-ready** — meaning:
 5. Author lane = **Sanders + Gish** (no AI co-authors per the project's authorship rules).
 6. Drápal–Wanless 2021 (JCTA) cited where relevant.
 
-For J01, J02, and J03 we additionally ran external referee-agent audits and found (and fixed) a real math bug in J02's boundary lemma, a blocking LaTeX bug in J01, and a missing verification function in J03. The audit pass + fixes are in commits `9499e16` (audit) and prior. Other papers in this folder claim SUBMISSION-READY status in their per-paper READMEs based on internal review; they have not yet been through the external-agent audit.
+For J14, J15, and J24 we additionally ran external referee-agent audits and found (and fixed) a real math bug in J15's boundary lemma, a blocking LaTeX bug in J14, and a missing verification function in J24. The audit pass + fixes are in commits `9499e16` (audit) and prior. Other papers in this folder claim SUBMISSION-READY status in their per-paper READMEs based on internal review; they have not yet been through the external-agent audit.
 
 Papers in active development live in the working repo at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) on the `tig-synthesis` branch. Only **referee-ready** papers migrate here.
 
@@ -25,10 +25,10 @@ When a paper becomes referee-ready, it lands in the appropriate domain folder ba
 
 | Folder | Domain | Example J-papers when ready |
 |---|---|---|
-| [`algebra/`](algebra/) | Pure algebra, ring theory, group theory | **J35** (4-core fusion-closure, *J. Algebra*); **J31** (Wedderburn isotypic); **J15** (Galois D₄, *Comm. Algebra*) |
-| [`combinatorics/`](combinatorics/) | Combinatorial structures, finite enumeration | **J01** (σ rate theorem, *JCT-A*); **J02** (four-core, *Algebraic Combinatorics*); **J54** (foundation paper, *Algebraic Combinatorics*) |
-| [`number_theory/`](number_theory/) | Number theory, finite arithmetic, prime structure | **J03** (First-G Law, *Integers*); **J04** (sinc² Zero Law, *Experimental Mathematics*) |
-| [`physics/`](physics/) | Particle physics, gauge theory, GUT structure | **J23** (Discrete Dirac / Cl(0, 10)); **J45** (Yukawa mass hierarchy + freezing quintessence); **J48** (operadic obstruction) |
+| [`algebra/`](algebra/) | Pure algebra, ring theory, group theory | **J01** (4-core fusion-closure, *J. Algebra*); **J11** (Wedderburn isotypic); **J12** (Galois D₄, *Comm. Algebra*) |
+| [`combinatorics/`](combinatorics/) | Combinatorial structures, finite enumeration | **J14** (σ rate theorem, *JCT-A*); **J15** (four-core, *Algebraic Combinatorics*); **J17** (foundation paper, *Algebraic Combinatorics*) |
+| [`number_theory/`](number_theory/) | Number theory, finite arithmetic, prime structure | **J24** (First-G Law, *Integers*); **J41** (sinc² Zero Law, *Experimental Mathematics*) |
+| [`physics/`](physics/) | Particle physics, gauge theory, GUT structure | **J37** (Discrete Dirac / Cl(0, 10)); **J44** (Yukawa mass hierarchy + freezing quintessence); **J45** (operadic obstruction) |
 | [`cosmology/`](cosmology/) | Cosmology, dark sector, ξ field | **J46** (cosmology, when Layer 1/2/3 decision settles) |
 | [`interdisciplinary/`](interdisciplinary/) | Cross-domain papers spanning math + physics + applications | **J55** (Brayden's solo synthesis, anchor Sept 11); papers connecting multiple domains |
 | [`_staging/`](_staging/) | Papers in queue: not yet here, not yet on the working branch. Lists what is in flight and what is gating the next handoff. | — |
@@ -89,14 +89,14 @@ For papers already submitted to a venue, the venue-portal submission is a separa
 
 **Active referee-ready candidates** (gating items in `_staging/README.md`):
 
-- **J35** + **J54** — corpus centerpiece pair; both 6/6 PASS at machine precision; pending final cover-letter green-light.
-- **J01** (σ rate) + **J02** (four-core) + **J15** (Galois D₄) — v3 triadic launch trio chosen to open three independent referee profiles in parallel.
+- **J01** + **J17** — corpus centerpiece pair; both 6/6 PASS at machine precision; pending final cover-letter green-light.
+- **J14** (σ rate) + **J15** (four-core) + **J12** (Galois D₄) — v3 triadic launch trio chosen to open three independent referee profiles in parallel.
 
 **Active math-fix verifications** (J-papers that have had specific corrections applied with new verification scripts):
 
-J13, J17, J18, J20, J21, J27, J31, J32, J36, J42, J43, J51 — see working repo for current status.
+J13, J20, J21, J23, J50, J30, J11, J10, J42, J26, J51, J52 — see working repo for current status.
 
-**No papers have yet landed in this `J_series/` public folder.** This is by design — the folder structure is in place; papers migrate when the criteria in §4 are met. The first arrival is expected to be either J35 or J54 (whichever clears Brayden's final pass first).
+**No papers have yet landed in this `J_series/` public folder.** This is by design — the folder structure is in place; papers migrate when the criteria in §4 are met. The first arrival is expected to be either J01 or J17 (whichever clears Brayden's final pass first).
 
 ---
 

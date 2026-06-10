@@ -1,6 +1,6 @@
-# Cover letter — J20: Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences
+# Cover letter — J20: Total-Dimension Match between Tensor Powers of a Finite-Field 4-Algebra and Real Clifford Algebras Cl(2n), with a Refined-Cell Grading
 
-**To:** Editors, *American Mathematical Monthly*
+**To:** Editors, *Linear Algebra and its Applications*
 
 **From:**
 - B.R. Sanders (corresponding), 7Site LLC, Hot Springs, AR — brayden@7site.co
@@ -8,37 +8,57 @@
 
 **Date:** [DATE OF SUBMISSION]
 
-**Manuscript title:** *Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences*
+**Manuscript title:** *Total-Dimension Match Between Tensor Powers of a Finite-Field 4-Algebra and Real Clifford Algebras Cl(2n), with a Refined-Cell Grading*
 
 ---
 
 ## Summary
 
-We document a quantitative non-genericity phenomenon between the sporadic Mathieu group M_22 (order 443,520 = 2^7 · 3^2 · 5 · 7 · 11) and a discrete substrate (Z/10Z, σ, W) of independent algebraic interest. The substrate distinguishes the prime set {2, 3, 5, 7, 11} — the same primes (with the same multiplicities) appearing in |M_22|. The paper's main result (Theorem on non-genericity): of M_22's 12 irreducible representations, exactly 10 have dimensions whose only prime factors lie in {2, 3, 5, 7, 11} with at most one factor of 2; equivalently, seven non-trivial irrep dimensions ({21, 45, 45, 55, 99, 231, 385}) factor strictly in {3, 5, 7, 11}, and two more (154 = 2·7·11 and 210 = 2·3·5·7) admit a single factor of 2. The observed concentration 10/12 ≈ 83% contrasts with the null-model density 67/385 ≈ 17.4% of integers in [1, 385] satisfying the same condition; under a uniform null on [1, 385], the concentration occurs with binomial p-value ≈ 1.19 × 10⁻⁶. A short backdrop section presents the standard parameters of the Steiner system S(3, 6, 22) (block count b = 77 = 7·11, replication r = 21 = 3·7, pair-replication λ_2 = 5, block size k = 6) with their substrate-prime decomposition, as the textbook context for the irrep-density observation. We do not claim a derivation of M_22 from the substrate.
+We record two elementary linear-algebraic facts about the tensor powers `V^{⊗n}` of a particular 4-dimensional commutative non-associative algebra `V` over `F_5`. First, the total dimension matches that of the real Clifford algebra `Cl(2n) = Cl(2n, 0)`:
 
-## Why American Mathematical Monthly
+  `dim_{F_5} V^{⊗n} = 4^n = 2^{2n} = dim_R Cl(2n)` for every `n ≥ 0`.
 
-- Audience fit: the paper is written for the *Monthly* readership. The Mathieu / Steiner content is laid out elementarily; the substrate side is sketched with no sporadic-group background beyond standard undergraduate group theory assumed; the main claim (a quantitative non-genericity result with a clean null-model p-value) is presented as a single section.
-- Pedagogical hook: the result is one quantitative statement with a clean binomial-tail computation, not a list of decorative coincidences. A *Monthly* reader can verify every claim from the verification script and Conway-Sloane / ATLAS lookups in a single sitting.
-- Length: 4-6 pages in amsart 11pt, suiting the *Monthly*'s expository-note format.
+This is forced by `dim V = 4 = 2^2` and holds for any 4-dimensional algebra over any field. The non-trivial content is the second result: each tensor slot of `V^{⊗n}` carries two structural sign bits (one for each of the two `F_5`-line summands of the slot's basis), giving `4^n = 2^{2n}` one-dimensional *refined cells*. The Hamming-weight distribution of these `2n` structural bits is exactly the binomial sequence `C(2n, k)`, `k = 0, ..., 2n`, which matches the grade dimensions of `Cl(2n)` exactly.
 
-## Revision history
+We are explicit about what is *not* proved. The mapping from refined cells of `V^{⊗n}` to basis multivectors of `Cl(2n)` is a bookkeeping bijection on basis-element labels; we do not claim it extends to a structure-preserving map of vector spaces or algebras over a common base ring (the domain is over `F_5`, the codomain is over `R`). The agreement between the coarse-cell weights `C(5, k) = 1, 5, 10, 10, 5, 1` at `n = 5` and the dimensions of the `SU(5)` one-generation representation `1 ⊕ 5̄ ⊕ 10` plus its conjugate is recorded as a binomial-coefficient coincidence, not a representation-theoretic theorem. All such open items are confined to §6 (Open questions).
 
-This is a Major-Revision resubmission following an external referee report (2026-05-07). The revision consolidates the previous catalog of six identities into a single non-genericity theorem (with an explicit binomial-tail null-model computation), corrects the previously misstated count (the original "six of twelve factor in {3,5,7,11} alone" was wrong; the correct strict count is seven non-trivial dimensions, with the original list silently omitting 45 with multiplicity 2 and incorrectly including 154 which has a factor of 2), inlines the substrate-prime distinction so each of the five primes is named from intrinsic substrate data, drops the arithmetic-tautology "231 identity," and consolidates the textbook Steiner-system parameters into a single backdrop table.
+## R1 fresh-eyes math fix
 
-## Companion submissions
+An earlier draft conflated the coarse-cell distribution `C(n, k)` (`2^n` total cells, weighted by the number of `V_+`-slots, each cell `2^n`-dimensional) with the `Cl(2n)` grade distribution `C(2n, k)` (sum `2^{2n}`, one summand per multivector grade). These are distinct sequences over distinct index sets. The revised manuscript distinguishes them cleanly: the coarse-cell distribution sums to `2^n`, the refined-cell distribution sums to `4^n`, and only the latter matches the `Cl(2n)` grade dimensions. The misstatement is acknowledged in the manuscript's Acknowledgments and corrected as the revised Theorem 4.1 (refined-cell binomial grading). The previous false coupling of `C(n, k)` to `Cl(2n)` grades is now noted explicitly in Remark 4.2.
 
-- J02 (*Algebraic Combinatorics*) — Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form Algebraic Attractor of Two Commutative Binary Operations on Z/10Z. Defines the substrate (Z/10Z, σ, W) and its substrate-prime distinction. The present paper depends on J02 only for the algebraic foundations; the non-genericity theorem is verifiable from this paper's §3 plus the binomial-tail computation in §4.
+## Why Linear Algebra and its Applications
+
+- **Subject fit.** A short, elementary linear-algebra note: tensor-power dimensions, basis-cell decompositions, binomial-coefficient identities, and the Hamming-weight grading on a 2n-bit label string. The result is recorded for the literature; no representation-theoretic machinery is invoked.
+- **Self-contained presentation.** Approximately 12 pages including bibliography. Verification reduces to a single standard-library Python script (`verify_J17.py`) with six independent checks corresponding one-to-one to the manuscript's claims; runtime under one second.
+- **Honest scoping.** The paper does *not* claim a structure-preserving map between `V^{⊗n}` and `Cl(2n)`; it claims a basis-label bijection with a matching Hamming grading. The companion open question (whether such a structure-preserving map exists over a common base ring) is recorded in §6, not in the abstract.
 
 ## Reproducibility
 
-Verification: `m22_decomposition.py` (factors each M_22 irrep dimension via `sympy.factorint`, classifies each by membership in the substrate-prime band, enumerates the band on [1, 385], and computes the binomial tail probabilities of the main theorem); `steiner_sigma_hexad.py` (Steiner-system parameters from b = C(v,t)/C(k,t), r = bk/v, λ_i recurrence). All scripts run in under 5 seconds with `numpy` and `sympy` as the only external dependencies. Scripts deposited at https://github.com/TiredofSleep/ck/tree/tig-synthesis (DOI 10.5281/zenodo.18852047).
+A single Python script `verify_J17.py` (CC-BY-4.0, standard library only — no `numpy`, no `sympy`, no external dependencies) bundled with the manuscript performs six checks:
+
+1. Total-dimension match `dim_{F_5} V^{⊗n} = 4^n = 2^{2n} = dim_R Cl(2n)` for `n = 0..5`.
+2. Coarse-cell count `2^n` for `n = 1..5`.
+3. Coarse-cell distribution at `n = 5`: `1, 5, 10, 10, 5, 1`, sum `32`.
+4. Refined-cell total `4^n` for `n = 0..5`.
+5. Refined-cell distribution `C(2n, k)` matches `Cl(2n)` grade dimensions, closed-form vs. direct enumeration over the `4^n` structural-bit strings, for `n = 0..5`.
+6. Refined `n = 5` distribution `1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1`, sum `1024 = 4^5`.
+
+All six checks PASS at machine precision in approximately one second. The script and the manuscript are deposited at https://github.com/TiredofSleep/ck/tree/tig-synthesis.
+
+## Companion submissions
+
+- **J37** — *Discrete Dirac on F_5^4: Substrate Algebra of the 4-Core*, submitted to *Algebras and Representation Theory*. Defines the algebra `V` and its multiplication table. J20 cites the data needed in §2 directly so verification is self-contained at the basis level.
+- **J50** — *F_p Universality: The Operator-Substrate Construction over Prime Fields*, submitted to *Algebra Universalis*. Sister companion in the same finite-field family; not load-bearing for J20.
+
+## Closest published precedent
+
+- **Drápal & Wanless (2021), *J. Combin. Theory A* 184, 105510** — *Maximally nonassociative quasigroups*. Same domain (small finite commutative non-associative structures), opposite structural extremum (theirs maximally non-associative; the present `V` is at the structurally regular end of the same family, with idempotents and a Grassmann annihilator). Cited in §0 (Lens) and the bibliography as the closest neighbour for the input substrate.
 
 ## Suggested reviewers
 
-- A specialist on the Mathieu groups and their Steiner-system designs (Conway-Sloane / Aschbacher lineage).
-- A specialist on Mathieu moonshine (for the open-question footing connecting the present non-genericity to moonshine phenomena).
-- A specialist on accessible expository number theory / combinatorics for the *Monthly*.
+- A specialist on tensor algebras over finite fields and their structural decompositions.
+- A specialist on Clifford algebras, their grade structure, and Bott periodicity.
+- A specialist on small finite commutative non-associative magmas or quasigroups (Drápal–Wanless neighbourhood).
 
 ## Conflict of interest
 

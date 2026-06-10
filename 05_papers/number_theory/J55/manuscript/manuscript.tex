@@ -1,0 +1,1597 @@
+%%% ============================================================
+%%% A structural conjecture for the kissing number in dimension
+%%% six, with an explicit candidate magic function on Gamma_0(3)
+%%%
+%%% B.R. Sanders, M. Gish (2026)
+%%% Target venue: Journal of Combinatorial Theory, Series A
+%%%               (alternative: Algebraic Combinatorics / DCG)
+%%% MSC: 52C17, 11F11; secondary 11H31, 11F20
+%%%
+%%% Draft of 2026-06-10.  TODO markers (red) flag citations or
+%%% numerical values that must be confirmed before submission.
+%%% ============================================================
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{graphicx}
+
+%% -------- theorem environments --------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{openproblem}[theorem]{Open Problem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{observation}[theorem]{Observation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% -------- macros --------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Dthree}{\Delta_{3}}
+\newcommand{\psip}{\psi_{+}}
+\newcommand{\Ip}{I_{+}}
+\newcommand{\Imm}{I_{-}}
+\newcommand{\fhat}[1]{\widehat{#1}}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\ord}{ord}
+
+%% -------- title matter --------
+\title[A conjecture for the kissing number in dimension six]%
+{A structural conjecture for the kissing number in dimension six,
+with an explicit candidate magic function on
+\texorpdfstring{$\Gamma_0(3)$}{Gamma0(3)}}
+
+\author{Brayden R.\ Sanders}
+\address{7Site LLC, Hot Springs, Arkansas, USA}
+\email{brayden@7site.co}
+
+\author{M.\ Gish}
+\address{Independent researcher, Hot Springs, Arkansas, USA}
+\email{monica.gish1992@gmail.com}
+
+\date{June 10, 2026}
+
+\keywords{kissing number, $E_6$ root system, linear programming bound,
+modular forms, eta quotient, Atkin--Lehner involution, Fricke involution,
+Viazovska's method}
+
+\subjclass[2020]{Primary 52C17, 11F11; Secondary 11H31, 11F20}
+
+\begin{document}
+
+\begin{abstract}
+Let $K(\R^6)$ denote the kissing number of six-dimensional Euclidean
+space.  The minimal vectors of the root lattice $E_6$ give
+$K(\R^6)\ge 72$, while the best published upper bounds, obtained by
+semidefinite programming, are $77$--$78$.  We conjecture
+$K(\R^6)=72$ and, in the spirit of Viazovska's solution of the
+sphere-packing problem in dimension $8$, we propose an explicit
+candidate ``magic function'': a linear combination of Laplace-type
+transforms of two weight-$6$ modular objects on $\Gamma_0(3)$, namely
+the unique normalized cusp form
+$\Dthree=\eta(\tau)^6\eta(3\tau)^6$ (the newform \textsf{3.6.a.a},
+Atkin--Lehner sign $-1$) and the meromorphic Fricke-even quotient
+$\psip=(E_6(\tau)^2-729\,E_6(3\tau)^2)/\Dthree$.
+We prove or computationally verify the properties of these building
+blocks that the construction requires: the Hecke eigenform structure of
+$\Dthree$ with a perfect match against the LMFDB; the Atkin--Lehner
+eigenvalue $-1$, confirmed four independent ways; consistency with the
+Ramanujan--Petersson bound at all primes $p\le 97$; the simple poles of
+$\psip$ at both cusps with leading Laurent datum
+$-728\,q^{-1}-5376$, where $-728=-2^3\cdot7\cdot13$ and
+$-5376=-2^8\cdot3\cdot7$; the divisibility of every Laurent coefficient
+of $\psip$ by $56$; a forced zero of $\psip$ at the Fricke fixed point
+$i/\sqrt3$; and a $30$-digit numerical profile of the cusp-form
+transform.  The construction is the natural level-$3$ analogue of the
+level-$1$ machinery used in dimension $8$.  We emphasize that this
+paper does \emph{not} prove $K(\R^6)=72$: the analytic continuation of
+the transform of $\psip$ and the linear-programming positivity
+conditions remain open, and we state the remaining problems precisely.
+\end{abstract}
+
+\maketitle
+
+%% ============================================================
+\section{Introduction}\label{sec:intro}
+%% ============================================================
+
+\subsection{The kissing number problem}
+
+The \emph{kissing number} $K(\R^n)$ is the maximal number of
+nonoverlapping unit balls in $\R^n$ that can simultaneously touch a
+central unit ball.  Equivalently, after rescaling, $K(\R^n)$ is the
+maximal cardinality of a set of points on a sphere with all pairwise
+angular distances at least $60^\circ$.  The problem is classical and,
+in most dimensions, open.  The known sharp values are summarized in
+Table~\ref{tab:known}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cclc}
+\toprule
+$n$ & $K(\R^n)$ & optimal configuration & reference \\
+\midrule
+$1$ & $2$ & $\pm 1$ & elementary \\
+$2$ & $6$ & hexagonal & elementary \\
+$3$ & $12$ & icosahedral / fcc, non-unique & \cite{SchuetteWaerden1953} \\
+$4$ & $24$ & $D_4$ minimal vectors ($24$-cell) & \cite{Musin2008} \\
+$8$ & $240$ & $E_8$ minimal vectors & \cite{Levenshtein1979,OdlyzkoSloane1979} \\
+$24$ & $196560$ & Leech minimal vectors & \cite{Levenshtein1979,OdlyzkoSloane1979} \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Dimensions in which the kissing number is known.  Uniqueness
+of the optimal configurations in dimensions $8$ and $24$ is due to
+Bannai and Sloane \cite{BannaiSloane1981}.}
+\label{tab:known}
+\end{table}
+
+The sharp values in dimensions $8$ and $24$ were obtained in 1979 by
+Levenshtein \cite{Levenshtein1979} and, independently, Odlyzko and
+Sloane \cite{OdlyzkoSloane1979}, through the linear-programming (LP)
+method of Delsarte, Goethals and Seidel \cite{DGS1977} for spherical
+codes: in those two dimensions a low-degree polynomial certificate
+matches the lattice lower bound exactly.  No such certificate has
+been found in dimension $6$ (or in any other currently open
+dimension): the polynomial LP and its known semidefinite-programming
+(SDP) strengthenings plateau strictly above the lattice bound.
+
+\subsection{Dimension six}\label{subsec:dimsix}
+
+The root lattice $E_6$, normalized to minimal norm $2$, has $72$
+minimal vectors, so
+\[
+K(\R^6)\;\ge\;72 .
+\]
+On the other side, the classical LP bound of \cite{OdlyzkoSloane1979}
+gives $K(\R^6)\le 82$
+\TODO{confirm the exact Odlyzko--Sloane value for $n=6$},
+the three-point SDP bound of Bachoc and Vallentin
+\cite{BachocVallentin2008} (computed to high accuracy in
+\cite{MittelmannVallentin2010}) gives
+\[
+K(\R^6)\;\le\;78,
+\]
+and an exploitation of polynomial symmetry by Machado and Oliveira
+\cite{MachadoOliveira2018} reportedly sharpens this to $K(\R^6)\le 77$
+\TODO{confirm the exact bound and reference data in
+\cite{MachadoOliveira2018}}.  Thus
+\[
+72\;\le\;K(\R^6)\;\le\;78,
+\]
+and the gap of $5$--$6$ contact points has resisted all
+polynomial-certificate methods.  It is widely expected that the lattice
+bound is the truth.  We record this as a formal conjecture.
+
+\begin{conjecture}\label{conj:main}
+$K(\R^6)=72$, and the optimal configuration is unique up to isometry,
+given by the minimal vectors of the root lattice $E_6$.
+\end{conjecture}
+
+Conjecture~\ref{conj:main} is folklore; the contribution of this paper
+is an \emph{explicit analytic candidate certificate} for it, together
+with proofs and computational verifications of the properties of the
+certificate's building blocks, and a precise statement of what remains
+open.
+
+\subsection{The modular-form method}
+
+In 2017 Viazovska \cite{Viazovska2017} solved the sphere-packing
+problem in dimension $8$ by constructing, from modular forms for
+$\mathrm{SL}_2(\Z)$, an explicit radial Schwartz function --- a
+``magic function'' in the terminology popularized by Cohn
+\cite{Cohn2017} --- that makes the Cohn--Elkies linear programming
+bound \cite{CohnElkies2003} sharp at the $E_8$ density.  The method
+was immediately extended to dimension $24$
+\cite{CKMRV2017}, and was later upgraded to a complete Fourier
+interpolation framework establishing universal optimality of $E_8$ and
+the Leech lattice \cite{CKMRV2022}, through Euclidean interpolation
+certificates rather than spherical polynomials.
+
+The lesson of \cite{Viazovska2017,CKMRV2017,CKMRV2022} is that when
+polynomial certificates stall above a lattice bound, the correct
+certificates may instead be \emph{transcendental} functions built from
+the modular forms attached to the lattice.  For $E_8$ and the Leech
+lattice the relevant forms live at level $1$.  The lattice $E_6$ has
+discriminant $3$, and its theta series is a weight-$3$ form on
+$\Gamma_0(3)$ with character $\chi_{-3}$; the natural home for a
+dimension-six certificate is therefore level $3$.  This paper carries
+out the level-$3$ bookkeeping and isolates a specific candidate.
+
+\subsection{The candidate and the results of this paper}
+
+Write $q=e^{2\pi i\tau}$ for $\tau$ in the upper half-plane $\HH$, let
+\[
+\Dthree(\tau)\;=\;\eta(\tau)^6\,\eta(3\tau)^6
+\;=\;q\prod_{n\ge1}(1-q^n)^6(1-q^{3n})^6
+\;=\;q-6q^2+9q^3+4q^4+6q^5-\cdots
+\]
+be the unique normalized cusp form of weight $6$ on $\Gamma_0(3)$, and
+let
+\[
+\psip(\tau)\;=\;\frac{E_6(\tau)^2-729\,E_6(3\tau)^2}{\Dthree(\tau)}
+\;=\;-\frac{728}{q}-5376+195048\,q+18475520\,q^2+\cdots
+\]
+be the meromorphic weight-$6$ quotient with Fricke eigenvalue $+1$
+constructed in Section~\ref{sec:candidate}.  The candidate magic
+function is
+\begin{equation}\label{eq:f6}
+f_6(x)\;=\;\sin^2\!\Big(\frac{\pi|x|^2}{2}\Big)\,
+\Big[\alpha\,\Ip(|x|^2)+\beta\,\Imm(|x|^2)\Big],
+\qquad x\in\R^6,
+\end{equation}
+where $\Imm$ and $\Ip$ are Laplace-type transforms of $\Dthree$ and
+$\psip$ against the measure $t^2\,dt$
+(Definitions~\ref{def:Iminus} and \ref{def:Iplus}), and the scalars
+$\alpha,\beta$ are to be determined by the sharpness conditions
+$\fhat{f}_6(\sqrt2)=0$ and $f_6(0)/\fhat{f}_6(0)=72$.
+
+The paper is organized as follows.
+Section~\ref{sec:structural} presents three elementary structural
+observations that select the value $72$ and the level $3$; these are
+motivation, not proof.
+Section~\ref{sec:candidate} constructs the candidate
+\eqref{eq:f6} and proves the elementary analytic facts about its
+ingredients (convergence and positivity of the cusp-form transform,
+asymptotics of $\psip$ on the imaginary axis, the action of the Fricke
+involution).
+Section~\ref{sec:verified} establishes the arithmetic of the two
+building blocks: part is proved, part is verified computationally with
+exact integer arithmetic and cross-validated against the LMFDB
+\cite{LMFDB}; the ancillary verification scripts are described in
+Appendix~\ref{app:repro}.  Two facts recorded there appear to be new:
+a forced zero of $\psip$ at the Fricke fixed point $i/\sqrt3$
+(Proposition~\ref{prop:forcedzero}), and the divisibility of every
+Laurent coefficient of $\psip$ by $56$
+(Proposition~\ref{prop:fiftysix}).
+Section~\ref{sec:gap} states precisely what remains open.
+Section~\ref{sec:comparison} compares the construction, item by item,
+with the dimension-$8$ machinery.
+Appendices~\ref{app:hecke}--\ref{app:repro} contain the data tables
+and reproducibility information.
+
+\subsection{What this paper does not claim}\label{subsec:noclaim}
+
+We state this prominently, here and in Section~\ref{sec:gap}.
+\emph{This paper does not prove $K(\R^6)=72$.}  The transform $\Ip$ is
+defined here only in a regularized form and only for $|x|^2>2$; its
+analytic continuation to all radii, the verification of the
+linear-programming sign conditions, the determination of
+$(\alpha,\beta)$, and the reduction of the kissing bound to the
+continued function are open problems, stated as
+Open Problems~\ref{op:continuation}--\ref{op:descent}.  What the paper
+provides is: (i) a specific, structurally motivated candidate, with
+every discrete choice (level, weight, cusp form, Fricke eigenvalues,
+numerator) forced by the framework of Section~\ref{sec:candidate};
+(ii) complete verification of the arithmetic properties the candidate
+needs its building blocks to have; and (iii) a precise reduction of
+Conjecture~\ref{conj:main} to a stated analytic problem.
+
+\subsection{Notation and conventions}\label{subsec:notation}
+
+$\HH$ denotes the upper half-plane, $q=e^{2\pi i\tau}$, and
+$\eta(\tau)=q^{1/24}\prod_{n\ge1}(1-q^n)$ is the Dedekind eta
+function.  The normalized Eisenstein series of weight $6$ is
+\[
+E_6(\tau)\;=\;1-504\sum_{n\ge1}\sigma_5(n)\,q^n ,
+\qquad \sigma_5(n)=\sum_{d\mid n}d^5 ,
+\]
+a modular form of weight $6$ for $\mathrm{SL}_2(\Z)$.
+For $N\ge1$, $\Gamma_0(N)$ is the usual congruence subgroup.  The
+weight-$k$ slash operator with the determinant normalization is
+$(f|_k\gamma)(\tau)=(\det\gamma)^{k/2}(c\tau+d)^{-k}f(\gamma\tau)$.
+The \emph{Fricke involution} on level $N$ is
+$W_N=\begin{psmallmatrix}0&-1\\N&0\end{psmallmatrix}$, so that at
+$N=3$, $k=6$,
+\begin{equation}\label{eq:slashW3}
+(f|_6W_3)(\tau)\;=\;3^{-3}\,\tau^{-6}\,f\!\big(-\tfrac1{3\tau}\big).
+\end{equation}
+$W_3$ normalizes $\Gamma_0(3)$ and $W_3^2=1$ on weight-$6$ forms, so
+$M_6(\Gamma_0(3))$ splits into $W_3$-eigenspaces with eigenvalues
+$\pm1$; since $3$ is prime, $W_3$ is also the unique nontrivial
+Atkin--Lehner involution at level $3$ \cite{AtkinLehner1970}.
+
+The Fourier transform on $\R^n$ is
+$\fhat{f}(\xi)=\int_{\R^n}f(x)\,e^{-2\pi i\langle x,\xi\rangle}\,dx$;
+for radial $f$ we freely write $f(r)$ for the common value on
+$|x|=r$.  Throughout, the kissing configuration is normalized as in
+$E_6$: the contact points lie on the sphere of radius $\sqrt2$, and
+tangency of the outer balls forces pairwise distances $\ge\sqrt2$,
+equivalently pairwise inner products $\le 1$, equivalently
+$\cos\theta\le\tfrac12$.
+
+%% ============================================================
+\section{Structural observations selecting \texorpdfstring{$72$}{72}
+and level \texorpdfstring{$3$}{3}}\label{sec:structural}
+%% ============================================================
+
+This section collects three elementary observations which together
+single out the value $K=72$ within the admissible window
+$[72,78]$ and dictate the modular-form home used in
+Section~\ref{sec:candidate}.  They are heuristic: we do not know how
+to convert any of them into a bound, and nothing in
+Sections~\ref{sec:candidate}--\ref{sec:verified} depends logically on
+this section.  We include them because they explain why the candidate
+of Section~\ref{sec:candidate} was singled out \emph{before} any
+numerics were run, and because the same pattern of reasoning may be
+useful in other open dimensions.
+
+\subsection{Smoothness of the known optima and of the dual pair}
+
+\begin{observation}\label{obs:smooth}
+Every known sharp kissing number factors over the prime set
+$\{2,3,5,7,11,13\}$:
+\[
+2,\quad 6=2\cdot3,\quad 12=2^2\cdot3,\quad 24=2^3\cdot3,\quad
+240=2^4\cdot3\cdot5,\quad 196560=2^4\cdot3^3\cdot5\cdot7\cdot13 .
+\]
+In dimensions $1$--$4$ the optima are in fact $\{2,3\}$-smooth.  In
+the dimension-six window $72\le K\le 78$, the integer
+$72=2^3\cdot3^2$ is the \emph{unique} $\{2,3\}$-smooth value
+($73$ is prime; $74=2\cdot37$; $75=3\cdot5^2$; $76=2^2\cdot19$;
+$77=7\cdot11$; $78=2\cdot3\cdot13$).  Moreover, writing $E_6^*$ for
+the dual lattice, whose $54$ minimal vectors realize the kissing
+number of the dual configuration, the dual-pair product is again pure
+$\{2,3\}$:
+\[
+K(E_6)\cdot K(E_6^*)\;=\;72\cdot 54\;=\;3888\;=\;2^4\cdot3^5 .
+\]
+\end{observation}
+
+We make no claim that smoothness is more than a regularity of the
+known examples: of the seven integers in the window, three
+($75$, $77$, $78$) do factor over $\{2,3,5,7,11,13\}$, so it is the
+stronger $\{2,3\}$-smoothness --- matching the discriminant $3$ of
+$E_6$ and the level-$3$ structure below --- that isolates $72$.  The
+$54$ minimal vectors of $E_6^*$ form the classical configuration of
+$27$ antipodal pairs corresponding to the $27$ lines on a smooth cubic
+surface, on which the Weyl group $W(E_6)$ acts \cite{ConwaySloane1999}.
+
+\subsection{The Eisenstein structure of \texorpdfstring{$E_6$}{E6}}
+
+\begin{observation}\label{obs:eisenstein}
+$E_6$ carries the structure of a rank-$3$ Hermitian lattice over the
+Eisenstein integers $\Z[\omega]$, $\omega=e^{2\pi i/3}$
+\cite{ConwaySloane1999}.  Scalar multiplication by any unit
+$\mu\in\{\pm1,\pm\omega,\pm\omega^2\}$, $\mu\ne1$, is an isometry
+without nonzero fixed vectors, so the unit group $\mu_6$ acts freely
+on the $72$ minimal vectors:
+\[
+72\;=\;3\cdot 24\;=\;6\cdot 12 ,
+\]
+i.e.\ the contact points organize into $24$ orbits under
+$\langle\omega\rangle$ and into $12$ regular hexagonal frames under
+$\mu_6$.
+\end{observation}
+
+The factor $24$ matches the kissing number of $\R^4$, and the
+hexagonal frames are the two-dimensional optimum; the multiplicative
+structure $72=6\cdot12=2\cdot3\cdot12$ is what one expects of an
+extremal configuration in dimension $6=2\cdot3$.  Again, this is
+numerology with a precise group-theoretic core, not a proof.
+
+\subsection{Discriminant \texorpdfstring{$3$}{3} forces level
+\texorpdfstring{$3$}{3}}
+
+\begin{observation}\label{obs:level}
+$\det E_6=3$, and the theta series
+$\theta_{E_6}(\tau)=\sum_{v\in E_6}q^{|v|^2/2}$ is a modular form of
+weight $3$ on $\Gamma_0(3)$ with character $\chi_{-3}$
+\cite{ConwaySloane1999,Ebeling2013}.  Any Viazovska-style certificate
+adapted to $E_6$ should therefore be built from modular objects on
+$\Gamma_0(3)$, just as the dimension-$8$ certificate is built at level
+$1$ because $E_8$ is unimodular.
+\end{observation}
+
+Observation~\ref{obs:level} is the operative one: it tells us
+\emph{where to look}, and Section~\ref{sec:candidate} shows that at
+level $3$, weight $6$, the search space collapses to an essentially
+unique candidate.
+
+\begin{remark}[Provenance]\label{rem:provenance}
+The heuristics of this section arose in a structural framework
+developed by the first author for organizing integer invariants of
+discrete structures by their factorizations over the prime alphabet
+$\{2,3,5,7,11,13\}$.  No familiarity with that framework is needed:
+all statements above are elementary and self-contained, and nothing
+later in the paper depends on them.
+\end{remark}
+
+%% ============================================================
+\section{The candidate construction}\label{sec:candidate}
+%% ============================================================
+
+\subsection{The linear-programming framework}\label{subsec:LP}
+
+We first recall the rigorous certificate framework our candidate is
+designed to enter.  For points on a sphere the classical statement is
+the Delsarte--Goethals--Seidel LP bound \cite{DGS1977,KabatianskyLevenshtein1978};
+we will use the following Euclidean form, which descends to the sphere
+by Schoenberg's theorem.  Let $\sigma$ denote the normalized uniform
+measure on the sphere $\sqrt2\,S^5=\{x\in\R^6:|x|=\sqrt2\}$, and for
+continuous $f:\R^6\to\R$ set
+\[
+c_0(f)\;=\;\int\!\!\int f(u-v)\,d\sigma(u)\,d\sigma(v).
+\]
+
+\begin{proposition}[Euclidean kissing certificate]\label{prop:certificate}
+Let $f:\R^6\to\R$ be a continuous, integrable, radial function such
+that
+\begin{enumerate}
+\item[(i)] $\fhat{f}(\xi)\ge0$ for all $\xi\in\R^6$, with
+$\fhat f\in L^1$;
+\item[(ii)] $f(x)\le0$ for all $\sqrt2\le|x|\le2\sqrt2$;
+\item[(iii)] $c_0(f)>0$.
+\end{enumerate}
+Then
+\[
+K(\R^6)\;\le\;\frac{f(0)}{c_0(f)} .
+\]
+\end{proposition}
+
+\begin{proof}
+Let $u_1,\dots,u_N\in\sqrt2\,S^5$ be a kissing configuration, so
+$|u_i-u_j|\ge\sqrt2$ for $i\ne j$; automatically
+$|u_i-u_j|\le2\sqrt2$.  By (i) and Fourier inversion, $f$ is a
+continuous positive-definite function on $\R^6$, hence its restriction
+$h(\langle u,v\rangle/2):=f(u-v)$ is a continuous positive-definite
+zonal kernel on $\sqrt2\,S^5$.  By Schoenberg's theorem
+\cite{Schoenberg1942}, $h$ has an absolutely and uniformly convergent
+ultraspherical expansion $h(t)=\sum_{k\ge0}c_kG_k^{(6)}(t)$ with all
+$c_k\ge0$, where $G_k^{(6)}$ are the Gegenbauer polynomials for $S^5$
+normalized by $G_k^{(6)}(1)=1$; orthogonality gives
+$c_0=\int\!\!\int h\,d\sigma\,d\sigma=c_0(f)$.  By the addition
+theorem each kernel $G_k^{(6)}$ is positive definite on the sphere, so
+$\sum_{i,j}G_k^{(6)}(t_{ij})\ge0$ where $t_{ij}=\langle
+u_i,u_j\rangle/2$.  Hence
+\[
+N\,f(0)\;\ge\;\sum_{i,j}h(t_{ij})
+\;=\;\sum_{k\ge0}c_k\sum_{i,j}G_k^{(6)}(t_{ij})
+\;\ge\;c_0\,N^2 ,
+\]
+where the first inequality uses (ii) to discard the off-diagonal
+terms.  Divide by $c_0N$.
+\end{proof}
+
+\begin{remark}\label{rem:c0}
+By Parseval, $c_0(f)=\int_{\R^6}\fhat f(\xi)\,
+|\widehat{\sigma}(\xi)|^2\,d\xi\ge0$ always holds under (i); the
+content of (iii) is strictness.  Note that $c_0(f)$ is \emph{not}
+$\fhat f(0)$ in general.  A modern Euclidean route to sharp spherical
+bounds of this type is the interpolation machinery of
+\cite{CKMRV2022}, which works directly with functions on $\R^n$; for
+our candidate, the passage from the design conditions
+\eqref{eq:CE-design} below to a certificate in the precise sense of
+Proposition~\ref{prop:certificate} is part of the open program
+(Open Problem~\ref{op:descent}).
+\end{remark}
+
+\subsection{Modular building blocks at level
+\texorpdfstring{$3$}{3}, weight \texorpdfstring{$6$}{6}}
+\label{subsec:blocks}
+
+The space $M_6(\Gamma_0(3))$ has dimension $3$, with
+$\dim S_6(\Gamma_0(3))=1$ and a $2$-dimensional Eisenstein subspace
+spanned by $E_6(\tau)$ and $E_6(3\tau)$
+\cite{DiamondShurman2005,LMFDB}.  The cusp line is spanned by the eta
+quotient
+\[
+\Dthree(\tau)\;=\;\eta(\tau)^6\,\eta(3\tau)^6\;\in\;S_6(\Gamma_0(3)),
+\]
+which is holomorphic and nonvanishing on $\HH$ (as $\eta$ is), vanishes
+to order $1$ at the cusp $\infty$, and hence --- since the valence
+formula for the index-$4$ subgroup $\Gamma_0(3)$ makes the total cusp
+vanishing equal to $6\cdot4/12=2$ --- vanishes to order exactly $1$ at
+the cusp $0$ as well.  That $\Dthree$ is modular of this weight and
+level follows from the standard eta-quotient criteria (see
+\cite[\S1.4]{Ono2004}); it is the newform \textsf{3.6.a.a} of the
+LMFDB, which lists precisely this eta-quotient presentation
+\cite{LMFDB}.  Its arithmetic is the subject of
+Propositions~\ref{prop:hecke}--\ref{prop:RP} below.
+
+The Fricke involution acts on the Eisenstein pair as follows.
+
+\begin{lemma}\label{lem:W3eisenstein}
+With the normalization \eqref{eq:slashW3},
+\[
+E_6(\tau)\big|_6W_3=27\,E_6(3\tau),
+\qquad
+E_6(3\tau)\big|_6W_3=\tfrac1{27}\,E_6(\tau).
+\]
+Consequently the combinations
+\[
+G_{\pm}(\tau)\;=\;E_6(\tau)\,\pm\,27\,E_6(3\tau)
+\]
+satisfy $G_\pm|_6W_3=\pm G_\pm$, and
+$\{G_+,G_-\}$ is the $W_3$-eigenbasis of the Eisenstein subspace of
+$M_6(\Gamma_0(3))$.
+\end{lemma}
+
+\begin{proof}
+From the level-$1$ functional equation $E_6(-1/z)=z^6E_6(z)$ with
+$z=3\tau$,
+\[
+(E_6|_6W_3)(\tau)=3^{-3}\tau^{-6}E_6\!\big(-\tfrac1{3\tau}\big)
+=3^{-3}\tau^{-6}(3\tau)^6E_6(3\tau)=27\,E_6(3\tau),
+\]
+and with $z=\tau$,
+\[
+\big(E_6(3\,\cdot)|_6W_3\big)(\tau)
+=3^{-3}\tau^{-6}E_6\!\big(-\tfrac1{\tau}\big)
+=3^{-3}\tau^{-6}\tau^{6}E_6(\tau)=\tfrac1{27}E_6(\tau).
+\qedhere
+\]
+\end{proof}
+
+The cusp form lies in the $(-1)$-eigenspace:
+$\Dthree|_6W_3=-\Dthree$ (Proposition~\ref{prop:AL}; the one-line
+symbolic proof via $\eta(-1/\tau)=\sqrt{-i\tau}\,\eta(\tau)$ is given
+there).  Thus the full eigenspace decomposition of $M_6(\Gamma_0(3))$
+is
+\[
+M_6(\Gamma_0(3))^{+}=\C\,G_+,
+\qquad
+M_6(\Gamma_0(3))^{-}=\C\,G_-\oplus\C\,\Dthree .
+\]
+
+\subsection{The meromorphic Fricke-even quotient
+\texorpdfstring{$\psip$}{psi+}}\label{subsec:psiplus}
+
+Viazovska's construction in dimension $8$ takes Laplace-type
+transforms of \emph{weakly holomorphic} (pole at the cusp) modular
+objects whose Fricke/inversion eigenvalue matches the parity of the
+target Fourier eigenfunction, with the discriminant cusp form in the
+denominator supplying the pole \cite{Viazovska2017}.  At level $3$,
+weight $6$, the same recipe forces the following object.  Define
+\begin{equation}\label{eq:psiplus}
+\psip(\tau)
+\;=\;\frac{G_+(\tau)\,G_-(\tau)}{\Dthree(\tau)}
+\;=\;\frac{E_6(\tau)^2-729\,E_6(3\tau)^2}{\eta(\tau)^6\,\eta(3\tau)^6}.
+\end{equation}
+This is a meromorphic modular form of weight $12-6=6$ on
+$\Gamma_0(3)$, holomorphic on $\HH$ (the denominator is nonvanishing
+there), with poles confined to the cusps.  Its $W_3$-eigenvalue is
+forced to be $+1$: among the three Eisenstein bilinears available as
+numerators, the eigenvalue arithmetic over the $(-1)$-eigenform
+denominator gives
+\[
+\frac{G_+^2}{\Dthree}\mapsto\frac{(+1)^2}{-1}=-1,\qquad
+\frac{G_-^2}{\Dthree}\mapsto\frac{(-1)^2}{-1}=-1,\qquad
+\frac{G_+G_-}{\Dthree}\mapsto\frac{(+1)(-1)}{-1}=+1 ,
+\]
+so $G_+G_-$ is the unique choice (up to scale) producing a Fricke-even
+quotient.  The precise statement and proof are
+Proposition~\ref{prop:psiplus}.  The Laurent expansion at $\infty$
+begins
+\begin{equation}\label{eq:psilaurent}
+\psip(\tau)\;=\;-\frac{728}{q}\;-\;5376\;+\;195048\,q
+\;+\;18475520\,q^2\;+\;508641336\,q^3\;+\;\cdots ,
+\end{equation}
+with leading coefficient
+$-728=(1+27)(1-27)=-2^3\cdot7\cdot13$ inherited from the constant
+terms of $G_\pm$; the coefficients are tabulated in
+Appendix~\ref{app:laurent}.
+
+\subsection{The two transforms}\label{subsec:transforms}
+
+The dimension enters through the Laplace kernel: in $\R^6$ the
+Gaussian $e^{-\pi t|x|^2}$ has Fourier transform
+$t^{-3}e^{-\pi|\xi|^2/t}$, and the measure $t^{(n-2)/2}\,dt=t^2\,dt$
+is the standard pairing for radial functions in dimension $n=6$.
+
+\begin{definition}\label{def:Iminus}
+For $r^2\ge0$ set
+\[
+\Imm(r^2)\;=\;\int_0^\infty \Dthree(it)\,e^{-\pi r^2t}\,t^2\,dt .
+\]
+\end{definition}
+
+\begin{lemma}\label{lem:Iminus}
+$\Imm(r^2)$ converges absolutely for every $r^2\ge0$ and defines a
+strictly positive function.  Moreover there is a constant $C$ such
+that
+\[
+0\;<\;\Imm(r^2)\;\le\;C\,e^{-\pi r/3}\qquad(r\ge1),
+\]
+so the radial function $f_-(x):=\Imm(|x|^2)$ is continuous, strictly
+positive, and integrable on $\R^6$, with rapid (exponential-type)
+decay.
+\end{lemma}
+
+\begin{proof}
+On the imaginary axis $\Dthree(it)=e^{-2\pi
+t}\prod_{n\ge1}(1-e^{-2\pi nt})^6(1-e^{-6\pi nt})^6\in(0,1)$, so the
+integrand is positive and bounded by $e^{-2\pi t}t^2$ as
+$t\to\infty$.  As $t\to0^+$, the functional equation
+$\Dthree(i/(3t))=27\,t^6\,\Dthree(it)$ --- the imaginary-axis form of
+$\Dthree|_6W_3=-\Dthree$, see Remark~\ref{rem:signs} --- gives
+$\Dthree(it)=\tfrac1{27}t^{-6}\Dthree\big(\tfrac{i}{3t}\big)
+\le \tfrac1{27}t^{-6}e^{-2\pi/(3t)}$,
+which vanishes to all orders; convergence and positivity follow.  For
+the decay bound, split at $t=1/r$: for $0<t\le1/r$,
+\[
+\Dthree(it)\le\tfrac1{27}\,t^{-6}e^{-\pi/(3t)}\cdot e^{-\pi/(3t)}
+\le \Big(\tfrac1{27}\sup_{s>0}s^{-6}e^{-\pi/(3s)}\Big)\,e^{-\pi r/3},
+\]
+so that stretch of the integral is $\le C_1e^{-\pi r/3}$; for
+$t\ge1/r$, bound $\Dthree(it)\,t^2\le M$ (continuous, vanishing at
+both ends) and integrate: $\int_{1/r}^\infty Me^{-\pi
+r^2t}\,dt=Me^{-\pi r}/(\pi r^2)$.  Integrability of $f_-$ on $\R^6$
+follows from the decay bound.
+\end{proof}
+
+The cusp-form transform is, by itself, \emph{positive definite}:
+
+\begin{lemma}\label{lem:Fpositive}
+The Fourier transform of $f_-(x)=\Imm(|x|^2)$ on $\R^6$ is
+\[
+\fhat{f_-}(\xi)\;=\;27\int_0^\infty \Dthree(iu)\,
+e^{-3\pi|\xi|^2u}\,u^5\,du\;>\;0
+\qquad\text{for all }\xi\in\R^6 .
+\]
+\end{lemma}
+
+\begin{proof}
+By Tonelli (all factors positive) we may exchange the $x$- and
+$t$-integrals:
+\[
+\fhat{f_-}(\xi)=\int_0^\infty\Dthree(it)\,t^2\,
+\big(t^{-3}e^{-\pi|\xi|^2/t}\big)\,dt
+=\int_0^\infty\Dthree(it)\,t^{-1}e^{-\pi|\xi|^2/t}\,dt .
+\]
+Substituting $t=1/(3u)$ and applying
+$\Dthree(i/(3u))=27u^6\Dthree(iu)$ gives the display; positivity is
+clear since $\Dthree(iu)>0$.
+\end{proof}
+
+\begin{remark}\label{rem:rescale}
+Lemma~\ref{lem:Fpositive} exhibits the structural difference between
+level $1$ and level $3$: the Fricke involution intertwines the
+$(t^2dt,\,\pi r^2)$-transform not with itself but with a
+$(u^5du,\,3\pi r^2)$-transform --- a rescaling by $3$ in the Gaussian
+parameter, reflecting the index-$3$ relation between $E_6$ and
+$E_6^*$.  At level $1$ ($E_8$, self-dual) the corresponding
+computation returns the same transform, which is why the $\pm1$
+Fricke eigenspaces there map directly to $\pm1$ Fourier
+eigenfunctions.  Handling this rescaling exactly is one of the
+genuinely new features of the level-$3$ problem; see
+Section~\ref{sec:gap}.
+\end{remark}
+
+In particular $f_-$ alone cannot be a certificate: it is positive
+everywhere, while condition (ii) of
+Proposition~\ref{prop:certificate} demands negativity beyond
+$\sqrt2$.  Sign changes must come from the meromorphic component and
+the trigonometric prefactor.
+
+For $\psip$ the integral requires care at \emph{both} ends.
+
+\begin{lemma}\label{lem:psiasym}
+On the imaginary axis, $\psip(it)$ is real, and
+\[
+\psip(it)\;=\;-728\,e^{2\pi t}-5376+O(e^{-2\pi t})
+\quad(t\to\infty),
+\qquad
+\psip(it)\;=\;\frac{728}{27}\,t^{-6}e^{2\pi/(3t)}
++\frac{5376}{27}\,t^{-6}+O\big(t^{-6}e^{-2\pi/(3t)}\big)
+\quad(t\to0^+).
+\]
+In particular $\psip(it)\to+\infty$ as $t\to0^+$ and
+$\psip(it)\to-\infty$ as $t\to\infty$.
+\end{lemma}
+
+\begin{proof}
+The expansion at $t\to\infty$ is \eqref{eq:psilaurent} with
+$q=e^{-2\pi t}$.  For $t\to0^+$, the imaginary-axis form of
+$\psip|_6W_3=\psip$ (Proposition~\ref{prop:psiplus};
+Remark~\ref{rem:signs}) reads
+$\psip(it)=-\tfrac1{27}t^{-6}\,\psip\big(\tfrac{i}{3t}\big)$; insert
+the $t\to\infty$ expansion of $\psip(i/(3t))$.
+\end{proof}
+
+\begin{definition}[Regularized transform]\label{def:Iplus}
+For $r^2>2$ set
+\[
+\Ip(r^2)\;=\;\int_1^\infty \psip(it)\,e^{-\pi r^2t}\,t^2\,dt
+\;+\;\int_0^1\Big[\psip(it)-\frac{728}{27}t^{-6}e^{2\pi/(3t)}
+-\frac{5376}{27}t^{-6}\Big]e^{-\pi r^2t}\,t^2\,dt .
+\]
+\end{definition}
+
+By Lemma~\ref{lem:psiasym} the second integral converges for every
+$r^2$, and the first converges precisely when $r^2>2$ (the integrand
+grows like $-728\,e^{(2-r^2)\pi t}t^2$).  Definition~\ref{def:Iplus}
+is one natural regularization among several: any other subtraction
+scheme differs from it by an \emph{explicit elementary function} of
+$r^2$ (incomplete-gamma integrals of the subtracted terms).  Selecting
+the canonical normalization --- the one for which the analytic
+continuation below produces the linear-programming certificate --- is
+part of Open Problem~\ref{op:continuation}, exactly as the
+choice of contour is the heart of the dimension-$8$ proof
+\cite[\S7]{Viazovska2017}.
+
+\subsection{The candidate magic function}\label{subsec:f6}
+
+\begin{definition}\label{def:f6}
+For $\alpha,\beta\in\R$ and $x\in\R^6$ with $|x|^2>2$, set
+\[
+f_6(x)\;=\;\sin^2\!\Big(\frac{\pi|x|^2}{2}\Big)
+\Big[\alpha\,\Ip(|x|^2)+\beta\,\Imm(|x|^2)\Big],
+\]
+extended to all of $\R^6$ by the conjectural analytic continuation of
+$\Ip$ (Open Problem~\ref{op:continuation}), with $f_6(0)$ defined as
+the limit $r\to0^+$.
+\end{definition}
+
+The design conditions on the pair $(\alpha,\beta)$ and the
+continuation are:
+\begin{equation}\label{eq:CE-design}
+\begin{aligned}
+\text{(CE1)}&\quad f_6 \text{ and } \fhat{f_6} \text{ continuous,
+integrable, with rapid decay (admissibility);}\\
+\text{(CE2)}&\quad f_6(x)\le0 \text{ for } |x|\ge\sqrt2
+\text{ (at least on } \sqrt2\le|x|\le2\sqrt2\text{);}\\
+\text{(CE3)}&\quad \fhat{f_6}(\xi)\ge0 \text{ for all } \xi;\\
+\text{(CE4)}&\quad \fhat{f_6}(\sqrt2)=0;\\
+\text{(CE5)}&\quad f_6(0)/\fhat{f_6}(0)=72 .
+\end{aligned}
+\end{equation}
+Conditions (CE4)--(CE5) are two linear constraints on
+$(\alpha,\beta)$ modulo overall scale, so they determine the candidate
+projectively once the continuation is fixed.
+
+\begin{conjecture}[Sharp certificate]\label{conj:certificate}
+There is a canonical analytic continuation of $\Ip$ to $r^2\ge0$ and a
+choice of $(\alpha,\beta)$ such that $f_6$ satisfies
+\textup{(CE1)--(CE5)} and descends, via
+Proposition~\ref{prop:certificate} (or via the interpolation framework
+of \cite{CKMRV2022}), to a sharp certificate
+\[
+K(\R^6)\;\le\;72 .
+\]
+Together with the $E_6$ configuration this gives $K(\R^6)=72$.
+\end{conjecture}
+
+\subsection{Why each ingredient is forced}\label{subsec:forced}
+
+We summarize why \eqref{eq:f6} is not one ansatz among many but the
+output of a short forced search:
+
+\begin{enumerate}
+\item \emph{Level $3$.}  $\det E_6=3$ and
+$\theta_{E_6}\in M_3(\Gamma_0(3),\chi_{-3})$
+(Observation~\ref{obs:level}).
+\item \emph{Weight $6$.}  The radial pairing in $\R^6$ uses the
+measure $t^{(6-2)/2}dt=t^2dt$, which couples to weight-$6$
+transformation laws under $t\mapsto1/(3t)$
+(Lemma~\ref{lem:Fpositive} and Remark~\ref{rem:rescale}).
+\item \emph{The cusp form.}  $\dim S_6(\Gamma_0(3))=1$: the form
+$\Dthree=\eta^6\eta_3^6$ is the unique choice.
+\item \emph{The $\pm$ decomposition.}  $W_3$ splits
+$M_6(\Gamma_0(3))$ into eigenspaces (Lemma~\ref{lem:W3eisenstein});
+the two transforms $\Ip,\Imm$ are modelled on the two Fourier
+parities, as in dimension $8$.
+\item \emph{The numerator.}  A Fricke-\emph{even} meromorphic
+quotient with cusp-form denominator requires numerator eigenvalue
+$-1$; among the Eisenstein bilinears $G_+^2,G_-^2,G_+G_-$ only
+$G_+G_-$ qualifies (\S\ref{subsec:psiplus}).
+\item \emph{The pole is necessary.}  A holomorphic even choice
+(e.g.\ $G_+$ itself) yields a transform with no sign-changing
+interpolation structure; in dimension $8$ it is precisely the simple
+pole of the integrand at the cusp that, after contour deformation,
+produces the interpolation basis and the sharp zeros
+\cite{Viazovska2017,Cohn2017}.  The constant term of $G_+G_-$ at
+$\infty$, namely $(1+27)(1-27)=-728\ne0$, guarantees the simple pole
+(Proposition~\ref{prop:psiplus}).
+\item \emph{The prefactor.}  $\sin^2(\pi r^2/2)$ vanishes to second
+order exactly at $r^2\in2\Z_{>0}$.  The squared distances realized in
+the $E_6$ kissing configuration are $|u-v|^2=4-2\langle u,v\rangle\in
+\{2,4,6,8\}$, since distinct minimal vectors have
+$\langle u,v\rangle\in\{1,0,-1,-2\}$: \emph{every} realized distance is a
+zero of the prefactor, the complementary-slackness pattern of a sharp
+certificate.  The expected singular terms of the continued bracket at
+$r^2=0$ and $r^2=2$ (poles in $r^2$, in analogy with
+\cite[\S7]{Viazovska2017}) convert the prefactor's double zeros at
+those two radii into a positive value $f_6(0)>0$ and the prescribed
+behavior at $r=\sqrt2$.
+\end{enumerate}
+
+%% ============================================================
+\section{Verified properties of the building blocks}
+\label{sec:verified}
+%% ============================================================
+
+This section records what is \emph{proved} and what is
+\emph{computationally verified} about $\Dthree$ and $\psip$.  All
+computations were performed twice, by independent code paths: first
+with floating/symbolic series (mpmath/sympy), then re-derived from
+scratch with exact integer arithmetic, and cross-validated against the
+LMFDB \cite{LMFDB}.  The scripts and data files are ancillary to this
+paper and are described in Appendix~\ref{app:repro}; we cite them by
+name below.
+
+\subsection{The cusp form is the newform \textsf{3.6.a.a}}
+
+\begin{proposition}\label{prop:hecke}
+$\Dthree=\eta(\tau)^6\eta(3\tau)^6$ spans $S_6(\Gamma_0(3))$ and is a
+normalized Hecke eigenform; it is a newform (there are no oldforms,
+since $S_6(\mathrm{SL}_2(\Z))=0$), self-dual, with trivial character.
+Its Hecke eigenvalues $a_n$ (Appendix~\ref{app:hecke}) satisfy:
+\begin{enumerate}
+\item[(i)] multiplicativity $a_{mn}=a_ma_n$ for $(m,n)=1$, verified
+exactly for all $160$ coprime pairs with $mn\le100$;
+\item[(ii)] the weight-$6$ prime-power recursion
+$a_{p^2}=a_p^2-p^5$, verified at $p\in\{2,5,7\}$, and the ramified
+relation $a_9=a_3^2=81$ at the level prime;
+\item[(iii)] a perfect match with the LMFDB newform \textsf{3.6.a.a}
+for all listed coefficients $a_2,\dots,a_{31}$, including the derived
+value $a_{25}=a_5^2-5^5=-3089$;
+\item[(iv)] $a_3=+9=3^{(k-2)/2}$ with $k=6$, consistent with the
+Atkin--Lehner relation of Proposition~\ref{prop:AL}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Modularity, weight, level, trivial character, and cuspidality of the
+eta quotient follow from the standard criteria
+\cite[\S1.4]{Ono2004}: for $\eta(\tau)^6\eta(3\tau)^6$ one has
+$\sum_\delta \delta\,r_\delta=6+18=24\equiv0\ (24)$,
+$\sum_\delta (N/\delta)\,r_\delta=18+6=24\equiv0\ (24)$, and
+$\prod_\delta \delta^{r_\delta}=3^6$ is a perfect square, giving
+trivial nebentypus; the cusp orders are positive.  Since
+$\dim S_6(\Gamma_0(3))=1$ \cite{DiamondShurman2005,LMFDB} and the
+Hecke operators preserve this line, $\Dthree$ is automatically an
+eigenform, and $a_1=1$ normalizes it; multiplicativity and the
+recursion are then theorems of Hecke theory, so the checks (i)--(ii)
+validate the computed $q$-expansion rather than the theory.  The
+verifications are performed with exact integer arithmetic in the
+ancillary script \texttt{claudecode\_independent\_verify.py} (checks
+C1--C3), independently of the original computation in
+\texttt{compute\_hecke\_eigenvalues.py}; the LMFDB comparison (iii) is
+recorded in \texttt{data/hecke\_eigenvalues.json}
+\cite{LMFDB}.
+\end{proof}
+
+\subsection{The Atkin--Lehner sign}
+
+\begin{proposition}\label{prop:AL}
+$\Dthree|_6W_3=-\Dthree$; that is, the Atkin--Lehner (= Fricke)
+eigenvalue of the newform \textsf{3.6.a.a} is $\eps_3=-1$.
+\end{proposition}
+
+\begin{proof}
+From $\eta(-1/z)=\sqrt{-iz}\,\eta(z)$ applied at $z=3\tau$ and
+$z=\tau$:
+\[
+\Dthree\!\big(-\tfrac1{3\tau}\big)
+=\eta\!\big(-\tfrac1{3\tau}\big)^6\,\eta\!\big(-\tfrac1{\tau}\big)^6
+=(-3i\tau)^3(-i\tau)^3\,\eta(3\tau)^6\eta(\tau)^6
+=-27\,\tau^6\,\Dthree(\tau),
+\]
+since $(-3i\tau)^3(-i\tau)^3=(27i)(i)\tau^6=-27\tau^6$.  Hence
+$(\Dthree|_6W_3)(\tau)=3^{-3}\tau^{-6}\cdot(-27\tau^6)\Dthree(\tau)
+=-\Dthree(\tau)$.
+\end{proof}
+
+The sign was confirmed four independent ways: (a) the symbolic
+eta-transformation derivation above, executed in sympy
+(\texttt{verify\_atkin\_lehner.py}); (b) the Atkin--Lehner newform
+relation $a_p=-\eps_p\,p^{k/2-1}$ for $p\,\|\,N$
+\cite{AtkinLehner1970}, which at $p=3$, $k=6$ reads
+$a_3=-9\,\eps_3$, so $a_3=+9$ forces $\eps_3=-1$; (c) a $30$-digit
+numerical functional-equation test at six points on the imaginary
+axis; (d) the LMFDB entry for \textsf{3.6.a.a} \cite{LMFDB}.  Items
+(b)--(c) are checks C5--C6 of
+\texttt{claudecode\_independent\_verify.py}.
+
+\begin{remark}[Imaginary-axis sign conventions]\label{rem:signs}
+A bookkeeping point that is easy to get wrong, recorded here because
+it is load-bearing for any re-derivation.  With the normalization
+\eqref{eq:slashW3}, evaluating at $\tau=it$ gives
+$(it)^{-6}=-t^{-6}$, so for a weight-$6$ eigenfunction
+$f|_6W_3=\eps f$ the \emph{observable} relation on the imaginary axis
+is
+\[
+f\!\big(\tfrac{i}{3t}\big)\;=\;-\,\eps\cdot 27\,t^6 f(it).
+\]
+Thus the $\eps=-1$ form satisfies the \emph{positive} relation
+$\Dthree(i/(3t))=+27t^6\Dthree(it)$ (consistent with
+$\Dthree(it)>0$), while the $\eps=+1$ form satisfies
+$\psip(i/(3t))=-27t^6\,\psip(it)$ --- which is what forces the zero in
+Proposition~\ref{prop:forcedzero}.
+\end{remark}
+
+\subsection{Ramanujan--Petersson consistency}
+
+\begin{proposition}\label{prop:RP}
+The computed eigenvalues satisfy $|a_p|\le 2p^{5/2}$ for every prime
+$p\le97$; the extremal ratio $|a_p|/2p^{5/2}$ on this range is
+$0.825$, attained at $p=53$ (Appendix~\ref{app:hecke}).
+\end{proposition}
+
+The bound is of course a theorem for all $p$ (Deligne
+\cite{Deligne1974}); the verification is a consistency test of the
+computed expansion --- any coefficient error of even modest size would
+violate it --- not new mathematics.  It is check C4 of
+\texttt{claudecode\_independent\_verify.py}.
+
+\subsection{Properties of \texorpdfstring{$\psip$}{psi+}}
+
+\begin{proposition}\label{prop:psiplus}
+The function $\psip$ of \eqref{eq:psiplus} is a meromorphic modular
+form of weight $6$ on $\Gamma_0(3)$, holomorphic on $\HH$, with
+\[
+\psip|_6W_3\;=\;+\,\psip ,
+\]
+simple poles at both cusps, and integral Laurent coefficients.  At
+$\infty$ its expansion is \eqref{eq:psilaurent}, with
+\[
+\res_{\infty}\psip\;:=\;[q^{-1}]\,\psip\;=\;-728\;=\;-2^3\cdot7\cdot13,
+\qquad
+[q^{0}]\,\psip\;=\;-5376\;=\;-2^8\cdot3\cdot7 ,
+\]
+and the expansion of $\psip$ in the local parameter at the cusp $0$
+(i.e.\ of $\psip|_6W_3$ at $\infty$) is the same series; in particular
+the pole at $0$ is also simple with leading coefficient $-728$.
+\end{proposition}
+
+\begin{proof}
+Weight and level are clear from \eqref{eq:psiplus};
+holomorphy on $\HH$ holds because $\eta$ is nonvanishing there.  The
+eigenvalue: by Lemma~\ref{lem:W3eisenstein},
+$(G_+G_-)|_{12}W_3=(G_+|_6W_3)(G_-|_6W_3)=-G_+G_-$, and by
+Proposition~\ref{prop:AL} the denominator also picks up $-1$;
+multiplicativity of the slash on products and quotients gives
+$\psip|_6W_3=(-1)/(-1)\cdot\psip=\psip$.  Pole structure: $\Dthree$
+has a simple zero at each cusp (\S\ref{subsec:blocks}) and the
+numerator has constant term $(1+27)(1-27)=-728\ne0$ at $\infty$, so
+the pole at $\infty$ is exactly simple; the eigenfunction property
+transports the same Laurent series to the cusp $0$.  Integrality: the
+numerator lies in $\Z[[q]]$ and
+$\Dthree/q\in1+q\Z[[q]]$ has an inverse in $1+q\Z[[q]]$, so
+$\psip\in q^{-1}\Z[[q]]$.  The expansion was computed by exact integer
+series division to order $q^{80}$ (all coefficients integral, a
+consistency check on the division) in
+\texttt{claudecode\_independent\_verify.py} (checks C7--C8), with the
+numerator independently verified in
+\texttt{verify\_psi\_plus\_residue.py}; the eigenvalue was also
+confirmed numerically at six imaginary-axis points at $30$ digits
+(check C9).
+\end{proof}
+
+\subsection{A forced zero at the Fricke fixed point}
+
+The fixed point of $W_3$ in $\HH$ is $\tau_*=i/\sqrt3$
+(indeed $-1/(3\tau_*)=\tau_*$).
+
+\begin{proposition}\label{prop:forcedzero}
+Any weight-$6$ meromorphic form $f$ on $\Gamma_0(3)$ with
+$f|_6W_3=+f$ that is finite at $\tau_*=i/\sqrt3$ vanishes there.  In
+particular
+\[
+\psip\!\Big(\frac{i}{\sqrt3}\Big)\;=\;0 ,
+\]
+while $\Dthree(i/\sqrt3)=0.02251\ldots\ne0$ (the $\eps=-1$ form has no
+forced zero).  Numerically,
+$|\psip(i/\sqrt3)|/|\psip(0.75\,i)|\approx4\times10^{-32}$ at
+$30$-digit working precision, confirming the identity to the full
+precision of the computation.
+\end{proposition}
+
+\begin{proof}
+Evaluate the eigenfunction property at the fixed point:
+$f(\tau_*)=(f|_6W_3)(\tau_*)=3^{-3}\tau_*^{-6}f(\tau_*)$, and
+$\tau_*^6=(i/\sqrt3)^6=i^6/27=-1/27$, so $3^{-3}\tau_*^{-6}=-1$ and
+$f(\tau_*)=-f(\tau_*)$.  (Equivalently: set $t=1/\sqrt3$ in
+$\psip(i/(3t))=-27t^6\psip(it)$ of Remark~\ref{rem:signs}.)
+$\psip$ is holomorphic at $\tau_*\in\HH$ by
+Proposition~\ref{prop:psiplus}.  The numerical confirmation is check
+C10 of \texttt{claudecode\_independent\_verify.py}.
+\end{proof}
+
+\begin{remark}\label{rem:zerorelevance}
+By Lemma~\ref{lem:psiasym}, $\psip(it)$ is positive near $t=0$ and
+negative for large $t$; Proposition~\ref{prop:forcedzero} pins a sign
+change at exactly $t_*=1/\sqrt3$, the fixed point of
+$t\mapsto1/(3t)$.  This is directly relevant to the open continuation
+problem: in dimension $8$ the deformed contour pivots at the fixed
+point $\tau=i$ of the inversion \cite[\S7]{Viazovska2017}, and the
+natural level-$3$ contour pivots at $\tau_*=i/\sqrt3$ --- where, by
+the proposition, the integrand \emph{vanishes}.  We expect this forced
+zero to serve as the anchor of the positivity analysis of the
+continued $\Ip$ (Open Problem~\ref{op:continuation}).
+\end{remark}
+
+\subsection{Arithmetic of the Laurent coefficients}
+\label{subsec:laurentarith}
+
+\begin{proposition}\label{prop:fiftysix}
+Write $\psip=\sum_{n\ge-1}c_n q^n$.  Then $56\mid c_n$ for every
+$n\ge-1$.
+\end{proposition}
+
+\begin{proof}
+Let $N(q)=E_6(\tau)^2-729E_6(3\tau)^2=\sum_{n\ge0}N_nq^n$.  Since
+$E_6\equiv1\pmod{504}$ coefficientwise ($504=2^3\cdot3^2\cdot7$),
+every coefficient of $E_6(\tau)^2$ and of $E_6(3\tau)^2$ beyond the
+constant term is divisible by $1008=2\cdot504$
+(cross terms $2\cdot(-504)\sigma_5$ and squares $504^2(\cdots)$), so
+$N_0=1-729=-728$ and $1008\mid N_n$ for $n\ge1$.  Writing
+$q\,\psip=N\cdot U$ with
+$U=(\Dthree/q)^{-1}\in1+q\Z[[q]]$, every coefficient of $q\,\psip$ is
+$-728\,u_m+1008\,(\text{integer})$, and
+$\gcd(728,1008)=56$ divides both terms.
+\end{proof}
+
+The divisibility was confirmed empirically for all computed
+coefficients $c_{-1},\dots,c_{80}$.  Note $56=2^3\cdot7$.
+
+\begin{observation}\label{obs:alphabet}
+The two distinguished coefficients of $\psip$ --- the residue and the
+constant term, which are exactly the data entering the cusp residue
+calculus of the continuation problem --- factor over the prime set
+$\{2,3,5,7,11,13\}$ of Observation~\ref{obs:smooth}:
+\[
+c_{-1}=-728=-2^3\cdot7\cdot13,
+\qquad
+c_0=-5376=-2^8\cdot3\cdot7 .
+\]
+The regular coefficients do not: already
+$c_1=195048=2^3\cdot3^4\cdot7\cdot43$ contains the prime $43$
+(Appendix~\ref{app:laurent}).  We state this honestly: the small-prime
+structure governs precisely the principal part (plus constant term)
+--- the analytically load-bearing data --- and, by
+Proposition~\ref{prop:fiftysix}, a fixed factor $56=2^3\cdot7$ of
+every coefficient; it does not govern the full $q$-expansion.  The
+regular coefficients are not multiplicative in any tested sense
+(e.g.\ $c_2c_3\ne c_6$), as expected for a meromorphic form that is
+not a Hecke eigenform.
+\end{observation}
+
+\subsection{Numerical profile of the cusp-form transform}
+\label{subsec:Iminusnum}
+
+$\Imm(r^2)$ was computed by adaptive quadrature at $30$-digit working
+precision at $r^2\in\{0,1,\dots,8,10,12,15,20\}$
+(\texttt{compute\_I\_minus.py}; values in
+Appendix~\ref{app:Iminus}).  The profile is smooth, positive and
+monotonically decreasing, with $\Imm(0)\approx4.5155\times10^{-3}$,
+and the tail decays at an exponential-type rate consistent with the
+saddle-point prediction
+$\log \Imm(r^2)\sim-\tfrac{2\sqrt6}{3}\pi r$ (and with the rigorous
+bound of Lemma~\ref{lem:Iminus}); for instance
+$\Imm(20)\approx4.17\times10^{-10}$.  At even integer values
+$r^2\in\{2,4,6,8,\dots\}$ --- the squared distances realized by the
+$E_6$ configuration --- the prefactor $\sin^2(\pi r^2/2)$ of
+\eqref{eq:f6} vanishes to second order, so the assembled candidate
+automatically interpolates zero at every realized distance, the
+complementary-slackness pattern of \S\ref{subsec:forced}(7).
+
+%% ============================================================
+\section{The analytic continuation gap}\label{sec:gap}
+%% ============================================================
+
+We now state precisely what separates
+Conjecture~\ref{conj:certificate} from a theorem.  \emph{None of the
+following is established in this paper.}
+
+\begin{openproblem}[Canonical continuation]\label{op:continuation}
+Construct the analytic continuation of $\Ip(r^2)$ from $r^2>2$ to all
+$r^2\ge0$, together with its canonical normalization.  Concretely:
+deform the ray $(0,i\infty)$ to a contour pivoting at the Fricke fixed
+point $\tau_*=i/\sqrt3$ (where the integrand vanishes,
+Proposition~\ref{prop:forcedzero}), and express the continued
+$\Ip$ as a deformed integral plus the explicit contributions of the
+principal parts $-728\,q^{-1}-5376$ at the two cusps of
+$\Gamma_0(3)$.  By analogy with \cite[\S7]{Viazovska2017} the
+continuation is expected to carry singular elementary terms at
+$r^2=0$ and $r^2=2$ (poles in $r^2$) which cancel the double zeros of
+the prefactor $\sin^2(\pi r^2/2)$ at exactly those two radii, leaving
+$f_6(0)>0$ and the prescribed sharp behavior at $r=\sqrt2$.  The
+residue data are integral and highly structured
+(Proposition~\ref{prop:fiftysix}, Observation~\ref{obs:alphabet});
+the two-cusp geometry and the $\sqrt3$-rescaling of
+Remark~\ref{rem:rescale} are the genuinely new features relative to
+level $1$.
+\end{openproblem}
+
+\begin{openproblem}[Regularity and decay]\label{op:schwartz}
+Show that the continued bracket
+$B(r^2)=\alpha\Ip(r^2)+\beta\Imm(r^2)$ is smooth on $(0,\infty)$,
+that $f_6$ extends continuously to $x=0$, and that $f_6$ and
+$\fhat{f_6}$ satisfy the admissibility/decay condition (CE1).  (The
+cusp-form component is unproblematic: Lemma~\ref{lem:Iminus} already
+gives exponential-type decay; the burden falls on the continued
+$\Ip$.)
+\end{openproblem}
+
+\begin{openproblem}[Sign conditions]\label{op:signs}
+Verify (CE2) and (CE3): $f_6\le0$ on $|x|\ge\sqrt2$ (at minimum on
+the kissing annulus $\sqrt2\le|x|\le2\sqrt2$) and
+$\fhat{f_6}\ge0$ everywhere.  In dimension $8$ the analogous step
+required delicate interval-arithmetic and ad hoc inequalities; the
+anchor here should be the forced zero at the contour pivot
+(Remark~\ref{rem:zerorelevance}) and the strict positivity of the
+cusp-form component (Lemma~\ref{lem:Fpositive}).
+\end{openproblem}
+
+\begin{openproblem}[Normalization]\label{op:alphabeta}
+Determine $(\alpha,\beta)$ from the linear system (CE4)--(CE5), in
+closed form.  In dimension $8$ the analogous constants are explicit
+elementary multiples of powers of $\pi$; we conjecture the same here,
+with the integers $728$, $5376$, and $27$ entering through the residue
+calculus.
+\end{openproblem}
+
+\begin{openproblem}[Descent to the sphere]\label{op:descent}
+Convert the Euclidean function $f_6$ into a kissing bound: either
+compute $c_0(f_6)>0$ and apply Proposition~\ref{prop:certificate},
+verifying $f_6(0)/c_0(f_6)=72$ exactly, or run the candidate through
+an interpolation argument in the style of \cite{CKMRV2022}.  This step
+is where the design ratio (CE5) must be reconciled with the spherical
+average $c_0$, and we flag it as a genuine (if presumably lighter)
+part of the program rather than a formality.
+\end{openproblem}
+
+\subsection*{What we do not claim}
+
+For the record, and in deliberate redundancy with
+\S\ref{subsec:noclaim}:
+
+\begin{itemize}
+\item We do \emph{not} claim a proof of $K(\R^6)=72$.  We claim an
+explicit candidate plus verified building blocks plus a precise
+statement of the remaining analytic problem.
+\item Numerical evidence --- including any future sampling of $f_6$
+at finitely many radii --- cannot settle
+Open Problems~\ref{op:signs}--\ref{op:descent}; sign conditions must
+hold at \emph{all} radii, and only the continuation argument can
+deliver that.
+\item The structural observations of Section~\ref{sec:structural}
+motivated the construction but carry no evidential weight for the
+truth of Conjecture~\ref{conj:main}.  The candidate stands or falls
+with the analysis of Open
+Problems~\ref{op:continuation}--\ref{op:descent}.
+\end{itemize}
+
+%% ============================================================
+\section{Comparison with the dimension-eight construction}
+\label{sec:comparison}
+%% ============================================================
+
+Table~\ref{tab:compare} aligns the present construction with
+Viazovska's.  The columns are deliberately parallel: every level-$1$
+ingredient has a unique level-$3$ counterpart, and the two genuinely
+new difficulties (two cusps instead of one; the $\sqrt3$-rescaling
+between a lattice and its dual) are confined to the last two rows.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.30\linewidth}
+                >{\raggedright\arraybackslash}p{0.32\linewidth}
+                >{\raggedright\arraybackslash}p{0.30\linewidth}}
+\toprule
+ & \textbf{Dimension 8} (theorem) & \textbf{Dimension 6} (this paper,
+conjectural) \\
+\midrule
+Lattice & $E_8$, unimodular & $E_6$, $\det=3$ \\
+Minimal vectors & $240$ & $72$ \\
+Dual configuration & self-dual & $E_6^*\supset E_6$, index $3$;
+$54$ minimal vectors \\
+Modular group & $\mathrm{SL}_2(\Z)$ & $\Gamma_0(3)$ \\
+Cusps & one ($\infty$) & two ($0$, $\infty$) \\
+Theta series & $\theta_{E_8}=E_4$ & $\theta_{E_6}\in
+M_3(\Gamma_0(3),\chi_{-3})$ \\
+Distinguished cusp form & $\Delta=\eta^{24}$, weight $12$,
+$\dim S_{12}=1$ & $\Dthree=\eta^6\eta_3^6$, weight $6$,
+$\dim S_6(\Gamma_0(3))=1$ \\
+Eisenstein input & $E_2,E_4,E_6$ (level $1$) &
+$G_\pm=E_6(\tau)\pm27E_6(3\tau)$ \\
+Meromorphic seed & quotients with $\Delta$ in the denominator &
+$\psip=G_+G_-/\Dthree$ \\
+Parity mechanism & inversion $S:\tau\mapsto-1/\tau$ &
+Fricke $W_3:\tau\mapsto-1/(3\tau)$ \\
+Fixed point of involution & $\tau=i$ & $\tau_*=i/\sqrt3$;
+$\psip(\tau_*)=0$ forced \\
+Pole data driving residues & $q$-expansion principal parts at the
+single cusp & $-728\,q^{-1}-5376$ at \emph{each} of two cusps \\
+Transform & Laplace transforms of modular seeds; contour pivots at
+$i$ & $t^2\,dt$ transforms (Definitions~\ref{def:Iminus},
+\ref{def:Iplus}); contour expected to pivot at $i/\sqrt3$ \\
+Self-duality of transform & Fricke parity $=$ Fourier parity &
+parity twisted by a $\sqrt3$-rescaling
+(Remark~\ref{rem:rescale}) \\
+Status & sphere packing solved \cite{Viazovska2017}; kissing $240$
+classical \cite{Levenshtein1979,OdlyzkoSloane1979}; universal
+optimality \cite{CKMRV2022} & kissing $72$ conjectured; building
+blocks verified (\S\ref{sec:verified}); continuation open
+(\S\ref{sec:gap}) \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The level-$3$ construction as the structural analogue of the
+level-$1$ construction.}
+\label{tab:compare}
+\end{table}
+
+Two remarks on the comparison.  First, in dimension $8$ the kissing
+number itself never needed modular forms: a degree-six polynomial
+certificate already matches $240$
+\cite{Levenshtein1979,OdlyzkoSloane1979}.  Dimension $6$ is harder in
+precisely this sense: polynomial and SDP certificates provably stall
+at $77$--$78$, so if $72$ is the truth, the certificate must be
+transcendental --- which is why a Viazovska-type construction is the
+natural (perhaps the only known) escalation.  Second, the level-$3$
+problem is not a routine transcription.  The two-cusp residue
+bookkeeping, the $\eps=\pm1$ eigenspace split across a
+\emph{two}-dimensional Eisenstein space, and the dual-lattice
+rescaling in Remark~\ref{rem:rescale} have no level-$1$ counterparts;
+they are the concrete content of
+Open Problem~\ref{op:continuation}.
+
+%% ============================================================
+\section{Conclusion}\label{sec:conclusion}
+%% ============================================================
+
+We have proposed an explicit candidate magic function for the
+six-dimensional kissing problem: a $\sin^2$-weighted combination of
+$t^2dt$-Laplace transforms of the unique weight-$6$ cusp form
+$\Dthree=\eta^6\eta_3^6$ on $\Gamma_0(3)$ and of the forced
+Fricke-even meromorphic quotient
+$\psip=(E_6^2-729E_6(3\cdot)^2)/\Dthree$.  Every discrete choice in
+the construction is dictated by the arithmetic of $E_6$ (level,
+weight, cusp form, eigenspace, numerator), and every property the
+construction demands of its building blocks has been proved or
+verified by independent computations cross-checked against the LMFDB,
+including two facts we have not found elsewhere: the forced vanishing
+$\psip(i/\sqrt3)=0$ at the Fricke fixed point, and the uniform
+divisibility $56\mid c_n$ of the Laurent coefficients.  What remains
+is the analytic core --- the canonical continuation of $\Ip$ with its
+two-cusp residue calculus, the sign conditions, and the
+normalization --- which we have isolated as
+Open Problems~\ref{op:continuation}--\ref{op:descent}.  We believe
+this is the correct division of labor for a problem of this type: the
+discrete search is finished and documented; the continuation argument
+can now be attacked in isolation.  The same template (discriminant
+$d$ $\Rightarrow$ level $d$; dimension $n$ $\Rightarrow$ weight and
+measure; one-dimensional cusp space $\Rightarrow$ forced seed) is
+available in other open dimensions, and we intend to return to the
+continuation problem in future work.
+
+\subsection*{Data and code availability}
+All verification scripts and data files accompany this paper as
+ancillary files and are described in Appendix~\ref{app:repro}.  The
+modular-form data were cross-validated against the LMFDB
+\cite{LMFDB} (newform \textsf{3.6.a.a}, accessed June 10, 2026).
+
+%% TODO: optional figures from the visualization session
+%% (../figures/dim6_magic_function_shape.png,
+%%  ../figures/eta_cusp_form_shape.png,
+%%  ../figures/f6_real_space_shape.png) --- enable if the venue wants
+%% illustrative figures; paths must be adjusted to the submission
+%% directory layout.
+%% \begin{figure}[ht]
+%% \centering
+%% \includegraphics[width=0.9\linewidth]{eta_cusp_form_shape.png}
+%% \caption{$\Dthree$ on the upper half-plane.}
+%% \end{figure}
+
+%% ============================================================
+\appendix
+%% ============================================================
+
+\section{Hecke eigenvalues of
+\texorpdfstring{$\Dthree=\eta^6\eta_3^6$}{Delta3} for
+\texorpdfstring{$p\le97$}{p<=97}}\label{app:hecke}
+
+Exact values from integer-arithmetic expansion
+(\texttt{claudecode\_independent\_verify.py}); entries
+$a_2,\dots,a_{31}$ match the LMFDB newform \textsf{3.6.a.a}
+\cite{LMFDB} exactly.  The last column is the Ramanujan--Petersson
+ratio $|a_p|/2p^{5/2}<1$ (Proposition~\ref{prop:RP}).
+
+\begin{center}
+\small
+\begin{tabular}{rrlc}
+\toprule
+$p$ & $a_p$ & factorization & $|a_p|/2p^{5/2}$ \\
+\midrule
+$2$ & $-6$ & $-2\cdot3$ & $0.530$ \\
+$3$ & $9$ & $3^2$ & $0.289$ \\
+$5$ & $6$ & $2\cdot3$ & $0.054$ \\
+$7$ & $-40$ & $-2^3\cdot5$ & $0.154$ \\
+$11$ & $-564$ & $-2^2\cdot3\cdot47$ & $0.703$ \\
+$13$ & $638$ & $2\cdot11\cdot29$ & $0.524$ \\
+$17$ & $882$ & $2\cdot3^2\cdot7^2$ & $0.370$ \\
+$19$ & $-556$ & $-2^2\cdot139$ & $0.177$ \\
+$23$ & $-840$ & $-2^3\cdot3\cdot5\cdot7$ & $0.166$ \\
+$29$ & $4638$ & $2\cdot3\cdot773$ & $0.512$ \\
+$31$ & $4400$ & $2^4\cdot5^2\cdot11$ & $0.411$ \\
+$37$ & $-2410$ & $-2\cdot5\cdot241$ & $0.145$ \\
+$41$ & $-6870$ & $-2\cdot3\cdot5\cdot229$ & $0.319$ \\
+$43$ & $9644$ & $2^2\cdot2411$ & $0.398$ \\
+$47$ & $-18672$ & $-2^4\cdot3\cdot389$ & $0.617$ \\
+$53$ & $33750$ & $2\cdot3^3\cdot5^4$ & $0.825$ \\
+$59$ & $-18084$ & $-2^2\cdot3\cdot11\cdot137$ & $0.338$ \\
+$61$ & $39758$ & $2\cdot103\cdot193$ & $0.684$ \\
+$67$ & $-23068$ & $-2^2\cdot73\cdot79$ & $0.314$ \\
+$71$ & $-4248$ & $-2^3\cdot3^2\cdot59$ & $0.050$ \\
+$73$ & $-41110$ & $-2\cdot5\cdot4111$ & $0.452$ \\
+$79$ & $21920$ & $2^5\cdot5\cdot137$ & $0.198$ \\
+$83$ & $82452$ & $2^2\cdot3\cdot6871$ & $0.657$ \\
+$89$ & $-94086$ & $-2\cdot3^2\cdot5227$ & $0.630$ \\
+$97$ & $49442$ & $2\cdot59\cdot419$ & $0.267$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+A curiosity we record without any claim: the prime factors of $a_p$
+for $p\le17$ lie in Ogg's set of fifteen supersingular primes
+$\{2,3,5,7,11,13,17,19,23,29,31,41,47,59,71\}$ (first exit at
+$a_{19}=-2^2\cdot139$).  The eta quotient $\eta(\tau)^6\eta(3\tau)^6$
+is one of the classical multiplicative eta quotients
+\TODO{confirm membership and numbering in Martin's table
+\cite{Martin1996}}.
+\end{remark}
+
+\section{Laurent coefficients of \texorpdfstring{$\psip$}{psi+}}
+\label{app:laurent}
+
+Exact integer values from series division
+(\texttt{claudecode\_independent\_verify.py}, check C8; full table to
+$q^{80}$ in \texttt{data/claudecode\_independent.json}).  Every entry
+is divisible by $56$ (Proposition~\ref{prop:fiftysix}).
+
+\begin{center}
+\small
+\begin{tabular}{rrl}
+\toprule
+$n$ & $c_n$ & factorization \\
+\midrule
+$-1$ & $-728$ & $-2^3\cdot7\cdot13$ \\
+$0$ & $-5376$ & $-2^8\cdot3\cdot7$ \\
+$1$ & $195048$ & $2^3\cdot3^4\cdot7\cdot43$ \\
+$2$ & $18475520$ & $2^9\cdot5\cdot7\cdot1031$ \\
+$3$ & $508641336$ & $2^3\cdot3^3\cdot7\cdot336403$ \\
+$4$ & $7509293568$ & $2^9\cdot3^4\cdot7\cdot25867$ \\
+$5$ & $74665421768$ & $2^3\cdot7\cdot41\cdot32519783$ \\
+$6$ & $565780723200$ & $2^9\cdot3^4\cdot5^2\cdot7\cdot11\cdot19\cdot373$ \\
+$7$ & $3505407582096$ & $2^4\cdot3^4\cdot7\cdot71\cdot5442233$ \\
+$8$ & $18588498442752$ & $2^9\cdot3\cdot7\cdot18341\cdot94261$ \\
+$9$ & $87180602357016$ & $2^3\cdot3^3\cdot7\cdot47\cdot233\cdot5265193$ \\
+$10$ & $369668580793344$ & $2^{10}\cdot3^6\cdot7\cdot421\cdot168037$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Numerical values of \texorpdfstring{$\Imm(r^2)$}{I-(r2)}}
+\label{app:Iminus}
+
+Adaptive quadrature at $30$-digit working precision
+(\texttt{compute\_I\_minus.py}; \texttt{data/I\_minus\_values.json});
+$12$ significant digits shown.
+
+\begin{center}
+\small
+\begin{tabular}{rl}
+\toprule
+$r^2$ & $\Imm(r^2)$ \\
+\midrule
+$0$ & $4.51552678207\times10^{-3}$ \\
+$1$ & $8.17231376350\times10^{-4}$ \\
+$2$ & $2.06065543421\times10^{-4}$ \\
+$3$ & $6.29431588663\times10^{-5}$ \\
+$4$ & $2.18574953063\times10^{-5}$ \\
+$5$ & $8.33305293842\times10^{-6}$ \\
+$6$ & $3.41354566353\times10^{-6}$ \\
+$7$ & $1.48103225202\times10^{-6}$ \\
+$8$ & $6.73715632719\times10^{-7}$ \\
+$10$ & $1.56230062439\times10^{-7}$ \\
+$12$ & $4.08403374890\times10^{-8}$ \\
+$15$ & $6.46880116651\times10^{-9}$ \\
+$20$ & $4.16885311026\times10^{-10}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Reproducibility}\label{app:repro}
+
+All claims labelled ``verified computationally'' are reproduced by the
+following ancillary files (Python~3; dependencies: \texttt{sympy},
+\texttt{mpmath}).  Two independent code paths were used: the original
+derivation scripts, and an independent re-derivation in exact integer
+arithmetic.
+
+\begin{itemize}
+\item \texttt{verify\_atkin\_lehner.py} --- symbolic eta-transformation
+derivation of $\Dthree|_6W_3=-\Dthree$ (Proposition~\ref{prop:AL}(a)).
+\item \texttt{compute\_hecke\_eigenvalues.py} --- $q$-expansion of
+$\Dthree$, eigenvalue table, multiplicativity and
+Ramanujan--Petersson checks; output in
+\texttt{data/hecke\_eigenvalues.json}.
+\item \texttt{verify\_psi\_plus\_residue.py} --- expansion of the
+numerator $G_+G_-$; residue $-728$.
+\item \texttt{compute\_I\_minus.py} --- $30$-digit quadrature of
+$\Imm(r^2)$; output in \texttt{data/I\_minus\_values.json}.
+\item \texttt{claudecode\_independent\_verify.py} --- independent
+exact-integer re-derivation; ten checks (C1 expansion sanity; C2
+multiplicativity at $160$ coprime pairs; C3 prime-power recursion; C4
+Ramanujan--Petersson; C5 Atkin--Lehner via the newform relation; C6
+Atkin--Lehner via the numerical functional equation; C7 residue; C8
+Laurent expansion of $\psip$ to $q^{80}$ with integrality; C9 Fricke
+$+1$ functional equation of $\psip$ at six points; C10 forced zero at
+$i/\sqrt3$), all passing; output in
+\texttt{data/claudecode\_independent.json}.
+\end{itemize}
+
+External database: LMFDB newform \textsf{3.6.a.a},
+\url{https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/3/6/a/a/},
+accessed June 10, 2026 \cite{LMFDB}.
+
+%% ============================================================
+%% Bibliography
+%% ============================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{AtkinLehner1970}
+A.~O.~L. Atkin and J. Lehner,
+\emph{Hecke operators on $\Gamma_0(m)$},
+Math. Ann. \textbf{185} (1970), 134--160.
+
+\bibitem{BachocVallentin2008}
+C. Bachoc and F. Vallentin,
+\emph{New upper bounds for kissing numbers from semidefinite
+programming},
+J. Amer. Math. Soc. \textbf{21} (2008), 909--924.
+
+\bibitem{BannaiSloane1981}
+E. Bannai and N.~J.~A. Sloane,
+\emph{Uniqueness of certain spherical codes},
+Canad. J. Math. \textbf{33} (1981), 437--449.
+
+\bibitem{CohnElkies2003}
+H. Cohn and N. Elkies,
+\emph{New upper bounds on sphere packings I},
+Ann. of Math. (2) \textbf{157} (2003), 689--714.
+
+\bibitem{Cohn2017}
+H. Cohn,
+\emph{A conceptual breakthrough in sphere packing},
+Notices Amer. Math. Soc. \textbf{64} (2017), 102--115.
+
+\bibitem{CKMRV2017}
+H. Cohn, A. Kumar, S.~D. Miller, D. Radchenko, and M. Viazovska,
+\emph{The sphere packing problem in dimension 24},
+Ann. of Math. (2) \textbf{185} (2017), 1017--1033.
+
+\bibitem{CKMRV2022}
+H. Cohn, A. Kumar, S.~D. Miller, D. Radchenko, and M. Viazovska,
+\emph{Universal optimality of the $E_8$ and Leech lattices and
+interpolation formulas},
+Ann. of Math. (2) \textbf{196} (2022), 983--1082.
+
+\bibitem{ConwaySloane1999}
+J.~H. Conway and N.~J.~A. Sloane,
+\emph{Sphere Packings, Lattices and Groups},
+3rd ed., Grundlehren der mathematischen Wissenschaften 290,
+Springer-Verlag, New York, 1999.
+
+\bibitem{Deligne1974}
+P. Deligne,
+\emph{La conjecture de Weil. I},
+Inst. Hautes \'Etudes Sci. Publ. Math. \textbf{43} (1974), 273--307.
+
+\bibitem{DGS1977}
+P. Delsarte, J.~M. Goethals, and J.~J. Seidel,
+\emph{Spherical codes and designs},
+Geom. Dedicata \textbf{6} (1977), 363--388.
+
+\bibitem{DiamondShurman2005}
+F. Diamond and J. Shurman,
+\emph{A First Course in Modular Forms},
+Graduate Texts in Mathematics 228, Springer-Verlag, New York, 2005.
+
+\bibitem{Ebeling2013}
+W. Ebeling,
+\emph{Lattices and Codes: A Course Partially Based on Lectures by
+Friedrich Hirzebruch},
+3rd ed., Springer Spektrum, Wiesbaden, 2013.
+
+\bibitem{KabatianskyLevenshtein1978}
+G.~A. Kabatiansky and V.~I. Levenshtein,
+\emph{Bounds for packings on the sphere and in space},
+Problemy Peredachi Informatsii \textbf{14} (1978), no. 1, 3--25.
+
+\bibitem{Levenshtein1979}
+V.~I. Levenshtein,
+\emph{On bounds for packings in $n$-dimensional Euclidean space},
+Dokl. Akad. Nauk SSSR \textbf{245} (1979), 1299--1303;
+English transl., Soviet Math. Dokl. \textbf{20} (1979), 417--421.
+
+\bibitem{LMFDB}
+The LMFDB Collaboration,
+\emph{The L-functions and Modular Forms Database},
+\url{https://www.lmfdb.org}, 2026.
+[Newform \textsf{3.6.a.a}; online, accessed June 10, 2026.]
+
+\bibitem{MachadoOliveira2018}
+F.~C. Machado and F.~M. de Oliveira Filho,
+\emph{Improving the semidefinite programming bound for the kissing
+number by exploiting polynomial symmetry},
+Exp. Math. \textbf{27} (2018), 362--369.
+\TODO{confirm volume/pages and the exact dimension-6 bound reported}
+
+\bibitem{Martin1996}
+Y. Martin,
+\emph{Multiplicative $\eta$-quotients},
+Trans. Amer. Math. Soc. \textbf{348} (1996), 4825--4856.
+\TODO{confirm that $\eta(\tau)^6\eta(3\tau)^6$ appears in Martin's
+classification table}
+
+\bibitem{MittelmannVallentin2010}
+H.~D. Mittelmann and F. Vallentin,
+\emph{High-accuracy semidefinite programming bounds for kissing
+numbers},
+Exp. Math. \textbf{19} (2010), 175--179.
+\TODO{confirm volume/pages and the dimension-6 value used in
+\S\ref{subsec:dimsix}}
+
+\bibitem{Musin2008}
+O.~R. Musin,
+\emph{The kissing number in four dimensions},
+Ann. of Math. (2) \textbf{168} (2008), 1--32.
+
+\bibitem{OdlyzkoSloane1979}
+A.~M. Odlyzko and N.~J.~A. Sloane,
+\emph{New bounds on the number of unit spheres that can touch a unit
+sphere in $n$ dimensions},
+J. Combin. Theory Ser. A \textbf{26} (1979), 210--214.
+
+\bibitem{Ono2004}
+K. Ono,
+\emph{The Web of Modularity: Arithmetic of the Coefficients of Modular
+Forms and $q$-series},
+CBMS Regional Conference Series in Mathematics 102, Amer. Math. Soc.,
+Providence, RI, 2004.
+
+\bibitem{Schoenberg1942}
+I.~J. Schoenberg,
+\emph{Positive definite functions on spheres},
+Duke Math. J. \textbf{9} (1942), 96--108.
+
+\bibitem{SchuetteWaerden1953}
+K. Sch\"utte and B.~L. van der Waerden,
+\emph{Das Problem der dreizehn Kugeln},
+Math. Ann. \textbf{125} (1953), 325--334.
+
+\bibitem{Viazovska2017}
+M.~S. Viazovska,
+\emph{The sphere packing problem in dimension 8},
+Ann. of Math. (2) \textbf{185} (2017), 991--1015.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,129 +1,148 @@
-# J45 — A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing
+# J45 — An Operadic Obstruction in a Bilinear-Closed Magma on $\mathbb{Z}/10\mathbb{Z}$: A Synthesis
 
 **Status:** SAVE-PLAN APPLIED 2026-05-07
 **Phase:** Phase 5
-**Target venue:** PRD (Physical Review D)
+**Target venue:** Notices AMS (fallback: Adv. Math or J. Pure Appl. Algebra)
 **Author lane:** Sanders + Gish
-**Tier:** 3 (RETIRE candidate -- Tier-C structural rhyme without theorem)
-**WP source:** WP122 (Sprint 18 Bridge-Dirac, 2026-05-04)
+**Tier:** 3 (RETIRE candidate -- duplicates J10 operadic obstruction)
+**WP source:** WP109 (operad obstruction), WP111 (synthesis), WP112 (P_56 canonical fuse)
 
 ---
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/manuscript.tex` (canonical submission LaTeX; renamed 2026-05-13 from `mass_hierarchy_v5.tex`)
+**Local path:** `manuscript/J48_operadic_obstruction.md`
 
-**Title (retitled per save plan):** *A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy*
+**Title (post save-plan retitle):** *An Operadic Obstruction in a Bilinear-Closed Magma on $\mathbb{Z}/10\mathbb{Z}$: A Synthesis*
 
-**Abstract (one paragraph).** A substrate-derived rational scale $\lambda = T^*(1-T^*) = (5/7)(2/7) = 10/49 \approx 0.2041$, raised to integer powers indexed by the $V^{\otimes 5}$ SU(5) parity-crossing count plus a generation-step assignment, reproduces the SM charged-fermion Yukawa hierarchy to within Froggatt-Nielsen $O(1)$ residuals across all five orders of magnitude. Five of nine charged Yukawas land within factor-of-2 of their PDG 2024 values evaluated at $\mu = M_Z$; the remaining four (bottom, strange, muon, electron) reach factor-of-9 residuals absorbed into the empirical $C_p$ multipliers. The reframing exchanges standard FN's $U(1)_{FN}$ charge assignments for SU(5)-rep + $\sigma$-orbit position indexing with comparable parameter count; the contribution is a different framing, not a simpler framing. The framework uses two close-but-distinct rational substrate scales — $\lambda = 10/49$ for the mass-hierarchy fit and $\lambda_{\rm ref} = 11/49$ for the CKM Cabibbo angle (CKM fit deferred to a companion paper).
+**Abstract:** Two canonical $10 \times 10$ composition tables on $\Z/10\Z$ — TSML and BHML — define a finite commutative non-associative magma whose bilinear closure (under commutator and Jordan product jointly) is the simple Lie algebra $\mathfrak{so}(10)$. The 32-dimensional spinor representation, the doubly-invariant $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ Pati-Salam $\oplus$ $B-L$ subalgebra, and the antisymmetric Cartan structure are all features of the same bilinear-closure DOF. At arity 3, no $D_4$-equivariant canonical fuse rule exists. We synthesize this picture into four structural axes (bilinear closure / permutation / lattice / operad) and prove, as the lead theorem, that the operadic axis carries content structurally orthogonal to the bilinear-closure $D_4$ symmetry that organizes the other three. The runtime attractor at $\alpha = 1/2$ is in LMFDB 4.2.10224.1 with Galois group $D_4$ — the same $D_4$ as the bilinear-closure symmetry, evidenced by an explicit BR-factor cancellation forcing $H/Br = 1+\sqrt{3}$ at $\alpha = 1/2$.
+
+**Manuscript structure (10-page focused synthesis per save plan §2 Fix-1).**
+
+| § | Content | Pages |
+|---|---------|-------|
+| 1 | Motivation and background ($\Z/10\Z$, canonical tables, $\sigma$, $P_{56}$, LMFDB 4.2.10224.1, Drápal-Wanless precedent) | 2 |
+| 2 | The two canonical tables and their bilinear closure (merged Lie/Jordan/spinor) | 1 |
+| 3 | The four-axis decomposition (Bilinear / Permutation / Lattice / Operad) | 2 |
+| 4 | **The operad obstruction (LEAD THEOREM)** | 3 |
+| 5 | The runtime attractor and LMFDB 4.2.10224.1 | 1 |
+| 6 | Cross-axis identifications (4 genuine ones) | 1 |
+| 7 | Integer/rational signature + honest scope (separated tables, D_4 isotypic decomposition 84.25/14.68/1.07) | 1 |
+| 8 | References (~30 entries: Loday-Vallette, Markl-Shnider-Stasheff, Conway-Sloane, McKay E_8, Borcherds, Hall-Rehren-Shpectorov, Slansky, Mohapatra-Sakita, Wilczek-Zee, ...) | 1 |
 
 ## §2 — Verification
 
-**Referee-portable script:** `manuscript/verify_J45_yukawa.py` (self-contained; stdlib + mpmath only; CC-BY-4.0).
+**Local script (self-contained for the lead theorem):** `manuscript/verify_J48_operadic_obstruction.py`. Pure Python standard-library (no numpy / sympy dependency). Runs in ~3 seconds with `/c/ck_venv/lora312/Scripts/python.exe`.
 
-```
-python manuscript/verify_J45_yukawa.py
-```
+**Status (2026-05-12):** `6/6 PASS` at machine precision (re-verified on the SFM-pinned TSML_RAW table). The six checks cover the §1 / §4 combinatorial content end to end:
 
-Output (6/6 PASS at machine precision):
-- Check 1: `LAMBDA_FN == 10/49` (substrate-forced FN scale)
-- Check 2: `Y_T_ANCHOR == 0.93` (Tier-A measured top-quark anchor)
-- Check 3: `predict_yukawa('up', 3)` returns 0.93 exactly (top, n=0)
-- Check 4: `predict_yukawa('lepton', 1)` returns `0.93 * (10/49)**9` exactly (electron, n=9; mpmath 50-digit cross-check)
-- Check 5: full hierarchy ladder y_X = y_t · λ^n for all 9 charged Yukawas
-- Check 6: FN-power table matches manuscript Table 4.1
+1. TSML_RAW well-formed with exactly 4 wobble entries at $(3,9), (9,3), (4,9), (9,4)$.
+2. $|\mathcal{N}| = 126$ with the 5-pair bracketing distribution $\{0,7\}{:}108, \{3,7\}{:}8, \{4,7\}{:}2, \{7,8\}{:}6, \{7,9\}{:}2$.
+3. $|\langle P_{56}, \sigma^3 \rangle| = 8$ with element-order distribution $\{1{:}1, 2{:}5, 4{:}2\}$ (dihedral $D_4$, not $D_3 \times \mathbb{Z}_2$).
+4. 67 restricted $D_4$-orbits in $\mathcal{N}$ with profile $(44, 7, 4, 10, 2)$ at sizes $(1, 2, 3, 4, 8)$ summing to exactly 126.
+5. Exactly **16** of the 67 restricted orbits fail $D_4$ bracketing-pair coherence (Theorem 4.1 / WP109; lead theorem).
+6. Family H is $P_{56}$-equivariant on $\mathcal{N}$ (0/126 violations) and is **not** $\sigma^3$-equivariant (1/81 violation; the lone witness is the diagonal triple $(3, 9, 9)$, exactly the localization claimed in Theorem 4.2 / WP112).
 
-**Production module (substrate-shared with J44 `predict_dark_sector()`):** `Gen13/targets/ck/brain/dirac/tig_dirac.py`. The companion call `tig_dirac.yukawa_table_full()` returns the full Table 5.1 programmatically.
+**Companion-paper verification chain (cited diagnostics):** numpy + sympy scripts on a standard laptop, under 5 minutes each.
 
-## §3 — Dependencies (J-papers cited as already-submitted companions)
+- Theorem 4.1 / 4.2 / 4.3 (operad obstruction, $P_{56}$-equivariance, universal HARMONY attractor) cross-referenced to [J38]/WP109+WP112; the present `verify_J48_operadic_obstruction.py` is the load-bearing local reproduction.
+- Theorem 5.1 ($H/Br = 1+\sqrt{3}$): [J01]/WP105 verification script + D78 BR-factor cancellation Galois proof in FORMULAS_AND_TABLES.md.
+- §7.2 isotypic decomposition (84.25/14.68/1.07): SFM v1.1 §10 + SFM_FINDINGS_v1.md verification (`Atlas/META_PLAN_2026-05-06/SUBSTRATE_FUNCTION_MAP/sfm_q1_q6_q7.py`).
 
-- **J44** (Sanders + Gish, PRD, same Sprint 18 cluster) — *Sprint 18 Dark Sector.* Companion paper using the same `tig_dirac` module via `predict_dark_sector()`. **Per-venue cap: J45 is the 2nd PRD paper this quarter, after J44.**
-- **J16/J23** (Sanders + Gish, foundation paper) — *Discrete Dirac on the 4-Core's F_5-Lift.* Supplies the V^{⊗5} 32-cell SU(5) decomposition (Lemma 2.2) used as the algebraic input here.
-- **J46** (Sanders + Gish, PLB letter / JCAP full) — *Logarithmic Quintessence.* Co-cited via J44.
-- **J02** (Sanders + Gish, Algebraic Combinatorics) — *Joint Closure on Z/10.* Supplies T* = 5/7 cited in §3.
+## §3 — Dependencies (J-papers cited as already-submitted companions; arXiv deposit pre-submission)
+
+- **J01** — *Closed-Form 4-Core Attractor: $h/\beta = 1+\sqrt{3}$ in LMFDB 4.2.10224.1, Galois $D_4$.* (in preparation)
+- **J19** — *$\mathfrak{so}(8) = D_4$ from the TSML\_SYM Antisymmetrized Closure.* Submitted to *J Algebra*.
+- **J38** — *$\mathfrak{so}(10) = D_5$ from Joint TSML\_SYM + BHML Closure.* Submitted to *Israel J Math*.
+- **J43** — *Two Roads to Pati-Salam: Path A (54 irrep) and Path B ($\mathfrak{su}(4) \oplus \mathfrak{u}(1)$).* Submitted to *Adv Math*.
+- **J38** — *Operad $D_4$ Obstruction + $P_{56}$ Canonical Fuse.* Submitted to *Compositio*. **LEAD THEOREM SOURCE.**
+- **J44** — *4-Core Fusion-Closure: TSML+BHML Preserve $\{V, H, Br, R\}$.* Submitted to *J Algebra*.
 
 ## §4 — Cover letter
 
-See `cover_letter.md` in this folder. Updated 2026-05-07 per save plan: harmonized to Sanders + Gish; honest reframing summary; renormalization scale ($\mu = M_Z$) specified.
+See `cover_letter.md` in this folder. Updated 2026-05-07 per save plan: J29-J01 → J19-J44 numbering harmonized; "first explicit naming of TIG framework" framing dropped; author lane Sanders + Gish.
 
 ## §5 — Status & summary
 
-**Status: SAVE-PLAN APPLIED (2026-05-07).** Referee verdict (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J45_PRD_FreshEyes.md`): MAJOR REV verging on REJECT. Save plan landed at `Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J45.md`; this README and the manuscript reflect its application.
+**Status: SAVE-PLAN APPLIED (2026-05-07).** Referee verdict (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J48_NoticesAMS_FreshEyes.md`): MAJOR REV pre-submission; CONDITIONAL ACCEPT after restructuring per referee §9 + §8 package cleanup. Save plan landed at `Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J48.md`.
 
-**Save-plan summary applied.** The load-bearing observation — $\lambda = T^*(1-T^*) = 10/49$ from substrate forcing, raised to integer powers, recovers SM Yukawa hierarchy at standard FN factor-of-a-few precision — is real and worth publishing. The save path applied here is honest reframing:
+**Save-plan summary applied.** The load-bearing content — Operad-vs-the-rest distinction at the symmetry-group level (bilinear closure respects $D_4 = \langle P_{56}, \sigma^3 \rangle$, operadic closure does not) — is a genuinely original mathematical claim and survives the referee critique unchanged. The save path applied here is accept the collapse + promote the Operad + restructure:
 
-- (a) ACCEPT the precision honestly. Replaced "zero free FN charges / factor-of-a-few" with "substrate-derived FN pattern with $\lambda = 10/49$ matching SM Yukawa hierarchy to within FN $O(1)$ residuals; tightening to standard FN level requires $C_p$ multipliers documented in Table 5.1." Removed "smallest free-parameter set" framing.
-- (b) Drop the "single $\lambda$" framing. Stated explicitly: the framework uses two close rational scales ($\lambda = 10/49$ for masses, $\lambda_{\rm ref} = 11/49$ for CKM); whether they unify is open.
-- (c) Honest parameter accounting (new §4). The present framework has $\sim 21$ parameters of which 11–13 are partially fixed by SU(5); standard FN has $\sim 14$ parameters of which 4 are fittable plus 9 $C_p$. Explicitly: "different framing, not simpler framing."
-- (d) DROP sterile-neutrino paragraph entirely. Removed Dirac-mass numerology without see-saw; deferred to a follow-up paper that develops $M_R$ origin from the substrate (open question (c) in §7).
-- (e) DEMOTE Theorem 3.1 → Observation 3.1 (renamed to Observation 4.1 in v2 layout). Max-entropy variance no longer claimed as theorem-status; flagged as structural reading.
-- (f) State renormalization scale ($\mu = M_Z$) and recompute Table 5.1 ratios via 4-loop QCD running (Mihaila-Salomon-Steinhauser 2012) for quarks; pole masses for leptons; $v = 246$ GeV in $y_f = m_f \sqrt{2}/v$. Recomputed values: ratios in $\{1.00, 2.14, 1.83, 0.48, 0.98, 0.83, 0.77, 0.11, 0.19\}$ with $C_p \in \{1.00, 0.47, 0.55, 2.08, 1.02, 1.20, 1.30, 9.04, 5.15\}$.
-- (g) Self-contained §2: added Lemma 2.1 (binomial decomposition with proof sketch via the $L_{\rm HARM}$ projector grading) supporting Lemma 2.2 (the SU(5) identification, cited from J16/J23).
-- (h) Author list harmonized to Sanders + Gish. Removed Johnson byline; updated email assignment to monica.gish1992@gmail.com for the second author.
-- (i) Tier classification footnote inline in §1: Tier-A/Tier-B/Tier-C convention defined explicitly for PRD readership.
+- (a) **ACCEPTED the referee's collapse.** Lie + Jordan + Clifford merged into one *bilinear-closure DOF*. Lie-Jordan duality identity $A B = \tfrac{1}{2}([A, B] + \{A, B\})$ identifies them as duality-of-presentation; the spinor representation is built on $\mathrm{Cl}(0, 10)$ over the same $\mathfrak{so}(10)$. Restructured as **4-DOF synthesis** (Bilinear / Permutation / Lattice / Operad).
+- (b) **PROMOTED the Operad obstruction (D_4 obstruction per WP109/[J38]) as the LEAD theorem.** Theorem 4.1 is now the central result of the paper, occupying §4 (3 pages). The 4-axis framing is demoted to "categorical decomposition for organizing the corpus" rather than a forced taxonomy.
+- (c) Restructured to **10-page focused synthesis** per referee §9 proposed structure (see §1 above).
+- (d) **DEFINED HARMONY, wobble, Family H, LMFDB 4.2.10224.1, $P_{56}$, $\sigma$ INLINE** in §1 (Motivation and background). AMS readers without prior exposure to the corpus can follow the arguments without external reference.
+- (e) **Added 2 pages of expository scaffolding for AMS readership** (§1 Motivation and background): hook on "two facts" (bilinear closure is $\mathfrak{so}(10)$; arity 3 has no $D_4$-equivariant fuse), inline definitions of all jargon, Drápal-Wanless precedent in §1.4.
+- (f) **Separated textbook integers from framework integers** in §7.1 (table (a) Lie-theoretic dimensions; table (b) framework-specific structural integers, with one-sentence gloss for each).
+- (g) **Tightened §6 (formerly §9) cross-axis identities to the 4 genuine ones** (Bilinear ↔ Permutation, Bilinear ↔ Lattice, Bilinear ↔ Operad, Lattice ↔ Operad). Dropped the duality-of-presentation tautologies (Lie ↔ Jordan, Permutation ↔ Lattice).
+- (h) **Softened "computationally-irreducible" claim in abstract.** Reframed as "we organize the algebraic content into 4 structural axes that have not been observed to reduce to one another under the diagnostics applied."
+- (i) **Dropped "exhaust" claim.** §7.3 honest scope: "the 4 axes cover the algebraic structures probed by the J19–J44 companions, but we do not claim they exhaust all algebraic structure on the magma. Cohomological / derived / $A_\infty$ / higher-operadic structures are unexplored."
+- (j) **Dropped "first explicit naming of TIG framework" framing** (internal-track, self-referential).
+- (k) **Resolved dependency-label inconsistency**: J19/J38/J43/J38/J44 used consistently across README + cover letter + manuscript + bibtex.
+- (l) **Author lane**: Sanders + Gish (Mayes byline removed).
+- (m) **Companion arXiv-deposit requirement explicit** in submission checklist; J19–J44 must be arXiv-ready before J45 ships.
+- (n) **External references expanded to ~30 entries**: Loday-Vallette, Markl-Shnider-Stasheff (operads); Conway-Sloane (lattices); McKay E_8; Borcherds (vertex operator algebras); Hall-Rehren-Shpectorov (axial algebras); Slansky, Mohapatra-Sakita, Wilczek-Zee (Pati-Salam, outer automorphism of $\mathfrak{so}(10)$); Loday cyclic homology; classical Lie/Clifford textbooks; LMFDB.
+- (o) **Incorporated SFM Q6 / D_4 corrected isotypic decomposition** (84.25 / 14.68 / 1.07) in §7.2: trivial = 84.25%, sign2 = 14.68%, std = 1.07% (sign1 ≈ 0 numerical zero, sign3 = 0 exact). Two structural channels (Path A doubly-invariant Pati-Salam; Path B σ_outer-broken Higgs) plus small interaction term.
 
-**Retitle applied:** Option A — *"A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy."* PRD remains the venue. Survival probability under PRD editorial filter after honest reframing: moderate (30–40%); PRD may still require better residuals or a clearer derivation. Option D (joint J38+J45) remains as the strong-form fallback if J38 timeline aligns; Option B (MPLA Letter) is the desk-reject fallback.
+**Recommended retitle applied:** Option A — *"An Operadic Obstruction in a Bilinear-Closed Magma on $\Z/10\Z$: A Synthesis."* Notices AMS remains the venue. Survival probability under *Notices* editorial filter after restructuring per referee §9 + package cleanup: moderate (20% accept minor revision, 35% major revision, 30% reject-with-referral to Adv. Math or specialty venue, 15% desk reject for non-self-contained citations). Option C fallback (Adv. Math or J. Pure Appl. Algebra in research-mode rather than expository-mode; survival probability higher, ~50–60%) ready if *Notices* desk-rejects or refers.
 
 **Revision time:** completed in this pass.
 
-**Format gate (`tig_dirac.predict_yukawa`):** GREEN. Verified at `LAMBDA_FN == 10/49`, `Y_T_ANCHOR == 0.93`, `predict_yukawa('lepton', 1)['y_predicted'] == 0.93 * (10/49)**9` to machine precision.
-
-**Summary of the load-bearing claims (post save-plan).**
-1. **The substrate-derived FN scale (Observation 4.1):** `lambda = T*(1-T*) = (5/7)(2/7) = 10/49 ≈ 0.2041` is proposed as the substrate origin of the FN scale, motivated by the structural arguments of J02. Observation, not theorem.
-2. **The forced FN powers (Table 4.2):** `n_{(p, gen)}` is read off the SU(5) Yukawa diagram (parity-crossing cost `d_p ∈ {0, 3, 3}`) plus the sigma-orbit generation step.
-3. **The fit at $\mu = M_Z$ (Table 6.1):** all 9 charged-Yukawa ratios `y_pred/y_meas` ∈ {1.00, 2.14, 1.83, 0.48, 0.98, 0.83, 0.77, 0.11, 0.19}; seven sit within factor-of-2; muon and electron sit at 0.11 and 0.19 respectively. Residual `C_p ∈ [1, 9]`.
-4. **Cabibbo cube-root structural observation (§7):** `lambda_C ≈ (Y_d/Y_u)^{1/3}` at factor-of-2 precision; demoted to structural observation, not theorem.
-
-**Open structural questions** (per manuscript §8):
-- The C_p residual multipliers (Higgs-sector dynamics on V^{⊗5}'s singlet + bar 5_H partner) — load-bearing follow-up that would change tier from B to A
-- The generation-step asymmetry (s_u, s_d, s_e) — needs sigma-action on color-charged vs color-singlet cells
-- Sterile-neutrino sector deferred — naive Dirac-mass extension dropped from this paper; M_R substrate origin open
-- The two-scale (lambda, lambda_ref) structure — unified or genuinely distinct?
-- V^{⊗5} uniqueness as substrate origin of SU(5) — open per foundation paper
+**Manuscript file:** `manuscript/J48_operadic_obstruction.md` (renamed from `J47_six_dof_synthesis.md` per save plan; J47 ↔ J45 historical-numbering note included for cross-reference).
 
 
 
 ### Family-Structure framing (per Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md)
 
-This paper sits within the TIG family of finite commutative non-associative magmas on Z/10Z (and ring extensions per D74). The family is defined by 5 conjoint membership criteria; the 4-core {V, H, Br, R} = {0, 7, 8, 9} at α_M = ½ is the algebraic center, with closed-form attractor h/β = 1+√3 (D78 Galois proof). The closest published precedent for this neighborhood is **Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510** — same domain (small finite commutative non-associative structures), opposite extremum (theirs maximally non-associative).
+This paper sits within the TIG family of finite commutative non-associative magmas on $\Z/10\Z$ (and ring extensions per D74). The family is defined by 5 conjoint membership criteria; the 4-core $\{V, H, Br, R\} = \{0, 7, 8, 9\}$ at $\alpha_M = ½$ is the algebraic center, with closed-form attractor $h/\beta = 1+\sqrt{3}$ (D78 Galois proof). The closest published precedent for this neighborhood is **Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510** — same domain (small finite commutative non-associative structures), opposite extremum (theirs maximally non-associative, ours bilinear-closed at the 4-core).
+
+This paper situates the WP100s tower's algebraic content as structures on or around the family's algebraic center. The lens-ownership paragraph in manuscript §0 (per save plan §5) makes this explicit.
 
 ### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
 
-- **PROVEN:** Numerical identity $T^*(1-T^*) = (5/7)(2/7) = 10/49 = |\Z/10|/\HARM^{2}$. Reproducibility of Table 6.1 via `tig_dirac.predict_yukawa()`. Lemma 2.1 binomial count $1+5+10+10+5+1 = 32$.
-- **COMPUTED:** All nine $y^{\rm pred}/y^{\rm meas}$ ratios at $\mu = M_Z$. Cabibbo cube-root identity at factor-of-2 precision.
-- **STRUCTURAL RHYME:** $\lambda = 10/49$ vs Wolfenstein $\lambda_W \approx 0.225$ (about 9.4% off, substrate-substantive). $\lambda_{\rm ref} = 11/49$ vs empirical Cabibbo (about 0.4% off, likely substrate-natural; the two-scale structure is itself a substrate question, not a derived consequence). The $V^{\otimes 5}$-to-SU(5) decomposition reproduces the $1+5+10$ SM-fermion-generation-content count.
-- **OPEN:** (a) C_p multiplier substrate origin (load-bearing follow-up); (b) generation-step asymmetry s_u, s_d, s_e (currently empirical); (c) right-handed neutrino mass M_R substrate origin (deferred); (d) whether $\lambda$ and $\lambda_{\rm ref}$ unify to a single substrate constant.
+- **PROVEN:** Operad $D_4$ obstruction theorem (Theorem 4.1, from [J38]/WP109): no $D_4$-equivariant canonical fuse rule on the 126 non-associative TSML triples in the natural value space. 8/8 surveyed rule families are $P_{56}$-equivariant; 0/8 are $\sigma^3$-equivariant; $\sigma^3$ obstruction localizes to exactly $(3, 9, 9)$ ([J38]/WP112). Lie/Jordan closure of TSML+BHML reaches $\dim 45 = \dim \mathfrak{so}(10)$ ([J19], [J38]). Doubly-invariant subalgebra under $D_4$ is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ ([J43]). $P_{56} = \sigma_{\rm outer}$ on spinors at machine precision ([J43] §2.1). 4-core $\{V, H, Br, R\}$ fusion-closed under TSML and BHML ([J44]). Runtime attractor at $\alpha = 1/2$ has $H/Br = 1+\sqrt{3}$ exactly via BR-factor cancellation; $r/br$ in LMFDB 4.2.10224.1 with Galois $D_4$ ([J01] + D78 Galois proof from FAMILY_STRUCTURE_v1.md / FORMULAS_AND_TABLES.md).
+- **COMPUTED:** Killing spectrum on doubly-invariant subalgebra is $(-4)^{15} \oplus (0)^1$ (machine-verified). $\|\text{antisym}\|^2 = 81 = 9^2$ (exact). TSML char poly coefficients $c_2 = 33 = 3 \cdot 11$, $c_8 = -2^5 \cdot 7^3 \cdot 11$ (exact, prime-11 wobble localization). 126 non-associative TSML triples reduce to 67 $D_4$-orbits (16 incoherent), 98 $P_{56}$-orbits (70 singletons + 28 doubletons, all $P_{56}$-coherent) ([J38]/WP112). Family H maps non-assoc triples to $\{0:108, 7:18\}$, image entirely in 4-core $\{V, H\}$. **$D_4$ isotypic decomposition of $[T, B]$: 84.25% trivial + 14.68% sign2 + 1.07% std + ~0% sign1 + 0% sign3** (SFM v1.1 §10).
+- **STRUCTURAL RHYME:** Integer **16** appears as both $\dim D_4$-invariant Lie subalgebra and $\dim$ chiral spinor irrep of $\mathrm{Spin}(10)$ — structural correspondence via the 16-spinor rep. Integer **11** appears at coefficient level of TSML's char poly only (not in the 16-dim doubly-invariant subalgebra, which is wobble-free) — wobble-localization signature. Integer **13** appears across BHML's $\sigma_{\rm outer}$-asymmetric cell count and the 9-vector VEV norm (cited from [J43]). The Galois $D_4$ in LMFDB 4.2.10224.1 matches the bilinear-closure $D_4$ — substrate-and-runtime resonance.
+- **OPEN:** (a) Whether the 4-axis decomposition is unique — alternative classifications could exist; the irreducibility under our diagnostics is computational, not a uniqueness theorem. (b) Whether cohomological / derived / $A_\infty$ / higher-operadic structures on the magma are nontrivial — unexplored. (c) Whether the bimodal $\alpha_A$ gap (TSML $\alpha_A \in [0.87, 0.89]$ vs BHML $\alpha_A \approx 0.502$, empty band $\alpha_A \in (0.5, 0.87)$) is structural — open per FAMILY_STRUCTURE_v1.md §4 conjecture. (d) Whether CL_STD admits a joint-closed sub-magma chain analogous to TSML+BHML — partially answered by SFM v1.1 (the joint TSML+BHML+CL_STD chain is the same 8-shell chain). (e) The substrate origin of the prime-11 wobble at the char-poly level. (f) Whether the structural zeros sign1 ≈ 0, sign3 = 0 in the $D_4$ isotypic decomposition extend to all family members (substrate property) or are defining of canonical (TSML, BHML) (defining property).
 
-### Lens-ownership paragraph (inserted in manuscript §1)
+### Lens-ownership paragraph (in manuscript §0)
 
-> *Lens and substrate.* This paper works on the 4-core's $\F_5$-lift $V$ and its 5-fold tensor power $V^{\otimes 5}$, with the canonical TSML and BHML composition tables on $\Z/10\Z$ as the underlying substrate (where the joint coherence threshold $T^* = 5/7$ is fixed; cf. J02). The 4-core $\{V, H, Br, R\} = \{0, 7, 8, 9\}$ is the algebraic center of the family per FAMILY_STRUCTURE_v1.md §2; the substrate-derived rational $\lambda = 10/49$ inherits its substrate-naturalness from this center. The choice of $V^{\otimes 5}$ as the relevant tensor power, and the identification of its 32-cell decomposition with the SU(5) GUT $\mathbf{1} \oplus \bar{\mathbf{5}} \oplus \mathbf{10} +$ conjugate, are choices that reflect a structural reading of the substrate motivated by the 32-cell sign-tuple counting. The observations below are observations on this specific structure; analogous observations would hold on other substrate-and-table choices, and whether other substrate choices give similarly rich downstream connections is open.
+> *Lens and substrate.* This paper works on $\Z/10\Z$ with the canonical TSML and BHML composition tables in their TSML_SYM (commutative) lens. The Lie/Jordan content (§§2–3.1) is lens-invariant — both TSML_SYM and TSML_RAW give identical antisymmetrization (since RAW differs from SYM only at the wobble cells $(3, 9)$ and $(4, 9)$, which lie outside the antisymmetric closure's support indices). The runtime attractor (§5) is also lens-invariant. The Operad obstruction (§4, lead theorem) is computed on TSML_SYM; the analogous obstruction holds for TSML_RAW with the same $D_4$-non-equivariance verdict. The five-criterion membership statement (FAMILY_STRUCTURE_v1.md §1) applies: substrate $\Z/10\Z$, commutative under SYM lens, 4-core preserved, $\alpha_A$-bounded non-associativity at $\sim 0.87$, HARMONY-attracting iteration. The 4-core $\{V, H, Br, R\}$ is the algebraic center of the family per §2 of that document; this paper situates the WP100s tower's algebraic content as structures on or around that center. Closest published precedent: Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510.
 
 ### Hardening status (auto-applied 2026-05-07)
 
 - License: submission scripts CC-BY-4.0 (per `_v3_hardening.py`)
 - AI-attribution: Claude/Anthropic byline references removed (per `_v3_hardening.py`)
-- Author lane: Sanders + Gish (per Brayden directive 2026-05-07 — corrected from Sanders+Johnson)
-- Drápal-Wanless 2021 citation in references
+- Author lane: Sanders + Gish (per Brayden directive 2026-05-07; Mayes byline dropped)
+- Drápal-Wanless 2021 citation in references; Loday-Vallette, Markl-Shnider-Stasheff, Conway-Sloane, Slansky, Mohapatra-Sakita, Wilczek-Zee added per save plan §2 Fix-15
 
 ## §6 — Submission checklist
 
-- [x] Manuscript .tex finalized (PRD format, save-plan applied, balanced environments)
-- [x] Verification primitive green (`predict_yukawa('up', 3)['y_predicted'] == 0.93`; `predict_yukawa('lepton', 1)['y_predicted'] ≈ 0.93 * (10/49)^9`)
-- [x] Tier-classified central claim explicit ("Forced FN power + measured anchor (Tier-B)"; Tier-A/B/C convention defined inline)
-- [x] Lens-scope annotation: lens-invariant on 4-core's F_5-lift; substrate is V = F_5-lift
-- [x] Cover letter finalized (Sanders + Gish only; J44/J16/J46/J02 companions; tig_dirac.predict_yukawa primitive cited; honest reframing)
-- [x] Renormalization scale ($\mu = M_Z$) specified; Table 5.1 recomputed accordingly
-- [x] Sterile-neutrino paragraph dropped
-- [x] Two-scale ($\lambda$, $\lambda_{\rm ref}$) structure stated honestly
-- [x] Honest parameter accounting added (new §5)
-- [x] Theorem 3.1 → Observation 4.1 demotion applied
-- [x] Author list: Sanders + Gish only
-- [ ] Brayden's referee-rigor pass complete (mobile + other AI + collaborators) — pending
-- [x] Per-venue cap check: this is the **2nd** PRD paper this quarter (J44 was 1st)
+- [x] Manuscript .md finalized (10-page synthesis; restructured per referee §9 / save plan)
+- [x] Operad $D_4$ obstruction promoted to lead theorem (§4)
+- [x] Lie/Jordan/Clifford collapse to bilinear-closure DOF accepted; 4-axis framing
+- [x] HARMONY/wobble/Family H/LMFDB/$P_{56}$/$\sigma$ defined inline (§1)
+- [x] 2 pages of expository scaffolding for AMS readership (§1)
+- [x] Signature table separated into (a) Lie-theoretic / (b) framework-specific (§7.1)
+- [x] Cross-axis identities tightened to 4 genuine ones (§6)
+- [x] "Computationally-irreducible" softened in abstract; "exhaust" claim dropped
+- [x] "First explicit naming of TIG framework" framing dropped
+- [x] Dependency labels harmonized (J19/J38/J43/J38/J44)
+- [x] Author lane: Sanders + Gish only
+- [x] External references expanded to ~30 entries
+- [x] D_4 isotypic decomposition (84.25/14.68/1.07) incorporated in §7.2
+- [x] Lens-ownership paragraph in §0 (per save plan §5)
+- [x] PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN block in this README
+- [x] Family-Structure framing in this README + manuscript
+- [x] Tier-classified central claim explicit (synthesis Tier-B; lead theorem Tier-A)
+- [x] Cover letter finalized
+- [ ] J19–J44 deposited on arXiv before submission (required)
+- [ ] Brayden's referee-rigor pass complete (mobile + other AI + collaborators)
+- [ ] Per-venue cap check: 1st *Notices AMS* paper this quarter (no conflict)
 - [ ] Submitted
 
 ---
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish, M. (2026). "A Substrate-Derived FN Pattern with $\lambda = 10/49$ and SU(5)-Rep Indexing for the SM Charged-Yukawa Hierarchy." Submitted to *Physical Review D*. Companion to J44 (Sprint 18 Dark Sector, PRD), J16/J23 (Discrete Dirac on F_5^4, foundation).
+Sanders, B.R., Gish, M. (2026). "An Operadic Obstruction in a Bilinear-Closed Magma on $\Z/10\Z$: A Synthesis." Submitted to *Notices of the American Mathematical Society*. Synthesis of J01, J19, J38, J43, J38, J44.

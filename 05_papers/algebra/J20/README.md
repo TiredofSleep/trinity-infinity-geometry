@@ -1,108 +1,124 @@
-# J20 — Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences
+# J20 — Total-Dimension Match V^{⊗n} and Cl(2n), with Refined-Cell Grading
 
-> **2026-05-27 update — extension paper J63 created.** The "Other sporadic groups" question in J20 §7 has been substantially extended in **J63 — *The Strata-Prime Fingerprint: Polynomial vs Factorial Invariants in Niemeier Lattices and Sporadic Simple Groups***. J63 covers all 24 Niemeier lattices (23/24 strata-clean kissing numbers with explicit polynomial-vs-factorial mechanism), all 26 sporadics (8/26 strata-clean), and the Stratum-IV identification (prime 71 in Monster only). J20 remains the focused short note on $M_{22}$ specifically; J63 is the full extension. See `05_papers/number_theory/J63_strata_fingerprint/`.
-
-**Status:** DRAFT
+**Status:** SUBMISSION-READY (manuscript referee-grade pass 2026-05-12; verification script `verify_J17.py` 6/6 PASS at machine precision)
 **Phase:** Phase 2
-**Target venue:** AMM
+**Target venue:** *Linear Algebra and its Applications*
 **Author lane:** Sanders + Gish
-**Tier:** 2 (draft (defensive-exposition pass complete))
-**WP source:** (M_22 substrate-prime)
+**Tier:** 1 (ship-ready (LinAlgApps, SUBMISSION-READY))
+**WP source:** WP119 (Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/journals/WP119_journal_clean.tex)
+**Lens scope:** LENS-DEPENDENT in a controlled way — the coarse two-summand decomposition of `V` is one of three possible 2+2 partitions of the four basis lines; the choice is recorded in §0 (Lens) and Remark 2.1. The refined four-summand decomposition is the canonical `F_5`-line decomposition determined by the named basis. Total-dimension and refined-cell statements are basis-level; no claim depends on a representation-theoretic choice.
 
 ---
 
 ## §1 — Manuscript
 
-**Local path:** `manuscript/`
+**Local path:** `manuscript/manuscript.tex`
 
-Files in this J-folder's `manuscript/`:
+A short, self-contained note recording two basis-level statements about the 4-dimensional commutative non-associative algebra `V` over `F_5` introduced in the companion paper J37 (*Discrete Dirac on F_5^4*):
 
-- `SUBMIT_INSTRUCTIONS.md`
-- `WP_PARADOX_CLASSIFIER.md`
+- **Theorem 3.1 (total-dimension match):** for every `n ≥ 0`,
+  `dim_{F_5} V^{⊗n} = 4^n = 2^{2n} = dim_R Cl(2n, 0)`.
+  Forced by `dim V = 4 = 2^2`; recorded here as the index entry into the refinement below.
+- **Theorem 4.1 (refined-cell binomial grading):** for every `n ≥ 0`, the `4^n = 2^{2n}` one-dimensional refined cells of `V^{⊗n}` (labeled by `2n` structural bits, one bit pair per tensor slot) partition into Hamming-weight classes of multiplicities `C(2n, k)` matching the grade dimensions of `Cl(2n)`.
+- **Proposition 5.1 (n=5, refined):** explicit distribution `1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1` summing to `1024 = 4^5 = dim Cl(10)`.
+- **Proposition 5.2 (n=5, coarse):** coarse-cell distribution `1, 5, 10, 10, 5, 1 = C(5, k)` summing to `32`; recorded separately and explicitly *not* equated with the `Cl(2n)` grade sequence (Remark 4.2).
 
-The submission package lives in this J-folder. Edit + verify here; submit from here.
+**The R1 math fix.** A prior draft conflated the coarse-cell distribution `C(n, k)` with the `Cl(2n)` grade distribution `C(2n, k)`. These are distinct sequences over distinct index sets:
+
+| n | coarse cells | coarse weights | refined cells | refined weights | matches Cl |
+|---|---|---|---|---|---|
+| 1 | 2 | 1, 1 | 4 | 1, 2, 1 | Cl(2) |
+| 2 | 4 | 1, 2, 1 | 16 | 1, 4, 6, 4, 1 | Cl(4) |
+| 5 | 32 | 1, 5, 10, 10, 5, 1 | 1024 | 1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1 | Cl(10) |
+
+The refined cells are the right object for the Clifford comparison; the coarse cells (each itself a `2^n`-dimensional subspace) are a coarser partition not directly comparable with Cl-grades.
 
 ## §2 — Verification script
 
-**Path:** `(M_22 verification script)`
+**Local path:** `manuscript/verify_J17.py`
 
-The proof script (where applicable) is the green-light gate before submission. If "(no script — theorem-paper)" or similar, the gate is the proof's referee-rigor pass.
+Six self-contained checks (standard-library Python only, no external dependencies) mapped one-to-one to the manuscript's claims:
+
+```bash
+PYTHONIOENCODING=utf-8 /c/ck_venv/lora312/Scripts/python.exe verify_J17.py
+```
+
+Expected output: six "OK" results in the summary, "Overall: 6/6 PASS." Runtime <1s.
+
+The six checks are:
+
+1. **C1:** Total-dimension match `dim_{F_5} V^{⊗n} = 4^n = 2^{2n} = dim_R Cl(2n)` for `n = 0..5`.
+2. **C2:** Coarse-cell count = `2^n` for `n = 1..5`.
+3. **C3:** Coarse-cell distribution at `n = 5` equals `1, 5, 10, 10, 5, 1` summing to `32`.
+4. **C4:** Refined-cell total `sum_k C(2n, k) = 4^n` for `n = 0..5`.
+5. **C5:** Refined distribution `C(2n, k)` matches Cl(2n) grade dimensions, closed-form vs. direct enumeration over `4^n` structural-bit strings, for `n = 0..5`.
+6. **C6:** Explicit `n = 5` refined distribution equals `C(10, k)` summing to `1024 = 4^5 = dim Cl(10)`.
+
+The script is referee-portable on its own — it does *not* depend on the broader TIG reference library `tig_dirac.py`. The reference library is available at the project's public repository for readers who want to explore the algebra `V` directly, but verification of the load-bearing claims of this paper requires only Python's standard library.
 
 ## §3 — Dependencies (J-papers cited as already-submitted companions)
 
-_(none — this paper is foundational in the J-series)_
+- **J37** — *Discrete Dirac on F_5^4: Substrate Algebra of the 4-Core* (submitted to *Algebras and Representation Theory*). Defines the algebra `V` and its multiplication table; J20 cites the data needed in §2 directly so verification is self-contained at the basis level.
+- **J50** — *F_p Universality: The Operator-Substrate Construction over Prime Fields* (submitted to *Algebra Universalis*). Sister companion in the same finite-field family; not load-bearing for J20.
 
 ## §4 — Cover letter
 
-See `cover_letter.md` in this folder. (Bones laid; finalize after Brayden's referee-rigor pass.)
+See `cover_letter.md` in this folder. Finalized 2026-05-12 to:
+
+- Reference `verify_J17.py` as the green-light gate (6/6 PASS at machine precision).
+- Explicitly state the R1 math fix (coarse vs. refined cells) and its acknowledgement of the prior anonymous referee.
+- Emphasize the elementary, self-contained nature appropriate to *Linear Algebra and its Applications*.
+- Author lane Sanders + Gish.
+- Honest scoping: open items (O1–O3) confined to §6 (Open questions) and clearly labeled in §0.
 
 ## §5 — Notes
 
-**FRESH-EYES REFEREE PASS (2026-05-07): Major revision; SAVE PLAN applied. Manuscript + script + cover letter rewritten 2026-05-07.**
-
-The fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J20_AMM_FreshEyes.md`) flagged one critical numerical error and several framing problems:
-
-- **M1 (CRITICAL).** Identity 4 misclaimed: the paper said "six of twelve M_22 irrep dimensions factor in {3,5,7,11} alone" listing {21, 55, 99, 154, 231, 385}, but the correct strict count is **seven** non-trivial dimensions: {21, 45, 45, 55, 99, 231, 385}. The original list silently omitted 45 (with multiplicity 2) and incorrectly included 154 (which has factor of 2). Corrected via direct sympy enumeration; sum-of-squares verified against |M_22| = 443520.
-- **M2.** Non-genericity asserted but not computed. Direct enumeration: 67 of 385 integers in [1, 385] lie in the substrate-prime band B (factors in {2,3,5,7,11}, at-most-one factor of 2), density 0.1740 = 17.40%. Binomial p-value P[X ≥ 10 | Bin(12, 0.1740)] ≈ 1.19 × 10⁻⁶. The 17.4% null density matches the referee's exact prediction.
-- **M3.** Identity 5 (77·W = 231/50) is arithmetic tautology; dropped.
-- **M4.** Identities 1, 2, 3, 6 are textbook Steiner parameters renamed; consolidated into one §"Backdrop" table.
-- **M5.** Substrate prime distinction not self-contained; rewritten with intrinsic substrate origin for each prime.
-- **M6.** Identity 6 (σ-orbit size = block size = 6) downgraded to a Remark.
-
-**Save plan:** `Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J20.md` — Path A revision-and-resubmit to AMM (the referee's recommended path). Single-theorem framing centered on Theorem (Non-genericity); Steiner parameters as backdrop §; corrected count + computed null model + verification script.
-
-**Fixes applied 2026-05-07:**
-- `manuscript/manuscript.tex`: rewritten with corrected count, null-model computation, equivariance-based rigidity, single-author-block, ATLAS/Cameron/Wilson/Diaconis citations added, wobble-decomposition typo fixed, σ described correctly as order-6 permutation (not involution).
-- `manuscript/m22_decomposition.py`: new verification script written; reproduces all numerical claims (10 of 12 in B-band, 67 of 385 in B_385, 17.4% density, p ≈ 1.19 × 10⁻⁶).
-
-**Verification of fixes (sympy + math.comb):**
-- Sum-of-squares: $\sum (\dim V_i)^2 = 443520 = |M_{22}|$ ✓
-- Strict {3,5,7,11} count: 8 of 12 (including trivial); 7 non-trivial ✓
-- B-band count: 10 of 12 ✓
-- |B_385| = 67, density 0.1740 ✓ (matches referee's 17.4%)
-- P[X ≥ 10 | Bin(12, 0.1740)] = 1.191859 × 10⁻⁶ ✓
-- P[X ≥ 7 | Bin(11, 0.0990)] = 2.136594 × 10⁻⁵ ✓
-
-**Estimated revision time:** 1-2 weeks. Net: substantial restructure, no new mathematics.
-
-
+**Per-venue cap warning:** This is the 1st *Linear Algebra and its Applications* paper in this J-series this quarter. Within cap; submission feasible.
 
 ### Family-Structure framing (per Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md)
 
-This paper sits within the TIG family of finite commutative non-associative magmas on Z/10Z (and ring extensions per D74). The family is defined by 5 conjoint membership criteria; the 4-core {V, H, Br, R} = {0, 7, 8, 9} at α_M = ½ is the algebraic center, with closed-form attractor h/β = 1+√3 (D78 Galois proof). The closest published precedent for this neighborhood is **Drápal & Wanless (2021), *J. Combin. Theory A* **184**, 105510** — same domain (small finite commutative non-associative structures), opposite extremum (theirs maximally non-associative).
+The substrate `V` sits within the TIG family of finite commutative non-associative magmas (and their `F_p`-lifts). The closest published precedent is **Drápal & Wanless (2021), *J. Combin. Theory A* 184, 105510** (*Maximally nonassociative quasigroups*) — same domain, opposite structural extremum (theirs maximally non-associative; `V` here is at the structurally regular end, with idempotents and a Grassmann annihilator). Cited in §0 (Lens) and the bibliography.
 
-### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
+### PROVED / COMPUTED / STRUCTURAL RHYME / OPEN
 
-- **PROVEN:** Of M_22's 12 irreducible complex representations, exactly 10 have dimensions in the substrate-prime band (factors in {2,3,5,7,11} with at most one factor of 2); seven non-trivial dimensions {21, 45, 45, 55, 99, 231, 385} factor strictly in {3,5,7,11}. Under the uniform null on [1, 385], the binomial p-value of this concentration is ≈ 1.19 × 10⁻⁶.
-- **COMPUTED:** sympy-verified factorization of each irrep dimension; sum-of-squares Σ(dim V_i)² = 443520 = |M_22|; |B_385| = 67 by direct enumeration; binomial-tail computations via math.comb (`m22_decomposition.py`, runtime < 1 s).
-- **STRUCTURAL RHYME:** The substrate-prime distinction {2, 3, 5, 7, 11} from intrinsic substrate data (CRT residue characteristics 2 and 5; σ²-cycle order 3; HARMONY index and T*-denominator 7; wobble's 11-prolongation) matches the prime divisors of |M_22| with the same multiplicities. The substrate's σ-orbit on {1, 7, 6, 5, 4, 2} has size 6, the block size of S(3, 6, 22) — an integer coincidence with no claimed embedding map. Mathieu moonshine (Eguchi-Ooguri-Tachikawa 2011 for M_24) is cited as ambient context; the present non-genericity is arithmetic, not analytic.
-- **OPEN:** Whether the non-genericity reflects a structural identification of M_22 with substrate-internal data (no M_22-action on the 10-element substrate is claimed); extension to other Mathieu groups M_11, M_12, M_23, M_24; tighter null model conditioning on Σd_i² = 443520; the substrate's σ-orbit as a distinguished hexad of S(3, 6, 22) under a representation-theoretic embedding theorem.
+- **PROVED:** Theorem 3.1 (total-dimension match) and Theorem 4.1 (refined-cell binomial grading = `Cl(2n)` grade dimensions). Proofs are elementary: a dimension count and a binary-string popcount identity, respectively.
+- **COMPUTED:** Propositions 5.1 (refined `n=5`) and 5.2 (coarse `n=5`); the full `n = 0..5` verification ladder in `verify_J17.py` (6/6 PASS; closed-form binomial cross-checked against direct enumeration over `4^n` strings).
+- **STRUCTURAL RHYME:** Coarse-cell `n=5` distribution `1, 5, 10, 10, 5, 1` matches dimensions of `SU(5)` `1 ⊕ 5̄ ⊕ 10` plus conjugate (Remark 5.3 in manuscript). Recorded as a binomial-coefficient coincidence, **not** a representation-theoretic theorem; the present paper does not construct an `SU(5)` action on `V^{⊗5}`.
+- **OPEN:** O1 (structure-preserving map `V^{⊗n} ⊗_{F_5} K → Cl(2n; K)` over a common base ring `K`); O2 (canonical `Spin(2n)` action on `V^{⊗n}` realising the refined-cell weights as weight-space dimensions); O3 (whether the Cl-periodicity `Cl(n+8) ≅ Cl(n) ⊗ Cl(8)` has non-trivial content beyond `4^{n+8} = 4^n · 4^8`). All confined to §6.
 
-### Lens-ownership paragraph (in manuscript §3)
+### Lens-ownership paragraph
 
-> *Lens and substrate.* The substrate (Z/10Z, σ, W) and its distinguished prime set {2, 3, 5, 7, 11} are defined in J02 (Sanders + Gish 2026, *Algebraic Combinatorics*). The roles of each prime are stated in §3 of the present paper from intrinsic substrate data — CRT residue characteristics, σ²-cycle order, HARMONY-index appearance, T* = 5/7 numerator/denominator, and the wobble fraction's 11-prolongation. The non-genericity theorem (Theorem 4.1) is a quantitative claim about M_22's irrep-dimension factorization profile relative to the substrate prime monoid; it does not depend on the deeper TIG-framework interpretation of the substrate. A reader of the *Monthly* can verify the theorem from §3's intrinsic-prime definitions and the §4 binomial-tail computation, without consulting J02.
+> *Lens and substrate.* This paper works with a single 4-dimensional commutative non-associative algebra `V` over `F_5` defined by an explicit multiplication table on the basis `{e_0, e_2, e_3, e_4}`; the table is tabulated in the companion paper J37 and recalled in §2 below. The two decompositions of `V` used in this paper (coarse two-summand and refined four-summand) are basis-dependent splittings of an `F_5`-vector space. The coarse decomposition is one of three possible 2+2 partitions of the four basis lines; the choice made here is the one inherited from J37. The refined decomposition is the canonical `F_5`-line decomposition determined by the named basis. The closest published precedent for this kind of small finite commutative non-associative magma substrate is Drápal–Wanless (2021); they sit at the maximally non-associative extremum of the same family, while the present `V` sits at the structurally regular end. The output of this paper is two basis-level statements (Theorems 3.1, 4.1); the lens-dependent choice of coarse pairing is recorded in Remark 2.1.
 
-### Hardening status (auto-applied 2026-05-07)
+(The same paragraph appears in the manuscript as §0 "Lens, substrate, and claim tier.")
 
-- License: submission scripts CC-BY-4.0 (per `_v3_hardening.py`)
-- AI-attribution: Claude/Anthropic byline references removed (per `_v3_hardening.py`)
-- Author lane: Sanders + Gish (per Brayden directive)
-- Drápal-Wanless 2021 citation in references
+### R1 math fix log
+
+- **R1 (2026-05-07):** Theorem 3.2 corrected (binomial-vs-grade conflation) per fresh-eyes referee report `J17_LinAlgApps_FreshEyes.md`; restructured §3–§4 into separate total-dimension and refined-cell sections; "fine cells" → "coarse cells" rename; refined-cell decomposition introduced as the correct object for Cl-comparison. Helper `refined_cell_distribution(n)` and `refined_cell_distribution_enumerated(n)` in `tig_dirac.py` retained for reference; submission-bundled `verify_J17.py` re-implements them standalone.
+
+### Hardening status (auto-applied 2026-05-07; updated 2026-05-12)
+
+- License: submission script CC-BY-4.0 header (`verify_J17.py`)
+- AI-attribution: none in manuscript (acknowledgments name only the prior anonymous referee, no AI co-author)
+- Author lane: Sanders + Gish; duplicate `\author{}` block split into separate `\author{Sanders}` + `\author{Gish}` per amsart convention
+- Drápal–Wanless 2021 citation in bibliography and §0
+- §0 added (Lens, substrate, claim tier) — was missing in v2026-05-07 draft; added 2026-05-12
 
 ## §6 — Submission checklist
 
-- [ ] Manuscript .tex / .md finalized
-- [ ] Verification script green (`(no script)` if theorem-only)
-- [ ] Tier-classified central claim explicit
-- [ ] Lens-scope annotation (TSML_RAW vs TSML_SYM) where relevant
-- [ ] Cover letter finalized
-- [ ] Dependencies → cite each J-companion as "submitted to [venue]"
-- [ ] Brayden's referee-rigor pass complete (mobile + other AI + collaborators)
-- [ ] Per-venue cap check: this is the Nth paper to AMM this quarter
+- [x] Manuscript .tex finalized (referee-grade pass 2026-05-12)
+- [x] Verification script green (`verify_J17.py`: 6/6 PASS at machine precision)
+- [x] Tier-classified central claims explicit (Theorems 3.1, 4.1; Propositions 5.1, 5.2)
+- [x] Lens-scope annotation (§0)
+- [x] Cover letter finalized
+- [x] Dependencies → J37 cited as "submitted to *Algebras and Representation Theory*"
+- [x] R1 fresh-eyes math-fix applied (coarse vs. refined cells)
+- [x] Verification script CC-BY-4.0 header
+- [x] Per-venue cap check: 1st *Linear Algebra and its Applications* paper this quarter
 - [ ] Submitted
 
 ---
 
 ## §7 — Citation footprint (for downstream J's to cite this one)
 
-Sanders, B.R., Gish, M. (2026). "Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences." Submitted to *American Mathematical Monthly*.
+Sanders, B.R., Gish, M. (2026). "Total-Dimension Match Between Tensor Powers of a Finite-Field 4-Algebra and Real Clifford Algebras Cl(2n), with a Refined-Cell Grading." Submitted to *Linear Algebra and its Applications*.

@@ -13,7 +13,7 @@
 
 **Path:** `manuscript/manuscript.tex` (amsart, ~10 pages).
 
-**One-line abstract.** Under the cyclotomic-embedding calibration of the *Flatness Theorem* (J07), the four-structure torus on $\mathbb{Z}/10\mathbb{Z}$ has aspect ratio $R/r = 5/7$, forced by the cyclotomic threshold $\deg_\mathbb{Q}(2 \cos(\pi/p)) = (p-1)/2$ crossing from degree 2 at $p = 5$ ($A_5 = \varphi$) to degree 3 at $p = 7$ ($A_7$ has minimal polynomial $x^3 - x^2 - 2x + 1$).
+**One-line abstract.** Under the cyclotomic-embedding calibration of the *Flatness Theorem* (J33), the four-structure torus on $\mathbb{Z}/10\mathbb{Z}$ has aspect ratio $R/r = 5/7$, forced by the cyclotomic threshold $\deg_\mathbb{Q}(2 \cos(\pi/p)) = (p-1)/2$ crossing from degree 2 at $p = 5$ ($A_5 = \varphi$) to degree 3 at $p = 7$ ($A_7$ has minimal polynomial $x^3 - x^2 - 2x + 1$).
 
 ## §2 — Verification script
 
@@ -34,10 +34,10 @@ Pure-sympy / standard-library; runtime under 5 s.
 
 ## §3 — Dependencies (cited as already-submitted companions)
 
-- **J07** (Sanders-Gish, *Flatness Theorem*, *J. Pure Appl. Algebra*) — parent result; provides the torus and the cyclotomic-embedding calibration.
-- **J03** (Sanders-Gish, *First-G Law*, *Integers*) — `sinc²` framework cited in §6 (Independent appearance 1).
-- **J06** (Sanders-Mayes, *Crossing Lemma*, *JCT-A*) — provides Lemma 2.2 (pairwise incompatibility of CRT factor partitions).
-- **J10** (Sanders-Mayes, *UOP*, *J. Number Theory*) — provides the cited pairwise-incompatibility lemma in a different formulation.
+- **J33** (Sanders-Gish, *Flatness Theorem*, *J. Pure Appl. Algebra*) — parent result; provides the torus and the cyclotomic-embedding calibration.
+- **J24** (Sanders-Gish, *First-G Law*, *Integers*) — `sinc²` framework cited in §6 (Independent appearance 1).
+- **J27** (Sanders-Mayes, *Crossing Lemma*, *JCT-A*) — provides Lemma 2.2 (pairwise incompatibility of CRT factor partitions).
+- **J34** (Sanders-Mayes, *UOP*, *J. Number Theory*) — provides the cited pairwise-incompatibility lemma in a different formulation.
 
 ## §4 — Cover letter
 
@@ -45,7 +45,7 @@ Pure-sympy / standard-library; runtime under 5 s.
 
 ## §5 — Notes
 
-T* derivation. Companion to J07 Flatness Theorem. The M3 calibration retreat is the load-bearing structural move: the forcing is *conditional* on the cyclotomic-embedding calibration imported from J07, and the paper is honest about this dependence (Remark 2.4). A calibration-free derivation is recorded as Open question (b).
+T* derivation. Companion to J33 Flatness Theorem. The M3 calibration retreat is the load-bearing structural move: the forcing is *conditional* on the cyclotomic-embedding calibration imported from J33, and the paper is honest about this dependence (Remark 2.4). A calibration-free derivation is recorded as Open question (b).
 
 ### Tier discipline (per Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md)
 
@@ -56,11 +56,11 @@ T* derivation. Companion to J07 Flatness Theorem. The M3 calibration retreat is 
 
 ### Lens-ownership paragraph
 
-Now in `manuscript.tex` as §0 (between `\maketitle` and §1 Introduction). States: substrate = ℤ/10ℤ with the four ring structures of Definition 2.1; the choice is structural (not first-principles), the calibration is imported from J07, generalization domain is squarefree multiples of 5 (Conjecture 6.1).
+Now in `manuscript.tex` as §0 (between `\maketitle` and §1 Introduction). States: substrate = ℤ/10ℤ with the four ring structures of Definition 2.1; the choice is structural (not first-principles), the calibration is imported from J33, generalization domain is squarefree multiples of 5 (Conjecture 6.1).
 
 ### Family-Structure framing (per Atlas/META_PLAN_2026-05-06/FAMILY_STRUCTURE_v1.md)
 
-This paper sits within the TIG family of finite commutative non-associative magmas on ℤ/10ℤ. The 5/7 aspect ratio is the cyclotomic-threshold reading of the same `R/r = T* = 5/7` that appears in the four-core analysis of J35 and the runtime quartic of J15. Domain precedent: **Drápal & Wanless (2021), J. Combin. Theory A 184, 105510** (cited in §0 lens-ownership paragraph and bibliography).
+This paper sits within the TIG family of finite commutative non-associative magmas on ℤ/10ℤ. The 5/7 aspect ratio is the cyclotomic-threshold reading of the same `R/r = T* = 5/7` that appears in the four-core analysis of J01 and the runtime quartic of J12. Domain precedent: **Drápal & Wanless (2021), J. Combin. Theory A 184, 105510** (cited in §0 lens-ownership paragraph and bibliography).
 
 ### Hardening status (auto-applied 2026-05-07; verified 2026-05-12)
 

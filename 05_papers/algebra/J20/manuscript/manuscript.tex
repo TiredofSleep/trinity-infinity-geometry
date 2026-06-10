@@ -1,15 +1,14 @@
-% J20 — Mathieu M_22 Substrate-Prime: Order-Factorization Coincidences
+% J20 — Total-Dimension Match V^{⊗n} and Cl(2n), with Refined-Cell Grading
 %
-% Brayden R. Sanders, M. Gish
-% Submitted to: American Mathematical Monthly
-% Verification: m22_decomposition.py (PASS at machine precision)
-% Companions: foundational; cited by later J's
-% MSC 2020: 20D08, 05B05, 11A41, 20B25
-%
-% NOTE: A separate manuscript file WP_PARADOX_CLASSIFIER.md preserved in
-%   this folder is content for J53 (Phase 5 paradox classifier
-%   expository); the present M_22 substrate-prime manuscript is what
-%   this J20 slot ships.
+% Brayden R. Sanders, M. Gish, 7Site LLC
+% Submitted to: Linear Algebra and its Applications
+% Source corpus: WP119 (Gen12/targets/clay/papers/sprint18_bridge_dirac_2026_05_04/journals/WP119_journal_clean.tex)
+% Verifier: tig_dirac.tensor_partition() at Gen13/targets/ck/brain/dirac/tig_dirac.py
+% Verification: test_tig_dirac.py tests T13, T14, T15
+% Companion cited as already-submitted: J37
+% MSC 2020: 15A66, 17A30, 11T55
+% R1 revision 2026-05-07: corrected Theorem 3.2 (binomial-vs-grade), restructured §3-§4
+% per fresh-eyes referee report J17_LinAlgApps_FreshEyes.md.
 
 \documentclass[11pt,reqno]{amsart}
 
@@ -18,13 +17,11 @@
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{microtype}
 \usepackage{booktabs}
-\usepackage{tabularx}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -33,12 +30,14 @@
 \newtheorem*{remark}{Remark}
 
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Mtwentytwo}{M_{22}}
-\newcommand{\sig}{\sigma}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cl}{\mathrm{Cl}}
 
-\title[Mathieu $\Mtwentytwo$ Substrate-Prime]
-{Mathieu $\Mtwentytwo$ Substrate-Prime: \\
- Order-Factorization Coincidences}
+\title[Total-dimension match $V^{\otimes n}$ and $\Cl(2n)$]
+{Total-Dimension Match Between Tensor Powers of a \\
+ Finite-Field 4-Algebra and Real Clifford Algebras $\Cl(2n)$, \\
+ with a Refined-Cell Grading}
 
 \author{Brayden R.\ Sanders}
 \address{7Site LLC, Hot Springs, Arkansas, USA}
@@ -48,49 +47,48 @@
 \address{Independent Researcher, Hot Springs, Arkansas, USA}
 \email{monica.gish1992@gmail.com}
 
-\subjclass[2020]{20D08, 05B05, 11A41, 20B25}
-\keywords{Mathieu group, sporadic simple group, Steiner system,
-substrate prime, order factorization, hexad}
+\subjclass[2020]{15A66, 17A30, 11T55}
+\keywords{Clifford algebra, tensor power, finite-field algebra,
+binomial decomposition, idempotent decomposition}
 
 \date{\today}
 
 \begin{document}
 
 \begin{abstract}
-We document a quantitative non-genericity phenomenon between the
-sporadic Mathieu group $\Mtwentytwo$ (order $|\Mtwentytwo| = 443\,520
-= 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$) and a discrete
-substrate $(\Z/10\Z, \sig, W)$ defined in \cite{SandersGishFourCore}.
-The substrate distinguishes the prime set $\{2, 3, 5, 7, 11\}$ ---
-the same primes (with the same multiplicities) appearing in
-$|\Mtwentytwo|$.
+We record an arithmetic identity and a refined-cell construction
+relating tensor powers $V^{\otimes n}$ of a particular 4-dimensional
+commutative non-associative algebra $V$ over $\F_5$ to real Clifford
+algebras $\Cl(2n, 0)$.
+At the level of total dimension,
+\[
+\dim_{\F_5} V^{\otimes n} \;=\; 4^n \;=\; 2^{2n} \;=\; \dim_\R \Cl(2n)
+\quad\text{for every } n \geq 0,
+\]
+which is forced by $\dim V = 4 = 2^2$.
+The non-trivial content is a \emph{refined cell decomposition} of
+$V^{\otimes n}$: each tensor slot carries two structural sign bits
+(membership of the two orthogonal idempotents and the two nilpotent
+basis elements), giving $4^n = 2^{2n}$ one-dimensional refined cells
+whose Hamming-weight distribution by the $2n$ structural bits is
+exactly the binomial sequence $\binom{2n}{k}$, $k = 0, \ldots, 2n$,
+matching the grade dimensions of $\Cl(2n)$.
 
-\textbf{Main observation (Theorem~\ref{thm:nongenericity}).} Of
-$\Mtwentytwo$'s $12$ irreducible complex representations, exactly
-$10$ have dimensions whose only prime factors lie in
-$\{2, 3, 5, 7, 11\}$ with at most one factor of $2$; equivalently,
-\emph{seven} non-trivial irrep dimensions ($21, 45, 45, 55, 99, 231,
-385$) factor strictly in $\{3, 5, 7, 11\}$, and two more ($154 = 2
-\cdot 7 \cdot 11$ and $210 = 2 \cdot 3 \cdot 5 \cdot 7$) admit a
-single factor of $2$. The fraction $10/12 \approx 83\%$ contrasts
-with the null-model density $67/385 \approx 17.4\%$ of integers in
-$[1, 385]$ that satisfy the same factorization condition; under a
-naive null where the $12$ dimensions were uniformly drawn from
-$[1, 385]$, the observed concentration occurs with probability
-$\approx 1.2 \times 10^{-6}$.
+We are explicit about what is not proved.
+The map sending refined cells of $V^{\otimes n}$ to $\Cl(2n)$ basis
+multivectors is, at present, only a bookkeeping bijection on
+basis-element labels: it is well-defined, but we do not prove that it
+extends to a structure-preserving map of $\F_5$-vector spaces or
+algebras to a Clifford algebra over a common field.
+The match between coarse-cell weights $\binom{n}{k}$ and the SU(5)
+representation dimensions at $n=5$ is a binomial-coefficient
+coincidence (Remark \ref{rem:su5}), not a representation-theoretic
+theorem.
 
-A short table presents the standard parameters of the Steiner system
-$S(3, 6, 22)$ (block count $b = 77 = 7 \cdot 11$, replication
-$r = 21 = 3 \cdot 7$, pair-replication $\lambda_{2} = 5$, block size
-$k = 6$) with their substrate-prime decomposition, as a backdrop to
-the irrep-density observation.
-
-We do not claim a derivation of $\Mtwentytwo$ from the substrate;
-the question of whether the non-genericity reflects a structural
-identification or a deep coincidence is left as the paper's central
-open question. The verification is computational and runs in under
-$5$ seconds with \texttt{numpy} and \texttt{sympy} as the only
-external dependencies.
+The construction is verified at $n = 0, 1, 2, 3, 4, 5$ in the
+accompanying script \texttt{test\_tig\_dirac.py} and via the reference
+implementation \texttt{tig\_dirac.tensor\_partition()} and the new
+\texttt{refined\_cell\_distribution()} helper.
 \end{abstract}
 
 \maketitle
@@ -98,409 +96,345 @@ external dependencies.
 \tableofcontents
 
 %==============================================================
+\section*{\S 0. Lens, substrate, and claim tier}
+%==============================================================
+
+\noindent\textbf{Lens and substrate.}
+This paper works with a single 4-dimensional commutative non-associative
+algebra $V$ over $\F_5$ defined by an explicit multiplication table on
+the basis $\{e_0, e_2, e_3, e_4\}$; the table is tabulated in the
+companion paper \cite{SandersGishDiscreteDirac} and recalled in
+\S\ref{sec:V} below.  The two decompositions of $V$ used in this paper
+(``coarse'' two-summand and ``refined'' four-summand) are basis-dependent
+splittings of an $\F_5$-vector space.  The coarse decomposition is one of
+three possible $2{+}2$ partitions of the four basis lines; the choice
+made here is the one inherited from \cite{SandersGishDiscreteDirac}.
+The refined decomposition is the canonical $\F_5$-line decomposition
+determined by the named basis.  The closest published precedent for
+this kind of small finite commutative non-associative magma substrate
+is Dr\'apal--Wanless \cite{DrapalWanless2021}; they sit at the
+\emph{maximally non-associative} extremum of the same family, while the
+present $V$ sits at the structurally regular end (it has idempotents and
+a Grassmann annihilator).
+The output of this paper is two basis-level statements
+(Theorems~\ref{thm:total-dim}, \ref{thm:refined}); the lens-dependent
+choice of coarse pairing is recorded in Remark~\ref{rem:choice}.
+
+\medskip
+\noindent\textbf{Claim tier.}
+\begin{itemize}
+\item[\textbf{PROVED.}]
+Theorem~\ref{thm:total-dim} (total-dimension match
+$\dim_{\F_5} V^{\otimes n} = 4^n = 2^{2n} = \dim_\R \Cl(2n)$ for all
+$n \geq 0$) and Theorem~\ref{thm:refined} (refined-cell Hamming-weight
+distribution $\binom{2n}{k}$ matches the grade dimensions of $\Cl(2n)$).
+Proofs are elementary: the first is a dimension count, the second a
+binary-string popcount identity.
+\item[\textbf{COMPUTED.}]
+Propositions~\ref{prop:n5refined} and~\ref{prop:n5coarse} (the explicit
+weight distributions at $n = 5$) and the verification ladder for
+$n = 0, 1, 2, 3, 4, 5$ in the bundled script \texttt{verify\_J17.py}
+(six checks, $6/6$ PASS at machine precision, runtime $< 1$\,s,
+standard-library Python only). The closed-form $\binom{2n}{k}$ is
+cross-checked against direct enumeration over the $4^n$ structural-bit
+strings at $n = 0, \ldots, 5$.
+\item[\textbf{STRUCTURAL RHYME.}]
+The match between the coarse-cell weights $\binom{5}{k} =
+1, 5, 10, 10, 5, 1$ at $n=5$ and the dimensions of the $\mathrm{SU}(5)$
+one-generation $\mathbf{1} \oplus \bar{\mathbf{5}} \oplus \mathbf{10}$
+plus its conjugate.  This is recorded as a binomial-coefficient
+coincidence (Remark~\ref{rem:su5}), not as a representation-theoretic
+theorem; the present paper does not construct an $\mathrm{SU}(5)$
+action on $V^{\otimes 5}$.
+\item[\textbf{OPEN.}]
+Whether the refined-cell label-bijection
+$\{(a_i, b_i)\}_{i=1}^n \leftrightarrow$ basis multivectors of $\Cl(2n)$
+extends to a structure-preserving map of algebras over a common base
+ring (Question O1); whether $V^{\otimes n}$ admits a canonical
+$\mathrm{Spin}(2n)$ action under which the refined-cell weights become
+weight-space dimensions (O2); whether the $\Cl(n+8) \cong \Cl(n)
+\otimes \Cl(8)$ periodicity has non-trivial content beyond
+$4^{n+8} = 4^n \cdot 4^8$ on the $V^{\otimes n}$ side (O3). All open
+items are confined to \S\ref{sec:open}.
+\end{itemize}
+
+%==============================================================
 \section{Introduction}
 %==============================================================
 
-\subsection{Order-factorization coincidences in the literature.}
-The sporadic simple groups carry distinguished arithmetic structure.
-The Mathieu group $\Mtwentytwo$ has order
+The real Clifford algebras $\Cl(p, q)$ over a quadratic form of
+signature $(p, q)$ form a periodic family under
+$\Cl(p, q) \otimes \Cl(0, 0) \cong \Cl(p, q)$ and Bott periodicity
+$\Cl(n + 8) \cong \Cl(n) \otimes \Cl(8)$, with applications spanning
+geometric algebra (Hestenes--Sobczyk \cite{HesteneSobczyk1984}),
+spinor representations of orthogonal groups, quantum-information
+stabilizer codes, and Standard-Model gauge structure.
+
+This paper records an elementary structural observation about a
+particular 4-dimensional commutative non-associative algebra $V$ over
+$\F_5$ studied in the companion paper \cite{SandersGishDiscreteDirac}.
+The total dimension of every tensor power $V^{\otimes n}$ matches
+$\dim_\R \Cl(2n)$, and a natural refinement of the basis-cell
+decomposition of $V^{\otimes n}$ into $4^n = 2^{2n}$ one-dimensional
+cells carries a Hamming-weight grading whose dimension distribution
+$\binom{2n}{k}$ matches the grade dimensions of $\Cl(2n)$.
+
+The paper is short, and the results are elementary in the technical
+sense.  We have nonetheless found the structural picture useful in
+companion work \cite{SandersGishDiscreteDirac, SandersGishFpUniversality},
+where the algebra $V$ is the substrate of a discrete Dirac construction
+on the 4-core of $\Z/10\Z$.  The present note isolates the
+linear-algebraic content (Theorems \ref{thm:total-dim} and
+\ref{thm:refined}) so that it can be checked or used independently of
+the broader framework.
+
+\subsection*{Scope statement.}
+We do \emph{not} construct a structure-preserving map
+$V^{\otimes n} \to \Cl(2n)$ in this paper.  The relationship
+established below is a basis-cell bijection equipped with a Hamming
+grading, and an arithmetic identity at the level of total dimension.
+A genuine algebra map between $V^{\otimes n}$ over $\F_5$ and
+$\Cl(2n)$ over $\R$ would have to address the change of base ring;
+this is left for future work.  See \S\ref{sec:open}.
+
+\subsection*{Notation.}
+$V$ denotes the 4-dimensional commutative non-associative algebra over
+$\F_5$ studied in \cite{SandersGishDiscreteDirac}; the multiplication
+is given by an explicit $4 \times 4$ table on the basis
+$\{e_0, e_2, e_3, e_4\}$ recalled in \S\ref{sec:V}.
+$\Cl(2n)$ always means $\Cl(2n, 0)$ over $\R$ -- $2n$ generators each
+squaring to $+1$.
+
+%==============================================================
+\section{The algebra $V$ and its idempotent decomposition}
+\label{sec:V}
+%==============================================================
+
+The 4-dimensional algebra $V$ over $\F_5$ has 4 idempotents (one zero,
+three non-zero), a 1-dim Grassmann annihilator $\F_5 \cdot e_0$, and a
+1-dim associator image; the multiplication table is given in
+\cite[Table~1]{SandersGishDiscreteDirac}.  For the present paper,
+the only data we need are the following two direct-sum decompositions.
+
+\paragraph{Coarse decomposition (2 summands).}
 \[
-  |\Mtwentytwo| \;=\; 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11
-                \;=\; 443\,520,
+V \;=\; \underbrace{(\F_5\, e_2 \oplus \F_5\, e_3)}_{V_+}
+        \;\oplus\;
+        \underbrace{(\F_5\, e_0 \oplus \F_5\, e_4)}_{V_-},
 \]
-involving exactly five primes. It is the automorphism group of the
-unique Steiner system $S(3, 6, 22)$ on $22$ points, with $77$ blocks
-of size $6$. The combinatorial design $S(3, 6, 22)$ has a rich
-parameter set --- $v = 22$ points, $b = 77$ blocks, $r = 21$
-replications, $\lambda_{2} = 5$ pair-replication --- each of which
-factors into small primes.
+where $V_+$ is the 2-dimensional subspace containing the primitive
+idempotent $e_2$ and the nilpotent $e_3$, and $V_-$ is its complement.
+This is the decomposition used in
+\cite[\S2]{SandersGishDiscreteDirac}; we record it without claiming
+it is canonical (see Remark \ref{rem:choice} below).
 
-The present paper catalogs a family of order-factorization
-coincidences linking $\Mtwentytwo$'s combinatorial parameters to a
-specific discrete substrate $(\Z/10\Z, \sig, W)$ studied in
-\cite{SandersGishFourCore}. The substrate carries the same five primes
-(with the same multiplicities) as $|\Mtwentytwo|$, distributed across
-elementary substrate-internal quantities.
-
-\subsection{What this paper claims.}
-The paper's central observation (Section~\ref{sec:identities}) is
-quantitative: the prime-factorization profile of $\Mtwentytwo$'s
-$12$ irreducible representation dimensions concentrates inside the
-substrate's distinguished prime monoid at a rate that is
-non-generic at the level of $p \approx 10^{-6}$ under a uniform
-null model on $[1, 385]$. Section~\ref{sec:identities} states the
-observation precisely (Theorem~\ref{thm:nongenericity}) and
-performs the null-model computation.
-
-A second, lighter section (Section~\ref{sec:steiner-table})
-collects the standard Steiner-system parameters of $S(3, 6, 22)$
-into a single table, exhibiting their factorization in the
-substrate primes. We present this as a substrate-flavored
-re-reading of textbook Steiner-design parameters, not as a
-sequence of independent ``coincidences''; the textbook content is
-attributed to Conway-Sloane~\cite{ConwaySloane1999}.
-
-We do not claim any of the following:
-\begin{itemize}\setlength\itemsep{2pt}
-\item A derivation of $\Mtwentytwo$ from substrate algebra alone.
-\item An action of $\Mtwentytwo$ on the substrate's $10$ elements
-preserving the substrate operations.
-\item A theorem of moonshine type linking $\Mtwentytwo$'s character
-table to substrate dynamics.
-\end{itemize}
-
-The question of whether the non-genericity in
-Theorem~\ref{thm:nongenericity} reflects a structural identification
-or a deep coincidence is left as the paper's central open question
-(Section~\ref{sec:open}).
-
-\subsection{Audience.}
-The paper is written for the readership of the \emph{American
-Mathematical Monthly}: the Mathieu / Steiner content is laid out
-elementarily (Section~\ref{sec:m22-steiner}), the substrate side is
-sketched (Section~\ref{sec:substrate}), and the catalog of identities
-is presented as a single section (Section~\ref{sec:identities}). No
-sporadic-group background beyond standard undergraduate group theory
-is assumed.
-
-%==============================================================
-\section{$\Mtwentytwo$ and the Steiner system $S(3, 6, 22)$}
-\label{sec:m22-steiner}
-%==============================================================
-
-We recall the standard facts about $\Mtwentytwo$ and its Steiner
-system. Standard references are Conway-Sloane
-\cite{ConwaySloane1999} and Aschbacher \cite{Aschbacher1994}.
-
-\subsection{The Mathieu group $\Mtwentytwo$.}
-$\Mtwentytwo$ is one of the five sporadic Mathieu groups, of order
-$443\,520 = 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$. It acts on a
-$22$-point set $\Omega_{22}$ as the automorphism group of the Steiner
-system $S(3, 6, 22)$.
-
-\subsection{The Steiner system $S(3, 6, 22)$.}
-$S(3, 6, 22)$ is the unique Steiner system on $22$ points such that
-every $3$-element subset of the $22$ points lies in exactly one block
-(\emph{hexad}), where each block has size $6$. The defining parameters
-are:
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Parameter & Value \\
-\midrule
-points $v$ & $22$ \\
-hexads $b$ & $77$ \\
-block size $k$ & $6$ \\
-$t$ (Steiner) & $3$ \\
-replication $r$ (blocks per point) & $21$ \\
-pair-replication $\lambda_{2}$ (blocks per pair) & $5$ \\
-triple-replication $\lambda_{3}$ (blocks per triple) & $1$ \\
-block stabilizer order & $5\,760 = 2^{7} \cdot 3^{2} \cdot 5$ \\
-point stabilizer order & $|M_{21}| = 20\,160$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Irreducible representations of $\Mtwentytwo$.}
-$\Mtwentytwo$ has $12$ irreducible complex representations of
-dimensions
+\paragraph{Refined decomposition (4 summands).}
 \[
-  \{1, 21, 45, 45, 55, 99, 154, 210, 231, 280, 280, 385\}.
+V \;=\; \F_5\, e_0 \;\oplus\; \F_5\, e_2 \;\oplus\; \F_5\, e_3 \;\oplus\; \F_5\, e_4,
 \]
-The natural permutation representation $\C^{22}$ on $\Omega_{22}$
-decomposes as $V_{1} \oplus V_{21}$, the trivial $1$-dim and the
-$21$-dim irrep (which is irreducible by double transitivity of the
-$\Mtwentytwo$ action on $\Omega_{22}$).
+the $\F_5$-vector-space splitting into the four basis lines.
 
-%==============================================================
-\section{The substrate}
-\label{sec:substrate}
-%==============================================================
+The coarse decomposition gives, across $n$ tensor factors, a
+\emph{coarse cell partition} of $V^{\otimes n}$ into $2^n$ subspaces,
+each of dimension $2^n$ (label each tensor slot by a sign
+$\sigma_i \in \{+, -\}$ recording $V_+$ or $V_-$).
+The refined decomposition gives a \emph{refined cell partition} into
+$4^n$ one-dimensional subspaces (label each slot by a 2-bit string
+$(a_i, b_i) \in \{0,1\}^2$ recording which of the four basis lines).
 
-\subsection*{Lens and substrate (ownership).}
-The substrate $(\Z/10\Z, \sig, W)$ and its distinguished prime set
-$\{2, 3, 5, 7, 11\}$ are defined in \cite{SandersGishFourCore}. The
-roles of each prime are stated in the present \S below from
-intrinsic substrate data --- CRT residue characteristics, $\sig^{2}$-cycle
-order, HARMONY-index appearance, the threshold $T^{*} = 5/7$
-numerator/denominator, and the wobble fraction's $11$-prolongation.
-The non-genericity result (Theorem~\ref{thm:nongenericity}) is a
-quantitative claim about $\Mtwentytwo$'s irrep-dimension factorization
-profile relative to the substrate prime monoid; it does not depend
-on the deeper TIG-framework interpretation of the substrate. A
-reader can verify the theorem from the present \S's
-intrinsic-prime definitions together with the \S\ref{sec:identities}
-binomial-tail computation, without consulting \cite{SandersGishFourCore}.
-The closest published precedent for the substrate's algebraic
-neighborhood (small finite commutative non-associative structures) is
-\cite{DrapalWanless2021}, where the opposite extremum (maximally
-non-associative quasigroups) is investigated.
+We refer to the $2^n$ coarse cells as \emph{coarse cells} and the
+$4^n$ refined cells as \emph{refined cells}.  In the previous draft of
+this paper the coarse cells were called \emph{fine cells}; the change
+in nomenclature is forced by Theorem \ref{thm:refined} below, which
+shows the \emph{refined} cells are the right object for the
+Clifford comparison.
 
-\subsection{The substrate primes (defined from the substrate's own data).}
-The discrete substrate of \cite{SandersGishFourCore} is
-$(\Z/10\Z, \sig, W)$, where $\sig$ is the permutation
-$(0)(3)(8)(9)(1\,7\,6\,5\,4\,2)$ of $\Z/10\Z$ and $W = 3/50$ is the
-wobble fraction. We note that $\sig$ is not an involution: it has
-order $6$ on the $6$-cycle and order $1$ on the four fixed indices
-$\{0, 3, 8, 9\}$, so $\sig$ has order $6$ as an element of $S_{10}$.
-
-The substrate distinguishes the prime set
-$\{2, 3, 5, 7, 11\}$ as follows; each prime is named by an
-intrinsic substrate quantity, with no external input:
-\begin{itemize}\setlength\itemsep{2pt}
-\item $2$: the residue characteristic of the $\Z/2$ factor in the
-CRT decomposition $\Z/10\Z \cong \Z/2 \times \Z/5$.
-\item $3$: the order of $\sig^{2}$ restricted to the $\sig$-cycle
-(direct check: $\sig^{2}$ has cycle structure $(0)(3)(8)(9)(1\,6\,4)
-(7\,5\,2)$, hence order $3$ on the cycle).
-\item $5$: the residue characteristic of the $\Z/5$ factor in the
-CRT decomposition; equivalently, the size of the largest non-trivial
-$\sig$-orbit divided by $\gcd(6, 5) = 1$.
-\item $7$: the size of the unique $\sig$-orbit modulo $5$ (the
-$6$-cycle has $5$ residues mod $5$ entering once and $0$ entering
-once); equivalently, $|\{0, \ldots, 9\}| - |\{0, 3, 8\}| = 7$ enumerates
-the non-fixed indices outside $\{8\}$. Within
-\cite{SandersGishFourCore}, $7$ is also the value of the
-substrate's HARMONY operator and the denominator of the threshold
-$T^{*} = 5/7$.
-\item $11$: the prime $11$ appears in the substrate as the
-denominator of $W = 3/50$ after passing to the canonical form
-$W \cdot 11/11 = 33/550$ in
-\cite{SandersGishFourCore}~\S$3$ (the wobble's $11$-prolongation; the
-prime $11$ is then the smallest prime not appearing in
-$\{2, 3, 5, 7\}$ that the substrate's auxiliary data carries). We
-note honestly that the case for $11$'s substrate-distinguishedness is
-weakest of the five; the main result of this paper does not rest on
-$11$ alone.
-\end{itemize}
-
-\begin{remark}
-The substrate-prime distinction $\{2, 3, 5, 7, 11\}$ is a property
-of the substrate's intrinsic data above. It happens that
-$|\Mtwentytwo| = 2^{7} \cdot 3^{2} \cdot 5 \cdot 7 \cdot 11$ uses
-exactly these five primes; this paper's main result
-(Theorem~\ref{thm:nongenericity}) makes the agreement quantitative.
+\begin{remark}\label{rem:choice}
+Both decompositions are basis-dependent.  The refined decomposition is
+the canonical splitting of $V$ into $\F_5$-lines determined by the
+basis $\{e_0, e_2, e_3, e_4\}$.  The coarse decomposition is one of
+$\binom{4}{2}/2 = 3$ ways to partition the four basis lines into two
+pairs; the pairing $\{e_2, e_3\} \,|\, \{e_0, e_4\}$ used here is the
+one inherited from \cite{SandersGishDiscreteDirac}, in which $e_2$
+(the privileged primitive idempotent) and $e_3$ (its companion in the
+2-dim ``particle'' subalgebra) are grouped together.
+The choice does not affect total dimensions.
 \end{remark}
 
-\subsection{The wobble fraction.}
-The wobble fraction is $W = 3/50$. The substrate paper
-\cite{SandersGishFourCore} also defines a complementary fraction
-$G = 22/50$ ($G$ for the gentleness phase amplitude), with
-$W + G = 25/50 = 1/2$. This identity of fractions is internal to
-the substrate; the gentleness numerator $22$ and the size of the
-Mathieu action set $|\Omega_{22}| = 22$ are equal as integers but not
-related by any structural map in the present paper.
-
 %==============================================================
-\section{The non-generic concentration of irrep dimensions}
-\label{sec:identities}
+\section{Total dimension match}
 %==============================================================
 
-We state and prove the paper's main observation: the prime
-factorizations of $\Mtwentytwo$'s irrep dimensions concentrate
-inside the substrate's prime monoid at a rate that is non-generic
-under a uniform null on $[1, 385]$.
-
-\begin{definition}[Substrate-prime band]
-\label{def:band}
-For an integer $m \ge 1$, write $m \in \mathcal{B}$ (the
-\emph{substrate-prime band}) iff every prime factor of $m$ lies in
-$\{2, 3, 5, 7, 11\}$ and $\nu_{2}(m) \le 1$ (i.e., $m$ has at most a
-single factor of $2$).
-\end{definition}
-
-We classify $\Mtwentytwo$'s $12$ irrep dimensions by membership in
-the band:
-
-\begin{center}
-\begin{tabular}{r l c c}
-\toprule
-$\dim V$ & factorization & strict $\{3,5,7,11\}$? & $\in \mathcal{B}$? \\
-\midrule
-$1$    & trivial               & vacuously yes & yes \\
-$21$   & $3 \cdot 7$           & yes & yes \\
-$45$   & $3^{2} \cdot 5$       & yes & yes \\
-$45$   & $3^{2} \cdot 5$       & yes & yes \\
-$55$   & $5 \cdot 11$          & yes & yes \\
-$99$   & $3^{2} \cdot 11$      & yes & yes \\
-$154$  & $2 \cdot 7 \cdot 11$  & no (has $2$) & yes \\
-$210$  & $2 \cdot 3 \cdot 5 \cdot 7$ & no & yes \\
-$231$  & $3 \cdot 7 \cdot 11$  & yes & yes \\
-$280$  & $2^{3} \cdot 5 \cdot 7$ & no & no ($2^{3}$) \\
-$280$  & $2^{3} \cdot 5 \cdot 7$ & no & no ($2^{3}$) \\
-$385$  & $5 \cdot 7 \cdot 11$  & yes & yes \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The factorizations are direct calculations (verified in
-\texttt{m22\_decomposition.py}, \S\ref{sec:verification}). The
-dimensions are taken from the standard $\Mtwentytwo$ character table
-(Conway--Sloane~\cite{ConwaySloane1999}; ATLAS~\cite{ATLAS1985}).
-Sum-of-squares verification: $\sum (\dim V_{i})^{2} = 443\,520 =
-|\Mtwentytwo|$ (checked directly).
-
-The classification yields:
-\begin{itemize}\setlength\itemsep{2pt}
-\item Strict $\{3, 5, 7, 11\}$ (no factor of $2$):
-\textbf{eight} dimensions, of which seven are non-trivial:
-$21$, $45$ (with multiplicity $2$), $55$, $99$, $231$, $385$.
-\item Dimensions in $\mathcal{B}$ (the substrate-prime band with
-at most one factor of $2$): \textbf{ten} of $12$, including the
-trivial $1$, the seven strict non-trivial dimensions, and
-$154 = 2 \cdot 7 \cdot 11$ and $210 = 2 \cdot 3 \cdot 5 \cdot 7$.
-\item Dimensions outside $\mathcal{B}$: only the two copies of
-$280 = 2^{3} \cdot 5 \cdot 7$.
-\end{itemize}
-
-\begin{theorem}[Non-genericity of $\Mtwentytwo$ irrep concentration]
-\label{thm:nongenericity}
-Let $\mathcal{B}_{N}$ denote the integers in $[1, N]$ that lie in
-the substrate-prime band $\mathcal{B}$ (Definition~\ref{def:band}).
-Then:
-\begin{enumerate}\setlength\itemsep{4pt}
-\item $|\mathcal{B}_{385}| = 67$, giving null density
-$|\mathcal{B}_{385}| / 385 \approx 0.1740$.
-\item $\Mtwentytwo$ has $10$ of $12$ irrep dimensions in
-$\mathcal{B}$, observed density $10/12 \approx 0.8333$.
-\item Under the null hypothesis $H_{0}$ that the $12$ irrep
-dimensions are i.i.d.\ uniform on $\{1, 2, \ldots, 385\}$,
+\begin{theorem}[Total-dimension match]
+\label{thm:total-dim}
+For every $n \geq 0$,
 \[
-  P[X \ge 10 \mid X \sim \mathrm{Bin}(12, 0.1740)]
-  \;\approx\; 1.19 \times 10^{-6}.
+\dim_{\F_5} V^{\otimes n} \;=\; 4^n \;=\; 2^{2n} \;=\; \dim_\R \Cl(2n).
 \]
-\item Under the same null, the $p$-value for the strict
-$\{3, 5, 7, 11\}$ count of seven non-trivial dimensions (out of $11$
-non-trivial draws) is
-$P[X \ge 7 \mid X \sim \mathrm{Bin}(11, 0.0990)] \approx 2.14
-\times 10^{-5}$.
-\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\textit{(1)} Direct enumeration:
-$\mathcal{B}_{385} = \{1, 2, 3, 5, 6, 7, 9, 10, 11, 14, 15, 18, 21,
-22, 25, 27, 30, 33, 35, 42, 45, 49, 50, 54, 55, 63, 66, 70, 75, 77,
-\ldots, 385\}$ has $67$ elements; verified by the one-liner
-\[
-  \texttt{[n for n in range(1,386) if all(p in \{2,3,5,7,11\}
-  for p in factorint(n)) and factorint(n).get(2,0) <= 1]}
-\]
-in \texttt{m22\_decomposition.py}.
-
-\textit{(2)} The classification table above; verified by direct
-factorization of each dimension.
-
-\textit{(3)} The binomial tail probability:
-\[
-  P[X \ge 10] \;=\; \sum_{k=10}^{12} \binom{12}{k}
-  (0.1740)^{k} (0.8260)^{12-k}
-  \;\approx\; 1.19 \times 10^{-6}.
-\]
-The numerical value is computed in \texttt{m22\_decomposition.py}.
-
-\textit{(4)} Among integers in $[2, 385]$, the count factoring strictly
-in $\{3, 5, 7, 11\}$ (no factor of $2$) is $38$, density $38 / 384
-\approx 0.0990$. The seven non-trivial irrep dimensions in this strict
-band (out of $11$ non-trivial irreps) yield
-$P[X \ge 7 \mid X \sim \mathrm{Bin}(11, 0.0990)] \approx 2.14 \times
-10^{-5}$.
+$\dim_{\F_5} V^{\otimes n} = (\dim_{\F_5} V)^n = 4^n$ by tensor-product
+dimension. $4^n = (2^2)^n = 2^{2n}$. $\dim_\R \Cl(2n) = 2^{2n}$ by the
+classical formula for the dimension of a Clifford algebra over a
+quadratic form on $2n$ generators
+\cite[Ch.~I]{HesteneSobczyk1984}.
 \end{proof}
 
-\begin{remark}[Status of the result]
-The non-genericity of Theorem~\ref{thm:nongenericity} is a
-quantitative statement, not a structural identification. The null
-model is the simplest reasonable choice (uniform on $[1, 385]$);
-alternative null models (e.g., conditioning on a sum-of-squares
-constraint, or restricting to $385$-divisors) would yield different
-$p$-values. The point of the theorem is that under the natural
-null, the concentration is real and small.
-
-A genuine derivation of $\Mtwentytwo$'s irrep dimensions from
-substrate-internal data would close the question; the present
-result does not attempt this.
-\end{remark}
-
-\begin{remark}[The dimension $231$]
-Among the $12$ $\Mtwentytwo$-irrep dimensions, $231 = 3 \cdot 7
-\cdot 11$ is the unique one whose prime factorization is a
-squarefree product of exactly three distinct substrate primes
-(no $2$, no $5$). This factorization-pattern uniqueness identifies
-$231$ as the most substrate-prime-saturated dimension; it sharpens
-Theorem~\ref{thm:nongenericity} but does not extend it.
+\begin{remark}
+Theorem~\ref{thm:total-dim} is forced by $\dim V = 4 = 2^2$.  The same
+identity holds with $V$ replaced by any 4-dimensional algebra over any
+field.  The \emph{refinement} below is what depends on the specific
+structure of $V$ -- in particular, on its having an
+$\F_5$-vector-space splitting into four lines.
 \end{remark}
 
 %==============================================================
-\section{Steiner-system parameters of $S(3, 6, 22)$ as backdrop}
-\label{sec:steiner-table}
+\section{Refined-cell grading matches $\Cl(2n)$ grade dimensions}
 %==============================================================
 
-The standard parameters of the Steiner system $S(3, 6, 22)$
-(Conway--Sloane~\cite{ConwaySloane1999};
-Cameron~\cite{Cameron1999}) factor in small primes; the
-substrate-prime decomposition is recorded in the rightmost column.
-We present this as a substrate-flavored re-reading of textbook
-quantities, not as independent ``coincidences'' alongside the main
-result of \S\ref{sec:identities}.
+\begin{theorem}[Refined-cell binomial grading]
+\label{thm:refined}
+For every $n \geq 0$ the $4^n = 2^{2n}$ refined cells of
+$V^{\otimes n}$ partition into Hamming-weight classes whose
+multiplicities match the grade dimensions of $\Cl(2n)$:
+\[
+\#\{\text{refined cells of weight } k\} \;=\; \binom{2n}{k}
+\;=\; \dim_\R \Cl^{(k)}(2n), \qquad k = 0, 1, \ldots, 2n.
+\]
+Here the \emph{weight} of a refined cell labeled by $(a_1, b_1, \ldots,
+a_n, b_n) \in \{0,1\}^{2n}$ is $a_1 + b_1 + \cdots + a_n + b_n$.
+\end{theorem}
 
-\begin{center}
-\begin{tabular}{l c c l}
-\toprule
-Parameter & Symbol & Value & Substrate-prime decomposition \\
-\midrule
-points     & $v$         & $22$  & $2 \cdot 11$ \\
-hexads     & $b$         & $77$  & $7 \cdot 11$ (HARMONY $\times$ wobble-prime) \\
-block size & $k$         & $6$   & $2 \cdot 3$ \\
-Steiner $t$ & $t$        & $3$   & $3$ (substrate trinitarian factor) \\
-replication & $r$        & $21$  & $3 \cdot 7$ ($= \dim V_{21}$) \\
-pair-replication & $\lambda_{2}$ & $5$ & $5$ ($= T^{*}$ numerator) \\
-triple-replication & $\lambda_{3}$ & $1$ & trivial \\
-block stabilizer order & --- & $5\,760$ & $2^{7} \cdot 3^{2} \cdot 5$ \\
-point stabilizer order & $|M_{21}|$ & $20\,160$ & $2^{6} \cdot 3^{2} \cdot 5 \cdot 7$ \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{proof}
+A refined cell of $V^{\otimes n}$ is labeled by a pair $(a_i, b_i)$
+for each tensor slot $i = 1, \ldots, n$, recording which of the four
+basis lines $\F_5 e_0, \F_5 e_2, \F_5 e_3, \F_5 e_4$ that slot
+contributes.  The total label is therefore a binary string of length
+$2n$, and the number of refined cells of total Hamming weight $k$ is
+the number of length-$2n$ binary strings of weight $k$, i.e.\
+$\binom{2n}{k}$.
+The Clifford grade $\Cl^{(k)}(2n)$ is, by definition, the
+$\R$-span of products of $k$ distinct generators among the $2n$
+generators of $\Cl(2n)$, and has dimension $\binom{2n}{k}$
+\cite[Ch.~I]{HesteneSobczyk1984}.
+The two distributions are therefore equal as multisets of
+non-negative integers indexed by $k = 0, \ldots, 2n$.
+\end{proof}
 
-The factorizations are textbook (Conway--Sloane~\cite{ConwaySloane1999}
-Ch.~$10$--$11$; ATLAS~\cite{ATLAS1985}; Wilson~\cite{Wilson2009}). The
-substrate-prime decomposition is direct.
+\begin{remark}[On the coarse-cell distribution]
+\label{rem:coarse}
+The coarse-cell distribution of $V^{\otimes n}$ -- counting coarse
+cells by the number of $V_+$-slots -- gives the binomial sequence
+$\binom{n}{k}$ for $k = 0, \ldots, n$.  These are the multiplicities
+of \emph{coarse} cells, each of which is itself a $2^n$-dimensional
+subspace.  The $\binom{n}{k}$ sequence is \emph{not} the grade
+sequence of $\Cl(2n)$, which is $\binom{2n}{k}$ over a $2n+1$-element
+index set.  Theorem \ref{thm:refined} resolves the apparent mismatch
+by working at the refinement: the coarse-cell distribution is the
+``coarse shadow'' of the refined distribution, obtained by collapsing
+the two bits per slot to one.  Concretely, the refined-cell weight $k$
+splits as $k = k_+ + k_-$ where $k_+$ is the number of slots
+contributing to $V_+$ (a coarse-cell coordinate) and $k_-$ is a
+sub-grading inside that coarse cell; summing over $k_-$ recovers the
+coarse multiplicity $\binom{n}{k_+}$ from the refined $\binom{2n}{k}$.
+\end{remark}
 
-\begin{remark}[The substrate's $\sig$-orbit and the hexad block size]
-The substrate $\sig$-orbit on $\{1, 7, 6, 5, 4, 2\}$ has size $6$,
-the block size $k$ of $S(3, 6, 22)$. The integers match. We do not
-conclude that the $\sig$-orbit is a distinguished hexad in
-$S(3, 6, 22)$; the Steiner system is unique up to isomorphism, and
-selecting a specific isomorphism class with the $\sig$-orbit as a
-distinguished hexad would be a substantive representation-theoretic
-question (Section~\ref{sec:open}).
+\begin{remark}[Status of the bijection]\label{rem:bijection}
+Theorem \ref{thm:refined} establishes equality of multiplicities
+between two binomial distributions.  The natural bijection between
+refined cells of $V^{\otimes n}$ and basis multivectors of $\Cl(2n)$
+is by mapping the 2-bit slot-label $(a_i, b_i)$ to a pair of generators
+of $\Cl(2n)$.  This bijection is well-defined on basis-element labels
+but is not, as stated, a map of $\F_5$-vector spaces (the codomain is
+an $\R$-vector space) and is not, as stated, an algebra homomorphism.
+What it gives is a label-level identification of refined cells with
+Clifford basis multivectors that respects the binomial grading.
+A genuine algebra map between $V^{\otimes n}$ and a Clifford algebra
+over a common field is left open; see \S\ref{sec:open}.
 \end{remark}
 
 %==============================================================
-\section{Computational verification}
-\label{sec:verification}
+\section{The case $n = 5$}
+\label{sec:n5}
 %==============================================================
 
-All numerical claims of \S\ref{sec:identities} and
-\S\ref{sec:steiner-table} are verified computationally:
+\begin{proposition}[Refined cells at $n = 5$]\label{prop:n5refined}
+$V^{\otimes 5}$ has $4^5 = 1024$ refined cells whose
+Hamming-weight distribution by the $10$ structural bits is
+\[
+\binom{10}{0},\binom{10}{1},\ldots,\binom{10}{10}
+\;=\;
+1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1.
+\]
+This matches the grade dimensions of $\Cl(10)$ exactly.
+\end{proposition}
 
-\begin{itemize}\setlength\itemsep{2pt}
-\item \texttt{m22\_decomposition.py} factors each
-$\Mtwentytwo$-irrep dimension, classifies each dimension by
-membership in the substrate-prime band $\mathcal{B}$, enumerates
-$\mathcal{B}_{385}$ to obtain the null density, and computes the
-binomial tail probabilities of
-Theorem~\ref{thm:nongenericity}(3)--(4) using \texttt{math.comb}.
-\item \texttt{steiner\_sigma\_hexad.py} confirms the Steiner-system
-parameters $(v, b, k, r, \lambda_{2}, \lambda_{3}) =
-(22, 77, 6, 21, 5, 1)$ via the formulas $b = \binom{v}{t}/\binom{k}{t}$,
-$r = bk/v$, $\lambda_{i} = \binom{k-i}{t-i} r / \binom{v-i}{t-i}$.
+\begin{proof}
+Specialization of Theorem \ref{thm:refined} to $n = 5$, $2n = 10$.
+\end{proof}
+
+\begin{proposition}[Coarse cells at $n = 5$]\label{prop:n5coarse}
+$V^{\otimes 5}$ has $2^5 = 32$ coarse cells whose
+$V_+$-weight distribution is
+$\binom{5}{0}, \binom{5}{1}, \binom{5}{2}, \binom{5}{3},
+ \binom{5}{4}, \binom{5}{5}
+ = 1, 5, 10, 10, 5, 1$.
+\end{proposition}
+
+\begin{proof}
+Coarse-cell version of Theorem \ref{thm:refined}; counts cells by the
+number of $V_+$-slots.
+\end{proof}
+
+\begin{remark}[On the SU(5) coincidence]\label{rem:su5}
+The numbers $1 + 5 + 10 + 10 + 5 + 1$ in
+Proposition~\ref{prop:n5coarse} agree with the dimensions of the
+SU(5) one-generation representation
+$\mathbf{1} \oplus \bar{\mathbf{5}} \oplus \mathbf{10}$ together with
+its conjugate.  This agreement is a binomial-coefficient identity:
+$\binom{5}{0} = 1$, $\binom{5}{1} = 5$, $\binom{5}{2} = 10$, and
+$\binom{5}{k} = \binom{5}{5-k}$.  It is true for any tensor structure
+that admits a binary partition at each of $5$ tensor factors,
+independent of $V$ or its multiplicative structure.  We record it as a
+remark, not as a theorem: the present paper does not construct an
+$\mathrm{SU}(5)$ action on $V^{\otimes 5}$, and we do not assert that
+the binomial coincidence reflects any representation-theoretic content
+of $V$.  Whether $V^{\otimes 5}$ admits a canonical $\mathrm{SU}(5)$
+or $\mathrm{Spin}(10)$ action is open and is the subject of related
+work \cite{SandersGishDiscreteDirac}.
+\end{remark}
+
+%==============================================================
+\section{Verification}
+%==============================================================
+
+The accompanying self-contained script \texttt{verify\_J17.py}
+(standard-library Python only; CC-BY-4.0) carries six checks mapped
+one-to-one to the load-bearing claims of this paper:
+\begin{itemize}
+\item[C1.] Total-dimension match $\dim_{\F_5} V^{\otimes n} =
+4^n = 2^{2n} = \dim_\R \Cl(2n)$ for $n = 0, 1, 2, 3, 4, 5$
+(Theorem~\ref{thm:total-dim}).
+\item[C2.] Coarse-cell count: $V^{\otimes n}$ has exactly $2^n$ coarse
+cells for $n = 1, \ldots, 5$.
+\item[C3.] Coarse-cell binomial at $n = 5$:
+$1 + 5 + 10 + 10 + 5 + 1 = 32$ (Proposition~\ref{prop:n5coarse}).
+\item[C4.] Refined-cell total $= 4^n$ for $n = 0, \ldots, 5$.
+\item[C5.] Refined-cell distribution equals Cl$(2n)$ grade dimensions
+$\binom{2n}{k}$, cross-checked closed-form vs.\ direct enumeration
+over all $4^n$ structural-bit strings, for $n = 0, \ldots, 5$
+(Theorem~\ref{thm:refined}).
+\item[C6.] Explicit $n = 5$ refined distribution
+$1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1$ summing to
+$1024 = 4^5$ (Proposition~\ref{prop:n5refined}).
 \end{itemize}
-
-All scripts run in under $5$ seconds with \texttt{sympy} (and
-optionally \texttt{numpy}) as the only external dependencies.
-Scripts deposited at the public repository
-\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis} (DOI
-\texttt{10.5281/zenodo.18852047}).
+All six checks PASS deterministically in $<1$ second on standard
+hardware. The accompanying reference library
+\texttt{tig\_dirac.py}\,---\,used in the broader framework but
+\emph{not} needed for verification of this paper\,---\,is deposited at
+the public repository
+\url{https://github.com/TiredofSleep/ck/tree/tig-synthesis/Gen13/targets/ck/brain/dirac/tig_dirac.py}.
 
 %==============================================================
 \section{Open questions}
@@ -508,110 +442,71 @@ Scripts deposited at the public repository
 %==============================================================
 
 \begin{enumerate}
-\item \textbf{Structural origin.} Is the non-genericity of
-Theorem~\ref{thm:nongenericity} the shadow of a structural
-identification of $\Mtwentytwo$ with substrate-internal data, or is
-it a deep arithmetic coincidence with no algebraic content? The
-paper does not commit to either reading.
+\item[(O1)]
+\textbf{Structure-preserving map}.
+Is there a natural map $V^{\otimes n} \otimes_{\F_5} K \to \Cl(2n; K)$,
+for some choice of common ring $K$ (e.g.\ $\F_5$ replaced by an
+algebraic closure of $\F_5$, or a Witt-vector lift to characteristic
+$0$), under which the refined-cell decomposition of the left-hand side
+maps to the grade decomposition of the right-hand side?
+The bijection of basis labels in Theorem \ref{thm:refined} is the
+candidate; what is missing is a verified product structure.
 
-\item \textbf{$\Mtwentytwo$ action on the substrate.} Does
-$\Mtwentytwo$ act on the substrate $(\Z/10\Z, \sig)$ in a way
-respecting the magma operations $\TS, \BH$ of
-\cite{SandersGishFourCore}? The substrate has only $10$ elements,
-far fewer than the $22$ on which $\Mtwentytwo$ acts; any action
-would necessarily involve the substrate's wobble layer or some
-auxiliary structure.
+\item[(O2)]
+\textbf{Action of $\mathrm{Spin}(2n)$}.
+Does $V^{\otimes n}$ admit a canonical action of $\mathrm{Spin}(2n)$
+or one of its $\F_5$-analogues, under which the coarse-cell or
+refined-cell weight distributions correspond to weight spaces?
+The case $n = 5$ would address Remark \ref{rem:su5}.
 
-\item \textbf{Structural Steiner-class selection.} $S(3, 6, 22)$ is
-unique up to isomorphism, but the embedding of the $\sig$-orbit as
-a specific hexad is a labeling choice. Does the substrate algebra
-of \cite{SandersGishFourCore} select a canonical representative
-isomorphism class with the $\sig$-orbit as a distinguished hexad?
-
-\item \textbf{Relation to Mathieu moonshine.} The Mathieu groups
-appear in moonshine phenomena (notably $M_{24}$ in K3-surface
-moonshine; see \cite{Eguchi2011}). The present non-genericity is
-arithmetic, not analytic (no generating function). Does it connect
-to any moonshine context?
-
-\item \textbf{Other sporadic groups.} The substrate primes
-$\{2, 3, 5, 7, 11\}$ are also a subset of the prime divisors of
-$|M_{11}|$, $|M_{12}|$, $|M_{23}|$, $|M_{24}|$. Does the
-non-genericity extend in a structurally illuminating way to the
-larger Mathieu groups?
-\item \textbf{Tighter null model.} Theorem~\ref{thm:nongenericity}
-uses the simplest null (uniform on $[1, 385]$). A tighter null
-conditioning on the sum-of-squares constraint
-$\sum (\dim V_{i})^{2} = 443\,520$ would refine the $p$-value; the
-authors expect the qualitative non-genericity to persist but have
-not computed it.
+\item[(O3)]
+\textbf{Periodicity}.
+The 8-periodicity $\Cl(n+8) \cong \Cl(n) \otimes \Cl(8)$ on the
+Clifford side has the trivial counterpart $V^{\otimes (n+8)} =
+V^{\otimes n} \otimes V^{\otimes 8}$ on the algebra side.  Is there
+content in the comparison beyond the trivial dimensional consequence
+$4^{n+8} = 4^n \cdot 4^8$?
 \end{enumerate}
 
 %==============================================================
 \section*{Acknowledgments}
 %==============================================================
 
-This work catalogs order-factorization identities between the Mathieu
-group $\Mtwentytwo$ and a discrete substrate of independent algebraic
-interest. The identities are presented as a self-contained
-arithmetic-combinatorial puzzle for the \emph{Monthly} readership.
-The verification scripts and substrate-side definitions are part of
-the broader Trinity Infinity Geometry framework developed at 7Site
-LLC (public repository at github.com/TiredofSleep/ck, DOI
-10.5281/zenodo.18852047).
+This work is part of a broader algebraic and physical framework
+developed at 7Site LLC (Trinity Infinity Geometry, public repository
+at github.com/TiredofSleep/ck). The present manuscript is
+self-contained as a study in tensor algebras over finite fields;
+familiarity with the broader framework is not required.
+
+We thank an anonymous referee whose careful reading uncovered the
+mis-statement in Theorem \ref{thm:refined} of an earlier draft (in
+which the coarse-cell distribution $\binom{n}{k}$ was equated with the
+$\Cl(2n)$ grade distribution $\binom{2n}{k}$); the present
+refined-cell formulation directly addresses that mismatch.
 
 %==============================================================
 \begin{thebibliography}{99}
 %==============================================================
 
-\bibitem{ConwaySloane1999} J.~H.~Conway, N.~J.~A.~Sloane,
-\emph{Sphere Packings, Lattices and Groups} (3rd ed.),
-Grundlehren der mathematischen Wissenschaften 290, Springer, 1999.
-[Standard reference for the Mathieu groups and the Steiner systems
-$S(5, 6, 12)$, $S(5, 8, 24)$.]
+\bibitem{HesteneSobczyk1984} D.~Hestenes, G.~Sobczyk,
+\emph{Clifford Algebra to Geometric Calculus},
+D.~Reidel Publishing Co., 1984.
 
-\bibitem{ATLAS1985} J.~H.~Conway, R.~T.~Curtis, S.~P.~Norton,
-R.~A.~Parker, R.~A.~Wilson,
-\emph{ATLAS of Finite Groups: Maximal Subgroups and Ordinary
-Characters for Simple Groups},
-Oxford University Press, 1985.
-[Reference for $\Mtwentytwo$ character table and irrep dimensions.]
-
-\bibitem{Aschbacher1994} M.~Aschbacher,
-\emph{Sporadic Groups},
-Cambridge Tracts in Mathematics 104, Cambridge University Press, 1994.
-
-\bibitem{Cameron1999} P.~J.~Cameron,
-\emph{Permutation Groups},
-London Mathematical Society Student Texts 45, Cambridge University
-Press, 1999.
-
-\bibitem{Wilson2009} R.~A.~Wilson,
-\emph{The Finite Simple Groups},
-Graduate Texts in Mathematics 251, Springer, 2009.
-
-\bibitem{Diaconis1988} P.~Diaconis,
-\emph{Group Representations in Probability and Statistics},
-IMS Lecture Notes -- Monograph Series 11, Institute of Mathematical
-Statistics, 1988.
-[Canonical \emph{Monthly}-level exposition of finite-Fourier
-arithmetic and group representations.]
-
-\bibitem{Eguchi2011} T.~Eguchi, H.~Ooguri, Y.~Tachikawa,
-\emph{Notes on the K3 surface and the Mathieu group $M_{24}$},
-Exp.~Math.~\textbf{20} (2011), 91--96.
-
-\bibitem{DrapalWanless2021} A.~Dr{\'a}pal, I.~M.~Wanless,
+\bibitem{DrapalWanless2021} A.~Dr\'apal, I.~M.~Wanless,
 \emph{Maximally nonassociative quasigroups},
-J.~Combin.\ Theory Ser.~A \textbf{184} (2021), 105510.
-[Domain precedent: small finite commutative non-associative
-structures; opposite extremum to the substrate of
-\cite{SandersGishFourCore}.]
+J.~Combin.~Theory Ser.~A \textbf{184} (2021), 105510.
 
-\bibitem{SandersGishFourCore} B.~R.~Sanders, M.~Gish,
-\emph{Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form
-Algebraic Attractor of Two Commutative Binary Operations on
-$\Z/10\Z$}, submitted to \emph{Algebraic Combinatorics}, 2026 (J02).
+\bibitem{GeorgiGlashow1974} H.~Georgi, S.~L.~Glashow,
+\emph{Unity of all elementary-particle forces},
+Phys.~Rev.~Lett.~\textbf{32} (1974), 438--441.
+
+\bibitem{SandersGishDiscreteDirac} B.~R.~Sanders, M.~Gish,
+\emph{Discrete Dirac on $\F_5^4$: Substrate Algebra of the 4-Core},
+submitted to \emph{Algebras and Representation Theory}, 2026 (J37).
+
+\bibitem{SandersGishFpUniversality} B.~R.~Sanders, M.~Gish,
+\emph{F$_p$ Universality: The Operator-Substrate Construction over
+Prime Fields}, submitted to \emph{Algebra Universalis}, 2026 (J50).
 
 \bibitem{TIGsynthesis2026} B.~R.~Sanders,
 \emph{Trinity Infinity Geometry Synthesis},
