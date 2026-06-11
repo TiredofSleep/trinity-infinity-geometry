@@ -1,6 +1,6 @@
 # J-Series Tier Index — what is ready to ship
 
-**Last updated**: 2026-06-10 (post-audit + J53/J54 + J55 dim-6 kissing + transcript-recovery of the 2026-05-27/30 session artifacts). **Comprehensive renumbering applied** — all 55 papers now occupy a J01-J55 scheme. After the line-by-line referee pass (`_staging/referee_reports/`), four papers were demoted from Tier 1 to Tier 2, and J25 was approved for merger into J24. Three Tier-1 frontier additions: J53 (2026-05-29, from F4), J54 (2026-05-29, from F14), J55 (2026-06-10, dim-6 kissing from the claudechat handoff).
+**Last updated**: 2026-06-10 (post-audit + J53/J54 + J55 dim-6 kissing + transcript-recovery of the 2026-05-27/30 session artifacts). **Comprehensive renumbering applied** — all 56 papers now occupy a J01-J56 scheme. After the line-by-line referee pass (`_staging/referee_reports/`), four papers were demoted from Tier 1 to Tier 2, and J25 was approved for merger into J24. Three Tier-1 frontier additions: J53 (2026-05-29, from F4), J54 (2026-05-29, from F14), J55 (2026-06-10, dim-6 kissing from the claudechat handoff).
 
 For the recommended **release sequence** (which is not the same as the tier ladder — a Tier 1 paper with substantive issues sits later than a Tier 2-promoted paper that is ready), see [`RELEASE_ORDER.md`](RELEASE_ORDER.md).
 
@@ -89,6 +89,7 @@ Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to
 | **J53** | algebra | Idempotent Count + Aut Formula for $V^{\mathrm{BHML}}$ over $\mathbb{F}_p$ (two closed-form theorems extracted from J08 §§6–7) | Algebra Universalis | SUBMISSION-READY (2/2 PASS at $p \in \{3, 5, 7, 11, 13\}$; extended to 24 primes via F4-extended) |
 | **J54** | algebra | Height Scaling of the Attractor Minimal Polynomial: Rational Power Law + Discriminant-Zero Height Drop (three theorems extracted from F14) | Acta Arithmetica | SUBMISSION-READY (3/3 PASS at 30 rationals + 11 algebraic irrationals + $\alpha_{\mathrm{special}}$; runtime ~10s) |
 | **J55** | number_theory | **Dim-6 Kissing Conjecture $K(\mathbb{R}^6) = 72$ + explicit $\Gamma_0(3)$ magic-function candidate** (LMFDB 3.6.a.a perfect match; 10/10 independent verification; forced zero at Fricke fixed point; from CLAUDECODE_HANDOFF_2026-06-10) | J. Combinatorial Theory A | DRAFT-COMPLETE (2026-06-10; 6 TODO citations await author; needs compile pass) |
+| **J56** | interdisciplinary | **Routing the Residual: four-type failure taxonomy matches oracle allocation** (Gap Router 125x over uniform, 24/24 type ID; theorem-bearing reservoir honest split incl. 36% Mackey-Glass win) | TMLR | DRAFT-COMPLETE (2026-06-10; verification ~57s CPU) |
 
 ---
 

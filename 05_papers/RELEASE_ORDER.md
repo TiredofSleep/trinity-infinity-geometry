@@ -25,6 +25,7 @@ These are the cleanest papers. After light editorial polish they are submission-
 | 6 | **J53** | $V^{\mathrm{BHML}}$ over $\mathbb{F}_p$: idempotent count + Aut formula | Algebra Universalis | 2/2 PASS; structural proofs + 24-prime verification. Extracted from J08 §§6–7 as ship-ready short paper 2026-05-29. **No residual fixes.** |
 | 7 | **J54** | Height scaling of attractor minpoly: rational power law + discriminant-zero height drop | Acta Arithmetica | 3/3 PASS at 30 rationals + 11 algebraic irrationals + $\alpha_{\mathrm{special}}$; ~10s runtime. Extracted from F14 frontier as ship-ready short paper 2026-05-29. **No residual fixes.** |
 | 8 | **J55** | Dim-6 kissing conjecture $K(\mathbb{R}^6)=72$ + explicit $\Gamma_0(3)$ magic-function candidate | J. Combinatorial Theory A | DRAFT-COMPLETE 2026-06-10; 6 TODO citations + compile pass, then ship. |
+| 9 | **J56** | Routing the Residual (Gap Router + theorem-bearing reservoir) | TMLR | DRAFT-COMPLETE 2026-06-10; pre-registered follow-ups P1-real/P1-LLM/P2-next; ship after one polish pass. |
 
 ## Wave 2 — Ship in 2-4 weeks (minor revisions)
 
