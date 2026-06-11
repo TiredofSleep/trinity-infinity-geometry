@@ -57,9 +57,21 @@ Standalone — no J-companion is load-bearing. The framework provenance (the str
 
 Companion targets (separate future papers, not this one): the $K_{12} = 36\cdot21$ orbit theorem via $\mathbb{Z}_{21} \subset 6\cdot\mathrm{Suz}\cdot2$; the kissing-lattice factorization-pattern catalog.
 
+## §4.5 — B2 RESULT (2026-06-10): LP-sharpness at 72 is IMPOSSIBLE; reframe required
+
+`manuscript/verification/b2_lp_crosscheck.py` (runtime ~2 min) executed the decisive cheap test:
+
+- **I₋ profile**: exact termwise Laplace (a_n·2/(π(r²+2n))³), cross-checked vs quadrature to 1e-12.
+- **Cusp-0 divergence documented**: ψ₊(it) ~ e^{2π/(3t)} as t→0 (simple pole at cusp 0), so the naive real integral I₊ is ill-defined at the 0-end for EVERY r² — the handoff's "converges for r² > 2" tracked only the ∞-cusp. The true object requires the Viazovska contour definition from the start.
+- **Regularized profile** Î₊(r²) (∞-cusp part + closed-form singular terms): strictly NEGATIVE on (2, 12], → −∞ like −1456/(π(r²−2))³ as r²→2⁺ — exactly the sign the construction needs; feasibility region β/α ≤ 1.04×10⁻⁴ (α > 0).
+- **THE VERDICT**: K(R⁶) ≤ 77 (de Laat–Leijenhorst–de Muinck Keizer 2024, SDP) and SDP refines LP ⟹ the plain two-point LP optimum is strictly above 77 ⟹ **no Cohn-Elkies-style two-point function can certify 72**. The conjecture's sharpness claim must live beyond the plain LP.
+
+**Paper 1 §5 must adopt one of** (a) reframe f₆ as the explicit analytic LP-feasible function approaching the LP optimum (~78–82) — still novel, no explicit modular-form LP function is known in dim 6; (b) keep 72 but state sharpness requires three-point/SDP-level positivity — the level-3 statement of why dim 6 is not dim 8; (c) the honest negative: document the obstruction precisely. This is recorded in canon as the D183 update.
+
 ## §5 — Open items before submission
 
-1. **6 TODO-marked citations** (current dim-6 SDP upper bound ≤ 77 attribution; Odlyzko–Sloane page numbers; eta-quotient table reference) — need Brayden's confirmation.
+1. **TODO citations partially resolved by B2**: dim-6 upper bound ≤ 77 = de Laat–Leijenhorst–de Muinck Keizer 2024 (SDP / D₄-optimality preprint; via Cohn's kissing table at cohn.mit.edu). Odlyzko–Sloane page numbers + eta-quotient table reference still need confirmation.
+1b. **ADOPT THE B2 REFRAME in §5** (see §4.5 above) — this now gates submission.
 2. **Venue choice**: JCT-A vs Algebraic Combinatorics vs DCG.
 3. One pdflatex compile pass (no TeX on the build machine).
 4. The known erratum trail from the handoff is documented in the verification report (Viazovska citation corrected to *Annals* 185; the bundled $I_-$ asymptotic claim contradicted its own data and was dropped).
