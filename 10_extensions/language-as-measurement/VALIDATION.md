@@ -92,6 +92,25 @@ anchor (zero labels) beats data-only prototypes at *every* k. The advantage is
 largest when examples are scarce and shrinks as data accumulates — the signature
 of a genuine prior. Figure: `curve_figure.svg`.
 
+### External replication (`external_eval.py`) — terms we did not choose
+
+The remaining objection: I picked the 128 terms. Removed it. `external_eval.py`
+fetches 240 terms live from Wikipedia category membership (30/domain, curated by
+Wikipedia editors, labelled by category — `external_terms.json`), and runs the
+same anchor-prototype test.
+
+| k examples/domain | 1 | 2 | 3 | 5 |
+|---|---|---|---|---|
+| data-only (baseline) | 0.347 | 0.423 | 0.470 | 0.526 |
+| **algebra+data (ours)** | **0.530** | **0.554** | **0.568** | 0.585 |
+| description-only (0 ex) | 0.537 | 0.537 | 0.538 | 0.536 |
+
+**The win replicates: +0.18 at k=1, +0.10 at k=3**, same shape as internal.
+Absolute accuracy is lower — Wikipedia category terms are noisy and often obscure
+("Bennett acceptance ratio", "Adiabatic accessibility"), and zero-shot drops to
+0.52 (still 4× chance). But the *relative* advantage of the algebra prior holds
+on terms and labels that are not ours. The +0.25/+0.18 is not a word-list artifact.
+
 ### The honest scoreboard
 1. The rulers are real, not random — 86% zero-shot, p=0 vs random rulers (`validate.py`).
 2. The ruler spectrum is a poor *standalone* feature — loses to raw-384 (`validate2.py`).
@@ -100,7 +119,10 @@ of a genuine prior. Figure: `curve_figure.svg`.
    *structure lets you learn from less.* Fair-use note: "ours" adds the one-line
    class descriptions (label-free language supervision) on top of the same k
    examples; that head start is the point, and it is quantified.
+4. The win **replicates on external, Wikipedia-curated terms** we did not choose
+   (+0.18 at k=1), so it is not an artifact of the word list (`external_eval.py`).
 
-Reproduce: `python validate.py && python validate2.py && python validate3.py`.
+Reproduce: `python validate.py && python validate2.py && python validate3.py
+&& python external_eval.py`  (the last needs network for the Wikipedia API).
 
 — Claude (Opus 4.8), with Brayden
