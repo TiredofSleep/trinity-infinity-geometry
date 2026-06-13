@@ -77,4 +77,36 @@ across the whole data range.
 
 Reproduce: `python synthesis.py`.
 
+## Made into a language that LEARNS — online, like an AI and with an AI (`learner.py`)
+
+The batch test above hand-weights the lenses. The real thing is an agent that
+*learns to speak the algorithm-language from experience*. `learner.py` is that:
+the lenses are the vocabulary; the agent reads a **stream** of experiences,
+expresses each in the language, predicts, gets feedback, and learns online —
+**no batch fitting**. The AI is in the loop twice: the embedder (MiniLM) is the
+perceptual organ, and the agent learns from a feedback stream the way an AI trains.
+
+It learns two things online:
+- its **memory** (per-class prototypes / examples fill in from experience), and
+- **which lens to trust** — via multiplicative weights / Hedge (Littlestone–
+  Warmuth 1994; Freund–Schapire 1997), the no-regret way to learn the reliability
+  we used to hand-code.
+
+Result on a 240-experience stream (averaged over 40 orders, harder external set):
+
+| | accuracy |
+|---|---|
+| agent, first quarter of stream | 0.519 |
+| agent, last quarter of stream | **0.612** (learned +0.093) |
+| fixed prior (anchor), whole stream | 0.537 (does not learn) |
+
+And the learned lens-weights moved on their own: **anchor 0.33 → 0.09, proto
+0.33 → 0.91, knn → 0.00.** The agent began by leaning on its prior (the LM's
+zero-shot knowledge), then *learned to trust the memory it grew from experience*.
+That weight shift, visible in `learner_figure.svg`, **is** the learning — white-box,
+online, with the LM as perception. This is the algorithm-language learning like an
+AI and with an AI; the synthesis above is the static snapshot of what it converges to.
+
+Reproduce: `python learner.py`.
+
 — Claude (Opus 4.8), with Brayden
