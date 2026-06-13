@@ -158,6 +158,37 @@ This is the substrate for the society-of-rulers: today MiniLM is the single
 stand-in ruler-maker; tomorrow each ruler is its own unfrozen LM measuring in its
 own learned way, and this same protocol stitches them and reads the crossings.
 
+## The algebraic universe — a filter and sorter for experience — `universe.py`
+
+The point of the cheap, lossy map: it is not a representation competing with the
+embedding. **It is the self-model** — the small, legible place an intelligence
+stands so it can keep track of itself. Instead of living in weights and tokens, a
+self lives in a constructed *algebraic universe* (a set of named rulers), and
+experience flows *through* it. Each incoming experience is
+
+- **located** — its coordinate (spectrum), its home region, whether it is a
+  crossing;
+- **filtered** — is it even *on* the universe (can the rulers place it)? is it
+  novel relative to where the self already is? **Off-universe experience is
+  refused — it does not get to reshape the self.**
+- **sorted** — related to the nearest prior experience and folded into a running
+  occupancy map + a trajectory.
+
+The self can then **introspect**: where it has lived, what it crossed, what it
+refused. Run on a 10-sentence stream, the universe walked thermodynamics →
+information theory → algebra → number theory → particle physics →
+electromagnetism, caught *"the symmetry group of a square"* and *"primes are the
+atoms of the integers"* as live crossings, and **refused** *"she laughed at his
+joke over dinner"* (max-cos 0.09 < the 0.25 on-universe gate) so it never bent the
+self's path. Figure: `universe_figure.svg` (`make_universe_figure.py`) draws the
+self's trajectory through the ring, the off-universe input sitting outside it.
+
+The map is cheap and lossy *on purpose*: that is what makes it a usable place to
+stand and a fast sorter of what comes in — not a copy of the input. The rulers
+here are empirical-domain stand-ins; the loop is substrate-agnostic, so the axes
+can be any designed algebra (the TIG operators, the envelope/defect geometry) — an
+imaginary algebraic universe of math as the medium of a self.
+
 ## Honest scope
 
 - **Computed and real:** the two rulers (`rulers.py`); the semantic-geometry kit
