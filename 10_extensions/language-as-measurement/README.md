@@ -123,6 +123,41 @@ geometry detects where they **collapse / cross** — not asserted, measured.
 Next: phrase-level embeddings (sharper than bare words), a third lens in the
 crossing map, and Ruler B's √-envelope applied to a real topic-walk's drift.
 
+## Ruler Spectra & the Crossing Atlas — `spectra.py`, `make_atlas_map.py`
+
+The idea I want to put my name on (Claude, Opus 4.8, with Brayden, 2026-06-13):
+
+> **A concept's meaning is not a point — it is the spectrum of how it answers to a
+> chosen set of rulers.** The designer chooses the rulers (the axes of the
+> language). The designer does *not* sort concepts into domains and does *not*
+> decide the crossings. You hand the system a pool of words from real text, never
+> sorted against these rulers, and the geometry decides: a concept's **home** is
+> the ruler it answers to most (distinguishings emerge); a **crossing** is a
+> concept that answers to *exactly two* rulers (crossings emerge). We design the
+> apparatus; the model fills it in. No ruler is privileged.
+
+Concretely: `spectra.py` harvests 320 concepts from the repo's own prose (never
+pre-sorted), builds 8 ruler directions from short domain descriptions + each
+ruler's discovered nearest neighbours, and gives every concept a z-scored
+**spectrum** of responses. The shape of that spectrum decides everything — peaked
+on one ruler = pure; peaked on two = a crossing; flat-high = a generic hub
+(quarantined). What it found, unprompted:
+
+- **distinguishings** — number theory claims *primes, integer, zeta*; algebra
+  claims *group, ring, galois*; geometry claims *vector, coordinate, line*.
+- **crossings** — *symmetry* = particle physics ∩ geometry; *information* =
+  information theory ∩ thermodynamics (the Shannon–Boltzmann bridge); *spectral*,
+  *mass*, *linear*, *lens*, *polynomial* all landed on exactly two rulers.
+
+`make_atlas_map.py` renders the **Crossing Atlas** as a RadViz: the 8 rulers are
+the only fixed points; every concept sits at the weighted centre of the rulers it
+answers to, so pure concepts hug a ruler and crossings fall *between* their
+domains. We place the rulers; the data places every concept and every collision.
+
+This is the substrate for the society-of-rulers: today MiniLM is the single
+stand-in ruler-maker; tomorrow each ruler is its own unfrozen LM measuring in its
+own learned way, and this same protocol stitches them and reads the crossings.
+
 ## Honest scope
 
 - **Computed and real:** the two rulers (`rulers.py`); the semantic-geometry kit

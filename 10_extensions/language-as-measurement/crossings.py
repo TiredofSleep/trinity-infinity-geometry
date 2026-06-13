@@ -44,6 +44,29 @@ def cross(lensA, lensB, sem_thr=0.30):
     return literal, semantic, mutual
 
 
+def system(sem_thr=0.40):
+    """Every cross-domain crossing across the WHOLE system of lenses.
+    Returns (nodes, edges) with nodes = (domain, level, label) and
+    edges = (cos, node_i, node_j, is_literal), cross-domain only, sorted."""
+    nodes = []
+    for d in LENSES:
+        for lvl, lab in nodes_of(d):
+            if lvl != "meta":
+                nodes.append((d, lvl, lab))
+    E = embed([lab for _, _, lab in nodes])
+    edges = []
+    for i in range(len(nodes)):
+        for j in range(i + 1, len(nodes)):
+            if nodes[i][0] == nodes[j][0]:
+                continue                       # within-domain skipped
+            s = float(E[i] @ E[j])
+            lit = nodes[i][2] == nodes[j][2]
+            if lit or s >= sem_thr:
+                edges.append((s, nodes[i], nodes[j], lit))
+    edges.sort(reverse=True)
+    return nodes, edges
+
+
 def main(lensA, lensB):
     print(f"crossings: [{lensA}]  x  [{lensB}]\n")
     literal, semantic, mutual = cross(lensA, lensB)

@@ -33,6 +33,12 @@ LENSES = {
                  "frequency": ["pitch", "rhythm"],
                  "phase": ["alignment", "interference"]},
     },
+    "particle physics": {
+        "meta": "meaning as a particle system",
+        "tree": {"charge": ["polarity", "attraction"],
+                 "spin": ["rotation", "orientation"],
+                 "interaction": ["exchange", "coupling"]},
+    },
 }
 
 
