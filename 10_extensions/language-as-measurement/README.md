@@ -95,27 +95,43 @@ Run the **EE** ruler on the same text and its "noise / channel capacity" branch
 **collapses onto** thermodynamics' ENTROPY branch — that collapse is a *crossing*
 the geometry should detect automatically, not a coincidence we assert.
 
-## English → shapes (the next build)
+## English → shapes (built) — `embed.py`, `curvature.py`, `lens.py`, `crossings.py`
 
-Each word/topic gets a position in an embedding space; the **curvature** of the
-path between consecutive words/topics (how sharply meaning turns) and the **wave**
-signature (amplitude / frequency / phase of the drift) are the measured shape.
-Then Ruler B applies directly: walking a topic is a "line," its semantic drift
-has a √-style envelope, and the **deviations are the information**.
+Words/topics become points in a real embedding space (local MiniLM, 384-d), so
+the shapes are **measured**.
 
-Immediate next step: `curvature.py` — embed a concept chain (local MiniLM,
-already available), compute discrete curvature + the envelope of semantic drift,
-and feed real numbers into a second figure. Then a `lens.py` that runs the
-recursive decomposition for a chosen domain and a `crossings.py` that detects
-collapses/crossings across two lenses.
+- **`curvature.py`** — a chain of words becomes a path; we read its *speed* (step
+  length) and *curvature* (turning angle). On `heat → flow → entropy →
+  information → message → language`: speed rises 1.12 → 1.23 (meaning accelerates)
+  and path/chord = 5.25 (the walk genuinely curves). Honest caveat: in raw 384-d,
+  steps are near-orthogonal, so turning angles cluster high (95–128°) and are only
+  weakly discriminative — the drawable bends come from the 2-D projection; speed
+  and drift are the sharper reads.
+- **`lens.py`** — three rulers (thermodynamics, electrical engineering, wave
+  mechanics) each decompose the subject *meaning* (meta → 3 categories →
+  operations). Structure authored; per-node spreads and per-branch turns measured.
+- **`crossings.py`** — the payoff. Across the thermo and EE rulers the geometry
+  finds, *on its own*: **energy ≈ power (cos 0.68)** and **disorder ≈ noise
+  (cos 0.41)** as semantic crossings, plus **entropy = entropy** and
+  **transfer = transfer (1.00)** as shared atoms. Figure: `lens_figure.svg`
+  (`make_lens_figure.py`). Honest caveat: bare-word MiniLM is noisy; cos < ~0.35
+  is treated as weak, and we report spurious matches rather than hide them.
+
+This is the thesis demonstrated with numbers: two rulers on one subject, and the
+geometry detects where they **collapse / cross** — not asserted, measured.
+
+Next: phrase-level embeddings (sharper than bare words), a third lens in the
+crossing map, and Ruler B's √-envelope applied to a real topic-walk's drift.
 
 ## Honest scope
 
-- **Computed and real:** the two rulers (`rulers.py`), the figure
-  (`make_rulers_figure.py`).
-- **Designed scaffold, not yet computed:** the domain-lens decomposition and the
-  collapse/crossing detector. The thermodynamics example above is the *method*,
-  not a measurement — it becomes a measurement once `curvature.py` + `lens.py`
-  put real numbers on each node and edge.
+- **Computed and real:** the two rulers (`rulers.py`); the semantic-geometry kit
+  (`embed.py`, `curvature.py`, `lens.py`, `crossings.py`); both figures.
+- **Authored, then measured:** the decomposition *trees* in `lens.py` are a
+  hypothesis about how each domain splits the subject; the geometry on them
+  (spreads, turns, cross-lens crossings) is measured. The crossings are a real
+  test of that hypothesis — and energy≈power, disorder≈noise passed it.
+- **Known limits:** bare-word MiniLM is a noisy ruler (near-orthogonal in 384-d;
+  weak below cos ~0.35). Phrase-level embeddings are the obvious upgrade.
 - No claim that any one ruler is privileged. The point is the *kit* and what each
   ruler uniquely reads.

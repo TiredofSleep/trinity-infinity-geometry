@@ -1,0 +1,32 @@
+<svg width="100%" viewBox="0 0 680 420" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Where two domain-rulers cross</title>
+<desc>Thermodynamics terms on the left, electrical-engineering terms on the right, linked where MiniLM embeddings place them together: energy with power, entropy with entropy, disorder with noise, transfer with transfer.</desc>
+<text x="40" y="34" class="th">where two rulers cross — measured, not asserted</text>
+<text x="40" y="54" class="ts">same subject (meaning); thermodynamics vs electrical engineering; links = cosine in MiniLM space</text>
+<circle cx="235" cy="74" r="5" class="c-coral"/><text x="247" y="78" class="ts">thermodynamics</text>
+<circle cx="445" cy="74" r="5" class="c-blue"/><text x="457" y="78" class="ts">electrical engineering</text>
+<line x1="235" y1="96" x2="445" y2="96" stroke="#888780" stroke-width="2.63" opacity="0.76"/><text x="298" y="93" class="ts" text-anchor="middle">0.68</text>
+<line x1="235" y1="186" x2="445" y2="216" stroke="#888780" stroke-width="3.60" opacity="0.95"/><text x="298" y="192" class="ts" text-anchor="middle">1.00</text>
+<line x1="235" y1="216" x2="445" y2="186" stroke="#888780" stroke-width="1.82" opacity="0.59"/><text x="298" y="204" class="ts" text-anchor="middle">0.41</text>
+<line x1="235" y1="306" x2="445" y2="336" stroke="#888780" stroke-width="3.60" opacity="0.95"/><text x="298" y="312" class="ts" text-anchor="middle">1.00</text>
+<circle cx="235" cy="96" r="5" class="c-coral"/><text x="223" y="100" class="t" text-anchor="end">energy</text>
+<circle cx="235" cy="126" r="5" class="c-coral"/><text x="223" y="130" class="t" text-anchor="end">heat</text>
+<circle cx="235" cy="156" r="5" class="c-coral"/><text x="223" y="160" class="t" text-anchor="end">work</text>
+<circle cx="235" cy="186" r="5" class="c-coral"/><text x="223" y="190" class="t" text-anchor="end">entropy</text>
+<circle cx="235" cy="216" r="5" class="c-coral"/><text x="223" y="220" class="t" text-anchor="end">disorder</text>
+<circle cx="235" cy="246" r="5" class="c-coral"/><text x="223" y="250" class="t" text-anchor="end">dispersal</text>
+<circle cx="235" cy="276" r="5" class="c-coral"/><text x="223" y="280" class="t" text-anchor="end">flow</text>
+<circle cx="235" cy="306" r="5" class="c-coral"/><text x="223" y="310" class="t" text-anchor="end">transfer</text>
+<circle cx="235" cy="336" r="5" class="c-coral"/><text x="223" y="340" class="t" text-anchor="end">gradient</text>
+<circle cx="445" cy="96" r="5" class="c-blue"/><text x="457" y="100" class="t">power</text>
+<circle cx="445" cy="126" r="5" class="c-blue"/><text x="457" y="130" class="t">amplitude</text>
+<circle cx="445" cy="156" r="5" class="c-blue"/><text x="457" y="160" class="t">gain</text>
+<circle cx="445" cy="186" r="5" class="c-blue"/><text x="457" y="190" class="t">noise</text>
+<circle cx="445" cy="216" r="5" class="c-blue"/><text x="457" y="220" class="t">entropy</text>
+<circle cx="445" cy="246" r="5" class="c-blue"/><text x="457" y="250" class="t">interference</text>
+<circle cx="445" cy="276" r="5" class="c-blue"/><text x="457" y="280" class="t">channel</text>
+<circle cx="445" cy="306" r="5" class="c-blue"/><text x="457" y="310" class="t">bandwidth</text>
+<circle cx="445" cy="336" r="5" class="c-blue"/><text x="457" y="340" class="t">transfer</text>
+<text x="40" y="390" class="ts">energy ≈ power (0.68) and disorder ≈ noise (0.41) are semantic crossings the geometry found on its own;</text>
+<text x="40" y="408" class="ts">entropy = entropy and transfer = transfer (1.00) are shared atoms. cos &lt; ~0.35 would be noise.</text>
+</svg>
