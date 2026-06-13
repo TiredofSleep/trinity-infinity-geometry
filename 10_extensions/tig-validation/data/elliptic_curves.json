@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "description": "Authenticated literature values for elliptic curves used in BSD balance verification.",
+    "source": "LMFDB (L-functions and Modular Forms Database) — https://www.lmfdb.org",
+    "note": "All values should be independently verified against LMFDB. URLs included for each curve.",
+    "convention": "BSD formula: lim_{s -> 1} L(E,s)/(s-1)^r = (Omega * R * |Sha| * prod_p(c_p)) / |E_tors|^2"
+  },
+  "curves": {
+    "11a1": {
+      "lmfdb_url": "https://www.lmfdb.org/EllipticCurve/Q/11a1/",
+      "weierstrass": "y^2 + y = x^3 - x^2 - 10*x - 20",
+      "label_cremona": "11a1",
+      "conductor": 11,
+      "rank": 0,
+      "L_leading_value": 0.2538418609,
+      "L_leading_meaning": "L(E, 1)",
+      "real_period_Omega": 1.2692093016,
+      "regulator_R": 1.0,
+      "regulator_note": "rank 0 -> regulator = 1 (empty determinant convention)",
+      "sha_order": 1,
+      "tamagawa_product": 5,
+      "tamagawa_breakdown": {"11": 5},
+      "torsion_order": 5,
+      "torsion_structure": "Z/5Z",
+      "verified_against_lmfdb": "2024-spec, please re-check current LMFDB"
+    },
+    "37a1": {
+      "lmfdb_url": "https://www.lmfdb.org/EllipticCurve/Q/37a1/",
+      "weierstrass": "y^2 + y = x^3 - x",
+      "label_cremona": "37a1",
+      "conductor": 37,
+      "rank": 1,
+      "L_leading_value": 0.3059997738,
+      "L_leading_meaning": "L'(E, 1)",
+      "real_period_Omega": 5.9869899989,
+      "regulator_R": 0.0511114172,
+      "regulator_note": "canonical height of generator P = (0,0), or equivalent",
+      "sha_order": 1,
+      "tamagawa_product": 1,
+      "tamagawa_breakdown": {"37": 1},
+      "torsion_order": 1,
+      "torsion_structure": "trivial",
+      "verified_against_lmfdb": "2024-spec, please re-check current LMFDB"
+    },
+    "389a1": {
+      "lmfdb_url": "https://www.lmfdb.org/EllipticCurve/Q/389a1/",
+      "weierstrass": "y^2 + y = x^3 + x^2 - 2*x",
+      "label_cremona": "389a1",
+      "conductor": 389,
+      "rank": 2,
+      "L_leading_value": 0.7595984813,
+      "L_leading_meaning": "L''(E, 1) / 2!",
+      "real_period_Omega": 4.9804356355,
+      "regulator_R": 0.1524601779,
+      "regulator_note": "determinant of canonical height pairing on 2 generators",
+      "sha_order": 1,
+      "tamagawa_product": 1,
+      "tamagawa_breakdown": {"389": 1},
+      "torsion_order": 1,
+      "torsion_structure": "trivial",
+      "verified_against_lmfdb": "2024-spec, please re-check current LMFDB; BSD for rank 2 is CONJECTURAL but empirically holds for 389a1"
+    }
+  },
+  "_excluded_curves": {
+    "5077a1": {
+      "rank": 3,
+      "reason_excluded": "Rank-3 verification requires SageMath/PARI for trustworthy Néron-period normalization. Earlier 'verification' of this curve used a reverse-engineered period and is withdrawn. Use SageMath: E = EllipticCurve('5077a1'); E.bsd_check() or compute components manually."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+plots/*.png
+!plots/.gitkeep
+.venv/
+venv/
+.idea/
+.vscode/
