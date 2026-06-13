@@ -1,0 +1,12 @@
+{"session": 1, "lived_experiences": 43, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 35, "grew_this_session": 35, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 2, "lived_experiences": 86, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 13, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 3, "lived_experiences": 129, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 4, "lived_experiences": 172, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 5, "lived_experiences": 215, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 6, "lived_experiences": 258, "test_acc": 0.6273, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 1.0, "w_proto": 0.0}
+{"session": 7, "lived_experiences": 301, "test_acc": 0.6545, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.917, "w_proto": 0.083}
+{"session": 8, "lived_experiences": 344, "test_acc": 0.7, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.231, "w_proto": 0.769}
+{"session": 9, "lived_experiences": 387, "test_acc": 0.7182, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.0, "w_proto": 1.0}
+{"session": 10, "lived_experiences": 430, "test_acc": 0.7091, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.0, "w_proto": 1.0}
+{"session": 11, "lived_experiences": 473, "test_acc": 0.6818, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.0, "w_proto": 1.0}
+{"session": 12, "lived_experiences": 516, "test_acc": 0.7182, "test_acc_anchor_only": 0.6273, "vocab": 48, "grew_this_session": 0, "w_anchor": 0.0, "w_proto": 1.0}
