@@ -46,6 +46,7 @@ now, and which are the next levers — so growth is principled.
 | inductive-bias prior | **proven** | +0.25 few-shot, replicated +0.18 (VALIDATION.md) |
 | reliability-weighted fusion | **proven** | robust across regimes (SYNTHESIS.md) |
 | continual / persistence | **proven** | unfrozen agent 0.63→0.72 across sessions |
+| continual learning (standard benchmark) | **competitive** | Split-CIFAR-100 CIL: NCM 0.526 vs ER 0.225 / EWC 0.136, 3 seeds (CL_BENCHMARK_RESULT.md) |
 | active learning (gate) | organ exists | the abstention gate (GATE_CALIBRATION.md) |
 | geometry-aware optimizer (Muon) | **tested & adopted** | A/B: ~2.5× faster, 42.8 vs 65.7 ppl (MUON_RESULT.md) |
 | curriculum (easy→hard) | **tested → negative** | shuffled wins at every step (CURRICULUM_AND_COUNTERPARTS.md) |

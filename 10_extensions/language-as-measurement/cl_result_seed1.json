@@ -1,0 +1,30 @@
+{
+ "seed": 1,
+ "results": {
+  "NCM (ours)": {
+   "final": 0.5256,
+   "avg_inc": 0.6499,
+   "forget": 0.1223
+  },
+  "finetune": {
+   "final": 0.1234,
+   "avg_inc": 0.3508,
+   "forget": 0.8438
+  },
+  "ewc": {
+   "final": 0.1263,
+   "avg_inc": 0.3543,
+   "forget": 0.8397
+  },
+  "er": {
+   "final": 0.2296,
+   "avg_inc": 0.4901,
+   "forget": 0.6834
+  },
+  "joint": {
+   "final": 0.6621,
+   "avg_inc": 0.7668,
+   "forget": 0.1017
+  }
+ }
+}
