@@ -47,8 +47,8 @@ now, and which are the next levers — so growth is principled.
 | reliability-weighted fusion | **proven** | robust across regimes (SYNTHESIS.md) |
 | continual / persistence | **proven** | unfrozen agent 0.63→0.72 across sessions |
 | active learning (gate) | organ exists | the abstention gate (GATE_CALIBRATION.md) |
+| geometry-aware optimizer (Muon) | **tested & adopted** | A/B: ~2.5× faster, 42.8 vs 65.7 ppl (MUON_RESULT.md) |
 | curriculum | next | order the 795M-token stream easy→hard |
-| geometry-aware optimizer | next | swap Adam→Muon: free training speedup |
 | learning from counterparts | next | 2nd/3rd LM as teacher-rulers (co-training) |
 
 ## The honest read
