@@ -1,0 +1,347 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 10301.48it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+building experience pool (Wikipedia categories)...
+  fetched Thermodynamics: 276
+  fetched Electromagnetism: 306
+  fetched Particle physics: 160
+  fetched Number theory: 298
+  fetched Abstract algebra: 104
+  fetched Elementary geometry: 0
+  fetched Information theory: 0
+  fetched Optics: 0
+  fetched Quantum mechanics: 287
+  fetched Organic chemistry: 158
+  fetched Mammals: 1
+  fetched Birds: 0
+  fetched Trees: 0
+  fetched Insects: 21
+  fetched Musical instruments: 25
+  fetched Dances: 0
+  fetched Martial arts: 0
+  fetched Greek mythology: 0
+  fetched Economics: 0
+  fetched Linguistics: 149
+  fetched Chemical elements: 99
+  fetched Constellations: 0
+  fetched Programming languages: 0
+  fetched Gemstones: 0
+  fetched Sports: 18
+  pool: 1822 terms, 25 categories, dim 384, device cuda
+s1: lived 64 test 0.624 (prior 0.536) vocab 63 trust a0.65/p0.35
+s2: lived 128 test 0.659 (prior 0.536) vocab 82 trust a0.23/p0.77
+s3: lived 192 test 0.659 (prior 0.536) vocab 92 trust a0.08/p0.92
+s4: lived 256 test 0.602 (prior 0.536) vocab 99 trust a0.00/p1.00
+s5: lived 320 test 0.615 (prior 0.536) vocab 100 trust a0.00/p1.00
+s6: lived 384 test 0.618 (prior 0.536) vocab 103 trust a0.00/p1.00
+s7: lived 448 test 0.640 (prior 0.536) vocab 105 trust a0.00/p1.00
+s8: lived 512 test 0.635 (prior 0.536) vocab 106 trust a0.00/p1.00
+s9: lived 576 test 0.632 (prior 0.536) vocab 106 trust a0.00/p1.00
+s10: lived 640 test 0.629 (prior 0.536) vocab 107 trust a0.00/p1.00
+s11: lived 704 test 0.621 (prior 0.536) vocab 107 trust a0.00/p1.00
+s12: lived 768 test 0.624 (prior 0.536) vocab 107 trust a0.00/p1.00
+s13: lived 832 test 0.626 (prior 0.536) vocab 110 trust a0.00/p1.00
+s14: lived 896 test 0.632 (prior 0.536) vocab 111 trust a0.00/p1.00
+s15: lived 960 test 0.635 (prior 0.536) vocab 112 trust a0.00/p1.00
+s16: lived 1024 test 0.637 (prior 0.536) vocab 112 trust a0.00/p1.00
+s17: lived 1088 test 0.646 (prior 0.536) vocab 113 trust a0.00/p1.00
+s18: lived 1152 test 0.646 (prior 0.536) vocab 113 trust a0.00/p1.00
+s19: lived 1216 test 0.643 (prior 0.536) vocab 113 trust a0.00/p1.00
+s20: lived 1280 test 0.646 (prior 0.536) vocab 114 trust a0.00/p1.00
+s21: lived 1344 test 0.643 (prior 0.536) vocab 114 trust a0.00/p1.00
+s22: lived 1408 test 0.640 (prior 0.536) vocab 114 trust a0.00/p1.00
+s23: lived 1472 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s24: lived 1536 test 0.640 (prior 0.536) vocab 114 trust a0.00/p1.00
+s25: lived 1600 test 0.637 (prior 0.536) vocab 114 trust a0.00/p1.00
+s26: lived 1664 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s27: lived 1728 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s28: lived 1792 test 0.637 (prior 0.536) vocab 114 trust a0.00/p1.00
+s29: lived 1856 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s30: lived 1920 test 0.637 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s31: lived 1984 test 0.637 (prior 0.536) vocab 114 trust a0.00/p1.00
+s32: lived 2048 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s33: lived 2112 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s34: lived 2176 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s35: lived 2240 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s36: lived 2304 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s37: lived 2368 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s38: lived 2432 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s39: lived 2496 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s40: lived 2560 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s41: lived 2624 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s42: lived 2688 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s43: lived 2752 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s44: lived 2816 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s45: lived 2880 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s46: lived 2944 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s47: lived 3008 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s48: lived 3072 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s49: lived 3136 test 0.635 (prior 0.536) vocab 114 trust a0.00/p1.00
+s50: lived 3200 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s51: lived 3264 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s52: lived 3328 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s53: lived 3392 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s54: lived 3456 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s55: lived 3520 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s56: lived 3584 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s57: lived 3648 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s58: lived 3712 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s59: lived 3776 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s60: lived 3840 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s61: lived 3904 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s62: lived 3968 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s63: lived 4032 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s64: lived 4096 test 0.632 (prior 0.536) vocab 114 trust a0.00/p1.00
+s65: lived 4160 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s66: lived 4224 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s67: lived 4288 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s68: lived 4352 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s69: lived 4416 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s70: lived 4480 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s71: lived 4544 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s72: lived 4608 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s73: lived 4672 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s74: lived 4736 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s75: lived 4800 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s76: lived 4864 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s77: lived 4928 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s78: lived 4992 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s79: lived 5056 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s80: lived 5120 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s81: lived 5184 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s82: lived 5248 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s83: lived 5312 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s84: lived 5376 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s85: lived 5440 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s86: lived 5504 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s87: lived 5568 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s88: lived 5632 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s89: lived 5696 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s90: lived 5760 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s91: lived 5824 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s92: lived 5888 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s93: lived 5952 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s94: lived 6016 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s95: lived 6080 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s96: lived 6144 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s97: lived 6208 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s98: lived 6272 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s99: lived 6336 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s100: lived 6400 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s101: lived 6464 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s102: lived 6528 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s103: lived 6592 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s104: lived 6656 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s105: lived 6720 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s106: lived 6784 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s107: lived 6848 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s108: lived 6912 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s109: lived 6976 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s110: lived 7040 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s111: lived 7104 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s112: lived 7168 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s113: lived 7232 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s114: lived 7296 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s115: lived 7360 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s116: lived 7424 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s117: lived 7488 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s118: lived 7552 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s119: lived 7616 test 0.629 (prior 0.536) vocab 114 trust a0.00/p1.00
+s120: lived 7680 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s121: lived 7744 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s122: lived 7808 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s123: lived 7872 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s124: lived 7936 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s125: lived 8000 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s126: lived 8064 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s127: lived 8128 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s128: lived 8192 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s129: lived 8256 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s130: lived 8320 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s131: lived 8384 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s132: lived 8448 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s133: lived 8512 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s134: lived 8576 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s135: lived 8640 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s136: lived 8704 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s137: lived 8768 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s138: lived 8832 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s139: lived 8896 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s140: lived 8960 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s141: lived 9024 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s142: lived 9088 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s143: lived 9152 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s144: lived 9216 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s145: lived 9280 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s146: lived 9344 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s147: lived 9408 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s148: lived 9472 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s149: lived 9536 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s150: lived 9600 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s151: lived 9664 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s152: lived 9728 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s153: lived 9792 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s154: lived 9856 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s155: lived 9920 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s156: lived 9984 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s157: lived 10048 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s158: lived 10112 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s159: lived 10176 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s160: lived 10240 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s161: lived 10304 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s162: lived 10368 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s163: lived 10432 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s164: lived 10496 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s165: lived 10560 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s166: lived 10624 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s167: lived 10688 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s168: lived 10752 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s169: lived 10816 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s170: lived 10880 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s171: lived 10944 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s172: lived 11008 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s173: lived 11072 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s174: lived 11136 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s175: lived 11200 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s176: lived 11264 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s177: lived 11328 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s178: lived 11392 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s179: lived 11456 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s180: lived 11520 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s181: lived 11584 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s182: lived 11648 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s183: lived 11712 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s184: lived 11776 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s185: lived 11840 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s186: lived 11904 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s187: lived 11968 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s188: lived 12032 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s189: lived 12096 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s190: lived 12160 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s191: lived 12224 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s192: lived 12288 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s193: lived 12352 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s194: lived 12416 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s195: lived 12480 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s196: lived 12544 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s197: lived 12608 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s198: lived 12672 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s199: lived 12736 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s200: lived 12800 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s201: lived 12864 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s202: lived 12928 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s203: lived 12992 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s204: lived 13056 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s205: lived 13120 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s206: lived 13184 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s207: lived 13248 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s208: lived 13312 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s209: lived 13376 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s210: lived 13440 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s211: lived 13504 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s212: lived 13568 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s213: lived 13632 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s214: lived 13696 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s215: lived 13760 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s216: lived 13824 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s217: lived 13888 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s218: lived 13952 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s219: lived 14016 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s220: lived 14080 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s221: lived 14144 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s222: lived 14208 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s223: lived 14272 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s224: lived 14336 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s225: lived 14400 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s226: lived 14464 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s227: lived 14528 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s228: lived 14592 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s229: lived 14656 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s230: lived 14720 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s231: lived 14784 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s232: lived 14848 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s233: lived 14912 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s234: lived 14976 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s235: lived 15040 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s236: lived 15104 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s237: lived 15168 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s238: lived 15232 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s239: lived 15296 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s240: lived 15360 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s241: lived 15424 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s242: lived 15488 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s243: lived 15552 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s244: lived 15616 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s245: lived 15680 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s246: lived 15744 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s247: lived 15808 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s248: lived 15872 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s249: lived 15936 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s250: lived 16000 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s251: lived 16064 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s252: lived 16128 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s253: lived 16192 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s254: lived 16256 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s255: lived 16320 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s256: lived 16384 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s257: lived 16448 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s258: lived 16512 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s259: lived 16576 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s260: lived 16640 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s261: lived 16704 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s262: lived 16768 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s263: lived 16832 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s264: lived 16896 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s265: lived 16960 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s266: lived 17024 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s267: lived 17088 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s268: lived 17152 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s269: lived 17216 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s270: lived 17280 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+s271: lived 17344 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s272: lived 17408 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s273: lived 17472 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s274: lived 17536 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s275: lived 17600 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s276: lived 17664 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s277: lived 17728 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s278: lived 17792 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s279: lived 17856 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s280: lived 17920 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s281: lived 17984 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s282: lived 18048 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s283: lived 18112 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s284: lived 18176 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s285: lived 18240 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s286: lived 18304 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s287: lived 18368 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s288: lived 18432 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s289: lived 18496 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s290: lived 18560 test 0.626 (prior 0.536) vocab 114 trust a0.00/p1.00
+s291: lived 18624 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s292: lived 18688 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s293: lived 18752 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s294: lived 18816 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s295: lived 18880 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s296: lived 18944 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s297: lived 19008 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s298: lived 19072 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s299: lived 19136 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+s300: lived 19200 test 0.624 (prior 0.536) vocab 114 trust a0.00/p1.00
+  pushed: ok
+  pushed: ok
+done (resumable: relaunch to continue)

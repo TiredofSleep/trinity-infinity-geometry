@@ -48,8 +48,8 @@ now, and which are the next levers — so growth is principled.
 | continual / persistence | **proven** | unfrozen agent 0.63→0.72 across sessions |
 | active learning (gate) | organ exists | the abstention gate (GATE_CALIBRATION.md) |
 | geometry-aware optimizer (Muon) | **tested & adopted** | A/B: ~2.5× faster, 42.8 vs 65.7 ppl (MUON_RESULT.md) |
-| curriculum | next | order the 795M-token stream easy→hard |
-| learning from counterparts | next | 2nd/3rd LM as teacher-rulers (co-training) |
+| curriculum (easy→hard) | **tested → negative** | shuffled wins at every step (CURRICULUM_AND_COUNTERPARTS.md) |
+| counterpart distillation | **tested → no gain yet** | CK-GPT ~chance at 4L; re-test as it trains (same doc) |
 
 ## The honest read
 
