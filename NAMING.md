@@ -9,19 +9,21 @@ The framework uses **two historical naming conventions** for the 10 operators of
 | code | **Canonical name (per `ck_tables.py`)** | Alternative (per `ck_tig.py`) | Role | σ-orbit |
 |:---:|:---|:---|:---|:---|
 | **0** | **VOID** | VOID | identity / absence of action | σ-fixed |
-| **1** | **BEING** | LATTICE | structural entry | 4-cycle `(1 7 9 3)` |
-| **2** | **DOING** | COUNTER | mirror of becoming | 4-cycle `(2 8 6 4)` |
-| **3** | **BECOMING** | PROGRESS | forward step | σ³-fixed (in 4-cycle `(1 7 9 3)`) |
-| **4** | **COLLAPSE** | COLLAPSE | oscillation | 4-cycle `(2 8 6 4)` |
-| **5** | **CREATE** | BALANCE | midpoint | σ-fixed |
-| **6** | **ASCEND** | CHAOS | reversed oscillation | 4-cycle `(2 8 6 4)` |
-| **7** | **HARMONY** | HARMONY | stability attractor | σ³-fixed (in 4-cycle `(1 7 9 3)`) |
-| **8** | **BREATH** | BREATH | rhythm | σ³-fixed (in 4-cycle `(2 8 6 4)`) |
-| **9** | **RESET** | RESET | return | σ³-fixed (in 4-cycle `(1 7 9 3)`) |
+| **1** | **BEING** | LATTICE | structural entry | 6-cycle `(1 7 6 5 4 2)` |
+| **2** | **DOING** | COUNTER | mirror of becoming | 6-cycle `(1 7 6 5 4 2)` |
+| **3** | **BECOMING** | PROGRESS | forward step | σ-fixed |
+| **4** | **COLLAPSE** | COLLAPSE | oscillation | 6-cycle `(1 7 6 5 4 2)` |
+| **5** | **CREATE** | BALANCE | midpoint | 6-cycle `(1 7 6 5 4 2)` |
+| **6** | **ASCEND** | CHAOS | reversed oscillation | 6-cycle `(1 7 6 5 4 2)` |
+| **7** | **HARMONY** | HARMONY | stability attractor | 6-cycle `(1 7 6 5 4 2)` |
+| **8** | **BREATH** | BREATH | rhythm | σ-fixed |
+| **9** | **RESET** | RESET | return | σ-fixed |
 
-**Stable across both conventions**: `VOID, COLLAPSE, HARMONY, BREATH, RESET` (codes 0, 4, 7, 8, 9). All five are σ-fixed or σ³-fixed.
+**Stable across both conventions** (same name in both): `VOID, COLLAPSE, HARMONY, BREATH, RESET` (codes 0, 4, 7, 8, 9).
 
-**The four-core** `{V, H, Br, R} = {0, 7, 8, 9}` uses universally-stable names.
+**σ structure** (canonical, per `ck_tables.py` and [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md) QR.1): σ = `(0)(3)(8)(9)(1 7 6 5 4 2)` — four σ-fixed points `{0, 3, 8, 9}` plus one 6-cycle, order 6. Its binary face σ³ (order 2) has 2-cycles `{1,5} {2,6} {4,7}`; its ternary face σ² (order 3) has classes `{1,4,6} {2,5,7}`.
+
+**The four-core** `{V, H, Br, R} = {0, 7, 8, 9}` uses universally-stable names (VOID, BREATH, RESET are σ-fixed; HARMONY sits in the 6-cycle).
 
 ---
 
@@ -43,5 +45,5 @@ It doesn't. Every theorem in the framework is stated in terms of the **codes** (
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`LICENSE`](LICENSE).*
+*7SiTe Public Sovereignty License v2.2 — see [`LICENSE`](LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026*
