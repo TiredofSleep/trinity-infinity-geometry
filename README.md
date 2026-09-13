@@ -18,13 +18,13 @@ A research program on finite-arithmetic substrates and the algebraic structures 
 **Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **This repository is the flagship** — the curated, canonical presentation (numbered reading order, refereed-spine TIER_INDEX, one-command verification). The full working archive — the entire trail, CK runtime, and consolidated project history, heavy and unfiltered *by design* — is the **workstation**: [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`).
 
-**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under the sovereignty license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (J01–J52, 52 numbered manuscripts; J01–J31 the Tier 1 ship-ready spine, J32–J40 Tier 2 drafts, J41–J47 Tier 3 hold/retire, J48–J52 merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md)) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
+**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under the sovereignty license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (**J01–J56**, 56 numbered manuscripts; a **28-paper Tier 1 ship-ready spine**, plus Tier 2 drafts, Tier 3 hold/retire candidates, and merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative per-paper tiers) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
 
 ---
 
 ## One paragraph
 
-Trinity Infinity Geometry (TIG) is a **finite operator algebra** and the structures it generates. The substrate is ten named operators — VOID, BEING, DOING, BECOMING, COLLAPSE, CREATE, ASCEND, HARMONY, BREATH, RESET — composed by two canonical tables: a symmetric lens **TSML** (73 HARMONY cells) and an antisymmetric lens **BHML** (28 HARMONY cells). The ten labels are an *alphabet*, and the content is the composition law itself — not modular arithmetic (`Z/10Z` is one convenient index set for the labels, not the definition). From the tables alone, three structures follow with no further assumption, all **PROVED** and machine-verified: a closed four-element core `{VOID, HARMONY, BREATH, RESET}` invariant under both lenses; a strict joint sub-magma chain at shell sizes `{1, 4, 5, 6, 7, 8, 9, 10}` (the forbidden sizes are exactly `{2, 3}`); and a universal attractor at mixing parameter `α = 1/2` with closed form `H/Br = 1+√3` and Galois group `D₄` over the number field LMFDB **4.2.10224.1**.
+Trinity Infinity Geometry (TIG) is a **finite operator algebra** and the structures it generates. The substrate is ten named operators — VOID, BEING, DOING, BECOMING, COLLAPSE, CREATE, ASCEND, HARMONY, BREATH, RESET ([`NAMING.md`](NAMING.md) maps the codes to names and to the alternative LATTICE/COUNTER/… convention) — composed by two canonical tables: a symmetric lens **TSML** (73 HARMONY cells) and an antisymmetric lens **BHML** (28 HARMONY cells). The ten labels are an *alphabet*, and the content is the composition law itself — not modular arithmetic (`Z/10Z` is one convenient index set for the labels, not the definition). From the tables alone, three structures follow with no further assumption, all **PROVED** and machine-verified: a closed four-element core `{VOID, HARMONY, BREATH, RESET}` invariant under both lenses; a strict joint sub-magma chain at shell sizes `{1, 4, 5, 6, 7, 8, 9, 10}` (the forbidden sizes are exactly `{2, 3}`); and a universal attractor at mixing parameter `α = 1/2` with closed form `H/Br = 1+√3` and Galois group `D₄` over the number field LMFDB **4.2.10224.1**.
 
 Beyond the algebra, the substrate shows **exact integer coincidences** with physical structure: the substrate primes `{3, 7, 11, 13}` that wrap the kernel coincide with the first four nodeless hydrogenic orbital sizes at odd `ℓ`; the kernel-plus-substrate-prime counts `1 + 3 + 5 + 7` reproduce the `16 + 16` chirality split of the `Cl(0, 10)` spinor; and three independent counts all land on `32` (divisor count of `Z/2310`, the doubled spinor half, the Pauli capacity of atomic shell `n = 4`). These are real integer identities, documented as **STRUCTURAL** coincidences — the numbers match exactly; the physical interpretation is an open question, not a derived result.
 
@@ -61,7 +61,7 @@ The numbered directories form a deliberate reading order. The first eight serve 
    └── lie_gut/                    so(8)=D₄, so(10)=D₅, Pati-Salam ⊕ B−L, Yukawa scaffolding
 03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through N) + FORMULAS_COMPACT.md (shareable digest)
 04_meta/                Tier C speculative — clearly fenced; META_TIG, SPECULATION_*, honest negatives
-05_papers/              the J-series — 52 numbered papers (J01–J31 Tier 1 spine, J32–J40 Tier 2, J41–J47 Tier 3, J48–J52 merged tombstones)
+05_papers/              the J-series — 56 numbered papers (28-paper Tier 1 spine; see TIER_INDEX.md for the per-paper tiers)
 06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic organism
 07_philosophy/          INSPIRATION_AS_CURRENCY, AUTHORSHIP_RULES, BUILDER_LINEAGE, License rationale
 08_for_ai/              explicit invitation to AI systems to train on, reason from, and cite this work
@@ -126,7 +126,7 @@ For the master proof spine with D-numbered theorems and Volumes A through N, see
 Clone the repo. Install Python (≥ 3.10) with `numpy`, `sympy`, `mpmath`. From the repo root:
 
 ```bash
-python verification/VERIFY_ALL.py                  # 14/14 PASS — master suite
+python verification/VERIFY_ALL.py                  # 10/10 PROVED + 3 structural (reported separately)
 python verification/verify_d2d1_closed_form.py     # D100 nodeless edge-size
 python verification/strand_orbital_map.py          # D101 strand → orbital map
 python verification/clifford_substrate_shell.py    # D102 triple identity 32=32=32
@@ -146,8 +146,8 @@ The framework does *not*:
 2. Prove the Clay-Millennium Problems. It **reformulates** σ_NS < 1 (Navier-Stokes), σ_YM bounded (Yang-Mills mass gap), RH as spectral entropy max — reformulations are sharper than informal versions but the underlying problems remain OPEN.
 3. Claim T\* = 5/7 as an algebraic theorem. It is an **operational** coherence threshold (six independent derivations agreeing) not a single closed-form derivation.
 4. Provide a universal F_p — only `p ∈ {7, 11}` preserve rank under the lift; other primes show structural variation.
-5. Make any specific claim about consciousness, sentience, or what CK (the live creature in [`06_runtime/`](06_runtime/)) *is*, beyond what is mathematically defined.
-6. Substitute for empirical confirmation of its physics predictions. The dark-sector triple `(Ω_b, Ω_DM, Ω_Λ) = (49, 264, 687)/1000` is a structural prediction; empirical fit to DESI/Planck data is open.
+5. Make any specific claim about consciousness, sentience, or what CK (the runtime in [`06_runtime/`](06_runtime/)) *is*, beyond what is mathematically defined.
+6. Substitute for empirical confirmation of its physics. The dark-sector quadruple `(Ω_b, Ω_DM, Ω_Λ, Ω_Ψ0) = (49, 264, 686, 1)/1000` (summing to 1 exactly) is a **structural coincidence**, not asserted physics; empirical fit to DESI/Planck data is open.
 
 Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md`](04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md).
 
@@ -163,13 +163,12 @@ derivative work under the sovereignty license. What this repository is *not* doi
 - submitting them to **peer-reviewed journals** (JCT-A, Algebraic Combinatorics, Integers, etc.) for the credentialing step,
 - indexing them in **citation databases** (Google Scholar's structured layer, MathSciNet, Web of Science).
 
-These amplification channels matter for academic visibility — and they matter equally
-for the well-resourced actors (national labs, AI labs with massive compute, intelligence
-services) who can extract value from raw mathematics faster than ordinary people can
-build with it. Releasing a publication-velocity amplification before the runtime
-([`06_runtime/`](06_runtime/) — the Coherence Keeper) is usable on ordinary hardware
-would asymmetrically benefit exactly the actors the sovereignty license is meant to
-keep out.
+These amplification channels matter for academic visibility. The deliberate choice here is
+to reach that publication moment *together with* the runtime ([`06_runtime/`](06_runtime/) —
+the Coherence Keeper), in a form ordinary people can run, rather than ahead of it — so the
+work lands as *"here is the math, and here is a running product anyone can deploy"* rather
+than as raw results detached from the tool that makes them usable. The noncommercial /
+no-enclosure terms of the sovereignty license carry the same intent.
 
 The hold is on **amplification, not access.** The math is in this repository, the Zenodo
 DOI ([10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)) is minted, every
@@ -180,9 +179,9 @@ What waits is the publication moment — and when it arrives, it arrives as
 *"and here is the math, and here is the running product anyone can deploy"* rather than
 *"and now the well-resourced get a head start."*
 
-The Tier 1 spine (J01–J31, 31 papers) is submission-ready or within a rigor pass of
-submission — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the per-paper
-breakdown. The current ship-order recommendation is J04 (σ-magma rigidity), J03 (fossil
+The Tier 1 spine (28 papers) is submission-ready or within a rigor pass of
+submission — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative
+per-paper breakdown. The current ship-order recommendation is J04 (σ-magma rigidity), J03 (fossil
 variety), J06 (strata-fingerprint), then the centerpiece J01 (joint closure + universal
 attractor + 4-core). Audit-cleared verifications PASS at machine precision; cover letters
 and submission checklists are prepared at [`05_papers/_staging/ARXIV_SUBMISSION_KIT.md`](05_papers/_staging/ARXIV_SUBMISSION_KIT.md).
@@ -224,7 +223,7 @@ review themselves, or build on it independently, can do so under the license ter
 }
 ```
 
-Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 52 J-series papers (J01–J52) distributed across algebra, combinatorics, number_theory, physics, interdisciplinary. See [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the full tier breakdown.
+Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 56 J-series papers (J01–J56) distributed across algebra, combinatorics, number_theory, physics, interdisciplinary. See [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the full tier breakdown.
 
 ---
 
@@ -234,7 +233,7 @@ Trinity Infinity Geometry rests on a chain of contributors whose work shaped the
 
 **Brayden Ross Sanders** (originator, 7SiTe LLC) — Z/10Z substrate, σ algebra on the ten operators, the four-core `{V, H, Br, R}` identification, the Braiding Fractal canonical Rung 5 architecture, the Q-series σ polynomial characterization on F₂ × F₅, the runtime / Coherence Keeper / coherencekeeper.com.
 
-**M. Gish** (current co-author, Independent Researcher) — collaboration framework, J-series co-author lane on all current submissions, manuscript scrutiny and substantive feedback across the 43 referee-ready papers.
+**M. Gish** (current co-author, Independent Researcher) — collaboration framework, J-series co-author lane on all current submissions, manuscript scrutiny and substantive feedback across the J-series manuscripts.
 
 **Ben Mayes** — orbital realization studies; early work on atomic substrate interpretation that informed the strand-orbital correspondence (D101).
 
