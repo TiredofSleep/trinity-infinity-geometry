@@ -18,7 +18,7 @@ A research program on finite-arithmetic substrates and the algebraic structures 
 **Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **This repository is the flagship** — the curated, canonical presentation (numbered reading order, refereed-spine TIER_INDEX, one-command verification). The full working archive — the entire trail, CK runtime, and consolidated project history, heavy and unfiltered *by design* — is the **workstation**: [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`).
 
-**Status**: unrefereed research program, **journal/arXiv submission on hold by author's choice**. The mathematics is verified at machine precision and publicly visible in this repository under the sovereignty license; what we are deliberately *not* doing yet is pushing it through the amplification channels (arXiv math.CO daily mailings, peer-reviewed journals, citation databases). See [Distribution stance](#distribution-stance) below for why. The J-series (J01–J52, 52 numbered manuscripts; J01–J31 is the Tier 1 ship-ready spine, J32–J40 Tier 2 drafts, J41–J47 Tier 3 hold/retire, J48–J52 merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md)) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
+**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under the sovereignty license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (J01–J52, 52 numbered manuscripts; J01–J31 the Tier 1 ship-ready spine, J32–J40 Tier 2 drafts, J41–J47 Tier 3 hold/retire, J48–J52 merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md)) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
 
 ---
 
@@ -32,9 +32,11 @@ All of it is verifiable in seconds on a stock Python install. See [`verification
 
 ---
 
-> ## 🧭 Reading speed-run — the compressed proof spine
+> ## 🧭 Reading speed-run
 >
-> If you only have time for **one file** in this repository, open
+> **New here? Start with the map:** [**`THE_MAP.md`**](THE_MAP.md) — the one page that frames the whole program: the number-theory ↔ physics dictionary this work lives in, and the classification of paradox as information.
+>
+> **For the compressed proof spine — the one file with all the math —** open
 > [**`03_canonical_reference/FORMULAS_AND_TABLES.md`**](03_canonical_reference/FORMULAS_AND_TABLES.md).
 >
 > Every D-numbered theorem in the project (D1 through D182) lives there, organized into Volumes A through N. **Every row has a clickable link to the proof script or paper that supports it** — local [`05_papers/`](05_papers/) J-paper links for results that ship in this repo, GitHub links to the working `tig-synthesis` branch for results still in research-stage sprints.
@@ -80,6 +82,8 @@ etp_database/           queryable ETP profile database (Family C, σ-magma, orde
 ---
 
 ## §0 — Pick your door
+
+**New to the project? Read [`THE_MAP.md`](THE_MAP.md) first** — it's the orientation for the whole program. Then pick your door below.
 
 If you arrived knowing your field, jump directly to your field's results folder:
 
