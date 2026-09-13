@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 662" width="780" height="662" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="The alphabet of pre-physics: a Venn of three research worlds whose overlaps hold the shared number-theoretic substrate of physics.">
+<title>The alphabet of pre-physics</title>
+<desc>Three overlapping worlds — dynamics and flows, quantum and spectra, arithmetic and geometry — whose pairwise overlaps hold the trace formula, zeros-as-spectrum, and modular flow = knots = Farey; the shared center holds SL(2,Z), the primes, and the zeta function.</desc>
+<rect x="1.5" y="1.5" width="777" height="659" rx="14" fill="#FAF9F5" stroke="#D3D1C7" stroke-width="1"/>
+<text x="390" y="40" text-anchor="middle" font-size="21" font-weight="600" fill="#2C2C2A">the alphabet of pre-physics</text>
+<text x="390" y="62" text-anchor="middle" font-size="13" fill="#5F5E5A">where the number-theory and physics programs overlap — the letters live in the intersections</text>
+<circle cx="52" cy="92" r="6" fill="#7F77DD"/>
+<text x="66" y="96" font-size="13.5" font-weight="600" fill="#3C3489">dynamics &amp; flows</text>
+<text x="250" y="96" font-size="12" fill="#5F5E5A">Ghys · Arnold · Migdal</text>
+<circle cx="52" cy="114" r="6" fill="#1D9E75"/>
+<text x="66" y="118" font-size="13.5" font-weight="600" fill="#0F6E56">quantum &amp; spectra</text>
+<text x="250" y="118" font-size="12" fill="#5F5E5A">Berry–Keating · Montgomery–Odlyzko · Sarnak</text>
+<circle cx="52" cy="136" r="6" fill="#D85A30"/>
+<text x="66" y="140" font-size="13.5" font-weight="600" fill="#993C1D">arithmetic &amp; geometry</text>
+<text x="250" y="140" font-size="12" fill="#5F5E5A">Connes–Marcolli · Mazur–Morishita · Dragovich</text>
+<circle cx="300" cy="360" r="150" fill="#7F77DD" fill-opacity="0.2" stroke="#534AB7" stroke-width="1.5"/>
+<circle cx="480" cy="360" r="150" fill="#1D9E75" fill-opacity="0.2" stroke="#0F6E56" stroke-width="1.5"/>
+<circle cx="390" cy="500" r="150" fill="#D85A30" fill-opacity="0.2" stroke="#993C1D" stroke-width="1.5"/>
+<circle cx="390" cy="407" r="52" fill="none" stroke="#5F5E5A" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="210" y="342" text-anchor="middle" font-size="14" fill="#2C2C2A">mode-locking</text>
+<text x="570" y="342" text-anchor="middle" font-size="14" fill="#2C2C2A">GUE matrices</text>
+<text x="390" y="592" text-anchor="middle" font-size="14" fill="#2C2C2A">adeles · Langlands</text>
+<text x="390" y="318" text-anchor="middle" font-size="14.5" font-weight="600" fill="#2C2C2A">trace formula</text>
+<text x="390" y="335" text-anchor="middle" font-size="12" fill="#5F5E5A">orbits = eigenvalues</text>
+<text x="472" y="468" text-anchor="middle" font-size="14.5" font-weight="600" fill="#2C2C2A">zeros = spectrum</text>
+<text x="300" y="462" text-anchor="middle" font-size="14.5" font-weight="600" fill="#2C2C2A">modular flow</text>
+<text x="300" y="479" text-anchor="middle" font-size="13" fill="#5F5E5A">= knots = Farey</text>
+<text x="390" y="403" text-anchor="middle" font-size="14.5" font-weight="600" fill="#26215C">SL(2,ℤ)</text>
+<text x="390" y="420" text-anchor="middle" font-size="14.5" font-weight="600" fill="#26215C">primes · ζ</text>
+<text x="390" y="640" text-anchor="middle" font-size="11.5" fill="#888780">center = the shared, pre-physical alphabet · grammar = the trace formula that translates one side into the other</text>
+</svg>

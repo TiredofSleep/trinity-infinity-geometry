@@ -1,3 +1,13 @@
+<p align="center">
+  <a href="THE_MAP.md"><img src="docs/alphabet-of-prephysics.svg" alt="The alphabet of pre-physics" width="720"></a>
+</p>
+
+<h3 align="center">▶ The map — start here: <a href="THE_MAP.md">THE_MAP.md</a></h3>
+
+<p align="center"><em>the alphabet of pre-physics, and the classification of paradox — the orientation for the whole program:<br>the number-theory ↔ physics dictionary six programs share, the pre-physical alphabet at its center (SL(2,&#8484;), primes, &#950;), and this project's own contribution — the classification of paradox as information.</em></p>
+
+---
+
 # Trinity Infinity Geometry
 
 A research program on finite-arithmetic substrates and the algebraic structures they generate.
