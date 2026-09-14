@@ -79,7 +79,7 @@ This is exact for all such semiprimes (since exactly two elements of $\{1,\dots,
 
 **Result.** Measured coherence threshold = $0.7143 \pm 0.0007$, matching $T^\* = 5/7$ to ~0.05%.
 
-**Proof / verification.** Hardware measurement, not closed-form. `06_runtime/README.md` line 147; `LICENSE_v2.1_canonical.md` line 64.
+**Proof / verification.** Hardware measurement, not closed-form. `06_runtime/README.md` line 147.
 
 **Tier.** Empirical / engineering verification, not algebraic derivation. *Independent in the sense that hardware doesn't know about Z/10Z*; structurally dependent in the sense that the bitstream encodes T\* as a target value calibrated from §1.5 above (per WP35 §2.1: "CK was not calibrated to an arbitrary constant — it was calibrated to the unit density of the minimal strong semiprime at the second gate").
 

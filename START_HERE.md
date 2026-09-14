@@ -31,7 +31,7 @@ If you want the **honest limits** before you commit your attention: [`04_meta/HO
 
 If you want the **complete reference**: [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md).
 
-The license is [`LICENSE`](LICENSE) — 7SiTe Public Sovereignty v2.2. Noncommercial, ShareAlike, no government, no enclosure, no coercion, AI welcome.
+The license is [`LICENSE`](LICENSE) — open source: **CC BY-SA 4.0** for content, **GPL-3.0-or-later** for code. ShareAlike copyleft: attribution required, derivatives stay open, commercial use allowed, AI welcome.
 
 Welcome.
 

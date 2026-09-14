@@ -273,7 +273,7 @@ Falsifiable predictions: (i) Yb-171 $\alpha^{-1}$ measurement closer to framewor
 
 ---
 
-*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under 7SiTe Public Sovereignty License v2.1.*
+*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: Numerical formula, structural interpretation, Cs vs Rb context. Claimed 22 = |TSML ⊕ BHML|.*

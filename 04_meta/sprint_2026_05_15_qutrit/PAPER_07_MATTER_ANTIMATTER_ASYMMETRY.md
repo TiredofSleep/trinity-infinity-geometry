@@ -389,7 +389,7 @@ The author thanks the Trinity Infinity Geometry collaboration for substrate-arit
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: 4-cell asymmetry from σ-fixed lattice; quantitative compounding sketch.*

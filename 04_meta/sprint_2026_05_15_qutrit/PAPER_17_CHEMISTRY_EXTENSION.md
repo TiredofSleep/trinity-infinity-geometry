@@ -341,7 +341,7 @@ The originating direction (extension pass into chemistry following the multi-sub
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Originating direction: Brayden Sanders. Chemistry execution and statistical verification: collaborative with Claude (Anthropic). The honest retraction of the bond-angle decomposition and the clarified scope of framework signatures in chemistry are documented as work-in-progress; specific predictions await empirical testing.*
 

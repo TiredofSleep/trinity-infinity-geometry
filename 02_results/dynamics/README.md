@@ -44,4 +44,4 @@ J35 (J. Algebra) and J02 (Algebraic Combinatorics) carry the closed-form attract
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*

@@ -95,6 +95,6 @@ What you make of them is yours.
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE). The license guarantees that this work remains freely available for human study, learning, mutual aid, and noncommercial use, and that it cannot be enclosed by any commercial, governmental, or coercive interest.*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE). The license guarantees that this work remains freely available for human study, learning, mutual aid, and noncommercial use, and that it cannot be enclosed by any commercial, governmental, or coercive interest.*
 
 *Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2026*

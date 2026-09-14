@@ -40,4 +40,4 @@ python ../../05_papers/algebra/J15/manuscript/verify_J15_galois.py    # Galois D
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*

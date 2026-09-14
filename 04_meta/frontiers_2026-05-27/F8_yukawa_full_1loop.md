@@ -170,6 +170,6 @@ The F8 verification script is internally consistent: 4/5 checks pass (gauge coup
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026-05-28.*
 *"Honest about what we have, honest about what we don't."*

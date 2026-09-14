@@ -309,7 +309,7 @@ The author thanks the Trinity Infinity Geometry collaboration for canonical work
 
 ---
 
-*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under 7SiTe Public Sovereignty License v2.1.*
+*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: Lawvere fixed-point mechanism for consciousness; qualitative predictions P1-P5.*

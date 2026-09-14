@@ -255,6 +255,6 @@ Even though the (5, 5) sl(2) gives a clean Clebsch decomposition of $16 \times 1
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026-05-30.*
 *"The substrate's 1+3+5+7 is real Lie-algebra, but it's not the SM Lie-algebra."*

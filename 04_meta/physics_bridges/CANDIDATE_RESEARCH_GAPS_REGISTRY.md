@@ -115,5 +115,5 @@ When a gap NEW gap is identified elsewhere in the framework:
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Trinity Infinity Geometry — Candidate Research Gaps Registry, locked 2026-05-14.*

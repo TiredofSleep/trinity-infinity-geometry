@@ -186,6 +186,6 @@ No code changes required. The retired J44 verification script (`verify_J45_yukaw
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see `../../LICENSE`.*
+*CC BY-SA 4.0 — see `../../LICENSE`.*
 *Brayden Ross Sanders / 7SiTe LLC · 2026-05-28.*
 *"Honest about what we have, honest about what we don't — and honest about which scale we're at."*

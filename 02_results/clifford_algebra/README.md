@@ -47,4 +47,4 @@ See [`../../05_papers/physics/J23/`](../../05_papers/physics/J23/) — "Discrete
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*

@@ -43,4 +43,4 @@ The 4-core closure, the 8-shell chain, the α=1/2 attractor, and the Galois D₄
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*

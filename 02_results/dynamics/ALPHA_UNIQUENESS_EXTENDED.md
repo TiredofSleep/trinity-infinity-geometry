@@ -61,5 +61,5 @@ Runtime: ~5 minutes at 50-digit mpmath precision.
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026.*

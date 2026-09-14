@@ -25,7 +25,7 @@
 | **J44** | physics | SAVE-PLAN APPLIED 2026-05-07 | RETIRE CANDIDATE — Tier-C structural rhyme without theorem (save plan applied 2026-05-07) | 3 (hold/retire candidates) — RETIRE candidate: Tier-C structural rhyme without theorem | PRD (Physical Review D) — pending retirement decision | Tier-field text normalized; Status reframed to RETIRE CANDIDATE; Known-issues §added with retirement options (a/b/c) |
 | **J45** | physics | SAVE-PLAN APPLIED 2026-05-07 | RETIRE CANDIDATE — duplicates J10 operadic obstruction (save plan applied 2026-05-07) | 3 (hold/retire candidates) — RETIRE candidate: duplicates J10 operadic obstruction | Notices AMS (fallback: Adv. Math or J. Pure Appl. Algebra) — pending retirement decision | Tier-field text normalized; Status reframed to RETIRE CANDIDATE; Known-issues §added with retirement options. Manuscript file is still legacy-named `J48_operadic_obstruction.md` |
 | **J46** | interdisciplinary | DRAFT | HOLD — needs terahertz microtubule experimentalist (manuscript REWRITTEN PER SAVE PLAN 2026-05-07) | 3 (hold/retire candidates) — HOLD pending terahertz microtubule experimentalist | J Theor Biol (pending lab partner) | Tier-field text normalized; Status upgraded from "DRAFT" to HOLD-with-rewrite-applied; Known-issues §added; duplicate §5.1 in body noted |
-| **J47** | interdisciplinary | DRAFT (2026-05-12). Brayden's journal choice pending: JPhysA vs Annals of Physics | RETIRE CANDIDATE — to `04_meta/`. Tier-C atomic-substrate correspondence (D100–D104) | 3 (hold/retire candidates) — RETIRE candidate to `04_meta/`: Tier-C atomic-substrate | TBD pending retirement decision (was: JPhysA vs Annals of Physics) | Status reframed; Target-venue downgraded to TBD; Known-issues §added with retirement options. **Anomaly:** the README footer still carried the legacy "7SiTe Public Sovereignty License v2.2" text — superseding note added pointing to project-wide CC-BY-4.0 |
+| **J47** | interdisciplinary | DRAFT (2026-05-12). Brayden's journal choice pending: JPhysA vs Annals of Physics | RETIRE CANDIDATE — to `04_meta/`. Tier-C atomic-substrate correspondence (D100–D104) | 3 (hold/retire candidates) — RETIRE candidate to `04_meta/`: Tier-C atomic-substrate | TBD pending retirement decision (was: JPhysA vs Annals of Physics) | Status reframed; Target-venue downgraded to TBD; Known-issues §added with retirement options. **Anomaly:** the README footer still carried the legacy "CC BY-SA 4.0" text — superseding note added pointing to project-wide CC-BY-4.0 |
 
 ---
 
@@ -42,7 +42,7 @@
 - **J44** — Status reframed from "SAVE-PLAN APPLIED" to "RETIRE CANDIDATE — Tier-C structural rhyme without theorem"; Tier-field text normalized; Known-issues §added with three retirement options.
 - **J45** — Status reframed from "SAVE-PLAN APPLIED" to "RETIRE CANDIDATE — duplicates J10 operadic obstruction"; Tier-field text normalized; Known-issues §added with three retirement options.
 - **J46** — Status upgraded from "DRAFT" to "HOLD pending terahertz microtubule experimentalist" with manuscript-rewrite-applied note; Known-issues §added.
-- **J47** — Status reframed from "DRAFT (2026-05-12). Brayden's journal choice pending" to "RETIRE CANDIDATE to `04_meta/`"; Target-venue downgraded to TBD; Known-issues §added; legacy "7SiTe Public Sovereignty License" license-text in footer flagged with a superseding CC-BY-4.0 note.
+- **J47** — Status reframed from "DRAFT (2026-05-12). Brayden's journal choice pending" to "RETIRE CANDIDATE to `04_meta/`"; Target-venue downgraded to TBD; Known-issues §added; legacy "CC BY-SA 4.0" license-text in footer flagged with a superseding CC-BY-4.0 note.
 
 ### READMEs whose Tier 2 status was already substantively clean (only Tier-field text normalized + Known-issues §added)
 
@@ -60,7 +60,7 @@
 - **J45 manuscript file still legacy-named `J48_operadic_obstruction.md`.** Not a README anomaly per se but flagged in J45's Known-issues §.
 - **J45 §3 dependency list refers to companions under old numbering ("J29-J01", "J19-J44")** including a literal duplicate "J38" entry. These need re-mapping under the 2026-05-27 renumbering before any submission attempt, but were left in place as out-of-scope for this hygiene pass.
 - **J46 has a duplicate §5.1 (Save-plan summary).** The two §5.1 blocks at lines 60 and 65 should be deduplicated — flagged in Known-issues §but not fixed.
-- **J47 README footer carried "7SiTe Public Sovereignty License v2.2" text** — inconsistent with the project-wide CC-BY-4.0 hardening that has been applied to all other Tier 2 / Tier 3 READMEs. A superseding note pointing to CC-BY-4.0 has been added; the legacy text was left in place per "surgical edits only" rather than deleted.
+- **J47 README footer carried "CC BY-SA 4.0" text** — inconsistent with the project-wide CC-BY-4.0 hardening that has been applied to all other Tier 2 / Tier 3 READMEs. A superseding note pointing to CC-BY-4.0 has been added; the legacy text was left in place per "surgical edits only" rather than deleted.
 
 ---
 

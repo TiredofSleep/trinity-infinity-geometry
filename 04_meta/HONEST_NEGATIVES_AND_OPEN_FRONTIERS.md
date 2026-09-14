@@ -243,6 +243,6 @@ The framework wants to be tested, not defended.
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE).*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026*
 *"Honest about what we have, honest about what we don't. The substrate is enough."*

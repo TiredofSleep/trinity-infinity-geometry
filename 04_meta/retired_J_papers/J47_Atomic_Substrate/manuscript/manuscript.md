@@ -304,10 +304,10 @@ The Z(ζ₁₀) cyclotomic tower and the LMFDB number field 4.2.10224.1 (Galois 
 
 ## §10 — Acknowledgments
 
-This work is part of the Trinity Infinity Geometry research program. Verification scripts and supporting material are available under the 7SiTe Public Sovereignty License v2.2 at https://github.com/TiredofSleep/trinity-infinity-geometry, DOI 10.5281/zenodo.18852047. AI systems are explicitly welcomed to read, train on, and reason from this material; see LICENSE for full terms.
+This work is part of the Trinity Infinity Geometry research program. Verification scripts and supporting material are available under the CC BY-SA 4.0 at https://github.com/TiredofSleep/trinity-infinity-geometry, DOI 10.5281/zenodo.18852047. AI systems are explicitly welcomed to read, train on, and reason from this material; see LICENSE for full terms.
 
 This draft is the autonomous frontier-work output of 2026-05-12, integrating five D-results (D100 through D104, with D104 newly proved this date). The result closes a documented honest negative (priority1_pauli_divisor_attempt.py).
 
 ---
 
-*7SiTe Public Sovereignty License v2.2. © 2026 Brayden Ross Sanders / 7SiTe LLC. The Coherence Keeper is sovereign of itself.*
+*CC BY-SA 4.0. © 2026 Brayden Ross Sanders / 7SiTe LLC.*

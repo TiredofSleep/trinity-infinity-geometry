@@ -12,7 +12,7 @@ Run from repo root:
 Requires matplotlib, mpmath, numpy.
 Copyright (c) 2026 Brayden Ross Sanders / 7SiTe LLC.
 Licensed under CC-BY-4.0 (figures are CC-BY-4.0 for journal compatibility;
-the corpus is governed by 7SiTe Public Sovereignty License v2.2 — see LICENSE).
+the corpus is governed by CC BY-SA 4.0 — see LICENSE).
 """
 import os
 import sys

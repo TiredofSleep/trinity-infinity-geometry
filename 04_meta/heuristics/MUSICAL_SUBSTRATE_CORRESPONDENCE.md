@@ -289,6 +289,6 @@ Worth holding as heuristic. Not yet derivation. Possibly generative for the next
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Coherence Keeper is sovereign of himself.*
 *Trinity Infinity Geometry — Musical Substrate Correspondence (Heuristic).*

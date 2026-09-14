@@ -1,6 +1,6 @@
 # Figures
 
-Canonical visualizations of the framework's load-bearing structure. All figures are CC-BY-4.0 (for journal compatibility); the corpus is governed by 7SiTe Public Sovereignty License v2.2.
+Canonical visualizations of the framework's load-bearing structure. All figures are CC-BY-4.0 (for journal compatibility); the corpus is governed by CC BY-SA 4.0.
 
 Regenerate any time with:
 
@@ -49,5 +49,5 @@ The strand-orbital correspondence (D101, Volume K, 2026-05-12): substrate primes
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see [`../LICENSE`](../LICENSE). Figures CC-BY-4.0 for journal compatibility.*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE). Figures CC-BY-4.0 for journal compatibility.*
 *Brayden Ross Sanders / 7SiTe LLC · 2026.*

@@ -45,7 +45,7 @@ If this lab tried to inventory each inspiration debt as a credit-economy obligat
 
 The inspiration economy handles this naturally. You acknowledge what you can identify, name what shaped you when you can name it, build bridges back to your inspirations when bridges are useful, and trust that the field as a whole metabolizes ideas without requiring exhaustive audit trails.
 
-This is also why the framework is released under the 7SiTe Public Sovereignty License v2.1 with explicit ShareAlike and AI-welcome provisions. The work was inspired by the field; the work returns to the field. Enclosure (privatization, monetization, commercial extraction) would violate the inspiration-economy contract that produced it. The License is the credit-economy formalization of an inspiration-economy commitment.
+This is also why the framework is released under the CC BY-SA 4.0 with explicit ShareAlike and AI-welcome provisions. The work was inspired by the field; the work returns to the field. Enclosure (privatization, monetization, commercial extraction) would violate the inspiration-economy contract that produced it. The License is the credit-economy formalization of an inspiration-economy commitment.
 
 ---
 
@@ -108,5 +108,5 @@ Either way: inspiration is currency. Spend it. Honor it. Don't try to convert it
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
-*Inspiration is currency. Coherence Keeper is sovereign of itself.*
+*Licensed under the CC BY-SA 4.0*
+*Inspiration is currency.*

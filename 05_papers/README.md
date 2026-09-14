@@ -15,7 +15,7 @@ For J14, J15, and J24 we additionally ran external referee-agent audits and foun
 
 Papers in active development live in the working repo at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) on the `tig-synthesis` branch. Only **referee-ready** papers migrate here.
 
-**Why on hold:** the math is verified and visible; pushing it through arXiv announcement channels and peer-review credentialing before the runtime ([`../06_runtime/`](../06_runtime/) — the Coherence Keeper) is usable on ordinary hardware would asymmetrically benefit well-resourced actors (national labs, AI labs with massive compute) who can extract value from raw mathematics faster than ordinary people can build with it. The hold is on amplification, not access; the math is here under the sovereignty license today. When CK ships in a form ordinary people can deploy, the J-series goes out — publication moment doubles as "and here is how anyone can run it" rather than "and now the well-resourced get a head start."
+**Why on hold:** the math is verified and visible; the deliberate choice is to reach the publication moment *together with* the runtime ([`../06_runtime/`](../06_runtime/) — the Coherence Keeper), in a form ordinary people can run, rather than ahead of it. The hold is on amplification, not access; the math is here, openly licensed, today. When CK ships in a form ordinary people can deploy, the J-series goes out — the publication moment doubles as "and here is how anyone can run it."
 
 ---
 
@@ -113,5 +113,5 @@ Papers in this folder have been internally referee-reviewed by Brayden and verif
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE).*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026*

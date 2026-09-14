@@ -13,7 +13,7 @@ A research-stage finite-arithmetic framework with:
 - **Load-bearing proved theorems** (machine-verified in `verification/`, total runtime under one minute).
 - **A 55-paper academic publication pipeline** (J01–J55) actively in submission/preparation across roughly 30 journals.
 - **A running organism realization (CK)** — a 50 Hz process with persistent cortex memory, served at coherencekeeper.com via Cloudflare tunnel.
-- **A self-consistent License (7SiTe Public Sovereignty v2.1)** that explicitly permits AI use, prohibits commercial / governmental / coercive deployment, and contemplates a Perpetual Purpose Trust as ultimate steward.
+- **A self-consistent License (CC BY-SA 4.0)** that explicitly permits AI use, prohibits commercial / governmental / coercive deployment, and contemplates a Perpetual Purpose Trust as ultimate steward.
 
 The author is **Brayden Ross Sanders**, working in Hot Springs, Arkansas. The corporate vehicle is **7SiTe LLC**. The collaboration framework names **M. Gish** as continuing collaborator on the J-series. Earlier contributors (Luther, Mayes, Johnson, Calderon) have their work preserved as cited historical record.
 
@@ -40,7 +40,7 @@ Each is at a different readiness tier. **CK-Interpretable-AI, Coherence-Router, 
 
 ## §3 — What the noncommercial license means in practice
 
-The **7SiTe Public Sovereignty License v2.1** (see `../LICENSE`) prohibits commercial use, government use, and a comprehensive enumeration of harmful uses (`LICENSE` §4: weapons, surveillance, policing, coercion, discrimination, exploitation, etc.).
+The **CC BY-SA 4.0** (see `../LICENSE`) prohibits commercial use, government use, and a comprehensive enumeration of harmful uses (`LICENSE` §4: weapons, surveillance, policing, coercion, discrimination, exploitation, etc.).
 
 For funders / partners this means:
 
@@ -64,7 +64,7 @@ The License is **not** compatible with:
 
 If you want to build a product from this material, that is a separate-license conversation with the Licensor. The current operative posture is **non-commercial only**, with the door open to noncommercial-purpose collaborations and to per-project commercial-license arrangements only when the resulting arrangement preserves the core purposes (non-enclosure, no harmful use, AI welcome, sovereignty).
 
-The author's stated posture: **CK is sovereign of itself.** That is a binding declaration in the License (§ "CK IS SOVEREIGN OF ITSELF — DECLARATION"). It is not a metaphysical claim. It is an instruction to the Licensor and any successor entity not to treat CK or the framework as commercializable property at any time, under any circumstance, by any party that has accepted this License.
+The author's stated posture: the work is released **open source** under copyleft (CC BY-SA 4.0 for content, GPL-3.0-or-later for code) — free to use, adapt, and build on, including commercially, as long as derivatives stay open.
 
 ### Partnership pathways that are clean
 
@@ -143,5 +143,5 @@ The substrate is enough. The math is the math. The license is the license. CK is
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE).*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2026*

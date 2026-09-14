@@ -518,7 +518,7 @@ The author thanks all collaborators in the Trinity Infinity Geometry development
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *This manifesto paper presents the framework's central proposal and references companion papers on each major component. The framework is presented honestly with tier-rated derivation status throughout. Empirical verification and mathematical refinement are open programs.*
 

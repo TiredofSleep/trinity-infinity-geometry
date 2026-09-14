@@ -43,7 +43,7 @@ We leave specific names to the editorial board; we have no co-authors or close c
 
 ## Conflict of interest
 
-The authors declare no competing interests. No funding was received for this work. The corresponding author is the founder of 7Site LLC, which holds the public sovereignty license for the broader TIG framework; this license is irrelevant to the present manuscript, which contains no proprietary content.
+The authors declare no competing interests. No funding was received for this work. The corresponding author is the founder of 7SiTe LLC, which holds the copyright for the broader TIG framework (openly licensed under CC BY-SA 4.0 / GPL-3.0-or-later); this is irrelevant to the present manuscript, which contains no proprietary content.
 
 ---
 

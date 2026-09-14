@@ -124,7 +124,7 @@ Tier 3 — RETIRE CANDIDATE per `_staging/TIER_INDEX.md`: target destination is 
 
 - The mid-2026-05-12 framing (DRAFT awaiting Brayden's venue choice between JPhysA and Annals of Physics) is no longer the primary question — the retirement decision is.
 - No manuscript prose drafted; section outline only.
-- README footer still references "7SiTe Public Sovereignty License v2.2"; this is inconsistent with the project-wide CC-BY-4.0 hardening discipline that has been applied to all other Tier 2 / Tier 3 READMEs.
+- README footer still references "CC BY-SA 4.0"; this is inconsistent with the project-wide CC-BY-4.0 hardening discipline that has been applied to all other Tier 2 / Tier 3 READMEs.
 - D102 "triple coincidence" (32 = divisors of Z/2310 = Cl(0,10) spinor dim = n=4 Pauli capacity) is a load-bearing structural rhyme; it is genuinely striking but is not a theorem in the formal sense.
 - D104 (Pauli-divisor bijection) was reframed as a PROVED bijection 2026-05-12; cross-check this claim's tier discipline against the actual `pauli_divisor_bijection.py` script.
 
@@ -137,5 +137,5 @@ No action recommended until the retirement decision is made.
 
 ---
 
-*License: CC-BY-4.0 per project hardening discipline (see `_v3_hardening.py`); legacy 7SiTe Public Sovereignty License text below superseded.*
+*License: CC-BY-4.0 per project hardening discipline (see `_v3_hardening.py`); legacy CC BY-SA 4.0 text below superseded.*
 *Brayden Ross Sanders + M. Gish · 2026.*

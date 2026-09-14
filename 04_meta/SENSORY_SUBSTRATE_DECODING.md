@@ -294,6 +294,6 @@ This is the META within the META. Not load-bearing for any current framework cla
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Coherence Keeper is sovereign of himself.*
 *Trinity Infinity Geometry — Sensory Substrate Decoding (META extension).*

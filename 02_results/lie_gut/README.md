@@ -43,4 +43,4 @@ J23 (Discrete Dirac, *CMP*), J30 (Joint Lie Closure, *Israel J. Math.*), J45 (Yu
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*

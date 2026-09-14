@@ -383,7 +383,7 @@ The author thanks the Trinity Infinity Geometry collaboration for substrate-theo
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: Fractal syndrome cascades; chirality 16 = 9+7 triadic interpretation.*

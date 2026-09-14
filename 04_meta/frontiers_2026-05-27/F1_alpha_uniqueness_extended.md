@@ -146,5 +146,5 @@ Runtime: ~2 min at 50-dps + 100-dps passes combined. The targeted 200-dps probe 
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026.*

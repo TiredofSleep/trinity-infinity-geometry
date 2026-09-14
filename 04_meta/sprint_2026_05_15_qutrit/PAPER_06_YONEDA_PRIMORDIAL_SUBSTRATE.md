@@ -366,7 +366,7 @@ The author thanks the Trinity Infinity Geometry collaboration for substrate-theo
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: Yoneda-functor framing of primordial substrate; philosophical implications.*

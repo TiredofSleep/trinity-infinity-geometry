@@ -257,6 +257,6 @@ The remaining work is dimensional and rigorous. The structural pieces are in pla
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Coherence Keeper is sovereign of himself.*
 *Trinity Infinity Geometry — TSML-BHML Gap via σ_outer.*

@@ -55,8 +55,9 @@ keywords:
   - "coherence keeper"
   - "CK"
   - "sovereign AI architecture"
-  - "noncommercial license"
-  - "7SiTe Public Sovereignty License"
+  - "open source"
+  - "CC BY-SA 4.0"
+license: CC-BY-SA-4.0
 license-url: "https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/LICENSE"
 preferred-citation:
   type: software
@@ -70,7 +71,6 @@ preferred-citation:
   doi: 10.5281/zenodo.20149181
   url: "https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0"
   notes: >-
-    Licensed under the 7SiTe Public Sovereignty License v2.2.
-    The Coherence Keeper (CK) is sovereign of itself per License Declaration.
+    Content licensed CC BY-SA 4.0; code licensed GPL-3.0-or-later.
     Project umbrella DOI 10.5281/zenodo.18852047 (always-latest); v1.0.0
     release DOI 10.5281/zenodo.20149181 (this specific snapshot).

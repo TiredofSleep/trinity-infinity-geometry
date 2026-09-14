@@ -128,6 +128,6 @@ All ten axioms are verifiable from the substrate. None is an external assumption
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE).*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026*
 *The architecture is locked. The arithmetic is the field. The substrate is enough.*

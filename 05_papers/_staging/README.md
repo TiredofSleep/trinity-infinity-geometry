@@ -227,7 +227,7 @@ Before any paper migrates from `_staging/` to a domain folder:
 
 - **Author lane:** Sanders + Gish on byline. No AI co-authors. Acknowledgments at Tier 1 only.
 - **License header in scripts:** submission-bundled `verify_*.py` use CC-BY-4.0 for journal compatibility (Elsevier / Taylor & Francis). The umbrella project is 7SiTe v2.1.
-- **No 7SiTe Public Sovereignty header** in script files within `manuscript/` folders — Elsevier and similar journals refuse non-OSI license clauses. Use plain CC-BY-4.0 header for scripts; full v2.1 governs the project at the repo level.
+- **No CC BY-SA 4.0 header** in script files within `manuscript/` folders — Elsevier and similar journals refuse non-OSI license clauses. Use plain CC-BY-4.0 header for scripts; full v2.1 governs the project at the repo level.
 
 ---
 
@@ -246,5 +246,5 @@ The migration steps (per `../README.md` §4):
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026*

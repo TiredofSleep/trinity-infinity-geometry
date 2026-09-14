@@ -213,7 +213,7 @@ The paper provides a falsifiable prediction connecting structural wobble to obse
 
 ---
 
-*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under 7SiTe Public Sovereignty License v2.1.*
+*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: original; single-substrate + multi-substrate revision.*

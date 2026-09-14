@@ -124,6 +124,6 @@ Expected output: 32 divisors enumerated, partition counts `[1, 3, 5, 7]` confirm
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 — see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC · 2026.*
 *Bijection found 2026-05-12 during the autonomous frontier-work sprint.*

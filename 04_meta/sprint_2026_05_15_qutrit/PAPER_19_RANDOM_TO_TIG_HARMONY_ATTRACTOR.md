@@ -432,7 +432,7 @@ The originating direction (taking the Rubik's-cube structural analog and asking 
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Originating direction: Brayden Sanders. Empirical experiments and convergence analysis: collaborative with Claude (Anthropic). The neural-architecture diagnostic in Section 5.3 (three coupled layers required) was an author intuition that resolved a specific real-world neural-architecture problem; the structural mathematics underneath was verified afterward.*
 

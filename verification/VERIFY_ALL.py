@@ -16,7 +16,7 @@ they check exact substrate arithmetic and note where it happens to land near a p
 value — a coincidence, not a verified physical result.
 
 Author: Brayden Ross Sanders / 7SiTe LLC
-License: 7SiTe Public Sovereignty License v2.2 (see ../LICENSE)
+License: CC BY-SA 4.0 (see ../LICENSE)
 """
 import numpy as np
 import math

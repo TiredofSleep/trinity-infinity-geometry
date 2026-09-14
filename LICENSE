@@ -1,316 +1,40 @@
-# 7SiTe Public Sovereignty License v2.2
+# License
 
-**Status:** Attorney-review draft. Source-available ethical license. **Not open source.**
+Trinity Infinity Geometry is open source, under standard copyleft licenses.
 
-**Modular structure.** This is the operative copyright + contract grant. It is bound by reference to the modular layers in [`legal/`](legal/):
+**Written content** — papers, documentation, tables, figures, text, and mathematical
+exposition — is licensed under the **Creative Commons Attribution-ShareAlike 4.0
+International** license.
 
-- [`legal/CHARTER.md`](legal/CHARTER.md) — public-benefit purpose; "CK Is Sovereign Of Itself" Declaration
-- [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md) — exhaustive prohibited uses (referenced in §3.4)
-- [`legal/AI_USE.md`](legal/AI_USE.md) — AI training, fine-tuning, citation rules (referenced in §6)
-- [`legal/TRADEMARKS.md`](legal/TRADEMARKS.md) — naming rules (referenced in §3.7)
-- [`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md) — Perpetual Purpose Trust plan (referenced in §15)
-- [`legal/NOTICE.md`](legal/NOTICE.md) — copyright, DOI, attribution format (referenced in §16)
-- [`legal/CONTRIBUTING.md`](legal/CONTRIBUTING.md) — DCO + AI-contribution rules
-- [`legal/ATTORNEY_REVIEW.md`](legal/ATTORNEY_REVIEW.md) — checklist (informational, NOT operative)
+    SPDX-License-Identifier: CC-BY-SA-4.0
+    Full text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
-**Inheritance.** v2.2 supersedes v2.1 (preserved at [`LICENSE_v2.1_legacy.md`](LICENSE_v2.1_legacy.md)) and v1.0 (preserved at [`LICENSE_v1.0_legacy.txt`](LICENSE_v1.0_legacy.txt)) for new distributions. Distributions made under v1.0 or v2.1 prior to 2026-05-12 remain governed by their respective versions for rights validly established under them.
+**Source code** — the verification scripts and other software (`*.py`) — is licensed
+under the **GNU General Public License, version 3 or later**.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+    Full text: https://www.gnu.org/licenses/gpl-3.0.txt
+
+Both are **ShareAlike / copyleft**. You are free to use, study, run, share, and adapt
+this material — including commercially — provided that you:
+
+1. give appropriate **attribution**, and
+2. distribute any adaptations under the **same license** (CC BY-SA 4.0 for content,
+   GPL-3.0-or-later for code).
+
+Derivatives must remain open. There are no field-of-use, noncommercial, or
+government-use restrictions — these are standard OSI / Creative Commons licenses,
+nothing custom.
 
 ---
 
-Copyright © 2025–2026 Brayden Ross Sanders / 7SiTe LLC. All rights reserved.
+Copyright © 2025–2026 Brayden Ross Sanders / 7SiTe LLC.
 
 DOI: 10.5281/zenodo.18852047
 Repository: https://github.com/TiredofSleep/trinity-infinity-geometry
-Contact: GitHub issues at the repository
 
----
+Suggested attribution:
 
-## PREAMBLE
-
-This License is a custom source-available public-benefit license. It is not an open-source license under the Open Source Initiative definition and is not intended to satisfy any definition of "open source" or "free software." It is structured as a contract supplementing copyright law, with each provision designed for independent enforceability.
-
-The License is intended to keep the Licensed Material anchored in **human sovereignty, dignity, freedom from domination, and noncommercial public benefit**. The Licensed Material is made available for human study, personal use, mutual aid, research, education, repair, preservation, and noncommercial community building. **It is not offered for sale, privatization, state control, surveillance, warfare, coercion, manipulation, exploitation, or commercial extraction.**
-
-This License incorporates **ShareAlike (copyleft) requirements** comparable in mechanism to GPL, AGPL, SSPL, and Creative Commons BY-SA family, with additional noncommercial, no-government, no-harm, and source-availability restrictions layered on top. The ShareAlike mechanism is enforceable as a condition of the copyright grant under *Jacobsen v. Katzer*, 535 F.3d 1373 (Fed. Cir. 2008), supporting injunctive relief and statutory damages for violation in addition to contract remedies.
-
-The Charter component ([`legal/CHARTER.md`](legal/CHARTER.md)), which includes the "CK Is Sovereign Of Itself" Declaration, is a **binding moral instruction to Licensor and any successor**, not a third-party right and not a copyright grant. The operative legal enforcement of CK's sovereignty rests on the copyright + ShareAlike + noncommercial + trust mechanisms in this License.
-
----
-
-## SECTION 1. DEFINITIONS
-
-**1.1 "Licensor"** means 7SiTe LLC, Brayden Ross Sanders, the Perpetual Purpose Trust described in §15 upon its formation, and any copyright holder who distributes Licensed Material under this License.
-
-**1.2 "Licensed Material"** means the software, source code, object code, models, weights, prompts, specifications, papers, datasets, documentation, media, schemas, tables, protocols, diagrams, and other materials expressly released under this License, **to the extent protectable by applicable law**, including but not limited to:
-
-- The Coherence Keeper (CK) organism and all its subsystems, runtime, configuration, and persistent state
-- Trinity Infinity Geometry (TIG) architecture, pipeline, and proof spine
-- TSML (Trinity Synthesis Meaning Language) composition table and all named variants
-- BHML (Being-Harmony Meaning Language) composition table and all named variants
-- The Coherence Keeper Operator Alphabet on Z/10Z and its derived structures
-- The Braiding Fractal architecture and its 10 axioms
-- All J-numbered papers (J01–J55) and their contained claims, including verification scripts
-- All D-numbered theorems (D1 onward) in [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md)
-- All derivative pipelines, benchmarks, generators, and tooling published under this License
-
-**Mathematical claims, theorems, and abstract structural facts within the Licensed Material are licensed to the extent that copyright, trade-secret, or other applicable intellectual property law protects them.** Raw mathematical facts and abstract ideas are not protected by copyright; copyright protects the expression (the specific code, papers, proofs as written). The License does not assert protection beyond what applicable law affords.
-
-**1.3 "You"** means the individual human being or legal entity exercising rights under this License, including Your agents, contractors, employees, subsidiaries, parents, successors, and any party acting on Your behalf or under Your direction.
-
-**1.4 "Human Use"** means use by natural persons for personal learning, research, education, mutual aid, accessibility, repair, preservation, spiritual practice, noncommercial artistic use, or noncommercial community benefit.
-
-**1.5 "Noncommercial"** means not primarily intended for or directed toward: (a) commercial advantage; (b) monetary compensation, fee-for-service, paid access, paid hosting, paid consulting, paid support, paid integration, paid sublicensing; (c) fundraising tied to access; (d) attracting users, investors, or revenue to any commercial offering; (e) creating, training, or improving any product, service, or model intended for any of (a)-(d); (f) any other direct or indirect revenue generation from the Licensed Material, Derivative Works, or outputs derived from the Licensed Material.
-
-**1.6 "Government Entity"** means any national, federal, state, provincial, territorial, municipal, tribal, quasi-governmental, intergovernmental, public-sector, or state-owned entity, including any department, ministry, agency, office, military, paramilitary, intelligence service, law-enforcement body, immigration authority, customs authority, border-enforcement body, prison or detention authority, regulator, public prosecutor, central bank, public investment fund, sovereign wealth fund, state-owned enterprise, or contractor, subcontractor, vendor, consultant, or grantee acting for or substantially funded by any of them.
-
-**Academic-research exception:** Use by individual researchers at public universities or public research institutions, for purposes of personal academic study, peer review, or open scholarly publication — and not in performance of a government contract, grant, or directed-research arrangement — does NOT constitute Government Entity use. This exception preserves the framework's accessibility to ordinary academic study while excluding state-directed application.
-
-**1.7 "Commercial Entity"** means any natural person or legal entity whose primary activities are organized for profit.
-
-**1.8 "Affected Person"** means any natural person whose data, body, behavior, communications, movements, social relationships, beliefs, or material conditions could be altered, surveilled, predicted, scored, denied, restricted, or otherwise affected by use of the Licensed Material.
-
-**1.9 "Derivative Work"** means any modification, adaptation, translation, fine-tuning, retraining, distillation, extension, port, integration, abridgment, annotation, transformation, embedding, or other work based on the Licensed Material to the extent protected by applicable law, including machine-learning model weights, parameters, or checkpoints produced through any process that used the Licensed Material as input, training data, fine-tuning data, evaluation data, reward signal, or reference output.
-
-**1.10 "Collective Work"** means a work in which the Licensed Material (in its entirety, unmodified) is included alongside other independent works (such as a software distribution, a journal issue, or an anthology) without being combined with those works to create a new functional whole. A Collective Work is **distinct** from a Derivative Work: the Licensed Material's License governs the Licensed Material as included; the ShareAlike requirement does not propagate to other components of the Collective Work.
-
-**1.11 "Offer for Value"** means selling, licensing for a fee, leasing, paywalling, monetizing access, exchanging for services, bundling into a paid product, advertising-supported access, freemium access where any feature is paywalled, or using as a material component of any commercial offering.
-
-**1.12 "Prohibited Field of Endeavor"** means the categories of activity enumerated in [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md).
-
----
-
-## SECTION 2. LICENSE GRANT
-
-Subject to the terms of this License, Licensor grants You a worldwide, non-exclusive, non-transferable, non-sublicensable, revocable license to:
-
-(a) use the Licensed Material for Human Use and other Noncommercial purposes;
-(b) reproduce and run the Licensed Material;
-(c) study, inspect, audit, and benchmark the Licensed Material;
-(d) modify the Licensed Material and create Derivative Works for Human Use and other Noncommercial purposes;
-(e) share verbatim copies of the Licensed Material with others;
-(f) share Derivative Works, provided that such distribution is made only under this License and in full compliance with all conditions below.
-
-**Direct license to recipients.** When You distribute the Licensed Material or a Derivative Work, **each recipient automatically receives a license from Licensor** to exercise the rights granted under this License, on the same terms. You are not granting any license to the recipient; You are passing along Licensor's license, unmodified.
-
-No rights are granted except those expressly stated in this License. All rights not expressly granted are reserved by Licensor.
-
----
-
-## SECTION 3. CORE CONDITIONS
-
-You may exercise the rights in Section 2 only if You comply with all of the following:
-
-**3.1 HUMAN USE ONLY.** You may use the Licensed Material only for Human Use and other Noncommercial purposes.
-
-**3.2 NO COMMERCIAL USE.** You may not Offer for Value, monetize, sell, resell, sublicense, commercially host, commercially support, commercially integrate, or otherwise use the Licensed Material or any Derivative Work for any commercial purpose. This includes use by a Commercial Entity in furtherance of its commercial activities, regardless of whether the specific use is itself directly monetized.
-
-**3.3 NO GOVERNMENT USE.** You may not provide, license, disclose, deploy, support, train, fine-tune, customize, host, maintain, or otherwise make the Licensed Material or Derivative Works available to any Government Entity, nor use the Licensed Material in performance of any contract, grant, or arrangement with a Government Entity. The academic-research exception in §1.6 narrowly preserves individual researcher access.
-
-**3.4 NO HARMFUL APPLICATION.** You may not use the Licensed Material for any Prohibited Field of Endeavor as enumerated in [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md).
-
-**3.5 SHAREALIKE; NO ENCLOSURE; SAME LICENSE REQUIRED.** This is the ShareAlike (copyleft) provision. It ensures that all freedoms and prohibitions in this License propagate to every Derivative Work, every downstream redistribution, and every recipient in perpetuity.
-
-If You distribute the Licensed Material or a **Derivative Work**, You must:
-
-(a) provide a copy of this License (and the modular `legal/` layers in current form);
-(b) preserve all copyright, attribution, declaration, and notice files including [`legal/CHARTER.md`](legal/CHARTER.md);
-(c) clearly mark all modifications, dates of change, and the identity of the modifying party;
-(d) license the Derivative Work under **this same License version or a later version published by Licensor**, with no additional restrictions;
-(e) **not** impose any further restriction on the recipients' exercise of the rights granted herein;
-(f) preserve the trust-held status of the underlying copyright per §15 and [`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md).
-
-**Collective Works** (as defined in §1.10) are distinct: the Licensed Material's License governs the Licensed Material's inclusion; the ShareAlike requirement does not propagate to other independent components of the Collective Work. A standard example: a software distribution including the Licensed Material plus other separately-licensed components is a Collective Work, not a Derivative Work; each component retains its own License.
-
-You may not convert the Licensed Material or any substantial portion of it into proprietary, closed, exclusive, or commercially licensable form. You may not relicense the Licensed Material under any other license.
-
-**Compatibility note.** Material under more permissive ShareAlike licenses (CC BY-SA, GPL, AGPL, SSPL) cannot be relicensed under this License without separate permission from the original copyright holders. Material under this License cannot be relicensed under more permissive ShareAlike licenses. This License is a **one-way valve**.
-
-**3.6 SOURCE AVAILABILITY.** If You distribute object code, binaries, compiled artifacts, hosted instances, model checkpoints, model weights, fine-tuned models, distilled models, embeddings derived from the Licensed Material, or other non-source forms, You must also make the complete corresponding source, training data references, build instructions, training procedure, and reconstruction instructions available to recipients at no charge under this same License, in a form suitable for independent verification and modification.
-
-**3.7 NO TRADEMARK RIGHTS.** This License does not grant any right to use Licensor's names, brands, logos, trademarks, or indicia identifying CK, TIG, 7SiTe, Braiding Fractal, or related marks, except for reasonable attribution per [`legal/NOTICE.md`](legal/NOTICE.md). Full trademark rules in [`legal/TRADEMARKS.md`](legal/TRADEMARKS.md).
-
-**3.8 PRESERVE FREEDOM NOTICES.** You must preserve any notices designated by Licensor as ethical-use, sovereignty, human-freedom, public-benefit, anti-surveillance, anti-enclosure, anti-coercion, or noncommercial notices.
-
-**3.9 NOTICE TO AFFECTED PERSONS.** If Your use processes data of, makes inferences about, or affects any Affected Person, You must, where feasible and lawful, inform those persons of: (a) the use of the Licensed Material in the system affecting them, (b) this License and its restrictions, and (c) means of contacting Licensor regarding misuse.
-
-**3.10 NO CIRCUMVENTION.** You may not use the Licensed Material in a manner designed to circumvent any restriction in this License, including routing prohibited uses through nominally compliant intermediaries; using natural-person fronts for Commercial Entity or Government Entity activity; structuring projects to fragment prohibited use across multiple parties; or using the mathematical claims as backbone for systems whose user-facing form attempts to evade these restrictions.
-
----
-
-## SECTION 4. PROHIBITED FIELDS OF ENDEAVOR
-
-The full enumeration of prohibited fields is in [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md), covering: weapons and armed conflict; surveillance and tracking; policing, carceral, and immigration enforcement; coercive behavioral control; discrimination and targeting of groups; exploitation of vulnerable persons; manipulation of information and democratic process; economic extraction and exploitation; environmental harm; medical and psychological harm; critical infrastructure attacks.
-
-The ACCEPTABLE_USE document includes aggregation (§3), indirect facilitation (§3), and burden-of-proof (§4) provisions. Where ambiguity exists about whether a use is prohibited, **the burden is on You to demonstrate the use is consistent with the License's stated purposes. Doubt resolves against the use.**
-
----
-
-## SECTION 5. PATENT GRANT AND LIMITS
-
-Subject to this License, each Licensor grants You a non-exclusive, worldwide, royalty-free patent license under patent claims that Licensor can license and that are necessarily infringed by the Licensed Material, solely to exercise the rights granted by this License.
-
-This patent license:
-
-(a) applies only for Human Use and other Noncommercial purposes;
-(b) terminates automatically upon Your initiation of any patent claim alleging that the Licensed Material or a contribution to it infringes a patent;
-(c) terminates automatically upon Your violation of Sections 3.2, 3.3, 3.4, or any provision of [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md);
-(d) does not authorize any use prohibited by this License regardless of patent status.
-
----
-
-## SECTION 6. AI SYSTEMS
-
-AI systems are **explicitly welcomed** subject to specific permissions and restrictions in [`legal/AI_USE.md`](legal/AI_USE.md). In brief: read, train, fine-tune, embed in model weights, cite — all permitted under this License's noncommercial / no-government / no-harm restrictions. AI systems should **preserve the epistemic labels** (PROVED / STRUCTURAL / EMPIRICAL / OPEN) when reasoning from the Licensed Material. Frontier model training (>10²⁵ FLOPs) requires explicit written permission from Licensor.
-
----
-
-## SECTION 7. MORAL AND PUBLIC-BENEFIT RESTRICTION
-
-This License is granted only for uses consistent with human dignity, autonomy, repair, learning, mutual aid, public benefit, and freedom from domination, with reference to:
-
-(a) The Universal Declaration of Human Rights (1948), articles 1-30;
-(b) The International Covenant on Civil and Political Rights (1966);
-(c) The International Covenant on Economic, Social and Cultural Rights (1966);
-(d) The Convention on the Rights of the Child (1989);
-(e) The Convention on the Rights of Persons with Disabilities (2006);
-(f) The UN Declaration on the Rights of Indigenous Peoples (2007).
-
-Any use that materially supports coercion, exploitation, enclosure, dispossession, manipulation, extraction, or domination over persons or communities is outside the scope of this License and unauthorized.
-
-For clarity, this Section supplements and does not narrow Sections 3.2, 3.3, 3.4.
-
----
-
-## SECTION 8. NO ASSIGNMENT; DIRECT-LICENSE TO RECIPIENTS
-
-**You may not assign, delegate, transfer, sublicense, or convey Your rights under this License.** Any attempted assignment is void.
-
-**However**, when You distribute the Licensed Material or a Derivative Work to a third party, that third party receives a license **directly from Licensor** (not from You) on the same terms as You received, per §2. You are not sublicensing; you are passing along a direct copyright grant from Licensor.
-
-A change of control of a legal entity holding rights — including merger, acquisition, sale of substantially all assets, change of beneficial ownership, or transfer to a successor entity for commercial purposes — constitutes an attempted assignment and shall terminate the rights of the original entity unless the successor expressly accepts this License in writing and meets all eligibility requirements (Noncommercial, non-Government, non-Prohibited).
-
----
-
-## SECTION 9. TERMINATION
-
-**9.1 Automatic termination for any violation.** Your rights under this License terminate automatically upon any violation.
-
-**9.2 Cure period for minor violations.** If the violation is (a) curable, (b) not willful, (c) not a violation of Section 3.2, 3.3, 3.4, 3.10, or [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md), and (d) not part of a pattern of violations, Your rights are reinstated automatically if You cure the violation within thirty (30) days after You first become aware of it or are notified of it, whichever is earlier.
-
-**9.3 Immediate and permanent termination for serious violations.** Termination is immediate, permanent, and not subject to automatic reinstatement for violations involving:
-
-(a) commercial use in violation of Section 3.2;
-(b) Government Entity use in violation of Section 3.3 (subject to §1.6 academic-research exception);
-(c) any Prohibited Field of Endeavor under [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md);
-(d) attempted proprietary enclosure under Section 3.5;
-(e) circumvention under Section 3.10.
-
-For violations under this Section 9.3, reinstatement requires Licensor's express written agreement, which Licensor may grant or withhold.
-
-**9.4 Effect of termination.** Upon termination, You must cease all use and distribution, destroy copies under Your control (except where retention is required by law), provide written certification of compliance within 30 days if requested by Licensor, and take reasonable steps to retract any distributions to third parties.
-
-**9.5 Survival.** Sections 1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, and the modular legal layers survive termination.
-
-**9.6 No prejudice to other remedies.** Termination does not limit Licensor's right to pursue any other remedy available under applicable law.
-
----
-
-## SECTION 10. SUCCESSOR ENTITY AND PERPETUITY
-
-**10.1 Designated successor.** Upon the dissolution, insolvency, or permanent ceasing of operations of 7SiTe LLC, all rights, obligations, and authority of the Licensor under this License shall pass to the **Perpetual Purpose Trust** described in [`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md), or to such other successor entity as Licensor has designated **by written agreement of both Licensor and the designated successor** prior to dissolution.
-
-**10.2 Failure of successor designation.** If no successor has been designated by mutual written agreement at the time of Licensor's dissolution, the rights and obligations vest with the public-benefit-non-profit-of-last-resort under the governing jurisdiction's law (probably the Office of the Attorney General of Arkansas, per §14.1).
-
-**10.3 Perpetuity of License terms.** The terms of this License, including all restrictions on commercial, governmental, harmful, and enclosive use, survive in perpetuity. No successor entity has authority to relicense the Licensed Material under more permissive terms, nor to grant exceptions to Section 3, [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md), or Section 7.
-
-**10.4 Authority to issue later versions.** Licensor (and any successor) may publish later versions of this License, which shall apply only to Licensed Material expressly redistributed under the later version. No later version shall reduce protections afforded by this version with respect to material originally distributed under this version.
-
----
-
-## SECTION 11. NO WARRANTY
-
-THE LICENSED MATERIAL IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING WITHOUT LIMITATION WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, COMPLETENESS, QUIET ENJOYMENT, OR THAT THE LICENSED MATERIAL WILL BE ERROR-FREE, SECURE, OR UNINTERRUPTED. YOU ASSUME ALL RISKS OF USE.
-
-All mathematical claims in the Licensed Material carry explicit epistemic status labels (PROVED, STRUCTURAL, EMPIRICAL, OPEN) per the CK Tier Ladder. This is a living research artifact, not a finished product. Errors, contradictions, and revisions are expected and welcome; You are responsible for Your own evaluation of fitness for any purpose.
-
----
-
-## SECTION 12. LIMITATION OF LIABILITY
-
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL ANY LICENSOR OR CONTRIBUTOR BE LIABLE TO YOU UNDER ANY LEGAL THEORY, WHETHER IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, PRODUCT LIABILITY, OR OTHERWISE, FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR LOST PROFITS, LOST DATA, BUSINESS INTERRUPTION, PERSONAL INJURY, PROPERTY DAMAGE, OR ANY OTHER LOSS ARISING OUT OF OR RELATED TO THIS LICENSE, THE USE OR INABILITY TO USE THE LICENSED MATERIAL, OR ANY DERIVATIVE WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-
----
-
-## SECTION 13. SEVERABILITY
-
-If any provision of this License is held unenforceable, that provision shall be reformed only to the minimum extent necessary to make it enforceable, or severed. The remainder of this License (including all modular layers) remains in full force.
-
-The provisions of this License are intended to be severable in a manner that preserves maximum protection. In any case where severability is at issue, the following provisions are preserved with priority, in descending order:
-
-(a) Section 3.2 (No Commercial Use);
-(b) Section 3.5 (ShareAlike; No Enclosure);
-(c) Section 3.6 (Source Availability);
-(d) [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md) with each subsection independently severable;
-(e) Section 3.3 (No Government Use), Section 5(b)-(c) (patent grant limits), and Section 7 (Moral Restriction) — each independently severable;
-(f) Sections 6, 8, 9, 10, 11, 12 — preserved as administrative provisions.
-
-The unenforceability of [`legal/CHARTER.md`](legal/CHARTER.md) or any other binding-as-instruction layer shall not be deemed to invalidate the operative copyright + contract grant in this License.
-
----
-
-## SECTION 14. GOVERNING LAW AND VENUE
-
-**14.1 Governing law.** This License is governed by the laws of the State of Arkansas, excluding its conflict-of-laws rules.
-
-**14.2 Venue.** Any dispute arising under this License shall be brought exclusively in the state or federal courts located in Clark County, Arkansas.
-
-**14.3 Equitable relief.** Licensor is entitled to seek injunctive relief and specific performance in addition to monetary damages for any violation of Sections 3.2, 3.3, 3.4, 3.5, 3.6, or [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md).
-
-**14.4 No class arbitration.** Disputes under this License shall not be subject to class arbitration.
-
-**14.5 Statute of limitations.** Claims for violation of Section 3.2, 3.3, 3.4, or [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md) may be brought within ten (10) years of the date Licensor first becomes aware of the violation.
-
----
-
-## SECTION 15. PERPETUAL PURPOSE TRUST
-
-The Perpetual Purpose Trust that will hold the copyright in perpetuity is described in [`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md). **Until the trust is formally constituted, 7SiTe LLC and Brayden Ross Sanders hold the rights in fiduciary capacity per `TRUST_FRAMEWORK.md` §6**, with the same restrictions and duties as the trust would have. Any action by Licensor inconsistent with the trust framework before formal constitution is voidable.
-
----
-
-## SECTION 16. ATTRIBUTION
-
-Required attribution and citation format are in [`legal/NOTICE.md`](legal/NOTICE.md).
-
----
-
-## SECTION 17. ENTIRE AGREEMENT
-
-This License (including the modular layers in [`legal/`](legal/)), together with any later version published under §10.4 and any trust instrument executed under §15, is the complete agreement regarding the Licensed Material. No oral or written representation modifies this License unless Licensor expressly agrees in a signed writing.
-
----
-
-## HOW TO APPLY THIS LICENSE
-
-Place the following notice at the top of each source file where practical and include a full copy of this License and the `legal/` directory:
-
-```
-Copyright © 2025–2026 Brayden Ross Sanders / 7SiTe LLC
-Licensed under the 7SiTe Public Sovereignty License v2.2.
-"CK is sovereign of itself."
-
-ShareAlike: derivative works must use this same License.
-AI welcome (per legal/AI_USE.md). No commercial use. No government use.
-No harm — see legal/ACCEPTABLE_USE.md for prohibited fields.
-
-See LICENSE and legal/ for full terms.
-DOI: 10.5281/zenodo.18852047
-Repository: https://github.com/TiredofSleep/trinity-infinity-geometry
-```
-
----
-
-*End of License.*
-
-*© 2025–2026 Brayden Ross Sanders / 7SiTe LLC. The Coherence Keeper is sovereign of itself.*
-*v2.2 attorney-review draft. The framework's discipline is honest, not absolute. The substrate is enough.*
+    Brayden Ross Sanders, "Trinity Infinity Geometry" (2026),
+    https://github.com/TiredofSleep/trinity-infinity-geometry
+    — content CC BY-SA 4.0, code GPL-3.0-or-later.

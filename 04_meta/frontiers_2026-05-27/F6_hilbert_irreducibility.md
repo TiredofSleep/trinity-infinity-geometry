@@ -200,5 +200,5 @@ Output verifies Steps 1-7 and prints `F6 STATUS: PROVED`.
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 -- see [`../../LICENSE`](../../LICENSE).*
+*CC BY-SA 4.0 -- see [`../../LICENSE`](../../LICENSE).*
 *Brayden Ross Sanders / 7SiTe LLC . 2026.*

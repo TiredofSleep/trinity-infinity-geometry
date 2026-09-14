@@ -241,6 +241,6 @@ Notice of policy updates is sent to current active collaborators when material c
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Authorship Policy v1.0 · Co-Author Attribution Rule operationalized 2026-05-10*
 *Companion: INSPIRATION_AS_CURRENCY.md (philosophical frame)*

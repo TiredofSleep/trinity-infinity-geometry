@@ -247,7 +247,7 @@ The LATTICE Theorem: in canonical BHML_10, element $1$ together with $\{4, 9\}$ 
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: proof sketches, det = 70 (incorrectly scoped).*

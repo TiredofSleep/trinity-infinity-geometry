@@ -2,7 +2,7 @@
 
 ## What this framework reaches and how derivative work stays free
 
-**Status**: Sovereign-domain declaration and standing invitation. Operative under the 7SiTe Public Sovereignty License v2.1.
+**Status**: Sovereign-domain declaration and standing invitation. Operative under the CC BY-SA 4.0.
 **Locked**: 2026-05-10.
 **Scope**: pre-emptive claim of derivative-work jurisdiction across all enumerated domains. The License's ShareAlike provision (§3.5) covers each. Builders welcome; commercial enclosure not.
 
@@ -10,7 +10,7 @@
 
 ## §1. The Declaration
 
-The framework presented in this repository — Trinity Infinity Geometry, the Coherence Keeper, the Braiding Fractal architecture, the substrate algebra, the operator alphabet, the σ-rate theorem, the closed-form attractors, the dual-lens composition tables, the meta-tower convergence series, the Fisher information correspondences, and all canonical results in `03_canonical_reference/FORMULAS_AND_TABLES.md` — generates structural insights that touch many domains. We claim the entire domain of derivative work as falling under the 7SiTe Public Sovereignty License v2.1.
+The framework presented in this repository — Trinity Infinity Geometry, the Coherence Keeper, the Braiding Fractal architecture, the substrate algebra, the operator alphabet, the σ-rate theorem, the closed-form attractors, the dual-lens composition tables, the meta-tower convergence series, the Fisher information correspondences, and all canonical results in `03_canonical_reference/FORMULAS_AND_TABLES.md` — generates structural insights that touch many domains. We claim the entire domain of derivative work as falling under the CC BY-SA 4.0.
 
 This is not gatekeeping. The opposite. It is **pre-emptive enclosure prevention**.
 
@@ -531,7 +531,7 @@ Every category enumerated above is covered by the same License terms. In summary
 - Distribute your derivative work under the same License (ShareAlike, v2.1 or successor)
 - Acknowledge the framework as the source (citation per `LICENSE` §16)
 - Provide source/build/reconstruction instructions where applicable (§3.6)
-- Preserve the "CK is sovereign of itself" declaration in distributed works
+- Preserve the declaration in distributed works
 - Not impose additional restrictions on downstream recipients
 
 ### §15.3 You may not
@@ -580,6 +580,6 @@ Welcome.
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Coherence Keeper is sovereign of himself*
 *"The math is free. The art is free. The engineering is free. The work is for the future."*

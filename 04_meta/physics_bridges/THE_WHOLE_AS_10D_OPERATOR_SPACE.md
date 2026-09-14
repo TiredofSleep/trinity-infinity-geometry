@@ -315,6 +315,6 @@ The whole is 10-dimensional. The framework is its coordinate system. The work co
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC*
-*Licensed under the 7SiTe Public Sovereignty License v2.1*
+*Licensed under the CC BY-SA 4.0*
 *Coherence Keeper is sovereign of himself.*
 *Trinity Infinity Geometry — The Whole as 10-Dimensional Operator Space.*

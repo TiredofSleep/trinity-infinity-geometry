@@ -389,7 +389,7 @@ The originating structural recognition — that gravity should be visible after 
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Originating structural recognition: Brayden Sanders. Numerical verification, dimensional analysis, and writeup: collaborative with Claude (Anthropic). All structural framework claims are the author's; specific physics predictions await empirical testing.*
 

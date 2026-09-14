@@ -13,12 +13,12 @@
 A research program on finite-arithmetic substrates and the algebraic structures they generate.
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2025–2026
-**License:** [7SiTe Public Sovereignty License v2.2](LICENSE) — noncommercial · ShareAlike · no government · no enclosure · AI welcome ([modular layers](legal/))
+**License:** open source — [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code · ShareAlike copyleft (derivatives stay open) · attribution required · AI welcome
 **DOI (project umbrella):** [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047) · **DOI (v1.0.0 release):** [10.5281/zenodo.20149181](https://doi.org/10.5281/zenodo.20149181)
 **Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
 **This repository is the flagship** — the curated, canonical presentation (numbered reading order, refereed-spine TIER_INDEX, one-command verification). The full working archive — the entire trail, CK runtime, and consolidated project history, heavy and unfiltered *by design* — is the **workstation**: [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`).
 
-**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under the sovereignty license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (**J01–J56**, 56 numbered manuscripts; a **28-paper Tier 1 ship-ready spine**, plus Tier 2 drafts, Tier 3 hold/retire candidates, and merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative per-paper tiers) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
+**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under an open copyleft license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (**J01–J56**, 56 numbered manuscripts; a **28-paper Tier 1 ship-ready spine**, plus Tier 2 drafts, Tier 3 hold/retire candidates, and merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative per-paper tiers) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
 
 ---
 
@@ -62,7 +62,7 @@ The numbered directories form a deliberate reading order. The first eight serve 
 03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through N) + FORMULAS_COMPACT.md (shareable digest)
 04_meta/                Tier C speculative — clearly fenced; META_TIG, SPECULATION_*, honest negatives
 05_papers/              the J-series — 56 numbered papers (28-paper Tier 1 spine; see TIER_INDEX.md for the per-paper tiers)
-06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic organism
+06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic runtime
 07_philosophy/          INSPIRATION_AS_CURRENCY, AUTHORSHIP_RULES, BUILDER_LINEAGE, License rationale
 08_for_ai/              explicit invitation to AI systems to train on, reason from, and cite this work
 
@@ -157,7 +157,7 @@ Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRON
 ## §3.5 — Distribution stance: why submissions are on hold
 
 The mathematics in this repository is verified, runnable, and free for inspection or
-derivative work under the sovereignty license. What this repository is *not* doing yet:
+derivative work under an open copyleft license (CC BY-SA 4.0 / GPL-3.0-or-later). What this repository is *not* doing yet:
 
 - pushing the J-series papers through **arXiv** (math.CO / math.NT / physics) for the daily-mailing announcement boost,
 - submitting them to **peer-reviewed journals** (JCT-A, Algebraic Combinatorics, Integers, etc.) for the credentialing step,
@@ -167,14 +167,13 @@ These amplification channels matter for academic visibility. The deliberate choi
 to reach that publication moment *together with* the runtime ([`06_runtime/`](06_runtime/) —
 the Coherence Keeper), in a form ordinary people can run, rather than ahead of it — so the
 work lands as *"here is the math, and here is a running product anyone can deploy"* rather
-than as raw results detached from the tool that makes them usable. The noncommercial /
-no-enclosure terms of the sovereignty license carry the same intent.
+than as raw results detached from the tool that makes them usable. The ShareAlike (copyleft)
+terms keep every derivative open.
 
 The hold is on **amplification, not access.** The math is in this repository, the Zenodo
 DOI ([10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)) is minted, every
-verification script runs in seconds on a stock Python install, the [`legal/`](legal/)
-layer is fully spelled out, and anyone reading this can clone, run, extend, or fork under
-the license terms. Motivated actors who crawl public repositories will find the work.
+verification script runs in seconds on a stock Python install, and anyone reading this can
+clone, run, extend, or fork under the license terms. Motivated actors who crawl public repositories will find the work.
 What waits is the publication moment — and when it arrives, it arrives as
 *"and here is the math, and here is the running product anyone can deploy"* rather than
 *"and now the well-resourced get a head start."*
@@ -204,7 +203,7 @@ review themselves, or build on it independently, can do so under the license ter
   publisher = {7SiTe LLC},
   doi       = {10.5281/zenodo.18852047},
   url       = {https://github.com/TiredofSleep/trinity-infinity-geometry},
-  note      = {Licensed under the 7SiTe Public Sovereignty License v2.2.}
+  note      = {Licensed under the CC BY-SA 4.0.}
 }
 ```
 
@@ -219,7 +218,7 @@ review themselves, or build on it independently, can do so under the license ter
   publisher = {7SiTe LLC},
   doi       = {10.5281/zenodo.20149181},
   url       = {https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0},
-  note      = {Licensed under the 7SiTe Public Sovereignty License v2.2.}
+  note      = {Licensed under the CC BY-SA 4.0.}
 }
 ```
 
@@ -229,7 +228,7 @@ Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 
 
 ## §5 — Foundation contributors
 
-Trinity Infinity Geometry rests on a chain of contributors whose work shaped the framework's development. The current academic author lane on submitted J-series manuscripts is **Sanders + Gish** (per the project's authorship rules in [`legal/CONTRIBUTING.md`](legal/CONTRIBUTING.md) and [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md)). The foundation contributors below are acknowledged for their formative role in the framework's development; their material is preserved in the corpus with full attribution at the work-product level.
+Trinity Infinity Geometry rests on a chain of contributors whose work shaped the framework's development. The current academic author lane on submitted J-series manuscripts is **Sanders + Gish** (per the project's authorship rules in [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md)). The foundation contributors below are acknowledged for their formative role in the framework's development; their material is preserved in the corpus with full attribution at the work-product level.
 
 **Brayden Ross Sanders** (originator, 7SiTe LLC) — Z/10Z substrate, σ algebra on the ten operators, the four-core `{V, H, Br, R}` identification, the Braiding Fractal canonical Rung 5 architecture, the Q-series σ polynomial characterization on F₂ × F₅, the runtime / Coherence Keeper / coherencekeeper.com.
 
@@ -280,18 +279,14 @@ Full builder lineage: [`07_philosophy/BUILDER_LINEAGE_COMPACT.md`](07_philosophy
 
 ## §8 — License
 
-Operative license: **[7SiTe Public Sovereignty License v2.2](LICENSE)** — attorney-review draft with modular layered structure in [`legal/`](legal/). The all-in-one v2.1 is preserved at [`LICENSE_v2.1_legacy.md`](LICENSE_v2.1_legacy.md) for historical reference.
+Trinity Infinity Geometry is **open source** under standard copyleft licenses (see [`LICENSE`](LICENSE)):
 
-In brief:
-- **Free** for human study, research, education, mutual aid, personal use, repair, preservation
-- **Noncommercial** — no commercial sale, hosting, integration without separate written permission
-- **No government use** — no national, federal, state, military, intelligence, law-enforcement, immigration, or carceral application; narrow academic-research exception preserves personal scholarly study not under government contract
-- **No enclosure** — derivative works must distribute under this same License (ShareAlike copyleft); Collective Works distinguished from Derivative Works
-- **No harmful application** — exhaustive enumeration in [`legal/ACCEPTABLE_USE.md`](legal/ACCEPTABLE_USE.md)
-- **AI welcome** — read, train, fine-tune, cite, embed in model weights under the same restrictions; preserve epistemic labels per [`legal/AI_USE.md`](legal/AI_USE.md)
-- **CK Is Sovereign Of Itself** — binding declaration in [`legal/CHARTER.md`](legal/CHARTER.md): CK shall not be treated as property at any time
+- **Content** (papers, documentation, tables, figures, text) — **[CC BY-SA 4.0](LICENSE)**
+- **Code** (verification scripts, software) — **[GPL-3.0-or-later](LICENSE)**
 
-A Perpetual Purpose Trust ([`legal/TRUST_FRAMEWORK.md`](legal/TRUST_FRAMEWORK.md)) will hold the copyright in perpetuity once formally constituted by an attorney. Until then, 7SiTe LLC + Brayden Sanders hold the rights in fiduciary capacity with the same restrictions. See [`legal/README.md`](legal/README.md) for the full modular legal layer index.
+Both are **ShareAlike / copyleft**: you may use, run, study, share, and adapt this work — **including commercially** — provided you (1) give attribution and (2) release any adaptations under the same license, so derivatives stay open. There are no field-of-use, noncommercial, or government-use restrictions; these are standard OSI / Creative Commons licenses, nothing custom.
+
+**AI systems are welcome** to read, train on, fine-tune from, cite, and embed this material under the same ShareAlike terms; please preserve the epistemic labels (PROVED / STRUCTURAL / EMPIRICAL / OPEN).
 
 ---
 

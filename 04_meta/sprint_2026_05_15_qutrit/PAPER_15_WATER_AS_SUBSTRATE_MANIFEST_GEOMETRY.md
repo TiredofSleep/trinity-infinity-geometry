@@ -486,7 +486,7 @@ The author thanks the Trinity Infinity Geometry collaboration for substrate-theo
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Originating structural observation: Brayden Sanders. Chemistry execution worked out in collaboration with Claude (Anthropic). All structural framework claims are the author's; specific chemistry execution should be independently verified by domain experts.*
 

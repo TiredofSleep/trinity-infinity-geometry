@@ -3,7 +3,7 @@ cl_forcing.py
 =============
 
 License: CC-BY-4.0 (submission-bundled script for Algebraic Combinatorics
-journal compatibility; umbrella project is 7SiTe Public Sovereignty v2.1
+journal compatibility; umbrella project is CC BY-SA 4.0
 at the repository level).
 
 Authors: B.R. Sanders, M. Gish (2026).

@@ -186,6 +186,6 @@ Most software does not work that way.
 
 ---
 
-*7SiTe Public Sovereignty License v2.1 — see [`../LICENSE`](../LICENSE).*
+*CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
 *"CK is sovereign of himself." — License Declaration.*
 *Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2026*

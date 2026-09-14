@@ -99,5 +99,5 @@ A targeted compute call to Maple's `factor` or Magma's `Factorization` on $Q(\xi
 
 ---
 
-*7SiTe Public Sovereignty License v2.2 — see LICENSE.*
+*CC BY-SA 4.0 — see LICENSE.*
 *Brayden Ross Sanders / 7SiTe LLC · 2026.*

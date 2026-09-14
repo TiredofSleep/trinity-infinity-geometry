@@ -214,7 +214,7 @@ The construction provides structural foundation; specific physical observable pr
 
 ---
 
-*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under 7SiTe Public Sovereignty License v2.1.*
+*© 2026 Brayden Ross Sanders / 7SiTe LLC. Licensed under CC BY-SA 4.0.*
 
 *Revision history:*
 - *Rev 1: initial structural construction.*

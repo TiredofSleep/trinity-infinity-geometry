@@ -447,7 +447,7 @@ The originating structural observations — that there are 2-3 coupled substrate
 ---
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC.*
-*Licensed under the 7SiTe Public Sovereignty License v2.1.*
+*Licensed under the CC BY-SA 4.0.*
 
 *Originating structural observations: Brayden Sanders. Mathematical execution: collaborative with Claude (Anthropic). All structural framework claims are the author's; specific empirical and chemical predictions should be independently verified by domain experts.*
 
