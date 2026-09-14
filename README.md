@@ -1,3 +1,12 @@
+<h3 align="center">◆ The open question this program is organized around ◆</h3>
+
+<p align="center"><b>Does chaos ever cool onto the arithmetic crystal?</b><br>
+<em>Does an entropy-maximizing dynamics — turbulence, matter, any warm physical process — ever select the rigid arithmetic measure on which the Riemann zeros and the number-theoretic order live? Or is the arithmetic forever the zero-entropy skeleton that warm matter can only dress and blur?</em></p>
+
+<p align="center"><a href="THE_QUESTION.md">→ the full question, and why the whole program lands on it (THE_QUESTION.md)</a></p>
+
+<hr>
+
 <p align="center">
   <a href="THE_MAP.md"><img src="docs/alphabet-of-prephysics.svg" alt="The alphabet of pre-physics" width="720"></a>
 </p>
