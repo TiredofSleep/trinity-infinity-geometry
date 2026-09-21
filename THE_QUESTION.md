@@ -1,3 +1,13 @@
+> ## ⚠ STATUS: DEMOTED TO EXPLORATORY FRONTIER (corrected 2026-09-21)
+>
+> This question was headlined, then put through referees. The scrutiny found a **load-bearing conflation of two different ζ's.** The "arithmetic crystal" invoked here — the B-free / visible-points / Mirsky picture, and the aperiodic-order machinery imported to make it rigorous — lives entirely in the **ζ-convergent, zero-free regime**: densities like `1/ζ(2)`, Euler products at real arguments `> 1`. **It contains no nontrivial zeros.** The Riemann zeros, in Migdal's decaying-turbulence program, come instead from the *analytically continued denominator* `ζ(p+17/2)` (poles at `p = −8 + iρₙ`) — a different mechanism. So *"does chaos cool onto the arithmetic crystal (where the zeros live)?"* conflates the density ζ with the zeros ζ, and **the bridge from the density regime to the zeros was never established.**
+>
+> What survived scrutiny is real but smaller: the totient / `S(q)` arithmetic in the turbulence ensemble; `coprime = single connected loop`; the parity (`p=2`) selection; the Hermite-orthogonality protection of the sign sector. The grand *crystal → zeros* framing did not. Nothing here bears on RH.
+>
+> **This document is kept in full, unedited below, for the record — kills are data.** The program's front door is now the **forced geometric spine** — [`05_papers/integers_clifford/`](05_papers/integers_clifford/README.md) — which stays where the mathematics is elementary and machine-verified. Read what follows as an honest, corrected exploration, not as the program's headline.
+
+---
+
 # The question
 
 *The one thing this whole program is now organized around, stated as sharply as it can be — and honestly, as an open question, not a claimed answer.*

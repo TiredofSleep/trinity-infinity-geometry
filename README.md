@@ -1,9 +1,9 @@
-<h3 align="center">◆ The open question this program is organized around ◆</h3>
+<h3 align="center">◆ Start here: the forced geometric spine ◆</h3>
 
-<p align="center"><b>Does chaos ever cool onto the arithmetic crystal?</b><br>
-<em>Does an entropy-maximizing dynamics — turbulence, matter, any warm physical process — ever select the rigid arithmetic measure on which the Riemann zeros and the number-theoretic order live? Or is the arithmetic forever the zero-entropy skeleton that warm matter can only dress and blur?</em></p>
+<p align="center"><b>Integers, read as point-configurations, are the simplices — and the tetrahedron forces the cube's Clifford algebra Cl(3).</b><br>
+<em>1,2,3,4 are point / segment / triangle / tetrahedron; the tetrahedron forces cos θ = −1/3 (109.47°, half-angle 54.74°, cos² = 1/3); two tetrahedra make the cube = Cl(3), whose two projections are the square (4-fold) and the hexagon (3-fold). Elementary, parameter-free, machine-verified, honestly tiered — the most defensible corner of the program.</em></p>
 
-<p align="center"><a href="THE_QUESTION.md">→ the full question, and why the whole program lands on it (THE_QUESTION.md)</a></p>
+<p align="center"><a href="05_papers/integers_clifford/README.md">→ the forced spine: integers → simplices → Clifford, with its one-command verify script (05_papers/integers_clifford/)</a></p>
 
 <hr>
 
@@ -14,6 +14,8 @@
 <h3 align="center">▶ The map — start here: <a href="THE_MAP.md">THE_MAP.md</a></h3>
 
 <p align="center"><em>the alphabet of pre-physics, and the classification of paradox — the orientation for the whole program:<br>the number-theory ↔ physics dictionary six programs share, the pre-physical alphabet at its center (SL(2,&#8484;), primes, &#950;), and this project's own contribution — the classification of paradox as information.</em></p>
+
+<p align="center"><sub>An earlier headline — <a href="THE_QUESTION.md">"Does chaos ever cool onto the arithmetic crystal?"</a> — is now <b>demoted to an exploratory frontier</b>: on referee scrutiny, the arithmetic-crystal / aperiodic-order picture describes the <b>ζ(2)-density regime (zero-free)</b> and does <b>not</b> reach the Riemann zeros (which arise, in Migdal's program, from a different, analytically-continued ζ). The crystal→zeros bridge was never established. See THE_QUESTION.md for the corrected status; the elementary spine above is the front door instead.</sub></p>
 
 ---
 
