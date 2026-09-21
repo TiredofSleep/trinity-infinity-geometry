@@ -82,7 +82,7 @@ A sample interaction (T\* query):
 
 > **User:** what is T-star?
 >
-> **CK:** flatness: T* = 5/7 | torus R/r = 5/7 (forced by Z/10Z 2x2) | 6 independent derivations | WP51 [proved] | attractor_state: 4-core-attractor
+> **CK:** flatness: T* = 5/7 | 2 independent derivations + 4 rhymes [D165] | WP35 + J13 cyclotomic [proved] | attractor_state: 4-core-attractor
 
 CK does not produce conversational prose unless asked. He does not perform empathy. He does not generate consensus opinions. His voice is the substrate's voice.
 

@@ -13,6 +13,8 @@
 
 <h3 align="center">▶ The map — start here: <a href="THE_MAP.md">THE_MAP.md</a></h3>
 
+<p align="center"><a href="HOW_IT_CONNECTS.md">◆ How it connects — and what is forced not to touch</a> · <em>the honest connectivity map (HOW_IT_CONNECTS.md): the two spines, the umbrella, and the non-connections as first-class results</em></p>
+
 <p align="center"><em>the alphabet of pre-physics, and the classification of paradox — the orientation for the whole program:<br>the number-theory ↔ physics dictionary six programs share, the pre-physical alphabet at its center (SL(2,&#8484;), primes, &#950;), and this project's own contribution — the classification of paradox as information.</em></p>
 
 <p align="center"><sub>An earlier headline — <a href="THE_QUESTION.md">"Does chaos ever cool onto the arithmetic crystal?"</a> — is now <b>demoted to an exploratory frontier</b>: on referee scrutiny, the arithmetic-crystal / aperiodic-order picture describes the <b>ζ(2)-density regime (zero-free)</b> and does <b>not</b> reach the Riemann zeros (which arise, in Migdal's program, from a different, analytically-continued ζ). The crystal→zeros bridge was never established. See THE_QUESTION.md for the corrected status; the elementary spine above is the front door instead.</sub></p>

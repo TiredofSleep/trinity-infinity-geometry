@@ -10,7 +10,7 @@
   Ω_DM = 264 / 1000
   Ω_Λ  = 687 / 1000
   ```
-  summing to 1.000 exactly. DESI 2024 / Planck 2018 observed values within ~0.2%. **STRUCTURAL** — algebra is exact at the rational level; empirical match within current uncertainty.
+  summing to 1.000 exactly. (Equivalently, the **quadruple** `(Ω_b, Ω_DM, Ω_Λ, Ω_Ψ0) = (49, 264, 686, 1)/1000` used in the main README — the same numbers, with this `Ω_Λ = 687` split into `686` + a `Ψ0` component of `1`.) DESI 2024 / Planck 2018 observed values within ~0.2%. **STRUCTURAL** — algebra is exact at the rational level; empirical match within current uncertainty.
 
 - **Inflation coupling** (D72 + WP104): `κ_ξ = 13/(4e)` under the same identification. **STRUCTURAL.**
 
