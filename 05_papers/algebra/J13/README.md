@@ -1,10 +1,12 @@
-# J13 — The Forced 5/7 Torus Aspect Ratio (Up to a Calibration Choice)
+# J13 — The Forced 5/7 Ratio (Cyclotomic Threshold on ℤ/10ℤ) — *held; torus framing retracted*
 
-**Status:** SUBMISSION-READY (6/6 PASS at machine precision; M1 + M2 math fixes applied; cover letter finalized; lens-ownership in §0; tier discipline explicit; Drápal-Wanless 2021 cited)
+> **⚠ HELD — torus framing retracted (D141).** Canon **D141** retracted torus topology outright ("no TIG result may cite torus topology"; the σ-flow does not live on any closed orientable surface). This paper's *torus aspect-ratio* framing — its title, abstract, and the torus imported from **J33** — is therefore **retracted**. What **survives is torus-free and cyclotomic**: `5/7` is forced by the degree threshold `deg_ℚ(2·cos(π/p))` crossing from 2 at `p=5` to 3 at `p=7` (Galois `A₃`, disc = 49). **Before any submission:** reframe/retitle to that cyclotomic result and remove the torus object throughout (and in J33). Kept in full below as history — kills are data.
+
+**Status:** HELD — torus framing retracted per D141; reframe to the cyclotomic-5/7 core before submission. (The cyclotomic verification is still 6/6 PASS; it is the torus *object/framing* that is retracted, not the cyclotomic computation.)
 **Phase:** Phase 2
 **Target venue:** *Acta Arithmetica* (lead); *Integers* (fallback if short-note framing preferred)
 **Author lane:** Sanders + Gish
-**Tier:** 1 (ship-ready (Acta Arithmetica, SUBMISSION-READY))
+**Tier:** 1 content, **HELD** — not ship-ready until the torus framing is removed (see banner).
 **WP source:** WP51 §4 "The Aspect Ratio R/r = T* = 5/7"
 
 ---

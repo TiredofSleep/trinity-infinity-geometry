@@ -2,7 +2,7 @@
 
 **Status**: STRENGTHENED + CORRECTED 2026-05-28 — two new closed-form theorems added from frontier F4 (Theorems 5 and 6). **Theorem 6 was CORRECTED later same day** via F4-extended (`F4_extended_higher_primes.md`): the formula is `|Aut(V^BHML_F_p)| = (p−1)²` uniformly at all primes (no $p=5$ anomaly), not the earlier $p(p^2-1)$ with $p=5$ exception. The §8 "Anomaly at $p=5$" section has been removed. Verify script PASSES all checks (including brute-force verification of $(p-1)^2$ at 6 primes; F4-extended adds 19 more primes to 97).
 
-**Tier:** 1 (re-promoted 2026-05-28 after §4 rescue; strengthened 2026-05-28 with F4 closed forms; Theorem 6 corrected later same day; was demoted to Tier 2 on 2026-05-27)
+**Tier:** 1 (re-promoted 2026-05-28 after §4 rescue; strengthened 2026-05-28 with F4 closed forms; Theorem 6 corrected later same day; was demoted to Tier 2 on 2026-05-27) — **NOTE (unreconciled):** the authoritative [`../../TIER_INDEX.md`](../../TIER_INDEX.md) and `FORMULAS_COMPACT.md` still list J08 as **Tier 2**; this README's 2026-05-28 re-promotion post-dates the last TIER_INDEX sync and awaits author confirmation. The corrected F_p closed forms shipped independently as **J53** (Tier 1) regardless.
 
 **Target venue**: *Algebra Universalis* (primary). Fallback: *Algebras and Representation Theory*.
 

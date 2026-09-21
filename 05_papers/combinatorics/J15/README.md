@@ -1,6 +1,6 @@
 # J15 — Joint Closure, Per-Coordinate Fuse Data, and a Closed-Form Algebraic Attractor of Two Commutative Binary Operations on Z/10Z
 
-**Status:** SUBMISSION-READY
+**Status:** HELD — reconcile before submission: the folder's `HOLD_PENDING_AUDIT.md` documents a v1 Theorem 2 flaw (a trivial total-mass identity dressed up as a cancellation result, demoted to Prop 5.1) and RELEASE_ORDER #10 lists an open §6 Thm 6.2 (Lefschetz) gap. The 2026-05-13 pass addressed the three AlgComb referee items, but these two holds are not confirmed closed.
 **Phase:** Phase 1
 **Target venue:** Algebraic Combinatorics
 **Author lane:** Sanders + Gish
