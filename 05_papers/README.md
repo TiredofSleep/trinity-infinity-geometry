@@ -27,10 +27,10 @@ When a paper becomes referee-ready, it lands in the appropriate domain folder ba
 |---|---|---|
 | [`algebra/`](algebra/) | Pure algebra, ring theory, group theory | **J01** (4-core fusion-closure, *J. Algebra*); **J11** (Wedderburn isotypic); **J12** (Galois D₄, *Comm. Algebra*) |
 | [`combinatorics/`](combinatorics/) | Combinatorial structures, finite enumeration | **J14** (σ rate theorem, *JCT-A*); **J15** (four-core, *Algebraic Combinatorics*); **J17** (foundation paper, *Algebraic Combinatorics*) |
-| [`number_theory/`](number_theory/) | Number theory, finite arithmetic, prime structure | **J24** (First-G Law, *Integers*); **J41** (sinc² Zero Law, *Experimental Mathematics*) |
-| [`physics/`](physics/) | Particle physics, gauge theory, GUT structure | **J37** (Discrete Dirac / Cl(0, 10)); **J44** (Yukawa mass hierarchy + freezing quintessence); **J45** (operadic obstruction) |
+| [`number_theory/`](number_theory/) | Number theory, finite arithmetic, prime structure | **J24** (First-G Law + Discrete Fejér, *Integers*; absorbed J41 + J25); **J06** (Strata-Prime Fingerprint); **J55** (Dim-6 Kissing Number) |
+| [`physics/`](physics/) | Particle physics, gauge theory, GUT structure | **J37** (Discrete Dirac / Cl(0, 10)); **J38** (logarithmic nonlinearity, BB/NS). *(J44, J45 retired → `04_meta/retired_J_papers/`.)* |
 | [`cosmology/`](cosmology/) | Cosmology, dark sector, ξ field | **J46** (cosmology, when Layer 1/2/3 decision settles) |
-| [`interdisciplinary/`](interdisciplinary/) | Cross-domain papers spanning math + physics + applications | **J55** (Brayden's solo synthesis, anchor Sept 11); papers connecting multiple domains |
+| [`interdisciplinary/`](interdisciplinary/) | Cross-domain papers spanning math + physics + applications | **J31** (algebraic-detector specificity — honest negative); **J40** (paradox-classifier UOP); **J56** (gap-router taxonomy) |
 | [`_staging/`](_staging/) | Papers in queue: not yet here, not yet on the working branch. Lists what is in flight and what is gating the next handoff. | — |
 
 A paper may legitimately fit two domains. The rule: place by **primary target journal** (the cover letter's lead venue). Cross-references between folders are welcome and encouraged.
