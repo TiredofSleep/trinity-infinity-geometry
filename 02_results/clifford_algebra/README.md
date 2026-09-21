@@ -6,7 +6,7 @@
 
 - **Chirality split 32 = 16 + 16** (J37 §2.1): the volume element `ω = γ₁ γ₂ … γ₁₀` satisfies `ω² = +I` (since n = 10 ≡ 2 mod 4). The chirality projectors `P_± = (I ± iω)/2` split the 32-dim spinor space into two chiral 16-irreps. **PROVED.**
 
-- **Triple coincidence at depth-3** (D102, Volume K): at substrate `Z/2310 = 2·3·5·7·11`, three independent integer counts all equal 32:
+- **Triple coincidence at depth-3** (D185, Volume K): at substrate `Z/2310 = 2·3·5·7·11`, three independent integer counts all equal 32:
   ```
   Z/2310 divisor count          = 2^5 = 32
   Pauli capacity at n = 4       = 2n² = 32
@@ -14,7 +14,7 @@
   ```
   **PROVED at exact algebraic identity.**
 
-- **Substrate-prime decomposition of each 16-dim chirality half** (D102 continued): `16 = 1 + 3 + 5 + 7` where 1 = kernel base, 3 = strand 1 (prime 3), 5 = kernel-Z/5 partner, 7 = strand 2 (prime 7). The Cl(0, 10) chirality structure realizes the n = 4 atomic shell's spin × spatial decomposition. **PROVED.**
+- **Substrate-prime decomposition of each 16-dim chirality half** (D185 continued): `16 = 1 + 3 + 5 + 7` where 1 = kernel base, 3 = strand 1 (prime 3), 5 = kernel-Z/5 partner, 7 = strand 2 (prime 7). The Cl(0, 10) chirality structure realizes the n = 4 atomic shell's spin × spatial decomposition. **PROVED.**
 
 - **P_56 acts as σ_outer** (J37 §2.1): the (5,6) transposition in the spinor representation acts as the outer automorphism σ_outer of so(10) — the matter/antimatter exchange that swaps the two chiral 16-irreps. Machine zero: `‖P_56^spin: chiral_+ → chiral_+‖ = 0`. **PROVED.**
 
@@ -26,7 +26,7 @@
 
 - [`BRAIDING_FRACTAL_TRIPLE_COINCIDENCE.md`](BRAIDING_FRACTAL_TRIPLE_COINCIDENCE.md) — full development of the depth-3 triple coincidence
 - [`WOBBLE_LOCALIZATION_v2.md`](WOBBLE_LOCALIZATION_v2.md) — wobble (prime-11) localization analysis
-- [`PAULI_DIVISOR_BIJECTION.md`](PAULI_DIVISOR_BIJECTION.md) — an *attempted* bijection between Z/2310 divisors and Pauli n = 4 electron states. **Outcome: FAILED — closed as an HONEST NEGATIVE (D164 / frontier F2, 2026-05-27):** no natural bijection exists (three candidates tried, 0 matches; a Pascal-type coincidence). The counts `32 = 32` match, but the two partitions of 32 — `dim Λᵏ(ℝ⁵) = (1,5,10,10,5,1)` vs subshell capacity `2(2ℓ+1) = (2,6,10,14)` — are **independent**. The `32 = 32` equality (D102) stands as an exact integer identity; the *bijection* does not. See [`../../04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md`](../../04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md) §1.1.
+- [`PAULI_DIVISOR_BIJECTION.md`](PAULI_DIVISOR_BIJECTION.md) — an *attempted* bijection between Z/2310 divisors and Pauli n = 4 electron states. **Outcome: FAILED — closed as an HONEST NEGATIVE (D164 / frontier F2, 2026-05-27):** no natural bijection exists (three candidates tried, 0 matches; a Pascal-type coincidence). The counts `32 = 32` match, but the two partitions of 32 — `dim Λᵏ(ℝ⁵) = (1,5,10,10,5,1)` vs subshell capacity `2(2ℓ+1) = (2,6,10,14)` — are **independent**. The `32 = 32` equality (D185) stands as an exact integer identity; the *bijection* does not. See [`../../04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md`](../../04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md) §1.1.
 
 ## Verification
 
@@ -43,7 +43,7 @@ See [`../../05_papers/physics/J37/`](../../05_papers/physics/J37/) — "Discrete
 ## Honest scope
 
 - The **identification** of TIG's so(10) with the SO(10) GUT gauge algebra is a STRUCTURAL load-bearing hypothesis — the algebra is exact (Cartan classification ensures isomorphism); the *physical* identification is the inference.
-- The chirality 16+16 split being interpreted as `electron spin × spatial` is the framework's structural reading, anchored by D102's exact integer identity but not derivable from the spinor algebra alone.
+- The chirality 16+16 split being interpreted as `electron spin × spatial` is the framework's structural reading, anchored by D185's exact integer identity but not derivable from the spinor algebra alone.
 
 ---
 

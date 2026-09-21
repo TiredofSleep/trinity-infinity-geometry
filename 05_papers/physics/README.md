@@ -33,7 +33,7 @@ Physics papers in this corpus emphasize:
 
 - **Cl(0, 10) construction**: 10 γ-matrices on ℂ³² from Pauli tensor products; 100 anticommutation relations verified; 45 generators of so(10).
 - **Spinor decomposition**: 32-dim spinor → 16+16 chirality under ω = γ₁…γ₁₀ (since ω² = +I for n = 10 ≡ 2 mod 4).
-- **Atomic-substrate refinement (Volume K, D102)**: each 16-dim chirality half = 1+3+5+7 = kernel + substrate primes. Realizes n = 4 atomic shell.
+- **Atomic-substrate refinement (Volume K, D185, was D102)**: each 16-dim chirality half = 1+3+5+7 = kernel + substrate primes. Realizes n = 4 atomic shell.
 - **D₄ outer automorphism**: P₅₆ acts as σ_outer in the spinor rep, swapping the two chiral 16-irreps. Matter/antimatter exchange.
 - **BHML's 54-irrep direction**: σ_outer-breaking content lives 100% in symmetric-traceless 54 of so(10); explicit 9-vector with `‖VEV‖² = 13/4` exactly.
 - **Pati-Salam doubly-invariant subalgebra**: `⟨P₅₆, σ³⟩ = D₄`; the doubly-invariant subalgebra under this D₄ is `su(4) ⊕ u(1)` (Pati–Salam plus B−L). Cited as standard SO(10) GUT decomposition.
