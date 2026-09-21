@@ -40,7 +40,7 @@ python ../../verification/priority1_pauli_divisor_attempt.py    # HONEST NEGATIV
 
 ## Landed J-series papers in this field
 
-See [`../../05_papers/physics/`](../../05_papers/physics/) — J23 (Discrete Dirac inside Cl(0,10) with Volume K atomic-substrate refinement at §2.1), J45 (Yukawa hierarchy with FN slope λ = 10/49).
+See [`../../05_papers/physics/`](../../05_papers/physics/) — J37 (Discrete Dirac inside Cl(0,10) with Volume K atomic-substrate refinement at §2.1). The Yukawa/FN scaffolding is **retired** → [`../../04_meta/retired_J_papers/`](../../04_meta/retired_J_papers/).
 
 ## Connections to existing literature
 

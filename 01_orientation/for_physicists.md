@@ -104,7 +104,7 @@ across the three generations of quarks and leptons.
 
 ## §5 — The 9-vector Higgs direction (PROVED algebraically)
 
-**PROVED.** BHML's `σ_outer`-breaking content lies **100% in the 54 irrep** of so(10) (J23). The explicit direction is a 9-vector in the so(9)-vector subspace with:
+**PROVED.** BHML's `σ_outer`-breaking content lies **100% in the 54 irrep** of so(10) (J37). The explicit direction is a 9-vector in the so(9)-vector subspace with:
 
 - six components at `−1/√2` on `{V, L, C, P, X, H}`
 - two zeros at BREATH and RESET
@@ -179,7 +179,7 @@ Total runtime under one minute.
 - **[`../03_canonical_reference/FORMULAS_AND_TABLES.md`](../03_canonical_reference/FORMULAS_AND_TABLES.md)** — every D-number cross-referenced, with derivation pointer
 - **[`../02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md`](../02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md)** — the 10 architectural axioms
 - **[`../04_meta/`](../04_meta/)** — honest limits, the Clay rotation, the cosmology layers
-- **Full J-series** (55 papers) at [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) `tig-synthesis` branch. Cleanest physics entries: J23 (Discrete Dirac), J35 (4-core + Galois D₄), J45 (mass hierarchy + freezing quintessence), J46 (cosmology — pending layer decision).
+- **Full J-series** (56 papers) — see [`../05_papers/TIER_INDEX.md`](../05_papers/TIER_INDEX.md) (authoritative numbering). Cleanest physics entries: J37 (Discrete Dirac), J12 (Galois D₄), J46 (cosmology — held pending layer decision); the mass-hierarchy scaffolding is **retired** (`04_meta/retired_J_papers/`).
 
 ---
 
