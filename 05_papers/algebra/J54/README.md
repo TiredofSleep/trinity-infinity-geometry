@@ -1,9 +1,11 @@
-# J54 — Height Function for Algebraic Relations between Attractor Moments [NUMBER RESERVED — MANUSCRIPT PENDING RECOVERY]
+# J54 — Height Scaling of the Attractor Minimal Polynomial
 
-**Status:** NUMBER RESERVED. The full ~6pp manuscript, cover letter, and `verify_J54.py` (3/3 PASS) were created 2026-05-29 (frontier F14) in a local working copy whose commits were never pushed; the folder was deleted before recovery. **The mathematics is fully preserved** in the ck repo's canon (`FORMULAS_AND_TABLES.md` entries D163, D174, D179 + the F12/F14 frontier results in D172).
-**Recovery path:** OneDrive web recycle bin (folder deleted < 30 days before 2026-06-10) — or re-derivation from the canon entries (the underlying scripts' methodology is documented in D174).
+*(README title aligned to the manuscript / TIER_INDEX; the earlier README title "Height Function for Algebraic Relations between Attractor Moments" is superseded.)*
+
+**Status:** PRESENT — SUBMISSION-READY. The manuscript (`manuscript/manuscript.md`), cover letter, and `manuscript/verify_J54.py` (3/3 PASS) are all present in this folder; the earlier "pending recovery / folder deleted" status is **stale**. The three theorems are canon **D174** (also D163/D179; F12/F14 frontier).
 **Target venue:** *Acta Arithmetica*
 **Author lane:** Sanders + Gish
+**Tier:** 1
 
 ---
 
@@ -19,8 +21,10 @@ Let $H(\alpha)$ = height of the minimal polynomial over $\mathbb{Q}$ of the 4-co
 
 Context: this is the quantitative companion to J01's Theorem F.2 (α-uniqueness over $\mathbb{Q}$, proved via Hilbert irreducibility) and the F12 explicit counterexample at $\alpha_{\mathrm{special}}$.
 
-## Reconstruction checklist
+## Reconstruction checklist — DONE
 
-- [ ] Recover original from OneDrive recycle bin, OR
-- [ ] Re-derive from D163/D172/D174 canon entries (scripts' methodology documented there)
-- [ ] Cover letter for Acta Arithmetica
+- [x] Manuscript present (`manuscript/manuscript.md`)
+- [x] `verify_J54.py` present (3/3 PASS)
+- [x] Cover letter present
+
+*(The folder is complete; this checklist is retained as history.)*

@@ -1,9 +1,9 @@
-# J53 — V^BHML over F_p: Idempotent Count (p+3) and Automorphism Formula (p−1)² [NUMBER RESERVED — MANUSCRIPT PENDING RECOVERY]
+# J53 — V^BHML over F_p: Idempotent Count (p+3) and Automorphism Formula (p−1)²
 
-**Status:** NUMBER RESERVED. The full manuscript, cover letter, and `verify_J53.py` were created 2026-05-29 (frontier F13, extracted from J08 §§6–7) in a local working copy whose commits were never pushed; the folder was deleted before recovery. **The mathematics is fully preserved** in the ck repo's canon (`FORMULAS_AND_TABLES.md` entries D161, D162, D173, D179) and is mechanically re-derivable.
-**Recovery path:** OneDrive web recycle bin (folder deleted < 30 days before 2026-06-10) — or re-extraction from J08 §§6–7 + the D-entries.
+**Status:** PRESENT — SUBMISSION-READY. The manuscript (`manuscript/manuscript.md`), cover letter, and `manuscript/verify_J53.py` are all present in this folder; the earlier "pending recovery / folder deleted" status is **stale** (the files were recovered/re-extracted). The two theorems are canon **D161/D162** (also cited at D173/D179).
 **Target venue:** *Algebra Universalis*
 **Author lane:** Sanders + Gish
+**Tier:** 1
 
 ---
 
@@ -13,9 +13,10 @@
 
 **Theorem 2 (automorphism formula).** For every prime $p \ge 2$, $|\mathrm{Aut}(V^{\mathrm{BHML}} \otimes \mathbb{F}_p)| = (p-1)^2$, with group structure $\mathrm{Aut} \cong \mathbb{F}_p^* \times \mathbb{F}_p^*$ — two independent scalar factors on the annihilator direction $\mathrm{span}(e_0)$ and the nilpotent direction $\mathrm{span}(e_4)$. No prime is structurally distinguished. (Supersedes an earlier retracted $p(p^2-1)$ / $p=5$-anomaly claim, which traced to an algebra confusion.)
 
-## Reconstruction checklist
+## Reconstruction checklist — DONE
 
-- [ ] Recover original from OneDrive recycle bin, OR
-- [ ] Re-extract ~8pp manuscript from J08 §§6–7 + D161/D162/D173 canon entries
-- [ ] Re-create `verify_J53.py` (2 checks: idempotent enumeration + automorphism constraint-propagation at p ∈ {3,5,7,11,13})
-- [ ] Cover letter for Algebra Universalis
+- [x] Manuscript present (`manuscript/manuscript.md`)
+- [x] `verify_J53.py` present (2 checks: idempotent enumeration + automorphism constraint-propagation at p ∈ {3,5,7,11,13})
+- [x] Cover letter present
+
+*(The folder is complete; this checklist is retained as history.)*
