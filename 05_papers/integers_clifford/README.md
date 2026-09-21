@@ -14,6 +14,7 @@ Read integer *n* as an *n*-point configuration: **1,2,3,4 are the simplices** (p
 
 | file | status | what it is |
 |---|---|---|
+| [`THE_INTEGERS.md`](THE_INTEGERS.md) | **canonical 0–9 definitions** | the refined 0–9 integers-as-geometry — supersedes the scattered 0–9 tables in the reference docs; shapes forced, wheel/sphere/breath names [READING], mod-3 roles [READING], base-independent spine flagged. |
 | [`integers_as_geometric_entities.md`](integers_as_geometric_entities.md) | **P1 — COMPLETE, FORCED** | the rigorous core: simplex ladder → the tetrahedral 1/3. Parameter-free, over-determined by two routes. Publishable-shaped. |
 | [`P2_clifford_cube_skeleton.md`](P2_clifford_cube_skeleton.md) | **P2 — skeleton, FORCED** | the cube = Cl(3); the two projections; 1/3 = projection angle. **Fence:** the hexagon does *not* host Clifford (60° mirrors don't anticommute) — it is the 3-fold *shadow*. |
 | [`P3_mass_sublattice_skeleton.md`](P3_mass_sublattice_skeleton.md) | **P3 — skeleton, one testable law** | honeycomb band gap = 2·Δ (sublattice asymmetry): linear, slope 2, through the origin. The physics (gapped Dirac) is textbook; TIG contributes the *framing*. **[OPEN]:** the (gap, Δ_eff) data table across honeycomb materials. |
