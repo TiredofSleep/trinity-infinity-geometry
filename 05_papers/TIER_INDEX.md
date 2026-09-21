@@ -55,7 +55,7 @@ Originally 31 (J01-J31). After the referee pass: **J08, J23, J28, J29 demoted to
 | **J13** | algebra | The Forced 5/7 Torus Aspect Ratio | Acta Arithmetica | READY |
 | **J14** | combinatorics | Non-Associativity Decay σ(N) ≤ 2/N over Z/NZ | JCT-A | READY |
 | **J15** | combinatorics | Joint Closure + Per-Coordinate Fuse + 4-Core Attractor | Algebraic Combinatorics | READY |
-| **J16** | algebra | The CL Forcing Axioms (S_1-S_7 force CL_TSML) | Algebraic Combinatorics | READY (manuscript polish: title still says A1-A9) |
+| **J16** | algebra | The CL Forcing Axioms (S_1-S_7 force CL_TSML) | Algebraic Combinatorics | READY |
 | **J17** | combinatorics | Forcing Axioms + Family of Comm Non-Assoc Magmas Preserving 4-Core | TBD | DRAFT (Tier 1 promotion, rigor pass pending) |
 | **J18** | algebra | F_p Extensions of CL_BHML across Six Primes | Communications in Algebra | READY |
 | **J19** | algebra | Charpoly Prime-11 Pattern | Linear Algebra Apps | RETARGETED to LAA (Tier 1 promotion, rigor pending) |

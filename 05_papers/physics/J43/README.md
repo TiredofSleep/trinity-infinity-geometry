@@ -6,6 +6,8 @@
 **Author lane:** Sanders + Gish
 **Tier:** 3 (hold/retire candidates) — HOLD pending NV-center experimentalist
 **WP source:** WP73-WP77 (bundled)
+
+> **Resurface note (2026-09-21).** The *theory* is complete and **lens-invariant** — pure finite-group representation theory + quantum control on ℂ³ (24-element S₄ closure, residual ≤ 1.84e-16), with **no TIG/TSML dependence**. It does not need the lab gate to be a paper: resurface it now as a standalone quantum-control / NV-proposal (PRA) with experimental Test E framed as a *proposed* measurement rather than a blocker. **Recommended resurface candidate.**
 **Acceptance probability:** ~70-80% after revisions per referee (conditional on lab-partner outreach)
 
 ---

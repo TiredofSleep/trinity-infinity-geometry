@@ -5,6 +5,8 @@
 **Status**: DRAFT — verification PASS, awaiting Brayden green-light + cover letter
 **Author lane**: Sanders + Gish
 **Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
+
+> **Resurface note (2026-09-21).** Demoted only as *pedagogical* (Mathematics-Magazine-class), **not** as wrong — verification PASSes; the four distinct magmas + cumulant spectrum are correct and complete. **Recommended resurface:** ship to *Mathematics Magazine* as-is (correct and complete, just not Tier-1 research).
 **Source**: scrutiny pass on `overnight_handoff_2026-05-27` (2026-05-26). The 4-magma refinement is a correction-via-strengthening of an earlier "3 magmas" claim in `OPEN_FRONTIERS_2026-05-26.md` §60.
 
 ---
