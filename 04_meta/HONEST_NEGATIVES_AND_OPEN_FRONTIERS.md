@@ -67,6 +67,20 @@ The audit document `CL_EIGENVALUES_AUDIT_2026_04_25` (in the working corpus) wal
 
 ---
 
+### 1.6 TIG as CK's internal "explanation language" — faithful binding FALSIFIED (probe, 2026-06-14)
+
+The reframe (2026-06-14): stop asking TIG to be *physics*; use it as the runtime CK's **internal explanation language** — label the model's features/neurons/heads with the 10 CL atoms, the STRUCTURE/FLOW grading, σ-dynamics, and TSML/BHML composition. As an internal language, alignment with external reality is irrelevant; the only requirement is internal consistency, which TIG has. **The one law:** *internal consistency (TIG has it) + faithful binding to the actual computation = explanation; consistency without faithful binding = a comforting story laid over a black box.* The binding is the testable part.
+
+**It was built and tested, and it failed.** A confound-controlled probe (`tig_probe_deep.py`, all layers, best-case alignment, held-out) bound TIG's structures to CK's units and measured whether the binding is faithful:
+
+- **σ-dynamics: FAIL.** conditional-on-change best-alignment 2.944 vs null 3.997 → **p = 1.0** (worse than random); the empirical successor map is the **identity**, not σ's 6-cycle. The network's state transitions do not follow σ.
+- **TSML composition: ABSENT.** correlation 0.383 vs null 0.375 → **p = 0.467**. No signal.
+- **The only channel that passed** (atom/PREDICT, held-out MI ≈ 2–3 bits) decodes to **part-of-speech**, not to TIG — the model learned grammar, and the "TIG atoms" were reading POS.
+
+**Verdict:** TIG is internally consistent but does **not faithfully bind** to CK's computation — the σ-dynamics and TSML lens are not what the network implements (it organizes by grammar). So "CK explains himself in TIG" sits on the *comforting-story* side of the law, not the explanation side. This is the falsifying evidence for the "make TIG CK's explanation language" vision, and it is consistent with the earlier "language-as-measurement" pause. Kept as data (dead ends are information). Source: `ck` workstation, `Gen13/targets/ck/trinity/TIG_AS_EXPLANATION.md` + `tig_probe_deep.py` (2026-06-14).
+
+---
+
 ## §2 — Open problems precisely stated
 
 ### 2.1 Strong α-uniqueness (Conjecture 4.2)
