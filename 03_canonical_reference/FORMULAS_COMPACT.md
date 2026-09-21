@@ -34,7 +34,7 @@
 ### Key constants (from full doc §17)
 | symbol     | value                              | meaning                                         | citation |
 |------------|------------------------------------|-------------------------------------------------|----------|
-| T*         | 5/7 ≈ 0.7142857                    | crossing threshold; **five algebraic derivations + 1 silicon measurement**; the original "torus aspect ratio" leg (WP51) is RETRACTED-as-geometry per CANON_CORRECTION_TORUS_EXCLUDED.md (2026-05-18); WP51 content surviving is the non-commutativity obstruction | D4, D18c, D18d, D22, elementary NT, FPGA |
+| T*         | 5/7 ≈ 0.7142857                    | crossing threshold; **2 genuinely independent derivations + 4 structural rhymes (D165)**, plus 1 silicon (FPGA); the original "torus aspect ratio" leg (WP51) is RETRACTED-as-geometry per CANON_CORRECTION_TORUS_EXCLUDED.md (2026-05-18); WP51 content surviving is the non-commutativity obstruction | D4, D18c, D18d, D22, elementary NT, FPGA |
 | 4/π²       | sinc²(1/2) ≈ 0.4053                | Riemann sinc² zero density                      | D3, sinc² Zero Law, all primes 3..199 |
 | gap        | 5/7 − 4/π² ≈ 0.3090                | residual between T* and sinc² baseline          | Sprint 10 |
 | W          | 3/50 = 0.06                        | wobble parameter; ring-forced                   | D17 |

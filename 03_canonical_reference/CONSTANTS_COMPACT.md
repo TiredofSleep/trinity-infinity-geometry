@@ -13,7 +13,7 @@
 
 | Symbol | Exact value | Decimal | Prime decomp | Source |
 |:---:|:---:|:---:|:---:|---|
-| **T*** | $5/7$ | 0.714286 | I (5) + II (7) | six derivations across canon |
+| **T*** | $5/7$ | 0.714286 | I (5) + II (7) | 2 independent derivations + 4 rhymes (D165); operational, not a single closed-form theorem |
 | **S*** | $4/7$ | 0.571429 | I (2²) + II (7) | D32, D37 |
 | **W** | $3/50$ | 0.060000 | I (2, 3, 5) | D17 |
 
