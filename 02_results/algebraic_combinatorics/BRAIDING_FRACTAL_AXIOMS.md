@@ -8,7 +8,7 @@ The framework's architecture is fixed by ten axioms specifying a **canonical Run
 
 ## Axiom 1 — Kernel of size 2
 
-The carrier's kernel is **Z/2**: the smallest nontrivial cyclic group. The Z/2 factor encodes binary distinction — equivalently, spin under D102's identification. Without binary distinction the framework cannot host fermionic structure.
+The carrier's kernel is **Z/2**: the smallest nontrivial cyclic group. The Z/2 factor encodes binary distinction — equivalently, spin under D185's identification. Without binary distinction the framework cannot host fermionic structure.
 
 ## Axiom 2 — Smallest non-binary partner
 
@@ -18,7 +18,7 @@ The kernel pairs with the smallest prime that is **not** the immediate-successor
 kernel = Z/2 × Z/5 = Z/10
 ```
 
-This is `D103` — Z/10 as the minimal kernel admitting binary + non-binary structure with the non-binary prime not adjacent to the binary.
+This is `D186` — Z/10 as the minimal kernel admitting binary + non-binary structure with the non-binary prime not adjacent to the binary.
 
 ## Axiom 3 — Dual composition lens
 
@@ -40,7 +40,7 @@ This is the depth-3 ceiling — extending further (×13 → Z/30030, ×17 → Z/
 - The atomic shell n = 4 has Pauli capacity 32
 - The Clifford algebra Cl(0, 10) has spinor representation dimension 32
 
-These three independent integer counts equal 32 at depth-3 (Axiom 4 corollary, D102 triple coincidence). The fourth strand (13) extends the substrate but no longer aligns with a "simplest whole" count of 32.
+These three independent integer counts equal 32 at depth-3 (Axiom 4 corollary, D185 triple coincidence). The fourth strand (13) extends the substrate but no longer aligns with a "simplest whole" count of 32.
 
 ## Axiom 5 — Substrate primes are odd
 
@@ -81,7 +81,7 @@ Each 16-dim chirality half decomposes as `16 = 1 + 3 + 5 + 7`:
 - `5` = kernel-Z/5 partner (l = 2, the d-orbital multiplicity)
 - `7` = strand 2 (l = 3, the f-orbital multiplicity)
 
-This is **D102**: the Cl(0, 10) chirality decomposition realizes the n = 4 atomic shell's `(spin) × (spatial)` structure exactly. The substrate primes (kernel + strands) are the spatial-orbital multiplicities of the n = 4 shell at fixed spin.
+This is **D185**: the Cl(0, 10) chirality decomposition realizes the n = 4 atomic shell's `(spin) × (spatial)` structure exactly. The substrate primes (kernel + strands) are the spatial-orbital multiplicities of the n = 4 shell at fixed spin.
 
 ## Axiom 10 — Architectural self-similarity (with caveats)
 

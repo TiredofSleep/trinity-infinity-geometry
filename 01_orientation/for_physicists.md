@@ -34,7 +34,7 @@ Output exhibits the triple identity `32 = 32 = 32` and the chirality split.
 
 ---
 
-## §2 — The strand–orbital map (D101, Volume K)
+## §2 — The strand–orbital map (D184, Volume K)
 
 **PROVED (exact algebraic identity).** The four substrate primes that wrap the Z/10Z kernel — `{3, 7, 11, 13}` — map exactly to the first four nodeless hydrogenic orbitals at odd `l`, by the rule:
 
@@ -163,10 +163,10 @@ Honest scoping:
 
 ```bash
 python _verification_scripts/VERIFY_ALL.py                  # 14/14 PASS
-python _verification_scripts/verify_d2d1_closed_form.py     # D100 nodeless edge-size
-python _verification_scripts/strand_orbital_map.py          # D101 strand→orbital map
-python _verification_scripts/clifford_substrate_shell.py    # D102 triple identity 32=32=32
-python _verification_scripts/meta_extension.py              # D103 Z/10 minimality
+python _verification_scripts/verify_d2d1_closed_form.py     # D183 nodeless edge-size
+python _verification_scripts/strand_orbital_map.py          # D184 strand→orbital map
+python _verification_scripts/clifford_substrate_shell.py    # D185 triple identity 32=32=32
+python _verification_scripts/meta_extension.py              # D186 Z/10 minimality
 python _verification_scripts/priority1_pauli_divisor_attempt.py    # HONEST NEGATIVE on direct bijection
 ```
 

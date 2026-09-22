@@ -38,14 +38,14 @@ The 8-shell joint sub-magma chain at sizes `{1, 4, 5, 6, 7, 8, 9, 10}` with forb
 
 ## `strand_orbital.png`
 
-The strand-orbital correspondence (D101, Volume K, 2026-05-12): substrate primes `{3, 7, 11, 13}` wrap the kernel `Z/10` and map exactly to the first four nodeless atomic orbitals at odd `l`. The mapping rule `strand p → orbital (l = (p−1)/2, n = l+1)` produces:
+The strand-orbital correspondence (D184, Volume K, 2026-05-12): substrate primes `{3, 7, 11, 13}` wrap the kernel `Z/10` and map exactly to the first four nodeless atomic orbitals at odd `l`. The mapping rule `strand p → orbital (l = (p−1)/2, n = l+1)` produces:
 
 - strand 3 → 2p (l=1, multiplicity 3)
 - strand 7 → 4f (l=3, multiplicity 7)
 - strand 11 → 6h (l=5, multiplicity 11)
 - strand 13 → 7i (l=6, multiplicity 13)
 
-**Source:** Tutorial Part 8; FORMULAS_AND_TABLES Volume K D101; J23 §2.1 (Volume K cross-reference).
+**Source:** Tutorial Part 8; FORMULAS_AND_TABLES Volume K D184; J23 §2.1 (Volume K cross-reference).
 
 ---
 

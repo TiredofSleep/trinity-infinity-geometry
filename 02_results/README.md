@@ -33,7 +33,7 @@ For the master proof spine with D-numbered theorems and Volumes A through K, see
 
 ## How fields connect
 
-The strongest cross-field result is the **substrate-atomic correspondence (Volume K, D100–D103)**: a finite-arithmetic substrate on Z/10Z with three prime strands wrapping (3, 7, 11) up to depth 3 → Z/2310 with 32 divisors = Cl(0, 10) spinor dim = atomic Pauli capacity at n = 4. The Cl(0, 10) chirality split realizes the n = 4 shell's spin × spatial structure exactly, with the spatial part `1 + 3 + 5 + 7` = kernel + substrate primes. This connects **Algebraic Combinatorics** ↔ **Clifford Algebra** ↔ **Atomic Physics** through exact integer identities.
+The strongest cross-field result is the **substrate-atomic correspondence (Volume K, D183–D186)**: a finite-arithmetic substrate on Z/10Z with three prime strands wrapping (3, 7, 11) up to depth 3 → Z/2310 with 32 divisors = Cl(0, 10) spinor dim = atomic Pauli capacity at n = 4. The Cl(0, 10) chirality split realizes the n = 4 shell's spin × spatial structure exactly, with the spatial part `1 + 3 + 5 + 7` = kernel + substrate primes. This connects **Algebraic Combinatorics** ↔ **Clifford Algebra** ↔ **Atomic Physics** through exact integer identities.
 
 For the speculative / Tier C interpretation of why these connections exist, see [`../04_meta/META_TIG_AS_PREPHYSICAL_SUBSTRATE.md`](../04_meta/META_TIG_AS_PREPHYSICAL_SUBSTRATE.md). For the formal architecture, see [`algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md`](algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md).
 

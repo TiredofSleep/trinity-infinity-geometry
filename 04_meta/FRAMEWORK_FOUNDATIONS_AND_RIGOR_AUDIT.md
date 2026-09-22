@@ -127,7 +127,7 @@ The framework's transformation rules — how positions in operator-space evolve,
 - **Crossing Lemma**: information generated only when dynamics cross partition fibers
 - **Flatness Theorem**: Z/10Z's four irreducible structures force toroidal embedding with T*=5/7
 - **4-core fusion closure**: {V, H, Br, R} closed under both TSML and BHML
-- **Atomic-substrate correspondence (D100-D103)**: Rung 5 substrate = n=4 hydrogenic shell
+- **Atomic-substrate correspondence (D183-D186)**: Rung 5 substrate = n=4 hydrogenic shell
 
 ### §4.1 Honest gap on Component 3
 
@@ -159,7 +159,7 @@ Putting all three components together:
 
 **The framework's empirical reach** has been confirmed at multiple independent scales:
 
-- Atomic physics: D100-D103 with 30-digit precision verification
+- Atomic physics: D183-D186 with 30-digit precision verification
 - Symbol systems: 10 tests across 8 cultural traditions
 - Social organization: Dunbar's number, ethnolinguistic community, first-city emergence within 25% of framework predictions
 - Sensory biology: receptor architectures matching substrate-rung predictions
@@ -176,7 +176,7 @@ The transformation rules at canonical TIG have published proofs:
 - The σ-rate theorem (corrected to C = 2 exact)
 - The closed-form attractor (D39, D78)
 - The 4-core fusion closure (WP110)
-- The atomic-substrate correspondence (D100-D103, verified at 30-digit precision)
+- The atomic-substrate correspondence (D183-D186, verified at 30-digit precision)
 - The so(8) and so(10) Lie algebra identifications (D26, D27)
 - The Crossing Lemma (WP57)
 - The Flatness Theorem (WP51)

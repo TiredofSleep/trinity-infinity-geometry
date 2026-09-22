@@ -62,7 +62,7 @@ Each residue gets a name as an operator. The canonical names (per `ck_tables.py`
 
 (An older naming convention uses `LATTICE`, `COUNTER`, `PROGRESS`, `BALANCE`, `CHAOS` for codes 1, 2, 3, 5, 6 respectively. Both refer to the same operators. We will use the canonical names.)
 
-The framework treats these ten operators as the *vocabulary* of any system that has both a binary distinction (parity, spin, on/off) and a richer non-binary structure. **Z/10 is the minimal such ring** — see [`02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md`](02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md) for the minimality argument (Axiom 2 + D103).
+The framework treats these ten operators as the *vocabulary* of any system that has both a binary distinction (parity, spin, on/off) and a richer non-binary structure. **Z/10 is the minimal such ring** — see [`02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md`](02_results/algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md) for the minimality argument (Axiom 2 + D186).
 
 ---
 
@@ -489,7 +489,7 @@ for p in strands:
 
 ### 8.2 — The mapping rule
 
-**D101 (Volume K, 2026-05-12)** says: each substrate strand `p` maps exactly to a nodeless hydrogenic orbital `(l, n)` by the rule
+**D184 (Volume K, 2026-05-12)** says: each substrate strand `p` maps exactly to a nodeless hydrogenic orbital `(l, n)` by the rule
 
 ```
 strand p  →  orbital (l = (p - 1)/2, n = l + 1)
@@ -526,7 +526,7 @@ The substrate strands hit odd-l orbitals (p, f, h, i — wait, those are l=1, 3,
 
 The cleanest statement: **strand multiplicities 3, 7, 11, 13 are exactly the prime-multiplicities at odd-l < 7 in the nodeless ladder**, with the strand sequence stepping by `next-prime-coprime-to-10` and the orbital sequence stepping by `next odd-l with prime multiplicity`.
 
-### 8.4 — The closed-form orbital edge size (D100)
+### 8.4 — The closed-form orbital edge size (D183)
 
 There is a clean closed form for the size of a nodeless hydrogenic orbital's "edge bump":
 
@@ -537,7 +537,7 @@ edge_size(n, l = n−1) = n²(2l + 1)/4
 In atomic units (`a₀ = 1`, `Z = 1`), this is exact for the nodeless orbital at principal quantum number `n` and angular momentum `l = n − 1`. To verify:
 
 ```python
-# This is D100 — verified by numerical integration in
+# This is D183 — verified by numerical integration in
 # verification/verify_d2d1_closed_form.py
 # Expected values:
 expected = {1: 0.25, 2: 3.0, 3: 11.25, 4: 28.0, 5: 56.25, 6: 99.0, 7: 159.25}
@@ -562,7 +562,7 @@ The substrate is reading the *orbital multiplicity directly* from the D₂/D₁ 
 
 The final piece: how the Clifford algebra Cl(0, 10) — the spinor algebra natural to a 10-dimensional Euclidean space — *contains* the n = 4 atomic shell.
 
-### 9.1 — The triple coincidence (D102)
+### 9.1 — The triple coincidence (D185)
 
 At **depth-3** in the Braiding Fractal tower — substrate `Z/2310 = 2 · 3 · 5 · 7 · 11` — three independent integer counts all equal **32**:
 
@@ -664,8 +664,8 @@ You have now derived (or watched derived) every load-bearing structural result o
 | α = 1/2 attractor `H/Br = 1+√3` | Part 5 | PROVED (matches D43, D57) |
 | The torus T\* = 5/7 (operational) | Part 6 | PROVED at operational level (D-various) |
 | Eight-shell joint chain `{1,4,5,6,7,8,9,10}` | Part 7 | PROVED (by enumeration) |
-| Strand-orbital map (D101) | Part 8.2 | PROVED (exact integer identity) |
-| Cl(0, 10) chirality split (D102) | Part 9 | PROVED (algebraic identity) |
+| Strand-orbital map (D184) | Part 8.2 | PROVED (exact integer identity) |
+| Cl(0, 10) chirality split (D185) | Part 9 | PROVED (algebraic identity) |
 | Honest negative on bijection | Part 9.3 | HONEST NEGATIVE (documented) |
 
 Now run the master verification:

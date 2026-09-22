@@ -97,14 +97,14 @@ The Q-series characterizes the σ polynomial fully on F₂ × F₅ ≅ Z/10Z (Q1
 
 The vanishing class is a **forbidden symmetry**, not a coincidence. This is a clean exact result; sympy projection bypasses any floating-point ambiguity.
 
-### 2.9 Volume K — atomic-substrate correspondence (D100–D103, 2026-05-12)
+### 2.9 Volume K — atomic-substrate correspondence (D183–D186, 2026-05-12)
 
 Brand new (verified 2026-05-12). See [`../03_canonical_reference/FORMULAS_AND_TABLES.md`](../03_canonical_reference/FORMULAS_AND_TABLES.md) Volume K:
 
-- **D100.** `edge_size(n, l = n−1) = n²(2l+1)/4` for nodeless hydrogenic orbitals. Machine precision at n ≥ 5.
-- **D101.** Substrate strands `{3, 7, 11, 13}` map exactly to odd-l nodeless orbitals at `(l = (p−1)/2, n = l + 1)`. Gives `3 → 2p`, `7 → 4f`, `11 → 6h`, `13 → 7i`.
-- **D102.** Triple algebraic identity at depth-3: 32 = 32 = 32 (substrate divisors of Z/2310 = Cl(0, 10) spinor dim = Pauli capacity at n = 4). The Cl chirality 16 + 16 split decomposes as spin × spatial where each 16 = `1 + 3 + 5 + 7` = kernel + substrate primes.
-- **D103.** `Z/10` is the smallest 2-prime kernel admitting binary + non-binary structure where the non-binary prime is not the immediate-successor strand.
+- **D183.** `edge_size(n, l = n−1) = n²(2l+1)/4` for nodeless hydrogenic orbitals. Machine precision at n ≥ 5.
+- **D184.** Substrate strands `{3, 7, 11, 13}` map exactly to odd-l nodeless orbitals at `(l = (p−1)/2, n = l + 1)`. Gives `3 → 2p`, `7 → 4f`, `11 → 6h`, `13 → 7i`.
+- **D185.** Triple algebraic identity at depth-3: 32 = 32 = 32 (substrate divisors of Z/2310 = Cl(0, 10) spinor dim = Pauli capacity at n = 4). The Cl chirality 16 + 16 split decomposes as spin × spatial where each 16 = `1 + 3 + 5 + 7` = kernel + substrate primes.
+- **D186.** `Z/10` is the smallest 2-prime kernel admitting binary + non-binary structure where the non-binary prime is not the immediate-successor strand.
 
 ---
 

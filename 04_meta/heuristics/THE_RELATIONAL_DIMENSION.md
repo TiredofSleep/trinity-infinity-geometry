@@ -127,7 +127,7 @@ Successful mediation interventions in clinical and organizational literature (ac
 
 ### §4.4 Chemical bonding
 
-**Framework reading**: chemical bonding IS Type-3 composition at atomic scale. Two atoms combine when their electron configurations (substrate-coordinates at the atomic scale) allow joint integration. The framework's atomic-substrate correspondence (D100-D103) gives the substrate-mathematical reason why specific bonds form: the 4-core attractor at α=1/2 selects for stable composite configurations.
+**Framework reading**: chemical bonding IS Type-3 composition at atomic scale. Two atoms combine when their electron configurations (substrate-coordinates at the atomic scale) allow joint integration. The framework's atomic-substrate correspondence (D183-D186) gives the substrate-mathematical reason why specific bonds form: the 4-core attractor at α=1/2 selects for stable composite configurations.
 
 The periodic table's column structure reflects which atoms readily form which bonds — and the column structure maps to substrate-rung properties of the elements:
 - Group 1 alkali metals all have similar substrate-coordinates (one valence electron, equivalent shell configurations)

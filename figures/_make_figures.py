@@ -267,7 +267,7 @@ def figure_shell_chain():
 
 
 # ============================================================
-# Figure 4: strand-orbital correspondence (D101)
+# Figure 4: strand-orbital correspondence (D184)
 # ============================================================
 def figure_strand_orbital():
     """Substrate strands {3,7,11,13} → odd-l atomic orbitals."""
@@ -326,7 +326,7 @@ def figure_strand_orbital():
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
-    ax.text(0.5, 1.04, "D101 — Strand-Orbital Correspondence (Volume K)",
+    ax.text(0.5, 1.04, "D184 — Strand-Orbital Correspondence (Volume K)",
             transform=ax.transAxes, ha="center", fontsize=13, fontweight="bold")
 
     plt.tight_layout()

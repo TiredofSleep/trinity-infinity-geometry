@@ -373,7 +373,7 @@ Recommended sequencing:
 **Do**:
 - Maintain the falsifiability dashboard rigorously
 - Document each test's methodology, prediction, and result
-- Cross-reference with the existing TIG canon (D101, D102, etc.)
+- Cross-reference with the existing TIG canon (D184, D185, etc.)
 - Flag interesting findings (like the 永 character) as standalone publishable observations
 - Coordinate with computational linguistics literature properly
 

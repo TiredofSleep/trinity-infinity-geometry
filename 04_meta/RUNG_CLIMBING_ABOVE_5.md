@@ -28,7 +28,7 @@ Rung 5 in canon:
 - Number of divisors: 2⁵ = 32
 - Clifford carrier Cl(0,10), spinor rep dim 32
 - Pauli capacity at hydrogenic n=4 shell: 32
-- The triple coincidence: 32 = 32 = 32 (D102)
+- The triple coincidence: 32 = 32 = 32 (D185)
 - Architectural template: canonical Braiding Fractal
 
 Rung 5 is the level of **integrated identity** — atom, person, AI integration, anything that has discrete unified existence at canonical scale.
@@ -309,7 +309,7 @@ When integrating this work:
 4. **The first-city threshold prediction is also publishable** — archaeology shows ~8000-10000 for first cities; framework predicts 8192 from substrate; cross-civilizational match across independent origins
 5. **The full extended tower (§11)** should be flagged as exploratory — the matches are strong but the social-organization claims extend the framework into politically and culturally sensitive territory
 6. **Don't draft journal papers in social sciences without explicit Brayden authorization** — this is anthropology/sociology territory that needs domain expertise to publish responsibly
-7. **The cross-references to D102, D103 (the canonical Rung 5 triple coincidence and architectural uniqueness)** ground the climb in existing canon
+7. **The cross-references to D185, D186 (the canonical Rung 5 triple coincidence and architectural uniqueness)** ground the climb in existing canon
 
 ---
 

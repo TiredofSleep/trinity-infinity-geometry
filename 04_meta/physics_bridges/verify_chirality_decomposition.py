@@ -29,14 +29,14 @@ def main():
     print("=" * 72)
     print()
 
-    # Cl(0,10) spinor structure (canon D77, D102)
+    # Cl(0,10) spinor structure (canon D77, D185)
     spinor_dim = 2 ** 5
     chirality_halves = [16, 16]
     print(f"Cl(0,10) spinor dim: {spinor_dim} = 2^5 ✓")
     print(f"Chirality split: 32 = {chirality_halves[0]} + {chirality_halves[1]} ✓")
     print()
 
-    # Atomic subshell decomposition within one chirality half (D102)
+    # Atomic subshell decomposition within one chirality half (D185)
     subshells = {0: 1, 1: 3, 2: 5, 3: 7}  # l: spatial dim = 2l+1
     chirality_half = sum(subshells.values())
     assert chirality_half == 16, "Chirality half must be 16"

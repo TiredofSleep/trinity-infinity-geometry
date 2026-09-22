@@ -1,6 +1,6 @@
 # D10x Reference Audit (post-2026-09-21 renumber)
 
-**Date:** 2026-09-22 · **Scope:** whole `trinity-infinity-geometry` repo except the two protected paths below · **Status:** audit complete; 4 references fixed, 329 left for review.
+**Date:** 2026-09-22 · **Scope:** whole `trinity-infinity-geometry` repo except the two protected paths below · **Status:** audit complete; **bulk pass EXECUTED 2026-09-22** — the 127 atomic references across 28 living docs converted D100–D103 → D183–D186 (plus the earlier 4 README fixes = 131 total). Left untouched by design: the J37 manuscript package (author's call), all archive/historical/dated material, all D104–D109 (outside the mapping), and the binary false positives. Verified: 0 residual bare D100–D103 in the converted set, 0 malformed mixed ranges, D104–108 preserved in the two mixed files, and the touched verifier scripts still pass.
 
 This catalogue traces every `D100`–`D109` reference outside the canon after the
 2026-09-21 consolidation renumber, and records for each whether it correctly
@@ -128,16 +128,16 @@ to match the file's own run-command block and the already-converted subdirectory
 - **All D104–D109 hits** — outside the confirmed mapping.
 - **Ambiguous hits** — local ad-hoc D-labels and a cross-repo "D102–D116 in CK" range.
 
-### Recommended bulk pass (for user approval)
+### Bulk pass — EXECUTED 2026-09-22 (on explicit go-ahead)
 
-Because ~28 living documents still use the old atomic numbers while README and two
-result READMEs use the new ones, the repo is currently **half-converted**. The clean
-fix is a single consistent pass over the living-document set below, applying
+The living-document set below (28 files) was converted in one consistent pass:
 D100→D183, D101→D184, D102→D185, D103→D186 (ranges like `D100–D103` → `D183–D186`
-fall out token-by-token), leaving D104+ and all archive/manuscript files alone. The
-per-file table lists every occurrence. This was **not** done unilaterally: it is a
-repo-wide content change spanning orientation, results, meta-analysis and a paper, well
-beyond "conservative straggler tidying," so it is surfaced here for an explicit go-ahead.
+fell out token-by-token). D104+ and all archive/manuscript files were left alone; the
+two "mixed" files kept their D104–D108 while their D100–D103 converted. The repo is no
+longer half-converted: every *living* doc now uses the atomic numbers' new home
+(D183–D186), matching the canon and the already-converted README/result docs. The J37
+manuscript package (24 refs) was left flagged for the author, since silently editing a
+submittable manuscript is out of scope for this pass.
 
 ---
 

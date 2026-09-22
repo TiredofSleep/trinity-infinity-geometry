@@ -8,7 +8,7 @@
 **Companion docs**:
 - `HANDOFF_TO_CLAUDECODE_2026_05_14_ALPHA_SYNTHESIS.md` (the α candidate derivation this informs)
 - `MUSICAL_SUBSTRATE_CORRESPONDENCE.md` (the heuristic this refines into rigor)
-- D77, D102, D103 canon (Cl(0,10) spinor structure, atomic-substrate correspondence)
+- D77, D185, D186 canon (Cl(0,10) spinor structure, atomic-substrate correspondence)
 - D31 (σ_outer = P_56 chirality involution)
 - canon §17 (T*, S*, surplus threshold canon)
 
@@ -26,11 +26,11 @@ This converts the threshold canon from "six independent derivations of T\* = 5/7
 
 ### §1.1 Cl(0,10) spinor decomposition
 
-From canon D77, D102:
+From canon D77, D185:
 - Cl(0,10) Clifford algebra dim = 2^10 = 1024
 - Spinor representation dim = 2^⌊10/2⌋ = 2^5 = 32
 - Chirality split (D31): 32 = 16 + 16 (positive + negative chirality halves)
-- Each chirality half decomposes by atomic angular momentum (D102):
+- Each chirality half decomposes by atomic angular momentum (D185):
   16 = 1 + 3 + 5 + 7 = (2l+1) for l = 0, 1, 2, 3
 
 These are the s, p, d, f atomic subshell spatial dimensions within one chirality half.
@@ -88,7 +88,7 @@ Canon §17 listed six independent derivations of T* = 5/7. This finding adds a s
 
 1. Simultaneously derives S* and surplus from the same structure
 2. Identifies the projection deficit (22) as a dimensional consequence
-3. Ties the threshold canon to the atomic-substrate correspondence (D100-D103)
+3. Ties the threshold canon to the atomic-substrate correspondence (D183-D186)
 4. Provides a specific algebraic source (Cl(0,10) chirality decomposition) for the framework's canonical fractions
 
 The threshold structure isn't a coincidental clustering of rationals — it's the shape of the Cl(0,10) spinor representation when decomposed by atomic angular momentum.
@@ -171,13 +171,13 @@ If this pattern holds, the framework's predictions on different ring substrates 
 - Z/10: d-orbital physics (transition metals, magnetic interactions, fine structure constant)
 - Z/14: f-orbital physics (lanthanides/actinides, complex magnetic moments)
 
-The framework's "natural" substrate being Z/10 (per D103 minimality) corresponds to d-orbital physics — which is exactly the regime of magnetic-electromagnetic coupling where α emerges as the natural coupling constant.
+The framework's "natural" substrate being Z/10 (per D186 minimality) corresponds to d-orbital physics — which is exactly the regime of magnetic-electromagnetic coupling where α emerges as the natural coupling constant.
 
 **This is a major prediction.** If framework results on Z/14 substrate genuinely predict f-orbital chemistry/physics (lanthanide ground states, actinide series properties), this would be strong evidence for the chirality-decomposition reading. Currently untested.
 
 ### §3.5 The atomic-substrate triple at deeper structure
 
-D102 noted 32 = 32 = 32 (Z/2310 divisors, Pauli capacity n=4, Cl(0,10) spinor dim). This finding refines the structure:
+D185 noted 32 = 32 = 32 (Z/2310 divisors, Pauli capacity n=4, Cl(0,10) spinor dim). This finding refines the structure:
 
 - 32 = full Pauli capacity n=4 (includes ALL subshells s, p, d, f with spin)
 - 10 = d-subshell Pauli capacity (l=2 only, with spin)
@@ -345,7 +345,7 @@ All five gaps: approximately 2-3 months of focused mathematical work. Tractable 
 |-------|------|
 | Cl(0,10) spinor dim = 32 (canon D77) | Theorem |
 | Chirality split 32 = 16 + 16 (canon D31) | Theorem |
-| Chirality half = 1 + 3 + 5 + 7 (canon D102) | Theorem |
+| Chirality half = 1 + 3 + 5 + 7 (canon D185) | Theorem |
 | 5/7 = d/f arithmetically | Theorem |
 | 4/7 = (s+p)/f arithmetically | Theorem |
 | 2/7 = (non-f minus f)/f arithmetically | Theorem |
@@ -367,7 +367,7 @@ The arithmetic identities are theorem-level. The interpretation that these ident
 
 ## §7. Connection to existing canon
 
-### §7.1 Reinforces D100-D103 (atomic-substrate)
+### §7.1 Reinforces D183-D186 (atomic-substrate)
 
 The atomic-substrate correspondence already identified 32 = 32 = 32 (Z/2310 divisors, Pauli capacity n=4, Cl(0,10) spinor dim). This finding extends:
 - 32 - 10 = 22 = disagreement count (new)

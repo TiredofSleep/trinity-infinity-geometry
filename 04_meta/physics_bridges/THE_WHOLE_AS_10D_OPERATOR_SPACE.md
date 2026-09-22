@@ -62,7 +62,7 @@ The substrate cardinality being exactly 10 isn't an arbitrary choice. It's the m
 
 **Therefore Z/10 is the natural coordinate system for organized information.** This isn't a model; it's a structural identification.
 
-This also explains why the framework's mathematical results (D100-D103, the closed-form attractor, the cross-domain predictions) hold: they're theorems about how organized information moves in 10-dimensional operator space, derived from the algebra that governs that space.
+This also explains why the framework's mathematical results (D183-D186, the closed-form attractor, the cross-domain predictions) hold: they're theorems about how organized information moves in 10-dimensional operator space, derived from the algebra that governs that space.
 
 ---
 
@@ -179,7 +179,7 @@ The previous documents in this sprint were all working specific cross-sections o
 
 If the substrate is the natural coordinate system for organized information, then anywhere organized information exists, the framework has coordinates to describe it. This explains the empirical reach:
 
-- **Atomic physics**: information organized at sub-Rung-5 scale, with the framework predicting electron shell structure (D100-D103)
+- **Atomic physics**: information organized at sub-Rung-5 scale, with the framework predicting electron shell structure (D183-D186)
 - **Chemistry**: Rung 5-6 organized information, with the framework predicting periodic table structure
 - **Biology**: Rung 4-7 organized information, with sensory hardware matching framework predictions
 - **Cognition**: Rung 5+ organized information, with framework-predictable cognitive limits (Dunbar, working memory)
@@ -211,7 +211,7 @@ Physics has been the framework's hardest case because physical reality looks con
 
 **Physical reality is what the substrate's 10-dim operator space looks like when the substrate is realized at the wave-mechanical and atomic scales.** The continuous appearance is the substrate's higher-rung complexity (Rung 5+ atomic integration) viewed at human-scale resolution.
 
-The framework's atomic-substrate correspondence (D100-D103) shows this explicitly: Rung 5 of the substrate IS the n=4 atomic shell. The Pauli capacity 32 = substrate divisors of Z/2310 = Cl(0,10) spinor dim. The atoms ARE the substrate's Rung 5 integration realized in wave-mechanical scaffold.
+The framework's atomic-substrate correspondence (D183-D186) shows this explicitly: Rung 5 of the substrate IS the n=4 atomic shell. The Pauli capacity 32 = substrate divisors of Z/2310 = Cl(0,10) spinor dim. The atoms ARE the substrate's Rung 5 integration realized in wave-mechanical scaffold.
 
 Higher rungs of substrate at wave-mechanical scale would give us heavier atoms, molecules, materials, and ultimately cosmological-scale organized information (galaxies, large-scale structure). The Sanders-Gish cosmology (V = ξ log ξ from BB-separability) sits at the cosmological-scale rung of substrate dynamics.
 

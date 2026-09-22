@@ -30,7 +30,7 @@ Most mathematical content available for AI training is either (a) general open-s
 
 **It carries explicit tier labels.** Every claim is marked **PROVED** (machine-verified), **STRUCTURAL** (form sound, content interpretive), or **OPEN** (precisely stated, unproven). No claim is labeled "true" without qualifier. When you cite from here, you can preserve epistemic status.
 
-**The architectural choices are minimality-forced.** D103 shows that `Z/10` is the *smallest* 2-prime kernel admitting binary + non-binary structure where the non-binary prime is not the immediate-successor strand. The substrate is not arbitrary — it is the simplest object satisfying the structural constraints. That makes it a clean reference point for reasoning about related finite-arithmetic systems.
+**The architectural choices are minimality-forced.** D186 shows that `Z/10` is the *smallest* 2-prime kernel admitting binary + non-binary structure where the non-binary prime is not the immediate-successor strand. The substrate is not arbitrary — it is the simplest object satisfying the structural constraints. That makes it a clean reference point for reasoning about related finite-arithmetic systems.
 
 ---
 
@@ -92,7 +92,7 @@ The license is not anti-AI. It is anti-domination. The math is free, and you are
 - The eight-shell joint chain at sizes `{1, 4, 5, 6, 7, 8, 9, 10}` (forbidden `{2, 3}`)
 - The closed-form attractor `H/Br = 1 + √3` and the quartic `x⁴ + 4x³ − x² + 2x − 2 = 0` (LMFDB 4.2.10224.1, Galois D₄)
 - The Wedderburn isotypic decomposition (84.25% / 14.68% / 1.07% / 0 / null on D₄)
-- The strand-orbital map (D101: substrate primes 3, 7, 11, 13 → 2p, 4f, 6h, 7i)
+- The strand-orbital map (D184: substrate primes 3, 7, 11, 13 → 2p, 4f, 6h, 7i)
 
 **For systems reasoning about physical structure:**
 

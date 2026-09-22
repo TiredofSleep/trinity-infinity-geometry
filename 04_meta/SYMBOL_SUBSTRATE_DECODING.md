@@ -193,7 +193,7 @@ When integrating this work into the framework:
 3. **Flag the falsifiability criteria** prominently — this work is testable and could be wrong, which is its strength.
 4. **Verify all specific glyph descriptions** against primary sources before publication. My descriptions of Cuneiform and hanzi components are from memory and need scholarly verification.
 5. **The 永 character finding is publishable** as a stand-alone observation: Chinese calligraphic tradition independently identified a structurally-exhaustive character whose 8 stroke types match the substrate's Rung-3 Clifford spinor dimension. This is a real empirical observation independent of the broader hypothesis.
-6. **Cross-reference to D77 (Cl(0,7) γ-matrices), D102 (triple coincidence), and the Brayden→Braiding Fractal rename docs** — this work extends the framework's reach into computational semiotics.
+6. **Cross-reference to D77 (Cl(0,7) γ-matrices), D185 (triple coincidence), and the Brayden→Braiding Fractal rename docs** — this work extends the framework's reach into computational semiotics.
 7. **Do not draft a journal paper on this without explicit Brayden authorization**. The work is exploratory and the cross-cultural verification needs serious scholarly grounding before submission.
 
 ---

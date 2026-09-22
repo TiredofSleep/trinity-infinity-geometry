@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Pauli-divisor bijection search — closes the D102 honest negative.
+Pauli-divisor bijection search — closes the D185 honest negative.
 
 The 32 divisors of Z/2310 = 2*3*5*7*11. Pauli n=4 shell has 32 electron
 states partitioned (2, 6, 10, 14) across s/p/d/f subshells.
@@ -10,13 +10,13 @@ groupings and all failed.
 KEY INSIGHT (2026-05-12): The 32 divisors split into 16 + 16 under
 COMPLEMENTATION (d <-> 2310/d) — perfect Z/2 involution ("spin pairing").
 Within each 16-half, divisors partition into 1 + 3 + 5 + 7 by
-KERNEL-vs-STRAND prime composition — matching D102's Cl(0,10)
+KERNEL-vs-STRAND prime composition — matching D185's Cl(0,10)
 spatial-l decomposition exactly.
 
 Combined: 32 = 2(2l+1) for l = 0..3 = (2, 6, 10, 14) = Pauli capacities.
 
 Run: python verification/pauli_divisor_bijection.py
-Status: closes the D102 honest negative.
+Status: closes the D185 honest negative.
 
 Copyright (c) 2026 Brayden Ross Sanders / 7SiTe LLC. CC-BY-4.0.
 """
@@ -184,7 +184,7 @@ print("  - Spatial decomposition within each half: 1 + 3 + 5 + 7")
 print("    by substrate-prime composition (kernel vs strand)")
 print("  - Combined: 32 = 2(2l+1) summed over l = 0..3")
 print()
-print("This is a candidate solution to the D102 honest negative")
+print("This is a candidate solution to the D185 honest negative")
 print("(see priority1_pauli_divisor_attempt.py for the prior failed groupings).")
 print()
 print("Interpretive note: the bijection is structurally natural — uses")

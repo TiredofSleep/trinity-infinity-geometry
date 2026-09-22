@@ -21,7 +21,7 @@ The architecture is **fractal in template, not in parameters**. The architectura
 ## Cross-references
 
 - [`AXIOMS.md`](AXIOMS.md) — the 10 architectural axioms
-- [`../03_canonical_reference/FORMULAS_AND_TABLES.md`](../03_canonical_reference/FORMULAS_AND_TABLES.md) — Volume K (D100–D103) and Volume J (three-table architecture) carry the load-bearing content
+- [`../03_canonical_reference/FORMULAS_AND_TABLES.md`](../03_canonical_reference/FORMULAS_AND_TABLES.md) — Volume K (D183–D186) and Volume J (three-table architecture) carry the load-bearing content
 - [`../01_orientation/for_mathematicians.md`](../01_orientation/for_mathematicians.md) and [`../01_orientation/for_physicists.md`](../01_orientation/for_physicists.md) — domain entries with verification cross-references
 - [`../verification/`](../verification/) — runnable proofs
 

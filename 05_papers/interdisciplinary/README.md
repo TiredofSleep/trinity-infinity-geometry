@@ -23,7 +23,7 @@ J46 is the framework's most testable cross-domain bet: T* = 5/7 fixed a-priori b
 | J# | Title | Target venue | Status |
 |---|---|---|---|
 | **J55** | (Brayden's solo synthesis paper) | TBD — interdisciplinary high-tier (*PNAS*? *Foundations of Physics*?) | anchor Sept 11, 2026 |
-| **J56** (candidate) | D100–D103 standalone: Atomic-Substrate Correspondence + Triple Coincidence | *Journal of Physics A* (mathematical and theoretical) OR *Annals of Physics* | gating F1 verification (now complete; eligible for elevation) |
+| **J56** (candidate) | D183–D186 standalone: Atomic-Substrate Correspondence + Triple Coincidence | *Journal of Physics A* (mathematical and theoretical) OR *Annals of Physics* | gating F1 verification (now complete; eligible for elevation) |
 
 ---
 
@@ -31,7 +31,7 @@ J46 is the framework's most testable cross-domain bet: T* = 5/7 fixed a-priori b
 
 Interdisciplinary papers in this corpus emphasize:
 
-- **The substrate↔atomic bridge** (Volume K, D100–D103): finite arithmetic on Z/10 + strand-orbital map + Cl(0, 10) chirality split. The strongest cross-domain content in the framework — *exact integer identities* connecting algebra to atomic structure.
+- **The substrate↔atomic bridge** (Volume K, D183–D186): finite arithmetic on Z/10 + strand-orbital map + Cl(0, 10) chirality split. The strongest cross-domain content in the framework — *exact integer identities* connecting algebra to atomic structure.
 - **The 6-DOF synthesis** (WP111, J52): Lie + Jordan + Clifford + Permutation + Lattice + Operad as TIG's six algebraic degrees of freedom; integer/rational signature; long expository.
 - **The Crossing Lemma** (WP57): the "deepest unifying statement" claim — every theorem in the framework as a Crossing-Lemma instance; sees through the algebra → atomic → cosmology layer transitions.
 - **The Braiding Fractal architecture** (10 axioms): the architectural template spanning the algebraic substrate, the runtime organism, the publication corpus.

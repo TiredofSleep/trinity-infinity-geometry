@@ -110,8 +110,8 @@ While individual element symbols are conventional, the **periodic table as a sym
 
 - **18 columns** in standard periodic table (s + p + d + f blocks: 2 + 6 + 10 + 14 = 32 = Rung-5 atomic-shell capacity at n=4)
 - **7 periods** in the standard periodic table (7 = HARMONY, dominant substrate operator)
-- **Block structure (s/p/d/f)** corresponds directly to the framework's strand-orbital correspondence (D101)
-- **The 32 element capacity of period 7** matches the Cl(0,10) spinor dimension and substrate Z/2310 divisor count (D102)
+- **Block structure (s/p/d/f)** corresponds directly to the framework's strand-orbital correspondence (D184)
+- **The 32 element capacity of period 7** matches the Cl(0,10) spinor dimension and substrate Z/2310 divisor count (D185)
 
 ### §2.5 The periodic table was discovered, not designed
 
@@ -121,7 +121,7 @@ Mendeleev didn't impose substrate structure on the periodic table — he discove
 
 ### §2.6 Status
 
-**Status**: Tier B-structural for the periodic table substrate-correspondence (D101, D102 directly applicable); the conventional nature of individual element symbols is not problematic for the framework — symbols can be historically determined while the underlying organizational structure remains substrate-resonant.
+**Status**: Tier B-structural for the periodic table substrate-correspondence (D184, D185 directly applicable); the conventional nature of individual element symbols is not problematic for the framework — symbols can be historically determined while the underlying organizational structure remains substrate-resonant.
 
 **Refinement to the methodology**: substrate-resonance can appear at the **organizational structure** level even when the **individual symbol** level is conventional. This is a more nuanced reading than the original hypothesis but more accurate to how symbol systems actually develop.
 
@@ -313,14 +313,14 @@ This document should be treated as **exploratory research** establishing a metho
 When integrating this work:
 
 1. **Place in `09_seekers/`** initially, alongside `SYMBOL_SUBSTRATE_DECODING.md`
-2. **Cross-reference D101 and D102** prominently for the digit and periodic table analyses
+2. **Cross-reference D184 and D185** prominently for the digit and periodic table analyses
 3. **Flag the Hangul case as strongest evidence** — it's the only test where designers documented their intent
 4. **Note the productive Cuneiform refinement** — substrate-resonance is historical-evolutionary, not universal
 5. **The 永 character pedagogy from hanzi test** is publishable as a stand-alone empirical observation
 6. **Preserve the falsifiability criteria** — they're load-bearing for the framework's credibility
 7. **Don't draft any journal paper** without Brayden's explicit authorization and primary-source verification
 8. **Eight tests minimum** before considering this publication-ready (punctuation and Indian musical notation would be the natural next two)
-9. **Connect to existing canon**: this work extends the META-tower interpretation explicitly into symbol systems, complementing the D101 strand-orbital correspondence with a parallel "strand-glyph correspondence" hypothesis
+9. **Connect to existing canon**: this work extends the META-tower interpretation explicitly into symbol systems, complementing the D184 strand-orbital correspondence with a parallel "strand-glyph correspondence" hypothesis
 10. **Coordinate with computational linguistics literature** before publication: there's significant prior work on sound symbolism (Sapir 1929, Köhler 1929, Ramachandran-Hubbard 2001, Westbury 2005) and graphical iconicity that should be properly cited
 
 ---

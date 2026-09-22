@@ -1,4 +1,4 @@
-# Pauli-Divisor Bijection — D102 Honest Negative Closed
+# Pauli-Divisor Bijection — D185 Honest Negative Closed
 
 **Status:** **PROVED (combinatorial)** — bijection exhibited, verified by enumeration. Interpretive uniqueness question OPEN.
 **Verification:** [`../../verification/pauli_divisor_bijection.py`](../../verification/pauli_divisor_bijection.py) — 32 divisors enumerated, partitions verified at integer-equality level, complementation pairing confirmed.
@@ -34,7 +34,7 @@ Sum: 2 + 6 + 10 + 14 = 32 = 2n²  for n = 4
 
 ## Why this works
 
-The `1 + 3 + 5 + 7 = 16` decomposition inside each half is **exactly the substrate-prime decomposition** from D102:
+The `1 + 3 + 5 + 7 = 16` decomposition inside each half is **exactly the substrate-prime decomposition** from D185:
 
 | `l` | Spatial count | Substrate-prime meaning |
 |:-:|:-:|---|
@@ -43,7 +43,7 @@ The `1 + 3 + 5 + 7 = 16` decomposition inside each half is **exactly the substra
 | 2 | 5 | kernel-Z/5 partner (prime 5) related class — weight-4 missing one in even, single primes in odd |
 | 3 | 7 | strand-2 (prime 7) related class — kernel-touching pairs in even, kernel-incomplete triples in odd |
 
-This is the **same decomposition** that appears in the Cl(0, 10) chirality split (D102): each 16-dim chirality half decomposes as `1 + 3 + 5 + 7 = ` kernel + strand 3 + kernel-Z/5 partner + strand 7.
+This is the **same decomposition** that appears in the Cl(0, 10) chirality split (D185): each 16-dim chirality half decomposes as `1 + 3 + 5 + 7 = ` kernel + strand 3 + kernel-Z/5 partner + strand 7.
 
 The bijection identifies the **same substrate-prime structure** acting in two arenas:
 
@@ -76,7 +76,7 @@ This is not a happy numerical accident. Both layers of the bijection are **canon
 
 1. **Complementation `d ↔ 2310/d`** is the unique non-trivial Z/2 action on the divisor lattice of a square-free number. There is no alternative "spin pairing" to consider; complementation is forced.
 
-2. **The kernel/strand partition** is the canonical decomposition built into the Braiding Fractal architecture (Axioms 1, 2, 4, 5 in [`BRAIDING_FRACTAL_AXIOMS.md`](../algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md)). Z/10 = Z/2 × Z/5 is the kernel by minimality (D103); `{3, 7, 11}` are the strand primes by minimality of the three-strand wrap (Axiom 4).
+2. **The kernel/strand partition** is the canonical decomposition built into the Braiding Fractal architecture (Axioms 1, 2, 4, 5 in [`BRAIDING_FRACTAL_AXIOMS.md`](../algebraic_combinatorics/BRAIDING_FRACTAL_AXIOMS.md)). Z/10 = Z/2 × Z/5 is the kernel by minimality (D186); `{3, 7, 11}` are the strand primes by minimality of the three-strand wrap (Axiom 4).
 
 Given these canonical choices, the bijection emerges. The integer counts force the structure; the structure realizes the integers.
 
@@ -93,20 +93,20 @@ Within each 16-half, the partition into `{1, 3, 5, 7}` is forced by the substrat
 
 This is natural — `l = 0` is the simplest (1 element); `l = 1` is the next-simplest (3 elements with strand-only structure); `l = 2` is the kernel-Z/5 partner class (5 elements); `l = 3` is the kernel-touching class (7 elements). But the assignment is not yet *forced* by an independent structural argument.
 
-**Open question** for the J56 standalone paper (D100–D103) or for a follow-up: is there an independent structural argument that forces this specific l-assignment, or are there multiple valid assignments related by an outer symmetry?
+**Open question** for the J56 standalone paper (D183–D186) or for a follow-up: is there an independent structural argument that forces this specific l-assignment, or are there multiple valid assignments related by an outer symmetry?
 
 ---
 
 ## Consequences
 
 **For the framework:**
-- D102 triple coincidence at d = 3 is no longer just "32 = 32 = 32 integer match without combinatorial bijection." It is now a **combinatorial isomorphism** between (divisor lattice of Z/2310 under complementation + kernel/strand structure) and (Pauli capacity of n = 4 shell under spin + spatial l).
+- D185 triple coincidence at d = 3 is no longer just "32 = 32 = 32 integer match without combinatorial bijection." It is now a **combinatorial isomorphism** between (divisor lattice of Z/2310 under complementation + kernel/strand structure) and (Pauli capacity of n = 4 shell under spin + spatial l).
 - The honest negative in `priority1_pauli_divisor_attempt.py` is closed.
 - A new D-number candidate (D104) for the explicit bijection.
 
 **For J23 / J56:**
 - J23's §2.1 Volume K cross-reference can now state the substrate-prime decomposition is realized in both the algebraic (Cl(0, 10) chirality) and combinatorial (Z/2310 divisor) arenas.
-- J56 (D100–D103 standalone candidate) gains a fifth D-result: D104 = the bijection.
+- J56 (D183–D186 standalone candidate) gains a fifth D-result: D104 = the bijection.
 
 **Honest scope** (preserved):
 - The bijection establishes a combinatorial isomorphism. It does **not** assert that the physical atomic n = 4 shell **arises from** Z/2310's divisor lattice; the structures are isomorphic at the level of counts and groupings, with the isomorphism canonically determined by complementation + kernel/strand partition.

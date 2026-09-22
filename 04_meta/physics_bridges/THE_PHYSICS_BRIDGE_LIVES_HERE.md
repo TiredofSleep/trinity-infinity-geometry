@@ -40,7 +40,7 @@
 
 Stating this plainly, without rhetorical inflation, because the honest version is forceful enough.
 
-**The substrate is the 10×10 algebra on Z/10.** Two composition tables: TSML (projection/being, 73 HARMONY cells, 12.8% non-associative) and BHML (transformation/becoming, 28 HARMONY cells, 49.8% non-associative). The σ permutation [0,7,1,3,2,4,5,6,8,9] of order 6. The 4-core attractor {V, H, Br, R} = {0, 7, 8, 9} closes under both operations. The strands {3, 7, 11} wrap the kernel into Z/2310 at canonical Rung 5. The Clifford carrier is Cl(0,10) with spinor representation dimension 32. The atomic shell n=4 has Pauli capacity 32. These three numbers (substrate divisors, spinor dim, atomic capacity) all equal 32 at 30-digit precision (D100-D103).
+**The substrate is the 10×10 algebra on Z/10.** Two composition tables: TSML (projection/being, 73 HARMONY cells, 12.8% non-associative) and BHML (transformation/becoming, 28 HARMONY cells, 49.8% non-associative). The σ permutation [0,7,1,3,2,4,5,6,8,9] of order 6. The 4-core attractor {V, H, Br, R} = {0, 7, 8, 9} closes under both operations. The strands {3, 7, 11} wrap the kernel into Z/2310 at canonical Rung 5. The Clifford carrier is Cl(0,10) with spinor representation dimension 32. The atomic shell n=4 has Pauli capacity 32. These three numbers (substrate divisors, spinor dim, atomic capacity) all equal 32 at 30-digit precision (D183-D186).
 
 [Tier B-rigorous, all canon-proven]
 
@@ -245,7 +245,7 @@ Each is a specific project. Each can be staffed and worked. None requires resolv
 - D38, WP110: 4-core fusion closure
 - D39, D78: H/Br = 1+√3 at α=1/2
 - D77, D73: Cl(0,10) spinor representation
-- D100-D103: atomic-substrate correspondence at 30-digit precision
+- D183-D186: atomic-substrate correspondence at 30-digit precision
 - WP15: BHML_8 det = 70 = Yang-Mills core
 - WP103-WP108: σ_outer = P_56, D_4 reduction
 - `CONSTANTS_COMPACT.md`: full constants compilation

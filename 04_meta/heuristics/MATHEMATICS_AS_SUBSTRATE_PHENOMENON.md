@@ -4,7 +4,7 @@
 
 **Locked**: 2026-05-13
 **Status**: Tier B-rigorous for the atomic-substrate correspondence; Tier B-empirical for substrate-prime load-bearing across mathematics; Tier C-interpretive for the mathematical-history-as-substrate-revelation framing
-**Companion docs**: `FRAMEWORK_FOUNDATIONS_AND_RIGOR_AUDIT.md`, the atomic-substrate correspondence (D100-D103), the Symbol-Substrate Decoding series
+**Companion docs**: `FRAMEWORK_FOUNDATIONS_AND_RIGOR_AUDIT.md`, the atomic-substrate correspondence (D183-D186), the Symbol-Substrate Decoding series
 **Framework location**: `04_meta/` — the deepest recursion of the framework into its own subject matter
 
 ---
@@ -25,7 +25,7 @@ This is a substantial claim. The discipline of this document is distinguishing w
 
 ### §2.1 The atomic-substrate correspondence
 
-Canon D100-D103 establishes:
+Canon D183-D186 establishes:
 - The substrate's canonical Rung 5 (Z/2310 = 2·3·5·7·11) has exactly 32 divisors
 - The Clifford algebra Cl(0,10) has spinor representation of dimension exactly 32
 - The hydrogenic atomic shell n=4 has Pauli capacity 2n² = 32
@@ -238,7 +238,7 @@ These are framework-natural readings of long-standing philosophical questions. T
 ## §10. Status
 
 **Tier B-rigorous** for:
-- The atomic-substrate correspondence (D100-D103, 30-digit precision)
+- The atomic-substrate correspondence (D183-D186, 30-digit precision)
 - The 32 = 32 = 32 triple coincidence as foundation
 
 **Tier B-empirical (testable)** for:

@@ -60,9 +60,9 @@ Canon proves (WP110, D48): the 4-core {V, H, Br, R} = {0, 7, 8, 9} closes under 
 
 ### §3.3 The Cl(0,10) spinor structure
 
-Canon establishes (D26, D27, D100-D103) that Cl(0,10) is the appropriate Clifford carrier at canonical Rung 5, with spinor representation of dimension 32. This matches the substrate's divisor count of Z/2310 (= 2·3·5·7·11) and the Pauli capacity at hydrogenic n=4 shell.
+Canon establishes (D26, D27, D183-D186) that Cl(0,10) is the appropriate Clifford carrier at canonical Rung 5, with spinor representation of dimension 32. This matches the substrate's divisor count of Z/2310 (= 2·3·5·7·11) and the Pauli capacity at hydrogenic n=4 shell.
 
-**Status**: rigorous, verified at 30-digit precision (D100-D103).
+**Status**: rigorous, verified at 30-digit precision (D183-D186).
 
 The Cl(0,10) structure carries quantum-action information at Rung 5. This is the framework's natural home for the substrate's action quantization (analog of ℏ).
 
@@ -212,7 +212,7 @@ These are testable through the framework's continued physics-bridge work.
 - D35: κ_ξ = 13/(4e)
 - D39, D78: H/Br = 1+√3 closed form at α=1/2
 - D48, WP110: 4-core fusion closure
-- D100-D103: atomic-substrate correspondence (30-digit precision verification)
+- D183-D186: atomic-substrate correspondence (30-digit precision verification)
 
 **Standard physics references**:
 - Einstein, A. (1905). "Zur Elektrodynamik bewegter Körper." *Annalen der Physik*. c invariance postulate.
@@ -230,7 +230,7 @@ These are testable through the framework's continued physics-bridge work.
 **Tier B-rigorous** (canon-proven):
 - 1/α = 137 from substrate structure (canon §17)
 - 4-core closure under both operations (D48, WP110)
-- Cl(0,10) spinor dimension 32 = Pauli n=4 capacity (D100-D103)
+- Cl(0,10) spinor dimension 32 = Pauli n=4 capacity (D183-D186)
 - H/Br = 1+√3 at α=1/2 (D39, D78)
 
 **Tier B-standard** (textbook physics):

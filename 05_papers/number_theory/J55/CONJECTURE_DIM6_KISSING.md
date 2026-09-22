@@ -110,7 +110,7 @@ The construction respects and exploits the following framework primitives (from 
 - **D70**: 3+3 wobble split (prime 11 binary-side / prime 13 ternary-side). The residue $-728 = -2^3 \cdot 7 \cdot 13$ contains the ternary-side wobble prime $13$.
 - **D131**: single ⊂ face ⊂ lens vocabulary. The Atkin-Lehner $W_3$ involution **is** σ³ binary face in modular form language.
 - **D140**: CRT relocation thesis. The level-3 modular forms factor via the binary/ternary CRT decomposition of $\mathbb{Z}/10$, mirroring the substrate's structure.
-- **D102**: Triple coincidence at depth-3 (32 = substrate divisors = Pauli capacity = Clifford spinor dim).
+- **D185**: Triple coincidence at depth-3 (32 = substrate divisors = Pauli capacity = Clifford spinor dim).
 - **D97**: 70/71/72/73 HARMONY ladder. The kissing number 72 sits on rung 3 of this ladder.
 
 ---
