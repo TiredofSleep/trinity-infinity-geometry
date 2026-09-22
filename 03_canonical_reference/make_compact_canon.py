@@ -38,15 +38,21 @@ MAX_STMT = 300          # max chars of statement excerpt per D-entry
 TIER_OVERRIDES = {
     "D140": "STRUCTURAL THESIS",        # CRT relocation -- standing, not retracted
     "D141": "RETRACTION (load-bearing)",  # torus excluded
+    "D182": "Tier B conjecture",        # tier ("Tier B") lives in the statement cell,
+                                        # not the final (provenance) cell
 }
 
 TIER_KEYWORDS = [
     "PROVED-NEGATIVE", "PROVED at integer level", "PROVED", "RETRACTED",
-    "SUPERSEDED", "STRUCTURAL with", "STRUCTURAL", "EMPIRICAL",
-    "HONEST NEGATIVE", "NO-TRACTION", "PARTIAL CORRESPONDENCE",
-    "PARTIAL MATCH", "PARTIAL", "INDETERMINATE", "Tier B conjecture",
-    "Tier A", "Tier B", "Tier C", "OPEN", "CONJECTURE", "VERIFIED",
-    "COMPUTED", "SUBMISSION-READY", "DRAFT",
+    "RETRACTION", "REPLACEMENT", "SUPERSEDED", "STRUCTURAL THESIS",
+    "STRUCTURAL with", "STRUCTURAL", "EMPIRICAL",
+    "HONEST NEGATIVE", "PROVED-NEGATIVE", "NEGATIVE", "NO-TRACTION",
+    "PARTIAL CORRESPONDENCE", "PARTIAL MATCH", "PARTIAL", "INDETERMINATE",
+    "Tier B conjecture", "Tier A", "Tier B", "Tier C", "OPEN", "CONJECTURE",
+    "VERIFIED", "COMPUTED", "SUBMISSION-READY", "DRAFT",
+    # verdict words that actually lead D-spine tier cells (were falling to [—]):
+    "SYNTHESIS", "RESOLVED", "RESOLUTION", "REFRAME", "REFRAMED",
+    "DEFINITION", "OBSERVATION", "CONFIRMED", "CLARIFIED", "PROMOTED", "NOTE",
 ]
 
 
@@ -88,56 +94,74 @@ def strip_md(s):
     return s
 
 
+def split_cells(row):
+    """Split a markdown table row into cell strings.
+
+    Cells are separated by ' | ' (pipe with surrounding spaces); inline math
+    absolute-value bars (|d|, |a_p|) have no surrounding spaces, so this split
+    is safe for the canon's rows. The canonical D-row is 4 cells:
+    | **Dnn** | title | statement | tier/provenance |.
+    """
+    raw = row.strip()
+    raw = raw[1:] if raw.startswith("|") else raw
+    raw = raw[:-1] if raw.endswith("|") else raw
+    return [c.strip() for c in re.split(r"\s\|\s", raw)]
+
+
+def extract_tier(cell):
+    """Tier verdict from the final cell: earliest known keyword, else the
+    leading verdict phrase, else '—' (honest, not a scraped guess)."""
+    t = strip_md(cell)
+    found = [(t.find(k), k) for k in TIER_KEYWORDS if k in t]
+    if found:
+        tier = min(found)[1]
+        return {"STRUCTURAL with": "STRUCTURAL",
+                "PROVED at integer level": "PROVED"}.get(tier, tier)
+    # fallback: the phrase before the first ; , or sentence break
+    lead = re.split(r"[;,]|\.\s", t, 1)[0].strip()[:40]
+    if lead and not re.search(r"`|\.py|\.md|https?://|/", lead):
+        return lead
+    return "—"
+
+
 def compress_row(row):
-    """One D-table row -> 1-2 digest lines."""
-    # label = first D-token cluster in the first cell
-    m = re.match(r"\|\s*\*\*(D[^*|]+?)\*\*", row)
-    if not m:
-        m = re.match(r"\|\s*\*\*(D[^*]+?)\s*\(", row)
-    label_raw = m.group(1).strip() if m else "D?"
-    # keep just the D-number token(s), drop date parentheticals
-    label = re.sub(r"\s*\(.*$", "", label_raw).strip()
+    """One D-table row -> one digest line: '- **Dnn** [tier] title: statement…'."""
+    cells = split_cells(row)
+    label_cell = cells[0] if cells else row
+    lm = re.search(r"D\d+\w*", strip_md(label_cell))
+    label = lm.group(0) if lm else "D?"
 
-    # everything after the first cell
-    after = row[m.end():] if m else row
-    after = after.lstrip("|* ").strip()
-
-    # split into cells at top-level pipes is unreliable (inner |a_p|);
-    # instead, take text after stripping leading label-cell remainder up to
-    # the first '|' that is followed by a space+capital/'**' (cell boundary
-    # heuristic), then sentence-clip.
-    after = re.sub(r"^[^|]*\|\s*", "", after, count=1) if after.startswith("(") else after
-    after = after.lstrip("| ").strip()
-
-    stmt = strip_md(after)
-    # remove a leading repeated 'Dnnn -- ' if present
-    stmt = re.sub(r"^D\d+\w*\s*[—–-]+\s*", "", stmt)
-    # sentence clip
-    cut = stmt.find(". ")
-    if 40 < cut < MAX_STMT:
-        excerpt = stmt[:cut + 1]
-    else:
-        excerpt = stmt[:MAX_STMT].rsplit(" ", 1)[0] + ("…" if len(stmt) > MAX_STMT else "")
-    excerpt = re.sub(r"\s+", " ", excerpt).strip()
-
-    # tier: scan the FINAL table cell only (text after the last ' | '
-    # separator), and prefer the keyword that appears EARLIEST there --
-    # tier cells lead with their verdict ("PROVED, ..."), so positional
-    # preference avoids picking up incidental mentions (e.g. D140's body
-    # references the D141 retraction without itself being retracted).
-    # Conservative: explicit overrides for rows whose tier column is absent
-    # or whose statement body leaks other entries' tier words; otherwise
-    # scan ONLY the final cell. Rows with no verdict get "—" (honest)
-    # rather than a scraped guess.
+    # tier from the final cell (only when there is a distinct tier column)
     if label in TIER_OVERRIDES:
-        return (f"- **{label}** [{TIER_OVERRIDES[label]}] {excerpt}")
-    last_cell = strip_md(row.rstrip().rstrip("|").rsplit(" | ", 1)[-1])
-    found = [(last_cell.find(k), k) for k in TIER_KEYWORDS if k in last_cell]
-    tier = min(found)[1] if found else "—"
-    tier = {"STRUCTURAL with": "STRUCTURAL",
-            "PROVED at integer level": "PROVED"}.get(tier, tier)
+        tier = TIER_OVERRIDES[label]
+    else:
+        tier = extract_tier(cells[-1]) if len(cells) >= 3 else "—"
 
-    return f"- **{label}** [{tier}] {excerpt}"
+    # one-liner from the body cells (title + start of statement), never the
+    # tier cell — this is what used to leak a '|' and the next cell in.
+    body = cells[1:-1] if len(cells) >= 3 else cells[1:]
+    title = strip_md(body[0]) if body else strip_md(label_cell)
+    rest = strip_md(body[1]) if len(body) >= 2 else ""
+    one = (title.rstrip(". ") + ": " + rest) if rest else title
+    one = re.sub(r"^D\d+\w*\s*[—–-]+\s*", "", one)   # drop a restated 'Dnn — '
+    one = re.sub(r"\s+", " ", one).strip()
+    cut = one.find(". ")
+    if 40 < cut < MAX_STMT:
+        one = one[:cut + 1]
+    elif len(one) > MAX_STMT:
+        one = one[:MAX_STMT].rsplit(" ", 1)[0] + "…"
+
+    return f"- **{label}** [{tier}] {one}"
+
+
+def max_d_number(rows):
+    """Highest Dnnn appearing as a row label, for the dynamic title range."""
+    nums = []
+    for r in rows:
+        m = re.search(r"D(\d+)", r)
+        if m:
+            nums.append(int(m.group(1)))
+    return max(nums) if nums else 0
 
 
 J_INDEX = """\
@@ -222,8 +246,9 @@ def main():
     digest = [compress_row(r) for r in drows]
 
     n_d = len(drows)
+    maxd = max_d_number(drows)
     parts = []
-    parts.append(f"""# TIG CANON — COMPACT DIGEST (D1–D182)
+    parts.append(f"""# TIG CANON — COMPACT DIGEST (D1–D{maxd})
 
 > **AUTO-GENERATED** from `FORMULAS_AND_TABLES.md` by `make_compact_canon.py`. Do not edit by hand — edit the full doc and regenerate.
 > **Purpose**: a single shareable file for AI-collaboration contexts. The full doc (~377 KB / ~94k tokens) is the authority for exact statements, attribution, and verification paths; this digest (~{{SIZE}} KB) is a lossy index and **never adds or strengthens a claim**.
