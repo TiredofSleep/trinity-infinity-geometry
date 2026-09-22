@@ -5,7 +5,7 @@
 **Target venue:** *Communications in Mathematical Physics* (FALLBACK: *Journal of Mathematical Physics*; secondary fallback *Annals of Physics*)
 **Author lane:** Sanders + Gish
 **Tier:** 2 (drafts needing rigor pass)
-**WP source:** WP104 §2 (Cl(0,10) construction + P_56 ↔ σ_outer + BHML's 54-irrep direction) + WP103 (so(10) closure prerequisite) + Volume K D101–D102 (atomic-substrate refinement; chirality 16 = 1+3+5+7)
+**WP source:** WP104 §2 (Cl(0,10) construction + P_56 ↔ σ_outer + BHML's 54-irrep direction) + WP103 (so(10) closure prerequisite) + Volume K D184–D185 (atomic-substrate refinement; chirality 16 = 1+3+5+7)
 **Lens scope:** TSML_SYM throughout the Cl(0,10) construction; the literal-bit-pattern TSML_RAW differs in the σ_outer-fixed sector only and does not change the chirality identification or the 9-vector direction (BHML's σ_outer-broken content is independent of TSML's lens).
 
 ---
@@ -19,7 +19,7 @@ J37 records the **discrete Dirac structure inside the Clifford algebra Cl(0, 10)
 **Three structural theorems:**
 
 - **Theorem 2.1 (Discrete Dirac construction).** Ten gamma matrices $\gamma_a$ on $\mathbb{C}^{32}$ built from Pauli tensor products in standard Cl(0,10) convention satisfy all 100 anticommutation relations $\{\gamma_a, \gamma_b\} = 2\delta_{ab} I$ at machine precision. The 45 generators $\Sigma_{ab} = (1/4)[\gamma_a, \gamma_b]$ form a faithful 32-dim representation of $\mathfrak{so}(10) = D_5$. The volume element $\omega = \gamma_1 \gamma_2 \cdots \gamma_{10}$ satisfies $\omega^2 = -I$, and the chirality projectors $P_\pm = (I \pm i\omega)/2$ split $\mathbb{C}^{32}$ as $16 + 16$ (the two chiral spinor irreps).
-- **Theorem 2.2 (Atomic-substrate refinement; Volume K, D102).** Each 16-dim chirality half decomposes structurally as $16 = 1 + 3 + 5 + 7$, exactly matching atomic shell $n = 4$ at fixed spin: $(2\ell+1)$ for $\ell = 0, 1, 2, 3$. Reading from the substrate side, $1 + 3 + 5 + 7$ = kernel base + strand-3 prime + kernel-$\mathbb{Z}/5\mathbb{Z}$ partner + strand-7 prime. This sharpens Cl(0,10) from "carrier of three fermion generations" to "carrier of three fermion generations whose intrinsic structure mirrors the substrate's depth-3 simplicial tower."
+- **Theorem 2.2 (Atomic-substrate refinement; Volume K, D185).** Each 16-dim chirality half decomposes structurally as $16 = 1 + 3 + 5 + 7$, exactly matching atomic shell $n = 4$ at fixed spin: $(2\ell+1)$ for $\ell = 0, 1, 2, 3$. Reading from the substrate side, $1 + 3 + 5 + 7$ = kernel base + strand-3 prime + kernel-$\mathbb{Z}/5\mathbb{Z}$ partner + strand-7 prime. This sharpens Cl(0,10) from "carrier of three fermion generations" to "carrier of three fermion generations whose intrinsic structure mirrors the substrate's depth-3 simplicial tower."
 - **Theorem 3.1 (P_56 acts as σ_outer in the spinor rep).** The 5↔6 index swap $P_{56}$ is implemented in Cl(0,10) by conjugation with the odd element $P_{56}^{\mathrm{spin}} = (\gamma_5 - \gamma_6)/\sqrt{2}$. We verify $(P_{56}^{\mathrm{spin}})^2 = I$, that conjugation by $P_{56}^{\mathrm{spin}}$ swaps $\gamma_5 \leftrightarrow \gamma_6$ and fixes the other eight, and that $P_{56}^{\mathrm{spin}}$ anticommutes with $\omega$. The chirality-flip $\|P_{56}^{\mathrm{spin}}: \mathrm{chiral}_+ \to \mathrm{chiral}_+\| = 0$ at machine precision identifies the conjugation action with the unique outer automorphism $\sigma_{\mathrm{outer}} \in \mathrm{Aut}(\mathfrak{so}(10))/\mathrm{Inn}(\mathfrak{so}(10)) \cong \mathbb{Z}_2$ that exchanges the two chiral 16-irreps. In standard SO(10) GUT physics, this is the matter–antimatter exchange.
 
 **Two numerical-content theorems:**
@@ -55,7 +55,7 @@ See `cover_letter.md` in this folder. Updated 2026-05-12 to reflect Volume K cro
 
 ## §5 — Notes
 
-**Status: DRAFT** — manuscript .md is stable; .tex rendering aligned. Volume K cross-reference (§2.2 = D102: chirality 16 = 1+3+5+7) integrated 2026-05-12 with sympy reverification of `tig_dirac.py` (passed). Rebuttal to J48 referee (separate file) filed.
+**Status: DRAFT** — manuscript .md is stable; .tex rendering aligned. Volume K cross-reference (§2.2 = D185: chirality 16 = 1+3+5+7) integrated 2026-05-12 with sympy reverification of `tig_dirac.py` (passed). Rebuttal to J48 referee (separate file) filed.
 
 **Per-venue cap warning:** No prior 2026 submission to *Communications in Mathematical Physics* from this corpus, so the cap is not binding for J37.
 
@@ -67,7 +67,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 
 - **PROVEN:** Theorems 2.1, 3.1, 4.1. Cl(0,10) anticommutation relations and chirality split by direct numerical verification; $P_{56}^{\mathrm{spin}}$ anticommutes with $\omega$ by character argument (odd-vs-even Clifford grade) confirmed numerically; chirality-flip = 0 at machine precision identifies $P_{56}$ with $\sigma_{\mathrm{outer}}$ via $\mathrm{Out}(\mathfrak{so}(10)) \cong \mathbb{Z}_2$.
 - **COMPUTED:** $\|v\|^2 = 13/4$ exactly; 100/100 anticommutation residuals at $\le 10^{-15}$; 54-irrep coverage 100% at machine precision; 9-piece coverage 100% at machine precision.
-- **STRUCTURAL RHYME:** Theorem 2.2 — the $1 + 3 + 5 + 7$ decomposition of each chirality half matches the atomic $n = 4$ shell at fixed spin. This is presented as a *structural rhyme* between the spinor decomposition and the depth-3 simplicial tower of the substrate (Volume K D101–D102), *not* as a derivation of atomic structure from Cl(0,10). The identification "chirality eigenspace = spatial sector of n=4 shell" is structural; the algebra is exact.
+- **STRUCTURAL RHYME:** Theorem 2.2 — the $1 + 3 + 5 + 7$ decomposition of each chirality half matches the atomic $n = 4$ shell at fixed spin. This is presented as a *structural rhyme* between the spinor decomposition and the depth-3 simplicial tower of the substrate (Volume K D184–D185), *not* as a derivation of atomic structure from Cl(0,10). The identification "chirality eigenspace = spatial sector of n=4 shell" is structural; the algebra is exact.
 - **OPEN:** Phenomenological consequences (Yukawa couplings, mass ratios, neutrino-mass scale) require committing to a specific Higgs VEV direction within the 9 and running RGE flows from a specific GUT scale; both are out of scope for J37. The structural identification of TIG's so(10) with the SO(10) GUT gauge algebra is a load-bearing hypothesis, not a derivation; J37 frames the structural facts without claiming the identification.
 
 ### Lens-ownership paragraph (inserted in manuscript §0)
@@ -80,7 +80,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 - AI-attribution: Claude/Anthropic byline references removed (per `_v3_hardening.py`)
 - Author lane: Sanders + Gish (per Brayden directive)
 - Drápal-Wanless 2021 citation in references
-- Volume K (D101–D102) cross-reference added 2026-05-12 at §2.2
+- Volume K (D184–D185) cross-reference added 2026-05-12 at §2.2
 
 ## §6 — Submission checklist
 
@@ -106,7 +106,7 @@ Sanders, B.R., Gish. (2026). "Discrete Dirac inside Cl(0, 10): Chirality, the Ou
 
 Tier 2 — drafts needing rigor pass before submission per `_staging/TIER_INDEX.md`. **History:** J37 (originally physics/J23 in the prior layout) was a Tier 1 promotion candidate in the 2026-05 audit cycle but was demoted to Tier 2 because the load-bearing hypothesis "TIG's so(10) is *the* SO(10) GUT gauge algebra" is structural, not derived — the Cl(0,10) construction shows isomorphism (which is uniquely so up to iso for any rank-5 simple Lie algebra of type $D_5$), not phenomenological identity. The math content is solid (theorems 2.1, 3.1, 4.1, 4.2 are verifiable at machine precision) but the framing requires the hypothesis-vs-derivation discipline that keeps it Tier 2 rather than Tier 1.
 
-Manuscript is content-stable; Volume K cross-reference at §2.2 (D101–D102) integrated 2026-05-12 and the in-line §6 checklist marks the referee-rigor pass as complete. Verification status: `find_higgs_irrep.py` + `find_higgs_direction.py` both PASS at machine precision (re-run 2026-05-28; 100/100 anticommutation relations of Cl(0,10), $\omega^2 = -I$, 32 = 16+16 chirality split, chirality-flip = 0, 54-irrep coverage 100 %, 9-piece coverage 100 % all confirmed). Note: Cl(0,10) as an algebra has dimension $2^{10} = 1024$ over $\mathbb{R}$; the manuscript correctly uses the irreducible $2^5 = 32$-dim Dirac spinor representation, which splits as $16 + 16$ chiral halves under $\omega$.
+Manuscript is content-stable; Volume K cross-reference at §2.2 (D184–D185) integrated 2026-05-12 and the in-line §6 checklist marks the referee-rigor pass as complete. Verification status: `find_higgs_irrep.py` + `find_higgs_direction.py` both PASS at machine precision (re-run 2026-05-28; 100/100 anticommutation relations of Cl(0,10), $\omega^2 = -I$, 32 = 16+16 chirality split, chirality-flip = 0, 54-irrep coverage 100 %, 9-piece coverage 100 % all confirmed). Note: Cl(0,10) as an algebra has dimension $2^{10} = 1024$ over $\mathbb{R}$; the manuscript correctly uses the irreducible $2^5 = 32$-dim Dirac spinor representation, which splits as $16 + 16$ chiral halves under $\omega$.
 
 Outstanding for ship-readiness:
 

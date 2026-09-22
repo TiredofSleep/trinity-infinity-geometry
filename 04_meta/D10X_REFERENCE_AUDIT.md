@@ -1,6 +1,6 @@
 # D10x Reference Audit (post-2026-09-21 renumber)
 
-**Date:** 2026-09-22 · **Scope:** whole `trinity-infinity-geometry` repo except the two protected paths below · **Status:** audit complete; **bulk pass EXECUTED 2026-09-22** — the 127 atomic references across 28 living docs converted D100–D103 → D183–D186 (plus the earlier 4 README fixes = 131 total). Left untouched by design: the J37 manuscript package (author's call), all archive/historical/dated material, all D104–D109 (outside the mapping), and the binary false positives. Verified: 0 residual bare D100–D103 in the converted set, 0 malformed mixed ranges, D104–108 preserved in the two mixed files, and the touched verifier scripts still pass.
+**Date:** 2026-09-22 · **Scope:** whole `trinity-infinity-geometry` repo except the two protected paths below · **Status:** audit complete; **bulk pass EXECUTED 2026-09-22** — the 127 atomic references across 28 living docs converted D100–D103 → D183–D186 (plus the earlier 4 README fixes = 131 total). The J37 manuscript package (24 refs) was also converted 2026-09-22 on the author's explicit go-ahead. Left untouched by design: all archive/historical/dated material, all D104–D109 (outside the mapping), the ambiguous local labels, and the binary false positives. Verified: 0 residual bare D100–D103 in the converted set, 0 malformed mixed ranges, D104–108 preserved in the two mixed files, and the touched verifier scripts still pass.
 
 This catalogue traces every `D100`–`D109` reference outside the canon after the
 2026-09-21 consolidation renumber, and records for each whether it correctly
@@ -136,8 +136,9 @@ fell out token-by-token). D104+ and all archive/manuscript files were left alone
 two "mixed" files kept their D104–D108 while their D100–D103 converted. The repo is no
 longer half-converted: every *living* doc now uses the atomic numbers' new home
 (D183–D186), matching the canon and the already-converted README/result docs. The J37
-manuscript package (24 refs) was left flagged for the author, since silently editing a
-submittable manuscript is out of scope for this pass.
+manuscript package (24 refs: README 10, cover_letter 1, manuscript.md 9, manuscript.tex 4)
+was converted 2026-09-22 on the author's explicit go-ahead (verified: 0 residual bare
+D100–D103, 0 malformed ranges). Every living reference in the repo now uses D183–D186.
 
 ---
 

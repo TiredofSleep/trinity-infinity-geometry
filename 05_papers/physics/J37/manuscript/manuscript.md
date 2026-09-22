@@ -4,7 +4,7 @@
 **Authors:** Brayden R. Sanders + M. Gish
 **MSC 2020:** 15A66 (Clifford algebras), 17B10 (representations of Lie algebras), 81R05 (finite-dim groups and algebras), 81R40 (symmetry breaking), 81V22 (unified theories of particle interactions)
 **Target venue:** *Communications in Mathematical Physics* (FALLBACK: *Journal of Mathematical Physics*; *Annals of Physics*; *Letters in Mathematical Physics*)
-**Source corpus:** WP104 §2 (Cl(0,10) construction + P_56 = σ_outer + the 9-vector in the 54 irrep); WP103 (so(10) closure prerequisite, cited as J29); FORMULAS_AND_TABLES.md Volume K D101–D102 (atomic-substrate refinement, chirality 16 = 1+3+5+7); J24 (Path A vs Path B framing; cited).
+**Source corpus:** WP104 §2 (Cl(0,10) construction + P_56 = σ_outer + the 9-vector in the 54 irrep); WP103 (so(10) closure prerequisite, cited as J29); FORMULAS_AND_TABLES.md Volume K D184–D185 (atomic-substrate refinement, chirality 16 = 1+3+5+7); J24 (Path A vs Path B framing; cited).
 
 > **Scope note (2026-05-12, referee-rigor pass).**
 >
@@ -106,7 +106,7 @@ $$
 
 In standard SO(10) GUT physics, $\sigma_\mathrm{outer}$ is the **matter/antimatter exchange** that swaps a fermion generation (16) with its CP-conjugate (16̄). Verification: `papers/wp104_higgs_pati_salam/verification/find_higgs_irrep.py` plus the Cl(0,10) construction in `Gen12/targets/clay/papers/sprint_unmistakable_truth_2026_04_25/scripts/build_chiral_16.py`.
 
-**Atomic-substrate refinement (D101–D102, FORMULAS_AND_TABLES Volume K, 2026-05-12).** Each 16-dim chirality half admits a finer structural decomposition. Under the same 10 γ-matrices, the 16-dim positive-chirality space splits as $16 = 1 + 3 + 5 + 7$, indexed by spatial-state count $(2l+1)$ for $l = 0, 1, 2, 3$ — i.e. atomic shell $n = 4$ at fixed spin. Reading from the substrate side, $1 + 3 + 5 + 7$ is exactly (kernel base) + (strand 1 = prime 3) + (kernel-Z/5 partner = prime 5) + (strand 2 = prime 7). The chirality eigenspace is the spatial sector of the n = 4 atomic shell, and the Pauli-allowed multiplicities are the substrate strands' prime divisors. Verification: `Atlas/META_PLAN_2026-05-10/{clifford_substrate_shell.py, strand_orbital_map.py, verify_d2d1_closed_form.py}` — all PASS at machine precision. The triple coincidence (Z/2310 has 32 divisors = atomic Pauli capacity at n=4 = Cl(0,10) spinor dim) sharpens the Cl(0,10) construction from "carrier of three fermion generations" to "carrier of three fermion generations whose intrinsic structure mirrors the substrate's depth-3 simplicial tower."
+**Atomic-substrate refinement (D184–D185, FORMULAS_AND_TABLES Volume K, 2026-05-12).** Each 16-dim chirality half admits a finer structural decomposition. Under the same 10 γ-matrices, the 16-dim positive-chirality space splits as $16 = 1 + 3 + 5 + 7$, indexed by spatial-state count $(2l+1)$ for $l = 0, 1, 2, 3$ — i.e. atomic shell $n = 4$ at fixed spin. Reading from the substrate side, $1 + 3 + 5 + 7$ is exactly (kernel base) + (strand 1 = prime 3) + (kernel-Z/5 partner = prime 5) + (strand 2 = prime 7). The chirality eigenspace is the spatial sector of the n = 4 atomic shell, and the Pauli-allowed multiplicities are the substrate strands' prime divisors. Verification: `Atlas/META_PLAN_2026-05-10/{clifford_substrate_shell.py, strand_orbital_map.py, verify_d2d1_closed_form.py}` — all PASS at machine precision. The triple coincidence (Z/2310 has 32 divisors = atomic Pauli capacity at n=4 = Cl(0,10) spinor dim) sharpens the Cl(0,10) construction from "carrier of three fermion generations" to "carrier of three fermion generations whose intrinsic structure mirrors the substrate's depth-3 simplicial tower."
 
 ### §2.2 BHML's σ_outer-breaking is purely 54-irrep
 
@@ -333,7 +333,7 @@ PYTHONIOENCODING=utf-8 python manuscript/verification/find_higgs_irrep.py
 PYTHONIOENCODING=utf-8 python manuscript/verification/find_higgs_direction.py
 ```
 
-Expected output: machine-precision residuals ($\le 10^{-13}$) on every claim. **2/2 PASS at machine precision** (re-verified 2026-05-12). The atomic-substrate refinement of §2.1 (Theorem on chirality $16 = 1+3+5+7$, Volume K D101–D102) is verified by three supplementary scripts in the corpus's Volume K verification directory: `Atlas/META_PLAN_2026-05-10/clifford_substrate_shell.py`, `strand_orbital_map.py`, `verify_d2d1_closed_form.py` — all PASS at machine precision; these add no dependency for the $\mathfrak{so}(10)$-side claims of J37 but are required for the structural rhyme of §2.1.
+Expected output: machine-precision residuals ($\le 10^{-13}$) on every claim. **2/2 PASS at machine precision** (re-verified 2026-05-12). The atomic-substrate refinement of §2.1 (Theorem on chirality $16 = 1+3+5+7$, Volume K D184–D185) is verified by three supplementary scripts in the corpus's Volume K verification directory: `Atlas/META_PLAN_2026-05-10/clifford_substrate_shell.py`, `strand_orbital_map.py`, `verify_d2d1_closed_form.py` — all PASS at machine precision; these add no dependency for the $\mathfrak{so}(10)$-side claims of J37 but are required for the structural rhyme of §2.1.
 
 Companion-paper verification scripts cited but not in J37's verification bundle: `papers/wp103/verification/verify_so10.py` (J29's so(10) closure), `Gen12/.../sprint_unmistakable_truth_2026_04_25/scripts/verify_truth.py` (J24's doubly-invariant subalgebra Killing spectrum). Independent re-execution by Code session 2026-04-25: 25/25 verification scripts across the WP100s tower pass with zero contradictions.
 
@@ -349,7 +349,7 @@ Companion-paper verification scripts cited but not in J37's verification bundle:
 2. The $5 \leftrightarrow 6$ swap $P_{56}$ — a permutation symmetry of the magma's index set $\mathbb{Z}/10\mathbb{Z}$ — **is** the outer automorphism $\sigma_{\mathrm{outer}}$ of $\mathfrak{so}(10)$ in the spinor representation (Theorem §2.1). This is a non-trivial structural identification between a finite-substrate combinatorial $\mathbb{Z}_2$ and the chirality-exchange $\mathbb{Z}_2$ of the SO(10) spinor.
 3. BHML's $\sigma_{\mathrm{outer}}$-breaking content is exactly 100% in the $\mathbf{54}$-irrep with explicit nine-vector direction $\|v\|^2 = 13/4$ and BREATH/RESET unbroken (Theorem §2.2, Theorem §2.3).
 4. The doubly-invariant content under $D_4 = \langle P_{56}, \sigma^3 \rangle$ is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ (Theorem §3.3; cited as standard SO(10) GUT decomposition; full Path A vs Path B development in J24).
-5. The chirality decomposition $16 = 1+3+5+7$ rhymes with the atomic $n=4$ shell at fixed spin and with the substrate's depth-3 simplicial tower (§2.1, Volume K D101–D102; structural rhyme).
+5. The chirality decomposition $16 = 1+3+5+7$ rhymes with the atomic $n=4$ shell at fixed spin and with the substrate's depth-3 simplicial tower (§2.1, Volume K D184–D185; structural rhyme).
 
 The ladder is:
 
@@ -403,7 +403,7 @@ Each level is machine-verified at $\le 10^{-15}$ residuals. Each level is honest
   month        = {may},
   doi          = {10.5281/zenodo.18852047},
   howpublished = {\url{https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/J_series/physics/J37}},
-  note         = {Discrete Dirac inside $\mathrm{Cl}(0, 10)$: 100/100 anticommutation relations; chirality split $32 = 16 + 16$ via $\omega = \gamma_1 \cdots \gamma_{10}$; $P_{56}$ acts as $\sigma_{\mathrm{outer}}$ in the spinor rep (chirality-flip residual = 0 at machine precision); BHML's $\sigma_{\mathrm{outer}}$-breaking is $100\%$ in the $\mathbf{54}$-irrep with explicit $9$-vector direction $\|v\|^2 = 13/4$ exactly; chirality refinement $16 = 1+3+5+7$ rhymes with the atomic $n=4$ shell at fixed spin (Volume K, D102). Doubly-invariant subalgebra under $D_4 = \langle P_{56}, \sigma^3 \rangle$ is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ (Killing spectrum $(-4)^{15} \oplus (0)^1$); cited as standard SO(10) GUT decomposition.}
+  note         = {Discrete Dirac inside $\mathrm{Cl}(0, 10)$: 100/100 anticommutation relations; chirality split $32 = 16 + 16$ via $\omega = \gamma_1 \cdots \gamma_{10}$; $P_{56}$ acts as $\sigma_{\mathrm{outer}}$ in the spinor rep (chirality-flip residual = 0 at machine precision); BHML's $\sigma_{\mathrm{outer}}$-breaking is $100\%$ in the $\mathbf{54}$-irrep with explicit $9$-vector direction $\|v\|^2 = 13/4$ exactly; chirality refinement $16 = 1+3+5+7$ rhymes with the atomic $n=4$ shell at fixed spin (Volume K, D185). Doubly-invariant subalgebra under $D_4 = \langle P_{56}, \sigma^3 \rangle$ is $\mathfrak{su}(4) \oplus \mathfrak{u}(1)$ (Killing spectrum $(-4)^{15} \oplus (0)^1$); cited as standard SO(10) GUT decomposition.}
 }
 ```
 
