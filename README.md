@@ -66,8 +66,8 @@ The numbered directories form a deliberate reading order. The first eight serve 
 01_orientation/         plain-language overview, audience-routed entry docs, parallel research
 02_results/             field-organized results:
    ├── algebraic_combinatorics/    Z/10Z, TSML+BHML, 4-core, 8-shell chain, σ-rate
-   ├── atomic_physics/             D2/D1 closed form, strand-orbital map (D100, D101)
-   ├── clifford_algebra/           Cl(0,10), chirality 16+16, triple coincidence (D102)
+   ├── atomic_physics/             D2/D1 closed form, strand-orbital map (D183, D184)
+   ├── clifford_algebra/           Cl(0,10), chirality 16+16, triple coincidence (D185)
    ├── number_theory/              First-G, sinc² zero law, cyclotomic Q(ζ₁₀), Galois D₄
    ├── dynamics/                   α=1/2 universal attractor, T*=5/7 (operational)
    ├── cosmology/                  V(ξ) = Λ⁴ξ log ξ, dark sector, layer choice for z*
@@ -247,7 +247,7 @@ Trinity Infinity Geometry rests on a chain of contributors whose work shaped the
 
 **M. Gish** (current co-author, Independent Researcher) — collaboration framework, J-series co-author lane on all current submissions, manuscript scrutiny and substantive feedback across the J-series manuscripts.
 
-**Ben Mayes** — orbital realization studies; early work on atomic substrate interpretation that informed the strand-orbital correspondence (D101).
+**Ben Mayes** — orbital realization studies; early work on atomic substrate interpretation that informed the strand-orbital correspondence (D184).
 
 **H.J. Johnson** — independent parallel development of logarithmic quintessence cosmology `V(ξ) = -β ξ log ξ` from information-theoretic first principles; convergence with the framework's Bialynicki-Birula bridge confirmed (see §6 below and [`01_orientation/PARALLEL_RESEARCH.md`](01_orientation/PARALLEL_RESEARCH.md)).
 
