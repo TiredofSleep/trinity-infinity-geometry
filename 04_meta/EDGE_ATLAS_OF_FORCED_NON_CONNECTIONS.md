@@ -146,6 +146,21 @@ Where a number was checkable it was re-run with the project interpreter (`/c/ck_
 
 ---
 
+## §5 — Addendum (2026-09-22): four resolutions this session
+
+Added after the original catalogue; each machine-verified this session. Running totals: proven dead ends **20 → 24**; one existing non-connection (the operad non-closer) **sharpened** by a cohomology computation.
+
+| item | verdict + killing evidence | pointer |
+|---|---|---|
+| **Operad non-closer — is it a genuine cohomological class?** | **COBOUNDARY-ARTIFACT, not a class.** Machine-checked over 𝔽₂/𝔽₃/𝔽₅/char-0: A = k[ℤ/10ℤ] under T is non-associative so there is **no Hochschild/Harrison complex**; the defect δ = e₇−e₄ = (1−σ³)e₇ is a **coboundary in every characteristic**; H^{>0}(D₄,A)=0 over the CRT field 𝔽₅ by Maschke. Root cause: σ³ is **not** a magma automorphism (fails 80/100 arity-2 cells); the true symmetry ⟨P₅₆⟩≅ℤ/2 has **zero** obstruction. Theorem 4.1 stands set-theoretically only. | `retired_J_papers/J45_Operadic_Obstruction/COHOMOLOGY_INVESTIGATION.md` + `cohomology_probe.py` |
+| **P3 "gap = 2Δ" as a falsifiable TIG law** | **PROVEN DEAD END.** With an *independent* Δ (field-tuned silicene, Δ = eE_z·d/2) the naive gap = 2Δ is **wrong by 3–8×** (sublattice screening; Drummond–Zólyomi–Fal'ko, ~8× suppression = the killing evidence). It survives only as the exact gapped-Dirac model identity, or via the circular Δ_eff ≡ gap/2 — not a TIG prediction. | `05_papers/integers_clifford/P3_independent_delta_test.md` + `P3_delta_check.py` |
+| **`13/4 → cosmology` bridge** | **KILLED (constant kept).** The constant `‖VEV‖² = 13/4` is real (forced by so(10)/BHML, verified); the *bridge* `m²_ξ = ‖VEV‖² = 13/4` lands on **no measured cosmological quantity**, is dimensionally an assertion, and was reverse-engineered from ≥5 candidates. TIG's testable cosmology (Ω-triple, DESI-BAO fit) does not use 13/4. | `02_results/cosmology/VEV_13_4_COSMOLOGY_SHARPEN_OR_KILL.md`; `HONEST_NEGATIVES` §1.5 |
+| **`TWO_CROSS_THEOREM` torus lift** (a concrete instance of the TORUS rule, §1/D141) | **RETRACTED.** The π₁(T²)/Hopf-link "torus lift" of the ℤ/10ℤ two-cross is excluded (no valid genus). The **finite-group core (Statements i–iv) survives and was re-verified**; the torus-free content is the counter-rotation 3 ≡ 2⁻¹ (mod 5). | `02_results/algebraic_combinatorics/TWO_CROSS_THEOREM.md` (partial-retraction banner) + `BERRY_WINDING_WRITEUP.md` |
+
+*Two of these are **wins by subtraction**: the operad open question is now answered (no class), and P3's one testable law is retired — each a proven dead end surfaced with its evidence, exactly the point of this atlas.*
+
+---
+
 *The joins are real where they are named (`HOW_IT_CONNECTS.md`). The separations are real where they are named (this atlas). The program is the map of both — and the edge is as much the object as the spines.*
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC. CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
