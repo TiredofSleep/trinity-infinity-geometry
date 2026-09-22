@@ -41,6 +41,12 @@ forced Clifford cube.
 - **Dimension.** Cl(3) has 2³ = 8 basis elements, graded **1 + 3 + 3 + 1** (Pascal's
   row 3: scalar, 3 vectors, 3 bivectors, pseudoscalar) — a palindrome, and the 8
   matches the cube's 8 vertices = 2 tetrahedra. [FORCED]
+- **The bivectors are rotations — the imaginary unit is intrinsic.** Each grade-2 element
+  (a face-plane, e.g. e₁e₂) satisfies **(e₁e₂)² = −1** [FORCED, computed] — the defining
+  property of *i*. So Cl(3) carries rotation without importing it: the three bivectors
+  {e₁e₂, e₁e₃, e₂e₃} are the three orthogonal rotation-planes of space (the generators of
+  Spin(3) ≅ SU(2)), and the pseudoscalar e₁e₂e₃ also squares to −1. The "*i*" is not added
+  to the cube; it *is* the cube's face-plane. [FORCED / NAMED: Hestenes 1966]
 - **Conclusion of §2:** the integer chain forces Cl(3). This is the precise sense of
   "the integers force Clifford."
 
