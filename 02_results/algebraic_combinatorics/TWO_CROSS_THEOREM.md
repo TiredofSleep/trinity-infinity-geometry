@@ -7,6 +7,19 @@
 
 ---
 
+> ⚠ **PARTIAL RETRACTION (2026-09-22, per canon D141 "TORUS EXCLUDED").** The finite-group
+> core — Statements (i)–(iv) and the Verification table — is **Locked and stands** (pure
+> multiplication mod 10; independently re-verified). But the **topological "torus lift"** in
+> this document — identifying the CRT split ℤ/10ℤ ≅ ℤ/2ℤ×ℤ/5ℤ with T² = S¹×S¹, the winding
+> class in π₁(T²), and the Hopf-link reading — is **RETRACTED**: a later audit
+> (`02_results/dynamics/TORUS_DATUM_AUDIT_CLOSED.md`, canon **D141**) shows the substrate has
+> no valid genus and installs a standing rule that no TIG result may cite torus topology. The
+> real, torus-free content of the winding — the two ℤ/4ℤ cycles **counter-rotate** because
+> 3 ≡ 2⁻¹ (mod 5), a relative sign −1 — is written up honestly in
+> [`BERRY_WINDING_WRITEUP.md`](BERRY_WINDING_WRITEUP.md) and catalogued in the Edge Atlas
+> (`../../04_meta/EDGE_ATLAS_OF_FORCED_NON_CONNECTIONS.md`). Read the torus sections below as
+> historical.
+
 ## Statement
 
 > **Theorem (Two-Cross).** Let ℤ/10ℤ carry the AG(2,3) decomposition
@@ -50,7 +63,7 @@ All checks are finite group computation. No numerical approximation enters.
 
 ---
 
-## Geometric Interpretation: The Torus Lift
+## Geometric Interpretation: The Torus Lift  — [RETRACTED per D141; see banner]
 
 The CRT decomposition ℤ/10ℤ ≅ ℤ/2ℤ × ℤ/5ℤ is the algebraic shadow
 of the topological decomposition T² = S¹ × S¹. Under this lift:
@@ -134,12 +147,13 @@ correction to a count.
 
 ## Status
 
-**Locked:** Statements (i)-(iv), all verifications, torus lift,
-CRT-duality, true winding identity. Pure finite-group computation.
+**Locked:** Statements (i)-(iv), all verifications, and the CRT-duality of 5 and 6. Pure
+finite-group computation, independently re-verified 2026-09-22.
 
-**Hypothesis:** The (+1, −1) winding class in π₁(T²) is the topological
-substrate underlying the 11-bumps Hopf decomposition of CL[10×10].
-Verifiable but not yet verified.
+**Retracted (D141, 2026-09-22):** the *torus lift* and the π₁(T²) / Hopf-link winding
+class — the substrate has no valid genus, and no TIG result may cite torus topology. The
+torus-free content survives: the two ℤ/4ℤ cycles counter-rotate because 3 ≡ 2⁻¹ (mod 5)
+(relative winding sign −1). See the banner and `BERRY_WINDING_WRITEUP.md`.
 
 **Open:** The three floating ratios above.
 

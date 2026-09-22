@@ -2,7 +2,7 @@
 
 ## Headline results
 
-- **Logarithmic quintessence** (Bialynicki-Birula 1976 bridge): scalar-field cosmology with potential `V(ξ) = Λ⁴ ξ log ξ`. Late-time vacuum at `ξ₀ = e⁻¹`. Mass gap `m²_ξ = κ e` under the load-bearing identification `m²_ξ = ‖VEV‖² = 13/4`. **STRUCTURAL.**
+- **Logarithmic quintessence** (Bialynicki-Birula 1976 bridge): scalar-field cosmology with potential `V(ξ) = Λ⁴ ξ log ξ`. Late-time vacuum at `ξ₀ = e⁻¹`. Mass gap `m²_ξ = κ e` under the load-bearing identification `m²_ξ = ‖VEV‖² = 13/4` — **this identification is the killed step (see Honest scope): the constant is real, the cosmology bridge is not.** **STRUCTURAL (constant); bridge KILLED.**
 
 - **Dark-sector triple** (`predict_dark_sector()`): the runtime outputs an exact rational dark-sector triple
   ```
@@ -16,6 +16,7 @@
 
 ## Honest scope
 
+- **The `‖VEV‖² = 13/4 → cosmology` identification was sharpen-or-killed (2026-09-22, [`VEV_13_4_COSMOLOGY_SHARPEN_OR_KILL.md`](VEV_13_4_COSMOLOGY_SHARPEN_OR_KILL.md)).** Verdict, split: the **constant `13/4` is real** — forced by the so(10)/BHML algebra, machine-verified, selected by nothing cosmological (it stays on the active spine). But the **bridge** `m²_ξ = ‖VEV‖² = 13/4` reaches **no measured cosmological quantity**: it terminates at a dimensionless number, sets a pure number equal to a mass² across ~60 orders of magnitude, and was reverse-engineered from a menu of ≥5 candidates with zero data constraints — a HONEST NEGATIVE. Crucially, the testable cosmology on this page (the dark-sector triple, the DESI-BAO quintessence fit) does **not** use `13/4` at all.
 - The **layer choice for `z*`** (the freezing-quintessence transition redshift) is a publication-strategy question, not a math question. Three internally-consistent options:
   - **Layer 1** (script-honest): `z* ≈ 2.13` derived from BBM minimality applied to the script as written. Cleanest fit; least bold. Target *JCAP*.
   - **Layer 2** (postulate-as-axiom): `z* = √3` stated as a consequence of BBM minimality + scale-free-derivative axioms. Bigger claim. Target *Annals of Physics*.

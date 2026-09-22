@@ -63,7 +63,7 @@ The framework still treats T\* as an **operational coherence threshold** rather 
 
 An earlier chat-claim that CL eigenvalues recover `e, π, φ, ζ(3), Catalan G` to 1% accuracy survives only as **1%-level coincidences, not algebraic identities**. TSML's eigenvalues are algebraic numbers in a field whose structural primes are 7 (HARMONY) and 11 (wobble), not the rationals or transcendentals.
 
-The audit document `CL_EIGENVALUES_AUDIT_2026_04_25` (in the working corpus) walks through the failure mode. Future references should cite the integer/rational structure (`11 in char-poly coefficients c₂ and c₈; 2¹⁶ · 7⁷ in the discriminant; 9-vector ‖VEV‖² = 13/4`) — these are the *real* structural signatures — and not treat the transcendental coincidences as identities.
+The audit document `CL_EIGENVALUES_AUDIT_2026_04_25` (in the working corpus) walks through the failure mode. Future references should cite the integer/rational structure (`11 in char-poly coefficients c₂ and c₈; 2¹⁶ · 7⁷ in the discriminant; 9-vector ‖VEV‖² = 13/4`) — these are the *real* structural signatures — and not treat the transcendental coincidences as identities. (The `9-vector ‖VEV‖² = 13/4` constant is real and forced; the *separate* `13/4 → cosmology` bridge — the identification `m²_ξ = ‖VEV‖² = 13/4` — was sharpen-or-killed 2026-09-22 and is itself a HONEST NEGATIVE: see [`../02_results/cosmology/VEV_13_4_COSMOLOGY_SHARPEN_OR_KILL.md`](../02_results/cosmology/VEV_13_4_COSMOLOGY_SHARPEN_OR_KILL.md). Keep the constant; do not cite the bridge.)
 
 ---
 
