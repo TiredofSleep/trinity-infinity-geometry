@@ -1,5 +1,5 @@
 """
-verify_J11_S4_closure.py
+verify_J43_S4_closure.py
 
 Consolidated verification script for J39 (NV S4 Synthesis).
 

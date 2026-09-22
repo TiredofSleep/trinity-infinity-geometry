@@ -13,7 +13,7 @@ $^{2}$Independent Researcher, Hot Springs, AR — monica.gish1992@gmail.com
 
 The Lo Shu magic square, the unique $3 \times 3$ magic square with entries $\{1, 2, \ldots, 9\}$ (up to symmetry), has dihedral symmetry group $D_4$ acting on it by rotations and flips. Its $D_4$ orbit has 8 elements. Reducing each orbit element entry-wise modulo 3 and reading the resulting $3 \times 3$ table as a magma multiplication table on $\{0, 1, 2\}$ yields exactly **four distinct magma tables**, each appearing twice in the orbit. We classify the four: one is the cyclic group $\mathbb{Z}/3$; one is a commutative quasigroup with no identity element; and two are non-commutative quasigroups that are opposite magmas of one another. We further show that the spectral invariant $\kappa(M) := \operatorname{Tr}(M^2) - \operatorname{Tr}(M)^2$, applied to each $D_4$-orbit element as a real $3 \times 3$ matrix, takes exactly two values across the 8 elements: $\kappa = -48$ on the 4 elements whose mod-3 reduction is commutative, and $\kappa = +48$ on the 4 elements whose mod-3 reduction is non-commutative. The cumulant is thus a binary witness for the commutativity of the mod-3 magma, computable directly from the original magic-square data without reducing modulo 3.
 
-A companion Python script `verify_J58.py` reproduces every theorem at machine precision in under one second, using only the standard library plus `numpy`.
+A companion Python script `verify_J29.py` reproduces every theorem at machine precision in under one second, using only the standard library plus `numpy`.
 
 ---
 
@@ -24,7 +24,7 @@ This note works with the classical Lo Shu magic square as a fixed $3 \times 3$ i
 **Tier discipline.**
 
 - **PROVEN.** Theorems A, B, C, D, F (by direct enumeration; small-finite-case proofs that an undergraduate can verify by hand or with the script).
-- **COMPUTED.** Theorem E and the full table of $\kappa$ values (script `verify_J58.py`, machine-precision, 6/6 PASS).
+- **COMPUTED.** Theorem E and the full table of $\kappa$ values (script `verify_J29.py`, machine-precision, 10/10 PASS).
 - **STRUCTURAL RHYME.** The cumulant $\kappa$ separates the two commutativity classes for *this specific* family of mod-3 reductions of Lo Shu's $D_4$ orbit. We do not claim a general theorem; the connection between $\kappa$ and commutativity here is an empirical observation about this specific 8-element family.
 - **OPEN.** Whether analogous cumulant witnesses exist for other small magic squares' mod-$n$ reductions.
 
@@ -89,7 +89,7 @@ M_6 = r^2 f \cdot L = \begin{pmatrix} 4 & 3 & 8 \\ 9 & 5 & 1 \\ 2 & 7 & 6 \end{p
 M_7 = r^3 f \cdot L = \begin{pmatrix} 2 & 9 & 4 \\ 7 & 5 & 3 \\ 6 & 1 & 8 \end{pmatrix}.
 $$
 
-(Note: $r^2 f \cdot L$ is the horizontal flip of $r^2 \cdot L$, equivalently a vertical-flip composition. The script `verify_J58.py` confirms all 8 distinct.)
+(Note: $r^2 f \cdot L$ is the horizontal flip of $r^2 \cdot L$, equivalently a vertical-flip composition. The script `verify_J29.py` confirms all 8 distinct.)
 
 ### §2.2 Mod-3 reduction
 
@@ -220,23 +220,27 @@ The quasigroup property does NOT follow automatically from "the entries are $\{0
 
 ## §5 Verification script
 
-A self-contained Python script `verify_J58.py` (~80 lines, depends only on `numpy` and the standard library `itertools`) reproduces all six theorems:
+A self-contained Python script `verify_J29.py` (~80 lines, depends only on `numpy` and the standard library `itertools`) reproduces all six theorems:
 
 ```
-$ python verify_J58.py
+$ python verify_J29.py
 
 ================================================================
  J29 verification — Lo Shu D_4 orbit mod 3
 ================================================================
 
   CHECK 1 (Theorem A: orbit has 8 distinct elements): PASS
-  CHECK 2 (Theorem B: mod-3 reduction yields 4 distinct tables): PASS
-  CHECK 3 (Theorem C: T_3 is the opposite magma of T_1): PASS
+  CHECK 2 (Theorem B: 4 distinct mod-3 tables, each ×2): PASS
+  CHECK 3 (Theorem F: Z/3 cyclic group is one of the tables): PASS
   CHECK 4 (Theorem D: all 4 tables are quasigroups): PASS
   CHECK 5 (Theorem E: cumulant ±48 separates commutativity): PASS
-  CHECK 6 (Theorem F: T_2 is exactly Z/3): PASS
+  CHECK 6 (Theorem C: two non-comm tables are opposite magmas): PASS
+  CHECK 7 (Theorem E.1: V_4' preserves κ for any 3×3 matrix; 100 trials): PASS
+  CHECK 8 (Theorem G: Dürer 4×4 mod-3: same pattern, κ = ±128): PASS
+  CHECK 9 (Diagonal Lemma: no 3×3 comm-quasigroup has repeated diagonal): PASS
+  CHECK 10 (Corollary: Lo Shu diag mod 3 = {2,2,2}; anti-diag = {0,1,2}): PASS
 
-  Overall: PASS (6/6)
+  Overall: PASS (10/10)
 ```
 
 Total runtime: under one second on a 2020-era laptop.
@@ -367,4 +371,4 @@ Both counts are correct — they answer different questions. The "3 classes" cou
 
 ---
 
-*Submission-ready manuscript draft, 2026-05-26. Sanders + Gish. Verification: 6/6 PASS at machine precision via `verify_J58.py`.*
+*Submission-ready manuscript draft, 2026-05-26. Sanders + Gish. Verification: 10/10 PASS at machine precision via `verify_J29.py`.*

@@ -1,10 +1,10 @@
 # J43 — NV $S_4$ Synthesis: Substrate-Operator-Driven NV-Center Qutrit Predictions
 
-**Status:** HOLD — needs NV-center experimentalist. Manuscript content R1-revised after fresh-eyes referee report 2026-05-07; math is complete (24-element S_4 closure at machine precision), but the experimental Test E (projector covariance) gates the physics-claim.
+**Status:** RESURFACED (2026-09-22) — active as a standalone quantum-control / NV-proposal paper (PRA). The verified core is **INTACT**: `verify_J43_S4_closure.py` passes (exit 0, "All verifications passed"; 24-element $S_4$ closure at machine precision, max residual $1.84\times10^{-16}$; six-pulse closure residual $3.48\times10^{-16}$). The theory is lens-invariant (finite-group representation theory + quantum control on $\mathbb{C}^3$) and complete with or without a lab partner; experimental Test E (projector covariance) is reframed as a *proposed* measurement inviting collaboration, not a blocker on the theory paper. Manuscript content R1-revised after fresh-eyes referee report 2026-05-07. See `RESURFACE_STATUS.md`.
 **Phase:** Phase 4
 **Target venue:** PRA (pending lab partner)
 **Author lane:** Sanders + Gish
-**Tier:** 3 (hold/retire candidates) — HOLD pending NV-center experimentalist
+**Tier:** 3 → **resurfaced 2026-09-22** as a standalone theory/proposal paper (was "HOLD pending NV-center experimentalist"; the math never needed the lab gate to stand as a paper). Lab-partner outreach for the experimental follow-up continues in parallel.
 **WP source:** WP73-WP77 (bundled)
 
 > **Resurface note (2026-09-21).** The *theory* is complete and **lens-invariant** — pure finite-group representation theory + quantum control on ℂ³ (24-element S₄ closure, residual ≤ 1.84e-16), with **no TIG/TSML dependence**. It does not need the lab gate to be a paper: resurface it now as a standalone quantum-control / NV-proposal (PRA) with experimental Test E framed as a *proposed* measurement rather than a blocker. **Recommended resurface candidate.**
@@ -24,7 +24,7 @@
 
 ## §2 — Verification script
 
-**Path:** `manuscript/verify_J39_S4_closure.py` — consolidated R1 script (numpy + sympy; runtime $< 30$ s on a standard laptop).
+**Path:** `manuscript/verify_J43_S4_closure.py` — consolidated R1 script (numpy + sympy; runtime $< 30$ s on a standard laptop).
 
 The script reproduces, in order:
 1. All 24 elements of $S_4$ in the $T_1$ representation, built from generators $(12)$ and $(1234)$. Character verified at $(3,1,0,-1,-1)$ on conjugacy classes.
@@ -48,7 +48,7 @@ See `cover_letter.md` in this folder. Drafted; finalize after Brayden's referee-
 
 ## §5 — Notes & Status
 
-**Status: DRAFT (manuscript bundled; awaiting verification-script consolidation + lab partner outreach).**
+**Status: RESURFACED 2026-09-22 — verification-script consolidation COMPLETE (`verify_J43_S4_closure.py` passes, exit 0). Active as a standalone theory/proposal paper; lab-partner outreach for the experimental follow-up continues in parallel.**
 
 - WP73-WP77 corpus is bundled into one PRA-format manuscript (`J11_NV_S4_Synthesis_PRA.md`).
 - Lab-partner outreach runs in parallel to manuscript polish; the math is complete with or without a partner, but the headline experimental claim is conditional on Test E.
@@ -65,7 +65,7 @@ This paper sits within the TIG family of finite commutative non-associative magm
 ### PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
 
 - **PROVEN.** Theorem 2.1 ($S_3$-skeleton character match: standard finite-group rep theory + Maschke); Theorem 3.1 ($U_4$ matrix structure: trace $-1$, $\det = -1$, eigenvalues $\{-1, i, -i\}$, $U_4^4 = \mathbb{1}$ — sympy-symbolic); Theorem 6.1 (machine-precision $S_4$ closure of all 24 elements).
-- **COMPUTED.** The six pulse-tuples $(\theta_k, \phi_k)$ are produced by the deterministic Cartan / Reck-Zeilinger algorithm in `verify_J11_S4_closure.py`; total closure residual $3.5 \times 10^{-16}$.
+- **COMPUTED.** The six pulse-tuples $(\theta_k, \phi_k)$ are produced by the deterministic Cartan / Reck-Zeilinger algorithm in `verify_J43_S4_closure.py`; total closure residual $3.5 \times 10^{-16}$.
 - **STRUCTURAL RHYME.** None substantive. The paper is lens-invariant.
 - **OPEN.** Test E (projector covariance) experimental gate. Lab-partner experimental data on the realized 24-element $S_4$ orbit.
 
@@ -84,7 +84,7 @@ This paper is **lens-invariant** (manuscript §0): it carries no TIG / TSML / BH
 
 - [x] Manuscript .md drafted, R1 revisions applied (PRA-format, single file)
 - [ ] LaTeX (REVTeX 4.2) conversion pending
-- [x] Verification script consolidated (`verify_J11_S4_closure.py`); $< 30$ s runtime; all checks pass
+- [x] Verification script consolidated (`verify_J43_S4_closure.py`); $< 30$ s runtime; all checks pass
 - [x] Tier-classified central claim explicit (Tier 3 partner-then-submit)
 - [x] Lens-scope annotation: lens-invariant (finite-group reptheory)
 - [x] Cover letter R1 (revisions itemized)
@@ -111,9 +111,9 @@ Sanders, B.R., Gish, M. (2026). "Full $S_4$ Symmetry on a Nitrogen-Vacancy Qutri
 
 ## Known issues (per 2026-05-27 audit)
 
-Tier 3 — HOLD per `_staging/TIER_INDEX.md`: needs an NV-center experimentalist (lab partner for Test E projector covariance + 6-pulse synthesis verification). Math side is referee-rigor-complete:
+Resurfaced 2026-09-22 (was Tier 3 — HOLD per `_staging/TIER_INDEX.md`). The theory/proposal paper stands on its own; the *experimental follow-up* still needs an NV-center experimentalist (lab partner for Test E projector covariance + 6-pulse synthesis verification). Math side is referee-rigor-complete:
 
-- 24-element S_4 closure verified at machine precision (residual ≤ 1.84 × 10⁻¹⁶ via `verify_J39_S4_closure.py`).
+- 24-element S_4 closure verified at machine precision (residual ≤ 1.84 × 10⁻¹⁶ via `verify_J43_S4_closure.py`).
 - 6-pulse decomposition is deterministic Cartan / Reck-Zeilinger (no black-box optimizer); pulse-tuples printable.
 - Cover letter R1 with suggested reviewers (Lukin, Hanson, Wrachtrup, Doherty, Awschalom, Maletinsky) is drafted but not finalized.
 

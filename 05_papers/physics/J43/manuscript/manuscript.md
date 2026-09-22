@@ -19,7 +19,7 @@ This paper carries no TIG / TSML / BHML / Z/10Z lens dependence. The mathematica
 
 ## Abstract
 
-We present an explicit, machine-precision construction of the symmetric group $S_4$ on the three-level Hilbert space of a nitrogen-vacancy (NV) center in diamond. The NV ground triplet $\{|0\rangle, |+1\rangle, |-1\rangle\}$ is shown to carry the standard 3-dimensional faithful irreducible representation $T_1$ of $S_4$ exactly on the $S_3 \subset S_4$ skeleton (the $A_1 \oplus E$ decomposition under $C_{3v}$ matches $T_1|_{S_3}$ identically). Synthesis of the full group requires only one explicit 4-cycle unitary $U_4$. We compute the change-of-basis $V$ analytically, derive the NV-basis form $U_{4,\mathrm{NV}} = V U_4 V^{-1}$, and decompose it into a six-pulse microwave sequence by an explicit deterministic Cartan / Reck-Zeilinger construction (no black-box optimizer). The decomposition is reproduced to machine precision by the consolidated script `verify_J11_S4_closure.py` (numpy + sympy, runtime $< 30$ s on a standard laptop), which also closes all 24 group elements to within $10^{-15}$ of the abstract $T_1$ matrices. The realization of the level-mixing pulse $G_{12}$, a $\Delta m_S = 2$ transition, is via the standard two-photon Raman scheme; we cite published NV experiments demonstrating the gate at the relevant fidelity, give a fidelity budget covering all six pulses, and disambiguate the relevant coherence time ($T_2^*$ vs $T_2$ vs $T_1$). A five-test falsification ladder closes with the projector-covariance test $F_{\mathrm{cov}} > 0.80$ as the decisive structural gate. The paper is **honestly Tier 3 (partner-then-submit)**: the math is complete; the experimental side is conditional on lab-partner data.
+We present an explicit, machine-precision construction of the symmetric group $S_4$ on the three-level Hilbert space of a nitrogen-vacancy (NV) center in diamond. The NV ground triplet $\{|0\rangle, |+1\rangle, |-1\rangle\}$ is shown to carry the standard 3-dimensional faithful irreducible representation $T_1$ of $S_4$ exactly on the $S_3 \subset S_4$ skeleton (the $A_1 \oplus E$ decomposition under $C_{3v}$ matches $T_1|_{S_3}$ identically). Synthesis of the full group requires only one explicit 4-cycle unitary $U_4$. We compute the change-of-basis $V$ analytically, derive the NV-basis form $U_{4,\mathrm{NV}} = V U_4 V^{-1}$, and decompose it into a six-pulse microwave sequence by an explicit deterministic Cartan / Reck-Zeilinger construction (no black-box optimizer). The decomposition is reproduced to machine precision by the consolidated script `verify_J43_S4_closure.py` (numpy + sympy, runtime $< 30$ s on a standard laptop), which also closes all 24 group elements to within $10^{-15}$ of the abstract $T_1$ matrices. The realization of the level-mixing pulse $G_{12}$, a $\Delta m_S = 2$ transition, is via the standard two-photon Raman scheme; we cite published NV experiments demonstrating the gate at the relevant fidelity, give a fidelity budget covering all six pulses, and disambiguate the relevant coherence time ($T_2^*$ vs $T_2$ vs $T_1$). A five-test falsification ladder closes with the projector-covariance test $F_{\mathrm{cov}} > 0.80$ as the decisive structural gate. The paper is **honestly Tier 3 (partner-then-submit)**: the math is complete; the experimental side is conditional on lab-partner data.
 
 ---
 
@@ -27,7 +27,7 @@ We present an explicit, machine-precision construction of the symmetric group $S
 
 Every claim of this paper is one of:
 - **PROVEN.** Theorem 2.1 ($S_3$-skeleton character match: standard finite-group representation theory). Theorem 3.1 (matrix structure of $U_4$: trace $-1$, $\det = -1$, eigenvalues $\{-1, i, -i\}$, $U_4^4 = \mathbb{1}$ exactly; verified symbolically in sympy). Theorem 6.1 (machine-precision $S_4$ closure of all 24 group elements: $\le 10^{-15}$ residual).
-- **COMPUTED.** The six pulse-angles $(\theta_k, \phi_k)$ of Section 5 are computed by the explicit deterministic Cartan / Reck-Zeilinger algorithm in `verify_J11_S4_closure.py`. The script reproduces them to machine precision; total reconstructed product equals $U_{4,\mathrm{SU(3)}}$ at residual $< 10^{-15}$ up to a global phase.
+- **COMPUTED.** The six pulse-angles $(\theta_k, \phi_k)$ of Section 5 are computed by the explicit deterministic Cartan / Reck-Zeilinger algorithm in `verify_J43_S4_closure.py`. The script reproduces them to machine precision; total reconstructed product equals $U_{4,\mathrm{SU(3)}}$ at residual $< 10^{-15}$ up to a global phase.
 - **STRUCTURAL RHYME.** None substantive. The $T_1$-vs-$S_3$ character match is a one-line consequence of Maschke's theorem; we do not lean on numerological coincidence anywhere.
 - **OPEN.** The experimental projector-covariance test (Test E, Section 7) is open and is the lab-partner gate. The fidelity budget of Section 5.1 is engineering-grade but assumes contemporary NV control numbers; refinement awaits a specific platform's calibration.
 
@@ -71,7 +71,7 @@ with $|0\rangle$ carrying $A_1$ and $\{|+1\rangle, |-1\rangle\}$ carrying $E$.
 
 *Proof.* Both decompositions have identical character $(3, 1, 0)$ on $C_{3v} \cong S_3$. By Maschke's theorem, two finite-dimensional unitary representations of a finite group with identical characters are unitarily equivalent. $\Box$
 
-**Verification by 3-cycle eigenvalue test.** The NV $C_3$ rotation acts as $|0\rangle \to |0\rangle$, $|+1\rangle \to \omega|+1\rangle$, $|-1\rangle \to \omega^{-1}|-1\rangle$ with $\omega = e^{2\pi i / 3}$, giving eigenvalues $\{1, \omega, \omega^{-1}\}$. The $T_1$ representation matrix $r_{(123)}$ has eigenvalues $\{1, e^{2\pi i / 3}, e^{-2\pi i / 3}\}$. Match: exact. (Verified in `verify_J11_S4_closure.py` Section 3.)
+**Verification by 3-cycle eigenvalue test.** The NV $C_3$ rotation acts as $|0\rangle \to |0\rangle$, $|+1\rangle \to \omega|+1\rangle$, $|-1\rangle \to \omega^{-1}|-1\rangle$ with $\omega = e^{2\pi i / 3}$, giving eigenvalues $\{1, \omega, \omega^{-1}\}$. The $T_1$ representation matrix $r_{(123)}$ has eigenvalues $\{1, e^{2\pi i / 3}, e^{-2\pi i / 3}\}$. Match: exact. (Verified in `verify_J43_S4_closure.py` Section 3.)
 
 **Verification by Frobenius–Schur indicator.** $T_1$ has FS indicator $+1$ (real-type); the NV decomposition has the same real/complex split (one real eigenspace + one complex conjugate pair). Match: exact.
 
@@ -97,7 +97,7 @@ $$U_4 = \begin{pmatrix} -\tfrac{1}{2} & -\tfrac{1}{2\sqrt{3}} & -\sqrt{\tfrac{2}
 | $U_4^T U_4$ | $\mathbb{1}$ | orthogonal |
 | $U_4^4$ | $\mathbb{1}$ | order-4 |
 
-*Proof (symbolic).* All five claims are verified in exact symbolic arithmetic by `verify_J11_S4_closure.py` Section 2 (sympy). The proof reduces to algebra over $\mathbb{Q}(\sqrt{2}, \sqrt{3})$: trace and determinant are immediate; eigenvalues are computed from the characteristic polynomial $\chi_{U_4}(t) = -(t+1)(t^2 + 1) = -t^3 - t^2 - t - 1$; orthogonality follows from $b_1, b_2, b_3$ being orthonormal in $\mathbb{R}^4$ and $(1234)$ being a permutation; $U_4^4 = \mathbb{1}$ follows from the order-4 property of $(1234)$. $\Box$
+*Proof (symbolic).* All five claims are verified in exact symbolic arithmetic by `verify_J43_S4_closure.py` Section 2 (sympy). The proof reduces to algebra over $\mathbb{Q}(\sqrt{2}, \sqrt{3})$: trace and determinant are immediate; eigenvalues are computed from the characteristic polynomial $\chi_{U_4}(t) = -(t+1)(t^2 + 1) = -t^3 - t^2 - t - 1$; orthogonality follows from $b_1, b_2, b_3$ being orthonormal in $\mathbb{R}^4$ and $(1234)$ being a permutation; $U_4^4 = \mathbb{1}$ follows from the order-4 property of $(1234)$. $\Box$
 
 The matrix $U_4$ has $\det = -1$ because the 4-cycle $(1234)$ is an odd permutation; the $T_1$ representation faithfully carries the sign character, $\det(M_\sigma^{T_1}) = \mathrm{sgn}(\sigma)$. Multiplying by the global phase $e^{i\pi / 3}$ projects to $SU(3)$ but breaks the exact order-4 relation; for flag-projector identification (phase-insensitive), the on-the-nose $U_4 \in O(3)$ form is sufficient and physically implementable.
 
@@ -123,7 +123,7 @@ $$V = \begin{pmatrix} 0 & 0 & 1 \\ \tfrac{1}{\sqrt{2}} & \tfrac{i}{\sqrt{2}} & 0
 | $V r_{(12)} V^{-1}$ vs $\sigma_{v,\mathrm{NV}}$ | $< 6 \times 10^{-16}$ |
 | $\det(V)$ | $i$ exactly (a pure phase) |
 
-(All four checks performed by `verify_J11_S4_closure.py` Section 3 with `numpy.linalg`.)
+(All four checks performed by `verify_J43_S4_closure.py` Section 3 with `numpy.linalg`.)
 
 **$U_4$ in the NV basis.** $U_{4,\mathrm{NV}} = V U_4 V^{-1}$. The script confirms $\mathrm{tr}(U_{4,\mathrm{NV}}) = -1$, $\det(U_{4,\mathrm{NV}}) = -1$, eigenvalues $\{-1, i, -i\}$ (residual $< 10^{-15}$), and $U_{4,\mathrm{NV}}^4 = \mathbb{1}$ (residual $< 1.6 \times 10^{-16}$).
 
@@ -165,7 +165,7 @@ For a 6-pulse sequence with **no echoing** (the bare construction of Section 5.1
 
 ### §5.3. The KAK / Cartan decomposition
 
-Any $U \in U(3)$ admits a deterministic two-level decomposition into Givens-style 2-level unitaries on adjacent index pairs (Reck–Zeilinger 1994 [Reck1994]; Nielsen–Chuang 2010 §4.5 [NielsenChuang]). For the NV-friendly pair pattern $G_{01}, G_{02}, G_{12}, G_{01}, G_{02}, G_{01}$ — three core SU(2) rotations on the strong $(01),(02)$ transitions plus one Raman $(12)$ + three AC-Stark / virtual-Z phase corrections — the decomposition is unique up to a global phase. The verification script `verify_J11_S4_closure.py` implements the explicit Cartan-Givens algorithm (no random seed; no black-box optimizer) and reproduces both the abstract group-theoretic result and the resulting six pulse-tuples.
+Any $U \in U(3)$ admits a deterministic two-level decomposition into Givens-style 2-level unitaries on adjacent index pairs (Reck–Zeilinger 1994 [Reck1994]; Nielsen–Chuang 2010 §4.5 [NielsenChuang]). For the NV-friendly pair pattern $G_{01}, G_{02}, G_{12}, G_{01}, G_{02}, G_{01}$ — three core SU(2) rotations on the strong $(01),(02)$ transitions plus one Raman $(12)$ + three AC-Stark / virtual-Z phase corrections — the decomposition is unique up to a global phase. The verification script `verify_J43_S4_closure.py` implements the explicit Cartan-Givens algorithm (no random seed; no black-box optimizer) and reproduces both the abstract group-theoretic result and the resulting six pulse-tuples.
 
 **Six-pulse decomposition of $U_{4,\mathrm{SU(3)}} = e^{i\pi / 3} U_{4,\mathrm{NV}}$**, computed by the script:
 
@@ -204,7 +204,7 @@ This section reports the mathematical closure: starting from the generators $\{r
 | 6 4-cycles | character $-1$ | $U_4$-orbit | $< 1.2 \times 10^{-15}$ |
 | 3 double trans. | character $-1$ | $(12)(34)$-orbit | $< 8 \times 10^{-16}$ |
 
-**Irreducibility check.** $\sum_{\sigma \in S_4} |\chi_{T_1}(\sigma)|^2 = 24 = |S_4|$ — confirmed (Schur orthogonality). Verified in `verify_J11_S4_closure.py` Section 1.
+**Irreducibility check.** $\sum_{\sigma \in S_4} |\chi_{T_1}(\sigma)|^2 = 24 = |S_4|$ — confirmed (Schur orthogonality). Verified in `verify_J43_S4_closure.py` Section 1.
 
 **Maximum residual over the 24-element closure** (script output): $1.84 \times 10^{-16}$.
 
@@ -298,4 +298,4 @@ These references are listed for cross-corpus context only; the present paper is 
 - Nielsen, M.A., Chuang, I.L. (2010). *Quantum Computation and Quantum Information*. Cambridge University Press. [NielsenChuang]
 
 ### Verification artifact
-- `verify_J11_S4_closure.py` — consolidated verification script (numpy + sympy, < 30 s on a standard laptop). Reproduces (a) all 24 elements of $S_4$ in the $T_1$ representation; (b) the explicit $U_4$ matrix's symbolic properties (trace, det, eigenvalues, $U_4^4 = \mathbb{1}$); (c) the change-of-basis $V$ and $V$-conjugation of the $S_3$ generators; (d) the deterministic Cartan / Reck-Zeilinger six-pulse decomposition with explicit angles; (e) the 24-element closure at residual $\le 1.84 \times 10^{-16}$. DOI for the script: 10.5281/zenodo.18852047.
+- `verify_J43_S4_closure.py` — consolidated verification script (numpy + sympy, < 30 s on a standard laptop). Reproduces (a) all 24 elements of $S_4$ in the $T_1$ representation; (b) the explicit $U_4$ matrix's symbolic properties (trace, det, eigenvalues, $U_4^4 = \mathbb{1}$); (c) the change-of-basis $V$ and $V$-conjugation of the $S_3$ generators; (d) the deterministic Cartan / Reck-Zeilinger six-pulse decomposition with explicit angles; (e) the 24-element closure at residual $\le 1.84 \times 10^{-16}$. DOI for the script: 10.5281/zenodo.18852047.

@@ -1,4 +1,4 @@
-"""verify_J58.py -- machine-precision verification of all theorems of J58.
+"""verify_J29.py -- machine-precision verification of all theorems of J58.
 
 CC-BY-4.0. (c) 2026 Brayden Ross Sanders / 7Site LLC. M. Gish co-author.
 
@@ -23,7 +23,7 @@ Plus (Theorem E.1 from §3.2 and §7 Durer extension):
      kappa witness with values +/- 128) holds for the Durer 4x4
      magic square.
 
-Run:  python verify_J58.py
+Run:  python verify_J29.py
 Runtime: under 2 seconds on a 2020-era laptop.
 """
 from itertools import product
@@ -95,7 +95,7 @@ def opposite_magma(table):
 
 def main():
     print("=" * 64)
-    print(" J58 verification -- Lo Shu D_4 orbit mod 3")
+    print(" J29 verification -- Lo Shu D_4 orbit mod 3")
     print("=" * 64)
     print()
 

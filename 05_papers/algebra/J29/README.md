@@ -2,7 +2,7 @@
 
 **Target venue**: *Mathematics Magazine* (MAA)
 **Alternative venues**: *College Mathematics Journal* (MAA), *Involve* (a journal of mathematics), *PRIMUS*
-**Status**: DRAFT — verification PASS, awaiting Brayden green-light + cover letter
+**Status**: RESURFACED (2026-09-22) — verified core INTACT, submission-ready for *Mathematics Magazine*. `verify_J29.py` passes (exit 0, "Overall: PASS (10/10)"); cover letter present (`cover_letter.md`). Correct and complete as a pedagogical note (Tier 2); a final author green-light before submission is the only open step. See `RESURFACE_STATUS.md`.
 **Author lane**: Sanders + Gish
 **Tier:** 2 (demoted 2026-05-27 audit; was Tier 1)
 
@@ -63,13 +63,13 @@ The mod-3 reduction of Lo Shu has been observed in the literature as a finite-al
 ## §4 — Files in this folder
 
 - `manuscript/manuscript.md` — full ~12-page note
-- `manuscript/verification/verify_J58.py` — self-contained verification
+- `manuscript/verification/verify_J29.py` — self-contained verification
 - `cover_letter.md` — venue-targeted cover letter
 
 ## §5 — Verification
 
 ```bash
-python manuscript/verification/verify_J58.py
+python manuscript/verification/verify_J29.py
 ```
 
 Expected: 10 OK lines + "Overall: PASS (10/10)." Runtime ~2 seconds on a 2020-era laptop. The 10 checks cover Theorems A-G + E.1 + the Diagonal Lemma + the Lo Shu diagonal-mod-3 Corollary.
@@ -77,7 +77,7 @@ Expected: 10 OK lines + "Overall: PASS (10/10)." Runtime ~2 seconds on a 2020-er
 ## §6 — Tier discipline
 
 - **PROVEN.** Theorems A, B, C, D, F by direct enumeration. Theorem E.1 by a generators-of-V₄′ argument on transpose and 180°-rotation (both preserve trace and trace-of-square). The Diagonal Lemma by case analysis on commutative 3×3 quasigroups. The Lo Shu Corollary (forced non-commutativity of the V₄′-coset) by combining the Lemma with Lo Shu's diagonal mod 3 being constant {2,2,2}.
-- **COMPUTED.** Theorem E (the ±48 value), the κ-comm correlation for the V₄′ \ commutative half (T₂ and T₄ are commutative by direct verification, not forced by the Lemma), and Theorem G (Dürer 4×4 mod-3 ±128 analog). All at machine precision via `verify_J58.py` (10/10 PASS).
+- **COMPUTED.** Theorem E (the ±48 value), the κ-comm correlation for the V₄′ \ commutative half (T₂ and T₄ are commutative by direct verification, not forced by the Lemma), and Theorem G (Dürer 4×4 mod-3 ±128 analog). All at machine precision via `verify_J29.py` (10/10 PASS).
 - **STRUCTURAL RHYME.** The ±48 specific value for Lo Shu, the ±128 for Dürer, and the "mod-3 is special" observation. Why mod 3 (not 4, 5, etc.) is the modulus at which both magic squares exhibit the dichotomy is an empirical observation. A general theorem here would connect $|V_4'| = 4$, $|D_4 \setminus V_4'| = 4$, and the multiplicative structure of $\mathbb{Z}/3$; we have not derived such a theorem for the 4×4 Dürer case.
 - **OPEN.** (i) The 4×4 (or general $n \times n$) version of the Diagonal Lemma — i.e., a structural reason for Dürer's V₄′-coset images being non-commutative. (ii) Do other classical magic squares (5×5 Siamese; pandiagonal 4×4; Strachey's odd-order construction) share the mod-3 specialness? (iii) Higher-order cumulant analog at moduli ≠ 3?
 

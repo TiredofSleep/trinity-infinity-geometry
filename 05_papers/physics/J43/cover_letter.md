@@ -16,13 +16,13 @@
 
 ## Summary
 
-We give an explicit, machine-precision construction of the symmetric group $S_4$ on the three-level Hilbert space of a single NV center in diamond. The NV ground triplet already carries the $S_3$ skeleton of the standard 3-dimensional faithful irreducible representation $T_1$ of $S_4$ exactly (the natural $C_{3v}$ decomposition $A_1 \oplus E$ matches $T_1|_{S_3}$ pointwise on character); the missing piece is one 4-cycle unitary $U_4$, which we write down analytically, transform into the NV physical basis, and decompose into a six-pulse microwave sequence by an explicit deterministic Cartan / Reck-Zeilinger algorithm. The verification script `verify_J11_S4_closure.py` (numpy + sympy, runtime $< 30$ s on a standard laptop) reproduces all 24 group elements at residual $\le 1.84 \times 10^{-16}$ and reproduces the six pulse-tuples to machine precision. The level-mixing pulse $G_{12}$ is a standard two-photon Raman gate; we cite published NV experiments (Wrachtrup, Hanson, Awschalom groups) that demonstrate the gate at the relevant fidelity, and provide a fidelity budget for the full six-pulse sequence ($F_{\mathrm{total}} \approx 0.91$ first-attempt; $> 0.95$ for a polished implementation with composite-pulse and dynamical-decoupling refinements). The paper closes with a five-test falsification ladder including an explicit decisive gate (projector covariance, Test E, $F_{\mathrm{cov}} > 0.80$), and invites lab-partner collaboration for the experimental verification.
+We give an explicit, machine-precision construction of the symmetric group $S_4$ on the three-level Hilbert space of a single NV center in diamond. The NV ground triplet already carries the $S_3$ skeleton of the standard 3-dimensional faithful irreducible representation $T_1$ of $S_4$ exactly (the natural $C_{3v}$ decomposition $A_1 \oplus E$ matches $T_1|_{S_3}$ pointwise on character); the missing piece is one 4-cycle unitary $U_4$, which we write down analytically, transform into the NV physical basis, and decompose into a six-pulse microwave sequence by an explicit deterministic Cartan / Reck-Zeilinger algorithm. The verification script `verify_J43_S4_closure.py` (numpy + sympy, runtime $< 30$ s on a standard laptop) reproduces all 24 group elements at residual $\le 1.84 \times 10^{-16}$ and reproduces the six pulse-tuples to machine precision. The level-mixing pulse $G_{12}$ is a standard two-photon Raman gate; we cite published NV experiments (Wrachtrup, Hanson, Awschalom groups) that demonstrate the gate at the relevant fidelity, and provide a fidelity budget for the full six-pulse sequence ($F_{\mathrm{total}} \approx 0.91$ first-attempt; $> 0.95$ for a polished implementation with composite-pulse and dynamical-decoupling refinements). The paper closes with a five-test falsification ladder including an explicit decisive gate (projector covariance, Test E, $F_{\mathrm{cov}} > 0.80$), and invites lab-partner collaboration for the experimental verification.
 
 ## R1 revisions
 
 This is a revised submission addressing fresh-eyes referee comments [J39_PRA_FreshEyes, 2026-05-07]. Specifically:
 
-1. **Consolidated verification script** (`verify_J11_S4_closure.py`) added. Reproduces the §5 pulse angles by an explicit deterministic Cartan / Reck-Zeilinger Givens algorithm — no black-box optimizer, no random seed, runtime $< 30$ s. Reproduces the symbolic properties of $U_4$ (trace, determinant, eigenvalues, $U_4^4 = \mathbb{1}$) in exact sympy arithmetic. Verifies all 24 group elements close at residual $\le 1.84 \times 10^{-16}$.
+1. **Consolidated verification script** (`verify_J43_S4_closure.py`) added. Reproduces the §5 pulse angles by an explicit deterministic Cartan / Reck-Zeilinger Givens algorithm — no black-box optimizer, no random seed, runtime $< 30$ s. Reproduces the symbolic properties of $U_4$ (trace, determinant, eigenvalues, $U_4^4 = \mathbb{1}$) in exact sympy arithmetic. Verifies all 24 group elements close at residual $\le 1.84 \times 10^{-16}$.
 
 2. **$G_{12}$ Raman protocol specified** (new §5.1). The $\Delta m_S = 2$ transition is implemented via two-photon Raman through $|0\rangle$, with explicit cited demonstrations in NV centers (Wrachtrup, Hanson, Awschalom groups) at the relevant fidelity range $0.95$–$0.98$ at $T = 4\,$K isotopically purified samples, $0.90$–$0.95$ at room temperature.
 
@@ -51,7 +51,7 @@ This is a revised submission addressing fresh-eyes referee comments [J39_PRA_Fre
 ## PROVEN / COMPUTED / STRUCTURAL RHYME / OPEN
 
 - **PROVEN.** Theorem 2.1 ($S_3$-skeleton character match); Theorem 3.1 ($U_4$ structure: trace $-1$, $\det = -1$, eigenvalues $\{-1, i, -i\}$, $U_4^4 = \mathbb{1}$ exactly, sympy-verified); Theorem 6.1 (machine-precision $S_4$ closure of all 24 elements at residual $\le 10^{-15}$).
-- **COMPUTED.** The six pulse-tuples $(\theta_k, \phi_k)$ of §5.3 are computed by the deterministic Cartan-Givens algorithm in `verify_J11_S4_closure.py`. Closure residual: $3.5 \times 10^{-16}$.
+- **COMPUTED.** The six pulse-tuples $(\theta_k, \phi_k)$ of §5.3 are computed by the deterministic Cartan-Givens algorithm in `verify_J43_S4_closure.py`. Closure residual: $3.5 \times 10^{-16}$.
 - **STRUCTURAL RHYME.** None substantive. The framework discipline keeps lens content out of the paper.
 - **OPEN.** Test E (projector covariance) experimental gate. Lab-partner experimental data.
 
@@ -64,7 +64,7 @@ The TIG/CK research program is shipping a coordinated J-series. Companion submis
 
 ## Reproducibility
 
-Verification primitive: `verify_J11_S4_closure.py` in the manuscript folder. Runs in `numpy + sympy` on a standard laptop in under 30 seconds. Reproduces (a) all 24 group elements; (b) the symbolic $U_4$ properties; (c) the change-of-basis $V$; (d) the deterministic Cartan six-pulse decomposition; (e) machine-precision closure. Code archive: DOI 10.5281/zenodo.18852047.
+Verification primitive: `verify_J43_S4_closure.py` in the manuscript folder. Runs in `numpy + sympy` on a standard laptop in under 30 seconds. Reproduces (a) all 24 group elements; (b) the symbolic $U_4$ properties; (c) the change-of-basis $V$; (d) the deterministic Cartan six-pulse decomposition; (e) machine-precision closure. Code archive: DOI 10.5281/zenodo.18852047.
 
 ## Suggested reviewers
 

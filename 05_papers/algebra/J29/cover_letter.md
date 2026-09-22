@@ -35,12 +35,12 @@ The note is intended for an undergraduate audience comfortable with:
 
 Nothing beyond a standard sophomore abstract-algebra course is required. The substrate (the Lo Shu) is among the oldest objects in recorded mathematics, which makes the paper a natural bridge between historical/cultural context and modern small-finite-algebra structure.
 
-A companion Python script (`verify_J58.py`, ~140 lines depending only on `numpy` and stdlib) reproduces every theorem at machine precision in under one second. Students can run it themselves and watch the structural facts emerge from the data.
+A companion Python script (`verify_J29.py`, ~140 lines depending only on `numpy` and stdlib) reproduces every theorem at machine precision in under one second. Students can run it themselves and watch the structural facts emerge from the data.
 
 ## Tier discipline
 
 - **PROVEN.** Theorems A, B, C, D, F by direct enumeration of 8 orbit elements.
-- **COMPUTED.** Theorem E and the full cumulant table (6/6 PASS in `verify_J58.py`).
+- **COMPUTED.** Theorem E and the full cumulant table (10/10 PASS in `verify_J29.py`).
 - **STRUCTURAL RHYME.** The cumulant-witnesses-commutativity correlation is observed in this specific 8-element family; we do not derive it from a more general theorem and explicitly mark this as an open generalization question (§7.1).
 - **OPEN.** Generalization to other small magic squares' mod-$n$ reductions.
 
@@ -71,4 +71,4 @@ with Monica Gish, Independent Researcher, Hot Springs, AR
 ---
 
 *Manuscript: `manuscript/manuscript.md`*
-*Verification: `manuscript/verification/verify_J58.py`* (6/6 PASS, runtime <1s)
+*Verification: `manuscript/verification/verify_J29.py`* (10/10 PASS, runtime <1s)
