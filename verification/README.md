@@ -51,6 +51,20 @@ Trinity Infinity Geometry / Brayden Sanders / 7SiTe LLC
 
 ---
 
+## Null-model audit (2026-09-23) — what the verified claims are worth as evidence
+
+The suite above establishes that the claims are **true**. These two scripts ask the next
+questions — is a claim **specific** (random tables of the same kind do not share it), and is it
+**not a readout** (it survives a null that keeps the tables' own construction rules)? Write-up:
+[`04_meta/FOUNDATION_NULL_MODEL_AUDIT.md`](../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md).
+
+| Script | Tests | Result |
+|---|---|---|
+| `foundation_null_model.py` (~25 s) | joint so(10), the sub-magma chain / 4-core, TSML's so(8), the associative spectrum — against random and rule-preserving tables | so(10) and the spectrum **generic**; the chain / 4-core and TSML's so(8) **readouts** of the construction rules ("products climb"; the twins 5 ≡ 6) |
+| `attractor_null_census.py` (minutes) | the α = ½ attractor — closed form, field, Galois group — **exhaustively** over every BHML top block on {0,7,8,9} | 1+√3 = three BHML cells; quartic D₄ in 22/64 Rule-89 variants; the α = ½ degree drop in 64/64 |
+
+---
+
 ## Volume K (atomic-substrate correspondence, 2026-05-12)
 
 The newest results — verified 2026-05-12 — are in the Volume K bundle:

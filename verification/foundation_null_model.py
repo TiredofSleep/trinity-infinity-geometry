@@ -10,6 +10,11 @@ never share is genuinely specific. See 04_meta/FOUNDATION_NULL_MODEL_AUDIT.md.
 
     python verification/foundation_null_model.py      (~30-60 s)
 
+Three gates for a structural claim: TRUE (verified) -> SPECIFIC (random tables of the
+same kind do not share it) -> NOT A READOUT (it survives a null that keeps the tables'
+own construction rules). Sections (1)-(2) are gate 2; section (3) is gate 3.
+The attractor row is in verification/attractor_null_census.py.
+
 Null models (all seeded, reproducible):
   uniform   -- entries uniform on {0..9}
   matched   -- TSML-like (symmetric, ~73% HARMONY=7, 7 absorbing, 0-row/col -> 0)
@@ -154,5 +159,68 @@ if __name__ == "__main__":
     print(f"    real BHML x TSML-like:   P(exact canon chain) = {frac([s == canon for s in specs_bhml]):.4f}"
           f"   P(has a 4-core) = {frac([4 in s for s in specs_bhml]):.3f}")
     print("    VERDICT: the chain / 4-core is SPECIFIC (beats the matched null),")
-    print("             and the specificity is carried by BHML; 'forbidden {2,3}' alone is weak.")
+    print("             and the specificity is carried by BHML; 'forbidden {2,3}' alone is weak.\n")
+
+    # (3) second pass -- open the specific results: are they READOUTS of the construction rules?
+    Ta, Ba = np.array(TSML), np.array(BHML)
+    rank = {x: (10 if x == 0 else x) for x in range(N)}           # the ladder order 1<2<...<9<0
+    climb_B = [(a, b, int(Ba[a][b])) for a in range(N) for b in range(a, N)
+               if rank[Ba[a][b]] < min(rank[a], rank[b])]
+    climb_T = [(a, b, int(Ta[a][b])) for a in range(N) for b in range(a, N)
+               if Ta[a][b] not in (0, 7) and rank[Ta[a][b]] < min(rank[a], rank[b])]
+    closed = [s for s in SUBSETS if all(Ta[a, b] in s and Ba[a, b] in s for a in s for b in s)]
+    uppers = sorted([(0,)] + [tuple(sorted({0} | set(range(k, 10)))) for k in range(1, 8)])
+    assert climb_B == [(8, 8, 7)] and climb_T == [] and sorted(closed) == uppers
+    print("(3) readout test -- the mechanism behind what beat the null")
+    print("    BHML climbs (a*b >= min(a,b) in the order 1<...<9<0) except the one cell 8*8=7;")
+    print("    every TSML product is 0, 7, or climbs. So the jointly closed sets are EXACTLY {0} and")
+    print("    the 7 upper sets {0}u{k..9}, k<=7 (all 8 enumerated). Sizes 3 and 2 are forbidden by")
+    print(f"    two diagonal cells: {{8,9,0}} by 8*8=7, {{9,0}} by TSML 9*9={Ta[9][9]}.")
+    rng89 = np.random.default_rng(89)
+    cells89 = [(8, j) for j in range(1, 7)] + [(9, j) for j in range(1, 7)] + [(8, 8), (8, 9), (9, 9)]
+
+    def rule89(climbing):
+        M = Ba.copy()
+        for (a, b) in cells89:
+            ok = [v for v in range(N) if not climbing or rank[v] >= min(rank[a], rank[b])]
+            v = rng89.choice(ok); M[a][b] = v; M[b][a] = v
+        return M
+    R89 = 1000
+    p89 = frac([spectrum(TSML, rule89(False)) == canon for _ in range(R89)])
+    ups = [frozenset(u) for u in uppers if len(u) >= 4]
+    p89c = frac([all(all(Ta[a, b] in u and M[a, b] in u for a in u for b in u) for u in ups)
+                 for M in (rule89(True) for _ in range(R89))])
+    print(f"    keep BHML Rules 0/1/7, randomize Rule 89 (rows 8,9):   P(exact chain) = {p89:.4f}")
+    print(f"    ...randomize Rule 89 but keep it CLIMBING: P(all upper sets closed) = {p89c:.3f}")
+    G = np.vstack([antisym(TSML, r) for r in FLOW])
+    kern = N - np.linalg.matrix_rank(G)
+    e0, d56 = np.eye(N)[0], np.eye(N)[5] - np.eye(N)[6]
+    assert kern == 2 and np.allclose(G @ e0, 0) and np.allclose(G @ d56, 0)
+    assert (Ta[5] == Ta[6]).all() and closure_dim([antisym(TSML, r) for r in range(N) if r not in (0, 7)]) == 28
+    print("    TSML-flow common kernel = span{e0, e5-e6}: 5 and 6 are TWINS (identical rows/cols, the")
+    print("    only elements no exceptional pair touches, never produced) -> so(8) on the complement.")
+    print("    VERDICT: specific against random tables, but READOUTS of the construction rules --")
+    print("             the chain = 'products climb'; TSML's so(8) = 'S6 avoids 5 and 6'.\n")
+
+    # (4) the associative spectrum (canon 6.1: Catalan / free commutative operad)
+    def trees(lv):
+        if len(lv) == 1:
+            yield lv[0]; return
+        for k in range(1, len(lv)):
+            for L in trees(lv[:k]):
+                for Rt in trees(lv[k:]):
+                    yield (L, Rt)
+
+    def spec4(Tb):
+        Tb = np.asarray(Tb)
+        X = [a.ravel() for a in np.meshgrid(*[np.arange(N)] * 4, indexing="ij")]
+        ev = lambda t: X[t] if isinstance(t, int) else Tb[ev(t[0]), ev(t[1])]
+        s = len({ev(t).tobytes() for t in trees((0, 1, 2, 3))})
+        ac = len({ev(t).tobytes() for p in itertools.permutations(range(4)) for t in trees(p)})
+        return s, ac
+    assert spec4(TSML) == spec4(BHML) == (5, 15)
+    p_spec = frac([spec4(sym(rng.integers(0, N, (N, N)))) == (5, 15) for _ in range(100)])
+    print("(4) associative spectrum at n=4 (Catalan s4=5, ac-free 15)")
+    print(f"    canon: TSML and BHML both maximal | random commutative tables maximal: P = {p_spec:.3f}")
+    print("    VERDICT: GENERIC -- almost every commutative table generates the free operad.")
     print("=" * 74)
