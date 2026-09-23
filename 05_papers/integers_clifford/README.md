@@ -31,6 +31,8 @@ Read integer *n* as an *n*-point configuration: **1,2,3,4 are the simplices** (p
 | [`P3_delta_check.py`](P3_delta_check.py) | check | holds the independent-Δ numbers and prints the HONEST NEGATIVE verdict. |
 | [`bott_periodicity_2x3.md`](bott_periodicity_2x3.md) | **fenced [READING]** | Bott period-8 as (duality × trinity): 4 (pseudoscalar-sign period) × 2 (ℝ/ℂ/ℍ character, Frobenius). The [FORCED] facts are standard + verified; the duality×trinity reading is tagged and fenced (framework-8 = dimension ≠ Bott-8 = period), with the honest 3-vs-2 tension recorded. Book side (ℝ→ℂ→ℍ only) is in the curriculum repo. |
 | [`bott_verify.py`](bott_verify.py) | check | reproduces the quaternion relations, the period-4 sign, and the corrected sub-claims. |
+| [`THE_ONE_THIRD_AND_THE_FOLD.md`](THE_ONE_THIRD_AND_THE_FOLD.md) | **fenced frontier** | the tetrahedral 1/3 across the Clifford tower: the buildable cube is a *fold* (3 distances, not equidistant — the equidistant 8 = 7-simplex, needs 7D); the 1/3 is lift/fold/gap; and it fractures conserved up ℝ→ℂ→ℍ (real −1/3; complex re²+im²=1; quaternion half-angle back to 1/3). [FORCED numbers · READING interpretation · FENCE no-weld]. + `verify_one_third_fold.py`. |
+| [`verify_one_third_fold.py`](verify_one_third_fold.py) | check | the cube's three distances, the dihedral/gap, and the fracture identities. |
 
 ## Tagging discipline
 

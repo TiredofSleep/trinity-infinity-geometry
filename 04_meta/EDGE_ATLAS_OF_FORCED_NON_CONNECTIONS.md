@@ -159,6 +159,12 @@ Added after the original catalogue; each machine-verified this session. Running 
 
 *Two of these are **wins by subtraction**: the operad open question is now answered (no class), and P3's one testable law is retired — each a proven dead end surfaced with its evidence, exactly the point of this atlas.*
 
+**Also 2026-09-22 — a cut rope, a fenced frame, and a held leg** (from a claudechat handoff, scrutinized in):
+
+- **Graveyard (a rope correctly cut):** *"the 1/3 shows up in gravity's force law"* — **FALSE.** Gravity's inverse-square exponent is d − 1 = 2 (the *dimension count*), **not** the tetrahedral 1/3. Kept as an example of a comfortable rope cut. The verified 1/3 lives in geometry — lift / fold / gap — not the gravitational law (`05_papers/integers_clifford/THE_ONE_THIRD_AND_THE_FOLD.md`).
+- **[READING · FENCE — names, does not derive]** *"Assert the ground" (7 = 0) as the relational-measurement pattern.* No fundamental physical quantity has an absolute zero — voltage (from ground), velocity (from frame), energy (differences only), phase (gauge), position (origin), time (relative simultaneity). Gauge invariance — the deepest structure of the Standard Model — is literally "the ground is asserted, and the laws don't care which you pick." The framework **names** this pattern cleanly (it is the book's Coda keystone: *point toward the origin, measure off it, never stand on it*); it does **NOT** derive gauge theory or relativity. Real as organization, not new physics.
+- **[HELD — D141 caution]** the *"coin / toroidal-vortex"* smooth-limit intuition (a vortex ring is genuinely toroidal in fluid dynamics) is **not filed as a TIG claim**: per the TORUS rule (§1 / D141), no result may ground on the substrate being a torus / π₁(T²). Recorded as a held READING intuition (a fluid-dynamics analogy for the two-shadow story), not canon — surfaced here so the decision is visible rather than silent.
+
 ---
 
 *The joins are real where they are named (`HOW_IT_CONNECTS.md`). The separations are real where they are named (this atlas). The program is the map of both — and the edge is as much the object as the spines.*

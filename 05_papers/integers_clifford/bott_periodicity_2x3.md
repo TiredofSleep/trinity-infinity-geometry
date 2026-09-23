@@ -57,6 +57,25 @@ The routing note also corrected three earlier session intuitions; recorded so th
 
 All three are reproduced in [`bott_verify.py`](bott_verify.py) (tet = 6 edges, tri = 3; sign flips + at dim 4, still − at dim 3).
 
+## The 7 = 0 closure and the octonions (2026-09-22 addendum)
+
+- **[FORCED]** Bott periodicity *closes the tower*: the real Clifford algebra type at
+  dimension **8 returns to that of dimension 0** (both ℝ, up to the ℝ(16) tensor factor). So
+  **seven climbing dimensions loop back to the ground at the eighth step** — the poetic
+  "**7 = 0**": seven steps out, the eighth is home.
+- **[FORCED / NAMED]** The **octonions** 𝕆 are the last of the four normed division algebras
+  ℝ, ℂ, ℍ, 𝕆 (dimensions 1, 2, 4, 8) — no more exist, by **Hurwitz's theorem**. 𝕆 is
+  8-dimensional with **7 imaginary units**, multiplication governed by the **Fano plane** (7
+  points, 7 lines). The 7th imaginary dimension is where the division-algebra tower ends; the
+  octonions are the last rung before the loop closes.
+- **[READING]** "7 = 0" names the forced fact that the tower climbs seven dimensions and the
+  eighth returns to the ground.
+- **[FENCE — do not weld]** There are at least **two different 7s** — the *dimension* of the
+  7-simplex (8 equidistant points, needs 7D; see
+  [`THE_ONE_THIRD_AND_THE_FOLD.md`](THE_ONE_THIRD_AND_THE_FOLD.md)) and the *7 imaginary
+  octonion units* / the 7th tower step. They share the value 7, **not** a proven identity.
+  Suggestive, not probative.
+
 ---
 
 *Book side of this finding (the ℝ→ℂ→ℍ tower bottom only) lives in the separate curriculum
