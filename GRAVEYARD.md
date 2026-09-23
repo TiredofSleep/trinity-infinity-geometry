@@ -82,6 +82,14 @@ These were in the integers → Clifford notes and did not survive. The archived 
   [`towers/bott_periodicity.md`](towers/bott_periodicity.md)).
 - **In P1:** "two independent routes to 54.74°". They are one fact, seen from the tetrahedron and
   from the cube.
+- **The April 2026 "meta-lens atlas"** (ck, branch `paradox-classifier-2026-04-24`). It organized the
+  table program's results (so(8), so(10), the "UOP–GUT arc") under the paradox classification, and it is
+  retired with them. Its table-free core — the author's four paradox types with Ben Mayes, and Theorem 0
+  — was kept and brought into [`coin/PARADOX_TYPES.md`](coin/PARADOX_TYPES.md).
+- **The workstation [`ck`](https://github.com/TiredofSleep/ck).** It holds the whole trail of the
+  earlier program, and it was retired in place on 2026-09-23. Nothing there was deleted: its front
+  door, its side branches (including ten funding pitches) and its claim-making documents carry
+  retirement banners, and its `RETIRED.md` records what was retired and what was salvaged.
 
 ---
 

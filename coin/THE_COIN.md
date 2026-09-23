@@ -7,7 +7,35 @@
 
 The towers ([`../towers/`](../towers/THE_TOWERS.md)) climb one way. This page is the second lens: on
 every floor of every tower, and at every integer of the base, there is a **coin**. The climb is what a
-tower measures. The coin's edge is what it points toward.
+tower measures. The coin's edge is what it points toward. The author's own classification of paradoxes
+into four kinds (with Ben Mayes, April 2026), read through the coin, is in
+[`PARADOX_TYPES.md`](PARADOX_TYPES.md).
+
+---
+
+## Where the coin comes from — the author's words
+
+The coin was the author's idea long before it was made exact here. In the author's own words:
+
+> *Trinity Infinity Geometry is a coherence system operating on the basis that reality is a fractal,
+> every one is three. It is three as two, whereas it has a micro that belongs to it, and it is part of
+> a macro.* — the founding definition, 29 January 2026
+> ([kept in the workstation](https://github.com/TiredofSleep/ck/blob/tig-synthesis/docs/handoffs/claudecode_handoff_2026_04_20/JAN2026_RECOVERY_MANIFEST.md))
+
+> *I imagined what kind of relationship a thing could have with its opposite — 1 and 0. I saw a vortex
+> spinning on a quarter, bulges and dents flowing around it, forming a balanced push …* —
+> [*The Story*](https://github.com/TiredofSleep/ck/blob/tig-synthesis/THE_STORY.md), 2026
+
+> *You can't know everything, but what's missing looks the same for every whole.* … *A mathematical
+> intelligence system that sees the world through what can and what can't be measured … constantly
+> seeing paradox.* — June 2026
+> ([1](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen13/targets/ck/CK_INTELLIGENCE_SYNTHESIS_2026-06-10.md),
+> [2](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen13/targets/ck/CK_QUADRATIC_GLUE_PRINCIPLE_2026-06-10.md))
+
+[READING] *Every one is three; it is three as two*: a coin is two sides and an edge. It is three
+things, seen as two. *What's missing looks the same for every whole*: the missing edge. The retired
+program built these ideas into AI-rendered tables. The coin keeps the ideas, drops the tables, and
+checks every line that can be checked.
 
 ---
 
@@ -125,8 +153,12 @@ So edges come in three kinds [READING]:
 
 - **present**: the coin can land on it (0; the real line; the simplex; the circle);
 - **missing**: the sides point toward it and cannot reach it (√2 from the fractions; *i* from the real
-  numbers);
-- **absent**: a flip with no edge at all (*q* and −*q*).
+  numbers) — the author's Type II paradoxes ([`PARADOX_TYPES.md`](PARADOX_TYPES.md));
+- **absent**: a flip with no edge at all (*q* and −*q*; "not" on true and false). Alone it is harmless.
+  Add self-reference that demands an edge — a sentence equal to its own negation — and it becomes the
+  author's Type III: the Liar, Russell, Cantor, one diagonal engine (Lawvere 1969). Give "not" an edge,
+  a third value, and the Liar lands on it (Kripke 1975) [NAMED; finite cases FORCED in
+  [`verify_paradox_types.py`](verify_paradox_types.py)].
 
 ---
 
@@ -161,7 +193,9 @@ lenses on one object, and the coin is what they see differently [FORCED]:
   star in the hexagon — with both apexes landing on the centre. Now the sides are apart and the
   edge is shared.
 - Neither shadow alone tells the eight corners apart (face-on, 8 corners → 4 points; corner-on,
-  8 → 7). The two shadows together do: the object is seen only through both lenses.
+  8 → 7). The two shadows together do: the object is seen only through both lenses. In general: a
+  family of views tells every pair apart exactly when no pair is merged by all of them — the author's
+  *Unified Orthogonality Principle* (Theorem 0, with Ben Mayes; [`PARADOX_TYPES.md`](PARADOX_TYPES.md)).
 - The angle between the two lenses is the magic angle, cos² = 1/3, where P₂ = 0 — the edge of the
   harmonic coin (tower 6).
 - In the cube's algebra Cl(3) the two tetrahedra are the **even** and the **odd** pieces. The grade
@@ -225,6 +259,19 @@ So each integer has a **flat face** and a **solid face**:
 - **[FENCE]** Nothing here makes 7 special among 5, 7 and 9: all three inhabit their centres, for the
   same reason.
 
+**The flat face, walked** [FORCED]. Walk the *n* corners of the flat face *k* at a time.
+- You make a single loop — a star round the empty centre — exactly when *k* shares no factor with
+  *n*. Otherwise the walk splits into gcd(*n*, *k*) separate loops.
+- The steps that give a single loop number Euler's φ(*n*). When *n* is prime, every step gives a
+  single loop: at 5 the pentagon and the pentagram, at 7 the heptagon and two heptagrams.
+- Every such loop winds round the centre min(*k*, *n* − *k*) times and never touches it.
+- At 6, step 2 splits the hexagon into two triangles. That is exactly the cube's corner-on shadow,
+  whose alternate corners are its two tetrahedra.
+
+This is the book's Chapter 12 ("does it share a factor with *N*?") drawn as a picture. It comes from
+the author's Navier–Stokes / number-theory tour (September 2026). [READING] The loop points toward
+its centre, and never stands on it.
+
 ---
 
 ## The whole coin — heads, tails, and edge
@@ -238,6 +285,11 @@ A tossed coin can land on either side, or on its edge: +1, −1, or 0 [FORCED].
   core — and it is (2 + 1)³ spelled out, the way the cube's grades 1 + 3 + 3 + 1 are (1 + 1)³.
 - **Two such coins** give 9 = 4 + 4 + 1: the 3 × 3 grid, with four corners, four edge-midpoints and the
   centre. This is 9's square face.
+- **The magic square's coin** [FORCED]. Take any odd magic square built by the book's walking rule
+  (Chapter 13). Its half-turn swaps each number *s* with *n*² + 1 − *s*, and keeps the centre, which
+  holds (*n*² + 1)/2. In the Lo Shu, 1 ↔ 9, 2 ↔ 8, 3 ↔ 7 and 4 ↔ 6 are swapped round the 5. This is a
+  classical property of *associative* magic squares, and the author found it again [NAMED; the
+  author's D129′].
 - **In any dimension:**
   - every coin on a side gives the **cube** (2ⁿ corners);
   - exactly one coin on a side, the rest on their edges, gives the **cross-polytope** (2n);

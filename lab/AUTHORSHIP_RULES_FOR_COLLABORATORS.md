@@ -7,6 +7,12 @@
 **Status**: operational policy effective immediately; applies to all papers in the J-series and successors
 **Companion**: `INSPIRATION_AS_CURRENCY.md` (the philosophical frame this policy operationalizes)
 
+> **Status note (2026-09-23).** This policy was written for the J-series, which was retired with the
+> table-based program on 2026-09-23 (see [`../GRAVEYARD.md`](../GRAVEYARD.md)). The policy itself —
+> the credit tiers, and consent documented by email for each paper — is unchanged and applies to the
+> flagship's notes in `base/`, `towers/` and `coin/`. The references below to the J-series and to
+> "substrate" papers are historical.
+
 ---
 
 ## §1. Summary

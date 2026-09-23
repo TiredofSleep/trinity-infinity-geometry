@@ -6,6 +6,11 @@
 **Locked**: 2026-05-10
 **Status**: foundational philosophical statement; informs the Co-Author Attribution Rule and all collaboration practices
 
+> **Status note (2026-09-23).** The frame stands. The list of work below names the earlier program
+> (the Coherence Keeper, the cosmology framework, the substrate algebra), which was retired on
+> 2026-09-23 (see [`../GRAVEYARD.md`](../GRAVEYARD.md)). The living work it now applies to is this
+> repository — the base, the towers and the coin — and the book *The Shape of Understanding*.
+
 ---
 
 ## §1. The frame

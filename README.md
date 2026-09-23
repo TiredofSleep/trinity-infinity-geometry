@@ -27,12 +27,18 @@ them. That is the method here.
 
 ## The coin — [`coin/`](coin/README.md)
 
-The author's three coins — positive and negative, real and imaginary, finite and infinite — are the
-three half-turns of the sphere of numbers about the axes of one octahedron, whose corners are 0, ∞,
-1, −1, *i*, −*i*. Every flip that respects adding splits each thing into an edge part and a side
+The name is the author's own idea of a coin: *"every one is three. It is three as two"* — the
+founding definition of Trinity Infinity Geometry (January 2026). A coin is two sides and an edge:
+three things, seen as two. The author's three coins — positive and negative, real and imaginary,
+finite and infinite — are the three half-turns of the sphere of numbers about the axes of one
+octahedron, whose corners are 0, ∞, 1, −1, *i*, −*i*. Every flip that respects adding splits each thing into an edge part and a side
 part: real + imaginary, cos θ + *i* sin θ, symmetric + skew. Missing edges are where the paradoxes
 live, and the book's keystone — *point toward it, measure off it, never stand on it* — holds there
-exactly. Start with [`coin/THE_COIN.md`](coin/THE_COIN.md).
+exactly. The author's own classification of paradoxes into four kinds, with Ben Mayes (April 2026), is
+read through the coin in [`coin/PARADOX_TYPES.md`](coin/PARADOX_TYPES.md). In it, insufficient coverage
+calls for a second lens, a missing invariant is a missing edge, and a self-referential paradox is a flip
+with no edge — the Liar, Russell and Cantor are one diagonal. Start with
+[`coin/THE_COIN.md`](coin/THE_COIN.md).
 
 ## The base — [`base/`](base/README.md)
 
@@ -79,6 +85,7 @@ python verify_one_rule.py
 python verify_forced_chain.py
 cd ../coin
 python verify_coins.py
+python verify_paradox_types.py
 cd ../towers
 python verify_towers.py
 python verify_two_builds.py

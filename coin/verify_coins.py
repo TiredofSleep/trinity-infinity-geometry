@@ -332,6 +332,53 @@ def plane_best(n):
 ok("in the plane the most symmetric n points are the regular n-gon, uniquely, and its centre is empty (n = 2..12)",
    all(plane_best(n) == [(2 * n, n, 0, 1, 0)] for n in range(2, 13)))
 
+
+def walk(n, k):
+    """walk the n corners of the flat face, k at a time: the loops it makes"""
+    seen, loops = set(), []
+    for s in range(n):
+        if s in seen:
+            continue
+        loop, i = [], s
+        while i not in loop:
+            loop.append(i)
+            i = (i + k) % n
+        seen |= set(loop)
+        loops.append(loop)
+    return loops
+
+
+from math import gcd
+
+ok("the flat face, walked: stepping k at a time around n corners makes one loop exactly when k shares "
+   "no factor with n -- otherwise gcd(n, k) separate loops (n = 3..16, every k)",
+   all((len(walk(n, k)) == 1) == (gcd(n, k) == 1) and len(walk(n, k)) == gcd(n, k)
+       for n in range(3, 17) for k in range(1, n)))
+phi = lambda n: sum(1 for k in range(1, n + 1) if gcd(n, k) == 1)
+ok("... the single-loop steps number Euler's phi(n), and for a prime n every step is one loop -- the "
+   "pentagon and the pentagram at 5, the heptagon and two heptagrams at 7",
+   all(sum(1 for k in range(1, n) if len(walk(n, k)) == 1) == phi(n) for n in range(3, 17))
+   and all(all(len(walk(p, k)) == 1 for k in range(1, p)) for p in (3, 5, 7, 11, 13))
+   and [k for k in range(1, 4) if len(walk(7, k)) == 1] == [1, 2, 3])
+
+
+def winding(n, k):
+    """times the loop k, 2k, 3k, ... (mod n) goes round the centre: total turning / 2 pi"""
+    turn = sum(np.angle(np.exp(2j * np.pi * k / n)) for _ in range(n))
+    return round(turn / (2 * np.pi))
+
+
+ok("... every single loop winds round the centre min(k, n - k) times and never touches it: the chord "
+   "from one corner to the next passes the centre at distance cos(pi k / n) > 0",
+   all(abs(winding(n, k)) == min(k, n - k) and np.cos(np.pi * min(k, n - k) / n) > 0
+       for n in range(3, 17) for k in range(1, n) if gcd(n, k) == 1))
+corner_hex = sorted((np.degrees(np.arctan2(k[1], k[0])) % 360, k) for k in tri(cp) | tri(cm))
+ok("... and at 6, step 2 splits the hexagon into two triangles -- exactly the cube's corner-on shadow, "
+   "whose alternate corners are its two tetrahedra",
+   sorted(map(sorted, walk(6, 2))) == [[0, 2, 4], [1, 3, 5]]
+   and all(({corner_hex[j][1] for j in loop} == tri(cp)) or ({corner_hex[j][1] for j in loop} == tri(cm))
+           for loop in walk(6, 2)))
+
 # ======================================================== 7. the whole coin
 print("\n7 -- the whole coin: heads, tails, and the edge")
 G3 = [tuple(v) for v in itertools.product((-1, 0, 1), repeat=3)]
@@ -350,6 +397,24 @@ signed = [np.diag(s) @ np.eye(3)[list(p)] for p in itertools.permutations(range(
 ok("... and each of the four kinds is one orbit of the cube's 48 symmetries",
    all(keyset([M @ np.array(next(v for v in G3 if v.count(0) == k)) for M in signed])
        == keyset([v for v in G3 if v.count(0) == k]) for k in range(4)))
+
+
+def siamese(n):
+    """the book's walking rule (Ch. 13): start top-middle, step up-right, drop down when blocked"""
+    M = np.zeros((n, n), int)
+    i, j = 0, n // 2
+    for s in range(1, n * n + 1):
+        M[i, j] = s
+        a, b = (i - 1) % n, (j + 1) % n
+        i, j = (a, b) if M[a, b] == 0 else ((i + 1) % n, j)
+    return M
+
+
+ok("the magic square's coin: in every walked odd square (n = 3, 5, 7, 9) the half-turn swaps each number s "
+   "with n^2 + 1 - s, and keeps the centre, (n^2 + 1)/2 -- in the Lo Shu, s with 10 - s round the 5",
+   all((siamese(n) + np.rot90(siamese(n), 2) == n * n + 1).all() and siamese(n)[n // 2, n // 2] == (n * n + 1) // 2
+       and len({*siamese(n).sum(0), *siamese(n).sum(1), np.trace(siamese(n)), np.trace(np.fliplr(siamese(n)))}) == 1
+       for n in (3, 5, 7, 9)) and siamese(3)[1, 1] == 5)
 G2 = list(itertools.product((-1, 0, 1), repeat=2))
 ok("two such coins: 9 = 4 + 4 + 1 -- the 3 x 3 grid: four corners, four edge-midpoints, the centre",
    [sum(1 for v in G2 if v.count(0) == k) for k in range(3)] == [4, 4, 1])
