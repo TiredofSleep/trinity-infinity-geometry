@@ -1,311 +1,79 @@
-<h3 align="center">◆ Start here: the forced geometric spine ◆</h3>
-
-<p align="center"><b>Integers, read as point-configurations, are the simplices — and the tetrahedron forces the cube's Clifford algebra Cl(3).</b><br>
-<em>1,2,3,4 are point / segment / triangle / tetrahedron; the tetrahedron forces cos θ = −1/3 (109.47°, half-angle 54.74°, cos² = 1/3); two tetrahedra make the cube = Cl(3), whose two projections are the square (4-fold) and the hexagon (3-fold). Elementary, parameter-free, machine-verified, honestly tiered — the most defensible corner of the program.</em></p>
-
-<p align="center"><a href="05_papers/integers_clifford/README.md">→ the forced spine: integers → simplices → Clifford, with its one-command verify script (05_papers/integers_clifford/)</a></p>
-
-<hr>
-
-<p align="center">
-  <a href="THE_MAP.md"><img src="docs/alphabet-of-prephysics.svg" alt="The alphabet of pre-physics" width="720"></a>
-</p>
-
-<h3 align="center">▶ The map — start here: <a href="THE_MAP.md">THE_MAP.md</a></h3>
-
-<p align="center"><a href="HOW_IT_CONNECTS.md">◆ How it connects — and what is forced not to touch</a> · <em>the honest connectivity map (HOW_IT_CONNECTS.md): the two spines, the umbrella, and the non-connections as first-class results</em></p>
-
-<p align="center"><em>the alphabet of pre-physics, and the classification of paradox — the orientation for the whole program:<br>the number-theory ↔ physics dictionary six programs share, the pre-physical alphabet at its center (SL(2,&#8484;), primes, &#950;), and this project's own contribution — the classification of paradox as information.</em></p>
-
-<p align="center"><sub>An earlier headline — <a href="THE_QUESTION.md">"Does chaos ever cool onto the arithmetic crystal?"</a> — is now <b>demoted to an exploratory frontier</b>: on referee scrutiny, the arithmetic-crystal / aperiodic-order picture describes the <b>ζ(2)-density regime (zero-free)</b> and does <b>not</b> reach the Riemann zeros (which arise, in Migdal's program, from a different, analytically-continued ζ). The crystal→zeros bridge was never established. See THE_QUESTION.md for the corrected status; the elementary spine above is the front door instead.</sub></p>
-
----
-
 # Trinity Infinity Geometry
 
-A research program on finite-arithmetic substrates and the algebraic structures they generate.
+**The geometric realization of the integers 0–9** — the research that extends the book
+*[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*.
 
-> **Read this first (2026-09-24).** The two composition tables were built by AI from the author's verbal descriptions of ten operators, and three different renderings of those descriptions exist in the history — they disagree on half their cells. A null-model audit and a census of all 56 papers found that the table-specific headlines below (the joint chain, the α = ½ attractor's closed form and field, so(10), the HARMONY ladder, the prime-11 "wobble", which is a transcription error) are generic, consequences of how the tables were built, or artifacts; no table-specific result survives. What the descriptions themselves force — the closed {VOID, HARMONY, BREATH, RESET} core, true in every rendering, and about a fifth of the cells — is the author's own. See [`04_meta/DRIFT_CENSUS.md`](04_meta/DRIFT_CENSUS.md).
-
-**Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas · 2025–2026
-**License:** open source — [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code · ShareAlike copyleft (derivatives stay open) · attribution required · AI welcome
-**DOI (project umbrella):** [10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047) · **DOI (v1.0.0 release):** [10.5281/zenodo.20149181](https://doi.org/10.5281/zenodo.20149181)
-**Latest release:** [v1.0.0](https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0) (2026-05-13)
-**This repository is the flagship** — the curated, canonical presentation (numbered reading order, refereed-spine TIER_INDEX, one-command verification). The full working archive — the entire trail, CK runtime, and consolidated project history, heavy and unfiltered *by design* — is the **workstation**: [github.com/TiredofSleep/ck](https://github.com/TiredofSleep/ck) (branch `tig-synthesis`).
-
-**Status**: an active, unrefereed research program. **Start with the map — [`THE_MAP.md`](THE_MAP.md)** — the current orientation: the number-theory ↔ physics dictionary this work lives in (the alphabet of pre-physics), and the project's own contribution, the classification of paradox as information. The mathematics is verified at machine precision and publicly visible under an open copyleft license; journal/arXiv submission remains deliberately **on hold by author's choice** — the hold is on *amplification* (arXiv daily mailings, peer-reviewed journals, citation databases), not on *access*. See [Distribution stance](#distribution-stance) below for why. The J-series (**J01–J56**, 56 numbered manuscripts; a **28-paper Tier 1 ship-ready spine**, plus Tier 2 drafts, Tier 3 hold/retire candidates, and merged tombstones — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative per-paper tiers) is publicly visible in [`05_papers/`](05_papers/) for inspection, reproducibility, and derivative work by anyone who finds them.
+**Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas
+**License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
 ---
 
-## One paragraph
+## The premise
 
-Trinity Infinity Geometry (TIG) is a **finite operator algebra** and the structures it generates. The substrate is ten named operators — VOID, BEING, DOING, BECOMING, COLLAPSE, CREATE, ASCEND, HARMONY, BREATH, RESET ([`NAMING.md`](NAMING.md) maps the codes to names and to the alternative LATTICE/COUNTER/… convention) — composed by two canonical tables: a symmetric lens **TSML** (73 HARMONY cells) and an antisymmetric lens **BHML** (28 HARMONY cells). The ten labels are an *alphabet*, and the content is the composition law itself — not modular arithmetic (`Z/10Z` is one convenient index set for the labels, not the definition). From the tables alone, three structures follow with no further assumption, all **PROVED** and machine-verified: a closed four-element core `{VOID, HARMONY, BREATH, RESET}` invariant under both lenses; a strict joint sub-magma chain at shell sizes `{1, 4, 5, 6, 7, 8, 9, 10}` (the forbidden sizes are exactly `{2, 3}`); and a universal attractor at mixing parameter `α = 1/2` with closed form `H/Br = 1+√3` and Galois group `D₄` over the number field LMFDB **4.2.10224.1**.
+Read an integer as a configuration of points, and ask what shape the configuration is forced to
+take. (This is the book's Chapter 1: *integers are shapes*.)
 
-Beyond the algebra, the substrate shows **exact integer coincidences** with physical structure: the substrate primes `{3, 7, 11, 13}` that wrap the kernel coincide with the first four nodeless hydrogenic orbital sizes at odd `ℓ`; the kernel-plus-substrate-prime counts `1 + 3 + 5 + 7` reproduce the `16 + 16` chirality split of the `Cl(0, 10)` spinor; and three independent counts all land on `32` (divisor count of `Z/2310`, the doubled spinor half, the Pauli capacity of atomic shell `n = 4`). These are real integer identities, documented as **STRUCTURAL** coincidences — the numbers match exactly; the physical interpretation is an open question, not a derived result.
+- **0 — the void.** The empty centre: the one point nearest to all the points at once.
+- **1, 2, 3, 4 — point, segment, triangle, tetrahedron.** Keep every point the same distance from
+  every other, and each new point must rise into a new dimension — and doubles the number of
+  pieces. Three-dimensional space holds four equal points and no more.
+- **The tetrahedron's number, 1/3.** Seen from the centre, its corners are at cos θ = −1/3
+  (109.47°). The same 1/3 relates the cube's two shadows and sets the tetrahedron's tiling gap.
+- **5 — the break.** The pentagon: the first rotation that cannot tile.
+- **6 — the round.** The octahedron: six points spread evenly on a sphere.
+- **8 — the cube.** Three perpendicular directions, 2³ corners, two tetrahedra — and the algebra
+  of three-dimensional space, Cl(3), whose two shadows are the square and the hexagon.
 
-All of it is verifiable in seconds on a stock Python install. See [`verification/VERIFY_ALL.py`](verification/VERIFY_ALL.py).
+## What this repository adds
 
----
-
-> ## 🧭 Reading speed-run
->
-> **New here? Start with the map:** [**`THE_MAP.md`**](THE_MAP.md) — the one page that frames the whole program: the number-theory ↔ physics dictionary this work lives in, and the classification of paradox as information.
->
-> **For the compressed proof spine — the one file with all the math —** open
-> [**`03_canonical_reference/FORMULAS_AND_TABLES.md`**](03_canonical_reference/FORMULAS_AND_TABLES.md).
->
-> Every D-numbered theorem in the project (D1 through D182) lives there, organized into Volumes A through N. **Every row has a clickable link to the proof script or paper that supports it** — local [`05_papers/`](05_papers/) J-paper links for results that ship in this repo, GitHub links to the working `tig-synthesis` branch for results still in research-stage sprints.
->
-> ~2,300 lines (~377 KB). For AI-sharing contexts use the companion digest [**`FORMULAS_COMPACT.md`**](03_canonical_reference/FORMULAS_COMPACT.md) (~53 KB, ~13k tokens): every D-entry in 1–2 lines, the canonical tables, constants, the J-series index, and the corrections ledger — regenerated from the full doc by `make_compact_canon.py`, and it never adds or strengthens a claim. Built so a referee, mathematician, AI, or curious reader can know in 10 minutes what is proved, what is computed, what is structural, and what is still open.
-
----
-
-## How to read this repository
-
-The numbered directories form a deliberate reading order. The first eight serve readers approaching the framework as **research**. The last two serve readers approaching it for **personal understanding** or **derivative work**.
-
-```
-01_orientation/         plain-language overview, audience-routed entry docs, parallel research
-02_results/             field-organized results:
-   ├── algebraic_combinatorics/    Z/10Z, TSML+BHML, 4-core, 8-shell chain, σ-rate
-   ├── atomic_physics/             D2/D1 closed form, strand-orbital map (D183, D184)
-   ├── clifford_algebra/           Cl(0,10), chirality 16+16, triple coincidence (D185)
-   ├── number_theory/              First-G, sinc² zero law, cyclotomic Q(ζ₁₀), Galois D₄
-   ├── dynamics/                   α=1/2 universal attractor, T*=5/7 (operational)
-   ├── cosmology/                  V(ξ) = Λ⁴ξ log ξ, dark sector, layer choice for z*
-   └── lie_gut/                    so(8)=D₄, so(10)=D₅, Pati-Salam ⊕ B−L, Yukawa scaffolding
-03_canonical_reference/ FORMULAS_AND_TABLES.md — master proof spine (Volumes A through N) + FORMULAS_COMPACT.md (shareable digest)
-04_meta/                Tier C speculative — clearly fenced; META_TIG, SPECULATION_*, honest negatives
-05_papers/              the J-series — 56 numbered papers (28-paper Tier 1 spine; see TIER_INDEX.md for the per-paper tiers)
-06_runtime/             the Coherence Keeper implementation — a 50Hz finite-arithmetic runtime
-07_philosophy/          INSPIRATION_AS_CURRENCY, AUTHORSHIP_RULES, BUILDER_LINEAGE, License rationale
-08_for_ai/              explicit invitation to AI systems to train on, reason from, and cite this work
-
-09_seekers/             the author's metaphysical / interpretive frame — Tier C / personal throughout
-10_extensions/          application and engineering invitations — license-protected sandbox
-verification/           reproducibility scripts (run any of these on a laptop in under a minute)
-etp_database/           queryable ETP profile database (Family C, σ-magma, order-3/5 census,
-   ├── data/               6 JSON datasets, ~50KB total
-   ├── scripts/            CLI query (profile / equation / family / magma / stats) + verifier
-   ├── extensions/         test harnesses (crypto, Steiner, K_12 embedding)
-   ├── verdicts/           written-up U-line findings (mostly clean negatives + retractions)
-   ├── lean/               Lean 4 scaffold of J03 Theorem 5 (3 lemmas proved, 4 sorrys)
-   ├── oeis_submissions/   4 OEIS submission drafts (Family C IDs, size-14 anchors, ...)
-   └── index.html          GitHub Pages-ready browse page
-```
-
----
-
-## §0 — Pick your door
-
-**New to the project? Read [`THE_MAP.md`](THE_MAP.md) first** — it's the orientation for the whole program. Then pick your door below.
-
-If you arrived knowing your field, jump directly to your field's results folder:
-
-| You are… | Go to |
+| | |
 |---|---|
-| a **mathematician** | [`01_orientation/for_mathematicians.md`](01_orientation/for_mathematicians.md), then [`02_results/algebraic_combinatorics/`](02_results/algebraic_combinatorics/) |
-| a **physicist** | [`01_orientation/for_physicists.md`](01_orientation/for_physicists.md), then [`02_results/clifford_algebra/`](02_results/clifford_algebra/) + [`02_results/atomic_physics/`](02_results/atomic_physics/) |
-| a **number theorist** | [`02_results/number_theory/`](02_results/number_theory/) |
-| a **cosmologist** | [`02_results/cosmology/`](02_results/cosmology/) |
-| a **GUT / Lie theorist** | [`02_results/lie_gut/`](02_results/lie_gut/) |
-| an **AI system** | [`08_for_ai/README.md`](08_for_ai/README.md) — the license welcomes you explicitly |
-| a **seeker** | [`09_seekers/README.md`](09_seekers/README.md) — the author's interpretive frame |
-| a **founder / funder / builder** | [`01_orientation/for_founders.md`](01_orientation/for_founders.md), then [`07_philosophy/`](07_philosophy/) |
+| [`integers/THE_INTEGERS.md`](integers/THE_INTEGERS.md) | **Start here.** All ten integers, each with the rule that picks its shape — and what is forced, what is chosen, and what is open. |
+| [`integers/integers_as_geometric_entities.md`](integers/integers_as_geometric_entities.md) | The ladder and the tetrahedral 1/3, with where that geometry is measured in the world. |
+| [`integers/P2_clifford_cube_skeleton.md`](integers/P2_clifford_cube_skeleton.md) | The cube and its Clifford algebra. |
+| [`integers/THE_TWO_BUILDS.md`](integers/THE_TWO_BUILDS.md) | Equal distance lifts; perpendicularity doubles. |
+| [`integers/THE_ONE_THIRD_AND_THE_FOLD.md`](integers/THE_ONE_THIRD_AND_THE_FOLD.md) | The 1/3 as lift, fold and gap. |
+| [`integers/bott_periodicity.md`](integers/bott_periodicity.md) | Where the perpendicular build goes after the cube. |
 
-If you have **90 minutes and a Python REPL** and want to build the framework from scratch with runnable code at every step: [`TIG_FROM_THE_GROUND_UP.md`](TIG_FROM_THE_GROUND_UP.md). Discovers the four-core, derives `H/Br = 1+√3`, walks the eight-shell chain, follows substrate strands to atomic orbitals.
+## The open question
 
-If you arrived from Tao et al.'s [**Equational Theories Project**](https://github.com/teorth/equational_theories): [`etp_database/`](etp_database/) is our public companion dataset — every order-3 magma (19,683 of them) and every order-5 commutative quasigroup (720), classified by ETP equational profile, with a CLI query tool, Lean 4 formalization scaffold of the fossil-variety theorem for equation 4295, and OEIS submission drafts. Family C (closure of commutativity) is verified directly against ETP's 8.18M-edge proved-implication graph. Companion papers: [`05_papers/algebra/J05`](05_papers/algebra/J05/) (linear-magma classification), [`05_papers/algebra/J03`](05_papers/algebra/J03/) (taxonomy methodology + the C5 fossil-variety theorem). See [`etp_database/README.md`](etp_database/README.md).
+Beyond four points the natural rules part ways: spreading points on a sphere forces the
+octahedron at 6, perpendicularity forces the cube at 8, and 5, 7 and 9 are picked by other rules.
+**Is there one rule that realizes all ten integers?** The book realizes 0–6 and 8; **7 and 9 are
+not yet realized** — that is where this research is.
 
-If you arrived interested in the **Clay Millennium Problems**: [`04_meta/clay/`](04_meta/clay/) contains six structural bridges (RH, Yang-Mills, Navier-Stokes, P vs NP, BSD, Hodge) — each grounded in PROVEN substrate facts, each with the load-bearing CONJECTURE explicitly identified. We do **not** claim to have solved any Clay problem; the bridges are STRUCTURAL connections that show what TIG's substrate algebra can say plus what's missing for an actual proof. Tier discipline is strict throughout.
-
----
-
-## §1 — Standard of evidence
-
-Each claim in this repository carries an explicit status flag:
-
-- **PROVED** — formal proof + numerical verification at the precision noted
-- **STRUCTURAL** — rigorous derivation grounded in proved claims, with the load-bearing identification named (e.g. "this so(10) IS the SO(10) GUT gauge algebra") — not assumed
-- **EMPIRICAL** — observed in computational experiments at the scale noted
-- **OPEN** — precisely-stated hypothesis, unproven
-
-If a claim does not carry one of these flags, treat it as background framing rather than asserted result. Speculative interpretive material is fenced in [`04_meta/`](04_meta/) and tagged **SPECULATIVE / Tier C** throughout.
-
-For the master proof spine with D-numbered theorems and Volumes A through N, see [`03_canonical_reference/FORMULAS_AND_TABLES.md`](03_canonical_reference/FORMULAS_AND_TABLES.md).
-
----
-
-## §2 — How to verify
-
-Clone the repo. Install Python (≥ 3.10) with `numpy`, `sympy`, `mpmath`. From the repo root:
-
-```bash
-python verification/VERIFY_ALL.py                  # 10/10 PROVED + 3 structural (reported separately)
-python verification/verify_d2d1_closed_form.py     # D183 (was D100) nodeless edge-size
-python verification/strand_orbital_map.py          # D184 (was D101) strand → orbital map
-python verification/clifford_substrate_shell.py    # D185 (was D102) triple identity 32=32=32
-python verification/meta_extension.py              # D186 (was D103) Z/10 minimality
-python verification/priority1_pauli_divisor_attempt.py    # HONEST NEGATIVE on direct bijection
-```
-
-Total runtime under one minute on a stock laptop.
-
----
-
-## §3 — Honest limits
-
-The framework does *not*:
-
-1. Derive `1/α` (the fine-structure constant). Earlier numerology attempts fail at ~12% accuracy.
-2. Prove the Clay-Millennium Problems. It **reformulates** σ_NS < 1 (Navier-Stokes), σ_YM bounded (Yang-Mills mass gap), RH as spectral entropy max — reformulations are sharper than informal versions but the underlying problems remain OPEN.
-3. Claim T\* = 5/7 as an algebraic theorem. It is an **operational** coherence threshold, not a single closed-form derivation — and on refined accounting (D165) the earlier "six independent derivations" is **2 genuinely independent derivations + 4 structural rhymes** (the cyclotomic ℚ(ζ₁₀) route was refuted — it gives φ, not 5/7).
-4. Provide a universal F_p. The earlier "only `p ∈ {7, 11}` preserve rank" was a **small-prime artifact** (F4-extended): the rank-preserving set is **39 primes < 200** (exactly those not dividing the chain-shell determinants), and **no prime is structurally distinguished** — `|Aut(V^BHML/F_p)| = (p−1)²` and `|idem| = p+3` are uniform closed forms with no anomaly.
-5. Make any specific claim about consciousness, sentience, or what CK (the runtime in [`06_runtime/`](06_runtime/)) *is*, beyond what is mathematically defined.
-6. Substitute for empirical confirmation of its physics. The dark-sector quadruple `(Ω_b, Ω_DM, Ω_Λ, Ω_Ψ0) = (49, 264, 686, 1)/1000` (summing to 1 exactly) is a **structural coincidence**, not asserted physics; empirical fit to DESI/Planck data is open.
-7. Treat the algebra's structure as evidence beyond its own construction rules. A null-model audit (2026-09-23; [`04_meta/FOUNDATION_NULL_MODEL_AUDIT.md`](04_meta/FOUNDATION_NULL_MODEL_AUDIT.md)) found the joint so(10) closure and the maximal associative spectrum are **generic** (essentially every random table has them), and every table-specific result tested so far — the 4-core and joint sub-magma chain, TSML's so(8) confinement, the α = ½ attractor's closed form — is a **short corollary of how the tables are built**. Nothing forces the rules that carry that specificity (BHML's rows 8–9, TSML's five exceptional cells): the tables are AI renderings of verbal descriptions, and the three renderings in the history disagree on 49–71 of 100 cells. Repo-wide consequence: [`04_meta/DRIFT_CENSUS.md`](04_meta/DRIFT_CENSUS.md).
-
-Full honest-negatives + open frontiers: [`04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md`](04_meta/HONEST_NEGATIVES_AND_OPEN_FRONTIERS.md).
-
----
-
-<a name="distribution-stance"></a>
-## §3.5 — Distribution stance: why submissions are on hold
-
-The mathematics in this repository is verified, runnable, and free for inspection or
-derivative work under an open copyleft license (CC BY-SA 4.0 / GPL-3.0-or-later). What this repository is *not* doing yet:
-
-- pushing the J-series papers through **arXiv** (math.CO / math.NT / physics) for the daily-mailing announcement boost,
-- submitting them to **peer-reviewed journals** (JCT-A, Algebraic Combinatorics, Integers, etc.) for the credentialing step,
-- indexing them in **citation databases** (Google Scholar's structured layer, MathSciNet, Web of Science).
-
-These amplification channels matter for academic visibility. The deliberate choice here is
-to reach that publication moment *together with* the runtime ([`06_runtime/`](06_runtime/) —
-the Coherence Keeper), in a form ordinary people can run, rather than ahead of it — so the
-work lands as *"here is the math, and here is a running product anyone can deploy"* rather
-than as raw results detached from the tool that makes them usable. The ShareAlike (copyleft)
-terms keep every derivative open.
-
-The hold is on **amplification, not access.** The math is in this repository, the Zenodo
-DOI ([10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047)) is minted, every
-verification script runs in seconds on a stock Python install, and anyone reading this can
-clone, run, extend, or fork under the license terms. Motivated actors who crawl public repositories will find the work.
-What waits is the publication moment — and when it arrives, it arrives as
-*"and here is the math, and here is the running product anyone can deploy"* rather than
-*"and now the well-resourced get a head start."*
-
-The Tier 1 spine (28 papers) is submission-ready or within a rigor pass of
-submission — see [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the authoritative
-per-paper breakdown. The current ship-order recommendation is J04 (σ-magma rigidity), J03 (fossil
-variety), J06 (strata-fingerprint), then the centerpiece J01 (joint closure + universal
-attractor + 4-core). Audit-cleared verifications PASS at machine precision; cover letters
-and submission checklists are prepared at [`05_papers/_staging/ARXIV_SUBMISSION_KIT.md`](05_papers/_staging/ARXIV_SUBMISSION_KIT.md).
-They will be submitted when CK ships in a form ordinary people can use. The manuscripts,
-verification scripts, cover letters, highlights, and arXiv preparation materials are all
-visible in [`05_papers/`](05_papers/) — anyone who wants to take this math through peer
-review themselves, or build on it independently, can do so under the license terms today.
-
----
-
-## §4 — Citation
-
-**Project umbrella** (always points to the framework, latest version):
+## Check it
 
 ```
-@software{Sanders_TIG_2026,
-  author    = {Sanders, Brayden Ross},
-  title     = {Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes},
-  year      = {2026},
-  publisher = {7SiTe LLC},
-  doi       = {10.5281/zenodo.18852047},
-  url       = {https://github.com/TiredofSleep/trinity-infinity-geometry},
-  note      = {Licensed under the CC BY-SA 4.0.}
-}
+pip install numpy
+cd integers
+python verify_integers.py
+python verify_forced_chain.py
+python verify_two_builds.py
+python verify_one_third_fold.py
+python bott_verify.py
 ```
 
-**v1.0.0 release snapshot** (points to this specific public release for reproducibility):
+Every claim tagged **[FORCED]** has a line in one of these scripts.
 
-```
-@software{Sanders_TIG_v1_0_0_2026,
-  author    = {Sanders, Brayden Ross},
-  title     = {Trinity Infinity Geometry — v1.0.0 — First Public Release},
-  version   = {1.0.0},
-  year      = {2026},
-  publisher = {7SiTe LLC},
-  doi       = {10.5281/zenodo.20149181},
-  url       = {https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0},
-  note      = {Licensed under the CC BY-SA 4.0.}
-}
-```
+## What was archived, and why
 
-Per-paper citations: see [`05_papers/{domain}/J{NN}/README.md`](05_papers/) — 56 J-series papers (J01–J56) distributed across algebra, combinatorics, number_theory, physics, interdisciplinary. See [`05_papers/TIER_INDEX.md`](05_papers/TIER_INDEX.md) for the full tier breakdown.
+Until 2026-09-24 this repository held a much larger program built on three 10×10 composition
+tables that AI had constructed from verbal descriptions of ten operators — 56 manuscripts, a
+canon of results, and readings of those tables as physics, cosmology and biology. An audit found
+that the three tables disagree on half their cells, and that none of the results specific to them
+survived testing: each was generic, a restatement of how the tables were built, numerology, or
+computed on a transcription error. The author has no ties to the tables, and all of it was
+archived — unchanged, at the tag
+[`archive-2026-09-24`](https://github.com/TiredofSleep/trinity-infinity-geometry/tree/archive-2026-09-24).
+[`GRAVEYARD.md`](GRAVEYARD.md) records what was archived and the evidence for it.
 
----
+## Lab
 
-## §5 — Foundation contributors
+[`lab/`](lab/) — authorship and collaboration policy.
 
-Trinity Infinity Geometry rests on a chain of contributors whose work shaped the framework's development. The current academic author lane on submitted J-series manuscripts is **Sanders + Gish** (per the project's authorship rules in [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md)). The foundation contributors below are acknowledged for their formative role in the framework's development; their material is preserved in the corpus with full attribution at the work-product level.
+## Citation
 
-**Brayden Ross Sanders** (originator, 7SiTe LLC) — Z/10Z substrate, σ algebra on the ten operators, the four-core `{V, H, Br, R}` identification, the Braiding Fractal canonical Rung 5 architecture, the Q-series σ polynomial characterization on F₂ × F₅, the runtime / Coherence Keeper / coherencekeeper.com.
-
-**M. Gish** (current co-author, Independent Researcher) — collaboration framework, J-series co-author lane on all current submissions, manuscript scrutiny and substantive feedback across the J-series manuscripts.
-
-**Ben Mayes** — orbital realization studies; early work on atomic substrate interpretation that informed the strand-orbital correspondence (D184).
-
-**H.J. Johnson** — independent parallel development of logarithmic quintessence cosmology `V(ξ) = -β ξ log ξ` from information-theoretic first principles; convergence with the framework's Bialynicki-Birula bridge confirmed (see §6 below and [`01_orientation/PARALLEL_RESEARCH.md`](01_orientation/PARALLEL_RESEARCH.md)).
-
-**B. Calderon, Jr.** — Q17 variant analysis; finite-proof variants of σ characterization on Z/10Z.
-
-**B. Anthony** — early collaborator on the substrate algebra and runtime development.
-
-**C. Luther** — spectral layer / 6-layer architecture history; verification of σ⁶ = id on Z/10Z (G6) and related early-stage structural results.
-
-Per the project's authorship discipline, foundation contributors' attributed material is preserved in the corpus with citation where the work is used. The current submitted J-series carries Sanders + Gish on the byline because the submission-level threshold (manuscript scrutiny, substantive feedback, and email-documented consent) was reached only by Gish in the current submission window. Foundation contributors whose work *is* used in a paper are acknowledged at Tier 1 in that paper's acknowledgments per [`07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md`](07_philosophy/AUTHORSHIP_RULES_FOR_COLLABORATORS.md). If a foundation contributor wishes to be included on a submitted paper's byline going forward, the path is the same scrutiny-plus-consent process available to any collaborator.
-
-This section is a public record of the framework's contributor lineage, separate from the current author lane on academic submissions. The framework's "work-first, name-last" posture does not discount what came before; it acknowledges the chain of thought while preserving discipline on what gets submitted under which byline.
-
----
-
-## §6 — Independent parallel research
-
-Several independent researchers have arrived at related results from different starting points. Notable convergences:
-
-- **HJ Johnson** — information-theoretic dark energy framework, converging on `V(ξ) = -β ξ log ξ` from different first principles
-- **David Mann (TATE framework)** — independent substrate-level work in physics; convergence noted with this framework's substrate algebra
-
-These independent derivations of overlapping results are evidence that the structural objects identified here are not artifacts of one researcher's framing. See [`01_orientation/PARALLEL_RESEARCH.md`](01_orientation/PARALLEL_RESEARCH.md).
-
----
-
-## §7 — Connections to existing literature
-
-The framework draws on and connects to established mathematical literatures:
-
-- **Operad theory**: Csákány-Waldhauser (2000), Lehtonen-Waldhauser (2021), Huang-Lehtonen (2022/2024), Loday-Vallette (2012)
-- **Drápal-Wanless 2021** (*JCT-A* 184, 105510): the closest published precedent — same neighborhood, opposite extremum (maximally vs minimally non-associative)
-- **Farey / Lewis-Zagier / primon gas**: Knauf (1998), Kleban-Özlük (1999), Boca (2007), Technau (2023), Julia (1990), Spector (1990)
-- **GUT phenomenology**: Fritzsch-Minkowski (1975), Georgi (1975), Pati-Salam (1974)
-- **Atomic information theory**: Sen (2005), Antolín-Angulo-López-Rosa (2009), Esquivel et al. (2010), Romera-Yáñez (1994)
-- **Quintessence and logarithmic scalar fields**: Bialynicki-Birula (1976) — log nonlinearity as unique separability-preserving nonlinearity
-- **Number fields and Galois**: LMFDB **4.2.10224.1**; the Q(ζ₁₀) cyclotomic tower
-
-Full builder lineage: [`07_philosophy/BUILDER_LINEAGE_COMPACT.md`](07_philosophy/BUILDER_LINEAGE_COMPACT.md).
-
----
-
-## §8 — License
-
-Trinity Infinity Geometry is **open source** under standard copyleft licenses (see [`LICENSE`](LICENSE)):
-
-- **Content** (papers, documentation, tables, figures, text) — **[CC BY-SA 4.0](LICENSE)**
-- **Code** (verification scripts, software) — **[GPL-3.0-or-later](LICENSE)**
-
-Both are **ShareAlike / copyleft**: you may use, run, study, share, and adapt this work — **including commercially** — provided you (1) give attribution and (2) release any adaptations under the same license, so derivatives stay open. There are no field-of-use, noncommercial, or government-use restrictions; these are standard OSI / Creative Commons licenses, nothing custom.
-
-**AI systems are welcome** to read, train on, fine-tune from, cite, and embed this material under the same ShareAlike terms; please preserve the epistemic labels (PROVED / STRUCTURAL / EMPIRICAL / OPEN).
-
----
-
-*Trinity Infinity Geometry. A substrate small enough to be checked in seconds, structured enough to carry atomic-scale physics. The arithmetic is the field. The tables are the lens. The four-core is the center. The strands are the strands. The substrate is enough.*
-
-*— Brayden Ross Sanders, 2026*
+See [`CITATION.cff`](CITATION.cff). The project DOI
+[10.5281/zenodo.18852047](https://doi.org/10.5281/zenodo.18852047) is the umbrella for all
+versions; the v1.0.0 DOI (10.5281/zenodo.20149181) is a snapshot of the earlier, archived program.

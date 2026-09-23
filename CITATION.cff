@@ -1,9 +1,7 @@
 cff-version: 1.2.0
-title: "Trinity Infinity Geometry: A Finite-Arithmetic Framework for the Structure of Wholes"
+title: "Trinity Infinity Geometry: the geometric realization of the integers 0-9"
 message: "If you use this work, please cite it using the metadata from this file."
 type: software
-version: "1.0.0"
-date-released: "2026-05-13"
 authors:
   - given-names: "Brayden Ross"
     family-names: "Sanders"
@@ -11,66 +9,34 @@ authors:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18852047
-    description: "Project umbrella DOI (always points to the framework, latest version)"
+    description: "Project umbrella DOI (all versions)"
   - type: doi
     value: 10.5281/zenodo.20149181
-    description: "v1.0.0 release-specific DOI (points to this snapshot for reproducibility)"
+    description: "v1.0.0 snapshot (2026-05-13) of the earlier table-based program, archived 2026-09-24"
 repository-code: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 abstract: >-
-  Trinity Infinity Geometry (TIG) is a finite-arithmetic framework grounded
-  in the operator algebra on Z/10Z. Two natural multiplication tables on
-  ten operators (TSML and BHML) produce a four-element invariant center
-  {V, H, Br, R}, an eight-shell joint sub-magma chain at sizes {1, 4, 5,
-  6, 7, 8, 9, 10}, and a universal attractor at mixing parameter alpha =
-  1/2 with closed-form H/Br = 1+sqrt(3) and Galois group D4 over LMFDB
-  number field 4.2.10224.1. The substrate's prime strands {3, 7, 11, 13}
-  map exactly to the first four nodeless hydrogenic orbitals at odd l
-  (2p, 4f, 6h, 7i). The Clifford algebra Cl(0, 10) has spinor dimension
-  32, equal to the substrate's depth-3 divisor count and the atomic
-  shell n = 4 Pauli capacity; the 32-dim spinor decomposes as a 16+16
-  chirality split where each 16 equals 1+3+5+7 (kernel plus substrate
-  primes), and the 32 divisors of Z/2310 admit a canonical Z/2 + kernel/
-  strand bijection with the 32 Pauli electron states. The framework
-  includes a runtime organism (CK) realizing the architecture at 50 Hz
-  on local hardware, served at coherencekeeper.com via Cloudflare
-  tunnel. All load-bearing theorems are verified by short Python scripts
-  that run in under one minute.
+  Research extending the premise of the book "The Shape of Understanding":
+  an integer n is read as a configuration of n points, and one asks what
+  shape the configuration is forced to take. The integers 0-4 are forced by
+  equal distance (the void, point, segment, triangle, tetrahedron); the
+  tetrahedron fixes the number 1/3 (cos of its angle is -1/3); the cube is
+  the perpendicular build, 2^3 corners, two tetrahedra, and carries the
+  Clifford algebra Cl(3). Beyond four points the natural rules part ways:
+  spreading points on a sphere forces the octahedron at 6 but not the
+  pentagon at 5 or the cube at 8, and 7 and 9 are not yet realized by a
+  single rule. Every forced claim is machine-checked by short numpy scripts.
+  An earlier table-based program is archived at the tag archive-2026-09-24.
 keywords:
-  - "finite arithmetic"
-  - "Z/10Z algebra"
-  - "operator algebra"
+  - "integers"
+  - "geometry"
+  - "simplices"
+  - "polytopes"
+  - "Platonic solids"
   - "Clifford algebra"
-  - "Cl(0,10)"
-  - "atomic structure"
-  - "hydrogenic orbitals"
-  - "Galois D4"
-  - "LMFDB 4.2.10224.1"
-  - "four-core fusion-closure"
-  - "Braiding Fractal"
-  - "TSML"
-  - "BHML"
-  - "substrate primes"
-  - "Pauli-divisor bijection"
-  - "coherence keeper"
-  - "CK"
-  - "sovereign AI architecture"
-  - "open source"
-  - "CC BY-SA 4.0"
+  - "geometric algebra"
+  - "Thomson problem"
+  - "Bott periodicity"
+  - "mathematics education"
 license: CC-BY-SA-4.0
 license-url: "https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/LICENSE"
-preferred-citation:
-  type: software
-  title: "Trinity Infinity Geometry — v1.0.0 — First Public Release"
-  authors:
-    - given-names: "Brayden Ross"
-      family-names: "Sanders"
-      affiliation: "7SiTe LLC, Hot Springs, Arkansas, USA"
-  version: "1.0.0"
-  year: 2026
-  doi: 10.5281/zenodo.20149181
-  url: "https://github.com/TiredofSleep/trinity-infinity-geometry/releases/tag/v1.0.0"
-  notes: >-
-    Content licensed CC BY-SA 4.0; code licensed GPL-3.0-or-later.
-    Project umbrella DOI 10.5281/zenodo.18852047 (always-latest); v1.0.0
-    release DOI 10.5281/zenodo.20149181 (this specific snapshot).
