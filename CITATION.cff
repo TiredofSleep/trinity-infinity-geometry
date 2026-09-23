@@ -12,7 +12,7 @@ identifiers:
     description: "Project umbrella DOI (all versions)"
   - type: doi
     value: 10.5281/zenodo.20149181
-    description: "v1.0.0 snapshot (2026-05-13) of the earlier table-based program, archived 2026-09-24"
+    description: "v1.0.0 snapshot (2026-05-13) of the earlier table-based program, archived 2026-09-23"
 repository-code: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 abstract: >-

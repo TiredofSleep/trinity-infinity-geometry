@@ -4,13 +4,14 @@
 at the tag [`archive-2026-09-24`](https://github.com/TiredofSleep/trinity-infinity-geometry/tree/archive-2026-09-24)
 (and on the branch `archive`); the full working history is in the workstation repository
 [`ck`](https://github.com/TiredofSleep/ck). Proven dead ends are information, so each is recorded
-here with the evidence that killed it.*
+here with the evidence that killed it. (The archive was made on 2026-09-23; the tag's name carries
+a date one day off, and is kept so that existing links still work.)*
 
 `A/` below abbreviates `https://github.com/TiredofSleep/trinity-infinity-geometry/blob/archive-2026-09-24/`.
 
 ---
 
-## 1. The table program — archived 2026-09-24
+## 1. The table program — archived 2026-09-23
 
 **What it was.** Three 10×10 composition tables on ten named operators — TSML (73 cells equal to
 HARMONY), BHML (28) and CL_STD (44) — built by AI from the author's verbal descriptions of the

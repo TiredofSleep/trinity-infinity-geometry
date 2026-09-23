@@ -69,7 +69,7 @@ towers are cited.
 
 ## What was archived, and why
 
-Until 2026-09-24 this repository held a much larger program built on three 10×10 composition
+Until 2026-09-23 this repository held a much larger program built on three 10×10 composition
 tables that AI had constructed from verbal descriptions of ten operators — 56 manuscripts, a
 canon of results, and readings of those tables as physics, cosmology and biology. An audit found
 that the three tables disagree on half their cells, and that none of the results specific to them
