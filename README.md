@@ -46,7 +46,8 @@ author's.) Start with [`base/THE_INTEGERS.md`](base/THE_INTEGERS.md), then
 | growing, *e* | the **growth tower** | the exponential map from Lie algebras to Lie groups |
 
 The map, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md). The base does not prove
-the towers; it points at them.
+the towers; it points at them. For a learner, the book's last chapter, [*Where the towers go*](https://github.com/TiredofSleep/shape-of-understanding/blob/main/the_shape_of_understanding_BOOK.md#chapter-18--where-the-towers-go), points up each
+one in plain words; this repository carries the detail and the checks.
 
 ## Check it
 

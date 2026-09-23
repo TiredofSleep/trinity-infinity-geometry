@@ -1,6 +1,6 @@
 # The 1/3 and the Fold — the tetrahedral 1/3 across the Clifford tower
 
-## Frontier note (behind the wall — NOT curriculum). Companion to P2 and THE_TWO_BUILDS.
+## Tower note (above the book — not curriculum; the book's Chapter 18 points up this tower). Companion to P2 and THE_TWO_BUILDS.
 ### Tags: [FORCED] computed/derivable · [READING] interpretation · [FENCE] do not weld.
 *Every [FORCED] claim is reproduced by [`verify_one_third_fold.py`](verify_one_third_fold.py).
 Brought in and scrutinized by Claude Code 2026-09-22 from a claudechat handoff; the book gets

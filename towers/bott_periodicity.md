@@ -1,8 +1,8 @@
 # Bott periodicity — where the perpendicular build goes after the cube
 
-*Research note, behind the wall: the book teaches only the bottom of the tower (ℝ → ℂ → ℍ,
-Chapter 7.1); the period 8 stays here. Every [FORCED] claim is reproduced by
-[`bott_verify.py`](bott_verify.py).*
+*The top of the Clifford tower. The book teaches its bottom rungs (ℝ → ℂ → ℍ in §7.1; the
+cube = Cl(3) in Chapter 14) and points up to the eight-step clock in its Chapter 18; the working-out
+is here. Every [FORCED] claim is reproduced by [`bott_verify.py`](bott_verify.py).*
 
 ---
 

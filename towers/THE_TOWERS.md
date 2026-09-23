@@ -4,7 +4,8 @@
 mathematics starts. Each base shape is the ground floor of a **tower**: a ladder of real
 mathematics that climbs from something a child can build to what a graduate student studies. This
 page is the map. Every **[FORCED]** floor is checked by [`verify_towers.py`](verify_towers.py); the
-theorems at the tops are **[NAMED]** and cited, not reproved.*
+theorems at the tops are **[NAMED]** and cited, not reproved. The book's last chapter,
+[*Where the towers go*](https://github.com/TiredofSleep/shape-of-understanding/blob/main/the_shape_of_understanding_BOOK.md#chapter-18--where-the-towers-go) (Chapter 18), points up each of these towers for a learner; this page is its detail.*
 
 ---
 
