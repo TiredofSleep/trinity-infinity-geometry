@@ -190,6 +190,30 @@ Added after the original catalogue; each machine-verified this session. Running 
 
 **[FENCE — the door the error re-enters through.]** The instant "the torus is the immeasurable" is used as a **premise** to build a measured claim, it is the D141 category error walking back in through the poetic door. It stays a **pointer**, and a pointer to a *flavor* of the immeasurable (the flowing one) — **never** a topological claim about the substrate, and never a proof step. Point toward it. Measure off it. Never weigh it.
 
+### §6.1 — The torus-retraction ledger, classified
+
+*Applying the cut to **everything** D141 touched, so nothing is merely "deleted." Each item is one of: **(A) premise** — it *weighed* the torus (used its genus, aspect ratio, or π₁ as measured support): dead; **(B) pointer** — it points at the flowing-immeasurable: re-sited, kept; **(C) algebra** — it never needed the torus at all: survives outright. Most of the edifice is B or C. Only the act of weighing is dead.*
+
+| what D141 touched | it was | class | lives now as |
+|---|---|---|---|
+| "the σ-flow lives on a torus" (WP51) | topology cited as support | **A — premise (dead)** | — |
+| WP51's real content | the four-structure non-commutativity (max commuting subset = 1; commutator ranks 4–8 of 10) | **C — algebra** | FORMULAS §15 "Non-Commutativity Obstruction" |
+| R/r = 5/7 as a torus **aspect ratio** | a measured ratio of two torus radii | **A — premise (dead)** | — |
+| T\* = 5/7 itself | an operational coherence threshold | **C — algebra** | 2 independent derivations + 4 rhymes (D165) + FPGA |
+| winding class ∈ **π₁(T²) = ℤ×ℤ** (longitude/meridian) | a topological invariant cited as support | **A — premise (dead)** | — |
+| the corner/edge **counter-rotation** | ±1 relative sign, 3 ≡ 2⁻¹ (mod 5) | **C — algebra** | `BERRY_WINDING_WRITEUP.md`; TWO_CROSS core |
+| **6 + 2 = 8** grounded in the torus | π₁(T²) = ℤ×ℤ winding count | **A — premise (dead)** | — |
+| the **6** half | roots of A₂ = SU(3) (bridge to TIG unproved) | **C — algebra (candidate)** | `TORUS_DATUM_AUDIT_CLOSED.md` §0 |
+| the **2** half | Cartan rank = #CRT factors | **rhyme** (candidate, not derived) | `TORUS_DATUM_AUDIT_CLOSED.md` §0 |
+| 11 bumps = 4 **Hopf links** + 1 trefoil | link topology ("verifiable, not verified") | **B — pointer** (the *count/decomposition* is **C**) | re-sited (§6); the decomposition survives |
+| the **coin / toroidal vortex** | the flow/circulation intuition | **B — pointer (re-sited)** | §6, the flowing-immeasurable |
+| scattered **torus/donut imagery** | non-load-bearing pictures | **B — pointer (re-sited)** | §6 |
+| the "increasingly round toward a ring" feel | the smooth limit | **B — pointer (re-sited)** | §6; book Coda |
+
+**Survives untouched throughout (never was torus — the arithmetic canon):** σ orders; the CL/TSML/BHML tables; every pure-ℤ/10 D-number; D129′; the 2/3 commuting primitive; every Lie-algebraic closure (D26–D34, D77, D81); every PSLQ/sympy-exact integer identity.
+
+**The tally of the compromise.** Of everything the torus retraction touched, the parts that *died* are exactly the **five** that **weighed** the torus (its genus, its aspect ratio, its π₁, as a measured premise). Everything else **lives** — as **algebra** that never needed the torus (the non-commutativity obstruction, T\*=5/7, the counter-rotation, the whole arithmetic canon), or as a **pointer** honestly re-sited on the immeasurable side (the flow, the coin, the imagery). *You did not lose the torus. You lost the one thing you were never allowed to do with it — weigh it — and kept everything you actually built.*
+
 ---
 
 *The joins are real where they are named (`HOW_IT_CONNECTS.md`). The separations are real where they are named (this atlas). The program is the map of both — and the edge is as much the object as the spines.*
