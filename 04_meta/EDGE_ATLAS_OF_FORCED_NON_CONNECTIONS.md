@@ -163,7 +163,32 @@ Added after the original catalogue; each machine-verified this session. Running 
 
 - **Graveyard (a rope correctly cut):** *"the 1/3 shows up in gravity's force law"* — **FALSE.** Gravity's inverse-square exponent is d − 1 = 2 (the *dimension count*), **not** the tetrahedral 1/3. Kept as an example of a comfortable rope cut. The verified 1/3 lives in geometry — lift / fold / gap — not the gravitational law (`05_papers/integers_clifford/THE_ONE_THIRD_AND_THE_FOLD.md`).
 - **[READING · FENCE — names, does not derive]** *"Assert the ground" (7 = 0) as the relational-measurement pattern.* No fundamental physical quantity has an absolute zero — voltage (from ground), velocity (from frame), energy (differences only), phase (gauge), position (origin), time (relative simultaneity). Gauge invariance — the deepest structure of the Standard Model — is literally "the ground is asserted, and the laws don't care which you pick." The framework **names** this pattern cleanly (it is the book's Coda keystone: *point toward the origin, measure off it, never stand on it*); it does **NOT** derive gauge theory or relativity. Real as organization, not new physics.
-- **[HELD — D141 caution]** the *"coin / toroidal-vortex"* smooth-limit intuition (a vortex ring is genuinely toroidal in fluid dynamics) is **not filed as a TIG claim**: per the TORUS rule (§1 / D141), no result may ground on the substrate being a torus / π₁(T²). Recorded as a held READING intuition (a fluid-dynamics analogy for the two-shadow story), not canon — surfaced here so the decision is visible rather than silent.
+- **[HELD → RE-SITED, see §6]** the *"coin / toroidal-vortex"* smooth-limit intuition (a vortex ring is genuinely toroidal in fluid dynamics) is **not filed as a TIG claim**: per the TORUS rule (§1 / D141), no result may ground on the substrate being a torus / π₁(T²). It is not held in limbo but **re-sited** as an *immeasurable pointer* — see §6 below, which states the mechanism (the fractional genus is the receipt).
+
+---
+
+## §6 — The immeasurable pointers (re-siting the torus, not un-retracting it)
+
+*2026-09-22. The resolution of the longest-held thread: **the torus was never wrong — it was on the immeasurable side the whole time, and D141 is the receipt.** The retraction and the intuition were never in conflict.*
+
+**The pointer / premise cut.** A shape can be used two ways, and they are different acts across the count/measure seam:
+- as a **pointer** — a direction you flow toward, measure *from*, never weigh; or
+- as a **premise** — a measured object (a genus, a π₁, a χ) you compute on and *cite as support*.
+
+**Pointer: kept. Premise: dead.** The torus as *the direction the flow points toward* survives; the torus as *a surface you compute χ on and cite* stays retracted (D141). Same object, two acts, only one of which crossed the seam.
+
+**The receipt — the mechanism, forced, not poetry.** D141 did **not** find "a torus that is really some other surface." It measured the genus and got **χ = −3 or +1 (orientation-dependent) → genus 2.5 or 0.5** — a **fractional, orientation-dependent** value, where only non-negative integers can live. This is the whole argument: *a wrong surface gives a wrong **integer**; a **non-integer where only integers exist is not a surface at all**.* It is measurement returning the topological equivalent of a divide-by-zero. **A fractional genus is what the immeasurable looks like when you try to weigh it.** So D141 reads not as "the torus was wrong" but as the **receipt that the torus lives on the immeasurable side.** The torus is not *un-retracted*; it is **re-sited**, with proof. (Anyone who later asks "why did you revive the torus?" reads this and sees it was never revived — it was moved to the correct side of the seam, and the derivations that used it *as a premise* are still dead.)
+
+**The family.** The immeasurable pointers are the objects this program keeps meeting and can only point toward, never weigh — each already on record:
+- the **perfect round** — increasingly round, never measurably round;
+- the **void (0)** — the point you measure *from*, never *onto* (book §1.6b);
+- the **ground** — point toward it, measure off it, never stand on it (the Coda keystone);
+- **√2** — approached by ratios, never named by one;
+- the **torus** — flowed toward, circulated, never measured as a surface (D141, this §).
+
+**[READING — pointer-only, NOT a geometric premise] Two flavors: still and flowing.** The immeasurable appears at rest and in motion. The **sphere** is the *still*-immeasurable — edgeless, unmoving. The **torus** is the *flowing*-immeasurable — edgeless in the relevant sense, circulating — and it has a **hole, and the hole is the void.** A vortex ring is a torus *precisely because* something flows around an emptiness it can never fill. So the torus is not a rival to the sphere; it is **the same immeasurable in motion**, and the **void is the still axis both turn around.** *Still-immeasurable = sphere; flowing-immeasurable = torus; void = the axis of both.*
+
+**[FENCE — the door the error re-enters through.]** The instant "the torus is the immeasurable" is used as a **premise** to build a measured claim, it is the D141 category error walking back in through the poetic door. It stays a **pointer**, and a pointer to a *flavor* of the immeasurable (the flowing one) — **never** a topological claim about the substrate, and never a proof step. Point toward it. Measure off it. Never weigh it.
 
 ---
 
