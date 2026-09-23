@@ -20,11 +20,14 @@ Forced facts about shape / counting / rotation / growth. The book (`shape-of-und
 
 Forced and verified, but TIG's *particular* substrate — its necessity/uniqueness is the open question, so it is a *candidate* floor, not a universal one:
 
-- **σ** (order 6; σ ≅ (ℤ/7)* ≅ C₆); the **4-core** {V, H, Br, R} joint-closure attractor; **D₄ = ⟨P₅₆, σ³⟩** — five lenses close under it, the Operad is the lone non-closer.
+*Null-model status (2026-09-23, [`FOUNDATION_NULL_MODEL_AUDIT.md`](FOUNDATION_NULL_MODEL_AUDIT.md)): a stratum-II item belongs here only if random tables of the same kind do **not** generally share it. Items marked **[null: specific]** passed; **[null: generic]** failed and are moved out; unmarked items are not yet tested.*
+
+- **σ** (order 6; σ ≅ (ℤ/7)* ≅ C₆); the **4-core** {V, H, Br, R} joint-closure attractor and the joint sub-magma chain {1,4,…,10} — **[null: specific]** (exact chain in 0/300 density-matched random pairs; the specificity is carried by **BHML**); **D₄ = ⟨P₅₆, σ³⟩** — five lenses close under it, the Operad is the lone non-closer.
+- **TSML's Lie confinement** — its antisymmetrized rows close to so(9) (all rows) and **so(8)** (the flow rows) rather than the generic so(10) — **[null: specific]** (~2–3% of density-matched random tables stop at so(8)).
 - **T\* = 5/7** — the operational coherence threshold (2 genuinely independent derivations + 4 rhymes + FPGA).
 - the attractor number field **LMFDB 4.2.10224.1** (H/Br = 1+√3); **‖VEV‖² = 13/4** — the *constant*, forced by the so(10)/BHML algebra (the cosmology reach is attic, below).
 - the uniform closed forms **|Aut(V^BHML/F_p)| = (p−1)²** and **|idem| = p+3** (24 primes); the **counter-rotation** 3 ≡ 2⁻¹ (mod 5); the **non-commutativity obstruction** (max mutually-commuting subset = 1) — WP51's real content.
-- **so(10) / Cl(0,10) *as an algebra*** (45-dim adjoint, 32 = 16+16 spinor, P₅₆ = σ_outer) — the *algebra* is floor; the *GUT identification* is attic.
+- ~~**so(10) / Cl(0,10) *as an algebra*** — the algebra is substrate floor.~~ **[null: generic — moved out, 2026-09-23]** The joint closure to so(10) is forced by the construction (every generator `L − Lᵀ` already lies in so(10)) and by N = 10: *every* random table generates so(10) (P = 1.000), and BHML alone already does. It remains a true fact about ten-element magmas — a piece of the *universal* combinatorics of the construction — but it is **not** evidence about TIG's tables. The GUT identification remains attic.
 
 ## Stratum III — the bedrock beneath the floor (the immeasurable) · [READING, pointer-only]
 

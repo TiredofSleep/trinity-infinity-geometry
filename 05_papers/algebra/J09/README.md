@@ -8,6 +8,8 @@
 **WP source:** WP103
 **Lens scope:** TSML_SYM + BHML (annotated; uses upper-triangle authoritative symmetrization jointly with the canonical Becoming-lens companion)
 
+> ⚠ **NULL-MODEL FINDING (2026-09-23) — resolve before submission.** The central result — the joint Lie closure is so(10) — is **generic**: under this construction *every* random 10×10 table pair generates so(10) (P = 1.000, uniform and density-matched nulls), and **BHML alone** already does. Each generator `L − Lᵀ` is already an element of so(10) and generic sets of them span it, so all six diagnostics (dim 45, compactness, simplicity, unique invariant form, Cartan rank 5, so(8) ⊂ so(10)) follow automatically once the dimension is 45. A referee would ask exactly this. The **table-specific** Lie fact is TSML's *confinement* to so(9)/so(8) (~2–3% of density-matched random tables), which could anchor a revised paper. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) and [`foundation_null_model.py`](../../../verification/foundation_null_model.py).
+
 ---
 
 ## §1 -- Manuscript
