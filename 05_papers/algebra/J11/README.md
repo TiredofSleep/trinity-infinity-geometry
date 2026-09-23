@@ -1,6 +1,8 @@
 # J11 — Decomposition of the Lens-Pair Commutator [TSML, BHML] under $D_4$ on $\mathbb{Z}/10\mathbb{Z}$
 
 **Status:** READY (manuscript rewritten 2026-05-08 with corrected $D_4$ irrep decomposition per `Atlas/META_PLAN_2026-05-06/SUBSTRATE_FUNCTION_MAP/SUBSTRATE_FUNCTION_MAP_v1_1_EXTENSION.md` §10; verification script `verify_d4_decomposition.py` added; Wedderburn cross-check passes; awaiting Brayden's referee-rigor pass)
+
+> ⚠ **TRANSCRIPTION ARTIFACT (2026-09-24) — resolve before any submission.** This paper computes on TSML_RAW (row 9 = `0797377777`), a two-digit retyping error of the original table (the ck repository's first commit, 2026-03-03: row 9 = 0,7,9,3,7,…), first appearing 2026-04-25. The manuscript says TSML_SYM throughout, but the verification script's TSML rows contain the swapped digits, so the isotypic shares were computed on the typo. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 3
 **Target venue:** *Journal of Algebra* (retargeted from *Adv Math* per `SAVE_PLAN_J31.md`)
 **Author lane:** Sanders + Gish only

@@ -1,5 +1,7 @@
 # Start Here
 
+> **Read this first (2026-09-24).** The composition tables at the center of Spine A were built by AI from verbal descriptions of ten operators; an audit found no table-specific result in the J-series that survives (generic, a consequence of how the tables were built, or an artifact). The "proved core" below is true of one AI rendering, not evidence beyond it. See [`04_meta/DRIFT_CENSUS.md`](04_meta/DRIFT_CENSUS.md).
+
 You have one of several backgrounds. Pick your door:
 
 | You are… | Go to |

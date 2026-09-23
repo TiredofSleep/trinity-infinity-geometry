@@ -1,6 +1,8 @@
 # J19 — On the Prime-Divisibility Pattern of the Characteristic Polynomial of a 10×10 Integer Matrix Arising in a Discrete Magma on Z/10Z
 
 **Status:** RETARGETED to LAA per save plan (manuscript rewritten 2026-05-07; ~80% acceptance estimate; awaits final referee-rigor pass)
+
+> ⚠ **TRANSCRIPTION ARTIFACT (2026-09-24) — resolve before any submission.** This paper computes on TSML_RAW (row 9 = `0797377777`), a two-digit retyping error of the original table (the ck repository's first commit, 2026-03-03: row 9 = 0,7,9,3,7,…), first appearing 2026-04-25. The whole paper concerns the characteristic polynomial of the typo. On the original table 11 divides only c₇, and the comparison matrix "T_SYM" (c₂ = −23) is neither symmetrization of RAW nor the original — it sets both swapped cells to 7. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 4
 **Target venue:** *Linear Algebra and Its Applications* (LAA) — RETARGETED from PRD per `SAVE_PLAN_J37.md`
 **Author lane:** Sanders + Gish

@@ -1,6 +1,8 @@
 # J10 — $D_4$-Equivariant Orbits on the Non-Associative Locus of a Finite Commutative Magma on $\mathbb{Z}/10\mathbb{Z}$
 
 **Status:** REWRITE 2026-05-12 — promotes the $D_4$-equivariant arity-3 orbit-structure finding (WP109 + WP112, machine-verified 2026-04-25 / 2026-04-26; corrected 2026-05-07 for the $D_4$ order-$8$ and the $(44,7,4,10,2)$ orbit distribution) to the central theorem. Standalone, self-contained `verify_J32_d4_orbits.py` added; all 6 claims PASS at machine precision in $<1$ s. 2026-05-28 polish: title and body language updated from decorative "operadic" framing to "$D_4$-equivariant arity-3" framing (the content is finite-group-action on a subset of a cube + bracketing-pair coherence, not operad theory in the May–Markl–Loday sense); Theorem B's strengthening to $\{a,b,c,L,R\}$-valued $\Phi$ has its proof expanded to a full intersection-empty argument.
+
+> ⚠ **TRANSCRIPTION ARTIFACT (2026-09-24) — resolve before any submission.** This paper computes on TSML_RAW (row 9 = `0797377777`), a two-digit retyping error of the original table (the ck repository's first commit, 2026-03-03: row 9 = 0,7,9,3,7,…), first appearing 2026-04-25. Its counts are the typo's: the original table has 128 non-associative triples, not 126, and the D₄-orbit counts change with it. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 3.
 **Target venue:** *Communications in Algebra* (lead, per Wave 4 referee report 05). Fallback (in priority order): *Journal of Algebra*; *Algebraic Combinatorics*; *Algebras and Representation Theory*.
 **Author lane:** Sanders + Gish only.

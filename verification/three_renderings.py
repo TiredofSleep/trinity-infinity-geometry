@@ -2,8 +2,10 @@
 """three_renderings.py -- which structure belongs to the DESCRIPTIONS, and which to one AI RENDERING?
 
 The composition tables were built by AI from verbal descriptions of the ten operators (VOID,
-LATTICE, COUNTER, PROGRESS, COLLAPSE, BALANCE, CHAOS, HARMONY, BREATH, RESET). Three renderings
-exist in the source history, all in CK's first commit (2026-03-03, ck.h):
+LATTICE, COUNTER, PROGRESS, COLLAPSE, BALANCE, CHAOS, HARMONY, BREATH, RESET -- the names in ck.h
+and the original descriptions; NAMING.md's current names for 1, 2, 3, 5, 6 are BEING, DOING,
+BECOMING, CREATE, ASCEND). Three renderings exist in the source history, all in the ck
+repository's first commit (2026-03-03, ck.h):
 
   CL_STD   "the Standard table, 44 harmony" -- from the author's first repo
   CL_TSML  73 harmony -- the runtime's table

@@ -1,6 +1,8 @@
 # J42 — Empirical Fits of CKM and PMNS Mixing Angles to Substrate-Algebra Primitives (REVISED 2026-05-07; UNBUNDLED)
 
 **Status:** HOLD — needs particle-physics collaborator OR reframe as observation. Manuscript was REVISED + UNBUNDLED 2026-05-07 per fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J36_StatSci_FreshEyes.md`) and save plan implemented (`Atlas/META_PLAN_2026-05-06/SAVE_PLANS/SAVE_PLAN_J36.md`); the previously-bundled $1/\alpha$ structural fit (Part 2) is **DEFERRED** because independent verification confirmed the leading-three-terms claim was ~12.6% off the target, not the 10⁻⁵ originally claimed.
+
+> ⚠ **DATA ERROR (2026-09-24) — do not cite.** The column headed "Empirical (PDG / CODATA)" lists |V_cb| = 0.0508, |V_ub| = 0.01140, V_td² = 0.00258 — which are 0.2253², 0.2253³, 0.2253⁴, not measurements (measured: ≈ 0.041, ≈ 0.0038, |V_td|² ≈ 7×10⁻⁵). The four-order fit is one Cabibbo fit counted four times; against real values (11/49)² misses by 23%, (11/49)³ by 3×, (11/49)⁴ by 34×. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 4.
 **Target venue:** *Statistical Science* companion (after revisions; fallback to *Foundations of Physics* if per-venue cap binds) — pending collaborator or reframe.
 **Author lane:** Sanders + Gish.

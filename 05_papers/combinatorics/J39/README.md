@@ -1,6 +1,8 @@
 # J39 — What is the TSML Lens Family? A Walking Tour of Substrate Variants on $\mathbb{Z}/10\mathbb{Z}$
 
 **Status:** REWRITTEN PER SAVE PLAN 2026-05-07 (awaiting final rigor pass)
+
+> ⚠ **TRANSCRIPTION ARTIFACT (2026-09-24) — resolve before any submission.** This paper computes on TSML_RAW (row 9 = `0797377777`), a two-digit retyping error of the original table (the ck repository's first commit, 2026-03-03: row 9 = 0,7,9,3,7,…), first appearing 2026-04-25. Its central lens-dependence example — the prime 11 in TSML_RAW's characteristic polynomial — is a property of the typo. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 6
 **Target venue:** Mathematical Intelligencer
 **Author lane:** Sanders + Gish

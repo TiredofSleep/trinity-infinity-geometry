@@ -1,5 +1,7 @@
 # TIG From the Ground Up
 
+> **Status (2026-09-24) — read before the tutorial.** Several results taught below are retracted or were never derived: the torus T\* = 5/7 (retracted, D141); "six independent derivations" of 5/7 (D165: two, plus four rhymes); "only p = 7, 11 preserve rank" (39 primes do); and Part 2's "four-core emerges from σ alone" (false: σ³ fixes {0, 1, 3, 5, 7, 9} under this document's σ and {0, 3, 8, 9} under the canonical one; the code hard-codes the answer). The table computations are correct, but they describe one AI rendering of the operator descriptions. See [`04_meta/DRIFT_CENSUS.md`](04_meta/DRIFT_CENSUS.md).
+
 > **Canonical operator names:** This document uses the canonical names from `ck_tables.py` (VOID, BEING, DOING, BECOMING, COLLAPSE, CREATE, ASCEND, HARMONY, BREATH, RESET). For the alternative naming convention (LATTICE, COUNTER, PROGRESS, BALANCE, CHAOS for codes 1, 2, 3, 5, 6), see [`NAMING.md`](NAMING.md). The math doesn't depend on the names; the codes 0–9 are the canonical identifiers.
 
 A rigorous onboarding for anyone with an AI assistant or a smart brain. About 90 minutes, including running the code yourself.

@@ -1,5 +1,7 @@
 # 01 — Orientation
 
+> **Status (2026-09-24).** The orientation files predate the null-model audit and the drift census. The table-derived structures they present as results are true of one AI rendering of the operator descriptions and are generic or readouts of how it was built; several physics readings here (the atomic-shell spinor, κ_ξ = 13/(4e), Pati–Salam "emerging", the toroidal frame) are retracted. See [`../04_meta/DRIFT_CENSUS.md`](../04_meta/DRIFT_CENSUS.md).
+
 If you arrived without a specific field interest, this is the door. If you arrived knowing your field, skip to [`../02_results/{your_field}/`](../02_results/) — there is a folder per field.
 
 ---

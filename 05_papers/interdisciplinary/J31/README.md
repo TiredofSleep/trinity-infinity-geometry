@@ -1,6 +1,8 @@
 # J31 — Specificity Scoping of Algebraic Detectors (REVISED 2026-05-28)
 
 **Status:** REVISED 2026-05-07 per fresh-eyes referee report (`Atlas/META_PLAN_2026-05-06/REFEREE_REPORTS/J34_StatSci_FreshEyes.md`); GATING ISSUE RESOLVED (WP106 distilgpt2 sweep script written and verified).
+
+> ⚠ **TRANSCRIPTION ARTIFACT (2026-09-24) — resolve before any submission.** This paper computes on TSML_RAW (row 9 = `0797377777`), a two-digit retyping error of the original table (the ck repository's first commit, 2026-03-03: row 9 = 0,7,9,3,7,…), first appearing 2026-04-25. Part 2's TSML-specific detector (11 | c₂, c₈) was computed on the typo and never fires on the original table. See [`FOUNDATION_NULL_MODEL_AUDIT.md`](../../../04_meta/FOUNDATION_NULL_MODEL_AUDIT.md) · [`DRIFT_CENSUS.md`](../../../04_meta/DRIFT_CENSUS.md).
 **Phase:** Phase 4.
 **Target venue:** *Statistical Science*.
 **Author lane:** Sanders + Gish.

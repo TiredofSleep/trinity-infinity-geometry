@@ -217,6 +217,8 @@ STD, TSML and BHML are three AI renderings of the same descriptions — so a pro
 three is plausibly the **descriptions'** content, and a property of one rendering is the
 **rendering's**.
 
+- *(Operator names as in `ck.h` and the original descriptions; `NAMING.md` now calls 1, 2, 3, 5, 6
+  BEING, DOING, BECOMING, CREATE, ASCEND.)*
 - **Shared by all three:** {VOID, HARMONY, BREATH, RESET} closes on itself in every rendering, and
   jointly in every pairing. Beyond that, the renderings agree on only **12 of the 55** unordered
   cells: VOID·VOID = VOID, VOID·HARMONY = HARMONY, LATTICE·COUNTER = PROGRESS, BALANCE·BREATH =
