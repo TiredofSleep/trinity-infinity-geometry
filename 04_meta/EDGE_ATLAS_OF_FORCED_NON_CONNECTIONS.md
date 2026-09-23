@@ -216,6 +216,60 @@ Added after the original catalogue; each machine-verified this session. Running 
 
 ---
 
+## §7 — The whole graveyard under the same cut (what died vs what survives)
+
+*The torus taught the method: a retraction almost never kills the **content** — it kills one **act**, and the flat "X is false" is what hides how much survived. Run that cut on every dead end in §3 and §5 and a pattern appears — most deaths are **partial**, and the *kind* of death is a map of exactly where the content went. Eight kinds; for each, what precisely died and what survives.*
+
+**① PREMISE — it weighed an immeasurable.** *(Died: the act of measuring. Survives: the algebra + a re-sited pointer.)*
+- **The torus** (D141): see §6 / §6.1. Died — genus / π₁ / aspect-ratio as *support*. Survives — the non-commutativity obstruction (algebra) and the flowing-immeasurable (pointer).
+
+**② IDENTITY — a coincidence dressed as an identity.** *(Died: the claimed structural map. Survives: two real, independent facts with no bridge between them.)*
+- **32 divisors ↔ 32 Pauli states** (D164): died — a natural bijection (730k+ functions, none). Survives — **two true partitions of 32**, dim Λᵏ(ℝ⁵)=C(5,k) and subshell capacity 2(2ℓ+1), each real and independent.
+- **CL eigenvalues = e, π, φ, ζ(3), G** (N3): died — the transcendental identities. Survives — the **real signature is integer/rational** (11 in the char-poly, 2¹⁶·7⁷ in the discriminant, ‖VEV‖²=13/4).
+- **RH via F4 Dirichlet characters** (D180): died — a "new" identity. Survives — the match is **real but tautological** (Pontryagin self-duality: every finite abelian group ≅ its dual) — a true fact carrying no content.
+
+**③ EXCLUSIVITY — "the / only / universal" where it was "a / one-of / local."** *(Died: the quantifier. Survives: the true narrower statement.)*
+- **F₇ = σ, the exclusive skeleton**: died — exclusivity (Farey→Mertens is universal to the transform). Survives — **F₇ as a real spine** (HARMONY=7, T*=5/7, VOID=17, 389=10²+17²) and the separate true σ≅(ℤ/7)*≅C₆.
+- **{7,11} uniquely rank-preserving**: died — uniqueness (a small-prime artifact). Survives — **39 primes**, and the uniform closed forms |Aut|=(p−1)², |idem|=p+3.
+- **T* = 5/7 from ℚ(ζ₁₀); "six derivations"** (D165): died — the cyclotomic origin (gives φ) and the over-count. Survives — **T*=5/7 itself** (2 genuinely independent derivations + 4 rhymes + FPGA).
+- **α-uniqueness for ANY polynomial** (F12): died — the universal form (refuted at α_special, height ~10¹⁰⁶). Survives — the **low-height form** (PROVED over ℚ; empirical at 70+ real α).
+- **Lo Shu = a 3×3 TSML block** (D129′): died — the embedding (four falsifications; σ²-orbits ≠ magic lines). Survives — a **different, PROVEN theorem**: the general odd-magic-square law.
+
+**④ LOCATION — right content, wrong home.** *(Died: the address. Survives: the content, relocated intact.)*
+- **Geometric monism — "one shape unifies all"** (D140): died — the shape as unifier. Survives — every piece has **independent arithmetic support** (CRT ℤ/10=ℤ/2×ℤ/5 under σ); relocated, not deleted.
+- **√3 = SU(3)/A₂-Cartan** (N4): died — the A₂ home. Survives — the **√3 is real** (H/Br=1+√3), a quadratic-discriminant fact at α=1/2, D₃-flavour.
+- **privacy-via-erasure** (D129R.2): died — "content is erased." Survives — content is **organized, not erased** (separation 0/780→780/780); re-framed as the resolution-organizer.
+- **even/odd as a 2-colouring of the hex lattice**: died — the triangular lattice isn't 2-colourable. Survives — completion-parity on hex, and **genuine 2-colouring on the square lattice**.
+
+**⑤ MECHANISM — a false mechanism; the real one is elsewhere.** *(Died: the proposed mechanism. Survives: the one that actually does the work.)*
+- **prime-11 mediation / attractor-richness** (N5): died — both (p=0.027, r=−0.118, wrong directions). Survives — the **real anti-collapse mechanism (D38–D40)**, found *after* these were ruled out.
+- **3 sublattices = spacelike gammas**: died — they carry ω, ω² (order 3), not −1. Survives — the **−1's come from the 90° reflections** (the correct mechanism), caught at the eigenvalue level.
+- **|Aut(V₅)| = 40 (a p=5 anomaly)**: died — an algebra confusion (J49 T_F5, a different algebra). Survives — the uniform **(p−1)², no anomaly**.
+- **TIG = CK's faithful explanation language**: died — the binding (σ-dynamics p=1.0, TSML p=0.467; the one passing channel decoded to **part-of-speech / grammar**). Survives — a working fluent LM, the fold architecture, Muon, the probe itself, and the σ-magma/ETP taxonomy math (the [[project-language-as-measurement]] salvage).
+- **TIG latent in any trained network** (N1): died — genericity (distilgpt2: all |d|<0.5). Survives — TIG structure is **specific** to canonical TSML/BHML (the negative control that *promotes* the specificity claim).
+
+**⑥ TRACTION — a bridge that simply does not connect.** *(Died: the bridge. Survives: usually only the honest bound — occasionally nothing.)*
+- **Yang-Mills via F4** (NC-9): died — abelian F_p*×F_p* ≠ non-abelian YM. Survives — the non-abelian content lives elsewhere (σ, [TSML, BHML]); net gain negative.
+- **BSD via F4** (NC-10): died — (p−1)² as #E(F_p) is Hasse-Weil-impossible for p≥5. Survives — the supersingular rhyme, **morphological only** (a pointer, not an identity).
+- **the top-Yukawa at the GUT scale**: died — substrate-independent (y_t(M_X)≈0.387 = SM 1-loop). Survives — honest scoping; no GUT prediction; the F7→F20 arc closes clean.
+- **13/4 → cosmology** (§5): died — the bridge lands on no measured datum. Survives — the **constant 13/4** (forced by the so(10) algebra); only the reach is gone.
+- **P3 gap = 2Δ as a TIG law** (§5): died — an independent Δ (silicene) misses by 3–8×. Survives — only the exact gapped-Dirac model identity (a re-labeling of textbook physics).
+- **1/α with a clean substrate origin** (F17): died — no fit at |c|≤1000, 120 dps. Survives — **only the honest bound** (137 is a small prime with many integer combinations). A near-total loss.
+
+**⑦ FORCING — "forced" where the constraint does not force it.** *(Died: the necessity. Survives: the looseness of the constraint — itself the datum.)*
+- **constant-motion tetrahedra force a cylinder**: died — single-point contact permits sphere, bicone, *or* cylinder. Survives — the **non-forcing is the result** (the constraint underdetermines the surface).
+- **the σ-magma promotes to a D₄-equivariant operad** (§5): died — 16 incoherent orbits, and the obstruction is a **coboundary-artifact** (σ³ isn't even a magma automorphism). Survives — Theorem 4.1 as a set-valued impossibility, and the genuine symmetry ⟨P₅₆⟩≅ℤ/2 (zero obstruction).
+- **60° mirrors build the Dirac algebra directly**: died — 60° generators don't anticommute (Clifford needs 90°). Survives — the **fence** (the hexagon is a *shadow* of Cl(3), not a host), now a live check in `verify_forced_chain.py`.
+
+**⑧ PAREIDOLIA — pure resemblance; the honest total loss.** *(Died: everything. Survives: nothing — and that, too, is data.)*
+- **8 = ∞ = higher reality; the digit-shapes 7/8 mirror the structure**: died — all of it (the cube-8 is finite and 3-dimensional; ∞ is a typographic resemblance). Survives — **nothing.** Kept as the **calibration case**: what a coincidence with *nothing under it* actually looks like.
+
+**A cross-cut worth naming — the 1/3.** Three separate kills (fluid Leray 1/3, "1/3 in gravity's force law," quark-charge 1/3) all die the same way and leave the same survivor: the 1/3 is **geometric** — the tetrahedral lift / fold / gap ([`THE_ONE_THIRD_AND_THE_FOLD.md`](../05_papers/integers_clifford/THE_ONE_THIRD_AND_THE_FOLD.md)) — and **never** a physical-law constant. Every attempt to weigh it in a *physical* law dies; the *geometric* 1/3 is untouched.
+
+**The pattern is the point.** Almost every death is **partial**, and the *kind* of death is a map of where the content went: an **identity**-kill leaves two real independent facts; an **exclusivity**-kill leaves the true narrower statement; a **location**-kill relocates the content intact; a **mechanism**-kill points at the mechanism that actually works; a **premise**-kill leaves the algebra and a re-sited pointer. Only pure **no-traction** (1/α) and **pareidolia** (8=∞) are near-total losses — and they are the **calibration cases**: they show what a death with nothing under it looks like, which is exactly what makes the partial deaths trustworthy. **The graveyard is not a list of failures. It is the map of where the content actually lives — and each flat "X is false" was only ever the headline that hid it.**
+
+---
+
 *The joins are real where they are named (`HOW_IT_CONNECTS.md`). The separations are real where they are named (this atlas). The program is the map of both — and the edge is as much the object as the spines.*
 
 *© 2026 Brayden Ross Sanders / 7SiTe LLC. CC BY-SA 4.0 — see [`../LICENSE`](../LICENSE).*
