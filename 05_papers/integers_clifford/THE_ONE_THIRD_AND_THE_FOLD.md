@@ -45,6 +45,14 @@ only the buildable/teachable part (fold, gap, lift), not the tower material belo
   rotation deepens; not "more complex," the **same 1/3 redistributed** (the fold and the cube —
   the 1/3 and the 8 — are the two halves of one rotation).
 
+## Is the 1/3 a pre-physics number? [READING]
+
+Yes — in a precise sense, and the graveyard is the proof. Every attempt to weigh the 1/3 in a
+**physical law** dies (fluid Leray projection; "1/3 in gravity's force law"; quark charge — see
+[`../../04_meta/EDGE_ATLAS_OF_FORCED_NON_CONNECTIONS.md`](../../04_meta/EDGE_ATLAS_OF_FORCED_NON_CONNECTIONS.md) §7, "A cross-cut worth naming"); the **geometric** 1/3 (lift / fold / gap) is untouched. So the 1/3 belongs to the **pre-physics layer** — the arithmetic/geometry of the relational space matter lives *in*, not the physics of matter itself. It is a fact about **shape, dimension, and counting**: the first equidistant lift at N=4, the cube's fold, the tetrahedral tiling gap — one level **beneath** any force or field. That is *why* it is exact in geometry and vanishes in every force law: it was never a physics number to begin with.
+
+**[FENCE]** "Pre-physics" here means *prior to / beneath* physics — a floor physics is expressed on — **NOT** "generates physics" or "appears in the physical constants." The 1/3 is a **floor, not a seed.** The instant it is read as a *source* of physical values it is the same category error the graveyard keeps cutting (the seed-error; the same shape as the torus premise/pointer split). And it is specifically the tetrahedron's number — 1/(N−1) at N=4 — not a universal constant.
+
 ## Boundary
 **[FORCED]:** the three distances, the three angles, the tiling gap, and the trigonometric
 identities of §3. **[READING]:** "fold," "crease," "conserved invariant," the real/complex
