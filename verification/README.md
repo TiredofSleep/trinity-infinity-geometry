@@ -62,6 +62,8 @@ questions — is a claim **specific** (random tables of the same kind do not sha
 |---|---|---|
 | `foundation_null_model.py` (~25 s) | joint so(10), the sub-magma chain / 4-core, TSML's so(8), the associative spectrum — against random and rule-preserving tables | so(10) and the spectrum **generic**; the chain / 4-core and TSML's so(8) **readouts** of the construction rules ("products climb"; the twins 5 ≡ 6) |
 | `attractor_null_census.py` (minutes) | the α = ½ attractor — closed form, field, Galois group — **exhaustively** over every BHML top block on {0,7,8,9} | 1+√3 = three BHML cells; quartic D₄ in 22/64 Rule-89 variants; the α = ½ degree drop in 64/64 |
+| `remaining_rows_null.py` (~50 s) | J04 σ-magma rigidity, J18/J53 F_p closed forms, J11's 13/4, J19's prime 11, J22's ladder | J04 rigidity **generic**; F_p forms and 13/4 **readouts**; J19 a **transcription artifact** (TSML_RAW is a two-digit typo); J22 **numerology** |
+| `three_renderings.py` (~30 s) | the three AI renderings of the operator descriptions (STD, TSML, BHML) — what they share | all three close {VOID, HARMONY, BREATH, RESET} and agree on only 12 of 55 cells; everything else is rendering-specific |
 
 ---
 
