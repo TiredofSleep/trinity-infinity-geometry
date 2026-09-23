@@ -10,7 +10,7 @@ is what every floor turns over.
 > **Run the checks** (Python 3.10+, numpy):
 >
 > ```
-> python verify_coins.py            # every [FORCED] line of THE_COIN.md (66 checks)
+> python verify_coins.py            # every [FORCED] line of THE_COIN.md (69 checks)
 > python verify_paradox_types.py    # every [FORCED] line of PARADOX_TYPES.md (11 checks)
 > ```
 

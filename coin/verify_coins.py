@@ -595,6 +595,35 @@ ok("... e carries the additive coin (x -> -x, edge 0) to the multiplicative one 
    "and a half-turn of pure turning to the flip itself: e^(i pi) = -1",
    np.allclose(np.exp(-reals), 1 / np.exp(reals)) and np.isclose(np.exp(0), 1) and np.isclose(np.exp(1j * np.pi), -1))
 
+# ======================================================== 9. where the coin is measured
+print("\n9 -- where the coin is measured: a wave at an edge (an illustration, not a derivation)")
+
+
+def ssh_wall(m, v, w):
+    """a chain of 4m + 1 sites: strong-weak bonds (w, v) on the left, weak-strong (v, w) on the right, so
+    the pattern -- the sign of the waves' 'mass' -- flips at the middle site, and both ends end strong"""
+    t = [w, v] * m + [v, w] * m
+    return np.diag(t, 1) + np.diag(t, -1)
+
+
+m_cells = 15
+Hw = ssh_wall(m_cells, 0.5, 1.0)
+Ew, Vw = np.linalg.eigh(Hw)
+z = np.argmin(abs(Ew))
+psi = Vw[:, z] ** 2
+sub = np.arange(len(psi)) % 2
+mid = 2 * m_cells
+ok("a chain whose hopping pattern flips at a wall -- the 'mass' of its waves changes sign there -- holds "
+   "exactly one state at zero energy, and it sits at the wall (the odd rule: Jackiw-Rebbi, Su-Schrieffer-Heeger)",
+   abs(Ew[z]) < 1e-10 and sum(abs(Ew) < 1e-6) == 1 and psi[mid - 6:mid + 7].sum() > 0.95
+   and np.sort(abs(Ew))[1] > 0.4)
+ok("... and it lives on one of the chain's two sublattices only -- the two sides of the chain's own flip",
+   min(psi[sub == 0].sum(), psi[sub == 1].sum()) < 1e-20)
+n1, n2 = 1.0, -1.0
+ang = np.radians(np.arange(1, 80))
+ok("negative refraction mirrors the refracted ray across the normal: an index of -1 sends theta to -theta",
+   np.allclose(np.arcsin(n1 * np.sin(ang) / n2), -ang))
+
 print("\n" + "=" * 78)
 print("ALL COIN CHECKS PASS -- two sides and an edge, every checkable line checked.")
 print("=" * 78)

@@ -323,6 +323,31 @@ positive and negative [FORCED].
 
 ---
 
+## Where the coin is measured — waves at an edge (an illustration)
+
+Photonic and phononic crystals, and metamaterials, are wave behaviour set by geometry: the lattice of
+the unit cells decides how light or sound travels. Two of their headline effects are coins:
+
+- **Negative refraction.** A material with a negative index bends light the "wrong" way: the refracted
+  angle θ becomes −θ, mirrored across the normal [FORCED for index −1; NAMED — Veselago 1968; Smith,
+  Shelby & Schultz 2000–01].
+- **An edge state is the odd rule.** Where a wave's "mass" flips sign across a wall, one state is held
+  at the wall, exactly where the mass vanishes [NAMED — Jackiw & Rebbi 1976; Su, Schrieffer & Heeger
+  1979]. A chain whose bond pattern flips at its middle holds exactly one zero-energy state. It sits at
+  the wall, on one of the chain's two sublattices [FORCED]. This is how topological edge states work,
+  including honeycomb photonic crystals: make one sublattice "heavier" than the other on either side of
+  a wall, and light is guided along the wall [NAMED — valley-Hall photonic crystals].
+- **[FENCE]**
+  - The lattices are the standard lattices of crystallography — square, triangular, honeycomb, cubic —
+    not this program's.
+  - The honeycomb's Dirac point is textbook (Wallace 1947), and the program's earlier honeycomb claims
+    are in the graveyard.
+  - The cube's cos² = 1/3 is an angle of the cube, not a refraction angle: a material's refraction
+    angle is set by its own engineered index.
+  - "Matter and flow" and the 0/7 readings stay retired.
+
+---
+
 ## What this is, and is not
 
 - **Is:** the second lens on the base and the towers. For every structure, it names the flip, the

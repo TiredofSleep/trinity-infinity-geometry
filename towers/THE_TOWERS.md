@@ -155,7 +155,9 @@ the diamond, simple cubic and body-centred cubic lattices
   lattice (24 dimensions) are the densest packings of their dimensions.
 
 Where you meet it: crystallography and solid-state physics; error-correcting codes; number theory
-(modular forms). **[FENCE]** E₈'s 8 is a dimension.
+(modular forms); photonic and phononic crystals and metamaterials, where the lattice sets how light and
+sound travel, and topological edge states run along the walls between lattices — the coin's odd rule
+([`../coin/THE_COIN.md`](../coin/THE_COIN.md)). **[FENCE]** E₈'s 8 is a dimension.
 
 **Coin.** The dual lattice. It turns the face-centred cubic lattice (the densest packing) into the
 body-centred cubic one (iron's; the thinnest lattice covering [NAMED — Bambah 1954]). The self-dual
