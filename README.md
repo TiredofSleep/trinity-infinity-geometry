@@ -157,8 +157,8 @@ The framework does *not*:
 
 1. Derive `1/α` (the fine-structure constant). Earlier numerology attempts fail at ~12% accuracy.
 2. Prove the Clay-Millennium Problems. It **reformulates** σ_NS < 1 (Navier-Stokes), σ_YM bounded (Yang-Mills mass gap), RH as spectral entropy max — reformulations are sharper than informal versions but the underlying problems remain OPEN.
-3. Claim T\* = 5/7 as an algebraic theorem. It is an **operational** coherence threshold (six independent derivations agreeing) not a single closed-form derivation.
-4. Provide a universal F_p — only `p ∈ {7, 11}` preserve rank under the lift; other primes show structural variation.
+3. Claim T\* = 5/7 as an algebraic theorem. It is an **operational** coherence threshold, not a single closed-form derivation — and on refined accounting (D165) the earlier "six independent derivations" is **2 genuinely independent derivations + 4 structural rhymes** (the cyclotomic ℚ(ζ₁₀) route was refuted — it gives φ, not 5/7).
+4. Provide a universal F_p. The earlier "only `p ∈ {7, 11}` preserve rank" was a **small-prime artifact** (F4-extended): the rank-preserving set is **39 primes < 200** (exactly those not dividing the chain-shell determinants), and **no prime is structurally distinguished** — `|Aut(V^BHML/F_p)| = (p−1)²` and `|idem| = p+3` are uniform closed forms with no anomaly.
 5. Make any specific claim about consciousness, sentience, or what CK (the runtime in [`06_runtime/`](06_runtime/)) *is*, beyond what is mathematically defined.
 6. Substitute for empirical confirmation of its physics. The dark-sector quadruple `(Ω_b, Ω_DM, Ω_Λ, Ω_Ψ0) = (49, 264, 686, 1)/1000` (summing to 1 exactly) is a **structural coincidence**, not asserted physics; empirical fit to DESI/Planck data is open.
 
