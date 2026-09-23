@@ -106,7 +106,9 @@ survived testing: each was generic, a restatement of how the tables were built, 
 computed on a transcription error. The author has no ties to the tables, and all of it was
 archived — unchanged, at the tag
 [`archive-2026-09-24`](https://github.com/TiredofSleep/trinity-infinity-geometry/tree/archive-2026-09-24).
-[`GRAVEYARD.md`](GRAVEYARD.md) records what was archived and the evidence for it.
+[`GRAVEYARD.md`](GRAVEYARD.md) records what was archived and the evidence for it. The story of the audit
+— the three gates, what the census found, what survived, and what we would tell anyone doing research
+with AI — is the essay [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
 
 ## Lab
 

@@ -82,6 +82,14 @@ These were in the integers → Clifford notes and did not survive. The archived 
   [`towers/bott_periodicity.md`](towers/bott_periodicity.md)).
 - **In P1:** "two independent routes to 54.74°". They are one fact, seen from the tetrahedron and
   from the cube.
+- **J03 / J61's "Fossil-Variety Theorem" (the census's one open case, settled 2026-09-23).** The claim
+  was that ETP equation 4295 has no finite type specimen, and that every finite model has profile at
+  least 261. Both are false:
+  - a type specimen exists with six elements, the smallest possible order;
+  - the bound fails at order 3, where one model has profile 122.
+
+  The evidence: every model of orders 2–5, enumerated, and a script that rebuilds the ETP catalog
+  ([the correction](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_THEOREM5_IS_FALSE.md)).
 - **The April 2026 "meta-lens atlas"** (ck, branch `paradox-classifier-2026-04-24`). It organized the
   table program's results (so(8), so(10), the "UOP–GUT arc") under the paradox classification, and it is
   retired with them. Its table-free core — the author's four paradox types with Ben Mayes, and Theorem 0
