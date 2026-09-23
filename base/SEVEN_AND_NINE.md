@@ -85,6 +85,12 @@ and 9 and also leaves the family at 10 and 11 (octagonal and nonagonal bipyramid
 not depend on writing numbers in base ten. It is recorded as a fact about this rule, not as a
 claim about why we count in tens.
 
+**Where the base hands off.** The family does not end at 10 so much as open upward. Its three
+solids — the tetrahedron, the octahedron and the cube — are the three-dimensional floors of the
+only three regular shapes that exist in every dimension (the simplex, cross-polytope and cube
+towers), and 12, the icosahedron, is where the five-fold line of the break rises. See
+[`../towers/THE_TOWERS.md`](../towers/THE_TOWERS.md).
+
 ## The pattern: the odd numbers fill the centre
 
 - **[FORCED]** 5 = 4 + centre, 7 = 6 + centre, 9 = 8 + centre. The even ones — 4, 6, 8 — are the

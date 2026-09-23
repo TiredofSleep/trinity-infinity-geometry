@@ -90,10 +90,32 @@ not 3²). Which to adopt is the author's decision.
 - **Each tetrahedron is its own mirror image** — the reflection x ↔ y maps it onto itself — so the
   two are *not* "two chiralities". (Earlier versions said they were; that was wrong.)
 - The cube's three perpendicular axes generate the Clifford algebra **Cl(3)**, of dimension
-  2³ = 8, graded 1 + 3 + 3 + 1 — see [`P2_clifford_cube_skeleton.md`](P2_clifford_cube_skeleton.md)
-  and [`THE_TWO_BUILDS.md`](THE_TWO_BUILDS.md).
+  2³ = 8, graded 1 + 3 + 3 + 1 — see [`../towers/P2_clifford_cube_skeleton.md`](../towers/P2_clifford_cube_skeleton.md)
+  and [`../towers/THE_TWO_BUILDS.md`](../towers/THE_TWO_BUILDS.md).
 - The cube's two shadows — a square down a face, a hexagon down a body diagonal — are related by
   cos²(1,1,1) = **1/3**, the tetrahedron's number again.
+
+---
+
+## Where each integer points
+
+The base is the ground floor of the towers of higher mathematics — the map is
+[`../towers/THE_TOWERS.md`](../towers/THE_TOWERS.md).
+
+| n | shape | points toward |
+|---|---|---|
+| **0** | the void — the centre | the **symmetry tower**: the centre is the one point every symmetry keeps fixed |
+| **1–4** | the simplices | the **simplex tower**: probability, algebraic topology |
+| **4** | the tetrahedron's 1/3 | the **harmonic tower**: Legendre polynomials, spherical harmonics |
+| **5** | the break (the pentagon) · the tetrahedron with its centre | the **exceptional shapes**, and **A₅ and the unsolvable quintic** · the **lattice tower** (diamond) |
+| **6** | the octahedron | the **cross-polytope tower**: sparsity, signed permutations |
+| **7** | the octahedron with its centre | the **lattice tower** (simple cubic) |
+| **8** | the cube | the **cube tower** (binary strings, codes) · the **Clifford tower**, up to Bott's eight-step clock |
+| **9** | the cube with its centre | the **lattice tower** (body-centred cubic), up to sphere packing and E₈ |
+
+The book's other pictures are ground floors too: turning (*i*) → the **number tower**
+ℝ → ℂ → ℍ → 𝕆; growing (*e*) → the **growth tower**; counting versus measuring (√2) → the
+**real-number tower**.
 
 ---
 

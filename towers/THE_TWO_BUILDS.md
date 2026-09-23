@@ -71,5 +71,5 @@ doubling and the i.**
 ## References
 - H. S. M. Coxeter, *Regular Polytopes*, 3rd ed. (Dover, 1973). [simplices, faces]
 - W. K. Clifford, *Amer. J. Math.* 1, 350 (1878); D. Hestenes, *Space-Time Algebra* (1966).
-- Companions: [`integers_as_geometric_entities.md`](integers_as_geometric_entities.md) (P1),
+- Companions: [`integers_as_geometric_entities.md`](../base/integers_as_geometric_entities.md) (P1),
   [`P2_clifford_cube_skeleton.md`](P2_clifford_cube_skeleton.md) (P2).

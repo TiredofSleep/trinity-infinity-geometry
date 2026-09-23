@@ -71,14 +71,14 @@ These were in the integers → Clifford notes and did not survive. The archived 
   quark charge, a copper-depletion strand. Each died; the geometric 1/3 of the tetrahedron is
   untouched.
 - **In the 0–9 realization:** "[FORCED]" on 0 and 5–9 (each uses a different rule — see
-  [`integers/THE_INTEGERS.md`](integers/THE_INTEGERS.md)); "the cube's two tetrahedra are the two
+  [`base/THE_INTEGERS.md`](base/THE_INTEGERS.md)); "the cube's two tetrahedra are the two
   chiralities" (false: a regular tetrahedron is achiral); "6 is the fusion, with symmetry D₆" (that
   is the flat hexagon's symmetry, not the octahedron's); the 0/7 pairing, the square/hex digit
   families, the "lens-centres", the mod-3 roles, the inhale/exhale of 7 → 8 → 9, and the "base-10
   reset" (readings carried over from the table program).
 - **In the Bott note:** "period 8 = duality × trinity". Two invariants of periods 4 and 2 give period
   4; the factor of 2 is ℍ ⊗ ℍ ≅ ℝ(4), not a trinity (see
-  [`integers/bott_periodicity.md`](integers/bott_periodicity.md)).
+  [`towers/bott_periodicity.md`](towers/bott_periodicity.md)).
 - **In P1:** "two independent routes to 54.74°". They are one fact, seen from the tetrahedron and
   from the cube.
 

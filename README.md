@@ -1,66 +1,70 @@
 # Trinity Infinity Geometry
 
-**The geometric realization of the integers 0–9** — the research that extends the book
-*[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*.
+**A new way to teach higher mathematics.** The base is the integers 0–9 read as shapes — the
+premise of the book *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)* —
+and every shape of the base points toward a **tower** of higher mathematics, climbing from
+something a child can build with gumdrops and toothpicks to what a graduate student studies.
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
 ---
 
-## The premise
+## The idea
 
-Read an integer as a configuration of points, and ask what shape the configuration is forced to
-take. (This is the book's Chapter 1: *integers are shapes*.)
+Higher mathematics is usually met as a stack of separate courses — linear algebra, group theory,
+topology, analysis — each with its own language, joined by nothing a student can see. Here it is
+met as **towers standing on one base**. The base is small enough to hold in one hand; each tower
+starts on it, and a learner who can stand on the base can see where every tower goes.
 
-- **0 — the void.** The empty centre: the one point nearest to all the points at once.
-- **1, 2, 3, 4 — point, segment, triangle, tetrahedron.** Keep every point the same distance from
-  every other, and each new point must rise into a new dimension — and doubles the number of
-  pieces. Three-dimensional space holds four equal points and no more.
-- **The tetrahedron's number, 1/3.** Seen from the centre, its corners are at cos θ = −1/3
-  (109.47°). The same 1/3 relates the cube's two shadows and sets the tetrahedron's tiling gap.
-- **5 — the break.** The pentagon: the first rotation that cannot tile.
-- **6 — the round.** The octahedron: six points spread evenly on a sphere.
-- **8 — the cube.** Three perpendicular directions, 2³ corners, two tetrahedra — and the algebra
-  of three-dimensional space, Cl(3), whose two shadows are the square and the hexagon.
+## The base — [`base/`](base/README.md)
 
-## What this repository adds
+Read an integer as a configuration of points, and ask what shape it is forced to take. One rule —
+the book's own, *the most symmetric arrangement* — realizes every integer from 0 to 9, each
+uniquely:
 
-| | |
-|---|---|
-| [`integers/THE_INTEGERS.md`](integers/THE_INTEGERS.md) | **Start here.** All ten integers, each with the rule that picks its shape — and what is forced, what is chosen, and what is open. |
-| [`integers/SEVEN_AND_NINE.md`](integers/SEVEN_AND_NINE.md) | **One rule for all ten** — the book's own "most symmetric arrangement", kept in 3-space: 7 is the octahedron with its centre, 9 the cube with its centre. |
-| [`integers/integers_as_geometric_entities.md`](integers/integers_as_geometric_entities.md) | The ladder and the tetrahedral 1/3, with where that geometry is measured in the world. |
-| [`integers/P2_clifford_cube_skeleton.md`](integers/P2_clifford_cube_skeleton.md) | The cube and its Clifford algebra. |
-| [`integers/THE_TWO_BUILDS.md`](integers/THE_TWO_BUILDS.md) | Equal distance lifts; perpendicularity doubles. |
-| [`integers/THE_ONE_THIRD_AND_THE_FOLD.md`](integers/THE_ONE_THIRD_AND_THE_FOLD.md) | The 1/3 as lift, fold and gap. |
-| [`integers/bott_periodicity.md`](integers/bott_periodicity.md) | Where the perpendicular build goes after the cube. |
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|---|
+| the void | point | segment | triangle | tetrahedron | tetrahedron + centre | octahedron | octahedron + centre | cube | cube + centre |
 
-## One rule for all ten
+(The book's 5 is the flat pentagon — the "break" — from a different rule; the choice is the
+author's.) Start with [`base/THE_INTEGERS.md`](base/THE_INTEGERS.md), then
+[`base/SEVEN_AND_NINE.md`](base/SEVEN_AND_NINE.md).
 
-Beyond four points the simpler rules part ways: spreading points on a sphere forces the
-octahedron at 6, perpendicularity forces the cube at 8. But the book's own rule — **the most
-symmetric arrangement** — kept in three-dimensional space, realizes every integer from 0 to 9,
-each uniquely: the void, point, segment, triangle, tetrahedron, tetrahedron + centre, octahedron,
-**octahedron + centre (7)**, cube, **cube + centre (9)** — checked over every symmetry group of
-3-space ([`integers/SEVEN_AND_NINE.md`](integers/SEVEN_AND_NINE.md)). It fills the book's gap at 7
-and 9, and at 10 it leaves the family. It differs from the book at 5 (the tetrahedron with its
-centre, not the pentagon) — a choice for the author.
+## The towers — [`towers/`](towers/README.md)
+
+| from the base | the tower | where it reaches |
+|---|---|---|
+| 1–4, the simplices | the **simplex tower** | probability; algebraic topology |
+| 8, the cube · 6, the octahedron | the **cube** and **cross-polytope towers** — with the simplex, the only regular shapes in every dimension | binary codes; sparsity; regular polytopes |
+| 8, the cube's algebra Cl(3) | the **Clifford tower** | spinors; Bott's eight-step clock |
+| turning, *i* | the **number tower** ℝ → ℂ → ℍ → 𝕆 | Hurwitz: division ends at 𝕆 |
+| the most symmetric arrangement; the break at 5 | the **symmetry tower** | A₅ and the unsolvable quintic; the quaternions over the rotations; Lie groups |
+| 5, 7, 9 — the centred shapes | the **lattice tower** | Kepler's packing; E₈ and the Leech lattice |
+| the tetrahedron's 1/3 | the **harmonic tower** | spherical harmonics; the shapes of atomic orbitals |
+| counting versus measuring, √2 | the **real-number tower** | the real line; transcendence of *e* and π |
+| growing, *e* | the **growth tower** | the exponential map from Lie algebras to Lie groups |
+
+The map, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md). The base does not prove
+the towers; it points at them.
 
 ## Check it
 
 ```
 pip install numpy
-cd integers
+cd base
 python verify_integers.py
 python verify_one_rule.py
 python verify_forced_chain.py
+cd ../towers
+python verify_towers.py
 python verify_two_builds.py
 python verify_one_third_fold.py
 python bott_verify.py
 ```
 
-Every claim tagged **[FORCED]** has a line in one of these scripts.
+Every claim tagged **[FORCED]** has a line in one of these scripts; theorems at the tops of the
+towers are cited.
 
 ## What was archived, and why
 

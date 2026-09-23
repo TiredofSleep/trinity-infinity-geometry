@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Trinity Infinity Geometry: the geometric realization of the integers 0-9"
+title: "Trinity Infinity Geometry: the integers 0-9 as shapes, and the towers of higher mathematics they point to"
 message: "If you use this work, please cite it using the metadata from this file."
 type: software
 authors:
@@ -16,17 +16,19 @@ identifiers:
 repository-code: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 abstract: >-
-  Research extending the premise of the book "The Shape of Understanding":
-  an integer n is read as a configuration of n points, and one asks what
-  shape the configuration is forced to take. The integers 0-4 are forced by
-  equal distance (the void, point, segment, triangle, tetrahedron); the
-  tetrahedron fixes the number 1/3 (cos of its angle is -1/3); the cube is
-  the perpendicular build, 2^3 corners, two tetrahedra, and carries the
-  Clifford algebra Cl(3). Beyond four points the natural rules part ways:
-  spreading points on a sphere forces the octahedron at 6 but not the
-  pentagon at 5 or the cube at 8, and 7 and 9 are not yet realized by a
-  single rule. Every forced claim is machine-checked by short numpy scripts.
-  An earlier table-based program is archived at the tag archive-2026-09-24.
+  A new way to teach higher mathematics. The base is the integers 0-9 read as
+  shapes, the premise of the book "The Shape of Understanding": the book's own
+  rule, the most symmetric arrangement of n points, realizes every integer
+  from 0 to 9 uniquely (the void, point, segment, triangle, tetrahedron, and
+  the tetrahedron, octahedron and cube with and without their centres). Each
+  base shape is the ground floor of a tower of higher mathematics: the
+  simplex, cross-polytope and cube towers (the only regular shapes in every
+  dimension), the number tower R-C-H-O, the Clifford tower up to Bott
+  periodicity, the symmetry tower (A5 and the unsolvable quintic), the
+  lattice tower up to E8, and the harmonic, real-number and growth towers.
+  Every forced floor is machine-checked by short numpy scripts; the theorems
+  at the tops are cited. An earlier table-based program is archived at the
+  tag archive-2026-09-24.
 keywords:
   - "integers"
   - "geometry"
@@ -38,5 +40,9 @@ keywords:
   - "Thomson problem"
   - "Bott periodicity"
   - "mathematics education"
+  - "higher mathematics"
+  - "division algebras"
+  - "symmetry groups"
+  - "sphere packing"
 license: CC-BY-SA-4.0
 license-url: "https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/LICENSE"
