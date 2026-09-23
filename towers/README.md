@@ -1,7 +1,9 @@
 # The towers — where the base points
 
 Each shape of the [base](../base/README.md) is the ground floor of a tower of higher mathematics,
-climbing from something a child can build to what a graduate student studies.
+climbing from something a child can build to what a graduate student studies. Every tower also carries
+a **coin** — a flip with two sides and an edge, where its paradox sits. The coins are the second lens:
+see [`../coin/`](../coin/README.md).
 
 > **Run the checks** (Python 3.10+, numpy):
 >

@@ -16,7 +16,8 @@ identifiers:
 repository-code: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 url: "https://github.com/TiredofSleep/trinity-infinity-geometry"
 abstract: >-
-  A new way to teach higher mathematics. The base is the integers 0-9 read as
+  A new way to teach higher mathematics, by classifying its paradoxes rather than
+  resolving them. The base is the integers 0-9 read as
   shapes, the premise of the book "The Shape of Understanding": the book's own
   rule, the most symmetric arrangement of n points, realizes every integer
   from 0 to 9 uniquely (the void, point, segment, triangle, tetrahedron, and
@@ -26,8 +27,14 @@ abstract: >-
   dimension), the number tower R-C-H-O, the Clifford tower up to Bott
   periodicity, the symmetry tower (A5 and the unsolvable quintic), the
   lattice tower up to E8, and the harmonic, real-number and growth towers.
-  Every forced floor is machine-checked by short numpy scripts; the theorems
-  at the tops are cited. An earlier table-based program is archived at the
+  Every shape and every floor is also a coin: a flip (an involution) with two
+  sides and an edge (its fixed set), where the paradox lives. The author's three
+  coins (positive/negative, finite/infinite, real/imaginary) are the three
+  half-turns of the Riemann sphere about the axes of the octahedron 0, oo, +-1,
+  +-i; the centres of 5, 7 and 9 are forced by orbit parity in the solid
+  symmetry groups, so 5, 7 and 9 are classified (flat face and solid face), not
+  chosen. Every forced floor is machine-checked by short numpy scripts; the
+  theorems at the tops are cited. An earlier table-based program is archived at the
   tag archive-2026-09-24.
 keywords:
   - "integers"

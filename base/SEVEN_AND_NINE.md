@@ -1,6 +1,6 @@
 # Seven and nine — one rule for the whole realization
 
-### Tags: **[FORCED]** checked by [`verify_one_rule.py`](verify_one_rule.py) · **[NAMED]** a cited standard result · **[READING]** an interpretation · **[OPEN]** the author's call.
+### Tags: **[FORCED]** checked by [`verify_one_rule.py`](verify_one_rule.py) (or, where marked, [`../coin/verify_coins.py`](../coin/verify_coins.py)) · **[NAMED]** a cited standard result · **[READING]** an interpretation · **[COIN]** a classified pair: both faces kept, neither chosen.
 
 ---
 
@@ -95,6 +95,11 @@ towers), and 12, the icosahedron, is where the five-fold line of the break rises
 
 - **[FORCED]** 5 = 4 + centre, 7 = 6 + centre, 9 = 8 + centre. The even ones — 4, 6, 8 — are the
   three Platonic solids with at most eight corners: the tetrahedron, octahedron and cube.
+- **[FORCED — `verify_coins.py`] Why the odd ones must.** In every solid symmetry group
+  (tetrahedral, octahedral, icosahedral, with or without mirrors), every orbit except the centre
+  has an even number of points. So an odd number of points with solid symmetry has to put one on the
+  centre. The centre at 5, 7 and 9 is forced by oddness. It is not chosen, and it needs no ring or
+  modular closing.
 - **[READING]** Each odd integer from 5 on is the one before it with its void filled. This is the
   book's "the void is the fullest point" (§1.6b) made literal — and the book already reads 1 this
   way ("the point, 1, is the void made visible"). The pattern does not reach 3: a segment with its
@@ -127,16 +132,22 @@ are the second **centred tetrahedral, centred octahedral and centred cube number
 
 (Symmetry counts in parentheses.)
 
-## What this settles, and what it leaves to the author
+## What this settles, and how 5, 7 and 9 are classified
 
 - **Settled:** one rule — the book's own — realizes every integer from 0 to 9, each uniquely, and
   stops at 10. It fills the book's gap at 7 and 9: **7 is the octahedron with its centre, 9 the
   cube with its centre.**
-- **[OPEN] Two choices, the author's:**
-  - **At 5**, the rule gives the tetrahedron with its centre; the book's 5 is the flat pentagon —
-    the "break", which comes from a different rule (regular polygons) and has less symmetry (20
-    against 24).
-  - **At 9**, the rule gives the cube with its centre; [`THE_INTEGERS.md`](THE_INTEGERS.md) used
-    3² (as points, a 3 × 3 grid, with 16 symmetries).
-- **Not changed:** the book. It teaches 0–6 and 8; this stays here, behind the wall, unless the
-  author moves it.
+- **[COIN] Classified, not chosen.** The program classifies paradoxes; it does not resolve them.
+  So 5, 7 and 9 are not decisions between rivals. Each integer is a coin with two faces, and both
+  are kept:
+  - **the flat face** — the most symmetric arrangement *in the plane*: the pentagon, the heptagon,
+    the nonagon. Its centre is empty. It points toward the void and never stands on it.
+  - **the solid face** — the most symmetric arrangement *in space*: the tetrahedron, octahedron or
+    cube with its centre. Its centre is inhabited, forced by oddness.
+  - **9 has a third face**, the square 3²: the 3 × 3 grid (16 symmetries in space), which is two
+    whole coins — heads, tails or edge — tossed together.
+  - The edge between the faces is the centre itself. See
+    [`../coin/THE_COIN.md`](../coin/THE_COIN.md) for the classification and its checks.
+- **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
+  plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves
+  them.

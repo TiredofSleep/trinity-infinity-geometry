@@ -15,9 +15,12 @@ theorems at the tops are **[NAMED]** and cited, not reproved. The book's last ch
   [`../base/`](../base/README.md)).
 - **Floors** — what you meet as you climb, each one a real piece of mathematics.
 - **Top** — where the tower reaches in mathematics today, and the course where students meet it.
+- **Coin** — the flip that every floor carries, with its two sides and its edge. The edge is where
+  the tower's paradox sits. A tower climbs one way; its coin is the second lens, the side of the tower
+  that does not climb but turns over. All eight coins are classified, and checked, in [`../coin/THE_COIN.md`](../coin/THE_COIN.md).
 
 The base does not prove the towers. It points at them: you stand on the base, and the tower is what
-the pointing reaches.
+the pointing reaches. The towers are what you climb. Their edges are what you point toward.
 
 ## The map
 
@@ -62,6 +65,10 @@ Hamming distance, error-correcting codes, Boolean logic. The cross-polytope is t
 ℓ¹ norm — **sparsity** and compressed sensing — and its symmetries are the signed permutations,
 2ⁿ·*n*! of them (48 in three dimensions, the octahedron's and the cube's).
 
+**Coin.** Duality, which trades corners for faces. Its two sides are the cube and the cross-polytope
+(in three dimensions, also the dodecahedron and the icosahedron). Its edge is the simplex, which is
+its own dual in every dimension. [FORCED — `verify_coins.py`]
+
 ## 2. The number tower — ℝ → ℂ → ℍ → 𝕆
 
 **Ground floor:** turning — the quarter-turn *i* (Picture 3). The book climbs this tower to ℍ in
@@ -79,6 +86,11 @@ multiplies: the tower of division ends at 𝕆. Where you meet it: complex analy
 rotation (computer graphics, spacecraft attitude); the octonions behind the exceptional Lie groups
 (G₂ is the symmetry group of 𝕆).
 
+**Coin.** Conjugation, a + bi → a − bi, on every floor. It flips the imaginary part, and its edge
+is the real numbers. A number times its mirror lands on that edge: x x̄ = |x|². The paradox sits
+where the edge is missing: on the real line, the flip x → −1/x keeps nothing, and its edge is *i*.
+[FORCED — `verify_coins.py`]
+
 ## 3. The Clifford tower — the cube's algebra and its eight-step clock
 
 **Ground floor:** the cube — three perpendicular directions generate the Clifford algebra Cl(3),
@@ -94,6 +106,10 @@ and [`THE_TWO_BUILDS.md`](THE_TWO_BUILDS.md)).
 [`bott_periodicity.md`](bott_periodicity.md), where the mechanism (ℍ ⊗ ℍ ≅ ℝ(4)) is checked. Where
 you meet it: spinors and the Dirac equation; K-theory; the topology of spheres.
 **[FENCE]** Bott's 8 is a period; the cube's 8 is a count of corners.
+
+**Coin.** The grade flip, v → −v, which negates the odd pieces and keeps the even ones. On the cube
+the two sides are its two tetrahedra (the even and the odd corners). The edge — the even half of
+Cl(3) — is the quaternions, where rotation lives. [FORCED — `verify_coins.py`]
 
 ## 4. The symmetry tower — from "most symmetric" to groups
 
@@ -116,6 +132,11 @@ one point every symmetry keeps fixed.
 **Top.** Lie groups and their representations; Galois theory; symmetry and conservation laws in
 physics (Noether).
 
+**Coin.** The mirror, whose two sides are left-handed and right-handed. Its edge is the shapes that
+are their own mirror image — all five Platonic solids. And turning is a coin with **no edge at all**:
+*q* and −*q* give one rotation, no unit quaternion is its own negative, and a full turn brings *q* to
+−*q* — it takes two to come home. [FORCED — `verify_coins.py`]
+
 ## 5. The lattice tower — from a centred shape to sphere packing
 
 **Ground floor:** 5, 7, 9 — a shape with its centre filled: an atom with its nearest neighbours in
@@ -136,6 +157,12 @@ the diamond, simple cubic and body-centred cubic lattices
 Where you meet it: crystallography and solid-state physics; error-correcting codes; number theory
 (modular forms). **[FENCE]** E₈'s 8 is a dimension.
 
+**Coin.** The dual lattice. It turns the face-centred cubic lattice (the densest packing) into the
+body-centred cubic one (iron's; the thinnest lattice covering [NAMED — Bambah 1954]). The self-dual
+lattices sit on the edge: the cubic grid, the hexagonal plane, and E₈. The paradox: balls never
+tile — a packing leaves gaps, and a covering overlaps. [FORCED — `verify_coins.py`, except the
+covering result]
+
 ## 6. The harmonic tower — from the tetrahedron's 1/3
 
 **Ground floor:** the tetrahedron's number — cos θ = −1/3; half-angle 54.74°, with cos² = 1/3
@@ -151,6 +178,10 @@ each); representations of the rotation group; harmonic analysis on the sphere.
 **[FENCE]** The counts 1, 3, 5, 7 belong to this tower; they are not a reading of the base's odd
 numbers.
 
+**Coin.** The mirror through the atom, which swaps the + and − lobes of an orbital. Its edge is the
+node, where the orbital vanishes (the odd rule). For P₂, the node is the cone at the magic angle.
+Turning x to −x flips the odd harmonics and keeps the even ones. [FORCED — `verify_coins.py`]
+
 ## 7. The real-number tower — from √2
 
 **Ground floor:** counting versus measuring — the diagonal of the unit square, which no fraction
@@ -163,6 +194,11 @@ names (Picture 6; Pythagoras, Chapter 8).
 fractions and Diophantine approximation; [NAMED — Hermite 1873, Lindemann 1882] *e* and π are
 transcendental; measure theory.
 
+**Coin.** x → 2/x, which swaps the fractions whose square is below 2 with those above. It keeps no
+fraction: its edge, √2, is missing. This is the keystone made exact. You **point toward it** by
+averaging the two sides (3/2, 17/12, 577/408, …). You **measure off it**: every fraction p/q stays
+more than 1/(3q²) away. And you **never stand on it**. [FORCED — `verify_coins.py`]
+
 ## 8. The growth tower — from *e*
 
 **Ground floor:** growth that feeds itself — *e* (Picture 4; Chapter 4).
@@ -174,6 +210,12 @@ transcendental; measure theory.
 **Top.** The exponential map from a Lie algebra to its Lie group — how the infinitesimal turns of
 towers 3 and 4 become finite ones; differential equations; dynamical systems.
 
+**Coin.** z → −z̄, which swaps growing (Re z > 0) for shrinking (Re z < 0). Its edge is pure turning,
+and *e* carries it onto the unit circle — the line between the solutions of x′ = λx that grow and
+those that shrink.
+The same split gives e^x = cosh x + sinh x and e^{iθ} = cos θ + *i* sin θ. [FORCED —
+`verify_coins.py`]
+
 ---
 
 ## What is and is not claimed
@@ -183,3 +225,6 @@ towers 3 and 4 become finite ones; differential equations; dynamical systems.
 - **Not claimed:** that the base *derives* the towers. The integers do not prove Bott's theorem or
   Hurwitz's; they are where a learner can stand to see them. The base points; the towers are what
   it points at.
+- **Also claimed:** every tower carries a coin — a flip with two sides and an edge — and each coin is
+  standard mathematics, checked where it can be ([`../coin/THE_COIN.md`](../coin/THE_COIN.md)). The towers climb; the coins classify the
+  paradoxes at their edges rather than resolving them.

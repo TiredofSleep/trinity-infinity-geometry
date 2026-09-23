@@ -2,7 +2,7 @@
 
 ## The geometric realization of the integers — which shape, and by which rule
 
-### Tags: **[FORCED]** follows from the named rule and is checked by a script · **[RULE]** names the rule that picks the shape · **[READING]** an interpretation · **[OPEN]** not settled. Every [FORCED] claim here is in [`verify_integers.py`](verify_integers.py), [`verify_forced_chain.py`](verify_forced_chain.py) or [`verify_one_rule.py`](verify_one_rule.py).
+### Tags: **[FORCED]** follows from the named rule and is checked by a script · **[RULE]** names the rule that picks the shape · **[READING]** an interpretation · **[COIN]** a classified pair: both faces kept, neither chosen, the edge between them named. Every [FORCED] claim here is in [`verify_integers.py`](verify_integers.py), [`verify_forced_chain.py`](verify_forced_chain.py), [`verify_one_rule.py`](verify_one_rule.py) or [`../coin/verify_coins.py`](../coin/verify_coins.py).
 
 ---
 
@@ -75,10 +75,23 @@ exhaustively checked over all symmetry groups]: the void, point, segment, triang
 the book's gap: **7 is the octahedron with its centre, 9 the cube with its centre**. At 10 it
 leaves this family.
 
-**[OPEN] — the author's call.** The rule agrees with the table above at 0–4 and 6–8. It differs
-at **5** (the tetrahedron with its centre, not the flat pentagon — which comes from the
-regular-polygon rule and has less symmetry, 20 against 24) and at **9** (the cube with its centre,
-not 3²). Which to adopt is the author's decision.
+**[COIN] — classified, not chosen.** The rule agrees with the table above at 0–4 and 6–8. At **5**
+and **9** the table shows another face of the same integer, and both faces are kept:
+
+- **Every integer from 4 on has a flat face and a solid face.** The most symmetric *n* points in the
+  plane are the regular *n*-gon, whose centre is empty [FORCED]. The most symmetric *n* points in
+  space are the solid of [`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md) [FORCED]. So 5 is the pentagon
+  *and* the tetrahedron with its centre, 7 is the heptagon *and* the octahedron with its centre, and
+  9 is the nonagon *and* the cube with its centre.
+- **The centre is the edge; whether it is inhabited is the coin.** In every solid symmetry group,
+  every orbit except the centre has an even number of points [FORCED]. So an odd number of points
+  with solid symmetry *must* stand on the centre: at 5, 7 and 9 the centre is forced, by oddness, not
+  chosen. The flat face points toward its centre and never stands on it. The solid face stands on
+  it.
+- **9 has a third face, the square 3²:** the 3 × 3 grid, which is two coins that can each land
+  heads, tails or on the edge (4 corners + 4 edge-midpoints + the centre) [FORCED].
+- The book shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
+  plane. The flagship keeps every face. The classification, with its checks, is in [`../coin/THE_COIN.md`](../coin/THE_COIN.md).
 
 ---
 
@@ -94,6 +107,10 @@ not 3²). Which to adopt is the author's decision.
   and [`../towers/THE_TWO_BUILDS.md`](../towers/THE_TWO_BUILDS.md).
 - The cube's two shadows — a square down a face, a hexagon down a body diagonal — are related by
   cos²(1,1,1) = **1/3**, the tetrahedron's number again.
+- **The two shadows are two lenses on one coin** [FORCED]. Face-on, the two tetrahedra cast the same
+  square, and the two sides cannot be told apart. Down the diagonal they separate into two triangles,
+  with both apexes on the centre. Neither shadow alone tells the eight corners apart; the two
+  together do. See [`../coin/THE_COIN.md`](../coin/THE_COIN.md).
 
 ---
 
@@ -132,11 +149,15 @@ Kept on record so it is not repeated (the full earlier text is in the archive �
   the hex (flow) family {3,6,7,9}"**, **"5 and 7 are the two lens-centres"**, **the mod-3 roles**,
   **the "inhale / exhale" pulse of 7 → 8 → 9**, **"9 = the last digit before the base-10 reset"** →
   readings carried over from the archived table program, or sortings chosen after the fact; none
-  follows from the premise.
+  follows from the premise. What was true beneath two of them is kept exactly in [`../coin/THE_COIN.md`](../coin/THE_COIN.md). The centre
+  is an edge, empty or inhabited, and it is inhabited at every odd count in a solid, not at 7 alone.
+  The two shadows are two lenses on one cube, not two families of digits.
 
 ---
 
 *Read as configurations of points, the integers 0–4 are forced — the void and the four
 simplices, by equal distance. Beyond four the simpler rules part ways, but the book's own rule —
 the most symmetric arrangement — carries on alone: it realizes every integer to 9, with 7 the
-octahedron and 9 the cube, each with its centre filled, and it leaves that family at 10.*
+octahedron and 9 the cube, each with its centre filled, and it leaves that family at 10. From 4 on,
+each integer is a coin with a flat face and a solid face; at 5, 7 and 9 the coin is whether the
+centre is inhabited, and both faces are kept.*

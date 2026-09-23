@@ -1,9 +1,11 @@
 # Trinity Infinity Geometry
 
-**A new way to teach higher mathematics.** The base is the integers 0–9 read as shapes — the
-premise of the book *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)* —
-and every shape of the base points toward a **tower** of higher mathematics, climbing from
-something a child can build with gumdrops and toothpicks to what a graduate student studies.
+**A new way to teach higher mathematics — by classifying its paradoxes, not resolving them.** The
+base is the integers 0–9 read as shapes — the premise of the book
+*[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*. Every shape of
+the base points toward a **tower** of higher mathematics, climbing from something a child can build
+with gumdrops and toothpicks to what a graduate student studies. And every shape, and every floor of
+every tower, is a **coin**, with two sides and an edge.
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
@@ -14,8 +16,23 @@ something a child can build with gumdrops and toothpicks to what a graduate stud
 
 Higher mathematics is usually met as a stack of separate courses — linear algebra, group theory,
 topology, analysis — each with its own language, joined by nothing a student can see. Here it is
-met as **towers standing on one base**. The base is small enough to hold in one hand; each tower
+met as **towers standing on one base**. The base is small enough to hold in one hand. Each tower
 starts on it, and a learner who can stand on the base can see where every tower goes.
+
+It is seen through **two lenses**. The towers are the climb. The **coin** is what every floor turns
+over. A *flip* is a move that, done twice, changes nothing: its two sides are what it swaps, and its
+edge is what it leaves in place. The paradoxes live on the edges — √2, which no fraction reaches, and
+*i*, which no real number is — and mathematics did not resolve them. It named them and classified
+them. That is the method here.
+
+## The coin — [`coin/`](coin/README.md)
+
+The author's three coins — positive and negative, real and imaginary, finite and infinite — are the
+three half-turns of the sphere of numbers about the axes of one octahedron, whose corners are 0, ∞,
+1, −1, *i*, −*i*. Every flip that respects adding splits each thing into an edge part and a side
+part: real + imaginary, cos θ + *i* sin θ, symmetric + skew. Missing edges are where the paradoxes
+live, and the book's keystone — *point toward it, measure off it, never stand on it* — holds there
+exactly. Start with [`coin/THE_COIN.md`](coin/THE_COIN.md).
 
 ## The base — [`base/`](base/README.md)
 
@@ -27,23 +44,26 @@ uniquely:
 |---|---|---|---|---|---|---|---|---|---|
 | the void | point | segment | triangle | tetrahedron | tetrahedron + centre | octahedron | octahedron + centre | cube | cube + centre |
 
-(The book's 5 is the flat pentagon — the "break" — from a different rule; the choice is the
-author's.) Start with [`base/THE_INTEGERS.md`](base/THE_INTEGERS.md), then
-[`base/SEVEN_AND_NINE.md`](base/SEVEN_AND_NINE.md).
+From 4 on, each integer is a coin with a **flat face** (the most symmetric arrangement in the
+plane: the square, the pentagon, …) and a **solid face** (the table). At 5, 7 and 9 the coin is
+whether the centre is inhabited. Every solid symmetry group has only even orbits besides the centre,
+so an odd count in a solid must stand on its centre. The flat face never does. Both faces are kept:
+the book's 5 is the flat pentagon, the "break". Start with
+[`base/THE_INTEGERS.md`](base/THE_INTEGERS.md), then [`base/SEVEN_AND_NINE.md`](base/SEVEN_AND_NINE.md).
 
 ## The towers — [`towers/`](towers/README.md)
 
-| from the base | the tower | where it reaches |
-|---|---|---|
-| 1–4, the simplices | the **simplex tower** | probability; algebraic topology |
-| 8, the cube · 6, the octahedron | the **cube** and **cross-polytope towers** — with the simplex, the only regular shapes in every dimension | binary codes; sparsity; regular polytopes |
-| 8, the cube's algebra Cl(3) | the **Clifford tower** | spinors; Bott's eight-step clock |
-| turning, *i* | the **number tower** ℝ → ℂ → ℍ → 𝕆 | Hurwitz: division ends at 𝕆 |
-| the most symmetric arrangement; the break at 5 | the **symmetry tower** | A₅ and the unsolvable quintic; the quaternions over the rotations; Lie groups |
-| 5, 7, 9 — the centred shapes | the **lattice tower** | Kepler's packing; E₈ and the Leech lattice |
-| the tetrahedron's 1/3 | the **harmonic tower** | spherical harmonics; the shapes of atomic orbitals |
-| counting versus measuring, √2 | the **real-number tower** | the real line; transcendence of *e* and π |
-| growing, *e* | the **growth tower** | the exponential map from Lie algebras to Lie groups |
+| from the base | the tower | where it reaches | its coin: sides · **edge** |
+|---|---|---|---|
+| 1–4, the simplices | the **simplex tower** | probability; algebraic topology | cube · cross-polytope · **the simplex, its own dual** |
+| 8, the cube · 6, the octahedron | the **cube** and **cross-polytope towers** — with the simplex, the only regular shapes in every dimension | binary codes; sparsity; regular polytopes | (the same coin: duality) |
+| 8, the cube's algebra Cl(3) | the **Clifford tower** | spinors; Bott's eight-step clock | odd · even · **the even half, ℍ** |
+| turning, *i* | the **number tower** ℝ → ℂ → ℍ → 𝕆 | Hurwitz: division ends at 𝕆 | ± imaginary · **the reals** |
+| the most symmetric arrangement; the break at 5 | the **symmetry tower** | A₅ and the unsolvable quintic; the quaternions over the rotations; Lie groups | left · right · **the Platonic solids**; *q* · −*q* · **no edge** |
+| 5, 7, 9 — the centred shapes | the **lattice tower** | Kepler's packing; E₈ and the Leech lattice | face-centred · body-centred · **the self-dual: ℤⁿ, E₈** |
+| the tetrahedron's 1/3 | the **harmonic tower** | spherical harmonics; the shapes of atomic orbitals | + lobe · − lobe · **the node (the magic angle)** |
+| counting versus measuring, √2 | the **real-number tower** | the real line; transcendence of *e* and π | below √2 · above · **√2, missing** |
+| growing, *e* | the **growth tower** | the exponential map from Lie algebras to Lie groups | growing · shrinking · **pure turning, the circle** |
 
 The map, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md). The base does not prove
 the towers; it points at them. For a learner, the book's last chapter, [*Where the towers go*](https://github.com/TiredofSleep/shape-of-understanding/blob/main/the_shape_of_understanding_BOOK.md#chapter-18--where-the-towers-go), points up each
@@ -57,6 +77,8 @@ cd base
 python verify_integers.py
 python verify_one_rule.py
 python verify_forced_chain.py
+cd ../coin
+python verify_coins.py
 cd ../towers
 python verify_towers.py
 python verify_two_builds.py
