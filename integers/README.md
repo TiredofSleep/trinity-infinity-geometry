@@ -9,6 +9,7 @@ the book.
 >
 > ```
 > python verify_integers.py       # which rule realizes which integer, 0–9
+> python verify_one_rule.py       # one rule for all ten: the most symmetric arrangement
 > python verify_forced_chain.py   # the simplex ladder, the tetrahedral 1/3, the cube = Cl(3)
 > python verify_two_builds.py     # equal distance lifts; perpendicularity doubles
 > python verify_one_third_fold.py # the 1/3 as lift, fold and gap
@@ -19,7 +20,8 @@ the book.
 
 | file | what it is |
 |---|---|
-| [`THE_INTEGERS.md`](THE_INTEGERS.md) | **Start here.** 0–9 one at a time, each with the rule that picks its shape: 0–4 forced by equal distance; 6 by spreading on a sphere; 8 by perpendicularity; 5, 7, 9 by other rules. The open question: one rule for all ten? |
+| [`THE_INTEGERS.md`](THE_INTEGERS.md) | **Start here.** 0–9 one at a time, each with the rule that picks its shape: 0–4 forced by equal distance; 6 by spreading on a sphere; 8 by perpendicularity; 5, 7, 9 by other rules — and the one rule that realizes all ten (next row). |
+| [`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md) | **One rule for all ten.** The book's own rule — the most symmetric arrangement — kept in 3-space realizes every integer 0–9 uniquely: **7 = octahedron + centre, 9 = cube + centre** (and 5 = tetrahedron + centre). Checked over every symmetry group of 3-space. At 10 it leaves the family. |
 | [`integers_as_geometric_entities.md`](integers_as_geometric_entities.md) | **P1.** The ladder 1–4 and the tetrahedral 1/3 = 1/(N−1) at N = 4, with where that geometry is measured (the carbon bond angle, the NMR magic angle) and a recorded boundary of what does not follow. |
 | [`P2_clifford_cube_skeleton.md`](P2_clifford_cube_skeleton.md) | **P2.** The cube: two tetrahedra; its three perpendicular axes generate Cl(3) (1 + 3 + 3 + 1; the bivectors square to −1); its two shadows, square and hexagon, joined by cos² = 1/3. |
 | [`THE_TWO_BUILDS.md`](THE_TWO_BUILDS.md) | Equal distance (lifts a dimension) and perpendicularity (doubles the algebra): different objects, both counted by the same row of Pascal's triangle. |

@@ -29,18 +29,23 @@ take. (This is the book's Chapter 1: *integers are shapes*.)
 | | |
 |---|---|
 | [`integers/THE_INTEGERS.md`](integers/THE_INTEGERS.md) | **Start here.** All ten integers, each with the rule that picks its shape — and what is forced, what is chosen, and what is open. |
+| [`integers/SEVEN_AND_NINE.md`](integers/SEVEN_AND_NINE.md) | **One rule for all ten** — the book's own "most symmetric arrangement", kept in 3-space: 7 is the octahedron with its centre, 9 the cube with its centre. |
 | [`integers/integers_as_geometric_entities.md`](integers/integers_as_geometric_entities.md) | The ladder and the tetrahedral 1/3, with where that geometry is measured in the world. |
 | [`integers/P2_clifford_cube_skeleton.md`](integers/P2_clifford_cube_skeleton.md) | The cube and its Clifford algebra. |
 | [`integers/THE_TWO_BUILDS.md`](integers/THE_TWO_BUILDS.md) | Equal distance lifts; perpendicularity doubles. |
 | [`integers/THE_ONE_THIRD_AND_THE_FOLD.md`](integers/THE_ONE_THIRD_AND_THE_FOLD.md) | The 1/3 as lift, fold and gap. |
 | [`integers/bott_periodicity.md`](integers/bott_periodicity.md) | Where the perpendicular build goes after the cube. |
 
-## The open question
+## One rule for all ten
 
-Beyond four points the natural rules part ways: spreading points on a sphere forces the
-octahedron at 6, perpendicularity forces the cube at 8, and 5, 7 and 9 are picked by other rules.
-**Is there one rule that realizes all ten integers?** The book realizes 0–6 and 8; **7 and 9 are
-not yet realized** — that is where this research is.
+Beyond four points the simpler rules part ways: spreading points on a sphere forces the
+octahedron at 6, perpendicularity forces the cube at 8. But the book's own rule — **the most
+symmetric arrangement** — kept in three-dimensional space, realizes every integer from 0 to 9,
+each uniquely: the void, point, segment, triangle, tetrahedron, tetrahedron + centre, octahedron,
+**octahedron + centre (7)**, cube, **cube + centre (9)** — checked over every symmetry group of
+3-space ([`integers/SEVEN_AND_NINE.md`](integers/SEVEN_AND_NINE.md)). It fills the book's gap at 7
+and 9, and at 10 it leaves the family. It differs from the book at 5 (the tetrahedron with its
+centre, not the pentagon) — a choice for the author.
 
 ## Check it
 
@@ -48,6 +53,7 @@ not yet realized** — that is where this research is.
 pip install numpy
 cd integers
 python verify_integers.py
+python verify_one_rule.py
 python verify_forced_chain.py
 python verify_two_builds.py
 python verify_one_third_fold.py
