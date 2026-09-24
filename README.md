@@ -41,11 +41,13 @@ The name is the author's own idea of a coin: *"every one is three. It is three a
 founding definition of Trinity Infinity Geometry (January 2026). A coin is two sides and an edge:
 three things, seen as two.
 
-![The coin: the numbers 0, ∞, 1, −1, i and −i at the six corners of an octahedron on the sphere of numbers. Three half-turns: z → −z keeps 0 and ∞ and swaps positive with negative; z → 1/z keeps 1 and −1 and swaps finite with infinite; z → −1/z keeps i and −i. The centre, kept by all three, is not a number.](figures/the_coin.svg)
+![The coin: the numbers 0, ∞, 1, −1, i and −i at the six corners of an octahedron on the sphere of numbers. Three half-turns: z → −z keeps 0 and ∞ and swaps positive with negative; z → 1/z keeps 1 and −1 and swaps finite with infinite; z → −1/z does both at once and keeps i and −i. The centre, kept by all three, is not a number.](figures/the_coin.svg)
 
-- **Three coins, one sphere.** The author's three coins — positive and negative, real and imaginary,
-  finite and infinite — are the three half-turns of the sphere of numbers about the axes of one
-  octahedron, whose corners are 0, ∞, 1, −1, *i* and −*i*.
+- **Three coins, one sphere.** The author's three coins — positive and negative, finite and
+  infinite, real and imaginary — are the three half-turns of the sphere of numbers about the axes of
+  one octahedron, whose corners are 0, ∞, 1, −1, *i* and −*i*. The first half-turn swaps positive and
+  negative, and the second swaps finite and infinite. The third does both at once, and it keeps no
+  real number: its edge is *i*, the edge the real line is missing.
 - **Every flip splits things in two.** A flip that respects adding splits each thing into an edge
   part and a side part: real + imaginary, cos θ + *i* sin θ, symmetric + skew.
 - **Missing edges are where the paradoxes live.** The book's keystone — *point toward it, measure off

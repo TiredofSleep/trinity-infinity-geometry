@@ -42,8 +42,8 @@
 <text x='494' y='200' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>edge: keeps 1 and −1</text>
 <text x='494' y='220' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>sides: swaps 0 with ∞, i with −i</text>
 <rect x='470' y='249' width='14' height='14' rx='3' fill='#1e8449'/>
-<text x='494' y='262' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>z → −1/z   <tspan font-weight='400' fill='#8c959f'>· real and imaginary</tspan></text>
-<text x='494' y='284' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>edge: keeps i and −i</text>
+<text x='494' y='262' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>z → −1/z   <tspan font-weight='400' fill='#8c959f'>· both at once</tspan></text>
+<text x='494' y='284' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>edge: keeps i and −i (no real number)</text>
 <text x='494' y='304' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>sides: swaps 0 with ∞, 1 with −1</text>
 <text x='470' y='352' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#8c959f'>The centre (open dot) is kept by all three flips —</text>
 <text x='470' y='370' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#8c959f'>a void that no number occupies.</text>

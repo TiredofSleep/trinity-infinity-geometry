@@ -162,7 +162,7 @@ def the_coin():
     lx, ly = 470, 96
     rows = [("z → −z", "positive and negative", "keeps 0 and ∞", "swaps 1 with −1, i with −i"),
             ("z → 1/z", "finite and infinite", "keeps 1 and −1", "swaps 0 with ∞, i with −i"),
-            ("z → −1/z", "real and imaginary", "keeps i and −i", "swaps 0 with ∞, 1 with −1")]
+            ("z → −1/z", "both at once", "keeps i and −i (no real number)", "swaps 0 with ∞, 1 with −1")]
     for k, ((f, coin, keep, swap), col) in enumerate(zip(rows, AXES)):
         y = ly + k * 84
         svg.append(f"<rect x='{lx}' y='{y - 15}' width='14' height='14' rx='3' fill='{col}'/>")
