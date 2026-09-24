@@ -10,8 +10,8 @@ is what every floor turns over.
 > **Run the checks** (Python 3.10+, numpy):
 >
 > ```
-> python verify_coins.py            # every [FORCED] line of THE_COIN.md (69 checks)
-> python verify_paradox_types.py    # every [FORCED] line of PARADOX_TYPES.md (11 checks)
+> python verify_coins.py            # every [FORCED] line of THE_COIN.md (68 checks)
+> python verify_paradox_types.py    # every [FORCED] line of PARADOX_TYPES.md (12 checks)
 > ```
 
 | file | what it is |

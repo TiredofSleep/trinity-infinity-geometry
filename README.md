@@ -17,7 +17,7 @@ every tower, is a **coin**, with two sides and an edge.
 - **What survived** when two years of AI-assisted research were audited — an essay:
   [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
 
-**Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas
+**Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas ·
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
 ---
