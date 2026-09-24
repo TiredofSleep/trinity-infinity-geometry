@@ -93,7 +93,7 @@ These were in the integers → Clifford notes and did not survive. The archived 
 
   The rest of J61's §6 falls the same way. It listed eight such families of laws, called one more of
   them a "fossil", and conjectured that six have no finite specimen. **All eight have one.** The
-  smallest have 3, 5 or 6 elements; the two hardest families need between 7 and 32. Reading each table
+  smallest have 3, 5 or 6 elements; the two hardest families need between 8 and 32. Reading each table
   the other way round pairs the families off, two sides and an edge, so one specimen for each pair does
   the work of two
   ([the follow-up](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_CLOSURES_ALL_REALIZED.md)).
