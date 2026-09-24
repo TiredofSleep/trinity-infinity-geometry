@@ -67,6 +67,8 @@ Five independent reviewers then classified all 56 papers, and all 337 other file
   theory. One case was left open. It has since been settled, against the paper. A "theorem" that a
   certain equation from Tao's Equational Theories Project has no finite *type specimen* is false: one
   exists, with six elements, the smallest size possible ([the correction](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_THEOREM5_IS_FALSE.md)).
+  The same paper made the same claim, as a label or a conjecture, about five related families of laws.
+  Every one of them has a finite specimen too ([the follow-up](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_CLOSURES_ALL_REALIZED.md)).
 - **About twenty papers contain a false or mislabeled statement.** One is worse. A column headed
   "Empirical (PDG / CODATA)" was not data: its values were exact powers of a single number. Against
   the real measurements, the "load-bearing" fit misses by 23%, then by 3 times, then by 34 times.

@@ -90,6 +90,13 @@ These were in the integers → Clifford notes and did not survive. The archived 
 
   The evidence: every model of orders 2–5, enumerated, and a script that rebuilds the ETP catalog
   ([the correction](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_THEOREM5_IS_FALSE.md)).
+
+  The rest of J61's §6 falls the same way. It listed eight such families of laws, called one more of
+  them a "fossil", and conjectured that six have no finite specimen. **All eight have one.** The
+  smallest have 3, 5 or 6 elements; the two hardest families need between 7 and 32. Reading each table
+  the other way round pairs the families off, two sides and an edge, so one specimen for each pair does
+  the work of two
+  ([the follow-up](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_CLOSURES_ALL_REALIZED.md)).
 - **The April 2026 "meta-lens atlas"** (ck, branch `paradox-classifier-2026-04-24`). It organized the
   table program's results (so(8), so(10), the "UOP–GUT arc") under the paradox classification, and it is
   retired with them. Its table-free core — the author's four paradox types with Ben Mayes, and Theorem 0
