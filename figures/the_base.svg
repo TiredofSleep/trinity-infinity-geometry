@@ -1,0 +1,144 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='840' height='392' viewBox='0 0 840 392'>
+<rect x='0.5' y='0.5' width='839' height='391' rx='10' fill='#ffffff' stroke='#d0d7de'/>
+
+<text x='420.0' y='32' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>The base: each integer from 0 to 9 as the shape it is forced to take</text>
+<circle cx='92.0' cy='116' r='35.7' fill='none' stroke='#8c959f' stroke-width='1.4' stroke-dasharray='4 4'/>
+<text x='92.0' y='188' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>0</tspan>  the void</text>
+<circle cx='256.0' cy='116.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='256.0' y='188' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>1</tspan>  point</text>
+<line x1='384.0' y1='125.5' x2='456.0' y2='106.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<circle cx='456.0' cy='106.5' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='384.0' cy='125.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='420.0' y='188' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>2</tspan>  segment</text>
+<line x1='584.0' y1='82.0' x2='554.6' y2='133.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='584.0' y1='82.0' x2='613.4' y2='133.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='554.6' y1='133.0' x2='613.4' y2='133.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<circle cx='584.0' cy='82.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='554.6' cy='133.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='613.4' cy='133.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='584.0' y='188' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>3</tspan>  triangle</text>
+<line x1='755.9' y1='66.8' x2='700.6' y2='144.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='755.9' y1='66.8' x2='795.4' y2='150.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='795.4' y1='150.5' x2='700.6' y2='144.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='755.9' y1='66.8' x2='740.1' y2='102.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='700.6' y1='144.6' x2='740.1' y2='102.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='795.4' y1='150.5' x2='740.1' y2='102.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<circle cx='755.9' cy='66.8' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='700.6' cy='144.6' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='795.4' cy='150.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='740.1' cy='102.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='748.0' y='188' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>4</tspan>  tetrahedron</text>
+<line x1='99.9' y1='216.8' x2='44.6' y2='294.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='99.9' y1='216.8' x2='139.4' y2='300.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='139.4' y1='300.5' x2='44.6' y2='294.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='99.9' y1='216.8' x2='84.1' y2='252.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='44.6' y1='294.6' x2='84.1' y2='252.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='139.4' y1='300.5' x2='84.1' y2='252.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='92.0' y1='266' x2='99.9' y2='216.8' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='92.0' y1='266' x2='139.4' y2='300.5' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='92.0' y1='266' x2='44.6' y2='294.6' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='92.0' y1='266' x2='84.1' y2='252.0' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<circle cx='99.9' cy='216.8' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='44.6' cy='294.6' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='139.4' cy='300.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='84.1' cy='252.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='92.0' cy='266' r='5' fill='#c0392b'/>
+<text x='92.0' y='338' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>5</tspan>  tetrahedron + centre</text>
+<line x1='288.6' y1='257.4' x2='232.8' y2='253.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='232.8' y1='253.9' x2='256.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='288.6' y1='257.4' x2='256.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='232.8' y1='253.9' x2='256.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='223.4' y1='274.6' x2='232.8' y2='253.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='288.6' y1='257.4' x2='256.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='223.4' y1='274.6' x2='256.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='288.6' y1='257.4' x2='279.2' y2='278.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='279.2' y1='278.1' x2='256.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='223.4' y1='274.6' x2='256.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='279.2' y1='278.1' x2='256.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='223.4' y1='274.6' x2='279.2' y2='278.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<circle cx='232.8' cy='253.9' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='288.6' cy='257.4' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='256.0' cy='303.1' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='256.0' cy='228.9' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='223.4' cy='274.6' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='279.2' cy='278.1' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='256.0' y='338' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>6</tspan>  octahedron</text>
+<line x1='452.6' y1='257.4' x2='396.8' y2='253.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='396.8' y1='253.9' x2='420.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='452.6' y1='257.4' x2='420.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='396.8' y1='253.9' x2='420.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='387.4' y1='274.6' x2='396.8' y2='253.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='452.6' y1='257.4' x2='420.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='387.4' y1='274.6' x2='420.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='452.6' y1='257.4' x2='443.2' y2='278.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='443.2' y1='278.1' x2='420.0' y2='303.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='387.4' y1='274.6' x2='420.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='443.2' y1='278.1' x2='420.0' y2='228.9' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='387.4' y1='274.6' x2='443.2' y2='278.1' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='420.0' y1='266' x2='452.6' y2='257.4' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='420.0' y1='266' x2='387.4' y2='274.6' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='420.0' y1='266' x2='396.8' y2='253.9' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='420.0' y1='266' x2='443.2' y2='278.1' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='420.0' y1='266' x2='420.0' y2='228.9' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='420.0' y1='266' x2='420.0' y2='303.1' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<circle cx='396.8' cy='253.9' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='452.6' cy='257.4' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='420.0' cy='303.1' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='420.0' cy='228.9' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='387.4' cy='274.6' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='443.2' cy='278.1' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='420.0' cy='266' r='5' fill='#c0392b'/>
+<text x='420.0' y='338' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>7</tspan>  octahedron + centre</text>
+<line x1='591.9' y1='280.0' x2='591.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='536.6' y1='294.6' x2='591.9' y2='280.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='631.4' y1='300.5' x2='591.9' y2='280.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='536.6' y1='231.5' x2='591.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='536.6' y1='294.6' x2='536.6' y2='231.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='631.4' y1='237.4' x2='591.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='576.1' y1='315.2' x2='536.6' y2='294.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='631.4' y1='300.5' x2='631.4' y2='237.4' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='576.1' y1='315.2' x2='631.4' y2='300.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='576.1' y1='252.0' x2='536.6' y2='231.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='576.1' y1='252.0' x2='631.4' y2='237.4' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='576.1' y1='315.2' x2='576.1' y2='252.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<circle cx='591.9' cy='280.0' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='591.9' cy='216.8' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='536.6' cy='294.6' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='631.4' cy='300.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='536.6' cy='231.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='631.4' cy='237.4' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='576.1' cy='315.2' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='576.1' cy='252.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<text x='584.0' y='338' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>8</tspan>  cube</text>
+<line x1='755.9' y1='280.0' x2='755.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='700.6' y1='294.6' x2='755.9' y2='280.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='795.4' y1='300.5' x2='755.9' y2='280.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='700.6' y1='231.5' x2='755.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.35' stroke-linecap='round'/>
+<line x1='700.6' y1='294.6' x2='700.6' y2='231.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='795.4' y1='237.4' x2='755.9' y2='216.8' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='740.1' y1='315.2' x2='700.6' y2='294.6' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='795.4' y1='300.5' x2='795.4' y2='237.4' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='740.1' y1='315.2' x2='795.4' y2='300.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='740.1' y1='252.0' x2='700.6' y2='231.5' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='740.1' y1='252.0' x2='795.4' y2='237.4' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='740.1' y1='315.2' x2='740.1' y2='252.0' stroke='#1f2328' stroke-width='1.6' stroke-opacity='0.9' stroke-linecap='round'/>
+<line x1='748.0' y1='266' x2='740.1' y2='315.2' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='740.1' y2='252.0' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='700.6' y2='294.6' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='700.6' y2='231.5' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='795.4' y2='300.5' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='795.4' y2='237.4' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='755.9' y2='280.0' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<line x1='748.0' y1='266' x2='755.9' y2='216.8' stroke='#c0392b' stroke-width='1' stroke-opacity='0.45' stroke-dasharray='2 3'/>
+<circle cx='755.9' cy='280.0' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='755.9' cy='216.8' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='700.6' cy='294.6' r='4.2' fill='#1f2328' fill-opacity='0.55'/>
+<circle cx='795.4' cy='300.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='700.6' cy='231.5' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='795.4' cy='237.4' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='740.1' cy='315.2' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='740.1' cy='252.0' r='4.2' fill='#1f2328' fill-opacity='1'/>
+<circle cx='748.0' cy='266' r='5' fill='#c0392b'/>
+<text x='748.0' y='338' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'><tspan font-weight='700'>9</tspan>  cube + centre</text>
+<text x='420.0' y='378' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>one rule, the most symmetric arrangement · at 5, 7 and 9 the odd point must stand on the centre (red)</text>
+</svg>

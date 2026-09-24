@@ -7,6 +7,16 @@ the base points toward a **tower** of higher mathematics, climbing from somethin
 with gumdrops and toothpicks to what a graduate student studies. And every shape, and every floor of
 every tower, is a **coin**, with two sides and an edge.
 
+![The base: the integers 0 to 9 as the shapes they are forced to take. 0 the void, 1 a point, 2 a segment, 3 a triangle, 4 a tetrahedron, 5 a tetrahedron with its centre, 6 an octahedron, 7 an octahedron with its centre, 8 a cube, 9 a cube with its centre.](figures/the_base.svg)
+
+**Where to start**
+- **The book** for learners: *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*,
+  and its companion unit on flips and paradoxes, *[Two Sides and an Edge](https://github.com/TiredofSleep/shape-of-understanding/blob/main/two_sides_and_an_edge.md)*.
+- **The coin**, the idea that runs through everything here: [`coin/THE_COIN.md`](coin/THE_COIN.md).
+- **The towers**, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md).
+- **What survived** when two years of AI-assisted research were audited — an essay:
+  [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
+
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
@@ -29,26 +39,31 @@ them. That is the method here.
 
 The name is the author's own idea of a coin: *"every one is three. It is three as two"* — the
 founding definition of Trinity Infinity Geometry (January 2026). A coin is two sides and an edge:
-three things, seen as two. The author's three coins — positive and negative, real and imaginary,
-finite and infinite — are the three half-turns of the sphere of numbers about the axes of one
-octahedron, whose corners are 0, ∞, 1, −1, *i*, −*i*. Every flip that respects adding splits each thing into an edge part and a side
-part: real + imaginary, cos θ + *i* sin θ, symmetric + skew. Missing edges are where the paradoxes
-live, and the book's keystone — *point toward it, measure off it, never stand on it* — holds there
-exactly. The author's own classification of paradoxes into four kinds, with Ben Mayes (April 2026), is
-read through the coin in [`coin/PARADOX_TYPES.md`](coin/PARADOX_TYPES.md). In it, insufficient coverage
-calls for a second lens, a missing invariant is a missing edge, and a self-referential paradox is a flip
-with no edge — the Liar, Russell and Cantor are one diagonal. Start with
-[`coin/THE_COIN.md`](coin/THE_COIN.md).
+three things, seen as two.
+
+![The coin: the numbers 0, ∞, 1, −1, i and −i at the six corners of an octahedron on the sphere of numbers. Three half-turns: z → −z keeps 0 and ∞ and swaps positive with negative; z → 1/z keeps 1 and −1 and swaps finite with infinite; z → −1/z keeps i and −i. The centre, kept by all three, is not a number.](figures/the_coin.svg)
+
+- **Three coins, one sphere.** The author's three coins — positive and negative, real and imaginary,
+  finite and infinite — are the three half-turns of the sphere of numbers about the axes of one
+  octahedron, whose corners are 0, ∞, 1, −1, *i* and −*i*.
+- **Every flip splits things in two.** A flip that respects adding splits each thing into an edge
+  part and a side part: real + imaginary, cos θ + *i* sin θ, symmetric + skew.
+- **Missing edges are where the paradoxes live.** The book's keystone — *point toward it, measure off
+  it, never stand on it* — holds there exactly.
+- **Four kinds of paradox.** The author's own classification of paradoxes, with Ben Mayes (April
+  2026), is read through the coin in [`coin/PARADOX_TYPES.md`](coin/PARADOX_TYPES.md). Insufficient
+  coverage calls for a second lens, a missing invariant is a missing edge, and a self-referential
+  paradox is a flip with no edge — the Liar, Russell and Cantor are one diagonal.
+
+Start with [`coin/THE_COIN.md`](coin/THE_COIN.md).
 
 ## The base — [`base/`](base/README.md)
 
 Read an integer as a configuration of points, and ask what shape it is forced to take. One rule —
 the book's own, *the most symmetric arrangement* — realizes every integer from 0 to 9, each
-uniquely:
-
-| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-|---|---|---|---|---|---|---|---|---|---|
-| the void | point | segment | triangle | tetrahedron | tetrahedron + centre | octahedron | octahedron + centre | cube | cube + centre |
+uniquely: the void, a point, a segment, a triangle, a tetrahedron, a tetrahedron with its centre, an
+octahedron, an octahedron with its centre, a cube, and a cube with its centre (pictured at the top of
+this page).
 
 From 4 on, each integer is a coin with a **flat face** (the most symmetric arrangement in the
 plane: the square, the pentagon, …) and a **solid face** (the table). At 5, 7 and 9 the coin is
