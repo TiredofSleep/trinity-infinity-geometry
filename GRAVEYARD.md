@@ -97,6 +97,19 @@ These were in the integers → Clifford notes and did not survive. The archived 
   the other way round pairs the families off, two sides and an edge, so one specimen for each pair does
   the work of two
   ([the follow-up](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen14/targets/journals/J_series/J61/J61_CLOSURES_ALL_REALIZED.md)).
+- **The Q series (April 2026; audited 2026-09-24).** Q2–Q17, with C. A. Luther's G6–G8, built a
+  "hidden operator" σ under the tables. It then tried to explain a search's success rate with σ,
+  through CRT, idempotents and polynomials. The census had not covered it; a separate audit found
+  that nothing in it is at once correct, table-free and non-generic.
+  - The rate it set out to explain, "4.6% at b = 10", was misread from the data: b = 10 gives 0.09%.
+  - The rates depend only on how many symbols are units. That is the algorithm's own symmetry, so no
+    arithmetic structure could enter them.
+  - Its Q2 "paradox" compared one AI rendering's table cell with a value of σ.
+
+  What it leaves is a set of honest negatives, including an explicit counterexample showing that a
+  periodic symbolic coding does not bound a norm, and six lessons. The first is to read the script
+  that made a number before modelling the number
+  ([the audit](https://github.com/TiredofSleep/ck/blob/tig-synthesis/papers/Q_SERIES_AUDIT_2026-09-24.md)).
 - **The April 2026 "meta-lens atlas"** (ck, branch `paradox-classifier-2026-04-24`). It organized the
   table program's results (so(8), so(10), the "UOP–GUT arc") under the paradox classification, and it is
   retired with them. Its table-free core — the author's four paradox types with Ben Mayes, and Theorem 0

@@ -125,9 +125,12 @@ We archived; we did not delete. The whole program is preserved unchanged at a ta
    fine-structure constant, to the quark masses and mixings *and* to the zeros of the zeta function,
    they can be fitted to noise.
 6. **Check that the data are data.** One column labelled "Empirical" had been generated.
-7. **Name the rule behind every "forced".** "Forced" always means *forced by a rule*. Say which one,
+7. **Read the code that made the number.** Ten notes in an earlier series set out to explain a
+   success rate of 4.6%. That figure was misread from the results: the data say 0.09%, and the rate
+   follows from the search's own symmetry.
+8. **Name the rule behind every "forced".** "Forced" always means *forced by a rule*. Say which one,
    and ask whether a different natural rule gives a different answer.
-8. **Keep a graveyard.** A retraction is a result. Every dead end, kept with its evidence, makes the
+9. **Keep a graveyard.** A retraction is a result. Every dead end, kept with its evidence, makes the
    living work believable.
 
 ## Where the work goes now
