@@ -8,6 +8,8 @@ integer is a **coin**, with a flat face (in the plane) and a solid face (in spac
 coin is whether the centre is inhabited, and both faces are kept: see
 [`../coin/THE_COIN.md`](../coin/THE_COIN.md).
 
+![The integers 0 to 9 as the shapes they are forced to take: the void, a point, a segment, a triangle, a tetrahedron, a tetrahedron with its centre, an octahedron, an octahedron with its centre, a cube, a cube with its centre.](../figures/the_base.svg)
+
 > **Run the checks** (Python 3.10+, numpy):
 >
 > ```

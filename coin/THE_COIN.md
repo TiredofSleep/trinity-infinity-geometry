@@ -102,6 +102,8 @@ hardest paradoxes, as the next sections show.
 Put the numbers on a sphere: the complex numbers, with one point ∞ added at the top (the Riemann
 sphere). The author's three coins become three turnings of that sphere:
 
+![The numbers 0, ∞, 1, −1, i and −i at the six corners of an octahedron on the sphere of numbers, with the three half-turns about its axes and the centre that all three keep.](../figures/the_coin.svg)
+
 | flip | its edge (kept) | it swaps |
 |---|---|---|
 | z → −z | 0 and ∞ | 1 with −1, *i* with −*i* |
