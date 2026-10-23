@@ -86,7 +86,7 @@ footer a{color:inherit}
   <header class="prose">
     <h1>Binary Magic Atlas</h1>
     <p class="lede">All 880 magic squares of order 4, written in binary. Every number 0–15 is a corner of the tesseract, every line sums to 30, and the squares sort into three regions of a trefoil.</p>
-    <p class="meta">Frénicle 1693 · Dudeney 1917 · computed and checked 2026</p>
+    <p class="meta">Frénicle 1693 · Fitting 1931 · Dudeney 1917 · computed and checked 2026</p>
   </header>
 
   <section class="bench" aria-label="Explorer">
@@ -137,15 +137,15 @@ footer a{color:inherit}
   </section>
 
   <section>
-    <div class="prose"><h2>What is proved</h2>
-      <p class="note">Proved means a written hand proof. Exhaustion means true for all 880 by computation, with no reason found yet.</p></div>
+    <div class="prose"><h2>What is known and what is proved</h2>
+      <p class="note">Known means published before. F. Fitting (1931), building on an idea of his son Hans, already had the binary layers, the carry rules and the counts. Proved means a written hand proof here. Exhaustion means true for all 880 by computation, with no reason found yet.</p></div>
     <div class="panel" style="margin-top:12px"><div class="tablewrap"><table id="rules"></table></div></div>
   </section>
 
   <section class="bench">
     <div class="prose" style="min-width:0">
       <h2>The quantum magic square</h2>
-      <p>One 3×3 square is both an ordinary magic square and a Mermin–Peres square, the standard proof that quantum measurements cannot have preset values. It is unique across all 28 ways of labeling two-qubit operators by numbers.</p>
+      <p>One 3×3 square is both an ordinary magic square and a Mermin–Peres square, the standard proof that quantum measurements cannot have preset values. It is unique across all 28 ways of labeling two-qubit operators by numbers. It is also the only 3×3 magic square with sum 30 whose rows and columns all XOR to zero.</p>
       <p style="margin-top:10px">In base 4 each number is two digits from {1, 2, 3}. Each digit layer is a Latin square, which is how the Lo Shu is built. Rows and columns have all-different digits, so they cancel: 1 XOR 2 XOR 3 = 0. Each diagonal repeats one digit, which leaves a residue, so its operators cannot be measured together.</p>
       <p style="margin-top:10px">The rows multiply to −1 and the columns to +1. No assignment of ±1 values satisfies all six lines.</p>
       <p style="margin-top:10px">For two qutrits no such grid exists at all. Fix the four corner cells and the rest follows. The last row closes only if two commutators are equal, and the last column only if they are opposite. In binary +1 equals −1, so both close. In base 3 both commutators are forced to zero, and nine cells cannot fit in a plane that holds eight.</p>
@@ -159,11 +159,11 @@ footer a{color:inherit}
 
   <section class="prose">
     <h2>At order 8 it becomes a family</h2>
-    <p>Across 2,000 sampled 8×8 magic squares on 0–63, none folds, none has diagonals that cancel bit by bit, and none is singular. Forcing rows and columns to be bit-balanced does not bring the fold back. The fold survives only in structured families: there are exactly 12,631,127,040 affine fully binary 8×8 magic squares, and every one of them folds. The 4×4 proof needs every balanced row of four cells to be a pure Walsh pattern. On eight cells only 14 of the 70 balanced rows are.</p>
+    <p>Across 2,000 sampled 8×8 magic squares on 0–63, none folds, none has diagonals that cancel bit by bit, and none is singular. Balance alone does not bring the fold back: 17 sampled squares whose six bit layers are balanced on every line have no XOR symmetry at all. The fold survives in structured families. There are exactly 12,631,127,040 affine fully binary 8×8 magic squares, and every one folds. Every square in Fitting's 1931 family folds too, by a half-shift, and almost none of those is affine. The 4×4 proof needs every balanced row of four cells to be a pure Walsh pattern. On eight cells only 14 of the 70 balanced rows are.</p>
   </section>
 
   <footer>
-    Sources: B. Frénicle de Bessy (1693); H. E. Dudeney, <i>Amusements in Mathematics</i> (1917); J. H. Conway, S. Norton, A. Ryba, "Frenicle's 880 Magic Squares" (2017); K. Takemura, <a href="https://arxiv.org/abs/2601.06131">arXiv:2601.06131</a> (2026); N. D. Mermin (1990) and A. Peres (1990); Klyachko, Can, Binicioğlu, Shumovsky (2008). Every claim on this page is reproduced by a script in the <span style="font-family:var(--mono)">binary_magic</span> folder.
+    Sources: B. Frénicle de Bessy (1693); F. Fitting, <a href="https://gdz.sub.uni-goettingen.de/id/PPN37721857X_0040">"Rein mathematische Behandlung des Problems der magischen Quadrate von 16 und von 64 Feldern"</a>, <i>Jahresbericht der DMV</i> 40 (1931); H. E. Dudeney, <i>Amusements in Mathematics</i> (1917); J. H. Conway, S. Norton, A. Ryba, "Frenicle's 880 Magic Squares" (2017); K. Takemura, <a href="https://arxiv.org/abs/2601.06131">arXiv:2601.06131</a> (2026); N. D. Mermin (1990) and A. Peres (1990); Klyachko, Can, Binicioğlu, Shumovsky (2008). Every claim on this page is reproduced by a script in the <span style="font-family:var(--mono)">binary_magic</span> folder.
   </footer>
 </div>
 
