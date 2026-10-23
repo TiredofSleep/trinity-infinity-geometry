@@ -119,6 +119,63 @@ These were in the integers → Clifford notes and did not survive. The archived 
   door, its side branches (including ten funding pitches) and its claim-making documents carry
   retirement banners, and its `RETIRED.md` records what was retired and what was salvaged.
 
+### From the October 2026 chats (the 2026-10-22 handoff)
+
+The readings that survive are in [`lab/FENCED_READINGS.md`](lab/FENCED_READINGS.md), and the binary
+magic squares are in [`towers/binary_magic/`](towers/binary_magic/README.md). The earth-house kit keeps
+its own graveyard. These died, with what killed them:
+
+- **"0 and 7 are two states of one location", and "7 = 0".** 7 + 1 = 0 (mod 8), so 7 is −1. What
+  is true is one shadow: numbered 000–111, the corners 0 and 7 both land on the centre when the cube
+  is seen down its long diagonal, and they are opposite in the whole.
+- **Matter and flow labels** on lenses, shapes and phases, and **"our structure lens is charged and our
+  flow lens is balanced".**
+  - In the clock-and-shift toy it runs backwards: the two-fold roots travel and the three-fold ones
+    are stuck.
+  - If the labels are defined by the outcome, the claim is circular.
+  - The toy's own sentence survives: unbalanced charge is stuck; balanced charge travels.
+- **"7 lifts into 8", "hex rules surround matter", "the void inhabits the form"** (as the reason
+  centres fill), and **"7's centre is forced by the ring closing".** These are narrative. What is
+  forced:
+  - the cube's 8 corners are 6 + 2, a hexagon and two apexes, in the diagonal shadow;
+  - the two shadows are related by cos² = 1/3;
+  - every odd count in a solid fills its centre ([`base/SEVEN_AND_NINE.md`](base/SEVEN_AND_NINE.md)).
+- **The cube's cos² = 1/3 as a metamaterial's refraction angle.** Refraction is set by index contrast,
+  frequency and the unit cell.
+- **SYK as TIG, a black-hole link, and the SYK phase diagram as "a coin with a vortex".** The picture
+  is a phase diagram of temperature against flavour number; the likeness is pareidolia.
+- **The Verlinde "factor of 400,000"** matching the Still Point paper's "400,000× miss". That is a
+  coincidence of one number, with no shared structure.
+- **"Cold fusion of the ground into rock", sonofusion, and "air prevents fusion".** No such process
+  exists. The best bubble collapse reaches about 10⁴ K, while fusion needs about 10⁷ K, and the
+  cavitation-fusion claims of 2002 were not replicated.
+- **The 3-6-9 meme, and the Tesla quote, as evidence.** Digit sums are remainders mod 9, so multiples
+  of 3 land on 3, 6 and 9. The quote has not been traced to anything he wrote.
+- **The electron as a literal spinning ball.** Its surface would move at 171 c, and spin needs a
+  720° turn.
+- **The ħ/2 zitterbewegung "match" as evidence.** The radius ħ/(2mc) makes m·c·r = ħ/2 true by
+  construction.
+- **The void setting the mass, with no size rule, and crossings or voids setting mass.** For the
+  proton, ħ/(2mc) is 8 times too small. The pion (140 MeV) and the rho (775 MeV) share quarks and
+  track.
+- **The pion as "vertical" or climbing, and the rho as "horizontal".** A particle at rest has no
+  preferred up. The pion is the circling (Goldstone) mode, and the climbing mode is the sigma.
+- **The size–weight illusion as support for the electron picture.** It is a fact about perception
+  (Charpentier, 1891).
+- **In the magic squares:**
+  - **"0 48 64 192 0" read as a sequence law.** The author meant the three trefoil regions.
+  - **Magic squares as knots, particles or physics.** The knot, the Dirac reading and the
+    metasurfaces are encodings.
+  - **The Hopf-link middle tier.** It depends on the drawing convention; only the 48 trefoils survive
+    both conventions.
+  - **"Franklin's 368,640", from memory.** The count is 1,105,920 bent-diagonal Franklin squares,
+    368,640 of them pandiagonal (Schindel, Rempel and Loly, 2006).
+  - **The carry rules, and the cancellation of the diagonals layer by layer, as new.** Both are
+    Fitting's (1931).
+- **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
+  they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
+  already says Klein four-group.
+
 ---
 
 ## 3. Where everything is

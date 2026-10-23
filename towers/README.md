@@ -21,3 +21,4 @@ see [`../coin/`](../coin/README.md).
 | [`P2_clifford_cube_skeleton.md`](P2_clifford_cube_skeleton.md) | The Clifford tower's ground floor: the cube's three perpendicular axes generate Cl(3); its bivectors square to −1; its two shadows, square and hexagon, are joined by cos² = 1/3. |
 | [`THE_ONE_THIRD_AND_THE_FOLD.md`](THE_ONE_THIRD_AND_THE_FOLD.md) | The tetrahedron's one number as lift, fold and tiling gap, and its return up ℝ → ℂ → ℍ — the bottom of the harmonic and number towers. |
 | [`bott_periodicity.md`](bott_periodicity.md) | The top of the Clifford tower: the algebras repeat with period 8 = 4 + 4, because ℍ ⊗ ℍ ≅ ℝ(4). |
+| [`binary_magic/`](binary_magic/README.md) | A floor of the cube tower: the cube's corners counted in binary, and all 880 4×4 magic squares read one binary digit at a time. Fitting (1931) had the layers; the fold theorem is new. Run `python run_all.py` inside it (23 checks, a few minutes). |

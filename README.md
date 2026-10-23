@@ -108,6 +108,8 @@ python verify_towers.py
 python verify_two_builds.py
 python verify_one_third_fold.py
 python bott_verify.py
+cd binary_magic
+python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)
 ```
 
 Every claim tagged **[FORCED]** has a line in one of these scripts; theorems at the tops of the
@@ -129,7 +131,9 @@ with AI — is the essay [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
 
 ## Lab
 
-[`lab/`](lab/) — authorship and collaboration policy.
+[`lab/`](lab/) — authorship and collaboration policy, and
+[fenced physics readings](lab/FENCED_READINGS.md) from October 2026: each with the exact piece
+inside it, checked, and the test that would decide it. None is a premise.
 
 ## Citation
 

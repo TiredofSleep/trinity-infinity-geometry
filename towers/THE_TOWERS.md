@@ -57,6 +57,13 @@ arrangements of 4, 6 and 8 points.
 - **The break points here too.** [FORCED] The two extra three-dimensional solids, the icosahedron
   and the dodecahedron, are the ones built on five-fold symmetry — the book's "break" at 5. Their
   line climbs one more floor (the 600-cell and the 120-cell, in four dimensions) and then ends.
+- **The cube's corners as numbers.** [CHECKED in [`binary_magic/`](binary_magic/README.md); NAMED:
+  Fitting 1931] Number the cube's corners 000–111. Then 0 and 7 are the two ends of the long
+  diagonal, and the two tetrahedra are the two parity classes, {0, 3, 5, 6} and {1, 2, 4, 7}. The
+  tesseract's corners, 0000–1111, fill the 4×4 magic squares. Read one binary digit at a time, every
+  square splits into four 0/1 layers that share the magic: each layer has two 1s in every row and
+  column, and carries happen only on the diagonals. Each square also has a fold, a mirror that turns
+  every value n into n XOR b. That is a law at 4×4, and at 8×8 it breaks.
 
 **Top — where you meet it.** The simplex is where **probability** lives (every probability
 distribution on *n* + 1 outcomes is a point of an *n*-simplex) and what **algebraic topology**
