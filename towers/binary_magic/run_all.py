@@ -10,7 +10,8 @@ SCRIPTS = ["binary_magic.py", "split_check.py", "trefoil_view.py", "knot_check.p
            "order8/order8_families.py ../squares_4x4.json fullbinary8_samples.txt",
            "code_lens/code_lens.py", "code_lens/order8_lens.py", "code_lens/antinomy.py",
            "code_lens/fold_mechanism.py", "code_lens/fold_pull.py", "code_lens/fold_needs.py",
-           "code_lens/nimm0_coupling.py"]
+           "code_lens/nimm0_coupling.py", "code_lens/void_fold.py", "code_lens/void_fold_check.py",
+           "mermin_28.py"]
 ENV = dict(os.environ, PYTHONIOENCODING="utf-8")          # some scripts print symbols a Windows console can't
 bad = 0
 for s in SCRIPTS:

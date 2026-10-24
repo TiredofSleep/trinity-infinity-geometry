@@ -20,7 +20,7 @@ diagonals, the carry bookkeeping (as his A-, B- and C-forms), the 528 / 192 / 11
 and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, and
 [`fitting_crosscheck.py`](fitting_crosscheck.py) checks every one of his statements on all 880 squares.
 
-> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 30 scripts
+> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 33 scripts
 > (about 12 minutes) and prints ALL GREEN. `magic_sets/` has its own `run_all.py` (10 scripts).
 
 ## What holds, by status
@@ -36,7 +36,9 @@ and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, 
   sign, and "1s→2s with 4s→8s" never occurs alone. These are Fitting's B- and C-forms and his
   Satz 4–5. The counts by number of carries are 528 / 192 / 112 / 48, Fitting's §I–II.
 - Takemura's degree classes, 240 / 624 / 16 (arXiv:2601.06131), and the 640 singular squares
-  (MathPages).
+  (MathPages). They are exactly Dudeney's types I–VI, the squares that some cell shift complements:
+  Trigg (1948) computed the determinants; Mattingly (2000) and Staab et al. (arXiv:1007.3239, 2010) prove
+  the singular direction for every even order.
 
 **Proved here** (hand proofs; each checked on all 880):
 - **Every square folds** [FOLD_PROOF.md](FOLD_PROOF.md): a left–right or top–bottom mirror turns every
@@ -47,6 +49,12 @@ and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, 
   ([`degree_explained.py`](degree_explained.py)). Elementary, and not in Takemura's papers.
 - The Walsh-pairing mechanism that gives degree ∞; any XOR symmetry zeroes at least half the binary
   spectrum.
+- **A complement under any cell shift forces singularity, with an explicit kernel** (Round 7,
+  [`code_lens/void_fold.py`](code_lens/void_fold.py); checked independently by
+  [`code_lens/void_fold_check.py`](code_lens/void_fold_check.py)). Every mask b is a reflection n → c − n
+  about 7.5, moved by ±2^(q−1) for each bit q it keeps. Only b = 1111 reflects through 7.5 itself, and under
+  any shift it zeroes the Walsh block wherever the shift fixes the character. The fact is known (above); one
+  Walsh argument for all six singular types, with explicit null vectors, is not in the papers checked.
 - **No two-qutrit grid:** no 3×3 grid of commuting two-qutrit operators with lines that multiply to
   the identity exists ([`qutrit_grids.py`](qutrit_grids.py)).
 
@@ -67,9 +75,11 @@ and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, 
   almost none is affine. So at order 8 folding is neither forced by binary balance nor confined to
   the affine squares.
 
-**Only by exhaustion** (true for all 880, no reason yet): singular exactly when there is a
-complement fold; invertible exactly when there is a 3-bit fold; the centre always has a complement
-fold and the petals never do; and degree 6 never occurs.
+**Only by exhaustion** (true for all 880, no hand proof yet): a square with no complement symmetry is
+invertible (known by computation since Trigg 1948; no single bit plane can certify it, Round 7); on an
+invertible square every mirror fold flips 3 bits; the centre always has a complement symmetry (a mirror in
+240 of 576) and the petals never do; and degree 6 never occurs. (An earlier version said "invertible exactly
+when there is a 3-bit fold". That was false: 288 singular squares have 3-bit mirror folds too.)
 
 **Readings: fenced, never premises.**
 - The trefoil is a drawing: the carry cube seen down its diagonal. Its knot encodes the rule that
@@ -107,15 +117,20 @@ asked for genuine n-qubit magic sets with few observables.
   shares no code with the others. The third enumerates every possible context, and solves for the whole
   space of commutation patterns.
 - **Even n:** the members are genuine but not critical, so they are not fair records.
-- **Lower bound:**
-  - The cases C = 5 (V = 14 and 15) came back empty.
-  - The case C = 6, V = 15 is **open**. Counted exactly, the current search would build more than 3.9 billion
-    hypergraphs in that case, so it cannot finish as written ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+- **Lower bound** (context-minimal sets):
+  - n = 5: the cases C = 5 (V = 14 and 15) came back empty. The case C = 6, V = 15 is **open**, and is being
+    rerun with `magic_sets/lower_bound4.py`, which generates only what Lemma 4 allows.
+  - n = 4: no genuine set with at most 6 contexts of 3–5 observables, at any size (L4, held).
+  - In every context-minimal clash the noncontextual bound is exactly C − 2 (Lemma 5). The published sets
+    are not context-minimal: 16 of their 18 hide a smaller clash among their own contexts
+    ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
 - **Literature:**
   - All 14 papers that Semantic Scholar lists as citing the 2022 paper (October 2026) were checked at
     abstract level, and none states this construction.
-  - The full texts are not all read. The nearest neighbours are Waegell's N-qubit parity proofs, which have
-    the "ring" context, and the all-versus-nothing proofs for graph states.
+  - Waegell's thesis (arXiv:1307.6264), Chapter 6, was read from the PDF. Its Star families put every
+    observable in exactly two IDs, so they reduce to the square or the pentagram. Computed, each with N ≥ 4
+    fits on fewer than N qubits. The odd-N Star shares the C_n graph star's counts but not its structure.
+  - Still unread in full: the all-versus-nothing proofs for graph states.
 - **Not sent:** a draft note to the authors, the author's decision. It is kept with his private papers, not here.
 
 ## Second implementation, and the literature
@@ -145,12 +160,17 @@ asked for genuine n-qubit magic sets with few observables.
 1. **Read Conway–Norton–Ryba (2017).** It is paywalled, and it may contain the fold.
 2. **Prove the exhaustion-only rules.** The fold is the lever. One step is easy: a complement fold whose
    shift keeps the main diagonal in place forces carry corner 000 (checked in `independent_check.py`).
+   The hardest is "no complement symmetry ⟹ invertible" (240 squares). It is known by computation (Trigg
+   1948), but no hand proof is known here, and Round 7 shows that any 2-adic proof has to mix bit planes.
 3. **Recipes.** Fitting's "Primterme" already generate all 880 from 14 types under four operations.
    Reproduce his 14 types, then ask what the folds add.
 4. **Order 8.** Which squares fold? Fitting's half-shift families do and the affine squares do, but none of
    the 17 annealed fully binary squares does. Find what decides it.
 5. **A hand proof that pairwise balance forces Nimm0** (code_lens Round 6c). It must use the separate
    diagonal condition F̂(01,01) + F̂(10,10) = 0.
-6. **The 5-qubit lower bound, case C = 6, V = 15.** It needs a generator that builds only what Lemma 4
-   allows, instead of filtering afterwards ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+6. **The 5-qubit lower bound, case C = 6, V = 15.** `magic_sets/lower_bound4.py` generates only what
+   Lemma 4 allows; its regime A alone is 23,281,793 hypergraphs, counted exactly
+   ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+7. **A hand proof that no complement symmetry ⟹ invertible** (240 squares; known by computation since Trigg
+   1948). It has to mix bit planes (Round 7).
 7. **Finish the citation check** on Trandafir–Lisoněk–Cabello 2022 (full texts) before anything is sent.

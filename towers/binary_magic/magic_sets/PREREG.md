@@ -310,3 +310,27 @@ genuine 3-qubit sets have 10 observables. **L3 restated:** n = 5, every minimal 
 
 So no genuine 5-qubit magic set with ≤ 15 observables uses 5 contexts. **L3-full stays unscored until the
 C = 6, V = 15 case finishes.** Partial logs are in `logs/`.
+
+### Round 11 scores, continued (Claude Code, 2026-10-24; predictions above unchanged)
+| id | result | outcome |
+|---|---|---|
+| L4 | n = 4, at most 6 contexts of 3-5 observables, every size: (C, V) in {(5,12), (6,13), (6,14), (6,15)} give 20 / 2,369 / 454 / 49 distinct context-minimal survivors, none genuine, none unresolved (`lower_bound4.py`, n = 4; `LOWER_BOUND.md`) | **held** |
+| L3-full | (5,14) and (5,15) empty, as before; (6,15) is being rerun with the regime-A/B generator (see below) | unscored |
+
+**Calibration of L4.** Waegell's 4-qubit Star with single-qubit factors (13 observables, 6 contexts of 3-5)
+is inside the class. The search generates it and classes it "fewer qubits" (`l4_calibrate.py`); directly
+it fits on 2 qubits.
+
+**Literature gate: Waegell's thesis (arXiv:1307.6264), read from the PDF.** Its Star families (Tables 26-27)
+put every observable in exactly two IDs, so they fall under Arkhipov's theorem. Computed, each with N >= 4
+fits on fewer than N qubits, and the 5-qubit Star fits on 2 (`waegell_stars.py`, `waegell_realize.py`, with
+explicit matrices). The odd-N Star shares the graph star's counts, 3N + 1 and N + 2, but not its hypergraph,
+and it is not genuine. This was the reading the chat asked for before anything is sent (THEOREM.md, Novelty).
+
+**Lemma 5 (added, from TLC's Theorem 2).** A context-minimal clash has b = C - 2 exactly, so its tolerance is
+2/C. The definitions matter:
+- The published sets are not context-minimal: 16 of the 18 tabled sets must hide a smaller clash among their
+  own contexts (`tolerance_check.py`). TLC's "minimal" is a different notion, injective assignments.
+- So T4-T6 and L3-L4 compare our context-minimal sets with sets from a wider class.
+- The C_5 graph star belongs to both classes, so "16 vs 26" stands inside theirs. A lower bound for their wider
+  class is not attempted.

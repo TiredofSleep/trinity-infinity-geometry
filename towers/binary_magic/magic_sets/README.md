@@ -21,8 +21,22 @@ members (e.g. 20 at n = 6) aren't critical, so they aren't fair records.
 | `critical_check.py` | Theorem B: odd cycles critical through n = 13; non-cycles hide a smaller clash (the referee's correction) |
 | `export_sets.py` | writes `graph_star_sets.json` (the n = 5, 6, 7 records as Pauli strings) |
 | `independent_star_check.py` | a third, independent check (Claude Code, 2026-10-24). It shares no code with the files above or `referee/`, enumerates every possible context, and solves for the whole Gram space |
-| `run_all.py` | all of the above (ALL GREEN) |
+| `lower_bound4.py` | the lower-bound search, generating only what Lemma 4 allows (regime A: every context within the dim R_c = 1 cap; regime B: a bigger context with its split T). Any n, with an optional cap on context size. Gentle: 6 workers at low priority by default |
+| `lower_bound5.py` | the same search with a sharper regime B. A largest context of exact size s0 forces dim R ≥ s0 − (V − C + 1 − n), so every observable outside it has its pattern in S^⊥ for a subspace S of that dimension: 7, 3 or 1 possible patterns at (6, 15). Each S is taken once per symmetry orbit. It reproduces `lower_bound4.py` on (5, 14) and (5, 15) exactly, building about 30 times fewer regime-B hypergraphs |
+| `gram_np.py` | the minimum magic Gram rank, vectorized with numpy (batched GF(2) ranks). It agrees with `ms_core.py` exactly on 45 test sets, and is fast enough to exhaust Gram spaces of dimension 24 |
+| `count_jobs.py` | counts exactly how many hypergraphs each `lower_bound4.py` job would build, without building them (and the symmetry-broken regime-B counts) |
+| `l4_calibrate.py` | L4's calibration: the search's (6, 13) survivors include Waegell's 4-qubit Star, as "fewer qubits" |
+| `waegell_stars.py`, `waegell_realize.py` | the literature gate: Waegell's Star families from his thesis's Tables 26–27, tested by the same criteria (magic, minimal, Gram rank, bound), then realized on fewer qubits and checked with explicit matrices |
+| `tlc_hidden.py` | the published MS5-26, rebuilt from its printed Pauli strings and checked with explicit matrices (genuine 5-qubit, b = 24/30); its incidence rank is 16, so 8,191 sub-collections of its own contexts are clashes, and each is tested for how many qubits it needs |
+| `tolerance_check.py` | Lemma 5 (b = C − 2 for context-minimal clashes) by brute force, and what the published tables imply: 13 of 18 with w_min > 1, and 16 of 18 that must hide a smaller clash |
+| `run_all.py` | all of the above except the long searches (ALL GREEN) |
 
-**Status:** proved; computer-checked; independently refereed (confirmed, with the even-n correction now built in). The literature check
-is partial: the ring context is in Waegell 2014; the completion and genuineness proof weren't found.
-Ask the authors before claiming.
+**Status:**
+- **Proved, computer-checked and independently refereed.** The even-n correction is built in.
+- **Lower bound:** n = 4, at most 6 contexts of 3–5 (L4) found none at any size. For n = 5, C = 5 is empty and
+  C = 6, V = 15 is open. Both cover context-minimal sets (`LOWER_BOUND.md`).
+- **Literature:**
+  - The ring context is in Waegell 2014.
+  - Waegell's thesis Stars are degree-2 sets that reduce to the square or the pentagram, not genuine.
+  - The completion and the genuineness proof were not found.
+- **Ask the authors before claiming.**

@@ -121,6 +121,7 @@ footer a{color:inherit}
   <section class="prose">
     <h2>How the three lenses line up</h2>
     <p>Read each square through its <b>bits</b> (which carries its diagonals need), its <b>folds</b> (a mirror that turns every number n into n XOR b), and its <b>signs</b> (determinant and Takemura's degree). The bits choose the region. The folds choose the signs. The crossings are where both kinds of fold meet.</p>
+    <p style="margin-top:10px">Every mask is a reflection measured from 7.5, the value no cell holds: n XOR b = c − n, with the centre c/2 at 7.5 moved by ±2<sup>q−1</sup> for each bit q that b leaves alone. Only the complement, b = 1111, leaves none, so only it reflects through 7.5 itself, and that forces a kernel. Under a left–right complement fold the four columns, weighted 1, −1, −1, 1, add to zero.</p>
   </section>
 
   <section class="panel">
@@ -128,7 +129,7 @@ footer a{color:inherit}
       <table>
         <thead><tr><th>Region</th><th>Bits</th><th>Folds</th><th>Signs</th></tr></thead>
         <tbody>
-          <tr><td><span class="sw" style="background:var(--center)"></span>Center · 576</td><td>no carries (528) or all three (48)</td><td>complement fold, b = 1111; 432 are affine</td><td>degree 4, all singular</td></tr>
+          <tr><td><span class="sw" style="background:var(--center)"></span>Center · 576</td><td>no carries (528) or all three (48)</td><td>complement b = 1111 under some shift: a mirror in 240, a swap or half-turn in 336; 432 are affine</td><td>degree 4, all singular</td></tr>
           <tr><td><span class="sw" style="background:var(--petal)"></span>Petals · 192</td><td>exactly one carry, 64 each</td><td>3-bit folds only</td><td>degree 3, all invertible</td></tr>
           <tr><td><span class="sw" style="background:var(--cross)"></span>Crossings · 112</td><td>two adjacent carries, 56 each</td><td>complement 64 · 3-bit 48</td><td>3-bit → 3 · complement → 4 or ∞</td></tr>
         </tbody>
@@ -159,7 +160,7 @@ footer a{color:inherit}
 
   <section class="prose">
     <h2>At order 8 it becomes a family</h2>
-    <p>Across 2,000 sampled 8×8 magic squares on 0–63, none folds, none has diagonals that cancel bit by bit, and none is singular. Balance alone does not bring the fold back: 17 sampled squares whose six bit layers are balanced on every line have no XOR symmetry at all. The fold survives in structured families. There are exactly 12,631,127,040 affine fully binary 8×8 magic squares, and every one folds. Every square in Fitting's 1931 family folds too, by a half-shift, and almost none of those is affine. The 4×4 proof needs every balanced row of four cells to be a pure Walsh pattern. On eight cells only 14 of the 70 balanced rows are.</p>
+    <p>Across 2,000 sampled 8×8 magic squares on 0–63, none folds, none has diagonals that cancel bit by bit, and none is singular. Balance alone does not bring the fold back: 17 sampled squares whose six bit layers are balanced on every line have no XOR symmetry at all. The fold survives in structured families. There are exactly 12,631,127,040 affine fully binary 8×8 magic squares, and every one folds. Every square in Fitting's 1931 family has an XOR symmetry too, under a half-shift rather than a mirror, and almost none of those is affine. The 4×4 proof needs every balanced row of four cells to be a pure Walsh pattern. On eight cells only 14 of the 70 balanced rows are.</p>
   </section>
 
   <footer>
@@ -296,7 +297,7 @@ function render(){
   const degTxt = deg===0 ? "∞" : String(deg);
   document.getElementById("ro").innerHTML = [
     ['Carries', cn, (sgn? (sgn>0?"main diagonal carries up":"main diagonal carries down") : "diagonals balanced"), carriesHtml],
-    ['Fold', (fold.dir==="lr"?"Left–right":"Top–bottom")+(both?" (both work)":""), "mask "+bits4(fb)+" flips "+flips.join(", ")+(comp?" · complement fold":""), ""],
+    ['Fold', (fold.dir==="lr"?"Left–right":"Top–bottom")+(both?" (both work)":""), "mask "+bits4(fb)+" flips "+flips.join(", ")+(fb===15?" · complement fold":(comp?" · complement under "+shiftName(compShift(sq)):"")), ""],
     ['Signs', "Degree "+degTxt, inv ? "invertible" : "singular", ""],
     ['Dudeney group', "Group of "+GSIZE[gid], "where its complement pairs sit", ""],
     ['Affine', aff ? "Yes" : "No", aff ? "each bit is an XOR of position bits" : "not a pure XOR map", ""],
@@ -307,21 +308,24 @@ document.getElementById("prev").onclick=()=>{state.idx--;render();};
 document.getElementById("next").onclick=()=>{state.idx++;render();};
 document.getElementById("rand").onclick=()=>{state.idx=Math.floor(Math.random()*pool().length);render();};
 
+function compShift(s){ for(let a=1;a<16;a++){ if(s.every((v,x)=>(s[x^a]^v)===15)) return a; } return 0; }
+function shiftName(a){ if(a===15) return "a half-turn"; const n={1:"neighbour swap",2:"half swap",3:"mirror"}; const r=a>>2, c=a&3; return [r?n[r]+" of rows":"", c?n[c]+" of columns":""].filter(Boolean).join(" + "); }
 /* rules */
 const RULES = [
-  ["Rows and columns never carry (they XOR to 0)","known","Fitting 1931 §III; Conway–Norton–Ryba 2017"],
+  ["Rows and columns never carry (they XOR to 0)","known","Fitting 1931 §III; Conway–Norton–Ryba 2017. Also forced by pairwise bit-plane balance plus the 10 line sums (computer-assisted, here)"],
   ["The 528 / 192 / 112 / 48 split by carrying layers","known","Fitting 1931 §I–II"],
   ["Carries are size 1, contiguous, one sign; 1s→2s with 4s→8s alone is impossible","known","Fitting 1931 §II (his B- and C-forms); restated as carries"],
   ["Degree 3 means invertible: APD₃ = 24·det/30","proved","determinant expansion"],
-  ["An even complement rearrangement forces even degree, so a singular square","proved","permutation sign"],
+  ["An even complement rearrangement forces even degree, so a singular square","proved","permutation sign. Directly: a complement shift zeroes the Walsh spectrum wherever the shift fixes the character, which leaves an explicit kernel"],
   ["Every square folds left–right or top–bottom","proved","given Nimm0; Walsh spectra + orthogonality"],
   ["Diagonals cancel bit plane by bit plane","known","Fitting 1931, Satz 3; a new Walsh proof here"],
   ["Every XOR symmetry zeroes at least half the binary spectrum","proved","S-box identity"],
-  ["The 48 whole-only squares are the only ones that knot","proved","an encoding: carry signs drawn on the trefoil"],
-  ["Singular means complement fold; invertible means 3-bit fold","exh","all 880"],
-  ["Petals never have a complement fold; the center always does","exh","all 880"],
+  ["Drawn on the trefoil, only the 48 all-carry squares give a knotted diagram","constr","follows from Fitting's one-sign rule; a property of the drawing, not a knot in the square"],
+  ["Singular exactly when some shift complements the square","exh","all 880; one direction is proved above, and no single bit plane can certify the other"],
+  ["On an invertible square every mirror fold flips 3 bits (288 singular squares have 3-bit mirror folds too)","exh","all 880"],
+  ["Petals never have a complement symmetry; the center always does (as a mirror in 240 of 576)","exh","all 880"],
   ["432 of the 880 are affine over GF(2)","enum","9 of Fitting's 11 quadruples"]];
-const ST = {proved:["Proved","st-proved"], exh:["Exhaustion","st-exh"], known:["Known","st-known"], enum:["Enumeration","st-enum"]};
+const ST = {proved:["Proved","st-proved"], exh:["Exhaustion","st-exh"], known:["Known","st-known"], enum:["Enumeration","st-enum"], constr:["By construction","st-known"]};
 document.getElementById("rules").innerHTML = '<thead><tr><th>Rule</th><th>Status</th><th>How</th></tr></thead><tbody>'+
   RULES.map(([t,s,h])=>'<tr><td>'+t+'</td><td><span class="pill '+ST[s][1]+'">'+ST[s][0]+'</span></td><td class="note">'+h+'</td></tr>').join("")+'</tbody>';
 

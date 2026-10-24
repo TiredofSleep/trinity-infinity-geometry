@@ -38,6 +38,8 @@ Fitting subgroup and Fitting's lemma. The 1933 paper again credits most of its i
 | Nimm0, restated | Conway, Norton & Ryba 2017. The chapter remarks that any proof must use the diagonals |
 | 12 complement-pair patterns | Dudeney 1910/1917; proved complete by Bondi & Ollerenshaw 1982 |
 | 640 singular, 240 invertible | MathPages, "The Determinants of 4x4 Magic Squares" (5,120 and 1,920 of 7,040) |
+| The singular ones are exactly Dudeney's types I–VI | Trigg, "Determinants of fourth-order magic squares", *Amer. Math. Monthly* (1948): he worked out the determinant of every order-4 square, and types I–VI are 0 (as reported by Staab et al.; Trigg's paper itself is not read) |
+| Complement-symmetric squares of even order are singular | Mattingly, "Even order regular magic squares are singular", *Amer. Math. Monthly* (2000), for the regular (associative) case. Staab, Fisher, Maggio, Andrade, Farrell & Schilling, arXiv:1007.3239 (2010), Theorems 12–13, for their types A (M + PMP = cE) and B (M + PM = cE) in every even order. Lee, Love, Narayan, Wascher & Webster, *Linear Algebra Appl.* 437 (2012) 1346–1355, is the source Wikipedia cites for the associative case |
 | Degree classes 240 / 624 / 16 | Takemura, arXiv:2601.06131 (January 2026). His abstract says the classes refine the complement-pair ("link-line") types, so the Dudeney-to-degree correspondence is his observation. The companion paper, arXiv:2512.18169, gives closed forms for the first degree; neither abstract mentions determinants |
 | The even/odd colouring of all 880 (the 1s layer only) | Fahimi, "Binary color-coded magic squares", *Discrete Mathematics* 347 (2024) 113708 |
 | 10 two-qubit Mermin–Peres grids; the KCBS pentagram | standard quantum foundations |
@@ -97,15 +99,51 @@ Rescoped against Fitting, after reading his §III.
   - Not yet read in full: Zhao et al., arXiv:2512.16654 (stabilizer-testing games for GHZ and cyclic
     cluster states; the first 100,000 characters show no such construction), and the all-versus-nothing
     proofs for graph states that it cites.
+  - **Waegell's thesis, arXiv:1307.6264, read from the PDF (Chapter 6, Tables 26–27):** its Star families put
+    every observable in exactly two IDs. They therefore reduce to the square or the pentagram, and each with
+    N ≥ 4 fits on fewer than N qubits (`magic_sets/waegell_stars.py`, `waegell_realize.py`). The odd-N Star has
+    the same counts as the C_n graph star (3N + 1, N + 2) but a different hypergraph, and it is not genuine.
+    This is not the construction here.
+  - **The published "smallest" sets are not context-minimal** (16 of 18 hide a smaller clash, by Lemmas 1–2);
+    the C_5 graph star is minimal in both senses. So "16 against 26" holds inside the paper's own class, and
+    the lower bound covers context-minimal sets only.
 - **Sedenions:** 8 of the 15 octonion-like sub-planes are octonions under the sedenions' own signs. That is
   Cawagas's (2004; Cawagas et al., arXiv:0907.2047). The maximum over all sign choices (8, in 135 ways) and
   the 5-plane minimal clash (`../planes_and_mirrors/why_seven_breaks.py`) are not checked against the literature.
+
+## Added 2026-10-24 (Round 7): the fold through 7.5, against the literature
+
+The chat's Round 7 (`code_lens/PREREG.md`) classified the 640 singular squares by their complement
+symmetry: 304 under a mirror, 288 under a row or column swap, and 48 under the half-turn. Checked here by a
+second implementation, `code_lens/void_fold_check.py` (22 checks), which also maps the classes onto the
+literature.
+- **These are Dudeney's types, exactly.** Each singular square has exactly one complement shift.
+  - Type VI (304) is complement under a mirror on one side. That is Staab et al.'s type B_J.
+  - Types IV and V (96 each) are complement under a neighbour swap or a half swap on one side: B_K and B_L.
+  - Types I, II and III (48 each) are complement under the same swap on both sides: A_K, A_L and A_J. Type
+    III, under the half-turn, is the regular (associative) squares.
+  - Types VII–XII (240) have no complement symmetry, and all are invertible.
+- **So "singular ⟺ complement symmetry" is known.** Trigg (1948) worked out every determinant. The singular
+  direction is proved in general by Mattingly (2000) for regular squares and by Staab et al. (2010, Theorems
+  12–13) for types A and B in every even order. The converse is known only by computation (Trigg; MathPages).
+- **What Round 7 adds** (small; probably new, pending Conway–Norton–Ryba):
+  - one Walsh-character argument for all six singular types at once, with explicit null vectors;
+    Staab et al. give none, and their type-A proof goes through eigenvalue pairing;
+  - the identity n XOR b = c − n with centre 7.5 ± 2^(q−1) per kept bit, which is elementary;
+  - a closed door: no single bit plane can certify invertibility 2-adically (V6, V11, with a hand reason), so
+    a hand proof of the converse has to mix planes.
+- **Enumerated here:** the 336 squares complemented by a swap or the half-turn (types I–V) are all affine.
+- **A correction to our own pages:** "invertible ⟺ 3-bit fold" was false. 288 singular squares have 3-bit
+  mirror folds too, so only "invertible ⟹ every mirror fold flips 3 bits" holds. The atlas page (version 5,
+  made live by the chat on 2026-10-24) and `ATLAS.md` now say so.
 
 ## Still to read
 
 - **Conway, Norton & Ryba, "Frenicle's 880 Magic Squares".** In *The Mathematics of Various
   Entertaining Subjects*, vol. 2 (Princeton, 2017), pp. 71–82, DOI 10.1515/9781400889136-007.
   Paywalled. A library or interlibrary loan can supply it.
+- **Trigg (1948) and Mattingly (2000)**, both in the *Monthly* (JSTOR). They are cited here through Staab et
+  al., who describe what each proved.
 
 ## Sources
 
@@ -115,6 +153,10 @@ Rescoped against Fitting, after reading his §III.
 - Futility Closet, "The Nimm0 Property": https://futilitycloset.com/2018/06/14/the-nimm0-property
 - Takemura, arXiv:2601.06131 and arXiv:2512.18169
 - MathPages, "The Determinants of 4x4 Magic Squares": https://mathpages.com/home/kmath310.htm
+- Staab, Fisher, Maggio, Andrade, Farrell & Schilling, "The Magic of Permutation Matrices: Categorizing,
+  Counting and Eigenspectra of Magic Squares", arXiv:1007.3239 (2010)
+- Lee, Love, Narayan, Wascher & Webster, "On nonsingular regular magic squares of odd order", *Linear Algebra
+  Appl.* 437 (2012) 1346–1355, doi:10.1016/j.laa.2012.04.004
 - Fahimi, arXiv:2307.09996 (*Discrete Mathematics* 347, 2024)
 - Barbero, Cerruti & Murru, "Squaring the magic squares of order 4", arXiv:1302.1163
 - magictesseract.com, Order-4 Magic Squares: https://magictesseract.com/order-4_squares

@@ -120,7 +120,11 @@ smaller clash hidden inside, so only they are fair comparisons with the publishe
   construction gives no fair record.
 - **n = 4:** the only connected even-degree simple graph on 4 vertices is C₄, which has 4 edges, so the
   construction gives nothing. The published 20 stands. The three-letter variant {X, Y, Z}ⁿ also gave only
-  3-qubit sets at n = 4 (Round 8b).
+  3-qubit sets at n = 4 (Round 8b). A search (L4, 2026-10-24) found no genuine context-minimal 4-qubit set
+  with at most 6 contexts of 3–5 observables, at any size (`lower_bound4.py` with n = 4; see
+  `LOWER_BOUND.md`).
+- **The bound is always C − 2.** In every context-minimal clash the noncontextual bound is exactly
+  C − 2 (Lemma 5 in `LOWER_BOUND.md`, from the paper's Theorem 2), so the tolerance is 2/(n + 2) for C_n.
 
 These are the smallest members of this family, not proven minima. Lower bounds remain open.
 
@@ -144,4 +148,23 @@ These are the smallest members of this family, not proven minima. Lower bounds r
     construction) and the all-versus-nothing proofs for graph states it cites.
   - A third, independent check of Theorems A and B (on C3, C5, C7 and triangle + C4) is
     `independent_star_check.py`.
+- **Waegell's thesis (arXiv:1307.6264), Chapter 6, read from the PDF on 2026-10-24.**
+  - The Star families of Tables 26–27 (Aravind's for odd N, Waegell–Aravind's for even N) put every observable
+    in exactly two IDs: the thesis's own symbols are 16₂-2₆5₄ at N = 5, 12₂-1₅4₄1₃ at N = 4 and 16₂-1₇4₄3₃ at
+    N = 6. The same holds for every Observable-based proof in that chapter (Wheel, Stars, Pinwheel). By
+    Arkhipov's theorem, as the paper uses it, degree-2 magic sets reduce to the square or the pentagram.
+  - Computed (`waegell_stars.py`, `waegell_realize.py`): every Star with 4 ≤ N ≤ 9 has a magic Gram matrix of
+    rank below 2N. The realizations are checked with explicit matrices: the 5-qubit Star fits on 2 qubits, as
+    the Mermin square with some observables made identity or repeated.
+  - The odd-N Star has the C_n graph star's counts: 3N + 1 observables, N + 2 contexts, b = N of N + 2. It is a
+    different hypergraph: contexts of 4 plus two of N + 1, where the graph star has all N + 1, and each X_i in 2
+    contexts where the graph star has n − 1. At N = 3 both are the pentagram.
+  - §6.5 "Graph States" says the eigenstates of IDs are graph states; it has no construction like this one.
+- **The paper's class and ours.**
+  - The published sets are not context-minimal. By Lemmas 1–2 and their own qubit counts, 16 of their 18 tabled
+    sets contain a smaller parity clash among their own contexts (`tolerance_check.py`). MS5-26, checked from
+    its printed Pauli strings, has 8,191 (`tlc_hidden.py`).
+  - The C_n graph star is in their class as well: its Gram space is {0, actual}, so no reduction to fewer qubits
+    exists, and context-minimal implies observable-minimal. So "16 against 26" is a comparison inside their
+    class. The lower bound (`LOWER_BOUND.md`) covers context-minimal sets only.
 - **Before any claim:** finish those readings, and ask the authors.

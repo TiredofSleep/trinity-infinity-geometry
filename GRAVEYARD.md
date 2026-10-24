@@ -183,6 +183,16 @@ its own graveyard. These died, with what killed them:
     dictionary or a coincidence of names.
   - **"Nimm0 is proved here for the first time."** Fitting proved it by hand in 1931 (§III). What is new is
     the pairwise relaxation.
+  - **"Invertible ⟺ 3-bit fold."** False: 288 singular squares have 3-bit mirror folds too. Only "on an
+    invertible square every mirror fold flips 3 bits" holds (code lens Round 7;
+    `towers/binary_magic/code_lens/void_fold_check.py`).
+  - **"The center's squares all have a complement fold"**, with fold meaning a mirror. Only 240 of the 576
+    do; the rest are complemented by a row or column swap or by the half-turn.
+  - **A single-plane 2-adic certificate of invertibility.** Impossible by structure. A flipped plane's
+    2 × 2 minor is always even (Round 7, V6 and V11, with the hand reason in the code lens's PREREG), so a
+    hand proof of "no complement ⟹ invertible" has to mix bit planes.
+  - **"Singular ⟺ complement symmetry" as a new exhaustion result.** These are Dudeney's types I–VI, which
+    Trigg settled by computation in 1948. Only the uniform Walsh proof of one direction is new here.
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

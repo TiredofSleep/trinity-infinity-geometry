@@ -1,7 +1,8 @@
 # Atlas: the triad of 4×4 magic squares
 
 All 880 magic squares on 0–15 (Frénicle), organized by the three trefoil regions and read through three lenses.
-Every number here is reproduced by `triad_atlas.py`. The `README.md` is the working log; this page is the map.
+Every number here is reproduced by `triad_atlas.py`, and the Round 7 numbers (2026-10-24) by `code_lens/void_fold.py`
+and, independently, `code_lens/void_fold_check.py`. `WORKING_LOG.md` is the working log; this page is the map.
 
 ## The three lenses
 
@@ -15,14 +16,15 @@ Every number here is reproduced by `triad_atlas.py`. The `README.md` is the work
 
 | Region | Bits (carry corner) | Folds | Signs | Dudeney groups |
 |---|---|---|---|---|
-| **Center** (576) | none (000): 528 · all three (111): 48 | complement fold (b = 1111) in every square; 432 are affine and have all 15 folds | degree 4, all singular | 304 (240), 96 ×2, 48 ×3 |
-| **Petals** (192) | exactly one: 64 / 64 / 64 | 3-bit folds only (b flips three bits) | degree 3, all invertible | 56 ×4 |
-| **Crossings** (112) | two adjacent: 56 / 56 (the third pair is forced empty) | complement fold 64 · 3-bit fold 48 | 3-bit → degree 3 (48) · complement → degree 4 (48) or ∞ (16) | 304 (64), 56 ×4 (32), 8 ×2 (16) |
+| **Center** (576) | none (000): 528 · all three (111): 48 | a complement symmetry (b = 1111) in every square, under a mirror in 240, a row or column swap in 288, the half-turn in 48; 432 are affine and have all 15 XOR symmetries | degree 4, all singular | 304 (240), 96 ×2, 48 ×3 |
+| **Petals** (192) | exactly one: 64 / 64 / 64 | 3-bit mirror folds only (b flips three bits) | degree 3, all invertible | 56 ×4 |
+| **Crossings** (112) | two adjacent: 56 / 56 (the third pair is forced empty) | complement mirror 64 · 3-bit mirror folds only 48 | 3-bit → degree 3 (48) · complement → degree 4 (48) or ∞ (16) | 304 (64), 56 ×4 (32), 8 ×2 (16) |
 
 **In one line:** the bits choose the region; the folds choose the signs; the crossings are where both kinds of fold meet.
 
 ### Inside each region
-- **Center:** 432 affine squares (each value bit is an XOR of position bits; the spectrum is 15 single spikes) · 96 complement-folded but not affine · 48 whole-only squares (the full carry ripple 0111 + 1 = 1000; the only squares that knot, as trefoils).
+- **Center:** 432 affine squares (each value bit is an XOR of position bits; the spectrum is 15 single spikes) · 96 more with no carries, not affine · 48 whole-only squares (the full carry ripple 0111 + 1 = 1000; drawn on the trefoil, theirs are the only knotted diagrams, by construction from Fitting's one-sign rule).
+  The complement symmetry is a mirror in 240 of them (96 affine, the 96 non-affine, all 48 whole-only) and a swap or the half-turn in the other 336, which are all affine. The 48 under the half-turn are the 48 associative squares.
 - **Petals:** one carry, which breaks two adjacent bit planes. The 3-bit fold always skips one of the two balanced planes.
 - **Crossings:** carries 1→2 + 2→4 or 2→4 + 4→8; 1→2 + 4→8 is impossible. The fold type decides everything on the sign side.
 
@@ -36,13 +38,16 @@ Every number here is reproduced by `triad_atlas.py`. The `README.md` is the work
 | Takemura degree 3 ⟺ invertible (APD₃ = 24·det/s) | **proved** |
 | Even complement rearrangement ⟹ even degree ⟹ singular; odd ⟹ odd degree | **proved** |
 | A complement fold (b = 1111) is an even rearrangement, so it forces a singular square | **proved** |
+| A complement symmetry under any of the 15 cell shifts forces a singular square: the Walsh block vanishes wherever the shift fixes the character, which leaves an explicit kernel (χ₁₁ = (1, −1, −1, 1) for the left–right mirror) | **proved** (Round 7). The fact is known: Trigg 1948 (order 4, Dudeney's types I–VI), Mattingly 2000 (regular squares of even order), Staab et al. 2010 (their types A and B, every even order; they give no null vector) |
 | A fold that swaps the diagonals flips every carrying plane | **proved** |
 | Any XOR symmetry zeroes every spectrum entry with u·a ≠ v·b (at least half) | **proved** |
 | Every bit plane has four 1s among corners + center (diagonals cancel plane by plane) | known: Fitting 1931, Satz 3 (a stronger form); a new proof given Nimm0 in `FOLD_PROOF.md`, step 3 |
 | Degree ∞ ⟺ rows (or columns) pair by single Walsh patterns plus one linear condition | **proved** (the ⟸ direction and the condition); that no other mechanism occurs is by exhaustion |
 | Every square folds (has a mirror XOR symmetry) | **proved** given Nimm0 (`FOLD_PROOF.md`) |
-| Singular ⟺ complement fold; invertible ⟺ 3-bit fold | exhaustion only (⟸ of the first is proved) |
-| Petals never have a complement fold; center always does | exhaustion only |
+| Singular ⟺ a complement symmetry under some cell shift, which is exactly Dudeney's types I–VI | ⟸ proved (above). ⟹ known by computation (Trigg 1948; MathPages), with no hand proof; no single bit plane can certify it (Round 7, V6 and V11) |
+| On an invertible square every mirror fold flips 3 bits | exhaustion only. The older row "invertible ⟺ 3-bit fold" was false: 288 singular squares have 3-bit mirror folds too |
+| Petals never have a complement symmetry; the center always does (as a mirror in 240 of 576) | exhaustion only |
+| The 336 squares complemented by a swap or the half-turn (Dudeney's types I–V) are all affine; the 48 under the half-turn are the associative squares | enumeration (`code_lens/void_fold_check.py`) |
 | The split 528 / 192 / 112 / 48 by carrying layers | known: Fitting 1931 §I–II (see `NOVELTY.md`) |
 | 432 affine squares; per-corner counts 64 / 56 / 48 | enumeration; the 432 are exactly 9 of Fitting's 11 quadruples of magic layers |
 
@@ -58,6 +63,8 @@ Every number here is reproduced by `triad_atlas.py`. The `README.md` is the work
 | `fourier_check.py` | wave, Walsh and full S-box spectra; folds; affine squares |
 | `triad_atlas.py` | this page's table and rule checks |
 | `fold_proof_check.py` | checks every step of `FOLD_PROOF.md` |
+| `code_lens/void_fold.py` · `code_lens/void_fold_check.py` | Round 7: every mask as a reflection about 7.5, the complement kernels, the singular classes; and a second implementation of all of it, with the Dudeney/Trigg/Staab correspondence |
+| `mermin_28.py` | the 28 two-qubit labellings and the one magic Mermin square |
 | `order8/` | annealers (C), order-8 tests, exact affine counts |
 | `dirac_tower.py`, `residue_test.py`, `semimagic_test.py`, `metasurface_check.py` | Clifford/Dirac reading, residue tests, metasurface tiles |
 

@@ -280,3 +280,113 @@ search over the relaxation, so a computer proof independent of Conway–Norton�
   only the first. H6 shows the first alone allows carries, so any hand proof of Nimm0 has to use the second,
   together with pairwise orthogonality (H7: without coupling, carries survive).
 - **Overlap with the literature is unknown:** Conway–Norton–Ryba's proof of Nimm0 is still unread.
+
+## Round 7: the void at 7.5 (written before `void_fold.py` ran, 2026-10-24)
+**Prompt.** The atlas's "Center" region (576 squares, all singular) is the region whose fold is the complement
+n -> 15 - n, i.e. the point reflection through 7.5, the value no cell holds. Question: is that why they are
+singular, and does the same picture prove the other half (3-bit fold => invertible)?
+
+**Derivation (by hand, before running).** Let H be the 4x4 Walsh matrix, columns chi_00, chi_01, chi_10, chi_11,
+and J the column reversal j -> 3 - j. J fixes chi_00 and chi_11 and negates chi_01 and chi_10.
+- *Complement fold, left-right:* M J = 15E - M. Apply to chi_11 (J chi_11 = chi_11, E chi_11 = 0):
+  M chi_11 = -M chi_11, so **M chi_11 = 0**. The kernel is chi_11 = (1,-1,-1,1), explicitly. (Top-bottom: chi_11^T M = 0.)
+  This is a one-line special case of degree_explained.py's P2; what is new is the explicit kernel.
+- *3-bit fold with kept bit k:* n XOR b = (15 - 2^k + 2^(k+1) n_k) - n, a reflection through 7.5 - 2^(k-1) or
+  7.5 + 2^(k-1) depending on bit k. It is the only kind of fold that misses the void. Then
+  M chi_11 = 2^k B_k chi_11 = 2^(k+1) sigma, where sigma = +-chi_r* for one r* (the kept plane's rows are +-chi_11).
+- *Centered at the void:* N = M - 7.5E = -(1/2) sum_m 2^m F_m with F_m = 1 - 2B_m. det M = 120 * det W'(N) / 256,
+  where W' is the 3x3 Walsh block over r, c in {01, 10, 11}. Under a 3-bit fold the column-11 entries of W' vanish
+  except at r*, so det M is +-2^(k+3) times a 2x2 minor built from the three flipped planes.
+
+| id | kind | prediction | kill condition |
+|---|---|---|---|
+| V1 | translation | Every square with a left-right complement fold has M chi_11 = 0; every one with a top-bottom complement fold has chi_11^T M = 0. | Any exception. |
+| V2 | translation | Every 3-bit fold (kept bit k) gives M chi_11 = 2^(k+1) sigma (or the transpose), sigma = +-chi_r* for a single r*. | Any exception. |
+| V3 | real | The only fold masks among the 880 are 1111 and the four weight-3 masks. No weight-1 or weight-2 fold occurs. | Any other mask. |
+| V4 | real | No square has both a complement fold and a 3-bit fold. | One that does. |
+| V5 | real | The 2-adic valuation of det M over the 3-bit-fold squares depends only on the kept bit k. | Two squares with the same k and different valuations. |
+| V6 | real (the hand-proof route) | The lowest flipped plane alone certifies invertibility: its 2x2 minor, halved, has odd determinant for every 3-bit-fold square. If this held, "3-bit fold => invertible" would have a mod-8 hand proof. | Any square where it is even. |
+| V7 | translation | The atlas's counts re-derive: 528 / 64 / 64 / 64 / 56 / 56 / 0 / 48 by carry corner; 432 affine; singular <=> complement fold on all 880. | Any mismatch. |
+
+### Round 7 scores (after running; predictions above unchanged)
+| id | result | outcome |
+|---|---|---|
+| V1 | every left-right complement fold has M chi_11 = 0, every top-bottom one chi_11^T M = 0 (304 squares) | **held** |
+| V2 | every 3-bit fold gives M chi_11 = 2^(k+1) sigma, sigma = +-chi_r* for one r* | **held** |
+| V3 | weight-2 masks occur: 480 left-right/top-bottom folds have weight 2 (304 have weight 4, 624 weight 3) | **lost** |
+| V4 | no square has both a complement and a 3-bit left-right/top-bottom fold | **held** |
+| V5 | v2(det) takes several values for the same k (k = 0: 6, 7 and 9) | **lost** |
+| V6 | the lowest flipped plane's minor has even determinant in all 240 invertible 3-bit-fold squares | **lost** (uniformly: the leading 2-adic term always cancels) |
+| V7 | counts and affine total re-derive (528 / 64 / 64 / 64 / 56 / 56 / 0 / 48; 432), but "singular <=> complement fold" fails: 336 singular squares have no left-right or top-bottom complement fold | **lost as registered**: my registration narrowed "complement fold" to the two mirrors. The atlas computes it over every XOR translation of the cell address (`atlas_data.py`, last field). Scope error in the registration, not in the atlas; rechecked as V7b below. |
+
+## Round 7b (written after the Round 7 scores, before the follow-up ran)
+**Derivation (by hand).** Let a = (a_r, a_c) be any nonzero XOR translation of the cell address, with
+M[i ^ a_r][j ^ a_c] = 15 - M[i][j]. Walsh characters diagonalise XOR translations, so on the 3x3 block
+W[r][c] (1 + chi_r(a_r) chi_c(a_c)) = 0. W vanishes wherever chi_r(a_r) chi_c(a_c) = +1:
+- a_r = 0: one whole column of W vanishes (c is the nonzero character orthogonal to a_c), kernel chi_c;
+- a_r, a_c both nonzero: W vanishes at (r0, c0) and on the 2x2 block of the other two r's and c's. The two
+  remaining rows are proportional, so rank W <= 2.
+
+Either way M is singular. **A complement symmetry of any kind is a reflection through 7.5, and it forces a
+kernel.**
+
+| id | kind | prediction | kill condition |
+|---|---|---|---|
+| V7b | translation (re-verifies the atlas's exhaustion row) | With "complement" taken over all 15 translations: singular <=> some complement XOR symmetry, on all 880. | Any mismatch. |
+| V8 | translation of the derivation | Every complement symmetry zeroes W exactly on {(r,c) : chi_r(a_r) chi_c(a_c) = +1}, and the stated kernel vector is in ker M. | Any exception. |
+| V9 | real | The 480 weight-2 mirror folds all sit on singular squares (squares that also have a complement symmetry). | A weight-2 fold on an invertible square. |
+| V10 | real | On every invertible square, every XOR symmetry (all translations) has a weight-3 mask. | Some other weight. |
+| V11 | exploratory, not a prediction | For each invertible square, record which flipped planes (if any) certify det != 0 by the mod-2 minor test. Post hoc; a pattern found here needs a fresh test. | -- |
+
+### Round 7b scores (after running; predictions above unchanged)
+| id | result | outcome |
+|---|---|---|
+| V7b | singular <=> some complement XOR symmetry, on all 880 (640 singular: 304 by a mirror, 288 by a row/column swap, 48 by the half-turn, which are the 48 associative squares) | **held** |
+| V8 | every complement symmetry zeroes W on its predicted set, and the stated kernel vector is in ker M | **held** |
+| V9 | all 480 weight-2 mirror folds sit on singular squares | **held** |
+| V10 | invertible squares also have weight-1 and weight-2 XOR symmetries under non-mirror shifts (128 each); only their *mirror* folds are all weight 3 | **lost** |
+| V11 | exploratory: no single flipped plane certifies det != 0 on any of the 240 invertible squares | (not scored) |
+
+**Why V6 and V11 had to fail (post hoc, by hand).** A flipped plane's rows are +-chi_01 or +-chi_10, in two
+balanced classes. If the classes split 2/2, the two rows of each class differ by the same index d (the four
+indices XOR to 0), so both minor columns are nonzero at the same two r's: identical columns mod 2. If one class
+has all four rows, its entries are +-4 before halving, so even. Either way the single-plane determinant is
+even. A 2-adic proof of "no complement => invertible" has to mix planes.
+
+## Where Round 7 leaves the atlas
+- **Proved, by hand:** every XOR mask b is a reflection n -> c - n about 7.5 +- 2^(q-1) +- ... over the bits q
+  that b keeps; only b = 1111 reflects through 7.5 itself. A complement symmetry under *any* of the 15 shifts
+  zeroes the Walsh block wherever the shift fixes the character, giving an explicit kernel (chi_11 for the
+  left-right mirror). This is the direct form of `degree_explained.py`'s P2.
+- **Still exhaustion:** the converse, no complement symmetry => invertible (240 squares). The single-plane
+  2-adic route is closed (above).
+- **Atlas corrections made (live page, version 5, 2026-10-24):** the Center row said "complement fold" under
+  a definition of fold as a mirror, but only 240 of 576 center squares have a complement *mirror*; the readout
+  appended "complement fold" to non-complement masks; the knot row is relabelled "By construction"; "folds by
+  a half-shift" now reads "XOR symmetry under a half-shift"; the exhaustion row is split as above. New script
+  `mermin_28.py` reproduces the 28-labelings and sum-30 uniqueness claims, which had no script.
+- **Running record (real predictions): 21 of 39 held** (Round 7/7b: V4 and V9 held; V3, V5, V6 and V10 lost).
+
+## Round 7: the literature gate and an independent check (Claude Code, 2026-10-24; the scores above are unchanged)
+- **Independent check:** `void_fold_check.py` is a second implementation that shares no code with
+  `void_fold.py` or `atlas_data.py`. It recomputes the reflection identity, the singular classes, the region rows
+  of atlas version 5 and the mirror-fold weights: 22 of 22 checks pass.
+- **The classes are Dudeney's types.** Each singular square has exactly one complement shift.
+  - VI (304) is complement under a one-sided mirror (Staab et al.'s B_J).
+  - IV and V (96 each) are complement under a one-sided swap K or L (B_K, B_L).
+  - I, II and III (48 each) are complement under (K,K), (L,L) and (J,J) (A_K, A_L, A_J).
+  - VII-XII (240) have none, and all are invertible. No mixed shift such as (K,L) occurs.
+- **Known:**
+  - singular <=> Dudeney I-VI (Trigg 1948, by computation, as reported in arXiv:1007.3239);
+  - the singular direction in general (Mattingly 2000 for regular squares; Staab et al. 2010, Theorems 12-13,
+    for types A and B of every even order).
+  - Wikipedia's source for the associative case is Lee, Love, Narayan, Wascher & Webster, Linear Algebra
+    Appl. 437 (2012) 1346-1355. Note that arXiv:1007.3239 is Staab et al., not Lee et al.
+- **Not found in those papers:** one Walsh argument for all six types with explicit null vectors (Staab et al.
+  give none), and the closed single-plane 2-adic route (V6, V11).
+- **The converse** (no complement => invertible) is known only by computation, so the open target stands as
+  "a hand proof".
+- **Enumerated:** the 336 squares complemented by a swap or the half-turn (types I-V) are all affine.
+- **Atlas file:** `artifact/atlas.html` is now version 5 as served, minus the publishing wrapper, and
+  `artifact/atlas_template.html` was rebuilt from it. Injecting `atlas_data.json` into the template
+  reproduces `atlas.html` byte for byte.

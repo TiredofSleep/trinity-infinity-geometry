@@ -78,7 +78,9 @@ with magic line sums, once Nimm0 is derived for that system (`code_lens/nimm0_co
   a singular square (proved).
 
 **Not proved here:** N itself, which is Fitting's theorem (1931, §III, a case analysis). **Still by exhaustion:** singular ⟹
-complement fold, and petals never having a complement fold.
+a complement symmetry under some cell shift (Dudeney's types I–VI; known by computation since Trigg 1948, with no hand
+proof), and petals never having a complement symmetry. That symmetry need not be a mirror fold: in 336 of the 640
+singular squares it is a row or column swap or the half-turn (Round 7, `code_lens/PREREG.md`).
 
 **Why it does not transfer to order 8:** Step 1 needs every balanced row to be a single Walsh
 pattern. On 4 cells all 6 balanced rows are (±χ). On 8 cells only 14 of the 70 balanced rows are.
