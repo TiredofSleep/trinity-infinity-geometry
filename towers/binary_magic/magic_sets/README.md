@@ -33,8 +33,9 @@ members (e.g. 20 at n = 6) aren't critical, so they aren't fair records.
 
 **Status:**
 - **Proved, computer-checked and independently refereed.** The even-n correction is built in.
-- **Lower bound:** n = 4, at most 6 contexts of 3–5 (L4) found none at any size. For n = 5, C = 5 is empty and
-  C = 6, V = 15 is open. Both cover context-minimal sets (`LOWER_BOUND.md`).
+- **Lower bound:** at n = 5, **16 is the exact minimum**: all three cases with V ≤ 15 are empty, and the last,
+  (6, 15), took 24.7 million hypergraphs and 28 minutes (`lower_bound5.py`). At n = 4, the search with at most 6
+  contexts of 3–5 (L4) found none at any size. Both cover context-minimal sets (`LOWER_BOUND.md`).
 - **Literature:**
   - The ring context is in Waegell 2014.
   - Waegell's thesis Stars are degree-2 sets that reduce to the square or the pentagram, not genuine.

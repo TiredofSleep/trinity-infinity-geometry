@@ -118,8 +118,9 @@ asked for genuine n-qubit magic sets with few observables.
   space of commutation patterns.
 - **Even n:** the members are genuine but not critical, so they are not fair records.
 - **Lower bound** (context-minimal sets):
-  - n = 5: the cases C = 5 (V = 14 and 15) came back empty. The case C = 6, V = 15 is **open**, and is being
-    rerun with `magic_sets/lower_bound4.py`, which generates only what Lemma 4 allows.
+  - n = 5: **16 is the exact minimum.** All three cases with 15 or fewer observables are empty: C = 5 with V = 14
+    and 15, and C = 6 with V = 15, the last by `magic_sets/lower_bound5.py` (24.7 million hypergraphs,
+    computer-assisted). So the C5 graph star is optimal.
   - n = 4: no genuine set with at most 6 contexts of 3–5 observables, at any size (L4, held).
   - In every context-minimal clash the noncontextual bound is exactly C − 2 (Lemma 5). The published sets
     are not context-minimal: 16 of their 18 hide a smaller clash among their own contexts. In MS5-26, the
@@ -169,9 +170,9 @@ asked for genuine n-qubit magic sets with few observables.
    the 17 annealed fully binary squares does. Find what decides it.
 5. **A hand proof that pairwise balance forces Nimm0** (code_lens Round 6c). It must use the separate
    diagonal condition F̂(01,01) + F̂(10,10) = 0.
-6. **The 5-qubit lower bound, case C = 6, V = 15.** `magic_sets/lower_bound4.py` generates only what
-   Lemma 4 allows; its regime A alone is 23,281,793 hypergraphs, counted exactly
-   ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+6. ~~The 5-qubit lower bound, case C = 6, V = 15.~~ Done 2026-10-24: empty, so 16 is the exact minimum
+   among context-minimal sets ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)). Still open: n = 4 beyond
+   6 contexts of 3–5, n ≥ 6, and the published sets' wider class (sets that hide smaller clashes).
 7. **A hand proof that no complement symmetry ⟹ invertible** (240 squares; known by computation since Trigg
    1948). It has to mix bit planes (Round 7).
 7. **Finish the citation check** on Trandafir–Lisoněk–Cabello 2022 (full texts) before anything is sent.

@@ -126,7 +126,9 @@ smaller clash hidden inside, so only they are fair comparisons with the publishe
 - **The bound is always C − 2.** In every context-minimal clash the noncontextual bound is exactly
   C − 2 (Lemma 5 in `LOWER_BOUND.md`, from the paper's Theorem 2), so the tolerance is 2/(n + 2) for C_n.
 
-These are the smallest members of this family, not proven minima. Lower bounds remain open.
+These are the smallest members of this family. **At n = 5 the minimum is proved: 16** is the fewest observables in any
+genuine context-minimal 5-qubit magic set (Lemmas 1–4 plus an exhaustive, computer-assisted search over the three
+cases they leave; `LOWER_BOUND.md`). So the C₅ graph star is optimal in that class. For other n, lower bounds remain open.
 
 ## Caveats
 - **Large contexts:** each local context holds n + 1 observables, and the GHZ context |E| + 1. The paper's

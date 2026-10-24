@@ -177,6 +177,9 @@ its own graveyard. These died, with what killed them:
     smaller clash, a padded pentagram, so they are not critical and not fair records. The independent
     referee found this, and it is now Theorem B.
   - **"Graph stars are proven smallest."** Only n = 5 is under test, and its last case is open.
+    *Update, 2026-10-24:* the last case came back empty, so at n = 5 the claim now holds among context-minimal sets
+    (16 is the exact minimum, `magic_sets/LOWER_BOUND.md`). For every other n, and for the published sets' wider
+    class, it is still dead as stated.
   - **"Better noise tolerance than the published sets at n = 5."** The tolerance is 2/(n + 2), and the
     published MS5-27 does better (0.37).
   - **The tesseract-code link, the Freudenthal–Tits "magic" name, and the √(n/3) "three"** as more than a

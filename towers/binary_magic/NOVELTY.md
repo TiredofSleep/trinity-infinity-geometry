@@ -92,6 +92,9 @@ Rescoped against Fitting, after reading his §III.
   This is elementary, and probably known.
 - **The magic pull toward mirror folds at order 8** is scoped to bi-affine shear families (replicated).
 - **Graph-star magic sets** (`magic_sets/`): critical, genuine n-qubit sets with 3n + 1 observables for odd n.
+  - **At n = 5, 16 is the exact minimum** among context-minimal genuine sets (Lemmas 1–4 plus an exhaustive
+    computer search, completed 2026-10-24). Probably new: the paper asks for minimum sets, and its own exhaustive
+    search covers a different class.
   - The ring context is Waegell's (2014).
   - The completion, and the proofs of genuineness and criticality, were not found in the papers checked.
   - Semantic Scholar lists 14 papers citing Trandafir–Lisoněk–Cabello 2022 (October 2026). All were checked

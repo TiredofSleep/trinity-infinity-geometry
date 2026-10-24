@@ -315,7 +315,7 @@ C = 6, V = 15 case finishes.** Partial logs are in `logs/`.
 | id | result | outcome |
 |---|---|---|
 | L4 | n = 4, at most 6 contexts of 3-5 observables, every size: (C, V) in {(5,12), (6,13), (6,14), (6,15)} give 20 / 2,369 / 454 / 49 distinct context-minimal survivors, none genuine, none unresolved (`lower_bound4.py`, n = 4; `LOWER_BOUND.md`) | **held** |
-| L3-full | (5,14) and (5,15) empty, as before; (6,15) is being rerun with the regime-A/B generator (see below) | unscored |
+| L3-full | (5,14) and (5,15) empty, as before. (6,15), by `lower_bound5.py`: 23,281,793 + 1,444,341 hypergraphs, 81,246 distinct context-minimal survivors (79,670 with no magic assignment, 1,576 on fewer qubits), none genuine, none unresolved. So **16 is the exact minimum** for context-minimal genuine 5-qubit sets (`LOWER_BOUND.md`) | **held** |
 
 **Calibration of L4.** Waegell's 4-qubit Star with single-qubit factors (13 observables, 6 contexts of 3-5)
 is inside the class. The search generates it and classes it "fewer qubits" (`l4_calibrate.py`); directly

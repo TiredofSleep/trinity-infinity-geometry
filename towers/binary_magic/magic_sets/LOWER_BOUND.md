@@ -87,7 +87,25 @@ of 3–5. The (6, 13) search generates it and finds that it fits on fewer qubits
 `waegell_stars.py` finds directly (2 qubits). The (5, 14) case at n = 5 reproduces lower_bound3's 216 survivors
 exactly (`lower_bound4.py 5 14`, in `run_all.py`). Log: `logs/lower_bound4_L4_n4_2026-10-24.log`.
 
-## Theorem (target): no genuine 5-qubit magic set has 15 or fewer observables
+## Theorem: no genuine context-minimal 5-qubit magic set has 15 or fewer observables (2026-10-24)
+
+**Result.** All three cases are empty, so 16 is the exact minimum. The C₅ graph star attains it.
+
+| case | search | distinct context-minimal survivors | no magic assignment | fewer qubits | genuine | unresolved |
+|---|---|---|---|---|---|---|
+| (5, 14) | `lower_bound3.py`; reproduced by `lower_bound4.py` and `lower_bound5.py` | 216 | 210 | 6 | 0 | 0 |
+| (5, 15) | the same three | 2,327 | 2,289 | 38 | 0 | 0 |
+| (6, 15) | `lower_bound5.py`: 23,281,793 regime-A and 1,444,341 regime-B hypergraphs built, 28 minutes on 5 processes | 81,246 | 79,670 | 1,576 | 0 | 0 |
+
+**Scope:**
+- the sets are context-minimal (no proper sub-collection of the contexts is a parity clash);
+- genuineness is the paper's Pauli criterion (minimum magic Gram rank, Cor. 10);
+- the proof is computer-assisted. The (6, 15) case rests on one implementation, whose new part (regime B)
+  reproduces `lower_bound4.py`'s different regime B exactly on the two smaller cases;
+- sets that hide a smaller clash among their own contexts, like the published ones, are not covered;
+- log: `logs/lower_bound5_6_15_2026-10-24.log`.
+
+**How the cases arise:**
 By Lemmas 2 and 3, V ≤ 15 forces C ∈ {5, 6}:
 - C = 6 needs V = 15, so d = 10;
 - C = 5 has V = 14 (d = 10) or V = 15 (d = 11).
@@ -135,7 +153,7 @@ written.
   (2,289 + 38). It builds 1,614 and 7,664 regime-B hypergraphs, where `lower_bound4.py` builds 50,263 and
   158,082 (31 and 21 times more).
 
-If both searches come back empty, then:
-- **16 is the exact minimum at n = 5;**
+Both searches came back empty (the table above), so:
+- **16 is the exact minimum at n = 5** among context-minimal genuine sets;
 - the C5 graph star is optimal;
 - the general bound V ≥ 2n + C − 1 shows that any odd-n improvement on 3n + 1 must use fewer than n + 2 contexts.
