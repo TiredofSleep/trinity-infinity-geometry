@@ -57,6 +57,13 @@ own contexts.
   and the pentagram (`tolerance_check.py`).
 - So the published sets are not context-minimal. Their minimality is a different notion: the paper's
   Appendix B asks that every Pauli assignment be injective and avoid the identity.
+- **Tested on MS5-26** (`tlc_hidden.py`; log in `logs/`), rebuilt from its printed Pauli strings and checked with
+  explicit matrices:
+  - incidence rank 16, so V = 2n + r holds with equality;
+  - 8,191 sub-collections of its contexts are clashes, 3,051 of them context-minimal;
+  - every context-minimal one fits on at most 4 qubits, by Lemma 1 or by a magic Gram matrix of rank ≤ 8;
+  - only 105 sub-collections still need 5 qubits, each shown exhaustively, and all of them use every
+    observable and at least 18 of the 30 contexts.
 - The search below is about **context-minimal** sets, the definition in `PREREG.md`. Sets that hide a
   smaller clash among their contexts, like the published ones, are outside its scope.
 

@@ -105,7 +105,8 @@ Rescoped against Fitting, after reading his §III.
     the same counts as the C_n graph star (3N + 1, N + 2) but a different hypergraph, and it is not genuine.
     This is not the construction here.
   - **The published "smallest" sets are not context-minimal** (16 of 18 hide a smaller clash, by Lemmas 1–2);
-    the C_5 graph star is minimal in both senses. So "16 against 26" holds inside the paper's own class, and
+    the C_5 graph star is minimal in both senses. In MS5-26 every one of the 3,051 minimal hidden clashes fits
+    on at most 4 qubits; only near-whole sub-collections (at least 18 of 30 contexts, all 26 observables) need 5. So "16 against 26" holds inside the paper's own class, and
     the lower bound covers context-minimal sets only.
 - **Sedenions:** 8 of the 15 octonion-like sub-planes are octonions under the sedenions' own signs. That is
   Cawagas's (2004; Cawagas et al., arXiv:0907.2047). The maximum over all sign choices (8, in 135 ways) and

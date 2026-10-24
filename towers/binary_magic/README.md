@@ -122,7 +122,8 @@ asked for genuine n-qubit magic sets with few observables.
     rerun with `magic_sets/lower_bound4.py`, which generates only what Lemma 4 allows.
   - n = 4: no genuine set with at most 6 contexts of 3–5 observables, at any size (L4, held).
   - In every context-minimal clash the noncontextual bound is exactly C − 2 (Lemma 5). The published sets
-    are not context-minimal: 16 of their 18 hide a smaller clash among their own contexts
+    are not context-minimal: 16 of their 18 hide a smaller clash among their own contexts. In MS5-26, the
+    published 5-qubit record, every one of its 3,051 minimal hidden clashes fits on at most 4 qubits
     ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
 - **Literature:**
   - All 14 papers that Semantic Scholar lists as citing the 2022 paper (October 2026) were checked at

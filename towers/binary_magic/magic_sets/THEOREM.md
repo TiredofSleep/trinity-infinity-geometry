@@ -164,6 +164,10 @@ These are the smallest members of this family, not proven minima. Lower bounds r
   - The published sets are not context-minimal. By Lemmas 1–2 and their own qubit counts, 16 of their 18 tabled
     sets contain a smaller parity clash among their own contexts (`tolerance_check.py`). MS5-26, checked from
     its printed Pauli strings, has 8,191 (`tlc_hidden.py`).
+  - **None of MS5-26's 3,051 context-minimal sub-clashes needs 5 qubits:** each fits on at most 4. The only
+    sub-collections that still need 5 (105 of them, checked exhaustively) use all 26 observables and at least 18 of
+    the 30 contexts. So MS5-26 is genuine as a whole while every minimal contradiction inside it is reducible.
+    The C_5 graph star is the other way round: minimal and genuine at once.
   - The C_n graph star is in their class as well: its Gram space is {0, actual}, so no reduction to fewer qubits
     exists, and context-minimal implies observable-minimal. So "16 against 26" is a comparison inside their
     class. The lower bound (`LOWER_BOUND.md`) covers context-minimal sets only.

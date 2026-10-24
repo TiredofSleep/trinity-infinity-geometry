@@ -334,3 +334,10 @@ and it is not genuine. This was the reading the chat asked for before anything i
 - So T4-T6 and L3-L4 compare our context-minimal sets with sets from a wider class.
 - The C_5 graph star belongs to both classes, so "16 vs 26" stands inside theirs. A lower bound for their wider
   class is not attempted.
+
+**The chat's next test, run 2026-10-24: do the hidden clashes still need all n qubits?** This was asked after
+Lemma 5 as an open question, with no prediction registered. On MS5-26, no:
+- all 3,051 context-minimal sub-clashes fit on at most 4 qubits;
+- 105 larger sub-collections need 5, and every one of them uses all 26 observables and at least 18 of the 30
+  contexts (`tlc_hidden.py`; `gram_np.py` is exhaustive up to Gram dimension 24, and none was left unresolved).
+Its genuineness lives in the near-whole set, not in any minimal contradiction inside it.
