@@ -20,8 +20,8 @@ diagonals, the carry bookkeeping (as his A-, B- and C-forms), the 528 / 192 / 11
 and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, and
 [`fitting_crosscheck.py`](fitting_crosscheck.py) checks every one of his statements on all 880 squares.
 
-> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 23 checks
-> (about 4 minutes) and prints ALL GREEN.
+> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 30 scripts
+> (about 12 minutes) and prints ALL GREEN. `magic_sets/` has its own `run_all.py` (10 scripts).
 
 ## What holds, by status
 
@@ -79,6 +79,45 @@ fold and the petals never do; and degree 6 never occurs.
 - The metasurface tiles are an analogy.
 - Magic squares are not knots, particles or physics.
 
+## Since 2026-10-24: the code lens, and magic sets
+
+Two new folders from the same chat, both pre-registered: predictions were written before each test ran,
+and the scores were added after, losses included.
+
+**[`code_lens/`](code_lens/README.md): the squares through the [[16,6,4]] tesseract code.**
+- **The fold theorem without citing Nimm0.** Take four bit planes with eight 1s each, every pair of planes
+  balanced, and all 10 lines summing to 30. Such a system always has a mirror fold (18,432 systems). Nimm0 is
+  derived along the way, by exhaustive search over this relaxation (*computer-assisted*).
+  - Fitting's 1931 hand proof of Nimm0 (§III) uses the actual numbers 0–15: the sets of odd numbers and their
+    sums, then explicit diagonals. So it depends on full distinctness.
+  - The pairwise statement is therefore stronger than his. It is probably new, pending Conway–Norton–Ryba.
+- **Sharper for squares:** Nimm0 plus "the 8 diagonal cells sum to 60" forces a mirror fold. This covers
+  106,368 semi-magic arrangements, 15 times the magic ones (*proved given Nimm0*: the fold proof never uses
+  more). Fitting treats only magic squares, so this extension is not his.
+- **Order 8:** in two families of bi-affine shears, magic pulls squares toward mirror folds about 5 times
+  (*replicated*). That is scoped to those families; Fitting's family behaves differently (above).
+
+**[`magic_sets/`](magic_sets/README.md): the lens on an open problem.** Trandafir, Lisoněk and Cabello (PRL 2022)
+asked for genuine n-qubit magic sets with few observables.
+- **Graph stars.** For an odd cycle, they give a critical, genuine n-qubit magic set with 3n + 1 observables:
+  16 at n = 5, where the published smallest has 26. They also give the first known sets for odd n ≥ 7.
+  ([`magic_sets/THEOREM.md`](magic_sets/THEOREM.md), *proved*.)
+- **Checked three ways:** by the chat's code, by an independent referee agent, and here by a third
+  implementation, [`magic_sets/independent_star_check.py`](magic_sets/independent_star_check.py). Each
+  shares no code with the others. The third enumerates every possible context, and solves for the whole
+  space of commutation patterns.
+- **Even n:** the members are genuine but not critical, so they are not fair records.
+- **Lower bound:**
+  - The cases C = 5 (V = 14 and 15) came back empty.
+  - The case C = 6, V = 15 is **open**. Counted exactly, the current search would build more than 3.9 billion
+    hypergraphs in that case, so it cannot finish as written ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+- **Literature:**
+  - All 14 papers that Semantic Scholar lists as citing the 2022 paper (October 2026) were checked at
+    abstract level, and none states this construction.
+  - The full texts are not all read. The nearest neighbours are Waegell's N-qubit parity proofs, which have
+    the "ring" context, and the all-versus-nothing proofs for graph states.
+- **Not sent:** a draft note to the authors, the author's decision. It is kept with his private papers, not here.
+
 ## Second implementation, and the literature
 
 | script | what it does |
@@ -96,15 +135,22 @@ fold and the petals never do; and degree 6 never occurs.
 | [`NOVELTY.md`](NOVELTY.md) | what was already known, with sources; what survives as probably new |
 | [`WORKING_LOG.md`](WORKING_LOG.md) | the chat's working log, in the order things were found (where its status notes differ from `NOVELTY.md`, `NOVELTY.md` is the later reading) |
 | [`HANDOFF_2026-10-22.md`](HANDOFF_2026-10-22.md) | the handoff from the chat, as received |
+| [`code_lens/`](code_lens/README.md) | the tesseract-code lens: pre-registered rounds 1–6c, the antinomy detector |
+| [`magic_sets/`](magic_sets/README.md) | graph-star magic sets: theorem, pre-registration, lower bound, referee code, a third independent check |
+| [`HANDOFF_2026-10-24.md`](HANDOFF_2026-10-24.md) | the second handoff from the chat, as received |
 | `artifact/` | the interactive atlas page; rebuild with `python artifact/atlas_data.py`, then put `atlas_data.json` into the template |
 | `order8/` | samplers (C source for two; the JavaScript one runs with Node), data, and tests. The compiled binary in the handoff was not committed: compile the C source yourself |
 
 ## Open
 1. **Read Conway–Norton–Ryba (2017).** It is paywalled, and it may contain the fold.
-2. **Prove the exhaustion-only rules.** The fold is the lever. One step is easy: a complement fold
-   whose shift keeps the main diagonal in place forces carry corner 000 (checked in
-   `independent_check.py`).
+2. **Prove the exhaustion-only rules.** The fold is the lever. One step is easy: a complement fold whose
+   shift keeps the main diagonal in place forces carry corner 000 (checked in `independent_check.py`).
 3. **Recipes.** Fitting's "Primterme" already generate all 880 from 14 types under four operations.
    Reproduce his 14 types, then ask what the folds add.
-4. **Order 8.** Which squares fold? Fitting's half-shift families do and the affine squares do, but
-   none of the 17 annealed fully binary squares does. Find what decides it.
+4. **Order 8.** Which squares fold? Fitting's half-shift families do and the affine squares do, but none of
+   the 17 annealed fully binary squares does. Find what decides it.
+5. **A hand proof that pairwise balance forces Nimm0** (code_lens Round 6c). It must use the separate
+   diagonal condition F̂(01,01) + F̂(10,10) = 0.
+6. **The 5-qubit lower bound, case C = 6, V = 15.** It needs a generator that builds only what Lemma 4
+   allows, instead of filtering afterwards ([`magic_sets/LOWER_BOUND.md`](magic_sets/LOWER_BOUND.md)).
+7. **Finish the citation check** on Trandafir–Lisoněk–Cabello 2022 (full texts) before anything is sent.

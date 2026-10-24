@@ -74,6 +74,33 @@ All provisional until Conway–Norton–Ryba is read; most are small.
   a new way to draw it.
 - **Diagonal cancellation layer by layer.** Fitting 1931, Satz 3. The Walsh proof here is new.
 
+## Added 2026-10-24: the code lens and magic sets
+
+Rescoped against Fitting, after reading his §III.
+- **Pairwise-balanced bit planes plus the 10 line sums force Nimm0, and the fold** (`code_lens/`, 18,432
+  plane systems; computer-assisted). Fitting's §III proves Nimm0 by hand for actual squares. His argument
+  uses the numbers 0–15 themselves: the sets of odd numbers, of numbers with a 2 and with a 4, their sums,
+  then explicit diagonal sets. So it depends on full distinctness.
+  - The pairwise relaxation is **stronger than Fitting's statement**: probably new, pending Conway–Norton–Ryba.
+  - A hand proof of the pairwise version is open.
+- **Nimm0 plus diagonal cells summing to 60 forces a mirror fold, for semi-magic arrangements** (106,368).
+  Fitting treats only magic squares and never states a fold. This is **not his**, so it is probably new,
+  pending Conway–Norton–Ryba.
+- **Parallel rows and columns ⟺ affine at order 4**, because every shuffle of 4 is affine (AGL(2,2) = S4).
+  This is elementary, and probably known.
+- **The magic pull toward mirror folds at order 8** is scoped to bi-affine shear families (replicated).
+- **Graph-star magic sets** (`magic_sets/`): critical, genuine n-qubit sets with 3n + 1 observables for odd n.
+  - The ring context is Waegell's (2014).
+  - The completion, and the proofs of genuineness and criticality, were not found in the papers checked.
+  - Semantic Scholar lists 14 papers citing Trandafir–Lisoněk–Cabello 2022 (October 2026). All were checked
+    at abstract level, and none states the construction.
+  - Not yet read in full: Zhao et al., arXiv:2512.16654 (stabilizer-testing games for GHZ and cyclic
+    cluster states; the first 100,000 characters show no such construction), and the all-versus-nothing
+    proofs for graph states that it cites.
+- **Sedenions:** 8 of the 15 octonion-like sub-planes are octonions under the sedenions' own signs. That is
+  Cawagas's (2004; Cawagas et al., arXiv:0907.2047). The maximum over all sign choices (8, in 135 ways) and
+  the 5-plane minimal clash (`../planes_and_mirrors/why_seven_breaks.py`) are not checked against the literature.
+
 ## Still to read
 
 - **Conway, Norton & Ryba, "Frenicle's 880 Magic Squares".** In *The Mathematics of Various

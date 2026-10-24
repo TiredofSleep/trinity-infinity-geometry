@@ -60,6 +60,17 @@ which contradicts Step 2. So a square cannot contain both.
 Either no plane is α, so the left–right mirror works, or no plane is β, so the top–bottom mirror
 works. The mask bit b_k is 1 exactly when plane k is antisymmetric under the mirror that works. ∎
 
+## Scope: what the proof actually uses
+
+Only three things:
+- Nimm0;
+- pairwise orthogonality of the planes (Step 2);
+- the combined sum of the 8 diagonal cells (Step 3).
+
+So the same proof covers every semi-magic arrangement with Nimm0 whose diagonal cells sum to 60: 106,368 of
+them, checked in `code_lens/fold_needs.py`. It also covers every system of four pairwise-balanced planes
+with magic line sums, once Nimm0 is derived for that system (`code_lens/nimm0_coupling.py`).
+
 ## What it unlocks
 - "Every square folds" moves from exhaustion to proof, given N.
 - The per-plane diagonal cancellation is proved (Step 3).

@@ -87,6 +87,10 @@ its own dual in every dimension. [FORCED — `verify_coins.py`]
   give up division — two non-zero numbers can multiply to zero, for example
   (e₁ + e₁₀)(e₄ − e₁₅) = 0 — and size stops multiplying: |xy| = |x||y| fails.
 - The doubling is the base's own: one more imaginary unit is one more yes/no, the lift of Picture 1.
+- **Why 7 breaks at 16.** [CHECKED in [`planes_and_mirrors/`](planes_and_mirrors/README.md)] On 4 bits, the
+  15 Fano sub-planes cannot all carry octonion signs at once: at most 8 can, and the smallest clash takes 5
+  (the sedenions' own split, 8 and 7, is Cawagas's; the maximum over all sign choices is computed, not yet
+  checked against the literature).
 
 **Top.** [NAMED — Hurwitz 1898] ℝ, ℂ, ℍ and 𝕆 are the only number systems in which size
 multiplies: the tower of division ends at 𝕆. Where you meet it: complex analysis; quaternions in

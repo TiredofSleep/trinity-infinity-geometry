@@ -172,6 +172,17 @@ its own graveyard. These died, with what killed them:
     368,640 of them pandiagonal (Schindel, Rempel and Loly, 2006).
   - **The carry rules, and the cancellation of the diagonals layer by layer, as new.** Both are
     Fitting's (1931).
+- **From the 2026-10-24 round** (magic sets and the code lens):
+  - **"A genuine 6-qubit magic set with 20 observables beats the published 35."** The even-n graph stars hide a
+    smaller clash, a padded pentagram, so they are not critical and not fair records. The independent
+    referee found this, and it is now Theorem B.
+  - **"Graph stars are proven smallest."** Only n = 5 is under test, and its last case is open.
+  - **"Better noise tolerance than the published sets at n = 5."** The tolerance is 2/(n + 2), and the
+    published MS5-27 does better (0.37).
+  - **The tesseract-code link, the Freudenthal–Tits "magic" name, and the √(n/3) "three"** as more than a
+    dictionary or a coincidence of names.
+  - **"Nimm0 is proved here for the first time."** Fitting proved it by hand in 1931 (§III). What is new is
+    the pairwise relaxation.
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.
