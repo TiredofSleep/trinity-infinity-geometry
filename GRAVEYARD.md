@@ -202,6 +202,13 @@ its own graveyard. These died, with what killed them:
     need arbitrary digit relabelings, which forced the (1 − ω)-adic proof (Round 8b).
   - **"Every kernel has a void"** (void lens H2). At order 5, 5 of 19 annealed singular squares have none: their
     kernels are accidental small-integer relations (`void_lens/round8c.log`).
+- **From the kernel ledger (2026-10-24/25; `towers/kernel_ledger/PREREG.md`):**
+  - **One subgroup's cosets certify every vanishing DFT minor** (K3a, K3b). They miss the main mechanism,
+    aliasing. The repaired class-pigeonhole certificate covers 87–89% at n = 12 and 16.
+  - **"4 seen as 5": singular 5×5 kernels merge two lines or drop one** (K6, 0 of 3). Seen at 0.89 against a 0.845
+    chance baseline: small-integer kernels repeat by pigeonhole.
+  - **Narrow 5-adic thresholds** (T3: 8.8× against a registered 10×; T6: a badly scaled lattice estimate). The
+    excess of weighted zeros is real, but its mechanism is still open.
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

@@ -20,6 +20,8 @@ diagonals, the carry bookkeeping (as his A-, B- and C-forms), the 528 / 192 / 11
 and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, and
 [`fitting_crosscheck.py`](fitting_crosscheck.py) checks every one of his statements on all 880 squares.
 
+> **Status (2026-10-25): closed for now.** [`STATUS.md`](STATUS.md) says what stands, at what strength, and what is left.
+
 > **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 39 scripts
 > (about 12 minutes) and prints ALL GREEN. `magic_sets/` has its own `run_all.py` (10 scripts).
 

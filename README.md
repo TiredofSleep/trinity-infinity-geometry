@@ -112,6 +112,7 @@ cd binary_magic
 python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)
 cd magic_sets && python run_all.py && cd ..   # graph-star magic sets
 cd ../planes_and_mirrors && python run_all.py # octonions, mirrors, why 16 breaks
+cd ../kernel_ledger && python run_all.py       # forced vs accidental zeros (pip install networkx)
 ```
 
 Every claim tagged **[FORCED]** has a line in one of these scripts; theorems at the tops of the
