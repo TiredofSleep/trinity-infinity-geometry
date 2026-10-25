@@ -1,7 +1,7 @@
 # kernel_ledger: forced vs accidental zeros, across domains
 
 > **Closed for now (2026-10-25)**, with the binary-magic thread: see [`../binary_magic/STATUS.md`](../binary_magic/STATUS.md).
-> The author's synthesis essay is [`A_LEDGER_OF_NOTHING.md`](A_LEDGER_OF_NOTHING.md), with verification notes at its end.
+> The author's synthesis essay is [`A_LEDGER_OF_NOTHING.md`](A_LEDGER_OF_NOTHING.md), revised 2026-10-25 after verification. The first draft is in [`archive/`](archive/README.md).
 > `python run_all.py` reruns every script here (8, about 2 minutes, ALL GREEN in the flagship).
 > **Fence:** the molecule, framework and Fourier rows reproduce known theorems. They show the same linear algebra
 > at work; they make no new physical claim.

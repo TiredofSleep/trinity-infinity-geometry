@@ -19,8 +19,8 @@ what stands, at what strength, and what is left.
 | Pairwise bit-plane balance plus the 10 line sums force Nimm0 and a fold | computer-assisted; probably new | `code_lens/` |
 | One kernel ledger across five domains | a synthesis of known theorems, plus measured residue shares at order 5 (71% concentric, 5% eccentric, 25% weighted) | `../kernel_ledger/` |
 
-The author's synthesis essay, *A Ledger of Nothing*, is in `../kernel_ledger/A_LEDGER_OF_NOTHING.md`, with
-verification notes. The live claude.ai doc is the master copy.
+The author's synthesis essay, *A Ledger of Nothing*, is in `../kernel_ledger/A_LEDGER_OF_NOTHING.md`. It was
+revised on 2026-10-25 after verification, and its first draft is kept in `../kernel_ledger/archive/`.
 
 ## Known: cite, don't claim
 - Fitting 1931: the binary layers, carries, Nimm0 and the counts.

@@ -16,6 +16,9 @@ every tower, is a **coin**, with two sides and an edge.
 - **The towers**, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md).
 - **What survived** when two years of AI-assisted research were audited — an essay:
   [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
+- **A Ledger of Nothing** — an essay on where zeros come from: paid for by a count, or bought by a coincidence,
+  from magic squares to molecules, with what is new fenced off from what is known:
+  [`towers/kernel_ledger/A_LEDGER_OF_NOTHING.md`](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md).
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas ·
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
