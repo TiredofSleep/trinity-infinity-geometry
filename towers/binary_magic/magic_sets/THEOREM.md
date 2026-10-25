@@ -171,6 +171,8 @@ cases they leave; `LOWER_BOUND.md`). So the C₅ graph star is optimal in that c
     the 30 contexts. So MS5-26 is genuine as a whole while every minimal contradiction inside it is reducible.
     The C_5 graph star is the other way round: minimal and genuine at once.
   - The C_n graph star is in their class as well: its Gram space is {0, actual}, so no reduction to fewer qubits
-    exists, and context-minimal implies observable-minimal. So "16 against 26" is a comparison inside their
-    class. The lower bound (`LOWER_BOUND.md`) covers context-minimal sets only.
+    exists, and context-minimal implies observable-minimal.
+  - **Every comparison names its notion of minimal:** 16 observables against 26 holds *within the paper's
+    observable-minimal class*. Our lower bound, 16 as the exact minimum at n = 5, covers *context-minimal sets
+    only* (`LOWER_BOUND.md`).
 - **Before any claim:** finish those readings, and ask the authors.

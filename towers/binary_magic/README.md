@@ -20,7 +20,7 @@ diagonals, the carry bookkeeping (as his A-, B- and C-forms), the 528 / 192 / 11
 and large 8×8 families. [`NOVELTY.md`](NOVELTY.md) gives the section for each, and
 [`fitting_crosscheck.py`](fitting_crosscheck.py) checks every one of his statements on all 880 squares.
 
-> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 33 scripts
+> **Run it** (Python 3.10+, numpy, sympy, scipy): `python run_all.py` runs all 39 scripts
 > (about 12 minutes) and prints ALL GREEN. `magic_sets/` has its own `run_all.py` (10 scripts).
 
 ## What holds, by status
@@ -135,6 +135,32 @@ asked for genuine n-qubit magic sets with few observables.
   - Still unread in full: the all-versus-nothing proofs for graph states.
 - **Not sent:** a draft note to the authors, the author's decision. It is kept with his private papers, not here.
 
+**[`void_lens/`](void_lens/README.md): squares measured from their unoccupied center (Round 8, 2026-10-24).**
+Subtract the center value (n² + 1)/2 first, then count. The chat's referee checked it, and so did a second,
+independent implementation here ([`void_lens/void_lens_check.py`](void_lens/void_lens_check.py), 15 of 15).
+- **MATLAB's odd magic(n) has a closed-form determinant:**
+  (−1)^((n−1)/2) · n^(n−1) · (n² + 1)/2 · ∏ (n^|O| − (−1)^|O|), over the orbits O of doubling mod n.
+  - Exact for every odd n up to 101, so magic(n) is never singular, and n^(n−1) divides the determinant. That
+    proves what Robert Israel observed on OEIS A160523 in 2015.
+  - The closed form is *probably new*. That the squares are nonsingular follows, unstated, from Manjunath &
+    Ambikasaran's 2022 eigenvalue bounds.
+- **Why the doubly-even magic(n) has rank 3:** the tiled sign pattern (1, −1, −1, 1) times a rank-2 ramp. This is
+  *known*: Manjunath & Ambikasaran 2022, Theorem 9, answered Moler's "I don't see how" from 2012.
+- **Prime order:** p·π₁(L₁) + π₂(L₂) + 1, built from two cyclic Latin squares with any digit relabelings, is never
+  singular. The proof uses valuations at (1 − ω), the technique behind Chebotarev's theorem.
+  - So **every pandiagonal 5×5 magic square is nonsingular** (all 28,800).
+  - The prime matters: there are singular members at n = 9.
+  - *Probably new*, pending a fuller search. Lee et al. (2012) construct nonsingular regular squares of prime
+    order by another route.
+- **The void index:** a complement symmetry by involutions P and Q forces nullity ≥ |(f_P + f_Q)/2 − 1|.
+  - It contains Staab et al.'s two theorems as special cases.
+  - At order 4 it is exact. Dudeney's two groups of 8 have a complement symmetry of index 0 and stay invertible
+    (atlas v6).
+- **Where it stops:** at order 5, 5 of 19 sampled singular squares have no void at all. Their kernels are
+  accidental.
+- `void_lens/applications/` reproduces known theorems from four fields with the same counting. They are
+  illustrations only, fenced in the folder's README.
+
 ## Second implementation, and the literature
 
 | script | what it does |
@@ -154,6 +180,7 @@ asked for genuine n-qubit magic sets with few observables.
 | [`HANDOFF_2026-10-22.md`](HANDOFF_2026-10-22.md) | the handoff from the chat, as received |
 | [`code_lens/`](code_lens/README.md) | the tesseract-code lens: pre-registered rounds 1–6c, the antinomy detector |
 | [`magic_sets/`](magic_sets/README.md) | graph-star magic sets: theorem, pre-registration, lower bound, referee code, a third independent check |
+| [`void_lens/`](void_lens/README.md) | Round 8: squares measured from their center. The odd MATLAB determinant, prime-order nonsingularity, the void index, an independent check, and fenced applications |
 | [`HANDOFF_2026-10-24.md`](HANDOFF_2026-10-24.md) | the second handoff from the chat, as received |
 | `artifact/` | the interactive atlas page; rebuild with `python artifact/atlas_data.py`, then put `atlas_data.json` into the template |
 | `order8/` | samplers (C source for two; the JavaScript one runs with Node), data, and tests. The compiled binary in the handoff was not committed: compile the C source yourself |

@@ -196,6 +196,12 @@ its own graveyard. These died, with what killed them:
     hand proof of "no complement ⟹ invertible" has to mix bit planes.
   - **"Singular ⟺ complement symmetry" as a new exhaustion result.** These are Dudeney's types I–VI, which
     Trigg settled by computation in 1948. Only the uniform Walsh proof of one direction is new here.
+  - **"Moler's doubly-even rank 3 is open."** Manjunath & Ambikasaran proved it in 2022 (Theorem 9). The void
+    form is the same factorization.
+  - **"The affine-digit family gives every pandiagonal 5×5 square"** (void lens D3). It gives only 800. The rest
+    need arbitrary digit relabelings, which forced the (1 − ω)-adic proof (Round 8b).
+  - **"Every kernel has a void"** (void lens H2). At order 5, 5 of 19 annealed singular squares have none: their
+    kernels are accidental small-integer relations (`void_lens/round8c.log`).
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

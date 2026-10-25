@@ -45,6 +45,7 @@ and, independently, `code_lens/void_fold_check.py`. `WORKING_LOG.md` is the work
 | Degree ∞ ⟺ rows (or columns) pair by single Walsh patterns plus one linear condition | **proved** (the ⟸ direction and the condition); that no other mechanism occurs is by exhaustion |
 | Every square folds (has a mirror XOR symmetry) | **proved** given Nimm0 (`FOLD_PROOF.md`) |
 | Singular ⟺ a complement symmetry under some cell shift, which is exactly Dudeney's types I–VI | ⟸ proved (above). ⟹ known by computation (Trigg 1948; MathPages), with no hand proof; no single bit plane can certify it (Round 7, V6 and V11) |
+| A complement symmetry by a row involution P and a column involution Q forces nullity ≥ \|(f_P + f_Q)/2 − 1\| (f = fixed lines). Dudeney's two groups of 8 have one of index 0 (it fixes exactly two lines) and are invertible | **proved** (void lens, Round 8; atlas v6); checked on all 880 by `void_lens/void_lens_check.py`. Its cases f = (0,0) and f = (0, 4) are Staab et al.'s types A and B |
 | On an invertible square every mirror fold flips 3 bits | exhaustion only. The older row "invertible ⟺ 3-bit fold" was false: 288 singular squares have 3-bit mirror folds too |
 | Petals never have a complement symmetry; the center always does (as a mirror in 240 of 576) | exhaustion only |
 | The 336 squares complemented by a swap or the half-turn (Dudeney's types I–V) are all affine; the 48 under the half-turn are the associative squares | enumeration (`code_lens/void_fold_check.py`) |

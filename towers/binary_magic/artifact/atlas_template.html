@@ -321,7 +321,8 @@ const RULES = [
   ["Diagonals cancel bit plane by bit plane","known","Fitting 1931, Satz 3; a new Walsh proof here"],
   ["Every XOR symmetry zeroes at least half the binary spectrum","proved","S-box identity"],
   ["Drawn on the trefoil, only the 48 all-carry squares give a knotted diagram","constr","follows from Fitting's one-sign rule; a property of the drawing, not a knot in the square"],
-  ["Singular exactly when some shift complements the square","exh","all 880; one direction is proved above, and no single bit plane can certify the other"],
+  ["Singular exactly when some shift complements the square (Dudeney's groups I–VI)","known","Trigg 1948; Mattingly 2000; Staab et al. 2010. Here: one uniform proof with explicit kernels; no single bit plane can certify the converse"],
+  ["Dudeney's two 8-square groups have a complement symmetry and are still invertible: it fixes exactly two lines, and a complement symmetry forces a kernel only when its fixed lines number other than two","proved","count of fixed lines: nullity ≥ |(f_rows + f_cols)/2 − 1|; checked on all 880"],
   ["On an invertible square every mirror fold flips 3 bits (288 singular squares have 3-bit mirror folds too)","exh","all 880"],
   ["Petals never have a complement symmetry; the center always does (as a mirror in 240 of 576)","exh","all 880"],
   ["432 of the 880 are affine over GF(2)","enum","9 of Fitting's 11 quadruples"]];

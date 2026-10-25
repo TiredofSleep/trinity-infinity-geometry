@@ -141,6 +141,19 @@ literature.
   mirror folds too, so only "invertible ⟹ every mirror fold flips 3 bits" holds. The atlas page (version 5,
   made live by the chat on 2026-10-24) and `ATLAS.md` now say so.
 
+## Added 2026-10-24 (Round 8, `void_lens/`): against the literature
+
+Each claim was checked by the chat's referee and by `void_lens/void_lens_check.py` (15 of 15). Details are in
+the last section of `void_lens/PREREG.md`.
+
+| claim | status | prior work |
+|---|---|---|
+| Closed-form det of MATLAB's odd magic(n); never singular; n^(n−1) divides it | **probably new** (exact to n = 101) | OEIS A160523 (Bjerkeng 2009; Israel 2015: n^(n−2) proved, n^(n−1) observed, "0 iff n even" stated). Manjunath & Ambikasaran, arXiv:2205.15563, Theorem 1: eigenvalue bounds that imply nonsingularity, unstated |
+| Doubly-even magic(n) has rank 3 | **known** | Manjunath & Ambikasaran 2022, Theorem 9, with the eigenpairs. Moler's 2012 question "I don't see how today" was answered there |
+| Prime order: the two-Latin-square family is nonsingular for any digit relabelings; so are all 28,800 pandiagonal 5×5 squares | **probably new**, pending Rosser & Walker (1938–39) and Loly et al. (2009), not read | Lee, Love, Narayan, Wascher & Webster, LAA 437 (2012): nonsingular regular squares of prime and prime-power order, built another way. The method is Chebotarev's (DFT minors; Tao 2005) |
+| Void index: nullity ≥ \|(f_P + f_Q)/2 − 1\|; at order 4, singular ⟺ index ≥ 1, and Dudeney's two groups of 8 are the index-0 squares | **small, probably new** | Staab et al., Theorems 12–13, are its cases f = (0,0) and f = (0, 2m) |
+| At order 5 some kernels have no void (5 of 19) | a proven limit | — |
+
 ## Still to read
 
 - **Conway, Norton & Ryba, "Frenicle's 880 Magic Squares".** In *The Mathematics of Various
