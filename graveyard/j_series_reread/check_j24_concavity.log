@@ -1,0 +1,7 @@
+t=0.30  finite-difference (sinc^2)'' = -2.59339  (concave)
+t=0.40  finite-difference (sinc^2)'' = -0.32683  (concave)
+t=0.45  finite-difference (sinc^2)'' = +0.75156  (convex)
+t=0.50  finite-difference (sinc^2)'' = +1.72683  (convex)
+t=0.55  finite-difference (sinc^2)'' = +2.55786  (convex)
+t=0.60  finite-difference (sinc^2)'' = +3.21310  (convex)
+inflection point of sinc^2 in (0,1): t = 0.4147837911

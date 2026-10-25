@@ -1,0 +1,11 @@
+catalog size 4694
+well-known anchors checked: 17 mismatches: []
+archive/J61 texts checked: 72 mismatches: []
+  constant 3x3: 1556 (archive: 1556) OK
+  right projection 3x3: 1214 (archive: 1214) OK
+  Z/5: 32 (archive: 32) OK
+  -(x+y) mod 4: 294 (archive: 294) OK
+  x*y=f(y), f=(1,2,2): 261 (archive: 261) OK
+  Z/3: 60 (archive: 60) OK
+  Z/4: 116 (archive: 116) OK
+time 0.5s

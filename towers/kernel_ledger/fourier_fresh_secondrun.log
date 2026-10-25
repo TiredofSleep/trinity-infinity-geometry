@@ -1,0 +1,5 @@
+n=12 exhaustive: singular 473192, certified 420347 (88.8%), unsound 4349; exact recheck of 429238 minors, disagreements with SVD 4349
+n=16 sampled: singular 24628, certified 21134 (85.8%), unsound 2000; exact recheck of 23706 minors, disagreements with SVD 2000
+n=11 sampled: singular 0, certified 0 (0.0%), unsound 0; exact recheck of 557 minors, disagreements with SVD 0
+n=13 sampled: singular 0, certified 0 (0.0%), unsound 0; exact recheck of 632 minors, disagreements with SVD 0
+SCORE: {'F1': 'LOST', 'F2': 'HELD', 'F3': 'HELD'}

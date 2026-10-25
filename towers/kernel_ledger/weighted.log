@@ -1,0 +1,6 @@
+fresh: 39831 distinct new squares, 76 singular: {'concentric': 48, 'weighted': 25, 'eccentric': 3}
+W1: weighted 25, random-lattice estimate 8.16, ratio 3.06
+W2: singular digit layer in 48% of weighted vs 24.8% of nonsingular (1.94x)
+W3: concentric share 63%
+
+SCORE: {'W1': 'HELD', 'W2': 'HELD', 'W3': 'HELD'}

@@ -1,0 +1,17 @@
+  [ok]   Channel.test_set seeds its RNG with id(self) (a memory address): P1 is not 'fully seeded'
+==============================================================================
+allocator (deterministic test sets)                   mean MSE   I      II     III    IV
+uniform (paper)                                        0.40862  0.0000  0.2522  0.0029  1.3793
+router (paper)                                         0.00329  0.0000  0.0001  0.0130  0.0000
+oracle (paper)                                         0.00334  0.0000  0.0000  0.0132  0.0001
+uniform + library, no taxonomy                         0.34580  0.0001  0.0001  0.0083  1.3748
+uniform + library + last-third window, no taxonomy     0.07416  0.0002  0.0003  0.0305  0.2657
+==============================================================================
+  [ok]   router type accuracy on the paper's suite: 24/24
+  [ok]   uniform's mean error is 84% Type IV (drift channels whose post-switch map is built as roughly minus the pre-switch map)
+  [ok]   the feature library alone, with no classification, fixes Type II: 0.2522 -> 0.0001
+  [ok]   a fixed recency window alone, with no classification, cuts Type IV 1.379 -> 0.266
+  [ok]   freezing Type III after a 60-sample probe makes those channels WORSE than uniform: 0.0130 vs 0.0029
+router with sin7pi/absu removed from its library: mean MSE 0.0659, type accuracy 21/24, per-type 0.0000  0.2504  0.0133  0.0001
+  [ok]   without the hidden features in its library the router's Type-II error returns to the uniform level (0.2504 vs uniform 0.2522)
+failures: 0

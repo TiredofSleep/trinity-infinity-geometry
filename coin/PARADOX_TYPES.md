@@ -10,7 +10,9 @@
 fail. Their sources, all in the workstation [`ck`](https://github.com/TiredofSleep/ck):
 
 - the memo: `Gen12/targets/clay/papers/sprint11_tig_bundle_2026_04_08/sprints/PARADOX_CLASSIFICATION_MEMO.md`;
-- the principle behind it: `Gen12/targets/clay/papers/sprint12_uop_gut_arc_2026_04_08/WP58_UNIFIED_ORTHOGONALITY_PRINCIPLE.md`;
+- the principle behind it: `Gen12/targets/clay/papers/sprint12_uop_gut_arc_2026_04_08/WP58_UNIFIED_ORTHOGONALITY_PRINCIPLE.md`.
+  Only its Theorem 0 is used here. Its Theorem A, on two orbit readings of ℤ/n, is false, and the
+  corrected criteria are in [`TWO_READINGS_OF_ZN.md`](TWO_READINGS_OF_ZN.md);
 - worked cases and a rule-based classifier: `papers/meta_lens/worked_paradoxes/` and
   `papers/meta_lens/classify_paradox.py`, on the branch `paradox-classifier-2026-04-24`.
 
@@ -40,6 +42,10 @@ It is elementary, and it is exactly the coin's *two lenses* stated in general [R
 - **The principle's first home, ℤ/30.** Reading a number mod 6 and mod 10 tells all 30 apart, because
   the least common multiple is 30. Reading it mod 2 and mod 6 does not. Adding more views *of the
   same kind* never helps — the memo's "refinement trap" [FORCED].
+- **All the natural readings of ℤ/n.** Residues, orbits under multiplication by units, and the mirror
+  x ↔ −x: when two of them suffice is settled level by level in
+  [`TWO_READINGS_OF_ZN.md`](TWO_READINGS_OF_ZN.md). Its trap is at n = 15, where two orbit readings
+  separate every unit and still merge 5 with 10 [FORCED — `verify_two_readings.py`].
 
 ---
 

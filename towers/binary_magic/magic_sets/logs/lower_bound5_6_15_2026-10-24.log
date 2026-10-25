@@ -1,0 +1,6 @@
+(C, V) = (6, 15), n = 5: regime A plus 7 regime-B jobs [(7, 2, 7), (7, 2, 7), (8, 3, 3), (8, 3, 3), (8, 3, 3), (9, 4, 1), (9, 4, 1)] (s0, k, outside patterns)
+done in 1686s with 5 processes
+  built per job: {'A': '23,281,793', 'B s0=7 k=2': '821,071', 'B s0=8 k=3': '538,472', 'B s0=9 k=4': '84,798'}
+  filtered: {'not minimal': 31954, 'repeated context': 217002, 'fails Lemma 4': 1175299}
+  distinct survivors: 81,246  ->  {'none': 79670, 'fewer qubits': 1576}
+RESULT: no genuine 5-qubit set in this case

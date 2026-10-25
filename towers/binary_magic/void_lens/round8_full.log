@@ -1,0 +1,22 @@
+PART A: odd magic(n)
+  closed form matches exact det: n = 3..21 (already seen) True; n = 23..61 (fresh) True
+  examples: {3: -360, 5: 5070000, 7: -348052801600}
+  linear squares tested: 77904; zero determinants: 0
+  linear 5x5 family: 1472 distinct magic squares, 800 pandiagonal (prediction: 28,800)
+  annealing: 179 natural 5x5 magic squares in 348s; singular one found: [[7, 16, 12, 11, 19], [9, 15, 22, 2, 17], [20, 23, 13, 3, 6], [8, 10, 4, 25, 18], [21, 1, 14, 24, 5]]
+
+PART B: even magic(n)
+  doubly even n = 4..64: rank-2 formula for M - (c/2)E exact and rank 3: True
+  singly even ranks: {6: 5, 10: 7, 14: 9, 18: 11, 22: 13, 26: 15, 30: 17, 34: 19, 38: 21, 42: 23, 46: 25, 50: 27, 54: 29, 58: 31, 62: 33}
+
+PART C: void index bound
+   ('none', 'invertible') 224
+   ('rowcol f=0,0 idx=1', 'singular') 144
+   ('rowcol f=0,2 idx=0', 'invertible') 11
+   ('rowcol f=0,4 idx=1', 'singular') 208
+   ('rowcol f=2,0 idx=0', 'invertible') 5
+   ('rowcol f=4,0 idx=1', 'singular') 288
+  affine 8x8 with a left-right complement mirror: nullity counts {3: 186, 4: 305, 5: 9}
+  annealed 8x8: 2000 squares, 0 with a factorised complement map
+
+SCORE: {'D1': 'HELD', 'D2': 'HELD', 'D3': 'LOST', 'D4': 'HELD', 'E1': 'HELD', 'E2': 'HELD', 'I1': 'HELD', 'I2': 'HELD', 'I3': 'HELD', 'I4': 'HELD', 'I5': 'HELD'}

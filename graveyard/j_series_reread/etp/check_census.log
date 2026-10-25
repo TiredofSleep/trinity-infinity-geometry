@@ -1,0 +1,20 @@
+order 2: 16 tables, 7 distinct profile sizes, 10 distinct profiles
+   smallest size 138 (2 tables), largest 1556 (2 tables)
+   transpose -> mirror holds for every table: True;  self-mirror profiles: 4
+   commutative tables: 8, min size 138; with profile == C2: 0
+   Latin squares: 2, sizes {663: 2}
+order 3: 19683 tables, 158 distinct profile sizes, 2639 distinct profiles
+   smallest size 1 (588 tables), largest 1556 (3 tables)
+   transpose -> mirror holds for every table: True;  self-mirror profiles: 101
+   commutative tables: 729, min size 14; with profile == C2: 120
+   Latin squares: 12, sizes {60: 3, 179: 6, 313: 2, 382: 1}
+archived order-3 profile_counts identical: True
+archived commutative counts identical: True
+archived quasigroup counts identical: True
+archived distinct-sets-per-size identical: True  total distinct sets: 2639
+order 3: 82 distinct 14-law profiles; anchors with >=2 variables: 2
+   anchor histogram: {np.int64(8): 14, np.int64(23): 14, np.int64(40): 1, np.int64(43): 1, np.int64(99): 2, np.int64(151): 6, np.int64(203): 2, np.int64(307): 12, np.int64(359): 8, np.int64(614): 2, np.int64(817): 1, np.int64(1426): 2, np.int64(1629): 5, np.int64(1832): 7, np.int64(2441): 2, np.int64(2847): 1, np.int64(3253): 2}
+order 3: tables satisfying no law but x = x: 588  example: [[1, 0, 0], [0, 2, 0], [0, 1, 1]]
+order 2: tables satisfying no law but x = x: 0
+archived 'smallest Family C realizer' [[1,2,0],[2,0,0],[0,0,0]] has profile C2: True
+time 66.0s

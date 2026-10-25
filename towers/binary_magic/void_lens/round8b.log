@@ -1,0 +1,6 @@
+p = 5 extended family: 28800 distinct pandiagonal magic squares (prediction 28,800); singular: 0
+primes, random members, zero determinants: {5: 0, 7: 0, 11: 0, 13: 0}
+  n = 9: first singular member uses digit maps [3, 6, 4, 2, 1, 0, 8, 5, 7] / [0, 3, 8, 2, 5, 7, 1, 4, 6]
+composite n, random members, zero determinants: {9: 3, 15: 0, 25: 0}
+
+SCORE: {'P1': 'HELD', 'P2': 'HELD', 'P3': 'HELD'}

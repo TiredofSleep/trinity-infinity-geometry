@@ -1,0 +1,37 @@
+A. character of the sum-zero (tetrahedron) representation of S4
+   e          size  1  trace {np.float64(3.0)}  det {np.float64(1.0)}
+   (ij)       size  6  trace {np.float64(1.0)}  det {np.float64(-1.0)}
+   (ijk)      size  8  trace {np.float64(-0.0)}  det {np.float64(1.0)}
+   (ij)(kl)   size  3  trace {np.float64(-1.0)}  det {np.float64(1.0)}
+   (ijkl)     size  6  trace {np.float64(-1.0)}  det {np.float64(-1.0)}
+   => (3,1,0,-1,-1) is the partition [3,1] (standard rep V), NOT [2,1,1] (= V (x) sgn)
+
+B. the paper's printed U_4 vs the image of (1234)
+   max|U4_paper - rep((1234))| = 1.1102230246251565e-16
+   eig: [-1.+0.j -0.+1.j -0.-1.j]  det: -1.0
+
+C. the paper's change of basis V
+   unitary: True
+   max|V r12 V^-1 - sigma_v| = 2.220446049250313e-16
+   V r123 V^-1 =
+ [[ 1. +0.j    -0. +0.j     0. +0.j   ]
+ [ 0. -0.j    -0.5+0.866j -0. +0.j   ]
+ [-0. -0.j    -0. +0.j    -0.5-0.866j]]
+   diagonal? True  diag = [ 1. +0.j    -0.5+0.866j -0.5-0.866j]
+   (the paper's script only compares eigenvalues of V r123 V^-1 with {1,w,w^2}; a random unitary W passes that too: True )
+
+D. uniqueness of the S3 intertwiner / S4 extension
+   alpha=0.0: same S3 images True; U4_NV changes by 0.000
+   alpha=0.7: same S3 images True; U4_NV changes by 0.457
+   alpha=2.0: same S3 images True; U4_NV changes by 1.122
+   => the S3 data fix V only up to a relative phase between |0> and the E block; the 4-cycle's NV matrix is NOT unique (a one-parameter family).
+
+E. does the PRINTED pulse table compile U_{4,SU3}?
+   det(target) = (1-0j)
+   best residual over all 6 orders x 8 dagger choices (global phase free): 1.272
+   (a correct compilation would give ~1e-4 at the printed 4-digit precision)
+   plain product G02 G01 G12 vs target, Frobenius residual: 2.724
+
+F. what the '24-element closure residual 1.84e-16' measures
+   max |V^-1 (V M V^-1) V - M| = 5.33e-16  (a round trip, true for ANY invertible V)
+   same test with a random orthogonal W instead of V: 4.30e-16

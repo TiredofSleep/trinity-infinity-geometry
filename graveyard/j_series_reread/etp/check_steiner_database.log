@@ -1,0 +1,19 @@
+STS(3) profile size: 382
+laws of STS(3) proved for ALL squags by the rewriting normal form: 382 of 382
+laws proved by rewriting that are NOT in STS(3) profile (soundness check, must be 0): 0
+the archive's 40 'small-order coincidences': proved for all squags: 40 of 40
+   archived profile_3 equals ours: True
+STS(7) Fano = PG(2,2): squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): True   (0.4s)
+STS(9) = AG(2,3): squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): True   (0.3s)
+STS(13) cyclic: squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): True   (0.4s)
+STS(15) = PG(3,2): squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): True   (0.4s)
+STS(15) cyclic: squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): True   (0.5s)
+STS(19) cyclic: squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): None   (0.7s)
+STS(21) cyclic: squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): None   (1.0s)
+STS(25) cyclic: squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): None   (1.3s)
+STS(27) = AG(3,3): squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): None   (1.6s)
+STS(31) = PG(4,2): squag=True; profile size 382; equal to STS(3)'s: True; the 40 laws hold (exhaustive): None   (0.8s)
+-(x+y) mod 4: profile 294; proved for every totally symmetric quasigroup: 294
+-(x+y) mod 5: profile 294; proved for every totally symmetric quasigroup: 294
+-(x+y) mod 7: profile 294; proved for every totally symmetric quasigroup: 294
+time 8.4s

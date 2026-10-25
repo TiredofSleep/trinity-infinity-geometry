@@ -1,0 +1,20 @@
+symmetric Latin squares of order 3: 6; profile sizes {60: 3, 313: 2, 382: 1}
+symmetric Latin squares of order 4: 96; profile sizes {14: 24, 15: 24, 49: 8, 116: 12, 165: 12, 294: 12, 663: 4}
+symmetric Latin squares of order 5: 720; profile sizes {14: 480, 15: 120, 32: 30, 89: 24, 90: 30, 176: 6, 294: 30}
+   profile-15 extras over C2: {(np.int64(151),): 120} ['x = (x * x) * (x * x)']
+   exactly C2: 480
+#1312: 28 order-3 tables satisfy it; smallest profile 79   (J03: (28, 79))
+#2241: 28 order-3 tables satisfy it; smallest profile 79   (J03: (28, 79))
+#4295: 45 order-3 tables satisfy it; smallest profile 122   (J03: (None, None))
+#4303: 45 order-3 tables satisfy it; smallest profile 122   (J03: (45, 122))
+#4610: 45 order-3 tables satisfy it; smallest profile 122   (J03: (45, 122))
+#4637: 45 order-3 tables satisfy it; smallest profile 122   (J03: (45, 122))
+J03's C3 'minimum example' [[0,1,2],[0,2,1],[2,1,0]]: satisfies 1312: True  profile 79
+Lo Shu mod 3 table [[0, 1, 2], [1, 2, 0], [2, 0, 1]] profile 60 commutative True
+Lo Shu mod 3 table [[1, 0, 2], [0, 2, 1], [2, 1, 0]] profile 313 commutative True
+Lo Shu mod 3 table [[2, 0, 1], [1, 2, 0], [0, 1, 2]] profile 179 commutative False
+Lo Shu mod 3 table [[2, 1, 0], [0, 2, 1], [1, 0, 2]] profile 179 commutative False
+random order-5 tables with constant diagonal whose profile is exactly C1: 22 of 30
+random commutative tables of order 10 with profile exactly C2: 10 of 10
+Z/5 profile inside -(x+y) mod 5 profile: False ; common laws: 14 ; associativity in 294-set: False
+time 39.8s

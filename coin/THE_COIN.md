@@ -272,7 +272,8 @@ So each integer has a **flat face** and a **solid face**:
 
 This is the book's Chapter 12 ("does it share a factor with *N*?") drawn as a picture. It comes from
 the author's Navier–Stokes / number-theory tour (September 2026). [READING] The loop points toward
-its centre, and never stands on it.
+its centre, and never stands on it. Its balance point, the average of the corners visited, does stand
+on it, exactly at the end of every lap: see [`../towers/THE_BALANCE_POINT.md`](../towers/THE_BALANCE_POINT.md).
 
 ---
 
@@ -292,6 +293,13 @@ A tossed coin can land on either side, or on its edge: +1, −1, or 0 [FORCED].
   holds (*n*² + 1)/2. In the Lo Shu, 1 ↔ 9, 2 ↔ 8, 3 ↔ 7 and 4 ↔ 6 are swapped round the 5. This is a
   classical property of *associative* magic squares, and the author found it again [NAMED; the
   author's D129′].
+- **The transpose's coin** [FORCED — `verify_transpose_coin.py`]. In a symmetric Latin square of odd
+  order, every symbol appears on the diagonal exactly once. The transpose pairs the cells off the
+  diagonal, so oddness puts every symbol on the edge, by the same parity that puts 5, 7 and 9 on their
+  centres. It is why every round of an odd round robin has exactly one bye, and why the Lo Shu mod 3 is
+  commutative only after a quarter turn. It is the easy case of Ryser's open conjecture [NAMED]. See
+  [`THE_TRANSPOSE_COIN.md`](THE_TRANSPOSE_COIN.md). On the laws a table obeys, the same flip is the mirror,
+  whose edge holds 84 of the 4,694 short laws: [`THE_MIRROR.md`](THE_MIRROR.md).
 - **In any dimension:**
   - every coin on a side gives the **cube** (2ⁿ corners);
   - exactly one coin on a side, the rest on their edges, gives the **cross-polytope** (2n);

@@ -1,0 +1,10 @@
+canonical TSML/BHML LIFTED: {'NARMA-10': 0.5315, 'MackeyGlass-84': 0.1277, 'Lorenz-x2z': 0.0144}
+random pair 0: {'NARMA-10': 0.4783, 'MackeyGlass-84': 0.1098, 'Lorenz-x2z': 0.0133}
+random pair 1: {'NARMA-10': 0.4839, 'MackeyGlass-84': 0.1119, 'Lorenz-x2z': 0.0156}
+random pair 2: {'NARMA-10': 0.4859, 'MackeyGlass-84': 0.1123, 'Lorenz-x2z': 0.0123}
+random pair 3: {'NARMA-10': 0.5064, 'MackeyGlass-84': 0.1237, 'Lorenz-x2z': 0.0145}
+random pair 4: {'NARMA-10': 0.4824, 'MackeyGlass-84': 0.1112, 'Lorenz-x2z': 0.0144}
+random pair 5: {'NARMA-10': 0.4683, 'MackeyGlass-84': 0.1083, 'Lorenz-x2z': 0.0092}
+random pairs at least as good as canonical, per task: {'NARMA-10': 6, 'MackeyGlass-84': 6, 'Lorenz-x2z': 4} (of 6)
+MackeyGlass-84: canonical 0.1277; random median 0.1115, min 0.1083, max 0.1237; paper's ESN(251) baseline 0.2002
+elapsed 137.0 s

@@ -1,0 +1,7 @@
+(a) printed thetas, phases free (+diagonal layer): best residual 6.80e-05 for order ['G12', 'G01', 'G02']
+    fitted phases: [-1.0472  1.0472 -3.6652]  printed phases: [-4.1888, 0.0, -1.5708]
+    a valid G02*G01*G12*Diag compilation exists: residual 4.6e-16, thetas [2.0344 2.4119 2.6779], phases [ 2.0944 -2.0944  2.618 ], diag [-2.0944 -0.      2.0944]
+(b) P G02(0.4636,-1.5708) P^dag equals some G12(theta, phi'): residual 2.3e-06; acts only on (|+1>,|-1>): True
+(b) P G02(1.0000,0.3000) P^dag equals some G12(theta, phi'): residual 2.6e-05; acts only on (|+1>,|-1>): True
+(c) [3,1]  (the matrices J43 uses) restricted to S3: character [np.float64(3.0), np.float64(1.0), np.float64(0.0)] -> {'A1': 1, 'E': 1}
+(c) [2,1,1] (the label J43 prints) restricted to S3: character [np.float64(3.0), np.float64(-1.0), np.float64(0.0)] -> {'A2': 1, 'E': 1}

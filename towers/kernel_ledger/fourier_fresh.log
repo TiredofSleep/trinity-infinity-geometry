@@ -1,0 +1,5 @@
+n=12 exhaustive: singular 477688 (exact), certified 424696 (88.9%), unsound 0; 477688 minors decided exactly
+n=16 sampled: singular 26827 (exact), certified 23263 (86.7%), unsound 0; 26827 minors decided exactly
+n=11 sampled: singular 0 (exact), certified 0 (0.0%), unsound 0; 0 minors decided exactly
+n=13 sampled: singular 0 (exact), certified 0 (0.0%), unsound 0; 0 minors decided exactly
+SCORE: {'F1': 'HELD', 'F2': 'HELD', 'F3': 'HELD'}

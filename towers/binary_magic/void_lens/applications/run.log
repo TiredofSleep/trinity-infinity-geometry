@@ -1,0 +1,14 @@
+A1: triangulenes
+  phenalenyl      C13: sublattices 7/6, imbalance 1, zero modes 1
+  [3]triangulene  C22: sublattices 12/10, imbalance 2, zero modes 2
+  [4]triangulene  C33: sublattices 18/15, imbalance 3, zero modes 3
+A2: two phenalenyls, opposite majorities, one joining bond
+  sublattices 13/13 (balanced); minority-to-minority bond: 2 zero modes; majority-to-majority: 0
+A3: mirror-symmetric frame, 6 joints, 9 bars
+  symmetric position: rank 8, mechanisms 1, self-stresses 1; velocity kernel splits 3 antisymmetric (incl. x-translation, rotation) / 1 symmetric (y-translation)
+  self-stress symmetric under the mirror: True; generic perturbation: rank 9
+A4: DES complementation on 2,000 random (key, block): True
+A5: 200 random 8-bit functions with f(x^a) = f(x)^1: Walsh zero on all 128 u with u.a = 0: True
+A6: DFT_7: 3431 minors, zero: 0, smallest |minor| 0.868; DFT_9: 48619 minors, zero: 3420; comb {0,3,6} invisible at 6 of 9 frequencies
+
+SCORE: {'A1': 'HELD', 'A2': 'HELD', 'A3': 'HELD', 'A4': 'HELD', 'A5': 'HELD', 'A6': 'HELD'}

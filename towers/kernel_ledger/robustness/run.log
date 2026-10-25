@@ -1,0 +1,14 @@
+ZERO AUDIT (Hueckel graphs; exact ranks)
+  [3]triangulene C22                     n= 22 sublattices 12/10  zero modes 2  paid: imbalance 2 + pairing 0  bought 0
+  phenalenyl dimer (goblet mechanism)    n= 26 sublattices 13/13  zero modes 2  paid: imbalance 0 + pairing 2  bought 0
+  cyclobutadiene C4                      n=  4 sublattices 2/2  zero modes 2  paid: imbalance 0 + pairing 0  bought 2
+  [12]annulene C12                       n= 12 sublattices 6/6  zero modes 2  paid: imbalance 0 + pairing 0  bought 2
+
+R1 bond disorder, paid-for modes survive in all 400 trials each: True
+R2 bought modes, bond disorder: slope C4 0.96, C12 1.00
+R3 paid modes, on-site disorder: slope triangulene 1.00
+R4 frames: count-paid survives all, symmetry-paid survives symmetric only: True
+R5 symmetry-paid mechanism stiffens with slope 0.99
+R6 cyclobutadiene: bought 2 ; goblet-type dimer: paid by pairing 2
+
+SCORE: {'R1': 'HELD', 'R2': 'HELD', 'R3': 'HELD', 'R4': 'HELD', 'R5': 'HELD', 'R6': 'HELD'}

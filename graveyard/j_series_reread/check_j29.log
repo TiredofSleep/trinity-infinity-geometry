@@ -1,0 +1,50 @@
+========================================================================
+1. The Lo Shu's orientations mod 3 (Theorems A-F)
+========================================================================
+  [ok]   8 distinct orientations: 8
+  [ok]   4 distinct mod-3 tables, each from 2 orientations: [2, 2, 2, 2]
+  [ok]   the four tables are exactly x+y, 1-x-y, x-y+2, y-x+2 (mod 3): {'x+y': True, '1-x-y': True, 'x-y+2': True, 'y-x+2': True}
+  [ok]   the Lo Shu itself reduces to x - y + 2 (mod 3)
+  [ok]   all four are Latin squares (quasigroups)
+  [ok]   exactly two are commutative
+  [ok]   the two non-commutative tables are each other's transposes (opposite magmas)
+  [ok]   de la Hire: digits of L-1 in base 3 are two orthogonal Latin squares, and L mod 3 = (low digit + 1) mod 3
+========================================================================
+2. The 'cumulant' kappa = Tr(M^2) - Tr(M)^2 (Theorem E)
+========================================================================
+  [ok]   kappa = -48 on the 4 commutative orientations, +48 on the other 4: [(-48, True), (48, False)]
+  [ok]   kappa = -2 * (sum of principal 2x2 minors): it is a characteristic-polynomial coefficient
+  [ok]   eigenvalues: Lo Shu [-4.899+0.j  4.899+0.j 15.   +0.j] = 15, +-2 sqrt6; quarter-turn [-0.-4.899j -0.+4.899j 15.+0.j   ] = 15, +-2 sqrt6 i
+  [ok]   any diagonal statistic separates the two cosets just as well, e.g. sum of squared diagonal: [(77, True), (93, False)]
+========================================================================
+3. Diagonal lemma, and its classical form (odd-order symmetric Latin squares)
+========================================================================
+  [ok]   order 3: all 6 symmetric Latin squares have every symbol exactly once on the diagonal
+  [ok]   order 5: all 720 symmetric Latin squares have every symbol exactly once on the diagonal
+  [ok]   orders 7 and 9: 4000 random symmetric Latin squares, diagonal always a transversal
+  [ok]   even order fails: Klein-group table diagonal = [0,0,0,0]; Z/4 diagonal = [0,2,0,2]
+  [ok]   converse fails from order 5: x + 2y mod 5 has a transversal diagonal but is not symmetric
+  [ok]   order 3 only: among all 12 Latin squares, symmetric <=> diagonal is a transversal
+  [ok]   Lo Shu: orientations keeping the main diagonal 2,5,8 (= 2,2,2 mod 3) are non-commutative; those with 6,5,4 (= 0,2,1) are commutative: [((np.int64(0), np.int64(2), np.int64(1)), True), ((np.int64(1), np.int64(2), np.int64(0)), True), ((np.int64(2), np.int64(2), np.int64(2)), False)]
+========================================================================
+4. Theorem G (Durer) and the 'mod 3 is special' sweep
+========================================================================
+  [ok]   Durer: 8 distinct orientations
+  [ok]   Durer mod 3: 4 tables (2 commutative), kappa by commutativity = [(-128, True), (128, False)]
+  moduli 2..30 giving a mixed (some commutative, some not) orbit: Lo Shu [3, 6], Durer [3]
+  [ok]   paper's tested moduli behave as stated (Lo Shu 2,4,5,7,9,10; Durer 2,4,5,6,8,10 not mixed)
+  [ok]   but the Lo Shu is ALSO mixed mod 6 (untested in the note): 'mod 3 is special' is only about the moduli tried
+  [ok]   mod 3 is the only modulus in 2..30 mixed for both squares
+========================================================================
+5. ETP profile sizes (Sec. 7.4): re-enumerate the laws of order <= 4
+========================================================================
+  distinct laws up to renaming and side-swap: 4706 ; trivial ones: 13
+  [ok]   keeping one trivial law (x = x) gives 4694 laws -- the ETP's 4694
+  profile sizes: {'T1': 179, 'T2': 60, 'T3': 179, 'T4': 313} ; |T1&T4| = 63 ; |T2&T4| = 14
+  [ok]   paper: |T1| = |T3| = 179, |T2| = 60, |T4| = 313
+  [ok]   paper: |T1 & T4| = 63
+  [ok]   paper: |T2 & T4| = 14
+  [ok]   opposite magmas satisfy the same number of laws (T1 vs T3)
+  [ok]   the laws true in EVERY commutative magma (equal up to swapping arguments) number 14, and T2 & T4 is exactly that set: True
+========================================================================
+elapsed 0.5 s ; failures: 0

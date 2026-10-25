@@ -1,0 +1,11 @@
+fresh: 64680 distinct new squares, 103 singular (base rate 0.159%)
+  rank_F5(B) = 2: 215 squares, 3 singular (1.40%, 8.8x base)
+  rank_F5(B) = 3: 15401 squares, 40 singular (0.26%, 1.6x base)
+  rank_F5(B) = 4: 49064 squares, 60 singular (0.12%, 0.8x base)
+  concentric: 79 singular, share with rank_F5(B) <= 3: 41%
+  eccentric: 2 singular, share with rank_F5(B) <= 3: 100%
+  weighted: 22 singular, share with rank_F5(B) <= 3: 41%
+T6: lattice estimate with L = 6000: 1.80 vs 22 weighted zeros (0.08x)
+T7: mean 5-adic valuation of det/325 by rank_F5(B): {2: 1.896, 3: 0.521, 4: 0.247}
+
+SCORE: {'T6': 'LOST', 'T7': 'HELD', 'T3': 'LOST', 'T4': 'HELD', 'T5': 'HELD'}

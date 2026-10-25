@@ -1,0 +1,36 @@
+M0 order 4: 640 singular squares; all have a kernel vector with |v_a| = |v_b| or a zero: True
+
+fresh order-5 sample: 18847 distinct new squares, 28 singular
+  forced      right [-2, 3, -2, -2, 3]  left [-48, -55, -72, 122, 53]  -> merge   chance 1.000
+  accidental  right [-158, 302, -88, -283, 227]  left [14, -11, 4, -16, 9]  -> NONE   chance 0.364
+  forced      right [2, -3, -3, 2, 2]  left [-37, 43, -17, -22, 33]  -> merge   chance 1.000
+  forced      right [-3, 2, 2, -3, 2]  left [-862, -1007, 1393, -212, 688]  -> merge   chance 1.000
+  forced      right [169, 429, -471, -281, 154]  left [2, -3, 2, -3, 2]  -> merge   chance 1.000
+  accidental  right [-39, 46, 16, -54, 31]  left [-19, -13, -19, 33, 18]  -> merge   chance 0.282
+  forced      right [2, -3, -3, 2, 2]  left [-113, 249, -423, -185, 472]  -> merge   chance 1.000
+  forced      right [-2, -2, -2, 3, 3]  left [-9, -619, 386, -489, 731]  -> merge   chance 1.000
+  forced      right [2, -3, 2, -3, 2]  left [-256, -401, 194, 439, 24]  -> merge   chance 1.000
+  forced      right [2, 2, -3, -3, 2]  left [-69, 1, -626, 444, 250]  -> merge   chance 1.000
+  accidental  right [1, 14, -5, -26, 16]  left [-1, -11, 4, -1, 9]  -> merge   chance 0.599
+  forced      right [112, -107, -173, 105, 63]  left [-2, -2, -2, 3, 3]  -> merge   chance 1.000
+  forced      right [-2, -2, -2, 3, 3]  left [-676, -576, 1249, -846, 849]  -> merge   chance 1.000
+  forced      right [2, -3, 2, -3, 2]  left [2347, -998, -633, -3358, 2642]  -> merge   chance 1.000
+  forced      right [-3, 2, -3, 2, 2]  left [326, 101, -559, 131, 1]  -> merge   chance 1.000
+  accidental  right [117, -3, -133, -78, 97]  left [16, -5, -14, -3, 6]  -> NONE   chance 0.381
+  accidental  right [8, -25, -19, 12, 24]  left [-24, 31, 16, -44, 21]  -> NONE   chance 0.351
+  accidental  right [-5, 5, 0, -3, 3]  left [0, 0, -2, 1, 1]  -> drop/drop   chance 1.000
+  accidental  right [-73, 0, -113, 86, 100]  left [1, -1, -1, 1, 0]  -> drop/drop   chance 1.000
+  forced      right [-2, -2, -2, 3, 3]  left [-196, -516, 489, 189, 34]  -> merge   chance 1.000
+  forced      right [-2, -2, 3, -2, 3]  left [-414, 146, 141, -244, 371]  -> merge   chance 1.000
+  forced      right [-1259, -1179, 731, 986, 721]  left [-2, -2, 3, -2, 3]  -> merge   chance 1.000
+  accidental  right [-7, 7, -5, 2, 3]  left [7, -13, -13, 12, 7]  -> merge   chance 0.795
+  forced      right [2, 2, -3, -3, 2]  left [1287, -1058, 332, -678, 117]  -> merge   chance 1.000
+  accidental  right [9, -21, -16, 19, 9]  left [59, -48, -2, -61, 52]  -> merge   chance 0.354
+  forced      right [23, -75, -106, 75, 83]  left [-3, 2, 2, -3, 2]  -> merge   chance 1.000
+  accidental  right [1123, -1602, -627, -42, 1148]  left [1, -9, 1, 1, 6]  -> merge   chance 0.545
+  forced      right [3, -2, -2, -2, 3]  left [175, -347, 45, -94, 221]  -> merge   chance 1.000
+
+observed merge/drop rate 0.89; chance baseline 0.845; ratio 1.1x
+accidental: 10, with merge/drop: 7
+
+SCORE: {'M0': 'HELD', 'M1': 'LOST', 'M2': 'LOST', 'M3': 'LOST'}

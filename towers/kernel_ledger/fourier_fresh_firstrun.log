@@ -1,0 +1,5 @@
+n=12 exhaustive: singular 477688, certified 424696 (88.9%), unsound 0
+n=16 sampled: singular 26724, certified 23191 (86.8%), unsound 72
+n=11 sampled: singular 0, certified 0 (0.0%), unsound 0
+n=13 sampled: singular 0, certified 0 (0.0%), unsound 0
+SCORE: {'F1': 'LOST', 'F2': 'HELD', 'F3': 'HELD'}

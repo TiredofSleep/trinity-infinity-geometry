@@ -1,0 +1,19 @@
+========================================================================
+J14 claims on CL_N
+========================================================================
+  [ok]   #{(a,b): a+b = ab mod N} = phi(N) for EVERY N in [2,200] (squarefree not needed)
+  [ok]   N=10: (total, case1, case2, case3) = (128, 61, 61, 6) (paper: (128, 61, 61, 6))
+  [ok]   N=30: (total, case1, case2, case3) = (1560, 777, 777, 6) (paper: (1560, 777, 777, 6))
+  [ok]   N=210: (total, case1, case2, case3) = (86464, 43217, 43217, 30) (paper: (86464, 43217, 43217, 30))
+  [ok]   squarefree 3 <= N <= 400: count < 2N^2 (i.e. N*sigma < 2); max N*sigma = 1.9799
+  [ok]   squarefree 3 <= N <= 400: 2(N-2)^2 - 2phi <= count <= 2(N-2)^2 + 2phi
+  N*sigma on the paper's broader set: {10: 1.28, 30: 1.7333, 42: 1.805, 66: 1.876, 105: 1.9191, 110: 1.9279, 154: 1.9467, 210: 1.9606, 330: 1.9751, 462: 1.982, 770: 1.9894, 1155: 1.9926}
+  [ok]   paper: N*sigma <= 1.993 on that set; actual max = 1.9926
+  N*sigma at N = 2^k: {2: 0.0, 4: 0.5, 8: 1.25, 16: 1.812, 32: 1.922, 64: 2.082, 128: 2.044}
+  [ok]   N=64 and N=128 exceed N*sigma = 2 (bound genuinely needs squarefree N)
+  [ok]   N=64: case-3 count 902 > 2*phi(64) = 64 -- the step 'a^2 = 0 forces a = 0' is what fails off squarefree N
+  [ok]   E(N) = phi(N) - #({-1, -2, -1/2} among the units), squarefree N <= 300 (exact, sharper than the paper's E <= phi)
+  [ok]   E_h(N) = prod over p | N of #roots of x^2+x-1 mod p (squarefree N <= 300)
+  [ok]   F6 note's 'DIS=0 count = N at primorials' is wrong: actual {2: 1, 6: 2, 30: 8, 210: 48} = phi(N)
+========================================================================
+elapsed 76.8 s ; failures: 0

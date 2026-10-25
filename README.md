@@ -23,6 +23,28 @@ every tower, is a **coin**, with two sides and an edge.
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas ·
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
+## What's new
+
+Four results at the research frontier. Each has a proof and a script that re-checks it, and most were
+checked twice, by independent code:
+- **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables, against
+  a published record of 26, and 16 is exactly the minimum
+  ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
+- **The determinant of MATLAB's odd magic squares, in closed form.** So they are never singular, which
+  settles an observation recorded on OEIS in 2015 ([linear algebra](towers/binary_magic/void_lens/README.md)).
+- **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
+  ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
+- **About a dozen smaller results**, and the teaching frame itself, each labelled by how firmly it stands:
+  [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
+
+**How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
+- One loop: an intuition, predictions written before anything runs, a second independent check, a
+  literature gate, and a graveyard for what fails.
+- It runs from a child's hands to the research frontier, and across about a dozen fields.
+- It runs on its own past too. The archived J series was read again on 2026-10-25. Nine pages came into
+  the towers and the coin, two of them small new results, and every error found is kept with its
+  counterexample ([`graveyard/j_series_reread/`](graveyard/j_series_reread/README.md)).
+
 ---
 
 ## The idea
@@ -106,16 +128,24 @@ python verify_forced_chain.py
 cd ../coin
 python verify_coins.py
 python verify_paradox_types.py
+python verify_transpose_coin.py
+python verify_two_readings.py
+python verify_mirror.py
 cd ../towers
 python verify_towers.py
 python verify_two_builds.py
 python verify_one_third_fold.py
 python bott_verify.py
+python verify_spinor_floor.py
+python verify_two_faces_of_s4.py
+python verify_balance_point.py   # pip install sympy
 cd binary_magic
 python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)
 cd magic_sets && python run_all.py && cd ..   # graph-star magic sets
 cd ../planes_and_mirrors && python run_all.py # octonions, mirrors, why 16 breaks
 cd ../kernel_ledger && python run_all.py       # forced vs accidental zeros (pip install networkx)
+cd ../laws_of_a_table                          # the laws a table obeys, counted with the ETP's 4,694
+python verify_zn_laws.py && python verify_steiner.py && python verify_eight_specimens.py && python independent_check.py
 ```
 
 Every claim tagged **[FORCED]** has a line in one of these scripts; theorems at the tops of the

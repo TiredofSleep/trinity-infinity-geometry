@@ -91,6 +91,10 @@ its own dual in every dimension. [FORCED — `verify_coins.py`]
   15 Fano sub-planes cannot all carry octonion signs at once: at most 8 can, and the smallest clash takes 5
   (the sedenions' own split, 8 and 7, is Cawagas's; the maximum over all sign choices is computed, not yet
   checked against the literature).
+- **Counting the laws.** [FORCED in [`laws_of_a_table/`](laws_of_a_table/README.md)] With the 4,694 short laws
+  of the Equational Theories Project as a ruler: x + y mod n obeys 32 of them for every n ≥ 5, and every
+  Steiner triple system obeys the same 382. The Fano plane is one of these, and its table is the octonions'
+  rule with the signs forgotten.
 
 **Top.** [NAMED — Hurwitz 1898] ℝ, ℂ, ℍ and 𝕆 are the only number systems in which size
 multiplies: the tower of division ends at 𝕆. Where you meet it: complex analysis; quaternions in
@@ -112,6 +116,10 @@ and [`THE_TWO_BUILDS.md`](THE_TWO_BUILDS.md)).
   by Pascal's row *n* ([`verify_two_builds.py`](verify_two_builds.py)). Its planes square to −1, so
   rotations live inside it, and its first floors are ℂ and ℍ again: the number tower and the
   Clifford tower share a bottom ([`bott_verify.py`](bott_verify.py)).
+- **[FORCED]** With an even number of directions, Cl(2n) is every operator on 2ⁿ states, the
+  **spinors**: 4ⁿ = (2ⁿ)². Pascal's row 2n grades the algebra and row n grades the spinors, and at
+  n = 3 the two half-spinors are the cube's two tetrahedra
+  ([`THE_SPINOR_FLOOR.md`](THE_SPINOR_FLOOR.md)).
 
 **Top.** [NAMED — Bott 1959] the Clifford algebras repeat their type every eight steps — see
 [`bott_periodicity.md`](bott_periodicity.md), where the mechanism (ℍ ⊗ ℍ ≅ ℝ(4)) is checked. Where
@@ -139,6 +147,10 @@ one point every symmetry keeps fixed.
 - **[FORCED]** Continuous symmetry: every unit quaternion *q* turns space by v ↦ qvq̄; *q* and −*q*
   give the same rotation, and multiplying quaternions composes rotations. The quaternions are the
   double cover of the rotations — SU(2) over SO(3).
+- **[FORCED]** S₄ has two faces in space: the tetrahedron's full symmetry group, mirrors included, and
+  the cube's rotations. The base's central inversion turns one into the other, and the chemist's two
+  labels for the p-orbitals, T₂ and T₁, name one representation seen from the two faces
+  ([`THE_TWO_FACES_OF_S4.md`](THE_TWO_FACES_OF_S4.md)).
 
 **Top.** Lie groups and their representations; Galois theory; symmetry and conservation laws in
 physics (Noether).
@@ -146,7 +158,9 @@ physics (Noether).
 **Coin.** The mirror, whose two sides are left-handed and right-handed. Its edge is the shapes that
 are their own mirror image — all five Platonic solids. And turning is a coin with **no edge at all**:
 *q* and −*q* give one rotation, no unit quaternion is its own negative, and a full turn brings *q* to
-−*q* — it takes two to come home. [FORCED — `verify_coins.py`]
+−*q* — it takes two to come home. [FORCED — `verify_coins.py`] The sign twist is a coin as well: its
+two sides are S₄'s two faces, and its edge is A₄, where they agree. [FORCED —
+`verify_two_faces_of_s4.py`]
 
 ## 5. The lattice tower — from a centred shape to sphere packing
 
@@ -185,6 +199,10 @@ covering result]
   angle" at which NMR spectroscopy averages directional interactions away. The Legendre
   polynomials are orthogonal; the harmonic polynomials of degree ℓ in three variables number
   2ℓ + 1.
+- **[FORCED]** A side floor on the circle: walk the flat face of 5, 7 or 9, and keep the balance point
+  of the corners visited. It stands on the centre exactly at whole laps, and its squared distance is
+  Fejér's kernel, which tends to sinc² — harmonics on the circle, one floor below the sphere's
+  ([`THE_BALANCE_POINT.md`](THE_BALANCE_POINT.md)).
 
 **Top.** Spherical harmonics — the angular shapes of atomic orbitals (s, p, d, f: 1, 3, 5, 7 of
 each); representations of the rotation group; harmonic analysis on the sphere.

@@ -1,0 +1,43 @@
+MS5-26 as printed: V = 26, C = 30; observable degrees {4: 25, 10: 1}; context sizes {3: 10, 4: 20}
+  explicit 32x32 matrices: every context commutes and multiplies to +-I; negative contexts [20, 23, 24] (3, odd = True); parity clash = True
+  incidence rank r = 16 (context-minimal would need C - 1 = 29); dependencies: dim 14; Lemma 1: V >= 2n + r gives 26 >= 26
+  w_min = 3 -> noncontextual bound b = C - 2 w_min = 24 (TLC Table II: 24/30)
+  whole set: Gram space dimension 1, minimum magic rank 10 -> 5 qubits
+
+Hidden sub-clashes: proper sub-collections T of the contexts with every observable of even
+T-degree and an odd number of negative contexts
+  8191 of them; testing each on 1 processes
+    512 tested; so far 0 need 5 qubits
+    1024 tested; so far 3 need 5 qubits
+    1536 tested; so far 7 need 5 qubits
+    2048 tested; so far 15 need 5 qubits
+    2560 tested; so far 19 need 5 qubits
+    3072 tested; so far 25 need 5 qubits
+    3584 tested; so far 32 need 5 qubits
+    4096 tested; so far 38 need 5 qubits
+    4608 tested; so far 38 need 5 qubits
+    5120 tested; so far 43 need 5 qubits
+    5632 tested; so far 47 need 5 qubits
+    6144 tested; so far 60 need 5 qubits
+    6656 tested; so far 67 need 5 qubits
+    7168 tested; so far 81 need 5 qubits
+    7680 tested; so far 93 need 5 qubits
+    410  fewer than 5 (Lemma 1)   context-minimal = False
+    625  fewer than 5 (Lemma 1)   context-minimal = True
+   4625  fewer than 5 (found)     context-minimal = False
+   2426  fewer than 5 (found)     context-minimal = True
+    105  needs 5                  context-minimal = False
+  proper sub-clashes that still need all 5 qubits: 105
+    26 observables, 18 contexts, context-minimal = False: contexts [2, 4, 6, 7, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24]
+    26 observables, 18 contexts, context-minimal = False: contexts [2, 4, 6, 8, 9, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24]
+    26 observables, 18 contexts, context-minimal = False: contexts [2, 3, 6, 7, 9, 10, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+    26 observables, 18 contexts, context-minimal = False: contexts [2, 3, 5, 6, 10, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 5, 6, 10, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 5, 6, 10, 11, 12, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 5, 6, 10, 11, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 6, 8, 9, 11, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 29]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 5, 6, 9, 11, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28, 30]
+    26 observables, 18 contexts, context-minimal = False: contexts [1, 2, 5, 6, 9, 11, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 29, 30]
+    26 observables, 20 contexts, context-minimal = False: contexts [2, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+    26 observables, 20 contexts, context-minimal = False: contexts [2, 3, 5, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+  smallest 5-qubit core inside MS5-26: 26 observables, 18 contexts

@@ -1,0 +1,51 @@
+========================================================================
+1. Two orbit readings  x -> orbit of x under <g>,  under <h>
+========================================================================
+  ordered unit pairs (g,h), all 3 <= n <= 150: 481368
+  [ok]   claimed 'separates iff <g> & <h> = {1}' FAILS on 25098 pairs (first squarefree counterexample (n,g,h) = (15, 2, 11))
+  [ok]   corrected (squarefree n): separates iff gcd(ord_p g, ord_p h) = 1 for every p | n -- agrees on 375316/375316
+  [ok]   corrected (every n): separates iff <g> & <h> trivial mod every prime power q | n -- agrees on 481368/481368
+  [ok]   on the UNITS alone: separates iff <g> & <h> = {1} (the claim is true there) -- agrees on 481368/481368
+  [ok]   Z/15, g=2, h=11: <2>&<11> = [1]; pairs merged by both = [(5, 10)]
+  -- subgroups (all subgroups of (Z/n)* for n <= 48) --
+  [ok]   subgroup pairs (G,H), n <= 48: 4258; 'iff G & H = 1' wrong on 630
+  [ok]   subgroup pairs: 'iff G_q & H_q = 1 for every prime power q | n' right on 4258/4258
+========================================================================
+2. A residue reading (x mod d) and an orbit reading (orbit under <g>)
+========================================================================
+  [ok]   squarefree n <= 200: separates iff g = 1 mod n/d -- agrees on 29346/29346
+  [ok]   every n <= 200: separates iff g = 1 mod p^v_p(n) for each p with v_p(d) < v_p(n) -- agrees on 58588/58588
+  [ok]   WP57 'Crossing Lemma' (separates iff g != 1 mod every p | n/d) wrong on 10680/12284 squarefree cases with 1<d<n
+  [ok]   on the UNITS: separates iff ord_d(g) = ord_n(g) -- agrees on 58588/58588
+  [ok]   J27 rewrite: hypotheses (i)+(ii) => separate the units: 1294/1294 (true) ; (ii) alone already suffices in 3764 further cases
+  [ok]   (n,d,g)=(6,3,5): separates = True
+  [ok]   (n,d,g)=(6,2,5): separates = False
+  [ok]   (n,d,g)=(15,5,2): separates = False
+  [ok]   (n,d,g)=(4,2,3): separates = False
+========================================================================
+3. The reflection reading {x,-x} and an orbit reading
+========================================================================
+  [ok]   squarefree n <= 300: separates iff -1 not in <g mod p> for every odd p | n -- agrees on 19136/19136
+  [ok]   every n <= 300: same, plus (if 4 | n) -1 not in <g mod 4> -- agrees on 27396/27396
+========================================================================
+4. Two residue readings, and the level picture
+========================================================================
+  [ok]   every n <= 200, all divisor pairs: x mod d1, x mod d2 separate iff lcm(d1,d2) = n
+  [ok]   sum over e | n of phi(e) = n, for n <= 300 (Gauss)
+  [ok]   unit-group orbits = gcd classes; |orbit of x under <g>| = ord(g mod n/gcd(x,n)), n <= 300
+========================================================================
+5. Statements in J34 / J35 / WP64 checked one by one
+========================================================================
+  [ok]   J34 Thm 4.1 (coverage => separation) FALSE for general maps: on Z/6, f resolves 2, g resolves 3 (True, True) but (f,g) merges 0 and 1: True
+  [ok]   an orbit reading resolves prime p exactly when g = 1 mod p: 1064/1064
+  [ok]   J34 Lemma 4.2 as printed ('resolves p iff G acts NON-trivially mod p') wrong on 1064/1064
+  [ok]   J34 Thm D witness y_i = 1 + p_i equals x_i = 1 mod p_i (so x = y; witness is void)
+  [ok]   WP64 claim 'two prime residue readings always separate' false on Z/30: 0 and 6 agree mod 2 and mod 3
+  [ok]   J35: supp(7) = [5], supp(11) = [3] are disjoint, so the pair is (M1) by the paper's own definition, not (M3)
+  [ok]   (M2) at p  <=>  p-1 has two prime factors  <=>  p is neither 2 nor a Fermat prime (p < 1200)
+  [ok]   J35 Def 1.1 literal: {discrete, x mod 2} is sufficient and comparable, so MVJN would be 0
+  [ok]   Z/7: orbit readings of 2 (order 3) and 6 (order 2) already separate all 7 points
+  [ok]   Z/9 (not squarefree): orbit readings of 4 (order 3) and 8 (order 2) separate all 9 points
+  [ok]   J35 open (b): for every squarefree n <= 200 with >= 2 primes, {x mod p, x mod n/p} separates with blocks product exactly n (pigeonhole minimum)
+========================================================================
+elapsed 28.2 s ; failures: 0

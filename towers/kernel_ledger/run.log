@@ -1,0 +1,11 @@
+K1 benzenoids: 300 samples, nullity == n - 2nu in all: True; nullity counts {0: 124, 1: 154, 2: 22}
+K2 diluted square lattice: 300 clusters; unweighted excess over n - 2nu in 131 (43.7%); random weights exact in all: True
+K3 DFT_6: singular minors 120, uncertified 46, smallest nonzero |minor| 1.00e+00, e.g. rows (0, 2) cols (0, 3)
+K3 DFT_8: singular minors 1396, uncertified 585, smallest nonzero |minor| 7.65e-01, e.g. rows (0, 2) cols (0, 4)
+K3 DFT_9: singular minors 3420, uncertified 2066, smallest nonzero |minor| 6.02e-01, e.g. rows (0, 3) cols (0, 3)
+K3 DFT_10: singular minors 20480, uncertified 10068, smallest nonzero |minor| 4.49e-01, e.g. rows (0, 2) cols (0, 5)
+K4 frameworks: 300 samples; antisymmetric mechanisms >= (b_sigma-1)/2 always: True; generically rigid graphs 167, exactly the forced count in 164 (98.2%)
+   (b_sigma, mechanisms) counts: {(1, 0): 112, (1, 1): 9, (1, 2): 17, (1, 4): 1, (3, 1): 111, (3, 2): 15, (3, 3): 5, (3, 4): 2, (5, 2): 22, (5, 3): 4, (5, 4): 2}
+K5 order 6: 2851 distinct squares, 0 singular (0.000%), with no void certificate 0
+
+SCORE: {'K1': 'HELD', 'K2a': 'HELD', 'K2b': 'HELD', 'K3a': 'LOST', 'K3b': 'LOST', 'K3c': 'HELD', 'K4a': 'HELD', 'K4b': 'HELD', 'K5a': 'HELD', 'K5b': 'UNSCORED'}

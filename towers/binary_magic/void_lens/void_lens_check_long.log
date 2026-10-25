@@ -1,0 +1,27 @@
+A. MATLAB's odd magic(n): det against the closed form
+  ok   siamese(3) and siamese(5) are MATLAB's magic(3) and magic(5)
+  ok   det magic(n) = (-1)^((n-1)/2) n^(n-1) (n^2+1)/2 prod_O (n^|O| - (-1)^|O|) for every odd n = 3..101
+  ok   so n^(n-1) divides det for those n (Israel's 2015 OEIS A160523 observation), and det != 0
+  ok   A160523's printed terms: n = 3, 5, 7, 9 give -360, 5070000, -348052801600, 75035738059027200
+B. MATLAB's doubly-even magic(n): rank 3
+  ok   for n = 4..64, 2M - (n^2+1)E = -(sigma sigma^T) o (n a 1^T + 1 a^T) with sigma = (1,-1,-1,1) tiled: so rank M <= 3
+  ok   rank of M modulo a prime is 3 for every such n, so rank M >= 3: exactly 3
+C. the prime-order family
+  ok   p = 5: all 3,686,400 members (every pi1, pi2 in S_5, every unit slope) have |det| >= 1 (smallest 8125.0)
+  ok   p = 7: 67,500 random members, |det| >= 1 (smallest 3945725.0)
+  ok   n = 9 (composite): the chat's member with digit maps 364210857 / 038257146 is singular, rank 7
+  ok   the family's pandiagonal magic 5x5 members: 28,800 (MathWorld: 3,600 up to the 8 symmetries, so 28,800); none singular (covered by the 3,686,400 above)
+D. the void index on the 880
+     fixed lines (0, 0), index 1.0, nullity 1: 144
+     fixed lines (0, 2), index 0.0, nullity 0: 11
+     fixed lines (0, 4), index 1.0, nullity 1: 208
+     fixed lines (2, 0), index 0.0, nullity 0: 5
+     fixed lines (4, 0), index 1.0, nullity 1: 288
+     fixed lines None, index None, nullity 0: 224
+  ok   whenever the complement map factors, it is a pair of involutions and nullity >= |(f_P + f_Q)/2 - 1|
+  ok   at order 4: singular exactly when the index is >= 1
+  ok   the 16 index-0 squares (one transposition times a fixed-point-free involution) are exactly Dudeney's two groups of 8, and they are invertible
+  ok   index 1 occurs as f = (0,0) [Staab et al.'s type A: 144] and (4,0) / (0,4) [type B: 496]
+  ok   Staab et al.'s rank bound for type B of order 2m, rank <= m + 1, is the index for f = (0, 2m): |(0 + 2m)/2 - 1| = m - 1 = 2m - (m + 1)
+
+15 of 15 checks pass

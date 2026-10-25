@@ -1,0 +1,20 @@
+(C, V) = (5, 12), n = 4, context sizes 3-5: 2s with 8 processes
+  built per regime: {'A': '1,395'}
+  filtered: {'repeated context': 30}
+  distinct survivors: 20  ->  {'none': 19, 'fewer qubits': 1}
+RESULT: no genuine 4-qubit set in this case
+(C, V) = (6, 13), n = 4, context sizes 3-5: 97s with 8 processes
+  built per regime: {'A': '1,341,370'}
+  filtered: {'repeated context': 20745, 'not minimal': 1230}
+  distinct survivors: 2,369  ->  {'none': 2278, 'fewer qubits': 91}
+RESULT: no genuine 4-qubit set in this case
+(C, V) = (6, 14), n = 4, context sizes 3-5: 69s with 8 processes
+  built per regime: {'A': '215,790'}
+  filtered: {'repeated context': 3660, 'not minimal': 90}
+  distinct survivors: 454  ->  {'none': 413, 'fewer qubits': 41}
+RESULT: no genuine 4-qubit set in this case
+(C, V) = (6, 15), n = 4, context sizes 3-5: 34s with 8 processes
+  built per regime: {'A': '12,043'}
+  filtered: {'repeated context': 285}
+  distinct survivors: 49  ->  {'none': 39, 'fewer qubits': 10}
+RESULT: no genuine 4-qubit set in this case

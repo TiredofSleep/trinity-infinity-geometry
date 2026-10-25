@@ -37,7 +37,8 @@ found nothing in them that stands on its own:
 - **The papers.** Of the 56: none carries a result specific to the tables that survives testing;
   36 are true-but-empty, numerology, typo-dependent, untested physics, or already retracted; 8 are
   merged tombstones; 10 contain mathematics that does not use the tables and is correct (two only after their
-  headline theorems are fixed) — all classical or elementary. About twenty contain a false or mislabeled statement — one (J42) has an "empirical"
+  headline theorems are fixed) — all classical or elementary. A second reading in October found more errors
+  in those ten (§3). About twenty contain a false or mislabeled statement — one (J42) has an "empirical"
   data column made of powers of the Cabibbo value 0.2253 instead of measurements.
   ([`A/04_meta/DRIFT_CENSUS.md`](https://github.com/TiredofSleep/trinity-infinity-geometry/blob/archive-2026-09-24/04_meta/DRIFT_CENSUS.md))
 
@@ -215,7 +216,36 @@ its own graveyard. These died, with what killed them:
 
 ---
 
-## 3. Where everything is
+## 3. The J series, read again — 2026-10-25
+
+In September the census found ten papers whose mathematics stands (§1). On 2026-10-25 those ten, with J03
+and J56, were read again by three independent audits, with fresh code for every claim. The census had been
+too generous: every one of the ten contains at least one false or unsupported statement. The full table, with an
+evidence script for every finding, is in [`graveyard/j_series_reread/`](graveyard/j_series_reread/README.md).
+The headlines:
+
+- **J27's "Crossing Lemma" is backwards** (wrong on 10,680 of 12,284 cases), and **J34's Theorem A and
+  J35's Theorem 3.1 are false**, first at n = 15. The corrected criteria, with proofs, are in
+  [`coin/TWO_READINGS_OF_ZN.md`](coin/TWO_READINGS_OF_ZN.md).
+- **J43 mislabels its own representation** ([3,1] called [2,1,1]). Its pulse table misses its target, and
+  its closure check cannot fail.
+- **J24's Remark 7.4 is false** (sinc² is convex at ½, not concave), it misstates what Montgomery proved, and
+  **J26's continuum limit is off by a factor k**.
+- **J56's 125× comes from how its test suite was built.** Its numbers are not reproducible, and its reservoir
+  does no better with the retired tables than with random ones.
+- **J03's Theorem 5 is false.** Law #4295 has a 6-element type specimen, and the bound "at least 261 laws"
+  fails at order 3, where a model obeys 122. The six "fossils" it named all have finite specimens.
+- **J05's conjecture fails at n = 6**, where −(x + y) mod 6 obeys 297 laws, not 294; its count for
+  (2x + 2y) mod 3 is 382, not 179; and its smallest commutative profile at order 3 is 14, not 29.
+- **The ETP database's Steiner verdict is false:** the 13-point system and PG(3,2) obey 382 laws, not 342.
+  None of its four OEIS drafts is worth submitting.
+
+What came in instead is nine pages, seven of classical mathematics and two small new results, listed in
+[`CONTRIBUTIONS.md`](CONTRIBUTIONS.md#read-again-the-j-series-2026-10-25).
+
+---
+
+## 4. Where everything is
 
 | | |
 |---|---|

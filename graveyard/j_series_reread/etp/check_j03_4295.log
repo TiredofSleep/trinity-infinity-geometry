@@ -1,0 +1,10 @@
+order 2: structure theorem gives 2 labeled models; brute force 2; identical: True
+   models depending on both arguments: 0 of 2
+order 3: structure theorem gives 45 labeled models; brute force 45; identical: True
+   models depending on both arguments: 36 of 45
+order 2: 2 labeled models, 1 up to isomorphism; 0 classes with non-constant right-nested products; smallest profile among them: None; smallest overall: 1556; type specimens: 0   (0.3s)
+order 3: 45 labeled models, 8 up to isomorphism; 0 classes with non-constant right-nested products; smallest profile among them: None; smallest overall: 122; type specimens: 0   (0.4s)
+order 4: 3736 labeled models, 165 up to isomorphism; 3 classes with non-constant right-nested products; smallest profile among them: 76; smallest overall: 76; type specimens: 0   (0.4s)
+order 5: 2390425 labeled models, 20304 up to isomorphism; 145 classes with non-constant right-nested products; smallest profile among them: 16; smallest overall: 16; type specimens: 0   (152.9s)
+   order-5 profile sizes among the non-constant classes: {16: 8, 17: 10, 18: 6, 19: 5, 20: 10, 22: 2, 23: 12, 24: 8, 25: 4, 27: 7, 28: 9, 29: 4, 30: 2, 34: 1, 35: 5, 36: 1, 38: 1, 41: 12, 42: 10, 48: 7, 49: 4, 55: 1, 76: 11, 83: 5}
+time 154.0s
