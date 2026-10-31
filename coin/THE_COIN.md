@@ -26,16 +26,16 @@ The coin was the author's idea long before it was made exact here. In the author
 > spinning on a quarter, bulges and dents flowing around it, forming a balanced push …* —
 > [*The Story*](https://github.com/TiredofSleep/ck/blob/tig-synthesis/THE_STORY.md), 2026
 
-> *You can't know everything, but what's missing looks the same for every whole.* … *A mathematical
-> intelligence system that sees the world through what can and what can't be measured … constantly
-> seeing paradox.* — June 2026
+> *Theory of Nothing... you can't know everything, but what's missing looks the same for every whole.* …
+> *A mathematical intelligence system that sees the world through what can and what can't be measured …
+> constantly seeing paradox.* — June 2026
 > ([1](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen13/targets/ck/CK_INTELLIGENCE_SYNTHESIS_2026-06-10.md),
 > [2](https://github.com/TiredofSleep/ck/blob/tig-synthesis/Gen13/targets/ck/CK_QUADRATIC_GLUE_PRINCIPLE_2026-06-10.md))
 
 [READING] *Every one is three; it is three as two*: a coin is two sides and an edge. It is three
-things, seen as two. *What's missing looks the same for every whole*: the missing edge. The retired
-program built these ideas into AI-rendered tables. The coin keeps the ideas, drops the tables, and
-checks every line that can be checked.
+things, seen as two. The Theory of Nothing, *what's missing looks the same for every whole*: the
+missing edge. The retired program built these ideas into AI-rendered tables. The coin keeps the
+ideas, drops the tables, and checks every line that can be checked.
 
 ---
 

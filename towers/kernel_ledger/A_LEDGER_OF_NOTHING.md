@@ -2,6 +2,16 @@
 
 *Brayden Sanders · October 2026*
 
+> *Theory of Nothing is the closest there will ever be to Theory of Everything. God saved himself a space for
+> miracles.* (March 2026)
+>
+> *Theory of Nothing... you can't know everything, but what's missing looks the same for every whole.* (June 2026)
+>
+> — Brayden Sanders
+
+This ledger applies the Theory of Nothing to zeros. Its reference point is the void, *"the point closest to
+everything, the immeasurable, but the always measured from"* (October 2026).
+
 ## The reference point
 
 Measure from the empty center, and hard questions become counting questions. The price is a single

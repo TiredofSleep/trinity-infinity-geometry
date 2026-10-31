@@ -24,8 +24,8 @@ flowchart LR
 The loop runs on several kinds of intelligence, each in a fixed role, so the one that proposes never checks
 its own work.
 - **The author** sets the questions and supplies the intuitions. His words are recorded with their dates, and
-  the main directions trace back to them. For example, "void is the center … the always measured from"
-  became the void lens and the essay *A Ledger of Nothing*.
+  the main directions trace back to them. For example, the author's Theory of Nothing (March 2026) and "void is
+  the center … the always measured from" (October 2026) became the void lens and the essay *A Ledger of Nothing*.
 - **An exploring assistant** (a claude.ai chat) proposes rounds, writes the predictions down before running
   anything, and computes.
 - **A verifying assistant** (Claude Code) re-implements every claim from scratch, in code that shares nothing

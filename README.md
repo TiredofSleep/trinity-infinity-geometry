@@ -1,5 +1,7 @@
 # Trinity Infinity Geometry
 
+> *Theory of Nothing is the closest there will ever be to Theory of Everything.* — Brayden Sanders, March 2026
+
 **A new way to teach higher mathematics — by classifying its paradoxes, not resolving them.** The
 base is the integers 0–9 read as shapes — the premise of the book
 *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*. Every shape of
@@ -9,6 +11,16 @@ every tower, is a **coin**, with two sides and an edge.
 
 ![The base: the integers 0 to 9 as the shapes they are forced to take. 0 the void, 1 a point, 2 a segment, 3 a triangle, 4 a tetrahedron, 5 a tetrahedron with its centre, 6 an octahedron, 7 an octahedron with its centre, 8 a cube, 9 a cube with its centre.](figures/the_base.svg)
 
+**The Theory of Nothing** is the author's own idea: *"you can't know everything, but what's missing looks the
+same for every whole"* (June 2026). The work follows the author's focus, *"the nothings, the dead ends, the
+paradox and its many angles"* (June 2026):
+- **the nothings:** the void, 0, and the centres that 5, 7 and 9 are forced to fill
+  ([`base/SEVEN_AND_NINE.md`](base/SEVEN_AND_NINE.md)); and the zeros, each paid for by a count or bought by a
+  coincidence ([*A Ledger of Nothing*](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md));
+- **the dead ends:** every one kept, with the evidence that killed it ([`GRAVEYARD.md`](GRAVEYARD.md));
+- **the paradox and its many angles:** the coin, two sides and an edge, with the paradoxes on the edges that
+  are missing, √2 and *i* ([`coin/THE_COIN.md`](coin/THE_COIN.md)).
+
 **Where to start**
 - **The book** for learners: *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*,
   and its companion unit on flips and paradoxes, *[Two Sides and an Edge](https://github.com/TiredofSleep/shape-of-understanding/blob/main/two_sides_and_an_edge.md)*.
@@ -16,9 +28,9 @@ every tower, is a **coin**, with two sides and an edge.
 - **The towers**, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md).
 - **What survived** when two years of AI-assisted research were audited — an essay:
   [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
-- **A Ledger of Nothing** — an essay on where zeros come from: paid for by a count, or bought by a coincidence,
-  from magic squares to molecules, with what is new fenced off from what is known:
-  [`towers/kernel_ledger/A_LEDGER_OF_NOTHING.md`](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md).
+- **A Ledger of Nothing** — the Theory of Nothing applied to zeros: an essay on where they come from, paid for
+  by a count or bought by a coincidence, from magic squares to molecules, with what is new fenced off from what
+  is known: [`towers/kernel_ledger/A_LEDGER_OF_NOTHING.md`](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md).
 
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas ·
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
