@@ -178,6 +178,10 @@ the diamond, simple cubic and body-centred cubic lattices
 - **[FORCED]** In eight dimensions the E₈ lattice gives every ball 240 touching neighbours;
   [NAMED — Viazovska 2016; Cohn, Kumar, Miller, Radchenko and Viazovska 2017] E₈ and the Leech
   lattice (24 dimensions) are the densest packings of their dimensions.
+- [NAMED — Cohn, Kumar, Miller, Radchenko and Viazovska 2022] They also win every energy contest. For the
+  plane and space, see [`../base/SYMMETRY_AND_ENERGY.md`](../base/SYMMETRY_AND_ENERGY.md). In the plane the
+  triangular lattice wins among lattices. In space, face-centred and body-centred cubic split the contests at
+  the edge of Poisson's coin.
 
 Where you meet it: crystallography and solid-state physics; error-correcting codes; number theory
 (modular forms); photonic and phononic crystals and metamaterials, where the lattice sets how light and

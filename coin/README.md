@@ -15,6 +15,7 @@ is what every floor turns over.
 > python verify_transpose_coin.py   # THE_TRANSPOSE_COIN.md (20 checks)
 > python verify_two_readings.py     # TWO_READINGS_OF_ZN.md (23 checks, about twenty seconds)
 > python verify_mirror.py           # THE_MIRROR.md (26 checks, about thirty seconds)
+> python verify_polar_coin.py       # THE_POLAR_COIN.md (26 checks, about forty seconds; numpy + scipy)
 > ```
 
 | file | what it is |
@@ -23,4 +24,5 @@ is what every floor turns over.
 | [`PARADOX_TYPES.md`](PARADOX_TYPES.md) | **The author's four kinds of paradox** (with Ben Mayes, April 2026), read through the coin. Each type pairs with a part of the coin: <ul><li>Type I, insufficient coverage (Zeno) — two lenses; the author's Theorem 0 says when views suffice.</li><li>Type II, a missing invariant (Banach–Tarski, Gödel) — a missing edge.</li><li>Type III, inadmissible (Russell, the Liar, Cantor) — a flip with no edge, plus self-reference; give "not" an edge and the Liar lands on it (Kripke).</li><li>Type IV, time-consistency (the Unexpected Hanging) — open.</li></ul> |
 | [`THE_TRANSPOSE_COIN.md`](THE_TRANSPOSE_COIN.md) | **The transpose's coin.** In a symmetric Latin square of odd order every symbol sits on the diagonal exactly once, by the parity that puts 5, 7 and 9 on their centres. It is why an odd round robin has one bye per round, and why the Lo Shu mod 3 is commutative only after a quarter turn. The easy case of Ryser's conjecture; classical, from the archived J29. |
 | [`THE_MIRROR.md`](THE_MIRROR.md) | **The transpose on laws.** Reading a table the other way round mirrors every law it obeys. Of the 4,694 short laws of the Equational Theories Project, 84 are their own mirror (the edge), and the rest form 2,305 pairs (the sides). On profiles the edge widens. Classical duality, with the counts computed here. |
+| [`THE_POLAR_COIN.md`](THE_POLAR_COIN.md) | **The polar's coin.** Polarity turns a convex shape inside out, so its corners become faces. The base's cube and octahedron are its two sides, the cube's two tetrahedra are two sides of the same shape, and the round ball is its edge. The volume product it measures is largest on the edge (Blaschke–Santaló) and smallest on the sides (Mahler: proved in the plane, and for symmetric shapes in space). Classical where settled; the open cases name two 2026 claims as claims. |
 | [`TWO_READINGS_OF_ZN.md`](TWO_READINGS_OF_ZN.md) | **Theorem 0 at work on ℤ/n.** When do two readings (residues, orbits of units, the mirror) tell every number apart? Four criteria, settled level by level, and a trap at n = 15. Elementary; it corrects the archived J27, J34 and J35, whose headline theorems were false. |

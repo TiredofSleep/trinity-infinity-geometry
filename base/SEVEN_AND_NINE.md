@@ -132,6 +132,10 @@ are the second **centred tetrahedral, centred octahedral and centred cube number
 
 (Symmetry counts in parentheses.)
 
+Spreading on a sphere depends on the law of repulsion. [`SYMMETRY_AND_ENERGY.md`](SYMMETRY_AND_ENERGY.md)
+shows which arrangements win under every law: the tetrahedron and the octahedron always do, the cube never
+does, and at 5, 7 and 9 no arrangement does.
+
 ## What this settles, and how 5, 7 and 9 are classified
 
 - **Settled:** one rule — the book's own — realizes every integer from 0 to 9, each uniquely, and

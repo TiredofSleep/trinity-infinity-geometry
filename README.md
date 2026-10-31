@@ -125,12 +125,14 @@ cd base
 python verify_integers.py
 python verify_one_rule.py
 python verify_forced_chain.py
+python verify_symmetry_and_energy.py   # pip install scipy
 cd ../coin
 python verify_coins.py
 python verify_paradox_types.py
 python verify_transpose_coin.py
 python verify_two_readings.py
 python verify_mirror.py
+python verify_polar_coin.py           # pip install scipy
 cd ../towers
 python verify_towers.py
 python verify_two_builds.py

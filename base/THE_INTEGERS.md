@@ -67,6 +67,9 @@ So the shapes in this table come from **more than one rule**:
 - 8 is forced by the perpendicular build;
 - 5, 7 and 9 are realized by other rules (regular polygon, centred figure, square).
 
+Spreading itself depends on the law of repulsion. [`SYMMETRY_AND_ENERGY.md`](SYMMETRY_AND_ENERGY.md)
+covers when one arrangement wins under every law, and why the cube never does.
+
 **One rule does realize all ten — see [`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md).** The book's own
 rule, "the most symmetric arrangement" (Ch. 1 §1.1), kept in three-dimensional space with the
 points not all on one line, gives a unique shape for every integer from 0 to 9 [FORCED,
