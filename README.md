@@ -169,7 +169,10 @@ with AI — is the essay [`WHAT_SURVIVED.md`](WHAT_SURVIVED.md).
 
 [`lab/`](lab/) — authorship and collaboration policy, and
 [fenced physics readings](lab/FENCED_READINGS.md) from October 2026: each with the exact piece
-inside it, checked, and the test that would decide it. None is a premise.
+inside it, checked, and the test that would decide it. None is a premise. Also there: the author's
+[prediction ledger](lab/predictions/README.md), eight dated bets on experiments, each with what would kill it;
+and the [generation loop](lab/generation_loop/README.md), ten pre-registered rounds testing Koide's lepton-mass
+relation against the cube.
 
 ## Citation
 

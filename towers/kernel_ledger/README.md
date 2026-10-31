@@ -2,7 +2,7 @@
 
 > **Closed for now (2026-10-25)**, with the binary-magic thread: see [`../binary_magic/STATUS.md`](../binary_magic/STATUS.md).
 > The author's synthesis essay is [`A_LEDGER_OF_NOTHING.md`](A_LEDGER_OF_NOTHING.md), revised 2026-10-25 after verification. The first draft is in [`archive/`](archive/README.md).
-> `python run_all.py` reruns every script here (8, about 2 minutes, ALL GREEN in the flagship).
+> `python run_all.py` reruns every script here (9, about 2 minutes, ALL GREEN in the flagship).
 > **Fence:** the molecule, framework and Fourier rows reproduce known theorems. They show the same linear algebra
 > at work; they make no new physical claim.
 
@@ -23,6 +23,7 @@ and scored after.
 | `fourier_certs.py` | the class-pigeonhole certificate for vanishing DFT minors |
 | `fourier_fresh.py` | F1-F3, the fresh Fourier test: exhaustive n = 12, sampled 16, 11, 13. Slow (tens of minutes); the log is `fourier_fresh.log` |
 | `annealN.c` | NxN magic-square annealer (source only: `cc -O2 -DN=6 -o anneal6 annealN.c -lm`); output in `squares6_annealed.txt` |
+| `quarter_turn.py` | K10 (registered 2026-10-27, from the author's question): is a hidden quarter-turn symmetry behind the weighted quarter? Lost, 0 of 2: 1.20× the baseline against the 1.5× needed, and no row and column kernel are ever the same lever (0 of 264). About 10 s; the log is `quarter_turn.log` |
 
 Run: `python3 ledger_tests.py`, then optionally `python3 fourier_fresh.py`. Needs numpy, networkx and sympy.
 Output is ASCII.

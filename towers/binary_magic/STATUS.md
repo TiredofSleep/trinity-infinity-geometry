@@ -35,7 +35,9 @@ Details are in `NOVELTY.md`.
 ## Waiting on the author (outward-facing; nothing has been sent)
 1. **The note to Trandafir, Lisoněk and Cabello.** The draft is kept privately and was updated 2026-10-24. Before
    sending, the (6, 15) case deserves one more independent implementation.
-2. **Optional:** a comment on OEIS A160523. The closed form proves Robert Israel's 2015 observation.
+2. **The determinant note and the OEIS lines** (drafted 2026-10-30, checked 2026-10-31):
+   [`void_lens/paper/`](void_lens/paper/README.md). The note is for arXiv, and the lines are for OEIS A160523,
+   whose observation the closed form proves. One citation was corrected; Loly et al. (2009) should be read first.
 3. **Optional:** `pip install pycryptodome`, so that `void_lens/applications` test A4 runs. It now reports SKIPPED.
 
 ## Open, parked (in priority order)
@@ -44,7 +46,8 @@ Details are in `NOVELTY.md`.
 2. Read before calling anything else new:
    - Conway, Norton and Ryba 2017;
    - Rosser and Walker 1938–39;
-   - Loly, Cameron, Trump and Schindel 2009;
+   - Loly, Cameron, Trump and Schindel 2009 (paywalled; the secondary sources checked on 2026-10-31 report no
+     determinant result);
    - Delvaux and Van Barel 2008, where the Fourier certificate is probably a special case.
 3. Do graph stars meet the conditions of Aasnæss's shallow-circuit construction (arXiv:2212.09382)?
 4. The order-5 residue: predict the weighted quarter from the arithmetic, or leave it.
@@ -59,5 +62,5 @@ chat's tally. Broad structural predictions mostly held; narrow numerical thresho
 ```
 cd towers/binary_magic && python run_all.py               # 39 scripts, about 15 minutes
 cd magic_sets && python run_all.py                        # 15 scripts
-cd ../../kernel_ledger && python run_all.py               # 8 scripts, about 2 minutes
+cd ../../kernel_ledger && python run_all.py               # 9 scripts, about 2 minutes
 ```

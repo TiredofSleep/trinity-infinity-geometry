@@ -1,0 +1,19 @@
+target eps (angle form): 7.880596e-07 +- 1.74e-09  (relative 0.22%); 2-sigma window +-0.44%
+target eta (cone form): 2.131894e-07 +- 4.72e-10  (relative 0.22%); 2-sigma window +-0.44%
+G10a T1 (c = 1) | eps (angle form): nearest alpha/pi*(me/mmu)^1.5 = 7.812492e-07 (-3.9 sigma, -0.864%)
+G10a T1 (c = 1) | eta (cone form): nearest alpha*(me/mmu)^2 = 1.706858e-07 (-90.0 sigma, -19.937%)
+G10a T1 (c = 1): 69 candidates per target; hits 0; expected by chance 0.061; P(>= hits) = 1
+G10b T2 (color/cone c) | eps (angle form): nearest alpha/pi*(me/mmu)^1.5 = 7.812492e-07 (-3.9 sigma, -0.864%)
+G10b T2 (color/cone c) | eta (cone form): nearest 2 * (alpha/pi)^3*ln(mtau/me)^1 = 2.043848e-07 (-18.7 sigma, -4.130%)
+G10b T2 (color/cone c): 966 candidates per target; hits 0; expected by chance 0.879; P(>= hits) = 1
+G10c T3 (all p/q <= 12) | eps (angle form): nearest 3/8 * alpha*(me/mtau)^1 = 7.869485e-07 (-0.6 sigma, -0.141%)
+G10c T3 (all p/q <= 12) | eta (cone form): nearest 3/11 * alpha/pi*(me/mmu)^1.5 = 2.130680e-07 (-0.3 sigma, -0.057%)
+G10c T3 (all p/q <= 12): 6279 candidates per target; hits 6; expected by chance 5.614; P(>= hits) = 0.491
+    HIT eps (angle form): 3/8 * alpha*(me/mtau)^1 = 7.869485e-07 (-0.64 sigma)
+    HIT eps (angle form): 7/3 * (alpha/(4pi))^2 = 7.868423e-07 (-0.70 sigma)
+    HIT eta (cone form): 3/11 * alpha/pi*(me/mmu)^1.5 = 2.130680e-07 (-0.26 sigma)
+    HIT eta (cone form): 3/5 * (alpha/pi)^3*ln(mmu/me)^2 = 2.137532e-07 (+1.19 sigma)
+    HIT eta (cone form): 5/4 * alpha*(me/mmu)^2 = 2.133573e-07 (+0.36 sigma)
+    HIT eta (cone form): 6 * alpha*(me/mtau)^1.5 = 2.135213e-07 (+0.70 sigma)
+
+SCORE: {'G10a': 'LOST', 'G10b': 'LOST', 'G10c': 'LOST'}

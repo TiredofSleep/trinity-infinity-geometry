@@ -1,0 +1,7 @@
+distinct squares: 152049; singular: concentric 187, eccentric 9, weighted 68
+nonsingular baseline (5000): mean q90 = 0.897 of 24
+concentric: mean q90 = 1.005 (1.12x baseline); lever match 0/187 = 0%
+eccentric : mean q90 = 0.667 (0.74x baseline); lever match 0/9 = 0%
+weighted  : mean q90 = 1.074 (1.20x baseline); lever match 0/68 = 0%
+
+SCORE: {'K10a': 'LOST', 'K10b': 'LOST'}

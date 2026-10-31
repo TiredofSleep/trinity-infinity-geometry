@@ -1,0 +1,9 @@
+independent 4-loop running (alpha_s(M_Z) = 0.1180, m_c(m_c) = 1.278, m_b(m_b) = 4.200, m_t(m_t) = 162.5 GeV)
+  alpha_s(m_b) = 0.2243, alpha_s(2 GeV) = 0.3015, alpha_s(1 GeV) = 0.4760
+  m_b(M_Z) = 2.879 GeV; m_c(3 GeV) = 0.994 GeV; m_c/m_s at 2 GeV = 11.77
+  masses at 1 GeV (MeV): u 2.826, d 6.206, s 123.4, c 1452, b 6578, t 3.892e+05
+  mu =  1: delta_up = 0.05218, delta_down = 0.10010
+  mu =  2: delta_up = 0.05218, delta_down = 0.10010
+  mu =  3: delta_up = 0.05218, delta_down = 0.10010
+  mu = MZ: delta_up = 0.05218, delta_down = 0.10010
+  m_c(3 GeV) for m_c(m_c) = 1.275 GeV: 0.991 (FLAG's m_c(3 GeV) = 0.988 corresponds to m_c(m_c) ~ 1.275-1.28)

@@ -210,6 +210,16 @@ its own graveyard. These died, with what killed them:
     chance baseline: small-integer kernels repeat by pigeonhole.
   - **Narrow 5-adic thresholds** (T3: 8.8× against a registered 10×; T6: a badly scaled lattice estimate). The
     excess of weighted zeros is real, but its mechanism is still open.
+  - **A hidden quarter-turn symmetry behind the weighted quarter** (K10, 2026-10-27, from the author's question; 0
+    of 2). Quarter-turn complements are 1.20× as common as in nonsingular squares, against 1.5× needed, and a
+    square's row kernel and column kernel are never the same lever (0 of 264) (`towers/kernel_ledger/quarter_turn.py`).
+- **From the generation loop (2026-10-30; `lab/generation_loop/PREREG.md`)**, fenced physics, tested against the cube:
+  - **Small sums of cube rotations give Koide's 2/3** (G1a): 0 of 17,344.
+  - **The quark families carry the leptons' angle 2/9** (G7, G9: −214 to −255σ, in every mass convention tried),
+    **or the published cross-family triplets are exactly Koide** (G8: +6.3σ and −3.4σ in the fixed convention).
+  - **A correction term that fills the gap between exact Koide and an exact 2/9 can be found by search** (G10): hits
+    come only at the chance rate, under the registered calibration and under two more
+    (`lab/generation_loop/g10_calibration_check.py`).
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

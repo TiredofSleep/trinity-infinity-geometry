@@ -1,0 +1,10 @@
+G6  purity on the flag circle: max |purity - 2/3| over 64 points = 3.44e-41
+    phi =    0 deg -> delta = 6.4904 deg
+    phi =  -90 deg -> delta = 8.3481 deg
+    phi =   90 deg -> delta = 9.2952 deg
+    phi =  180 deg -> delta = 15.0000 deg
+    lepton point: phi_e = 3.79716185701608 rad = 217.561349 deg (+- 3.6e-09 rad); weights (edge, face, body) = (1, 0.103649, 0.695195)
+    lepton point: phi_e = 2.36943716698971 rad = 135.758749 deg (+- 4.9e-09 rad); weights (edge, face, body) = (1, 0.141796, 1.348841)
+    grammar: 7275871 candidates; expected chance hits 0.059; hits: none
+
+SCORE: {'G6a': 'HELD', 'G6b': 'HELD'}

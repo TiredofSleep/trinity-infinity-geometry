@@ -1,0 +1,10 @@
+PASS  the flag's squared cosines are 1/2 (e-f), 1/3 (e-b) and 2/3 (f-b)
+PASS  purity 2/3 is the quadric w_e^2 + w_f^2 + w_b^2 - w_e w_f - 2 w_e w_b = 0
+PASS  with w_e = 1 the quadric is the circle (w_f - 1/2)^2 + (w_b - 1)^2 = 1/4
+PASS  every point of the circle, w_f = 1/2 + cos(phi)/2, w_b = 1 + sin(phi)/2, has purity exactly 2/3
+PASS  for two lines, purity 2/3 is w1^2 + w2^2 + 6(c - 2/3) w1 w2 = 0 (the cross term vanishes iff c = 2/3)
+PASS  an equal edge + body-diagonal pair (the magic angle, cos^2 = 1/3) has purity (1 + 1/3)/2 = 2/3
+PASS  the G6 lepton point (1, 0.141796, 1.348841) lies on the circle: (w_f - 1/2)^2 + (w_b - 1)^2 = 0.250000
+PASS  the G6 lepton point (1, 0.103649, 0.695195) lies on the circle: (w_f - 1/2)^2 + (w_b - 1)^2 = 0.250000
+
+All checks passed.

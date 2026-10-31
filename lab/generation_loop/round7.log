@@ -1,0 +1,10 @@
+check: charged leptons -> amplitude b = 1.414209 (sqrt2 = 1.414214), delta = 0.222225 (2/9 = 0.222222)
+up-type (u, c, t): amplitude b = 1.7517 (b^2 = 3.0683), delta = 0.07707 +- 0.00062 rad = 4.416 deg; vs 2/9: -235.7 sigma (chance of landing within 2 sigma at random: 0.24%)
+down-type (d, s, b): amplitude b = 1.5460 (b^2 = 2.3903), delta = 0.10984 +- 0.00052 rad = 6.294 deg; vs 2/9: -214.1 sigma (chance of landing within 2 sigma at random: 0.20%)
+not scored (other conventions, approximate inputs):
+   all six at one common scale (1-loop)   up   : b = 1.8227, delta = 0.05188 rad (2.973 deg)
+   all six at one common scale (1-loop)   down : b = 1.5669, delta = 0.10367 rad (5.940 deg)
+   pole masses for c, b, t                up   : b = 1.7290, delta = 0.08635 rad (4.948 deg)
+   pole masses for c, b, t                down : b = 1.5697, delta = 0.10237 rad (5.866 deg)
+
+SCORE: {'G7a': 'LOST', 'G7b': 'LOST'}

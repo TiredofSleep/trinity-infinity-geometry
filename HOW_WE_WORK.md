@@ -34,7 +34,7 @@ its own work.
 - **The literature** decides what is new. Three of our "new" results turned out to be from 1931, 1948 and
   2022, and we say so.
 
-## The record: six days in October 2026
+## The record: October 2026
 
 | days | what the loop produced | what it retired or credited to others |
 |---|---|---|
@@ -44,8 +44,9 @@ its own work.
 | Oct 24 | Round 8: the determinant of MATLAB's odd magic squares in closed form; every pandiagonal 5×5 square is invertible; the void index | MATLAB's doubly-even rank 3 was proved in 2022 |
 | Oct 24–25 | The lower bound: 16 is exactly the minimum at five qubits. The published sets' hidden contradictions. The kernel ledger across six fields | Narrow numerical thresholds, and "4 seen as 5" |
 | Oct 25 | The archived J series read again by three independent audits: nine pages came into the towers and the coin, each correcting its source. Two are small new results, on Steiner triple systems and on eight closures of the Equational Theories Project | More than fifty false or unsupported statements in the papers, each kept with its counterexample |
+| Oct 27–30 | The MATLAB-determinant note drafted for arXiv and OEIS. A ledger of eight dated physics bets, each with its kill condition (fenced, in `lab/`). Ten rounds testing Koide's lepton-mass relation against the cube; one small identity, the flag circle | K10's quarter turn (0 of 2). The generation loop's last four rounds (0 of 10): no cube origin for Koide's 2/3 or Brannen's angle, and no quark family carries them. Koide (1981), Foot (1994) and Brannen (2006) had the relations |
 
-In those six days the loop produced four results at the research frontier and about a dozen smaller ones.
+From October 20 to 25 the loop produced four results at the research frontier and about a dozen smaller ones.
 - 44 of 71 pre-registered predictions held. Broad structural predictions mostly held; narrow numerical
   thresholds mostly lost.
 - About thirty claims went to the graveyard, each with its evidence.

@@ -1,0 +1,18 @@
+targets: delta_Koide = 0.2222220471; eps = 7.880596e-07 +- 1.74e-09; eta = 2.131894e-07 +- 4.72e-10
+tier sizes: {'T1': 69, 'T2': 966, 'T3': 6279}
+
+T1: 69 candidates per target, 0 hits on the real targets
+    A +-1 decade           expected   0.064   P(>= 0) = 1   verdict LOST
+    B +-0.3 decade         expected   0.052   P(>= 0) = 1   verdict LOST
+    B +-0.1 decade         expected   0.077   P(>= 0) = 1   verdict LOST
+    C random constants     expected   0.065   P(>= 0) = 1   verdict LOST
+T2: 966 candidates per target, 0 hits on the real targets
+    A +-1 decade           expected   0.877   P(>= 0) = 1   verdict LOST
+    B +-0.3 decade         expected   0.845   P(>= 0) = 1   verdict LOST
+    B +-0.1 decade         expected   0.819   P(>= 0) = 1   verdict LOST
+    C random constants     expected   0.861   P(>= 0) = 1   verdict LOST
+T3: 6279 candidates per target, 6 hits on the real targets
+    A +-1 decade           expected   5.616   P(>= 6) = 0.491   verdict LOST
+    B +-0.3 decade         expected   5.738   P(>= 6) = 0.511   verdict LOST
+    B +-0.1 decade         expected   5.488   P(>= 6) = 0.469   verdict LOST
+    C random constants     expected   5.660   P(>= 6) = 0.498   verdict LOST

@@ -4,7 +4,7 @@ fourier_fresh.py is re-scored from its saved halves ("merge"); the full run take
 import os, subprocess, sys, time
 ENV = dict(os.environ, PYTHONIOENCODING="utf-8")
 SCRIPTS = ["ledger_tests.py", "four_in_five.py", "eccentric.py", "weighted.py", "digit_filter.py", "digit_rank.py",
-           "fourier_fresh.py merge", "robustness/zero_audit.py"]
+           "fourier_fresh.py merge", "robustness/zero_audit.py", "quarter_turn.py"]
 bad = 0
 for s in SCRIPTS:
     s, *args = s.split()

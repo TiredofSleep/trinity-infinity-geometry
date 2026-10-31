@@ -1,0 +1,39 @@
+OEIS A160523: proposed additions (draft, 2026-10-30)
+=====================================================
+
+How to submit: log in at oeis.org (registration uses your real name), open A160523, click "edit", add the
+lines below in the matching fields, and fill in "Reason for edit". An editor reviews the change before it goes live.
+These lines use the OEIS's own field codes (%F = formula, %C = comment, %e = example, %o = program,
+%H = links). The program was tested against exact determinants for every odd n from 3 to 101.
+
+%F A160523 For odd n, a(n) = (-1)^((n-1)/2) * n^(n-1) * ((n^2+1)/2) * Product_{O} (n^|O| - (-1)^|O|), where O runs over the orbits of the map k -> 2k (mod n) on {1, ..., n-1} (empty product for n = 1). - Brayden Sanders, Oct 30 2026
+
+%C A160523 For odd n the formula above shows that a(n) is never 0 and that a(n)/n^(n-1) is an integer coprime to n (each factor n^L - (-1)^L is congruent to +-1 mod n, and gcd((n^2+1)/2, n) = 1). This proves the divisibility of a(n) by n^(n-1) observed by Robert Israel. Proof sketch: subtracting (n^2+1)/2 from every entry leaves N(i,j) = n*f(i+j-h) + f(i+2j+1) with h = (n-1)/2 and f(x) = (x mod n) - h (rows and columns indexed from 0). In the Fourier basis e_k(j) = w^(k*j), w = exp(2*Pi*I/n), N sends e_k to a multiple of e_(-k) plus a multiple of e_(-k/2), so det factors over the orbits of doubling mod n. Using Sum_{x=0..n-1} x*w^(k*x) = n/(w^k - 1), each orbit O contributes (n^|O| - (-1)^|O|) * Product_{k in O} n/(w^k - 1), the phases cancel because Sum_{k in O} k == 0 (mod n), and the row-sum eigenvalue n*(n^2+1)/2 supplies the rest. - Brayden Sanders, Oct 30 2026
+
+%e A160523 For n = 7 the orbits of k -> 2k (mod 7) are {1,2,4} and {3,6,5}, so a(7) = (-1)^3 * 7^6 * 25 * (7^3+1)^2 = -348052801600.
+
+%o A160523 (Python)
+def a(n):
+    if n % 2 == 0:
+        return -10 if n == 2 else 0
+    s = (-1)**((n-1)//2) * n**(n-1) * (n*n+1) // 2
+    seen = [False]*n
+    for k in range(1, n):
+        if not seen[k]:
+            L, j = 0, k
+            while not seen[j]:
+                seen[j], L, j = True, L+1, 2*j % n
+            s *= n**L - (-1)**L
+    return s  # Brayden Sanders, Oct 30 2026
+
+%H A160523 Brayden Sanders, <a href="(arXiv link once posted)">The determinant of MATLAB's odd-order magic squares</a>, 2026.
+
+Reason for edit (suggested text):
+  Added a closed form for odd n, with proof sketch. It proves the conjectured divisibility by n^(n-1), and shows
+  that a(n) is nonzero for odd n with a(n)/n^(n-1) coprime to n. Verified against exact determinants for all odd
+  n <= 101.
+
+Notes for the submitter:
+  - Leave the %H line out until the arXiv note has a link; it can be added in a second edit.
+  - The program returns 0 for even n >= 4, matching the existing Maple and Mathematica programs and the b-file.
+    Doubly even n is proved singular (rank 3); for singly even n it is observed (rank n/2 + 2) but not proved here.

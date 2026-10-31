@@ -1,0 +1,7 @@
+G8a (-s, c, b)  P6 own-mass (scored)                    : Q = 0.67444 +- 0.00124  (+6.3 sigma from 2/3)
+G8a (-s, c, b)  one common scale (unscored)             : Q = 0.70150 +- 0.00139  (+25.0 sigma from 2/3)
+G8b (c, b, t)   P6 own-mass (scored)                    : Q = 0.66216 +- 0.00132  (-3.4 sigma from 2/3)
+G8b (c, b, t)   authors' mixed, direct top (unscored)   : Q = 0.66875 +- 0.00052  (+4.0 sigma from 2/3)
+G8b (c, b, t)   one common scale (unscored)             : Q = 0.72076 +- 0.00113  (+47.7 sigma from 2/3)
+
+SCORE: {'G8a': 'LOST', 'G8b': 'LOST'}

@@ -1,0 +1,220 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath,booktabs}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\title{The determinant of MATLAB's odd-order magic squares}
+\author{Brayden Sanders}
+\address{Hot Springs, Arkansas, USA}
+\email{}
+\date{October 30, 2026}
+
+\begin{document}
+
+\begin{abstract}
+For odd $n$ we give a closed form for the determinant of the $n\times n$ magic square returned by MATLAB's
+\texttt{magic(n)} (the de la Loub\`ere, or siamese, construction):
+\[
+\det \mathrm{magic}(n) \;=\; (-1)^{\frac{n-1}{2}}\, n^{\,n-1}\,\frac{n^2+1}{2}\prod_{O}\bigl(n^{|O|}-(-1)^{|O|}\bigr),
+\]
+where $O$ runs over the orbits of $k\mapsto 2k$ on $\Z_n\setminus\{0\}$. In particular the determinant never
+vanishes, and $\det\mathrm{magic}(n)/n^{n-1}$ is an integer coprime to $n$. This proves the divisibility by $n^{n-1}$
+observed in OEIS A160523. The proof subtracts the mean entry and works in the discrete Fourier basis, where the
+centered matrix becomes a diagonal matrix plus a weighted permutation. The same argument shows that every odd-order
+square built from two linear Latin squares with unit coefficients is nonsingular.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+MATLAB's \texttt{magic(n)} returns an $n\times n$ magic square. For odd $n$ it uses the de la Loub\`ere (siamese)
+construction. In matrix form, with rows $I$ and columns $J$ running over $1,\dots,n$,
+\[
+\mathrm{magic}(n)_{IJ} \;=\; n\cdot\bigl((I+J-\tfrac{n+3}{2}) \bmod n\bigr)+\bigl((I+2J-2)\bmod n\bigr)+1 .
+\]
+Moler \cite{moler} discussed the linear algebra of these squares. Numerically, odd orders have full rank, orders
+divisible by $4$ have rank $3$, and the remaining even orders have rank $n/2+2$. The OEIS entry A160523 \cite{oeis}
+lists $a(n)=\det\mathrm{magic}(n)$. There Robert Israel noted (2015) that $a(n)$ is divisible by $n^{n-2}$ for odd
+$n$ and appears to be divisible by $n^{n-1}$. Manjunath and Ambikasaran \cite{ma} approximated the eigenvalues of
+the odd-order squares with proven error bounds; nonsingularity follows from those bounds, although it is not stated
+there. We were unable to find an exact formula for $a(n)$ in the literature.
+
+\begin{theorem}\label{thm:main}
+Let $n$ be odd. Then
+\[
+\det \mathrm{magic}(n) = (-1)^{\frac{n-1}{2}}\, n^{\,n-1}\,\frac{n^2+1}{2}\prod_{O}\bigl(n^{|O|}-(-1)^{|O|}\bigr),
+\]
+where the product runs over the orbits $O$ of the doubling map $k\mapsto 2k$ on $\Z_n\setminus\{0\}$. For $n=1$ the
+product is empty.
+\end{theorem}
+
+\begin{corollary}
+For odd $n$, $\mathrm{magic}(n)$ is nonsingular. Moreover $\det\mathrm{magic}(n)/n^{n-1}$ is an integer coprime to
+$n$, so for each prime $p\mid n$ the exact power of $p$ dividing the determinant is $p^{(n-1)v_p(n)}$.
+\end{corollary}
+
+\begin{proof}
+Each factor $n^{L}-(-1)^{L}$ is nonzero and congruent to $\pm1 \pmod n$, and $\gcd\bigl(\tfrac{n^2+1}{2},n\bigr)=1$.
+\end{proof}
+
+For example, for $n=7$ the orbits are $\{1,2,4\}$ and $\{3,6,5\}$, so
+$\det\mathrm{magic}(7) = -7^6\cdot 25\cdot (7^3+1)^2 = -348\,052\,801\,600$.
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Index rows and columns by $i=I-1$ and $j=J-1$ in $\Z_n$, and put $h=\frac{n-1}{2}$. Then
+\[
+M_{ij} = n\bigl((i+j-h)\bmod n\bigr) + \bigl((i+2j+1)\bmod n\bigr) + 1 .
+\]
+Let $f(x)=(x\bmod n)-h$. This is an $n$-periodic function with $\sum_{x\in\Z_n}f(x)=0$.
+
+\begin{lemma}[Measuring from the center]
+$M = N + \frac{n^2+1}{2}\,\mathbf{1}\mathbf{1}^{\mathsf T}$, where $N_{ij}=n\,f(i+j-h)+f(i+2j+1)$.
+\end{lemma}
+
+\begin{proof}
+Write $(x\bmod n)=f(x)+h$. The constant term is then $nh+h+1=(n+1)\frac{n-1}{2}+1=\frac{n^2+1}{2}$.
+\end{proof}
+
+Let $\omega=e^{2\pi i/n}$, let $e_k(j)=\omega^{kj}$ for $k\in\Z_n$, and let
+$\hat f(k)=\sum_{x\in\Z_n}f(x)\,\omega^{kx}$. For $k\neq0$,
+\begin{equation}\label{eq:saw}
+\hat f(k)=\sum_{x=0}^{n-1}x\,\omega^{kx}=\frac{n}{\omega^k-1},
+\end{equation}
+because $(z-1)\sum_{x=0}^{n-1}xz^x=n$ whenever $z^n=1\neq z$.
+
+\begin{lemma}[Fourier action]
+For every $k\in\Z_n$,
+\[
+N e_k = a_k\, e_{-k} + b_{k/2}\, e_{-k/2},\qquad a_k=n\,\omega^{kh}\hat f(k),\quad b_k=\omega^{-k}\hat f(k),
+\]
+where $k/2$ means $k\cdot 2^{-1}$ in $\Z_n$ (recall $n$ is odd).
+\end{lemma}
+
+\begin{proof}
+Substitute $x=i+j-h$ in $\sum_j f(i+j-h)\,\omega^{kj}$ to get $\omega^{kh}\hat f(k)\,\omega^{-ki}$. Substitute
+$y=i+2j+1$, so that $j=(y-i-1)/2$, in $\sum_j f(i+2j+1)\,\omega^{kj}$ to get $\hat f(k/2)\,\omega^{-k/2}\,\omega^{-(k/2)i}$.
+\end{proof}
+
+Since $\hat f(0)=0$, the lemma gives $N e_0=0$, and so $M e_0=s\,e_0$ with $s=n\frac{n^2+1}{2}$. For $k\neq0$ we have
+$\mathbf{1}^{\mathsf T}e_k=0$, so $M e_k=N e_k$. Both $\mathbb{C}e_0$ and $V=\mathrm{span}\{e_k:k\neq0\}$ are therefore
+invariant, and
+\[
+\det M = s\cdot \det\bigl(N|_V\bigr).
+\]
+
+On $V$, define $R e_k=e_{-k}$, $D e_k=a_k e_k$ and $U e_k=b_{k/2}\,e_{k/2}$. The lemma says exactly that
+$N|_V=R\,(D+U)$. The involution $k\mapsto -k$ has no fixed points on $\Z_n\setminus\{0\}$, so
+$\det R=(-1)^{(n-1)/2}$.
+
+The halving map $k\mapsto k/2$ permutes $\Z_n\setminus\{0\}$, and its cycles are the orbits $O$ of doubling.
+Hence $D+U$ is block diagonal over the orbits. Each block is a diagonal matrix plus one weighted cyclic permutation
+of length $L=|O|\geq2$. In such a block the only permutations in the support are the identity and the full cycle,
+so its determinant is
+\[
+\prod_{k\in O}a_k-(-1)^{L}\prod_{k\in O}b_k
+= \Bigl(\prod_{k\in O}\hat f(k)\Bigr)\Bigl(n^{L}\omega^{hS_O}-(-1)^{L}\omega^{-S_O}\Bigr),
+\qquad S_O=\sum_{k\in O}k .
+\]
+If $O=\{k,2k,\dots,2^{L-1}k\}$ then $2^{L}k\equiv k$, so $S_O=(2^{L}-1)k\equiv0\pmod n$. Both phases are therefore
+$1$, and the block determinant is $(n^{L}-(-1)^{L})\prod_{k\in O}\hat f(k)$.
+
+Finally, by \eqref{eq:saw},
+\[
+\prod_{k\neq0}\hat f(k)=\frac{n^{n-1}}{\prod_{k=1}^{n-1}(\omega^k-1)}=\frac{n^{n-1}}{n}=n^{n-2},
+\]
+using $\prod_{k=1}^{n-1}(1-\omega^k)=n$ and the fact that $n-1$ is even. Collecting the factors,
+\[
+\det M = n\,\tfrac{n^2+1}{2}\cdot(-1)^{\frac{n-1}{2}}\cdot n^{n-2}\prod_O\bigl(n^{|O|}-(-1)^{|O|}\bigr),
+\]
+which is the theorem. \qed
+
+\section{A family of nonsingular squares}
+
+The proof uses only the fact that each of the two digit layers is linear in $(i,j)$ with unit coefficients.
+
+\begin{theorem}\label{thm:family}
+Let $n\geq3$ be odd, let $a_1,b_1,a_2,b_2$ be units of $\Z_n$, and let $c_1,c_2\in\Z_n$. With $\rho(x)=x\bmod n$,
+the matrix
+\[
+M_{ij}=n\,\rho(a_1i+b_1j+c_1)+\rho(a_2i+b_2j+c_2)+1
+\]
+is nonsingular.
+\end{theorem}
+
+\begin{proof}
+All row sums are equal because $b_1,b_2$ are units, so $M e_0=s e_0$ with $s\neq0$ and $V$ is invariant as before.
+Substituting as in the Fourier lemma gives $N e_k=A_k e_{\sigma(k)}+B_k e_{\tau(k)}$, where $\sigma(k)=-a_1b_1^{-1}k$
+and $\tau(k)=-a_2b_2^{-1}k$. By \eqref{eq:saw},
+\[
+|A_k|=\frac{n^2}{|\omega^{k/b_1}-1|}\geq\frac{n^2}{2},\qquad
+|B_k|=\frac{n}{|\omega^{k/b_2}-1|}\leq\frac{n}{2\sin(\pi/n)} .
+\]
+Write $N|_V=P_\sigma(D_A+W)$, where $W e_k=B_k e_{\pi(k)}$ and $\pi=\sigma^{-1}\tau$. Each cycle of $\pi$ of length
+$L$ contributes $\prod A_k-(-1)^L\prod B_k$, and
+\[
+\Bigl|\prod A_k\Bigr| \big/ \Bigl|\prod B_k\Bigr| \;\geq\; \bigl(n\sin(\pi/n)\bigr)^{L} > 1
+\]
+because $n\sin(\pi/n)\geq 3\sin(\pi/3)>2$ for $n\geq3$. If $\pi$ fixes $k$, the factor $A_k+B_k$ is nonzero for the same
+reason. So no factor vanishes.
+\end{proof}
+
+Theorem~\ref{thm:main} is the case $(a_1,b_1,c_1,a_2,b_2,c_2)=(1,1,-h,1,2,1)$, where the two permutations are
+$k\mapsto-k$ and $k\mapsto-k/2$ and the phases cancel orbit by orbit.
+
+\section{Verification}
+
+We computed $\det\mathrm{magic}(n)$ exactly, by fraction-free Gaussian elimination over the integers, for every odd
+$n\le101$. Every value agrees with Theorem~\ref{thm:main}, and the formula also reproduces the ten odd-index terms
+listed in A160523 ($n\le19$). A separate implementation, written independently from MATLAB's \texttt{magic.m} source,
+confirmed the same range. Theorem~\ref{thm:family} was tested on $77{,}904$ squares: all parameter choices for
+$n=5$ and $7$, and $2{,}000$ random choices each for $n=9,15,21,25$. No zero determinant occurred.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rll}
+\toprule
+$n$ & orbit lengths of $k\mapsto2k$ & $\det\mathrm{magic}(n)/n^{n-1}$ \\
+\midrule
+3 & 2 & $-40$ \\
+5 & 4 & $8112$ \\
+7 & 3, 3 & $-2958400$ \\
+9 & 6, 2 & $1743123200$ \\
+11 & 10 & $-1582182900600$ \\
+13 & 12 & $1980337235410800$ \\
+15 & 4, 4, 2, 4 & $-3283944692869234688$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}
+The formula depends on the arithmetic of $n$ only through the orbit lengths of doubling, that is, through the
+multiplicative orders of $2$ modulo the divisors of $n$. When $2$ is a primitive root mod a prime $n$, there is a
+single orbit and $\det\mathrm{magic}(n)=(-1)^{(n-1)/2}n^{n-1}\frac{n^2+1}{2}\,(n^{n-1}-1)$.
+\end{remark}
+
+\subsection*{Acknowledgment}
+The derivation, the computations and the drafting of this note were carried out with the assistance of an AI system
+(Claude, Anthropic). The author checked the argument and the computations and takes responsibility for the content.
+
+\begin{thebibliography}{9}
+\bibitem{moler} C. Moler, \emph{Magic Squares, Part 3, Linear Algebra}, Cleve's Corner (MathWorks blog),
+November 12, 2012. \url{https://blogs.mathworks.com/cleve/2012/11/12/magic-squares-part-3-linear-algebra/}
+\bibitem{oeis} OEIS Foundation, \emph{The On-Line Encyclopedia of Integer Sequences}, sequence A160523.
+\url{https://oeis.org/A160523}
+\bibitem{ma} H. Manjunath and S. Ambikasaran, \emph{Spectrum of MATLAB's magic squares},
+arXiv:2205.15563 (2022).
+\bibitem{staab} P. Staab et al., \emph{The magic of permutation matrices: categorizing, counting and eigenspectra
+of magic squares}, arXiv:1007.3239 (2010).
+\end{thebibliography}
+
+\end{document}

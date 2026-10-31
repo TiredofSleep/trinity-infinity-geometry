@@ -1,0 +1,13 @@
+G3  pairs at purity 2/3: 12 (axis kinds [('body', 'edge')]); all at the magic angle and at 15 deg: True
+    cone + two half cones (1, 1/2, 1/2): 858 mixtures, 24 at purity 2/3, 24 with three nonzero masses; angles (deg): [8.348109]
+      e.g. weight 1 on edge, 1/2 on face and body: delta = 8.3481 deg, sqrt-mass ratios [ 1.      3.9015 19.5746]
+      e.g. weight 1 on edge, 1/2 on face and body: delta = 8.3481 deg, sqrt-mass ratios [ 1.      3.9015 19.5746]
+      e.g. weight 1 on edge, 1/2 on face and body: delta = 8.3481 deg, sqrt-mass ratios [ 1.      3.9015 19.5746]
+    equal triples: 286 mixtures, 24 at purity 2/3, 24 with three nonzero masses; angles (deg): [6.490407]
+    closest purity-2/3 mixture to delta_e = 12.7324 deg: 4.3843 deg away
+G4  unrolled-cone targets: 11; candidates 7275871; expected chance hits 0.030
+    no candidate within tolerance
+G5  delta_nu = 27.3907 deg (+- 0.2427); delta_e = 12.7324 deg
+    delta_nu - delta_e = 14.6583 deg vs pi/12 = 15 deg: -1.41 sigma
+
+SCORE: {'G3a': 'HELD', 'G3b': 'HELD', 'G3c': 'HELD', 'G4a': 'HELD', 'G5a': 'HELD'}

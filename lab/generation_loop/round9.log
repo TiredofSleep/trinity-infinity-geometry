@@ -1,0 +1,14 @@
+checks: alpha_s(m_b) = 0.2243, alpha_s(2 GeV) = 0.3015, alpha_s(1 GeV) = 0.4760
+        m_b(M_Z) = 2.879 GeV (literature ~2.86-2.87); m_c(3 GeV) = 0.994 GeV (FLAG 0.988 for m_c(m_c) ~1.28); m_c/m_s at 2 GeV = 11.77 (FLAG lattice 11.77)
+        masses at 1 GeV (MeV): u 2.826, d 6.206, s 123.4, c 1452, b 6578, t 3.892e+05
+        mu =  1: delta_up = 0.05218, delta_down = 0.10010   (same at every common scale)
+        mu =  2: delta_up = 0.05218, delta_down = 0.10010   (same at every common scale)
+        mu =  3: delta_up = 0.05218, delta_down = 0.10010   (same at every common scale)
+        mu = MZ: delta_up = 0.05218, delta_down = 0.10010   (same at every common scale)
+G9a up-type   (u, c, t) at 1 GeV: b = 1.8226 (b^2 = 3.322), Q = 0.8870, delta = 0.05218 +- 0.00067 rad (2.990 deg); -254.6 sigma from 2/9
+G9b down-type (d, s, b) at 1 GeV: b = 1.5771 (b^2 = 2.487), Q = 0.7479, delta = 0.10010 +- 0.00055 rad (5.735 deg); -221.8 sigma from 2/9
+G9c down-type constituent (340, 486, 4730): b = 0.8902, Q = 0.4654, delta = 0.06426 +- 0.02648 rad (3.682 deg); -6.0 sigma from 2/9; chance of a 2-sigma hit at random: 10.1%
+    (unscored) up-type constituent with Griffiths' free top (336, 1550, 177000): b = 1.6399, delta = 0.04646 rad (2.662 deg) -- the top never locks, so this family is not defined here
+    top lifetime hbar/Gamma_t = 4.6e-25 s vs locking time hbar/Lambda_QCD ~ 3.1e-24 s (ratio 6.8)
+
+SCORE: {'G9a': 'LOST', 'G9b': 'LOST', 'G9c': 'LOST'}

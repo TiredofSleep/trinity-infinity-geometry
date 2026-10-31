@@ -239,3 +239,29 @@ the most 5-divisible point. W1's estimator used L = 240, which has only one extr
 - Weighted kernels are *not* more digit-degenerate than concentric ones (T5).
 - No properly scaled test yet says the excess is 5-adic. The next estimator should work per valuation class:
   write det/325 = 5^k u and estimate the density of u near 0 within each k.
+
+## Round K10: a hidden quarter-turn symmetry behind the weighted quarter? (registered 2026-10-27 20:50 CT, before any K10 computation)
+**Source:** the user, 2026-10-27 20:42 CT, verbatim: "3 times more than chance a 90 degree symmetry appears inside a cube?"
+**Sample:** every distinct 5x5 square in squares5_annealed.txt and squares5_fresh{,2,3,4}.txt, deduplicated by `canon`.
+These were all seen in earlier rounds, but no quarter-turn statistic was ever computed on them.
+Classes as in K7/K8: concentric (`local_certs` or void index >= 1), eccentric (`eccentric`), weighted (neither).
+
+**Measures:**
+- q90(M) is the number of the 24 off-center cells with M[i][j] + M[4-j][i] = 26. That counts cells where turning the
+  square a quarter-turn gives the complement.
+- A lever match means the row kernel u (u^T M = 0) and the column kernel v (M v = 0) satisfy v || u or
+  v || reverse(u). The same lever balances the rows and the columns, as a quarter-turn or transpose symmetry would force.
+
+| id | kind | prediction | kill condition |
+|---|---|---|---|
+| K10a | real | Mean q90 over weighted-singular squares is at least 1.5x the mean over 5,000 random nonsingular squares (seed 1010). | Ratio below 1.5. Unscored if fewer than 15 weighted. |
+| K10b | real | A lever match occurs in at least 25% of weighted-singular squares. | Below 25%. Unscored if fewer than 15 weighted. |
+
+### Round K10 scores (`quarter_turn.py`, `quarter_turn.log`; 152,049 distinct squares, 264 singular)
+| id | result | outcome |
+|---|---|---|
+| K10a | mean q90: weighted 1.074 vs nonsingular 0.897 (1.20x; needed 1.5x). Concentric 1.12x, eccentric 0.74x. | **lost** |
+| K10b | lever match in 0 of 68 weighted (also 0 of 187 concentric and 0 of 9 eccentric). The detector was checked on built-to-match matrices and returned True. | **lost** |
+
+Row levers and column levers are never the same lever in any class. No quarter-turn or transpose symmetry is behind
+the weighted quarter. **Tally:** 0 of 2. Running record: **41 of 70**.
