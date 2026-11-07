@@ -223,9 +223,13 @@ A lens should predict as well as describe. This one predicts with its coin.
 
 In every contest the dodecahedron is also a saddle: one family of three moves lowers its energy.
 
-- **Known in part.** Nerattini, Brauchart and Kiessling (2014) state that the dodecahedron minimizes no
-  power law with *s* > −2, which covers five of the seven contests [NAMED]. The run adds the two Gaussians
-  and the saddle. The coin's pattern now holds for both polar pairs, in every contest tested.
+- **Known in part** [NAMED]. That the dodecahedron is not universally optimal was known:
+  - Cohn and Kumar (2007) note it is not even an optimal spherical code;
+  - Ballinger et al. (2009) find it loses the harmonic contest;
+  - Nerattini, Brauchart and Kiessling (2014) state that it minimizes no power law with *s* > −2, which
+    covers five of the seven contests.
+
+  The run adds the two Gaussians and the saddle.
 - **Rigid wins, floppy loses** [FORCED, measured; found by the run, not part of the prediction]. Put bars
   along each solid's edges and keep its corners on the sphere.
   - The three solids with triangle faces cannot flex, and each is a local minimum in all seven contests.
@@ -237,14 +241,18 @@ In every contest the dodecahedron is also a saddle: one family of three moves lo
   for its 12 bars, and the dodecahedron 37 for its 30, so at least 1 flex and at least 7 are forced. The
   triangle-faced solids have more bars than freedoms, and none of them can flex. On the polar coin, the
   side that wins is the braced one, and the side that loses is the one the count leaves floppy.
-- **Open: one number decides every contest.**
-  - The three losing moves form one block of the energy's second derivative in every contest: a single
-    number λ times the identity.
-  - Every completely monotone potential is a mixture of Gaussians e^(−*a r*²) (Bernstein's theorem). So if
-    λ(*a*) < 0 for every *a* > 0, the dodecahedron loses every contest.
-  - λ(*a*) is negative at every *a* computed, from 0.001 to 1000, and at the weak end it approaches
-    −0.35 *a*⁶.
-  - A proof for every *a* is not yet written.
+- **Then proved: the dodecahedron loses every contest** [FORCED: exact arithmetic in ℚ(√5),
+  [`base/verify_dodecahedron.py`](base/verify_dodecahedron.py); NEW: not found in the literature we checked].
+  - Every potential completely monotone on (0, 4] is a sum Σ *c*ₙ (4 − *r*²)ⁿ with every *c*ₙ ≥ 0
+    (Bernstein). Along one of the floppy moves, the second derivative of the energy is Σ *c*ₙ 2ⁿ Λₙ.
+  - Λₙ = 0 for *n* ≤ 5, and Λₙ < 0 for every *n* ≥ 6: exactly up to 60, and by an explicit bound beyond.
+    The first of them is Λ₆ = −320/81.
+  - So the prediction is a theorem for every contest in this page's sense, the mixtures of Gaussians.
+  - Cohn and Kumar's slightly larger class has one exception, and it is the coin's own edge. A polynomial of
+    degree at most 5 in *r*² cannot tell the dodecahedron from the best, because it is a 5-design, so there
+    it ties. The registered "why it could fail" pointed exactly there: balance up to degree 5.
+  - The same computation one step down gives the cube. It ties every contest that stops at degree 3, its
+    design strength, and loses all the rest.
 
 ## 8. What this page is, and is not
 

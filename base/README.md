@@ -18,13 +18,14 @@ coin is whether the centre is inhabited, and both faces are kept: see
 > python verify_forced_chain.py   # the simplex ladder, the tetrahedral 1/3, the cube = Cl(3)
 > python verify_symmetry_and_energy.py   # symmetry against energy (31 checks; numpy + scipy)
 > python run_dodecahedron.py             # the run registered in ../THE_LENS.md §7 (a minute or two; its log is kept)
+> python verify_dodecahedron.py          # the exact proof: which contests the dodecahedron and the cube lose (11 checks, about a second)
 > ```
 
 | file | what it is |
 |---|---|
 | [`THE_INTEGERS.md`](THE_INTEGERS.md) | **Start here.** 0–9 one at a time, each with the rule that picks its shape — and the tower each one points to. |
 | [`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md) | **One rule for all ten.** The book's own rule — the most symmetric arrangement — kept in three-dimensional space realizes every integer 0–9 uniquely: 7 = the octahedron with its centre, 9 = the cube with its centre (and 5 = the tetrahedron with its centre). This is checked over every symmetry group of 3-space. The odd ones must stand on their centres, because every solid symmetry group has only even orbits besides the centre. 5, 7 and 9 are classified, not chosen: the flat face (the polygon) and the solid face (the centred solid) are both kept. |
-| [`SYMMETRY_AND_ENERGY.md`](SYMMETRY_AND_ENERGY.md) | **Symmetry against energy.** When does the most symmetric arrangement also win every energy contest, whatever the law of repulsion? <ul><li>On the circle, always.</li><li>On the sphere, at 2, 3, 4, 6 and 12; never at 8 (a short proof), and not at 20 in any contest tested (a registered prediction that held); at 5, 7 and 9 nothing wins every contest. The rigid solids win and the ones that flex lose.</li><li>In the plane, the triangular lattice wins among lattices.</li><li>In space, face-centred and body-centred cubic split the contests at the edge of Poisson's coin.</li></ul> Classical, with one 2026 claim named as a claim. |
+| [`SYMMETRY_AND_ENERGY.md`](SYMMETRY_AND_ENERGY.md) | **Symmetry against energy.** When does the most symmetric arrangement also win every energy contest, whatever the law of repulsion? <ul><li>On the circle, always.</li><li>On the sphere, at 2, 3, 4, 6 and 12; never at 8 (a short proof), and not at 20 in any contest (a registered prediction, then an exact proof); at 5, 7 and 9 nothing wins every contest. The rigid solids win and the ones that flex lose.</li><li>In the plane, the triangular lattice wins among lattices.</li><li>In space, face-centred and body-centred cubic split the contests at the edge of Poisson's coin.</li></ul> Classical, with one 2026 claim named as a claim. |
 | [`integers_as_geometric_entities.md`](integers_as_geometric_entities.md) | **P1.** The ladder 1–4 and the tetrahedral 1/3 = 1/(N−1) at N = 4, with where that geometry is measured (the carbon bond angle, the NMR magic angle) and a recorded boundary of what does not follow. |
 
 Tags: **[FORCED]** follows from the named rule and has a line in a verify script · **[RULE]** names

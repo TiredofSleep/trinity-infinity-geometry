@@ -300,7 +300,8 @@ check("so a small move along it lowers the dodecahedron's energy in every contes
       all(min(energy(unit(moved(dodeca, Bd, s * 1e-3 * V3[:, 0])), pot) for s in (1, -1)) < energy(dodeca, pot)
           for pot in PANEL.values()))
 gauss_lams = [np.trace(V3.T @ hess_sphere(dodeca, gauss(a)) @ V3) / 3 for a in (0.1, 0.3, 1, 3, 10, 30)]
-check("[measured, not a proof] the same number is negative for the Gaussians a = 0.1, 0.3, 1, 3, 10 and 30",
+check("[measured; the exact proof is verify_dodecahedron.py] the same number is negative for the Gaussians "
+      "a = 0.1, 0.3, 1, 3, 10 and 30",
       all(v < 0 for v in gauss_lams))
 best20 = math.inf
 for _ in range(6):

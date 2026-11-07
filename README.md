@@ -146,6 +146,7 @@ python verify_integers.py
 python verify_one_rule.py
 python verify_forced_chain.py
 python verify_symmetry_and_energy.py   # pip install scipy
+python verify_dodecahedron.py          # exact, in Q(sqrt5): the contests the dodecahedron and the cube lose
 cd ../coin
 python verify_coins.py
 python verify_paradox_types.py

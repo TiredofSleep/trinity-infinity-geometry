@@ -26,6 +26,11 @@ is a choice of *f*. "Every contest" means every completely monotone *f*: Coulomb
 1/*r*ˢ, the Gaussians e^(−*a r*²), and every mixture of them. The logarithm is their limit. An arrangement
 that wins all of them is **universally optimal** [NAMED: Cohn and Kumar 2007].
 
+Here "completely monotone" means on all of (0, ∞), so by Bernstein's theorem every contest is a mixture of
+Gaussians. Cohn and Kumar allow a slightly larger class: potentials completely monotone on (0, 4], the
+squared distances that occur on the unit sphere. That class adds polynomials such as 4 − *r*², and §3 says
+what they change.
+
 The script plays seven contests: powers *s* = 1, 3, 12 and 40, Gaussians *a* = 1 and 4, and the logarithm.
 - [FORCED] The search reproduces the published Coulomb (Thomson) energies for 2 to 9 and 12 points.
 - Seven contests can show that **no** arrangement wins them all, when two winners differ. Only a theorem can
@@ -70,6 +75,10 @@ is its number of different distances.
   - So ψ = 0, the cube, is the highest point. The 45° turn, a square antiprism, is lower by
     2(*c*₁ + *c*₃ + …) > 0. ∎
   - The script checks every twist on a grid, in all seven contests.
+  - In Cohn and Kumar's larger class, a polynomial of degree at most 3 in *r*² gives *c*₁ = 0, and there the
+    cube ties: it is a 3-design, and every 3-design wins such a contest [NAMED: Delsarte, Goethals and
+    Seidel]. Any potential with more in it makes the twist win [FORCED: the second derivative along the
+    twist, computed exactly by [`verify_dodecahedron.py`](verify_dodecahedron.py)].
 - [FORCED; NAMED] **The cube loses even though it is balanced to degree 3**, which is the most that 8 points
   allow. Every twisted cube is still a 3-design, and no 8 points make a 4-design: that takes at least 9
   [Delsarte, Goethals and Seidel 1977].
@@ -79,9 +88,18 @@ is its number of different distances.
   [`../THE_LENS.md`](../THE_LENS.md) §7 before it was run]. In each it is a saddle: one family of three
   moves lowers its energy. Under Coulomb's law the best 20 points are Thomson's, at 150.881568334, against
   the dodecahedron's 151.798620562. [NAMED: Nerattini, Brauchart and Kiessling (2014) state that the
-  dodecahedron minimizes no power law with *s* > −2.] Whether it loses *every* completely monotone contest
-  is open. It comes down to the sign of one number for each Gaussian, and that number is negative wherever
-  it has been computed ([`../THE_LENS.md`](../THE_LENS.md) §7).
+  dodecahedron minimizes no power law with *s* > −2.]
+- **The dodecahedron loses every contest** [FORCED: exact arithmetic in ℚ(√5),
+  [`verify_dodecahedron.py`](verify_dodecahedron.py); NEW: not found in the literature we checked]. In Cohn
+  and Kumar's larger class it loses every contest except one kind: the polynomials of degree at most 5 in
+  *r*². There it ties, because it is a 5-design [NAMED: Delsarte, Goethals and Seidel].
+  - *Why.* Every potential of that class is f = Σ *c*ₙ (4 − *r*²)ⁿ with every *c*ₙ ≥ 0 (Bernstein). Along one
+    of the dodecahedron's flexes, the second derivative of the energy is Σ *c*ₙ 2ⁿ Λₙ.
+  - Λₙ = 0 for *n* ≤ 5, and Λₙ < 0 for every *n* ≥ 6: exactly up to *n* = 60, and by an explicit bound
+    beyond. The first of them is Λ₆ = −320/81.
+  - So unless the potential stops at degree 5, a small move along the flex lowers the energy.
+  - That the dodecahedron is not universally optimal was known [NAMED: Cohn and Kumar 2007, who note it is
+    not even an optimal spherical code; Ballinger et al. 2009].
 - **Rigid wins, floppy loses** [FORCED, measured]. Put bars along each solid's edges and keep its corners on
   the sphere.
   - The tetrahedron, the octahedron and the icosahedron, whose faces are triangles, cannot flex. Each is a
@@ -101,8 +119,10 @@ is its number of different distances.
 **[COIN] The polar pair gets opposite verdicts.** By [`../coin/THE_POLAR_COIN.md`](../coin/THE_POLAR_COIN.md),
 the cube and the octahedron are the two sides of one coin. On the sphere the octahedron wins every contest,
 and the cube loses every one. The tetrahedron, on that coin's edge, wins every one. The next pair agrees in
-every contest tested: the icosahedron wins and the dodecahedron loses. In both pairs the winner is the side
-with triangle faces, which is rigid, and the loser is the side that flexes.
+every contest: the icosahedron wins and the dodecahedron loses. In both pairs the winner is the side with
+triangle faces, which is rigid, and the loser is the side that flexes. Each loser's verdict has its own
+edge, at its design strength. The cube ties the contests that see only degree 3 or less, and the
+dodecahedron those that see only degree 5 or less.
 
 ## 4. The plane: the triangular lattice
 
@@ -175,6 +195,8 @@ steepness *a* that is the lattice's theta function θ(*a*), the sum of e^(−*a*
 - J. J. Thomson, *Philos. Mag.* **7** (1904) 237–265. Energies: D. J. Wales and S. Ulker, *Phys. Rev. B*
   **74** (2006) 212101.
 - T. W. Melnyk, O. Knop and W. R. Smith, *Can. J. Chem.* **55** (1977) 1745–1761.
+- B. Ballinger, G. Blekherman, H. Cohn, N. Giansiracusa, E. Kelly and A. Schürmann, "Experimental study of
+  energy-minimizing point configurations on spheres", *Experiment. Math.* **18** (2009); arXiv:math/0611451.
 - R. Nerattini, J. S. Brauchart and M. K.-H. Kiessling, "'Magic' numbers in Smale's 7th problem",
   arXiv:1307.2834 (v3, 2014): the dodecahedron minimizes no power law with *s* > −2 (stated there in a footnote).
 - R. E. Schwartz, "The phase transition in five point energy minimization", arXiv:1610.03303.
