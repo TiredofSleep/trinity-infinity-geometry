@@ -1,0 +1,159 @@
+THE REGISTERED RUN (THE_LENS.md section 7, registered at commit 0a74851)
+dodecahedron: 20 corners on the unit sphere; nearest distance 0.713644
+
+[Riesz s=1 (Coulomb)]  (9 s)
+  dodecahedron energy         151.7986205619   (largest force on a corner: 1.9e-15)
+  lowest found (220 starts)   150.8815683338   below the dodecahedron by 0.917052
+  lowest from the 20 nudges   150.8815683338
+  lowest found has 26 distinct distances; closest pair 46.093 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -2.17633 (x3, Tg)
+  a small step along that mode: energy 151.7985117535 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[Riesz s=3]  (9 s)
+  dodecahedron energy         141.1416482631   (largest force on a corner: 4.4e-15)
+  lowest found (220 starts)   131.8130143935   below the dodecahedron by 9.32863
+  lowest from the 20 nudges   131.8130143935
+  lowest found has 26 distinct distances; closest pair 46.684 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -22.0791 (x3, Tg)
+  a small step along that mode: energy 141.1405443862 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[Riesz s=12]  (10 s)
+  dodecahedron energy         1730.1204681396   (largest force on a corner: 1.3e-12)
+  lowest found (220 starts)   616.4349645092   below the dodecahedron by 1113.69
+  lowest from the 20 nudges   616.4349645092
+  lowest found has 26 distinct distances; closest pair 46.872 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -2971.07 (x3, Tg)
+  a small step along that mode: energy 1729.9719301055 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[Riesz s=40]  (11 s)
+  dodecahedron energy         21769684.5667456016   (largest force on a corner: 1.7e-07)
+  lowest found (220 starts)   262608.9317734629   below the dodecahedron by 2.15071e+07
+  lowest from the 20 nudges   262608.9317734633
+  lowest found has 26 distinct distances; closest pair 47.223 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -1.27442e+08 (x3, Tg)
+  a small step along that mode: energy 21763314.3211134560 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[Gaussian a=1]  (23 s)
+  dodecahedron energy         39.1100649082   (largest force on a corner: 8.4e-16)
+  lowest found (220 starts)   39.0882452725   below the dodecahedron by 0.0218196
+  lowest from the 20 nudges   39.0882452725
+  lowest found has 72 distinct distances; closest pair 44.204 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -0.051166 (x3, Tg)
+  a small step along that mode: energy 39.1100623507 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[Gaussian a=4]  (9 s)
+  dodecahedron energy         4.2030891410   (largest force on a corner: 2.3e-16)
+  lowest found (220 starts)   3.5728499047   below the dodecahedron by 0.630239
+  lowest from the 20 nudges   3.5728499047
+  lowest found has 26 distinct distances; closest pair 46.241 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -1.48989 (x3, Tg)
+  a small step along that mode: energy 4.2030146513 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+[log]  (9 s)
+  dodecahedron energy         -53.6172737431   (largest force on a corner: 1.1e-15)
+  lowest found (220 starts)   -54.0111299746   below the dodecahedron by 0.393856
+  lowest from the 20 nudges   -54.0111299746
+  lowest found has 26 distinct distances; closest pair 45.731 deg
+  second derivative at the dodecahedron: 3 turning modes; lowest other eigenvalue -0.9375 (x3, Tg)
+  a small step along that mode: energy -53.6173206143 (lower)
+  verdict in this contest: the dodecahedron LOSES
+
+THOMSON CHECK: the best Coulomb energy found, against the published minimum for 20 points, 150.881568334
+  found 150.881568334
+
+SCORE: the dodecahedron loses 7 of 7 contests; it is a saddle in 7 of 7.
+PREDICTION HOLDS in all seven registered contests.
+(registered run: 80 s)
+
+BEYOND THE REGISTERED RUN (not scored)
+
+1. The five Platonic solids: the edge framework's floppy moves (Maxwell's count, then the rank),
+   and the lowest non-turning eigenvalue of the energy's second derivative in each of the seven contests
+   tetrahedron   V= 4 E= 6  Maxwell 2V-3-E =  -1, floppy moves = 0  | seven contests: +++++++  (- = a saddle, + = a local minimum)
+   octahedron    V= 6 E=12  Maxwell 2V-3-E =  -3, floppy moves = 0  | seven contests: +++++++  (- = a saddle, + = a local minimum)
+   cube          V= 8 E=12  Maxwell 2V-3-E =   1, floppy moves = 2  | seven contests: -------  (- = a saddle, + = a local minimum)
+   icosahedron   V=12 E=30  Maxwell 2V-3-E =  -9, floppy moves = 0  | seven contests: +++++++  (- = a saddle, + = a local minimum)
+   dodecahedron  V=20 E=30  Maxwell 2V-3-E =   7, floppy moves = 8  | seven contests: -------  (- = a saddle, + = a local minimum)
+
+2. The dodecahedron's unstable family (3 moves, even under x -> -x):
+   largest first-order change of an edge length along it: 5.0e-11 (0 = a floppy move)
+   in each contest: the second derivative on the family, and how far it is from one number times the identity
+   Riesz s=1 (Coulomb)  lambda = -2.176330e+00   leak 2.8e-16   spread 2.1e-10
+   Riesz s=3            lambda = -2.207912e+01   leak 2.2e-11   spread 3.5e-10
+   Riesz s=12           lambda = -2.971070e+03   leak 1.6e-10   spread 1.5e-09
+   Riesz s=40           lambda = -1.274419e+08   leak 1.2e-09   spread 1.2e-08
+   Gaussian a=1         lambda = -5.116596e-02   leak 2.9e-11   spread 1.5e-10
+   Gaussian a=4         lambda = -1.489893e+00   leak 1.0e-11   spread 1.1e-10
+   log                  lambda = -9.375000e-01   leak 1.1e-11   spread 2.1e-10
+
+3. lambda(a) on that family for the Gaussians e^(-a r^2), steep to weak (double precision):
+   a =  1000.0000   lambda = -2.948153e-218   lambda / a^6 = -2.9482e-236   (leak nan)
+   a =   794.3282   lambda = -7.248163e-173   lambda / a^6 = -2.8855e-190   (leak nan)
+   a =   630.9573   lambda = -7.847990e-137   lambda / a^6 = -1.2438e-153   (leak 3e-07)
+   a =   501.1872   lambda = -3.143668e-108   lambda / a^6 = -1.9835e-124   (leak 2e-07)
+   a =   398.1072   lambda = -1.573202e-85   lambda / a^6 = -3.9517e-101   (leak 1e-07)
+   a =   316.2278   lambda = -1.610462e-67   lambda / a^6 = -1.6105e-82   (leak 7e-08)
+   a =   251.1886   lambda = -3.107182e-53   lambda / a^6 = -1.2370e-67   (leak 4e-08)
+   a =   199.5262   lambda = -6.593394e-42   lambda / a^6 = -1.0450e-55   (leak 3e-08)
+   a =   158.4893   lambda = -6.247311e-33   lambda / a^6 = -3.9418e-46   (leak 2e-08)
+   a =   125.8925   lambda = -8.044151e-26   lambda / a^6 = -2.0206e-38   (leak 1e-08)
+   a =   100.0000   lambda = -3.407357e-20   lambda / a^6 = -3.4074e-32   (leak 6e-09)
+   a =    79.4328   lambda = -9.582653e-16   lambda / a^6 = -3.8149e-27   (leak 4e-09)
+   a =    63.0957   lambda = -3.125640e-12   lambda / a^6 = -4.9538e-23   (leak 3e-09)
+   a =    50.1187   lambda = -1.841649e-09   lambda / a^6 = -1.1620e-19   (leak 2e-09)
+   a =    39.8107   lambda = -2.787031e-07   lambda / a^6 = -7.0007e-17   (leak 1e-09)
+   a =    31.6228   lambda = -1.432711e-05   lambda / a^6 = -1.4327e-14   (leak 6e-10)
+   a =    25.1189   lambda = -3.123921e-04   lambda / a^6 = -1.2437e-12   (leak 4e-10)
+   a =    19.9526   lambda = -3.446455e-03   lambda / a^6 = -5.4623e-11   (leak 2e-10)
+   a =    15.8489   lambda = -2.213050e-02   lambda / a^6 = -1.3963e-09   (leak 1e-10)
+   a =    12.5893   lambda = -9.237033e-02   lambda / a^6 = -2.3202e-08   (leak 8e-11)
+   a =    10.0000   lambda = -2.726055e-01   lambda / a^6 = -2.7261e-07   (leak 5e-11)
+   a =     7.9433   lambda = -6.025912e-01   lambda / a^6 = -2.3990e-06   (leak 3e-11)
+   a =     6.3096   lambda = -1.031031e+00   lambda / a^6 = -1.6341e-05   (leak 1e-11)
+   a =     5.0119   lambda = -1.388401e+00   lambda / a^6 = -8.7602e-05   (leak 7e-12)
+   a =     3.9811   lambda = -1.488738e+00   lambda / a^6 = -3.7395e-04   (leak 1e-11)
+   a =     3.1623   lambda = -1.288827e+00   lambda / a^6 = -1.2888e-03   (leak 2e-11)
+   a =     2.5119   lambda = -9.171806e-01   lambda / a^6 = -3.6514e-03   (leak 2e-11)
+   a =     1.9953   lambda = -5.480175e-01   lambda / a^6 = -8.6855e-03   (leak 2e-11)
+   a =     1.5849   lambda = -2.811911e-01   lambda / a^6 = -1.7742e-02   (leak 3e-11)
+   a =     1.2589   lambda = -1.266862e-01   lambda / a^6 = -3.1822e-02   (leak 3e-11)
+   a =     1.0000   lambda = -5.116596e-02   lambda / a^6 = -5.1166e-02   (leak 3e-11)
+   a =     0.7943   lambda = -1.887212e-02   lambda / a^6 = -7.5131e-02   (leak 3e-11)
+   a =     0.6310   lambda = -6.460395e-03   lambda / a^6 = -1.0239e-01   (leak 3e-11)
+   a =     0.5012   lambda = -2.080944e-03   lambda / a^6 = -1.3130e-01   (leak 2e-11)
+   a =     0.3981   lambda = -6.379942e-04   lambda / a^6 = -1.6026e-01   (leak 2e-11)
+   a =     0.3162   lambda = -1.879561e-04   lambda / a^6 = -1.8796e-01   (leak 2e-11)
+   a =     0.2512   lambda = -5.362440e-05   lambda / a^6 = -2.1348e-01   (leak 2e-11)
+   a =     0.1995   lambda = -1.491034e-05   lambda / a^6 = -2.3631e-01   (leak 2e-11)
+   a =     0.1585   lambda = -4.061289e-06   lambda / a^6 = -2.5625e-01   (leak 2e-11)
+   a =     0.1259   lambda = -1.088133e-06   lambda / a^6 = -2.7333e-01   (leak 2e-11)
+   a =     0.1000   lambda = -2.877384e-07   lambda / a^6 = -2.8774e-01   (leak 2e-11)
+   negative at every a computed: True
+
+4. The weak end in high precision (90 digits): lambda(a) from a second difference along one move
+   a = 0.3     lambda =   -0.000141435247399   lambda / a^6 = -0.194012685
+   a = 0.1     lambda =     -2.8772342995e-7   lambda / a^6 = -0.28772343
+   a = 0.03    lambda =   -2.41107793864e-10   lambda / a^6 = -0.3307377145
+   a = 0.01    lambda =   -3.44214978212e-13   lambda / a^6 = -0.3442149782
+   a = 0.003   lambda =   -2.54468767935e-16   lambda / a^6 = -0.3490655253
+   a = 0.001   lambda =   -3.50464282401e-19   lambda / a^6 = -0.3504642824
+
+5. lambda for the powers 1/r^s and the logarithm:
+   s =  0.25   lambda = -2.963029e-01
+   s =   0.5   lambda = -7.359703e-01
+   s =     1   lambda = -2.176330e+00
+   s =     2   lambda = -8.437500e+00
+   s =     3   lambda = -2.207912e+01
+   s =     6   lambda = -1.690796e+02
+   s =    12   lambda = -2.971070e+03
+   s =    24   lambda = -3.460417e+05
+   s =    40   lambda = -1.274419e+08
+   s =    80   lambda = -1.849581e+14
+   log       lambda = -9.375000e-01
+(total 82 s)

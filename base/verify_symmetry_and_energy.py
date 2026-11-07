@@ -209,6 +209,108 @@ def antiprism_best(pot):
 check("the Coulomb winner at 8 is a square antiprism (its best height gives the same energy)",
       abs(antiprism_best(PANEL["Riesz s=1 (Coulomb)"]) - winners[8]["Riesz s=1 (Coulomb)"][0]) < 1e-9)
 
+
+# the dodecahedron (the prediction registered in ../THE_LENS.md, section 7), and rigid against floppy
+def tangent_basis(X):
+    B = []
+    for x in X:
+        a = np.array([1.0, 0, 0]) if abs(x[0]) < 0.9 else np.array([0, 1.0, 0])
+        e1 = a - (a @ x) * x
+        e1 /= np.linalg.norm(e1)
+        B.append((e1, np.cross(x, e1)))
+    return B
+
+
+def moved(X, B, u):
+    return X + np.array([u[2 * i] * B[i][0] + u[2 * i + 1] * B[i][1] for i in range(len(X))])
+
+
+def hess_sphere(X, pot, h=1e-5):
+    """second derivative of the energy at X, for moves of the corners along the sphere"""
+    B, n = tangent_basis(X), len(X)
+
+    def g(u):
+        _, gr = fun_grad(moved(X, B, u).ravel(), n, 3, pot)
+        gr = gr.reshape(-1, 3)
+        return np.array([[gr[i] @ B[i][0], gr[i] @ B[i][1]] for i in range(n)]).ravel()
+
+    H = np.zeros((2 * n, 2 * n))
+    for k in range(2 * n):
+        e = np.zeros(2 * n)
+        e[k] = h
+        H[:, k] = (g(e) - g(-e)) / (2 * h)
+    return (H + H.T) / 2
+
+
+def edge_matrix(X, B):
+    """first-order change of each edge's squared length, for each move along the sphere"""
+    T = ((X[:, None] - X[None]) ** 2).sum(-1)
+    t0 = T[np.triu_indices(len(X), 1)].min()
+    E = [(i, j) for i in range(len(X)) for j in range(i + 1, len(X)) if abs(T[i, j] - t0) < 1e-9]
+    R = np.zeros((len(E), 2 * len(X)))
+    for r, (i, j) in enumerate(E):
+        d = X[i] - X[j]
+        R[r, 2 * i:2 * i + 2] = [2 * d @ B[i][0], 2 * d @ B[i][1]]
+        R[r, 2 * j:2 * j + 2] = [-2 * d @ B[j][0], -2 * d @ B[j][1]]
+    return R
+
+
+def lowest_moves(H):
+    """the lowest eigenvalue once the three turns (zero) are set aside, and its eigenvectors"""
+    lam, V = np.linalg.eigh(H)
+    sc = np.abs(lam).max()
+    keep = np.where(np.abs(lam) >= 1e-6 * sc)[0]
+    same = keep[np.abs(lam[keep] - lam[keep[0]]) < 1e-6 * sc]
+    return lam[keep[0]], V[:, same]
+
+
+solids = {"tetrahedron": shapes[4], "octahedron": shapes[6], "cube": cube, "icosahedron": shapes[12],
+          "dodecahedron": dodeca}
+n_flex, saddle = {}, {}
+for name, X in solids.items():
+    n_flex[name] = 2 * len(X) - 3 - np.linalg.matrix_rank(edge_matrix(X, tangent_basis(X)), tol=1e-9)
+    saddle[name] = [lowest_moves(hess_sphere(X, pot))[0] < 0 for pot in PANEL.values()]
+check("rigid against floppy: with bars along the edges and the corners kept on the sphere, the tetrahedron, "
+      "octahedron and icosahedron cannot flex; the cube has 2 flexes and the dodecahedron 8",
+      n_flex == {"tetrahedron": 0, "octahedron": 0, "cube": 2, "icosahedron": 0, "dodecahedron": 8})
+check("... and the three rigid solids are local minima in all seven contests, while the two that flex are "
+      "saddles in all seven", all(not any(v) for k, v in saddle.items() if n_flex[k] == 0)
+      and all(all(v) for k, v in saddle.items() if n_flex[k] > 0))
+Bc = tangent_basis(cube)
+twist = np.array([[np.cross([0, 0, 1], x) @ Bc[i][0], np.cross([0, 0, 1], x) @ Bc[i][1]] if x[2] > 0 else [0.0, 0.0]
+                  for i, x in enumerate(cube)]).ravel()
+check("the cube's twist is one of its flexes: turning the top face keeps every edge's length to first order",
+      np.abs(edge_matrix(cube, Bc) @ twist).max() < 1e-12)
+Bd = tangent_basis(dodeca)
+_, V3 = lowest_moves(hess_sphere(dodeca, PANEL["Riesz s=1 (Coulomb)"]))
+check("the dodecahedron's unstable moves under Coulomb's law are a family of 3, and every one of them keeps "
+      "every edge's length to first order: they are flexes",
+      V3.shape[1] == 3 and np.abs(edge_matrix(dodeca, Bd) @ V3).max() < 1e-8)
+block_ok, lams = True, []
+for pot in PANEL.values():
+    H = hess_sphere(dodeca, pot)
+    M = V3.T @ H @ V3
+    lam_b = np.trace(M) / 3
+    block_ok &= bool(np.linalg.norm(H @ V3 - V3 @ M) < 1e-7 * np.linalg.norm(H)
+                     and np.linalg.norm(M - lam_b * np.eye(3)) < 1e-6 * abs(lam_b))
+    lams.append(lam_b)
+check("in all seven contests that family is one block of the second derivative, a single number times the "
+      "identity, and the number is negative", block_ok and all(v < 0 for v in lams))
+check("so a small move along it lowers the dodecahedron's energy in every contest",
+      all(min(energy(unit(moved(dodeca, Bd, s * 1e-3 * V3[:, 0])), pot) for s in (1, -1)) < energy(dodeca, pot)
+          for pot in PANEL.values()))
+gauss_lams = [np.trace(V3.T @ hess_sphere(dodeca, gauss(a)) @ V3) / 3 for a in (0.1, 0.3, 1, 3, 10, 30)]
+check("[measured, not a proof] the same number is negative for the Gaussians a = 0.1, 0.3, 1, 3, 10 and 30",
+      all(v < 0 for v in gauss_lams))
+best20 = math.inf
+for _ in range(6):
+    r = minimize(fun_grad, unit(rng.normal(size=(20, 3))).ravel(), args=(20, 3, PANEL["Riesz s=1 (Coulomb)"]),
+                 jac=True, method="L-BFGS-B", options={"maxiter": 20000, "maxcor": 30, "ftol": 1e-16, "gtol": 1e-12})
+    best20 = min(best20, energy(unit(r.x.reshape(20, 3)), PANEL["Riesz s=1 (Coulomb)"]))
+check(f"under Coulomb's law a short search finds 20 points at {best20:.9f}, Thomson's published minimum "
+      f"150.881568334, below the dodecahedron's {energy(dodeca, PANEL['Riesz s=1 (Coulomb)']):.9f}",
+      abs(best20 - 150.881568334) < 2e-9)
+
 # ------------------------------------------------------------------ 4. five points: the switch
 def e_tbp(s):
     return 2 ** (-s) + 6 * 2 ** (-s / 2) + 3 * 3 ** (-s / 2)

@@ -11,7 +11,7 @@ This page holds the author's lens in one place:
 - the lens worked once, on a magic square anyone can check (§2);
 - the lens as six questions to ask of anything (§3);
 - what each part of it became here, and how firmly that stands (§4);
-- one prediction, written down before any test (§7).
+- one prediction, written down before any test, and how it came out (§7).
 
 ---
 
@@ -204,6 +204,47 @@ A lens should predict as well as describe. This one predicts with its coin.
   octahedron and the cube alone, and it goes to the graveyard with the run that killed it.
 - **Status.** Registered with this page on 2026-11-07, before any run. The result will be scored here; the
   literature gate comes after the run.
+
+### The result (run on 2026-11-07, after the page was committed)
+
+**The prediction held.** The dodecahedron loses all seven contests
+([`base/run_dodecahedron.py`](base/run_dodecahedron.py); its log is
+[`base/run_dodecahedron.log`](base/run_dodecahedron.log)).
+
+| contest | the dodecahedron | the lowest found |
+|---|---|---|
+| Coulomb, 1/*r* | 151.7986206 | 150.8815683, Thomson's published minimum |
+| 1/*r*³ | 141.1416483 | 131.8130144 |
+| 1/*r*¹² | 1730.120468 | 616.4349645 |
+| 1/*r*⁴⁰ | 21,769,684.57 | 262,608.9318 |
+| Gaussian, *a* = 1 | 39.11006491 | 39.08824527 |
+| Gaussian, *a* = 4 | 4.203089141 | 3.572849905 |
+| logarithm | −53.61727374 | −54.01112997 |
+
+In every contest the dodecahedron is also a saddle: one family of three moves lowers its energy.
+
+- **Known in part.** Nerattini, Brauchart and Kiessling (2014) state that the dodecahedron minimizes no
+  power law with *s* > −2, which covers five of the seven contests [NAMED]. The run adds the two Gaussians
+  and the saddle. The coin's pattern now holds for both polar pairs, in every contest tested.
+- **Rigid wins, floppy loses** [FORCED, measured; found by the run, not part of the prediction]. Put bars
+  along each solid's edges and keep its corners on the sphere.
+  - The three solids with triangle faces cannot flex, and each is a local minimum in all seven contests.
+  - The cube can flex in 2 ways and the dodecahedron in 8, and each is a saddle in all seven.
+  - The cube's twist is one of its flexes, and the dodecahedron's three losing moves are flexes too.
+- [READING] **The coin meets the ledger.** Those flexes are zeros of the kind
+  [*A Ledger of Nothing*](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md) counts: the floppy modes of a frame,
+  paid for by a count. Moving the corners on the sphere, less the three turns, gives the cube 13 freedoms
+  for its 12 bars, and the dodecahedron 37 for its 30, so at least 1 flex and at least 7 are forced. The
+  triangle-faced solids have more bars than freedoms, and none of them can flex. On the polar coin, the
+  side that wins is the braced one, and the side that loses is the one the count leaves floppy.
+- **Open: one number decides every contest.**
+  - The three losing moves form one block of the energy's second derivative in every contest: a single
+    number λ times the identity.
+  - Every completely monotone potential is a mixture of Gaussians e^(−*a r*²) (Bernstein's theorem). So if
+    λ(*a*) < 0 for every *a* > 0, the dodecahedron loses every contest.
+  - λ(*a*) is negative at every *a* computed, from 0.001 to 1000, and at the weak end it approaches
+    −0.35 *a*⁶.
+  - A proof for every *a* is not yet written.
 
 ## 8. What this page is, and is not
 

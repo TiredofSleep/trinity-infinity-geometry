@@ -40,7 +40,7 @@ The script plays seven contests: powers *s* = 1, 3, 12 and 40, Gaussians *a* = 1
 
 So the base's flat faces, the pentagon, the heptagon and the nonagon, win every contest on their circles.
 
-## 3. On the sphere, symmetry wins at 2, 3, 4 and 6, and loses at 8
+## 3. On the sphere, symmetry wins at 2, 3, 4, 6 and 12, and loses at 8 and 20
 
 **The test** [NAMED: Cohn and Kumar 2007; FORCED: the numbers]. An arrangement is sharp when its design
 strength *t*, the degree up to which it averages every polynomial correctly, is at least 2*m* − 1. Here *m*
@@ -75,6 +75,20 @@ is its number of different distances.
   [Delsarte, Goethals and Seidel 1977].
 - [FORCED, measured] The Coulomb winner at 8 is the square antiprism at its best height, which is Thomson's
   answer.
+- **The dodecahedron loses all seven contests too** [FORCED, measured; registered as a prediction in
+  [`../THE_LENS.md`](../THE_LENS.md) §7 before it was run]. In each it is a saddle: one family of three
+  moves lowers its energy. Under Coulomb's law the best 20 points are Thomson's, at 150.881568334, against
+  the dodecahedron's 151.798620562. [NAMED: Nerattini, Brauchart and Kiessling (2014) state that the
+  dodecahedron minimizes no power law with *s* > −2.] Whether it loses *every* completely monotone contest
+  is open. It comes down to the sign of one number for each Gaussian, and that number is negative wherever
+  it has been computed ([`../THE_LENS.md`](../THE_LENS.md) §7).
+- **Rigid wins, floppy loses** [FORCED, measured]. Put bars along each solid's edges and keep its corners on
+  the sphere.
+  - The tetrahedron, the octahedron and the icosahedron, whose faces are triangles, cannot flex. Each is a
+    local minimum in all seven contests.
+  - The cube can flex in 2 ways and the dodecahedron in 8. Each is a saddle in all seven contests.
+  - The cube's twist is one of its flexes, and the dodecahedron's three losing moves are flexes too.
+  - The run behind the dodecahedron's line, with its log: [`run_dodecahedron.py`](run_dodecahedron.py).
 - **At 5, 7 and 9 no arrangement wins every contest** [FORCED, measured]. The winners of the seven contests
   differ: their inner products differ by up to 0.49 at 5, 0.43 at 7 and 0.10 at 9 (and 0.11 at 8).
 - **The edge inside five** [NAMED; FORCED]. Over the powers *s*, the triangular bipyramid wins until
@@ -86,7 +100,9 @@ is its number of different distances.
 
 **[COIN] The polar pair gets opposite verdicts.** By [`../coin/THE_POLAR_COIN.md`](../coin/THE_POLAR_COIN.md),
 the cube and the octahedron are the two sides of one coin. On the sphere the octahedron wins every contest,
-and the cube loses every one. The tetrahedron, on that coin's edge, wins every one.
+and the cube loses every one. The tetrahedron, on that coin's edge, wins every one. The next pair agrees in
+every contest tested: the icosahedron wins and the dodecahedron loses. In both pairs the winner is the side
+with triangle faces, which is rigid, and the loser is the side that flexes.
 
 ## 4. The plane: the triangular lattice
 
@@ -159,6 +175,8 @@ steepness *a* that is the lattice's theta function θ(*a*), the sum of e^(−*a*
 - J. J. Thomson, *Philos. Mag.* **7** (1904) 237–265. Energies: D. J. Wales and S. Ulker, *Phys. Rev. B*
   **74** (2006) 212101.
 - T. W. Melnyk, O. Knop and W. R. Smith, *Can. J. Chem.* **55** (1977) 1745–1761.
+- R. Nerattini, J. S. Brauchart and M. K.-H. Kiessling, "'Magic' numbers in Smale's 7th problem",
+  arXiv:1307.2834 (v3, 2014): the dodecahedron minimizes no power law with *s* > −2 (stated there in a footnote).
 - R. E. Schwartz, "The phase transition in five point energy minimization", arXiv:1610.03303.
 - H. L. Montgomery, "Minimal theta functions", *Glasgow Math. J.* **30** (1988) 75–85.
 - P. Sarnak and A. Strömbergsson, "Minima of Epstein's zeta function and heights of flat tori", *Invent.
