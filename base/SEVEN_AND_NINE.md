@@ -104,6 +104,8 @@ towers), and 12, the icosahedron, is where the five-fold line of the break rises
   book's "the void is the fullest point" (§1.6b) made literal — and the book already reads 1 this
   way ("the point, 1, is the void made visible"). The pattern does not reach 3: a segment with its
   centre is three points on a line, which the rule excludes, so 3 is the triangle.
+- **7, counted.** The arithmetic of 7 draws the same shape. The six sevenths turn on one wheel round a
+  centre they never visit, and half a turn is the flip: see [`SEVENTHS.md`](SEVENTHS.md).
 
 ## Where these shapes are measured [NAMED — illustration, not derivation]
 

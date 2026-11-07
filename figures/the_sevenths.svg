@@ -1,0 +1,53 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='840' height='470' viewBox='0 0 840 470'>
+<rect x='0.5' y='0.5' width='839' height='469' rx='10' fill='#ffffff' stroke='#d0d7de'/>
+
+<text x='420.0' y='34' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>The sevenths: six turns of one wheel, round a centre that is never visited</text>
+<line x1='225.0' y1='104.0' x2='353.2' y2='178.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='295.1,144.5 282.3,142.8 287.3,134.2' fill='#8c959f'/>
+<line x1='353.2' y1='178.0' x2='353.2' y2='326.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='353.2,259.0 348.2,247.0 358.2,247.0' fill='#8c959f'/>
+<line x1='353.2' y1='326.0' x2='225.0' y2='400.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='283.0,366.5 290.9,356.2 295.9,364.8' fill='#8c959f'/>
+<line x1='225.0' y1='400.0' x2='96.8' y2='326.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='154.9,359.5 167.7,361.2 162.7,369.8' fill='#8c959f'/>
+<line x1='96.8' y1='326.0' x2='96.8' y2='178.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='96.8,245.0 101.8,257.0 91.8,257.0' fill='#8c959f'/>
+<line x1='96.8' y1='178.0' x2='225.0' y2='104.0' stroke='#8c959f' stroke-width='1.6'/>
+<polygon points='167.0,137.5 159.1,147.8 154.1,139.2' fill='#8c959f'/>
+<polygon points='225.0,104.0 353.2,326.0 96.8,326.0' fill='none' stroke='#2471a3' stroke-width='2.2'/>
+<polygon points='353.2,178.0 225.0,400.0 96.8,178.0' fill='none' stroke='#c0392b' stroke-width='2.2' stroke-dasharray='6 5'/>
+<circle cx='225.0' cy='104.0' r='7' fill='#2471a3' stroke='white' stroke-width='1.5'/>
+<text x='225.0' y='68.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>1/7</text>
+<text x='225.0' y='86.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.142857</text>
+<circle cx='353.2' cy='178.0' r='7' fill='#c0392b' stroke='white' stroke-width='1.5'/>
+<text x='382.6' y='159.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>3/7</text>
+<text x='382.6' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.428571</text>
+<circle cx='353.2' cy='326.0' r='7' fill='#2471a3' stroke='white' stroke-width='1.5'/>
+<text x='382.6' y='341.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>2/7</text>
+<text x='382.6' y='359.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.285714</text>
+<circle cx='225.0' cy='400.0' r='7' fill='#c0392b' stroke='white' stroke-width='1.5'/>
+<text x='225.0' y='432.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>6/7</text>
+<text x='225.0' y='450.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.857142</text>
+<circle cx='96.8' cy='326.0' r='7' fill='#2471a3' stroke='white' stroke-width='1.5'/>
+<text x='67.4' y='341.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>4/7</text>
+<text x='67.4' y='359.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.571428</text>
+<circle cx='96.8' cy='178.0' r='7' fill='#c0392b' stroke='white' stroke-width='1.5'/>
+<text x='67.4' y='159.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>5/7</text>
+<text x='67.4' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>.714285</text>
+<circle cx='225' cy='252' r='6' fill='white' stroke='#1f2328' stroke-width='1.6'/>
+<text x='225' y='276' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>0/7</text>
+<text x='225' y='292' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>never visited</text>
+<text x='478' y='92' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>×10 turns the wheel one step</text>
+<text x='478' y='111' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>1 → 3 → 2 → 6 → 4 → 5 → 1: the remainders</text>
+<text x='478' y='130' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>of 1, 10, 100, 1000, … on division by 7</text>
+<text x='478' y='163' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>Half a turn is the flip</text>
+<text x='478' y='182' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>k goes to 7 − k, and each digit d to 9 − d:</text>
+<text x='478' y='201' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>142 + 857 = 999</text>
+<text x='478' y='234' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>Two steps stay on one triangle</text>
+<text x='478' y='253' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>the squares mod 7, 1, 2, 4 (solid),</text>
+<text x='478' y='272' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>or 3, 5, 6 (dashed)</text>
+<text x='478' y='305' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>In space</text>
+<text x='478' y='324' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>the hexagon is an octahedron's six corners</text>
+<text x='478' y='343' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>seen down an axis; the triangles are two</text>
+<text x='478' y='362' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>opposite faces, and 0/7 sits at the centre</text>
+</svg>

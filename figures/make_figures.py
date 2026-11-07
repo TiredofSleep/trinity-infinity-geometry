@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """make_figures.py -- draws the front-page figures as plain SVG (no dependencies).
 
-    python make_figures.py      ->  the_base.svg, the_coin.svg, the_lens.svg  (in this folder)
+    python make_figures.py      ->  the_base.svg, the_coin.svg, the_lens.svg, the_sevenths.svg  (in this folder)
 
 Each figure sits on a light card, so it reads the same in light and dark themes."""
 import math
@@ -243,7 +243,75 @@ def the_lens():
     print("  wrote the_lens.svg")
 
 
+# ---------------------------------------------------------------- the sevenths: one wheel on the octahedron
+
+
+def the_sevenths():
+    w, h = 840, 470
+    BLUE = AXES[1]
+    svg = [card(w, h),
+           f"<text x='{w / 2}' y='34' text-anchor='middle' {FONT} font-size='17' font-weight='600' fill='{INK}'>"
+           f"The sevenths: six turns of one wheel, round a centre that is never visited</text>"]
+    cx, cy, R = 225, 252, 148
+    order7 = [pow(10, r, 7) for r in range(6)]                      # 1, 3, 2, 6, 4, 5: the wheel's order
+    wheel = "142857"
+    pos = {}
+    for r, k in enumerate(order7):
+        th = math.radians(90 - 60 * r)
+        pos[k] = (cx + R * math.cos(th), cy - R * math.sin(th))
+    # the hexagon, with the direction of x10 marked on each side
+    for r, k in enumerate(order7):
+        a, b = pos[k], pos[order7[(r + 1) % 6]]
+        svg.append(f"<line x1='{a[0]:.1f}' y1='{a[1]:.1f}' x2='{b[0]:.1f}' y2='{b[1]:.1f}' stroke='{SOFT}' "
+                   f"stroke-width='1.6'/>")
+        mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+        ux, uy = (b[0] - a[0]) / math.hypot(b[0] - a[0], b[1] - a[1]), (b[1] - a[1]) / math.hypot(b[0] - a[0], b[1] - a[1])
+        tip = (mx + 7 * ux, my + 7 * uy)
+        left = (mx - 5 * ux - 5 * uy, my - 5 * uy + 5 * ux)
+        right = (mx - 5 * ux + 5 * uy, my - 5 * uy - 5 * ux)
+        svg.append(f"<polygon points='{tip[0]:.1f},{tip[1]:.1f} {left[0]:.1f},{left[1]:.1f} {right[0]:.1f},"
+                   f"{right[1]:.1f}' fill='{SOFT}'/>")
+    # the two opposite faces: the squares 1, 2, 4 (solid) and 3, 5, 6 (dashed)
+    for face, col, dash in (((1, 2, 4), BLUE, ""), ((3, 6, 5), ACC, " stroke-dasharray='6 5'")):
+        pts = " ".join(f"{pos[k][0]:.1f},{pos[k][1]:.1f}" for k in face)
+        svg.append(f"<polygon points='{pts}' fill='none' stroke='{col}' stroke-width='2.2'{dash}/>")
+    # the corners and their labels
+    for r, k in enumerate(order7):
+        x, y = pos[k]
+        col = BLUE if k in (1, 2, 4) else ACC
+        svg.append(f"<circle cx='{x:.1f}' cy='{y:.1f}' r='7' fill='{col}' stroke='white' stroke-width='1.5'/>")
+        ux, uy = (x - cx) / R, (y - cy) / R
+        lx, ly = x + 34 * ux, y + 34 * uy + 5
+        block = wheel[r:] + wheel[:r]
+        svg.append(f"<text x='{lx:.1f}' y='{ly - 7:.1f}' text-anchor='middle' {FONT} font-size='17' "
+                   f"font-weight='600' fill='{INK}'>{k}/7</text>")
+        svg.append(f"<text x='{lx:.1f}' y='{ly + 11:.1f}' text-anchor='middle' {FONT} font-size='12' "
+                   f"fill='{SOFT}'>.{block}</text>")
+    svg.append(f"<circle cx='{cx}' cy='{cy}' r='6' fill='white' stroke='{INK}' stroke-width='1.6'/>")
+    svg.append(f"<text x='{cx}' y='{cy + 24}' text-anchor='middle' {FONT} font-size='13' fill='{INK}'>0/7</text>")
+    svg.append(f"<text x='{cx}' y='{cy + 40}' text-anchor='middle' {FONT} font-size='12' fill='{SOFT}'>"
+               f"never visited</text>")
+    # what the picture says
+    tx, y = 478, 92
+    notes = [("×10 turns the wheel one step", ["1 → 3 → 2 → 6 → 4 → 5 → 1: the remainders",
+                                                "of 1, 10, 100, 1000, … on division by 7"]),
+             ("Half a turn is the flip", ["k goes to 7 − k, and each digit d to 9 − d:", "142 + 857 = 999"]),
+             ("Two steps stay on one triangle", ["the squares mod 7, 1, 2, 4 (solid),", "or 3, 5, 6 (dashed)"]),
+             ("In space", ["the hexagon is an octahedron's six corners", "seen down an axis; the triangles are two",
+                           "opposite faces, and 0/7 sits at the centre"])]
+    for head, lines in notes:
+        svg.append(f"<text x='{tx}' y='{y}' {FONT} font-size='15' font-weight='600' fill='{INK}'>{head}</text>")
+        for ln in lines:
+            y += 19
+            svg.append(f"<text x='{tx}' y='{y}' {FONT} font-size='14' fill='{INK}'>{ln}</text>")
+        y += 33
+    svg.append("</svg>\n")
+    open(os.path.join(HERE, "the_sevenths.svg"), "w", encoding="utf-8").write("\n".join(svg))
+    print("  wrote the_sevenths.svg")
+
+
 if __name__ == "__main__":
     the_base()
     the_coin()
     the_lens()
+    the_sevenths()

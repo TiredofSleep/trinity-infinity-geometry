@@ -119,6 +119,12 @@ invertible. Carried across six fields, it became *A Ledger of Nothing*: every ze
 or bought by a coincidence. [NEW] for the two results; the ledger's levels are [NAMED] ·
 [`void_lens/`](towers/binary_magic/void_lens/README.md), [`kernel_ledger/`](towers/kernel_ledger/README.md)
 
+**Sevenths: what a rotation.** *"what if we made magic squares out of sevenths... what a rotation..."*
+(November 2026). The six sevenths are one wheel, 142857, turned, and half a turn is the flip k → 7 − k. Their
+square has two zeros, both paid for by that half turn. Every full-period prime's square has rank exactly
+(p + 1)/2. The wheel sits on the octahedron, round a centre it never visits. [FORCED]; the rank rule [NEW] ·
+[`base/SEVENTHS.md`](base/SEVENTHS.md)
+
 **Paradoxes: four kinds.** The author's classification of paradoxes, with Ben Mayes (April 2026), read
 through the coin. Too little coverage calls for a second lens; a missing invariant is a missing edge; a
 self-referential paradox is a flip with no edge, and the Liar, Russell and Cantor are one diagonal.

@@ -12,5 +12,7 @@ python make_figures.py
   octahedron ([`../coin/THE_COIN.md`](../coin/THE_COIN.md)).
 - [`the_lens.svg`](the_lens.svg) — the lens worked on Dürer's magic square, numbered from 0
   ([`../THE_LENS.md`](../THE_LENS.md)).
+- [`the_sevenths.svg`](the_sevenths.svg) — the six sevenths as one wheel on the octahedron's corners, round
+  a centre never visited ([`../base/SEVENTHS.md`](../base/SEVENTHS.md)).
 
 Each figure sits on a light card, so it reads the same in light and dark themes.
