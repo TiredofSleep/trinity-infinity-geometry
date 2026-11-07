@@ -9,9 +9,9 @@
 
 In the base, 7 is the octahedron with its centre ([`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md)). Counting in
 sevenths draws the same picture a second way: six sevenths turning on one wheel, round a centre that is never
-visited. This page builds the magic square the author asked for and finds what it pays for. Then it does what
-the author asked next: it keeps base 10 and reads every number through sevenths, by its numerator. It sorts
-what that view gives into what belongs to 7 alone and what 7 shares with other numbers.
+visited. This page builds the magic square the author asked for and finds what it pays for. Then it counts
+with seven both ways the author asked: base 10 read through sevenths, and base 7. The two turn out to be the
+two faces of the base's own coin at 7. Last, it sorts what belongs to 7 alone and what 7 shares.
 
 ![The six sevenths on a hexagon, in the order 1, 3, 2, 6, 4, 5 that multiplying by 10 visits. Each is labelled with its repeating digits, all turns of 142857. Opposite corners are complements, such as 1/7 and 6/7. A solid triangle joins the squares mod 7 (1, 2, 4) and a dashed one joins 3, 5 and 6. The centre, 0/7, is never visited.](../figures/the_sevenths.svg)
 
@@ -94,7 +94,14 @@ Write the six sevenths as the rows of a square:
   pairing" of the table program, which stays retired ([`../coin/THE_COIN.md`](../coin/THE_COIN.md)). In the
   base, 7 is not special among 5, 7 and 9: all three fill their centres for one reason.
 
-## 5. Base 10, viewed in sevenths [FORCED unless marked]
+## 5. Two ways to count with seven [COIN]
+
+The author asked for base 10 viewed in sevenths, and then added that base 7 may be an equally important
+viewpoint. Both are kept. They turn out to be the two faces of one coin, and it is the base's own coin at 7.
+
+![Two panels. Left: the seven remainders 0 to 6 on a heptagon, turned one step by adding 1, with the centre empty. Right: the six nonzero remainders on a hexagon, turned by multiplying by 10, with the squares 1, 2, 4 joined by a solid triangle and 3, 5, 6 by a dashed one, and 0 fixed at the centre.](../figures/the_two_sevens.svg)
+
+### 5.1 Base 10, viewed in sevenths: multiplying turns the wheel [FORCED unless marked]
 
 > *it's not base 7, it's base 10 viewed in sevenths... using the numerator* — the author, 7 November 2026
 
@@ -127,7 +134,59 @@ The author's system keeps base 10 and reads every number through sevenths, by it
   approximation is 3 + 1/7 = 22/7 = 3.142857 142857…: the wheel, unturned, just above π. This is a fact about
   π, whose first partial quotient happens to be 7. It is not a fact about sevenths.
 
-### How unique is the sevenths view? [COIN]
+### 5.2 Base 7: adding turns the heptagon [FORCED unless marked]
+
+> *base 7 may be equally important a paradigm viewpoint* — the author, 7 November 2026
+
+- **The view.** In base 7 the seven remainders are the digits 0 to 6. Adding 1 moves all seven one step round
+  a single cycle, with nothing left in place: a heptagon turning, its centre empty. Here 0 is a digit like the
+  others, out on the rim.
+- **Base 7 is the sevenths view, repeated.** The last base-7 digit of a number is the remainder that the
+  sevenths view reads. The other digits are its count of sevens, written the same way: 2026 is 5623 in base 7,
+  and 2026 = 7 × 289 + 3. Base 10 viewed in sevenths reads one digit of base 7 and makes it a turn of the wheel;
+  base 7 reads every digit as a place.
+- **Its own tests.** Base 7 casts out sixes instead of nines: the digit sum tests 6. The alternating digit sum
+  tests 8, as it tests 11 in base 10. Alternating pairs test 10, because 49 + 1 = 50. Alternating triples test
+  43, because 343 + 1 = 344 = 8 × 43.
+- **The mirror.** In base 7 the tenths make one wheel: 1/10 = 0.0462 0462…₇.
+  - 1/10, 7/10, 9/10 and 3/10 are that wheel turned, because multiplying by 7 runs through the four remainders
+    1, 7, 9, 3 that a tenth can have.
+  - Half a turn is 7², which leaves −1 mod 10, so it complements the digits to 6: 0462 and 6204.
+  - Each base sees the other's unit as one wheel. Among base 10's full wheels, the primes that turn both ways
+    are 7, 17, 23, 47, 97, …, and 7 is the first.
+- **The old theorems carry over.** Midy's complement is to 6 instead of 9. In Girstmair's formula 8 takes the
+  place of 11: the alternating digit sum of 1/p in base 7 is −8·h(−p), and for 1/23 it is −24 = −8 × 3. The
+  rank rule of §3 holds in base 7 too.
+- **The first fully magic base-7 square** is at p = 10831, a square 10 830 digits wide. It was searched below
+  20 000, setting aside the trivial 2 [NEW: not in OEIS, which lists bases 2, 3 and 10]. The same search finds
+  the listed first cases of those bases: 59, 223 and 19.
+
+### 5.3 The edge: where 0 sits [COIN; the group facts FORCED]
+
+- The seven remainders carry two structures at once, and they are the two faces of the base's 7
+  ([`SEVEN_AND_NINE.md`](SEVEN_AND_NINE.md)).
+  - **The flat face, the heptagon.** Under adding, all seven sit round one circle and turn together, and the
+    centre is empty. That is base 7.
+  - **The solid face, the octahedron with its centre.** Under multiplying, 0 stays put, since 0 times anything
+    is 0, and the other six turn round the octahedron's corners. That is the sevenths wheel.
+- The edge between the faces is the field of seven elements, where adding and multiplying live together, joined
+  by the distributive law. What moves between the faces is 0: on the rim when we add, at the centre when we
+  multiply.
+- **The same coin at 5** [FORCED]. Adding turns a pentagon, the book's flat 5. Multiplying by 2 turns 1, 2, 4, 3
+  round 0, and a quarter turn with a mirror turns the tetrahedron's four corners in one cycle: the base's solid 5.
+- **At 9 it breaks** [FORCED]. No symmetry of the cube has order 8, so nothing turns all eight corners round the
+  centre. The cube's corners carry the field of eight elements another way, through their binary labels, with one
+  corner, 000, fixed (the table below).
+- **Two Fano planes** [FORCED]. The translates of the squares {1, 2, 4} make one Fano plane, and the translates of
+  {3, 5, 6} make another; they share no line. Half a turn, x → −x, swaps them. A map x → ax + b keeps each plane
+  when a is an even turn (1, 2, 4) and swaps them when a is an odd one.
+- **The edge of swapping the bases** [FORCED]. A fraction ends in base 10 when its denominator divides a power of
+  10, and in base 7 when it divides a power of 7. The only denominator that does both is 1. So swapping the base
+  exchanges which fractions are wheels, and only the whole numbers stay put.
+- [READING] So the author's two viewpoints are the base's coin at 7, made into arithmetic. The flat face counts,
+  the solid face turns, and the coin's edge is 0, which sits on the rim of one and at the centre of the other.
+
+### 5.4 How unique is each view? [COIN]
 
 Base 10 can be viewed through any prime whose reciprocal makes a full wheel: 7, 17, 19, 23, 29, …. Ask two
 questions of each feature. Is 7 alone in it? And does it need base 10 at all?
@@ -148,31 +207,33 @@ questions of each feature. Is 7 alone in it? And does it need base 10 at all?
 | The primes lean to the odd turns | [FORCED: counted; NAMED] | no: Chebyshev's bias holds for every modulus | no |
 | π ≈ 22/7 = 3.142857… | [NAMED] | a fact about π | — |
 | The base's 7: the octahedron with its centre | [FORCED] | shared with 5 and 9 | no |
+| Adding and multiplying are the base's two faces: a heptagon with its centre empty, and the octahedron turning round 0 | [FORCED; READING] | the octahedron is 7's own: at 5 the same coin gives the tetrahedron, and at 9 it breaks | no |
+| Each base sees the other's unit as one wheel: 10 turns the units mod 7, and 7 turns the units mod 10 | [FORCED] | the first of 7, 17, 23, 47, 97, … | it is a relation between 10 and 7 |
 
 **What it shows** [READING].
-- In sevenths, base 10 becomes a wheel whose step is 10 itself. Multiplying becomes turning, and the
-  classical theorems about remainders become statements about turns.
-- The half turn is the flip in every guise: the complement of the digits, the inversion of the octahedron, the
-  −1 in Euler's and Wilson's theorems, and the thousand in the test for 7.
-- What belongs to 7 alone: its wheel is the smallest, its half turn falls at a thousand, and it has arithmetic
-  no change of base can touch, namely the Fano plane, 168 and the heptagon.
-
-**An aside: counting in base 7.** This is a different system from the author's: the base itself is 7, and
-1/7 = 0.1 has no wheel. It was computed first, from a misreading of the author's question, and it is kept,
-labelled as what it is [FORCED].
-- The wheels move to other primes. The first is 1/5 = 0.1254 1254 …₇, whose halves add to 66₇: Midy again,
-  with 6 in place of 9.
-- The rank rule holds, and in Girstmair's formula 8 takes the place of 11: the alternating digit sum of 1/p
-  in base 7 is −8·h(−p). For 1/23 it is −24 = −8 × 3.
-- The first prime whose base-7 square is fully magic is 10831, a square 10 830 digits wide. It was searched
-  below 20 000, setting aside the trivial 2 [NEW: not in OEIS, which lists bases 2, 3 and 10]. The same search
-  finds the listed first cases of those bases: 59, 223 and 19.
+- In sevenths, base 10 becomes a wheel whose step is 10 itself. Multiplying becomes turning, and the classical
+  theorems about remainders become statements about turns.
+- In base 7, the same seven remainders are digits on a heptagon, and adding turns them. Each base sees the
+  other's unit as one wheel.
+- The two views are the base's coin at 7. The flat face counts, the solid face turns, and 0 is the edge: on the
+  rim of one, at the centre of the other.
+- The half turn is the flip in every guise:
+  - the complement of the digits (to 9 in base 10, to 6 in base 7);
+  - the inversion of the octahedron;
+  - the −1 in Euler's and Wilson's theorems;
+  - the thousand in the test for 7;
+  - the swap of the two Fano planes.
+- What belongs to 7 alone:
+  - its wheel is the smallest, and its half turn falls at a thousand;
+  - its multiplying face is the octahedron;
+  - it has arithmetic no change of base can touch: the Fano plane, 168 and the heptagon.
 
 ## What this page is, and is not
 
-- **Is:** the author's sevenths made exact, and base 10 read through them, as the author meant. The known parts
-  are credited, and each special-looking fact is sorted by whether 7 is alone in it and whether it needs
-  base 10.
+- **Is:** the author's sevenths made exact, and seven counted both ways the author asked: base 10 read through
+  sevenths, and base 7. They are classified as the two faces of the base's coin at 7, neither chosen over the
+  other. The known parts are credited, and each special-looking fact is sorted by whether 7 is alone in it and
+  whether it needs base 10.
 - **Is not:** a claim that 7 is special in some deeper sense. Small numbers turn up everywhere. This page keeps
   only what is forced or cited, and says for each fact who else shares it.
 

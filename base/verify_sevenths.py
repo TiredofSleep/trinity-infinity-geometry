@@ -348,7 +348,100 @@ check("pi's continued fraction begins 3; 7, 15, 1, 292, so its first approximati
       "the wheel, unturned, and above pi (Archimedes)",
       cf == [3, 7, 15, 1, 292] and tail(22, 6) == W and Fr(22, 7) > PI)
 
-# an aside: counting in base 7 (a different system from the author's)
+# the second face: base 7, where adding turns a heptagon
+def in_base(m, b):
+    out = []
+    while m:
+        out.append(m % b)
+        m //= b
+    return out[::-1] or [0]
+
+
+plus = [(x + 1) % 7 for x in range(7)]
+times = [(3 * x) % 7 for x in range(7)]
+check("adding 1 moves all seven remainders round one cycle with nothing fixed (a heptagon, its centre empty); "
+      "multiplying by 3 (= 10) fixes 0 and turns the six others (the octahedron round its centre)",
+      sorted({plus[x] for x in range(7)}) == list(range(7)) and all(plus[x] != x for x in range(7))
+      and [pow(3, r, 7) for r in range(6)] == [1, 3, 2, 6, 4, 5] and times[0] == 0)
+check("base 7 is the sevenths view repeated: n's last base-7 digit is the remainder the view reads, and the rest is "
+      "the count of sevens in base 7 (every n below 20000); 2026 = 5623 in base 7, and 2026 = 7 x 289 + 3",
+      all(in_base(m, 7)[-1] == m % 7 and (m < 7 or in_base(m // 7, 7) == in_base(m, 7)[:-1]) for m in range(1, 20000))
+      and in_base(2026, 7) == [5, 6, 2, 3] and 7 * 289 + 3 == 2026)
+
+
+def alt7(m, size):
+    s, sign = 0, 1
+    while m:
+        s, m, sign = s + sign * (m % 7 ** size), m // 7 ** size, -sign
+    return s
+
+
+check("base 7's own tests: casting out sixes (the digit sum) tests 6, alternating digits test 8, alternating pairs "
+      "test 10 (49 + 1 = 50), alternating triples test 43 (343 + 1 = 344 = 8 x 43); every n below 50000",
+      all((m % 6 == 0) == (sum(in_base(m, 7)) % 6 == 0) and (m % 8 == 0) == (alt7(m, 1) % 8 == 0)
+          and (m % 10 == 0) == (alt7(m, 2) % 10 == 0) and (m % 43 == 0) == (alt7(m, 3) % 43 == 0)
+          for m in range(1, 50000)) and 49 + 1 == 50 and 343 + 1 == 8 * 43)
+ten = {k: digits(k, 10, 7) for k in (1, 3, 7, 9)}
+check("the mirror: in base 7 the tenths make one wheel, 1/10 = 0.0462 0462..., and 1/10, 7/10, 9/10, 3/10 are it "
+      "turned, because 7 generates the units mod 10; 7^2 leaves -1 mod 10, so half a turn complements the digits to 6",
+      ten[1] == [0, 4, 6, 2] and ten[7] == [4, 6, 2, 0] and ten[9] == [6, 2, 0, 4] and ten[3] == [2, 0, 4, 6]
+      and [pow(7, r, 10) for r in range(4)] == [1, 7, 9, 3] and 49 % 10 == 9
+      and all(a + c == 6 for a, c in zip(ten[1], ten[9])))
+both_ways = [p for p in primes(200) if p > 5 and full(10, p) and order(p, 10) == 4]    # 4 units mod 10
+check(f"each sees the other's unit as one wheel: among base 10's full wheels below 200, those that 10 and p turn "
+      f"both ways are {both_ways}, and 7 is the first", both_ways[0] == 7 and all(p % 10 in (3, 7) for p in both_ways))
+
+
+def terminates(den, b):
+    for q in (2, 3, 5, 7):
+        if b % q == 0:
+            while den % q == 0:
+                den //= q
+    return den == 1
+
+
+check("the edge of swapping the bases: the only denominator up to 2000 that ends in both base 10 and base 7 is 1, "
+      "so a fraction written finitely both ways is a whole number",
+      [d for d in range(1, 2001) if terminates(d, 10) and terminates(d, 7)] == [1])
+QRL = {frozenset((q + k) % 7 for q in (1, 2, 4)) for k in range(7)}
+QNL = {frozenset((q + k) % 7 for q in (3, 5, 6)) for k in range(7)}
+
+
+def plane(P):
+    return all(sum(1 for L in P if {a, c} <= L) == 1 for a in range(7) for c in range(a + 1, 7))
+
+
+def moved_lines(P, a, b):
+    return {frozenset((a * x + b) % 7 for x in L) for L in P}
+
+
+check("two Fano planes: the translates of the squares, and of the others. They share no line; half a turn (x -> -x) "
+      "swaps them; x -> ax + b keeps each for a = 1, 2, 4 (even turns) and swaps them for a = 3, 5, 6 (odd turns)",
+      plane(QRL) and plane(QNL) and not (QRL & QNL) and moved_lines(QRL, 6, 0) == QNL
+      and all(moved_lines(QRL, a, b) == QRL for a in (1, 2, 4) for b in range(7))
+      and all(moved_lines(QRL, a, b) == QNL for a in (3, 5, 6) for b in range(7)))
+tet = np.array([(1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)], float)
+S4 = np.array([[0, -1, 0], [1, 0, 0], [0, 0, -1]], float)            # a quarter turn and a mirror
+s4 = [int(np.argmin(np.linalg.norm(tet - S4 @ v, axis=1))) for v in tet]
+c4 = [0]
+while s4[c4[-1]] != 0:
+    c4.append(s4[c4[-1]])
+cube_group = [np.array([[sg[i] if perm[i] == j else 0 for j in range(3)] for i in range(3)])
+              for perm in permutations(range(3)) for sg in product((1, -1), repeat=3)]
+
+
+def mat_order(Mx):
+    P_, k = Mx.copy(), 1
+    while not np.allclose(P_, np.eye(3)):
+        P_, k = P_ @ Mx, k + 1
+    return k
+
+
+check("the same coin at 5: x2 turns 1, 2, 4, 3 and fixes 0, and a quarter turn with a mirror turns the "
+      "tetrahedron's four corners in one cycle; at 9 it breaks: none of the cube's 48 symmetries has order 8",
+      [pow(2, r, 5) for r in range(4)] == [1, 2, 4, 3] and len(c4) == 4 and len(cube_group) == 48
+      and max(mat_order(g) for g in cube_group) == 6)
+
 check("in base 7 the first full wheel is 1/5 = 0.1254 1254 ..., whose halves add to 66 (Midy, with 6 for 9)",
       digits(1, 5, 7) == [1, 2, 5, 4] and (1 * 7 + 2) + (5 * 7 + 4) == 6 * 7 + 6
       and [p for p in primes(13) if full(7, p)] == [2, 5, 11, 13])

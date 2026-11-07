@@ -123,7 +123,9 @@ or bought by a coincidence. [NEW] for the two results; the ledger's levels are [
 (November 2026). The six sevenths are one wheel, 142857, turned, and half a turn is the flip k → 7 − k. Their
 square has two zeros, both paid for by that half turn. Every full-period prime's square has rank exactly
 (p + 1)/2. The wheel sits on the octahedron, round a centre it never visits. Read through the numerator, base
-10's multiplication becomes rotation, and Wilson's theorem is half a turn. [FORCED]; the rank rule [NEW] ·
+10's multiplication becomes rotation, and Wilson's theorem is half a turn. Counted in base 7, which the author
+called "equally important", the same seven remainders turn round a heptagon instead. The two views are the
+base's coin at 7. [FORCED]; the rank rule [NEW] ·
 [`base/SEVENTHS.md`](base/SEVENTHS.md)
 
 **Paradoxes: four kinds.** The author's classification of paradoxes, with Ben Mayes (April 2026), read

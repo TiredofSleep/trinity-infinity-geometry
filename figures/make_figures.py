@@ -310,8 +310,80 @@ def the_sevenths():
     print("  wrote the_sevenths.svg")
 
 
+# ---------------------------------------------------------------- seven counted two ways: adding and multiplying
+
+
+def _arrowed_polygon(svg, pts, col):
+    n = len(pts)
+    for i in range(n):
+        a, b = pts[i], pts[(i + 1) % n]
+        svg.append(f"<line x1='{a[0]:.1f}' y1='{a[1]:.1f}' x2='{b[0]:.1f}' y2='{b[1]:.1f}' stroke='{col}' "
+                   f"stroke-width='1.6'/>")
+        mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+        L = math.hypot(b[0] - a[0], b[1] - a[1])
+        ux, uy = (b[0] - a[0]) / L, (b[1] - a[1]) / L
+        tip, left = (mx + 7 * ux, my + 7 * uy), (mx - 5 * ux - 5 * uy, my - 5 * uy + 5 * ux)
+        right = (mx - 5 * ux + 5 * uy, my - 5 * uy - 5 * ux)
+        svg.append(f"<polygon points='{tip[0]:.1f},{tip[1]:.1f} {left[0]:.1f},{left[1]:.1f} {right[0]:.1f},"
+                   f"{right[1]:.1f}' fill='{col}'/>")
+
+
+def the_two_sevens():
+    w, h = 840, 470
+    BLUE = AXES[1]
+    svg = [card(w, h),
+           f"<text x='{w / 2}' y='34' text-anchor='middle' {FONT} font-size='17' font-weight='600' fill='{INK}'>"
+           f"Seven, counted two ways: the two faces of the base's 7</text>"]
+    R = 112
+    # left: adding turns a heptagon, its centre empty (base 7)
+    cx, cy = 215, 250
+    hept = [(cx + R * math.cos(math.radians(90 - 360 * k / 7)), cy - R * math.sin(math.radians(90 - 360 * k / 7)))
+            for k in range(7)]
+    _arrowed_polygon(svg, hept, SOFT)
+    for k, (x, y) in enumerate(hept):
+        svg.append(f"<circle cx='{x:.1f}' cy='{y:.1f}' r='7' fill='{INK}' stroke='white' stroke-width='1.5'/>")
+        ux, uy = (x - cx) / R, (y - cy) / R
+        svg.append(f"<text x='{x + 24 * ux:.1f}' y='{y + 24 * uy + 6:.1f}' text-anchor='middle' {FONT} "
+                   f"font-size='17' font-weight='600' fill='{INK}'>{k}</text>")
+    svg.append(f"<circle cx='{cx}' cy='{cy}' r='9' fill='none' stroke='{SOFT}' stroke-width='1.4' "
+               f"stroke-dasharray='3 3'/>")
+    svg.append(f"<text x='{cx}' y='72' text-anchor='middle' {FONT} font-size='15' font-weight='600' fill='{INK}'>"
+               f"Adding: base 7</text>")
+    svg.append(f"<text x='{cx}' y='92' text-anchor='middle' {FONT} font-size='13' fill='{SOFT}'>"
+               f"+1 turns all seven round one circle</text>")
+    # right: multiplying turns the octahedron round its centre (base 10 viewed in sevenths)
+    cx2 = 625
+    order7 = [pow(10, r, 7) for r in range(6)]
+    pos = {k: (cx2 + R * math.cos(math.radians(90 - 60 * r)), cy - R * math.sin(math.radians(90 - 60 * r)))
+           for r, k in enumerate(order7)}
+    _arrowed_polygon(svg, [pos[k] for k in order7], SOFT)
+    for face, col, dash in (((1, 2, 4), BLUE, ""), ((3, 6, 5), ACC, " stroke-dasharray='6 5'")):
+        pts = " ".join(f"{pos[k][0]:.1f},{pos[k][1]:.1f}" for k in face)
+        svg.append(f"<polygon points='{pts}' fill='none' stroke='{col}' stroke-width='2'{dash}/>")
+    for k, (x, y) in pos.items():
+        col = BLUE if k in (1, 2, 4) else ACC
+        svg.append(f"<circle cx='{x:.1f}' cy='{y:.1f}' r='7' fill='{col}' stroke='white' stroke-width='1.5'/>")
+        ux, uy = (x - cx2) / R, (y - cy) / R
+        svg.append(f"<text x='{x + 24 * ux:.1f}' y='{y + 24 * uy + 6:.1f}' text-anchor='middle' {FONT} "
+                   f"font-size='17' font-weight='600' fill='{INK}'>{k}</text>")
+    svg.append(f"<circle cx='{cx2}' cy='{cy}' r='8' fill='{INK}' stroke='white' stroke-width='1.5'/>")
+    svg.append(f"<text x='{cx2 + 16}' y='{cy + 6}' {FONT} font-size='17' font-weight='600' fill='{INK}'>0</text>")
+    svg.append(f"<text x='{cx2}' y='72' text-anchor='middle' {FONT} font-size='15' font-weight='600' fill='{INK}'>"
+               f"Multiplying: base 10 viewed in sevenths</text>")
+    svg.append(f"<text x='{cx2}' y='92' text-anchor='middle' {FONT} font-size='13' fill='{SOFT}'>"
+               f"×10 turns the six round 0, which stays put</text>")
+    svg.append(f"<text x='{w / 2}' y='428' text-anchor='middle' {FONT} font-size='14' fill='{INK}'>The same seven "
+               f"remainders. What moves is 0: on the rim when we add, at the centre when we multiply.</text>")
+    svg.append(f"<text x='{w / 2}' y='450' text-anchor='middle' {FONT} font-size='13' fill='{SOFT}'>The flat face "
+               f"(the heptagon) and the solid face (the octahedron with its centre), now as arithmetic.</text>")
+    svg.append("</svg>\n")
+    open(os.path.join(HERE, "the_two_sevens.svg"), "w", encoding="utf-8").write("\n".join(svg))
+    print("  wrote the_two_sevens.svg")
+
+
 if __name__ == "__main__":
     the_base()
     the_coin()
     the_lens()
     the_sevenths()
+    the_two_sevens()
