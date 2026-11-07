@@ -1,0 +1,60 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='840' height='440' viewBox='0 0 840 440'>
+<rect x='0.5' y='0.5' width='839' height='439' rx='10' fill='#ffffff' stroke='#d0d7de'/>
+
+<text x='420.0' y='34' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>The lens on one square: Dürer's, numbered from 0 to 15</text>
+<rect x='56' y='70' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='122' y='70' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='188' y='70' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='254' y='70' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='56' y='136' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='122' y='136' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='188' y='136' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='254' y='136' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='56' y='202' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='122' y='202' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='188' y='202' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='254' y='202' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='56' y='268' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='122' y='268' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='188' y='268' width='66' height='66' fill='#f7dcd8' stroke='#d0d7de' stroke-width='1.5'/>
+<rect x='254' y='268' width='66' height='66' fill='#d9e7f5' stroke='#d0d7de' stroke-width='1.5'/>
+<line x1='161.0' y1='121.0' x2='215.0' y2='283.0' stroke='#1f2328' stroke-opacity='0.5' stroke-width='1.6' stroke-dasharray='5 4'/>
+<line x1='107.0' y1='175.0' x2='269.0' y2='229.0' stroke='#1f2328' stroke-opacity='0.5' stroke-width='1.6' stroke-dasharray='5 4'/>
+<text x='89.0' y='111.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>15</text>
+<text x='155.0' y='111.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>2</text>
+<text x='221.0' y='111.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>1</text>
+<text x='287.0' y='111.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>12</text>
+<text x='89.0' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>4</text>
+<text x='155.0' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>9</text>
+<text x='221.0' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>10</text>
+<text x='287.0' y='177.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>7</text>
+<text x='89.0' y='243.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>8</text>
+<text x='155.0' y='243.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>5</text>
+<text x='221.0' y='243.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>6</text>
+<text x='287.0' y='243.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>11</text>
+<text x='89.0' y='309.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>3</text>
+<text x='155.0' y='309.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>14</text>
+<text x='221.0' y='309.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>13</text>
+<text x='287.0' y='309.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='22' font-weight='600' fill='#1f2328'>0</text>
+<circle cx='188' cy='202' r='6' fill='white' stroke='#1f2328' stroke-width='1.6'/>
+<text x='188' y='362' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>7.5, the centre (open dot): no cell holds it</text>
+<rect x='60' y='378' width='14' height='14' rx='3' fill='#d9e7f5' stroke='#2471a3'/>
+<text x='80' y='390' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>0 to 7: one side</text>
+<rect x='200' y='378' width='14' height='14' rx='3' fill='#f7dcd8' stroke='#c0392b'/>
+<text x='220' y='390' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>8 to 15: the other side</text>
+<text x='362' y='84' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>1   The centre you measure from</text>
+<text x='384' y='103' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>7.5, halfway from 0 to 15. No cell holds it.</text>
+<text x='362' y='137' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>2   The flip and its two sides</text>
+<text x='384' y='156' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>n → 15 − n swaps the low numbers, 0 to 7 (blue),</text>
+<text x='384' y='175' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>with the high ones, 8 to 15 (red).</text>
+<text x='362' y='209' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>3   The edge</text>
+<text x='384' y='228' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>What the flip keeps is 7.5 itself, the one</text>
+<text x='384' y='247' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>number the square is missing.</text>
+<text x='362' y='281' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>4   The glue</text>
+<text x='384' y='300' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>A number and its flip always average 7.5: every</text>
+<text x='384' y='319' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>pair measures the centre, and no cell stands on it.</text>
+<text x='384' y='338' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>In Dürer's square each pair also sits mirrored</text>
+<text x='384' y='357' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='14' fill='#1f2328'>through the middle (two are dashed).</text>
+<text x='362' y='387' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#8c959f'>What it pays for: that mirror symmetry forces a zero.</text>
+<text x='362' y='405' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#8c959f'>The square is singular: its determinant is 0.</text>
+</svg>

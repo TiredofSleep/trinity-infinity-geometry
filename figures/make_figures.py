@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """make_figures.py -- draws the front-page figures as plain SVG (no dependencies).
 
-    python make_figures.py      ->  the_base.svg, the_coin.svg  (in this folder)
+    python make_figures.py      ->  the_base.svg, the_coin.svg, the_lens.svg  (in this folder)
 
 Each figure sits on a light card, so it reads the same in light and dark themes."""
 import math
@@ -179,6 +179,71 @@ def the_coin():
     print("  wrote the_coin.svg")
 
 
+# ---------------------------------------------------------------- the lens, worked on Dürer's square
+
+
+DURER0 = [[15, 2, 1, 12], [4, 9, 10, 7], [8, 5, 6, 11], [3, 14, 13, 0]]   # Melencolia I (1514), minus 1
+
+
+def the_lens():
+    w, h = 840, 440
+    LOW, HIGH, LOW_EDGE = "#d9e7f5", "#f7dcd8", AXES[1]
+    svg = [card(w, h),
+           f"<text x='{w / 2}' y='34' text-anchor='middle' {FONT} font-size='17' font-weight='600' fill='{INK}'>"
+           f"The lens on one square: Dürer's, numbered from 0 to 15</text>"]
+    c, x0, y0 = 66, 56, 70
+    mid = (x0 + 2 * c, y0 + 2 * c)
+    for i, row in enumerate(DURER0):
+        for j, n in enumerate(row):
+            svg.append(f"<rect x='{x0 + j * c}' y='{y0 + i * c}' width='{c}' height='{c}' "
+                       f"fill='{LOW if n < 7.5 else HIGH}' stroke='{EDGE}' stroke-width='1.5'/>")
+    # two pairs, each a number and its flip, mirrored through the middle (trimmed clear of the digits)
+    for (i, j) in ((0, 1), (1, 0)):      # 2 with 13 and 4 with 11: their lines pass between the digits
+        ax, ay = x0 + (j + 0.5) * c, y0 + (i + 0.5) * c
+        bx, by = x0 + (3 - j + 0.5) * c, y0 + (3 - i + 0.5) * c
+        L = math.hypot(bx - ax, by - ay)
+        ux, uy = (bx - ax) / L, (by - ay) / L
+        svg.append(f"<line x1='{ax + 19 * ux:.1f}' y1='{ay + 19 * uy:.1f}' x2='{bx - 19 * ux:.1f}' "
+                   f"y2='{by - 19 * uy:.1f}' stroke='{INK}' stroke-opacity='0.5' stroke-width='1.6' "
+                   f"stroke-dasharray='5 4'/>")
+    for i, row in enumerate(DURER0):
+        for j, n in enumerate(row):
+            svg.append(f"<text x='{x0 + (j + 0.5) * c}' y='{y0 + (i + 0.5) * c + 8}' text-anchor='middle' "
+                       f"{FONT} font-size='22' font-weight='600' fill='{INK}'>{n}</text>")
+    svg.append(f"<circle cx='{mid[0]}' cy='{mid[1]}' r='6' fill='white' stroke='{INK}' stroke-width='1.6'/>")
+    svg.append(f"<text x='{mid[0]}' y='{y0 + 4 * c + 28}' text-anchor='middle' {FONT} font-size='14' "
+               f"fill='{INK}'>7.5, the centre (open dot): no cell holds it</text>")
+    for k, (fill, stroke, label) in enumerate(((LOW, LOW_EDGE, "0 to 7: one side"),
+                                               (HIGH, ACC, "8 to 15: the other side"))):
+        lx = x0 + 4 + k * 140
+        svg.append(f"<rect x='{lx}' y='{y0 + 4 * c + 44}' width='14' height='14' rx='3' fill='{fill}' "
+                   f"stroke='{stroke}'/>")
+        svg.append(f"<text x='{lx + 20}' y='{y0 + 4 * c + 56}' {FONT} font-size='13' fill='{INK}'>{label}</text>")
+    # the four moves
+    tx, ty = 362, 84
+    steps = [("1   The centre you measure from", ["7.5, halfway from 0 to 15. No cell holds it."]),
+             ("2   The flip and its two sides", ["n → 15 − n swaps the low numbers, 0 to 7 (blue),",
+                                                  "with the high ones, 8 to 15 (red)."]),
+             ("3   The edge", ["What the flip keeps is 7.5 itself, the one", "number the square is missing."]),
+             ("4   The glue", ["A number and its flip always average 7.5: every", "pair measures the centre, and no cell stands on it.",
+                               "In Dürer's square each pair also sits mirrored", "through the middle (two are dashed)."])]
+    y = ty
+    for head, lines in steps:
+        svg.append(f"<text x='{tx}' y='{y}' {FONT} font-size='15' font-weight='600' fill='{INK}'>{head}</text>")
+        for ln in lines:
+            y += 19
+            svg.append(f"<text x='{tx + 22}' y='{y}' {FONT} font-size='14' fill='{INK}'>{ln}</text>")
+        y += 34
+    svg.append(f"<text x='{tx}' y='{y - 4}' {FONT} font-size='13' fill='{SOFT}'>What it pays for: that mirror "
+               f"symmetry forces a zero.</text>")
+    svg.append(f"<text x='{tx}' y='{y + 14}' {FONT} font-size='13' fill='{SOFT}'>The square is singular: its "
+               f"determinant is 0.</text>")
+    svg.append("</svg>\n")
+    open(os.path.join(HERE, "the_lens.svg"), "w", encoding="utf-8").write("\n".join(svg))
+    print("  wrote the_lens.svg")
+
+
 if __name__ == "__main__":
     the_base()
     the_coin()
+    the_lens()

@@ -16,6 +16,7 @@ is what every floor turns over.
 > python verify_two_readings.py     # TWO_READINGS_OF_ZN.md (23 checks, about twenty seconds)
 > python verify_mirror.py           # THE_MIRROR.md (26 checks, about thirty seconds)
 > python verify_polar_coin.py       # THE_POLAR_COIN.md (26 checks, about forty seconds; numpy + scipy)
+> python verify_lens.py             # ../THE_LENS.md: the glue and the worked square (23 checks; numpy + scipy)
 > ```
 
 | file | what it is |

@@ -10,5 +10,7 @@ python make_figures.py
   ([`../base/`](../base/README.md)).
 - [`the_coin.svg`](the_coin.svg) — the three half-turns of the sphere of numbers about the axes of one
   octahedron ([`../coin/THE_COIN.md`](../coin/THE_COIN.md)).
+- [`the_lens.svg`](the_lens.svg) — the lens worked on Dürer's magic square, numbered from 0
+  ([`../THE_LENS.md`](../THE_LENS.md)).
 
 Each figure sits on a light card, so it reads the same in light and dark themes.

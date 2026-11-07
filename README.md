@@ -21,9 +21,13 @@ paradox and its many angles"* (June 2026):
 - **the paradox and its many angles:** the coin, two sides and an edge, with the paradoxes on the edges that
   are missing, √2 and *i* ([`coin/THE_COIN.md`](coin/THE_COIN.md)).
 
+The whole lens, part by part, in the author's words: [`THE_LENS.md`](THE_LENS.md).
+
 **Where to start**
 - **The book** for learners: *[The Shape of Understanding](https://github.com/TiredofSleep/shape-of-understanding)*,
   and its companion unit on flips and paradoxes, *[Two Sides and an Edge](https://github.com/TiredofSleep/shape-of-understanding/blob/main/two_sides_and_an_edge.md)*.
+- **The lens**: the author's lens in the author's own words, worked once on Dürer's magic square, and
+  traced part by part to what it became: [`THE_LENS.md`](THE_LENS.md).
 - **The coin**, the idea that runs through everything here: [`coin/THE_COIN.md`](coin/THE_COIN.md).
 - **The towers**, floor by floor: [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md).
 - **What survived** when two years of AI-assisted research were audited — an essay:
@@ -149,6 +153,7 @@ python verify_transpose_coin.py
 python verify_two_readings.py
 python verify_mirror.py
 python verify_polar_coin.py           # pip install scipy
+python verify_lens.py                 # the lens's glue and its worked square (pip install scipy)
 cd ../towers
 python verify_towers.py
 python verify_two_builds.py
