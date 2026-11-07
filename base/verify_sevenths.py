@@ -286,7 +286,69 @@ sqfree = [d for d in range(1, 201) if all(d % (q * q) for q in range(2, 15))]
 one = [d for d in sqfree if class_number(-d if d % 4 == 3 else -4 * d) == 1]
 check(f"class number 1 below 200: Q(sqrt -d) for d = {one}", one == [1, 2, 3, 7, 11, 19, 43, 67, 163])
 
-# counting in base 7
+# base 10, viewed in sevenths: every number by its numerator
+def tail(n, places=12):
+    r, out = n % 7, []
+    for _ in range(places):
+        r *= 10
+        out.append(r // 7)
+        r %= 7
+    return out
+
+
+check("the view: n/7 is (n div 7) followed by the wheel turned by the turns of n's remainder, or by nothing when 7 "
+      "divides n (every n up to 20000); 10/7 = 1.428571..., 100/7 = 14.285714..., 2026/7 = 289.428571...",
+      all(tail(n) == ([0] * 12 if n % 7 == 0 else (W[turn[n % 7]:] + W[:turn[n % 7]]) * 2) for n in range(1, 20001))
+      and (10 // 7, tail(10, 6)) == (1, [4, 2, 8, 5, 7, 1]) and (2026 // 7, tail(2026, 6)) == (289, [4, 2, 8, 5, 7, 1]))
+check("multiplication becomes rotation: the turns of a product are the sum of the turns, mod 6",
+      all(turn[a * c % 7] == (turn[a] + turn[c]) % 6 for a in range(1, 7) for c in range(1, 7)))
+check("Fermat: six turns are the whole wheel, so k^6 leaves 1; Euler: k^3 leaves 1 for an even number of turns "
+      "(the squares 1, 2, 4) and -1 for an odd number",
+      all(pow(k, 6, 7) == 1 and pow(k, 3, 7) == (1 if turn[k] % 2 == 0 else 6) for k in range(1, 7)))
+check("Wilson: 6! leaves -1, because its turns add to 0 + 1 + 2 + 3 + 4 + 5 = 15, which is half a turn",
+      math.factorial(6) % 7 == 6 and sum(turn.values()) % 6 == 3)
+check("orders: 3 and 5 turn the whole wheel, 2 and 4 a third of it, 6 half of it",
+      {k: 6 // math.gcd(turn[k], 6) for k in range(1, 7)} == {1: 1, 2: 3, 3: 6, 4: 3, 5: 6, 6: 2})
+
+
+def alt_blocks(m):
+    s, sign = 0, 1
+    while m:
+        s, m, sign = s + sign * (m % 1000), m // 1000, -sign
+    return s
+
+
+check("the base is a turn: x10 is one turn, x100 two, and 1000 leaves -1, half the wheel; so 7 divides n exactly when "
+      "it divides the alternating sum of n's three-digit blocks (every n below 200000), and 1001 = 7 x 11 x 13",
+      [pow(10, r, 7) for r in (1, 2, 3)] == [3, 2, 6] and 7 * 11 * 13 == 1001
+      and all((m % 7 == 0) == (alt_blocks(m) % 7 == 0) for m in range(1, 200001)))
+fw = [p for p in primes(200) if p > 5 and full(10, p)]
+check(f"among base 10's full wheels below 200 ({len(fw)} primes), only 7's half turn is a thousand",
+      [p for p in fw if pow(10, 3, p) == p - 1 and (p - 1) // 2 == 3] == [7] and fw[0] == 7)
+sieve = np.ones(10 ** 7 + 1, bool)
+sieve[:2] = False
+for i in range(2, int(10 ** 3.5) + 1):
+    if sieve[i]:
+        sieve[i * i::i] = False
+PR = np.nonzero(sieve)[0]
+RES = PR % 7
+shares = [int((RES == k).sum()) for k in range(1, 7)]
+lead = np.cumsum(np.isin(RES, [3, 5, 6]).astype(int)) - np.cumsum(np.isin(RES, [1, 2, 4]).astype(int))
+at = lead[np.searchsorted(PR, np.arange(1000, 10 ** 7 + 1, 1000), side="right") - 1]
+check(f"primes on the wheel: below ten million the six turns hold {min(shares)} to {max(shares)} primes each, and "
+      "the odd turns (3, 5, 6) lead the even ones (1, 2, 4) at every checkpoint, every thousand",
+      max(shares) - min(shares) < 0.002 * max(shares) and (at > 0).all())
+PI = Fr("3.14159265358979323846264338327950288419716939937510582097494459")
+xx, cf = PI, []
+for _ in range(5):
+    a0 = xx.numerator // xx.denominator
+    cf.append(a0)
+    xx = 1 / (xx - a0)
+check("pi's continued fraction begins 3; 7, 15, 1, 292, so its first approximation is 3 + 1/7 = 22/7 = 3.142857...: "
+      "the wheel, unturned, and above pi (Archimedes)",
+      cf == [3, 7, 15, 1, 292] and tail(22, 6) == W and Fr(22, 7) > PI)
+
+# an aside: counting in base 7 (a different system from the author's)
 check("in base 7 the first full wheel is 1/5 = 0.1254 1254 ..., whose halves add to 66 (Midy, with 6 for 9)",
       digits(1, 5, 7) == [1, 2, 5, 4] and (1 * 7 + 2) + (5 * 7 + 4) == 6 * 7 + 6
       and [p for p in primes(13) if full(7, p)] == [2, 5, 11, 13])
