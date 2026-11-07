@@ -39,15 +39,19 @@ paradox and its many angles"* (June 2026):
 
 Four results at the research frontier. Each has a proof and a script that re-checks it, and most were
 checked twice, by independent code:
-- **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables, against
-  a published record of 26, and 16 is exactly the minimum
-  ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
-- **The determinant of MATLAB's odd magic squares, in closed form.** So they are never singular, which
-  settles an observation recorded on OEIS in 2015 ([linear algebra](towers/binary_magic/void_lens/README.md)).
+- **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables,
+  against a published record of 26 ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
+- **16 is the minimum at five qubits** among genuine sets that hide no smaller contradiction. Four lemmas
+  reduce the question to three cases, and a computer search shows that all three are empty
+  ([the lower bound](towers/binary_magic/magic_sets/LOWER_BOUND.md)).
+- **The determinant of MATLAB's odd magic squares, in closed form.** It shows that they are never singular,
+  and it proves an observation recorded on OEIS in 2015: n^(n−1) divides the determinant
+  ([linear algebra](towers/binary_magic/void_lens/README.md)).
 - **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
   ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
-- **About a dozen smaller results**, and the teaching frame itself, each labelled by how firmly it stands:
-  [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
+
+There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
+stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
 
 **How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
 - One loop: an intuition, predictions written before anything runs, a second independent check, a
