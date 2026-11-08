@@ -18,6 +18,8 @@
 - A fifth round went to 17 and 19: seven of twelve held, and at 19 the odd side won (§7).
 - A sixth round tested the author's prediction for what follows, against a rival reading, at 23 and 29. Both died:
   the even side won at 23 and the odd side at 29 (§8).
+- Then the data were read from other angles, the author's 7-wheel rule was registered as round 7, and a two-wheels
+  test ran as round 8: two of three held (§9).
 
 ---
 
@@ -87,6 +89,8 @@ clocks to shifts and clocks, up to phase.
   and the odd winner at 19 has 4 symmetries, not 12 or more (§7).
 - **W1 and W2 (round 6).** The author's prediction, that the odd side wins from 19 on, died at 23. The rival, that
   the Legendre state's side wins, died at 23 and at 29 (§8).
+- **Y1 (round 8).** The turning wheel's best symmetric state does not beat the multiplying wheel's at every prime:
+  at 13 it loses (§9).
 
 ## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
 
@@ -340,7 +344,7 @@ The author asked for 17 and 19. Twelve predictions were registered with the scri
 
 ## 8. Round 6: the author's prediction [READING; measured]
 
-> *i'd predict that even only wins the lows, the odd wins the rest?* — the author, 10 November 2026, on seeing
+> *i'd predict that even only wins the lows, the odd wins the rest?* — the author, 8 November 2026, on seeing
 > nineteen
 
 Round 5 broke the even side's streak at 19, and the author predicted what would follow. The prediction was
@@ -392,7 +396,39 @@ promised: [`round6.py`](round6.py), with the logs [`round6_twentythree.log`](rou
     basin cannot be ruled out.
   - From 7 on, no winner is fixed by its symmetries.
 
-## 9. Our space, and what it cannot hold [FORCED; FENCE]
+## 9. Other angles, and the two-wheels test [READING; measured]
+
+After round 6 the author asked to pause and look at the data from other angles. The author then pointed to the wheel
+of numbers around 7 and to Shor's algorithm. Made exact, that is a rule, registered as round 7 and not yet run
+([`PREREG.md`](PREREG.md)): the even side wins exactly when the powers of 7 modulo p pass through the half turn, the
+case Shor's period finding checks for. It fits all eight primes
+run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it against the rival observation.
+
+- **Flatness: what every winner shares.** The total negativity has a ceiling, (√p − 1)/2, reached only if every point
+  of the Wigner function had the same size. From 7 on, both sides' best states reach 88 to 90% of it at every prime.
+  The contest is about making the quasi-probabilities as even as possible, and both sides do that almost equally well.
+- **The edge: why the gap is small.** Two effects of size about 1/p pull opposite ways. An odd state gets −1/p at the
+  centre for free; an even state has one more dimension to work in. From 7 on, every gap between the sides is at most
+  about half of 1/p.
+- **The two wheels.** The symmetries that fix the centre include two cyclic wheels that share only the half turn: the
+  multiplying wheel, k → ak, with p − 1 steps, and the turning wheel, the rotations of phase space, with p + 1 steps.
+  Every winner found has a symmetry from the turning wheel, or only the half turn. The Legendre state, which the whole
+  multiplying wheel fixes, has not won since 3.
+- **The two-wheels test** (round 8, registered with its script, 2 of 3 held). The script is
+  [`two_wheels.py`](two_wheels.py); its output is in [`two_wheels_combined.log`](two_wheels_combined.log).
+  - For each prime and each order m > 2 on each wheel, the sign ascent searched every eigenspace of the order-m
+    symmetry, with equal effort on both wheels. A one-line eigenspace is exact.
+  - The turning wheel's best beat the multiplying wheel's at 5, 7, 11, 17, 19, 23 and 29, and reached the winner
+    wherever the winner has a turning symmetry. Nothing beat a known winner.
+  - At 13 the multiplying wheel won, 1.167364 against 1.105229 (Y1 died). The turning side is exact: the verifier
+    counts every sign choice in its order-7 family.
+  - The test had a confound: a small order fixes a large family, and at 13 the turning wheel offers only orders 7
+    and 14.
+  - Read after the run, the logs hold 14 pairs of families of equal size, one on each wheel. The turning wheel wins 12
+    and loses at 13 (dimension 2) and 19 (dimension 4). At equal size a turning symmetry is usually the better one,
+    not always.
+
+## 10. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -409,7 +445,7 @@ promised: [`round6.py`](round6.py), with the logs [`round6_twentythree.log`](rou
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 10. Standing
+## 11. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -441,7 +477,8 @@ promised: [`round6.py`](round6.py), with the logs [`round6_twentythree.log`](rou
     sides; and the rule that the tetrahedral states sit on the Legendre state's side;
   - round 5: the coin at 17 and 19, the odd side's win at 19, and the exceptional groups' states there, all on
     the Legendre state's side;
-  - round 6: the coin at 23 and 29, and the test of the author's prediction.
+  - round 6: the coin at 23 and 29, and the test of the author's prediction;
+  - the angles (flatness, the edge's two effects, the two wheels) and round 8's two-wheels test.
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen.
@@ -455,9 +492,10 @@ promised: [`round6.py`](round6.py), with the logs [`round6_twentythree.log`](rou
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
-  - which side wins at large p. The odd side won at 19 and 29, both 4 more than a multiple of 5, and the even side
-    at 23. No reading tested so far survives, and the margins are now about as small as what the searches could
-    miss. A law, if there is one, is open.
+  - which side wins at large p. The odd side won at 19 and 29 and the even side at 23. The author's 7-wheel rule fits
+    every prime run other than 7 and is registered as round 7; 31 decides it;
+  - why a turning symmetry usually beats a multiplying one at equal family size (12 of 14 pairs, read after round 8),
+    and why not at 13 and 19.
 
 ## Run it
 
@@ -475,6 +513,9 @@ python round5.py combine
 python round6.py twentythree           # round 6, run at once: about 29 and 70 minutes
 python round6.py twentynine
 python round6.py combine
+python two_wheels.py A                 # round 8, run at once: about 8 and 18 minutes
+python two_wheels.py B
+python two_wheels.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

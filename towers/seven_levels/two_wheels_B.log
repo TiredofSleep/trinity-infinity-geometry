@@ -1,0 +1,11 @@
+  29: turning wheel, order 3: best 1.957461379 (eigenspace dimensions [10, 10, 9])
+  29: turning wheel, order 5: best 1.963715306 (eigenspace dimensions [6, 6, 6, 6, 5])
+  29: turning wheel, order 6: best 1.957461379 (eigenspace dimensions [5, 5, 5, 5, 5, 4])
+  29: turning wheel, order 10: best 1.963715306 (eigenspace dimensions [3, 3, 3, 3, 3, 3, 3, 3, 3, 2])
+  29: turning wheel, order 15: best 1.903068573 (eigenspace dimensions [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1])
+  29: turning wheel, order 30: best 1.901698621 (eigenspace dimensions [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+  29: multiplying wheel, order 4: best 1.943961333 (eigenspace dimensions [8, 7, 7, 7])
+  29: multiplying wheel, order 7: best 1.919459681 (eigenspace dimensions [5, 4, 4, 4, 4, 4, 4])
+  29: multiplying wheel, order 14: best 1.919459681 (eigenspace dimensions [3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+  29: multiplying wheel, order 28: best 1.878678880 (eigenspace dimensions [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+turning 29: 1.963715306 (order 10); multiplying 29: 1.943961333 (order 4); winner so far 1.963715306 [1073 s]

@@ -1,0 +1,11 @@
+  5: turning 0.556677, multiplying 0.554893, turning ahead by +0.001784; winner so far 0.556677
+  7: turning 0.732522, multiplying 0.728262, turning ahead by +0.004260; winner so far 0.732522
+  11: turning 1.029707, multiplying 0.999307, turning ahead by +0.030400; winner so far 1.032586
+  13: turning 1.105229, multiplying 1.167364, turning ahead by -0.062135; winner so far 1.168522
+  17: turning 1.402567, multiplying 1.393205, turning ahead by +0.009363; winner so far 1.402567
+  19: turning 1.507862, multiplying 1.507131, turning ahead by +0.000731; winner so far 1.507862
+  23: turning 1.699737, multiplying 1.604721, turning ahead by +0.095016; winner so far 1.700022
+  29: turning 1.963715, multiplying 1.943961, turning ahead by +0.019754; winner so far 1.963715
+Y1 DIED: at every prime from 11 to 29 the best turning-symmetric state beats the best multiplying-symmetric one
+Y2 HELD: at 17, 19 and 29 the turning search reaches the winner found so far
+Y3 HELD: the turning search finds nothing above the winners found so far

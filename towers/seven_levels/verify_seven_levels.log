@@ -47,5 +47,10 @@ round 6:
 PASS  the Legendre states: at 23 odd, 1.341641910165; at 29 even, 1.878678879531
 PASS  the exceptional groups' states lie on the Legendre state's side: at 23 the values [1.490815, 1.490815, 1.490815, 1.490815], all odd; at 29 the values [1.656907, 1.79327, 1.79327], all even
 
+round 8:
+PASS  the confound of family size: at 13 the turning wheel's orders above 2 are only 7 and 14, against the multiplying wheel's 3, 4, 6 and 12; at 23 the turning wheel has 3, 4, 6, 8, 12 and 24 and the multiplying wheel only 11 and 22; every eigenspace dimension is as two_wheels_A.log records it
+PASS  the one-line families are exact and agree with the log: at 13 the turning wheel's order 14, 1.105228575; at 23 the turning wheel's order 24, 1.627721703, and the multiplying wheel's order 22, 1.602496306
+PASS  Y1's death at 13 is exact: counting every sign choice constant on the 25 orbits of the turning wheel's order 7 (2^25 in each eigenspace) puts its best state at 1.105228575, which order 14 shares; a search finds a state that the multiplying wheel's order 4 fixes at 1.167363950
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

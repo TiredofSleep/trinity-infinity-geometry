@@ -229,11 +229,11 @@ its own graveyard. These died, with what killed them:
     state with 24 symmetries: the binary tetrahedral group, the strange state's group at three
     (`towers/seven_levels/round3.log`; `verify_seven_levels.py` checks it). The Legendre state is the deepest odd
     state at 3 and at 7, the second by an exhaustive count, but not at 11.
-  - **"At thirteen the two sides end within 0.01"** (U9, a registered guess, 2026-11-09). Three million climbs
+  - **"At thirteen the two sides end within 0.01"** (U9, a registered guess, 2026-11-08). Three million climbs
     on each side found the even side ahead by 0.017 (`towers/seven_levels/round4_thirteen.log`). The size reading
     that made the guess is half dead: from 7 on no winner is fixed by its symmetries, as it said, but the margin
     is wider when p is 1 more than a multiple of 4.
-  - **Round 5's guesses from the pattern at 3 to 13** (2026-11-10; `towers/seven_levels/round5_*.log`):
+  - **Round 5's guesses from the pattern at 3 to 13** (2026-11-08; `towers/seven_levels/round5_*.log`):
     - "The even side wins at 19" (V2), and with it "the best state found at 19 is even about one point" (V5b):
       the odd side wins at 19, 1.507862 against 1.484879, and a second even search with a fresh seed found the
       same even best.
@@ -241,12 +241,16 @@ its own graveyard. These died, with what killed them:
       there is no even lead at all.
     - "A highly symmetric state wins the odd side at 19" (V6): the odd winner has 4 symmetries; the tetrahedral
       state, with 24, comes below it.
-  - **Round 6's two readings** (2026-11-10; `towers/seven_levels/round6_*.log`):
+  - **Round 6's two readings** (2026-11-08; `towers/seven_levels/round6_*.log`):
     - The author's prediction, "even only wins the lows, the odd wins the rest" (W1): the even side wins at 23,
       by 0.0036, and a recheck with a fresh seed confirmed it. At 29 the odd side wins, as the author said.
     - "The Legendre state's side wins" (W2): the even side wins at 23 and the odd side at 29, the opposite of both
       its calls.
-- **From the genetic-code study (2026-11-09; `lab/genetic_code/PREREG.md`, fenced):**
+  - **"The best turning-symmetric state beats the best multiplying-symmetric one at every prime"** (round 8's Y1,
+    2026-11-08; `towers/seven_levels/two_wheels_*.log`). At 13 the multiplying wheel's order-4 family reaches 1.167364
+    against the turning wheel's 1.105229, which is exact: the verifier counts every sign choice in the turning wheel's
+    order-7 family. The test was confounded by family size: at 13 the turning wheel offers only orders 7 and 14.
+- **From the genetic-code study (2026-11-08; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.
   - **"With transition bias, the best code found keeps the third-letter symmetry"** (G2). The best code found

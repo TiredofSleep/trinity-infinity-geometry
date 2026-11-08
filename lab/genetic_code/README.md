@@ -1,7 +1,7 @@
 # The genetic code: symmetry or optimum? [FENCE]
 
 > *how does this parallel our look at mitochondria?* · *do all 3 and the mitochondrial research in this next
-> pass* — the author, 8 and 9 November 2026
+> pass* — the author, 8 November 2026
 
 Round 3 of the seven levels ([`../../towers/seven_levels/`](../../towers/seven_levels/README.md) §5) found the
 best states on the symmetric side, even under the half turn, without their symmetry picking them out: they had to
@@ -65,7 +65,7 @@ changes between sense codons. A transition bias b weighs transitions (U and C, A
 
 ## Part 2: Freeland and Hurst's weights
 
-> *do 17 and 19 and the position-weighted code test* — the author, 9 November 2026
+> *do 17 and 19 and the position-weighted code test* — the author, 8 November 2026
 
 Part 1's G2 died because its model weighed the three letters alike and its scale had ties. Part 2 fixed both. Five
 predictions were registered before the run ([`PREREG.md`](PREREG.md), commit 88440d4), and four held. The script

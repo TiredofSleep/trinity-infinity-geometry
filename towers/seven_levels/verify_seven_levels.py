@@ -1,7 +1,8 @@
 """verify_seven_levels.py -- runs the eight predictions registered in PREREG.md (commit b42b65b) on a
 seven-level quantum system, and reports each as HELD or DIED with its evidence.  Then it checks the README's
 other lines: round 2's most negative state as recorded in most_negative.log, and round 3's results as recorded in
-round3.log (it uses round3.py's tools).
+round3.log (it uses round3.py's tools), and rounds 4 to 8 likewise.  For round 8 it checks the family sizes
+behind the confound and makes Y1's death at 13 exact.
 
 numpy + scipy + round3.py.  ASCII output.
 Run:  python verify_seven_levels.py           (about a minute)
@@ -901,6 +902,68 @@ forced(f"the exceptional groups' states lie on the Legendre state's side: at 23 
        f"at 29 the values {ex6[29][4]}, all even",
        all(abs(x + 1) < 1e-6 for x in ex6[23][3]) and all(abs(x - 1) < 1e-6 for x in ex6[29][3])
        and ex6[23][4] == [1.490815, 1.490815, 1.490815, 1.490815] and ex6[29][4] == [1.656907, 1.79327, 1.79327])
+
+# ------------------------------------------------------------------ round 8 (two_wheels.py; its logs are two_wheels_*.log)
+print()
+print("round 8:")
+
+
+def wheels(p_):
+    """each wheel's operators of order m > 2 at p, built as two_wheels.py builds them: the turning wheel's from an
+    element of order p + 1, the multiplying wheel's from a primitive root"""
+    Ap = r3.phase_points(p_)
+    Wl = r5.Weil(p_, Ap)
+    g = next(a for a in range(2, p_) if len({pow(a, e, p_) for e in range(1, p_)}) == p_ - 1)
+    X = next(Y for Y in Wl.parent if r5.order(Y, p_) == p_ + 1)
+    out = {}
+    for m in (m for m in range(3, p_ + 2) if (p_ + 1) % m == 0):
+        Y = (1, 0, 0, 1)
+        for _ in range((p_ + 1) // m):
+            Y = r5.mul(Y, X, p_)
+        out["turning", m] = r5.operator(Wl, Y)
+    for m in (m for m in range(3, p_) if (p_ - 1) % m == 0):
+        a = pow(g, (p_ - 1) // m, p_)
+        out["multiplying", m] = np.eye(p_)[[(pow(a, -1, p_) * k) % p_ for k in range(p_)]].astype(complex)
+    return Ap, out
+
+
+def lines_best(U, Ap, p_):
+    """the best state among U's one-line eigenspaces, which is exact"""
+    ones = [Q[:, 0] for Q in r3.eigenspaces(U) if Q.shape[1] == 1]
+    return max(r3.negativity(r3.wigner(v[None, :], Ap, p_)[0]) for v in ones)
+
+
+DIMS8 = {13: {("turning", 7): [2] * 6 + [1], ("turning", 14): [1] * 13, ("multiplying", 3): [5, 4, 4],
+              ("multiplying", 4): [4, 3, 3, 3], ("multiplying", 6): [3, 2, 2, 2, 2, 2],
+              ("multiplying", 12): [2] + [1] * 11},
+         23: {("turning", 3): [8, 8, 7], ("turning", 4): [6, 6, 6, 5], ("turning", 6): [4] * 5 + [3],
+              ("turning", 8): [3] * 7 + [2], ("turning", 12): [2] * 11 + [1], ("turning", 24): [1] * 23,
+              ("multiplying", 11): [3] + [2] * 10, ("multiplying", 22): [2] + [1] * 21}}
+w8 = {p_: wheels(p_) for p_ in (13, 23)}
+dims8 = {p_: {key: sorted((Q.shape[1] for Q in r3.eigenspaces(U)), reverse=True) for key, U in w8[p_][1].items()}
+         for p_ in (13, 23)}
+forced("the confound of family size: at 13 the turning wheel's orders above 2 are only 7 and 14, against the "
+       "multiplying wheel's 3, 4, 6 and 12; at 23 the turning wheel has 3, 4, 6, 8, 12 and 24 and the multiplying "
+       "wheel only 11 and 22; every eigenspace dimension is as two_wheels_A.log records it", dims8 == DIMS8)
+A13, U13 = w8[13]
+A23, U23 = w8[23]
+l13 = lines_best(U13["turning", 14], A13, 13)
+l23t = lines_best(U23["turning", 24], A23, 23)
+l23m = lines_best(U23["multiplying", 22], A23, 23)
+forced(f"the one-line families are exact and agree with the log: at 13 the turning wheel's order 14, {l13:.9f}; at "
+       f"23 the turning wheel's order 24, {l23t:.9f}, and the multiplying wheel's order 22, {l23m:.9f}",
+       abs(l13 - 1.105228575) < 1e-9 and abs(l23t - 1.627721703) < 1e-9 and abs(l23m - 1.602496306) < 1e-9)
+U7 = U13["turning", 7]
+orb7 = r3.cycles(r3.perm_of(U7, A13))
+t13 = max((r4.exact_best_big(r3.compress(A13, Q), 13, orb7)[0][0][0] - 1) / 2 if Q.shape[1] > 1
+          else r3.negativity(r3.wigner(Q[:, 0][None, :], A13, 13)[0]) for Q in r3.eigenspaces(U7))
+rng8 = np.random.default_rng(20261112)
+m13 = max(r3.search(r3.compress(A13, Q), 13, 4000, rng8, batch=4000)[0].max()
+          for Q in r3.eigenspaces(U13["multiplying", 4]))
+forced(f"Y1's death at 13 is exact: counting every sign choice constant on the {len(orb7)} orbits of the turning "
+       f"wheel's order 7 (2^25 in each eigenspace) puts its best state at {t13:.9f}, which order 14 shares; a search "
+       f"finds a state that the multiplying wheel's order 4 fixes at {m13:.9f}",
+       len(orb7) == 25 and abs(t13 - 1.105228575) < 1e-9 and m13 > 1.16736394)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

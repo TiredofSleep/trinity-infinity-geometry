@@ -1,7 +1,7 @@
-# The genetic code: symmetry or optimum? (registered 2026-11-09, before its run)
+# The genetic code: symmetry or optimum? (registered 2026-11-08, before its run)
 
 > *how does this parallel our look at mitochondria?* · *do all 3 and the mitochondrial research in this next
-> pass* — the author, 8 and 9 November 2026
+> pass* — the author, 8 November 2026
 
 **The fence.** This tests a reading in biology's own terms. It does not claim that the seven-level coin governs
 genetic codes. Round 3 found a pattern: the best state sits on the symmetric side (even under the half turn), but
@@ -52,7 +52,7 @@ optimum follows the symmetry of the mutation weights, as the coin's sides follow
 
 ---
 
-## Scores (added after the run, 2026-11-09)
+## Scores (added after the run, 2026-11-08)
 
 Run by [`code_symmetry.py`](code_symmetry.py); its output is kept in [`code_symmetry.log`](code_symmetry.log), and
 [`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks it. **2 of 4 held.**
@@ -72,9 +72,9 @@ other way: the optimum's value lies on the symmetric side. Both are kept in
 
 ---
 
-## Part 2: Freeland and Hurst's weights (registered 2026-11-10, before its run)
+## Part 2: Freeland and Hurst's weights (registered 2026-11-08, before its run)
 
-> *do 17 and 19 and the position-weighted code test* — the author, 9 November 2026
+> *do 17 and 19 and the position-weighted code test* — the author, 8 November 2026
 
 Part 1's G2 died because its model weighed the three letters alike and its scale had ties. Part 2 fixes both.
 - *The weights.* Freeland and Hurst's (1998) misreading weights by letter position, as tabulated by Seo, Tlusty
@@ -121,7 +121,7 @@ own weights. H4 is forced. H3 and H5 are the new question.
 
 ---
 
-## Part 2 scores (added after the run, 2026-11-10)
+## Part 2 scores (added after the run, 2026-11-08)
 
 Run by [`code_weighted.py`](code_weighted.py); its output is kept in [`code_weighted.log`](code_weighted.log), and
 [`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks it. **4 of 5 held.**

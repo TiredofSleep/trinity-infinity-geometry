@@ -262,7 +262,7 @@ died: the deepest odd state there is not the Legendre state. What the run found,
 
 ---
 
-## Round 4: toward a proof at seven, the maximum at eleven, the sides at thirteen (registered 2026-11-09, before its run)
+## Round 4: toward a proof at seven, the maximum at eleven, the sides at thirteen (registered 2026-11-08, before its run)
 
 The author asked for all three of round 3's next questions. [`round4.py`](round4.py) is committed with these
 predictions, before its run. It uses round 3's two tools, and runs in three parts.
@@ -348,7 +348,7 @@ levels.
 
 ---
 
-## Round 4 scores (added after the run, 2026-11-09)
+## Round 4 scores (added after the run, 2026-11-08)
 
 Run by [`round4.py`](round4.py) in three parts; the output is kept in [`round4_seven.log`](round4_seven.log),
 [`round4_eleven.log`](round4_eleven.log) and [`round4_thirteen.log`](round4_thirteen.log). The runs are seeded.
@@ -378,7 +378,7 @@ a winner fixed by its symmetries, failed too (U13 held). The coin across five pr
 
 ---
 
-## Round 5: seventeen and nineteen (registered 2026-11-10, before its run)
+## Round 5: seventeen and nineteen (registered 2026-11-08, before its run)
 
 The author asked for 17 and 19. [`round5.py`](round5.py) is committed with these predictions, before its run.
 
@@ -441,7 +441,7 @@ and they rest on searches. V6 is the boldest: it says that the lesson of the str
 
 ---
 
-## Round 5 scores (added after the run, 2026-11-10)
+## Round 5 scores (added after the run, 2026-11-08)
 
 Run by [`round5.py`](round5.py); the output is kept in [`round5_seventeen.log`](round5_seventeen.log),
 [`round5_nineteen.log`](round5_nineteen.log) and [`round5_combined.log`](round5_combined.log). The runs are seeded.
@@ -468,9 +468,9 @@ streak ended at 19, and the margins grew instead of shrinking. The dead guesses 
 
 ---
 
-## Round 6: the author's prediction (registered 2026-11-10, not yet run)
+## Round 6: the author's prediction (registered 2026-11-08, not yet run)
 
-> *i'd predict that even only wins the lows, the odd wins the rest?* — the author, 10 November 2026, on seeing
+> *i'd predict that even only wins the lows, the odd wins the rest?* — the author, 8 November 2026, on seeing
 > round 5's nineteen
 
 Round 5 broke the even side's streak: the odd side won at 19. Two readings fit every prime so far, and they part
@@ -491,7 +491,7 @@ climbs on each side at each prime; at 29 that takes hours. Its script will be co
 
 ---
 
-## Round 6 scores (added after the run, 2026-11-10)
+## Round 6 scores (added after the run, 2026-11-08)
 
 Run by [`round6.py`](round6.py), committed at 66b4d0d before its run; the output is kept in
 [`round6_twentythree.log`](round6_twentythree.log), [`round6_twentynine.log`](round6_twentynine.log) and
@@ -512,10 +512,10 @@ seed, and kicks from the highest even tops, found the same even best, 11 times, 
 
 ---
 
-## Round 7: the author's 7-wheel (registered 2026-11-10, not yet run)
+## Round 7: the author's 7-wheel (registered 2026-11-08, not yet run)
 
 > *it must be related to the wheel of numbers revolving around 7? i am thinking shor's with a 7 wheel
-> conversion?* — the author, 10 November 2026, on seeing round 6
+> conversion?* — the author, 8 November 2026, on seeing round 6
 
 **Made exact.**
 - For a prime p other than 7, turn the 7-wheel: the powers of 7 modulo p. Its period r is what Shor's algorithm
@@ -551,7 +551,7 @@ that takes about three hours, at 37 about six. Its script will be committed befo
 
 ---
 
-## Round 8: the two-wheels test (registered 2026-11-10, before its run)
+## Round 8: the two-wheels test (registered 2026-11-08, before its run)
 
 The author asked for this test after a pause to look at the data from other angles.
 
@@ -592,3 +592,31 @@ reaches it, within 10⁻⁶.
 **Expected standing, stated before the run.** This tests a reading from the angles, by search inside symmetric
 families. The proposed mechanism, that a turning symmetry treats every direction of phase space alike, is not
 tested here.
+
+---
+
+## Round 8 scores (added after the run, 2026-11-08)
+
+Run by [`two_wheels.py`](two_wheels.py); the output is kept in [`two_wheels_A.log`](two_wheels_A.log),
+[`two_wheels_B.log`](two_wheels_B.log) and [`two_wheels_combined.log`](two_wheels_combined.log). **2 of 3 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| Y1 | **died** | at 13 the multiplying wheel wins: its order-4 family reaches 1.167364, and the turning wheel, whose only orders there are 7 and 14, reaches 1.105229. That is exact on the turning side: the verifier counts every sign choice in its order-7 family. The turning wheel wins at 11, 17, 19, 23 and 29 |
+| Y2 | held | the turning search reaches the winner at 17 (orders 3 and 6), 19 (order 4) and 29 (orders 5 and 10) |
+| Y3 | held | no family goes above a winner found so far |
+
+**What the death teaches.** The test compared the best of each wheel, and a small order fixes a large family: its
+eigenspaces have dimension about p/m. So the test mostly measured which wheel offers a small order. At 13 the turning
+wheel offers only 7 and 14, against the multiplying wheel's 3, 4, 6 and 12; at 23 it is the other way round. The
+death at 13 is not a search's miss. [`verify_seven_levels.py`](verify_seven_levels.py) counts every sign choice
+constant on the 25 orbits of the turning wheel's order 7, 2^25 in each eigenspace, and finds 1.105229 the best.
+
+**Read after the run** (post hoc, not registered). The logs already hold 14 pairs of families of equal size, one on
+each wheel, whose largest eigenspaces have the same dimension. The turning wheel wins 12 of them. It loses two:
+- at 13 in dimension 2 (order 7 against order 12), by 0.010;
+- at 19 in dimension 4 (order 5 against order 6), by 0.040.
+
+So at equal size a turning symmetry is usually the better one, not always. At 7 and 19 the turning wheel's order-4
+family also beat the multiplying wheel's larger order-3 family. The dead prediction is kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md).
