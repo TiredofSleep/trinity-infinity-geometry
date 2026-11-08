@@ -224,6 +224,11 @@ its own graveyard. These died, with what killed them:
   - **"No seven-level state has more Wigner negativity than the Legendre state"** (Q7, a registered guess). A
     search found 0.7325 against the Legendre state's 0.7283, at a state that is not even odd under the half turn
     (`towers/seven_levels/verify_seven_levels.log` gives it to 8 decimals).
+  - **"The Legendre state is still the deepest odd state at eleven levels"** (T8, a registered guess,
+    2026-11-08). A million climbs among the odd states found 1.029707, against the Legendre state's 0.787711, at a
+    state with 24 symmetries: the binary tetrahedral group, the strange state's group at three
+    (`towers/seven_levels/round3.log`; `verify_seven_levels.py` checks it). The Legendre state is the deepest odd
+    state at 3 and at 7, the second by an exhaustive count, but not at 11.
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

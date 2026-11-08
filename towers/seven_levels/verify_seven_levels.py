@@ -1,8 +1,12 @@
 """verify_seven_levels.py -- runs the eight predictions registered in PREREG.md (commit b42b65b) on a
 seven-level quantum system, and reports each as HELD or DIED with its evidence.  Then it checks the README's
-other lines, among them round 2's most negative state as recorded in most_negative.log.
+other lines: round 2's most negative state as recorded in most_negative.log, and round 3's results as recorded in
+round3.log (it uses round3.py's tools).
 
-numpy + scipy.  ASCII output.  Run:  python verify_seven_levels.py      (about half a minute)
+numpy + scipy + round3.py.  ASCII output.
+Run:  python verify_seven_levels.py           (about 45 seconds)
+      python verify_seven_levels.py --full    (also every one of the 2^24 sign choices on each side at seven levels;
+                                               about two and a half minutes)
 """
 import ctypes
 import itertools
@@ -583,6 +587,180 @@ forced("the most negative state in each eigenspace of the Fourier transform (a g
        f"-i: {best_in[-1j]:.6f}",
        abs(best_in[1] - 0.732522) < 1e-6 and abs(best_in[-1] - 0.732522) < 1e-6
        and abs(best_in[1j] - N_chi) < 1e-6 and abs(best_in[-1j] - 0.601107) < 1e-6)
+
+# ------------------------------------------------------------------ round 3 (round3.py; its output is round3.log)
+from fractions import Fraction
+
+import round3 as r3
+
+FULL = "--full" in sys.argv
+
+
+def amps(s):
+    v = np.array([complex(t.replace("i", "j")) for t in s.split(", ")])
+    return v / np.linalg.norm(v)
+
+
+def climbed(s, d, A):
+    """the recorded amplitudes (10 decimals), climbed back to their exact top by the sign ascent, in the recorded
+    phase (an eigenvector comes back with an arbitrary phase)"""
+    v = amps(s)
+    c = r3.ascend(v[None, :].copy(), A, d)[0][0]
+    z = np.vdot(c, v)
+    return c * z / abs(z)
+
+
+def strict_top(psi, A, d):
+    """the state is the top eigenvector of its own sign operator, with a gap below: a strict local maximum"""
+    W = r3.wigner(psi[None, :], A, d)[0]
+    ev, V = np.linalg.eigh(np.tensordot(np.where(W >= 0, 1.0, -1.0), A, axes=1) / d)
+    return (abs(ev[-1] - np.abs(W).sum()) < 1e-12 and abs(abs(np.vdot(V[:, -1], psi)) - 1) < 1e-10
+            and ev[-1] - ev[-2] > 0.1)
+
+
+def root_near(coeffs, x0, h=Fraction(1, 10 ** 9)):
+    """an exact sign change of the integer polynomial across [x0 - h, x0 + h] proves a root there"""
+    x0 = Fraction(x0).limit_denominator(10 ** 15)
+
+    def val(x):
+        v = Fraction(0)
+        for c in coeffs:
+            v = v * x + c
+        return v
+    return val(x0 - h) * val(x0 + h) < 0
+
+
+print()
+print("round 3:")
+A5, (E5, O5), lins5 = r3.phase_points(5), r3.sides(5), r3.linear_parts(5)
+orb5 = r3.half_turn_orbits(5)
+ve5, ce5, rbe5, _ = r3.exact_best(r3.compress(A5, E5), 5, orb5, {0: 1})
+vo5, co5, rbo5, _ = r3.exact_best(r3.compress(A5, O5), 5, orb5, {0: -1})
+jp = (math.sqrt(5) - 2 + math.sqrt(15 + 6 * math.sqrt(5))) / 10
+e5, o5 = E5 @ rbe5(ce5[0])[0], O5 @ rbo5(co5[0])[0]
+De5 = r3.describe(r3.wigner(e5[None, :], A5, 5)[0], 5, lins5)
+Do5 = r3.describe(r3.wigner(o5[None, :], A5, 5)[0], 5, lins5)
+NL5 = r3.negativity(r3.wigner(r3.legendre(5)[None, :], A5, 5)[0])
+forced(f"five levels, every sign choice on each side (2^12 each): the best even state is Jain and Prakash's, "
+       f"{(ve5[0] - 1) / 2:.12f} = (sqrt5 - 2 + sqrt(15 + 6 sqrt5))/10, with {De5[0]} symmetries, one ceiling "
+       f"point and deepest value {De5[5]:.6f}; 5(1 + 2N) is a root of x^4 - 12x^3 + 14x^2 + 12x + 1; the best odd "
+       f"state has {(vo5[0] - 1) / 2:.6f}, also with {Do5[0]} symmetries; the Legendre state of 5, which is even, "
+       "has exactly 2/5",
+       abs((ve5[0] - 1) / 2 - jp) < 1e-12 and De5[0] == 6 and De5[2] == 1 and abs(De5[5] + 0.092780) < 1e-6
+       and root_near([1, -12, 14, 12, 1], 5 * (1 + 2 * jp)) and abs((vo5[0] - 1) / 2 - 0.433070425601) < 1e-11
+       and Do5[0] == 6 and Do5[3] == 1 and abs(NL5 - 0.4) < 1e-12)
+
+A7r3, lins7 = r3.phase_points(7), r3.linear_parts(7)
+E7, O7 = r3.sides(7)
+REC7 = ("-0.0864103215+0.0000000000i, -0.3633885010+0.0000000000i, -0.0775903120-0.0000000000i, "
+          "+0.5984940843-0.0000000000i, +0.5984940843-0.0000000000i, -0.0775903120+0.0000000000i, "
+          "-0.3633885010-0.0000000000i")
+rec7 = climbed(REC7, 7, A7r3)
+Wr7 = r3.wigner(rec7[None, :], A7r3, 7)[0]
+N_rec = r3.negativity(Wr7)
+chi7 = r3.legendre(7)
+REC7_X = [1, -36, 258, 3468, -39873, -108680, 1734236, 1510968, -26665265, -10245204, 127009090, 35031356,
+           -154719151]
+shifted = r3.centred(r3.ascend(top[None, :].copy(), A7r3, 7)[0][0], A7r3, 7)   # round 2's state, at its centre
+forced(f"round 2's record, moved to its centre, is real and even, (a, b, c, e, e, c, b); it is a strict local "
+       f"maximum, and x = 7(1 + 2N) = {7 * (1 + 2 * N_rec):.12f} is a root of the recorded degree-12 polynomial; "
+       "the Legendre state's x is a root of x^3 - 15x^2 - 37x - 13",
+       abs(abs(np.vdot(shifted, rec7)) - 1) < 1e-9 and np.abs(rec7.imag).max() < 1e-9
+       and np.allclose(rec7, rec7[(-np.arange(7)) % 7]) and strict_top(rec7, A7r3, 7)
+       and abs(N_rec - 0.732522000010631) < 1e-12 and root_near(REC7_X, 7 * (1 + 2 * N_rec))
+       and strict_top(chi7, A7r3, 7) and root_near([1, -15, -37, -13], 7 * (1 + 2 * N_chi)))
+alone_rec = r3.fixed_by_symmetry_alone(rec7, A7r3, 7, lins7)
+alone_chi = r3.fixed_by_symmetry_alone(chi7, A7r3, 7, lins7)
+forced(f"the Legendre state is the only state its 12 symmetries fix (residual {alone_chi[1]:.0e}); the record is not: "
+       f"its 4 symmetries leave a two-dimensional family, and it is the best point of it (residual {alone_rec[1]:.1f})",
+       alone_chi[0] and not alone_rec[0])
+
+# every kind of symmetry other than the half turn, counted exhaustively (as round3.py does for T5)
+w7_, X7_, Z7_, F7_, P7_, T7_ = r3.basics(7)
+M2_ = np.eye(7)[[(pow(2, -1, 7) * k) % 7 for k in range(7)]]
+
+
+def best_fixed(U):
+    orbits = r3.cycles(r3.perm_of(U, A7r3))
+    return max((r3.exact_best(r3.compress(A7r3, Q), 7, orbits)[0][0] - 1) / 2 for Q in r3.eigenspaces(U))
+
+
+kinds = {"x2": best_fixed(M2_), "shift": best_fixed(X7_), "shear": best_fixed(T7_)}
+seen_, moved_ = set(), []
+for j in range(1, 7):
+    for a1 in range(7):
+        for a2 in range(7):
+            U = mp(Z7_, a2) @ mp(X7_, a1) @ mp(T7_, j)
+            pm = r3.perm_of(U, A7r3)
+            if r3.perm_order(pm) == 7 and not (pm == np.arange(49)).any():
+                pw, elems = np.arange(49), []
+                for _ in range(6):
+                    pw = pm[pw]
+                    elems.append(tuple(pw))
+                if frozenset(elems) not in seen_:
+                    seen_.add(frozenset(elems))
+                    moved_.append(U)
+kinds["moved"] = max(best_fixed(U) for U in moved_)
+forced(f"every other kind of symmetry, counted exhaustively: the best state fixed by x2 has {kinds['x2']:.6f} (the "
+       f"Legendre state), by the shift {kinds['shift']:.6f}, by the shear {kinds['shear']:.6f}, and by the "
+       f"{len(moved_)} groups of shears with a shift that fix no point {kinds['moved']:.6f}: none beats the record",
+       abs(kinds["x2"] - N_chi) < 1e-12 and kinds["shift"] < 1e-12 and abs(kinds["shear"] - 0.320997086245) < 1e-11
+       and len(moved_) == 42 and abs(kinds["moved"] - 0.725152059270) < 1e-11 and max(kinds.values()) < N_rec)
+
+if FULL:
+    orb7 = r3.half_turn_orbits(7)
+    vo7, co7, rbo7, _ = r3.exact_best(r3.compress(A7r3, O7), 7, orb7, {0: -1})
+    ve7, ce7, rbe7, _ = r3.exact_best(r3.compress(A7r3, E7), 7, orb7, {0: 1})
+    top_o7, top_e7 = co7[vo7 > vo7[0] - 1e-9], ce7[ve7 > ve7[0] - 1e-9]
+    W_chi7 = r3.wigner(chi7[None, :], A7r3, 7)[0]
+    ok_o = all(r3.carries(W_chi7, r3.wigner((O7 @ rbo7(c)[0])[None, :], A7r3, 7)[0], 7, lins7) for c in top_o7)
+    ok_e = all(r3.carries(Wr7, r3.wigner((E7 @ rbe7(c)[0])[None, :], A7r3, 7)[0], 7, lins7) for c in top_e7)
+    forced(f"(--full) every one of the 2^24 odd sign choices: the best is the Legendre state, reached by {len(top_o7)} "
+           f"choices, all its images; every one of the 2^24 even choices: the best is the record, reached by "
+           f"{len(top_e7)}, all its images",
+           abs((vo7[0] - 1) / 2 - N_chi) < 1e-12 and len(top_o7) == 28 and ok_o
+           and abs((ve7[0] - 1) / 2 - N_rec) < 1e-12 and len(top_e7) == 84 and ok_e)
+
+A11, lins11 = r3.phase_points(11), r3.linear_parts(11)
+TET11 = ("+0.0000000000+0.0000000000i, -0.0662691948-0.0000000000i, +0.2299431906+0.0000000000i, "
+          "+0.4981621116-0.0000000000i, -0.3097058288+0.0000000000i, +0.3140880978-0.0000000000i, "
+          "-0.3140880978+0.0000000000i, +0.3097058288-0.0000000000i, -0.4981621116+0.0000000000i, "
+          "-0.2299431906-0.0000000000i, +0.0662691948+0.0000000000i")
+WIN11 = ("+0.4767846184+0.0000000000i, -0.3225795083-0.0992783298i, -0.2160886441-0.1863491300i, "
+          "-0.0966836082-0.0356497256i, -0.0439107553-0.3891179782i, -0.0768803819-0.1453754310i, "
+          "-0.0768803819-0.1453754310i, -0.0439107553-0.3891179782i, -0.0966836082-0.0356497256i, "
+          "-0.2160886441-0.1863491300i, -0.3225795083-0.0992783298i")
+tet = climbed(TET11, 11, A11)
+win = climbed(WIN11, 11, A11)
+Wt11, Ww11 = r3.wigner(tet[None, :], A11, 11)[0], r3.wigner(win[None, :], A11, 11)[0]
+Nt, Nw = r3.negativity(Wt11), r3.negativity(Ww11)
+Dt, Dw = r3.describe(Wt11, 11, lins11), r3.describe(Ww11, 11, lins11)
+TET11_X = [1, -34, -615, 23880, 7074, -4124748, 20637882, 173161416, -1637462595, 3726459230, -1235597747]
+WIN11_X = [1, -110, 4059, -22220, -2305347, 53173846, 116588263, -17214868088, 141074198749, 2091799880962,
+           -36379724664129, -39652596935732, 3910966184300153, -14556796029974154, -208296087585036341,
+           1525841726814407024, 4883102424135078803, -68624080291106399642, 5094817285875423073,
+           1629009436243920609164, -2570676344121824786265, -21418168336766257247246, 50267931441656895942437,
+           162072855148505968005768, -416000538733381509421745, -769288232150255907576058,
+           1555464922065730094433861, 2391561387163614417129972, -1847323033936729869177757,
+           -3543359770787538121857470, -1082294068352599534974487]
+L11_ = r3.legendre(11)
+NL11_ = r3.negativity(r3.wigner(L11_[None, :], A11, 11)[0])
+forced(f"eleven levels, the best odd state found: {Nt:.12f}, {Dt[0]} symmetries with orders {Dt[1]} (the binary "
+       f"tetrahedral group, the strange state's own), on the floor at its centre, real, the only state its symmetries "
+       f"fix, a strict local maximum; 11(1 + 2N) is a root of the recorded degree-10 polynomial; the Legendre state "
+       f"of 11 has only {NL11_:.6f}, though it is a local maximum too",
+       abs(Nt - 1.029706813152930) < 1e-12 and Dt[0] == 24 and Dt[1] == {1: 1, 2: 1, 3: 8, 4: 6, 6: 8}
+       and Dt[3] == 1 and np.abs(tet.imag).max() < 1e-9 and r3.fixed_by_symmetry_alone(tet, A11, 11, lins11)[0]
+       and strict_top(tet, A11, 11) and root_near(TET11_X, 11 * (1 + 2 * Nt))
+       and abs(NL11_ - 0.787711348725826) < 1e-12 and strict_top(L11_, A11, 11))
+forced(f"eleven levels, the best state found: {Nw:.12f}, even, on the ceiling +1/11 at its centre only; its one "
+       f"symmetry is the half turn there; negative at {Dw[4]} of the 121 points, none deeper than {Dw[5]:.6f}; a "
+       "strict local maximum, not fixed by its symmetry alone; 11(1 + 2N) is a root of the recorded degree-30 "
+       f"polynomial; it beats the odd side by {Nw - Nt:.6f}",
+       abs(Nw - 1.032585792266799) < 1e-12 and Dw[0] == 2 and Dw[2] == 1 and Dw[3] == 0 and Dw[4] == 44
+       and abs(Dw[5] + 0.039577) < 1e-6 and strict_top(win, A11, 11)
+       and not r3.fixed_by_symmetry_alone(win, A11, 11, lins11)[0] and root_near(WIN11_X, 11 * (1 + 2 * Nw))
+       and Nw - Nt > 0.0028)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

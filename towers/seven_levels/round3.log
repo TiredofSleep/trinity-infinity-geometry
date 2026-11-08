@@ -1,0 +1,94 @@
+three levels: the best even state 0.333333333333, the best odd state 0.333333333333 (all 16 sign choices on each side)
+T1 HELD: both sides reach 1/3 = 0.333333333333
+
+five levels: Jain and Prakash's maximum (sqrt5 - 2 + sqrt(15 + 6 sqrt5))/10 = 0.556677223351
+  the best even state 0.556677223351; the best odd state 0.433070425601 (all 4096 sign choices each)
+  200000 sign ascents: best 0.556677223351; 15565 reached it; 0 still moving
+T2 HELD: nothing beats 0.556677, and the best even state reaches it
+  the best even ququint state: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 1, floor points 0, negative points 6, deepest -0.092780
+  the best odd ququint state: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 0, floor points 1, negative points 7, deepest -0.200000
+  the Legendre state of 5 (even here) has 0.400000; symmetries 8, orders {1: 1, 2: 1, 4: 6}, ceiling points 1, floor points 0, negative points 8, deepest -0.050000
+[2 s]
+
+seven levels: the round-2 record, polished, 0.732522000011; the Legendre state 0.728262097006 = (4cos(2pi/7) - 4cos(6pi/7) - 1)/7 = 0.728262097006
+  odd side, all 16777216 sign choices: best 0.728262097006, reached by 28 sign choices, 28 of them the Legendre state up to symmetry; the next value 0.721570211654
+T3 HELD: the best odd state is the Legendre state
+[34 s]
+  even side, all 16777216 sign choices: best 0.732522000011, reached by 84 sign choices, 84 of them the record up to symmetry; the next value 0.729722269845
+T4 HELD: the best even state is the round-2 record
+[81 s]
+  states fixed by the multiplier x2 (order 3): 17 orbits; the best 0.728262097006
+  states fixed by the shift (order 7): 7 orbits; the best 0.000000000000
+  states fixed by the shear (order 7): 13 orbits; the best 0.320997086245
+  states fixed by a shear with a shift that fixes no point (42 such groups of order 7): the best 0.725152059270
+T5 HELD: the best state with any symmetry has 0.732522000011
+[82 s]
+  1000000 sign ascents in the whole space: best 0.732522000011; 1460 reached the record; 0 still moving
+T6 HELD: no start beats the record, and the record is reached
+[107 s]
+
+eleven levels: the Legendre state has 0.787711348726; symmetries 20, orders {1: 1, 2: 1, 4: 10, 5: 4, 10: 4}, ceiling points 0, floor points 1, negative points 41, deepest -0.090909
+  1000000 sign ascents among even states:   best 1.032585792267 (reached 15969 times; 0 still moving)
+  1000000 sign ascents among odd states:    best 1.029706813153 (reached 3367 times; 0 still moving)
+  1000000 sign ascents in the whole space: best 1.032585792267 (reached 181 times; 0 still moving)
+T7 HELD: the even side beats the odd side, 1.032586 against 1.029707
+T8 DIED: no odd state found beats the Legendre state (1.029707 against 0.787711); the best odd state found is the Legendre state: False
+T9 HELD: the best state found beats the Legendre state, 1.032586 against 0.787711
+T10 HELD: the best state found touches the ceiling +1/11 at 1 point(s) and the floor at 0
+  it has: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 44, deepest -0.039577
+[291 s]
+
+ROUND 3 SCORE: 9 of 10 held: T1 held, T2 held, T3 held, T4 held, T5 held, T6 held, T7 held, T8 died, T9 held, T10 held
+
+BEYOND THE REGISTERED ROUND (not scored)
+  Exact values. x = d(1 + 2N) is d times the sum of |W|; each polynomial is exact and irreducible over Q.
+  five levels, the best even state (Jain and Prakash's): N = 0.556677223350563; x is a root of x**4 - 12*x**3 + 14*x**2 + 12*x + 1; fixed by its symmetries alone: True
+  five levels, the best odd state: N = 0.433070425600584; x is a root of x**4 - 16*x**3 + 66*x**2 - 16*x - 179; fixed by its symmetries alone: True
+  five levels, the Legendre state: N = 0.400000000000000, which is 2/5: True
+  seven levels, the record, the best even state: N = 0.732522000010631
+    x is a root of x**12 - 36*x**11 + 258*x**10 + 3468*x**9 - 39873*x**8 - 108680*x**7 + 1734236*x**6 + 1510968*x**5 - 26665265*x**4 - 10245204*x**3 + 127009090*x**2 + 35031356*x - 154719151 (degree 12; the root matches to 0.0e+00)
+    N is a root of 13841287201*n**12 + 47455841832*n**11 + 50845544820*n**10 - 161414428*n**9 - 36543073539*n**8 - 21038229478*n**7 + 1623203253*n**6 + 4468107336*n**5 + 778010436*n**4 - 252144788*n**3 - 71927492*n**2 + 1560888*n + 1055272
+    fixed by its symmetries alone: False (largest residual 2.4e+00)
+    moved to its centre: -0.2219874879+0.2783635053i, -0.1303338875-0.1634335256i, +0.5403605029+0.0000000000i, -0.2862341998+0.1378431257i, -0.2862341998+0.1378431257i, +0.5403605029+0.0000000000i, -0.1303338875-0.1634335256i
+  seven levels, the Legendre state, the best odd state: N = 0.728262097006373
+    x is a root of x**3 - 15*x**2 - 37*x - 13 (degree 3; the root matches to 0.0e+00)
+    N is a root of 343*n**3 + 147*n**2 - 175*n - 83
+    fixed by its symmetries alone: True (largest residual 2.4e-15)
+    moved to its centre: +0.0000000000+0.0000000000i, +0.4082482905+0.0000000000i, +0.2545386457+0.3191813661i, +0.0908437909+0.3980126535i, -0.0908437909-0.3980126535i, -0.2545386457-0.3191813661i, -0.4082482905+0.0000000000i
+  the ten highest tops of the 1000000 climbs at seven levels, with how often each was reached: 0.732522000 x1460, 0.729722270 x4765, 0.729616128 x11533, 0.728262097 x351, 0.725917449 x16296, 0.725878292 x5968, 0.725152059 x944, 0.723417505 x12459, 0.721570212 x79, 0.721456166 x2509
+    top 0.732522000: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 1, floor points 0, negative points 16, deepest -0.067999; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: False
+      -0.3560402869+0.0000000000i, +0.3176959937-0.0000000000i, -0.2090393253+0.0000000000i, +0.5403605029+0.0000000000i, +0.5403605029-0.0000000000i, -0.2090393253+0.0000000000i, +0.3176959937-0.0000000000i
+    top 0.729722270: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 16, deepest -0.064072; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: False
+      -0.4884469703-0.0278534427i, -0.2590037611-0.1098332820i, +0.5061329371-0.0000000000i, +0.2024070771+0.0635326571i, +0.2024070771+0.0635326571i, +0.5061329371+0.0000000000i, -0.2590037611-0.1098332820i
+    top 0.729616128: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 15, deepest -0.072248; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: False
+      +0.5755883879+0.0000000000i, +0.1863108380-0.2336264013i, -0.1516225253+0.1901286330i, -0.1715681933-0.0000000000i, -0.0851033430+0.3728621078i, -0.1115077830-0.4885475182i, +0.0680236188-0.2980309470i
+    top 0.728262097: symmetries 12, orders {1: 1, 2: 1, 3: 2, 4: 6, 6: 2}, ceiling points 0, floor points 1, negative points 13, deepest -0.142857; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: True
+      +0.0000000000+0.0000000000i, -0.3399158686-0.1636948549i, +0.0724455058-0.0908437909i, -0.5866517290+0.0000000000i, +0.5866517290+0.0000000000i, -0.0724455058+0.0908437909i, +0.3399158686+0.1636948549i
+    top 0.725917449: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 17, deepest -0.075527; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: False
+      +0.6885588014+0.0000000000i, -0.0928621246-0.2510810026i, +0.3025576142+0.1229608944i, -0.2223677146-0.2877674769i, -0.3531287929-0.0335297506i, -0.1592111260-0.1383021632i, +0.2119097349-0.0099058025i
+    top 0.725878292: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 15, deepest -0.137597; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: False
+      +0.0199725910-0.4438057914i, +0.0359120562-0.0471748168i, +0.4892857840+0.0000000000i, -0.0491058107-0.3589883208i, -0.3319923832+0.0127979107i, +0.1703160736-0.2850499954i, +0.0245303452-0.4551837769i
+    top 0.725152059: symmetries 21, orders {1: 1, 3: 14, 7: 6}, ceiling points 0, floor points 0, negative points 21, deepest -0.034531; 3 samples, one state up to symmetry: True; fixed by its symmetries alone: True
+      +0.0969211334-0.0466747579i, +0.3924256577-0.1889822365i, +0.0239375431-0.1048772290i, -0.4355596199-0.0000000000i, +0.3924256577+0.1889822365i, +0.6294018868+0.0000000000i, +0.0239375431-0.1048772290i
+  eleven levels, the Legendre state: a local maximum (a climb from it stays put: True); 2 of the 1000000 odd climbs ended there
+  eleven levels, the even climbs: the five highest tops, with how often each was reached: 1.032585792 x15969, 1.031268187 x13986, 1.029183767 x5110, 1.029154285 x7111, 1.028524243 x4824
+    top 1.032585792: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 44, deepest -0.039577; 3 samples, one state up to symmetry: True
+    top 1.031268187: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 46, deepest -0.039448; 3 samples, one state up to symmetry: False
+    top 1.029183767: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 42, deepest -0.038581; 3 samples, one state up to symmetry: True
+  eleven levels, the odd climbs: the five highest tops, with how often each was reached: 1.029706813 x3367, 1.011847749 x17308, 1.004460349 x40592, 1.002970197 x10087, 0.997752609 x2556
+    top 1.029706813: symmetries 24, orders {1: 1, 2: 1, 3: 8, 4: 6, 6: 8}, ceiling points 0, floor points 1, negative points 49, deepest -0.090909; 3 samples, one state up to symmetry: True
+    top 1.011847749: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 0, floor points 1, negative points 45, deepest -0.090909; 3 samples, one state up to symmetry: True
+    top 1.004460349: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 45, deepest -0.090909; 3 samples, one state up to symmetry: True
+  eleven levels, the whole-space climbs: the five highest tops, with how often each was reached: 1.032585792 x181, 1.032535829 x226, 1.031268187 x66, 1.030625483 x84, 1.030144914 x176
+    top 1.032585792: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 44, deepest -0.039577; 3 samples, one state up to symmetry: True
+    top 1.032535829: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 46, deepest -0.042013; 3 samples, one state up to symmetry: True
+    top 1.031268187: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 46, deepest -0.039448; 3 samples, one state up to symmetry: False
+  eleven levels, the best odd state found: N = 1.029706813152929
+    x is a root of x**10 - 34*x**9 - 615*x**8 + 23880*x**7 + 7074*x**6 - 4124748*x**5 + 20637882*x**4 + 173161416*x**3 - 1637462595*x**2 + 3726459230*x - 1235597747 (degree 10; the root matches to 7.1e-15)
+    fixed by its symmetries alone: True (largest residual 3.1e-15)
+    moved to its centre: +0.0000000000+0.0000000000i, -0.3013653229-0.0884888429i, -0.0094310897-0.0655946699i, +0.2028141863-0.2340600483i, +0.2206288757-0.0647824830i, +0.4981621116-0.0000000000i, -0.4981621116+0.0000000000i, -0.2206288757+0.0647824830i, -0.2028141863+0.2340600483i, +0.0094310897+0.0655946699i, +0.3013653229+0.0884888429i
+  eleven levels, the best state found, which is even: N = 1.032585792266799
+    x is a root of x**30 - 110*x**29 + 4059*x**28 - 22220*x**27 - 2305347*x**26 + 53173846*x**25 + 116588263*x**24 - 17214868088*x**23 + 141074198749*x**22 + 2091799880962*x**21 - 36379724664129*x**20 - 39652596935732*x**19 + 3910966184300153*x**18 - 14556796029974154*x**17 - 208296087585036341*x**16 + 1525841726814407024*x**15 + 4883102424135078803*x**14 - 68624080291106399642*x**13 + 5094817285875423073*x**12 + 1629009436243920609164*x**11 - 2570676344121824786265*x**10 - 21418168336766257247246*x**9 + 50267931441656895942437*x**8 + 162072855148505968005768*x**7 - 416000538733381509421745*x**6 - 769288232150255907576058*x**5 + 1555464922065730094433861*x**4 + 2391561387163614417129972*x**3 - 1847323033936729869177757*x**2 - 3543359770787538121857470*x - 1082294068352599534974487 (degree 30; the root matches to 7.1e-15)
+    fixed by its symmetries alone: False (largest residual 1.6e+00)
+    moved to its centre: +0.4767846184+0.0000000000i, -0.3225795083-0.0992783298i, -0.2160886441-0.1863491300i, -0.0966836082-0.0356497256i, -0.0439107553-0.3891179782i, -0.0768803819-0.1453754310i, -0.0768803819-0.1453754310i, -0.0439107553-0.3891179782i, -0.0966836082-0.0356497256i, -0.2160886441-0.1863491300i, -0.3225795083-0.0992783298i
+[406 s]

@@ -12,9 +12,11 @@ Both tools rest on one identity: sum_u |W_u| is the largest value of sum_u s_u W
     the best state fixed by g is the best top eigenvector, inside g's eigenspace, over sign choices constant on
     those orbits. For the half turn at seven levels that is 2^24 sign choices on each side, and all are tried.
 
-numpy (and sympy for one exact polynomial).  One process at below-normal priority, at most four threads.
+numpy (and sympy for the exact polynomials).  One process at below-normal priority, at most four threads.
 ASCII output; also written to round3.log.
 Run:  python round3.py      (about seven minutes; seeded, so a rerun repeats it)
+After the first run, the unscored section gained the exact polynomials and the recorded states, and the wording of
+T8's output line was corrected. The scored code did not change, and a second run repeated every scored line.
 """
 import os
 
@@ -274,37 +276,78 @@ def describe(W, d, lins):
 
 
 # ------------------------------------------------------------------ one exact polynomial
-def minimal_polynomial(signs, d, target):
-    """minimal polynomial over Q of the total negativity whose sign pattern is `signs` (exact, in Z[w])"""
+def minimal_polynomial(signs, d, side, target):
+    """the exact minimal polynomials of x = d * sum|W| = d(1 + 2N) and of N, for a state on one side whose sign
+    pattern is `signs`.  The pattern is symmetric, so d*H = sum_u s_u A_u (entries in Z[w]) splits into an even and an
+    odd block; the block is taken on an integer basis, and the norm down to Q is the product over the conjugates
+    w -> w^g, g = 1, ..., (d-1)/2."""
     import sympy as sp
     w, x, n = sp.symbols("w x n")
     cyc = sp.Poly(sum(w ** j for j in range(d)), w)
-    M = [[0] * d for _ in range(d)]
+    H = [[0] * d for _ in range(d)]
     for q in range(d):
         for p in range(d):
             for m in range(d):
-                M[(2 * q - m) % d][m] += int(signs[q * d + p]) * w ** ((2 * p * (q - m)) % d)
-    cp = sp.Poly(sp.Matrix(M).charpoly(x).as_expr(), x)                # d * H = sum_u s_u A_u, entries in Z[w]
-    coeffs = [sp.rem(sp.Poly(c, w), cyc).as_expr() for c in cp.all_coeffs()]
-    assert d % 4 == 3                                                  # then the squares stand for the pairs {g, -g}
-    norm = 1                                                           # the product over the real conjugates
-    for g in sorted({k * k % d for k in range(1, d)}):
+                H[(2 * q - m) % d][m] += int(signs[q * d + p]) * w ** ((2 * p * (q - m)) % d)
+    half = (d - 1) // 2
+    V = [[0] * (half + (side == "even")) for _ in range(d)]            # |0>, |j> + |-j>  or  |j> - |-j>
+    if side == "even":
+        V[0][0] = 1
+    for j in range(1, half + 1):
+        c = j - (side == "odd")
+        V[j][c], V[d - j][c] = 1, (1 if side == "even" else -1)
+    V = sp.Matrix(V)
+    M = (V.T * V).inv() * V.T * sp.Matrix(H) * V
+    M = M.applyfunc(lambda e: sp.rem(sp.Poly(sp.expand(e), w), cyc).as_expr() if e != 0 else 0)
+    coeffs = [sp.rem(sp.Poly(sp.expand(c), w), cyc).as_expr() for c in sp.Poly(M.charpoly(x).as_expr(), x).all_coeffs()]
+    norm = 1
+    for g in range(1, half + 1):
         norm *= sum(sp.expand(c.subs(w, w ** g)) * x ** (len(coeffs) - 1 - i) for i, c in enumerate(coeffs))
-    norm = sp.Poly(sp.expand(norm), x)
-    red = [sp.rem(sp.Poly(c, w), cyc).as_expr() for c in norm.all_coeffs()]
-    assert all(r.is_Integer for r in red), "the norm should have integer coefficients"
-    poly = sp.Poly(sum(r * x ** (len(red) - 1 - i) for i, r in enumerate(red)), x)
-    lam = d * (1 + 2 * target)                                         # d * sum|W| = d * (1 + 2N)
-    best = None
-    for f, _ in sp.factor_list(poly)[1]:
-        err = min(abs(complex(r) - lam) for r in sp.Poly(f, x).nroots(n=30))
-        if best is None or err < best[0]:
-            best = (err, f)
-    g = sp.Poly(sp.Poly(best[1], x).as_expr().subs(x, d * (1 + 2 * n)), n)
-    g = sp.Poly(sp.primitive(g.as_expr())[1], n)
-    if g.LC() < 0:
-        g = -g
-    return g, best[0]
+    red = [sp.rem(sp.Poly(c, w), cyc).as_expr() for c in sp.Poly(sp.expand(norm), x).all_coeffs()]
+    assert all(c.is_Rational for c in red), "the norm should have rational coefficients"
+    poly = sp.Poly(sum(c * x ** (len(red) - 1 - i) for i, c in enumerate(red)), x)
+    lam = d * (1 + 2 * target)
+    err, f = min(((min(abs(complex(rt) - lam) for rt in sp.Poly(f, x).nroots(n=40)), f)
+                  for f, _ in sp.factor_list(poly)[1]), key=lambda t: t[0])
+    fx = sp.Poly(f, x).monic()
+    g = sp.Poly(sp.primitive(fx.as_expr().subs(x, d * (1 + 2 * n)))[1], n)
+    return fx, (-g if g.LC() < 0 else g), err
+
+
+def centred(psi, A, d):
+    """move the state's single ceiling or floor point, if it has one, to the centre; make its largest amplitude real"""
+    W = wigner(psi[None, :], A, d)[0]
+    ext = np.where(np.abs(np.abs(W) - 1 / d) < 1e-9)[0]
+    if len(ext) == 1:
+        w, X, Z, F, P, T = basics(d)
+        q0, p0 = divmod(int(ext[0]), d)
+        psi = (np.linalg.matrix_power(Z, p0) @ np.linalg.matrix_power(X, q0)).conj().T @ psi
+    psi = psi / np.linalg.norm(psi)
+    return psi * np.exp(-1j * np.angle(psi[int(np.argmax(np.abs(psi)))]))
+
+
+def fixed_by_symmetry_alone(psi, A, d, lins):
+    """is the state the only one its symmetries fix (in its own eigenvalue type)?  The operators that commute with
+    its symmetries are spanned by the sums of A_u over the symmetry orbits; it is the only one exactly when it is an
+    eigenvector of every such sum.  Returns that verdict and the largest residual."""
+    W = wigner(psi[None, :], A, d)[0]
+    sym = symmetries(W, d, lins)
+    label, changed = np.arange(d * d), True
+    while changed:                                                     # label each point by its orbit's least point
+        changed = False
+        for g in sym:
+            new = np.minimum(label, label[g])
+            if (new != label).any():
+                label, changed = new, True
+    worst = 0.0
+    for o in np.unique(label):
+        v = A[label == o].sum(axis=0) @ psi
+        worst = max(worst, np.linalg.norm(v - np.vdot(psi, v) * psi))
+    return worst < 1e-8, worst
+
+
+def amplitudes(psi):
+    return ", ".join(f"{z.real:+.10f}{z.imag:+.10f}i" for z in psi)
 
 
 # ------------------------------------------------------------------ the round
@@ -473,10 +516,10 @@ def main():
     SC["T7"] = be > odd_side + 1e-6
     say(f"T7 {'HELD' if SC['T7'] else 'DIED'}: the even side beats the odd side, {be:.6f} against {odd_side:.6f}")
     Wbo = wigner((O @ reps_o[max(reps_o)][0])[None, :], A, d)[0]
-    reached = abs(bo - NL11) < 1e-6 and carries(WL11, Wbo, d, lins11)
+    is_legendre = abs(bo - NL11) < 1e-6 and carries(WL11, Wbo, d, lins11)
     SC["T8"] = bo < NL11 + 1e-6
     say(f"T8 {'HELD' if SC['T8'] else 'DIED'}: no odd state found beats the Legendre state ({bo:.6f} against "
-        f"{NL11:.6f}); the search reached the Legendre state itself: {reached}")
+        f"{NL11:.6f}); the best odd state found is the Legendre state: {is_legendre}")
     SC["T9"] = bf > NL11 + 1e-6
     say(f"T9 {'HELD' if SC['T9'] else 'DIED'}: the best state found beats the Legendre state, {bf:.6f} against "
         f"{NL11:.6f}")
@@ -494,35 +537,70 @@ def main():
 
     # ---------------------------------------------------------- beyond the registered round (not scored)
     say("\nBEYOND THE REGISTERED ROUND (not scored)")
+    say("  Exact values. x = d(1 + 2N) is d times the sum of |W|; each polynomial is exact and irreducible over Q.")
+    d = 5
+    A = phase_points(d)
+    E, O = sides(d)
+    orb = half_turn_orbits(d)
+    for name, Q, side, sgn in (("the best even state (Jain and Prakash's)", E, "even", +1),
+                               ("the best odd state", O, "odd", -1)):
+        v, c, rb, _ = exact_best(compress(A, Q), d, orb, {0: sgn})
+        phi, lam = rb(c[0])
+        W = wigner((Q @ phi)[None, :], A, d)[0]
+        fx, g, err = minimal_polynomial(np.where(W >= 0, 1, -1), d, side, (lam - 1) / 2)
+        say(f"  five levels, {name}: N = {(lam - 1) / 2:.15f}; x is a root of {fx.as_expr()}; fixed by its "
+            f"symmetries alone: {fixed_by_symmetry_alone(Q @ phi, A, d, lins5)[0]}")
+    N = negativity(wigner(legendre(5)[None, :], A, d)[0])
+    say(f"  five levels, the Legendre state: N = {N:.15f}, which is 2/5: {abs(N - 0.4) < 1e-12}")
     d = 7
     A = phase_points(d)
     E, O = sides(d)
-    for name, (phi, lam), Q in (("even", even_top, E), ("odd", odd_top, O)):
-        W = wigner((Q @ phi)[None, :], A, d)[0]
-        g, err = minimal_polynomial(np.where(W >= 0, 1, -1), d, (lam - 1) / 2)
-        say(f"  the best {name} seven-level state: its total negativity N = {(lam - 1) / 2:.15f} is a root of "
-            f"{g.as_expr()} (degree {g.degree()}; the root matches to {err:.1e})")
-    # the landscape of the million ascents at seven levels
+    for name, (phi, lam), Q, side in (("the record, the best even state", even_top, E, "even"),
+                                      ("the Legendre state, the best odd state", odd_top, O, "odd")):
+        psi = centred(Q @ phi, A, d)
+        W = wigner(psi[None, :], A, d)[0]
+        fx, g, err = minimal_polynomial(np.where(W >= 0, 1, -1), d, side, (lam - 1) / 2)
+        alone, res = fixed_by_symmetry_alone(psi, A, d, lins7)
+        say(f"  seven levels, {name}: N = {(lam - 1) / 2:.15f}")
+        say(f"    x is a root of {fx.as_expr()} (degree {fx.degree()}; the root matches to {err:.1e})")
+        say(f"    N is a root of {g.as_expr()}")
+        say(f"    fixed by its symmetries alone: {alone} (largest residual {res:.1e})")
+        say(f"    moved to its centre: {amplitudes(psi)}")
     vals = Counter(np.round(N7, 9))
-    say("  the ten highest tops of the 1000000 ascents at seven levels, with how often each was reached: "
+    say("  the ten highest tops of the 1000000 climbs at seven levels, with how often each was reached: "
         + ", ".join(f"{v:.9f} x{c}" for v, c in sorted(vals.items(), reverse=True)[:10]))
-    for v in sorted(reps7, reverse=True)[:5]:
+    for v in sorted(reps7, reverse=True)[:7]:
         Ws = [wigner(s[None, :], A, d)[0] for s in reps7[v]]
         one = all(carries(Ws[0], W2, d, lins7) for W2 in Ws[1:])
         say(f"    top {v:.9f}: symmetries %d, orders %s, ceiling points %d, floor points %d, negative points %d, "
-            "deepest %+.6f" % describe(Ws[0], d, lins7) + f"; {len(Ws)} samples, one state up to symmetry: {one}")
+            "deepest %+.6f" % describe(Ws[0], d, lins7) + f"; {len(Ws)} samples, one state up to symmetry: {one}; "
+            f"fixed by its symmetries alone: {fixed_by_symmetry_alone(reps7[v][0], A, d, lins7)[0]}")
+        say(f"      {amplitudes(centred(reps7[v][0], A, d))}")
     d = 11
     A = phase_points(d)
     E, O = sides(d)
+    stays = abs(ascend(L11[None, :].copy(), A, d)[1][0] - NL11) < 1e-12
+    say(f"  eleven levels, the Legendre state: a local maximum (a climb from it stays put: {stays}); "
+        f"{int((np.abs(No - NL11) < 1e-9).sum())} of the 1000000 odd climbs ended there")
     for name, reps, Ns, Q in (("even", reps_e, Ne, E), ("odd", reps_o, No, O), ("whole-space", reps_f, Nf, np.eye(d))):
-        Ws = [wigner((Q @ s)[None, :], A, d)[0] for s in reps[max(reps)]]
-        one = all(carries(Ws[0], W2, d, lins11) for W2 in Ws[1:])
-        say(f"  eleven levels, the best {name} state found: symmetries %d, orders %s, ceiling points %d, floor points "
-            "%d, negative points %d, deepest %+.6f" % describe(Ws[0], d, lins11)
-            + f"; {len(Ws)} samples, one state up to symmetry: {one}")
-        top = Counter(np.round(Ns, 9))
-        say("    its five highest tops: "
-            + ", ".join(f"{v:.9f} x{c}" for v, c in sorted(top.items(), reverse=True)[:5]))
+        say(f"  eleven levels, the {name} climbs: the five highest tops, with how often each was reached: "
+            + ", ".join(f"{v:.9f} x{c}" for v, c in sorted(Counter(np.round(Ns, 9)).items(), reverse=True)[:5]))
+        for v in sorted(reps, reverse=True)[:3]:
+            Ws = [wigner((Q @ s)[None, :], A, d)[0] for s in reps[v]]
+            one = all(carries(Ws[0], W2, d, lins11) for W2 in Ws[1:])
+            say(f"    top {v:.9f}: symmetries %d, orders %s, ceiling points %d, floor points %d, negative points %d, "
+                "deepest %+.6f" % describe(Ws[0], d, lins11) + f"; {len(Ws)} samples, one state up to symmetry: {one}")
+    for name, reps, Q, side in (("the best odd state found", reps_o, O, "odd"),
+                                ("the best state found, which is even", reps_e, E, "even")):
+        psi = centred(Q @ reps[max(reps)][0], A, d)
+        W = wigner(psi[None, :], A, d)[0]
+        N = negativity(W)
+        fx, g, err = minimal_polynomial(np.where(W >= 0, 1, -1), d, side, N)
+        alone, res = fixed_by_symmetry_alone(psi, A, d, lins11)
+        say(f"  eleven levels, {name}: N = {N:.15f}")
+        say(f"    x is a root of {fx.as_expr()} (degree {fx.degree()}; the root matches to {err:.1e})")
+        say(f"    fixed by its symmetries alone: {alone} (largest residual {res:.1e})")
+        say(f"    moved to its centre: {amplitudes(psi)}")
     say(clock())
     LOG.close()
 

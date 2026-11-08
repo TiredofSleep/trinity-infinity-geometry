@@ -234,3 +234,28 @@ literature checked has nothing on seven or eleven levels:
 - Erew and Goldstein (2025). They show that a state fixed by a group of Clifford operations is stationary for
   mana, and they list such states for two, three and five levels;
 - the OpenAI math release of October 2026.
+
+---
+
+## Round 3 scores (added after the run, 2026-11-08)
+
+Run by [`round3.py`](round3.py); its output is kept in [`round3.log`](round3.log). The run is seeded, and a
+second run repeated every scored line. **9 of 10 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| T1 | held | the count gives 1/3 on both sides |
+| T2 | held | the best even state has 0.556677223351, Jain and Prakash's value to 12 decimals, and the best odd state 0.433070. Of the 200 000 climbs, 15 565 reach 0.556677 and none goes higher |
+| T3 | held | of the 16 777 216 odd sign choices, the best gives the Legendre state's 0.728262097006. The 28 choices that reach it are all the Legendre state up to symmetry; the next value is 0.721570 |
+| T4 | held | of the 16 777 216 even choices, the best gives the record's 0.732522000011. The 84 choices that reach it are all the record up to symmetry; the next value is 0.729722 |
+| T5 | held | the best states fixed by the other kinds of symmetry: the multiplier ×2, 0.728262 (the Legendre state); the shift, 0; the shear, 0.320997; the 42 groups of shears with a shift, 0.725152 |
+| T6 | held | 1460 of the million climbs reach the record, and none goes higher |
+| T7 | held | even 1.032586, odd 1.029707 |
+| T8 | **died** | the best odd state found has 1.029707, against the Legendre state's 0.787711. It has 24 symmetries, with the element orders of the binary tetrahedral group |
+| T9 | held | 1.032586 against 0.787711 |
+| T10 | held | the best state found touches +1/11 at one point and never −1/11. Its only symmetry is the half turn about that point |
+
+**Yield.** T1 and T2 recover known values, and T2's count makes the symmetric part of Jain and Prakash's search
+exact. T3–T5 are exhaustive, and new as far as we checked. T6 is a search. At eleven, three guesses held and one
+died: the deepest odd state there is not the Legendre state. What the run found, and the coin across 3, 5, 7 and
+11, are in the [README](README.md) §5. The dead guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).

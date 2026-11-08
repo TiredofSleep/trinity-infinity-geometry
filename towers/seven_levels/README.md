@@ -11,6 +11,8 @@
 - This page says how, and says what our three-dimensional space can and cannot hold.
 - Eight predictions were registered before the run ([`PREREG.md`](PREREG.md)). Seven held and one died.
 - A second round of five, on the most negative state, was registered after that one died. All five held (§4).
+- A third round of ten took up the three questions round 2 left open, registered with its script. Nine held, and
+  the one that died showed the strange state's group returning at eleven levels (§5).
 
 ---
 
@@ -73,6 +75,8 @@ clocks to shifts and clocks, up to phase.
   0.7325, against the Legendre state's 0.7283. The state it found is not even odd under the half turn: its
   parity expectation is +0.23. The guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md), with the
   counterexample in the log to 8 decimals. Round 2 (§4) found what that state is.
+- **T8 (round 3).** The Legendre state is not the deepest odd state at eleven levels. A tetrahedral state is
+  (§5).
 
 ## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
 
@@ -83,7 +87,8 @@ registered before the run, and all five held ([`PREREG.md`](PREREG.md)).
   Its output is in [`most_negative.log`](most_negative.log).
   - The best value found is **0.732522**. Three starts reached it, and their states are the same up to symmetry.
   - At least 17 other starts stopped at a second peak, 0.729722.
-  - This is a search, not a proof. A larger value is not ruled out.
+  - This is a search, not a proof. A larger value is not ruled out. Round 3 (§5) proved that no state with a
+    symmetry beats it.
 - **The state** [FORCED, on the state as recorded to 8 decimals].
   - Its Wigner function reaches the ceiling, +1/7, at exactly one point: its own centre. Four Clifford
     operations fix it: the identity, and a quarter turn about that centre with its square and its cube.
@@ -113,11 +118,89 @@ registered before the run, and all five held ([`PREREG.md`](PREREG.md)).
     the two states share the largest mana, and Wang, Wilde and Su (2020) with showing that a finer measure,
     the thauma, ranks the strange state first.
   - So at three the two sides tie. At seven the best even state found beats the Legendre state, by 0.0043.
+    Round 3 (§5) made both sides exact at seven, and took the coin to eleven.
   - Jain and Prakash (2020) found the same split at five: the most magic state there is not the most symmetric
     one. They also proved that above 3 no state is fixed by every Clifford operation that fixes the centre, as
     the strange state is at 3.
 
-## 5. Our space, and what it cannot hold [FORCED; FENCE]
+## 5. Round 3: the three open questions [FORCED; READING; NAMED: Jain and Prakash, Erew and Goldstein]
+
+The author asked for all three of round 2's open questions. Ten predictions were registered before the run,
+with the script that tests them, and nine held ([`PREREG.md`](PREREG.md)). The script is
+[`round3.py`](round3.py); its output is in [`round3.log`](round3.log).
+
+- **Two tools.** Both rest on one identity: the sum of a state's |W| is the largest value of Σ s_u W_u over
+  sign choices s_u = ±1, one for each phase-space point.
+  - *The sign ascent.* Give each point the sign of the state's Wigner value there. Then replace the state with
+    the top eigenvector of Σ s_u A_u, where A_u is the point's Wigner operator. No step lowers the sum of |W|,
+    so every start climbs to a local maximum. A million climbs at seven levels take about twenty seconds.
+  - *The exhaustive count.* If a symmetry fixes a state, the state's signs are constant along the symmetry's
+    orbits in phase space. So the best state a symmetry fixes is found by trying every sign choice that is
+    constant on those orbits. For the half turn at seven levels that is 2^24 = 16 777 216 choices on each side,
+    and every one was tried.
+- **A. Is 0.732522 the maximum?** Among states with a symmetry, yes, by exhaustion [FORCED]. Among the rest,
+  a million climbs found nothing higher.
+  - *The even side.* Every even sign choice was tried. The best is the round-2 record. The 84 choices that
+    reach it are its 84 images under the 336 symmetries that fix the centre. The next even state is round 2's
+    second peak, 0.729722.
+  - *Every kind of symmetry.* A state with any symmetry has one of prime order: 2, 3 or 7. Up to conjugacy
+    that leaves only a few kinds, and each was counted:
+    - the half turn, the only kind of order 2: the even side above, and the odd side (B, below);
+    - the multiplier ×2, since all subgroups of order 3 are conjugate. Its best state is the Legendre state;
+    - the shift: only stabilizer states, at 0;
+    - the shear: at most 0.320997;
+    - 42 groups of shears with a shift that fix no point: at most 0.725152, at a state with 21 symmetries,
+      the Frobenius group of order 21.
+
+    None beats the record. So if 0.732522 is ever beaten, the winner has no symmetry at all.
+  - *The search.* A million climbs from random states: 1460 reached the record, and none went higher. States
+    with no symmetry do come close: the third-highest top, 0.729616, has none.
+  - *Its exact value.* x = 7(1 + 2N), seven times the sum of |W|, is a root of
+    x¹² − 36x¹¹ + 258x¹⁰ + 3468x⁹ − 39873x⁸ − 108680x⁷ + 1734236x⁶
+    + 1510968x⁵ − 26665265x⁴ − 10245204x³ + 127009090x² + 35031356x − 154719151,
+    which is irreducible. So N = 0.732522000010631… is an algebraic number of degree 12.
+  - *What fixes it.* Its four symmetries do not pin it down. They fix a two-dimensional family of states, and
+    the record is the best point of that family. Round 2's state, moved to its centre, is a real, even vector:
+    (−0.0864, −0.3634, −0.0776, 0.5985, 0.5985, −0.0776, −0.3634).
+- **B. Is the Legendre state the best odd state?** At seven, yes, by exhaustion [FORCED]. At eleven, no.
+  - *Seven.* Every odd sign choice was tried. The best is the Legendre state, reached by 28 choices, its 28
+    images. The next odd state has 0.721570. The Legendre state's value is
+    N = (4 cos(2π/7) − 4 cos(6π/7) − 1)/7, and x = 7(1 + 2N) is a root of x³ − 15x² − 37x − 13. Its 12
+    symmetries fix no other state.
+  - *Eleven.* **T8 died**: the registered guess that the Legendre state is still the deepest odd state. A million
+    climbs among the odd states found 1.029707, against the Legendre state's 0.787711. The Legendre state of 11
+    is a local maximum, but far down: 2 of the million odd climbs ended there. The new state:
+    - has 24 symmetries, with the element orders of the binary tetrahedral group SL(2, 3). That is the strange
+      state's own group at three;
+    - is the only state those symmetries fix, and in a frame centred on its floor point it is real;
+    - has x = 11(1 + 2N) a root of an irreducible polynomial of degree 10.
+  - So the deepest odd state is the Legendre state at 3 and at 7, but not at 11. There the deepest odd state
+    found carries the strange state's group. The guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
+- **C. Which side wins at eleven?** The even side, by 0.0029 [measured].
+  - A million climbs among the even states found 1.032586. A million among the odd ones found 1.029707.
+  - The winner touches the ceiling, +1/11, at one point, its centre. Its only symmetry is the half turn about
+    that point. It is negative at 44 of the 121 points, none deeper than −0.0396.
+  - It is not fixed by its symmetry. It is just the best of the even states, which fill six dimensions, and its
+    x has degree 30.
+  - A million climbs in the whole space found nothing higher; 181 of them reached it.
+- **The coin across the primes** [READING, on exhaustive and measured facts].
+
+  | p | odd side: best state | its symmetries | even side: best state | its symmetries | the even side wins by |
+  |---|---|---|---|---|---|
+  | 3 | 1/3, the strange state | 24 | 1/3, the Norrell state | 6 | 0, a tie |
+  | 5 | 0.433070 | 6 | 0.556677, Jain and Prakash's | 6 | 0.124 |
+  | 7 | 0.728262, the Legendre state | 12 | 0.732522, the record | 4 | 0.0043 |
+  | 11 | 1.029707, found | 24 | 1.032586, found | 2 | 0.0029 |
+
+  - The rows for 3, 5 and 7 are exhaustive. The row for 11 rests on searches.
+  - The even side wins at every prime above 3 tried. At 3, 7 and 11, which are 3 more than a multiple of 4,
+    the two sides end within 0.005 of each other. At 5 they are 0.124 apart.
+  - At 3 and 5 every best state is the only state its symmetries fix. At 7 and 11 the odd side's best still is,
+    but the winner, on the even side, is not: it has to be found by climbing, and the more symmetric side loses.
+  - At 11 the odd side's best state has the strange state's group.
+  - At 5, where the Legendre state is even, it has exactly 2/5, short of Jain and Prakash's state.
+
+## 6. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -134,7 +217,7 @@ registered before the run, and all five held ([`PREREG.md`](PREREG.md)).
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 6. Standing
+## 7. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -146,31 +229,48 @@ registered before the run, and all five held ([`PREREG.md`](PREREG.md)).
   - SL(2, 5) as the binary icosahedral group;
   - Galois's subgroups of index 7, which are the 14 copies of S₄;
   - the strange and Norrell states, their shared largest mana, and the thauma's ranking (Veitch et al. 2014;
-    Wang, Wilde and Su 2020; Jain and Prakash 2020).
+    Wang, Wilde and Su 2020; Jain and Prakash 2020);
+  - Jain and Prakash's five-level maximum, found by their search. Round 3's count makes its symmetric part exact;
+  - that a state fixed by a group of Clifford operations is stationary for mana, with the list of such states for
+    two, three and five levels (Erew and Goldstein 2025).
 - **This repository's own:**
   - the dictionary, and the reading that puts the sevenths' two faces, the octahedron with its centre, the cube
     and Klein's space into one picture;
   - the most negative seven-level state found, its four symmetries, its two Fourier frames, and the coin it
-    makes with the Legendre state. Two web searches (2026-11-07) found work on three and five levels, and
-    nothing that identifies the most negative state of seven.
+    makes with the Legendre state;
+  - round 3 at seven levels, by exhaustion: the record is the best even state and the best state with any
+    symmetry, and the Legendre state is the best odd state; the record's exact value, of degree 12;
+  - round 3 at eleven levels, by search: the tetrahedral odd state, the even winner, and the coin across 3, 5,
+    7 and 11.
+
+  Web searches (2026-11-07 and 08), Erew and Goldstein's list and the OpenAI math release cover three and five
+  levels, and nothing on seven or eleven.
 - **The yield.** Round 1 was mostly known: seven classical facts confirmed, and one guess dead. Round 2 is new
-  as far as we checked, but it is a measurement, not a proof.
+  as far as we checked, but it is a measurement, not a proof. Round 3 is new as far as we checked. At seven it
+  is exhaustive for every state with a symmetry, exact up to rounding: the nearest rival values sit 0.0028 and
+  0.0067 below. At eleven it is a search.
 - **Open:**
-  - whether 0.732522 is the maximum;
-  - whether the Legendre state is the most negative odd state;
-  - which side wins at 11, which is 3 more than a multiple of 4, like 3 and 7. At 5 the Legendre state is even,
-    so the coin is set differently there.
+  - whether some seven-level state with no symmetry at all beats 0.732522. A million climbs found none;
+  - whether 1.032586 is the eleven-level maximum, and whether the tetrahedral state is the deepest odd state
+    there;
+  - which side wins at 13, the next prime that is 1 more than a multiple of 4, like 5;
+  - whether the even side wins at every prime above 3.
 
 ## Run it
 
 ```
-python verify_seven_levels.py      # about half a minute (numpy + scipy)
-python most_negative.py            # round 2's search, about a minute and a half
+python verify_seven_levels.py          # about 45 seconds (numpy + scipy)
+python verify_seven_levels.py --full   # adds round 3's two counts of 2^24 sign choices: 2.5 minutes
+python most_negative.py                # round 2's search, about a minute and a half
+python round3.py                       # round 3, about seven minutes (numpy + sympy)
 ```
 
-- The first reruns all eight predictions and the page's other checks, round 2's recorded state among them. It
-  exits with 1 if the recorded score changes.
+- The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
+  and 3. It exits with 1 if the recorded score changes or a check fails. With `--full`, its output is kept in
+  [`verify_seven_levels.log`](verify_seven_levels.log).
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
+- The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
+  on two runs.
 
 ## Sources
 
@@ -192,3 +292,5 @@ python most_negative.py            # round 2's search, about a minute and a half
   Lett.* **124** (2020) 090505.
 - A. Jain and S. Prakash, "Qutrit and ququint magic states", *Phys. Rev. A* **102** (2020) 042409,
   [arXiv:2003.07164](https://arxiv.org/abs/2003.07164).
+- M. Erew and M. Goldstein, "Extremizing measures of magic on pure states by Clifford-stabilizer states" (2025),
+  [arXiv:2512.19657](https://arxiv.org/abs/2512.19657).
