@@ -80,6 +80,21 @@ Fields, Gross, Klein and Galois. If they hold, what is claimed here is the readi
 
 ---
 
-## Scores (added after the run)
+## Scores (added after the run, 2026-11-07)
 
-*(empty until the run)*
+Run by [`verify_seven_levels.py`](verify_seven_levels.py); its output is kept in
+[`verify_seven_levels.log`](verify_seven_levels.log). **7 of 8 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| Q1 | held | 42 of the 5040 permutations, exactly the maps k → ak + b |
+| Q2 | held | the same orders for both: 1, 21, 56, 42, 48 elements of orders 1, 2, 3, 4, 7 |
+| Q3 | held | (a) and (b) as stated; (c) 14 subgroups shaped like S₄, each with the cube's fixed points by element order, and one orbit |
+| Q4 | held | 168 elements up to scalars; diag(ω⁴, ω², ω); a 3-cycle; the quartic invariant under every generator |
+| Q5 | held | the exact group in SU(3) has 168 elements; 14 copies of S₄, each with character 3, −1, 0, 1; the order-7 traces are (−1 ± √−7)/2 |
+| Q6 | held | every part; the value at the centre is −1/7 |
+| Q7 | **died** | Legendre state 0.728262; a search from 125 starts found 0.732522, at a state that is not odd under the half turn (it is in the log to 8 decimals) |
+| Q8 | held | 20 affine permutations; the icosahedral rotation group's orders; 120 matrices with the binary icosahedral group's orders |
+
+**Yield.** As expected, Q1–Q6 and Q8 are classical, and they are credited in the [README](README.md). The one
+guess, Q7, died, and it is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).

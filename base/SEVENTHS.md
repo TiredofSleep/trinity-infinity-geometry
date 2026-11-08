@@ -228,6 +228,15 @@ questions of each feature. Is 7 alone in it? And does it need base 10 at all?
   - its multiplying face is the octahedron;
   - it has arithmetic no change of base can touch: the Fano plane, 168 and the heptagon.
 
+## 6. On seven quantum levels
+
+The author then asked how the two faces meet our space for quantum parts. A quantum system with seven levels
+is indexed by the seven remainders, so both faces act on it: adding is the shift, multiplying is the multiplier,
+and the Fourier transform joins them. Eight predictions were registered before the run, and seven held. The
+eight measurement bases move like the cube's corners, and the "magic" subspace is Klein's space, where the
+octahedron acts as it does on ours. One guess died. The results are in
+[`../towers/seven_levels/`](../towers/seven_levels/README.md).
+
 ## What this page is, and is not
 
 - **Is:** the author's sevenths made exact, and seven counted both ways the author asked: base 10 read through

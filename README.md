@@ -164,6 +164,7 @@ python bott_verify.py
 python verify_spinor_floor.py
 python verify_two_faces_of_s4.py
 python verify_balance_point.py   # pip install sympy
+python seven_levels/verify_seven_levels.py   # the sevenths on seven quantum levels (pip install scipy)
 cd binary_magic
 python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)
 cd magic_sets && python run_all.py && cd ..   # graph-star magic sets

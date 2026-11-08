@@ -1,0 +1,19 @@
+Q1 HELD: 42 of the 5040 permutations are Clifford; all are maps k -> ak + b: True
+Q2 HELD: |SL(2,7)| = 336; orders mod +-1 {1: 1, 2: 21, 3: 56, 4: 42, 7: 48}; the Fano plane's 168 symmetries {1: 1, 2: 21, 3: 56, 4: 42, 7: 48}
+Q3 HELD: (a) True: multipliers fix the levels and the Fourier basis, orbits of the other six [[1, 2, 4], [3, 5, 6]]; (b) True: Fourier swaps them; (c) True: 14 subgroups shaped like S4, each moving the 8 bases as the cube's rotations move its corners (order, fixed points): {(1, 8): 1, (2, 0): 9, (3, 2): 8, (4, 0): 6}
+Q4 HELD: the odd subspace is kept: True; quadratic phase diag(w^4, w^2, w): True; x2 cycles the coordinates: True; 168 elements up to scalars; Klein's quartic invariant: True
+Q5 HELD: the exact group in SU(3) has 168 elements; 14 S4 subgroups found, each with the character of the octahedron's rotations (3, -1, 0, 1 on orders 1, 2, 3, 4): True; order-7 traces [(-0.5-1.322876j), (-0.5+1.322876j)]
+Q6 HELD: multiplier eigenvector: True; Fourier eigenvalue i: True; odd under the half turn: True; Wigner value at the centre -0.142857 (sum 1.000000)
+Q7 DIED: total negativity: Legendre state 0.728262; (|1>-|6>)/sqrt2 0.320997; best found from 125 starts 0.732522
+      the counterexample, amplitudes on |0>..|6> (8 decimals): +0.65793943-0.00000000i, +0.02258219-0.25614868i, +0.06112287+0.37643668i, +0.26721180+0.02435209i, +0.18564308-0.19373132i, +0.10825996-0.36567795i, +0.24470148+0.07901445i
+      recomputed from those 8 decimals: negativity 0.732522; |amplitudes| [0.6579, 0.2571, 0.3814, 0.2683, 0.2683, 0.3814, 0.2571]; parity expectation +0.2312 (not odd)
+Q8 HELD: 20 Clifford permutations (affine: True); orders mod +-1 {1: 1, 2: 15, 3: 20, 5: 24}; magic subspace kept: True; its group has 120 elements with orders {1: 1, 2: 1, 3: 20, 4: 30, 5: 24, 6: 20, 10: 24}
+
+PASS  the half turn is the Fourier transform done twice, and the multiplier by -1
+PASS  the multiplier x3 fixes |0> and turns the other six in one cycle (1, 3, 2, 6, 4, 5)
+PASS  spin 3: a seventh of a turn of space about the axis has exactly the seven 7th roots of unity as eigenvalues, so it is the clock
+PASS  spin 3: half a turn about a perpendicular axis sends each m to -m (up to sign): the flip
+PASS  no symmetry of the octahedron has order 7 (its 48 have orders 1, 2, 3, 4, 6)
+
+SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
+matches the recorded score: yes; the page's other lines: all pass

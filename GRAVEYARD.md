@@ -220,6 +220,10 @@ its own graveyard. These died, with what killed them:
   - **A correction term that fills the gap between exact Koide and an exact 2/9 can be found by search** (G10): hits
     come only at the chance rate, under the registered calibration and under two more
     (`lab/generation_loop/g10_calibration_check.py`).
+- **From the seven levels (2026-11-07; `towers/seven_levels/PREREG.md`):**
+  - **"No seven-level state has more Wigner negativity than the Legendre state"** (Q7, a registered guess). A
+    search found 0.7325 against the Legendre state's 0.7283, at a state that is not even odd under the half turn
+    (`towers/seven_levels/verify_seven_levels.log` gives it to 8 decimals).
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

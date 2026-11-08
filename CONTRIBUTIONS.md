@@ -78,6 +78,16 @@ census caught. Each is kept with its counterexample in [`graveyard/j_series_rere
 
 ## Known: re-derived here and credited, not claimed
 
+- **The seven-level dictionary** ([`towers/seven_levels/`](towers/seven_levels/README.md)), with these
+  sources:
+  - the Clifford group and its 168 (Weyl; Gottesman);
+  - the eight unbiased bases (Wootters and Fields);
+  - Klein's three-dimensional representation as the odd part of the Weil representation (Klein; Elkies);
+  - SL(2, 5) as the binary icosahedral group;
+  - Galois's subgroups of index 7.
+
+  All are re-derived and checked. The reading that ties them to the sevenths is this repository's own.
+
 - **Fitting (1931)**: the binary layers of the 880 squares, the carries, Nimm0, and the 528 / 192 / 112 / 48
   counts.
 - **Dudeney (1917) and Trigg (1948)**: a 4×4 magic square is singular exactly when it has a complement symmetry.
