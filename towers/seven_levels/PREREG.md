@@ -259,3 +259,89 @@ second run repeated every scored line. **9 of 10 held.**
 exact. T3–T5 are exhaustive, and new as far as we checked. T6 is a search. At eleven, three guesses held and one
 died: the deepest odd state there is not the Legendre state. What the run found, and the coin across 3, 5, 7 and
 11, are in the [README](README.md) §5. The dead guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
+
+---
+
+## Round 4: toward a proof at seven, the maximum at eleven, the sides at thirteen (registered 2026-11-09, before its run)
+
+The author asked for all three of round 3's next questions. [`round4.py`](round4.py) is committed with these
+predictions, before its run. It uses round 3's two tools, and runs in three parts.
+
+**A. Seven levels: toward a proof.** Round 3 proved that no state with a unitary symmetry beats the record. This
+part closes in on the rest.
+
+**U1.** No real seven-level state beats the record. Every one of the 2^28 sign choices symmetric under the mirror
+(q, p) → (q, −p) is tried, and the best is the record. Every anti-unitary symmetry either squares to a unitary one,
+which round 3 counted, or is conjugate to complex conjugation, whose fixed states are the real ones; the run
+checks this. So, with round 3, no state with any symmetry, unitary or anti-unitary, would beat the record.
+*Kill:* a mirror-symmetric choice above 0.732522 by more than 10⁻⁹, or a best real state that is not the record up
+to symmetry or mirror.
+
+**U2. (Forced.)** A state that beats the record has between 8 and 24 negative points. The Wigner operators of a
+set of k points sum to an operator with trace k and squared norm 7k, so by Samuelson's inequality its lowest
+eigenvalue is at least k/7 − √(6k(1 − k/49)). A state whose negative points are that set has total negativity at
+most minus that eigenvalue over 7, and outside 8 ≤ k ≤ 24 this falls short of 0.732522.
+*Kill:* an error in the bound; the run checks it on random sets.
+
+**U3.** Ten million climbs from random states find nothing above 0.732522. The run also estimates, by Good and
+Turing's rule, how much of the space belongs to tops it never reached.
+*Kill:* a larger value, by more than 10⁻⁹.
+
+**B. Eleven levels: the true maximum.** Round 3's best was 1.032586: an even state whose only symmetry is its half
+turn.
+
+**U4.** Nothing beats it. The run tries ten million climbs among even states, four million in the whole space, and
+2000 kicks from each of the 20 highest tops.
+*Kill:* a larger value, by more than 10⁻⁹.
+
+**U5.** No state with a symmetry of order 4, 5, 6 or 11 beats it. Exhaustive counts: 2^30 sign choices in each
+eigenspace of the quarter turn, 2^25 for order 5, 2^20 for order 6, and the shift, the shear and every group of
+order 11 that fixes no point. States whose only symmetries have order 2 or 3 are beyond counting (2^60 and 2^40
+choices).
+*Kill:* a symmetric state above 1.032586, by more than 10⁻⁹.
+
+**U6.** Ten million climbs among odd states: the tetrahedral state, 1.029707, stays the best odd state.
+*Kill:* an odd state above it, by more than 10⁻⁹.
+
+**U7.** Round 3 found samples of one top that no Clifford operation carries to each other. Such samples are
+mirror images: complex conjugates, up to a Clifford operation.
+*Kill:* two samples of one value that neither a Clifford operation nor a mirror joins.
+
+**C. Thirteen levels: 1 more than a multiple of 4, like 5.** Here the Legendre state is even. Two readings
+compete:
+- *the size reading:* from 7 on, the two sides end close, and the winner is not fixed by its symmetries;
+- *the Legendre-side reading:* when the Legendre state is even, the even side holds the most symmetric states,
+  wins by a wide margin, and has a winner fixed by its symmetries, as at 5.
+
+U9 and U13 follow the size reading; the other reading predicts the opposite of both.
+
+**U8.** The even side wins at 13. The run tries three million climbs on each side, and the Legendre state counts
+as even.
+*Kill:* the odd side comes within 10⁻⁶ of the even side, or passes it.
+
+**U9.** It wins by less than 0.01.
+*Kill:* a margin of 0.01 or more, or U8 dying.
+
+**U10.** The best state found in two million climbs in the whole space touches +1/13 at exactly one point, and
+never −1/13.
+*Kill:* anything else.
+
+**U11.** The Legendre state of 13 is even (forced: (−1 | 13) = +1), and the best even state found beats it.
+*Kill:* the Legendre state is the best even state found.
+
+**U12. (Forced.)** Every state that a binary tetrahedral group fixes lies on the Legendre state's side.
+- Such a group contains the half turn, and every character of the group is trivial on it.
+- For p ≥ 5, SL(2, p) is perfect, so its operators have determinant 1. The half turn's operator is therefore
+  (−1 | p) times the parity.
+- So the fixed state's parity is (−1 | p): odd at 3, 7 and 11, and even at 13.
+
+The tool was run at 3 and 11 while it was tested, before this registration. It found one odd state at 3, the
+strange state, and two odd states at 11, at 1.029707 and 0.899019. The live checks are 7 and 13.
+*Kill:* a fixed state on the other side.
+
+**U13.** The winner at 13 is not fixed by its symmetries alone.
+*Kill:* it is.
+
+**Expected standing, stated before the run.** U1 and U5 are exhaustive. U2 and U12 are forced by the arguments
+given. The others rest on searches. None of the literature checked (2026-11-07 to 09) treats eleven or thirteen
+levels.
