@@ -1,0 +1,23 @@
+G0 data: the standard code's MS0 = 5.1936; 98 of 1000000 random codes with its blocks beat it
+G0 HELD: MS0 is Haig and Hurst's 5.194, and the share is between 5e-5 and 3e-4
+G1 data: the vertebrate mitochondrial code's MS0 = 5.1735; 51 of 1000000 random codes with its blocks beat it
+G1 DIED: the mitochondrial code is less optimized than the standard code (5.10e-05 against 9.80e-05 of random codes beat it)
+
+bias 2 (transitions weigh 2 times transversions):
+  climbing over every code: best cost 2.856163, reached by 5 of 96 chains, 0 of them with the third-letter symmetry
+    the best code: HRTTHRTPNESSNESSQRAAQRAAKDGGKDGGVYCLVYCIT*LFP*LFPVLIPVLLS*WMS*WM
+  climbing over symmetric codes only: best cost 2.856163
+    the best symmetric code: **VV**YYEERRDDRRSSTTPPVVNNHHKKQQMMIIFFLLSSTTGGAAWWLLLLCCSSPPGGAA
+  the natural codes at this bias: standard 4.662670, mitochondrial 4.700000
+
+bias 1 (transitions weigh 1 times transversions):
+  climbing over every code: best cost 3.560945, reached by 13 of 96 chains, 0 of them with the third-letter symmetry
+    the best code: Y*VYW*MMCLLCLTFLGEHGSEGGI*WITNATRDRRHDQQV*VVSKSSAKSSPNAALPFLPRTP
+  climbing over symmetric codes only: best cost 3.574844
+    the best symmetric code: AAGGGGRRSSQQKKDDLLLLVVTTFFYYTT**CCLLMMVVIIWWPP**PPSSSSRRAAHHNNEE
+  the natural codes at this bias: standard 5.193574, mitochondrial 5.173543
+
+G2 DIED: with transition bias the best code found keeps the third-letter symmetry (False), at the same cost as the best symmetric code (2.856163 against 2.856163)
+G3 HELD: with equal weights the best code found breaks the third-letter symmetry (True); best over every code 3.560945, best symmetric 3.574844
+
+SCORE: 2 of 4 held: G0 held, G1 died, G2 died, G3 held

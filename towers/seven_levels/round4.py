@@ -9,9 +9,9 @@
 It uses round3.py's tools (the sign ascent and the exhaustive count).  numpy only.  One process per part, at
 below-normal priority and two threads, so the three parts can run at once.  ASCII output; each part writes
 round4_<part>.log.
-Run:  python round4.py seven      (about 15 minutes)
-      python round4.py eleven     (about 45 minutes)
-      python round4.py thirteen   (about 20 minutes)
+Run:  python round4.py seven      (17 minutes when the three ran at once)
+      python round4.py eleven     (43 minutes)
+      python round4.py thirteen   (19 minutes)
 Set ROUND4_SMOKE=1 for a quick test of the code at a tiny size; its scores mean nothing.
 """
 import os

@@ -49,3 +49,23 @@ optimum follows the symmetry of the mutation weights, as the coin's sides follow
   purine/pyrimidine equivalence at the third letter adds fault tolerance.
 - Novozhilov, Wolf and Koonin (2007) climbed in code space before, keeping the standard block structure. This
   study frees it.
+
+---
+
+## Scores (added after the run, 2026-11-09)
+
+Run by [`code_symmetry.py`](code_symmetry.py); its output is kept in [`code_symmetry.log`](code_symmetry.log), and
+[`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks it. **2 of 4 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| G0 | held | MS0 = 5.1936; 98 of a million random codes beat the standard code |
+| G1 | **died** | 51 of a million random codes with its blocks beat the mitochondrial code, so it is a little more optimized than the standard code, not less |
+| G2 | **died** | the best code found over every code (2.856163) costs exactly what the best symmetric code costs, but breaks the third-letter symmetry. It is symmetric at its second letter once the tied amino acids are merged (T = P = 6.6, L = I = 4.9) |
+| G3 | held | with equal weights the best code found (3.560945) is symmetric at no letter, and beats the best symmetric code (3.574844) |
+
+**What the deaths teach.** G1 was a guess, and the literature was already split. G2 was worded too narrowly for
+its own model: the model weighs the three letters alike, so the optimum may carry its pairing at any letter, and
+the polar-requirement scale has ties that let a symmetric code be relabeled for free. Its substance came out the
+other way: the optimum's value lies on the symmetric side. Both are kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) has the reading.

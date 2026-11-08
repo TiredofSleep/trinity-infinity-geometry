@@ -1,0 +1,23 @@
+eleven levels: 10000000 climbs among even states: best 1.032585792267 (reached 158331 times; 0 still moving) [510 s]
+  4000000 climbs in the whole space: best 1.032585792267 (reached 745 times; 0 still moving) [1101 s]
+  2000 kicks from each of the 20 highest tops: best 1.032585792267
+U4 HELD: nothing beats 1.032586: the best found is 1.032585792267
+[1104 s]
+  states fixed by the Fourier transform, a quarter turn (order 4, 31 orbits): the best 1.029706813153 [2157 s]
+  states fixed by the multiplier x3 (order 5, 25 orbits): the best 0.999307294645 [2180 s]
+  states fixed by a sixth of a turn (order 6, 21 orbits): the best 1.029706813153 [2183 s]
+  states fixed by the shift (order 11, 11 orbits): the best 0.000000000000 [2183 s]
+  states fixed by the shear (order 11, 21 orbits): the best 0.319394281061 [2187 s]
+  states fixed by a shear with a shift that fixes no point (110 groups of order 11): the best 0.913739670608
+U5 HELD: no state with a symmetry of order 4, 5, 6 or 11 beats 1.032586: the best has 1.029706813153
+[2211 s]
+  10000000 climbs among odd states: best 1.029706813153 (reached 34706 times; 0 still moving)
+U6 HELD: the tetrahedral state is still the best odd state found
+[2538 s]
+U7 HELD: of 35 sample pairs no Clifford operation joins, 35 are mirror images
+  the even climbs' five highest tops: 1.032585792 x158331, 1.031268187 x141580, 1.029183767 x49830, 1.029154285 x71284, 1.028524243 x48582
+  the odd climbs' five highest tops: 1.029706813 x34706, 1.011847749 x174363, 1.004460349 x403650, 1.002970197 x101187, 0.997752609 x25546
+  the whole-space climbs' five highest tops: 1.032585792 x745, 1.032535829 x814, 1.031268187 x199, 1.030625483 x407, 1.030144914 x659
+[2581 s]
+
+ROUND 4 (eleven): 4 of 4 held: U4 held, U5 held, U6 held, U7 held

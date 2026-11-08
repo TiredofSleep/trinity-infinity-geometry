@@ -345,3 +345,33 @@ strange state, and two odd states at 11, at 1.029707 and 0.899019. The live chec
 **Expected standing, stated before the run.** U1 and U5 are exhaustive. U2 and U12 are forced by the arguments
 given. The others rest on searches. None of the literature checked (2026-11-07 to 09) treats eleven or thirteen
 levels.
+
+---
+
+## Round 4 scores (added after the run, 2026-11-09)
+
+Run by [`round4.py`](round4.py) in three parts; the output is kept in [`round4_seven.log`](round4_seven.log),
+[`round4_eleven.log`](round4_eleven.log) and [`round4_thirteen.log`](round4_thirteen.log). The runs are seeded.
+**12 of 13 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| U1 | held | of the 2^28 mirror-symmetric sign choices, the best gives the record, reached by 42 choices, all its images; the next value is 0.729722. All 392 anti-unitary involutions are conjugate to the mirror |
+| U2 | held | the bound allows 8 to 24 negative points, and it held on 9600 random sets |
+| U3 | held | 14 754 of the ten million climbs reach the record, and none goes higher; 52 348 tops, 3248 of them reached once (Good and Turing: about 3 × 10⁻⁴ unreached) |
+| U4 | held | 158 331 of ten million even climbs and 745 of four million whole-space climbs reach 1.032586; 40 000 kicks find nothing higher |
+| U5 | held | the best states fixed by a symmetry: order 4, 1.029707 (the tetrahedral state); order 5, 0.999307; order 6, 1.029707; order 11, at most 0.913740 |
+| U6 | held | 34 706 of ten million odd climbs reach the tetrahedral state, and none goes higher |
+| U7 | held | all 35 sample pairs that no Clifford operation joins are mirror images |
+| U8 | held | even 1.168522, odd 1.151336 |
+| U9 | **died** | the margin is 0.017, not under 0.01 |
+| U10 | held | the best state found touches +1/13 at one point and never −1/13; its only symmetry is the half turn there |
+| U11 | held | the Legendre state of 13 is even, at 0.933851, below the best even state found |
+| U12 | held | the tetrahedral states: one at 3 (odd), none at 7, two at 11 (odd), one at 13 (even, 0.982303) |
+| U13 | held | the winner at 13 is not fixed by its symmetries alone |
+
+**Yield.** U1, U2 and U5 are exhaustive or forced, and new as far as we checked. So is U12's rule, though its
+ingredient, the sign of the half turn's operator, is a standard fact about the Weil representation. The searches
+held everywhere but one place: the margin at 13, where the size reading's guess died. The other reading's guess,
+a winner fixed by its symmetries, failed too (U13 held). The coin across five primes is in the
+[README](README.md) §6. The dead guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).

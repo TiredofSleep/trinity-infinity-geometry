@@ -70,6 +70,14 @@ p = mc2_eV ** 2 * d_si / hc_eVm / 1e6
 check(f"de Broglie's clock (frequency mc^2/h) matches the row spacing at p = {p:.2f} MeV/c "
       "(the 80.87 MeV/c prediction; the 2005 dip was at 81.1)", abs(p - 80.87) < 0.05)
 
+import os as _os
+import subprocess as _sp
+import sys as _sys
+_r = _sp.run([_sys.executable, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "genetic_code",
+                                             "verify_code_symmetry.py")], capture_output=True, text=True)
+check("R13: the genetic-code study's recorded results, rechecked by genetic_code/verify_code_symmetry.py "
+      "(MS0 = 5.1936; the best codes' costs; the symmetry once the tied amino acids are merged)", _r.returncode == 0)
+
 print()
 print("ALL CHECKS PASSED" if not FAILS else f"{len(FAILS)} FAILED: {FAILS}")
 raise SystemExit(1 if FAILS else 0)

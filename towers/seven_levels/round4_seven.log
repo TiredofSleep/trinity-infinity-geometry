@@ -1,0 +1,25 @@
+seven levels: the record 0.732522000011
+  anti-unitary involutions: 392; conjugates of the mirror: 392; the same set: True
+  134244456 of the 268435456 choices have fewer than 8 or more than 24 negative points and were skipped
+  all 268435456 sign choices symmetric under the mirror: best 0.732522000011, reached by 42 choices, 42 of them the record up to symmetry; the next value 0.729722269845
+U1 HELD: the best real state is the record, so no state with any symmetry, unitary or anti-unitary, beats it
+[662 s]
+U2 HELD: a state beating the record has between 8 and 24 negative points (the bound never fails on 9600 random sets: largest excess 0.0e+00)
+  10000000 climbs: best 0.732522000011; 14754 reached the record; 52348 different tops; 3248 reached only once, so the unreached tops' basins hold about 3.2e-04 of the starts (Good and Turing); 0 still moving
+U3 HELD: no climb beats the record
+  the twelve highest tops, with how often each was reached, and their symmetries (unitary, anti-unitary):
+    0.732522000 x14754: 4 unitary, 4 anti-unitary; negative points 16
+    0.729722270 x47948: 2 unitary, 2 anti-unitary; negative points 16
+    0.729616128 x116075: 1 unitary, 1 anti-unitary; negative points 15
+    0.728262097 x3459: 12 unitary, 12 anti-unitary; negative points 13
+    0.725917449 x163451: 1 unitary, 0 anti-unitary; negative points 17
+    0.725878292 x58261: 1 unitary, 1 anti-unitary; negative points 15
+    0.725152059 x9330: 21 unitary, 21 anti-unitary; negative points 21
+    0.723417505 x127354: 1 unitary, 0 anti-unitary; negative points 16
+    0.721570212 x879: 8 unitary, 8 anti-unitary; negative points 17
+    0.721456166 x26400: 1 unitary, 1 anti-unitary; negative points 14
+    0.720771520 x43601: 1 unitary, 0 anti-unitary; negative points 16
+    0.719426195 x9882: 1 unitary, 1 anti-unitary; negative points 16
+[991 s]
+
+ROUND 4 (seven): 3 of 3 held: U1 held, U2 held, U3 held

@@ -229,6 +229,18 @@ its own graveyard. These died, with what killed them:
     state with 24 symmetries: the binary tetrahedral group, the strange state's group at three
     (`towers/seven_levels/round3.log`; `verify_seven_levels.py` checks it). The Legendre state is the deepest odd
     state at 3 and at 7, the second by an exhaustive count, but not at 11.
+  - **"At thirteen the two sides end within 0.01"** (U9, a registered guess, 2026-11-09). Three million climbs
+    on each side found the even side ahead by 0.017 (`towers/seven_levels/round4_thirteen.log`). The size reading
+    that made the guess is half dead: from 7 on no winner is fixed by its symmetries, as it said, but the margin
+    is wider when p is 1 more than a multiple of 4.
+- **From the genetic-code study (2026-11-09; `lab/genetic_code/PREREG.md`, fenced):**
+  - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
+    51 of a million random codes with its own blocks beat it, against 98 for the standard code.
+  - **"With transition bias, the best code found keeps the third-letter symmetry"** (G2). The best code found
+    costs exactly what the best symmetric code costs, but it breaks the third-letter pairing. The prediction was
+    worded too narrowly for its own model: the model weighs the three letters alike, and the polar-requirement
+    scale ties threonine with proline and leucine with isoleucine. With the ties merged, the code is symmetric at
+    its second letter (`lab/genetic_code/verify_code_symmetry.py`).
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

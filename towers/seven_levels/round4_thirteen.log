@@ -1,0 +1,26 @@
+thirteen levels: the Legendre state has 0.933850957749; symmetries 24, orders {1: 1, 2: 1, 3: 2, 4: 14, 6: 2, 12: 4}, ceiling points 1, floor points 0, negative points 72, deepest -0.029723
+  3000000 climbs among even states: best 1.168522054432 (reached 7139 times); among odd states: best 1.151335942047 (reached 4799 times) [489 s]
+  2000000 climbs in the whole space: best 1.168522054432 (reached 8 times) [1040 s]
+U8 HELD: the even side wins at 13: 1.168522 against 1.151336
+U9 DIED: by less than 0.01: 0.017186
+U10 HELD: the best state found touches +1/13 at 1 point(s) and -1/13 at 0
+    it has: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 62, deepest -0.026087
+U11 HELD: the Legendre state of 13 is even, and the best even state found beats it: 1.168522 against 0.933851
+U12 HELD: every state a binary tetrahedral group fixes lies on the Legendre state's side
+    p = 3: SL(2, p) has 24 elements; a binary tetrahedral subgroup fixes 1 state(s), parities [-1.0], total negativities [0.333333]; the Legendre state's side is odd
+    p = 7: SL(2, p) has 336 elements; a binary tetrahedral subgroup fixes 0 state(s); the Legendre state's side is odd
+    p = 11: SL(2, p) has 1320 elements; a binary tetrahedral subgroup fixes 2 state(s), parities [-1.0, -1.0], total negativities [1.029707, 0.899019]; the Legendre state's side is odd
+    p = 13: SL(2, p) has 2184 elements; a binary tetrahedral subgroup fixes 1 state(s), parities [1.0], total negativities [0.982303]; the Legendre state's side is even
+U13 HELD: the winner at 13 is not fixed by its symmetries alone (residual 1.6e+00)
+  the even climbs' five highest tops: 1.168522054 x7139, 1.167363950 x525, 1.164259397 x468, 1.163542541 x7782, 1.163446891 x10400
+    top 1.168522054: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 62, deepest -0.026087; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+    top 1.167363950: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 1, floor points 0, negative points 60, deepest -0.025984; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+  the odd climbs' five highest tops: 1.151335942 x4799, 1.148549702 x30207, 1.146511995 x15305, 1.144291644 x77527, 1.144013014 x9444
+    top 1.151335942: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 0, floor points 1, negative points 73, deepest -0.076923; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+    top 1.148549702: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 71, deepest -0.076923; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+  the whole-space climbs' five highest tops: 1.168522054 x8, 1.167324820 x3, 1.166938394 x2, 1.166697698 x8, 1.166242898 x23
+    top 1.168522054: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 62, deepest -0.026087; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+    top 1.167324820: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 61, deepest -0.026901; 3 samples, one state up to symmetry or mirror: True; fixed by its symmetries alone: False
+[1133 s]
+
+ROUND 4 (thirteen): 5 of 6 held: U8 held, U9 died, U10 held, U11 held, U12 held, U13 held

@@ -4,9 +4,10 @@ other lines: round 2's most negative state as recorded in most_negative.log, and
 round3.log (it uses round3.py's tools).
 
 numpy + scipy + round3.py.  ASCII output.
-Run:  python verify_seven_levels.py           (about 45 seconds)
-      python verify_seven_levels.py --full    (also every one of the 2^24 sign choices on each side at seven levels;
-                                               about two and a half minutes)
+Run:  python verify_seven_levels.py           (about a minute)
+      python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
+                                               sign choices, and the tetrahedral states at 3, 7, 11 and 13; about
+                                               fifteen minutes)
 """
 import ctypes
 import itertools
@@ -761,6 +762,91 @@ forced(f"eleven levels, the best state found: {Nw:.12f}, even, on the ceiling +1
        and abs(Dw[5] + 0.039577) < 1e-6 and strict_top(win, A11, 11)
        and not r3.fixed_by_symmetry_alone(win, A11, 11, lins11)[0] and root_near(WIN11_X, 11 * (1 + 2 * Nw))
        and Nw - Nt > 0.0028)
+
+# ------------------------------------------------------------------ round 4 (round4.py; its logs are round4_*.log)
+import round4 as r4
+
+print()
+print("round 4:")
+
+
+def samuelson(k):
+    return (math.sqrt(6 * k * (1 - k / 49)) - k / 7) / 7
+
+
+forced("a state that beats the record has between 8 and 24 negative points: outside that range the bound "
+       "(sqrt(6k(1 - k/49)) - k/7)/7 falls below 0.732522 (at 7 and 25 it is exactly 5/7)",
+       [k for k in range(1, 49) if samuelson(k) > N_rec] == list(range(8, 25))
+       and abs(samuelson(7) - 5 / 7) < 1e-12 and abs(samuelson(25) - 5 / 7) < 1e-12)
+mirs7 = r4.mirror_parts(7)
+qq, pp = np.divmod(np.arange(49), 7)
+Kmap = qq * 7 + (-pp) % 7
+conj_K, invol = set(), set()
+for lin in lins7:
+    for g in r3.images(lin, 7):
+        ginv = np.empty_like(g)
+        ginv[g] = np.arange(49)
+        conj_K.add(tuple(g[Kmap[ginv]]))
+for m_ in mirs7:
+    for g in r3.images(m_, 7):
+        if (g[g] == np.arange(49)).all():
+            invol.add(tuple(g))
+u_rec, a_rec = r4.counts_ext(Wr7, 7, lins7, mirs7)
+forced(f"all {len(invol)} anti-unitary involutions at seven levels are conjugate to the mirror (q, p) -> (q, -p); "
+       f"the record has {u_rec} ordinary and {a_rec} mirror symmetries",
+       len(invol) == 392 and invol == conj_K and u_rec == 4 and a_rec == 4)
+A13, lins13 = r3.phase_points(13), r3.linear_parts(13)
+L13 = r3.legendre(13)
+D13 = r3.describe(r3.wigner(L13[None, :], A13, 13)[0], 13, lins13)
+forced(f"the Legendre state of 13 is even, with {D13[0]} symmetries and total negativity "
+       f"{r3.negativity(r3.wigner(L13[None, :], A13, 13)[0]):.12f}",
+       np.allclose(r3.basics(13)[4] @ L13, L13) and D13[0] == 24 and D13[2] == 1
+       and abs(r3.negativity(r3.wigner(L13[None, :], A13, 13)[0]) - 0.933850957749) < 1e-11)
+forced("the half turn's operator has determinant 1 only as (-1 | p) times the parity: det P = (-1)^((p-1)/2) for "
+       "p = 3, 5, 7, 11, 13",
+       all(round(np.linalg.det(r3.basics(p_)[4])) == (-1) ** ((p_ - 1) // 2) for p_ in (3, 5, 7, 11, 13)))
+
+if FULL:
+    # U1: every sign choice symmetric under the mirror, with the 8..24 bound skipping the rest
+    orbits = [np.array([n_]) for n_ in range(49) if Kmap[n_] == n_] + \
+             [np.array([n_, Kmap[n_]]) for n_ in range(49) if n_ < Kmap[n_]]
+    C_ = np.array([A7r3[o].sum(axis=0).real for o in orbits]) / 7
+    m_o = len(orbits)
+    Cf_ = C_.reshape(m_o, 49)
+    sizes = np.array([len(o) for o in orbits])
+    ib = 20
+    codes_in = np.arange(1 << ib, dtype=np.int64)
+    bits_in = (codes_in[:, None] >> np.arange(ib)) & 1
+    H_in = (1.0 - 2.0 * bits_in) @ Cf_[:ib]
+    k_in = bits_in @ sizes[:ib]
+    top_val, n_top = -1.0, 0
+    for outer in range(1 << (m_o - ib)):
+        bits_out = (outer >> np.arange(m_o - ib)) & 1
+        k = k_in + bits_out @ sizes[ib:]
+        keep = np.where((k >= 8) & (k <= 24))[0]
+        if len(keep):
+            lam = np.linalg.eigvalsh((H_in[keep] + (1.0 - 2.0 * bits_out) @ Cf_[ib:]).reshape(-1, 7, 7))[:, -1]
+            mx = lam.max()
+            if mx > top_val + 1e-9:
+                top_val, n_top = mx, int((lam > mx - 1e-9).sum())
+            elif mx > top_val - 1e-9:
+                n_top += int((lam > top_val - 1e-9).sum())
+    forced(f"(--full) every one of the 2^28 mirror-symmetric sign choices: the best gives "
+           f"{(top_val - 1) / 2:.12f}, the record, reached by {n_top} choices",
+           abs((top_val - 1) / 2 - N_rec) < 1e-12 and n_top == 42)
+    tets = []
+    for p_ in (3, 7, 11, 13):
+        Ap = r3.phase_points(p_)
+        states, _ = r4.tetrahedral_states(p_, Ap)
+        leg = 1 if pow(p_ - 1, (p_ - 1) // 2, p_) == 1 else -1
+        pars = [float(np.real(np.vdot(s_, r3.basics(p_)[4] @ s_))) for s_ in (states or [])]
+        vals = sorted(round(float(r3.negativity(r3.wigner(s_[None, :], Ap, p_)[0])), 6) for s_ in (states or []))
+        tets.append((p_, leg, pars, vals))
+    forced("(--full) the states a binary tetrahedral group fixes, with their parities: "
+           + "; ".join(f"p = {p_}: {vals}" for p_, leg, pars, vals in tets)
+           + ". Each lies on the Legendre state's side",
+           all(abs(x - leg) < 1e-6 for p_, leg, pars, vals in tets for x in pars)
+           and [vals for p_, leg, pars, vals in tets] == [[0.333333], [], [0.899019, 1.029707], [0.982303]])
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
