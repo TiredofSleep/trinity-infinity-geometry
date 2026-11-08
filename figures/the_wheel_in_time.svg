@@ -1,0 +1,67 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='840' height='540' viewBox='0 0 840 540'>
+<rect x='0.5' y='0.5' width='839' height='539' rx='10' fill='#ffffff' stroke='#d0d7de'/>
+
+<text x='420.0' y='34' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='17' font-weight='600' fill='#1f2328'>The wheel rolling in time, and its six windings in Fourier space</text>
+<text x='228.0' y='72' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>In time: the digits of 1/7, one per turn</text>
+<line x1='58' y1='245.0' x2='398' y2='245.0' stroke='#8c959f' stroke-width='1.2' stroke-dasharray='4 4'/>
+<text x='228.0' y='239.0' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>4.5, the centre</text>
+<polyline points='58.0,343.8 59.4,345.6 60.8,346.1 62.2,345.2 63.7,343.0 65.1,339.7 66.5,335.3 67.9,329.9 69.3,323.8 70.8,317.2 72.2,310.2 73.6,303.0 75.0,295.8 76.4,288.8 77.8,282.3 79.2,276.2 80.7,270.9 82.1,266.5 83.5,263.0 84.9,260.5 86.3,259.1 87.8,258.8 89.2,259.6 90.6,261.4 92.0,264.2 93.4,267.8 94.8,272.2 96.2,277.1 97.7,282.5 99.1,288.2 100.5,293.9 101.9,299.4 103.3,304.7 104.8,309.4 106.2,313.4 107.6,316.6 109.0,318.8 110.4,319.9 111.8,319.7 113.2,318.3 114.7,315.6 116.1,311.5 117.5,306.1 118.9,299.5 120.3,291.7 121.8,282.9 123.2,273.2 124.6,262.7 126.0,251.7 127.4,240.3 128.8,228.7 130.2,217.2 131.7,205.9 133.1,195.1 134.5,185.0 135.9,175.6 137.3,167.3 138.8,160.1 140.2,154.1 141.6,149.5 143.0,146.2 144.4,144.4 145.8,143.9 147.2,144.8 148.7,147.0 150.1,150.3 151.5,154.7 152.9,160.1 154.3,166.2 155.8,172.8 157.2,179.8 158.6,187.0 160.0,194.2 161.4,201.2 162.8,207.7 164.2,213.8 165.7,219.1 167.1,223.5 168.5,227.0 169.9,229.5 171.3,230.9 172.8,231.2 174.2,230.4 175.6,228.6 177.0,225.8 178.4,222.2 179.8,217.8 181.2,212.9 182.7,207.5 184.1,201.8 185.5,196.1 186.9,190.6 188.3,185.3 189.8,180.6 191.2,176.6 192.6,173.4 194.0,171.2 195.4,170.1 196.8,170.3 198.2,171.7 199.7,174.4 201.1,178.5 202.5,183.9 203.9,190.5 205.3,198.3 206.8,207.1 208.2,216.8 209.6,227.3 211.0,238.3 212.4,249.7 213.8,261.3 215.2,272.8 216.7,284.1 218.1,294.9 219.5,305.0 220.9,314.4 222.3,322.7 223.7,329.9 225.2,335.9 226.6,340.5 228.0,343.8 229.4,345.6 230.8,346.1 232.2,345.2 233.7,343.0 235.1,339.7 236.5,335.3 237.9,329.9 239.3,323.8 240.8,317.2 242.2,310.2 243.6,303.0 245.0,295.8 246.4,288.8 247.8,282.3 249.2,276.2 250.7,270.9 252.1,266.5 253.5,263.0 254.9,260.5 256.3,259.1 257.8,258.8 259.2,259.6 260.6,261.4 262.0,264.2 263.4,267.8 264.8,272.2 266.2,277.1 267.7,282.5 269.1,288.2 270.5,293.9 271.9,299.4 273.3,304.7 274.8,309.4 276.2,313.4 277.6,316.6 279.0,318.8 280.4,319.9 281.8,319.7 283.2,318.3 284.7,315.6 286.1,311.5 287.5,306.1 288.9,299.5 290.3,291.7 291.8,282.9 293.2,273.2 294.6,262.7 296.0,251.7 297.4,240.3 298.8,228.7 300.2,217.2 301.7,205.9 303.1,195.1 304.5,185.0 305.9,175.6 307.3,167.3 308.8,160.1 310.2,154.1 311.6,149.5 313.0,146.2 314.4,144.4 315.8,143.9 317.2,144.8 318.7,147.0 320.1,150.3 321.5,154.7 322.9,160.1 324.3,166.2 325.7,172.8 327.2,179.8 328.6,187.0 330.0,194.2 331.4,201.2 332.8,207.7 334.2,213.8 335.7,219.1 337.1,223.5 338.5,227.0 339.9,229.5 341.3,230.9 342.8,231.2 344.2,230.4 345.6,228.6 347.0,225.8 348.4,222.2 349.8,217.8 351.2,212.9 352.7,207.5 354.1,201.8 355.5,196.1 356.9,190.6 358.3,185.3 359.8,180.6 361.2,176.6 362.6,173.4 364.0,171.2 365.4,170.1 366.8,170.3 368.2,171.7 369.7,174.4 371.1,178.5 372.5,183.9 373.9,190.5 375.3,198.3 376.8,207.1 378.2,216.8 379.6,227.3 381.0,238.3 382.4,249.7 383.8,261.3 385.3,272.8 386.7,284.1 388.1,294.9 389.5,305.0 390.9,314.4 392.3,322.7 393.8,329.9 395.2,335.9 396.6,340.5 398.0,343.8' fill='none' stroke='#2471a3' stroke-width='2'/>
+<circle cx='58.0' cy='343.8' r='4.5' fill='#1f2328'/>
+<text x='58.0' y='363.8' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>1</text>
+<circle cx='86.3' cy='259.1' r='4.5' fill='#1f2328'/>
+<text x='86.3' y='279.1' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>4</text>
+<circle cx='114.7' cy='315.6' r='4.5' fill='#1f2328'/>
+<text x='114.7' y='335.6' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>2</text>
+<circle cx='143.0' cy='146.2' r='4.5' fill='#1f2328'/>
+<text x='143.0' y='136.2' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>8</text>
+<circle cx='171.3' cy='230.9' r='4.5' fill='#1f2328'/>
+<text x='171.3' y='220.9' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>5</text>
+<circle cx='199.7' cy='174.4' r='4.5' fill='#1f2328'/>
+<text x='199.7' y='164.4' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>7</text>
+<circle cx='228.0' cy='343.8' r='4.5' fill='#1f2328'/>
+<text x='228.0' y='363.8' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>1</text>
+<circle cx='256.3' cy='259.1' r='4.5' fill='#1f2328'/>
+<text x='256.3' y='279.1' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>4</text>
+<circle cx='284.7' cy='315.6' r='4.5' fill='#1f2328'/>
+<text x='284.7' y='335.6' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>2</text>
+<circle cx='313.0' cy='146.2' r='4.5' fill='#1f2328'/>
+<text x='313.0' y='136.2' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>8</text>
+<circle cx='341.3' cy='230.9' r='4.5' fill='#1f2328'/>
+<text x='341.3' y='220.9' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>5</text>
+<circle cx='369.7' cy='174.4' r='4.5' fill='#1f2328'/>
+<text x='369.7' y='164.4' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>7</text>
+<circle cx='398.0' cy='343.8' r='4.5' fill='#1f2328'/>
+<text x='398.0' y='363.8' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>1</text>
+<line x1='58' y1='390' x2='398' y2='390' stroke='#d0d7de' stroke-width='1.2'/>
+<text x='58.0' y='406' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>0</text>
+<text x='143.0' y='406' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>3</text>
+<text x='228.0' y='406' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>6</text>
+<text x='313.0' y='406' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>9</text>
+<text x='398.0' y='406' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>12</text>
+<text x='228.0' y='424' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#8c959f'>turns of the wheel (×10 each); after 3 the curve is its own mirror in 4.5</text>
+<text x='630' y='72' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='15' font-weight='600' fill='#1f2328'>In Fourier space: six windings</text>
+<line x1='460.8' y1='238' x2='808.4' y2='238' stroke='#d0d7de' stroke-width='1.2'/>
+<line x1='738' y1='101.6' x2='738' y2='374.4' stroke='#d0d7de' stroke-width='1.2'/>
+<polyline points='738.0,234.0 661.0,234.0 650.0,234.0 595.0,234.0 672.0,234.0 683.0,234.0 738.0,234.0' fill='none' stroke='#1e8449' stroke-width='1.6' stroke-linejoin='round' stroke-dasharray="5 3"/>
+<circle cx='738.0' cy='238.0' r='4.5' fill='#1e8449' stroke='white' stroke-width='1.2'/>
+<polyline points='738.0,238.0 661.0,238.0 666.5,247.5 694.0,199.9 771.0,199.9 765.5,190.4 738.0,238.0' fill='none' stroke='#1e8449' stroke-width='1.6' stroke-linejoin='round'/>
+<circle cx='738.0' cy='238.0' r='4.5' fill='#1e8449' stroke='white' stroke-width='1.2'/>
+<polyline points='738.0,238.0 661.0,238.0 666.5,228.5 694.0,276.1 771.0,276.1 765.5,285.6 738.0,238.0' fill='none' stroke='#1e8449' stroke-width='1.6' stroke-linejoin='round'/>
+<circle cx='738.0' cy='238.0' r='4.5' fill='#1e8449' stroke='white' stroke-width='1.2'/>
+<polyline points='738.0,238.0 661.0,238.0 655.5,247.5 683.0,295.2 606.0,295.2 600.5,304.7 628.0,352.3' fill='none' stroke='#2471a3' stroke-width='2' stroke-linejoin='round'/>
+<circle cx='628.0' cy='352.3' r='4.5' fill='#2471a3' stroke='white' stroke-width='1.2'/>
+<polyline points='738.0,238.0 661.0,238.0 655.5,228.5 683.0,180.8 606.0,180.8 600.5,171.3 628.0,123.7' fill='none' stroke='#2471a3' stroke-width='2' stroke-linejoin='round'/>
+<circle cx='628.0' cy='123.7' r='4.5' fill='#2471a3' stroke='white' stroke-width='1.2'/>
+<polyline points='738.0,238.0 661.0,238.0 672.0,238.0 617.0,238.0 540.0,238.0 551.0,238.0 496.0,238.0' fill='none' stroke='#c0392b' stroke-width='2.4' stroke-linejoin='round'/>
+<circle cx='496.0' cy='238.0' r='4.5' fill='#c0392b' stroke='white' stroke-width='1.2'/>
+<circle cx='738' cy='238' r='4' fill='white' stroke='#1f2328' stroke-width='1.4'/>
+<text x='496.0' y='260' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#c0392b'>−11</text>
+<text x='628.0' y='114.6' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#2471a3'>−5 + 3√3 i</text>
+<text x='628.0' y='370.4' text-anchor='middle' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='12' fill='#2471a3'>−5 − 3√3 i</text>
+<rect x='40' y='467' width='14' height='14' rx='3' fill='#1e8449'/>
+<text x='62' y='478' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>frequencies 0, 2, 4: roll out and come back to 0, the half turn pays for them (0 runs along the line, dashed)</text>
+<rect x='40' y='486' width='14' height='14' rx='3' fill='#c0392b'/>
+<text x='62' y='497' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>frequency 3, the half turn: straight along the line to −11 = −11 × h(−7)</text>
+<rect x='40' y='505' width='14' height='14' rx='3' fill='#2471a3'/>
+<text x='62' y='516' font-family='-apple-system, Segoe UI, Helvetica, Arial, sans-serif' font-size='13' fill='#1f2328'>frequencies 1 and 5: land at −5 ∓ 3√3 i</text>
+</svg>

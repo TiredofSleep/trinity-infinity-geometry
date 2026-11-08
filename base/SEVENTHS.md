@@ -27,6 +27,14 @@ two faces of the base's own coin at 7. Last, it sorts what belongs to 7 alone an
 - **Half a turn is the flip.** Three turns send k/7 to (7 − k)/7 = 1 − k/7, and every digit d to 9 − d:
   142 + 857 = 999 [NAMED: Midy's theorem, 1836]. Measured from 4.5, the middle of the digits, half a turn is
   negation. It is the coin z → −z, done by turning.
+- **Seven closes the wheel.**
+  - Multiplying 142857 by 1 to 6 only turns it: 285714, 428571, 571428, 714285, 857142.
+  - Multiplying by 7 lands on the centre: 142857 × 7 = 999999 = 10⁶ − 1. That is the wheel plus its flip,
+    142857 + 857142, with every digit meeting its complement.
+  - In decimals 7/7 = 1 = 0.999999…. **The centre is the one place where a seventh has two decimal faces**,
+    1.000… and 0.999…. Every other k/7 has exactly one.
+  - The same holds for every full wheel: 1/17's sixteen-digit wheel times 17 is sixteen 9s [NAMED: cyclic
+    numbers].
 
 ## 2. The square [FORCED]
 
@@ -79,6 +87,25 @@ Write the six sevenths as the rows of a square:
   - Checked on 65 squares: in base 10 for every full-period prime below 200, and in bases 2, 3 and 7 below 150.
     The same rank, (p + 1)/2, is known for a different circulant built from primitive roots
     [NAMED: arXiv:2601.10757].
+
+### The modes, rolling in time [FORCED]
+
+> *these transitions should read in fourier space?* · *imagine them as a dynamic integral rolling along a
+> timeline, plotting their path* — the author, 7 November 2026
+
+![Left: the digits of 1/7 plotted in time, one per turn of the wheel, with the smooth curve through them and the centre line at 4.5. Right: six paths in the complex plane, the running Fourier sums of the digits measured from 4.5, one for each frequency. The paths for frequencies 0, 2 and 4 return to the origin; frequency 3 runs straight along the real line to −11; frequencies 1 and 5 end at −5 ± 3√3 i.](../figures/the_wheel_in_time.svg)
+
+- **The timeline.** Read the wheel as a signal in time, one digit per turn: 1, 4, 2, 8, 5, 7, 1, 4, …. The smooth
+  curve through the digits is the sum of the wheel's six modes. Measured from 4.5, it turns over every three
+  steps: half a turn later it is its own negative.
+- **The integral, rolling.** At each frequency, add up the digits one turn at a time, each turned by that
+  frequency's phase, and plot the running sum. The six modes are where the six paths arrive:
+  - frequencies 0, 2 and 4 roll out and come back to 0. Those are the zeros the half turn pays for;
+  - frequency 3, the half turn itself, rolls straight along the line to −11 = −11 × h(−7), the class number;
+  - frequencies 1 and 5 land at −5 ∓ 3√3 *i*.
+- **The same transitions, read on the seven levels.** Read on the seven levels with the seven-point Fourier
+  transform of §6, the two faces trade places. The heptagon's turn becomes the clock, a phase on each mode, and
+  the multiplying wheel runs backwards: the Fourier transform turns ×10 into ×5.
 
 ## 4. The wheel on the octahedron [READING; the group facts FORCED]
 

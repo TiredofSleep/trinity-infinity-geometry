@@ -17,5 +17,7 @@ python make_figures.py
 - [`the_two_sevens.svg`](the_two_sevens.svg) — seven counted two ways: adding turns a heptagon, its centre empty
   (base 7), and multiplying turns the octahedron round 0 (base 10 viewed in sevenths)
   ([`../base/SEVENTHS.md`](../base/SEVENTHS.md) §5).
+- [`the_wheel_in_time.svg`](the_wheel_in_time.svg) — the digits of 1/7 rolling in time, and the six running
+  Fourier sums that arrive at the wheel's modes ([`../base/SEVENTHS.md`](../base/SEVENTHS.md) §3).
 
 Each figure sits on a light card, so it reads the same in light and dark themes.

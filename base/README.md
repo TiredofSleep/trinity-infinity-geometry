@@ -19,7 +19,7 @@ coin is whether the centre is inhabited, and both faces are kept: see
 > python verify_symmetry_and_energy.py   # symmetry against energy (31 checks; numpy + scipy)
 > python run_dodecahedron.py             # the run registered in ../THE_LENS.md §7 (a minute or two; its log is kept)
 > python verify_dodecahedron.py          # the exact proof: which contests the dodecahedron and the cube lose (11 checks, about a second)
-> python verify_sevenths.py              # the sevenths: the wheel, the square, seven counted two ways, what is unique to 7 (48 checks)
+> python verify_sevenths.py              # the sevenths: the wheel, the square, seven counted two ways, what is unique to 7 (54 checks)
 > ```
 
 | file | what it is |

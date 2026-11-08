@@ -113,6 +113,20 @@ check("half a turn (3 places) sends k/7 to (7 - k)/7 and every digit d to 9 - d;
       and all(digits(7 - k, 7)[j] == 9 - digits(k, 7)[j] for k in range(1, 7) for j in range(6)) and 142 + 857 == 999)
 check("measured from 4.5, half a turn is negation: the wheel's second half is minus its first",
       all(W[j + 3] - 4.5 == -(W[j] - 4.5) for j in range(3)))
+check("seven closes the wheel: 142857 x 1..6 are its turns, and 142857 x 7 = 999999 = 10^6 - 1 = 142857 + 857142",
+      [str(142857 * k) for k in range(1, 7)] == ["".join(map(str, W[r:] + W[:r])) for r in (0, 2, 1, 4, 5, 3)]
+      and 142857 * 7 == 999999 == 10 ** 6 - 1 == 142857 + 857142)
+ok_nines = True
+for p in primes(100):
+    if p > 5 and full(10, p):
+        cyclic = int("".join(map(str, digits(1, p))))
+        ok_nines &= cyclic * p == 10 ** (p - 1) - 1
+check("for every full wheel below 100, the wheel times its prime is all 9s (1/17's sixteen digits times 17 are "
+      "sixteen 9s)", ok_nines and 588235294117647 * 17 == 10 ** 16 - 1)
+check("the centre's two faces: no k/7 with 7 not dividing k ever ends, so each has one decimal; 7/7 = 1 is also "
+      "0.999..., since 0.9, 0.99, 0.999, ... fall short of 1 by exactly 10^-n",
+      all((k * 10 ** n) % 7 != 0 for k in range(1, 7) for n in range(31))
+      and all(1 - sum(Fr(9, 10 ** t) for t in range(1, n + 1)) == Fr(1, 10 ** n) for n in range(1, 31)))
 
 # ------------------------------------------------------------------ 2. the square
 M = square(7)
@@ -173,6 +187,53 @@ for b, limit in ((10, 200), (7, 150), (3, 150), (2, 150)):
             cases += 1
 check(f"rank (p + 1)/2, and (p - 1)/2 measured from the centre, for every full-period square checked ({cases} squares "
       "in bases 10, 7, 3 and 2)", ok_r)
+
+# the modes, rolling in time
+cent = [d - 4.5 for d in W]
+ends = {}
+on_line = True
+for m in range(6):
+    z, path = 0j, [0j]
+    for t in range(6):
+        z += cent[t] * cmath.exp(2j * math.pi * m * t / 6)
+        path.append(z)
+    ends[m] = path[-1]
+    if m == 3:
+        on_line = all(abs(q.imag) < 1e-12 for q in path)
+check("the integral, rolling: the running Fourier sums of the digits measured from 4.5 come back to 0 at "
+      "frequencies 0, 2 and 4, roll straight along the line to -11 at frequency 3, and land at -5 -+ 3 sqrt3 i at "
+      "frequencies 1 and 5",
+      all(abs(ends[m]) < 1e-12 for m in (0, 2, 4)) and on_line and abs(ends[3] + 11) < 1e-12
+      and abs(ends[1] - complex(-5, -3 * 3 ** 0.5)) < 1e-12 and abs(ends[5] - complex(-5, 3 * 3 ** 0.5)) < 1e-12)
+lam6 = [sum(d * cmath.exp(-2j * math.pi * m * t / 6) for t, d in enumerate(W)) for m in range(6)]
+
+
+def rolling(t):
+    """the smooth real curve of the wheel's six modes (modes 4 and 5 are the conjugates of 2 and 1)"""
+    return (lam6[0].real / 6 + 2 * sum((lam6[m] * cmath.exp(2j * math.pi * m * t / 6)).real for m in (1, 2)) / 6
+            + (lam6[3] * cmath.exp(2j * math.pi * 3 * t / 6)).real / 6)
+
+
+check("the timeline: the smooth curve of the six modes passes through the digits, and measured from 4.5 it is its "
+      "own negative three turns later (checked at 50 times)",
+      all(abs(rolling(t) - W[t]) < 1e-12 for t in range(6))
+      and all(abs((rolling(t + 3) - 4.5) + (rolling(t) - 4.5)) < 1e-12 for t in np.linspace(0, 6, 50)))
+w7 = cmath.exp(2j * math.pi / 7)
+F7 = np.array([[w7 ** (j * k) for k in range(7)] for j in range(7)]) / math.sqrt(7)
+X7 = np.roll(np.eye(7), 1, axis=0)
+Z7 = np.diag([w7 ** k for k in range(7)])
+
+
+def mult7(a):
+    A = np.zeros((7, 7))
+    for k in range(7):
+        A[(a * k) % 7, k] = 1
+    return A
+
+
+check("read on the seven levels, the faces trade places: the Fourier transform turns the heptagon's step into the "
+      "clock, and the multiplying wheel x10 (= x3) into x5, the wheel run backwards",
+      np.allclose(F7 @ X7 @ F7.conj().T, Z7) and np.allclose(F7 @ mult7(3) @ F7.conj().T, mult7(5)))
 
 # ------------------------------------------------------------------ 4. the wheel on the octahedron
 n = np.ones(3) / math.sqrt(3)

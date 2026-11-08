@@ -381,9 +381,92 @@ def the_two_sevens():
     print("  wrote the_two_sevens.svg")
 
 
+# ---------------------------------------------------------------- the wheel in time, read in Fourier space
+
+
+def the_wheel_in_time():
+    import cmath
+    w, h = 840, 540
+    BLUE, GREEN = AXES[1], AXES[2]
+    digits7 = [1, 4, 2, 8, 5, 7]
+    svg = [card(w, h),
+           f"<text x='{w / 2}' y='34' text-anchor='middle' {FONT} font-size='17' font-weight='600' fill='{INK}'>"
+           f"The wheel rolling in time, and its six windings in Fourier space</text>"]
+    # left: the digits of 1/7 in time, one per turn, with the smooth curve through them
+    x0, x1, yb, yt = 58, 398, 372, 118                       # t from 0 to 12, digit from 0 to 9
+    X_ = lambda t: x0 + (x1 - x0) * t / 12
+    Y_ = lambda d: yb - (yb - yt) * d / 9
+    lam = [sum(d * cmath.exp(-2j * cmath.pi * m * t / 6) for t, d in enumerate(digits7)) for m in range(6)]
+
+    def curve(t):
+        s = lam[0].real / 6 + 2 * sum((lam[m] * cmath.exp(2j * cmath.pi * m * t / 6)).real for m in (1, 2)) / 6
+        return s + (lam[3] * cmath.exp(2j * cmath.pi * 3 * t / 6)).real / 6
+
+    svg.append(f"<text x='{(x0 + x1) / 2}' y='72' text-anchor='middle' {FONT} font-size='15' font-weight='600' "
+               f"fill='{INK}'>In time: the digits of 1/7, one per turn</text>")
+    svg.append(f"<line x1='{x0}' y1='{Y_(4.5):.1f}' x2='{x1}' y2='{Y_(4.5):.1f}' stroke='{SOFT}' stroke-width='1.2' "
+               f"stroke-dasharray='4 4'/>")
+    svg.append(f"<text x='{X_(6):.1f}' y='{Y_(4.5) - 6:.1f}' text-anchor='middle' {FONT} font-size='12' fill='{SOFT}'>4.5, "
+               f"the centre</text>")
+    pts = " ".join(f"{X_(t / 20):.1f},{Y_(curve(t / 20)):.1f}" for t in range(0, 241))
+    svg.append(f"<polyline points='{pts}' fill='none' stroke='{BLUE}' stroke-width='2'/>")
+    for t in range(13):
+        d = digits7[t % 6]
+        svg.append(f"<circle cx='{X_(t):.1f}' cy='{Y_(d):.1f}' r='4.5' fill='{INK}'/>")
+        svg.append(f"<text x='{X_(t):.1f}' y='{Y_(d) - 10 if d >= 4.5 else Y_(d) + 20:.1f}' text-anchor='middle' "
+                   f"{FONT} font-size='13' fill='{INK}'>{d}</text>")
+    svg.append(f"<line x1='{x0}' y1='{yb + 18}' x2='{x1}' y2='{yb + 18}' stroke='{EDGE}' stroke-width='1.2'/>")
+    for t in (0, 3, 6, 9, 12):
+        svg.append(f"<text x='{X_(t):.1f}' y='{yb + 34}' text-anchor='middle' {FONT} font-size='12' fill='{SOFT}'>"
+                   f"{t}</text>")
+    svg.append(f"<text x='{(x0 + x1) / 2}' y='{yb + 52}' text-anchor='middle' {FONT} font-size='12' fill='{SOFT}'>"
+               f"turns of the wheel (×10 each); after 3 the curve is its own mirror in 4.5</text>")
+    # right: the running Fourier sums of the digits measured from 4.5, one path per frequency
+    cx, cy, s = 738, 238, 22.0
+    svg.append(f"<text x='630' y='72' text-anchor='middle' {FONT} font-size='15' font-weight='600' fill='{INK}'>"
+               f"In Fourier space: six windings</text>")
+    svg.append(f"<line x1='{cx - 12.6 * s:.1f}' y1='{cy}' x2='{cx + 3.2 * s:.1f}' y2='{cy}' stroke='{EDGE}' "
+               f"stroke-width='1.2'/>")
+    svg.append(f"<line x1='{cx}' y1='{cy - 6.2 * s:.1f}' x2='{cx}' y2='{cy + 6.2 * s:.1f}' stroke='{EDGE}' "
+               f"stroke-width='1.2'/>")
+    cent = [d - 4.5 for d in digits7]
+    style = {0: (GREEN, 1.6), 2: (GREEN, 1.6), 4: (GREEN, 1.6), 3: (ACC, 2.4), 1: (BLUE, 2), 5: (BLUE, 2)}
+    for m in (0, 2, 4, 1, 5, 3):
+        z, path = 0j, [0j]
+        for t in range(6):
+            z += cent[t] * cmath.exp(2j * cmath.pi * m * t / 6)
+            path.append(z)
+        col, sw = style[m]
+        dy = -4 if m == 0 else 0
+        pp = " ".join(f"{cx + s * q.real:.1f},{cy - s * q.imag + dy:.1f}" for q in path)
+        svg.append(f"<polyline points='{pp}' fill='none' stroke='{col}' stroke-width='{sw}' stroke-linejoin='round'"
+                   f"{' stroke-dasharray=\"5 3\"' if m == 0 else ''}/>")
+        end = path[-1]
+        svg.append(f"<circle cx='{cx + s * end.real:.1f}' cy='{cy - s * end.imag:.1f}' r='4.5' fill='{col}' "
+                   f"stroke='white' stroke-width='1.2'/>")
+    svg.append(f"<circle cx='{cx}' cy='{cy}' r='4' fill='white' stroke='{INK}' stroke-width='1.4'/>")
+    svg.append(f"<text x='{cx - 11 * s:.1f}' y='{cy + 22}' text-anchor='middle' {FONT} font-size='12' "
+               f"fill='{ACC}'>−11</text>")
+    svg.append(f"<text x='{cx - 5 * s:.1f}' y='{cy - 5.2 * s - 9:.1f}' text-anchor='middle' {FONT} font-size='12' "
+               f"fill='{BLUE}'>−5 + 3√3 i</text>")
+    svg.append(f"<text x='{cx - 5 * s:.1f}' y='{cy + 5.2 * s + 18:.1f}' text-anchor='middle' {FONT} font-size='12' "
+               f"fill='{BLUE}'>−5 − 3√3 i</text>")
+    legend = [(GREEN, "frequencies 0, 2, 4: roll out and come back to 0, the half turn pays for them (0 runs along the line, dashed)"),
+              (ACC, "frequency 3, the half turn: straight along the line to −11 = −11 × h(−7)"),
+              (BLUE, "frequencies 1 and 5: land at −5 ∓ 3√3 i")]
+    for i, (col, text) in enumerate(legend):
+        y = 478 + 19 * i
+        svg.append(f"<rect x='40' y='{y - 11}' width='14' height='14' rx='3' fill='{col}'/>")
+        svg.append(f"<text x='62' y='{y}' {FONT} font-size='13' fill='{INK}'>{text}</text>")
+    svg.append("</svg>\n")
+    open(os.path.join(HERE, "the_wheel_in_time.svg"), "w", encoding="utf-8").write("\n".join(svg))
+    print("  wrote the_wheel_in_time.svg")
+
+
 if __name__ == "__main__":
     the_base()
     the_coin()
     the_lens()
     the_sevenths()
     the_two_sevens()
+    the_wheel_in_time()
