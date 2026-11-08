@@ -509,3 +509,42 @@ seed, and kicks from the highest even tops, found the same even best, 11 times, 
 **Yield.** The author's prediction called 29 right and 23 wrong; the rival called neither. The even side has won at
 5, 7, 11, 13, 17 and 23, and the odd side at 19 and 29. Both readings are kept in
 [`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) §8 has what the run found.
+
+---
+
+## Round 7: the author's 7-wheel (registered 2026-11-10, not yet run)
+
+> *it must be related to the wheel of numbers revolving around 7? i am thinking shor's with a 7 wheel
+> conversion?* — the author, 10 November 2026, on seeing round 6
+
+**Made exact.**
+- For a prime p other than 7, turn the 7-wheel: the powers of 7 modulo p. Its period r is what Shor's algorithm
+  finds.
+- If r is even, the wheel passes through the half turn: 7^(r/2) ≡ −1 (mod p). That is the case Shor's algorithm
+  checks for.
+- If r is odd, the wheel never reaches the half turn.
+- The half turn is the coin's edge: the centre's Wigner operator is the parity, k → −k.
+
+**The rule.** The even side wins exactly when the 7-wheel passes through the half turn.
+
+**Against the primes already run.** This is a retrodiction, not a test. The rule fits every one of them:
+- 3: r = 1, so the wheel never reaches the half turn; the two sides tie;
+- 5, 11, 13, 17 and 23: r is even, and the even side wins;
+- 19 (r = 3) and 29 (r = 7): the wheel never reaches the half turn, and the odd side wins.
+
+Of the bases 2 to 29, only 7 fits all eight primes. When p is 3 more than a multiple of 4, quadratic reciprocity
+turns the rule into p's place on the sevenths' wheel. The odd side wins exactly when p leaves a remainder of 3, 5
+or 6 on division by 7: the non-squares of the sevenths.
+
+**Caution.** No mechanism is known: the negativity problem at p never mentions 7. Odd periods come at about a
+third of the primes, so a rule fixed in advance would fit these eight by chance about one time in seventy. Round
+6's observation, that the odd side's wins fell at primes 4 more than a multiple of 5, fits them too.
+
+**X1 (the author's 7-wheel).** The odd side wins at 31 (r = 15) and at 37 (r = 9).
+*Kill:* the even side wins at either.
+
+**X2 (the rival observation).** The even side wins at 31 and at 37: neither is 4 more than a multiple of 5.
+*Kill:* the odd side wins at either.
+
+31 alone decides between them. The run will use round 6's machinery, with two million climbs on each side; at 31
+that takes about three hours, at 37 about six. Its script will be committed before the run.
