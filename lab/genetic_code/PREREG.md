@@ -69,3 +69,52 @@ its own model: the model weighs the three letters alike, so the optimum may carr
 the polar-requirement scale has ties that let a symmetric code be relabeled for free. Its substance came out the
 other way: the optimum's value lies on the symmetric side. Both are kept in
 [`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) has the reading.
+
+---
+
+## Part 2: Freeland and Hurst's weights (registered 2026-11-10, before its run)
+
+> *do 17 and 19 and the position-weighted code test* — the author, 9 November 2026
+
+Part 1's G2 died because its model weighed the three letters alike and its scale had ties. Part 2 fixes both.
+- *The weights.* Freeland and Hurst's (1998) misreading weights by letter position, as tabulated by Seo, Tlusty
+  and Jo (2026):
+  - first letter: transitions 1, transversions 0.5;
+  - second letter: transitions 0.5, transversions 0.1;
+  - third letter: 1 and 1.
+- *A second scale, without ties.* Polar requirement and Kyte–Doolittle hydropathy, each standardized over the 20
+  amino acids; the cost adds their squared changes.
+
+**One fact shapes the predictions.** At the third letter every change weighs the same. So the cost cannot prefer
+the pyrimidine/purine pairing to the other two ways of pairing the four bases (H4). The question becomes whether
+error minimization pairs the third letters at all. If it does, something else chooses the pairing that nature
+uses, pyrimidine with pyrimidine and purine with purine; the obvious candidate is the tRNA's wobble pairing.
+
+The rest of the setting is part 1's: random codes keep their own blocks, with the amino acids shuffled and the
+stops kept; the climbing runs 96 chains of 200 000 swaps each, then a full polish, over every code with the
+mitochondrial composition, with the stops free. Seeded (20261110). [`code_weighted.py`](code_weighted.py) is
+committed with these predictions, before its run.
+
+**H1. (Calibration.)** With these weights and polar requirement, at most 20 of a million random codes beat the
+standard code. Freeland and Hurst found about one in a million.
+*Kill:* more than 20.
+
+**H2. (A guess.)** With these weights, the standard code is more optimized than the vertebrate mitochondrial code:
+a smaller share of random codes beat it. Freeland, Knight, Landweber and Hurst (2000) found the nonstandard codes
+less adaptive; part 1's unweighted measure said the opposite (G1).
+*Kill:* the share is the same or larger.
+
+**H3.** Every climb that reaches the best cost (polar requirement, with the tied amino acids merged) ends at a code
+that pairs its third letters: for one of the three pairings of the four bases, the two codons of each pair share a
+meaning, in every box.
+*Kill:* a best climb's code with no such pairing.
+
+**H4. (Forced.)** Relabeling the third letter never changes the cost, so the cost cannot prefer one pairing. Checked
+on random codes, with both scales.
+*Kill:* a change in cost.
+
+**H5.** With the scale that has no ties, every climb that reaches the best cost pairs its third letters.
+*Kill:* a best code with no pairing.
+
+**Expected standing, stated before the run.** H1 calibrates to known results. H2 tests a literature claim under its
+own weights. H4 is forced. H3 and H5 are the new question.

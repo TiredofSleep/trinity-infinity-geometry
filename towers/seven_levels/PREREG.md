@@ -375,3 +375,66 @@ ingredient, the sign of the half turn's operator, is a standard fact about the W
 held everywhere but one place: the margin at 13, where the size reading's guess died. The other reading's guess,
 a winner fixed by its symmetries, failed too (U13 held). The coin across five primes is in the
 [README](README.md) §6. The dead guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
+
+---
+
+## Round 5: seventeen and nineteen (registered 2026-11-10, before its run)
+
+The author asked for 17 and 19. [`round5.py`](round5.py) is committed with these predictions, before its run.
+
+**The picture round 4 left.**
+- The even side wins at every prime above 3.
+- When p is 3 more than a multiple of 4 the two sides end within 0.005. When it is 1 more they end farther apart:
+  0.124 at 5, 0.017 at 13.
+- From 7 on, no winner is fixed by its symmetries.
+
+Seventeen is 1 more than a multiple of 4 and nineteen is 3 more, so the pair tests all of it at once.
+
+**The setting.**
+- *Climbs* (the sign ascent from random states) in the even subspace, the odd subspace and the whole space:
+  - at 17, three million on each side and 1.5 million in the whole space;
+  - at 19, two million on each side and one million in the whole space.
+  - The Legendre state counts on its own side.
+- *The exceptional groups* (binary tetrahedral, octahedral and icosahedral) are found in SL(2, p), one from each
+  conjugacy class, and the states each fixes are computed exactly.
+- *Testing.* While the tool was tested, it was run at 11 and 13, where it repeated round 4's states, and its group
+  search ran at 17 and 19 with the fixed states hidden. It found two classes each of tetrahedral and octahedral
+  groups at 17, and one tetrahedral and two icosahedral classes at 19.
+
+**V1.** The even side wins at 17.
+*Kill:* the odd side comes within 10⁻⁶ of the even side, or passes it.
+
+**V2.** The even side wins at 19.
+*Kill:* the same.
+
+**V3.** The two sides end closer at 19 than at 17: 3 more than a multiple of 4 is closer than 1 more, as 7 and 11
+were against 5 and 13.
+*Kill:* the margin at 19 is as large as at 17, or larger.
+
+**V4a.** The margin at 17 is below 13's 0.017.
+*Kill:* 0.017 or more.
+
+**V4b.** The margin at 19 is below 11's 0.0029.
+*Kill:* 0.0029 or more.
+
+**V5a, V5b.** At 17, and at 19, the best state found touches the ceiling at exactly one point, never touches the
+floor, and is not fixed by its symmetries alone.
+*Kill:* anything else.
+
+**V6.** At 19, the best odd state found has at least 12 symmetries: on the Legendre state's side a highly symmetric
+state wins, as at 3, 7 and 11.
+*Kill:* fewer than 12.
+
+**V7a, V7b.** The Legendre state is beaten on its own side: at 17 by the best even state found, at 19 by the best
+odd state found.
+*Kill:* the Legendre state is the best state found there.
+
+**V8a, V8b. (Forced.)** Every state that a binary tetrahedral, octahedral or icosahedral group fixes lies on the
+Legendre state's side: even at 17, odd at 19.
+- Each of these groups has the half turn inside its commutator subgroup, so all its characters are trivial there.
+- The half turn's operator is (−1 | p) times the parity (round 4, U12).
+
+*Kill:* a fixed state on the other side.
+
+**Expected standing, stated before the run.** V8 is forced. The others are guesses from the pattern at 3 to 13,
+and they rest on searches. V6 is the boldest: it says that the lesson of the strange state continues at 19.
