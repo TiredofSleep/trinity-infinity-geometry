@@ -98,3 +98,32 @@ Run by [`verify_seven_levels.py`](verify_seven_levels.py); its output is kept in
 
 **Yield.** As expected, Q1–Q6 and Q8 are classical, and they are credited in the [README](README.md). The one
 guess, Q7, died, and it is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
+
+---
+
+## Round 2: the most negative state (registered 2026-11-07, before its run)
+
+Q7 died, so this round asks what the most negative seven-level state actually is. A state's total negativity
+is the sum of its negative Wigner values, taken positive.
+
+**The search.** Maximize the total negativity from random starts by Powell's method: 100 starts for three
+levels and 400 for seven. Two states count as **the same up to symmetry** when a Clifford operation carries
+one to the other, up to phase. The Clifford group of seven levels has 49 × 336 = 16 464 operations up to phase.
+
+**R1. (Calibration.)** For three levels, the largest total negativity is 1/3, the value of the strange state
+(|1⟩ − |2⟩)/√2.
+*Kill:* a larger value, by more than 10⁻⁶, or a smaller maximum.
+
+**R2.** For seven levels, the maximizers found (within 10⁻⁵ of the best) are all the same up to symmetry.
+*Kill:* two of them that no Clifford operation carries one to the other.
+
+**R3.** The seven-level maximizer has a symmetry: some Clifford operation other than the identity fixes it, up
+to phase.
+*Kill:* none does.
+
+**R4.** The seven-level maximum is below 0.75.
+*Kill:* 0.75 or more.
+
+**R5.** The maximizer trades depth for breadth: its most negative Wigner value is above −1/7, the depth the
+Legendre state reaches.
+*Kill:* a maximizer with a value of −1/7.
