@@ -43,5 +43,9 @@ round 5:
 PASS  the Legendre states: at 17 even, 1.250924335054; at 19 odd, 1.356950270213
 PASS  the exceptional groups' states lie on the Legendre state's side: at 17 (binary tetrahedral, binary tetrahedral, binary octahedral, binary octahedral) the values [1.167172, 1.167172, 1.235683, 1.235683, 1.341419, 1.341419, 1.388656, 1.388656], all even; at 19 (binary tetrahedral, binary icosahedral, binary icosahedral) the values [1.223807, 1.278772, 1.495712], all odd
 
+round 6:
+PASS  the Legendre states: at 23 odd, 1.341641910165; at 29 even, 1.878678879531
+PASS  the exceptional groups' states lie on the Legendre state's side: at 23 the values [1.490815, 1.490815, 1.490815, 1.490815], all odd; at 29 the values [1.656907, 1.79327, 1.79327], all even
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

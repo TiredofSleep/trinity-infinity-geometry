@@ -241,6 +241,11 @@ its own graveyard. These died, with what killed them:
       there is no even lead at all.
     - "A highly symmetric state wins the odd side at 19" (V6): the odd winner has 4 symmetries; the tetrahedral
       state, with 24, comes below it.
+  - **Round 6's two readings** (2026-11-10; `towers/seven_levels/round6_*.log`):
+    - The author's prediction, "even only wins the lows, the odd wins the rest" (W1): the even side wins at 23,
+      by 0.0036, and a recheck with a fresh seed confirmed it. At 29 the odd side wins, as the author said.
+    - "The Legendre state's side wins" (W2): the even side wins at 23 and the odd side at 29, the opposite of both
+      its calls.
 - **From the genetic-code study (2026-11-09; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.

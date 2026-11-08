@@ -1,0 +1,17 @@
+23 levels: the Legendre state is odd (parity -1), total negativity 1.341641910165
+  2000000 climbs among even states: best 1.700022327901 (reached 144 times; 0 still moving) [909 s]
+  2000000 climbs among odd states: best 1.696422984545 (reached 361 times; 0 still moving) [1730 s]
+  the even side 1.700022327901, the odd side 1.696422984545: the even side ahead by 0.003599 (even wins)
+  the best even state found: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 204, deepest -0.012969; fixed by its symmetries alone: False
+    the five highest even tops: 1.700022328 x144, 1.699736782 x72, 1.699408272 x141, 1.699336081 x112, 1.699230166 x4
+  the best odd state found: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 217, deepest -0.043478; fixed by its symmetries alone: False
+    the five highest odd tops: 1.696422985 x361, 1.696334334 x207, 1.696250911 x354, 1.696154779 x155, 1.695911431 x31
+[1738 s]
+  the exceptional groups in SL(2, 23) (12144 elements), one from each conjugacy class (not scored; round 4's forced rule puts their states on the Legendre state's side):
+    binary tetrahedral (order 24), class 1: fixes 2 state(s); parities [-1.0, -1.0]; total negativities [1.490815, 1.490815]
+    binary tetrahedral (order 24), class 2: fixes 2 state(s); parities [-1.0, -1.0]; total negativities [1.490815, 1.490815]
+    binary octahedral (order 48), class 1: fixes 0 state(s); parities []; total negativities []
+    binary octahedral (order 48), class 2: fixes 0 state(s); parities []; total negativities []
+[1741 s]
+
+margin at 23: 0.003599343

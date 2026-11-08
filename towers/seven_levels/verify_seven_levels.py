@@ -877,6 +877,31 @@ forced("the exceptional groups' states lie on the Legendre state's side: at 17 (
        and ex[17][4] == [1.167172, 1.167172, 1.235683, 1.235683, 1.341419, 1.341419, 1.388656, 1.388656]
        and ex[19][4] == [1.223807, 1.278772, 1.495712])
 
+# ------------------------------------------------------------------ round 6 (round6.py; its logs are round6_*.log)
+print()
+print("round 6:")
+ex6 = {}
+for p_ in (23, 29):
+    Ap = r3.phase_points(p_)
+    Pp = r3.basics(p_)[4]
+    Lp = r3.legendre(p_)
+    leg = 1 if pow(p_ - 1, (p_ - 1) // 2, p_) == 1 else -1
+    Wl = r5.Weil(p_, Ap)
+    pars, vals = [], []
+    for name, a_, b_ in r5.exceptional(Wl, p_):
+        for st in r5.fixed_states(r5.operator(Wl, a_), r5.operator(Wl, b_)):
+            pars.append(float(np.real(np.vdot(st, Pp @ st))))
+            vals.append(round(float(r3.negativity(r3.wigner(st[None, :], Ap, p_)[0])), 6))
+    ex6[p_] = (r3.negativity(r3.wigner(Lp[None, :], Ap, p_)[0]), np.allclose(Pp @ Lp, leg * Lp), leg, pars,
+               sorted(vals))
+forced(f"the Legendre states: at 23 odd, {ex6[23][0]:.12f}; at 29 even, {ex6[29][0]:.12f}",
+       ex6[23][1] and ex6[29][1] and ex6[23][2] == -1 and ex6[29][2] == 1
+       and abs(ex6[23][0] - 1.341641910165) < 1e-11 and abs(ex6[29][0] - 1.878678879531) < 1e-11)
+forced(f"the exceptional groups' states lie on the Legendre state's side: at 23 the values {ex6[23][4]}, all odd; "
+       f"at 29 the values {ex6[29][4]}, all even",
+       all(abs(x + 1) < 1e-6 for x in ex6[23][3]) and all(abs(x - 1) < 1e-6 for x in ex6[29][3])
+       and ex6[23][4] == [1.490815, 1.490815, 1.490815, 1.490815] and ex6[29][4] == [1.656907, 1.79327, 1.79327])
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

@@ -488,3 +488,24 @@ at 29.
 
 At 23 the two agree, so 29 decides between them. The run will use round 5's machinery, with at least two million
 climbs on each side at each prime; at 29 that takes hours. Its script will be committed before the run.
+
+---
+
+## Round 6 scores (added after the run, 2026-11-10)
+
+Run by [`round6.py`](round6.py), committed at 66b4d0d before its run; the output is kept in
+[`round6_twentythree.log`](round6_twentythree.log), [`round6_twentynine.log`](round6_twentynine.log) and
+[`round6_combined.log`](round6_combined.log). The runs are seeded. **Both readings died.**
+
+| | outcome | evidence |
+|---|---|---|
+| W1, the author's prediction | **died** | at 23 the even side wins, 1.700022 against 1.696423. At 29 the odd side wins, 1.963715 against 1.957461, as the author said |
+| W2, the rival reading | **died** | the even side wins at 23 and the odd side at 29: the opposite of both its calls |
+
+**Rechecks, not registered.** At 23, two million more odd climbs with a fresh seed, and kicks from the highest odd
+tops, found the same odd best, 353 times, and nothing higher. At 29, two million more even climbs with a fresh
+seed, and kicks from the highest even tops, found the same even best, 11 times, and nothing higher.
+
+**Yield.** The author's prediction called 29 right and 23 wrong; the rival called neither. The even side has won at
+5, 7, 11, 13, 17 and 23, and the odd side at 19 and 29. Both readings are kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) §8 has what the run found.
