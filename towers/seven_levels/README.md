@@ -10,6 +10,7 @@
   act on it.
 - This page says how, and says what our three-dimensional space can and cannot hold.
 - Eight predictions were registered before the run ([`PREREG.md`](PREREG.md)). Seven held and one died.
+- A second round of five, on the most negative state, was registered after that one died. All five held (§4).
 
 ---
 
@@ -71,9 +72,52 @@ clocks to shifts and clocks, up to phase.
 - **Q7. The Legendre state is not the most negative state.** A search from 125 starts found total negativity
   0.7325, against the Legendre state's 0.7283. The state it found is not even odd under the half turn: its
   parity expectation is +0.23. The guess is kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md), with the
-  counterexample in the log to 8 decimals.
+  counterexample in the log to 8 decimals. Round 2 (§4) found what that state is.
 
-## 4. Our space, and what it cannot hold [FORCED; FENCE]
+## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
+
+Q7 died, so a second round asked which seven-level state is the most negative. Five predictions were
+registered before the run, and all five held ([`PREREG.md`](PREREG.md)).
+
+- **The search.** [`most_negative.py`](most_negative.py) maximizes the total negativity from 400 random starts.
+  Its output is in [`most_negative.log`](most_negative.log).
+  - The best value found is **0.732522**. Three starts reached it, and their states are the same up to symmetry.
+  - At least 17 other starts stopped at a second peak, 0.729722.
+  - This is a search, not a proof. A larger value is not ruled out.
+- **The state** [FORCED, on the state as recorded to 8 decimals].
+  - Its Wigner function reaches the ceiling, +1/7, at exactly one point: its own centre. Four Clifford
+    operations fix it: the identity, and a quarter turn about that centre with its square and its cube.
+  - Each quarter turn is the Fourier transform seen in another frame.
+    - In the frames of one, the state is real and even, and the Fourier transform sends it to minus itself.
+    - In the frames of the other, it is an eigenstate with eigenvalue +1, but never real. Among real states,
+      that eigenspace reaches only 0.615232.
+  - It is negative at 16 of the 49 points, none deeper than −0.068.
+  - Each eigenspace of the Fourier transform has its own best state: 0.732522 for the eigenvalues −1 and +1,
+    0.728262 for i (the Legendre state), and 0.601107 for −i, which holds a single state.
+- **A coin: deep or wide** [READING, on FORCED facts].
+  - The edge is the centre, where the Wigner operator is the half turn itself. So an odd state sits on the
+    floor there, at −1/7, and an even state sits on the ceiling, at +1/7.
+  - One side is the Legendre state. It is odd: −1/7 at the centre, negative at 13 points, total 0.728262. Twelve
+    Clifford operations fix it: the six multipliers, and the Fourier transform after each.
+  - The other side is the maximizer. It is even about its own centre: +1/7 there, negative at 16 points, none
+    deeper than −0.068, total 0.732522. Four operations fix it. The more symmetric state loses.
+- **The same coin at three.**
+  - The strange state (|1⟩ − |2⟩)/√2 is the Legendre state of 3. It is odd: −1/3 at the centre and +1/6 at the
+    other eight points. Its −1/3 is unique, so every operation that fixes it fixes the centre, and all 24
+    Clifford operations that fix the centre fix it.
+  - The Norrell state (|1⟩ + |2⟩)/√2 is even: +1/3 at the centre, and −1/6 at two points. Six operations fix it.
+  - Both total 1/3, the largest value the search found. Of the 100 starts, 99 reached it: 30 at the strange
+    state and 69 at the Norrell state, up to symmetry. None reached it anywhere else.
+  - The tie is known. Mana, the logarithm of 1 + 2 × the total negativity, ranks states exactly as the total
+    negativity does. Jain and Prakash credit Veitch, Mousavian, Gottesman and Emerson (2014) with seeing that
+    the two states share the largest mana, and Wang, Wilde and Su (2020) with showing that a finer measure,
+    the thauma, ranks the strange state first.
+  - So at three the two sides tie. At seven the best even state found beats the Legendre state, by 0.0043.
+  - Jain and Prakash (2020) found the same split at five: the most magic state there is not the most symmetric
+    one. They also proved that above 3 no state is fixed by every Clifford operation that fixes the centre, as
+    the strange state is at 3.
+
+## 5. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -90,7 +134,7 @@ clocks to shifts and clocks, up to phase.
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 5. Standing
+## 6. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -100,19 +144,33 @@ clocks to shifts and clocks, up to phase.
   - PSL(2, 7) ≅ GL(3, 2), and Klein's quartic with its three-dimensional representation, the odd part of the
     Weil representation;
   - SL(2, 5) as the binary icosahedral group;
-  - Galois's subgroups of index 7, which are the 14 copies of S₄.
-- **This repository's own:** the dictionary, and the reading that puts the sevenths' two faces, the octahedron
-  with its centre, the cube and Klein's space into one picture.
-- **The yield is mostly known.** That is the honest result of this round: seven classical facts confirmed, and
-  one guess dead.
+  - Galois's subgroups of index 7, which are the 14 copies of S₄;
+  - the strange and Norrell states, their shared largest mana, and the thauma's ranking (Veitch et al. 2014;
+    Wang, Wilde and Su 2020; Jain and Prakash 2020).
+- **This repository's own:**
+  - the dictionary, and the reading that puts the sevenths' two faces, the octahedron with its centre, the cube
+    and Klein's space into one picture;
+  - the most negative seven-level state found, its four symmetries, its two Fourier frames, and the coin it
+    makes with the Legendre state. Two web searches (2026-11-07) found work on three and five levels, and
+    nothing that identifies the most negative state of seven.
+- **The yield.** Round 1 was mostly known: seven classical facts confirmed, and one guess dead. Round 2 is new
+  as far as we checked, but it is a measurement, not a proof.
+- **Open:**
+  - whether 0.732522 is the maximum;
+  - whether the Legendre state is the most negative odd state;
+  - which side wins at 11, which is 3 more than a multiple of 4, like 3 and 7. At 5 the Legendre state is even,
+    so the coin is set differently there.
 
 ## Run it
 
 ```
 python verify_seven_levels.py      # about half a minute (numpy + scipy)
+python most_negative.py            # round 2's search, about a minute and a half
 ```
 
-It reruns all eight predictions and the page's other checks, and exits with 1 if the recorded score changes.
+- The first reruns all eight predictions and the page's other checks, round 2's recorded state among them. It
+  exits with 1 if the recorded score changes.
+- The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 
 ## Sources
 
@@ -128,3 +186,9 @@ It reruns all eight predictions and the page's other checks, and exits with 1 if
 - F. Klein, "Ueber die Transformation siebenter Ordnung der elliptischen Functionen", *Math. Ann.* **14** (1878);
   N. D. Elkies, "The Klein quartic in number theory", in *The Eightfold Way* (1999).
 - É. Galois, letter to Auguste Chevalier (1832): PSL(2, p) has a subgroup of index p only for p ≤ 11.
+- V. Veitch, S. A. H. Mousavian, D. Gottesman and J. Emerson, "The resource theory of stabilizer quantum
+  computation", *New J. Phys.* **16** (2014) 013009.
+- X. Wang, M. M. Wilde and Y. Su, "Efficiently computable bounds for magic state distillation", *Phys. Rev.
+  Lett.* **124** (2020) 090505.
+- A. Jain and S. Prakash, "Qutrit and ququint magic states", *Phys. Rev. A* **102** (2020) 042409,
+  [arXiv:2003.07164](https://arxiv.org/abs/2003.07164).

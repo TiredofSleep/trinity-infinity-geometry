@@ -14,6 +14,13 @@ PASS  the multiplier x3 fixes |0> and turns the other six in one cycle (1, 3, 2,
 PASS  spin 3: a seventh of a turn of space about the axis has exactly the seven 7th roots of unity as eigenvalues, so it is the clock
 PASS  spin 3: half a turn about a perpendicular axis sends each m to -m (up to sign): the flip
 PASS  no symmetry of the octahedron has order 7 (its 48 have orders 1, 2, 3, 4, 6)
+PASS  round 2's maximizer: total negativity 0.732522, negative at 16 of the 49 points, none deeper than -0.068, and +1/7 at one point
+PASS  the Clifford group has 16464 operations up to phase; the maximizer's symmetries are 4, of orders [1, 2, 4, 4]; in each of the 8 frames where one of its quarter turns becomes the Fourier transform, it is a REAL Fourier eigenstate with eigenvalue -1, even, with +1/7 at the centre; in the 8 frames of the other quarter turn it is an eigenstate with eigenvalue +1, complex in every one (|sum of squared amplitudes| 0.661; 1 means real)
+PASS  among REAL states, the -1 eigenspace still reaches 0.732522, the +1 eigenspace only 0.615232: the maximum's real face is the -1 one
+PASS  the centre's Wigner operator is the half turn itself, so parity decides the centre: the Legendre state (odd) sits on the floor there, -1/7, negative at 13 points (one at -1/7, twelve at -0.0488); the maximizer seen even sits on the ceiling, +1/7, and spreads its negativity over 16 points, none below -0.0680
+PASS  the Legendre state is fixed by 12 Clifford operations, exactly the six multipliers and the Fourier transform after each; the maximizer by 4: the more symmetric state loses
+PASS  three levels, the same two sides: the strange state (|1> - |2>)/sqrt2 is the Legendre state of 3, odd, and sits on the floor at the centre, -1/3, with +1/6 at the other eight points; the Norrell state (|1> + |2>)/sqrt2 is even and sits on the ceiling, +1/3, with six +1/6 and two -1/6; both total 1/3; of the 216 Clifford operations 24 fix the strange state and 6 the Norrell state, so none carries one to the other
+PASS  the most negative state in each eigenspace of the Fourier transform (a grid over each, then refined): 1: 0.732522, -1: 0.732522, i: 0.728262 (the Legendre state's value), -i: 0.601107
 
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

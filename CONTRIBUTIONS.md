@@ -43,6 +43,7 @@ and its checks live.
 | **The dodecahedron loses every energy contest that can see it.** For every potential completely monotone on (0, 4] that is not a polynomial of degree at most 5 in r², the dodecahedron is a saddle: along one of its flexes the energy's second derivative is negative. The polynomials of degree at most 5 cannot tell it from the best, because it is a 5-design. The cube is the same one step down, with its edge at degree 3. Behind it, rigid wins and floppy loses: the three triangle-faced solids cannot flex, and they are local minima in every contest tested. This was the lens's registered prediction | geometry · energy minimization | proved (exact arithmetic in ℚ(√5), with a bound beyond n = 60); that the dodecahedron is not universally optimal was known (Cohn and Kumar 2007; Ballinger et al. 2009; Nerattini, Brauchart and Kiessling 2014) | [`THE_LENS.md`](THE_LENS.md) §7, [`base/SYMMETRY_AND_ENERGY.md`](base/SYMMETRY_AND_ENERGY.md), [`base/verify_dodecahedron.py`](base/verify_dodecahedron.py) |
 | **Every full-period prime reciprocal square has rank exactly (p + 1)/2, in any base.** Take a prime p and a base b in which 1/p has the full period, and write the base-b digits of k/p as row k. The half turn pays for every zero (the nontrivial even characters). None is ever bought, because B₁,χ ≠ 0 for odd characters. At p = 7, the author's "magic squares out of sevenths", the rank is 4 | number theory · linear algebra | proved, by a short argument from Girstmair's character sums and the class-number formula; checked on 65 squares in bases 2, 3, 7 and 10; not found stated (the same rank is known for a different circulant, arXiv:2601.10757) | [`base/SEVENTHS.md`](base/SEVENTHS.md) |
 | **The first fully magic prime reciprocal square in base 7 is at p = 10831** (searched below 20 000, setting aside the trivial 2). The same search finds the listed first cases in bases 2, 3 and 10: 59, 223 and 19 | combinatorics | computed, on the base-7 face of the sevenths; not in OEIS, which lists bases 2, 3 and 10 | [`base/SEVENTHS.md`](base/SEVENTHS.md) |
+| **The most negative seven-level state found, and its coin.** A search from 400 starts reaches total negativity 0.732522, at one state up to symmetry. Four Clifford operations fix it, and in one frame it is real, even, and sent to minus itself by the Fourier transform. It beats the Legendre state (0.728262), which twelve operations fix. At the centre an odd state sits on the floor, −1/7, and an even one on the ceiling, +1/7. At three the two sides tie, which is known | quantum information | found by a seeded search, not proved; its five predictions were registered first, and all held; not found in the literature checked, which covers three and five levels | [`towers/seven_levels/`](towers/seven_levels/README.md) |
 
 ## For teaching: the frame itself
 
@@ -84,7 +85,9 @@ census caught. Each is kept with its counterexample in [`graveyard/j_series_rere
   - the eight unbiased bases (Wootters and Fields);
   - Klein's three-dimensional representation as the odd part of the Weil representation (Klein; Elkies);
   - SL(2, 5) as the binary icosahedral group;
-  - Galois's subgroups of index 7.
+  - Galois's subgroups of index 7;
+  - the strange and Norrell states' shared largest mana, and the thauma's ranking (Veitch et al.;
+    Wang, Wilde and Su; Jain and Prakash).
 
   All are re-derived and checked. The reading that ties them to the sevenths is this repository's own.
 

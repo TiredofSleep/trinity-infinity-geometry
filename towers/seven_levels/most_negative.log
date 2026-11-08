@@ -1,0 +1,30 @@
+three levels: 216 Clifford operations up to phase
+  best total negativity found from 100 starts: 0.333333333; the strange state 0.333333333; the Norrell state 0.333333333
+  the best state is the strange state up to symmetry: False
+R1 HELD: the three-level maximum is 0.333333333 (1/3 = 0.333333333)
+
+seven levels: 16464 Clifford operations up to phase
+  best total negativity from 400 starts: 0.732522000; 3 starts came within 1e-5 of it
+  the twenty best values: 0.732522, 0.732522, 0.732522, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722, 0.729722
+R2 HELD: all 3 near-best states are the same up to symmetry: True
+R3 HELD: the maximizer's symmetry group has 4 element(s) up to phase, with orders {1: 1, 2: 1, 4: 2}
+R4 HELD: the seven-level maximum found is 0.732522000
+R5 HELD: the maximizer's deepest Wigner value is -0.067998966 (-1/7 = -0.142857143); it has 16 negative points out of 49
+  its Wigner values, sorted: -0.06800, -0.06800, -0.06800, -0.06800, -0.05463, -0.05463, -0.05463, -0.05463, -0.04185, -0.04185, -0.04185, -0.04185, -0.01865, -0.01865, -0.01865, -0.01865, +0.03302, +0.03302, +0.03302, +0.03302, +0.03302, +0.03302, +0.03302, +0.03302, +0.04584, +0.04584, +0.04584, +0.04584, +0.04584, +0.04584, +0.04584, +0.04584, +0.05246, +0.05246, +0.05246, +0.05246, +0.05493, +0.05493, +0.05493, +0.05493, +0.06615, +0.06615, +0.06615, +0.06615, +0.06615, +0.06615, +0.06615, +0.06615, +0.14286
+  the maximizer, amplitudes on |0>..|6> (8 decimals): +0.01922811-0.08424383i, -0.22656903+0.28410857i, +0.06990646-0.03366517i, +0.59849409+0.00000000i, -0.53922453-0.25967686i, -0.04837677-0.06066255i, +0.08086155+0.35427759i
+  for comparison: the Legendre state 0.728262097; its deepest value -0.142857143
+
+ROUND 2 SCORE: 5 of 5 held: R1 held, R2 held, R3 held, R4 held, R5 held
+
+BEYOND THE REGISTERED ROUND (not scored)
+  the maximizer's +1/7 point is (q, p) = (0, 4); moved to the centre it is even under the half turn: True
+  a quarter turn of its symmetry is the Fourier transform in 8 Clifford frames; in each the state is a Fourier eigenstate with eigenvalue -1.000000+0.000000i (the same in all: True; largest residual 2.3e-08); real up to phase in 8
+  a quarter turn of its symmetry is the Fourier transform in 8 Clifford frames; in each the state is a Fourier eigenstate with eigenvalue +1.000000-0.000000i (the same in all: True; largest residual 2.3e-08); real up to phase in 0
+  the most negative state in the Fourier eigenspace 1 (dimension 2): 0.732522, parity +1.000, deepest value -0.067999
+  the most negative state in the Fourier eigenspace -1 (dimension 2): 0.732522, parity +1.000, deepest value -0.067999
+  the most negative state in the Fourier eigenspace 1j (dimension 2): 0.728262, parity -1.000, deepest value -0.142857
+  the most negative state in the Fourier eigenspace (-0-1j) (dimension 1): 0.601107, parity -1.000, deepest value -0.142857
+  three levels: the strange and Norrell states both reach 1/3 and are not the same up to symmetry (True); their symmetry groups have 24 and 6 elements
+  three levels: 99 of the 100 starts reached 1/3 within 1e-6: 30 at the strange state up to symmetry, 69 at the Norrell state, 0 elsewhere
+  the strange state's Wigner values times 9, sorted: -3.000, +1.500, +1.500, +1.500, +1.500, +1.500, +1.500, +1.500, +1.500
+  the Norrell state's Wigner values times 9, sorted: -1.500, -1.500, +1.500, +1.500, +1.500, +1.500, +1.500, +1.500, +3.000

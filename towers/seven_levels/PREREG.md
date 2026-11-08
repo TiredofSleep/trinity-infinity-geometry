@@ -127,3 +127,22 @@ to phase.
 **R5.** The maximizer trades depth for breadth: its most negative Wigner value is above −1/7, the depth the
 Legendre state reaches.
 *Kill:* a maximizer with a value of −1/7.
+
+---
+
+## Round 2 scores (added after the run, 2026-11-07)
+
+Run by [`most_negative.py`](most_negative.py); its output is kept in [`most_negative.log`](most_negative.log).
+The search is seeded, so a rerun repeats it. **5 of 5 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| R1 | held | the best of 100 starts is 0.333333333, the strange state's value. The Norrell state reaches it too ([README](README.md) §4) |
+| R2 | held | 3 of the 400 starts came within 10⁻⁵ of the best, 0.732522000, and Clifford operations carry them to one another |
+| R3 | held | 4 Clifford operations fix the maximizer, of orders 1, 2, 4 and 4 |
+| R4 | held | 0.732522000 |
+| R5 | held | the maximizer's deepest value is −0.067999, against −1/7 ≈ −0.142857. It is negative at 16 of the 49 points |
+
+**Yield.** R1 recovers a known value. The state behind R2–R5 does not appear in the literature we checked, which
+covers three and five levels. It was found by search, so it is not proved to be the maximum. What it is, and the
+coin it makes with the Legendre state, are in the [README](README.md) §4.

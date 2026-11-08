@@ -261,8 +261,11 @@ The author then asked how the two faces meet our space for quantum parts. A quan
 is indexed by the seven remainders, so both faces act on it: adding is the shift, multiplying is the multiplier,
 and the Fourier transform joins them. Eight predictions were registered before the run, and seven held. The
 eight measurement bases move like the cube's corners, and the "magic" subspace is Klein's space, where the
-octahedron acts as it does on ours. One guess died. The results are in
-[`../towers/seven_levels/`](../towers/seven_levels/README.md).
+octahedron acts as it does on ours. One guess died: the Legendre state, the octahedron's height, is not the
+most negative state. A second round found the state that beats it, by 0.0043. The Legendre state is odd under
+the half turn, the wheel's flip, and the winner is even about its own centre. At the centre the flip decides
+which way a state's quasi-probability goes: down to −1/7 for an odd state, up to +1/7 for an even one. The
+results are in [`../towers/seven_levels/`](../towers/seven_levels/README.md).
 
 ## What this page is, and is not
 

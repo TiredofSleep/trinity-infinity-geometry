@@ -1,7 +1,8 @@
 """verify_seven_levels.py -- runs the eight predictions registered in PREREG.md (commit b42b65b) on a
-seven-level quantum system, and reports each as HELD or DIED with its evidence.
+seven-level quantum system, and reports each as HELD or DIED with its evidence.  Then it checks the README's
+other lines, among them round 2's most negative state as recorded in most_negative.log.
 
-numpy + scipy.  ASCII output.  Run:  python verify_seven_levels.py      (about a minute)
+numpy + scipy.  ASCII output.  Run:  python verify_seven_levels.py      (about half a minute)
 """
 import ctypes
 import itertools
@@ -438,6 +439,150 @@ signed = [np.array([[s[i] if pp[i] == j else 0 for j in range(3)] for i in range
           for pp in itertools.permutations(range(3)) for s in itertools.product((1, -1), repeat=3)]
 forced("no symmetry of the octahedron has order 7 (its 48 have orders 1, 2, 3, 4, 6)",
        sorted({mat_order(g.astype(float)) for g in signed}) == [1, 2, 3, 4, 6])
+
+# round 2: the most negative state found (most_negative.py), rebuilt from its 8 decimals in the log
+rec = ("+0.01922811-0.08424383i, -0.22656903+0.28410857i, +0.06990646-0.03366517i, +0.59849409+0.00000000i, "
+       "-0.53922453-0.25967686i, -0.04837677-0.06066255i, +0.08086155+0.35427759i")
+top = np.array([complex(s.replace("i", "j")) for s in rec.split(", ")])
+top /= np.linalg.norm(top)
+Wt = wigner(top, A7, 7)
+forced("round 2's maximizer: total negativity 0.732522, negative at 16 of the 49 points, none deeper than -0.068, "
+       "and +1/7 at one point",
+       abs(negativity(top) - 0.732522) < 1e-6 and int((Wt < -1e-9).sum()) == 16 and Wt.min() > -0.0681
+       and abs(Wt.max() - 1 / 7) < 1e-8 and int((Wt > 1 / 7 - 1e-4).sum()) == 1)
+
+
+def clifford_group(d):
+    """the Clifford group of d levels (d an odd prime) up to phase: shift, clock, Fourier, the shear
+    |k> -> w^(k^2/2)|k> and a primitive-root multiplier generate it"""
+    w_, X_, Z_, F_, P_ = setting(d)
+    T_ = np.diag([w_ ** ((pow(2, -1, d) * k * k) % d) for k in range(d)])
+    g_ = next(a for a in range(2, d) if len({pow(a, e, d) for e in range(1, d)}) == d - 1)
+    gens_ = [X_, Z_, F_, T_, mult(g_, d)]
+
+    def canon_(U):
+        flat = U.ravel()
+        i = int(np.argmax(np.abs(flat) > 1e-6))
+        return U / (flat[i] / abs(flat[i]))
+
+    start = np.eye(d, dtype=complex)
+    group = {key(start): start}
+    frontier = [start]
+    while frontier:
+        new = []
+        for U in frontier:
+            for G_ in gens_:
+                V_ = canon_(G_ @ U)
+                k_ = key(V_)
+                if k_ not in group:
+                    group[k_] = V_
+                    new.append(V_)
+        frontier = new
+    return np.array(list(group.values()))
+
+
+CL = clifford_group(7)
+images = np.einsum("nij,j->ni", CL, top)
+stab = CL[np.abs(images.conj() @ top) > 1 - 1e-4]
+
+
+def order_phase(U):
+    Q_, n_ = U.copy(), 1
+    while abs(abs(np.trace(Q_)) - U.shape[0]) > 1e-6:
+        Q_, n_ = Q_ @ U, n_ + 1
+    return n_
+
+
+def symmetries(psi, C):
+    return int((np.abs(np.einsum("nij,j->ni", C, psi).conj() @ psi) > 1 - 1e-6).sum())
+
+
+faces = []
+for U in [U for U in stab if order_phase(U) == 4]:                  # its two quarter turns, U and U^3
+    views = [S_.conj().T @ top for S_ in CL if abs(abs(np.trace((S_ @ F @ S_.conj().T).conj().T @ U)) - 7) < 1e-6]
+    lams = [v.conj() @ F @ v for v in views]                       # each view: a frame where U is F itself
+    ok_ = all(np.linalg.norm(F @ v - l * v) < 1e-6 and abs(l - lams[0]) < 1e-6 for v, l in zip(views, lams))
+    faces.append((lams[0], len(views), ok_, [abs(np.sum(v * v)) for v in views], views[0]))  # |sum v_k^2| = 1: real
+faces.sort(key=lambda f_: f_[0].real)
+two = (len(faces) == 2 and abs(faces[0][0] + 1) < 1e-6 and abs(faces[1][0] - 1) < 1e-6
+       and all(f_[1] == 8 and f_[2] for f_ in faces))
+v_m = faces[0][4] if two else top
+W_m = wigner(v_m, A7, 7)
+forced(f"the Clifford group has {len(CL)} operations up to phase; the maximizer's symmetries are 4, of orders "
+       f"{sorted(order_phase(U) for U in stab)}; in each of the 8 frames where one of its quarter turns becomes the "
+       "Fourier transform, it is a REAL Fourier eigenstate with eigenvalue -1, even, with +1/7 at the centre; in the 8 "
+       "frames of the other quarter turn it is an eigenstate with eigenvalue +1, complex in every one "
+       f"(|sum of squared amplitudes| {max(faces[-1][3]):.3f}; 1 means real)",
+       len(CL) == 16464 and sorted(order_phase(U) for U in stab) == [1, 2, 4, 4] and two
+       and min(faces[0][3]) > 1 - 1e-8 and max(faces[1][3]) < 0.99
+       and np.allclose(P @ v_m, v_m, atol=1e-6) and abs(W_m[0] - 1 / 7) < 1e-8)
+from scipy.optimize import minimize_scalar
+
+evR, VR = np.linalg.eigh(F.real)            # on even states F is its real part, so its +1 and -1 spaces have real bases
+best_real = {}
+for target in (1, -1):
+    B = VR[:, np.abs(evR - target) < 1e-6]
+
+    def along(t, B=B):
+        return negativity(math.cos(t) * B[:, 0] + math.sin(t) * B[:, 1])
+
+    ts = np.linspace(0, math.pi, 3601)
+    t0 = ts[int(np.argmax([along(t) for t in ts]))]
+    r = minimize_scalar(lambda t: -along(t), bounds=(t0 - math.pi / 3600, t0 + math.pi / 3600), method="bounded",
+                        options={"xatol": 1e-12})
+    best_real[target] = max(along(t0), -r.fun)
+forced(f"among REAL states, the -1 eigenspace still reaches {best_real[-1]:.6f}, the +1 eigenspace only "
+       f"{best_real[1]:.6f}: the maximum's real face is the -1 one",
+       abs(best_real[-1] - 0.732522) < 1e-6 and best_real[1] < 0.62)
+forced("the centre's Wigner operator is the half turn itself, so parity decides the centre: the Legendre state (odd) "
+       "sits on the floor there, -1/7, negative at 13 points (one at -1/7, twelve at "
+       f"{np.sort(W_chi)[1]:.4f}); the maximizer seen even sits on the ceiling, +1/7, and spreads its negativity over "
+       f"16 points, none below {W_m.min():.4f}",
+       np.allclose(A7[0], P) and abs(W_chi[0] + 1 / 7) < 1e-12 and int((W_chi < -1e-12).sum()) == 13
+       and np.allclose(np.sort(W_chi)[1:13], np.sort(W_chi)[1]) and int((W_m < -1e-9).sum()) == 16
+       and W_m.min() > -0.0681)
+n_chi = symmetries(chi, CL)
+named = [mult(a, 7) for a in range(1, 7)] + [F @ mult(a, 7) for a in range(1, 7)]
+named_fix = all(abs(abs(chi.conj() @ G_ @ chi) - 1) < 1e-9 for G_ in named)
+forced(f"the Legendre state is fixed by {n_chi} Clifford operations, exactly the six multipliers and the Fourier "
+       f"transform after each; the maximizer by {len(stab)}: the more symmetric state loses",
+       n_chi == 12 and named_fix and len({key(canon(G_.astype(complex))) for G_ in named}) == 12 and len(stab) == 4)
+C3 = clifford_group(3)
+w3, X3, Z3, F3, P3 = setting(3)
+A3 = wigner_ops(3, X3, Z3, P3)
+strange = np.array([0, 1, -1], complex) / np.sqrt(2)
+norrell = np.array([0, 1, 1], complex) / np.sqrt(2)                 # |N+> in Jain and Prakash (2020)
+legendre3 = np.array([0] + [1 if pow(k, 1, 3) == 1 else -1 for k in range(1, 3)], complex) / np.sqrt(2)
+Ws3, Wn3 = np.sort(wigner(strange, A3, 3)), np.sort(wigner(norrell, A3, 3))
+forced(f"three levels, the same two sides: the strange state (|1> - |2>)/sqrt2 is the Legendre state of 3, odd, and "
+       f"sits on the floor at the centre, -1/3, with +1/6 at the other eight points; the Norrell state (|1> + |2>)/sqrt2 "
+       f"is even and sits on the ceiling, +1/3, with six +1/6 and two -1/6; both total 1/3; of the {len(C3)} Clifford "
+       f"operations {symmetries(strange, C3)} fix the strange state and {symmetries(norrell, C3)} the Norrell state, so "
+       "none carries one to the other",
+       np.allclose(strange, legendre3) and np.allclose(Ws3, [-1 / 3] + [1 / 6] * 8)
+       and np.allclose(Wn3, [-1 / 6] * 2 + [1 / 6] * 6 + [1 / 3]) and len(C3) == 216
+       and abs(wigner(strange, A3, 3)[0] + 1 / 3) < 1e-12 and abs(wigner(norrell, A3, 3)[0] - 1 / 3) < 1e-12
+       and symmetries(strange, C3) == 24 and symmetries(norrell, C3) == 6)
+evF, VF = np.linalg.eig(F)
+best_in = {}
+for target in (1, -1, 1j, -1j):
+    idx = [k for k in range(7) if abs(evF[k] - target) < 1e-6]
+    Qe, _ = np.linalg.qr(VF[:, idx])
+    if len(idx) == 1:
+        best_in[target] = negativity(Qe[:, 0])
+        continue
+    th, ph = np.meshgrid(np.linspace(0, np.pi, 91), np.linspace(0, 2 * np.pi, 180, endpoint=False), indexing="ij")
+    cands = [(negativity(Qe @ np.array([math.cos(a / 2), np.exp(1j * b) * math.sin(a / 2)])), a, b)
+             for a, b in zip(th.ravel(), ph.ravel())]
+    v0, a0, b0 = max(cands)
+    r = minimize(lambda v: -negativity(Qe @ np.array([math.cos(v[0] / 2), np.exp(1j * v[1]) * math.sin(v[0] / 2)])),
+                 [a0, b0], method="Powell", options={"xtol": 1e-12, "ftol": 1e-14})
+    best_in[target] = max(v0, -r.fun)
+forced("the most negative state in each eigenspace of the Fourier transform (a grid over each, then refined): "
+       f"1: {best_in[1]:.6f}, -1: {best_in[-1]:.6f}, i: {best_in[1j]:.6f} (the Legendre state's value), "
+       f"-i: {best_in[-1j]:.6f}",
+       abs(best_in[1] - 0.732522) < 1e-6 and abs(best_in[-1] - 0.732522) < 1e-6
+       and abs(best_in[1j] - N_chi) < 1e-6 and abs(best_in[-1j] - 0.601107) < 1e-6)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
