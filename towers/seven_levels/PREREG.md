@@ -548,3 +548,47 @@ third of the primes, so a rule fixed in advance would fit these eight by chance 
 
 31 alone decides between them. The run will use round 6's machinery, with two million climbs on each side; at 31
 that takes about three hours, at 37 about six. Its script will be committed before the run.
+
+---
+
+## Round 8: the two-wheels test (registered 2026-11-10, before its run)
+
+The author asked for this test after a pause to look at the data from other angles.
+
+**The reading.**
+- The Clifford operations that fix the centre form SL(2, p). Two cyclic wheels run through it:
+  - the multiplying wheel, k → ak, with p − 1 steps: the wheel of numbers, which at 7 is the sevenths' six;
+  - the turning wheel, the rotations of phase space such as the Fourier transform, with p + 1 steps.
+- The two wheels share only the half turn, which is the coin's edge.
+- Every winner found so far has a symmetry from the turning wheel, or only the half turn. None has a symmetry from
+  the multiplying wheel beyond the half turn. The Legendre state, which the whole multiplying wheel fixes, has not
+  won since 3.
+
+**The test.** For each prime p and each order m > 2 that divides p + 1 (turning) or p − 1 (multiplying):
+- the states that the wheel's subgroup of order m fixes are the eigenvectors of its generator;
+- in each eigenspace, the sign ascent finds the best state, with the same effort on both wheels: 3000 k² starts
+  in an eigenspace of dimension k, at most 300 000;
+- a one-line eigenspace is exact.
+
+[`two_wheels.py`](two_wheels.py) is committed with these predictions, before its run. While it was tested it ran at
+5 and 7, where the winners were known:
+- at 5, the turning wheel's best is Jain and Prakash's state, 0.556677, and the multiplying wheel's best is
+  0.554893;
+- at 7, the turning wheel's best is the record, 0.732522, and the multiplying wheel's best is the Legendre state,
+  0.728262.
+
+The live test is 11 to 29.
+
+**Y1.** At every prime from 11 to 29, the best turning-symmetric state beats the best multiplying-symmetric state.
+*Kill:* a prime where the multiplying wheel's best is as good or better.
+
+**Y2. (Calibration.)** At 17, 19 and 29, where the winner found so far has a turning symmetry, the turning search
+reaches it, within 10⁻⁶.
+*Kill:* it falls short at any of them.
+
+**Y3.** The turning search finds nothing above the winners found so far, at any prime.
+*Kill:* a higher state, which would be a new best.
+
+**Expected standing, stated before the run.** This tests a reading from the angles, by search inside symmetric
+families. The proposed mechanism, that a turning symmetry treats every direction of phase space alike, is not
+tested here.
