@@ -1,0 +1,32 @@
+17 levels: the Legendre state is even (parity +1), total negativity 1.250924335054; symmetries 32, orders {1: 1, 2: 1, 4: 18, 8: 4, 16: 8}, ceiling points 1, floor points 0, negative points 96, deepest -0.020860
+  3000000 climbs among even states: best 1.402567380158 (reached 1647 times) [641 s]
+  3000000 climbs among odd states: best 1.371866921046 (reached 2368 times) [1056 s]
+  1500000 climbs in the whole space: best 1.402567380158 (reached 1 times) [1942 s]
+  the even side 1.402567380158, the odd side 1.371866921046: the even side ahead by 0.030700
+  the best state found: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 1, floor points 0, negative points 108, deepest -0.022481; fixed by its symmetries alone: False (residual 3.2e+00)
+  the best odd state found: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 111, deepest -0.058824
+  the best even state found: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 1, floor points 0, negative points 108, deepest -0.022481
+[1968 s]
+  the exceptional groups in SL(2, 17) (4896 elements), one from each conjugacy class:
+    binary tetrahedral (order 24), class 1: fixes 3 state(s); parities [1.0, 1.0, 1.0]; total negativities [1.341419, 1.167172, 1.341419]
+    binary tetrahedral (order 24), class 2: fixes 3 state(s); parities [1.0, 1.0, 1.0]; total negativities [1.388656, 1.388656, 1.235683]
+    binary octahedral (order 48), class 1: fixes 1 state(s); parities [1.0]; total negativities [1.167172]
+    binary octahedral (order 48), class 2: fixes 1 state(s); parities [1.0]; total negativities [1.235683]
+[1968 s]
+V1 HELD: the even side wins at 17, by 0.030700
+V4a DIED: the margin at 17 is below 13's 0.017: 0.030700
+V5a HELD: the best state found at 17 touches the ceiling at 1 point(s) and the floor at 0, and its symmetries alone do not fix it: True
+V7a HELD: the Legendre state of 17 (1.250924) is beaten on its own side: 1.402567
+V8a HELD: every state fixed by an exceptional group lies on the Legendre state's side (even)
+  the even climbs' five highest tops: 1.402567380 x1647, 1.401278630 x1184, 1.400696264 x337, 1.400607028 x724, 1.400388634 x45
+    top 1.402567380: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 1, floor points 0, negative points 108, deepest -0.022481; 3 samples, one state up to symmetry or mirror: True
+    top 1.401278630: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 106, deepest -0.022526; 3 samples, one state up to symmetry or mirror: True
+  the odd climbs' five highest tops: 1.371866921 x2368, 1.369935667 x1995, 1.369860639 x1715, 1.369109306 x1075, 1.369040314 x1582
+    top 1.371866921: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 111, deepest -0.058824; 3 samples, one state up to symmetry or mirror: True
+    top 1.369935667: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 109, deepest -0.058824; 3 samples, one state up to symmetry or mirror: True
+  the whole-space climbs' five highest tops: 1.402567380 x1, 1.401737369 x5, 1.400949499 x2, 1.400700472 x1, 1.400607028 x1
+    top 1.402567380: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 1, floor points 0, negative points 108, deepest -0.022481; 1 samples, one state up to symmetry or mirror: True
+    top 1.401737369: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 107, deepest -0.023157; 3 samples, one state up to symmetry or mirror: True
+
+margin at 17: 0.030700459
+ROUND 5 (seventeen): 4 of 5 held here: V1 held, V4a died, V5a held, V7a held, V8a held

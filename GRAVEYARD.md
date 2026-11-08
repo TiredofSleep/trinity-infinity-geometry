@@ -233,6 +233,14 @@ its own graveyard. These died, with what killed them:
     on each side found the even side ahead by 0.017 (`towers/seven_levels/round4_thirteen.log`). The size reading
     that made the guess is half dead: from 7 on no winner is fixed by its symmetries, as it said, but the margin
     is wider when p is 1 more than a multiple of 4.
+  - **Round 5's guesses from the pattern at 3 to 13** (2026-11-10; `towers/seven_levels/round5_*.log`):
+    - "The even side wins at 19" (V2), and with it "the best state found at 19 is even about one point" (V5b):
+      the odd side wins at 19, 1.507862 against 1.484879, and a second even search with a fresh seed found the
+      same even best.
+    - "The margins shrink" (V4a, V4b): the even side's lead at 17 is 0.031, wider than 13's 0.017, and at 19
+      there is no even lead at all.
+    - "A highly symmetric state wins the odd side at 19" (V6): the odd winner has 4 symmetries; the tetrahedral
+      state, with 24, comes below it.
 - **From the genetic-code study (2026-11-09; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.
@@ -241,6 +249,9 @@ its own graveyard. These died, with what killed them:
     worded too narrowly for its own model: the model weighs the three letters alike, and the polar-requirement
     scale ties threonine with proline and leucine with isoleucine. With the ties merged, the code is symmetric at
     its second letter (`lab/genetic_code/verify_code_symmetry.py`).
+  - **"With Freeland and Hurst's weights, the standard code is more optimized than the mitochondrial code"**
+    (part 2's H2, a guess from the literature). None of a million random codes with its own blocks beat the
+    mitochondrial code, against 3 of a million for the standard code.
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.

@@ -1,0 +1,32 @@
+19 levels: the Legendre state is odd (parity -1), total negativity 1.356950270213; symmetries 36, orders {1: 1, 2: 1, 3: 2, 4: 18, 6: 2, 9: 6, 18: 6}, ceiling points 0, floor points 1, negative points 145, deepest -0.052632
+  2000000 climbs among even states: best 1.484878538507 (reached 193 times) [635 s]
+  2000000 climbs among odd states: best 1.507862142347 (reached 4508 times) [1041 s]
+  1000000 climbs in the whole space: best 1.506812211414 (reached 1 times) [1948 s]
+  the even side 1.484878538507, the odd side 1.507862142347: the even side ahead by -0.022984
+  the best state found: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 0, floor points 1, negative points 141, deepest -0.052632; fixed by its symmetries alone: False (residual 2.6e+00)
+  the best odd state found: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 0, floor points 1, negative points 141, deepest -0.052632
+  the best even state found: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 148, deepest -0.019460
+[2044 s]
+  the exceptional groups in SL(2, 19) (6840 elements), one from each conjugacy class:
+    binary tetrahedral (order 24), class 1: fixes 3 state(s); parities [-1.0, -1.0, -1.0]; total negativities [1.278772, 1.223807, 1.495712]
+    binary icosahedral (order 120), class 1: fixes 0 state(s); parities []; total negativities []
+    binary icosahedral (order 120), class 2: fixes 0 state(s); parities []; total negativities []
+[2045 s]
+V2 DIED: the even side wins at 19, by -0.022984
+V4b HELD: the margin at 19 is below 11's 0.0029: -0.022984
+V5b DIED: the best state found at 19 touches the ceiling at 0 point(s) and the floor at 1, and its symmetries alone do not fix it: True
+V6 DIED: the best odd state found at 19 has 4 symmetries (at least 12)
+V7b HELD: the Legendre state of 19 (1.356950) is beaten on its own side: 1.507862
+V8b HELD: every state fixed by an exceptional group lies on the Legendre state's side (odd)
+  the even climbs' five highest tops: 1.484878539 x193, 1.484237945 x128, 1.484042278 x9, 1.483836893 x26, 1.483753618 x162
+    top 1.484878539: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 148, deepest -0.019460; 3 samples, one state up to symmetry or mirror: True
+    top 1.484237945: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 150, deepest -0.019386; 3 samples, one state up to symmetry or mirror: True
+  the odd climbs' five highest tops: 1.507862142 x4508, 1.505694977 x851, 1.505220746 x383, 1.504804404 x127, 1.504403964 x21
+    top 1.507862142: symmetries 4, orders {1: 1, 2: 1, 4: 2}, ceiling points 0, floor points 1, negative points 141, deepest -0.052632; 3 samples, one state up to symmetry or mirror: True
+    top 1.505694977: symmetries 2, orders {1: 1, 2: 1}, ceiling points 0, floor points 1, negative points 139, deepest -0.052632; 3 samples, one state up to symmetry or mirror: True
+  the whole-space climbs' five highest tops: 1.506812211 x1, 1.506442344 x1, 1.505760622 x1, 1.505131779 x1, 1.504931714 x1
+    top 1.506812211: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 134, deepest -0.051688; 1 samples, one state up to symmetry or mirror: True
+    top 1.506442344: symmetries 1, orders {1: 1}, ceiling points 0, floor points 0, negative points 139, deepest -0.052540; 1 samples, one state up to symmetry or mirror: True
+
+margin at 19: -0.022983604
+ROUND 5 (nineteen): 3 of 6 held here: V2 died, V4b held, V5b died, V6 died, V7b held, V8b held

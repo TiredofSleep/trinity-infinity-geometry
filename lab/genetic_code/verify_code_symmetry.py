@@ -1,5 +1,5 @@
-"""verify_code_symmetry.py -- rechecks the results recorded in code_symmetry.log in a few seconds, without the
-million random codes or the climbing.  numpy only.  Exits with 1 if a check fails.
+"""verify_code_symmetry.py -- rechecks the results recorded in code_symmetry.log and code_weighted.log in a few
+seconds, without the million random codes or the climbing.  numpy only.  Exits with 1 if a check fails.
 Run:  python verify_code_symmetry.py
 """
 import sys
@@ -75,5 +75,76 @@ check(f"with equal weights the best code found ({cost(BEST_B1):.6f}) beats the b
       and not any(paired_at(merged(BEST_B1), k) for k in range(3)))
 check("all four codes keep the mitochondrial composition",
       all(sorted(x) == sorted(MITO) for x in (BEST_B2, BEST_SYM_B2, BEST_B1, BEST_SYM_B1)))
+
+# ---------------------------------------------------------------- part 2: Freeland and Hurst's weights
+FH = {0: (1.0, 0.5), 1: (0.5, 0.1), 2: (1.0, 1.0)}           # by letter: (transition, transversion)
+KD = {"I": 4.5, "V": 4.2, "L": 3.8, "F": 2.8, "C": 2.5, "M": 1.9, "A": 1.8, "G": -0.4, "T": -0.7, "S": -0.8,
+      "W": -0.9, "Y": -1.3, "P": -1.6, "H": -3.2, "E": -3.5, "Q": -3.5, "D": -3.5, "N": -3.5, "K": -3.9, "R": -4.5}
+
+
+def zscores(scale):
+    v = np.array([scale[a] for a in sorted(PR)])
+    return dict(zip(sorted(PR), (v - v.mean()) / v.std()))
+
+
+ZP, ZK = zscores(PR), zscores(KD)
+
+
+def fh_cost(code, both=False):
+    num = den = 0.0
+    for c in range(64):
+        b = [c // 16, (c // 4) % 4, c % 4]
+        for pos in range(3):
+            for nb in range(4):
+                if nb == b[pos]:
+                    continue
+                b2 = list(b)
+                b2[pos] = nb
+                c2 = 16 * b2[0] + 4 * b2[1] + b2[2]
+                if c < c2 and code[c] != "*" and code[c2] != "*":
+                    w = FH[pos][0] if {b[pos], nb} in ({0, 1}, {2, 3}) else FH[pos][1]
+                    x, y = code[c], code[c2]
+                    d2 = (ZP[x] - ZP[y]) ** 2 + (ZK[x] - ZK[y]) ** 2 if both else (PR[x] - PR[y]) ** 2
+                    num += w * d2
+                    den += w
+    return num / den
+
+
+def pairings(code):
+    box = np.array(list(code)).reshape(16, 4)
+    return [name for name, ((a, b), (c, d)) in (("U-C", ((0, 1), (2, 3))), ("U-A", ((0, 2), (1, 3))),
+                                                ("U-G", ((0, 3), (1, 2))))
+            if ((box[:, a] == box[:, b]) & (box[:, c] == box[:, d])).all()]
+
+
+W_BEST = "GQGQ*D*DPATALMLMSHSH*E*ETTPTIWLWASASRNRNYVYVCICLSGSGRKRKVPVPLFLF"
+W_BEST_YR = "GGQQ**DDIIMMTTAASSHH**EELLWWTTPPAASSRRNNCCLLYYVVSSGGRRKKLLFFVVPP"
+W2_BEST = "PPPPRRRRYWYWFCFCSSSSQHQHTTTTLLLLSGSGKNKNAAAAVVVV*G*GDEDE*M*MILIL"
+W2_BEST_YR = "DDEE**GGIILL**MMKKNNSSGGVVVVAAAARRRRPPPPFFCCYYWWQQHHSSSSLLLLTTTT"
+check(f"part 2: with Freeland and Hurst's weights the standard code costs {fh_cost(STANDARD):.6f} and the "
+      f"mitochondrial code {fh_cost(MITO):.6f}",
+      abs(fh_cost(STANDARD) - 2.628345) < 1e-6 and abs(fh_cost(MITO) - 2.666200) < 1e-6)
+rng = np.random.default_rng(7)
+worst = 0.0
+for _ in range(5):
+    code = "".join(rng.permutation(list(MITO)))
+    for perm in ((1, 0, 2, 3), (2, 3, 0, 1), (0, 2, 1, 3), (3, 1, 2, 0)):
+        moved = [""] * 64
+        for c in range(64):
+            moved[16 * (c // 16) + 4 * ((c // 4) % 4) + perm[c % 4]] = code[c]
+        moved = "".join(moved)
+        worst = max(worst, abs(fh_cost(moved) - fh_cost(code)), abs(fh_cost(moved, True) - fh_cost(code, True)))
+check(f"part 2: relabeling the third letter never changes the weighted cost (largest change {worst:.1e})",
+      worst < 1e-12)
+check(f"part 2: the best code found costs {fh_cost(W_BEST):.6f} and pairs its third letters "
+      f"({pairings(merged(W_BEST))}, ties merged); the best pyrimidine/purine-paired code costs the same",
+      abs(fh_cost(W_BEST) - 1.327775) < 1e-6 and abs(fh_cost(W_BEST_YR) - fh_cost(W_BEST)) < 1e-9
+      and len(pairings(merged(W_BEST))) > 0 and pairings(W_BEST_YR) == ["U-C"])
+check(f"part 2, the scale without ties: the best code found costs {fh_cost(W2_BEST, True):.6f} and pairs its third "
+      f"letters ({pairings(W2_BEST)}); the best pyrimidine/purine-paired code costs the same",
+      abs(fh_cost(W2_BEST, True) - 0.546390) < 1e-6 and abs(fh_cost(W2_BEST_YR, True) - fh_cost(W2_BEST, True)) < 1e-9
+      and len(pairings(W2_BEST)) > 0 and pairings(W2_BEST_YR) == ["U-C"])
+check("part 2: the four codes keep the mitochondrial composition",
+      all(sorted(x) == sorted(MITO) for x in (W_BEST, W_BEST_YR, W2_BEST, W2_BEST_YR)))
 print("all checks pass" if OK else "A CHECK FAILED")
 sys.exit(0 if OK else 1)

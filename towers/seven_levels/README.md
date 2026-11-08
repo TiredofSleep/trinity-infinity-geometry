@@ -15,6 +15,8 @@
   the one that died showed the strange state's group returning at eleven levels (§5).
 - A fourth round of thirteen took up round 3's next questions: twelve held (§6). The genetic-code test the
   author asked for is fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
+- A fifth round went to 17 and 19: seven of twelve held, and at 19 the odd side won (§7). The author's
+  prediction for what comes next is registered as round 6.
 
 ---
 
@@ -80,6 +82,8 @@ clocks to shifts and clocks, up to phase.
 - **T8 (round 3).** The Legendre state is not the deepest odd state at eleven levels. A tetrahedral state is
   (§5).
 - **U9 (round 4).** At thirteen the even side wins by 0.017, not by less than 0.01 (§6).
+- **V2, V4a, V4b, V5b, V6 (round 5).** At nineteen the odd side wins, the margins grew instead of shrinking,
+  and the odd winner at 19 has 4 symmetries, not 12 or more (§7).
 
 ## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
 
@@ -267,7 +271,7 @@ fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
   | 11 | 1.029707, found | 24 | 1.032586, found | 2 | 0.0029 |
   | 13 | 1.151336, found | 6 | 1.168522, found | 2 | 0.017 |
 
-  - The even side wins at every prime above 3.
+  - The even side wins at every prime above 3, up to 13. Round 5 found the odd side winning at 19 (§7).
   - When p is 3 more than a multiple of 4, the Legendre state's side is the odd one. There the best odd state is
     a highly symmetric one, with 12 symmetries at 7 and 24 at 11, and it comes within 0.005.
   - When p is 1 more, the symmetric states move to the even side, and they do not win it: at 13 the tetrahedral
@@ -277,7 +281,61 @@ fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
     Legendre-side reading said the winner would be fixed by its symmetries; that is false too. Each reading had
     half of it.
 
-## 7. Our space, and what it cannot hold [FORCED; FENCE]
+## 7. Round 5: seventeen and nineteen [FORCED; READING]
+
+The author asked for 17 and 19. Twelve predictions were registered with the script that tests them, and seven held
+([`PREREG.md`](PREREG.md)). The script is [`round5.py`](round5.py), run once for each prime; the logs are
+[`round5_seventeen.log`](round5_seventeen.log), [`round5_nineteen.log`](round5_nineteen.log) and
+[`round5_combined.log`](round5_combined.log).
+
+- **Seventeen: the even side wins, by 0.031** [measured].
+  - Three million climbs on each side found 1.402567 on the even side and 1.371867 on the odd side. The margin is
+    wider than 13's 0.017, so the guess that it would shrink died (V4a).
+  - The winner touches the ceiling, +1/17, at one point, its centre. It has 6 symmetries, a sixth of a turn about
+    that point, and they do not fix it.
+  - The Legendre state of 17 is even, with 32 symmetries. It has 1.250924.
+- **Nineteen: the odd side wins** [measured].
+  - Two million climbs on each side found 1.507862 on the odd side and 1.484879 on the even side. The even side's
+    streak ends here (V2, V5b died).
+  - The winner sits on the floor, −1/19, at its centre. It has 4 symmetries, a quarter turn about that point, and
+    they do not fix it.
+  - An unregistered check ran two million more climbs on the even side with a fresh seed, plus 20 000 kicks from
+    its highest tops. It found the same even best, 224 times, and nothing higher.
+  - The Legendre state of 19 is odd, with 36 symmetries. It has 1.356950.
+- **The exceptional groups' states sit on the Legendre state's side** [FORCED, and checked].
+  - At 17 there are two kinds of binary tetrahedral group and two of binary octahedral. The tetrahedral ones fix
+    three states each and the octahedral ones one each, all even, from 1.167172 to 1.388656.
+  - At 19 the binary tetrahedral group fixes three odd states, up to 1.495712, and the two kinds of binary
+    icosahedral group fix none.
+  - From 17 on, the best of these states sits between the two sides: above the losing side's best, below the
+    winner. The guess that a highly symmetric state would win the odd side at 19 died (V6).
+- **The coin across seven primes** [READING, on exhaustive and measured facts].
+
+  | p | odd side: best state | its symmetries | even side: best state | its symmetries | the even side ahead by |
+  |---|---|---|---|---|---|
+  | 3 | 1/3, the strange state | 24 | 1/3, the Norrell state | 6 | 0, a tie |
+  | 5 | 0.433070 | 6 | 0.556677 | 6 | 0.124 |
+  | 7 | 0.728262, the Legendre state | 12 | 0.732522, the record | 4 | 0.0043 |
+  | 11 | 1.029707 | 24 | 1.032586 | 2 | 0.0029 |
+  | 13 | 1.151336 | 6 | 1.168522 | 2 | 0.017 |
+  | 17 | 1.371867 | 2 | 1.402567 | 6 | 0.031 |
+  | 19 | 1.507862 | 4 | 1.484879 | 2 | −0.023 |
+
+  - From 11 on, the rows rest on searches.
+  - From 7 on, no winner is fixed by its symmetries.
+  - Three readings fit some of this, and none fits all of it.
+    - *The even side wins.* That held from 5 to 17 and broke at 19.
+    - *The Legendre side wins.* The side that holds the Legendre state and the tetrahedral states won at 5, 13, 17
+      and 19. It lost at 7 and 11, by less than 0.005.
+    - *The author's prediction, made on seeing 19:* "even only wins the lows, the odd wins the rest".
+  - The author's prediction and the Legendre-side reading are now registered against each other as round 6
+    ([`PREREG.md`](PREREG.md)). They agree at 23 (the odd side) and part at 29: the author says odd, the rival
+    says even.
+- **The genetic-code study's second part** used Freeland and Hurst's weights by letter position. The best codes
+  pair their third letters, but the weights cannot choose the pairing: all three pairings of the four bases appear
+  among the best codes. See [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
+
+## 8. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -294,7 +352,7 @@ fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 8. Standing
+## 9. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -323,7 +381,9 @@ fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
     7 and 11;
   - round 4: the record beats every state with any symmetry, ordinary or mirror; a rival needs 8 to 24
     negative points; at eleven, exhaustive counts for symmetries of order 4, 5, 6 and 11; at thirteen, the two
-    sides; and the rule that the tetrahedral states sit on the Legendre state's side.
+    sides; and the rule that the tetrahedral states sit on the Legendre state's side;
+  - round 5: the coin at 17 and 19, the odd side's win at 19, and the exceptional groups' states there, all on
+    the Legendre state's side.
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen.
@@ -332,13 +392,12 @@ fenced in [`../../lab/genetic_code/`](../../lab/genetic_code/README.md).
   is exhaustive for every state with a symmetry, exact up to rounding: the nearest rival values sit 0.0028 and
   0.0067 below. At eleven it is a search. Round 4 is new as far as we checked: exhaustive at seven for every
   state with a symmetry of any kind, exhaustive at eleven for symmetries of order 4, 5, 6 and 11, and a search
-  at thirteen.
+  at thirteen. Round 5 is a search, except its forced rule, and its guesses read off 3 to 13 mostly died.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
-  - whether the even side wins at every prime above 3, and whether the margin keeps shrinking: 0.124 at 5 and
-    0.017 at 13, against 0.004 and 0.003 at 7 and 11. The next primes are 17 (1 more than a multiple of 4) and
-    19 (3 more).
+  - which side wins from 19 on: the author's prediction against the Legendre-side reading, registered as round
+    6 and decided at 29.
 
 ## Run it
 
@@ -350,6 +409,9 @@ python round3.py                       # round 3, about seven minutes (numpy + s
 python round4.py seven                 # round 4's three parts, run at once: about 17, 43 and 19 minutes
 python round4.py eleven
 python round4.py thirteen
+python round5.py seventeen             # round 5, run at once: about 33 and 34 minutes
+python round5.py nineteen
+python round5.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -358,7 +420,7 @@ python round4.py thirteen
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The last three rerun round 4, which is seeded, and rewrite its three logs.
+- The round-4 and round-5 lines rerun those rounds, which are seeded, and rewrite their logs.
 
 ## Sources
 

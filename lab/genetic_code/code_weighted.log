@@ -1,0 +1,23 @@
+Freeland and Hurst's weights, polar requirement: the standard code costs 2.6283, and 3 of a million random codes with its blocks beat it; the mitochondrial code costs 2.6662, and 0 of a million beat it
+H1 HELD: at most 20 of a million random codes beat the standard code (3)
+H2 DIED: the standard code is more optimized than the mitochondrial code (3.00e-06 against 0.00e+00)
+H4 HELD: all 24 relabelings of the third letter leave the cost unchanged, on 200 random codes and both scales (largest change 5.3e-15), so the weights cannot prefer one pairing
+
+polar requirement (ties merged):
+  climbing over every code: best cost 1.327775, reached by 27 of 96 chains; their third-letter pairings: [['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['pyrimidine/purine (UC | AG)'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['UG | CA'], ['UG | CA'], ['UG | CA'], ['UG | CA'], ['pyrimidine/purine (UC | AG)']]
+    the best code: GQGQ*D*DPATALMLMSHSH*E*ETTPTIWLWASASRNRNYVYVCICLSGSGRKRKVPVPLFLF
+  climbing over pyrimidine/purine-paired codes only: best cost 1.327775
+    the best such code: GGQQ**DDIIMMTTAASSHH**EELLWWTTPPAASSRRNNCCLLYYVVSSGGRRKKLLFFVVPP
+  the natural codes: standard 2.628345, mitochondrial 2.666200
+
+polar requirement and hydropathy:
+  climbing over every code: best cost 0.546390, reached by 4 of 96 chains; their third-letter pairings: [['UA | CG'], ['UA | CG'], ['UG | CA'], ['UG | CA']]
+    the best code: PPPPRRRRYWYWFCFCSSSSQHQHTTTTLLLLSGSGKNKNAAAAVVVV*G*GDEDE*M*MILIL
+  climbing over pyrimidine/purine-paired codes only: best cost 0.546390
+    the best such code: DDEE**GGIILL**MMKKNNSSGGVVVVAAAARRRRPPPPFFCCYYWWQQHHSSSSLLLLTTTT
+  the natural codes: standard 0.981017, mitochondrial 0.953220
+
+H3 HELD: every climb that reaches the best cost (polar requirement, ties merged) pairs its third letters: [['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['UA | CG'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['pyrimidine/purine (UC | AG)'], ['pyrimidine/purine (UC | AG)'], ['UG | CA'], ['UA | CG'], ['UG | CA'], ['UA | CG'], ['UA | CG'], ['UG | CA'], ['UG | CA'], ['UG | CA'], ['UG | CA'], ['pyrimidine/purine (UC | AG)']]
+H5 HELD: with the scale that has no ties, every climb that reaches the best cost pairs its third letters: [['UA | CG'], ['UA | CG'], ['UG | CA'], ['UG | CA']]
+
+SCORE: 4 of 5 held: H1 held, H2 died, H4 held, H3 held, H5 held

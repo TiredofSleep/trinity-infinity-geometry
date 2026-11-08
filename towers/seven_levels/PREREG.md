@@ -438,3 +438,53 @@ Legendre state's side: even at 17, odd at 19.
 
 **Expected standing, stated before the run.** V8 is forced. The others are guesses from the pattern at 3 to 13,
 and they rest on searches. V6 is the boldest: it says that the lesson of the strange state continues at 19.
+
+---
+
+## Round 5 scores (added after the run, 2026-11-10)
+
+Run by [`round5.py`](round5.py); the output is kept in [`round5_seventeen.log`](round5_seventeen.log),
+[`round5_nineteen.log`](round5_nineteen.log) and [`round5_combined.log`](round5_combined.log). The runs are seeded.
+**7 of 12 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| V1 | held | at 17: even 1.402567, odd 1.371867 |
+| V2 | **died** | at 19 the odd side wins: 1.507862 against 1.484879 |
+| V3 | held | the gap is 0.023 at 19 and 0.031 at 17 |
+| V4a | **died** | the margin at 17 is 0.031, not below 0.017 |
+| V4b | **died** | at 19 there is no even lead to be small: the odd side leads by 0.023. The script's automatic line said held, because −0.023 is below 0.0029, but the prediction meant the even side's lead, as round 4's U9 did |
+| V5a | held | the best state at 17 touches the ceiling once and never the floor, and its 6 symmetries do not fix it |
+| V5b | **died** | the best state at 19 is odd: it sits on the floor at its centre |
+| V6 | **died** | the best odd state at 19 has 4 symmetries. The tetrahedral state, with 24, has 1.495712, below it |
+| V7a | held | the Legendre state of 17 has 1.250924, beaten by 1.402567 |
+| V7b | held | the Legendre state of 19 has 1.356950, beaten by 1.507862 |
+| V8a | held | at 17 every state of the tetrahedral and octahedral groups is even (values from 1.167172 to 1.388656) |
+| V8b | held | at 19 the tetrahedral group's three states are odd, and the icosahedral groups fix none |
+
+**Yield.** The forced prediction held at both primes. The guesses read off 3 to 13 did worse: the even side's
+streak ended at 19, and the margins grew instead of shrinking. The dead guesses are kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) §7 has what the run found.
+
+---
+
+## Round 6: the author's prediction (registered 2026-11-10, not yet run)
+
+> *i'd predict that even only wins the lows, the odd wins the rest?* — the author, 10 November 2026, on seeing
+> round 5's nineteen
+
+Round 5 broke the even side's streak: the odd side won at 19. Two readings fit every prime so far, and they part
+at 29.
+- *The author's:* the even side wins only the low primes; from 19 on, the odd side wins.
+- *The Legendre-side reading:* the side that the Legendre symbol picks wins. That side holds the Legendre state
+  and the tetrahedral states: odd when p is 3 more than a multiple of 4, even when it is 1 more. It won at 5, 13,
+  17 and 19, and lost only at 7 and 11, by less than 0.005.
+
+**W1 (the author's prediction).** The odd side wins at 23 and at 29.
+*Kill:* the even side wins at either.
+
+**W2 (the rival reading).** The Legendre side wins: the odd side at 23, the even side at 29.
+*Kill:* the other side wins at either.
+
+At 23 the two agree, so 29 decides between them. The run will use round 5's machinery, with at least two million
+climbs on each side at each prime; at 29 that takes hours. Its script will be committed before the run.

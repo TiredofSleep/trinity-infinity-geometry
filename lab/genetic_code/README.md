@@ -8,7 +8,7 @@ best states on the symmetric side, even under the half turn, without their symme
 be found by climbing. This study asks the same question of genetic codes, in biology's own terms. Four
 predictions were registered before the run ([`PREREG.md`](PREREG.md), commit d2485b4), and two held. The script
 is [`code_symmetry.py`](code_symmetry.py); its output is in [`code_symmetry.log`](code_symmetry.log), and
-[`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks the recorded results in seconds.
+[`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks the recorded results of both parts in seconds.
 
 **The two codes.**
 - The vertebrate mitochondrial code keeps a third-letter symmetry everywhere: xyU and xyC mean the same, and so
@@ -63,6 +63,43 @@ changes between sense codons. A transition bias b weighs transitions (U and C, A
 - **The first look.** The first look at mitochondria (May 2026) used the TIG tables. The September audit retired
   those tables, so its numbers do not stand. Only the method, a registered direction and then a null, carries over.
 
+## Part 2: Freeland and Hurst's weights
+
+> *do 17 and 19 and the position-weighted code test* — the author, 9 November 2026
+
+Part 1's G2 died because its model weighed the three letters alike and its scale had ties. Part 2 fixed both. Five
+predictions were registered before the run ([`PREREG.md`](PREREG.md), commit 88440d4), and four held. The script
+is [`code_weighted.py`](code_weighted.py); its output is in [`code_weighted.log`](code_weighted.log).
+
+- **The weights** are Freeland and Hurst's (1998) misreading weights, as tabulated by Seo, Tlusty and Jo (2026):
+  - first letter: transitions 1, transversions 0.5;
+  - second letter: transitions 0.5, transversions 0.1;
+  - third letter: 1 and 1.
+- **The second scale**, which has no ties, adds the squared changes of polar requirement and Kyte–Doolittle
+  hydropathy, each standardized over the 20 amino acids.
+- **H1, the calibration, held.** Three of a million random codes beat the standard code; Freeland and Hurst found
+  about one in a million.
+- **H2 died.** The vertebrate mitochondrial code beat all of a million random codes with its own blocks, so with
+  these weights too it is at least as optimized as the standard code. Freeland, Knight, Landweber and Hurst (2000)
+  found the reverse for nonstandard codes in general; this is one code and one measure.
+- **H4 held, and it is forced.** At the third letter every change weighs the same, so relabeling the third letter
+  never changes the cost. The weights cannot prefer one way of pairing the four bases.
+- **H3 and H5 held: the best codes pair their third letters.**
+  - With polar requirement (tied amino acids merged), 27 of 96 climbs reach the best cost, 1.327775. Every one
+    pairs its third letters.
+  - The three pairings appear 11, 10 and 6 times: U with A, U with G, and U with C (pyrimidine/purine).
+  - With the scale that has no ties, 4 climbs reach the best cost, 0.546390, and all four pair their third letters,
+    two one way and two another.
+  - In both scales the best pyrimidine/purine-paired code costs exactly the same as the best code overall.
+- **Beyond the scored round.** Both natural codes cost about twice the best: 2.63 (standard) and 2.67
+  (mitochondrial) against 1.33, and 0.98 and 0.95 against 0.55 on the second scale.
+
+**The reading** [READING; FENCE]. Error minimization makes the pairs, and it cannot pick which pairs. The
+pyrimidine/purine pairing that nature uses must come from somewhere else; the obvious candidate is the tRNA's
+wobble pairing, which reads U and C, or A and G, alike. In the seven-level coin the half turn makes the two sides,
+and a separate rule, the Legendre symbol of −1, decides which side holds the most symmetric states. The shapes
+match; the groups and the mechanisms do not.
+
 ## Sources
 
 - D. Haig and L. D. Hurst, "A quantitative measure of error minimization in the genetic code", *J. Mol. Evol.*
@@ -75,3 +112,7 @@ changes between sense codons. A transition bias b weighs transitions (U and C, A
 - C. R. Woese et al., polar requirement (1966); F. H. C. Crick, "Codon–anticodon pairing: the wobble hypothesis",
   *J. Mol. Biol.* **19** (1966); S. Osawa and T. H. Jukes on codon reassignment (1989).
 - NCBI genetic codes, translation tables 1 and 2.
+- J. Kyte and R. F. Doolittle, "A simple method for displaying the hydropathic character of a protein",
+  *J. Mol. Biol.* **157** (1982).
+- H. Seo, T. Tlusty and J. Jo, "The genetic code at the balance point of error and demand", *PLOS Comput.
+  Biol.* (2026): Table 1 gives Freeland and Hurst's weights.

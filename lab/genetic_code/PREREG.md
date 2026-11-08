@@ -118,3 +118,23 @@ on random codes, with both scales.
 
 **Expected standing, stated before the run.** H1 calibrates to known results. H2 tests a literature claim under its
 own weights. H4 is forced. H3 and H5 are the new question.
+
+---
+
+## Part 2 scores (added after the run, 2026-11-10)
+
+Run by [`code_weighted.py`](code_weighted.py); its output is kept in [`code_weighted.log`](code_weighted.log), and
+[`verify_code_symmetry.py`](verify_code_symmetry.py) rechecks it. **4 of 5 held.**
+
+| | outcome | evidence |
+|---|---|---|
+| H1 | held | 3 of a million random codes beat the standard code (cost 2.6283) |
+| H2 | **died** | none of a million random codes beat the mitochondrial code (cost 2.6662): it is at least as optimized as the standard code |
+| H3 | held | all 27 climbs that reach the best cost, 1.327775, pair their third letters: 11 as U-A, 10 as U-G, 6 as U-C |
+| H4 | held | the 24 relabelings of the third letter change no cost by more than 5.3 × 10⁻¹⁵ |
+| H5 | held | all 4 climbs that reach the best cost on the scale without ties, 0.546390, pair their third letters |
+
+**What it teaches.** Error minimization with Freeland and Hurst's weights makes the third-letter pairs, but it cannot
+choose between the three pairings, and the climbs find all three. The pyrimidine/purine pairing in nature needs
+another cause. H2, a guess from the literature, died as G1 did. Both are kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md).
