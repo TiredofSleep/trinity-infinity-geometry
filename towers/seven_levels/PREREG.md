@@ -146,3 +146,91 @@ The search is seeded, so a rerun repeats it. **5 of 5 held.**
 **Yield.** R1 recovers a known value. The state behind R2–R5 does not appear in the literature we checked, which
 covers three and five levels. It was found by search, so it is not proved to be the maximum. What it is, and the
 coin it makes with the Legendre state, are in the [README](README.md) §4.
+
+---
+
+## Round 3: the three open questions (registered 2026-11-08, before its run)
+
+Round 2 left three questions open, and the author asked for all three:
+- Is 0.732522 the seven-level maximum?
+- Is the Legendre state the best odd state?
+- Which side wins at eleven levels?
+
+**The sides** are round 2's coin. An odd state, under the half turn, sits on the floor at the centre (−1/p); an
+even one sits on the ceiling (+1/p).
+
+**Two tools.** Both rest on one identity: the sum of a state's |W| is the largest value of Σ s_u W_u over sign
+choices s_u = ±1, one for each phase-space point u.
+- *The sign ascent.* Give each point the sign of the state's Wigner value there. Replace the state by the top
+  eigenvector of Σ s_u A_u, where A_u is the point's Wigner operator. No step lowers the sum of |W|, so every start
+  climbs to a local maximum. The starts are uniformly random states, seeded (20261108).
+- *The exhaustive count.* If a Clifford operation g fixes a state, the state's signs are the same along each orbit
+  of g in phase space. So the best state that g fixes is the best top eigenvector, inside g's eigenspaces, over the
+  sign choices that are constant on g's orbits.
+  - For the half turn at seven levels that is 2^24 sign choices on each side; every one is tried.
+  - The centre's sign is forced: it is + on the even side and − on the odd side.
+
+**Why the count reaches every symmetric state at seven levels.** If a Clifford operation other than the identity
+fixes a state, then so does one of prime order: 2, 3 or 7, the primes dividing 16 464. Conjugate operations fix
+conjugate states, with the same negativity, so one of each kind is enough:
+- order 2: the half turn, the only kind;
+- order 3: the multiplier ×2, since all subgroups of order 3 are conjugate (Sylow);
+- order 7: up to conjugacy these all lie in the one group made of the shifts, the clocks and the shear's powers.
+  That gives the shift, the shear, and the shears composed with a shift that fix no point; all of them are counted.
+
+[`round3.py`](round3.py) is committed with these predictions, before its run.
+
+**T1. (Calibration.)** At three levels the count gives 1/3 on both sides: the strange state on the odd side, the
+Norrell state on the even side.
+*Kill:* either side differs from 1/3 by more than 10⁻⁹.
+
+**T2. (Calibration.)** At five levels nothing beats Jain and Prakash's maximum, (√5 − 2 + √(15 + 6√5))/10 ≈
+0.556677 in total negativity. Neither the count on either side (2^12 sign choices each) nor 200 000 sign ascents in
+the whole space finds more. Their state is even, so the best even state reaches the value exactly. (It is
+fixed by the half turn, and its deepest value, −0.09, is above −1/5, so it is not odd.)
+*Kill:* a larger value, by more than 10⁻⁹ in the count or 10⁻⁶ in the search; a search whose best falls short by
+more than 10⁻⁶; or a best even state below the value.
+
+**T3. (Question B.)** At seven levels the best odd state is the Legendre state, at
+(4 cos(2π/7) − 4 cos(6π/7) − 1)/7 ≈ 0.728262.
+*Kill:* an odd sign choice that gives more, by more than 10⁻⁹, or a best odd state that no Clifford operation
+carries to the Legendre state.
+
+**T4.** At seven levels the best even state is the round-2 record, 0.732522.
+*Kill:* an even state above it by more than 10⁻⁹, or a best even state that is not the record up to symmetry.
+
+**T5. (Question A, the symmetric states.)** No seven-level state that a Clifford operation other than the identity
+fixes has more than 0.732522. So if the record is ever beaten, the winner has no symmetry at all.
+*Kill:* a symmetric state above 0.732522, by more than 10⁻⁹.
+
+**T6. (Question A, the rest.)** A million sign ascents from random seven-level states find nothing above 0.732522,
+and at least one reaches it.
+*Kill:* a larger value, by more than 10⁻⁹, or no start that reaches the record.
+
+**T7. (Question C.)** At eleven levels the even side wins. A million sign ascents among the even states (6
+dimensions) and a million among the odd ones (5 dimensions): the best even state beats the best odd state, by
+more than 10⁻⁶. The Legendre state counts as an odd state.
+*Kill:* the odd side comes within 10⁻⁶ of the even side, or passes it.
+
+**T8. (Question B at eleven.)** The Legendre state is still the deepest odd state: no odd state found beats it.
+*Kill:* an odd state found with more, by more than 10⁻⁶.
+
+**T9.** At eleven levels the Legendre state is beaten: a million sign ascents in the whole space find a state
+with more.
+*Kill:* none beats it by more than 10⁻⁶.
+
+**T10.** The best state found at eleven levels is even about one point, as the maxima at five and seven are. Its
+largest Wigner value is +1/11, at exactly one point, and it never reaches −1/11.
+*Kill:* anything else.
+
+**Expected standing, stated before the run.** T1 recovers known values (Veitch et al. 2014). T2 recovers Jain and
+Prakash's value, which came from a numerical search; the count would make its symmetric part exact. T3–T6 would
+be new if they hold. T3–T5 are exhaustive, exact up to rounding; T6 is a search, so it is evidence, not proof.
+T7–T10 are guesses about eleven levels, read off from three, five and seven; they rest on searches alone. The
+literature checked has nothing on seven or eleven levels:
+- Veitch et al. (2014);
+- Wang, Wilde and Su (2020);
+- Jain and Prakash (2020);
+- Erew and Goldstein (2025). They show that a state fixed by a group of Clifford operations is stationary for
+  mana, and they list such states for two, three and five levels;
+- the OpenAI math release of October 2026.
