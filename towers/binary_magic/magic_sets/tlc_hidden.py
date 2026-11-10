@@ -70,7 +70,7 @@ def be_gentle():
     if sys.platform == "win32":
         import ctypes
         k = ctypes.windll.kernel32
-        k.SetPriorityClass(k.GetCurrentProcess(), 0x00004000)
+        k.SetPriorityClass(ctypes.c_void_p(-1), 0x00004000)
 
 
 if __name__ == "__main__":

@@ -464,7 +464,7 @@ def main():
     global LOG
     try:
         import ctypes
-        ctypes.windll.kernel32.SetPriorityClass(ctypes.windll.kernel32.GetCurrentProcess(), 0x00004000)
+        ctypes.windll.kernel32.SetPriorityClass(ctypes.c_void_p(-1), 0x00004000)
     except Exception:
         pass
     LOG = open(os.path.join(HERE, f"round4_{PART}.log"), "w", encoding="utf-8")

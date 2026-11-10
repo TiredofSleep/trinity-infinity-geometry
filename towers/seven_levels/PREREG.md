@@ -906,8 +906,9 @@ these are round 10's.)
 - The registration's timing printed no values. A smoke test of the code ran only on arrays already run (three and four
   wheels of 3, two of 5); its scores mean nothing and its logs are not kept.
 - The six workers were meant to run at below-normal priority, but the call that sets it fails silently on 64-bit
-  Windows, and every script here since round 3 has the same fault. The workers ran at normal priority until they were
-  lowered by hand partway through the run. No value depends on it. The call is fixed in a separate commit.
+  Windows, and every script in the repository that sets it had the same fault, 17 in all. The workers ran at normal
+  priority until they were lowered by hand partway through the run. No value depends on it. The call is fixed in a
+  separate commit.
 
 **Derived during the run, after the registration, so not a prediction: the norm-type states' Wigner values are
 Kloosterman sums.** On three wheels of p, each norm-type state takes the value K(m)/p⁵ at (p² + p + 1)p³ points for

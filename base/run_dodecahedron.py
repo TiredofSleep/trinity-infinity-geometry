@@ -27,7 +27,7 @@ import numpy as np
 from scipy.optimize import minimize
 
 try:                                                      # be gentle with the machine
-    ctypes.windll.kernel32.SetPriorityClass(ctypes.windll.kernel32.GetCurrentProcess(), 0x00004000)
+    ctypes.windll.kernel32.SetPriorityClass(ctypes.c_void_p(-1), 0x00004000)
 except Exception:
     pass
 
