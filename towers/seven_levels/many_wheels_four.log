@@ -1,0 +1,8 @@
+4 wheel(s) of 3 levels: D = 81, 6561 points, the even side 41 dimensions, the odd side 40; the ceiling (sqrt D - 1)/2 = 4.000000000
+  10000 climbs, even: best 3.629629629630, 0.9074 of the ceiling (reached 1558 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [0.422959, 0.350219, 0.358323, 0.410396]; M2 3.402400 [1426 s]
+CHECK 3 4 even 3.402399765 na
+  10000 climbs, odd: best 3.476833049264, 0.8692 of the ceiling (reached 1 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [0.390422, 0.350026, 0.392167, 0.344028]; M2 3.385578 [2977 s]
+CHECK 3 4 odd 3.385577713 na
+  1000 climbs, whole: best 3.289770964706, 0.8224 of the ceiling (reached 1 times; 0 still moving); its half-turn value +0.112252; purity on each wheel [0.376805, 0.354347, 0.366887, 0.3489]; M2 3.440239 [3697 s]
+CHECK 3 4 whole 3.440238622 na
+RESULT 3 4 3.629629629630 3.476833049264 3.289770964706

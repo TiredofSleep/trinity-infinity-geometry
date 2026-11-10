@@ -1,0 +1,20 @@
+31 levels: the 7-wheel has period 15: it never reaches the half turn, so X1 calls the odd side; 31 leaves 1 on division by 5, so X2 calls the even side
+  the Legendre state is odd (parity -1), total negativity 1.736567405507
+  2000000 climbs among even states: best 2.045297101516 (reached 2 times; 0 still moving) [3978 s]
+  2000000 climbs among odd states: best 2.031473445840 (reached 1 times; 0 still moving) [7814 s]
+  the even side 2.045297101516, the odd side 2.031473445840: the even side ahead by 0.013824 (even wins)
+  the best even state found: symmetries 2, orders {1: 1, 2: 1}, ceiling points 1, floor points 0, negative points 406, deepest -0.009418; fixed by its symmetries alone: False
+    the five highest even tops: 2.045297102 x2, 2.045294387 x2, 2.045222299 x4, 2.045203302 x1, 2.045186368 x2
+  the best odd state found: symmetries 6, orders {1: 1, 2: 1, 3: 2, 6: 2}, ceiling points 0, floor points 1, negative points 415, deepest -0.032258; fixed by its symmetries alone: False
+    the five highest odd tops: 2.031473446 x1, 2.031183292 x1, 2.031048854 x1, 2.030648216 x1, 2.030569002 x1
+[7827 s]
+  the exceptional groups in SL(2, 31) (29760 elements), one from each conjugacy class (not scored; round 4's forced rule puts their states on the Legendre state's side):
+    binary tetrahedral (order 24), class 1: fixes 3 state(s); parities [-1.0, -1.0, -1.0]; total negativities [1.906903, 1.779773, 1.779773]
+    binary tetrahedral (order 24), class 2: fixes 3 state(s); parities [-1.0, -1.0, -1.0]; total negativities [1.779773, 1.779773, 1.906903]
+    binary octahedral (order 48), class 1: fixes 1 state(s); parities [-1.0]; total negativities [1.906903]
+    binary octahedral (order 48), class 2: fixes 1 state(s); parities [-1.0]; total negativities [1.906903]
+    binary icosahedral (order 120), class 1: fixes 0 state(s); parities []; total negativities []
+    binary icosahedral (order 120), class 2: fixes 0 state(s); parities []; total negativities []
+[7857 s]
+
+margin at 31: 0.013823656

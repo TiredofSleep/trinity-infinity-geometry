@@ -1,0 +1,16 @@
+1 wheel(s) of 5 levels: D = 5, 25 points, the even side 3 dimensions, the odd side 2; the ceiling (sqrt D - 1)/2 = 0.618033989
+  100000 climbs, even: best 0.556677223351, 0.9007 of the ceiling (reached 22107 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [1.0] [1 s]
+CHECK 5 1 even nan na
+  100000 climbs, odd: best 0.433070425601, 0.7007 of the ceiling (reached 68199 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [1.0] [1 s]
+CHECK 5 1 odd nan na
+  100000 climbs, whole: best 0.556677223351, 0.9007 of the ceiling (reached 7871 times; 0 still moving); its half-turn value +0.457873; purity on each wheel [1.0] [2 s]
+CHECK 5 1 whole nan na
+RESULT 5 1 0.556677223351 0.433070425601 0.556677223351
+2 wheel(s) of 5 levels: D = 25, 625 points, the even side 13 dimensions, the odd side 12; the ceiling (sqrt D - 1)/2 = 2.000000000
+  500000 climbs, even: best 1.766937254162, 0.8835 of the ceiling (reached 955 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [0.372213, 0.372213]; M2 2.271408 (Knipfer et al.: ln(625/49), their numerical peak = 2.545931); its Wigner values are no product's [457 s]
+CHECK 5 2 even 2.271407770 no
+  500000 climbs, odd: best 1.727386411555, 0.8637 of the ceiling (reached 61 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [0.345677, 0.345677]; M2 2.243595 (Knipfer et al.: ln(625/49), their numerical peak = 2.545931); its Wigner values are no product's [852 s]
+CHECK 5 2 odd 2.243595426 no
+  100000 climbs, whole: best 1.766077759452, 0.8830 of the ceiling (reached 1 times; 0 still moving); its half-turn value +0.102585; purity on each wheel [0.377338, 0.377338]; M2 2.332999 (Knipfer et al.: ln(625/49), their numerical peak = 2.545931); its Wigner values are no product's [1241 s]
+CHECK 5 2 whole 2.332998863 no
+RESULT 5 2 1.766937254162 1.727386411555 1.766077759452

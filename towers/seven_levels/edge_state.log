@@ -1,0 +1,12 @@
+three wheels of 3, 200000 climbs in the whole space (seed [20261110, 3, 3, 7]): best 1.888888888889 (17/9 = 1.888888888889), reached 11 times; 0 still moving [1028 s]
+  the next tops: 1.886964, 1.881372, 1.875593, 1.875301, 1.875297
+  best state 1: <A_u> x 9 takes the values (value, count) [(-4, 27), (-1, 351), (2, 351)]; largest |<A_u>| 0.444444444, so it is no point's eigenstate
+    its Weyl expectations vanish on a Lagrangian: True; equal size 1/sqrt 27 elsewhere: True; in that Lagrangian's eigenbasis its amplitudes are equal in size with cube-root phases: True
+    equivalent to the norm state (f = e N(Mj + a) + degree <= 2): yes, M = [[0, 0, 1], [1, 0, 2], [0, 2, 0]], a = (0, 0, 0), sign +
+  best state 2: <A_u> x 9 takes the values (value, count) [(-4, 27), (-1, 351), (2, 351)]; largest |<A_u>| 0.444444444, so it is no point's eigenstate
+    its Weyl expectations vanish on a Lagrangian: True; equal size 1/sqrt 27 elsewhere: True; in that Lagrangian's eigenbasis its amplitudes are equal in size with cube-root phases: True
+    equivalent to the norm state (f = e N(Mj + a) + degree <= 2): yes, M = [[0, 0, 1], [1, 0, 1], [0, 2, 2]], a = (0, 0, 0), sign +
+  best state 3: <A_u> x 9 takes the values (value, count) [(-4, 27), (-1, 351), (2, 351)]; largest |<A_u>| 0.444444444, so it is no point's eigenstate
+    its Weyl expectations vanish on a Lagrangian: True; equal size 1/sqrt 27 elsewhere: True; in that Lagrangian's eigenbasis its amplitudes are equal in size with cube-root phases: True
+    equivalent to the norm state (f = e N(Mj + a) + degree <= 2): yes, M = [[0, 0, 1], [0, 1, 2], [2, 2, 0]], a = (0, 0, 0), sign +
+[1031 s]

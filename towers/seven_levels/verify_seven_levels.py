@@ -1,14 +1,17 @@
 """verify_seven_levels.py -- runs the eight predictions registered in PREREG.md (commit b42b65b) on a
 seven-level quantum system, and reports each as HELD or DIED with its evidence.  Then it checks the README's
 other lines: round 2's most negative state as recorded in most_negative.log, and round 3's results as recorded in
-round3.log (it uses round3.py's tools), and rounds 4 to 8 likewise.  For round 8 it checks the family sizes
-behind the confound and makes Y1's death at 13 exact.
+round3.log (it uses round3.py's tools), and rounds 4 to 9 likewise.  For round 8 it checks the family sizes
+behind the confound and makes Y1's death at 13 exact.  For round 7 it checks the 7-wheel's calls at 31 and 37, the
+number wheels that fit the sides that won, and the exceptional states at 31.  For round 9 it checks the arrays'
+operators, the forced numbers for large arrays, and the norm state found on three wheels of 3 (README section 11).
 
 numpy + scipy + round3.py.  ASCII output.
-Run:  python verify_seven_levels.py           (about a minute)
+Run:  python verify_seven_levels.py           (about two minutes)
       python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
-                                               sign choices, and the tetrahedral states at 3, 7, 11 and 13; about
-                                               fifteen minutes)
+                                               sign choices, the tetrahedral states at 3, 7, 11 and 13, the norm
+                                               state's exact count of symmetries, and the fields' character states;
+                                               about twenty minutes)
 """
 import ctypes
 import itertools
@@ -964,6 +967,286 @@ forced(f"Y1's death at 13 is exact: counting every sign choice constant on the {
        f"wheel's order 7 (2^25 in each eigenspace) puts its best state at {t13:.9f}, which order 14 shares; a search "
        f"finds a state that the multiplying wheel's order 4 fixes at {m13:.9f}",
        len(orb7) == 25 and abs(t13 - 1.105228575) < 1e-9 and m13 > 1.16736394)
+
+
+# ------------------------------------------------------------------ round 7 (round7.py; its logs are round7_*.log)
+print()
+print("round 7:")
+
+
+def period_of(b, p_):
+    """the b-wheel's period modulo p: how many steps b, b^2, ... take to return to 1"""
+    r, x = 1, b % p_
+    while x != 1:
+        x, r = x * b % p_, r + 1
+    return r
+
+
+WON = {5: "even", 7: "even", 11: "even", 13: "even", 17: "even", 19: "odd", 23: "even", 29: "odd", 31: "even"}
+
+
+def wheel_fits(b, upto):
+    return all(("even" if period_of(b, q) % 2 == 0 else "odd") == w for q, w in WON.items() if b % q and q <= upto)
+
+
+fits29 = [b for b in range(2, 31) if wheel_fits(b, 29)]
+fits31 = [b for b in range(2, 31) if wheel_fits(b, 31)]
+forced(f"the 7-wheel has period {period_of(7, 31)} at 31 and {period_of(7, 37)} at 37, so the author's rule called "
+       f"the odd side at both; with the sides that won from 5 to 29, the bases from 2 to 30 that fit every prime are "
+       f"{fits29}, and with 31's even win, {fits31}",
+       period_of(7, 31) == 15 and period_of(7, 37) == 9 and fits29 == [7] and fits31 == [])
+A31 = r3.phase_points(31)
+P31 = r3.basics(31)[4]
+L31 = r3.legendre(31)
+NL31 = r3.negativity(r3.wigner(L31[None, :], A31, 31)[0])
+W31 = r5.Weil(31, A31)
+pars31, vals31 = [], []
+for name, a_, b_ in r5.exceptional(W31, 31):
+    for st in r5.fixed_states(r5.operator(W31, a_), r5.operator(W31, b_)):
+        pars31.append(float(np.real(np.vdot(st, P31 @ st))))
+        vals31.append(round(float(r3.negativity(r3.wigner(st[None, :], A31, 31)[0])), 6))
+forced(f"at 31 the Legendre state is odd, {NL31:.12f}, and the exceptional groups' states lie on its side: the values "
+       f"{sorted(vals31)}, all odd",
+       np.allclose(P31 @ L31, -L31) and abs(NL31 - 1.736567405507) < 1e-11
+       and all(abs(x + 1) < 1e-6 for x in pars31) and sorted(vals31) == [1.779773] * 4 + [1.906903] * 4)
+
+# ------------------------------------------------------------------ round 9 (many_wheels.py; its logs are many_wheels_*.log)
+print()
+print("round 9:")
+from scipy.special import betainc
+
+A3 = r3.phase_points(3)
+A33 = np.einsum("aij,bkl->abikjl", A3, A3).reshape(81, 9, 9)          # two wheels of 3: products of operators
+P3 = r3.basics(3)[4]
+ev0 = np.linalg.eigvalsh(A33[0])
+forced("two wheels of 3: each of the 81 points' operators is the product of the wheels' operators, they sum to 9 "
+       "times the identity, and the origin's is the two half turns at once, with 5 eigenvalues +1 and 4 eigenvalues -1",
+       np.allclose(A33.sum(axis=0), 9 * np.eye(9)) and np.allclose(A33[0], np.kron(P3, P3))
+       and int((ev0 > 0).sum()) == 5 and int((ev0 < 0).sum()) == 4)
+strange = np.array([0, 1, -1], complex) / np.sqrt(2)
+N1 = r3.negativity(r3.wigner(strange[None, :], A3, 3)[0])
+two = np.kron(strange, strange)
+W2 = r3.wigner(two[None, :], A33, 9)[0]
+N2 = r3.negativity(W2)
+
+
+def sre2_state(psi, p_, n_):
+    """M2 = -ln( sum over the D^2 Weyl operators of |<psi|W|psi>|^4 / D ), as many_wheels.py computes it"""
+    T = psi.reshape((p_,) * n_)
+    tot = 0.0
+    for x in itertools.product(range(p_), repeat=n_):
+        R = np.roll(T, shift=[-xi for xi in x], axis=tuple(range(n_)))
+        tot += (np.abs(np.fft.fftn(np.conj(R) * T)) ** 4).sum()
+    return float(-np.log(tot / p_ ** n_))
+
+
+m2one, m2two = sre2_state(strange, 3, 1), sre2_state(two, 3, 2)
+forced(f"a product's sum of sizes multiplies: the strange state has negativity {N1:.12f} = 1/3, and two of them side "
+       f"by side {N2:.12f} = 8/9, the value Z1 found as the best at two wheels; their M2 are ln 2 and ln 4 "
+       f"({m2one:.9f} and {m2two:.9f}), as the log records for the best states found there",
+       abs(N1 - 1 / 3) < 1e-12 and abs(N2 - 8 / 9) < 1e-12 and abs(m2one - np.log(2)) < 1e-9
+       and abs(m2two - np.log(4)) < 1e-9)
+
+
+def mean_random(D):
+    """the average sum of sizes over random states, as a fraction of sqrt D: each point's value is 2B - 1 with
+    B ~ Beta((D + 1)/2, (D - 1)/2)"""
+    if D > 10 ** 12:
+        return float(np.sqrt(2 / np.pi))
+    a, b = (D + 1) / 2, (D - 1) / 2
+    m = a / (a + b)
+    return float(np.sqrt(D) * 2 * ((m - 0.5) + 2 * (0.5 * betainc(a, b, 0.5) - m * betainc(a + 1, b, 0.5))))
+
+
+rng9 = np.random.default_rng(20261110)
+G = rng9.normal(size=(20000, 9)) + 1j * rng9.normal(size=(20000, 9))
+G /= np.linalg.norm(G, axis=1, keepdims=True)
+S = np.abs(r3.wigner(G, A33, 9)).sum(axis=1) / 3                         # sum of sizes over sqrt D
+mc, se = S.mean(), S.std() / np.sqrt(len(S))
+forced(f"the average random state's formula agrees with 20000 random states at two wheels of 3: {mean_random(9):.4f} "
+       f"against {mc:.4f} +/- {se:.4f}", abs(mc - mean_random(9)) < 4 * se)
+f9 = {3: (1 + 2 / 3) / np.sqrt(3), 5: (1 + 2 * 0.556677223351) / np.sqrt(5), 7: (1 + 2 * 0.732522000011) / np.sqrt(7)}
+cross = {q: next(k for k in range(1, 200) if f9[q] ** k < mean_random(q ** k)) for q in (3, 5, 7)}
+hundred = {q: f9[q] ** 100 for q in (3, 5, 7)}
+forced(f"the 10 x 10 array: the best single-wheel state repeated reaches {f9[3]:.3f}, {f9[5]:.3f} and {f9[7]:.3f} of the "
+       f"ceiling per wheel at 3, 5 and 7 levels; the average random state is ahead from {cross[3]}, {cross[5]} and "
+       f"{cross[7]} wheels on; at 100 wheels the products reach {hundred[3]:.3g}, {hundred[5]:.3g} and "
+       f"{hundred[7]:.3g}, the average random state {mean_random(3 ** 100):.3f}",
+       cross == {3: 6, 5: 4, 7: 4} and abs(hundred[3] - 0.0213) < 5e-5 and abs(hundred[5] - 0.00354) < 5e-6
+       and abs(hundred[7] - 0.000846) < 5e-7 and abs(mean_random(3 ** 100) - np.sqrt(2 / np.pi)) < 1e-12)
+
+
+# the norm state of the 27-element field, read after round 9's run (README section 11)
+def field_mul(x, y, p_, modulus):
+    """multiply in F_p[t]/(modulus), modulus monic, coefficients lowest degree first; elements as tuples"""
+    n_ = len(modulus) - 1
+    prod = [0] * (2 * n_ - 1)
+    for i in range(n_):
+        for j in range(n_):
+            prod[i + j] += x[i] * y[j]
+    for k in range(2 * n_ - 2, n_ - 1, -1):                               # reduce t^k with t^n = -(lower terms)
+        c, prod[k] = prod[k], 0
+        for i in range(n_):
+            prod[k - n_ + i] -= c * modulus[i]
+    return tuple(v % p_ for v in prod[:n_])
+
+
+def field_pow(x, e, p_, modulus):
+    r = tuple([1] + [0] * (len(modulus) - 2))
+    for _ in range(e):
+        r = field_mul(r, x, p_, modulus)
+    return r
+
+
+def wigner_contract(psi, p_, n_):
+    """<A_u> at every point of n wheels, one wheel at a time, in the order of many_wheels.array_points"""
+    A1 = r3.phase_points(p_)
+    R = np.outer(psi.conj(), psi).reshape((p_,) * (2 * n_))
+    for k in range(n_):
+        R = np.moveaxis(R, [0, n_ - k], [0, 1])
+        R = np.moveaxis(np.tensordot(A1, R, axes=([1, 2], [0, 1])), 0, -1)
+    return R.reshape(-1).real
+
+
+def degree_le2(vals, p_, n_):
+    """is the function F_p^n -> F_p with these values (in itertools.product order) a polynomial of degree <= 2?"""
+    pts_ = list(itertools.product(range(p_), repeat=n_))
+    mons = [lambda x: 1] + [lambda x, i=i: x[i] for i in range(n_)] + \
+           [lambda x, i=i, k=k: x[i] * x[k] for i in range(n_) for k in range(i, n_)]
+    M = [[m(x) % p_ for m in mons] + [v % p_] for x, v in zip(pts_, vals)]
+    r, cols = 0, len(mons)
+    for c in range(cols):
+        piv = next((i for i in range(r, len(M)) if M[i][c]), None)
+        if piv is None:
+            continue
+        M[r], M[piv] = M[piv], M[r]
+        inv = pow(M[r][c], -1, p_)
+        M[r] = [(v * inv) % p_ for v in M[r]]
+        for i in range(len(M)):
+            if i != r and M[i][c]:
+                fct = M[i][c]
+                M[i] = [(a - fct * b) % p_ for a, b in zip(M[i], M[r])]
+        r += 1
+    return all(row[cols] == 0 for row in M[r:])
+
+
+MOD27 = [2, 2, 0, 1]                                                     # t^3 - t - 1 over F_3
+F27 = list(itertools.product(range(3), repeat=3))                       # c0 + c1 t + c2 t^2 is the basis state |c0 c1 c2>
+NORM = {x: field_pow(x, 13, 3, MOD27) for x in F27}                      # N(x) = x x^3 x^9 = x^13
+norm_in_f3 = all(v[1] == 0 and v[2] == 0 for v in NORM.values())
+NORM = {x: v[0] for x, v in NORM.items()}
+w3 = np.exp(2j * np.pi / 3)
+psiN = np.array([w3 ** NORM[x] for x in F27]) / np.sqrt(27)
+exN = wigner_contract(psiN, 3, 3)
+levN = Counter(np.round(exN * 9).astype(int).tolist())
+NN = (np.abs(exN).sum() / 27 - 1) / 2
+P27 = np.kron(np.kron(P3, P3), P3)
+forced(f"the norm state of the 27-element field, sum of w^N(x) |x> / sqrt 27 with N(x) = x^13: N lies in F_3; its "
+       f"<A_u> take the values 2/9, -1/9 and -4/9 at {levN.get(2)}, {levN.get(-1)} and {levN.get(-4)} points, so its "
+       f"negativity is {NN:.12f} = 17/9; |<A_u>| <= {np.abs(exN).max():.6f} = 4/9 everywhere, so it is no point's "
+       f"eigenstate; the half turn sends it to its complex conjugate",
+       norm_in_f3 and levN == {2: 351, -1: 351, -4: 27} and abs(NN - 17 / 9) < 1e-12
+       and abs(np.abs(exN).max() - 4 / 9) < 1e-12 and abs(exN[0] + 4 / 9) < 1e-12 and np.allclose(P27 @ psiN, psiN.conj()))
+eta27 = np.array([0 if NORM[x] == 0 else (1 if NORM[x] == 1 else -1) for x in F27], complex)
+odd_part = (psiN - P27 @ psiN) / 2
+forced("its odd part, of weight 13/18, is i sqrt(3)/2 times the field's Legendre state (the quadratic character "
+       "x^13 as amplitudes); its even part, of weight 5/18, is |0> minus half of every other basis state, over sqrt 27",
+       np.allclose(odd_part, 1j * np.sqrt(3) / 2 * eta27 / np.sqrt(27))
+       and abs(np.vdot(odd_part, odd_part).real - 13 / 18) < 1e-12
+       and np.allclose((psiN + P27 @ psiN) / 2, np.array([1.0] + [-0.5] * 26) / np.sqrt(27)))
+# its characteristic function: zero on the 26 Z-type Weyl operators, 1/sqrt 27 in size on the other 702
+X3, Z3 = np.roll(np.eye(3), 1, axis=0), np.diag(w3 ** np.arange(3))
+chiN = {}
+for a_ in F27:
+    for b_ in F27:
+        Wop = np.ones((1, 1), complex)
+        for ai, bi in zip(a_, b_):
+            Wop = np.kron(Wop, mp(Z3, bi) @ mp(X3, ai))
+        chiN[a_, b_] = abs(np.vdot(psiN, Wop @ psiN))
+zeroN = [k for k, v in chiN.items() if v < 1e-9]
+forced(f"its Weyl expectations vanish on {len(zeroN)} operators, the Z-type ones (a Lagrangian with the identity), and "
+       f"have size 1/sqrt 27 on the other {sum(1 for k, v in chiN.items() if abs(v - 27 ** -0.5) < 1e-9)}",
+       sorted(zeroN) == sorted(((0, 0, 0), b_) for b_ in F27 if any(b_))
+       and all(abs(v - 27 ** -0.5) < 1e-9 for k, v in chiN.items() if k[0] != (0, 0, 0)))
+# its symmetries: 27 shifts, each with a quadratic phase, and 39 linear maps
+idx27 = {x: i for i, x in enumerate(F27)}
+squares = [m for m in F27 if any(m) and field_pow(m, 13, 3, MOD27) == (1, 0, 0)]
+lin_maps = [lambda x, m=m, k=k: field_mul(m, field_pow(x, 3 ** k, 3, MOD27), 3, MOD27) for m in squares for k in range(3)]
+add27 = lambda x, y: tuple((u + v) % 3 for u, v in zip(x, y))
+lin_ok = all(all(L(add27(x, y)) == add27(L(x), L(y)) for x in F27[:9] for y in F27[:9]) and
+             np.allclose(psiN[[idx27[L(x)] for x in F27]], psiN) for L in lin_maps)
+shift_ok = all(degree_le2([(NORM[add27(x, a_)] - NORM[x]) % 3 for x in F27], 3, 3) for a_ in F27)
+forced(f"its symmetries include {len(lin_maps)} linear maps, x -> m x^(3^k) for the {len(squares)} nonzero squares m "
+       f"and k = 0, 1, 2, which fix it as permutations of the basis, and the 27 shifts x -> x + a, each made a "
+       f"symmetry by the phase w^(N(x) - N(x + a)), a quadratic phase since N(x + a) - N(x) has degree 2: "
+       f"{27 * len(lin_maps)} in all",
+       len(squares) == 13 and len(lin_maps) == 39 and lin_ok and shift_ok)
+m2N = sre2_state(psiN, 3, 3)
+LOGGED_WHOLE33 = (1.888888888889, 2.621381818)                          # many_wheels_three.log: value and M2
+forced(f"its M2 is ln(729/53) = {m2N:.9f}, the M2 that many_wheels_three.log records for the {LOGGED_WHOLE33[0]} "
+       f"state the run found in the whole space of three wheels of 3",
+       abs(m2N - np.log(729 / 53)) < 1e-9 and abs(LOGGED_WHOLE33[1] - m2N) < 1e-8
+       and abs(LOGGED_WHOLE33[0] - 17 / 9) < 1e-11)
+# the norm states of other arrays: stabilizer states at two wheels; 2000/729 at four wheels of 3
+other = {}
+for p_, mod_ in ((3, [1, 0, 1]), (5, [2, 0, 1]), (7, [1, 0, 1]), (3, [1, 0, 1, 1, 1])):    # irreducible moduli
+    n_ = len(mod_) - 1
+    els_ = list(itertools.product(range(p_), repeat=n_))
+    e_ = (p_ ** n_ - 1) // (p_ - 1)
+    wp = np.exp(2j * np.pi / p_)
+    nv = [field_pow(x, e_, p_, mod_) for x in els_]
+    assert all(all(c == 0 for c in v[1:]) for v in nv)
+    ps = np.array([wp ** v[0] for v in nv]) / np.sqrt(p_ ** n_)
+    ex_ = wigner_contract(ps, p_, n_)
+    other[p_, n_] = (np.abs(ex_).sum() / p_ ** n_ - 1) / 2
+forced(f"the norm states of the other arrays: at two wheels of 3, 5 and 7 the norm is quadratic and the state has "
+       f"negativity {other[3, 2]:.1e}, {other[5, 2]:.1e} and {other[7, 2]:.1e}; at four wheels of 3 it has "
+       f"{other[3, 4]:.12f} = 2000/729, below 98/27",
+       max(other[3, 2], other[5, 2], other[7, 2]) < 1e-12 and abs(other[3, 4] - 2000 / 729) < 1e-12)
+if FULL:
+    # every affine map of the field's coordinates that keeps the norm state up to a quadratic phase
+    count = 0
+    for m in itertools.product(range(3), repeat=9):
+        Mx = np.array(m).reshape(3, 3)
+        if round(np.linalg.det(Mx)) % 3 == 0:
+            continue
+        for a_ in F27:
+            img = [tuple((Mx @ np.array(x) + np.array(a_)) % 3) for x in F27]
+            if degree_le2([(NORM[y] - NORM[x]) % 3 for x, y in zip(F27, img)], 3, 3):
+                count += 1
+    forced(f"(--full) every affine map x -> Mx + a that keeps the norm state up to a quadratic phase, among all "
+           f"11232 x 27: {count}, so its Clifford symmetries are exactly 27 x 39", count == 1053)
+if FULL:
+    # the states of each field's multiplicative characters, sum over x != 0 of chi(x) |x>: all below the bests found
+    BESTS9 = {(3, 2): 8 / 9, (3, 3): 17 / 9, (3, 4): 98 / 27, (5, 2): 1.766937254162, (7, 2): 2.719253432179}
+    MODS9 = {(3, 2): [1, 0, 1], (3, 3): MOD27, (3, 4): [1, 0, 1, 1, 1], (5, 2): [2, 0, 1], (7, 2): [1, 0, 1]}
+    char_top = {}
+    for (p_, n_), mod_ in MODS9.items():
+        q_ = p_ ** n_
+        els_ = list(itertools.product(range(p_), repeat=n_))
+        one_ = tuple([1] + [0] * (n_ - 1))
+
+        def order_of(g):
+            x, k = g, 1
+            while x != one_:
+                x, k = field_mul(x, g, p_, mod_), k + 1
+            return k
+
+        gen = next(g for g in els_ if any(g) and order_of(g) == q_ - 1)
+        logs, x = {}, one_
+        for k in range(q_ - 1):
+            logs[x] = k
+            x = field_mul(x, gen, p_, mod_)
+        tops = []
+        for k in range(1, q_ - 1):
+            z = np.exp(2j * np.pi * k / (q_ - 1))
+            ps = np.array([0 if not any(x) else z ** logs[x] for x in els_]) / np.sqrt(q_ - 1)
+            ex_ = wigner_contract(ps, p_, n_)
+            tops.append((np.abs(ex_).sum() / q_ - 1) / 2)
+        char_top[p_, n_] = max(tops)
+    forced("(--full) the states of the fields' multiplicative characters stay below every array's best: at most "
+           + ", ".join(f"{char_top[k]:.6f} against {BESTS9[k]:.6f}" for k in MODS9),
+           all(char_top[k] < BESTS9[k] - 1e-3 for k in MODS9))
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

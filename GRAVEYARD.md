@@ -250,6 +250,11 @@ its own graveyard. These died, with what killed them:
     2026-11-08; `towers/seven_levels/two_wheels_*.log`). At 13 the multiplying wheel's order-4 family reaches 1.167364
     against the turning wheel's 1.105229, which is exact: the verifier counts every sign choice in the turning wheel's
     order-7 family. The test was confounded by family size: at 13 the turning wheel offers only orders 7 and 14.
+  - **The author's 7-wheel: "the even side wins exactly when the powers of 7 modulo p pass through the half turn"**
+    (round 7's X1, 2026-11-10; `towers/seven_levels/round7_*.log`). At 31 the 7-wheel has period 15 and never reaches
+    the half turn, so the rule called the odd side, but the even side wins, 2.045297 against 2.031473. A recheck with a fresh seed, two million more odd climbs and kicks from the highest odd tops, found the same odd best and nothing higher.
+    The rule had fitted the eight primes it was read from. With 31, no number wheel of any base from 2 to 30 fits
+    every decided prime.
 - **From the genetic-code study (2026-11-08; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.

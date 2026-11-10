@@ -20,6 +20,10 @@
   the even side won at 23 and the odd side at 29 (§8).
 - Then the data were read from other angles, the author's 7-wheel rule was registered as round 7, and a two-wheels
   test ran as round 8: two of three held (§9).
+- Round 7 ran at 31: the even side won, and the author's 7-wheel died there (§10).
+- Then the author asked about many wheels at once. Round 9 ran arrays of two to four wheels, and all eight of its
+  predictions held. The best states of big arrays are collective, and on three wheels of 3 levels the best state found
+  sits on neither face: it is the norm state of the field with 27 elements (§11).
 
 ---
 
@@ -91,6 +95,7 @@ clocks to shifts and clocks, up to phase.
   the Legendre state's side wins, died at 23 and at 29 (§8).
 - **Y1 (round 8).** The turning wheel's best symmetric state does not beat the multiplying wheel's at every prime:
   at 13 it loses (§9).
+- **X1 (round 7).** The author's 7-wheel: at 31 it never reaches the half turn, and the even side wins anyway (§10).
 
 ## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
 
@@ -399,10 +404,10 @@ promised: [`round6.py`](round6.py), with the logs [`round6_twentythree.log`](rou
 ## 9. Other angles, and the two-wheels test [READING; measured]
 
 After round 6 the author asked to pause and look at the data from other angles. The author then pointed to the wheel
-of numbers around 7 and to Shor's algorithm. Made exact, that is a rule, registered as round 7 and not yet run
+of numbers around 7 and to Shor's algorithm. Made exact, that is a rule, registered as round 7
 ([`PREREG.md`](PREREG.md)): the even side wins exactly when the powers of 7 modulo p pass through the half turn, the
-case Shor's period finding checks for. It fits all eight primes
-run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it against the rival observation.
+case Shor's period finding checks for. It fitted all eight primes
+run before it other than 7 itself, and of the bases 2 to 29 only 7 did. At 31 it died (§10).
 
 - **Flatness: what every winner shares.** The total negativity has a ceiling, (√p − 1)/2, reached only if every point
   of the Wigner function had the same size. From 7 on, both sides' best states reach 88 to 90% of it at every prime.
@@ -428,7 +433,126 @@ run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it aga
     and loses at 13 (dimension 2) and 19 (dimension 4). At equal size a turning symmetry is usually the better one,
     not always.
 
-## 10. Our space, and what it cannot hold [FORCED; FENCE]
+## 10. Round 7: the 7-wheel at thirty-one [READING; measured]
+
+> *it must be related to the wheel of numbers revolving around 7? i am thinking shor's with a 7 wheel
+> conversion?* — the author, 8 November 2026
+
+The author's rule (X1) was made exact in §9 and registered before any run at 31: the even side wins exactly when the
+powers of 7 modulo p pass through the half turn. At 31 they never do, since the 7-wheel's period there is 15, so the
+rule called the odd side. The rival observation (X2), that the odd side's wins fall at primes 4 more than a multiple
+of 5, called the even side. The script was committed before its run: [`round7.py`](round7.py), with the logs
+[`round7_thirtyone.log`](round7_thirtyone.log) and [`round7_combined.log`](round7_combined.log).
+
+- **Thirty-one: the even side wins, by 0.0138, and the 7-wheel dies.**
+  - Two million climbs on each side found 2.045297 on the even side and 2.031473 on the odd side.
+  - A timing test of 2 000 climbs per side had printed the same order before the run. It is disclosed in
+    [`PREREG.md`](PREREG.md), and it could not change the registered calls.
+  - An unregistered recheck ran two million more odd climbs with a fresh seed, and kicks from the ten highest
+    odd tops. It found the same odd best, once again, and nothing higher. Both searches reached it only
+    once, so its basin is tiny.
+  - The even winner has only its half turn. The best odd state has six symmetries, turns of order 3 and 6 from the
+    multiplying wheel (6 divides 30), and they do not fix it.
+- **The exceptional states** [FORCED, not scored]. 31 is 3 more than a multiple of 4, so round 4's rule puts them on
+  the odd side, and there they sit. The two kinds of binary tetrahedral group fix three odd states each (1.906903
+  once and 1.779773 twice), the two kinds of binary octahedral group one each (1.906903), and the binary icosahedral
+  groups none.
+- **The coin across ten primes.** To the table in §8, 31 adds the odd side at 2.031473 and the even side at
+  2.045297, the even side ahead by 0.0138.
+  - The even side wins at 5, 7, 11, 13, 17, 23 and 31, the odd side at 19 and 29, and 3 is a tie.
+  - No number wheel of any base from 2 to 30 now fits every decided prime. Before 31, only 7 did.
+  - The rival observation fits all nine, but it rests on two odd wins. Its next odd call is 59, beyond this
+    machinery; 37 would test its even call again.
+  - Flatness and the edge still hold. Both bests reach 89 to 90% of the ceiling, (√31 − 1)/2 = 2.283882, and the gap,
+    0.0138, is 43% of 1/31.
+
+## 11. Round 9: many wheels [FORCED; READING; measured; NAMED: Liu and Winter, Knipfer et al.]
+
+> *you are only spinning one wheel... imagine a 10x10 of wheels or larger?* — the author, 9 November 2026
+
+**Made exact.**
+- An array of n wheels is n p-level systems side by side: D = p^n levels and D² phase-space points.
+- Each point's operator is the product of the wheels' operators. The array's half turn is every wheel's half turn
+  at once.
+- A product state's sum of sizes multiplies. So the best product state, the best single wheel repeated, reaches the
+  fraction fⁿ of the ceiling √D.
+- Clifford operations keep the negativity and can entangle the wheels. So the test that entanglement pays is to beat
+  every product.
+
+Eight predictions were registered with the script, [`many_wheels.py`](many_wheels.py), before its full run
+([`PREREG.md`](PREREG.md)). Its pilots had been seen by mistake, and six of the eight only checked them. All eight
+held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `_combined`.
+
+- **The 10 × 10 array** [FORCED]. No search reaches 3^100 levels, but this arithmetic is exact.
+  - Each point's operator has (D + 1)/2 eigenvalues +1 and (D − 1)/2 eigenvalues −1. So the average random state's
+    sum of sizes follows from a Beta distribution, and it tends to √(2/π) = 0.798 of the ceiling.
+
+  | levels | best single wheel, f | random beats every product from | 10 wheels: product, random | 100 wheels: product, random |
+  |---|---|---|---|---|
+  | 3 | 0.962 | 6 wheels | 0.681, 0.798 | 0.021, 0.798 |
+  | 5 | 0.945 | 4 wheels | 0.569, 0.798 | 0.0035, 0.798 |
+  | 7 | 0.932 | 4 wheels | 0.493, 0.798 | 0.00085, 0.798 |
+
+  - So in a 10 × 10 array the wheels cannot spin separately. Every product state, and every Clifford image of one,
+    falls below the average random state: 37 times below it at 3 levels and 940 times at 7. The best states are
+    collective.
+  - This is the many-wheel case of Liu and Winter's theorem that typical many-body states are nearly maximally
+    magic [NAMED].
+  - The measure counts the wheels and ignores their layout: a 10 × 10 grid and a line of 100 wheels are the same to
+    it. The layout would matter for what neighbouring wheels can do together, not for this ceiling.
+- **The searches** [measured]. The sign ascent ran on the even side, the odd side and the whole space of each array.
+
+  | array | D | even side | odd side | whole space | best product of smaller bests | best, share of the ceiling |
+  |---|---|---|---|---|---|---|
+  | one wheel of 3 | 3 | 1/3 | 1/3 | 1/3 | — | 0.911 |
+  | two wheels of 3 | 9 | 8/9 | 8/9 | 8/9 | 8/9 | 0.889 |
+  | three wheels of 3 | 27 | 1.875593 | 1.886964 | **17/9** | 49/27 | 0.900 |
+  | four wheels of 3 | 81 | **98/27** | 3.476833 | 3.289771* | 3.478273 | 0.907 |
+  | two wheels of 5 | 25 | **1.766937** | 1.727386 | 1.766078* | 1.733134 | 0.883 |
+  | two wheels of 7 | 49 | **2.719253** | 2.633836 | 2.510505* | 2.538221 | 0.906 |
+
+  \* The whole-space search had a tenth or less of the side searches' climbs.
+
+  - **Two wheels of 3:** nothing beats a product of two single-wheel bests. The best states found are entangled, yet
+    their Wigner values are a product's, as a Clifford image of a product's would be.
+  - **From three wheels of 3, two of 5 and two of 7 on, entanglement pays:** the best state beats every product.
+  - **The coin persists in arrays.** The even side wins at four wheels of 3, two of 5 and two of 7. At three wheels of
+    3 the odd side beats the even side, but the best state found is on neither face (below).
+  - **Two measures, two winners.** The most negative states are not the most magic by the stabilizer Rényi entropy
+    M₂, the measure Knipfer et al. maximize [NAMED]. At two wheels of 3 the best states' M₂ is ln 4, against their
+    maximum ln(81/17) = 1.561. At two wheels of 5 and of 7 it falls below their values too.
+- **Three wheels of 3: the winner sits on the edge** [FORCED for the state; measured for the search]. The whole-space
+  search beat both sides with 17/9, at a state on neither face. A second search with a fresh seed found 17/9 again,
+  11 times in 200 000 climbs, and nothing higher.
+  - The state is the **norm state** of the field with 27 elements, up to a Clifford operation:
+    ψ = Σ ω^N(x) |x⟩ / √27, where x runs over the field, ω = e^(2πi/3), and N(x) = x·x³·x⁹ is the field's norm,
+    which lies in the three-element field. [`edge_state.py`](edge_state.py) reruns the search and finds an explicit
+    Clifford operation for each best state; its output is in [`edge_state.log`](edge_state.log).
+  - Its Wigner function takes only three values: 2/243, −1/243 and −4/243, at 351, 351 and 27 points. So its
+    negativity is exactly 17/9. No point's operator has it as an eigenstate: |⟨A_u⟩| ≤ 4/9 everywhere, so it is
+    neither even nor odd about any centre.
+  - **Its flatness.** Its Weyl expectations vanish on 26 operators, which form a Lagrangian with the identity, and
+    have the same size, 1/√27, on all 702 others. That comes from N being cubic: each difference N(x + a) − N(x) is
+    quadratic, and for a ≠ 0 it has no flat direction, so it spreads evenly over every frequency.
+  - It has exactly 1 053 Clifford symmetries: the 27 shifts x → x + a, each with a quadratic phase, and 39 linear
+    maps, multiplication by the 13 nonzero squares and the field's own map x → x³ (the Frobenius map). Every
+    symmetry keeps that Lagrangian, so a count over all the maps that do finds them all.
+  - **Its coin.** The half turn sends it to its complex conjugate, a different state with the same value. Here the
+    edge is a flip between two states, not a fixed point. The state's odd part, with weight 13/18, is the field's
+    Legendre state: the quadratic character of the 27-element field as amplitudes, the field's version of the state
+    that is the best odd state at seven levels. Its even part, with weight 5/18, is |0⟩ minus half of every other
+    basis state.
+  - **Checked after the run, and negative:**
+    - at two wheels the norm is quadratic, so the norm state is a stabilizer state, with no negativity;
+    - at four wheels of 3 the norm state gives only 2000/729 ≈ 2.743. The four-wheel best, 98/27, is something
+      else, an even state whose structure is open;
+    - the states of the field's multiplicative characters, Σ χ(x) |x⟩ for each character χ of its wheel of nonzero
+      elements, stay below every array's best.
+  - The verifier checks the norm state's value, levels, coin, zero set, symmetries and M₂, which matches the logged
+    M₂ of the state the run found. It also checks the other arrays' norm states, and with `--full` the character
+    states and the exact count of symmetries.
+
+## 12. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -445,7 +569,7 @@ run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it aga
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 11. Standing
+## 13. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -462,7 +586,10 @@ run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it aga
   - that a state fixed by a group of Clifford operations is stationary for mana, with the list of such states for
     two, three and five levels (Erew and Goldstein 2025);
   - the tools round 4 borrows: Samuelson's inequality, Good and Turing's estimate of the unseen, and the sign of
-    the half turn's operator in the Weil representation.
+    the half turn's operator in the Weil representation;
+  - Liu and Winter's theorem that typical many-body states are nearly maximally magic, and Knipfer, Roman, Matcheva
+    and Matchev's values of M₂ for two qudits;
+  - the norm and the quadratic character of a finite field.
 - **This repository's own:**
   - the dictionary, and the reading that puts the sevenths' two faces, the octahedron with its centre, the cube
     and Klein's space into one picture;
@@ -478,30 +605,42 @@ run other than 7 itself, and of the bases 2 to 29 only 7 does. 31 decides it aga
   - round 5: the coin at 17 and 19, the odd side's win at 19, and the exceptional groups' states there, all on
     the Legendre state's side;
   - round 6: the coin at 23 and 29, and the test of the author's prediction;
-  - the angles (flatness, the edge's two effects, the two wheels) and round 8's two-wheels test.
+  - the angles (flatness, the edge's two effects, the two wheels) and round 8's two-wheels test;
+  - round 7: the coin at 31, and the test of the author's 7-wheel;
+  - round 9: the coin in arrays, the small arrays' best values (search results), and the norm state on three wheels
+    of 3, exact: the best found there, and on neither face.
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
-  levels, and nothing on seven, eleven or thirteen.
+  levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
+  negativity for three or more qutrits, and no use of the norm state as a magic state.
 - **The yield.** Round 1 was mostly known: seven classical facts confirmed, and one guess dead. Round 2 is new
   as far as we checked, but it is a measurement, not a proof. Round 3 is new as far as we checked. At seven it
   is exhaustive for every state with a symmetry, exact up to rounding: the nearest rival values sit 0.0028 and
   0.0067 below. At eleven it is a search. Round 4 is new as far as we checked: exhaustive at seven for every
   state with a symmetry of any kind, exhaustive at eleven for symmetries of order 4, 5, 6 and 11, and a search
   at thirteen. Round 5 is a search, except its forced rule, and its guesses read off 3 to 13 mostly died.
-  Round 6 is a search, and both of its readings died.
+  Round 6 is a search, and both of its readings died. Round 7 is a search, and the author's rule died at the first
+  prime it predicted. Round 9 held all eight, but six only checked pilots; what it adds is exact arithmetic about large
+  arrays, small arrays' values by search, and one exact state, read after the run.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
-  - which side wins at large p. The odd side won at 19 and 29 and the even side at 23. The author's 7-wheel rule fits
-    every prime run other than 7 and is registered as round 7; 31 decides it;
+  - which side wins at large p. The odd side won at 19 and 29, the even side at 23 and 31. The author's 7-wheel died at
+    31, and no number wheel of base 2 to 30 fits every decided prime. The rival observation, that the odd side wins at
+    primes 4 more than a multiple of 5, fits all nine on two odd wins; 37 would test it again (about six hours), and
+    59 is beyond this machinery;
   - why a turning symmetry usually beats a multiplying one at equal family size (12 of 14 pairs, read after round 8),
-    and why not at 13 and 19.
+    and why not at 13 and 19;
+  - many wheels: whether 17/9 is the maximum on three wheels of 3, and why the norm state wins there; what the
+    four-wheel best, 98/27, is; whether states on neither face win in other arrays, where the whole-space searches
+    were short; and the arrays nobody has run, such as three wheels of 5 or five of 3, which need code that never
+    writes out all D² operators.
 
 ## Run it
 
 ```
-python verify_seven_levels.py          # about 45 seconds (numpy + scipy)
-python verify_seven_levels.py --full   # adds round 3's two counts of 2^24 sign choices: 2.5 minutes
+python verify_seven_levels.py          # about two minutes (numpy + scipy)
+python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries): 18 minutes
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
 python round4.py seven                 # round 4's three parts, run at once: about 17, 43 and 19 minutes
@@ -516,6 +655,14 @@ python round6.py combine
 python two_wheels.py A                 # round 8, run at once: about 8 and 18 minutes
 python two_wheels.py B
 python two_wheels.py combine
+python round7.py thirtyone             # round 7, about two hours
+python round7.py combine
+python many_wheels.py three            # round 9, run two at a time: about 30, 60, 20 and 120 minutes
+python many_wheels.py four
+python many_wheels.py five
+python many_wheels.py seven
+python many_wheels.py combine
+python edge_state.py                   # the three-wheel winner as the norm state, about 20 minutes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -524,7 +671,7 @@ python two_wheels.py combine
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The round-4, round-5 and round-6 lines rerun those rounds, which are seeded, and rewrite their logs.
+- The lines for rounds 4 to 9 and `edge_state.py` rerun those runs, which are seeded, and rewrite their logs.
 
 ## Sources
 
@@ -552,3 +699,8 @@ python two_wheels.py combine
 - I. J. Good, "The population frequencies of species and the estimation of population parameters",
   *Biometrika* **40** (1953).
 - A. Weil, "Sur certains groupes d'opérateurs unitaires", *Acta Math.* **111** (1964).
+- Z.-W. Liu and A. Winter, "Many-body quantum magic", *PRX Quantum* **3** (2022) 020333,
+  [doi:10.1103/PRXQuantum.3.020333](https://link.aps.org/doi/10.1103/PRXQuantum.3.020333).
+- M. Knipfer, A. Roman, K. Matcheva and K. Matchev, "Analytical landscape of maximal magic for two-qutrit states and
+  beyond" (2026), [arXiv:2607.07197](https://arxiv.org/abs/2607.07197).
+- R. Lidl and H. Niederreiter, *Finite Fields* (1983): the norm and the quadratic character.

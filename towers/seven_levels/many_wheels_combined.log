@@ -1,0 +1,26 @@
+  1 wheel(s) of 3: even 0.333333333, odd 0.333333333, whole 0.333333333; even ahead by +0.000000000; best 0.9107 of the ceiling
+  2 wheel(s) of 3: even 0.888888889, odd 0.888888889, whole 0.888888889; even ahead by +0.000000000; best 0.8889 of the ceiling
+  3 wheel(s) of 3: even 1.875593191, odd 1.886963587, whole 1.888888889; even ahead by -0.011370396; best 0.9003 of the ceiling
+  4 wheel(s) of 3: even 3.629629630, odd 3.476833049, whole 3.289770965; even ahead by +0.152796580; best 0.9074 of the ceiling
+  1 wheel(s) of 5: even 0.556677223, odd 0.433070426, whole 0.556677223; even ahead by +0.123606798; best 0.9007 of the ceiling
+  2 wheel(s) of 5: even 1.766937254, odd 1.727386412, whole 1.766077759; even ahead by +0.039550843; best 0.8835 of the ceiling
+  1 wheel(s) of 7: even 0.732522000, odd 0.728262097, whole 0.732522000; even ahead by +0.004259903; best 0.8902 of the ceiling
+  2 wheel(s) of 7: even 2.719253432, odd 2.633836451, whole 2.510505335; even ahead by +0.085416981; best 0.9064 of the ceiling
+  2 wheels of 3: the best product of smaller arrays' bests: even 0.888888889, odd 0.888888889
+  3 wheels of 3: the best product of smaller arrays' bests: even 1.814814815, odd 1.814814815
+  4 wheels of 3: the best product of smaller arrays' bests: even 3.478272645, odd 3.478272645
+  2 wheels of 5: the best product of smaller arrays' bests: even 1.733133509, odd 1.471908533
+  2 wheels of 7: the best product of smaller arrays' bests: even 2.538220961, odd 2.527720113
+Z0 HELD: one wheel reproduces the known bests at 3, 5 and 7
+Z1 HELD: two wheels of 3: nothing beats 8/9, the value of a product of two single-wheel bests
+Z2 HELD: three and four wheels of 3, two of 5 and two of 7: the best state beats every product of smaller arrays' bests
+Z3 HELD: the pilot's coin holds: odd at three wheels of 3, even at four of 3, two of 5 and two of 7 (found: odd, even, even, even)
+Z4 HELD: every best state, from two wheels on, reaches 88% of its ceiling
+Z5 HELD: four wheels of 3: the best is 98/27, nothing higher (found 3.629629629630)
+Z6 HELD: two wheels of 3: every best state found has the Wigner values of a product of single-wheel bests
+Z7 HELD: two wheels of 5 and of 7: every best state found has M2 below Knipfer et al.'s values (ln(625/49) and ln(2401/97))
+
+the large-array numbers (forced, not searched): the best single-wheel state, repeated on every wheel, against the average random state, as fractions of the ceiling sqrt D of the sum of sizes
+  3 levels: 1 wheels: 0.962 against 0.866, 2 wheels: 0.926 against 0.820, 3 wheels: 0.891 against 0.805, 4 wheels: 0.857 against 0.800, 10 wheels: 0.681 against 0.798, 100 wheels: 0.0213 against 0.798; the average random state is ahead from 6 wheels on
+  5 levels: 1 wheels: 0.945 against 0.839, 2 wheels: 0.893 against 0.806, 3 wheels: 0.844 against 0.799, 4 wheels: 0.798 against 0.798, 10 wheels: 0.569 against 0.798, 100 wheels: 0.00354 against 0.798; the average random state is ahead from 4 wheels on
+  7 levels: 1 wheels: 0.932 against 0.827, 2 wheels: 0.868 against 0.802, 3 wheels: 0.809 against 0.798, 4 wheels: 0.754 against 0.798, 10 wheels: 0.493 against 0.798, 100 wheels: 0.000846 against 0.798; the average random state is ahead from 4 wheels on

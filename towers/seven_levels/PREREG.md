@@ -717,3 +717,81 @@ done without printing a value.
 
 **Expected standing.** The forced numbers are exact arithmetic on the best single-wheel states found. The searches
 are reading-level evidence in small arrays. The 10 × 10 array itself stays out of reach of any search.
+
+---
+
+## Round 7 scores (added after the run, 2026-11-10)
+
+Run by [`round7.py`](round7.py), committed at ad00f5a before its run; the output is kept in
+[`round7_thirtyone.log`](round7_thirtyone.log) and [`round7_combined.log`](round7_combined.log). The run is seeded.
+**The author's 7-wheel died at 31.**
+
+| | outcome | evidence |
+|---|---|---|
+| X1, the author's 7-wheel | **died** | at 31 the 7-wheel has period 15 and never reaches the half turn, so the rule called the odd side. The even side wins, 2.045297 against 2.031473 |
+| X2, the rival observation | **stands at 31** | the even side wins at 31, as it said. 37 was not run: with X1 dead, it no longer decides between them |
+
+**The pilot.** A timing test of 2 000 climbs per side ran after this registration and before the full run. It
+printed even 2.040380 and odd 2.017126, and round 9's registration discloses it. The full run found both sides
+higher, in the same order.
+
+**Recheck, not registered.** Two million more odd climbs with a fresh seed, and kicks from the ten highest odd tops,
+found the same odd best, 2.031473, once again, and nothing higher. The odd side falls short of the even best
+by 0.0138. Both searches reached that odd best only once, so its basin is tiny.
+
+**Read after the run.**
+- With 31's even win, no number wheel of any base from 2 to 30 fits every decided prime. Before 31, only 7 did.
+- The rival observation fits all nine decided primes, but it rests on two odd wins, at 19 and 29.
+
+**Yield.** The rule fitted the eight primes it was read from and missed the first prime it predicted. It is kept in
+[`../../GRAVEYARD.md`](../../GRAVEYARD.md), and the [README](README.md) §10 has what the run found.
+
+---
+
+## Round 9 scores (added after the run, 2026-11-10)
+
+Run by [`many_wheels.py`](many_wheels.py), committed with this registration at ad00f5a, before the full run; the
+output is kept in [`many_wheels_three.log`](many_wheels_three.log), [`many_wheels_four.log`](many_wheels_four.log),
+[`many_wheels_five.log`](many_wheels_five.log), [`many_wheels_seven.log`](many_wheels_seven.log) and
+[`many_wheels_combined.log`](many_wheels_combined.log). The runs are seeded. **All eight held.** Z0 to Z5 only checked
+what the pilots had shown, at 50 to 500 times their effort; Z6 and Z7 were fresh.
+
+| | outcome | evidence |
+|---|---|---|
+| Z0, calibration | held | one wheel: 1/3 on both sides at 3; 0.556677 and 0.433070 at 5; 0.732522 and 0.728262 at 7 |
+| Z1, pilot | held | two wheels of 3: 8/9 on the even side, the odd side and in the whole space, a million climbs each, and nothing higher |
+| Z2, pilot | held | the best beats every product of smaller arrays' bests: 17/9 against 49/27 at three wheels of 3, 98/27 against 3.478273 at four, 1.766937 against 1.733134 at two of 5, and 2.719253 against 2.538221 at two of 7 |
+| Z3, pilot | held | the odd side at three wheels of 3 (1.886964 against 1.875593); the even side at four of 3 (98/27 against 3.476833), two of 5 (1.766937 against 1.727386) and two of 7 (2.719253 against 2.633836) |
+| Z4, pilot | held | the best states reach 88.4% (two of 5) to 90.7% (four of 3) of their ceilings |
+| Z5, pilot | held | four wheels of 3: 98/27, reached 1 558 times in 10 000 even climbs, and nothing higher |
+| Z6, fresh | held | two wheels of 3: every best state found has the Wigner values of a product of single-wheel bests (even with even, or even with odd), yet each is entangled: each wheel's purity is 0.625 or 0.5 |
+| Z7, fresh | held | M₂ of the best states: 2.24 to 2.33 at two wheels of 5, against Knipfer et al.'s 2.546; 2.89 to 3.02 at two of 7, against their 3.209 |
+
+**Read after the run.**
+- **Three wheels of 3: the best state found is on neither face.** The whole-space search found 17/9, above both
+  sides' bests, at half-turn value −1/9. A second whole-space search of 200 000 climbs with a fresh seed found 17/9
+  again, 11 times, and nothing higher.
+  - No phase-point operator has it as an eigenstate: |⟨A_u⟩| is at most 4/9 at every point, so it is not even or odd
+    about any centre.
+  - It is the **norm state** of the field with 27 elements, up to a Clifford operation: ψ = Σ ω^N(x) |x⟩ / √27, where
+    x runs over the field, ω = e^(2πi/3), and N(x) = x·x³·x⁹ is the field's norm, which lies in the three-element
+    field. [`edge_state.py`](edge_state.py) reruns the search and finds an explicit Clifford operation for each best
+    state; its output is in [`edge_state.log`](edge_state.log).
+  - Exact facts about it, checked by the verifier: its Wigner function takes three values, 2/243, −1/243 and −4/243,
+    at 351, 351 and 27 points, so its negativity is exactly 17/9. It has 1 053 Clifford symmetries. Its M₂ is ln(729/53).
+  - The half turn sends it to its complex conjugate. Its odd part, with weight 13/18, is the field's Legendre state:
+    the quadratic character of the 27-element field, as amplitudes. Its even part, with weight 5/18, is |0⟩ minus half
+    of every other basis state.
+- Z2 compared each side's best. With 17/9, the best product at four wheels is 94/27 = 3.481481, still below 98/27.
+- The whole-space searches at four wheels of 3, two of 5 and two of 7 had a tenth or less of the side searches'
+  climbs and found less than the even side, so they cannot say whether a state on neither face wins there.
+- **Four wheels of 3:** the best found, 98/27, is even. Its structure is open.
+- **The field's other states do not reach the other bests** (checked after the run; the verifier checks them): the
+  norm states at two wheels are stabilizer states; at four wheels of 3 the norm state gives 2000/729 ≈ 2.743; and the
+  states of the field's multiplicative characters stay below every array's best (at most 0.807, 1.741, 3.433, 1.662
+  and 2.576 at two, three and four wheels of 3, and two of 5 and of 7).
+
+**Yield.** Mostly confirmation: the pilots' picture held at 50 to 500 times the effort. The forced numbers are exact.
+New as far as we checked: the small arrays' best values, which are search results, not proofs; and one exact state,
+the norm state at three wheels of 3, the best found there and on neither face. The web searches of 2026-11-10 found no
+maximum of the total Wigner negativity for three or more qutrits, and no use of this state as a magic state.

@@ -1,0 +1,16 @@
+1 wheel(s) of 7 levels: D = 7, 49 points, the even side 4 dimensions, the odd side 3; the ceiling (sqrt D - 1)/2 = 0.822875656
+  200000 climbs, even: best 0.732522000011, 0.8902 of the ceiling (reached 16902 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [1.0] [2 s]
+CHECK 7 1 even nan na
+  200000 climbs, odd: best 0.728262097006, 0.8850 of the ceiling (reached 86220 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [1.0] [4 s]
+CHECK 7 1 odd nan na
+  50000 climbs, whole: best 0.732522000011, 0.8902 of the ceiling (reached 73 times; 0 still moving); its half-turn value +0.320879; purity on each wheel [1.0] [6 s]
+CHECK 7 1 whole nan na
+RESULT 7 1 0.732522000011 0.728262097006 0.732522000011
+2 wheel(s) of 7 levels: D = 49, 2401 points, the even side 25 dimensions, the odd side 24; the ceiling (sqrt D - 1)/2 = 3.000000000
+  200000 climbs, even: best 2.719253432179, 0.9064 of the ceiling (reached 37 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [0.270833, 0.270833]; M2 3.017968 (Knipfer et al.: ln(2401/97), their conjecture = 3.208930); its Wigner values are no product's [3092 s]
+CHECK 7 2 even 3.017968415 no
+  200000 climbs, odd: best 2.633836451213, 0.8779 of the ceiling (reached 7 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [0.297027, 0.297027]; M2 2.890372 (Knipfer et al.: ln(2401/97), their conjecture = 3.208930); its Wigner values are no product's [5930 s]
+CHECK 7 2 odd 2.890371758 no
+  20000 climbs, whole: best 2.510505334764, 0.8368 of the ceiling (reached 1 times; 0 still moving); its half-turn value -0.110083; purity on each wheel [0.286944, 0.286944]; M2 2.941971 (Knipfer et al.: ln(2401/97), their conjecture = 3.208930); its Wigner values are no product's [7137 s]
+CHECK 7 2 whole 2.941970908 no
+RESULT 7 2 2.719253432179 2.633836451213 2.510505334764

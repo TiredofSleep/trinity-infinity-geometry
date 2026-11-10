@@ -1,0 +1,24 @@
+1 wheel(s) of 3 levels: D = 3, 9 points, the even side 2 dimensions, the odd side 1; the ceiling (sqrt D - 1)/2 = 0.366025404
+  100000 climbs, even: best 0.333333333333, 0.9107 of the ceiling (reached 66915 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [1.0] [1 s]
+CHECK 3 1 even nan na
+  100000 climbs, odd: best 0.333333333333, 0.9107 of the ceiling (reached 100000 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [1.0] [1 s]
+CHECK 3 1 odd nan na
+  100000 climbs, whole: best 0.333333333333, 0.9107 of the ceiling (reached 64702 times; 0 still moving); its half-turn value +0.500000; purity on each wheel [1.0] [1 s]
+CHECK 3 1 whole nan na
+RESULT 3 1 0.333333333333 0.333333333333 0.333333333333
+2 wheel(s) of 3 levels: D = 9, 81 points, the even side 5 dimensions, the odd side 4; the ceiling (sqrt D - 1)/2 = 1.000000000
+  1000000 climbs, even: best 0.888888888889, 0.8889 of the ceiling (reached 362197 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [0.625, 0.625]; M2 1.386294 (Knipfer et al.: ln(81/17), their maximum = 1.561236); its Wigner values are those of the product even-even [25 s]
+CHECK 3 2 even 1.386294361 yes
+  1000000 climbs, odd: best 0.888888888889, 0.8889 of the ceiling (reached 423135 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [0.5, 0.5]; M2 1.386294 (Knipfer et al.: ln(81/17), their maximum = 1.561236); its Wigner values are those of the product even-odd [41 s]
+CHECK 3 2 odd 1.386294361 yes
+  1000000 climbs, whole: best 0.888888888889, 0.8889 of the ceiling (reached 7551 times; 0 still moving); its half-turn value -0.250000; purity on each wheel [0.625, 0.625]; M2 1.386294 (Knipfer et al.: ln(81/17), their maximum = 1.561236); its Wigner values are those of the product even-even [110 s]
+CHECK 3 2 whole 1.386294361 yes
+RESULT 3 2 0.888888888889 0.888888888889 0.888888888889
+3 wheel(s) of 3 levels: D = 27, 729 points, the even side 14 dimensions, the odd side 13; the ceiling (sqrt D - 1)/2 = 2.098076211
+  500000 climbs, even: best 1.875593190792, 0.8940 of the ceiling (reached 55909 times; 0 still moving); its half-turn value +1.000000; purity on each wheel [0.382172, 0.413139, 0.406719]; M2 2.383614 [752 s]
+CHECK 3 3 even 2.383614242 na
+  500000 climbs, odd: best 1.886963587183, 0.8994 of the ceiling (reached 220992 times; 0 still moving); its half-turn value -1.000000; purity on each wheel [0.374244, 0.384128, 0.427201]; M2 2.409421 [1295 s]
+CHECK 3 3 odd 2.409420721 na
+  100000 climbs, whole: best 1.888888888889, 0.9003 of the ceiling (reached 3 times; 0 still moving); its half-turn value -0.111111; purity on each wheel [0.432099, 0.432099, 0.432099]; M2 2.621382 [1820 s]
+CHECK 3 3 whole 2.621381818 na
+RESULT 3 3 1.875593190792 1.886963587183 1.888888888889

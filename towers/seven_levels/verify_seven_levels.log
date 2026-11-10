@@ -52,5 +52,23 @@ PASS  the confound of family size: at 13 the turning wheel's orders above 2 are 
 PASS  the one-line families are exact and agree with the log: at 13 the turning wheel's order 14, 1.105228575; at 23 the turning wheel's order 24, 1.627721703, and the multiplying wheel's order 22, 1.602496306
 PASS  Y1's death at 13 is exact: counting every sign choice constant on the 25 orbits of the turning wheel's order 7 (2^25 in each eigenspace) puts its best state at 1.105228575, which order 14 shares; a search finds a state that the multiplying wheel's order 4 fixes at 1.167363950
 
+round 7:
+PASS  the 7-wheel has period 15 at 31 and 9 at 37, so the author's rule called the odd side at both; with the sides that won from 5 to 29, the bases from 2 to 30 that fit every prime are [7], and with 31's even win, []
+PASS  at 31 the Legendre state is odd, 1.736567405507, and the exceptional groups' states lie on its side: the values [1.779773, 1.779773, 1.779773, 1.779773, 1.906903, 1.906903, 1.906903, 1.906903], all odd
+
+round 9:
+PASS  two wheels of 3: each of the 81 points' operators is the product of the wheels' operators, they sum to 9 times the identity, and the origin's is the two half turns at once, with 5 eigenvalues +1 and 4 eigenvalues -1
+PASS  a product's sum of sizes multiplies: the strange state has negativity 0.333333333333 = 1/3, and two of them side by side 0.888888888889 = 8/9, the value Z1 found as the best at two wheels; their M2 are ln 2 and ln 4 (0.693147181 and 1.386294361), as the log records for the best states found there
+PASS  the average random state's formula agrees with 20000 random states at two wheels of 3: 0.8203 against 0.8202 +/- 0.0002
+PASS  the 10 x 10 array: the best single-wheel state repeated reaches 0.962, 0.945 and 0.932 of the ceiling per wheel at 3, 5 and 7 levels; the average random state is ahead from 6, 4 and 4 wheels on; at 100 wheels the products reach 0.0213, 0.00354 and 0.000846, the average random state 0.798
+PASS  the norm state of the 27-element field, sum of w^N(x) |x> / sqrt 27 with N(x) = x^13: N lies in F_3; its <A_u> take the values 2/9, -1/9 and -4/9 at 351, 351 and 27 points, so its negativity is 1.888888888889 = 17/9; |<A_u>| <= 0.444444 = 4/9 everywhere, so it is no point's eigenstate; the half turn sends it to its complex conjugate
+PASS  its odd part, of weight 13/18, is i sqrt(3)/2 times the field's Legendre state (the quadratic character x^13 as amplitudes); its even part, of weight 5/18, is |0> minus half of every other basis state, over sqrt 27
+PASS  its Weyl expectations vanish on 26 operators, the Z-type ones (a Lagrangian with the identity), and have size 1/sqrt 27 on the other 702
+PASS  its symmetries include 39 linear maps, x -> m x^(3^k) for the 13 nonzero squares m and k = 0, 1, 2, which fix it as permutations of the basis, and the 27 shifts x -> x + a, each made a symmetry by the phase w^(N(x) - N(x + a)), a quadratic phase since N(x + a) - N(x) has degree 2: 1053 in all
+PASS  its M2 is ln(729/53) = 2.621381818, the M2 that many_wheels_three.log records for the 1.888888888889 state the run found in the whole space of three wheels of 3
+PASS  the norm states of the other arrays: at two wheels of 3, 5 and 7 the norm is quadratic and the state has negativity 0.0e+00, 3.3e-16 and 1.0e-15; at four wheels of 3 it has 2.743484224966 = 2000/729, below 98/27
+PASS  (--full) every affine map x -> Mx + a that keeps the norm state up to a quadratic phase, among all 11232 x 27: 1053, so its Clifford symmetries are exactly 27 x 39
+PASS  (--full) the states of the fields' multiplicative characters stay below every array's best: at most 0.806629 against 0.888889, 1.740741 against 1.888889, 3.432712 against 3.629630, 1.661798 against 1.766937, 2.576123 against 2.719253
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass
