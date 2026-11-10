@@ -620,3 +620,100 @@ each wheel, whose largest eigenspaces have the same dimension. The turning wheel
 So at equal size a turning symmetry is usually the better one, not always. At 7 and 19 the turning wheel's order-4
 family also beat the multiplying wheel's larger order-3 family. The dead prediction is kept in
 [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
+
+---
+
+## Round 9: many wheels (registered 2026-11-09, before its full run; its pilots were seen first)
+
+> *you are only spinning one wheel... imagine a 10x10 of wheels or larger?* — the author, 9 November 2026
+
+**Made exact.**
+- One wheel is one p-level system, the setting of rounds 1 to 8.
+- An array of n wheels is n of them side by side. Its dimension is D = p^n, and its phase space has D² points.
+  Each point's operator is the product of the wheels' operators.
+  - So a product state's Wigner function is the product of the wheels' Wigner functions, and the sum of its sizes
+    multiplies.
+- The array's half turn is every wheel's half turn at once, the operator at the origin. The coin is even or odd under
+  it, as before. The ceiling is (√D − 1)/2.
+- Clifford operations keep the negativity and can entangle wheels, so an entangled state can carry exactly a
+  product's value. The test that entanglement pays is to beat every product.
+
+**Forced, before any search: the 10 × 10 array.** Computed by [`many_wheels.py`](many_wheels.py) `combine`.
+- The best single-wheel state, repeated on every wheel, reaches a fraction fⁿ of the ceiling √D on the sum of sizes:
+  f = 0.962 at 3 levels, 0.945 at 5 and 0.932 at 7.
+- The average random state reaches √D · E|2B − 1|, with B ~ Beta((D + 1)/2, (D − 1)/2). That is exact, because
+  each point's operator has (D + 1)/2 eigenvalues +1 and (D − 1)/2 eigenvalues −1. It falls from 0.866 at one
+  wheel of 3 levels towards √(2/π) = 0.798.
+- So the average random state beats the best product from 6 wheels on at 3 levels, and from 4 wheels on at 5 and 7.
+- At 100 wheels the products reach 0.021, 0.0035 and 0.00085 of the ceiling; the average random state reaches 0.798.
+- The best states of a 10 × 10 array are not built wheel by wheel, and not any Clifford image of such a product.
+
+**Literature.**
+- Liu and Winter (PRX Quantum 3, 020333, 2022) prove that typical many-qubit states are nearly maximally magic, for
+  a range of measures.
+- Knipfer, Roman, Matcheva and Matchev (arXiv:2607.07197, July 2026) use a different measure, the stabilizer Rényi
+  entropy M₂. They find the two-qutrit maximum ln(81/17), a numerical peak ln(625/49) at two wheels of 5, and
+  conjecture ln[d⁴/(2d² − 1)] for two wheels of any prime d.
+- No maximum of the total Wigner negativity for two or more qudits was found.
+
+**Pilots, seen before this registration.** While timing the machinery, short searches ran at every size below and
+printed their values. They were meant as timing tests, and that was a mistake: they are pilots, so these sizes can
+no longer be predicted fresh. The table gives the higher of the two pilot runs.
+
+| array | pilot climbs per search | even | odd | whole |
+|---|---|---|---|---|
+| two wheels of 3 | 1 000 and 20 000 | 0.888889 | 0.888889 | 0.888889 |
+| three wheels of 3 | 500 and 4 000 | 1.875593 | 1.886964 | 1.886964 |
+| four wheels of 3 | 20 | 3.629630 (98/27) | 3.459175 | 3.278927 |
+| two wheels of 5 | 500 and 4 000 | 1.766937 | 1.727386 | 1.732350 |
+| two wheels of 7 | 200 and 1 000 | 2.718663 | 2.616966 | 2.573386 |
+
+- Also seen: the best two-wheel states of 3 levels had purity below 1 on each wheel (0.68 and 0.5), and M₂ 1.461
+  and 1.386, below Knipfer et al.'s 1.561. At four wheels of 3, the purities were 0.36 to 0.40 and M₂ 3.38 to 3.43.
+- At 31, round 7's prime, a timing test of 2 000 climbs per side printed even 2.040380 and odd 2.017126. Round 7's
+  predictions were registered at de3719d, so this changes nothing there. Its run of two million climbs per side decides.
+- Not seen, only counted: whether the best two-wheel states of 3 levels have a product's Wigner values, and M₂ at two
+  wheels of 5 and of 7.
+
+**The test.** [`many_wheels.py`](many_wheels.py) is committed with this registration. It runs the sign ascent on the
+even side, the odd side and the whole space, at 50 to 500 times the pilot's effort:
+
+| array | climbs: even, odd, whole |
+|---|---|
+| one wheel of 3 and of 5 | 100 000 each |
+| one wheel of 7 | 200 000, 200 000, 50 000 |
+| two wheels of 3 | 1 000 000 each |
+| three wheels of 3; two wheels of 5 | 500 000, 500 000, 100 000 |
+| four wheels of 3 | 10 000, 10 000, 1 000 |
+| two wheels of 7 | 200 000, 200 000, 20 000 |
+
+Z0 to Z5 check whether the pilot's picture holds. Z6 and Z7 are fresh.
+
+**Z0. (Calibration.)** One wheel reproduces the known bests: 1/3 on both sides at 3; 0.556677 even and 0.433070 odd
+at 5; 0.732522 even and 0.728262 odd at 7.
+
+**Z1. (Pilot.)** Two wheels of 3: nothing beats 8/9, the value of a product of two single-wheel bests.
+*Kill:* a higher state.
+
+**Z2. (Pilot.)** At three and four wheels of 3, two of 5 and two of 7, the best state beats every product of smaller
+arrays' bests. *Kill:* an array where it doesn't.
+
+**Z3. (Pilot.)** The pilot's coin holds: odd at three wheels of 3; even at four of 3, two of 5 and two of 7.
+*Kill:* any side changes.
+
+**Z4. (Pilot.)** Every best state from two wheels on reaches 88% of its ceiling. *Kill:* one below.
+
+**Z5. (Pilot.)** Four wheels of 3: the best is 98/27, and nothing higher is found. *Kill:* a higher state.
+
+**Z6. (Fresh.)** Two wheels of 3: every best state found has the Wigner values of a product of single-wheel bests, as
+a Clifford image of a product would. *Kill:* a best state whose values are no product's.
+
+**Z7. (Fresh.)** Two wheels of 5 and of 7: every best state found has M₂ below Knipfer et al.'s values, ln(625/49)
+and ln(2401/97). *Kill:* one at or above them. A state above ln(2401/97) would also break their conjecture.
+
+**What stays open.** The arrays nobody has run yet, such as three wheels of 5 (D = 125) or five of 3 (D = 243), need
+code that never writes out all D² operators. Their predictions will be registered before any run, and their timing
+done without printing a value.
+
+**Expected standing.** The forced numbers are exact arithmetic on the best single-wheel states found. The searches
+are reading-level evidence in small arrays. The 10 × 10 array itself stays out of reach of any search.
