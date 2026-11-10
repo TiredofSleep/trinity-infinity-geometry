@@ -1,0 +1,49 @@
+1. the norm-type state on three wheels of p, from Kloosterman sums: sum|W| = [(p + 1) + (p^2 + p + 1) sum_m |K(m)|]/p^2
+  3 levels: the Kloosterman sums K(m), m = 1..2: -1.000000, 2.000000; every norm-type state's Wigner values are K(m)/p^5 and -(p + 1)/p^5 as claimed: True
+  5 levels: the Kloosterman sums K(m), m = 1..4: 0.381966, -3.236068, 1.236068, 2.618034; every norm-type state's Wigner values are K(m)/p^5 and -(p + 1)/p^5 as claimed: True
+  7 levels: the Kloosterman sums K(m), m = 1..6: 2.048917, -2.356896, -1.603875, -2.692021, 4.493959, 1.109916; every norm-type state's Wigner values are K(m)/p^5 and -(p + 1)/p^5 as claimed: True
+  p =    3: negativity 1.888889, 0.9003 of the ceiling
+  p =    5: negativity 4.252724, 0.8355 of the ceiling
+  p =    7: negativity 7.902228, 0.9021 of the ceiling
+  p =   11: negativity 14.900798, 0.8399 of the ceiling
+  p =   13: negativity 18.887726, 0.8235 of the ceiling
+  p =   17: negativity 30.679376, 0.8881 of the ceiling
+  p =   19: negativity 35.393838, 0.8652 of the ceiling
+  p =   23: negativity 45.974124, 0.8412 of the ceiling
+  p =   29: negativity 66.919602, 0.8625 of the ceiling
+  p =   31: negativity 72.887426, 0.8495 of the ceiling
+  p =   37: negativity 93.716675, 0.8365 of the ceiling
+  p =   41: negativity 112.895031, 0.8633 of the ceiling
+  p =   43: negativity 120.095621, 0.8549 of the ceiling
+  p =   47: negativity 135.088941, 0.8411 of the ceiling
+  p =   53: negativity 160.621122, 0.8347 of the ceiling
+  p =   59: negativity 196.364170, 0.8685 of the ceiling
+  p =   97: negativity 407.007474, 0.8530 of the ceiling
+  p =  199: negativity 1195.132540, 0.8518 of the ceiling
+  p =  499: negativity 4716.544149, 0.8463 of the ceiling
+  p =  997: negativity 13303.373729, 0.8452 of the ceiling
+  p = 1999: negativity 37915.017081, 0.8485 of the ceiling
+  the mean fraction over the primes from 1000 to 2000: 0.8489; 8/(3 pi) = 0.8488
+  the primes up to 2000 where it reaches 90% of the ceiling: [3, 7]
+
+2. other flat states
+  5 levels: 624 states w^(Tr(a x^3) + b N(x)); 128 of them flat
+    negativity 4.252724292, flat True: 4 norm
+    negativity 4.066625258, flat False: 124 mixed
+    negativity 4.057182539, flat True: 124 Alltop
+    negativity 4.041052449, flat False: 124 mixed
+    negativity 4.028002933, flat False: 124 mixed
+    negativity 3.367739820, flat False: 124 mixed
+    round 10's best found on three wheels of 5: 4.301387418; the best flat state here 4.252724292
+  7 levels: 2400 states w^(Tr(a x^3) + b N(x)); 804 of them flat
+    negativity 7.902228372, flat True: 228 mixed, 6 norm
+    negativity 7.458637718, flat True: 114 Alltop, 228 mixed
+    negativity 7.355154297, flat True: 114 Alltop
+    negativity 7.280507447, flat True: 114 Alltop
+    negativity 7.091847780, flat False: 114 mixed
+    negativity 7.013165535, flat False: 342 mixed
+    negativity 6.936453879, flat False: 342 mixed
+    negativity 6.893564991, flat False: 342 mixed
+    round 10's best found on three wheels of 7: 7.902228372; the best flat state here 7.902228372
+  3 levels: the Galois-ring states (702 units a): flat 702 of 702; negativities 1.738432946 (702); the norm state 17/9 = 1.888888889
+[56 s]

@@ -5,13 +5,15 @@ round3.log (it uses round3.py's tools), and rounds 4 to 9 likewise.  For round 8
 behind the confound and makes Y1's death at 13 exact.  For round 7 it checks the 7-wheel's calls at 31 and 37, the
 number wheels that fit the sides that won, and the exceptional states at 31.  For round 9 it checks the arrays'
 operators, the forced numbers for large arrays, and the norm state found on three wheels of 3 (README section 11).
+For round 10 it checks larger_arrays.py's Wigner function against the operators, the norm-type states' flatness and
+Kloosterman values on three wheels of 3, 5 and 7, the norm state on five wheels of 3, and the scores (section 12).
 
-numpy + scipy + round3.py.  ASCII output.
+numpy + scipy + round3.py + larger_arrays.py.  ASCII output.
 Run:  python verify_seven_levels.py           (about two minutes)
       python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
                                                sign choices, the tetrahedral states at 3, 7, 11 and 13, the norm
-                                               state's exact count of symmetries, and the fields' character states;
-                                               about twenty minutes)
+                                               state's exact count of symmetries, the fields' character states, and
+                                               round 10's flat states and reruns; about 25 minutes)
 """
 import ctypes
 import itertools
@@ -1247,6 +1249,141 @@ if FULL:
     forced("(--full) the states of the fields' multiplicative characters stay below every array's best: at most "
            + ", ".join(f"{char_top[k]:.6f} against {BESTS9[k]:.6f}" for k in MODS9),
            all(char_top[k] < BESTS9[k] - 1e-3 for k in MODS9))
+
+# ------------------------------------------------------------------ round 10 (larger_arrays.py; its logs are larger_arrays_*.log)
+print()
+print("round 10:")
+import larger_arrays as la
+
+# the structured Wigner function equals the operators' one, point by point, on arrays round 9 wrote out
+rng10 = np.random.default_rng([20261110, 10, 99])
+err10 = 0.0
+for p_, n_ in ((3, 2), (3, 3), (5, 2)):
+    arr_ = la.Array(p_, n_)
+    psi_ = rng10.normal(size=p_ ** n_) + 1j * rng10.normal(size=p_ ** n_)
+    psi_ /= np.linalg.norm(psi_)
+    dense_ = wigner_contract(psi_, p_, n_) / p_ ** n_                    # many_wheels' order: (q1 k1)(q2 k2)...
+    fast_ = arr_.wigner(psi_[None, :])[0]                                # larger_arrays' order: (q1 q2 ..)(k1 k2 ..)
+    dg_ = arr_.digits
+    order_ = [int(sum(int(x) * (p_ * p_) ** (n_ - 1 - i) for i, x in enumerate(dg_[qi] * p_ + dg_[ki])))
+              for qi in range(p_ ** n_) for ki in range(p_ ** n_)]
+    err10 = max(err10, np.abs(dense_[order_] - fast_.ravel()).max())
+forced(f"larger_arrays.py's Wigner function, one Fourier transform per point q, equals the operators' one at every point "
+       f"of two and three wheels of 3 and two of 5 (largest difference {err10:.1e})", err10 < 1e-14)
+
+
+def kloosterman(p_):
+    a_ = np.arange(1, p_)
+    inv_ = np.array([pow(int(x), -1, p_) for x in a_])
+    return np.array([np.cos(2 * np.pi * ((a_ + m * inv_) % p_) / p_).sum() for m in range(1, p_)])
+
+
+def norm_closed_form(p_):
+    """the negativity of every norm-type state on three wheels of p: sum|W| = [(p + 1) + (p^2 + p + 1) sum_m |K(m)|]/p^2"""
+    return (((p_ + 1) + (p_ * p_ + p_ + 1) * np.abs(kloosterman(p_)).sum()) / p_ ** 2 - 1) / 2
+
+
+theorem_ok, closed_ok, rows10 = True, True, []
+for p_ in (3, 5, 7):
+    arr_ = la.Array(p_, 3)
+    q_ = p_ ** 3
+    K_ = kloosterman(p_)
+    for c_ in range(1, p_):
+        psi_ = la.norm_state(p_, 3, c_)
+        C_ = la.weyl_sizes(arr_, psi_)                                   # rows a, columns b: |<psi| Z^b X^a |psi>|
+        W_ = arr_.wigner(psi_[None, :])[0]
+        theorem_ok &= bool(np.abs(C_[0, 1:]).max() < 1e-12 and np.allclose(C_[1:, :], q_ ** -0.5, atol=1e-12)
+                           and q_ * np.abs(W_).max() < 1 - 1e-6
+                           and np.allclose(psi_[arr_.neg], psi_.conj(), atol=1e-14))
+        # the Wigner values: K(m)/p^5 at (p^2 + p + 1) q points for each m in F_p*, and -(p + 1)/p^5 at q points
+        want = np.sort(np.concatenate([np.repeat(K_ / p_ ** 5, (p_ * p_ + p_ + 1) * q_),
+                                       np.full(q_, -(p_ + 1) / p_ ** 5)]))
+        closed_ok &= bool(np.allclose(np.sort(W_.ravel()), want, atol=1e-14))
+        m2_ = float(-np.log((C_ ** 4).sum() / q_))
+        theorem_ok &= abs(m2_ - np.log(q_ ** 2 / (2 * q_ - 1))) < 1e-9
+    Nn_ = arr_.negativity(arr_.wigner(la.norm_state(p_, 3, 1)[None, :]))[0]
+    closed_ok &= abs(Nn_ - norm_closed_form(p_)) < 1e-11
+    rows10.append(f"{Nn_:.9f} at {p_} levels ({Nn_ / ((np.sqrt(q_) - 1) / 2):.4f} of the ceiling)")
+forced("on three wheels of 3, 5 and 7, every norm-type state sum_x w^(c N(x)) |x> has Weyl expectations zero on the "
+       "Z-type operators and of size 1/sqrt(p^3) on all others, is no point's eigenstate, is sent to its complex "
+       "conjugate by the half turn, and has M2 = ln(q^2/(2q - 1))", theorem_ok)
+big10 = {p_: norm_closed_form(p_) / ((p_ ** 1.5 - 1) / 2) for p_ in (997, 1999)}
+forced("its Wigner values are Kloosterman sums: K(m)/p^5 at (p^2 + p + 1) p^3 points for each m in F_p*, and "
+       "-(p + 1)/p^5 at p^3 points, for every c; so its negativity is " + "; ".join(rows10)
+       + f"; and toward 8/(3 pi) = {8 / (3 * np.pi):.4f} of the ceiling at large p ({big10[997]:.4f} at 997, "
+       f"{big10[1999]:.4f} at 1999)", closed_ok and abs(big10[1999] - 8 / (3 * np.pi)) < 0.01)
+arr35 = la.Array(3, 5)
+psi35 = la.norm_state(3, 5, 1)
+N35 = arr35.negativity(arr35.wigner(psi35[None, :]))[0]
+z35 = la.zero_set(arr35, psi35)
+forced(f"on five wheels of 3 the norm state has negativity {N35:.12f} = 4232/729; its Weyl expectations vanish on "
+       f"{z35[0]} operators, a Lagrangian with the identity, but it is not flat, so the theorem stops at three wheels",
+       abs(N35 - 4232 / 729) < 1e-11 and z35 == (242, True, False))
+# the scores, from the values larger_arrays_run.log records, and the bars from round 9's logged bests
+LOG10 = {(5, 3): dict(even=4.293476409921, odd=4.291597773343, whole=4.162583641648, kicks=4.301387418094,
+                      norm=4.252724292100, normfix=4.252724292100),
+         (3, 5): dict(even=6.082020166220, odd=6.069251540379, whole=5.925176606383, kicks=6.052265927721,
+                      norm=5.805212620027, normfix=6.052265927720),
+         (7, 3): dict(even=7.238233221470, odd=7.241590191964, whole=7.097607760339, kicks=7.902228372125,
+                      norm=7.902228372133, normfix=7.902228372133)}
+R9B = {(3, 1): 1 / 3, (3, 4): 98 / 27, (5, 1): 0.556677223351, (5, 2): 1.766937254162, (7, 1): 0.732522000011,
+       (7, 2): 2.719253432179}
+S10 = lambda N: 1 + 2 * N
+bar10 = {(5, 3): (S10(R9B[5, 1]) * S10(R9B[5, 2]) - 1) / 2, (3, 5): (S10(R9B[3, 4]) * S10(R9B[3, 1]) - 1) / 2,
+         (7, 3): (S10(R9B[7, 1]) * S10(R9B[7, 2]) - 1) / 2}
+best10 = {k: max(v.values()) for k, v in LOG10.items()}
+ceil10 = {k: (np.sqrt(k[0] ** k[1]) - 1) / 2 for k in LOG10}
+v10 = {"V0": True,
+       "V1": all(best10[k] <= LOG10[k]["norm"] + 1e-9 for k in ((5, 3), (7, 3))),
+       "V2": all(LOG10[k]["norm"] > max(LOG10[k]["even"], LOG10[k]["odd"]) + 1e-9 for k in ((5, 3), (7, 3))),
+       "V3": best10[3, 5] > LOG10[3, 5]["norm"] + 1e-9,
+       "V4": all(best10[k] > bar10[k] + 1e-9 for k in LOG10),
+       "V5": all(LOG10[k]["odd"] > LOG10[k]["even"] + 1e-9 for k in LOG10),
+       "V6": all(best10[k] >= 0.88 * ceil10[k] for k in LOG10)}
+RECORDED10 = {"V0": True, "V1": False, "V2": False, "V3": True, "V4": False, "V5": False, "V6": False}
+forced(f"the logged norm-type values are the closed form's ({norm_closed_form(5):.12f} and {norm_closed_form(7):.12f}); "
+       f"the registered bars are products of round 9's logged bests ({bar10[5, 3]:.6f}, {bar10[3, 5]:.6f} = 517/81 and "
+       f"{bar10[7, 3]:.6f}); and the logged values give the recorded scores: "
+       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in v10.items()),
+       abs(LOG10[5, 3]["norm"] - norm_closed_form(5)) < 1e-11 and abs(LOG10[7, 3]["norm"] - norm_closed_form(7)) < 1e-11
+       and abs(bar10[3, 5] - 517 / 81) < 1e-12 and abs(bar10[5, 3] - 4.290842) < 1e-6
+       and abs(bar10[7, 3] - 7.435601) < 1e-6 and v10 == RECORDED10)
+if FULL:
+    # read after the run (flat_states.py): every flat state tried falls at or below the norm-type states
+    import flat_states as fs
+    flat10 = {}
+    for p_ in (5, 7):
+        cls_ = fs.scan(p_)
+        flat10[p_] = (max(N for (N, fl) in cls_ if fl), max(N for (N, fl), c in cls_.items() if fl and "Alltop" in c),
+                      sum(sum(c.values()) for (N, fl), c in cls_.items() if fl))
+    gr_flat, gr_vals = fs.galois_ring_profile()
+    forced(f"(--full) the flat states w^(Tr(a x^3) + b N(x)) on three wheels of 5 and 7: {flat10[5][2]} and "
+           f"{flat10[7][2]} of them flat, the best {flat10[5][0]:.9f} and {flat10[7][0]:.9f}, the norm-type states' "
+           f"values; the Alltop states (b = 0) reach {flat10[5][1]:.9f} and {flat10[7][1]:.9f}; the {sum(gr_vals.values())} "
+           f"Galois-ring states on three wheels of 3 are all flat, at {max(gr_vals):.9f}, below 17/9",
+           abs(flat10[5][0] - norm_closed_form(5)) < 1e-8 and abs(flat10[7][0] - norm_closed_form(7)) < 1e-8
+           and abs(flat10[5][1] - 4.057182539) < 1e-8 and abs(flat10[7][1] - 7.458637718) < 1e-8
+           and flat10[5][2] == 128 and flat10[7][2] == 804 and gr_flat == 702 and list(gr_vals) == [1.738432946])
+    # read after the run (product_climbs.py): the seeded odd climbs on four wheels of 3, and the best state found on
+    # three wheels of 5, rerun and checked
+    import product_climbs as pc
+    _, n4, psi4, used4 = pc.regain(("regain", 3, 4, "odd", 3.476833049264, 20_000))
+    ex4 = wigner_contract(psi4, 3, 4)
+    N4 = (np.abs(ex4).sum() / 81 - 1) / 2
+    P81 = np.kron(np.kron(P3, P3), np.kron(P3, P3))
+    forced(f"(--full) four wheels of 3: product_climbs.py's seeded odd climbs reach {N4:.12f} after {used4} climbs, by "
+           f"the operators' contraction, at a state the half turn sends to minus itself; round 9 logged 3.476833 for the "
+           f"odd side, and the even side's 98/27 stays ahead",
+           abs(N4 - 3.533330767884) < 1e-9 and abs(n4 - N4) < 1e-9 and np.allclose(P81 @ psi4, -psi4) and N4 < 98 / 27)
+    _, vals5, reps5, _, _ = la.kick_job(("kick", 5, 3, 2, 0.3, la.KICKS[5, 3], 100))
+    top5 = max(reps5)
+    psi5 = reps5[top5][0]
+    W5 = la.Array(5, 3).wigner(psi5[None, :])[0]
+    ov5 = abs(np.vdot(la.norm_state(5, 3, 2), psi5)) ** 2
+    forced(f"(--full) three wheels of 5: round 10's kicks of the norm-type state c = 2 at size 0.3, rerun, climb to "
+           f"{top5:.9f}, at a state that no point's operator has as an eigenstate (largest |<A_u>| "
+           f"{125 * np.abs(W5).max():.6f}), so on neither face, and whose overlap with that norm-type state is {ov5:.6f}",
+           abs(top5 - 4.301387418) < 1e-8 and 125 * np.abs(W5).max() < 0.3 and abs(ov5 - 0.956327) < 1e-5)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

@@ -1,0 +1,118 @@
+round 10: 80 jobs on 6 workers; seed 20261110
+  3 wheels of 5: D = 125, ceiling (sqrt D - 1)/2 = 5.090169944; climbs even 40000, odd 40000, whole 10000; kicks 500 per norm-type state (c = [1, 2]) and per size (0.05, 0.3)
+  5 wheels of 3: D = 243, ceiling (sqrt D - 1)/2 = 7.294228634; climbs even 4000, odd 4000, whole 800; kicks 100 per norm-type state (c = [1]) and per size (0.05, 0.3)
+  3 wheels of 7: D = 343, ceiling (sqrt D - 1)/2 = 8.760129589; climbs even 2000, odd 2000, whole 400; kicks 50 per norm-type state (c = [1, 2, 3]) and per size (0.05, 0.3)
+  job 5 wheels of 3, whole, chunk 0: 100 climbs done [544 s; 545 s]
+  job 3 wheels of 5, odd, chunk 0: 5000 climbs done [816 s; 818 s]
+  job 3 wheels of 5, even, chunk 0: 5000 climbs done [824 s; 825 s]
+  job 5 wheels of 3, odd, chunk 0: 500 climbs done [848 s; 850 s]
+  job 3 wheels of 5, whole, chunk 0: 2500 climbs done [913 s; 915 s]
+  job 5 wheels of 3, even, chunk 0: 500 climbs done [940 s; 941 s]
+  job 3 wheels of 7, whole, chunk 0: 50 climbs done [644 s; 1190 s]
+  job 3 wheels of 7, odd, chunk 0: 250 climbs done [846 s; 1671 s]
+  job 3 wheels of 7, even, chunk 0: 250 climbs done [873 s; 1691 s]
+  job 5 wheels of 3, whole, chunk 1: 100 climbs done [533 s; 1723 s]
+  job 3 wheels of 5, even, chunk 1: 5000 climbs done [812 s; 1726 s]
+  job 3 wheels of 5, odd, chunk 1: 5000 climbs done [805 s; 1747 s]
+  job 3 wheels of 5, whole, chunk 1: 2500 climbs done [1419 s; 2269 s]
+  job 3 wheels of 7, whole, chunk 1: 50 climbs done [633 s; 2356 s]
+  job 5 wheels of 3, odd, chunk 1: 500 climbs done [843 s; 2533 s]
+  job 5 wheels of 3, even, chunk 1: 500 climbs done [915 s; 2586 s]
+  job 3 wheels of 7, even, chunk 1: 250 climbs done [889 s; 2615 s]
+  job 3 wheels of 7, odd, chunk 1: 250 climbs done [894 s; 2640 s]
+  job 5 wheels of 3, whole, chunk 2: 100 climbs done [547 s; 3133 s]
+  job 3 wheels of 5, odd, chunk 2: 5000 climbs done [804 s; 3338 s]
+  job 5 wheels of 3, odd, chunk 2: 500 climbs done [833 s; 3473 s]
+  job 5 wheels of 3, even, chunk 2: 500 climbs done [896 s; 3511 s]
+  job 3 wheels of 5, even, chunk 2: 5000 climbs done [1247 s; 3603 s]
+  job 3 wheels of 5, whole, chunk 2: 2500 climbs done [1402 s; 3670 s]
+  job 3 wheels of 7, whole, chunk 2: 50 climbs done [650 s; 3783 s]
+  job 3 wheels of 7, even, chunk 2: 250 climbs done [892 s; 4230 s]
+  job 5 wheels of 3, whole, chunk 3: 100 climbs done [549 s; 4332 s]
+  job 3 wheels of 7, odd, chunk 2: 250 climbs done [918 s; 4391 s]
+  job 3 wheels of 5, whole, chunk 3: 2500 climbs done [895 s; 4406 s]
+RESULT 5 3 whole 4.162583641648 1 10000 0
+  the next tops: 4.162228686, 4.162036067, 4.161140609, 4.160815919, 4.160406783
+STATE 5 3 whole 1 +0.069876779 0.347814501 3.852310270 0 False False none [0.238133, 0.248063, 0.259202]
+  job 3 wheels of 5, even, chunk 3: 5000 climbs done [1218 s; 4822 s]
+  job 3 wheels of 5, odd, chunk 3: 5000 climbs done [1220 s; 4891 s]
+  job 3 wheels of 7, whole, chunk 3: 50 climbs done [580 s; 4971 s]
+  job 5 wheels of 3, even, chunk 3: 500 climbs done [925 s; 5156 s]
+  job 5 wheels of 3, odd, chunk 3: 500 climbs done [829 s; 5161 s]
+  job 3 wheels of 7, even, chunk 3: 250 climbs done [902 s; 5308 s]
+  job 3 wheels of 7, odd, chunk 3: 250 climbs done [872 s; 5693 s]
+  job 5 wheels of 3, whole, chunk 4: 100 climbs done [540 s; 5696 s]
+  job 3 wheels of 5, odd, chunk 4: 5000 climbs done [809 s; 5779 s]
+  job 5 wheels of 3, even, chunk 4: 500 climbs done [940 s; 6101 s]
+  job 3 wheels of 5, even, chunk 4: 5000 climbs done [1239 s; 6130 s]
+  job 5 wheels of 3, odd, chunk 4: 500 climbs done [830 s; 6138 s]
+  job 3 wheels of 7, whole, chunk 4: 50 climbs done [642 s; 6336 s]
+  job 3 wheels of 7, even, chunk 4: 250 climbs done [907 s; 6602 s]
+  job 3 wheels of 7, odd, chunk 4: 250 climbs done [872 s; 6651 s]
+  job 5 wheels of 3, whole, chunk 5: 100 climbs done [522 s; 6660 s]
+  job 3 wheels of 5, even, chunk 5: 5000 climbs done [805 s; 6906 s]
+  job 5 wheels of 3, even, chunk 5: 500 climbs done [905 s; 7241 s]
+  job 3 wheels of 7, whole, chunk 5: 50 climbs done [662 s; 7314 s]
+  job 3 wheels of 5, odd, chunk 5: 5000 climbs done [1221 s; 7350 s]
+  job 5 wheels of 3, odd, chunk 5: 500 climbs done [854 s; 7456 s]
+  job 3 wheels of 7, even, chunk 5: 250 climbs done [901 s; 7561 s]
+  job 3 wheels of 7, odd, chunk 5: 250 climbs done [905 s; 7812 s]
+  job 5 wheels of 3, whole, chunk 6: 100 climbs done [527 s; 7878 s]
+  job 3 wheels of 5, odd, chunk 6: 5000 climbs done [804 s; 8118 s]
+  job 5 wheels of 3, even, chunk 6: 500 climbs done [899 s; 8355 s]
+  job 5 wheels of 3, odd, chunk 6: 500 climbs done [841 s; 8402 s]
+  job 3 wheels of 5, even, chunk 6: 5000 climbs done [1222 s; 8463 s]
+  job 3 wheels of 7, whole, chunk 6: 50 climbs done [658 s; 8469 s]
+  job 3 wheels of 7, even, chunk 6: 250 climbs done [868 s; 8745 s]
+  job 5 wheels of 3, whole, chunk 7: 100 climbs done [510 s; 8972 s]
+RESULT 3 5 whole 5.925176606383 1 800 0
+  the next tops: 5.924754959, 5.924448762, 5.922921664, 5.922131673, 5.922058643
+STATE 3 5 whole 1 +0.032591505 0.388692307 4.489111100 0 False False none [0.33743, 0.351065, 0.348492, 0.348217, 0.342759]
+  job 3 wheels of 7, odd, chunk 6: 250 climbs done [908 s; 9026 s]
+  job 3 wheels of 5, even, chunk 7: 5000 climbs done [817 s; 9172 s]
+RESULT 5 3 even 4.293476409921 1 40000 0
+  the next tops: 4.291571651, 4.291079933, 4.291015245, 4.290201326, 4.290005261
+STATE 5 3 even 1 +1.000000000 1.000000000 3.716269154 0 False False none [0.229875, 0.249504, 0.232142]
+  job 3 wheels of 5, odd, chunk 7: 5000 climbs done [813 s; 9215 s]
+RESULT 5 3 odd 4.291597773343 1 40000 0
+  the next tops: 4.290226041, 4.289940107, 4.289522173, 4.288958131, 4.288726578
+STATE 5 3 odd 1 -1.000000000 1.000000000 3.716251369 0 False False none [0.243629, 0.22873, 0.2383]
+KICK 5 3 1 0.05 500 4.252724292100 500 0 [5 s; 9220 s]
+KICK 5 3 1 0.3 500 4.274650415183 1 0 [101 s; 9322 s]
+KICK 5 3 2 0.05 500 4.252724292100 500 0 [5 s; 9327 s]
+  job 5 wheels of 3, even, chunk 7: 500 climbs done [911 s; 9380 s]
+RESULT 3 5 even 6.082020166220 1 4000 0
+  the next tops: 6.074809425, 6.074129588, 6.074125869, 6.073471860, 6.073364201
+STATE 3 5 even 1 +1.000000000 1.000000000 4.324819392 0 False False none [0.336612, 0.344131, 0.348552, 0.344714, 0.340801]
+KICK 3 5 1 0.05 100 6.052265927721 100 0 [14 s; 9395 s]
+KICK 5 3 2 0.3 500 4.301387418094 1 0 [103 s; 9430 s]
+KICK 7 3 1 0.05 50 7.902228372124 50 0 [4 s; 9433 s]
+KICK 7 3 1 0.3 50 7.902228372124 50 0 [8 s; 9441 s]
+KICK 7 3 2 0.05 50 7.902228372125 50 0 [3 s; 9444 s]
+KICK 7 3 2 0.3 50 7.902228372125 50 0 [7 s; 9452 s]
+KICK 7 3 3 0.05 50 7.902228372124 50 0 [3 s; 9455 s]
+KICK 7 3 3 0.3 50 7.902228372124 50 0 [7 s; 9462 s]
+KICK 3 5 1 0.3 100 6.052265927721 100 0 [82 s; 9477 s]
+  job 3 wheels of 7, whole, chunk 7: 50 climbs done [624 s; 9596 s]
+RESULT 7 3 whole 7.097607760339 1 400 0
+  the next tops: 7.096427087, 7.094287499, 7.093400316, 7.092658377, 7.092364161
+STATE 7 3 whole 1 +0.025366271 0.249224875 4.820444265 0 False False none [0.160312, 0.160045, 0.17381]
+  job 5 wheels of 3, odd, chunk 7: 500 climbs done [854 s; 9600 s]
+RESULT 3 5 odd 6.069251540379 1 4000 0
+  the next tops: 6.066260201, 6.065435533, 6.064692605, 6.063218397, 6.063074936
+STATE 3 5 odd 1 -1.000000000 1.000000000 4.317021823 0 False False none [0.341489, 0.352266, 0.339082, 0.33843, 0.345731]
+  job 3 wheels of 7, even, chunk 7: 250 climbs done [950 s; 9976 s]
+RESULT 7 3 even 7.238233221470 1 2000 0
+  the next tops: 7.234257730, 7.233658597, 7.233157081, 7.233022207, 7.232960758
+STATE 7 3 even 1 +1.000000000 1.000000000 4.629325695 0 False False none [0.163112, 0.172696, 0.154285]
+  job 3 wheels of 7, odd, chunk 7: 250 climbs done [913 s; 10085 s]
+RESULT 7 3 odd 7.241590191964 1 2000 0
+  the next tops: 7.235780976, 7.235348359, 7.231988092, 7.230850621, 7.230837583
+STATE 7 3 odd 1 -1.000000000 1.000000000 4.632823331 0 False False none [0.159343, 0.159708, 0.163127]
+NORM 5 3 1 4.252724292100 4.252724292100 -0.240000000 0.240000000 4.139174578 124 True True
+NORM 5 3 2 4.252724292100 4.252724292100 -0.240000000 0.240000000 4.139174578 124 True True
+NORM 3 5 1 5.805212620027 6.052265927720 -0.493827160 0.493827160 4.339962210 242 True False
+NORM 7 3 1 7.902228372133 7.902228372133 -0.163265306 0.163265306 5.146042056 342 True True
+NORM 7 3 2 7.902228372133 7.902228372133 -0.163265306 0.163265306 5.146042056 342 True True
+NORM 7 3 3 7.902228372133 7.902228372133 -0.163265306 0.163265306 5.146042056 342 True True
+[10088 s]

@@ -1,0 +1,25 @@
+  3 wheels of 5 (D = 125): even 4.293476410, odd 4.291597773, whole 4.162583642; kicks 4.301387418; best norm-type state 4.252724292; best of all 4.301387418 = 0.8450 of the ceiling 5.090170; best product of smaller arrays' bests 4.290841926
+    norm-type state c = 1: 4.252724292100; the ascent from it ends at 4.252724292100
+    norm-type state c = 2: 4.252724292100; the ascent from it ends at 4.252724292100
+    even best: half-turn value +1.000000000, largest |<A_u>| 1.000000000, M2 3.716269154, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    odd best: half-turn value -1.000000000, largest |<A_u>| 1.000000000, M2 3.716251369, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    whole best: half-turn value +0.069876779, largest |<A_u>| 0.347814501, M2 3.852310270, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+  5 wheels of 3 (D = 243): even 6.082020166, odd 6.069251540, whole 5.925176606; kicks 6.052265928; best norm-type state 5.805212620; best of all 6.082020166 = 0.8338 of the ceiling 7.294229; best product of smaller arrays' bests 6.382716049
+    norm-type state c = 1: 5.805212620027; the ascent from it ends at 6.052265927720
+    even best: half-turn value +1.000000000, largest |<A_u>| 1.000000000, M2 4.324819392, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    odd best: half-turn value -1.000000000, largest |<A_u>| 1.000000000, M2 4.317021823, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    whole best: half-turn value +0.032591505, largest |<A_u>| 0.388692307, M2 4.489111100, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+  3 wheels of 7 (D = 343): even 7.238233221, odd 7.241590192, whole 7.097607760; kicks 7.902228372; best norm-type state 7.902228372; best of all 7.902228372 = 0.9021 of the ceiling 8.760130; best product of smaller arrays' bests 7.435601358
+    norm-type state c = 1: 7.902228372133; the ascent from it ends at 7.902228372133
+    norm-type state c = 2: 7.902228372133; the ascent from it ends at 7.902228372133
+    norm-type state c = 3: 7.902228372133; the ascent from it ends at 7.902228372133
+    even best: half-turn value +1.000000000, largest |<A_u>| 1.000000000, M2 4.629325695, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    odd best: half-turn value -1.000000000, largest |<A_u>| 1.000000000, M2 4.632823331, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+    whole best: half-turn value +0.025366271, largest |<A_u>| 0.249224875, M2 4.820444265, Weyl zeros 0 (Lagrangian False, flat elsewhere False), Wigner values of norm-type state c = none
+V0 HELD: calibration: the structured code ends where round 3's does from 1680 of 1680 starts, and reproduces the known norm states
+V1 DIED: three wheels of 5 and of 7: nothing found beats the best norm-type state
+V2 DIED: three wheels of 5 and of 7: the best norm-type state beats both sides' bests
+V3 HELD: five wheels of 3: the norm state does not win; something found beats it
+V4 DIED: every new array's best beats every product of smaller arrays' bests
+V5 DIED: the odd side wins on every new array, an odd number of wheels each (found: even at 3 of 5, even at 5 of 3, odd at 3 of 7)
+V6 DIED: every new array's best reaches 88% of its ceiling

@@ -255,6 +255,20 @@ its own graveyard. These died, with what killed them:
     the half turn, so the rule called the odd side, but the even side wins, 2.045297 against 2.031473. A recheck with a fresh seed, two million more odd climbs and kicks from the highest odd tops, found the same odd best and nothing higher.
     The rule had fitted the eight primes it was read from. With 31, no number wheel of any base from 2 to 30 fits
     every decided prime.
+  - **Round 10's guesses on the larger arrays** (2026-11-10; `towers/seven_levels/larger_arrays_*.log`):
+    - "On three wheels of 5 nothing beats the best norm-type state, and it beats both sides' bests" (round 10's V1
+      and V2 there; both held on three wheels of 7). A climb from a kicked norm-type state reached 4.301387, and both
+      sides' bests, 4.293476 (even) and 4.291598 (odd), beat the norm-type states' 4.252724. The Kloosterman closed
+      form, derived during the run, shows why: at 5 the norm state reaches only 83.5% of the ceiling, below the
+      product of the smaller arrays' bests. The winner found is still on neither face, a reshaped norm-type state.
+    - "Every new array's best beats every product of smaller arrays' bests" (V4). On five wheels of 3 the best climb
+      reached 6.082020, below 517/81 = 6.382716, the four-wheel best times a one-wheel best. That product is itself a
+      state of the array, so the death is the search's: 4 000 climbs on each side ended 0.30 below it
+      (`towers/seven_levels/product_climbs.log`).
+    - "With an odd number of wheels the odd side wins" (V5, Claude's reading, registered as resting on one array). The
+      even side won on three wheels of 5, by 0.0019, and on five of 3, where both sides fell short of a known product.
+    - "Every array's best reaches 88% of its ceiling" (V6): 84.5% on three wheels of 5, and 83.4% on five of 3, where
+      the best known state, the product, reaches 87.5%.
 - **From the genetic-code study (2026-11-08; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.

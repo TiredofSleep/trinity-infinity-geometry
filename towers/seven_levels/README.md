@@ -24,6 +24,10 @@
 - Then the author asked about many wheels at once. Round 9 ran arrays of two to four wheels, and all eight of its
   predictions held. The best states of big arrays are collective, and on three wheels of 3 levels the best state found
   sits on neither face: it is the norm state of the field with 27 elements (§11).
+- Round 10 ran three larger arrays with new code, and two of its seven predictions held. On three wheels of any odd
+  prime the norm state is flat, and its Wigner values are Kloosterman sums. It wins on three wheels of 7 and loses on
+  three of 5, where the winner found still sits on neither face. On five wheels of 3 the searches fell short of a known
+  product state (§12).
 
 ---
 
@@ -96,6 +100,9 @@ clocks to shifts and clocks, up to phase.
 - **Y1 (round 8).** The turning wheel's best symmetric state does not beat the multiplying wheel's at every prime:
   at 13 it loses (§9).
 - **X1 (round 7).** The author's 7-wheel: at 31 it never reaches the half turn, and the even side wins anyway (§10).
+- **V1, V2, V4, V5 and V6 (round 10).** On three wheels of 5 the norm-type state loses. On five wheels of 3 the
+  searches fell short of a product state. The even side won on two arrays with an odd number of wheels, and two arrays
+  fell below 88% of the ceiling (§12).
 
 ## 4. Round 2: the most negative state [FORCED; READING; NAMED: Veitch et al., Wang et al., Jain and Prakash]
 
@@ -507,11 +514,13 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
   | one wheel of 3 | 3 | 1/3 | 1/3 | 1/3 | — | 0.911 |
   | two wheels of 3 | 9 | 8/9 | 8/9 | 8/9 | 8/9 | 0.889 |
   | three wheels of 3 | 27 | 1.875593 | 1.886964 | **17/9** | 49/27 | 0.900 |
-  | four wheels of 3 | 81 | **98/27** | 3.476833 | 3.289771* | 3.478273 | 0.907 |
+  | four wheels of 3 | 81 | **98/27** | 3.476833† | 3.289771* | 3.478273 | 0.907 |
   | two wheels of 5 | 25 | **1.766937** | 1.727386 | 1.766078* | 1.733134 | 0.883 |
   | two wheels of 7 | 49 | **2.719253** | 2.633836 | 2.510505* | 2.538221 | 0.906 |
 
   \* The whole-space search had a tenth or less of the side searches' climbs.
+
+  † Round 10's climbs from the products later found an odd state at 3.533331 (§12). The even side still wins.
 
   - **Two wheels of 3:** nothing beats a product of two single-wheel bests. The best states found are entangled, yet
     their Wigner values are a product's, as a Clifford image of a product's would be.
@@ -552,7 +561,86 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
     M₂ of the state the run found. It also checks the other arrays' norm states, and with `--full` the character
     states and the exact count of symmetries.
 
-## 12. Our space, and what it cannot hold [FORCED; FENCE]
+## 12. Round 10: the larger arrays [FORCED; READING; measured; NAMED: Kloosterman, Weil, Davenport and Hasse, Katz, Damski et al.]
+
+> *you are only spinning one wheel... imagine a 10x10 of wheels or larger?* — the author, 9 November 2026
+
+Round 9 stopped near 81 levels, because it wrote out every phase-point operator. Round 10 ran three larger arrays with
+code that never does: three wheels of 5 (125 levels), five wheels of 3 (243) and three wheels of 7 (343). Seven
+predictions were registered with the script, [`larger_arrays.py`](larger_arrays.py), before any run
+([`PREREG.md`](PREREG.md)), and two held. The output is in `larger_arrays_run.log` and `larger_arrays_combined.log`.
+What was read after the run is in [`flat_states.log`](flat_states.log) and [`product_climbs.log`](product_climbs.log).
+
+- **The new code** [FORCED]. For each point q the Wigner function is one Fourier transform:
+  W(q, k) = (1/D) Σ_s ψ̄(q + s) ψ(q − s) ω^(2k·s). A state on one side needs only half of the q's. The verifier checks
+  it against round 9's operators at every point. In the calibration, from all 1 680 starts, the climbs end where round
+  3's code ends.
+- **Flat on three wheels of every odd prime** [FORCED; proved before the run]. Take the field with p³ elements and its
+  norm N to F_p. Every norm-type state ψ_c = Σ_x ω^(c·N(x)) |x⟩ / √(p³) has Weyl expectations zero on the Z-type
+  operators, which form a Lagrangian, and of size exactly 1/√(p³) on every other operator.
+  - So the flatness of round 9's three-qutrit winner is no accident of 3.
+  - The reason: each difference N(x + a) − N(x) has the quadratic part Tr(a^(p²) x^(p+1)), and that form is never
+    degenerate. A degenerate one would need z^(p−1) = −1 in the field, which is impossible because p² + p + 1 is odd.
+  - The half turn sends ψ_c to its complex conjugate, and no point's operator has it as an eigenstate. So at every p it
+    sits on neither face, and the edge is a flip between two states, as at 3.
+  - On five wheels of 3 the norm has degree 5, its differences are not quadratic, and the argument fails. That norm
+    state is zero on a Lagrangian too, but not flat elsewhere, and its negativity is 4232/729.
+- **Its Wigner values are Kloosterman sums** [FORCED; derived during the run, after the registration; NAMED:
+  Kloosterman, Davenport and Hasse, Weil, Katz].
+  - Each norm-type state takes the value K(m)/p⁵ at (p² + p + 1)p³ points for each nonzero m in F_p, and −(p + 1)/p⁵
+    at the other p³ points. Here K(m) = Σ_a ω^(a + m/a), over the nonzero a in F_p, is the Kloosterman sum. Every c
+    gives the same values.
+  - So its negativity is exact at every prime: the sum of sizes is [(p + 1) + (p² + p + 1) Σ_m |K(m)|]/p². That is
+    17/9 at 3, 4.252724 at 5 and 7.902228 at 7.
+  - The route: Davenport and Hasse's theorem turns the Gauss sum of a character composed with the norm into the cube of
+    the character's Gauss sum over F_p, and summing squared Gauss sums over the characters gives a Kloosterman sum.
+  - Its share of the ceiling is 90.0% at 3, 83.5% at 5, 90.2% at 7, 84.0% at 11, 82.4% at 13 and 88.8% at 17. Below
+    2 000 only 3 and 7 reach 90%, and 7 reaches the most. As p grows the share tends to 8/(3π) = 84.9%, because the
+    Kloosterman angles follow the Sato–Tate law (Katz). The average random state tends to √(2/π) = 79.8%.
+  - [READING] So how strong the norm state is at a prime is decided by that prime's Kloosterman sums. At 5 they are
+    small: 0.38, −3.24, 1.24 and 2.62, against Weil's bound 2√5 = 4.47.
+- **The searches** [measured].
+
+  | array | D | even side | odd side | whole space | kicks of the norm-type states | norm-type state | best product of smaller bests | best, share of the ceiling |
+  |---|---|---|---|---|---|---|---|---|
+  | three wheels of 5 | 125 | 4.293476 | 4.291598 | 4.162584 | **4.301387** | 4.252724 | 4.290842 (even) | 4.301387, 0.845 |
+  | five wheels of 3 | 243 | 6.082020 | 6.069252 | 5.925177 | 6.052266 | 4232/729 = 5.805213 | **517/81 = 6.382716** (either side) | 6.382716, 0.875 (search: 6.082020, 0.834) |
+  | three wheels of 7 | 343 | 7.238233 | 7.241590 | 7.097608 | 7.902228 | **7.902228** | 7.435601 (even) | 7.902228, 0.902 |
+
+  - **Three wheels of 7: the norm state wins, on neither face.** Nothing found beats it. All 300 kicks of it climbed
+    back to it, and it stands 0.47 above the best product.
+  - **Three wheels of 5: the norm state loses, but the winner is still on neither face.** Both sides' bests beat the
+    norm state, and a climb from a kicked norm-type state found the best state of all, 4.301387. That state is the
+    norm-type state reshaped: its overlap with it is 0.956. No point's operator has it as an eigenstate, and it is not
+    flat.
+  - **Five wheels of 3: the searches fell short.** The best climb reached 6.082020. But the four-wheel best times a
+    one-wheel best is a state of the array, with 517/81 = 6.382716 on either side, and the climb leaves it where it is.
+    So V4's death is the search's: 4 000 climbs on each side ended 0.30 below a state already known.
+  - **Climbing from the products** [read after the run]. Every product of two smaller arrays' best states is a fixed
+    point of the climb, on its side and in the whole space. Every kick of the best one on each side climbed back to it
+    or lower. At three wheels of 7 the products, 7.435601 (even) and 7.408174 (odd), stay far below the norm state.
+  - **The coin.** As scored, the even side won at three wheels of 5 (by 0.0019) and five of 3, and the odd side at
+    three of 7. But the searches on the two largest arrays fell short of known states. Read with those states, the
+    sides tie at five of 3 (517/81 each), and at three of 7 the even side leads, 7.435601 against 7.408174. On all
+    three arrays of three wheels tried, at 3, 5 and 7, the best state found sits on neither face.
+- **Other flat states** [measured; read after the run]. Damski, Bistroń, Ponterio, Czartowski and Życzkowski build
+  flat states like these for every p^n, as fiducials of product Weyl–Heisenberg mutually unbiased bases: from Alltop's
+  cubic phases ω^Tr(a x³) for p ≥ 5, and from a Galois ring at 3 [NAMED]. The norm form is not among their
+  constructions. [`flat_states.py`](flat_states.py) tries them against the norm-type states:
+  - three wheels of 5: of the 624 states ω^(Tr(a x³) + b N(x)), 128 are flat. The best flat value is the norm-type
+    states' 4.252724, and Alltop's states reach 4.057183;
+  - three wheels of 7: 804 of 2 400 are flat. The best flat value, 7.902228, belongs to the norm-type states and 228
+    mixed ones. Alltop's states reach 7.458638;
+  - three wheels of 3: the 702 Galois-ring states, as we reconstructed the construction, are all flat, at 1.738433,
+    below 17/9.
+
+  [READING] Flatness alone does not make a winner. The norm-type states are the best flat states in every family
+  tried, and they still lose at 5; the Galois-ring states are flat and fall well short at 3.
+- **A correction to round 9** [measured]. Finding round 9's best states again, the seeded odd climbs on four wheels of
+  3 reached 3.533331, above the 3.476833 that round 9 logged for the odd side. The operators' contraction confirms it.
+  The even side's 98/27 stays ahead, so the coin there stands.
+
+## 13. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -569,7 +657,7 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 13. Standing
+## 14. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -589,7 +677,12 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
     the half turn's operator in the Weil representation;
   - Liu and Winter's theorem that typical many-body states are nearly maximally magic, and Knipfer, Roman, Matcheva
     and Matchev's values of M₂ for two qudits;
-  - the norm and the quadratic character of a finite field.
+  - the norm and the quadratic character of a finite field;
+  - Kloosterman sums, Weil's bound on them, Davenport and Hasse's theorem on Gauss sums of lifted characters, and
+    Katz's theorem that the Kloosterman angles follow the Sato–Tate law;
+  - flat states for every p^n as fiducials of product Weyl–Heisenberg mutually unbiased bases, from Alltop's cubic
+    phases (Alltop 1980; Klappenecker and Rötteler 2004) and a Galois ring at 3 (Damski, Bistroń, Ponterio,
+    Czartowski and Życzkowski 2026).
 - **This repository's own:**
   - the dictionary, and the reading that puts the sevenths' two faces, the octahedron with its centre, the cube
     and Klein's space into one picture;
@@ -608,11 +701,15 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
   - the angles (flatness, the edge's two effects, the two wheels) and round 8's two-wheels test;
   - round 7: the coin at 31, and the test of the author's 7-wheel;
   - round 9: the coin in arrays, the small arrays' best values (search results), and the norm state on three wheels
-    of 3, exact: the best found there, and on neither face.
+    of 3, exact: the best found there, and on neither face;
+  - round 10: on three wheels of every odd prime the norm-type states are flat, and their Wigner values are
+    Kloosterman sums, so their negativity is exact at every p; the larger arrays' values (search results), with the
+    norm state's win on three wheels of 7.
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
-  negativity for three or more qutrits, and no use of the norm state as a magic state.
+  negativity for three or more qutrits, and no use of the norm state as a magic state. They found Damski et al.'s
+  flat states, but not the norm construction or Kloosterman sums as a state's Wigner values.
 - **The yield.** Round 1 was mostly known: seven classical facts confirmed, and one guess dead. Round 2 is new
   as far as we checked, but it is a measurement, not a proof. Round 3 is new as far as we checked. At seven it
   is exhaustive for every state with a symmetry, exact up to rounding: the nearest rival values sit 0.0028 and
@@ -621,7 +718,9 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
   at thirteen. Round 5 is a search, except its forced rule, and its guesses read off 3 to 13 mostly died.
   Round 6 is a search, and both of its readings died. Round 7 is a search, and the author's rule died at the first
   prime it predicted. Round 9 held all eight, but six only checked pilots; what it adds is exact arithmetic about large
-  arrays, small arrays' values by search, and one exact state, read after the run.
+  arrays, small arrays' values by search, and one exact state, read after the run. Round 10 held two of seven. What
+  it adds is exact: the norm-type states' flatness and Kloosterman values on three wheels of every prime. Its searches
+  taught that at 243 and 343 levels random climbs stop short of states already known.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -631,16 +730,15 @@ held. The output is in `many_wheels_three.log`, `_four`, `_five`, `_seven` and `
     59 is beyond this machinery;
   - why a turning symmetry usually beats a multiplying one at equal family size (12 of 14 pairs, read after round 8),
     and why not at 13 and 19;
-  - many wheels: whether 17/9 is the maximum on three wheels of 3, and why the norm state wins there; what the
-    four-wheel best, 98/27, is; whether states on neither face win in other arrays, where the whole-space searches
-    were short; and the arrays nobody has run, such as three wheels of 5 or five of 3, which need code that never
-    writes out all D² operators.
+  - many wheels: whether the norm state is the maximum on three wheels of 3 and of 7; what the four-wheel best, 98/27,
+    is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
+    that reaches the top at 243 levels and more, which must start from the states already known.
 
 ## Run it
 
 ```
 python verify_seven_levels.py          # about two minutes (numpy + scipy)
-python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries): 18 minutes
+python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 25 minutes
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
 python round4.py seven                 # round 4's three parts, run at once: about 17, 43 and 19 minutes
@@ -663,6 +761,11 @@ python many_wheels.py five
 python many_wheels.py seven
 python many_wheels.py combine
 python edge_state.py                   # the three-wheel winner as the norm state, about 20 minutes
+python larger_arrays.py calibrate      # round 10: the check against round 3's code, about two minutes
+python larger_arrays.py run            # about three hours on six workers
+python larger_arrays.py combine
+python flat_states.py                  # read after round 10: the flat states, under a minute
+python product_climbs.py               # read after round 10: the climbs from products, about 15 minutes on six workers
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -671,7 +774,8 @@ python edge_state.py                   # the three-wheel winner as the norm stat
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The lines for rounds 4 to 9 and `edge_state.py` rerun those runs, which are seeded, and rewrite their logs.
+- The lines for rounds 4 to 10, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
+  are seeded, and rewrite their logs.
 
 ## Sources
 
@@ -704,3 +808,14 @@ python edge_state.py                   # the three-wheel winner as the norm stat
 - M. Knipfer, A. Roman, K. Matcheva and K. Matchev, "Analytical landscape of maximal magic for two-qutrit states and
   beyond" (2026), [arXiv:2607.07197](https://arxiv.org/abs/2607.07197).
 - R. Lidl and H. Niederreiter, *Finite Fields* (1983): the norm and the quadratic character.
+- H. D. Kloosterman, "On the representation of numbers in the form ax² + by² + cz² + dt²", *Acta Math.* **49**
+  (1926).
+- H. Davenport and H. Hasse, "Die Nullstellen der Kongruenzzetafunktionen in gewissen zyklischen Fällen", *J. reine
+  angew. Math.* **172** (1935).
+- A. Weil, "On some exponential sums", *Proc. Natl. Acad. Sci.* **34** (1948).
+- N. M. Katz, *Gauss Sums, Kloosterman Sums, and Monodromy Groups*, Annals of Mathematics Studies **116** (1988).
+- W. O. Alltop, "Complex sequences with low periodic correlations", *IEEE Trans. Inf. Theory* **26** (1980).
+- A. Klappenecker and M. Rötteler, "Constructions of mutually unbiased bases", in *Finite Fields and Applications*,
+  Lecture Notes in Computer Science **2948** (2004).
+- B. S. Damski, R. Bistroń, D. Ponterio, J. Czartowski and K. Życzkowski, "Product Weyl–Heisenberg covariant mutually
+  unbiased bases and extremal non-stabilizerness" (2026), [arXiv:2603.15550](https://arxiv.org/abs/2603.15550).

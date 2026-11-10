@@ -70,5 +70,15 @@ PASS  the norm states of the other arrays: at two wheels of 3, 5 and 7 the norm 
 PASS  (--full) every affine map x -> Mx + a that keeps the norm state up to a quadratic phase, among all 11232 x 27: 1053, so its Clifford symmetries are exactly 27 x 39
 PASS  (--full) the states of the fields' multiplicative characters stay below every array's best: at most 0.806629 against 0.888889, 1.740741 against 1.888889, 3.432712 against 3.629630, 1.661798 against 1.766937, 2.576123 against 2.719253
 
+round 10:
+PASS  larger_arrays.py's Wigner function, one Fourier transform per point q, equals the operators' one at every point of two and three wheels of 3 and two of 5 (largest difference 1.4e-17)
+PASS  on three wheels of 3, 5 and 7, every norm-type state sum_x w^(c N(x)) |x> has Weyl expectations zero on the Z-type operators and of size 1/sqrt(p^3) on all others, is no point's eigenstate, is sent to its complex conjugate by the half turn, and has M2 = ln(q^2/(2q - 1))
+PASS  its Wigner values are Kloosterman sums: K(m)/p^5 at (p^2 + p + 1) p^3 points for each m in F_p*, and -(p + 1)/p^5 at p^3 points, for every c; so its negativity is 1.888888889 at 3 levels (0.9003 of the ceiling); 4.252724292 at 5 levels (0.8355 of the ceiling); 7.902228372 at 7 levels (0.9021 of the ceiling); and toward 8/(3 pi) = 0.8488 of the ceiling at large p (0.8452 at 997, 0.8485 at 1999)
+PASS  on five wheels of 3 the norm state has negativity 5.805212620027 = 4232/729; its Weyl expectations vanish on 242 operators, a Lagrangian with the identity, but it is not flat, so the theorem stops at three wheels
+PASS  the logged norm-type values are the closed form's (4.252724292100 and 7.902228372133); the registered bars are products of round 9's logged bests (4.290842, 6.382716 = 517/81 and 7.435601); and the logged values give the recorded scores: V0 held, V1 died, V2 died, V3 held, V4 died, V5 died, V6 died
+PASS  (--full) the flat states w^(Tr(a x^3) + b N(x)) on three wheels of 5 and 7: 128 and 804 of them flat, the best 4.252724292 and 7.902228372, the norm-type states' values; the Alltop states (b = 0) reach 4.057182539 and 7.458637718; the 702 Galois-ring states on three wheels of 3 are all flat, at 1.738432946, below 17/9
+PASS  (--full) four wheels of 3: product_climbs.py's seeded odd climbs reach 3.533330767884 after 7000 climbs, by the operators' contraction, at a state the half turn sends to minus itself; round 9 logged 3.476833 for the odd side, and the even side's 98/27 stays ahead
+PASS  (--full) three wheels of 5: round 10's kicks of the norm-type state c = 2 at size 0.3, rerun, climb to 4.301387418, at a state that no point's operator has as an eigenstate (largest |<A_u>| 0.254923), so on neither face, and whose overlap with that norm-type state is 0.956327
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

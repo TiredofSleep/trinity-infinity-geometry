@@ -881,3 +881,85 @@ says much. Round 9's forced numbers already settle the large arrays.
 
 **Expected standing.** The norm-type states' values will be exact. The searches are reading-level evidence, shorter
 than round 9's. A held V1 says only that nothing better was found.
+
+---
+
+## Round 10 scores (added after the run, 2026-11-10)
+
+Run by [`larger_arrays.py`](larger_arrays.py), committed with this registration at df9a004, before any run; the output
+is kept in [`larger_arrays_run.log`](larger_arrays_run.log) and [`larger_arrays_combined.log`](larger_arrays_combined.log).
+The run is seeded and took 2.8 hours. **Two of seven held: V0 and V3.** V1 and V2 held at three wheels of 7 and died
+at three of 5. V4 died at five of 3, and V5 and V6 died at two arrays each. (Round 5 also named its predictions V;
+these are round 10's.)
+
+| | outcome | evidence |
+|---|---|---|
+| V0, calibration | held | done before the registration: from all 1 680 starts the climbs end where round 3's code ends |
+| V1 | **died at three of 5; held at three of 7** | three of 5: a climb from a kicked norm-type state reached 4.301387, and both sides' bests (4.293476 even, 4.291598 odd) beat the norm-type states' 4.252724. Three of 7: nothing found beats the norm-type states' 7.902228, and all 300 kicks of them climbed back to it |
+| V2 | **died at three of 5; held at three of 7** | three of 5: both sides' bests are above 4.252724. Three of 7: 7.902228 against 7.238233 (even) and 7.241590 (odd) |
+| V3 | held | five of 3: the norm state has 4232/729 = 5.805213. The climb from it ends at 6.052266, and the even side's best is 6.082020 |
+| V4 | **died at five of 3** | the best found there, 6.082020, is below 517/81 = 6.382716, the four-wheel best times a one-wheel best. It held at three of 5 (4.301387 against 4.290842) and at three of 7 (7.902228 against 7.435601) |
+| V5 | **died** | the even side won at three of 5 (4.293476 against 4.291598) and at five of 3 (6.082020 against 6.069252); the odd side won at three of 7 (7.241590 against 7.238233) |
+| V6 | **died at three of 5 and five of 3** | the best found reaches 84.5% of the ceiling at three of 5 and 83.4% at five of 3; at three of 7, 90.2% |
+
+**Disclosed.**
+- The registration's timing printed no values. A smoke test of the code ran only on arrays already run (three and four
+  wheels of 3, two of 5); its scores mean nothing and its logs are not kept.
+- The six workers were meant to run at below-normal priority, but the call that sets it fails silently on 64-bit
+  Windows, and every script here since round 3 has the same fault. The workers ran at normal priority until they were
+  lowered by hand partway through the run. No value depends on it. The call is fixed in a separate commit.
+
+**Derived during the run, after the registration, so not a prediction: the norm-type states' Wigner values are
+Kloosterman sums.** On three wheels of p, each norm-type state takes the value K(m)/p⁵ at (p² + p + 1)p³ points for
+each nonzero m in F_p, and −(p + 1)/p⁵ at the other p³ points. Here K(m) = Σ_a ω^(a + m/a), over the nonzero a in F_p,
+is the Kloosterman sum.
+- So its negativity is exact at every p: the sum of sizes is [(p + 1) + (p² + p + 1) Σ_m |K(m)|]/p². That gives 17/9
+  at 3, 4.252724 at 5 and 7.902228 at 7, the values the run logged.
+- The route: Davenport and Hasse's theorem turns the Gauss sum of a character composed with the norm into the cube of
+  the character's Gauss sum over F_p, and summing squared Gauss sums over the characters gives a Kloosterman sum.
+- Before the run ended it showed that V1 and V2 would die at three of 5: 4.252724 is below the product bar 4.290842,
+  and the product is itself a state of the array.
+- Its share of the ceiling tends to 8/(3π) = 0.849 as p grows (the mean over the primes from 1 000 to 2 000 is
+  0.8489), because the Kloosterman angles follow the Sato–Tate law (Katz). Below 2 000 only 3 and 7 reach 90%, and 7
+  reaches the most, 90.2%.
+- [`flat_states.py`](flat_states.py) checks it at 3, 5 and 7 and tabulates it to 1 999; the verifier checks it too.
+
+**Read after the run** ([`flat_states.py`](flat_states.py) and [`product_climbs.py`](product_climbs.py); the output is
+in [`flat_states.log`](flat_states.log) and [`product_climbs.log`](product_climbs.log)):
+- **Other flat states fall at or below the norm-type states.** Of the states ω^(Tr(a x³) + b N(x)) on three wheels,
+  128 of 624 are flat at 5 and 804 of 2 400 at 7. At both, the best flat value is the norm-type states'. Alltop's cubic
+  phase states (b = 0) reach 4.057183 and 7.458638. The 702 Galois-ring states on three qutrits, as we reconstructed
+  Damski et al.'s construction, are all flat, at 1.738433, below 17/9.
+- **On three wheels of 5 the best state found is on neither face either.** The kick that found 4.301387, rerun, gives
+  a state with half-turn value −0.229 and largest |⟨A_u⟩| 0.255, so no point's operator has it as an eigenstate. Its
+  overlap with the norm-type state it was kicked from is 0.956: it is that state reshaped. It is not flat, and it is
+  entangled: each wheel's purity is about 0.23, against 0.2 for a fully mixed wheel.
+  - So V2 died as registered, but its consequence, "the winner sits on the edge", holds on all three arrays of three
+    wheels tried: at 3 and 7 the norm state, at 5 a state near one.
+- **The searches fell short on the two largest arrays.** Every product of two smaller arrays' best states was formed
+  and climbed from:
+  - each product is a fixed point of the climb, on its side and in the whole space. Every kick of the best one on
+    each side (20 at each of the sizes 0.05 and 0.3, on the side and in the whole space) climbed back to it or lower;
+  - five wheels of 3: the best known state is 517/81 = 6.382716, on both sides: the four-wheel best times an even or an
+    odd one-wheel best. The random climbs, 4 000 on each side, ended 0.30 below it, and the climb from the norm state
+    stops at 6.052266. So V4's death there is the search's;
+  - three wheels of 7: the products reach 7.435601 (even) and 7.408174 (odd), above both sides' searches but far below
+    the norm state's 7.902228, which still wins;
+  - so the coin as scored rests on searches that fell short. Read with the known states, the sides tie at five of 3
+    (517/81 each), and at three of 7 the even side leads (7.435601 against 7.408174), behind the norm state.
+- **A correction to round 9.** Finding round 9's best states again, the seeded odd climbs on four wheels of 3 reached
+  3.533331, above the 3.476833 that round 9 logged for the odd side, found once in its 10 000 climbs. The operators'
+  contraction confirms the value. The even side's 98/27 stays ahead, so round 9's Z3 still holds. On two wheels of 7
+  the odd climbs did not find round 9's odd best again in 80 000 climbs; round 9 found it 7 times in 200 000.
+
+**Yield.**
+- Exact, and new as far as we checked: on three wheels of every odd prime the norm-type states are flat, and their
+  Wigner values are Kloosterman sums, so their negativity is known in closed form at every p.
+- Searches: the norm state wins on three wheels of 7, at 90.2% of the ceiling. On three wheels of 5 a reshaped
+  norm-type state wins, also on neither face. On five wheels of 3 the best known state is a product.
+- A lesson: at 243 and 343 levels random climbs stop short of states already known. A search there must also start
+  from them: the products, and the field's own states.
+- Literature: the flat profile is known (Damski, Bistroń, Ponterio, Czartowski and Życzkowski 2026: fiducials of
+  product Weyl–Heisenberg mutually unbiased bases), and so is Alltop's construction. The norm construction and its
+  Kloosterman values were not found. The dead predictions are kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md), and
+  the [README](README.md) §12 has what the run found.
