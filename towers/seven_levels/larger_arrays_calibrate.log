@@ -1,0 +1,13 @@
+the structured code against round 3's, from the same starts, on arrays round 9 ran
+  3 wheels of 3, even: same end value from 300 of 300 starts; Wigner values against the dense operators within 2.1e-17
+  3 wheels of 3, odd: same end value from 300 of 300 starts; Wigner values against the dense operators within 1.4e-17
+  3 wheels of 3, whole: same end value from 300 of 300 starts; Wigner values against the dense operators within 1.0e-17
+  2 wheels of 5, even: same end value from 300 of 300 starts; Wigner values against the dense operators within 1.4e-17
+  2 wheels of 5, odd: same end value from 300 of 300 starts; Wigner values against the dense operators within 1.4e-17
+  2 wheels of 7, even: same end value from 100 of 100 starts; Wigner values against the dense operators within 7.8e-18
+  4 wheels of 3, even: same end value from 40 of 40 starts; Wigner values against the dense operators within 3.5e-18
+  4 wheels of 3, odd: same end value from 40 of 40 starts; Wigner values against the dense operators within 5.2e-18
+  the norm state on 3 wheels of 3: 1.888888888889 (known 1.888888888889)
+  the norm state on 4 wheels of 3: 2.743484224966 (known 2.743484224966)
+  the norm state on 2 wheels of 5: 0.000000000000 (known 0.000000000000)
+CALIBRATE 1680 1680 True

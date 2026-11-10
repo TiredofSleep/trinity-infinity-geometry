@@ -795,3 +795,89 @@ what the pilots had shown, at 50 to 500 times their effort; Z6 and Z7 were fresh
 New as far as we checked: the small arrays' best values, which are search results, not proofs; and one exact state,
 the norm state at three wheels of 3, the best found there and on neither face. The web searches of 2026-11-10 found no
 maximum of the total Wigner negativity for three or more qutrits, and no use of this state as a magic state.
+
+---
+
+## Round 10: the larger arrays (registered 2026-11-10, before any run)
+
+> *you are only spinning one wheel... imagine a 10x10 of wheels or larger?* — the author, 9 November 2026
+
+Round 9 left the larger arrays open: they need code that never writes out all D² operators. This round runs three of
+them: three wheels of 5 (D = 125), five wheels of 3 (D = 243) and three wheels of 7 (D = 343).
+
+**Made exact, before the run.**
+- **The new code.** For a state ψ on n wheels of p levels, W(q, k) = (1/D) Σ_s ψ̄(q + s) ψ(q − s) ω^(2k·s), so for
+  each q the Wigner function is one Fourier transform. The sign matrix Σ_u s_u A_u / D is the same transform of the
+  signs, read at ((a + b)/2, a − b). A state on one side has W(−u) = W(u), so half the phase space suffices.
+  - Checked before this registration against round 3's code on arrays already run: from all 1 680 starts, every climb
+    ends at the same value ([`larger_arrays_calibrate.log`](larger_arrays_calibrate.log)).
+  - The timing printed no values, following round 9's lesson. One climb takes 0.15 to 0.3 s on three wheels of 5;
+    1.5 s on a side and 5.5 s in the whole space on five of 3; and 3 s and 11.5 s on three of 7.
+- **The norm-type states.** For the field with q = pⁿ elements, ψ_c = Σ_x ω^(c·N(x)) |x⟩ / √q for c = 1, …, p − 1,
+  where N is the field's norm to F_p. ψ₋c is ψ_c's complex conjugate, with the same values. Round 9's winner on three
+  wheels of 3 is ψ₁ there, up to a Clifford operation.
+- **A theorem, proved here; the verifier will check it at 3, 5 and 7.** On three wheels of any odd prime p, every
+  norm-type state has expectation zero on the Z-type Weyl operators (a Lagrangian) and size exactly 1/√(p³) on every
+  other one. It is even or odd about no centre, so it is on neither face, and the half turn sends it to its complex
+  conjugate.
+  - Proof. ⟨ψ|Z^b X^a|ψ⟩ is a character sum of N(x + a) − N(x). For a ≠ 0 its degree-2 part is the quadratic form
+    Tr(a^(p²) x^(p+1)), whose polar form is Tr(y (a^p x^(p²) + a^(p²) x^p)).
+  - That form is degenerate only if z^(p−1) = −1 for some z in the field. Then the order of z would divide 2(p − 1)
+    but not p − 1, and that is impossible, since 2(p − 1) and p³ − 1 share only p − 1 (p² + p + 1 is odd).
+  - A nondegenerate quadratic character sum over F_p³ has size p^(3/2). For a = 0 the sum vanishes unless b = 0.
+  - About a centre q, the state is even or odd only if N(q + x) − N(q − x) is linear in x. But that difference is
+    2N(x) plus a linear term, and N is not linear. And N(−x) = (−1)^(p² + p + 1) N(x) = −N(x), so the half turn
+    sends the state to its complex conjugate.
+  - So the flatness of round 9's winner is not an accident of p = 3. On five wheels the norm has degree 5, its
+    differences are not quadratic, and the argument fails. On four wheels the norm state is even and fell short
+    (2000/729 against 98/27).
+- **Not computed before this registration:** any norm-type state's negativity on the new arrays, and any search value
+  there.
+
+**Predictions.** V0 is a calibration, already done. V1 to V6 are fresh.
+
+**V0. (Calibration, done.)** The structured code ends where round 3's does, from all 1 680 starts, and it
+reproduces the known norm states: 17/9 on three wheels of 3, 2000/729 on four, and 0 on two of 5.
+
+**V1. (Fresh.)** On three wheels of 5 and of 7, nothing found beats the best norm-type state. That covers every climb:
+from random states on either side and in the whole space, from the norm-type states themselves, and from their kicks.
+*Kill:* a higher state.
+
+**V2. (Fresh.)** On three wheels of 5 and of 7, the best norm-type state beats both sides' bests. So the winner sits on
+the edge, as on three wheels of 3. *Kill:* a side's best at or above it.
+
+**V3. (Fresh.)** On five wheels of 3, the norm state does not win: some climb beats it. *Kill:* nothing found above it.
+
+**V4. (Fresh.)** Every new array's best beats every product of smaller arrays' bests (round 9's). The bars are
+4.290842 on three wheels of 5 (two of 5 with one of 5), 517/81 = 6.382716 on five of 3 (four of 3 with one) and
+7.435601 on three of 7 (two of 7 with one). *Kill:* an array where it doesn't.
+
+**V5. (Fresh; Claude's reading, on thin ground.)** From two wheels on, the coin follows the number of wheels: with an
+odd number the odd side wins. So the odd side wins on three wheels of 5, five of 3 and three of 7.
+- It rests on one array: three wheels of 3 went odd. The three arrays with an even number of wheels (four of 3, two of
+  5, two of 7) went even.
+- Single wheels do not follow it: the even side wins at most primes.
+
+*Kill:* the even side wins on any new array.
+
+**V6. (Fresh.)** Every new array's best reaches 88% of its ceiling, as every array from two wheels on did in round 9
+(Z4). The marks are 4.479350, 6.418921 and 7.708914. *Kill:* one below.
+
+**The test.** [`larger_arrays.py`](larger_arrays.py) is committed with this registration. The run is seeded.
+
+| array | D | climbs: even, odd, whole | kicks of each norm-type state, at each size |
+|---|---|---|---|
+| three wheels of 5 | 125 | 40 000, 40 000, 10 000 | 500, for c = 1 and 2 |
+| five wheels of 3 | 243 | 4 000, 4 000, 800 | 100, for c = 1 |
+| three wheels of 7 | 343 | 2 000, 2 000, 400 | 50, for c = 1, 2 and 3 |
+
+- The searches are shorter than round 9's, because a climb here costs 10 to 100 times as much.
+- A kick is a norm-type state plus a random vector of relative size 0.05 or 0.3. It climbs in the whole space.
+  Together with the climb from the norm-type state itself, the kicks test whether a higher state sits nearby.
+- The run takes about three hours on six worker processes at below-normal priority, one thread each.
+
+**Not run.** Six wheels of 3 (D = 729): a climb would take about half a minute on a side, too long for a search that
+says much. Round 9's forced numbers already settle the large arrays.
+
+**Expected standing.** The norm-type states' values will be exact. The searches are reading-level evidence, shorter
+than round 9's. A held V1 says only that nothing better was found.
