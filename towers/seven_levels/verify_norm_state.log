@@ -1,0 +1,18 @@
+NORM_STATE.md: the norm-type state on three wheels of p; its Wigner values are Kloosterman sums
+
+A. the whole statement, from the state itself
+PASS  p = 3 (t^3 + 2 t + 1): for every c, the Wigner function computed from the state takes the value K(m)/p^5 at 351 points for each m in F_p* and -(p + 1)/p^5 at 27 points (imaginary parts below 4e-18); its negativity is the formula's, 1.888888889; its Weyl expectations are 0 on the Z-type operators and 1/sqrt q on every other
+PASS  p = 5 (t^3 + 1 t + 1): for every c, the Wigner function computed from the state takes the value K(m)/p^5 at 3875 points for each m in F_p* and -(p + 1)/p^5 at 125 points (imaginary parts below 3e-19); its negativity is the formula's, 4.252724292; its Weyl expectations are 0 on the Z-type operators and 1/sqrt q on every other
+PASS  p = 7 (t^3 + 0 t + 2): for every c, the Wigner function computed from the state takes the value K(m)/p^5 at 19551 points for each m in F_p* and -(p + 1)/p^5 at 343 points (imaginary parts below 2e-19); its negativity is the formula's, 7.902228372; its Weyl expectations are 0 on the Z-type operators and 1/sqrt q on every other
+PASS  p = 11 (t^3 + 1 t + 4): for every c, the Wigner function computed from the state takes the value K(m)/p^5 at 177023 points for each m in F_p* and -(p + 1)/p^5 at 1331 points (imaginary parts below 3e-20); its negativity is the formula's, 14.900797513; its Weyl expectations are 0 on the Z-type operators and 1/sqrt q on every other
+PASS  p = 13 (t^3 + 0 t + 2): for every c, the Wigner function computed from the state takes the value K(m)/p^5 at 402051 points for each m in F_p* and -(p + 1)/p^5 at 2197 points (imaginary parts below 1e-20); its negativity is the formula's, 18.887726447; its Weyl expectations are 0 on the Z-type operators and 1/sqrt q on every other
+[30 s]
+
+B. each step of the proof, at every odd prime up to 101
+PASS  the norm's fibres: one element over 0 and p^2 + p + 1 over each nonzero value: at all 25 odd primes from 3 to 101
+PASS  the sum at w = 0: sum over s of w^(-2c N(s)) = -p(p + 1), for every c: at all 25 odd primes from 3 to 101
+PASS  Davenport and Hasse: G(chi o N) = g(chi)^3, for every character chi of F_p*: at all 25 odd primes from 3 to 101
+PASS  the key identity: T(mu) = sum over s of w^(Tr(s) - mu N(s)) = p K(1/mu), for every mu: at all 25 odd primes from 3 to 101
+[44 s]
+
+ALL PASS

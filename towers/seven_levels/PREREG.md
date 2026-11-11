@@ -924,6 +924,7 @@ is the Kloosterman sum.
   0.8489), because the Kloosterman angles follow the Sato–Tate law (Katz). Below 2 000 only 3 and 7 reach 90%, and 7
   reaches the most, 90.2%.
 - [`flat_states.py`](flat_states.py) checks it at 3, 5 and 7 and tabulates it to 1 999; the verifier checks it too.
+  The full proof, written out after the scoring, is in [`NORM_STATE.md`](NORM_STATE.md), with its own checks.
 
 **Read after the run** ([`flat_states.py`](flat_states.py) and [`product_climbs.py`](product_climbs.py); the output is
 in [`flat_states.log`](flat_states.log) and [`product_climbs.log`](product_climbs.log)):

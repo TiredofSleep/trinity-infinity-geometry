@@ -594,6 +594,9 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
     17/9 at 3, 4.252724 at 5 and 7.902228 at 7.
   - The route: Davenport and Hasse's theorem turns the Gauss sum of a character composed with the norm into the cube of
     the character's Gauss sum over F_p, and summing squared Gauss sums over the characters gives a Kloosterman sum.
+    Both proofs are written out in [`NORM_STATE.md`](NORM_STATE.md). [`verify_norm_state.py`](verify_norm_state.py)
+    checks the whole statement from the state itself at p = 3, 5, 7, 11 and 13, and each step of the proof at every
+    odd prime up to 101.
   - Its share of the ceiling is 90.0% at 3, 83.5% at 5, 90.2% at 7, 84.0% at 11, 82.4% at 13 and 88.8% at 17. Below
     2 000 only 3 and 7 reach 90%, and 7 reaches the most. As p grows the share tends to 8/(3π) = 84.9%, because the
     Kloosterman angles follow the Sato–Tate law (Katz). The average random state tends to √(2/π) = 79.8%.
@@ -739,6 +742,7 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
 ```
 python verify_seven_levels.py          # about two minutes (numpy + scipy)
 python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 25 minutes
+python verify_norm_state.py            # NORM_STATE.md's proof, checked: about a minute (numpy)
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
 python round4.py seven                 # round 4's three parts, run at once: about 17, 43 and 19 minutes
