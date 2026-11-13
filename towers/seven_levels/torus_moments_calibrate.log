@@ -1,0 +1,18 @@
+the code against round 11: its mean raw mu4/mu2^2 by prime and torus, and the identity 2p/(p + 1)
+  5: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  7: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  11: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  13: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  17: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  19: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  23: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  29: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  31: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  37: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  41: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  43: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  47: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  53: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  59: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+  61: both tori's mean raw mu4/mu2^2 equal round 11's logged values, and the non-split one equals 2p/(p + 1): True
+CALIBRATE True

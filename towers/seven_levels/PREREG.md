@@ -1073,3 +1073,59 @@ measurement: the magic of the oscillator states follows the Sato–Tate law, the
 these states are good but not the best. The mechanism, Kloosterman-type sums, is Gurevich and Hadani's; the reading
 as magic, and the identity above, were not found in the literature checked. The [README](README.md) §13 has the
 summary.
+
+---
+
+## Round 12: the higher moments (registered 2026-11-13, before any run)
+
+> *write the proof and test the higher moments* — the author, 13 November 2026
+
+Round 11 found the oscillator states' Wigner values following the Sato–Tate law in two statistics, S/√p and the
+fourth-moment ratio. Two statistics do not fix a law. This round tests the rest of its shape.
+
+**Made exact, before the run.**
+- **What Sato–Tate predicts.** Scaled to variance 1, Sato–Tate values follow the semicircle law on [−2, 2]: the odd
+  moments vanish and the even ones are the Catalan numbers 1, 2, 5, 14. The rivals:
+
+  | law | 4th | 6th | 8th |
+  |---|---|---|---|
+  | semicircle (Sato–Tate) | 2 | 5 | 14 |
+  | Gaussian (the average random state) | 3 | 15 | 105 |
+  | arcsine (a uniform angle) | 1.5 | 2.5 | 4.375 |
+  | the sum of two independent semicircles | 2.5 | 8.75 | 36.75 |
+
+  The last is the kind of law Kurlberg and Rudnick conjectured for some matrix elements of Hecke states. In Kolmogorov
+  distance the semicircle lies 0.041 from the Gaussian and 0.091 from the arcsine law (computed from the formulas, not
+  from data).
+- **Standardizing.** Each state's Wigner values off the origin are centered and scaled to variance 1. That removes the
+  small mean, about 1/√p in these units, that Σ W = 1 forces.
+- **The proof of round 11's identity**, written alongside this round, reduces every even moment of the raw values,
+  averaged over the non-split eigenbasis, to a trace of a power of a torus-averaged phase-point operator. So those
+  averages are exact numbers at each prime, with no sampling noise.
+- **Checked before this registration** ([`torus_moments_calibrate.log`](torus_moments_calibrate.log)): the script
+  reproduces round 11's logged fourth-moment ratios, both tori, at every prime from 5 to 61, and the identity
+  2p/(p + 1).
+- **The timing printed no values.** The run takes about ten minutes.
+- **Not computed before this registration:** any third, sixth or eighth moment, and any Kolmogorov distance of the data.
+
+**Predictions.** M0 is a calibration; M1 to M5 are fresh. The script is [`torus_moments.py`](torus_moments.py), committed
+with this registration; it uses round 11's states.
+
+**M0. (Calibration.)** The run reproduces round 11's mean raw fourth-moment ratio at every prime and torus, and the
+identity 2p/(p + 1) at every prime. *Kill:* a mismatch.
+
+**M1. (Fresh.)** At the primes from 211 to 401, the mean standardized third moment over all one-line states is within
+0.1 of 0. *Kill:* outside −0.1 to 0.1.
+
+**M2. (Fresh.)** The mean standardized sixth moment is within 0.3 of 5. *Kill:* outside 4.7 to 5.3.
+
+**M3. (Fresh.)** The mean standardized eighth moment is within 1.5 of 14. *Kill:* outside 12.5 to 15.5.
+
+**M4. (Fresh.)** At every prime from 211 to 401, the non-split eigenbasis's averages of the standardized sixth and
+eighth moments are within 0.3 of 5 and 1.5 of 14. *Kill:* one prime outside.
+
+**M5. (Fresh.)** All the standardized values at the primes from 211 to 401, pooled, lie within Kolmogorov distance
+0.015 of the semicircle law. *Kill:* 0.015 or more.
+
+**Expected standing.** The values are exact up to rounding. Holding all of these would say the whole distribution,
+not just two statistics, is Sato–Tate's at these sizes; it would still not be a proof.
