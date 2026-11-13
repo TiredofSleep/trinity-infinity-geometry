@@ -7,13 +7,15 @@ number wheels that fit the sides that won, and the exceptional states at 31.  Fo
 operators, the forced numbers for large arrays, and the norm state found on three wheels of 3 (README section 11).
 For round 10 it checks larger_arrays.py's Wigner function against the operators, the norm-type states' flatness and
 Kloosterman values on three wheels of 3, 5 and 7, the norm state on five wheels of 3, and the scores (section 12).
+For round 11 it checks the torus states (the chirp, the orbit count, the purity identity, the averaged fourth-moment
+identity) and the scores (section 13).
 
 numpy + scipy + round3.py + larger_arrays.py.  ASCII output.
 Run:  python verify_seven_levels.py           (about two minutes)
       python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
                                                sign choices, the tetrahedral states at 3, 7, 11 and 13, the norm
                                                state's exact count of symmetries, the fields' character states, and
-                                               round 10's flat states and reruns; about 25 minutes)
+                                               rounds 10 and 11's reruns; about 35 minutes)
 """
 import ctypes
 import itertools
@@ -1384,6 +1386,49 @@ if FULL:
            f"{top5:.9f}, at a state that no point's operator has as an eigenstate (largest |<A_u>| "
            f"{125 * np.abs(W5).max():.6f}), so on neither face, and whose overlap with that norm-type state is {ov5:.6f}",
            abs(top5 - 4.301387418) < 1e-8 and 125 * np.abs(W5).max() < 0.3 and abs(ov5 - 0.956327) < 1e-5)
+
+# ------------------------------------------------------------------ round 11 (oscillator_states.py; its logs are oscillator_states_*.log)
+print()
+print("round 11:")
+import oscillator_states as osc
+
+ok_torus, ok_sums, ok_levels, ok_id = True, True, True, True
+for p_ in [q_ for q_ in osc.PRIMES if q_ <= 61]:
+    Psi_, chk_ = osc.nonsplit_states(p_)
+    Wn_ = osc.wigner(Psi_, p_)
+    Ws_ = osc.wigner(osc.split_states(p_), p_)
+    ok_torus &= bool(chk_["unitary"] and chk_["order"] == p_ + 1 and chk_["ortho"])
+    if p_ in osc.ROUND8_TURNING:
+        ok_torus &= abs(((np.abs(Wn_).sum(axis=(1, 2)) - 1) / 2).max() - osc.ROUND8_TURNING[p_]) < 2e-9
+    for WW in (Wn_, Ws_):
+        ok_sums &= bool(np.allclose(WW.sum(axis=(1, 2)), 1, atol=1e-12)
+                        and np.allclose((WW ** 2).sum(axis=(1, 2)), 1 / p_, atol=1e-14))
+        ok_levels &= max(1 + int((np.diff(np.sort(w.ravel() * p_ ** 1.5)) > 1e-7).sum()) for w in WW) <= p_ + 2
+    off_ = Wn_.reshape(len(Wn_), -1)[:, 1:]
+    ok_id &= abs(((off_ ** 4).mean(axis=1) / ((off_ ** 2).mean(axis=1)) ** 2).mean() - 2 * p_ / (p_ + 1)) < 1e-12
+forced("the chirp's map generates the non-split torus (order p + 1) at every prime from 5 to 61, and its best "
+       "eigenvector gives round 8's logged values from 5 to 29", ok_torus)
+forced("every oscillator state from 5 to 61 has sum W = 1 and sum W^2 = 1/p, so S/sqrt p is mean |W| over rms W; and "
+       "its Wigner function takes at most p + 2 values, constant on the torus's orbits", ok_sums and ok_levels)
+forced("averaged over the non-split torus's eigenvectors, mu4/mu2^2 is 2p/(p + 1) at every prime from 5 to 61, to "
+       "within 1e-12", ok_id)
+LOG11 = dict(mean_s=0.846813, mean_r4=2.0032, wins=65, primes=77, best_from_37=0.8824)   # oscillator_states_combined.log
+v11 = {"O1": abs(LOG11["mean_s"] - 8 / (3 * np.pi)) <= 0.01, "O2": abs(LOG11["mean_r4"] - 2) <= 0.1,
+       "O3": LOG11["wins"] > 0.75 * LOG11["primes"], "O4": LOG11["best_from_37"] < 0.90}
+forced(f"the logged values give the recorded scores: mean S/sqrt p {LOG11['mean_s']} against 8/(3 pi) = "
+       f"{8 / (3 * np.pi):.6f}, mean mu4/mu2^2 {LOG11['mean_r4']}, {LOG11['wins']} wins of {LOG11['primes']}, best share "
+       f"from 37 on {LOG11['best_from_37']}: " + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in v11.items()),
+       all(v11.values()))
+if FULL:
+    # O1 and O2's statistics again, from the states themselves, at the primes from 211 to 401
+    tot_, s_sum_, r_sum_ = 0, 0.0, 0.0
+    for p_ in [q_ for q_ in osc.PRIMES if q_ >= 211]:
+        for Psi_ in (osc.nonsplit_states(p_)[0], osc.split_states(p_)):
+            N_, s_, r4_, _, _ = osc.stats(osc.wigner(Psi_, p_), p_)
+            tot_, s_sum_, r_sum_ = tot_ + len(N_), s_sum_ + s_.sum(), r_sum_ + r4_.sum()
+    forced(f"(--full) the primes from 211 to 401, recomputed: {tot_} states, mean S/sqrt p {s_sum_ / tot_:.6f}, mean "
+           f"mu4/mu2^2 {r_sum_ / tot_:.4f}, as the log records",
+           tot_ == 20056 and abs(s_sum_ / tot_ - LOG11["mean_s"]) < 1e-6 and abs(r_sum_ / tot_ - LOG11["mean_r4"]) < 1e-4)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

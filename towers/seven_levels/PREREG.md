@@ -1035,3 +1035,41 @@ computed exactly; there is no search. One process at below-normal priority, abou
 
 **Expected standing.** The values are exact up to rounding. O1 and O2 test the shape of the distribution of values, so
 a held O1 supports the Sato–Tate reading without proving it, and a dead one says these states follow another law.
+
+---
+
+## Round 11 scores (added after the run, 2026-11-13)
+
+Run by [`oscillator_states.py`](oscillator_states.py), committed with this registration at 938e13d, before the run;
+the output is kept in [`oscillator_states_run.log`](oscillator_states_run.log) and
+[`oscillator_states_combined.log`](oscillator_states_combined.log). It took 6.6 minutes, and every value in it is
+exact up to rounding. **All five held.**
+
+| | outcome | evidence |
+|---|---|---|
+| O0, calibration | held | round 8's turning-wheel bests and the Legendre states again; at all 77 primes the chirp is unitary, its map has order p + 1, and every state's Wigner function takes at most p + 2 values |
+| O1 | held | at the primes from 211 to 401, the 20 056 one-line states have mean S/√p = 0.846813, against Sato–Tate's 0.848826; a Gaussian law would give 0.797885 and a uniform angle 0.900316 |
+| O2 | held | their mean μ4/μ2² is 2.0032, against Sato–Tate's 2; a Gaussian law would give 3 and a uniform angle 1.5 |
+| O3 | held | the non-split torus's best beats the split torus's at 65 of the 77 primes (84%). It loses at 7, 73, 79, 107, 139, 157, 193, 199, 223, 229, 271 and 283 |
+| O4 | held | from 37 to 401 the best one-line state reaches at most 88.2% of the ceiling (at 41); from about 100 on, 85.6 to 86.8% |
+
+The check held too: no one-line oscillator state beats the best state known at any prime from 7 to 31.
+
+**Read after the run.**
+- **The two tori approach Sato–Tate differently.** At the primes from 211 to 401 the non-split states' mean S/√p is
+  0.8483, which is Sato–Tate's value once the finite size is allowed for (0.8471 to 0.8479). The split states' mean is
+  0.8452, rising from 0.81 to 0.83 at small primes: their two axes carry tiny Wigner values, a correction of order 1/p.
+- **An exact identity.** Averaged over the non-split torus's p eigenvectors, μ4/μ2² is exactly 2p/(p + 1), to within
+  4 × 10⁻¹⁶ at the 43 primes tested from 5 to 401. State by state it varies (from 1.68 to 2.26 at 31). The route to a
+  proof: averaging a phase-point operator over the torus gives an operator diagonal in that eigenbasis, so the average
+  fourth moment is a trace of fourth powers, a count over the torus's circles. The proof is not written.
+- **The states are close to one another.** At each prime, the spread of S/√p across the states is about 0.14/√p:
+  0.007 at 401. So no oscillator state stands out, and the best of them settles near 86% of the ceiling, between the
+  average random state (79.8%) and the best states found by search at 7 to 31 (89 to 90%).
+- **No coin.** The best oscillator state is even at 42 primes and odd at 35, with no pattern by p modulo 4.
+
+**Yield.** The values are exact; the predictions were registered first and all five held. What it adds is
+measurement: the magic of the oscillator states follows the Sato–Tate law, the same law as round 10's norm state, and
+these states are good but not the best. The mechanism, Kloosterman-type sums, is Gurevich and Hadani's; the reading
+as magic, and the identity above, were not found in the literature checked. The [README](README.md) §13 has the
+summary.

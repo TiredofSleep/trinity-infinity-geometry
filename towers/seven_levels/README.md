@@ -28,6 +28,9 @@
   prime the norm state is flat, and its Wigner values are Kloosterman sums. It wins on three wheels of 7 and loses on
   three of 5, where the winner found still sits on neither face. On five wheels of 3 the searches fell short of a known
   product state (§12).
+- Zooming out showed the two wheels of §9 to be the two tori of SL(2, p), whose states are studied in radar and quantum
+  chaos. Round 11 measured the magic of every one of them up to 401, exactly: all five predictions held, and it follows
+  the Sato–Tate law, like the norm state's (§13).
 
 ---
 
@@ -431,7 +434,7 @@ run before it other than 7 itself, and of the bases 2 to 29 only 7 did. At 31 it
     Sochen, used for radar sequences, and the Hecke eigenfunctions of the quantized cat map in quantum chaos (Kurlberg
     and Rudnick). So round 8's one-line families measured the Wigner negativity of those states at every prime from 5
     to 29. At 5 the most negative state of all, Jain and Prakash's, is one of them: an eigenvector of the whole
-    turning wheel.
+    turning wheel. Round 11 measured all of them up to 401 (§13).
 - **The two-wheels test** (round 8, registered with its script, 2 of 3 held). The script is
   [`two_wheels.py`](two_wheels.py); its output is in [`two_wheels_combined.log`](two_wheels_combined.log).
   - For each prime and each order m > 2 on each wheel, the sign ascent searched every eigenspace of the order-m
@@ -649,7 +652,48 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
   3 reached 3.533331, above the 3.476833 that round 9 logged for the odd side. The operators' contraction confirms it.
   The even side's 98/27 stays ahead, so the coin there stands.
 
-## 13. Our space, and what it cannot hold [FORCED; FENCE]
+## 13. Round 11: the oscillator states [FORCED; measured; NAMED: Gurevich, Hadani and Sochen, Kurlberg and Rudnick, Katz]
+
+> *zoom out, and look for work that shares ground, let's see if what we have is useful* — the author, 12 November 2026
+
+Zooming out found that the two wheels of §9 are the two kinds of maximal torus in SL(2, p), and that their
+eigenvectors, the oscillator states, are studied in radar and in quantum chaos, where their Wigner functions are
+Kloosterman-type sums. Nobody we found had measured their magic. Round 11 measured every one of them, the p − 2
+one-line states of the split torus and the p of the non-split torus, at every prime from 5 to 401: exactly, with no
+search. Five predictions were registered with the script, [`oscillator_states.py`](oscillator_states.py), before the
+run ([`PREREG.md`](PREREG.md)), and all five held.
+
+- **The share of the ceiling is a statistic** [FORCED]. For a pure state on p levels, Σ W² = 1/p, so the root mean
+  square of the Wigner function is exactly p^(−3/2), and S/√p, the sum of sizes over √p, is mean |W| over rms W. It
+  depends only on the shape of the distribution of values: 8/(3π) = 0.849 for Sato–Tate, √(2/π) = 0.798 for a
+  Gaussian (the average random state), 2√2/π = 0.900 for a uniform angle. The ratio μ4/μ2² separates them too: 2, 3
+  and 1.5.
+- **The oscillator states follow Sato–Tate** [measured, exact values]. At the primes from 211 to 401, over 20 056
+  states:
+
+  | | mean S/√p | mean μ4/μ2² |
+  |---|---|---|
+  | the oscillator states | **0.8468** | **2.0032** |
+  | Sato–Tate | 0.8488 | 2 |
+  | Gaussian, the average random state | 0.7979 | 3 |
+  | uniform angle | 0.9003 | 1.5 |
+
+  - So their magic obeys the same law as round 10's norm state, whose values are Kloosterman sums.
+  - The non-split states sit on Sato–Tate's value once finite size is allowed for (0.8483). The split states come up
+    from below (0.8452), held back by the tiny Wigner values on their two axes.
+- **An exact identity** [measured; exact to 4 × 10⁻¹⁶ at 43 primes; the proof is not written]. Averaged over the
+  non-split torus's p eigenvectors, μ4/μ2² is exactly 2p/(p + 1), which tends to Sato–Tate's 2. Averaging a phase-point
+  operator over the torus gives an operator diagonal in that basis, so the average is a count over the torus's circles.
+- **Good, not best** [measured]. The states lie close together: S/√p spreads by about 0.14/√p at each prime. So the
+  best of them settles near 86% of the ceiling, between the average random state (80%) and the best states found by
+  search from 7 to 31 (89 to 90%). None beats a known winner. At 5 one of them is the winner: Jain and Prakash's state.
+- **The two wheels again.** The non-split torus's best beats the split torus's at 65 of the 77 primes, as round 8's
+  turning-wheel advantage suggested.
+- [READING] The author's one wheel and many wheels meet here. The states of one wheel's two tori and the norm state on
+  three wheels both have Kloosterman-type values, and their magic follows the same Sato–Tate law: number theory
+  decides how far a structured state's quasi-probabilities can spread.
+
+## 14. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -666,7 +710,7 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 14. Standing
+## 15. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -717,7 +761,9 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
     of 3, exact: the best found there, and on neither face;
   - round 10: on three wheels of every odd prime the norm-type states are flat, and their Wigner values are
     Kloosterman sums, so their negativity is exact at every p, read as magic (the mechanism is close kin to Gurevich
-    and Hadani's); the larger arrays' values (search results), with the norm state's win on three wheels of 7.
+    and Hadani's); the larger arrays' values (search results), with the norm state's win on three wheels of 7;
+  - round 11: the magic of every oscillator state up to 401, exact: it follows the Sato–Tate law, and averaged over the
+    non-split torus's states the fourth-moment ratio is exactly 2p/(p + 1) (to rounding; the proof is not written).
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
@@ -733,7 +779,9 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
   prime it predicted. Round 9 held all eight, but six only checked pilots; what it adds is exact arithmetic about large
   arrays, small arrays' values by search, and one exact state, read after the run. Round 10 held two of seven. What
   it adds is exact: the norm-type states' flatness and Kloosterman values on three wheels of every prime. Its searches
-  taught that at 243 and 343 levels random climbs stop short of states already known.
+  taught that at 243 and 343 levels random climbs stop short of states already known. Round 11 held five of five, on
+  exact values: the oscillator states' magic follows the Sato–Tate law. Its mechanism is Gurevich and Hadani's; the
+  measurement and the exact identity are new as far as we checked.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -745,13 +793,14 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
     and why not at 13 and 19;
   - many wheels: whether the norm state is the maximum on three wheels of 3 and of 7; what the four-wheel best, 98/27,
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
-    that reaches the top at 243 levels and more, which must start from the states already known.
+    that reaches the top at 243 levels and more, which must start from the states already known;
+  - the oscillator states: a proof of the identity 2p/(p + 1), and whether every moment follows Sato–Tate.
 
 ## Run it
 
 ```
 python verify_seven_levels.py          # about two minutes (numpy + scipy)
-python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 25 minutes
+python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 35 minutes
 python verify_norm_state.py            # NORM_STATE.md's proof, checked: about a minute (numpy)
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
@@ -780,6 +829,9 @@ python larger_arrays.py run            # about three hours on six workers
 python larger_arrays.py combine
 python flat_states.py                  # read after round 10: the flat states, under a minute
 python product_climbs.py               # read after round 10: the climbs from products, about 15 minutes on six workers
+python oscillator_states.py calibrate  # round 11: seconds
+python oscillator_states.py run        # about seven minutes, one process
+python oscillator_states.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -788,8 +840,8 @@ python product_climbs.py               # read after round 10: the climbs from pr
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The lines for rounds 4 to 10, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
-  are seeded, and rewrite their logs.
+- The lines for rounds 4 to 11, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
+  are seeded or exact, and rewrite their logs.
 
 ## Sources
 

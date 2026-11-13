@@ -80,5 +80,12 @@ PASS  (--full) the flat states w^(Tr(a x^3) + b N(x)) on three wheels of 5 and 7
 PASS  (--full) four wheels of 3: product_climbs.py's seeded odd climbs reach 3.533330767884 after 7000 climbs, by the operators' contraction, at a state the half turn sends to minus itself; round 9 logged 3.476833 for the odd side, and the even side's 98/27 stays ahead
 PASS  (--full) three wheels of 5: round 10's kicks of the norm-type state c = 2 at size 0.3, rerun, climb to 4.301387418, at a state that no point's operator has as an eigenstate (largest |<A_u>| 0.254923), so on neither face, and whose overlap with that norm-type state is 0.956327
 
+round 11:
+PASS  the chirp's map generates the non-split torus (order p + 1) at every prime from 5 to 61, and its best eigenvector gives round 8's logged values from 5 to 29
+PASS  every oscillator state from 5 to 61 has sum W = 1 and sum W^2 = 1/p, so S/sqrt p is mean |W| over rms W; and its Wigner function takes at most p + 2 values, constant on the torus's orbits
+PASS  averaged over the non-split torus's eigenvectors, mu4/mu2^2 is 2p/(p + 1) at every prime from 5 to 61, to within 1e-12
+PASS  the logged values give the recorded scores: mean S/sqrt p 0.846813 against 8/(3 pi) = 0.848826, mean mu4/mu2^2 2.0032, 65 wins of 77, best share from 37 on 0.8824: O1 held, O2 held, O3 held, O4 held
+PASS  (--full) the primes from 211 to 401, recomputed: 20056 states, mean S/sqrt p 0.846813, mean mu4/mu2^2 2.0032, as the log records
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

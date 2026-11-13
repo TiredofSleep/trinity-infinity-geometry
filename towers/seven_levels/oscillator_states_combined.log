@@ -1,0 +1,10 @@
+  the primes from 211 to 401: 20056 one-line states; mean S/sqrt p 0.846813 (Sato-Tate 0.848826, Gaussian 0.797885, uniform angle 0.900316); mean mu4/mu2^2 2.0032 (Sato-Tate 2, Gaussian 3, uniform angle 1.5)
+  the non-split torus's best beats the split torus's at 65 of 77 primes; it loses at [7, 73, 79, 107, 139, 157, 193, 199, 223, 229, 271, 283]
+  the best one-line state's share of the ceiling, by prime: 5 0.9007, 7 0.8850, 11 0.8829, 13 0.8484, 17 0.8821, 19 0.8684, 23 0.8576, 29 0.8673, 31 0.8629, 37 0.8601, 41 0.8824, 43 0.8638, 47 0.8631, 53 0.8553, 59 0.8710, 61 0.8527, 67 0.8666, 71 0.8620, 73 0.8637, 79 0.8752, 83 0.8667, 89 0.8622, 97 0.8617, 101 0.8629, 103 0.8648, 107 0.8597, 109 0.8623, 113 0.8640, 127 0.8589, 131 0.8599, 137 0.8630, 139 0.8583, 149 0.8665, 151 0.8572, 157 0.8649, 163 0.8631, 167 0.8592, 173 0.8621, 179 0.8668, 181 0.8629, 191 0.8600, 193 0.8637, 197 0.8587, 199 0.8603, 211 0.8576, 223 0.8587, 227 0.8583, 229 0.8632, 233 0.8621, 239 0.8584, 241 0.8681, 251 0.8603, 257 0.8614, 263 0.8612, 269 0.8611, 271 0.8611, 277 0.8616, 281 0.8645, 283 0.8575, 293 0.8591, 307 0.8617, 311 0.8666, 313 0.8584, 317 0.8601, 331 0.8578, 337 0.8607, 347 0.8616, 349 0.8591, 353 0.8572, 359 0.8614, 367 0.8606, 373 0.8569, 379 0.8582, 383 0.8561, 389 0.8602, 397 0.8587, 401 0.8582
+  every chirp checks out and every state's Wigner function takes at most p + 2 values: True
+O0 HELD: calibration: round 8's turning-wheel bests and the Legendre states again; the torus checks hold at every prime
+O1 HELD: the primes from 211 to 401: the mean S/sqrt p of the one-line states is within 0.01 of 8/(3 pi)
+O2 HELD: the primes from 211 to 401: the mean mu4/mu2^2 is within 0.1 of 2
+O3 HELD: the non-split torus's best beats the split torus's at more than three quarters of the primes from 5 to 401
+O4 HELD: from 37 to 401 no one-line oscillator state reaches 90% of the ceiling
+  (check) no one-line oscillator state beats the best state known at 7 to 31: True
