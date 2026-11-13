@@ -1,0 +1,10 @@
+TORUS_MOMENTS.md: averaged over the non-split eigenbasis, mu4/mu2^2 = 2p/(p + 1)
+PASS  step 1: the chirp moves phase-point operators by its symplectic map, U A_u U^dagger = A_(Su), at 9 primes from 5 to 31
+PASS  step 2: averaging A_u over the torus gives an operator diagonal in the eigenbasis, with entries p W_j(u)
+PASS  step 3: Tr(A_1 A_2 A_3 A_4) = p w^(-2<u1 - u2, u3 - u2>) when u1 - u2 + u3 - u4 = 0, and 0 otherwise
+PASS  step 6: Tr(Abar_C^4) = (p/m^4)(2m^2 - 3m + Phi(C)) on the circles tested
+PASS  step 4: at the 24 primes from 5 to 101 the torus's orbits off the origin are p - 1 circles of p + 1 points, and on each the solutions of v1 + v3 = v2 + v4 number exactly 3m^2 - 3m
+PASS  step 5: Phi(C) adds up over the p - 1 circles to (p - 1)(p + 1), at every prime from 5 to 101
+PASS  step 7: the average over the eigenbasis of sum_u W^4 is 1/p^4 + 2(p - 1)/(p^3 (p + 1)^2), and the average fourth-moment ratio is 2p/(p + 1), at every prime from 5 to 101
+
+ALL PASS

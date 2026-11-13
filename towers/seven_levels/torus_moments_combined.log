@@ -1,0 +1,9 @@
+  the primes from 211 to 401: 20056 one-line states; mean standardized moments m3 -0.0566, m4 2.0097, m6 5.0655, m8 14.3502 (semicircle 0, 2, 5, 14; Gaussian 0, 3, 15, 105; arcsine 0, 1.5, 2.5, 4.375; two independent semicircles 0, 2.5, 8.75, 36.75)
+  the non-split basis averages, m6 from 5.0077 to 5.0239 and m8 from 14.0696 to 14.2027 at the primes from 211 to 401
+  the pooled standardized values (2062782912 of them): Kolmogorov distance 0.0072 to the semicircle, 0.0426 to the Gaussian, 0.0943 to the arcsine law
+M0 HELD: calibration: round 11's mean raw mu4/mu2^2 at every prime and torus, and the identity 2p/(p + 1) at every prime
+M1 HELD: the mean standardized third moment at 211 to 401 is within 0.1 of 0
+M2 HELD: the mean standardized sixth moment at 211 to 401 is within 0.3 of 5
+M3 HELD: the mean standardized eighth moment at 211 to 401 is within 1.5 of 14
+M4 HELD: at every prime from 211 to 401 the non-split basis averages of m6 and m8 are within 0.3 of 5 and 1.5 of 14
+M5 HELD: the pooled standardized values are within Kolmogorov distance 0.015 of the semicircle law

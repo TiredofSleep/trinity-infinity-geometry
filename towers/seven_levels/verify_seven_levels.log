@@ -87,5 +87,10 @@ PASS  averaged over the non-split torus's eigenvectors, mu4/mu2^2 is 2p/(p + 1) 
 PASS  the logged values give the recorded scores: mean S/sqrt p 0.846813 against 8/(3 pi) = 0.848826, mean mu4/mu2^2 2.0032, 65 wins of 77, best share from 37 on 0.8824: O1 held, O2 held, O3 held, O4 held
 PASS  (--full) the primes from 211 to 401, recomputed: 20056 states, mean S/sqrt p 0.846813, mean mu4/mu2^2 2.0032, as the log records
 
+round 12:
+PASS  TORUS_MOMENTS.md's counting steps at every prime from 5 to 61: the torus's orbits are p - 1 circles of p + 1 points, v1 + v3 = v2 + v4 has exactly 3m^2 - 3m solutions on each, and the circle sums Phi add up to (p - 1)(p + 1); with the trace steps this proves the average fourth-moment ratio 2p/(p + 1)
+PASS  the logged values give round 12's recorded scores (torus_moments_combined.log): M1 held, M2 held, M3 held, M4 held, M5 held
+PASS  (--full) the non-split basis averages of the sixth and eighth moments, recomputed at every prime from 211 to 401, are the logged ones
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

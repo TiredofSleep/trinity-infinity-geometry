@@ -30,7 +30,8 @@
   product state (§12).
 - Zooming out showed the two wheels of §9 to be the two tori of SL(2, p), whose states are studied in radar and quantum
   chaos. Round 11 measured the magic of every one of them up to 401, exactly: all five predictions held, and it follows
-  the Sato–Tate law, like the norm state's (§13).
+  the Sato–Tate law, like the norm state's. Round 12 found the whole distribution of their Wigner values to be the
+  semicircle, six of six held, and the fourth moment is proved exactly (§13).
 
 ---
 
@@ -681,9 +682,15 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   - So their magic obeys the same law as round 10's norm state, whose values are Kloosterman sums.
   - The non-split states sit on Sato–Tate's value once finite size is allowed for (0.8483). The split states come up
     from below (0.8452), held back by the tiny Wigner values on their two axes.
-- **An exact identity** [measured; exact to 4 × 10⁻¹⁶ at 43 primes; the proof is not written]. Averaged over the
-  non-split torus's p eigenvectors, μ4/μ2² is exactly 2p/(p + 1), which tends to Sato–Tate's 2. Averaging a phase-point
-  operator over the torus gives an operator diagonal in that basis, so the average is a count over the torus's circles.
+- **An exact identity** [FORCED; proved in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)]. Averaged over the non-split
+  torus's p eigenvectors, μ4/μ2² is exactly 2p/(p + 1), which tends to Sato–Tate's 2. Averaging a phase-point operator
+  over the torus gives an operator diagonal in that basis, so the average is a trace: a count of parallelograms on the
+  torus's circles, weighted by their areas, which a Legendre-symbol sum closes.
+- **The whole distribution** [measured; round 12, registered first, six of six held]. Standardized, the values follow
+  the semicircle through the eighth moment: at the primes from 211 to 401 the third, fourth, sixth and eighth moments
+  average −0.057, 2.010, 5.066 and 14.35, against the semicircle's 0, 2, 5 and 14 (Gaussian: 0, 3, 15, 105). All 2.06
+  billion values lie at Kolmogorov distance 0.0072 from the semicircle law, against 0.0426 from the Gaussian. The skew
+  shrinks like −1/√p. See [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §5 and [`torus_moments.py`](torus_moments.py).
 - **Good, not best** [measured]. The states lie close together: S/√p spreads by about 0.14/√p at each prime. So the
   best of them settles near 86% of the ceiling, between the average random state (80%) and the best states found by
   search from 7 to 31 (89 to 90%). None beats a known winner. At 5 one of them is the winner: Jain and Prakash's state.
@@ -762,8 +769,8 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   - round 10: on three wheels of every odd prime the norm-type states are flat, and their Wigner values are
     Kloosterman sums, so their negativity is exact at every p, read as magic (the mechanism is close kin to Gurevich
     and Hadani's); the larger arrays' values (search results), with the norm state's win on three wheels of 7;
-  - round 11: the magic of every oscillator state up to 401, exact: it follows the Sato–Tate law, and averaged over the
-    non-split torus's states the fourth-moment ratio is exactly 2p/(p + 1) (to rounding; the proof is not written).
+  - round 11: the magic of every oscillator state up to 401, exact: it follows the Sato–Tate law; and the theorem that,
+    averaged over the non-split torus's states, the fourth-moment ratio is exactly 2p/(p + 1) ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)).
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
@@ -781,7 +788,8 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   it adds is exact: the norm-type states' flatness and Kloosterman values on three wheels of every prime. Its searches
   taught that at 243 and 343 levels random climbs stop short of states already known. Round 11 held five of five, on
   exact values: the oscillator states' magic follows the Sato–Tate law. Its mechanism is Gurevich and Hadani's; the
-  measurement and the exact identity are new as far as we checked.
+  measurement and the exact identity are new as far as we checked. Round 12 held six of six: the full distribution is
+  the semicircle through the eighth moment, measured; the fourth moment is proved.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -794,13 +802,14 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   - many wheels: whether the norm state is the maximum on three wheels of 3 and of 7; what the four-wheel best, 98/27,
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
-  - the oscillator states: a proof of the identity 2p/(p + 1), and whether every moment follows Sato–Tate.
+  - the oscillator states: proofs for the moments above the fourth, which the same trace reduces to counts of bent
+    polygons on the torus's circles.
 
 ## Run it
 
 ```
 python verify_seven_levels.py          # about two minutes (numpy + scipy)
-python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 35 minutes
+python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 45 minutes
 python verify_norm_state.py            # NORM_STATE.md's proof, checked: about a minute (numpy)
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
@@ -832,6 +841,10 @@ python product_climbs.py               # read after round 10: the climbs from pr
 python oscillator_states.py calibrate  # round 11: seconds
 python oscillator_states.py run        # about seven minutes, one process
 python oscillator_states.py combine
+python verify_torus_moments.py         # TORUS_MOMENTS.md's proof, step by step: seconds
+python torus_moments.py calibrate      # round 12: seconds
+python torus_moments.py run            # about eleven minutes, one process
+python torus_moments.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -840,7 +853,7 @@ python oscillator_states.py combine
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The lines for rounds 4 to 11, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
+- The lines for rounds 4 to 12, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
   are seeded or exact, and rewrite their logs.
 
 ## Sources

@@ -8,14 +8,14 @@ operators, the forced numbers for large arrays, and the norm state found on thre
 For round 10 it checks larger_arrays.py's Wigner function against the operators, the norm-type states' flatness and
 Kloosterman values on three wheels of 3, 5 and 7, the norm state on five wheels of 3, and the scores (section 12).
 For round 11 it checks the torus states (the chirp, the orbit count, the purity identity, the averaged fourth-moment
-identity) and the scores (section 13).
+identity) and the scores (section 13); for round 12, the counting steps of TORUS_MOMENTS.md's proof and the scores.
 
 numpy + scipy + round3.py + larger_arrays.py.  ASCII output.
 Run:  python verify_seven_levels.py           (about two minutes)
       python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
                                                sign choices, the tetrahedral states at 3, 7, 11 and 13, the norm
                                                state's exact count of symmetries, the fields' character states, and
-                                               rounds 10 and 11's reruns; about 35 minutes)
+                                               rounds 10 to 12's reruns; about 45 minutes)
 """
 import ctypes
 import itertools
@@ -1429,6 +1429,55 @@ if FULL:
     forced(f"(--full) the primes from 211 to 401, recomputed: {tot_} states, mean S/sqrt p {s_sum_ / tot_:.6f}, mean "
            f"mu4/mu2^2 {r_sum_ / tot_:.4f}, as the log records",
            tot_ == 20056 and abs(s_sum_ / tot_ - LOG11["mean_s"]) < 1e-6 and abs(r_sum_ / tot_ - LOG11["mean_r4"]) < 1e-4)
+
+# ------------------------------------------------------------------ round 12 (torus_moments.py; TORUS_MOMENTS.md's proof)
+print()
+print("round 12:")
+import os
+import verify_torus_moments as vtm
+import torus_moments as tmo
+
+ok_count, ok_phi = True, True
+for p_ in [q_ for q_ in osc.PRIMES if q_ <= 61]:
+    _, S12 = vtm.chirp(p_)
+    orbs12 = vtm.orbits(S12, p_)
+    m12 = p_ + 1
+    ok_count &= len(orbs12) == p_ - 1 and all(len(o) == m12 for o in orbs12)
+    phi12 = 0
+    for orb in orbs12:
+        P12 = np.array(orb)
+        sums12 = ((P12[:, None, :] + P12[None, :, :]) % p_).reshape(-1, 2)
+        cnt12 = np.bincount(sums12[:, 0] * p_ + sums12[:, 1], minlength=p_ * p_).astype(np.int64)
+        ok_count &= int((cnt12 ** 2).sum()) == 3 * m12 * m12 - 3 * m12
+        sy12 = (P12[:, None, 0] * P12[None, :, 1] - P12[:, None, 1] * P12[None, :, 0]) % p_
+        phi12 += np.exp(2j * np.pi * 4 * sy12 / p_).sum()
+    ok_phi &= abs(phi12 - (p_ - 1) * (p_ + 1)) < 1e-6
+forced("TORUS_MOMENTS.md's counting steps at every prime from 5 to 61: the torus's orbits are p - 1 circles of p + 1 "
+       "points, v1 + v3 = v2 + v4 has exactly 3m^2 - 3m solutions on each, and the circle sums Phi add up to "
+       "(p - 1)(p + 1); with the trace steps this proves the average fourth-moment ratio 2p/(p + 1)", ok_count and ok_phi)
+LOG12 = dict(m3=-0.0566, m6=5.0655, m8=14.3502, ns6=(5.0077, 5.0239), ns8=(14.0696, 14.2027), ks=0.0072)
+v12 = {"M1": abs(LOG12["m3"]) <= 0.1, "M2": abs(LOG12["m6"] - 5) <= 0.3, "M3": abs(LOG12["m8"] - 14) <= 1.5,
+       "M4": max(abs(x - 5) for x in LOG12["ns6"]) <= 0.3 and max(abs(x - 14) for x in LOG12["ns8"]) <= 1.5,
+       "M5": LOG12["ks"] < 0.015}
+forced("the logged values give round 12's recorded scores (torus_moments_combined.log): "
+       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in v12.items()), all(v12.values()))
+if FULL:
+    # M4's non-split basis averages again, from the states themselves, at the primes from 211 to 401
+    logged12 = {}
+    for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "torus_moments_run.log"), encoding="utf-8"):
+        f12 = line.split()
+        if line.startswith("MOM ") and f12[1].isdigit() and f12[2] == "nonsplit":
+            logged12[int(f12[1])] = (float(f12[6]), float(f12[7]))
+    ok12 = True
+    for p_ in [q_ for q_ in osc.PRIMES if q_ >= 211]:
+        V12 = osc.nonsplit_states(p_)[0]
+        m6s, m8s = [], []
+        for i in range(0, len(V12), 16):
+            M12, _, _ = tmo.moments(osc.wigner(V12[i:i + 16], p_))
+            m6s.append(M12[6]), m8s.append(M12[8])
+        ok12 &= abs(np.concatenate(m6s).mean() - logged12[p_][0]) < 1e-6 and abs(np.concatenate(m8s).mean() - logged12[p_][1]) < 1e-5
+    forced("(--full) the non-split basis averages of the sixth and eighth moments, recomputed at every prime from 211 to "
+           "401, are the logged ones", ok12)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

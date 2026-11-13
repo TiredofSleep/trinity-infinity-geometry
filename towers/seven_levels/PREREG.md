@@ -1129,3 +1129,33 @@ eighth moments are within 0.3 of 5 and 1.5 of 14. *Kill:* one prime outside.
 
 **Expected standing.** The values are exact up to rounding. Holding all of these would say the whole distribution,
 not just two statistics, is Sato–Tate's at these sizes; it would still not be a proof.
+
+---
+
+## Round 12 scores (added after the run, 2026-11-13)
+
+Run by [`torus_moments.py`](torus_moments.py), committed with this registration at a959a20, before the run; the output
+is kept in [`torus_moments_run.log`](torus_moments_run.log) and [`torus_moments_combined.log`](torus_moments_combined.log).
+It took 10.9 minutes, and its values are exact up to rounding. **All six held.**
+
+| | outcome | evidence |
+|---|---|---|
+| M0, calibration | held | round 11's mean raw fourth-moment ratio at every prime and torus, and 2p/(p + 1) at every prime |
+| M1 | held | the mean standardized third moment at 211 to 401 is −0.0566 |
+| M2 | held | the mean sixth moment is 5.0655, against the semicircle's 5 (Gaussian 15, arcsine 2.5, two semicircles 8.75) |
+| M3 | held | the mean eighth moment is 14.350, against 14 (Gaussian 105, arcsine 4.375, two semicircles 36.75) |
+| M4 | held | the non-split basis averages run from 5.0077 to 5.0239 (sixth) and from 14.070 to 14.203 (eighth) at every prime from 211 to 401 |
+| M5 | held | the 2 062 782 912 pooled standardized values lie at Kolmogorov distance 0.0072 from the semicircle, 0.0426 from the Gaussian and 0.0943 from the arcsine law |
+
+**Read after the run.**
+- The skew is about −1/√p: for the non-split states between −1.010/√p and −1.003/√p at the primes from 101 to 401, and
+  for the split ones between −0.99/√p and −0.95/√p. It vanishes as p grows.
+- After centering, the non-split states' average fourth moment lies within about 3/p² of 2 (between 2.6/p² and 3.2/p²
+  from 31 to 401); no exact form was found.
+- The split states' moments come down to the semicircle's from above, more slowly than the non-split ones'.
+- The proof of round 11's identity is now written, in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), with
+  [`verify_torus_moments.py`](verify_torus_moments.py) checking each of its steps.
+
+**Yield.** The whole distribution of the oscillator states' Wigner values is the semicircle at these sizes, through the
+eighth moment and in Kolmogorov distance: the Sato–Tate law in full. That is measurement. The proof covers the fourth
+moment only.
