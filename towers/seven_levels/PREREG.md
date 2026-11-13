@@ -965,3 +965,73 @@ in [`flat_states.log`](flat_states.log) and [`product_climbs.log`](product_climb
   product Weyl–Heisenberg mutually unbiased bases), and so is Alltop's construction. The norm construction and its
   Kloosterman values were not found. The dead predictions are kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md), and
   the [README](README.md) §12 has what the run found.
+
+---
+
+## Round 11: the oscillator states (registered 2026-11-13, before any run)
+
+> *zoom out, and look for work that shares ground, let's see if what we have is useful* — the author, 12 November 2026
+
+Zooming out found that round 8's two wheels are the two kinds of maximal torus in SL(2, p): the multiplying wheel is
+the split torus and the turning wheel the non-split one. Their eigenvectors are the oscillator system of Gurevich,
+Hadani and Sochen, used for radar sequences, and the Hecke eigenfunctions of the quantized cat map. In that
+literature the Wigner functions of such states are Kloosterman-type sums with Sato–Tate statistics, but we found no
+measurement of their magic. Round 8 measured the best state of each family up to 29. This round measures every one
+of them, at every prime up to 401.
+
+**Made exact, before the run.**
+- **The states.** At each prime p:
+  - the split torus's one-line states are the p − 2 character states Σ_x χ(x) |x⟩ / √(p − 1), over the nonzero x, for
+    the nontrivial characters χ of F_p*. The trivial character's eigenspace also holds |0⟩, has two dimensions, and is
+    left out;
+  - the non-split torus's one-line states are the p eigenvectors of the chirp U = Σ ω^((t/4)(x² + y²) − xy) |x⟩⟨y| / √p,
+    a Clifford unitary whose symplectic map, [[t/2, 1], [t²/4 − 1, t/2]], has order p + 1 for a suitable t. The script
+    checks U's action on X and Z, and the order.
+  - Checked before this registration ([`oscillator_states_calibrate.log`](oscillator_states_calibrate.log)): the best
+    non-split state equals round 8's logged value at every prime from 5 to 29, and the split state of the character of
+    order 2 is the Legendre state, with its known value at 7, 17, 19, 23, 29 and 31.
+- **Orbits.** A torus fixes each of its eigenvectors up to a phase, so their Wigner functions are constant on the
+  torus's orbits in phase space: p − 1 circles of p + 1 points for the non-split torus, and p − 1 hyperbolas and two
+  axes of p − 1 points for the split one. So each state's Wigner function takes at most p + 2 values; the script checks
+  it.
+- **An identity that turns the share into a statistic** [FORCED]. For a pure state on p levels, Σ_u W(u)² = 1/p, so the
+  root mean square of W over the p² points is exactly p^(−3/2). The sum of sizes S is p² times the mean |W|, so
+  S/√p = mean |W| / rms W. That depends only on the shape of the distribution of values.
+  - If the values are Sato–Tate distributed (proportional to cos θ, with density (2/π) sin²θ), S/√p tends to
+    8/(3π) = 0.8488. If they are Gaussian, as for an average random state, √(2/π) = 0.7979. If the angle θ is uniform,
+    2√2/π = 0.9003.
+  - The ratio μ4/μ2² of the fourth moment to the squared second separates the same three: 2, 3 and 1.5.
+  - Round 10's norm states have S/√p tending to 8/(3π), because their values are Kloosterman sums.
+- **The timing printed no values.** The whole run, 77 primes, takes about six minutes.
+- **Not computed before this registration:** any oscillator state's value beyond round 8's logged family bests and the
+  Legendre states, and any S/√p or moment ratio.
+
+**Predictions.** O0 is a calibration, already done. O1 to O4 are fresh.
+
+**O0. (Calibration, done.)** The code reproduces round 8's turning-wheel bests from 5 to 29 and the Legendre states
+from 7 to 31; and in the run, at every prime, the chirp's checks hold and every state's Wigner function takes at most
+p + 2 values. *Kill:* a mismatch or a failed check.
+
+**O1. (Fresh; the Sato–Tate reading.)** At the primes from 211 to 401, the mean S/√p over all the one-line oscillator
+states is within 0.01 of 8/(3π) = 0.8488. It rests on Gurevich and Hadani's reduction of these Wigner functions to
+Kloosterman-type sums, on Katz's Sato–Tate law for such sums, and on round 10, where it is exact. *Kill:* a mean
+outside 0.8388 to 0.8588.
+
+**O2. (Fresh.)** At the same primes, the mean of μ4/μ2² over the Wigner values off the origin is within 0.1 of 2.
+*Kill:* a mean outside 1.9 to 2.1.
+
+**O3. (Fresh; Claude's reading, on thin ground.)** The non-split torus's best one-line state beats the split torus's at
+more than three quarters of the primes from 5 to 401. It rests on round 8, where the turning wheel won 12 of 14 pairs
+of families of equal size. *Kill:* three quarters or fewer.
+
+**O4. (Fresh.)** From 37 to 401, no one-line oscillator state reaches 90% of the ceiling. Round 8's best ones reach
+85 to 88% from 7 to 29, and every best state found by search from 7 to 31 sits at 89 to 90%. *Kill:* one at 90% or
+more.
+
+A check, not a prediction: no one-line oscillator state beats the best state known at its prime, from 7 to 31.
+
+**The test.** [`oscillator_states.py`](oscillator_states.py) is committed with this registration. Every state is
+computed exactly; there is no search. One process at below-normal priority, about six minutes.
+
+**Expected standing.** The values are exact up to rounding. O1 and O2 test the shape of the distribution of values, so
+a held O1 supports the Sato–Tate reading without proving it, and a dead one says these states follow another law.

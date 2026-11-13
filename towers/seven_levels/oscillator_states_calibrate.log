@@ -1,0 +1,16 @@
+the code against values already logged: round 8's turning wheel of order p + 1, and the Legendre states
+  5: the chirp is unitary True, its map has order 6 (p + 1 = 6), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 0.556677223: True
+  7: the chirp is unitary True, its map has order 8 (p + 1 = 8), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 0.721570212: True
+  11: the chirp is unitary True, its map has order 12 (p + 1 = 12), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.022656198: True
+  13: the chirp is unitary True, its map has order 14 (p + 1 = 14), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.105228575: True
+  17: the chirp is unitary True, its map has order 18 (p + 1 = 18), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.377452883: True
+  19: the chirp is unitary True, its map has order 20 (p + 1 = 20), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.458481547: True
+  23: the chirp is unitary True, its map has order 24 (p + 1 = 24), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.627721703: True
+  29: the chirp is unitary True, its map has order 30 (p + 1 = 30), its eigenvalues are distinct True, its eigenvectors orthonormal True; the best one-line state equals round 8's 1.901698621: True
+  7: the split torus's state of the character of order 2 is the Legendre state, 0.728262097006: True
+  17: the split torus's state of the character of order 2 is the Legendre state, 1.250924335054: True
+  19: the split torus's state of the character of order 2 is the Legendre state, 1.356950270213: True
+  23: the split torus's state of the character of order 2 is the Legendre state, 1.341641910165: True
+  29: the split torus's state of the character of order 2 is the Legendre state, 1.878678879531: True
+  31: the split torus's state of the character of order 2 is the Legendre state, 1.736567405507: True
+CALIBRATE True
