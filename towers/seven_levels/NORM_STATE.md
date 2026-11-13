@@ -158,9 +158,18 @@ The bookkeeping closes: q + (p − 1)(p² + p + 1)q = q² points, and the values
   character sums; the discrete Wigner function (Wootters 1987; Gross 2006); and flat states for every pⁿ as fiducials
   of product Weyl–Heisenberg mutually unbiased bases (Alltop 1980; Klappenecker and Rötteler 2004; Damski, Bistroń,
   Ponterio, Czartowski and Życzkowski 2026).
-- **This repository's own, new as far as we checked:** Theorems 1 and 2 for the norm-form state, and the corollary.
-  Web searches on 2026-11-10 found the flat states of Damski et al., but not this construction or these values. If a
-  specialist knows them, they are a known exercise, and the credit moves.
+- **Close kin, found on 2026-11-12** [NAMED]. The mechanism is not new. States fixed by a torus in the symplectic group
+  have Wigner functions given by Gauss and Kloosterman-type sums: Gurevich and Hadani worked this out for the Hecke
+  eigenstates of the quantized cat map, with the bound 2/√p, and for tori in higher dimensions; Kurlberg and Rudnick
+  found Sato–Tate statistics there. The norm state is such a state: multiplication by the p² + p + 1 elements of norm 1
+  fixes it, and in the language of the field with q elements it is built from the multiplicative-character states,
+  the eigenvectors of a split torus. And because a group of Clifford operations fixes it and no other state, it is a
+  stationary point of every magic measure (Erew and Goldstein 2025); round 10's kicks found it a local maximum.
+- **This repository's own, new as far as we checked:** Theorems 1 and 2 for the norm-form state, read as magic: the
+  negativity is an L1 norm of Kloosterman sums, and its limit 8/(3π) is the Sato–Tate mean of |2 cos θ|. The magic of
+  states fixed by Clifford subgroups has been computed for single qudits of 2, 3 and 5 levels (Erew and Goldstein;
+  Jain and Prakash), without this structure. Searches on 2026-11-10 and 12 found no use of the Gauss and Kloosterman
+  machinery to compute magic. If a specialist knows one, the credit moves.
 - **Not proved:** that ψ_c is the most negative state on three wheels of 3 or of 7. That is a search result
   ([README](README.md) §11 and §12). On three wheels of 5 it is not the most negative state.
 - **Checked** by [`verify_norm_state.py`](verify_norm_state.py), whose output is in
@@ -194,3 +203,10 @@ python verify_norm_state.py     # about a minute (numpy)
   Lecture Notes in Computer Science **2948** (2004).
 - B. S. Damski, R. Bistroń, D. Ponterio, J. Czartowski and K. Życzkowski, "Product Weyl–Heisenberg covariant mutually
   unbiased bases and extremal non-stabilizerness" (2026), [arXiv:2603.15550](https://arxiv.org/abs/2603.15550).
+- S. Gurevich and R. Hadani, "Proof of the Kurlberg–Rudnick rate conjecture",
+  [arXiv:math-ph/0404074](https://arxiv.org/abs/math-ph/0404074); "Bounds on certain higher-dimensional exponential
+  sums via the self-reducibility of the Weil representation", [arXiv:math/0612765](https://arxiv.org/abs/math/0612765).
+- P. Kurlberg and Z. Rudnick, "On the distribution of matrix elements for the quantum cat map", *Ann. of Math.*
+  **161** (2005).
+- M. Erew and M. Goldstein, "Extremizing measures of magic on pure states by Clifford-stabilizer states" (2025),
+  [arXiv:2512.19657](https://arxiv.org/abs/2512.19657).

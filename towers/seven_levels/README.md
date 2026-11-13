@@ -426,6 +426,12 @@ run before it other than 7 itself, and of the bases 2 to 29 only 7 did. At 31 it
   multiplying wheel, k → ak, with p − 1 steps, and the turning wheel, the rotations of phase space, with p + 1 steps.
   Every winner found has a symmetry from the turning wheel, or only the half turn. The Legendre state, which the whole
   multiplying wheel fixes, has not won since 3.
+  - [NAMED] The two wheels are the two kinds of maximal torus in SL(2, p): the multiplying wheel is the split torus and
+    the turning wheel the non-split one. Their eigenvectors are the "oscillator system" of Gurevich, Hadani and
+    Sochen, used for radar sequences, and the Hecke eigenfunctions of the quantized cat map in quantum chaos (Kurlberg
+    and Rudnick). So round 8's one-line families measured the Wigner negativity of those states at every prime from 5
+    to 29. At 5 the most negative state of all, Jain and Prakash's, is one of them: an eigenvector of the whole
+    turning wheel.
 - **The two-wheels test** (round 8, registered with its script, 2 of 3 held). The script is
   [`two_wheels.py`](two_wheels.py); its output is in [`two_wheels_combined.log`](two_wheels_combined.log).
   - For each prime and each order m > 2 on each wheel, the sign ascent searched every eigenspace of the order-m
@@ -685,7 +691,11 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
     Katz's theorem that the Kloosterman angles follow the Sato–Tate law;
   - flat states for every p^n as fiducials of product Weyl–Heisenberg mutually unbiased bases, from Alltop's cubic
     phases (Alltop 1980; Klappenecker and Rötteler 2004) and a Galois ring at 3 (Damski, Bistroń, Ponterio,
-    Czartowski and Życzkowski 2026).
+    Czartowski and Życzkowski 2026);
+  - the two wheels as the split and non-split tori, whose eigenvectors are the oscillator system (Gurevich, Hadani and
+    Sochen 2008) and the Hecke eigenfunctions of the cat map; their Wigner functions as Kloosterman-type sums, bounded
+    by 2/√p (Gurevich and Hadani), with Sato–Tate statistics (Kurlberg and Rudnick 2005). Round 10's Kloosterman
+    values come from the same mechanism; the reading of them as magic was not found.
 - **This repository's own:**
   - the dictionary, and the reading that puts the sevenths' two faces, the octahedron with its centre, the cube
     and Klein's space into one picture;
@@ -706,8 +716,8 @@ What was read after the run is in [`flat_states.log`](flat_states.log) and [`pro
   - round 9: the coin in arrays, the small arrays' best values (search results), and the norm state on three wheels
     of 3, exact: the best found there, and on neither face;
   - round 10: on three wheels of every odd prime the norm-type states are flat, and their Wigner values are
-    Kloosterman sums, so their negativity is exact at every p; the larger arrays' values (search results), with the
-    norm state's win on three wheels of 7.
+    Kloosterman sums, so their negativity is exact at every p, read as magic (the mechanism is close kin to Gurevich
+    and Hadani's); the larger arrays' values (search results), with the norm state's win on three wheels of 7.
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
@@ -823,3 +833,12 @@ python product_climbs.py               # read after round 10: the climbs from pr
   Lecture Notes in Computer Science **2948** (2004).
 - B. S. Damski, R. Bistroń, D. Ponterio, J. Czartowski and K. Życzkowski, "Product Weyl–Heisenberg covariant mutually
   unbiased bases and extremal non-stabilizerness" (2026), [arXiv:2603.15550](https://arxiv.org/abs/2603.15550).
+- S. Gurevich, R. Hadani and N. Sochen, "The finite harmonic oscillator and its associated sequences", *Proc. Natl.
+  Acad. Sci.* **105** (2008), [PMC2481336](https://pmc.ncbi.nlm.nih.gov/articles/PMC2481336); and "... and its
+  applications to sequences, communication and radar", [arXiv:0808.1495](https://arxiv.org/abs/0808.1495).
+- S. Gurevich and R. Hadani, "Proof of the Kurlberg–Rudnick rate conjecture",
+  [arXiv:math-ph/0404074](https://arxiv.org/abs/math-ph/0404074); and "Bounds on certain higher-dimensional
+  exponential sums via the self-reducibility of the Weil representation",
+  [arXiv:math/0612765](https://arxiv.org/abs/math/0612765).
+- P. Kurlberg and Z. Rudnick, "On the distribution of matrix elements for the quantum cat map", *Ann. of Math.*
+  **161** (2005).
