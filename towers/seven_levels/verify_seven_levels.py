@@ -1613,6 +1613,12 @@ for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "exact
     f16 = line.split()
     if len(f16) > 1 and f16[0][:1] == "E" and f16[0][1:].isdigit():
         held16[f16[0]] = f16[1] == "HELD:"
+import subprocess as _sp16
+_r16 = _sp16.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "verify_sixth_moment.py")],
+                 capture_output=True, text=True)
+forced("TORUS_MOMENTS.md section 8's proof of the sixth moment, step by step (verify_sixth_moment.py: the split into "
+       "two triangles, the inscribed-triangle areas, the three kinds of w, the Legendre lemmas, the circle's Fourier "
+       "transform, Kloosterman's sixth moment)", _r16.returncode == 0)
 forced("round 16's exact formulas for I6 (the weight-4, level-6 newform) and J4 (the Gaussian integers), recomputed "
        "from the states at 31, 37, 41 and 43; and the test log scores E0 to E5 held",
        ok16 and all(held16.get(f"E{i}") for i in range(6)))

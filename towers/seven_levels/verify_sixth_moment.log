@@ -1,0 +1,10 @@
+TORUS_MOMENTS.md section 8, Theorem 4: the sixth moment, step by step
+PASS  step 1: on a closed hexagon the six operators' trace phase is 2A(v1, v2, v3) + 2A(v4, v5, v6), the fan's value, at p = 5, 7, 11, 13
+PASS  step 2: in the field model, reversing a triangle negates its area; the area is (N(w) - r) Im(x/s) when s = y + w != 0 and 2<w, x> when s = 0; and each (w, y) carries 1 - eta(1 - 4r/N(s)) triangles, at every prime from 5 to 23 on two circles
+PASS  step 3: the three parts are (1 - chi) m^2, m(4p^2 + 6p - 2 + (-1|p)) and m(2p^2 - 3p + 3 - (-1|p) - (1 - chi)), and Z6 = m(6p^2 + (4 - chi)p + 1), at every prime from 5 to 23 on two circles
+PASS  step 4: Q = 2m - 3, sum B^2 = 2p + 1 + (-1|p), L = 2p - 1, H = -(p - 1)/2 + [chi = -1] and K0 = (p - 2 + (-1|p))/2 - [chi = -1], at every prime from 5 to 199
+PASS  step 5: a circle's Fourier transform is a Kloosterman sum, sum over N(v) = r of psi(Tr(alpha v)) = -K(r N(alpha)), at every prime from 5 to 31; and N6 = ((p + 1)^6 + (p + 1) V6)/p^2, counted directly as sum_w n_w^2, at every prime from 5 to 23
+PASS  step 6: V6 = 5p^4 - 10p^3 - (b(p) + 9)p^2 - 5p - 1, b(p) from (eta(t) eta(2t) eta(3t) eta(6t))^2, at every prime from 7 to 199 (Hulek, Spandaw, van Geemen and van Straten)
+PASS  step 7: the phase-0 hexagons counted from the states' exact sixth moment are the proved Z6 at all 76 primes from 7 to 401
+
+ALL PASS

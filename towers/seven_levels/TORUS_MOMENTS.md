@@ -358,7 +358,7 @@ circles. By §7's Theorem 3,
 and I2 = p(p² − 1), J2 = p² − 1. [`exact_moments.py`](exact_moments.py) reads all of them from the states, as
 integers, at every prime up to 401.
 
-**Theorem 4: the sixth moment** [exact; proved except one count].
+**Theorem 4: the sixth moment** [FORCED; proved here, given one classical evaluation, NAMED].
 
   I6 = p [5p⁴ − p³ − 5p² − 1 + (p + 1)(b(p) − (−3|p) p²)],
 
@@ -369,11 +369,45 @@ p^(−7)[p + I6/(p + 1)⁵].
   V6 = Σ_a K(a)⁶ is the sixth moment of the Kloosterman sums. The reason is that a circle's Fourier transform is a
   Kloosterman sum: Σ over the v with N(v) = r of ψ(Tr(αv)) is −K(r N(α)). And V6 = 5p⁴ − 10p³ − (b(p) + 9)p² − 5p − 1
   [NAMED: Hulek, Spandaw, van Geemen and van Straten 2001; checked here at every prime from 7 to 199].
-- **Measured exactly, proof open.** Z6, the closed hexagons whose phase is 0, number
-  (p + 1)(6p² + (4 − (−3|p))p + 1). It was found at the primes from 7 to 199 and then predicted, without refitting, at
-  every prime from 211 to 401 (round 16).
+- **Proved below: the phase-0 count.** Z6, the closed hexagons whose phase is 0, number
+  (p + 1)(6p² + (4 − (−3|p))p + 1). It was found first at the primes from 7 to 199, predicted without refitting at
+  every prime from 211 to 401 (round 16), and then proved by the elementary count below.
 - So the modular form enters only through the closed polygons. The phase-0 polygons are a polynomial count, and the
   p mod 3 that round 15 saw in the generic part is the (−3|p) here.
+
+**Proof of the phase-0 count** [FORCED; each step checked by [`verify_sixth_moment.py`](verify_sixth_moment.py)].
+1. **Two triangles.** The six operators split as (A1A2A3)(A4A5A6). Each triple is one phase-point operator times
+   ω^(2A), with A(x, y, z) = ⟨y − x, z − x⟩, and the remaining pair has trace p exactly when the hexagon closes,
+   v1 − v2 + v3 = v4 − v5 + v6 =: w. So the phase is 2A(v1, v2, v3) + 2A(v4, v5, v6), and Z6 counts pairs of triangles
+   on the circle with the same alternating sum w and cancelling areas. Reversing a triangle, (x, y, z) → (z, y, x),
+   keeps w and negates the area, so Z6 = Σ_w Σ_a n_w(a)², where n_w(a) counts the triangles with alternating sum w and
+   area a.
+2. **The area of an inscribed triangle.** Work in the field model of §6 (Step 4), on the circle N(v) = r. Given w and
+   y on the circle, put s = y + w; then x + z = s.
+   - If s ≠ 0, write x = sξ. Then z = sξ̄, with Tr ξ = 1 and N ξ = r/N(s), so there are two, one or no such triangles
+     as 1 − 4r/N(s) is a non-square, zero, or a nonzero square. The area is A = κ(N(w) − r)·Im ξ.
+   - If s = 0, which needs w on the circle, then z = −x for every x, and A = 2⟨w, x⟩.
+3. **Three kinds of w.**
+   - **w = 0.** Then N ξ = Tr ξ = 1, so ξ is a primitive sixth root of unity, the hexagons of §6. There are two
+     triangles for each y when p ≡ 2 (mod 3), with the same two areas ±α for every y, and none when p ≡ 1. So
+     Σ_a n_0(a)² = (1 − χ)m², with χ = (−3|p).
+   - **w on the circle.** Every triangle with s ≠ 0 has area 0. These are the degenerate ones, x = y or z = y, by
+     §3's chord argument, and there are Q = 2m − 3 of them. The family with s = 0 has areas 2⟨w, x⟩; the number with
+     area a is B(a) = 1 + η(1 + εa²/(4κ²r²)), and Σ_a B(a)² = 2p + 1 + (−1|p). So
+     Σ_a n_w(a)² = Σ_a B(a)² + 2B(0)Q + Q² = 4p² + 6p − 2 + (−1|p), for each of the m points w of the circle.
+   - **Every other w,** with N(w) = ν ∉ {0, r}. A nonzero area ±a comes from the y with N(y + w) = σ(a), one value σ
+     for each pair ±a, and σ runs over the values with σ(σ − 4r) a non-square. Area 0 comes from N(y + w) = 4r. The
+     number of y on the circle with N(y + w) = σ is M = 1 − η((σ − r − ν)² − 4rν), and M² = 2 − 2η(·) − [· = 0].
+     Taking r = 1, which dilation allows, the sums over ν ∉ {0, 1} come out as follows. Σ_ν M(4)² = 2p − 1. The sum of
+     the η terms is −(p − 1)/2 + [χ = −1]: each inner sum is a Legendre symbol of a quadratic in ν over a whole line,
+     −1 because its discriminant 16σ is not 0. The zeros number (p − 2 + (−1|p))/2 − [χ = −1]. So these w contribute
+     m[2p² − 3p + 3 − (−1|p) − (1 − χ)].
+4. **Adding up.** The (−1|p) terms cancel:
+   Z6 = (1 − χ)m² + m(4p² + 6p − 2 + (−1|p)) + m(2p² − 3p + 3 − (−1|p) − (1 − χ)) = m(6p² + (4 − χ)p + 1). ∎
+
+The modular form is in N6 alone. Step 3 shows why the phase-0 count escapes it. There each count is 0, 1 or 2, so its
+square is a linear combination of Legendre symbols. N6 = Σ_w (Σ_a n_w(a))² squares sums of many counts, and the cross
+terms carry the sixth moment of the Kloosterman sums.
 
 **Theorem 5: the fourth free cumulant** [exact given one count].
 
@@ -400,7 +434,11 @@ with P(p) = 3p⁴ − 26p³ + 40p² − 6p − 11 when p ≡ 1 (mod 3) and 3p⁴
 
 **Not found.** The fifth moments I5 and J5, and the parity-weighted J6, fitted none of the formulas tried: a polynomial
 with the characters of p mod 3 and mod 4, plus one or two of fourteen modular forms
-([`exact_moments_fit.py`](exact_moments_fit.py)). Their exact integers are kept in the logs.
+([`exact_moments_fit.py`](exact_moments_fit.py)). Nor do they carry the newform of weight 3 and level 15,
+η(3τ)³η(5τ)³ + η(τ)³η(15τ)³, though it governs the fifth moment of Kloosterman sums [NAMED: Peters, Top and van der
+Vlugt 1992, through a K3 surface; Broadhurst 2016]: the search finds that law exactly, Σ_a K(a)⁵ = 1 + 4p + 5p² + 4(−3|p)p³ + p²f(p), at every prime from 7 to 199. Nor does any of 397 small
+elliptic curves with twists by 12 quadratic characters fit them; the best leaves 10⁻³ of I5. Their exact integers are
+kept in the logs.
 
 **What it says.**
 - The moments of the oscillator states' Wigner values are point counts, and modular forms appear in them. From the
@@ -426,7 +464,8 @@ with the characters of p mod 3 and mod 4, plus one or two of fourteen modular fo
   none computes a third moment of the Wigner function. Also new as far as we checked: the reduction of every moment
   to polygon counts, with the split into non-crossing, crossing and generic polygons (§7), and round 15's
   measurements. Web searches on 2026-11-14 found no treatment of the phase-point operators as free variables. And
-  the exact sixth moment and fourth free cumulant (§8), with the modular forms in them.
+  the exact sixth moment and fourth free cumulant (§8), with the modular forms in them, and the elementary count of the
+  phase-0 hexagons that completes Theorem 4.
 - **Checked** by [`verify_torus_moments.py`](verify_torus_moments.py), whose output is in
   [`verify_torus_moments.log`](verify_torus_moments.log). For §3: steps 1, 2, 3 and 6 with the operators themselves at
   every prime up to 31, and steps 4, 5 and the theorem by counting at every prime up to 101. For §6: the operator steps
@@ -434,11 +473,13 @@ with the characters of p mod 3 and mod 4, plus one or two of fourteen modular fo
   identities at every prime up to 101; and the off-origin skew against all 77 of round 12's logged values. For §7:
   [`free_moments.py`](free_moments.py)'s calibrate step (the phase formula, one circle's counts against the states,
   the pairings) at the primes it names. For §8: [`exact_moments.py`](exact_moments.py), its blind test at 211 to 401
-  and its check against the states at 503 to 1009 ([`exact_moments_test.log`](exact_moments_test.log)).
+  and its check against the states at 503 to 1009 ([`exact_moments_test.log`](exact_moments_test.log)); and
+  [`verify_sixth_moment.py`](verify_sixth_moment.py), each step of Theorem 4's proof
+  ([`verify_sixth_moment.log`](verify_sixth_moment.log)).
 - **Measured, not proved:** the moments above the fourth and the whole distribution (§5 and §7;
   [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log),
   [`free_moments_run.log`](free_moments_run.log)), including the generic hexagons' 1/p and the free counts of the
-  odd moments; and the two phase-0 counts of §8, Z6 and J4, exact at every prime to 401 but not proved.
+  odd moments; and the count behind J4 in §8, exact at every prime to 401 but not proved.
 
 ## Run it
 
@@ -452,6 +493,7 @@ python free_moments.py run         # round 15: about nine minutes, one process
 python exact_moments.py collect    # round 16: the integers at 5..199, seconds
 python exact_moments_fit.py        # the exact fits that found Theorems 4 and 5 (sympy), a minute
 python exact_moments.py test       # round 16's blind test at 211..401 and the states at 503..1009, minutes
+python verify_sixth_moment.py      # Theorem 4's proof, step by step: seconds
 ```
 
 ## Sources
@@ -465,6 +507,8 @@ python exact_moments.py test       # round 16's blind test at 211..401 and the s
   (2005), [arXiv:math/0302277](https://arxiv.org/abs/math/0302277).
 - L. Rosenzweig, "On the fluctuations of matrix elements of the quantum cat map" (2009),
   [arXiv:0909.1410](https://arxiv.org/abs/0909.1410).
+- C. Peters, J. Top and M. van der Vlugt, "The Hasse zeta function of a K3 surface related to the number of words of
+  weight 5 in the Melas codes", *J. reine angew. Math.* **432** (1992): the fifth moment of Kloosterman sums.
 - K. Hulek, J. Spandaw, B. van Geemen and D. van Straten, "The modularity of the Barth–Nieto quintic and its
   relatives", *Adv. Geom.* **1** (2001): the sixth moment of Kloosterman sums and the newform of weight 4, level 6.
 - D. Broadhurst, "Feynman integrals, L-series and Kloosterman moments" (2016),

@@ -221,14 +221,23 @@ free central limit theorem \cite{VDN1992} (the $q=0$ case of the Bo\.zejko--Spei
 Let $I_6=\sum_C\Tr S_C^6$ and let $b(p)$ be the coefficients of $(\eta(\tau)\eta(2\tau)\eta(3\tau)\eta(6\tau))^2$,
 the newform of weight $4$ and level $6$. Then $I_6=p(pZ_6-N_6)$, where
 $N_6=\big((p+1)^6+(p+1)V_6\big)/p^2$ counts the closed hexagons on a circle and $V_6=\sum_aK(a)^6$, because the
-Fourier transform of a circle is a Kloosterman sum; and $V_6=5p^4-10p^3-(b(p)+9)p^2-5p-1$ \cite{HSvGvS2001}. If
-moreover the hexagons of phase $0$ number $Z_6=(p+1)\big(6p^2+(4-(\tfrac{-3}{p}))p+1\big)$, as they do at every prime
-up to $401$, then
+Fourier transform of a circle is a Kloosterman sum; $V_6=5p^4-10p^3-(b(p)+9)p^2-5p-1$ \cite{HSvGvS2001}; and the
+hexagons of phase $0$ number $Z_6=(p+1)\big(6p^2+(4-(\tfrac{-3}{p}))p+1\big)$. Hence
 \[
 I_6=p\Big[5p^4-p^3-5p^2-1+(p+1)\big(b(p)-\big(\tfrac{-3}{p}\big)p^2\big)\Big],\qquad
 \frac1p\sum_j\sum_uW_j(u)^6=\frac{1}{p^7}\Big[p+\frac{I_6}{(p+1)^5}\Big].
 \]
 \end{theorem}
+\begin{proof}[Proof of the count $Z_6$]
+The six operators split as $(A_1A_2A_3)(A_4A_5A_6)$, so the phase is $2A(v_1,v_2,v_3)+2A(v_4,v_5,v_6)$ with
+$A(x,y,z)=\langle y-x,z-x\rangle$, and $Z_6=\sum_w\sum_a n_w(a)^2$, where $n_w(a)$ counts the triangles on the circle
+with $x-y+z=w$ and area $a$ (reversing a triangle negates its area). In the field model, with $s=y+w\ne0$ and
+$x=s\xi$, one has $z=s\bar\xi$, $\mathrm{Tr}\,\xi=1$, $N\xi=r/N(s)$ and area $\kappa(N(w)-r)\,\mathrm{Im}\,\xi$;
+for $s=0$ the area is $2\langle w,x\rangle$. For $w=0$, $\xi$ is a primitive sixth root of unity, giving
+$(1-\chi)m^2$; for $w$ on the circle every triangle with $s\ne0$ is degenerate, giving $m(4p^2+6p-2+(\tfrac{-1}{p}))$;
+for the remaining $w$ the counts are Legendre symbols of quadratics, whose sums over the level $N(w)$ are elementary,
+giving $m(2p^2-3p+3-(\tfrac{-1}{p})-(1-\chi))$, with $\chi=(\tfrac{-3}{p})$. The sum is $m(6p^2+(4-\chi)p+1)$.
+\end{proof}
 Similarly, with $J_4=\sum_C\Tr(PS_C^4)$, one finds at every prime up to $401$ that
 $J_4=(3p+1)(p^2-1)-4p(p+1)b^2$, where $p=a^2+b^2$ with $b$ even if $p\equiv1\pmod4$ and $b=0$ otherwise; the
 non-polynomial part is $p(p+1)c(p)$ with $c$ the coefficients of $\eta(4\tau)^6$. With Theorems~\ref{thm:moment}

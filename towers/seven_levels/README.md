@@ -799,7 +799,11 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
 - **The fourth free cumulant is exact,** and it is 3/p² only to leading order. Its next term depends on p mod 3, on
   p mod 4 and, when p ≡ 1 (mod 4), on the angle of the Gaussian prime a + bi with p = a² + b². Behind it is η(4τ)⁶,
   the form with complex multiplication by the Gaussian integers.
-- **Open:** proofs of the two phase-0 counts, and the fifth moments and J6, which fit no formula tried.
+- **Proved:** the sixth moment, in full. The phase-0 hexagons are counted by an elementary argument, triangle by
+  triangle, and the modular form comes only from the closed hexagons, through the classical evaluation of
+  Kloosterman's sixth moment ([`verify_sixth_moment.py`](verify_sixth_moment.py)).
+- **Open:** the count behind the fourth cumulant, and the fifth moments and J6, which fit no formula tried. They do
+  not carry the weight-3, level-15 form of Kloosterman's fifth moment.
 - Who else works on this ground, and what their theorems give this floor: [`LITERATURE_MAP.md`](LITERATURE_MAP.md).
 
 ## 18. Our space, and what it cannot hold [FORCED; FENCE]
@@ -911,8 +915,8 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
   - the oscillator states: a proof that the generic polygons' area phases cancel at every even order, the one step
-    left for the whole semicircle (round 15 measured the sixth: they cancel to order 1/p); the proofs of round 16's
-    two phase-0 counts; and exact formulas for the fifth moments;
+    left for the whole semicircle (round 15 measured the sixth, and Theorem 4 now proves it); the proof of round 16's
+    count behind J4; and exact formulas for the fifth moments;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
 
@@ -966,6 +970,7 @@ python free_moments.py run             # about nine minutes, one process
 python exact_moments.py collect        # round 16: seconds
 python exact_moments_fit.py            # the exact fits, about a minute (sympy)
 python exact_moments.py test           # the blind test, minutes
+python verify_sixth_moment.py          # the sixth moment's proof, step by step: seconds
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

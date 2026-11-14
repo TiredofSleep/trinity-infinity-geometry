@@ -1494,3 +1494,6 @@ output is kept in [`exact_moments_test.log`](exact_moments_test.log). **All six 
 weight 4 and level 6; it enters through the closed-hexagon count, by the classical evaluation of Kloosterman's sixth
 moment. The fourth free cumulant is exact and 3/p² only to leading order; the Gaussian integers' CM form η(4τ)⁶ is in
 it. What is not proved is the two counts of phase-0 polygons, Z6 and J4: both are exact at every prime to 401.
+(Added later the same day: Z6 is now proved, by an elementary count, so the sixth-moment formula is a theorem;
+see [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8 and [`verify_sixth_moment.py`](verify_sixth_moment.py). J4's count
+is still open.)
