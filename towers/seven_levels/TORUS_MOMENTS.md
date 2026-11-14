@@ -220,7 +220,7 @@ the fourth term.
 
 - **The taper is exact.** Both proved moments taper onto the semicircle at known rates: the skew to 0 as −1/√p, and the
   fourth-moment ratio to 2 as 2 − 2/(p + 1). [READING] This is the taper of the author's prime gradient, on this floor:
-  how the shape at each prime approaches its limit, prime by prime.
+  how the shape at each prime approaches its limit, prime by prime ([`../THE_STAIRCASE.md`](../THE_STAIRCASE.md)).
 - **One fact closes both proofs.** The fourth moment needed parallelograms on a circle, the third needs triangles, and
   both close because a line meets a circle at most twice.
 - **The odd moment sees the hexagon.** The parity split is a coin by p mod 3: whether the turning wheel holds a hexagon.

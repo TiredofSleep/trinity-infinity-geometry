@@ -75,6 +75,7 @@ stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
 | quantum information: magic states, Wigner negativity, qudits | [`towers/seven_levels/`](towers/seven_levels/README.md), [`NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md) |
 | quantum contextuality: magic sets of observables | [`towers/binary_magic/magic_sets/`](towers/binary_magic/magic_sets/THEOREM.md) |
 | number theory: Kloosterman sums, Sato–Tate, repeating decimals | [`towers/seven_levels/NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`base/SEVENTHS.md`](base/SEVENTHS.md) |
+| number theory: primes, the sieve, Mertens' theorem, the explicit formula, Frobenius angles | [`towers/THE_STAIRCASE.md`](towers/THE_STAIRCASE.md) |
 | quantum chaos and the Weil representation | [`towers/seven_levels/TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md), seven levels §9 and §13 |
 | finite fields and signal design: Walsh spectra, bent functions, cubic forms | seven levels §14, [`cubic_magic.py`](towers/seven_levels/cubic_magic.py) |
 | linear algebra: determinants of magic squares | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) |
@@ -190,6 +191,7 @@ python bott_verify.py
 python verify_spinor_floor.py
 python verify_two_faces_of_s4.py
 python verify_balance_point.py   # pip install sympy
+python verify_staircase.py       # the interleave staircase (pip install mpmath)
 python seven_levels/verify_seven_levels.py   # the sevenths on seven quantum levels (pip install scipy)
 cd binary_magic
 python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)

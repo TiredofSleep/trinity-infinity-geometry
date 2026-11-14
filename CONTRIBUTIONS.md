@@ -59,6 +59,7 @@ and its checks live.
 | **The coin.** The author's three coins are the three half-turns of the number sphere about one octahedron's axes, and the edge of the third is *i*. Every involution is read as two sides and an edge | [`coin/THE_COIN.md`](coin/THE_COIN.md) |
 | **Four kinds of paradox** (the author with Ben Mayes, April 2026), read through the coin. The Liar, Russell and Cantor are one diagonal | [`coin/PARADOX_TYPES.md`](coin/PARADOX_TYPES.md) |
 | **The towers.** Nine climbs of established mathematics, each starting on the base, each with its coin | [`towers/THE_TOWERS.md`](towers/THE_TOWERS.md) |
+| **The interleave staircase** (the author with C. A. Luther and M. Gish, March 2026), made exact. Two primes' staircases cancel to a straight line; with every prime the sieve's line over-predicts by Mertens' 2e^(−γ); the compression is 1/ln x; the waves are the zeros of ζ; over finite fields each prime gets a direction, and their Sato–Tate spread is the qudit floor's magic. Classical, credited | [`towers/THE_STAIRCASE.md`](towers/THE_STAIRCASE.md) |
 | **A Ledger of Nothing.** One way to ask where any zero comes from (paid for by a count, or bought by a coincidence), run across six fields | [essay](towers/kernel_ledger/A_LEDGER_OF_NOTHING.md) |
 | **The books.** *The Shape of Understanding* and *Two Sides and an Edge*, with every picture checked against its proof | [book repository](https://github.com/TiredofSleep/shape-of-understanding) |
 
