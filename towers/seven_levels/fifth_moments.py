@@ -176,16 +176,20 @@ def test():
     with Pool(4) as pool:
         res = pool.map(_counts, P_op)
     bad1, bad2, bad5, worst_all = [], [], [], 0.0
+    keys = [f"{a}{n}" for n in range(2, 7) for a in "IJ"]
+    say("EXACT p " + " ".join(keys) + " worst")
+    for p, c, worst in sorted(res):
+        say(f"EXACT {p} " + " ".join(str(c[k]) for k in keys) + f" {worst:.2e}")
+    b6all = emo.eta_coeffs([(1, 2), (2, 2), (3, 2), (6, 2)], P_op[-1])
     for p, c, worst in sorted(res):
         worst_all = max(worst_all, worst)
         m = p + 1
         chi = eta(-3, p)
         ok1 = c["I5"] == I5_formula(p, a10[p])
         ok2 = c["J5"] == J5_formula(p, p + 1 - E_count(p), f15[p])
-        b6 = emo.eta_coeffs([(1, 2), (2, 2), (3, 2), (6, 2)], p)[p]
         proved = (c["I2"] == p * (p * p - 1) and c["J2"] == p * p - 1 and c["I3"] == (p + 1) * (p - 1) * (2 * p + 1)
                   and c["I4"] == 2 * p * p * (p - 1) * (p + 1) and c["J3"] == (-2 * p * (p + 1) if chi == -1 else 0)
-                  and c["I6"] == emo.I6_formula(p, b6) and c["J4"] == emo.J4_formula(p))
+                  and c["I6"] == emo.I6_formula(p, b6all) and c["J4"] == emo.J4_formula(p))
         if not ok1:
             bad1.append(p)
         if not ok2:

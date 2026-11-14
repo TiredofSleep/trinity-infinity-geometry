@@ -1,0 +1,51 @@
+Round 17: the fifth moments, tested where they were not found (PREREG.md)
+operator primes 409..509 (18), octic and curve primes 409..601 (31)
+F0 level 5: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 6: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 8: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 9: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 HELD
+F3 p=409: S_oct = 986385, a10 = 9530, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=419: S_oct = -1038145, a10 = 7260, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=421: S_oct = 1043385, a10 = 12062, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=431: S_oct = -1119985, a10 = -13608, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=433: S_oct = 1120545, a10 = -3838, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=439: S_oct = -1140585, a10 = 7400, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=443: S_oct = -1160725, a10 = 8352, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=449: S_oct = 1190305, a10 = 10770, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=457: S_oct = 1251105, a10 = -6694, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=461: S_oct = 1269385, a10 = -3018, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=463: S_oct = -1262925, a10 = 14492, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=467: S_oct = -1291885, a10 = 7776, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=479: S_oct = -1381225, a10 = -13680, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=487: S_oct = -1405845, a10 = 7916, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=491: S_oct = -1423225, a10 = 13932, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=499: S_oct = -1492785, a10 = -8260, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=503: S_oct = -1519645, a10 = -11148, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=509: S_oct = 1554505, a10 = -9690, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=521: S_oct = 1634785, a10 = -16038, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=523: S_oct = -1630245, a10 = 992, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=541: S_oct = 1738665, a10 = 7142, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=547: S_oct = -1777245, a10 = 7616, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=557: S_oct = 1861225, a10 = -10314, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=563: S_oct = -1898245, a10 = -7128, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=569: S_oct = 1929745, a10 = 2010, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=571: S_oct = -1968585, a10 = -23188, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=577: S_oct = 1964145, a10 = 22466, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=587: S_oct = -2033485, a10 = 22776, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=593: S_oct = 2119825, a10 = -21198, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=599: S_oct = -2125465, a10 = 15960, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=601: S_oct = 2149905, a10 = 5882, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 HELD
+F4 E's traces equal the level-150 newform's at every prime 409..601: True 
+F4 HELD
+Traceback (most recent call last):
+  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\fifth_moments.py", line 209, in <module>
+    test()
+  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\fifth_moments.py", line 188, in test
+    and c["I6"] == emo.I6_formula(p, b6) and c["J4"] == emo.J4_formula(p))
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\exact_moments.py", line 124, in I6_formula
+    return p * (5 * p ** 4 - p ** 3 - 5 * p ** 2 - 1 + (p + 1) * (b6[p] - legendre(-3, p) * p * p))
+                                                                  ~~^^^
+TypeError: 'int' object is not subscriptable
