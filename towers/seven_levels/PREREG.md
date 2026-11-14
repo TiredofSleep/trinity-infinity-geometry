@@ -1579,3 +1579,85 @@ inconclusive.** The exact half held.
 - A modular-symbols engine, checked on four known forms, named the forms after LMFDB answered with a captcha.
 - The deaths: round 16's "the level-15 form is not in the fifth moments", and the Q(√−11) form of the circle part,
   which cancels in the whole. Both are kept in the graveyard.
+
+---
+
+## Round 18: J4's surface sum, proved (registered 2026-11-14, before the test)
+
+> *1 and 2, J4's surface sum first* — the author, 14 November 2026
+
+Round 17 left Theorem 5 resting on one character sum over an elliptic surface,
+T(p) = Σ_(κ≠0) Σ_A η(κA(κ + 4 − 4A)((κ + 4)A − 4κ)), measured exactly to 401. It is now proved
+([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theorem 5). The proof has two classical tools.
+- **A 2-isogeny.** This is Landen's transformation over F_p. It turns T into a sum over the Legendre family at the
+  squares.
+- **Quartic Jacobi sums.** They evaluate that sum: T(p) = p + 2(a² − b²) when p ≡ 1 (mod 4), with a odd, and T(p) = p
+  when p ≡ 3 (mod 4). That is (2 + (−1|p))p − 4b².
+
+The pairing that leads to T is now written out in full. So J4 is a theorem, and with it the fourth free cumulant.
+[`fourth_cumulant.py`](fourth_cumulant.py) checks every step at every prime from 7 to 401
+([`fourth_cumulant_verify.log`](fourth_cumulant_verify.log)). This round tests the theorem and its steps where they
+were not computed.
+
+| | prediction | dies if |
+|---|---|---|
+| G1 | T(p) = (2 + (−1\|p))p − 4b² at every prime from 409 to 3001 | a prime fails |
+| G2 | the proof's steps hold at every prime from 409 to 1009: the Legendre form at every κ, Landen at every t, the sum, and W = J(χ, η)² + J(χ̄, η)² with Re J odd | a step fails at a prime |
+| G3 | the pairing: F(κ) = p − 1 + 2η(κ + 4) + G(κ) at every κ ≠ 0 and ΣG = 2 + (−1\|p)p, so N_V⁽⁴⁾ = (p − 1)² + 2 + (−1\|p)p − T(p), at every prime from 409 to 1009 | one fails |
+
+**The drafter's expectation:** all hold. Every step is an identity, so a failure would mean an error in the proof.
+
+Run: `python fourth_cumulant.py test` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 19: the coin at 5 (registered 2026-11-14, before the test)
+
+> *1 and 2, J4's surface sum first* — the author, 14 November 2026. The "1" says yes to registering a test of the
+> reading that the fifth moment's split by (5|p) is the coin at 5.
+
+**The reading.** In [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md) the author classifies 5 as a coin.
+- The flat face is the pentagon, with its centre empty.
+- The solid face is the tetrahedron with its centre filled: 5 = 4 + centre.
+- The edge between them is the centre itself.
+
+The fifth moment splits by (5|p), through Clebsch's cubic. [`coin_at_five.py`](coin_at_five.py) checks a dictionary
+between the two [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)].
+- **The solid face.** The double octic behind I5 is branched along the five planes where one of the five points sits
+  at the centre, the other four summing to 0 round it.
+- **The flat face.** It is also branched along Clebsch's cubic, which holds the regular pentagon (1, z, z², z³, z⁴).
+- **The edge.** The two faces meet in 15 rational lines, each the centre with two opposite pairs.
+- **The flip.** The cubic's other 12 lines form a double six. Every odd permutation of the five points swaps its two
+  sixes, and over Q so does √5 ↦ −√5 [NAMED: Clebsch 1871].
+- **Characteristic 5.** There the cubic pinches at one point, the centre.
+
+So the coin's flip is √5 ↦ −√5, its sides are (5|p) = ±1, and its edge is p = 5.
+
+The test asks two things the dictionary does not decide.
+- **The edge itself.** If the edge is where the two sides meet, the formulas should hold at the edge primes.
+  - The symbol there is 0, the average of its sides.
+  - Each form enters with its coefficient at its bad prime: a10(5) = 5, a10(3) = −8, f15(5) = 5, f15(3) = −3 and
+    a_E(5) = 0. These were computed before this registration, by the engine with U_q, and from the eta products.
+  - At 3 the curve's equation gives a_E(3) = −2, while the level-150 newform has a(3) = 1. Both values are
+    registered.
+  - The derivations assumed p ≥ 7 in places, so this can fail.
+- **The coin at 7.** The author's coin also holds at 7: the heptagon, and the octahedron with its centre.
+  - The dictionary's flat face at 7 is the cubic fourfold X7 = {x1 + ⋯ + x7 = x1³ + ⋯ + x7³ = 0}, the analogue of
+    Clebsch's cubic.
+  - Laza and Zheng found its transcendental lattice to be −[[2, 1], [1, 18]], as the cubic they call X¹(A7)
+    [NAMED: Laza and Zheng, arXiv:1905.11547]. Its discriminant is 35 = 5·7, which means complex multiplication by
+    Q(√−35): the pentagon's √5 and the heptagon's √−7 together.
+  - Then t7 = p²α(p) + p·c(p), with α an integer and c the CM form's coefficient. c vanishes at the primes inert in
+    Q(√−35) and is never a multiple of p at the split ones.
+  - If C2 holds, the arithmetic sees 7 in its flat face at 7 as it sees 5 in Clebsch's.
+
+| | prediction | dies if |
+|---|---|---|
+| C0, forced | the operators at p = 3 and 5 reproduce the proved I2, J2, I3 and I4, and Theorem 5's J4 (80 at 3, −96 at 5) | one fails: the instrument or a proof fails at small p, and C1 is void |
+| C1 | **the edge**: I5 = 3504 and J5 = −930 at p = 5, and I5 = 368 at p = 3. J5 at 3 is −84 (the equation's count) or −192 (the newform's), and which is recorded. J3 at 3 is −12 (the edge average, −(1 − (−3\|p))p(p + 1)) or 0 (the form "−2p(p + 1) when p ≡ 2 mod 3, else 0"), and which is recorded | a value is none of these |
+| C2 | **the coin at 7**: X7's primitive trace t7(p) = #X7(F_p) − (1 + p + p² + p³ + p⁴) is divisible by p² at every prime from 11 to 397 inert in Q(√−35), and at no split one. The control holds at every one of these primes: Clebsch's t5 = (5 + (5\|p))p | a prime fails, or the control does |
+| C3, a first look, not scored | the cubic in 9 variables, where the coin breaks: its primitive trace and divisibility, by p mod 9; and t7/p² at the inert primes, by character | — |
+
+**The drafter's expectation:** C0 and C2 hold, and C1 holds at 5. At 3, a coin toss.
+
+Run: `python coin_at_five.py test` (a few minutes, four processes at below-normal priority).

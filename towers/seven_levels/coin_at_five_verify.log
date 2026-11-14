@@ -1,0 +1,12 @@
+coin_at_five.py -- the coin at 5 in the fifth moments: the dictionary, checked
+[PASS] D1. the regular pentagon (1, z, z^2, z^3, z^4) has e1 = e2 = e3 = e4 = 0 and e5 != 0: on the flat face (Clebsch's cubic, e3 = 0), off the solid face (e5 = 0)  (every p = 1 mod 5 to 101)
+[PASS] D2. on the plane d5 = 0 (with d1 + d2 + d3 + d4 = 0), e3 = -(d1 + d2)(d1 + d3)(d2 + d3): three lines, each the centre with two opposite pairs (0, a, -a, b, -b); five planes, 15 lines, the edge
+[PASS] D3a. lines on Clebsch's cubic over F_p: 27 when (5|p) = 1, 15 when (5|p) = -1  (every prime 7..31)  (7:15 11:27 13:15 17:15 19:27 23:15 29:27 31:27)
+[PASS] D3b. exactly 15 of them lie in the Sylvester planes, at every p: the edge is rational
+[PASS] D3c. when (5|p) = 1 the other 12 form a double six: two sixes of skew lines, each line meeting 5 of the other
+[PASS] D3d. the flip: every even permutation of the five points keeps each six, every odd one swaps them (all 119 non-identity permutations, at p = 11, 19, 29, 31)
+[PASS] D4a. Clebsch's cubic is singular in characteristic 5 at the centre [1:1:1:1:1] alone, and smooth at 7, 11, 13 (brute force over every point)
+[PASS] D4b. in n variables (p > 3) the singular points are the sign vectors whose sum vanishes mod p, and the centre [1:...:1] is singular exactly when p divides n: at 5 for n = 5, at 7 for n = 7, and never for n = 9, whose only prime is 3, where every one of these cubics degenerates (x^3 sums to (sum x)^3)  (* marks the centre)  (n=5,p=5:1* n=5,p=7:0 n=5,p=11:0 n=5,p=13:0 n=7,p=5:7 n=7,p=7:1* n=7,p=11:0 n=7,p=13:0 n=9,p=5:36 n=9,p=7:9 n=9,p=11:0 n=9,p=13:0)
+[PASS] D5. the exact count: #X5(F_p) = p^2 + (6 + (5|p))p + 1 for Clebsch's cubic, so its primitive trace is (5 + (5|p))p  (every prime 7..61)
+time 0.2 minutes
+ALL PASS
