@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tiredofsleep.github.io/trinity-infinity-geometry/sitemap.xml

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trinity Infinity Geometry: magic states, Kloosterman sums and a new way to teach higher mathematics</title>
+<meta name="description" content="Open, machine-checked mathematics by Brayden Ross Sanders: the Wigner negativity (magic) of qudit states via Walsh spectra, Kloosterman sums and the Sato-Tate law; magic squares; quantum contextuality; and a new way to teach higher mathematics by classifying its paradoxes. Every prediction registered before it ran; every failure kept.">
+<meta name="keywords" content="magic states, Wigner negativity, discrete Wigner function, qudits, Clifford hierarchy, third-level gates, Kloosterman sums, Sato-Tate law, Weil representation, oscillator states, quantum chaos, Walsh spectrum, bent functions, elliptic curves, finite fields, explicit formula, magic squares, quantum contextuality, Steiner triple systems, mathematics education, pre-registration, negative results, reproducible research">
+<meta name="author" content="Brayden Ross Sanders">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tiredofsleep.github.io/trinity-infinity-geometry/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trinity Infinity Geometry">
+<meta property="og:description" content="Magic states, Kloosterman sums and the Sato-Tate law; magic squares and contextuality; a new way to teach higher mathematics by classifying its paradoxes. Machine-checked, pre-registered, failures kept.">
+<meta property="og:url" content="https://tiredofsleep.github.io/trinity-infinity-geometry/">
+<meta property="og:image" content="https://tiredofsleep.github.io/trinity-infinity-geometry/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trinity Infinity Geometry">
+<meta name="twitter:description" content="Magic states, Kloosterman sums, the Sato-Tate law, and two sides and an edge on every floor of higher mathematics.">
+<meta name="twitter:image" content="https://tiredofsleep.github.io/trinity-infinity-geometry/share.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["SoftwareSourceCode", "Dataset"],
+  "name": "Trinity Infinity Geometry",
+  "description": "Machine-checked mathematics: the Wigner negativity of algebraic qudit states (Walsh spectra, Kloosterman sums, the Sato-Tate law), magic squares, quantum contextuality, and a way to teach higher mathematics by classifying its paradoxes.",
+  "author": {"@type": "Person", "name": "Brayden Ross Sanders", "affiliation": {"@type": "Organization", "name": "7SiTe LLC"}},
+  "codeRepository": "https://github.com/TiredofSleep/trinity-infinity-geometry",
+  "url": "https://tiredofsleep.github.io/trinity-infinity-geometry/",
+  "identifier": "https://doi.org/10.5281/zenodo.18852047",
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "programmingLanguage": "Python",
+  "keywords": ["magic states", "Wigner negativity", "qudits", "Kloosterman sums", "Sato-Tate law", "Weil representation", "quantum chaos", "Walsh spectrum", "bent functions", "elliptic curves", "finite fields", "magic squares", "quantum contextuality", "mathematics education"]
+}
+</script>
+<style>
+:root { --bg: #f7f5f0; --fg: #1d1b17; --muted: #5d584d; --accent: #9a5a12; --rule: #ddd6c8; --card: #ffffff; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg: #14161c; --fg: #ece7dc; --muted: #a8a191; --accent: #e0a85a; --rule: #2c2f38; --card: #1b1e25; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 Georgia, "Times New Roman", serif; }
+main { max-width: 46rem; margin: 0 auto; padding: 3rem max(16px, env(safe-area-inset-left, 0px)) 4rem; }
+h1 { font-size: 2.4rem; line-height: 1.15; margin: 0 0 .4rem; text-wrap: balance; }
+h2 { font: 600 .82rem/1.2 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 3rem 0 1rem; }
+p.lede { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.5rem; }
+blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); font-style: italic; }
+a { color: var(--accent); }
+ul.results { list-style: none; padding: 0; display: grid; gap: .9rem; }
+ul.results li { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: .9rem 1.1rem; }
+.tag { font: 600 .72rem/1 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .35rem; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 .78rem/1.2 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Trinity Infinity Geometry</h1>
+<p class="lede">A new way to teach higher mathematics, by classifying its paradoxes rather than resolving them, and the research
+results it keeps producing. Every shape and every floor is a coin: two sides and an edge.</p>
+<blockquote>Theory of Nothing is the closest there will ever be to Theory of Everything. <br>— Brayden Sanders, March 2026</blockquote>
+
+<h2>Results</h2>
+<ul class="results">
+<li><span class="tag">Quantum information · finite fields</span><strong>The magic of a cubic-phase qudit state is the L1 norm of a Walsh
+spectrum.</strong> So no magic state of a third-level diagonal gate reaches the Wigner-negativity ceiling, and on three qudits the norm
+state of the field with p³ elements is the most magic of them. <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/seven_levels">Seven levels</a></li>
+<li><span class="tag">Number theory · magic states</span><strong>The norm state's Wigner values are Kloosterman sums</strong>, on three
+qudits of every odd prime, so its negativity is known in closed form and tends to 8/(3π) of the ceiling.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/NORM_STATE.md">The proof</a></li>
+<li><span class="tag">Quantum chaos · magic states</span><strong>The oscillator states' magic follows the Sato–Tate law</strong>, and
+averaged over a torus's eigenbasis the fourth moment of their Wigner values is exactly 2p/(p + 1).
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">The theorem</a></li>
+<li><span class="tag">Quantum contextuality</span><strong>Small genuine magic sets for every odd number of qubits</strong>: 16
+observables at five qubits against a published 26, and 16 is the minimum.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/binary_magic/magic_sets/THEOREM.md">The theorem</a></li>
+<li><span class="tag">Linear algebra</span><strong>The determinant of MATLAB's odd magic squares, in closed form</strong>; every
+pandiagonal 5×5 magic square is invertible.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/binary_magic/void_lens">The void lens</a></li>
+</ul>
+
+<h2>Find it by field</h2>
+<div class="table-wrap"><table>
+<tr><th>Field</th><th>Where</th></tr>
+<tr><td>Magic states, Wigner negativity, qudits</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/seven_levels">towers/seven_levels</a></td></tr>
+<tr><td>Kloosterman sums, Sato–Tate, repeating decimals</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/NORM_STATE.md">NORM_STATE</a>, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/base/SEVENTHS.md">the sevenths</a></td></tr>
+<tr><td>Quantum chaos, the Weil representation</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">TORUS_MOMENTS</a></td></tr>
+<tr><td>Walsh spectra, bent functions, cubic forms</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/cubic_magic.py">cubic magic</a></td></tr>
+<tr><td>Quantum contextuality</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/binary_magic/magic_sets">magic sets</a></td></tr>
+<tr><td>Universal algebra, Steiner triple systems</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/laws_of_a_table">laws of a table</a></td></tr>
+<tr><td>Geometry, energy, the Platonic solids</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/THE_LENS.md">the lens</a></td></tr>
+<tr><td>Mathematics education</td><td><a href="https://github.com/TiredofSleep/shape-of-understanding">The Shape of Understanding</a> (the book), <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/coin">the coin</a></td></tr>
+</table></div>
+
+<h2>How the work stays honest</h2>
+<p>Each direction starts from the author's intuition, made exact. Predictions are registered in a public commit before anything
+runs, a second independent check confirms each result, a literature gate credits what is known, and every failed prediction is
+kept in the <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/GRAVEYARD.md">graveyard</a> with the
+evidence that killed it. The computations are AI-assisted and machine-checked; the directions are the author's.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/HOW_WE_WORK.md">How we work</a>.</p>
+
+<h2>Cite</h2>
+<p>Brayden Ross Sanders, <em>Trinity Infinity Geometry</em>, doi:<a href="https://doi.org/10.5281/zenodo.18852047">10.5281/zenodo.18852047</a>.
+Metadata in <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/CITATION.cff">CITATION.cff</a>.</p>
+
+<footer>Code and text: <a href="https://github.com/TiredofSleep/trinity-infinity-geometry">github.com/TiredofSleep/trinity-infinity-geometry</a> · licence CC BY-SA 4.0</footer>
+</main>
+</body>
+</html>
