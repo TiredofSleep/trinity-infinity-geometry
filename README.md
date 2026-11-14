@@ -63,7 +63,8 @@ checked twice, by independent code:
 - **The oscillator states' magic follows the Sato–Tate law,** and averaged over a torus's eigenbasis the
   third and fourth moments of their Wigner values are exact: the skew tapers as −1/√p, and the fourth-moment
   ratio is 2p/(p + 1). In every moment only the non-crossing pairings survive, as in free probability, and the
-  corrections are free too
+  corrections are free too. The sixth moment is exact and carries the weight-4, level-6 newform of Kloosterman's
+  sixth moment; the fourth free cumulant carries the Gaussian integers' η(4τ)⁶
   ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it

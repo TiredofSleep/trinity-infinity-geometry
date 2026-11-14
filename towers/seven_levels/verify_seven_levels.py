@@ -1598,6 +1598,25 @@ forced(f"round 15's sixth moment at p = 31, recomputed: non-crossing {parts15['n
        f"{parts15['cr']:+.6f}, generic {parts15['gen']:+.6f}, as free_moments_run.log records; and the log scores "
        f"F1 to F7 held", ok15 and all(logged15.get(f"F{i}") for i in range(1, 8)))
 
+# ------------------------------------------------------------------ round 16 (exact_moments.py; its logs are exact_moments_*.log)
+print()
+print("round 16:")
+import exact_moments as emo
+
+b6_16 = emo.eta_coeffs([(1, 2), (2, 2), (3, 2), (6, 2)], 50)
+ok16 = True
+for p_ in (31, 37, 41, 43):
+    c16, _ = emo.counts(p_)
+    ok16 &= c16["I6"] == emo.I6_formula(p_, b6_16) and c16["J4"] == emo.J4_formula(p_)
+held16 = {}
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "exact_moments_test.log"), encoding="utf-8"):
+    f16 = line.split()
+    if len(f16) > 1 and f16[0][:1] == "E" and f16[0][1:].isdigit():
+        held16[f16[0]] = f16[1] == "HELD:"
+forced("round 16's exact formulas for I6 (the weight-4, level-6 newform) and J4 (the Gaussian integers), recomputed "
+       "from the states at 31, 37, 41 and 43; and the test log scores E0 to E5 held",
+       ok16 and all(held16.get(f"E{i}") for i in range(6)))
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

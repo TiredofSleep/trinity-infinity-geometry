@@ -7,7 +7,7 @@
 
 **Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
-**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 14 · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14.
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 16 · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14.
 
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
@@ -783,7 +783,26 @@ generic polygons' phases cancel. Round 15 registered eight predictions with [`fr
 - [READING] The Wigner values at a point are the eigenvalues of a sum of symmetries, one for each point of a circle.
   They add like free variables, because their commutation phase, a symplectic area, cancels on crossing pairings.
 
-## 17. Our space, and what it cannot hold [FORCED; FENCE]
+## 17. Round 16: the exact sixth moment, and modular forms [measured exactly; FORCED in part; NAMED: Hulek, Spandaw, van Geemen and van Straten]
+
+> *go after an exact formula for the 6th moment first.. The free fourth cumulant equals 3/p² to every digit the log
+> keeps. Worth a short exact proof as a small theorem* — the author, 14 November 2026
+
+Every moment of the oscillator states' Wigner values is an exact integer count. Read from the states at every prime
+up to 199, the counts fitted exact formulas, and round 16 then predicted them at every prime from 211 to 401 without
+refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exact_moments.py)).
+
+- **The sixth moment is exact, and a modular form is in it.** Summed over the circles,
+  Tr S_C⁶ adds up to p[5p⁴ − p³ − 5p² − 1 + (p + 1)(b(p) − (−3|p)p²)], where b(p) are the coefficients of
+  (η(τ)η(2τ)η(3τ)η(6τ))², the newform of weight 4 and level 6. It is the form of the sixth moment of Kloosterman sums,
+  and it enters only through the count of closed hexagons; the hexagons with phase 0 are a polynomial count.
+- **The fourth free cumulant is exact,** and it is 3/p² only to leading order. Its next term depends on p mod 3, on
+  p mod 4 and, when p ≡ 1 (mod 4), on the angle of the Gaussian prime a + bi with p = a² + b². Behind it is η(4τ)⁶,
+  the form with complex multiplication by the Gaussian integers.
+- **Open:** proofs of the two phase-0 counts, and the fifth moments and J6, which fit no formula tried.
+- Who else works on this ground, and what their theorems give this floor: [`LITERATURE_MAP.md`](LITERATURE_MAP.md).
+
+## 18. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -800,7 +819,7 @@ generic polygons' phases cancel. Round 15 registered eight predictions with [`fr
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 18. Standing
+## 19. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -876,7 +895,8 @@ generic polygons' phases cancel. Round 15 registered eight predictions with [`fr
   the semicircle through the eighth moment, measured; the third and fourth moments are proved. Round 13 held four of six: every
   cubic state's Wigner function is a Walsh spectrum (exact), and the norm state is the most magic cubic on three
   wheels of 3, 5 and 7 (exhaustive at 3 and 5), though not from 11 on. Round 14 held one of six, the forced Smith
-  chart: its other five guesses died, and the deaths are kept. Round 15 held eight of eight: every moment reduces
+  chart: its other five guesses died, and the deaths are kept. Round 16 held six of six: the sixth moment and the
+  fourth free cumulant are exact, with modular forms in them. Round 15 held eight of eight: every moment reduces
   to polygon counts, only the non-crossing pairings survive, and the corrections are free.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
@@ -891,7 +911,8 @@ generic polygons' phases cancel. Round 15 registered eight predictions with [`fr
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
   - the oscillator states: a proof that the generic polygons' area phases cancel at every even order, the one step
-    left for the whole semicircle (round 15 measured the sixth: they cancel to order 1/p);
+    left for the whole semicircle (round 15 measured the sixth: they cancel to order 1/p); the proofs of round 16's
+    two phase-0 counts; and exact formulas for the fifth moments;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
 
@@ -942,6 +963,9 @@ python planes.py run                   # round 14: about twenty minutes, one pro
 python planes.py combine
 python free_moments.py calibrate       # round 15: seconds
 python free_moments.py run             # about nine minutes, one process
+python exact_moments.py collect        # round 16: seconds
+python exact_moments_fit.py            # the exact fits, about a minute (sympy)
+python exact_moments.py test           # the blind test, minutes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

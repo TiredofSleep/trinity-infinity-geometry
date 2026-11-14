@@ -32,7 +32,8 @@ negative cubic-phase state; from dimension $11$ on, samples find smooth cubic cu
 $\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$, and their basis-averaged third moment is exactly
 $2/(p^2(p+1))$, so the skew tapers to $0$ as $-1/\sqrt p$. Every moment reduces to a count of polygons on the torus's
 orbits in which only non-crossing pairings survive, the mechanism of free probability; numerically, up to $p=1009$,
-the whole value distribution is the semicircle law, and its corrections are free. All computational predictions were registered before they were run.
+the whole value distribution is the semicircle law, and its corrections are free. The sixth moment is exact and
+carries the newform of weight $4$ and level $6$ that governs the sixth moment of Kloosterman sums. All computational predictions were registered before they were run.
 \end{abstract}
 
 \section{Introduction}
@@ -216,6 +217,26 @@ free probability: commuting operators would retain every pairing and give the Ga
 commutation phase of the phase-point operators, a symplectic area, suppresses the crossing pairings, as in Voiculescu's
 free central limit theorem \cite{VDN1992} (the $q=0$ case of the Bo\.zejko--Speicher $q$-Gaussians \cite{BozejkoSpeicher1991}).
 
+\begin{theorem}\label{thm:sixth}
+Let $I_6=\sum_C\Tr S_C^6$ and let $b(p)$ be the coefficients of $(\eta(\tau)\eta(2\tau)\eta(3\tau)\eta(6\tau))^2$,
+the newform of weight $4$ and level $6$. Then $I_6=p(pZ_6-N_6)$, where
+$N_6=\big((p+1)^6+(p+1)V_6\big)/p^2$ counts the closed hexagons on a circle and $V_6=\sum_aK(a)^6$, because the
+Fourier transform of a circle is a Kloosterman sum; and $V_6=5p^4-10p^3-(b(p)+9)p^2-5p-1$ \cite{HSvGvS2001}. If
+moreover the hexagons of phase $0$ number $Z_6=(p+1)\big(6p^2+(4-(\tfrac{-3}{p}))p+1\big)$, as they do at every prime
+up to $401$, then
+\[
+I_6=p\Big[5p^4-p^3-5p^2-1+(p+1)\big(b(p)-\big(\tfrac{-3}{p}\big)p^2\big)\Big],\qquad
+\frac1p\sum_j\sum_uW_j(u)^6=\frac{1}{p^7}\Big[p+\frac{I_6}{(p+1)^5}\Big].
+\]
+\end{theorem}
+Similarly, with $J_4=\sum_C\Tr(PS_C^4)$, one finds at every prime up to $401$ that
+$J_4=(3p+1)(p^2-1)-4p(p+1)b^2$, where $p=a^2+b^2$ with $b$ even if $p\equiv1\pmod4$ and $b=0$ otherwise; the
+non-polynomial part is $p(p+1)c(p)$ with $c$ the coefficients of $\eta(4\tau)^6$. With Theorems~\ref{thm:moment}
+and~\ref{thm:third} this gives the free fourth cumulant of the standardized Wigner values exactly; it is
+$3/p^2+(16\sin^2\theta_p-8-8[p\equiv2\bmod3])/p^3+O(p^{-4})$, where $\sin^2\theta_p=b^2/p$ and $\theta_p$ is
+the angle of the Gaussian prime $a+bi$. Both formulas were found at the primes up to $199$ and confirmed, without
+refitting, at every prime from $211$ to $401$.
+
 \paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
 $401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
 states), standardized, they match the semicircle law through the eighth moment, and the Kolmogorov distance of the
@@ -279,6 +300,8 @@ arXiv:math-ph/0404074.
 linear maps of the torus, Duke Math. J. 103 (2000).
 \bibitem{Rosenzweig2009} L. Rosenzweig, On the fluctuations of matrix elements of the quantum cat map,
 arXiv:0909.1410 (2009).
+\bibitem{HSvGvS2001} K. Hulek, J. Spandaw, B. van Geemen, D. van Straten, The modularity of the Barth--Nieto
+quintic and its relatives, Adv. Geom. 1 (2001).
 \bibitem{BozejkoSpeicher1991} M. Bo\.zejko, R. Speicher, An example of a generalized Brownian motion, Comm. Math.
 Phys. 137 (1991).
 \bibitem{VDN1992} D. V. Voiculescu, K. J. Dykema, A. Nica, Free Random Variables, CRM Monograph Series 1, Amer. Math.

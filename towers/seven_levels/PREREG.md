@@ -1473,3 +1473,24 @@ The formulas were found at the primes from 7 to 199. This round tests them where
 **The drafter's expectation:** all hold.
 
 Run: `python exact_moments.py test` (minutes).
+
+---
+
+## Round 16 scores (added after the test, 2026-11-14)
+
+Run by [`exact_moments.py`](exact_moments.py) `test`, committed with this registration at 7c77ed2 before the test; the
+output is kept in [`exact_moments_test.log`](exact_moments_test.log). **All six held.**
+
+| | outcome | evidence |
+|---|---|---|
+| E0, forced | held | the coefficients of η(4τ)⁶ are 2(a² − b²) or 0 at every prime to 1009 |
+| E1 | held | I6's formula is exact at all 33 primes from 211 to 401, none of them used to find it |
+| E2 | held | J4's formula is exact at all 33 primes from 211 to 401 |
+| E3, forced | held | I2, I3, I4, J2 and J3 at every prime from 211 to 401 |
+| E4 | held | the exact κ4 and the states' value agree to about 10⁻¹⁵ at 211, 503, 701, 907 and 1009 (κ4 = 6.6516 × 10⁻⁵ at 211, 2.9511 × 10⁻⁶ at 1009) |
+| E5 | held | the exact sixth moment and the states' agree to a relative 10⁻¹² or better at 503, 701, 907 and 1009 |
+
+**Yield.** Two exact formulas, each found on 45 primes and confirmed on 33 more. The sixth moment carries the newform of
+weight 4 and level 6; it enters through the closed-hexagon count, by the classical evaluation of Kloosterman's sixth
+moment. The fourth free cumulant is exact and 3/p² only to leading order; the Gaussian integers' CM form η(4τ)⁶ is in
+it. What is not proved is the two counts of phase-0 polygons, Z6 and J4: both are exact at every prime to 401.

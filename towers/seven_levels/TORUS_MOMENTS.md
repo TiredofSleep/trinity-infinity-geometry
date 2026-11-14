@@ -12,6 +12,7 @@ non-split torus's eigenvectors, the fourth-moment ratio of the Wigner values is 
 prime tested. This page proves it (§2 to §4). Round 12 then tested the higher moments (§5), and the skew it
 measured, about −1/√p, turned out exact as well: §6 proves the third moment. §7 says why the whole law is the
 semicircle: every moment is a count of polygons, and only the non-crossing ones survive, as in free probability.
+§8 makes the sixth moment and the fourth free cumulant exact, and modular forms appear in them.
 
 ## 1. The setting
 
@@ -343,7 +344,74 @@ and all eight held. The output is in [`free_moments_calibrate.log`](free_moments
   circle, and these add like free variables. The arithmetic, the circle's geometry and its hexagons, enters only
   through a few small free cumulants.
 
-## 8. Standing
+## 8. The exact sixth moment, and the fourth free cumulant: modular forms enter [FORCED in part; measured exactly; NAMED]
+
+> *go after an exact formula for the 6th moment first.. The free fourth cumulant equals 3/p² to every digit the log
+> keeps. Worth a short exact proof as a small theorem* — the author, 14 November 2026
+
+Every moment is an integer in disguise. Let I_n = Σ_C Tr S_C^n and J_n = Σ_C Tr(P S_C^n), summed over the p − 1
+circles. By §7's Theorem 3,
+
+  (1/p) Σ_j Σ_u W_j(u)^n = p^(−n−1) [Tr P^n + m^(1−n) I_n],   (1/p) Σ_j ε_j Σ_u W_j(u)^n = p^(−n−1) [Tr P^(n+1) + m^(1−n) J_n].
+
+§2 and §6 prove I3 = (p + 1)(p − 1)(2p + 1), I4 = 2p²(p − 1)(p + 1) and J3 = −2p(p + 1) when p ≡ 2 (mod 3), else 0;
+and I2 = p(p² − 1), J2 = p² − 1. [`exact_moments.py`](exact_moments.py) reads all of them from the states, as
+integers, at every prime up to 401.
+
+**Theorem 4: the sixth moment** [exact; proved except one count].
+
+  I6 = p [5p⁴ − p³ − 5p² − 1 + (p + 1)(b(p) − (−3|p) p²)],
+
+where b(p) is the p-th coefficient of (η(τ)η(2τ)η(3τ)η(6τ))² = q − 2q² − 3q³ + 4q⁴ + 6q⁵ + …, the newform of weight 4
+and level 6, and (−3|p) is 1 or −1 as p is 1 or 2 more than a multiple of 3. So the basis average of Σ_u W(u)⁶ is
+p^(−7)[p + I6/(p + 1)⁵].
+- **Proved.** I6 = p(pZ6 − N6), by §7. N6, the closed hexagons on a circle, is ((p + 1)⁶ + (p + 1)V6)/p², where
+  V6 = Σ_a K(a)⁶ is the sixth moment of the Kloosterman sums. The reason is that a circle's Fourier transform is a
+  Kloosterman sum: Σ over the v with N(v) = r of ψ(Tr(αv)) is −K(r N(α)). And V6 = 5p⁴ − 10p³ − (b(p) + 9)p² − 5p − 1
+  [NAMED: Hulek, Spandaw, van Geemen and van Straten 2001; checked here at every prime from 7 to 199].
+- **Measured exactly, proof open.** Z6, the closed hexagons whose phase is 0, number
+  (p + 1)(6p² + (4 − (−3|p))p + 1). It was found at the primes from 7 to 199 and then predicted, without refitting, at
+  every prime from 211 to 401 (round 16).
+- So the modular form enters only through the closed polygons. The phase-0 polygons are a polynomial count, and the
+  p mod 3 that round 15 saw in the generic part is the (−3|p) here.
+
+**Theorem 5: the fourth free cumulant** [exact given one count].
+
+  J4 = (3p + 1)(p² − 1) − 4p(p + 1) b²,
+
+where p = a² + b² with b even when p ≡ 1 (mod 4), and b = 0 when p ≡ 3 (mod 4). Equivalently,
+J4 = 2p³ − 3p − 1 − (−1|p)(p³ + p²) + p(p + 1)c(p), with c(p) = 2(a² − b²) the coefficients of η(4τ)⁶, the newform of
+weight 3 with complex multiplication by the Gaussian integers. With Theorems 1 and 2 this makes the basis average of
+the standardized fourth moment off the origin exact. Its free cumulant κ4 = m4 − 2 is
+
+  κ4 = [P(p) + 16 b² (p² − 2p − 1)] / (p² (p − 3)² (p² − 1)),
+
+with P(p) = 3p⁴ − 26p³ + 40p² − 6p − 11 when p ≡ 1 (mod 3) and 3p⁴ − 34p³ + 32p² + 34p + 29 when p ≡ 2 (mod 3).
+- So κ4 = 3/p² + (16 sin²θ_p − 8 − 8[p ≡ 2 mod 3])/p³ + O(1/p⁴), where sin²θ_p = b²/p and θ_p is the angle of the
+  Gaussian prime a + bi, Hecke's angle (0 when p ≡ 3 mod 4). The 3/p² the logs showed is the leading term, not the
+  whole.
+- **Proved:** the algebra from J4 to κ4. **Measured exactly, proof open:** J4, found at the primes from 5 to 199 and
+  predicted at every prime from 211 to 401 (round 16).
+- [READING] J4 + (p + 1)⁴ = p(p + 1)(p² + 6p + 1 − 4b²) counts the 4-tuples on a circle whose five-gon phase with the
+  origin vanishes: points on a surface. Its count, p² + 6p + 1 − 4b², is that of a surface whose middle cohomology
+  carries η(4τ)⁶, as for a K3 surface with complex multiplication by the Gaussian integers. Where 4 divides p + 1 the
+  turning wheel holds the fourth roots of unity and the count is a polynomial, as the third moment's count was where 3
+  divides p + 1.
+
+**Not found.** The fifth moments I5 and J5, and the parity-weighted J6, fitted none of the formulas tried: a polynomial
+with the characters of p mod 3 and mod 4, plus one or two of fourteen modular forms
+([`exact_moments_fit.py`](exact_moments_fit.py)). Their exact integers are kept in the logs.
+
+**What it says.**
+- The moments of the oscillator states' Wigner values are point counts, and modular forms appear in them. From the
+  sixth moment on there is a non-CM form of weight 4. It is the form of the Barth–Nieto quintic and of Kloosterman's
+  sixth moment, and it also turns up in Feynman integrals (Broadhurst 2016). The parity-weighted fourth moment carries
+  the Gaussian integers' CM form.
+- [READING] The author's "how primes form direction" appears here twice: in the Sato–Tate angles of b(p), and in the
+  angle of the Gaussian prime a + bi, which tunes κ4's correction.
+- The neighbourhood of these results, and who works there, is in [`LITERATURE_MAP.md`](LITERATURE_MAP.md).
+
+## 9. Standing
 
 - **Known, and credited** [NAMED]: the Weil representation and its covariance (Weil 1964); the multiplicity-free action
   of a torus, and the oscillator states (Gurevich, Hadani and Sochen 2008); the algebra of phase-point operators
@@ -357,18 +425,20 @@ and all eight held. The output is in [`free_moments_calibrate.log`](free_moments
   they give. Web searches on 2026-11-14 found the nearest work in Kurlberg and Rudnick's and Rosenzweig's papers;
   none computes a third moment of the Wigner function. Also new as far as we checked: the reduction of every moment
   to polygon counts, with the split into non-crossing, crossing and generic polygons (§7), and round 15's
-  measurements. Web searches on 2026-11-14 found no treatment of the phase-point operators as free variables.
+  measurements. Web searches on 2026-11-14 found no treatment of the phase-point operators as free variables. And
+  the exact sixth moment and fourth free cumulant (§8), with the modular forms in them.
 - **Checked** by [`verify_torus_moments.py`](verify_torus_moments.py), whose output is in
   [`verify_torus_moments.log`](verify_torus_moments.log). For §3: steps 1, 2, 3 and 6 with the operators themselves at
   every prime up to 31, and steps 4, 5 and the theorem by counting at every prime up to 101. For §6: the operator steps
   at every prime up to 31; the zero-area count, the Cayley formula, the triangle sums, the hexagons and both
   identities at every prime up to 101; and the off-origin skew against all 77 of round 12's logged values. For §7:
   [`free_moments.py`](free_moments.py)'s calibrate step (the phase formula, one circle's counts against the states,
-  the pairings) at the primes it names.
+  the pairings) at the primes it names. For §8: [`exact_moments.py`](exact_moments.py), its blind test at 211 to 401
+  and its check against the states at 503 to 1009 ([`exact_moments_test.log`](exact_moments_test.log)).
 - **Measured, not proved:** the moments above the fourth and the whole distribution (§5 and §7;
   [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log),
   [`free_moments_run.log`](free_moments_run.log)), including the generic hexagons' 1/p and the free counts of the
-  odd moments.
+  odd moments; and the two phase-0 counts of §8, Z6 and J4, exact at every prime to 401 but not proved.
 
 ## Run it
 
@@ -379,6 +449,9 @@ python torus_moments.py run        # about eleven minutes, one process
 python torus_moments.py combine
 python free_moments.py calibrate   # round 15's forced checks: seconds
 python free_moments.py run         # round 15: about nine minutes, one process
+python exact_moments.py collect    # round 16: the integers at 5..199, seconds
+python exact_moments_fit.py        # the exact fits that found Theorems 4 and 5 (sympy), a minute
+python exact_moments.py test       # round 16's blind test at 211..401 and the states at 503..1009, minutes
 ```
 
 ## Sources
@@ -392,6 +465,12 @@ python free_moments.py run         # round 15: about nine minutes, one process
   (2005), [arXiv:math/0302277](https://arxiv.org/abs/math/0302277).
 - L. Rosenzweig, "On the fluctuations of matrix elements of the quantum cat map" (2009),
   [arXiv:0909.1410](https://arxiv.org/abs/0909.1410).
+- K. Hulek, J. Spandaw, B. van Geemen and D. van Straten, "The modularity of the Barth–Nieto quintic and its
+  relatives", *Adv. Geom.* **1** (2001): the sixth moment of Kloosterman sums and the newform of weight 4, level 6.
+- D. Broadhurst, "Feynman integrals, L-series and Kloosterman moments" (2016),
+  [arXiv:1604.03057](https://arxiv.org/abs/1604.03057).
+- J. Fresán, C. Sabbah and J.-D. Yu, "Hodge theory of Kloosterman connections", *Duke Math. J.* **171** (2022),
+  [arXiv:1810.06454](https://arxiv.org/abs/1810.06454).
 - D. V. Voiculescu, K. J. Dykema and A. Nica, *Free Random Variables*, CRM Monograph Series 1, Amer. Math. Soc.
   (1992): the free central limit theorem.
 - M. Bożejko and R. Speicher, "An example of a generalized Brownian motion", *Comm. Math. Phys.* **137** (1991):

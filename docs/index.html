@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trinity Infinity Geometry: magic states, Kloosterman sums and a new way to teach higher mathematics</title>
 <meta name="description" content="Open, machine-checked mathematics by Brayden Ross Sanders: the Wigner negativity (magic) of qudit states via Walsh spectra, Kloosterman sums and the Sato-Tate law; magic squares; quantum contextuality; and a new way to teach higher mathematics by classifying its paradoxes. Every prediction registered before it ran; every failure kept.">
-<meta name="keywords" content="magic states, Wigner negativity, discrete Wigner function, qudits, Clifford hierarchy, third-level gates, Kloosterman sums, Sato-Tate law, Weil representation, oscillator states, quantum chaos, quantum cat map, Hecke eigenfunctions, free probability, Walsh spectrum, bent functions, elliptic curves, finite fields, explicit formula, prime numbers, sieve of Eratosthenes, Mertens' theorem, Riemann zeta zeros, Frobenius angles, magic squares, quantum contextuality, Steiner triple systems, mathematics education, pre-registration, negative results, reproducible research">
+<meta name="keywords" content="magic states, Wigner negativity, discrete Wigner function, qudits, Clifford hierarchy, third-level gates, Kloosterman sums, Sato-Tate law, Weil representation, oscillator states, quantum chaos, quantum cat map, Hecke eigenfunctions, free probability, modular forms, Kloosterman moments, trace functions, Walsh spectrum, bent functions, elliptic curves, finite fields, explicit formula, prime numbers, sieve of Eratosthenes, Mertens' theorem, Riemann zeta zeros, Frobenius angles, magic squares, quantum contextuality, Steiner triple systems, mathematics education, pre-registration, negative results, reproducible research">
 <meta name="author" content="Brayden Ross Sanders">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tiredofsleep.github.io/trinity-infinity-geometry/">
@@ -30,7 +30,7 @@
   "identifier": "https://doi.org/10.5281/zenodo.18852047",
   "license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "programmingLanguage": "Python",
-  "keywords": ["magic states", "Wigner negativity", "qudits", "Kloosterman sums", "Sato-Tate law", "Weil representation", "quantum chaos", "quantum cat map", "free probability", "Walsh spectrum", "bent functions", "elliptic curves", "finite fields", "prime numbers", "explicit formula", "magic squares", "quantum contextuality", "mathematics education"]
+  "keywords": ["magic states", "Wigner negativity", "qudits", "Kloosterman sums", "Sato-Tate law", "Weil representation", "quantum chaos", "quantum cat map", "free probability", "modular forms", "Kloosterman moments", "Walsh spectrum", "bent functions", "elliptic curves", "finite fields", "prime numbers", "explicit formula", "magic squares", "quantum contextuality", "mathematics education"]
 }
 </script>
 <style>
@@ -73,7 +73,8 @@ qudits of every odd prime, so its negativity is known in closed form and tends t
 <li><span class="tag">Quantum chaos · magic states</span><strong>The oscillator states' magic follows the Sato–Tate law</strong>, and
 averaged over a torus's eigenbasis the third and fourth moments of their Wigner values are exact: the skew tapers as
 −1/√p and the fourth-moment ratio is 2p/(p + 1). In every moment only the non-crossing pairings survive, as in free
-probability, and the corrections are free.
+probability, and the corrections are free. The sixth moment is exact, and it carries the weight-4, level-6 newform
+of Kloosterman's sixth moment.
 <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">The theorem</a></li>
 <li><span class="tag">Quantum contextuality</span><strong>Small genuine magic sets for every odd number of qubits</strong>: 16
 observables at five qubits against a published 26, and 16 is the minimum.
@@ -89,6 +90,7 @@ pandiagonal 5×5 magic square is invertible.
 <tr><td>Magic states, Wigner negativity, qudits</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/seven_levels">towers/seven_levels</a></td></tr>
 <tr><td>Kloosterman sums, Sato–Tate, repeating decimals</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/NORM_STATE.md">NORM_STATE</a>, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/base/SEVENTHS.md">the sevenths</a></td></tr>
 <tr><td>Primes, the sieve, the explicit formula, Frobenius angles</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/THE_STAIRCASE.md">the staircase</a></td></tr>
+<tr><td>Modular forms in moments, Kloosterman moments, equidistribution</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">TORUS_MOMENTS §8</a>, <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/LITERATURE_MAP.md">the literature map</a></td></tr>
 <tr><td>Quantum chaos, the Weil representation</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">TORUS_MOMENTS</a></td></tr>
 <tr><td>Walsh spectra, bent functions, cubic forms</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/cubic_magic.py">cubic magic</a></td></tr>
 <tr><td>Quantum contextuality</td><td><a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/binary_magic/magic_sets">magic sets</a></td></tr>
