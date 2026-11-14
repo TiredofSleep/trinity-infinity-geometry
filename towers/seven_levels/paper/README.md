@@ -9,6 +9,10 @@ Kloosterman sums · Sato–Tate law · Weil representation · oscillator states 
 
 **Status:** a draft, not submitted. Submission is the author's call.
 
+**Target:** arXiv quant-ph, the author's choice (2026-11-14), cross-listed to math.NT. The introduction leads with
+magic-state resource theory and the third-level gates of fault-tolerant qudit computing; the number theory comes
+after, as the tool.
+
 | claim in the draft | proof or evidence | check |
 |---|---|---|
 | Theorem 1: a cubic-phase state's Wigner values are a Walsh spectrum | proved | [`../cubic_magic.py`](../cubic_magic.py) `calibrate`; [`../verify_seven_levels.py`](../verify_seven_levels.py), round 13 |
