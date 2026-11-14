@@ -1254,3 +1254,61 @@ the Walsh spectrum of its cubic, and, with Mesnager, Özbudak and Sınak, that n
 and new: on three wheels of 3 and 5, and in the sample at 7, the norm state is the most magic of all the third level's
 diagonal magic states, ahead of the CCZ-type state. Useful: it says which non-Clifford diagonal gate on three qudits
 gives the most negativity per magic state.
+
+---
+
+## Round 14: the triangle, the planes and the Smith chart (registered 2026-11-14, before any run)
+
+> *if the triangle unfolds to 8 pointed curves under p=5, that makes sense to be a coin. does a triangle unfold to
+> other amounts of points at p=n?... do the fano, consider the double smith* · *the smith chart from electrical
+> engineering... laid over other planes* — the author, 14 November 2026
+
+**Made exact, before the run.**
+- **The triangle.** The norm form's curve is three lines conjugate over F_p³, a triangle with no point over F_p. At 5,
+  smooth curves with 8 points tied its negativity (round 13). The question, at each prime: which curves tie it, and with
+  how many points?
+- **The planes.** The Fano cubic on 7 wheels is Σ x_i x_j x_k over the 7 lines {i, i + 1, i + 3} mod 7, the Fano plane
+  as the difference set {0, 1, 3}. The affine-plane cubic on 9 wheels uses the 12 lines of AG(2, 3). By round 13's
+  identity their negativities are L1 norms of Walsh spectra.
+- **The Smith chart** [FORCED]. The chart is the map Γ = (z − 1)/(z + 1), the matrix [[1, −1], [1, 1]].
+  - Its square is twice z → −1/z, the impedance–admittance flip that the double chart overlays; its fourth power is a
+    scalar, the identity map. So the chart is a quarter turn of the Riemann sphere, and the double chart is its half
+    turn.
+  - Over F_p it scales into SL(2, p) exactly when 2 is a square (p one more or one less than a multiple of 8), with
+    order 8. It lies in the non-split torus, round 8's turning wheel, exactly when p is 7 more than a multiple of 8.
+    Only at 7 does that torus have 8 elements, so only at 7 does the chart generate the whole turning wheel.
+  - The flip z → −1/z is the Fourier transform's action, and round 2's most negative seven-level state is, in one
+    frame, an eigenvector of the Fourier transform: the double chart's half turn fixes it.
+  - [FENCE] The fine-structure constant is an impedance ratio: α = Z₀/(2R_K), the impedance of free space over twice the
+    von Klitzing resistance. That is a definition-level identity of SI physics, noted here, and nothing in this round
+    tests physics.
+- **The test.** [`planes.py`](planes.py) is committed with this registration:
+  - random ternary cubic forms, 2 000 000 at 7, 1 000 000 at 11 and 600 000 at 13; for each that reaches the norm
+    value, its curve's point count and whether it has a rational singular point;
+  - the two plane cubics against seeded samples of dense random cubics and of sparse ones with as many triples: on 7
+    wheels 2 000, 200 and 20 of each at 3, 5 and 7; on 9 wheels 500 and 8 at 3 and 5;
+  - the Smith chart's facts at every prime from 5 to 199.
+- **The timing printed no values.** The run takes about 22 minutes.
+- **Not computed before this registration:** any tie at 7, 11 or 13, and any plane cubic's value.
+
+**Predictions.** S0 is forced; the rest are fresh.
+
+**S0. (Forced.)** The Smith chart's facts above hold at every prime from 5 to 199.
+
+**T1. (Fresh; Claude's reading, from round 13's coin by p mod 3.)** The triangle unfolds at 11, which is 2 more than a
+multiple of 3 like 5: some non-norm curve ties the norm value. It does not unfold at 7 or 13. *Kill:* no tie at 11, or
+a tie at 7 or 13.
+
+**T2. (Fresh; a guess from the one case seen.)** Every non-norm form that ties the norm value is a curve with p + 3
+points and no rational singular point (at 5: 8 points). *Kill:* another point count, a singular one, or no ties at all.
+
+**F1. (Fresh.)** On 7 wheels at 3, 5 and 7, the Fano cubic beats every sampled dense and sparse cubic. *Kill:* a sample
+at or above it.
+
+**F2. (Fresh; a gamble.)** The Fano cubic's S/√q exceeds Sato–Tate's 8/(3π) at 5 and 7. *Kill:* at or below.
+
+**F3. (Fresh.)** On 9 wheels at 3 and 5, the affine-plane cubic beats every sampled dense cubic. *Kill:* a sample at
+or above it.
+
+**Expected standing.** S0 is exact. The ties and the plane cubics' values are exact for the forms tested; the samples
+make T1, F1 and F3 search-level evidence.
