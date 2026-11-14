@@ -1,0 +1,18 @@
+  2 wheels of 3: best cubic 0.666666667 (0.6667 of the ceiling; 4 values; 2 points on its curve; form 1:12); best by search 0.888888889
+  3 wheels of 3: best cubic 1.888888889 (0.9003 of the ceiling; 3 values; 6 points on its curve; form 1:012,2:021,1:120,1:201); best by search 1.888888889
+  2 wheels of 5: best cubic 1.570820393 (0.7854 of the ceiling; 6 values; 3 points on its curve; form 3:03,1:12,1:21); best by search 1.766937254
+  3 wheels of 5: best cubic 4.252724292 (0.8355 of the ceiling; 10 values; 8 points on its curve; form 2:003,3:021,2:030,1:102,4:111,4:120,2:210); best by search 4.301387418
+  2 wheels of 7: best cubic 2.567774657 (0.8559 of the ceiling; 9 values; 1 points on its curve; form 4:03,4:12,1:21,6:30); best by search 2.719253432
+  3 wheels of 7: best cubic 7.902228372 (0.9021 of the ceiling; 7 values; 0 points on its curve; form 5:003,3:012,1:021,4:030,6:102,5:111,4:120,5:201,1:210,2:300); best by search 7.902228372
+  2 wheels of 11: best cubic 4.259786486 (0.8520 of the ceiling; 26 values; 3 points on its curve; form 4:03,1:12,5:21)
+  2 wheels of 13: best cubic 5.102876910 (0.8505 of the ceiling; 31 values; 1 points on its curve; form 8:03,9:12,2:21,1:30)
+  2 wheels of 17: best cubic 6.756732680 (0.8446 of the ceiling; 57 values; 3 points on its curve; form 10:03,5:12,1:21)
+  2 wheels of 19: best cubic 7.633914279 (0.8482 of the ceiling; 64 values; 1 points on its curve; form 11:03,10:12,1:21)
+  2 wheels of 23: best cubic 9.318854255 (0.8472 of the ceiling; 100 values; 3 points on its curve; form 9:03,4:12,1:21)
+K0 HELD: calibration: the Walsh identity against the state's own Wigner function, and round 10's norm states
+K1 HELD: no cubic-phase state reaches the ceiling (forced, by the identity and Mesnager, Ozbudak and Sinak)
+K2 DIED: two wheels of 5 and of 7: the best cubic state reaches round 9's search best
+K3 HELD: three wheels of 3: no cubic form beats the norm form's 17/9
+K4 DIED: three wheels of 5: some cubic form beats the norm form's 4.252724
+K5 HELD: three wheels of 7: no sampled cubic form beats the norm form's 7.902228
+K6 HELD: per wheel, the best cubic state on three wheels beats the CCZ-type state xyz and the single-wheel cubic x^3 (at 3: beats xyz)

@@ -32,15 +32,16 @@ except Exception:
     pass
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LOG = open(os.path.join(HERE, "verify_norm_state.log"), "w", encoding="utf-8")
+LOG = None                                                               # opened by main(), so imports leave the log alone
 OK = True
 T0 = time.time()
 
 
 def say(s=""):
     print(s, flush=True)
-    LOG.write(s + "\n")
-    LOG.flush()
+    if LOG:
+        LOG.write(s + "\n")
+        LOG.flush()
 
 
 def check(label, ok):
@@ -183,6 +184,8 @@ def part_b(p):
 
 
 def main():
+    global LOG
+    LOG = open(os.path.join(HERE, "verify_norm_state.log"), "w", encoding="utf-8")
     say("NORM_STATE.md: the norm-type state on three wheels of p; its Wigner values are Kloosterman sums")
     say()
     say("A. the whole statement, from the state itself")

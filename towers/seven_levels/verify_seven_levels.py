@@ -8,7 +8,8 @@ operators, the forced numbers for large arrays, and the norm state found on thre
 For round 10 it checks larger_arrays.py's Wigner function against the operators, the norm-type states' flatness and
 Kloosterman values on three wheels of 3, 5 and 7, the norm state on five wheels of 3, and the scores (section 12).
 For round 11 it checks the torus states (the chirp, the orbit count, the purity identity, the averaged fourth-moment
-identity) and the scores (section 13); for round 12, the counting steps of TORUS_MOMENTS.md's proof and the scores.
+identity) and the scores (section 13); for round 12, the counting steps of TORUS_MOMENTS.md's proof and the scores;
+for round 13, the Walsh identity of cubic states, the exhaustive maxima at small sizes, and the scores (section 14).
 
 numpy + scipy + round3.py + larger_arrays.py.  ASCII output.
 Run:  python verify_seven_levels.py           (about two minutes)
@@ -1478,6 +1479,54 @@ if FULL:
         ok12 &= abs(np.concatenate(m6s).mean() - logged12[p_][0]) < 1e-6 and abs(np.concatenate(m8s).mean() - logged12[p_][1]) < 1e-5
     forced("(--full) the non-split basis averages of the sixth and eighth moments, recomputed at every prime from 211 to "
            "401, are the logged ones", ok12)
+
+# ------------------------------------------------------------------ round 13 (cubic_magic.py; its logs are cubic_magic_*.log)
+print()
+print("round 13:")
+import cubic_magic as cmg
+
+rng13 = np.random.default_rng([20261114, 13])
+worst13 = 0.0
+for p_, n_ in ((5, 2), (7, 2), (3, 3), (5, 3)):
+    mons13, Mv13 = cmg.monomial_values(p_, n_)
+    X13 = cmg.points(p_, n_)
+    for _ in range(4):
+        c13 = rng13.integers(0, p_, len(mons13))
+        lin13 = rng13.integers(0, p_, n_)
+        q13 = rng13.integers(0, p_, (n_, n_))
+        extra13 = (X13 @ lin13 + np.einsum("ai,ij,aj->a", X13, q13, X13)) % p_
+        f13 = ((c13 @ Mv13) + extra13) % p_
+        worst13 = max(worst13, abs(cmg.negativities(c13[None, :], Mv13, p_, n_)[0][0] - cmg.direct_negativity(f13, p_, n_)))
+forced(f"every cubic-phase state's Wigner values are the Walsh spectrum of its cubic part: random cubic states with random "
+       f"lower terms on two wheels of 5 and 7 and three of 3 and 5 agree with their own Wigner functions (largest "
+       f"difference {worst13:.1e})", worst13 < 1e-10)
+mons33, Mv33 = cmg.monomial_values(3, 3)
+N33 = np.concatenate([cmg.negativities(c, Mv33, 3, 3)[0] for c in cmg.all_forms(3, len(mons33))])
+xyz33 = np.zeros(len(mons33), dtype=np.int64)
+xyz33[mons33.index((1, 1, 1))] = 1
+mons52, Mv52 = cmg.monomial_values(5, 2)
+N52 = np.concatenate([cmg.negativities(c, Mv52, 5, 2)[0] for c in cmg.all_forms(5, len(mons52))])
+x3_5 = cmg.negativities(np.array([[1]]), cmg.monomial_values(5, 1)[1], 5, 1)[0][0]
+forced(f"exhaustive: over all 2187 cubic forms on three wheels of 3 the best is {N33.max():.12f} = 17/9, the norm form's, and "
+       f"xyz has {cmg.negativities(xyz33[None, :], Mv33, 3, 3)[0][0]:.12f} = 16/9; over all 625 on two wheels of 5 the best "
+       f"is {N52.max():.12f} = (9 + 3 sqrt 5)/10, below round 9's 1.766937; the cube state w^(x^3) at 5 has {x3_5:.12f} = "
+       f"1/sqrt 5; and no form reaches the ceiling", abs(N33.max() - 17 / 9) < 1e-12
+       and abs(cmg.negativities(xyz33[None, :], Mv33, 3, 3)[0][0] - 16 / 9) < 1e-12
+       and abs(N52.max() - (9 + 3 * np.sqrt(5)) / 10) < 1e-12 and abs(x3_5 - 1 / np.sqrt(5)) < 1e-12
+       and N33.max() < (np.sqrt(27) - 1) / 2 and N52.max() < (np.sqrt(25) - 1) / 2)
+LOG13 = {"K2": (1.570820393250, 1.766937254162, 2.567774657226, 2.719253432179), "K4": (4.252724292100, 4.252724292100),
+         "K5": (7.902228372133, 7.902228372133)}
+v13 = {"K2": LOG13["K2"][0] >= LOG13["K2"][1] - 1e-6 and LOG13["K2"][2] >= LOG13["K2"][3] - 1e-6,
+       "K4": LOG13["K4"][0] > LOG13["K4"][1] + 1e-9, "K5": LOG13["K5"][0] <= LOG13["K5"][1] + 1e-9}
+forced("the logged values give round 13's recorded scores: " + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in
+       v13.items()) + " (K0, K1, K3 and K6 are checked above or exactly)",
+       v13 == {"K2": False, "K4": False, "K5": True})
+if FULL:
+    # three wheels of 5, all 9 765 625 forms: the maximum is the norm form's
+    mons53, Mv53 = cmg.monomial_values(5, 3)
+    top53 = max(cmg.negativities(c, Mv53, 5, 3)[0].max() for c in cmg.all_forms(5, len(mons53)))
+    forced(f"(--full) over all 9765625 cubic forms on three wheels of 5 the best is {top53:.12f}, the norm form's",
+           abs(top53 - 4.252724292100) < 1e-9)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

@@ -32,6 +32,8 @@
   chaos. Round 11 measured the magic of every one of them up to 401, exactly: all five predictions held, and it follows
   the Sato–Tate law, like the norm state's. Round 12 found the whole distribution of their Wigner values to be the
   semicircle, six of six held, and the fourth moment is proved exactly (§13).
+- Round 13 took every cubic-phase state, the magic states of the third level's diagonal gates: their Wigner functions
+  are Walsh spectra, none reaches the ceiling, and on three wheels the norm state is the most magic of them (§14).
 
 ---
 
@@ -700,7 +702,36 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   three wheels both have Kloosterman-type values, and their magic follows the same Sato–Tate law: number theory
   decides how far a structured state's quasi-probabilities can spread.
 
-## 14. Our space, and what it cannot hold [FORCED; FENCE]
+## 14. Round 13: cubic magic [FORCED; measured; NAMED: Cui, Gottesman and Krishna, Howard and Vala, Mesnager, Özbudak and Sınak]
+
+> *it's okay to drift, i am the visionary, you are the drafter... let's pick a useful direction* — the author,
+> 14 November 2026
+
+Round 10's proof used one fact about the norm: it is a cubic. A cubic-phase state, ψ_f = Σ ω^f(x) |x⟩ / √q with f of
+degree at most 3, is the magic state of one of the third level's diagonal gates, the non-Clifford gates of
+fault-tolerant computing with qudits [NAMED: Cui, Gottesman and Krishna]. Round 13 asked which of them carries the most
+magic. Six predictions were registered with the script, [`cubic_magic.py`](cubic_magic.py), before the run
+([`PREREG.md`](PREREG.md)); four held.
+
+- **Every cubic state's Wigner function is a Walsh spectrum** [FORCED]. If C is f's cubic part, the Wigner values are
+  S(w)/q², each q times, where S(w) = Σ_s ω^(w·s − 2C(s)). So the negativity is the L1 norm of a cubic's Walsh spectrum,
+  and only the cubic part matters. For one qudit this was known as a cubic character sum [NAMED: Howard and Vala].
+- **None reaches the ceiling** [FORCED, with NAMED]. By Parseval the ceiling needs a flat Walsh spectrum, a bent
+  function, and Mesnager, Özbudak and Sınak proved that no homogeneous cubic is bent in odd characteristic.
+- **On three wheels the norm state is the best cubic** [measured; exhaustive at 3 and 5]. Over all 2 187 cubic forms at
+  3 and all 9 765 625 at 5, and 2 000 004 at 7, nothing beats the norm form: 17/9, 4.252724 and 7.902228. The CCZ-type
+  state ω^(xyz) comes second at 3 (16/9). Per wheel the norm state beats both CCZ and three single-wheel cubes.
+  - [READING] So among the diagonal non-Clifford gates on three qudits, the norm's phase gives the most negativity per
+    magic state.
+  - At 5 elliptic curves tie it: forms whose curve is smooth with 8 points have different Wigner values but the same
+    negativity, to 10⁻⁹. Why is open.
+- **On two wheels the cubics are not the record holders** [measured, exhaustive]. The best two-wheel cubic falls short of
+  round 9's searches: (9 + 3√5)/10 = 1.570820 against 1.766937 at 5. From 7 to 23 it sits at 0.845 to 0.856 of the
+  ceiling: the semicircle's 0.849 again.
+  - [READING] A coin by p mod 3: the best two-wheel cubic splits into three rational lines when p is 2 more than a
+    multiple of 3, and has one rational root when p is 1 more, at all seven primes from 5 to 23.
+
+## 15. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -717,7 +748,7 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 15. Standing
+## 16. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -789,7 +820,9 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   taught that at 243 and 343 levels random climbs stop short of states already known. Round 11 held five of five, on
   exact values: the oscillator states' magic follows the Sato–Tate law. Its mechanism is Gurevich and Hadani's; the
   measurement and the exact identity are new as far as we checked. Round 12 held six of six: the full distribution is
-  the semicircle through the eighth moment, measured; the fourth moment is proved.
+  the semicircle through the eighth moment, measured; the fourth moment is proved. Round 13 held four of six: every
+  cubic state's Wigner function is a Walsh spectrum (exact), and the norm state is the most magic cubic on three
+  wheels (exhaustive at 3 and 5).
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -803,7 +836,9 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
   - the oscillator states: proofs for the moments above the fourth, which the same trace reduces to counts of bent
-    polygons on the torus's circles.
+    polygons on the torus's circles;
+  - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
+    continues; and the best cubic on four or more wheels.
 
 ## Run it
 
@@ -845,6 +880,9 @@ python verify_torus_moments.py         # TORUS_MOMENTS.md's proof, step by step:
 python torus_moments.py calibrate      # round 12: seconds
 python torus_moments.py run            # about eleven minutes, one process
 python torus_moments.py combine
+python cubic_magic.py calibrate        # round 13: seconds
+python cubic_magic.py run              # about seven minutes, one process
+python cubic_magic.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -853,7 +891,7 @@ python torus_moments.py combine
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The lines for rounds 4 to 12, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
+- The lines for rounds 4 to 13, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
   are seeded or exact, and rewrite their logs.
 
 ## Sources
@@ -907,3 +945,9 @@ python torus_moments.py combine
   [arXiv:math/0612765](https://arxiv.org/abs/math/0612765).
 - P. Kurlberg and Z. Rudnick, "On the distribution of matrix elements for the quantum cat map", *Ann. of Math.*
   **161** (2005).
+- J. Cui, D. Gottesman and A. Krishna, "Diagonal gates in the Clifford hierarchy", *Phys. Rev. A* **95** (2017),
+  [arXiv:1608.06596](https://arxiv.org/abs/1608.06596).
+- M. Howard and J. Vala, "Qudit versions of the qubit π/8 gate", *Phys. Rev. A* **86** (2012),
+  [arXiv:1206.1598](https://arxiv.org/abs/1206.1598).
+- S. Mesnager, F. Özbudak and A. Sınak, "On the p-ary (cubic) bent and plateaued (vectorial) functions", *Des.
+  Codes Cryptogr.* **86** (2018).

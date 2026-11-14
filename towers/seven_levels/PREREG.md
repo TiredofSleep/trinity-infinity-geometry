@@ -1217,3 +1217,40 @@ wheel is the cube root of the sum of sizes. *Kill:* either falls short at 3, 5 o
 
 **Expected standing.** The identity and the corollary are exact. The best values on two wheels and on three wheels of
 3 and 5 are exhaustive, so exact maxima over cubic states; at 7 the sample is not exhaustive.
+
+---
+
+## Round 13 scores (added after the run, 2026-11-14)
+
+Run by [`cubic_magic.py`](cubic_magic.py), committed with this registration at 0bf86ae, before the run; the output is
+kept in [`cubic_magic_run.log`](cubic_magic_run.log) and [`cubic_magic_combined.log`](cubic_magic_combined.log). It
+took 6.6 minutes; the values are exact up to rounding, and exhaustive except at three wheels of 7. **Four held, two
+died: K2 and K4.**
+
+| | outcome | evidence |
+|---|---|---|
+| K0, calibration | held | the identity against the state's own Wigner function, and round 10's norm states |
+| K1, forced | held | no cubic form tested reaches the ceiling |
+| K2 | **died** | the best two-wheel cubic states fall short of round 9's search bests: (9 + 3√5)/10 = 1.570820 against 1.766937 at 5, and 2.567775 against 2.719253 at 7 (and 2/3 against 8/9 at 3). The most negative two-qudit states are not cubic-phase states |
+| K3 | held | three wheels of 3, all 2 187 forms: the best is the norm form's 17/9; the CCZ-type form xyz is second, at 16/9 |
+| K4 | **died** | three wheels of 5, all 9 765 625 forms: nothing beats the norm form's 4.252724. It is the maximum, reached by 388 000 forms |
+| K5 | held | three wheels of 7, 2 000 004 forms: the best is the norm form, 7.902228, reached 1 316 times |
+| K6 | held | per wheel, the norm state beats the CCZ-type state and three single-wheel cubes: at 7, 2.562 against 2.476 and 2.259 (cube root of the sum of sizes) |
+
+**Read after the run.**
+- **Two wheels follow Sato–Tate too.** The best two-wheel cubic reaches 0.856, 0.852, 0.850, 0.845, 0.848 and 0.847 of
+  the ceiling at 7, 11, 13, 17, 19 and 23: the semicircle's 0.849 again, a third family after the torus states and the
+  norm states.
+- **A coin by p mod 3.** The best two-wheel cubic splits into three rational lines when p is 2 more than a multiple of 3
+  (5, 11, 17, 23), and has exactly one rational root when p is 1 more (7, 13, 19). This held at all seven primes; it is
+  an observation, not a test.
+- **At 5 elliptic curves tie the norm form.** Of the forms reaching 4.252724, those whose curve has no points have
+  exactly the norm form's Wigner values. The rest have smooth curves with 8 points over F_5, elliptic curves, and other
+  Wigner values, yet the same negativity to 10⁻⁹. Why is open.
+- Exact values: the best two-wheel cubic at 5 has (9 + 3√5)/10, and the single-wheel cube state ω^(x³) at 5 has 1/√5.
+
+**Yield.** Exact and new as far as we checked: the identity that turns every cubic-phase state's Wigner function into
+the Walsh spectrum of its cubic, and, with Mesnager, Özbudak and Sınak, that no such state reaches the ceiling. Exhaustive
+and new: on three wheels of 3 and 5, and in the sample at 7, the norm state is the most magic of all the third level's
+diagonal magic states, ahead of the CCZ-type state. Useful: it says which non-Clifford diagonal gate on three qudits
+gives the most negativity per magic state.
