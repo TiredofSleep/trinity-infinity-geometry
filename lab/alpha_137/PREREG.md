@@ -107,3 +107,20 @@ python alpha_test.py run         # everything; writes alpha_test_run.log (second
   [NIST's table](https://www.physics.nist.gov/cuu/pdf/wallet_2022.pdf).
 - Particle Data Group, *Review of Particle Physics* (2017), the electroweak review: α̂(M_Z)⁻¹ = 127.950 ± 0.017 and
   α̂(m_τ)⁻¹ = 133.471 ± 0.016 in the MS-bar scheme.
+
+---
+
+## Scores (added after the run, 2026-11-14)
+
+Run by [`alpha_test.py`](alpha_test.py), committed with this registration at 8d54ab0, before the run; the output is
+kept in [`alpha_test_run.log`](alpha_test_run.log). **A0 and A3 held; the reading's two predictions, A1 and A2,
+died.**
+
+| | outcome | evidence |
+|---|---|---|
+| A0, forced | held | every cross-check passed |
+| A1 | **died** | the nearest expression, 137 + a4/a1 = 137 + ln 137/137 = 137.035912270, is 8.7 × 10⁻⁵ from α⁻¹: 4 100σ |
+| A2 | **died** | its look-elsewhere p-value is 0.0216, above the registered 0.01 |
+| A3 | held | the decoys' p-values are 0.268, 0.677 and 0.436 |
+
+The results page is [`README.md`](README.md).

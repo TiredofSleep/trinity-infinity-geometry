@@ -1,0 +1,44 @@
+alpha_test.py run: the registered test of lab/alpha_137/PREREG.md [FENCE]
+
+PASS  A0a  the atoms are finite and nonzero, and pi(137) = 33
+PASS  A0b  the norm state's closed form gives the logged negativities at p = 5 and 7 (4.252724292100, 7.902228372133)
+PASS  A0c  at p = 137 the oscillator states themselves give a11 (minus their average standardized third moment) and a12 (2 minus their average fourth-moment ratio)
+PASS  A0d  |K(1, 137)| <= 2 sqrt 137 (Weil)
+PASS  A0e  the grammar has 630 expressions, as registered (630)
+
+the atoms at x = p = 137:
+  a1   1/ln 137                         +0.203252820504
+  a2   1/(137 ln^2 137)                 +0.000301545321
+  a3   1/sqrt 137                       +0.085435765772
+  a4   1/137                            +0.007299270073
+  a5   1/137^2                          +0.000053279344
+  a6   2e^-g - 1                        +0.122918967134
+  a7   1 - e^g ln 137 prod(1 - 1/p)     +0.017051509821
+  a8   (psi(137) - 137)/137             -0.001995832328
+  a9   (theta(137) - 137)/137           -0.111611899452
+  a10  1 - pi(137)/(li(137) - li(2))    +0.104216646426
+  a11  (p + 2)/((p + 1) sqrt(p - 1))    +0.086370664257
+  a12  2/(p + 1)                        +0.014492753623
+  a13  8/(3 pi) - S/p^(3/2)             -0.000466250566
+  a14  |K(1, 137)|/(2 sqrt 137)         +0.910185321273
+
+the grammar: 630 expressions, 215 of them in [137, 138]; under the null the median distance from a random target to the nearest is 8.255e-03
+
+the target, alpha^-1 = 137.035999177 (sigma 2.1e-08): the nearest expressions
+  137 + a4/a1                  137.035912270   distance 8.691e-05 = 4.14e+03 sigma
+  137 - a13/a12                137.032171289   distance 3.828e-03 = 1.82e+05 sigma
+  137 (1 + a2)                 137.041311709   distance 5.313e-03 = 2.53e+05 sigma
+  137 + a2/a4                  137.041311709   distance 5.313e-03 = 2.53e+05 sigma
+  137 + a1^2                   137.041311709   distance 5.313e-03 = 2.53e+05 sigma
+  d* = 8.691e-05; look-elsewhere p-value 0.0216
+
+decoy 137 + (pi - 3) = 137.141592654: nearest 137 + a12/a10 = 137.139063711, distance 2.529e-03, p-value 0.2680
+decoy 137 + (e - 2) = 137.718281828: nearest 137 + a11/a6 = 137.702663440, distance 1.562e-02, p-value 0.6767
+decoy 137 + (sqrt 2 - 1) = 137.414213562: nearest 137 + a3/a1 = 137.420342338, distance 6.129e-03, p-value 0.4360
+
+A0 HELD: the atoms' cross-checks
+A1 DIED: some expression lies within 3 sigma of alpha^-1 (nearest: 4.14e+03 sigma)
+A2 DIED: the nearest expression is closer than chance (p-value 0.0216, against 0.01)
+A3 HELD: no decoy has a p-value below 0.01 (0.2680, 0.6767, 0.4360)
+
+The running: alpha^-1 is 137.036 at zero momentum transfer, about 133.5 at the tau mass and 127.95 at the Z mass (MS-bar, PDG 2017). This grammar is built on 137 and so presupposes the zero-momentum limit.

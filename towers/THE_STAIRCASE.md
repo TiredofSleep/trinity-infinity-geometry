@@ -160,9 +160,12 @@ The author's prime gradient, read off the qudit floor's results ([`seven_levels/
 
 ## 8. Fenced
 
-The author also asked why the coin's edge should be 137 (14 November 2026). A test of that reading, registered before
-it runs and judged against a look-elsewhere null, belongs with the other physics readings, fenced in
-[`../lab/`](../lab/FENCED_READINGS.md).
+The author also asked why the coin's edge should be 137 (14 November 2026). That reading was tested with the other
+physics readings, fenced, registered before it ran and judged against a look-elsewhere null:
+[`../lab/alpha_137/`](../lab/alpha_137/README.md). Of 630 pre-named expressions built from this page's functions at
+137, the nearest, 137 + ln 137/137, misses the inverse fine-structure constant by 8.7 × 10⁻⁵, 4 100 times the
+measurement's uncertainty, and a grammar that size comes that close by chance 2.2% of the time. The reading died at
+its registered bar, and its death is kept.
 
 ## Standing
 

@@ -294,6 +294,15 @@ its own graveyard. These died, with what killed them:
   - **"With Freeland and Hurst's weights, the standard code is more optimized than the mitochondrial code"**
     (part 2's H2, a guess from the literature). None of a million random codes with its own blocks beat the
     mitochondrial code, against 3 of a million for the standard code.
+- **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
+  - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
+    Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,
+    the nearest is 137 + ln 137/137 = 137.035912, which misses 137.035999177 by 8.7 × 10⁻⁵, 4 100 times the
+    measurement's uncertainty (A1). A grammar this size comes that close to a random target 2.2% of the time,
+    against the registered bar of 1% (A2). The decoys were ordinary (`lab/alpha_137/alpha_test_run.log`).
+  - **An earlier attempt, WP124 (May 2026),** wrote 1/α ≈ 4·|Aut(V)| − 2√7 − π/7 − … from the retired tables and
+    claimed 10⁻⁵. Its leading terms give 154.26, not 137.036 (the ck repository's
+    `Atlas/META_PLAN_2026-05-06/STATUS_REPORT_2026-05-07.md`).
 - **"The anharmonic group"** as the name of the coin's three half-turns. Together with the identity
   they form the Klein four-group; the anharmonic group is the six cross-ratio maps. The flagship
   already says Klein four-group.
