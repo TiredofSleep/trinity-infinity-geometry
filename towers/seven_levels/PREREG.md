@@ -1432,3 +1432,44 @@ The run took 8.7 minutes. **All eight held.**
 crossing pairings fall away. Measured: at the sixth moment the generic polygons' phases cancel to order 1/p, and every
 odd moment through the eleventh follows free probability's count, not the classical one. One step remains for a proof
 of the whole semicircle: that the generic polygons' phases cancel at every even order.
+
+---
+
+## Round 16: the exact sixth moment and the fourth free cumulant (registered 2026-11-14, before the test)
+
+> *go after an exact formula for the 6th moment first.. The free fourth cumulant equals 3/p² to every digit the log
+> keeps. Worth a short exact proof as a small theorem* — the author, 14 November 2026
+
+Every moment is an integer count in disguise ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §7). The `collect` step of
+[`exact_moments.py`](exact_moments.py) read the integers I_n = Σ_C Tr S_C^n and J_n = Σ_C Tr(P S_C^n), for n up to 6,
+from the states at every prime from 5 to 199 ([`exact_moments_collect.log`](exact_moments_collect.log)).
+[`exact_moments_fit.py`](exact_moments_fit.py) then looked for exact formulas: polynomials in p, with the characters
+of p mod 3 and mod 4, plus at most two modular forms from a library of fourteen. Two came out exact, with small integer
+coefficients, at all 45 primes from 7 to 199:
+
+- **I6 = p[5p⁴ − p³ − 5p² − 1 + (p + 1)(b(p) − (−3|p)p²)].** Here b(p) is the p-th coefficient of
+  (η(τ)η(2τ)η(3τ)η(6τ))², the newform of weight 4 and level 6. It is the form in the sixth moment of Kloosterman sums
+  [NAMED: Hulek, Spandaw, van Geemen and van Straten 2001], and the whole modular term comes through the count of closed
+  hexagons, which a circle's Fourier transform, a Kloosterman sum, writes in terms of that sixth moment. The hexagons
+  with phase 0 number (p + 1)(6p² + (4 − (−3|p))p + 1), with no modular part.
+- **J4 = (3p + 1)(p² − 1) − 4p(p + 1)b²,** where p = a² + b² with b even when p ≡ 1 (mod 4), and b = 0 when
+  p ≡ 3 (mod 4). Equivalently, its non-polynomial part is p(p + 1)c(p), with c(p) the coefficients of η(4τ)⁶, the
+  newform of weight 3 with complex multiplication by the Gaussian integers.
+
+With J4, the fourth free cumulant is exact. It is 3/p² + O(1/p³), not exactly 3/p², and its 1/p³ term depends on p mod
+3, on p mod 4 and on b²/p. The fifth moments and J6 did not fit any formula tried; they stay open.
+
+The formulas were found at the primes from 7 to 199. This round tests them where they were not fitted.
+
+| | prediction | dies if |
+|---|---|---|
+| E0, forced | the coefficients of η(4τ)⁶ are 2(a² − b²) at the primes 1 more than a multiple of 4, and 0 at the others, up to 1009, so the two forms of J4's formula agree | a prime fails |
+| E1 | I6's formula holds exactly at every prime from 211 to 401 | a prime fails |
+| E2 | J4's formula holds exactly at every prime from 211 to 401 | a prime fails |
+| E3, forced | the proved counts I2, I3, I4, J2 and J3 hold at every prime from 211 to 401 | one fails |
+| E4 | the exact κ4 equals the states' basis-averaged standardized fourth moment off the origin, minus 2, within 10⁻¹¹ at 211, 503, 701, 907 and 1009 | a prime outside |
+| E5 | the exact sixth moment equals the states' (1/p)Σ_jΣ_u W⁶ within a relative 10⁻¹⁰ at 503, 701, 907 and 1009 | a prime outside |
+
+**The drafter's expectation:** all hold.
+
+Run: `python exact_moments.py test` (minutes).
