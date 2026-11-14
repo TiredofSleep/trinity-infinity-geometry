@@ -1575,6 +1575,29 @@ forced("the logged values give round 14's recorded scores: no non-norm ties at 7
        "cubic below the samples and below Sato-Tate (F1, F2 died); and the norm value exceeded at 11 and 13",
        LOG14["T"][3] > 0 and LOG14["T"][5] > 0 and LOG14["T"][1] == 0 and max(LOG14["F"]) < 8 / (3 * np.pi))
 
+# ------------------------------------------------------------------ round 15 (free_moments.py; its logs are free_moments_*.log)
+print()
+print("round 15:")
+import free_moments as fmo
+
+fmo.FAILS.clear()
+fmo.calibrate()
+forced("free_moments.py's forced checks C1 to C5: the phase formula, one circle's counts against the states' "
+       "moments, Phi = 0 on every non-crossing pairing and not on any crossing one, no generic quadrilaterals",
+       not fmo.FAILS)
+parts15, _, _, _ = fmo.k6(31)
+logged15 = {}
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "free_moments_run.log"), encoding="utf-8"):
+    f15 = line.split()
+    if len(f15) > 4 and f15[0] == "K6" and f15[1].isdigit():
+        logged15[int(f15[1])] = tuple(map(float, f15[2:5]))
+    if len(f15) > 1 and f15[0][:1] == "F" and f15[0][1:].isdigit():
+        logged15[f15[0]] = f15[1] == "HELD:"
+ok15 = all(abs(a - b) < 5e-7 for a, b in zip((parts15["nc"], parts15["cr"], parts15["gen"]), logged15[31]))
+forced(f"round 15's sixth moment at p = 31, recomputed: non-crossing {parts15['nc']:.6f}, crossing "
+       f"{parts15['cr']:+.6f}, generic {parts15['gen']:+.6f}, as free_moments_run.log records; and the log scores "
+       f"F1 to F7 held", ok15 and all(logged15.get(f"F{i}") for i in range(1, 8)))
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

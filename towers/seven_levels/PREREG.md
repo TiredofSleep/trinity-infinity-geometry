@@ -1395,3 +1395,40 @@ moments directly at five primes up to 1009.
 **The drafter's expectation:** F0 and F1 are forced. F2, F3, F4, F6 and F7 should hold. F5 is the open one.
 
 Run: `python free_moments.py calibrate`, then `python free_moments.py run` (minutes).
+
+---
+
+## Round 15 scores (added after the run, 2026-11-14)
+
+Run by [`free_moments.py`](free_moments.py), committed with this registration at ef11ddc, before the run; the output is
+kept in [`free_moments_calibrate.log`](free_moments_calibrate.log) and [`free_moments_run.log`](free_moments_run.log).
+The run took 8.7 minutes. **All eight held.**
+
+| | outcome | evidence |
+|---|---|---|
+| F0, forced | held | C1 to C5 pass: the phase formula; one circle's counts against the states' moments; Φ = 0 on all 5 and 14 non-crossing pairings; a non-zero phase on all 10 and 91 crossing ones; no generic quadrilaterals |
+| F1 | held | the non-crossing part rises from 4.056 at 5 to 4.941 at 101, inside [5 − 15/p, 5] at every prime; its shortfall is about 6/p, from overlaps |
+| F2 | held | the crossing part is −0.209 at 31, −0.109 at 61 and −0.067 at 101: p times it stays between −6.5 and −6.8 |
+| F3 | held | the generic part is 0.033 at 89, 0.010 at 97 and 0.028 at 101, and log\|gen\| falls against log p with slope −0.52 over 31 to 101 |
+| F4 | held | p·Z′_gen/N′_gen lies between 1.011 and 1.047 at every prime from 61 on |
+| F5 | held | m5/m3 = 5.036, 5.011, 4.973 and 5.014 at 503, 701, 907 and 1009 (free 5, classical 10) |
+| F6 | held | at 1009 the 10th and 12th moments are 42.201 and 133.120 (semicircle 42 and 132; Gaussian 945 and 10 395) |
+| F7 | held | at 1009 the sixth and eighth moments are 5.0031 and 14.0305, against 5.0167 and 14.1603 at 211 |
+
+**Read after the run.**
+- **Every odd moment follows the free count.** Only the fifth was registered. At 1009 the seventh, ninth and eleventh
+  moments over the third are 21.01, 83.8 and 328.7. Free probability predicts 21, 84 and 330, the numbers of
+  non-crossing partitions of 7, 9 and 11 points into one triple and pairs; the classical counts are 105, 1 260 and
+  17 325. At 211 all four ratios lie within 5% of the free counts, and at 1009 within 0.4%.
+- So, to first order, the law is the semicircle perturbed by one free cumulant, κ3 = m3, which is about −1/√p, with
+  the next ones small. κ4 = m4 − 2 equals 3/p² to the log's rounding (6.70 × 10⁻⁵ against 6.74 × 10⁻⁵ at 211), and
+  m6 − 5 is near the free value 3κ3² (within 6% at 907 and 1009).
+- **The generic part falls like 1/p, and its constant follows p mod 3.** p times it lies below 1.1 at every prime 1
+  more than a multiple of 3, and between 1.7 and 3.1 at every prime from 17 on that is 2 more than a multiple of 3,
+  where the turning wheel holds hexagons: the coin of [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §6. The fitted slope,
+  −0.52, mixes the two classes and understates the fall.
+
+**Yield.** Forced: every moment reduces to polygon counts, the non-crossing pairings give the Catalan numbers, and the
+crossing pairings fall away. Measured: at the sixth moment the generic polygons' phases cancel to order 1/p, and every
+odd moment through the eleventh follows free probability's count, not the classical one. One step remains for a proof
+of the whole semicircle: that the generic polygons' phases cancel at every even order.

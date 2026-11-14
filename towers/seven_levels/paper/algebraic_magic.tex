@@ -30,8 +30,9 @@ computation over all cubic forms on three qudits of dimension $3$ and $5$, and a
 negative cubic-phase state; from dimension $11$ on, samples find smooth cubic curves whose states beat it.
 (iii) For the eigenbases of the non-split torus of $\mathrm{SL}(2,p)$, the oscillator states, the basis-averaged ratio
 $\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$, and their basis-averaged third moment is exactly
-$2/(p^2(p+1))$, so the skew tapers to $0$ as $-1/\sqrt p$. Numerically, up to $p=401$, the whole value distribution
-of these states is the semicircle law. All computational predictions were registered before they were run.
+$2/(p^2(p+1))$, so the skew tapers to $0$ as $-1/\sqrt p$. Every moment reduces to a count of polygons on the torus's
+orbits in which only non-crossing pairings survive, the mechanism of free probability; numerically, up to $p=1009$,
+the whole value distribution is the semicircle law, and its corrections are free. All computational predictions were registered before they were run.
 \end{abstract}
 
 \section{Introduction}
@@ -198,10 +199,31 @@ characteristic polynomial is irreducible \cite{KurlbergRudnick2000}. For smooth 
 their normalized matrix elements are known to vanish in the semiclassical limit for the fifth moment
 \cite{Rosenzweig2009}; Theorem~\ref{thm:third} is an exact statement at every $p$ for the phase-point operators.
 
+\paragraph{Every moment: the free picture.} Let $S_C=\sum_{v\in C}A_v$ and $m=p+1$. Step (2) of
+Theorem~\ref{thm:moment} gives $\sum_j\sum_uW_j(u)^k=p^{-k}\big[\Tr P^k+m^{1-k}\sum_C\Tr S_C^k\big]$ for every $k$.
+The circles are dilations of one another by elements of $\F_{p^2}$, and a dilation multiplies every symplectic product by
+its norm; hence $\sum_C\Tr S_C^k=p(pZ_k-N_k)$ for even $k$ and $pZ_k-m^k$ for odd $k$, where $N_k$ counts the closed
+$k$-gons on a single circle and $Z_k$ those whose phase vanishes. A product of $k$ phase-point operators is a phase-point
+operator or a shift times $\omega^{\Phi}$, with $\Phi$ a fan of triangle areas. For a non-crossing pairing of the
+corners (matched corners equal or opposite, so that the polygon closes) some matched corners are adjacent and
+$A_vA_v=1$ removes them, so $\Phi\equiv0$: the non-crossing pairings contribute exactly the Catalan numbers to the
+normalized moments. On every crossing pairing (checked for $k=6,8$) $\Phi$ is not identically zero, and these
+contribute $O(1/p)$. What remains are the closed polygons on no pairing; there are none for $k=4$, which is why
+Theorem~\ref{thm:moment} is exact. Consequently the semicircle law holds in every moment if and only if the area phases
+of these generic polygons cancel, $pZ_{\rm gen}-N_{\rm gen}=o(p^{j})$ for $2j$-gons with one corner fixed. For $2j=6$
+equidistribution of the phase suffices; from $2j=8$ on, square-root cancellation is needed. This is the mechanism of
+free probability: commuting operators would retain every pairing and give the Gaussian moments $(2j-1)!!$, whereas the
+commutation phase of the phase-point operators, a symplectic area, suppresses the crossing pairings, as in Voiculescu's
+free central limit theorem \cite{VDN1992} (the $q=0$ case of the Bo\.zejko--Speicher $q$-Gaussians \cite{BozejkoSpeicher1991}).
+
 \paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
 $401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
 states), standardized, they match the semicircle law through the eighth moment, and the Kolmogorov distance of the
-pooled $2.06\times10^9$ values to the semicircle law is $0.0072$, against $0.0426$ to the Gaussian.
+pooled $2.06\times10^9$ values to the semicircle law is $0.0072$, against $0.0426$ to the Gaussian. At $p=1009$ the
+10th and 12th moments are $42.20$ and $133.1$ (semicircle $42$ and $132$), and the odd moments show that the
+corrections are free: $m_5/m_3$, $m_7/m_3$, $m_9/m_3$ and $m_{11}/m_3$ are $5.01$, $21.0$, $83.8$ and $328.7$, the
+numbers of non-crossing partitions into one triple and pairs ($5$, $21$, $84$, $330$), not the classical
+$10$, $105$, $1260$, $17325$. In the sixth-moment count the generic hexagons contribute $O(1/p)$.
 
 \begin{table}[h]\centering
 \begin{tabular}{lccccc}\toprule
@@ -216,9 +238,9 @@ Gaussian (random states) & 0.7979 & 0 & 3 & 15 & 105\\\bottomrule
 \section{Discussion}
 Three algebraic families, the torus states, the norm states and the cubic-phase states, sit at or near the Sato--Tate
 share $8/(3\pi)$ of the ceiling, between random states ($\sqrt{2/\pi}$) and the most negative states found by search
-for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: proofs of the sixth and higher moments,
-which reduce by Step (2) to counts of polygons on the circles (the third and fourth close because a line meets a
-circle at most twice); the reason for the tie at $p=5$ between the norm form and
+for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: a proof that the area phases of the generic
+closed polygons cancel at every even order, which would give the whole semicircle (at order six they cancel to
+$O(1/p)$ in the numerics); the reason for the tie at $p=5$ between the norm form and
 elliptic curves with $8$ points; and whether the most negative states have an algebraic description at all. The
 natural home for these questions is the theory of trace functions over finite fields \cite{FKMS}.
 
@@ -257,6 +279,10 @@ arXiv:math-ph/0404074.
 linear maps of the torus, Duke Math. J. 103 (2000).
 \bibitem{Rosenzweig2009} L. Rosenzweig, On the fluctuations of matrix elements of the quantum cat map,
 arXiv:0909.1410 (2009).
+\bibitem{BozejkoSpeicher1991} M. Bo\.zejko, R. Speicher, An example of a generalized Brownian motion, Comm. Math.
+Phys. 137 (1991).
+\bibitem{VDN1992} D. V. Voiculescu, K. J. Dykema, A. Nica, Free Random Variables, CRM Monograph Series 1, Amer. Math.
+Soc. (1992).
 \bibitem{KurlbergRudnick2005} P. Kurlberg, Z. Rudnick, On the distribution of matrix elements for the quantum cat map,
 Ann. of Math. 161 (2005).
 \bibitem{FKMS} E. Fouvry, E. Kowalski, Ph. Michel, W. Sawin, Lectures on applied $\ell$-adic cohomology,

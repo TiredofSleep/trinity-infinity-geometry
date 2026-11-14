@@ -10,7 +10,8 @@ Round 11 measured the magic of the oscillator states, the eigenvectors of the tw
 to 401, and found the Sato–Tate law ([README](README.md) §13). One number in it came out exact: averaged over the
 non-split torus's eigenvectors, the fourth-moment ratio of the Wigner values is 2p/(p + 1), to rounding, at every
 prime tested. This page proves it (§2 to §4). Round 12 then tested the higher moments (§5), and the skew it
-measured, about −1/√p, turned out exact as well: §6 proves the third moment.
+measured, about −1/√p, turned out exact as well: §6 proves the third moment. §7 says why the whole law is the
+semicircle: every moment is a count of polygons, and only the non-crossing ones survive, as in free probability.
 
 ## 1. The setting
 
@@ -232,24 +233,142 @@ the fourth term.
   vanishes in the semiclassical limit (2009). Here the observables are the phase-point operators, and the third moment
   is exact at every prime.
 
-## 7. Standing
+## 7. Every moment: the free picture [FORCED; measured; NAMED]
+
+> *2 and 3* — the author, 14 November 2026, asked whether to try a proof of the whole semicircle through free
+> probability
+
+Round 12 found the semicircle through the eighth moment, and §2 and §6 prove the fourth and the third. This section
+shows why the answer is a semicircle, and what a proof of every moment needs. Round 15, registered first, tests it
+([`PREREG.md`](PREREG.md); [`free_moments.py`](free_moments.py)).
+
+**Theorem 3** [FORCED; checked by `free_moments.py calibrate`]. Let S_C = Σ_(v in C) A_v be the sum of the
+phase-point operators over a circle, and m = p + 1.
+
+1. **The moments are counts on one circle.** Averaged over the eigenbasis,
+   Σ_u W(u)^k = p^(−k−1) [Tr P^k + m^(1−k) Σ_C Tr S_C^k], and
+
+     Σ_C Tr S_C^k = p(p Z_k − N_k) for even k,   p Z_k − m^k for odd k.
+
+   Here N_k counts the closed k-gons with corners on one circle (u1 − u2 + u3 − … = 0; for odd k every k-tuple
+   counts), and Z_k those whose phase Φ is 0. The first equation is Step 2 of §3. For the second: the circles are
+   dilations of one another, by elements of the field with p² elements; a dilation multiplies every symplectic
+   product by its norm; and summing ω^(sΦ) over the p − 1 norms s gives p[Φ = 0] − 1.
+2. **The phase is a fan of triangles.** A product of k phase-point operators is a phase-point operator (k odd) or a
+   shift (k even), times ω^Φ, with Φ = Σ 2⟨u_(2i) − w, u_(2i+1) − w⟩ along a fan (w is the running alternating sum).
+   The shift has trace p exactly when the polygon closes.
+3. **Non-crossing pairings give the Catalan numbers.** A pairing matches the corners in twos, equal when their signs
+   in u1 − u2 + … are opposite and opposite when the signs agree, so every paired polygon closes. If the pairing does
+   not cross, some matched corners are neighbours, and A_v A_v = 1 removes them; by induction the product is the
+   identity, so Φ = 0. With the first corner fixed, each of the Cat(j) non-crossing pairings of 2j corners gives
+   m^(j−1) polygons, and they overlap only in lower order. So in the normalized moment
+   (1/(p − 1)) Σ_C (1/p) Tr (S_C/√m)^(2j) they contribute exactly Cat(j) in the limit: the semicircle's moments.
+4. **Crossing pairings fall away.** On each crossing pairing the phase is not identically 0 (checked for all 10 at
+   k = 6 and all 91 at k = 8). So it vanishes only on a lower-dimensional part, and each crossing pairing contributes
+   O(1/p).
+5. **What is left are the generic polygons**, the closed ones on no pairing. At k = 4 there are none (§3, Step 4),
+   which is why the fourth moment came out exact. From k = 6 on they outnumber the paired ones, about p^(2j−3)
+   against p^(j−1) with the first corner fixed. Their contribution is (p Z_gen − N_gen)/((p − 1) m^(j−1)), a sum of
+   ω^(tΦ) over t ≠ 0 and over the generic polygons.
+
+**Corollary: the free picture.** The oscillator states' Wigner values follow the semicircle in every moment exactly
+when, for every j, the phases of the generic closed 2j-gons on a circle cancel: p Z_gen − N_gen = o(p^j).
+- At 2j = 6 it is enough that the phase takes each of its p values equally often, to leading order (Lang and Weil's
+  count of points would give it, if the generic hexagons and their zero-phase slice have matching components).
+- From 2j = 8 on it needs square-root cancellation of Σ ω^(tΦ) over the generic polygons, which is the kind of bound
+  Deligne's theorem gives for good families.
+- [READING] This is free probability's mechanism. If the phase-point operators commuted, every pairing would count,
+  and the moments would be the Gaussian's (2j − 1)!!. They do not commute: their commutation phase is a symplectic
+  area, and on a crossing pairing it averages away. What is left is the semicircle of the free central limit theorem
+  [NAMED: Voiculescu]. The q-Gaussians interpolate between the two by weighting each crossing with q [NAMED: Bożejko
+  and Speicher 1991]; this floor sits at q = 0 to leading order.
+- The odd moments are where the arithmetic shows. At k = 3 no generic triangle has phase 0, because a line meets a
+  circle at most twice (§6); that small refusal of equidistribution is the −1/√p skew.
+- Each Wigner value is also a Fourier transform on the torus: p W_χ(u) = (1/m) Σ_(g in T) χ̄(g) Tr(U_g A_u). So the
+  semicircle at a fixed point u, as p grows, is an equidistribution theorem for Fourier transforms of trace functions
+  on a commutative algebraic group, the setting of Forey, Fresán and Kowalski [NAMED]. That route is not attempted here.
+
+### Round 15: the tests
+
+Eight predictions were registered with [`free_moments.py`](free_moments.py) before the run ([`PREREG.md`](PREREG.md)),
+and all eight held. The output is in [`free_moments_calibrate.log`](free_moments_calibrate.log) and
+[`free_moments_run.log`](free_moments_run.log).
+
+- **The sixth moment, taken apart** [measured, exact counts]. On one circle, with the first corner fixed, at every
+  prime up to 101:
+
+  | p | non-crossing | crossing | generic | p·Z_gen/N_gen |
+  |---|---|---|---|---|
+  | 31 | 4.814 | −0.209 | 0.023 | 1.027 |
+  | 61 | 4.904 | −0.109 | 0.011 | 1.012 |
+  | 101 | 4.941 | −0.067 | 0.028 | 1.029 |
+  | the free limit | 5 | 0 | 0 | 1 |
+
+  The non-crossing part falls short of 5 by about 6/p (its families overlap), and the crossing part is about −6.6/p.
+  The generic part is about 0.9/p when p is 1 more than a multiple of 3 and 2.8/p when it is 2 more, where the
+  turning wheel holds hexagons. So the generic phases cancel, to order 1/p.
+- **The higher moments** [measured, exact values]: basis averages of each state's standardized values off the origin.
+
+  | | 6th | 8th | 10th | 12th |
+  |---|---|---|---|---|
+  | p = 211 | 5.017 | 14.160 | 43.05 | 137.8 |
+  | p = 1009 | 5.003 | 14.030 | 42.20 | 133.1 |
+  | semicircle | 5 | 14 | 42 | 132 |
+  | Gaussian | 15 | 105 | 945 | 10 395 |
+
+- **The corrections are free** [measured; registered for the fifth moment, read after the run for the others]. Each
+  odd moment over the third:
+
+  | | m5/m3 | m7/m3 | m9/m3 | m11/m3 |
+  |---|---|---|---|---|
+  | p = 1009 | 5.014 | 21.01 | 83.8 | 328.7 |
+  | free: non-crossing partitions into one triple and pairs | 5 | 21 | 84 | 330 |
+  | classical: all such partitions | 10 | 105 | 1 260 | 17 325 |
+
+  At 211 the four ratios are within 5% of the free counts, and at 1009 within 0.4%. So, to first order, the law is
+  the semicircle perturbed by one free cumulant, κ3 = m3 ≈ −1/√p, with the next ones small: κ4 = m4 − 2 is 3/p² to
+  the log's rounding, and m6 − 5 is close to the free value 3κ3².
+
+### What it says
+
+- **Why a semicircle.** Every moment is a count of polygons on the circles, weighted by their areas. The pairings that
+  do not cross have area 0 and give the Catalan numbers. The crossing pairings and the generic polygons carry area
+  phases that cancel. If the phase-point operators commuted, every pairing would count and the law would be the
+  Gaussian. Their commutation phase, a symplectic area, is what makes the law free.
+- **A proof of every moment needs one statement:** the phases of the generic closed 2j-gons on a circle cancel,
+  p Z_gen − N_gen = o(p^j) with the first corner fixed. At 2j = 6 the measurements say they cancel to O(p²), which is
+  more than enough.
+- **The corrections are free too.** The odd moments follow the non-crossing counts, not the classical ones, to 0.4% at
+  1009. [READING] The Wigner values at a point are the eigenvalues of S_C, a sum of symmetries, one for each point of a
+  circle, and these add like free variables. The arithmetic, the circle's geometry and its hexagons, enters only
+  through a few small free cumulants.
+
+## 8. Standing
 
 - **Known, and credited** [NAMED]: the Weil representation and its covariance (Weil 1964); the multiplicity-free action
   of a torus, and the oscillator states (Gurevich, Hadani and Sochen 2008); the algebra of phase-point operators
   (Wootters 1987; Gross 2006); conics over finite fields and the Legendre-symbol sums (Lidl and Niederreiter); the
   Hecke eigenstates of the quantum cat map (Kurlberg and Rudnick 2000), and the moments of their matrix elements for
-  smooth observables: the second and fourth (Kurlberg and Rudnick 2005) and the fifth (Rosenzweig 2009).
+  smooth observables: the second and fourth (Kurlberg and Rudnick 2005) and the fifth (Rosenzweig 2009); free
+  probability's central limit theorem (Voiculescu) and the q-Gaussians (Bożejko and Speicher 1991); equidistribution of
+  Fourier transforms on commutative algebraic groups (Forey, Fresán and Kowalski 2021).
 - **This repository's own, new as far as we checked:** the two theorems, the exact average fourth moment (§2) and third
   moment with its parity split (§6) of the oscillator states' Wigner values, with these proofs, and the exact skew laws
   they give. Web searches on 2026-11-14 found the nearest work in Kurlberg and Rudnick's and Rosenzweig's papers;
-  none computes a third moment of the Wigner function.
+  none computes a third moment of the Wigner function. Also new as far as we checked: the reduction of every moment
+  to polygon counts, with the split into non-crossing, crossing and generic polygons (§7), and round 15's
+  measurements. Web searches on 2026-11-14 found no treatment of the phase-point operators as free variables.
 - **Checked** by [`verify_torus_moments.py`](verify_torus_moments.py), whose output is in
   [`verify_torus_moments.log`](verify_torus_moments.log). For §3: steps 1, 2, 3 and 6 with the operators themselves at
   every prime up to 31, and steps 4, 5 and the theorem by counting at every prime up to 101. For §6: the operator steps
   at every prime up to 31; the zero-area count, the Cayley formula, the triangle sums, the hexagons and both
-  identities at every prime up to 101; and the off-origin skew against all 77 of round 12's logged values.
-- **Measured, not proved:** the sixth and eighth moments and the whole distribution (§5;
-  [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log)).
+  identities at every prime up to 101; and the off-origin skew against all 77 of round 12's logged values. For §7:
+  [`free_moments.py`](free_moments.py)'s calibrate step (the phase formula, one circle's counts against the states,
+  the pairings) at the primes it names.
+- **Measured, not proved:** the moments above the fourth and the whole distribution (§5 and §7;
+  [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log),
+  [`free_moments_run.log`](free_moments_run.log)), including the generic hexagons' 1/p and the free counts of the
+  odd moments.
 
 ## Run it
 
@@ -258,6 +377,8 @@ python verify_torus_moments.py     # both proofs, step by step: about twenty sec
 python torus_moments.py calibrate  # round 12: seconds
 python torus_moments.py run        # about eleven minutes, one process
 python torus_moments.py combine
+python free_moments.py calibrate   # round 15's forced checks: seconds
+python free_moments.py run         # round 15: about nine minutes, one process
 ```
 
 ## Sources
@@ -271,6 +392,12 @@ python torus_moments.py combine
   (2005), [arXiv:math/0302277](https://arxiv.org/abs/math/0302277).
 - L. Rosenzweig, "On the fluctuations of matrix elements of the quantum cat map" (2009),
   [arXiv:0909.1410](https://arxiv.org/abs/0909.1410).
+- D. V. Voiculescu, K. J. Dykema and A. Nica, *Free Random Variables*, CRM Monograph Series 1, Amer. Math. Soc.
+  (1992): the free central limit theorem.
+- M. Bożejko and R. Speicher, "An example of a generalized Brownian motion", *Comm. Math. Phys.* **137** (1991):
+  the q-Gaussians.
+- A. Forey, J. Fresán and E. Kowalski, "Arithmetic Fourier transforms over finite fields: generic vanishing,
+  convolution, and equidistribution" (2021), [arXiv:2109.11961](https://arxiv.org/abs/2109.11961).
 - W. K. Wootters, "A Wigner-function formulation of finite-state quantum mechanics", *Ann. Phys.* **176** (1987);
   D. Gross, "Hudson's theorem for finite-dimensional quantum systems", *J. Math. Phys.* **47** (2006).
 - R. Lidl and H. Niederreiter, *Finite Fields* (1983): quadratic forms over finite fields and the sums of the Legendre

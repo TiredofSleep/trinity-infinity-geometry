@@ -763,7 +763,27 @@ five fresh ones died.
   affine-plane cubic on 9 wheels 0.78, below random cubics, whose share is the Gaussian 0.798. Their Walsh spectra take
   few values, and a concentrated spectrum has a small L1 norm.
 
-## 16. Our space, and what it cannot hold [FORCED; FENCE]
+## 16. Round 15: the free picture [FORCED; measured; NAMED: Voiculescu, Bożejko and Speicher]
+
+> *2 and 3* — the author, 14 November 2026
+
+[`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §7 reduces every moment of the oscillator states' Wigner values to polygons on
+the torus's circles, weighted by their areas, and proves both ends. Pairings that do not cross have area 0 and give the
+Catalan numbers, the semicircle's moments; crossing pairings fall away like 1/p. What is left is whether the other,
+generic polygons' phases cancel. Round 15 registered eight predictions with [`free_moments.py`](free_moments.py)
+([`PREREG.md`](PREREG.md)), and all eight held.
+
+- At the sixth moment, at every prime up to 101, the generic polygons' part falls like 1/p: about 0.9/p when p is 1
+  more than a multiple of 3, and 2.8/p when it is 2 more, the hexagons again.
+- At 1009 the 10th and 12th moments are 42.20 and 133.1, against the semicircle's 42 and 132 (Gaussian: 945 and
+  10 395).
+- The corrections are free. At 1009 the fifth, seventh, ninth and eleventh moments over the third are 5.01, 21.01,
+  83.8 and 328.7, against free probability's non-crossing counts 5, 21, 84 and 330; the classical counts are 10, 105,
+  1 260 and 17 325.
+- [READING] The Wigner values at a point are the eigenvalues of a sum of symmetries, one for each point of a circle.
+  They add like free variables, because their commutation phase, a symplectic area, cancels on crossing pairings.
+
+## 17. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -780,7 +800,7 @@ five fresh ones died.
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 17. Standing
+## 18. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -856,7 +876,8 @@ five fresh ones died.
   the semicircle through the eighth moment, measured; the third and fourth moments are proved. Round 13 held four of six: every
   cubic state's Wigner function is a Walsh spectrum (exact), and the norm state is the most magic cubic on three
   wheels of 3, 5 and 7 (exhaustive at 3 and 5), though not from 11 on. Round 14 held one of six, the forced Smith
-  chart: its other five guesses died, and the deaths are kept.
+  chart: its other five guesses died, and the deaths are kept. Round 15 held eight of eight: every moment reduces
+  to polygon counts, only the non-crossing pairings survive, and the corrections are free.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -869,8 +890,8 @@ five fresh ones died.
   - many wheels: whether the norm state is the maximum on three wheels of 3 and of 7; what the four-wheel best, 98/27,
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
-  - the oscillator states: proofs for the moments above the fourth, which the same trace reduces to counts of bent
-    polygons on the torus's circles;
+  - the oscillator states: a proof that the generic polygons' area phases cancel at every even order, the one step
+    left for the whole semicircle (round 15 measured the sixth: they cancel to order 1/p);
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
 
@@ -919,6 +940,8 @@ python cubic_magic.py run              # about seven minutes, one process
 python cubic_magic.py combine
 python planes.py run                   # round 14: about twenty minutes, one process
 python planes.py combine
+python free_moments.py calibrate       # round 15: seconds
+python free_moments.py run             # about nine minutes, one process
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2
@@ -927,7 +950,7 @@ python planes.py combine
 - The second reruns round 2's search, which is seeded, and rewrites [`most_negative.log`](most_negative.log).
 - The third reruns round 3, which is seeded, and rewrites [`round3.log`](round3.log). The scored lines were the same
   on two runs.
-- The lines for rounds 4 to 13, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
+- The lines for rounds 4 to 15, `edge_state.py`, `flat_states.py` and `product_climbs.py` rerun those runs, which
   are seeded or exact, and rewrite their logs.
 
 ## Sources

@@ -1,0 +1,9 @@
+free_moments.py calibrate: round 15's forced checks
+PASS  C1  Tr(A_u1 ... A_uk) = p^[k even] w^Phi [closure], with Phi the fan of triangles, for k = 3 to 6 at p = 5, 7, 11, 13
+PASS  C2  summed over the circles, Tr(S_C^k) = p(p Z_k - N_k) (even k) or p Z_k - m^k (odd k) from one circle's counts, as the states' Wigner moments give, for k = 3 to 6 at p = 5 to 23 (k = 5 to 13)
+PASS  C3  every non-crossing pairing has Phi = 0 (5 at k = 6, 14 at k = 8; 200 members each at p = 31)
+PASS  C4  every crossing pairing has a member with Phi != 0 at p = 31 (10 at k = 6, 91 at k = 8)
+PASS  C5  at k = 4 every closed quadrilateral on a circle lies on a pairing, at every prime from 5 to 31
+C6  timing only: the hexagon enumeration at p = 11 took 0.01 s; the states' moments at p = 101 took 0.03 s (no measured value printed)
+
+ALL PASS
