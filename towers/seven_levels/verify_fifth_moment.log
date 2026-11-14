@@ -16,7 +16,7 @@ verify_fifth_moment.py -- TORUS_MOMENTS.md section 8, the fifth moments
 [PASS] 10b. J5 = p(p + 1)[f15(p) - p a_E(p) + (4(-3|p) - 3)p - 1] at all 76 primes 7..401
 [PASS] 10c. E's traces equal the level-150 newform's (a(7), a(11), a(13) = -2, 2, -6) at every prime 7..401 [measured]
 [PASS] 11. J4's count: N_V(4) = (p - 1)(p - 3) + 4b^2 by brute force (p = 7..29) and from round 16's J4 (to 401)
-[PASS] 11b. pairing: N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T(p), T the elliptic surface's sum (p = 7..29); and T(p) = (2 + (-1|p))p - 4b^2 at every prime 7..401 [measured]
+[PASS] 11b. pairing: N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T(p), T the elliptic surface's sum (p = 7..29); and T(p) = (2 + (-1|p))p - 4b^2 at every prime 7..401 [proved: fourth_cumulant.py, Theorem 5]
 [PASS] 12. sqrt(p) x the normalized fifth moment I5/((p - 1) p m^(5/2)) approaches 5, the free picture's value  ([(101, 4.9209), (199, 5.044), (401, 4.9501)])
 [PASS] 13. the circle part's surface sum S2 = 2p - 1 + c11(p) - p(r3(p) - 1) (Q(sqrt -11)'s weight-3 CM form and a weight-1 form) at every prime 7..101; Theorem 7 carries neither, so they cancel [a dead end, kept]
 time 0.3 minutes

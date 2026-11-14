@@ -1736,3 +1736,23 @@ at every prime from 401 to 601, where nothing about these cubics has been comput
 **The drafter's expectation:** both hold.
 
 Run: `python coin_at_five.py test20` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 20 scores (added after the test, 2026-11-14)
+
+Run by [`coin_at_five.py`](coin_at_five.py) `test20`, committed with this registration at 5c12567 before the test.
+Output: [`coin_at_five_test20.log`](coin_at_five_test20.log).
+
+**Both held.**
+
+| | outcome | evidence |
+|---|---|---|
+| H1 | held | t7 = p²(14 + 6(5\|p)) + p·c(p), with \|c(p)\| the coefficient of Q(√−35)'s weight-3 CM form, at all 32 primes from 401 to 601, in exact arithmetic |
+| H2 | held | t9 = p³(42 + 27(5\|p) + (105\|p)) + 8p²c(p), with the same c, at all 32 |
+
+**Yield.** Exact point counts for the cubics in 7 and 9 variables, found on 74 primes and held blind on 32 more.
+- The cubic fourfold's algebraic part sees only the pentagon's √5. Its transcendental part has complex
+  multiplication by Q(√−35), as Laza and Zheng's lattice implies.
+- The cubic sixfold adds one character, (105|p), and eight copies of the same CM form.
+- What these are, and how they read the coin, is in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md).

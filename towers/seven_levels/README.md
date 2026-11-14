@@ -7,7 +7,7 @@
 
 **Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
-**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 17 · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18.
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 20 · [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), the coin at 5 in the fifth moment, and the cubics at 7 and 9 · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18, 18 §19, 19 and 20 §20.
 
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
@@ -839,7 +839,46 @@ Both fifth moments are exact ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theore
   - The operators matched both formulas at every prime from 409 to 509, but missed the registered precision bar, so
     that half is inconclusive.
 
-## 19. Our space, and what it cannot hold [FORCED; FENCE]
+## 19. Round 18: J4 proved, and the fourth free cumulant with it [FORCED; NAMED: Landen, Jacobi]
+
+> *1 and 2, J4's surface sum first* — the author, 14 November 2026
+
+Theorem 5 is proved ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, "The proof of Theorem 5";
+[`fourth_cumulant.py`](fourth_cumulant.py)).
+- **The last open count of round 16 is closed.** It was one character sum on an elliptic surface. Pairing the four
+  points leaves the Legendre family. A 2-isogeny over F_p, Landen's transformation, moves it to the Legendre family at
+  the squares, and quartic Jacobi sums evaluate that.
+- **The result.** T(p) = p + 2(a² − b²) when p ≡ 1 (mod 4) and p = a² + b² with a odd; T(p) = p when p ≡ 3 (mod 4).
+  So J4 = (3p + 1)(p² − 1) − 4p(p + 1)b² at every odd prime, and the fourth free cumulant is exact.
+- **The Gaussian integers' form η(4τ)⁶ comes from the Jacobi sum** of a character of order 4.
+- **Round 18 held three of three.** The surface sum held at every prime from 409 to 3001, and every step of the proof at
+  every prime to 1009.
+
+## 20. Rounds 19 and 20: the coin at 5, and at 7 and 9 [FORCED; measured; NAMED: Clebsch, Laza and Zheng]
+
+> *1 and 2, J4's surface sum first* — the author, 14 November 2026: the "1" says yes to testing the reading that the
+> fifth moment's split by (5|p) is the coin at 5.
+
+The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) ([`coin_at_five.py`](coin_at_five.py)).
+- **The dictionary** [FORCED]. The double octic behind I5 is the coin at 5.
+  - The five planes where one point sits at the centre are the solid face.
+  - Clebsch's cubic, which holds the regular pentagon, is the flat face.
+  - Their 15 rational lines are the edge.
+  - The sign of a permutation swaps the two sixes of the cubic's other lines, as √5 ↦ −√5 does.
+  - At the prime 5 the cubic pinches at the centre.
+- **The edge, in the moments** (round 19). I5's formula holds at p = 5, where (5|5) = 0 averages its two sides, and at
+  3. The parity-weighted moments J3 and J5 do not hold at their edges: that registered claim died, and is kept in the
+  graveyard.
+- **The coin at 7.** The flat face at 7 is the cubic fourfold {Σx = Σx³ = 0} in seven variables.
+  - Its count was read after round 19 and held blind at every prime from 401 to 601 (round 20):
+    #X7(F_p) = 1 + p + ⋯ + p⁴ + p²(14 + 6(5|p)) + p·c(p).
+  - c is the weight-3 CM form of Q(√−35), as Laza and Zheng's lattice implies.
+  - So 7 enters only through √−35 = √5·√−7, the pentagon's number times the heptagon's.
+- **At 9**, where the coin breaks, the nine-variable cubic adds one character, (105|p) = (−3|p)(−35|p), and eight
+  copies of the same CM form. That count also held blind.
+- **The scores.** Round 19 held two of three scored predictions (C1 failed on its J side). Round 20 held two of two.
+
+## 21. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -856,7 +895,7 @@ Both fifth moments are exact ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theore
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 20. Standing
+## 22. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -936,7 +975,11 @@ Both fifth moments are exact ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theore
   fourth free cumulant are exact, with modular forms in them. Round 15 held eight of eight: every moment reduces
   to polygon counts, only the non-crossing pairings survive, and the corrections are free. Round 17 held six of seven:
   the fifth moments are exact, the double octic and the curve held blind in exact arithmetic, and the operator checks
-  at 409 to 509 matched but missed their precision bar.
+  at 409 to 509 matched but missed their precision bar. Round 18 held three of three: J4, and with it the fourth free
+  cumulant, is proved, by Landen's transformation and quartic Jacobi sums. Round 19 held two of three. Its dictionary
+  finds the author's coin at 5 in the fifth moment's double octic, and the coin at 7 in the arithmetic of its flat face.
+  The parity-weighted moments' formulas did not hold at the edge primes, and that death is kept. Round 20 held two of
+  two: exact counts for the cubics in 7 and 9 variables, held blind.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -950,9 +993,10 @@ Both fifth moments are exact ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theore
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
   - the oscillator states: a proof that the generic polygons' area phases cancel at every even order, the one step
-    left for the whole semicircle (round 15 measured the sixth, and Theorem 4 now proves it); the elliptic surface's
-    sum that is all that remains of J4 (§18); the double octic's count behind I5, which matches the level-10 form at every prime
-    tried; and J6, now a count on a fourfold;
+    left for the whole semicircle (round 15 measured the sixth, and Theorem 4 now proves it); the double octic's
+    count behind I5, which matches the level-10 form at every prime tried; and J6, now a count on a fourfold;
+  - the coin: proofs of the counts of the cubics in 7 and 9 variables; whether the seventh moment carries Q(√−35), as
+    the fifth carries √5; and the cubic in eleven variables, past the base's edge at 10;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
 
@@ -1011,6 +1055,11 @@ python modular_symbols.py              # the engine that names the forms, checke
 python fifth_moments.py collect        # round 17: the double octic's sums to 401, a minute
 python verify_fifth_moment.py          # the fifth moments' proofs, step by step: under a minute
 python fifth_moments.py test           # round 17's blind test at 409..601, minutes on four processes
+python fourth_cumulant.py              # Theorem 5's proof, step by step at every odd prime to 401: seconds
+python fourth_cumulant.py test         # round 18: the surface sum to 3001, a minute on four processes
+python coin_at_five.py                 # the coin at 5: the dictionary, checked, seconds
+python coin_at_five.py test            # round 19: the edge, and the cubics to 397, a minute on four processes
+python coin_at_five.py test20          # round 20: the cubics at 401..601, blind, a minute on four processes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

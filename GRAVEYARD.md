@@ -306,6 +306,13 @@ its own graveyard. These died, with what killed them:
     surface sum. That sum carries the weight-3 CM form of Q(√−11) and a weight-1 form of the cubic field of
     discriminant −44, exactly, at every prime tried. Neither is in I5: they cancel against the rest. Kept for its
     lesson: a piece of a count can carry motives the whole does not (step 13 of the same script).
+- **From the coin at 5 (2026-11-14; `towers/seven_levels/COIN_AT_FIVE.md` §2, round 19's C1):**
+  - **"At the edge prime, every formula holds with the symbol's 0, the average of its two sides."** That held for the
+    moment without the parity flip, I5, at p = 5 (3504) and at p = 3 (368), and Theorem 5's J4 holds at 3. It died for
+    the parity-weighted moments. The operators give J3 = 24 at 3 (registered −12 or 0), J5 = 240 at 3 (registered
+    −84 or −192) and J5 = −1680 at 5 (registered −930) (`towers/seven_levels/coin_at_five_test.log`).
+  - Theorems 6 and 7 were written for p ≥ 7, so no stated theorem fell. What died is the reading that the edge
+    averages the sides for every moment. At its edge J3 is +2p(p + 1), the mirror of its (−3|p) = −1 side.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

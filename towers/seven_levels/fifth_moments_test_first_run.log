@@ -40,12 +40,12 @@ F3 HELD
 F4 E's traces equal the level-150 newform's at every prime 409..601: True 
 F4 HELD
 Traceback (most recent call last):
-  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\fifth_moments.py", line 209, in <module>
+  File "<repository>\towers\seven_levels\fifth_moments.py", line 209, in <module>
     test()
-  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\fifth_moments.py", line 188, in test
+  File "<repository>\towers\seven_levels\fifth_moments.py", line 188, in test
     and c["I6"] == emo.I6_formula(p, b6) and c["J4"] == emo.J4_formula(p))
                    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\brayd\OneDrive\Desktop\trinity-infinity-geometry\towers\seven_levels\exact_moments.py", line 124, in I6_formula
+  File "<repository>\towers\seven_levels\exact_moments.py", line 124, in I6_formula
     return p * (5 * p ** 4 - p ** 3 - 5 * p ** 2 - 1 + (p + 1) * (b6[p] - legendre(-3, p) * p * p))
                                                                   ~~^^^
 TypeError: 'int' object is not subscriptable

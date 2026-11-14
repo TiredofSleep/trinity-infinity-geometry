@@ -33,7 +33,9 @@ $\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$, and their basis-aver
 $2/(p^2(p+1))$, so the skew tapers to $0$ as $-1/\sqrt p$. Every moment reduces to a count of polygons on the torus's
 orbits in which only non-crossing pairings survive, the mechanism of free probability; numerically, up to $p=1009$,
 the whole value distribution is the semicircle law, and its corrections are free. The sixth moment is exact and
-carries the newform of weight $4$ and level $6$ that governs the sixth moment of Kloosterman sums. All computational predictions were registered before they were run.
+carries the newform of weight $4$ and level $6$ that governs the sixth moment of Kloosterman sums. The
+parity-weighted fourth moment is proved exact, by Landen's transformation over $\F_p$ and quartic Jacobi sums, and it
+carries the CM form $\eta(4\tau)^6$. All computational predictions were registered before they were run.
 \end{abstract}
 
 \section{Introduction}
@@ -244,7 +246,8 @@ non-polynomial part is $p(p+1)c(p)$ with $c$ the coefficients of $\eta(4\tau)^6$
 and~\ref{thm:third} this gives the free fourth cumulant of the standardized Wigner values exactly; it is
 $3/p^2+(16\sin^2\theta_p-8-8[p\equiv2\bmod3])/p^3+O(p^{-4})$, where $\sin^2\theta_p=b^2/p$ and $\theta_p$ is
 the angle of the Gaussian prime $a+bi$. Both formulas were found at the primes up to $199$ and confirmed, without
-refitting, at every prime from $211$ to $401$.
+refitting, at every prime from $211$ to $401$; the first is proved below (Theorem~\ref{thm:fourth}), and the second
+follows from it.
 
 \begin{theorem}\label{thm:fifth}
 Let $I_n=\sum_C\Tr S_C^n$ and $J_n=\sum_C\Tr(PS_C^n)$. For odd $n$ and for even $n'$,
@@ -286,9 +289,28 @@ I_5=p(p+1)\Big[p^3+4p^2-\big(1+\big(\tfrac5p\big)\big)p-4+a(p)\Big]-p^5-1 .
 The curve $E$ has the traces of the newform of weight $2$ and level $150$ at every prime tested. The double octic
 behaves as a rigid Calabi--Yau threefold would; rigid Calabi--Yau threefolds over $\mathbb Q$ are modular
 \cite{GouveaYui2011}, and its count is the one step of $I_5$ not proved here. The case $n=3$ recovers the count behind
-Theorem~\ref{thm:third}. The case $n=4$ reduces the count behind $J_4$ to a surface, $M_4=(p-1)(p-3)+4b^2$. And
+Theorem~\ref{thm:third}. The case $n=4$ gives the count behind $J_4$, $M_4=(p-1)(p-3)+4b^2$, which is proved next. And
 $\sqrt p\,I_5/((p-1)p(p+1)^{5/2})\to5$, the value the free cumulants $\kappa_1\approx1/\sqrt p$ and
 $\kappa_3\approx-1/\sqrt p$ give.
+
+\begin{theorem}\label{thm:fourth}
+For every odd prime $p$, $J_4=(3p+1)(p^2-1)-4p(p+1)b^2$, with $b$ as above. Equivalently, the character sum
+$T(p)=\sum_{\kappa\ne0}\sum_{A}\eta\big(\kappa A(\kappa+4-4A)((\kappa+4)A-4\kappa)\big)$ of an elliptic surface equals
+$p+c(p)$, where $c(p)$ is the $p$-th coefficient of $\eta(4\tau)^6$. So the free fourth cumulant above is exact.
+\end{theorem}
+\begin{proof}[Sketch]
+By the reduction of Theorem~\ref{thm:fifth}, $J_4=p^4-1-p(p+1)M_4$, where $M_4$ counts the $\delta\in\mathbb F_p^4$
+with $\sum\delta_i=0$ and $1+\varepsilon e_2+\varepsilon^2e_4=0$. Put $\sigma=\delta_1+\delta_2$,
+$A=1+\varepsilon\delta_1\delta_2$ and $B=1+\varepsilon\delta_3\delta_4$; then $1+\varepsilon e_2+\varepsilon^2e_4=
+AB-\varepsilon\sigma^2$, and sums of Legendre symbols give $M_4=(p-1)^2+2+(\tfrac{-1}{p})p-T(p)$. For
+$\kappa\ne0,-4$ the inner sum is $\eta(-\kappa)L(16\kappa/(\kappa+4)^2)$, where $L(\lambda)=\sum_X\eta(X(X-1)(X-\lambda))$
+is the Legendre curve's sum. With $\kappa=4t$ the curves $E_{4t/(1+t)^2}$ and $E_{t^2}$ are $2$-isogenous over
+$\mathbb F_p$ for $t\ne0,\pm1$ (Landen's transformation; \cite{Silverman}, III.4.5), so they have the same number of
+points and $T(p)=p-1-(\tfrac{-1}{p})+\sum_{t\ne0,\pm1}\eta(-t)L(t^2)$. When $p\equiv3\pmod4$ the terms at $\pm t$
+cancel and $T(p)=p$. When $p\equiv1\pmod4$, a character $\chi$ of order $4$ gives $T(p)=p+J(\chi,\eta)^2+J(\bar\chi,
+\eta)^2=p+2(a^2-b^2)$, with $J(\chi,\eta)=a+bi$ of norm $p$ \cite{IrelandRosen}; and $a$ is odd, because $y^2=t^3-t$
+has $p+1+2a$ points, a multiple of $4$.
+\end{proof}
 
 \paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
 $401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
@@ -314,7 +336,7 @@ Three algebraic families, the torus states, the norm states and the cubic-phase 
 share $8/(3\pi)$ of the ceiling, between random states ($\sqrt{2/\pi}$) and the most negative states found by search
 for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: a proof that the area phases of the generic
 closed polygons cancel at every even order, which would give the whole semicircle (at order six they cancel to
-$O(1/p)$ in the numerics); the modularity of the double octic behind $I_5$; the surface count behind $J_4$; the reason for the tie at $p=5$ between the norm form and
+$O(1/p)$ in the numerics); the modularity of the double octic behind $I_5$; the reason for the tie at $p=5$ between the norm form and
 elliptic curves with $8$ points; and whether the most negative states have an algebraic description at all. The
 natural home for these questions is the theory of trace functions over finite fields \cite{FKMS}.
 
@@ -367,6 +389,8 @@ Phys. 137 (1991).
 Soc. (1992).
 \bibitem{KurlbergRudnick2005} P. Kurlberg, Z. Rudnick, On the distribution of matrix elements for the quantum cat map,
 Ann. of Math. 161 (2005).
+\bibitem{Silverman} J. H. Silverman, The Arithmetic of Elliptic Curves, 2nd ed., Springer, 2009.
+\bibitem{IrelandRosen} K. Ireland, M. Rosen, A Classical Introduction to Modern Number Theory, 2nd ed., Springer, 1990.
 \bibitem{FKMS} E. Fouvry, E. Kowalski, Ph. Michel, W. Sawin, Lectures on applied $\ell$-adic cohomology,
 arXiv:1712.03173.
 \end{thebibliography}

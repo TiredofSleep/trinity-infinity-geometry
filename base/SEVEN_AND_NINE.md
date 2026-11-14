@@ -154,6 +154,10 @@ does, and at 5, 7 and 9 no arrangement does.
     whole coins — heads, tails or edge — tossed together.
   - The edge between the faces is the centre itself. See
     [`../coin/THE_COIN.md`](../coin/THE_COIN.md) for the classification and its checks.
+  - **Where the coins meet arithmetic.** The coin at 5 is in the fifth moment of the oscillator states. Its double
+    octic is branched along the planes where one point sits at the centre (the solid face) and Clebsch's cubic, which
+    holds the pentagon (the flat face). The coin at 7 is in the cubic fourfold in seven variables, whose count carries
+    √5·√−7. See [`../towers/seven_levels/COIN_AT_FIVE.md`](../towers/seven_levels/COIN_AT_FIVE.md).
 - **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
   plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves
   them.

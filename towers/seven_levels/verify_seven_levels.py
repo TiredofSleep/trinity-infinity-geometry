@@ -1653,6 +1653,55 @@ forced("round 17's exact formulas for I5 (the weight-4, level-10 newform) and J5
        "level-15 form), recomputed from the states at 31, 37, 41 and 43; and the test log scores F0 to F5 held, F6 "
        "(the precision bar) not met, as recorded", ok17 and held17 == RECORDED17)
 
+# ------------------------------------------------------------------ rounds 18 to 20 (fourth_cumulant.py, coin_at_five.py)
+print()
+print("rounds 18 to 20:")
+_HERE18 = os.path.dirname(os.path.abspath(__file__))
+
+
+def _scores(logname, keys):
+    out = {}
+    for line in open(os.path.join(_HERE18, logname), encoding="utf-8"):
+        f18 = line.split()
+        if f18 and f18[0] in keys:
+            if "HELD" in f18:
+                out[f18[0]] = "HELD"
+            elif "FAILED" in f18 or any(w.startswith("FAILED") for w in f18):
+                out[f18[0]] = "FAILED"
+    return out
+
+
+_r18 = _sp16.run([sys.executable, os.path.join(_HERE18, "fourth_cumulant.py")], capture_output=True, text=True)
+forced("TORUS_MOMENTS.md section 8's Theorem 5, step by step at every odd prime to 401 (fourth_cumulant.py: the "
+       "pairing, the Legendre form, Landen's 2-isogeny, the quartic Jacobi sums, and the chain to the operators' J4)",
+       _r18.returncode == 0)
+# the outcomes scored on 2026-11-14 (PREREG.md)
+RECORDED18 = {"G1": "HELD", "G2": "HELD", "G3": "HELD"}
+RECORDED19 = {"C0": "HELD", "C1": "FAILED", "C2": "HELD"}
+RECORDED20 = {"H1": "HELD", "H2": "HELD"}
+forced("round 18's test log scores G1 to G3 held, as recorded",
+       _scores("fourth_cumulant_test.log", RECORDED18) == RECORDED18)
+_r19 = _sp16.run([sys.executable, os.path.join(_HERE18, "coin_at_five.py")], capture_output=True, text=True)
+forced("COIN_AT_FIVE.md's dictionary (coin_at_five.py: the pentagon on Clebsch's cubic, the 15 lines of the edge, the "
+       "27 or 15 lines, the double six and the flip, the centre at the edge prime, the exact count of Clebsch's cubic)",
+       _r19.returncode == 0)
+forced("round 19's test log scores C0 and C2 held and C1 failed, and round 20's H1 and H2 held, as recorded",
+       _scores("coin_at_five_test.log", RECORDED19) == RECORDED19
+       and _scores("coin_at_five_test20.log", RECORDED20) == RECORDED20)
+import coin_at_five as coin20
+
+ok20 = True
+for p_ in (11, 13, 17, 19):
+    N_ = coin20.cone_counts(p_, (7, 9))
+    t7_ = coin20.primitive_trace(7, coin20.projective(N_[7], p_), p_)
+    t9_ = coin20.primitive_trace(9, coin20.projective(N_[9], p_), p_)
+    s_ = coin20.leg(5, p_)
+    c_ = t7_ // p_ - p_ * (14 + 6 * s_)
+    ok20 &= t7_ % p_ == 0 and abs(c_) == coin20.cm35(p_)
+    ok20 &= t9_ == p_ ** 3 * (42 + 27 * s_ + coin20.leg(105, p_)) + 8 * p_ * p_ * c_
+forced("the cubics in 7 and 9 variables recounted at 11, 13, 17 and 19: t7 = p^2(14 + 6(5|p)) + p c(p) with |c| the "
+       "CM form of Q(sqrt -35), and t9 = p^3(42 + 27(5|p) + (105|p)) + 8p^2 c(p)", ok20)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

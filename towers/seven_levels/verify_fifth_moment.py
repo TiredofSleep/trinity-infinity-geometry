@@ -24,7 +24,7 @@
      weight-2 newform of level 150 with a(7), a(11), a(13) = -2, 2, -6                                (primes to 401)
  11. J4's count reduced: N_V(4) = (p - 1)(p - 3) + 4b^2 by brute force (p = 7 .. 29) and from round 16's J4 (to 401)
      and, pairing the points, N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T(p) with T one elliptic surface's character sum,
-     T(p) = (2 + (-1|p))p - 4b^2                                                    (p = 7 .. 29; T at every prime to 401)
+     T(p) = (2 + (-1|p))p - 4b^2, now proved (fourth_cumulant.py)                    (p = 7 .. 29; T at every prime to 401)
  12. the free picture: sqrt(p) times the normalized fifth moment tends to 5 (free cumulants k1 = 1/sqrt p,
      k3 = -1/sqrt p, k5 = o(1/sqrt p))
  13. a piece the whole does not carry (kept as a dead end): split by w, the part of Z5 with w on the circle holds the
@@ -247,7 +247,7 @@ def main():
     ok = all(N_V_direct(4, p) == (p - 1) ** 2 + 2 + eta(-1, p) * p - T_surface(p) for p in fm.primes(7, 29))
     ok2 = all(T_surface(p) == (2 + eta(-1, p)) * p - 4 * b_even(p) ** 2 for p in PS)
     check("11b. pairing: N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T(p), T the elliptic surface's sum (p = 7..29); and "
-          "T(p) = (2 + (-1|p))p - 4b^2 at every prime 7..401 [measured]", ok and ok2)
+          "T(p) = (2 + (-1|p))p - 4b^2 at every prime 7..401 [proved: fourth_cumulant.py, Theorem 5]", ok and ok2)
     # 12. the free picture
     vals = []
     for p in (101, 199, 401):

@@ -52,6 +52,10 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
    the functional equations that Broadhurst and Roberts conjectured (2022); Yun attached Galois representations to the
    moments and proved Evans's conjectures (2015). The fourth cumulant brought in η(4τ)⁶, the form with complex
    multiplication by the Gaussian integers.
+   - Its proof ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), Theorem 5) uses only classical tools: a 2-isogeny over F_p,
+     Landen's transformation (Silverman, III.4.5), and Jacobi sums of a character of order 4 (Ireland and Rosen,
+     ch. 8). The same transformation, written for the finite-field hypergeometric function ₂F₁, is Evans and Greene's
+     quadratic transformation (arXiv:1511.00020).
    - [READING] Fresán stands on both of the strands this floor crosses: equidistribution, and the motives of Kloosterman
      moments.
 6. **The fifth moments live on a double octic** [NAMED; measured]. I5 reduces to the double cover of 3-space branched
@@ -69,6 +73,19 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      van der Vlugt 1992).
    - [READING] Duco van Straten stands where these meet: on the Barth–Nieto quintic of the sixth moment (with Hulek,
      Spandaw and van Geemen), and on double octics (with Cynk).
+7. **The coin at 5, and the cubics in 7 and 9 variables** [NAMED; measured; [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md)].
+   - Clebsch's cubic is the flat face of the coin at 5. Its 27 lines (Clebsch 1871) and its icosahedral symmetry, as
+     the Hilbert modular surface of Q(√5) (Hirzebruch 1976), are classical.
+   - The cubic fourfold {Σx = Σx³ = 0} in seven variables is one of the six cubic fourfolds with a maximal group of
+     symplectic automorphisms. It is X¹(A7) in Laza and Zheng's classification (Math. Z. 2022), with transcendental
+     lattice of discriminant 35, and the Clebsch–Segre cubic in Koike's equations (arXiv:2409.08448).
+   - A two-dimensional transcendental part is carried by a weight-3 CM form: Livné's mechanism for singular K3
+     surfaces (1995). Here the field is Q(√−35).
+   - Web searches on 2026-11-14 found no point count, zeta function or Galois action for this fourfold, nor for the
+     nine-variable cubic sixfold. The nearest are the Fermat cubic fourfold's form of level 27, and a census of cubic
+     fourfolds over F₂ that counts points to find Frobenius eigenvalues.
+   - [READING] Laza and Zheng's classification comes from the Leech lattice. The point counts here see the same field
+     from the other side, through Frobenius.
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 
@@ -127,3 +144,12 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 - F. Gouvêa and N. Yui, "Rigid Calabi–Yau threefolds over Q are modular", *Expo. Math.* **29** (2011).
 - C. Peters, J. Top and M. van der Vlugt, *J. reine angew. Math.* **432** (1992): Kloosterman's fifth moment.
 - A. Clebsch, *Math. Ann.* **4** (1871): the diagonal cubic surface.
+- F. Hirzebruch, *Russian Math. Surveys* **31** (1976): the Hilbert modular group of Q(√5) and Clebsch's cubic.
+- R. Laza and Z. Zheng, "Automorphisms and periods of cubic fourfolds", *Math. Z.* **300** (2022),
+  [arXiv:1905.11547](https://arxiv.org/abs/1905.11547).
+- K. Koike, "Cubic fourfolds with symplectic automorphisms" (2024), [arXiv:2409.08448](https://arxiv.org/abs/2409.08448).
+- R. Livné, *Israel J. Math.* **92** (1995): two-dimensional orthogonal motives and weight-3 CM forms.
+- R. Evans and J. Greene, "A quadratic hypergeometric ₂F₁ transformation over finite fields",
+  [arXiv:1511.00020](https://arxiv.org/abs/1511.00020).
+- J. H. Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed. (2009); K. Ireland and M. Rosen, *A Classical
+  Introduction to Modern Number Theory*, 2nd ed. (1990).

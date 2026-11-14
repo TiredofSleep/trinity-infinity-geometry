@@ -409,7 +409,7 @@ The modular form is in N6 alone. Step 3 shows why the phase-0 count escapes it. 
 square is a linear combination of Legendre symbols. N6 = Σ_w (Σ_a n_w(a))² squares sums of many counts, and the cross
 terms carry the sixth moment of the Kloosterman sums.
 
-**Theorem 5: the fourth free cumulant** [exact given one count].
+**Theorem 5: the fourth free cumulant** [FORCED, for every odd prime p].
 
   J4 = (3p + 1)(p² − 1) − 4p(p + 1) b²,
 
@@ -424,8 +424,11 @@ with P(p) = 3p⁴ − 26p³ + 40p² − 6p − 11 when p ≡ 1 (mod 3) and 3p⁴
 - So κ4 = 3/p² + (16 sin²θ_p − 8 − 8[p ≡ 2 mod 3])/p³ + O(1/p⁴), where sin²θ_p = b²/p and θ_p is the angle of the
   Gaussian prime a + bi, Hecke's angle (0 when p ≡ 3 mod 4). The 3/p² the logs showed is the leading term, not the
   whole.
-- **Proved:** the algebra from J4 to κ4. **Measured exactly, proof open:** J4, found at the primes from 5 to 199 and
-  predicted at every prime from 211 to 401 (round 16).
+- **Proved:** J4, and the algebra from J4 to κ4. The proof of J4 is given after the fifth moments, because it uses
+  their method; see "The proof of Theorem 5" below.
+  - J4 was first found at the primes from 5 to 199, and predicted at every prime from 211 to 401 (round 16).
+  - Round 18 tested the proof's surface sum at every prime to 3001, and its steps to 1009.
+  - Round 19 found J4 = 80 from the operators at p = 3, as the theorem says.
 - [READING] J4 + (p + 1)⁴ = p(p + 1)(p² + 6p + 1 − 4b²) counts the 4-tuples on a circle whose five-gon phase with the
   origin vanishes: points on a surface. Its count, p² + 6p + 1 − 4b², is that of a surface whose middle cohomology
   carries η(4τ)⁶, as for a K3 surface with complex multiplication by the Gaussian integers. Where 4 divides p + 1 the
@@ -454,6 +457,8 @@ Every step below is checked by [`verify_fifth_moment.py`](verify_fifth_moment.py
 - E is the elliptic curve y² = x(x − 4)(4x² − 52x + 9), and a_E(p) = p + 1 − #E(F_p).
 - [measured] E's traces are those of the newform of weight 2 and level 150 with a(7), a(11), a(13) = −2, 2, −6, at
   every prime from 7 to 401. So, as far as traces can tell, E has conductor 150; Tate's algorithm was not run.
+- **Its range is p ≥ 7**, as the proof's special classes assume. At the primes 3 and 5, where its forms are bad, it
+  fails: the operators give J5 = 240 at 3 and −1680 at 5 (round 19; [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §2).
 
 *Proof.*
 1. **Split.** J5 = p(pZ − N) by §7, with six operators P A_v1 ⋯ A_v5. Split them as (P A_v1 A_v2)(A_v3 A_v4 A_v5).
@@ -481,6 +486,8 @@ Every step below is checked by [`verify_fifth_moment.py`](verify_fifth_moment.py
 
 where a(p) is the p-th coefficient of the newform of weight 4 and level 10: a(7), a(11), a(13), a(17), a(19) = −4, 12,
 −58, 66, −100. So the basis average of Σ_u W(u)⁵ is p⁻⁶[1 + I5/(p + 1)⁴].
+- **It holds at the edges too** [measured; round 19]. At p = 5, with (5|5) = 0 and a(5) = 5, the operators give
+  I5 = 3504, as the formula does; at p = 3, with a(3) = −8, they give 368. The proof below is written for p ≥ 7.
 
 1. **The phase as a form.** With u_i = (−1)^i v_i, the five-point phase is a constant times Σ_(i<j) Im(ū_i u_j). In
    the field model each u_i is a unit of F_p². So Z5 counts the common zeros of six quadrics: the five norms
@@ -523,15 +530,56 @@ where a(p) is the p-th coefficient of the newform of weight 4 and level 10: a(7)
 where N_V⁽ⁿ⁾ counts the points g1, …, gn of the turning wheel, none equal to −1, with g1⋯gn = (−1)^(n+1) and
 Σ(g_i − 1)/(g_i + 1) = 0: the points that multiply to ±1 and whose Cayley coordinates sum to 0.
 - n = 3 gives N_V = 3p − 2, and §6's I3 again.
-- n = 4 reduces J4 to a surface count: N_V⁽⁴⁾ = (p − 1)(p − 3) + 4b² [measured, by brute force to 29 and from round
-  16's J4 to 401]. Pairing the four points two by two makes it one character sum [FORCED]. Put δ1 + δ2 = σ, and let
-  A = 1 + εδ1δ2 and B = 1 + εδ3δ4, so the condition reads AB = εσ². Legendre sums then give
-  N_V⁽⁴⁾ = (p − 1)² + 2 + (−1|p)p − T(p), where T(p) = Σ_(κ≠0) Σ_A η(κA(κ + 4 − 4A)((κ + 4)A − 4κ)) is the sum of an
-  elliptic surface. So all that is open in Theorem 5 is one evaluation, T(p) = (2 + (−1|p))p − 4b², exact at every
-  prime to 401 [measured]. The surface's middle cohomology should carry η(4τ)⁶.
+- n = 4 is an elliptic surface's count, and it proves Theorem 5 (below).
 - n = 5 is the double octic.
 - n = 6 makes J6 a count on a fourfold, an integer at every prime to 401. A first look finds the Gaussian integers' CM
   form η(4τ)⁶ in it again, with more left over.
+
+**The proof of Theorem 5** [FORCED].
+
+> *1 and 2, J4's surface sum first* — the author, 14 November 2026
+
+By the reduction above, J4 = p⁴ − 1 − p(p + 1)N_V⁽⁴⁾. In Cayley coordinates N_V⁽⁴⁾ counts the δ in F_p⁴ with
+Σδ_i = 0 and 1 + εe2 + ε²e4 = 0. Every step below is checked at every odd prime from 3 to 401 by
+[`fourth_cumulant.py`](fourth_cumulant.py) ([`fourth_cumulant_verify.log`](fourth_cumulant_verify.log)), and in round
+18 at every prime to 1009, with T to 3001 ([`fourth_cumulant_test.log`](fourth_cumulant_test.log)).
+1. **Pairing.** Pair the four points two by two.
+   - Put σ = δ1 + δ2 = −(δ3 + δ4), A = 1 + εδ1δ2 and B = 1 + εδ3δ4. Then 1 + εe2 + ε²e4 = AB − εσ².
+   - Given σ and A, the pairs (δ1, δ2) number 1 − η(εσ² + 4 − 4A), and the same holds for (δ3, δ4) and B. So
+     N_V⁽⁴⁾ = Σ_σ F(εσ²), with F(κ) = Σ_(AB = κ)(1 − η(κ + 4 − 4A))(1 − η(κ + 4 − 4B)).
+   - F(0) = 0, since η(4) = 1. As σ runs over the units, εσ² runs twice over the non-squares, so
+     N_V⁽⁴⁾ = Σ_(κ≠0)(1 − η(κ))F(κ).
+   - Legendre sums give F(κ) = p − 1 + 2η(κ + 4) + G(κ), where G(κ) = Σ_A η(A(κ + 4 − 4A)((κ + 4)A − 4κ)).
+   - For fixed A the sum of G over κ is a quadratic's, so Σ_(κ≠0) G(κ) = 2 + (−1|p)p.
+   - Hence N_V⁽⁴⁾ = (p − 1)² + 2 + (−1|p)p − T(p), where T(p) = Σ_(κ≠0) η(κ)G(κ) is the character sum of an elliptic
+     surface.
+2. **Legendre form.** For κ ≠ 0, −4, the cubic in A is −4κ(κ + 4)·A(A − (κ + 4)/4)(A − 4κ/(κ + 4)).
+   - Scaling A by (κ + 4)/4 makes the sum over A equal η(−κ)L(λ), where λ = 16κ/(κ + 4)².
+   - L(λ) = Σ_X η(X(X − 1)(X − λ)) is the Legendre curve's sum: E_λ: y² = X(X − 1)(X − λ) has p + 1 + L(λ) points.
+   - At κ = −4 the sum is p − 1.
+3. **Landen's transformation.** Put κ = 4t, so λ = 4t/(1 + t)² and 1 − λ = ((1 − t)/(1 + t))².
+   - For t ≠ 0, ±1, move the root 1 of E_λ to 0. The 2-isogeny with kernel (0, 0) [NAMED: Silverman, *The
+     Arithmetic of Elliptic Curves*, III.4.5] gives Y² = X(X − 4/(1 + t)²)(X − 4t²/(1 + t)²), which is E_(t²).
+   - Isogenous curves over F_p have the same number of points [NAMED: Tate], so L(4t/(1 + t)²) = L(t²).
+   - With L(1) = −1 this gives T(p) = p − 1 − (−1|p) + Σ_(t≠0,±1) η(−t)L(t²).
+4. **When p ≡ 3 (mod 4).** η(−t) = −η(t), and L(t²) is even in t. So the terms at t and −t cancel, and T(p) = p.
+5. **When p ≡ 1 (mod 4): quartic Jacobi sums.** Now T(p) = p + W, with W = Σ_t η(t)L(t²) = Σ_x η(x(x − 1))
+   Σ_t η(t)η(x − t²).
+   - Let χ be a character of order 4, so χ² = η. With u = t², η(t) = χ(u), and u is a square 1 + η(u) times.
+   - So for x ≠ 0 the inner sum is χ̄(x)J + χ(x)J̄, where J = J(χ, η) = Σ_v χ(v)η(1 − v).
+   - Summing over x gives W = J² + J̄². With J = a + bi and a² + b² = p [NAMED: |J|² = p; Ireland and Rosen, ch. 8],
+     W = 2(a² − b²).
+   - At x = 1 the inner sum is Σ_t η(t³ − t) = 2a. So the curve y² = t³ − t has p + 1 + 2a points. That number is
+     divisible by 4, since the curve's three points of order 2 are rational. So a is odd and b even.
+   - Hence T(p) = p + 2(p − 2b²) = 3p − 4b². ∎
+
+So N_V⁽⁴⁾ = (p − 1)(p − 3) + 4b², and J4 = p⁴ − 1 − p(p + 1)N_V⁽⁴⁾ is Theorem 5.
+- **What the proof says.** T(p) = p + c(p): the surface's middle cohomology carries η(4τ)⁶, as the reading above
+  guessed, and the pairing turns that into J4.
+- **Where the Gaussian integers come from.** J4 is a parity-weighted moment, and pairing its four points leaves the
+  Legendre family at the squares, whose twisted sum is the Jacobi sum of a character of order 4.
+- **Its tools are classical.** Landen's transformation over finite fields and quartic Jacobi sums are old. What is new
+  here is the count, and its place in the operators' moments.
 
 **What it says.**
 - The moments of the oscillator states' Wigner values are point counts, and modular forms appear in them. From the
@@ -567,6 +615,8 @@ where N_V⁽ⁿ⁾ counts the points g1, …, gn of the turning wheel, none equa
   phase-0 hexagons that completes Theorem 4. And the fifth moments (§8, Theorems 6 and 7): the curve of conductor 150
   in J5; the reduction of every odd I_n and even J_n to one count on the wheel, by Gauss sums of Hermitian forms; and
   the double octic over Clebsch's cubic and its pentahedron, whose count carries the weight-4 form of level 10.
+  And the proof of Theorem 5 (§8). Its tools, Landen's transformation over F_p and quartic Jacobi sums, are
+  classical; what is new as far as we checked is the count, and its place in the operators' moments.
   - Web searches on 2026-11-14 found no double octic built this way. The nearest are Meyer's computer search of
     S4-symmetric double octics (arXiv:1810.03659), whose tables were not checked for this one, and Schütt's rigid
     Calabi–Yau threefold of level 10, built another way (arXiv:math/0311106).
@@ -582,12 +632,14 @@ where N_V⁽ⁿ⁾ counts the points g1, …, gn of the turning wheel, none equa
   [`verify_sixth_moment.py`](verify_sixth_moment.py), each step of Theorem 4's proof
   ([`verify_sixth_moment.log`](verify_sixth_moment.log)). And [`verify_fifth_moment.py`](verify_fifth_moment.py),
   each step of Theorems 6 and 7 ([`verify_fifth_moment.log`](verify_fifth_moment.log)), with round 17's blind test
-  at 409 to 601 ([`fifth_moments_test.log`](fifth_moments_test.log)).
+  at 409 to 601 ([`fifth_moments_test.log`](fifth_moments_test.log)). And [`fourth_cumulant.py`](fourth_cumulant.py),
+  each step of Theorem 5's proof at every odd prime to 401 ([`fourth_cumulant_verify.log`](fourth_cumulant_verify.log)),
+  with round 18's test to 3001 ([`fourth_cumulant_test.log`](fourth_cumulant_test.log)).
 - **Measured, not proved:** the moments above the fourth and the whole distribution (§5 and §7;
   [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log),
   [`free_moments_run.log`](free_moments_run.log)), including the generic hexagons' 1/p and the free counts of the
-  odd moments. Also, from §8: J4's surface count, the double octic's count behind I5, and E's conductor. Each is
-  exact at every prime to 401 (the octic and E to 601), but none is proved.
+  odd moments. Also, from §8: the double octic's count behind I5, and E's conductor. Each is exact at every prime to
+  601, but neither is proved.
 
 ## Run it
 
@@ -606,6 +658,8 @@ python modular_symbols.py          # the engine that names the forms, against fo
 python fifth_moments.py collect    # the double octic's sums at 7..401: a minute
 python verify_fifth_moment.py      # Theorems 6 and 7, step by step: under a minute
 python fifth_moments.py test       # round 17's blind test at 409..601: minutes, four processes
+python fourth_cumulant.py          # Theorem 5's proof, step by step at every odd prime to 401: seconds
+python fourth_cumulant.py test     # round 18: the surface sum to 3001 and the steps to 1009: a minute, four processes
 ```
 
 ## Sources
@@ -637,6 +691,10 @@ python fifth_moments.py test       # round 17's blind test at 409..601: minutes,
   D. Gross, "Hudson's theorem for finite-dimensional quantum systems", *J. Math. Phys.* **47** (2006).
 - R. Lidl and H. Niederreiter, *Finite Fields* (1983): quadratic forms over finite fields and the sums of the Legendre
   symbol.
+- J. H. Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed., Springer (2009): the 2-isogeny of Example III.4.5,
+  and the equal point counts of isogenous curves (Exercise 5.4; J. Tate, *Invent. Math.* **2** (1966)).
+- K. Ireland and M. Rosen, *A Classical Introduction to Modern Number Theory*, 2nd ed., Springer (1990), ch. 8: Jacobi
+  sums and their absolute value.
 - A. Clebsch, "Ueber die Anwendung der quadratischen Substitution auf die Gleichungen 5ten Grades und die
   geometrische Theorie des ebenen Fünfseits", *Math. Ann.* **4** (1871): the diagonal cubic surface.
 - S. Cynk and T. Szemberg, "Double covers of P³ and Calabi–Yau varieties" (1999),

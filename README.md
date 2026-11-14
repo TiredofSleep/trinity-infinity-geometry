@@ -64,10 +64,15 @@ checked twice, by independent code:
   third and fourth moments of their Wigner values are exact: the skew tapers as −1/√p, and the fourth-moment
   ratio is 2p/(p + 1). In every moment only the non-crossing pairings survive, as in free probability, and the
   corrections are free too. The sixth moment is exact and carries the weight-4, level-6 newform of Kloosterman's
-  sixth moment; the fourth free cumulant carries the Gaussian integers' η(4τ)⁶. The fifth moments are exact too.
-  One carries an elliptic curve of conductor 150. The other carries the weight-4 newform of level 10, through a
-  double octic built on Clebsch's diagonal cubic surface
+  sixth moment; the fourth free cumulant is proved, and carries the Gaussian integers' η(4τ)⁶. The fifth moments
+  are exact too. One carries an elliptic curve of conductor 150. The other carries the weight-4 newform of level 10,
+  through a double octic built on Clebsch's diagonal cubic surface
   ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
+- **The author's coin at 5 is in that double octic.** It is branched along the coin's solid face (the planes where
+  one point sits at the centre) and its flat face (Clebsch's cubic, which holds the pentagon), and they meet in 15
+  rational lines, the edge. The coin at 7 is in the cubic fourfold {Σx = Σx³ = 0} in seven variables, whose count
+  carries Q(√−35) = Q(√5·√−7). Its exact count, and that of the nine-variable cubic, held blind
+  ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
 stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
