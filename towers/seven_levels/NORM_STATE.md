@@ -4,6 +4,8 @@
 
 ### Tags: **[FORCED]** proved here and checked by [`verify_norm_state.py`](verify_norm_state.py) · **[NAMED]** a cited standard result · **[READING]** an interpretation · **[measured]** a search result.
 
+**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
+
 Round 9 found that on three wheels of 3 levels, the most negative state found is the norm state of the field with 27
 elements, and that it sits on neither face of the coin ([README](README.md) §11). Round 10 took it to three wheels of
 every prime (§12). This page proves the exact part:

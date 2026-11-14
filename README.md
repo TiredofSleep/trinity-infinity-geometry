@@ -41,7 +41,7 @@ The whole lens, part by part, in the author's words: [`THE_LENS.md`](THE_LENS.md
 
 ## What's new
 
-Four results at the research frontier. Each has a proof and a script that re-checks it, and most were
+Seven results at the research frontier. Each has a proof and a script that re-checks it, and most were
 checked twice, by independent code:
 - **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables,
   against a published record of 26 ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
@@ -53,9 +53,34 @@ checked twice, by independent code:
   ([linear algebra](towers/binary_magic/void_lens/README.md)).
 - **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
   ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
+- **The magic of a cubic-phase qudit state is the L1 norm of a Walsh spectrum.** So no magic state of a
+  third-level diagonal gate ever reaches the Wigner-negativity ceiling, and on three qudits the norm state of
+  the field with p³ elements is the most magic of them (exhaustive at 3 and 5 levels)
+  ([quantum information · finite fields](towers/seven_levels/README.md#14-round-13-cubic-magic-forced-measured-named-cui-gottesman-and-krishna-howard-and-vala-mesnager-özbudak-and-sınak)).
+- **The norm state's Wigner values are Kloosterman sums,** on three qudits of every odd prime, so its
+  negativity is known in closed form and tends to 8/(3π) of the ceiling, Sato–Tate's value
+  ([number theory · magic states](towers/seven_levels/NORM_STATE.md)).
+- **The oscillator states' magic follows the Sato–Tate law,** and averaged over a torus's eigenbasis the
+  fourth moment of their Wigner values is exactly 2p/(p + 1)
+  ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
 stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
+
+**Find it by field:**
+
+| field | where |
+|---|---|
+| quantum information: magic states, Wigner negativity, qudits | [`towers/seven_levels/`](towers/seven_levels/README.md), [`NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md) |
+| quantum contextuality: magic sets of observables | [`towers/binary_magic/magic_sets/`](towers/binary_magic/magic_sets/THEOREM.md) |
+| number theory: Kloosterman sums, Sato–Tate, repeating decimals | [`towers/seven_levels/NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`base/SEVENTHS.md`](base/SEVENTHS.md) |
+| quantum chaos and the Weil representation | [`towers/seven_levels/TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md), seven levels §9 and §13 |
+| finite fields and signal design: Walsh spectra, bent functions, cubic forms | seven levels §14, [`cubic_magic.py`](towers/seven_levels/cubic_magic.py) |
+| linear algebra: determinants of magic squares | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) |
+| universal algebra: equational laws, Steiner triple systems | [`towers/laws_of_a_table/`](towers/laws_of_a_table/README.md) |
+| geometry: energy, the Platonic solids, the dodecahedron | [`THE_LENS.md`](THE_LENS.md), [`base/SYMMETRY_AND_ENERGY.md`](base/SYMMETRY_AND_ENERGY.md) |
+| mathematics education: the base, the towers, the coin | [`base/`](base/README.md), [`towers/`](towers/README.md), [`coin/`](coin/README.md) |
+| fenced: physics and biology readings, each with its test | [`lab/FENCED_READINGS.md`](lab/FENCED_READINGS.md), [`lab/genetic_code/`](lab/genetic_code/README.md) |
 
 **How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
 - One loop: an intuition, predictions written before anything runs, a second independent check, a

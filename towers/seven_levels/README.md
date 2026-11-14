@@ -5,6 +5,10 @@
 
 ### Tags: **[FORCED]** checked by [`verify_seven_levels.py`](verify_seven_levels.py) · **[NAMED]** a cited standard result · **[READING]** an interpretation · **[FENCE]** outside the mathematics.
 
+**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
+
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 14 · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14.
+
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
   act on it.

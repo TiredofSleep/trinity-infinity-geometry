@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\title{Magic of algebraic qudit states:\\ Walsh spectra, Kloosterman sums and the Sato--Tate law}
+\author{Brayden Ross Sanders\\ \small 7SiTe LLC, Hot Springs, Arkansas, USA}
+\date{Draft, November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an odd prime $p$, we study the Wigner negativity of qudit states built from polynomials over finite fields.
+(i) For a cubic-phase state $\sum_x \omega^{f(x)}|x\rangle$ on $n$ qudits, the magic state of a third-level diagonal
+gate, the discrete Wigner function takes exactly the Walsh-spectrum values of the cubic part of $f$. So its
+negativity is the $L^1$ norm of a cubic Walsh spectrum, and by the non-existence of homogeneous cubic bent functions in
+odd characteristic, no such state reaches the negativity ceiling. (ii) On three qudits, the state whose phase is the
+norm map of $\F_{p^3}$ has Wigner values $K(m)/p^5$, where $K$ is the Kloosterman sum, and $-(p+1)/p^5$. Its negativity
+is therefore known in closed form for every $p$, and its share of the ceiling tends to $8/(3\pi)$. An exhaustive
+computation over all cubic forms on three qudits of dimension $3$ and $5$ finds it the most negative cubic-phase state.
+(iii) For the eigenbases of the non-split torus of $\mathrm{SL}(2,p)$, the oscillator states, the basis-averaged ratio
+$\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$. Numerically, up to $p=401$, the whole value distribution
+of these states is the semicircle law. All computational predictions were registered before they were run.
+\end{abstract}
+
+\section{Introduction}
+For qudits of odd prime dimension, the discrete Wigner function is non-negative exactly on the stabilizer states
+\cite{Gross2006}, and its negativity is a resource for quantum computation: it bounds distillation and simulation
+costs and coincides with contextuality \cite{Veitch2012,Veitch2014,Howard2014}. Which states carry the most negativity
+is known only in small dimensions \cite{JainPrakash2020,Erew2025}. This note computes the negativity of three algebraic
+families exactly, and finds that number theory governs it: Walsh spectra, Kloosterman sums, and the Sato--Tate law.
+The mechanism for torus-invariant states is close kin to Gurevich and Hadani's treatment of Hecke eigenstates
+\cite{GurevichHadani,GHS2008} and to Kurlberg and Rudnick's moment computations \cite{KurlbergRudnick2005}. The new
+content is the reading as magic, and the theorems and computations below.
+
+\section{Setting}
+Let $q=p^n$. Index the computational basis of $n$ qudits by $x\in\F_p^n$, and let $\omega=e^{2\pi i/p}$. The
+phase-point operators are $\langle a|A_{(u,k)}|b\rangle=[a+b=2u]\,\omega^{k\cdot(a-b)}$, and the Wigner function of a
+state $\psi$ is $W(u,k)=\langle\psi|A_{(u,k)}|\psi\rangle/q$, so that
+$W(u,k)=q^{-1}\sum_s \overline{\psi(u+s)}\,\psi(u-s)\,\omega^{2k\cdot s}$. The sum of sizes is $S=\sum|W|$, the
+negativity is $N=(S-1)/2$, and Cauchy--Schwarz with $\sum W^2=1/q$ gives the ceiling $S\le\sqrt q$.
+
+\begin{proposition}[the share is a shape]
+For every pure state, $S/\sqrt q$ equals the mean of $|W|$ divided by its root mean square over the $q^2$ points.
+\end{proposition}
+\begin{proof}
+The root mean square is $(q^{-2}\sum W^2)^{1/2}=q^{-3/2}$, and $S=q^2\cdot\mathrm{mean}|W|$.
+\end{proof}
+So the share of the ceiling depends only on the distribution of the Wigner values: $8/(3\pi)\approx0.849$ for the
+semicircle (Sato--Tate) law, $\sqrt{2/\pi}\approx0.798$ for a Gaussian (the average random state), $2\sqrt2/\pi\approx0.900$
+for a uniform angle, and $1$ only if every $|W|$ is equal.
+
+\section{Cubic-phase states}
+\begin{theorem}\label{thm:walsh}
+Let $f:\F_p^n\to\F_p$ be a polynomial of degree at most $3$ (over $\F_3$, with no exponent above $2$), let $C$ be its
+homogeneous cubic part, and let $\psi_f=q^{-1/2}\sum_x\omega^{f(x)}|x\rangle$. Then the Wigner function of $\psi_f$
+takes the values $\widehat S(w)/q^2$, each exactly $q$ times, for $w\in\F_p^n$, where
+$\widehat S(w)=\sum_s\omega^{w\cdot s-2C(s)}$. Hence $N(\psi_f)=\tfrac12\big(q^{-1}\sum_w|\widehat S(w)|-1\big)$ depends
+only on $C$, and only up to $\mathrm{GL}(n,p)$.
+\end{theorem}
+\begin{proof}
+$f(u+s)-f(u-s)$ is twice the part of $f(u+s)$ that is odd in $s$, namely $C(s)+\ell_u(s)$ with $\ell_u$ linear in $s$.
+So $W(u,k)=q^{-2}\sum_s\omega^{-2C(s)+(2k-2\ell_u)\cdot s}$, and for fixed $u$ the map $k\mapsto w=2k-2\ell_u$ is a
+bijection.
+\end{proof}
+For one qudit this reduces to the known cubic character sums of the qudit $\pi/8$ gates \cite{HowardVala2012}; the
+gates themselves are classified in \cite{CGK2017}.
+
+\begin{corollary}\label{cor:ceiling}
+No cubic-phase state, on any number of qudits of odd prime dimension, reaches the negativity ceiling.
+\end{corollary}
+\begin{proof}
+By Parseval $\sum_w|\widehat S(w)|^2=q^2$, so $q^{-1}\sum|\widehat S|\le\sqrt q$, with equality only if
+$|\widehat S|\equiv\sqrt q$, that is, only if $-2C$ is bent. There are no homogeneous cubic bent functions in odd
+characteristic \cite{MOS2018}.
+\end{proof}
+
+\paragraph{Exhaustive comparison.} Table~\ref{tab:cubic} lists the most negative cubic-phase state on three qudits,
+over every cubic form at $p=3$ ($2187$ forms) and $p=5$ ($9\,765\,625$), and over a random sample of $2\,000\,004$ at
+$p=7$. It is the norm state of Section~\ref{sec:norm} in every case, ahead of the CCZ-type state $\omega^{x_1x_2x_3}$.
+At $p=5$ some smooth cubic curves with $8$ points over $\F_5$ give exactly the same negativity, with different Wigner
+values; we do not know why. On two qudits the best cubic-phase states fall below the most negative states known
+(e.g.\ $(9+3\sqrt5)/10\approx1.5708$ against $1.7669$ at $p=5$), and from $p=7$ to $23$ their share of the ceiling lies
+between $0.845$ and $0.856$.
+
+\begin{table}[h]\centering
+\begin{tabular}{rrrrr}\toprule
+$p$ & forms & best (the norm state) & CCZ-type $x_1x_2x_3$ & share of the ceiling\\\midrule
+3 & 2187 (all) & $17/9$ & $16/9$ & 0.900\\
+5 & 9\,765\,625 (all) & 4.252724 & 3.991084 & 0.835\\
+7 & 2\,000\,004 (sample) & 7.902228 & 7.091848 & 0.902\\\bottomrule
+\end{tabular}
+\caption{The most negative cubic-phase states on three qudits.}\label{tab:cubic}
+\end{table}
+
+\section{The norm state on three qudits}\label{sec:norm}
+Write $\F=\F_{p^3}$ in a polynomial basis, let $N(x)=x^{1+p+p^2}$ be the norm to $\F_p$, and let
+$\psi_c=p^{-3/2}\sum_x\omega^{cN(x)}|x\rangle$ for $c\in\F_p^\times$. Let $K(m)=\sum_{a\ne0}\omega^{a+m/a}$ be the
+Kloosterman sum.
+\begin{theorem}\label{thm:norm}
+For every $c$, $\psi_c$ has Weyl expectations $0$ on the $Z$-type operators and of modulus exactly $p^{-3/2}$ on all
+others. Its Wigner function takes the value $K(m)/p^5$ at $(p^2+p+1)p^3$ points for each $m\in\F_p^\times$, and the value
+$-(p+1)/p^5$ at the remaining $p^3$ points. Consequently
+\[
+S=\frac{(p+1)+(p^2+p+1)\sum_{m\ne0}|K(m)|}{p^2},\qquad \frac{S}{p^{3/2}}\longrightarrow\frac{8}{3\pi}.
+\]
+\end{theorem}
+\begin{proof}[Proof sketch]
+By Theorem~\ref{thm:walsh} the values are $\widehat S(w)/q^2$ with $\widehat S(w)=\sum_s\omega^{\Tr(ws)-2cN(s)}$ after
+a linear change of the momentum variable. For $w=0$, the fibres of $N$ give $\widehat S(0)=-p(p+1)$. For $w\ne0$,
+substituting $s\mapsto s/w$ gives $\widehat S(w)=T(2c/N(w))$ with $T(\mu)=\sum_s\omega^{\Tr(s)-\mu N(s)}$. Expanding
+$t\mapsto\omega^{-\mu t}$ in multiplicative characters $\chi$ of $\F_p^\times$, the Davenport--Hasse relation
+$G(\chi\circ N)=g(\chi)^3$ \cite{DavenportHasse} and $g(\chi)g(\bar\chi)=\chi(-1)p$ reduce $T(\mu)$ to
+$\sum_\chi\chi(\mu)g(\chi)^2=(p-1)K(1/\mu)$, whence $T(\mu)=pK(1/\mu)$. The Weyl expectations follow because every
+difference $N(x+a)-N(x)$, $a\ne0$, is a non-degenerate quadratic form plus a linear term. The limit uses Katz's
+equidistribution of Kloosterman angles \cite{Katz1988}, under which $\mathbb E|2\cos\theta|=8/(3\pi)$.
+\end{proof}
+The share is $0.9003$ at $p=3$, $0.8355$ at $5$ and $0.9021$ at $7$; below $2000$ only $3$ and $7$ reach $0.9$.
+
+\section{Oscillator states}\label{sec:torus}
+Let $T\subset\mathrm{SL}(2,p)$ be a non-split torus (cyclic of order $p+1$) and $U_g$ its Weil representation on one
+qudit, with $U_gA_uU_g^\dagger=A_{gu}$. The $U_g$ have $p$ distinct characters, so they share an orthonormal eigenbasis
+$\psi_1,\dots,\psi_p$, the non-split oscillator states \cite{GHS2008}. Off the origin, $T$ has $p-1$ orbits, the
+circles $Q(v)=r$ of an anisotropic quadratic form, each of $p+1$ points.
+\begin{theorem}\label{thm:moment}
+$\displaystyle\frac1p\sum_j\sum_u W_j(u)^4=\frac1{p^4}+\frac{2(p-1)}{p^3(p+1)^2}$. Equivalently, the basis average of
+$\mu_4/\mu_2^2$, taken over the Wigner values off the origin, is exactly $2p/(p+1)$.
+\end{theorem}
+\begin{proof}
+(1) $W_j$ is constant on each circle. (2) $\bar A_u=(p+1)^{-1}\sum_{g\in T}A_{gu}$ commutes with every $U_g$, hence is
+diagonal in the eigenbasis with entries $pW_j(u)$; so $\sum_jW_j(u)^4=p^{-4}\Tr\bar A_u^4$. (3) For phase-point
+operators, $\Tr(A_{u_1}A_{u_2}A_{u_3}A_{u_4})=p\,\omega^{-2\langle u_1-u_2,u_3-u_2\rangle}$ if $u_1-u_2+u_3-u_4=0$
+and $0$ otherwise. (4) On a circle $C$ of $m=p+1$ points, the solutions of $v_1+v_3=v_2+v_4$ are exactly the three
+families $v_2=v_1$, $v_2=v_3$, $v_3=-v_1$: if $s=v_1+v_3\ne0$, the points $v$ of $C$ with $s-v\in C$ lie on a line.
+The first two carry area $0$; with the overlaps,
+$\Tr\bar A_C^4=pm^{-4}(2m^2-3m+\Phi(C))$, where $\Phi(C)=\sum_{v_1,v_2\in C}\omega^{4\langle v_1,v_2\rangle}$.
+(5) Writing $v=\lambda v_1+\mu w$ with $\langle v_1,w\rangle=1$, a fibre of $\mu$ meets $C$ in $1+\eta(\delta\mu^2+r^2)$
+points, $\eta$ the Legendre symbol and $\delta$ a non-square independent of $C$; summing over the circles and using
+$\sum_x\eta(x^2+c)=-1$ $(c\ne0)$ gives $\sum_C\Phi(C)=m(p-1)$. (6) Then
+$\sum_u\Tr\bar A_u^4=p+2p^2(p-1)/(p+1)^2$, and dividing by $p^5$ gives the claim. Off the origin every state has
+$\mu_2=1/(p^2(p+1))$, which yields the ratio.
+\end{proof}
+\begin{remark}
+In the count, the two families of area zero are the two non-crossing pairings of four points, and the third is the
+crossing pairing, whose area phases cancel on average. This is why the limit is $2$, the semicircle's fourth moment,
+and not the Gaussian's $3$.
+\end{remark}
+
+\paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
+$401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
+states), standardized, they match the semicircle law through the eighth moment, and the Kolmogorov distance of the
+pooled $2.06\times10^9$ values to the semicircle law is $0.0072$, against $0.0426$ to the Gaussian.
+
+\begin{table}[h]\centering
+\begin{tabular}{lccccc}\toprule
+ & $S/\sqrt p$ & 3rd & 4th & 6th & 8th\\\midrule
+oscillator states, $211\le p\le401$ & 0.8468 & $-0.057$ & 2.010 & 5.066 & 14.35\\
+semicircle (Sato--Tate) & 0.8488 & 0 & 2 & 5 & 14\\
+Gaussian (random states) & 0.7979 & 0 & 3 & 15 & 105\\\bottomrule
+\end{tabular}
+\caption{Standardized moments of the oscillator states' Wigner values.}\label{tab:torus}
+\end{table}
+
+\section{Discussion}
+Three algebraic families, the torus states, the norm states and the cubic-phase states, sit at or near the Sato--Tate
+share $8/(3\pi)$ of the ceiling, between random states ($\sqrt{2/\pi}$) and the most negative states found by search
+for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: proofs of the higher moments, which
+reduce by Step (2) to counts of polygons on the circles; the reason for the tie at $p=5$ between the norm form and
+elliptic curves with $8$ points; and whether the most negative states have an algebraic description at all. The
+natural home for these questions is the theory of trace functions over finite fields \cite{FKMS}.
+
+\paragraph{Data and methods.} Every result is checked by scripts in the repository
+\url{https://github.com/TiredofSleep/trinity-infinity-geometry} (folder \texttt{towers/seven\_levels}); every
+computational prediction was registered, with its script, in a public commit before it was run, and the predictions
+that failed are kept with their evidence.
+
+\paragraph{Acknowledgment.} The computations and the drafting were assisted by an AI system (Claude, Anthropic); the
+directions are the author's, and every claim is machine-checked.
+
+\begin{thebibliography}{99}
+\bibitem{Gross2006} D. Gross, Hudson's theorem for finite-dimensional quantum systems, J. Math. Phys. 47 (2006).
+\bibitem{Veitch2012} V. Veitch, C. Ferrie, D. Gross, J. Emerson, Negative quasi-probability as a resource for quantum
+computation, New J. Phys. 14 (2012).
+\bibitem{Veitch2014} V. Veitch, S. A. H. Mousavian, D. Gottesman, J. Emerson, The resource theory of stabilizer
+quantum computation, New J. Phys. 16 (2014).
+\bibitem{Howard2014} M. Howard, J. Wallman, V. Veitch, J. Emerson, Contextuality supplies the `magic' for quantum
+computation, Nature 510 (2014).
+\bibitem{JainPrakash2020} A. Jain, S. Prakash, Qutrit and ququint magic states, Phys. Rev. A 102 (2020).
+\bibitem{Erew2025} M. Erew, M. Goldstein, Extremizing measures of magic on pure states by Clifford-stabilizer states,
+arXiv:2512.19657 (2025).
+\bibitem{HowardVala2012} M. Howard, J. Vala, Qudit versions of the qubit $\pi/8$ gate, Phys. Rev. A 86 (2012).
+\bibitem{CGK2017} S. X. Cui, D. Gottesman, A. Krishna, Diagonal gates in the Clifford hierarchy, Phys. Rev. A 95
+(2017).
+\bibitem{MOS2018} S. Mesnager, F. \"Ozbudak, A. S{\i}nak, On the $p$-ary (cubic) bent and plateaued (vectorial)
+functions, Des. Codes Cryptogr. 86 (2018) 1865--1892.
+\bibitem{DavenportHasse} H. Davenport, H. Hasse, Die Nullstellen der Kongruenzzetafunktionen in gewissen zyklischen
+F\"allen, J. reine angew. Math. 172 (1935).
+\bibitem{Katz1988} N. M. Katz, Gauss Sums, Kloosterman Sums, and Monodromy Groups, Ann. of Math. Stud. 116 (1988).
+\bibitem{GHS2008} S. Gurevich, R. Hadani, N. Sochen, The finite harmonic oscillator and its associated sequences,
+Proc. Natl. Acad. Sci. 105 (2008).
+\bibitem{GurevichHadani} S. Gurevich, R. Hadani, Proof of the Kurlberg--Rudnick rate conjecture,
+arXiv:math-ph/0404074.
+\bibitem{KurlbergRudnick2005} P. Kurlberg, Z. Rudnick, On the distribution of matrix elements for the quantum cat map,
+Ann. of Math. 161 (2005).
+\bibitem{FKMS} E. Fouvry, E. Kowalski, Ph. Michel, W. Sawin, Lectures on applied $\ell$-adic cohomology,
+arXiv:1712.03173.
+\end{thebibliography}
+\end{document}

@@ -4,6 +4,8 @@
 
 ### Tags: **[FORCED]** proved here and checked by [`verify_torus_moments.py`](verify_torus_moments.py) · **[NAMED]** a cited standard result · **[measured]** a computed result.
 
+**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
+
 Round 11 measured the magic of the oscillator states, the eigenvectors of the two tori of SL(2, p), at every prime up
 to 401, and found the Sato–Tate law ([README](README.md) §13). One number in it came out exact: averaged over the
 non-split torus's eigenvectors, the fourth-moment ratio of the Wigner values is 2p/(p + 1), to rounding, at every
