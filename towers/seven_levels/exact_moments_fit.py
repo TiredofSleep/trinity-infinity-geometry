@@ -4,7 +4,7 @@ characters of p mod 3 and mod 4 times polynomials of degree at most 5, plus one 
 one power or two adjacent ones) from a library of fourteen eta products. A fit counts only if it is exact, in rational
 arithmetic, at every prime, with at least four more primes than unknowns.
 
-    python exact_moments_fit.py                       # the exact fits: Kloosterman's sixth moment, J4 and I6
+    python exact_moments_fit.py                       # the exact fits: Kloosterman's sixth and fifth moments, J4, I6
     python exact_moments_fit.py I5 J5 J6 SumK^5       # the searches that found nothing (slow)
 
 numpy + sympy.  ASCII output.
@@ -70,6 +70,10 @@ FORMS = {
     "w5 l4? eta1^4 eta2^2 eta4^4": eta_fast([(1, 4), (2, 2), (4, 4)]),
 }
 
+_A15, _B15 = eta_fast([(3, 3), (5, 3)]), eta_fast([(1, 3), (15, 3)])
+FORMS["w3 l15 eta3^3 eta5^3 + eta1^3 eta15^3 (Kloosterman's fifth moment)"] = [a + b for a, b in zip(_A15, _B15)]
+
+
 def kloost_moments(p, ks):
     a = np.arange(1, p)
     inv = np.array([pow(int(v), -1, p) for v in a])
@@ -105,7 +109,7 @@ def try_fit(target, deg, form_terms):
     sol = sol.subs({t: 0 for t in params})
     return [(n, c) for n, c in zip(names, sol) if c != 0]
 
-which = sys.argv[1:] if len(sys.argv) > 1 else ["SumK^6", "J4", "I6"]
+which = sys.argv[1:] if len(sys.argv) > 1 else ["SumK^6", "SumK^5", "J4", "I6"]
 for tname in which:
     target = TARGETS[tname]
     deg = 4 if tname.startswith("Sum") else 6
