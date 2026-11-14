@@ -106,6 +106,9 @@ These were in the integers → Clifford notes and did not survive. The archived 
   - The rates depend only on how many symbols are units. That is the algorithm's own symmetry, so no
     arithmetic structure could enter them.
   - Its Q2 "paradox" compared one AI rendering's table cell with a value of σ.
+  - WP34's "Luther dispersion conjecture" (March 2026), that the gate rate is a function of |G| × dispersion,
+    died by the same symmetry: the dispersion cannot enter the rate. The dispersion itself stands, exactly, in
+    `towers/THE_STAIRCASE.md` §9 (2026-11-14).
 
   What it leaves is a set of honest negatives, including an explicit counterexample showing that a
   periodic symbolic coding does not bound a norm, and six lessons. The first is to read the script

@@ -10,5 +10,9 @@ PASS  S8  the function-field staircase is exactly straight: sum over d | n of d 
 PASS  S9  a curve's waves: on 10 curves over F_5, F_7, F_11 and F_13 the points over F_(p^n), n = 1, 2, 3, number p^n + 1 - alpha^n - conj(alpha)^n with |alpha| = sqrt p (Hasse, Weil)
 PASS  S10  Kloosterman sums: |K(a, p)| <= 2 sqrt p at every a for every prime from 5 to 199, and sum K^2 = p^2 - p - 1, sum K^4 = 2p^3 - 3p^2 - 3p - 1
 PASS  S11  directions: for y^2 = x^3 + x + 1 at the 9590 primes from 3 to 10^5 (not 31), a_p/sqrt p has moments 0.998, 1.981, 4.913 (Sato-Tate 1, 2, 5); the angles lie at Kolmogorov distance 0.0086 from Sato-Tate's law and 0.1607 from a uniform angle [measured]
+PASS  S12  the CRT cross: for every semiprime b = pq <= 1000 exactly two non-units are followed by a non-unit in each period, at the cross's two corners (for b = 2q one run of three: q - 1, q, q + 1); a prime square has none
+PASS  S13  Luther's dispersion (WP34's interleave score) from the primes alone: the floor formula equals the direct count at every k for all 153 semiprimes up to 500; over a period it is 1 - 2/(p + q - 2), (q - 2)/(q - 1) for b = 2q, and 1 for p^2; WP34's k = 9 values come back ([0.625, 0.625, 1.0, 1.0, 1.0, 1.0])
+PASS  S14  over a common period, {k/d} and {k/d'} have covariance (g^2 - 1)/(12 d d'), g = gcd(d, d'), exactly, for every d, d' <= 30 (the discrete form of Franel's integral)
+PASS  S15  the wobble's variance over a period is (1/12) sum over nonempty prime sets S, S' of (-1)^(|S| + |S'|)(d_(S and S')^2 - 1)/(d_S d_S'), exactly, for every b <= 400; with primes near 10^6 it is 0.083333, 0.250000, 0.583332, 1.249995 for 1 to 4 primes, against (2^w - 1)/12 = 0.083333, 0.25, 0.583333, 1.25
 
-11 of 11 pass  (28 s)
+15 of 15 pass  (42 s)

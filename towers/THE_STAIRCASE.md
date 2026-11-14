@@ -3,8 +3,8 @@
 *A side floor of the number tower, from the integers up to finite fields. It restores the author's interleave
 staircase (WP34, March 2026) and makes each of its words exact: the interleaving, the straight line it cancels to,
 the compression and the taper. The mathematics is classical and credited; the frame is the author's. Every [FORCED]
-claim is checked by [`verify_staircase.py`](verify_staircase.py) (11 checks, about thirty seconds), whose output is
-kept in [`verify_staircase.log`](verify_staircase.log).*
+claim is checked by [`verify_staircase.py`](verify_staircase.py) (15 checks, about a minute), whose output is kept
+in [`verify_staircase.log`](verify_staircase.log).*
 
 Tags: **[FORCED]** proved here and checked by the script · **[NAMED]** a classical result, cited · **[measured]** a
 computed number · **[READING]** an interpretation · **[FENCE]** a physics reading, not a claim.
@@ -38,6 +38,9 @@ polynomials · elliptic curves · Hasse–Weil bound · Frobenius angles · Sato
   law (§5). [NAMED; FORCED checks]
 - **On the qudit floor that spread is magic,** and its taper, −1/√p, is proved (§6;
   [`TORUS_MOMENTS.md`](seven_levels/TORUS_MOMENTS.md) §6). [FORCED]
+- **Luther's dispersion has a formula from the primes.** On the Chinese-remainder grid the non-units are a cross, and
+  they clump only at its two corners. WP34's interleave score is 1 − 2/(p + q − 2) over a period, and the staircase's
+  wobble spreads with variance tending to (2^ω − 1)/12 for ω primes (§9). [FORCED]
 
 ## 1. The interleave staircase [FORCED]
 
@@ -167,6 +170,40 @@ physics readings, fenced, registered before it ran and judged against a look-els
 measurement's uncertainty, and a grammar that size comes that close by chance 2.2% of the time. The reading died at
 its registered bar, and its death is kept.
 
+## 9. Prime-forced dispersion: Luther's question, made exact [FORCED; NAMED]
+
+> *the prime p determines not only the onset of obstruction but the entire spread of G across the alphabet* —
+> C. A. Luther, in WP34 §9, March 2026
+
+WP34 called this prime-forced dispersion and left one step open: to write the dispersion as an explicit formula from
+the primes. Here it is.
+
+- **The picture** [NAMED: the Chinese remainder theorem]. The map n → (n mod p, n mod q) lays 1, 2, …, pq on a
+  p × q grid, wrapped into a torus, along a line of slope 1. The non-units are exactly the grid's two axes, a cross.
+  So the staircase of non-units is that line meeting the cross, one axis every p steps and the other every q steps.
+- **Clumps happen only at the corners** [FORCED]. In each period exactly two non-units are followed by another, where
+  the line steps from one axis to the other: at the two corners next to the origin. For b = 2q the two merge into one
+  run of three, q − 1, q, q + 1, and a prime square has none. (Checked for every semiprime up to 1000.)
+- **Luther's dispersion, as a formula from the primes** [FORCED]. WP34 measured dispersion by its interleave score: the
+  number of changes between units and non-units in 1, …, k, over 2·min(|C_k|, |G_k|). At every k the number of
+  changes is 2(|G_k| − A_k), less 1 when k itself is a non-unit. Here |G_k| = ⌊k/p⌋ + ⌊k/q⌋ − ⌊k/pq⌋, and A_k counts
+  the corners passed, each with one floor. Over a whole period the score is 1 − 2/(p + q − 2) for odd primes,
+  (q − 2)/(q − 1) for b = 2q, and 1 for a prime square. (Checked at every k for all 153 semiprimes up to 500; WP34's
+  0.625 at b = 15 and 21 with k = 9 comes back.)
+- **The wobble's spread counts the primes** [FORCED]. Over a period, the wobble e(k) of §1 has variance
+  (1/12) Σ (−1)^(|S| + |S′|) (d_(S∩S′)² − 1)/(d_S d_S′), summed over pairs of nonempty sets S, S′ of b's primes, with
+  d_S their product. It rests on one covariance: over a common period, {k/d} and {k/d′} have covariance
+  (g² − 1)/(12 d d′), with g = gcd(d, d′), the discrete form of Franel's integral [NAMED: Franel 1924]. As the primes
+  grow, the variance tends to (2^ω − 1)/12 for ω primes, one twelfth for each nonempty set of them: 1/12, 1/4, 7/12,
+  5/4. That is WP34's ω hierarchy, found here in the spread itself. (Checked exactly for every b up to 400.)
+- [READING] **The coin with the gate.** WP34 tied dispersion to a "gate rate", the success rate of a hill-climb over
+  tables. The audit of 2026-09-24 found that the hill-climb sees a symbol only as a unit, a non-unit or HAR, so its rate
+  depends on the count of non-units alone, and the stored runs show exactly that (`papers/Q_SERIES_AUDIT_2026-09-24.md`
+  in the retired ck repository). So the conjecture that dispersion moves the gate rate died, and the death is kept. The
+  dispersion itself stands, locked by the primes, and now exact. Two sides: the numbers, which see where the non-units
+  sit, and the algorithm, which sees only how many. The edge is the algorithm's symmetry, the relabelings that keep each
+  symbol's unit status.
+
 ## Standing
 
 - **Known, and credited** [NAMED]: inclusion–exclusion and Legendre's sieve; Mertens' theorems (1874), with Rosser
@@ -178,15 +215,18 @@ its registered bar, and its death is kept.
 - **The author's**, with WP34's co-authors: the interleave staircase and its reading as the sieve's partition geometry
   (March 2026); the lens line (June 2026); and the prime gradient, with its compression and its taper (14 November
   2026).
-- **This page's own:** the gathering, and the readings marked [READING]. Nothing here is new mathematics except the
-  qudit floor's taper, which is proved in [`TORUS_MOMENTS.md`](seven_levels/TORUS_MOMENTS.md) §6.
-- **Checked** by [`verify_staircase.py`](verify_staircase.py): 11 checks, all passing
+- **C. A. Luther's**, in WP34: prime-forced dispersion, the observation that the primes lock the whole spread of the
+  non-units (March 2026). Its link to the gate rate died in the audit of 2026-09-24.
+- **This page's own:** the gathering, the readings marked [READING], and the elementary formulas of §9 for WP34's
+  interleave score and the wobble's variance. Nothing here is new mathematics except the qudit floor's taper, which is
+  proved in [`TORUS_MOMENTS.md`](seven_levels/TORUS_MOMENTS.md) §6.
+- **Checked** by [`verify_staircase.py`](verify_staircase.py): 15 checks, all passing
   ([`verify_staircase.log`](verify_staircase.log)).
 
 ## Run it
 
 ```
-python verify_staircase.py     # 11 checks, about thirty seconds (numpy, mpmath)
+python verify_staircase.py     # 15 checks, about a minute (numpy, mpmath)
 ```
 
 ## Sources
@@ -212,3 +252,7 @@ python verify_staircase.py     # 11 checks, about thirty seconds (numpy, mpmath)
   *Publ. RIMS* **47** (2011): the Sato–Tate theorem.
 - N. M. Katz, *Gauss Sums, Kloosterman Sums, and Monodromy Groups* (1988).
 - R. Lidl and H. Niederreiter, *Finite Fields* (1983): Gauss's count of irreducible polynomials.
+- J. Franel, "Les suites de Farey et le problème des nombres premiers", *Göttinger Nachrichten* (1924): the integral of
+  a product of two sawtooth functions.
+- The Q-series audit (2026-09-24), in the retired ck repository:
+  [papers/Q_SERIES_AUDIT_2026-09-24.md](https://github.com/TiredofSleep/ck/blob/tig-synthesis/papers/Q_SERIES_AUDIT_2026-09-24.md).

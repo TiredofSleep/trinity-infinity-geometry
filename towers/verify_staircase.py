@@ -30,11 +30,19 @@ S10 Kloosterman sums: |K(a, p)| <= 2 sqrt p for every a and every prime 5 <= p <
     sum_a K^2 = p^2 - p - 1 and sum_a K^4 = 2p^3 - 3p^2 - 3p - 1 (a from 1 to p - 1)
 S11 directions: the curve y^2 = x^3 + x + 1 gives each prime p an angle, a_p = 2 sqrt(p) cos(theta_p); over the primes
     from 3 to 10^5 (not 31), the moments of a_p/sqrt p and the Kolmogorov distance to Sato-Tate      [measured]
+Prime-forced dispersion (C. A. Luther's question in WP34), section 9:
+S12 the CRT cross: for every semiprime b = pq <= 1000, exactly two non-units in each period are followed by a non-unit,
+    at the cross's two corners (for b = 2q, one run of three); a prime square has none
+S13 Luther's dispersion, WP34's interleave score, from the primes alone: a floor formula equal to the direct count at
+    every k for the 153 semiprimes up to 500; over a period 1 - 2/(p + q - 2), (q - 2)/(q - 1) for b = 2q, 1 for p^2
+S14 {k/d} and {k/d'} have covariance (g^2 - 1)/(12 d d') over a common period, g = gcd(d, d') (d, d' <= 30, exactly)
+S15 the wobble's variance over a period, exactly for every b <= 400, and its limit (2^w - 1)/12 for w primes
 
 numpy + mpmath (mpmath only for S7).  One process, below-normal priority.  ASCII output; writes verify_staircase.log.
-Runtime: about thirty seconds.
+Runtime: about a minute.
 """
 import ctypes
+import itertools
 import math
 import os
 import sys
@@ -334,11 +342,120 @@ def main():
           f"moments {mom[0]:.3f}, {mom[1]:.3f}, {mom[2]:.3f} (Sato-Tate 1, 2, 5); the angles lie at Kolmogorov distance "
           f"{ks_st:.4f} from Sato-Tate's law and {ks_u:.4f} from a uniform angle [measured]",
           abs(mom[0] - 1) < 0.05 and abs(mom[1] - 2) < 0.15 and ks_st < 0.02 < ks_u)
+    s12_s15()
     say()
-    say(f"{11 - len(FAILS)} of 11 pass" + (f"; failed: {', '.join(FAILS)}" if FAILS else "") +
+    say(f"{15 - len(FAILS)} of 15 pass" + (f"; failed: {', '.join(FAILS)}" if FAILS else "") +
         f"  ({time.time() - t0:.0f} s)")
     LOG.close()
     sys.exit(1 if FAILS else 0)
+
+
+def semiprimes(limit):
+    out = []
+    for b in range(4, limit + 1):
+        f = factor(b)
+        if (len(f) == 2 and f[0] * f[1] == b) or (len(f) == 1 and f[0] ** 2 == b):
+            out.append((b, f[0], f[1] if len(f) == 2 else f[0]))
+    return out
+
+
+def interleave_direct(b, k):
+    s = [gcd(x, b) > 1 for x in range(1, k + 1)]
+    T = sum(1 for i in range(k - 1) if s[i] != s[i + 1])
+    G = sum(s)
+    return T / (2 * min(k - G, G)) if min(k - G, G) > 0 else 0.0
+
+
+def corners(p, q):
+    """the two n mod pq with n and n + 1 both non-units: n = 0 mod p, -1 mod q, and n = 0 mod q, -1 mod p"""
+    return (p * ((q - 1) * pow(p, -1, q) % q), q * ((p - 1) * pow(q, -1, p) % p))
+
+
+def interleave_formula(p, q, k):
+    """WP34's interleave score from the primes alone (b = pq with p < q, or b = p^2 with q = p)"""
+    b = p * q
+    if p == q:
+        G, A = k // p, 0
+    else:
+        G = k // p + k // q - k // b
+        A = sum((k - 1 - r) // b + 1 for r in corners(p, q) if k - 1 >= r)
+    last = k % p == 0 or k % q == 0
+    T = 2 * (G - A) - (1 if last else 0)
+    return T / (2 * min(k - G, G)) if min(k - G, G) > 0 else 0.0
+
+
+def wobble_variance(primes):
+    """the variance of e(k) = sum over d | b of mu(d){k/d} over a period, b = product of the given primes, from the
+    covariance (g^2 - 1)/(12 d d') of {k/d} and {k/d'}"""
+    from fractions import Fraction
+    subsets = [S for r in range(1, len(primes) + 1) for S in itertools.combinations(primes, r)]
+    tot = Fraction(0)
+    for S in subsets:
+        for S2 in subsets:
+            d, d2 = math.prod(S), math.prod(S2)
+            g = math.prod(set(S) & set(S2)) if set(S) & set(S2) else 1
+            tot += Fraction((-1) ** (len(S) + len(S2)) * (g * g - 1), 12 * d * d2)
+    return tot
+
+
+def s12_s15():
+    from fractions import Fraction
+    # S12: the corners of the CRT cross
+    ok = True
+    for b, p, q in semiprimes(1000):
+        adj = [n for n in range(1, b - 1) if gcd(n, b) > 1 and gcd(n + 1, b) > 1]
+        if p == q:
+            ok &= adj == []
+        else:
+            ok &= sorted(adj) == sorted(corners(p, q))
+            if p == 2:
+                ok &= sorted(adj) == [q - 1, q]                         # one run of three: q - 1, q, q + 1
+    check("S12", "the CRT cross: for every semiprime b = pq <= 1000 exactly two non-units are followed by a non-unit "
+          "in each period, at the cross's two corners (for b = 2q one run of three: q - 1, q, q + 1); a prime square "
+          "has none", ok)
+    # S13: Luther's dispersion as a formula from the primes
+    ok, full = True, True
+    for b, p, q in semiprimes(500):
+        for k in range(2, b):
+            ok &= abs(interleave_formula(p, q, k) - interleave_direct(b, k)) < 1e-12
+        want = 1.0 if p == q else ((q - 2) / (q - 1) if p == 2 else 1 - 2 / (p + q - 2))
+        full &= abs(interleave_formula(p, q, b - 1) - want) < 1e-12
+    wp34 = [round(interleave_direct(b, 9), 3) for b in (15, 21, 22, 26, 34, 38)]
+    check("S13", "Luther's dispersion (WP34's interleave score) from the primes alone: the floor formula equals the "
+          "direct count at every k for all 153 semiprimes up to 500; over a period it is 1 - 2/(p + q - 2), "
+          f"(q - 2)/(q - 1) for b = 2q, and 1 for p^2; WP34's k = 9 values come back ({wp34})",
+          ok and full and wp34 == [0.625, 0.625, 1.0, 1.0, 1.0, 1.0])
+    # S14: the covariance of fractional parts
+    ok = True
+    for d in range(1, 31):
+        for d2 in range(1, 31):
+            L = d * d2 // gcd(d, d2)
+            ks = range(L)
+            ex = Fraction(sum(k % d for k in ks), d * L)
+            ey = Fraction(sum(k % d2 for k in ks), d2 * L)
+            exy = Fraction(sum((k % d) * (k % d2) for k in ks), d * d2 * L)
+            g = gcd(d, d2)
+            ok &= exy - ex * ey == Fraction(g * g - 1, 12 * d * d2)
+    check("S14", "over a common period, {k/d} and {k/d'} have covariance (g^2 - 1)/(12 d d'), g = gcd(d, d'), exactly, "
+          "for every d, d' <= 30 (the discrete form of Franel's integral)", ok)
+    # S15: the wobble's spread, and its limit (2^w - 1)/12
+    ok = True
+    for b in range(2, 401):
+        ps = factor(b)
+        es = []
+        for k in range(b):
+            G = sum(1 for x in range(1, k + 1) if gcd(x, b) > 1)
+            dens = Fraction(math.prod(p_ - 1 for p_ in ps) * b // math.prod(ps), b)     # phi(b)/b
+            es.append(G - (1 - dens) * k)
+        mean = sum(es, Fraction(0)) / b
+        var = sum(((e - mean) ** 2 for e in es), Fraction(0)) / b
+        ok &= var == wobble_variance(ps)
+    big = [1000003, 1000033, 1000037, 1000039]
+    lim = [float(wobble_variance(big[:w])) for w in (1, 2, 3, 4)]
+    check("S15", "the wobble's variance over a period is (1/12) sum over nonempty prime sets S, S' of "
+          "(-1)^(|S| + |S'|)(d_(S and S')^2 - 1)/(d_S d_S'), exactly, for every b <= 400; with primes near 10^6 it is "
+          + ", ".join(f"{v:.6f}" for v in lim) + " for 1 to 4 primes, against (2^w - 1)/12 = 0.083333, 0.25, 0.583333, "
+          "1.25", ok and all(abs(v - (2 ** w - 1) / 12) < 1e-4 for v, w in zip(lim, (1, 2, 3, 4))))
 
 
 if __name__ == "__main__":
