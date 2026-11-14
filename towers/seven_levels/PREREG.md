@@ -1497,3 +1497,43 @@ it. What is not proved is the two counts of phase-0 polygons, Z6 and J4: both ar
 (Added later the same day: Z6 is now proved, by an elementary count, so the sixth-moment formula is a theorem;
 see [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8 and [`verify_sixth_moment.py`](verify_sixth_moment.py). J4's count
 is still open.)
+
+---
+
+## Round 17: the fifth moments (registered 2026-11-14, before the test)
+
+> *1, apply the hexagon method to the fifth moments* — the author, 14 November 2026
+
+Round 16 left I5 and J5 open: no formula in its library fitted them. The hexagon method of
+[`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8 splits a count by the alternating sum w of a triangle. Applied to the fifth
+moments, it gave two exact formulas, found and checked at every prime from 7 to 401 against the operators' integers
+([`exact_moments_collect.log`](exact_moments_collect.log), [`exact_moments_test.log`](exact_moments_test.log)):
+
+- **J5 = p(p + 1)[f15(p) − p·a_E(p) + (4(−3|p) − 3)p − 1].** The phase-0 polygons number (p + 1)·#E(F_p) for the
+  elliptic curve E: y² = x(x − 4)(4x² − 52x + 9), by an elementary count. The closed polygons bring in Kloosterman's
+  fifth moment and its weight-3 newform f15 of level 15.
+- **I5 = p(p + 1)[p³ + 4p² − (1 + (5|p))p − 4 + a10(p)] − p⁵ − 1,** where a10(p) are the coefficients of the weight-4
+  newform of level 10. Here the split by w left a sum over a threefold, and a second method finished it. Expanding the
+  six quadrics in Gauss sums of Hermitian forms gives I5 = (p + 1)(p·N_V − N_W), where N_W = (p⁵ + 1)/(p + 1). N_V is a
+  point count on a double octic: the double cover of 3-space branched along Clebsch's diagonal cubic surface and its
+  five Sylvester planes. That count matches the level-10 newform exactly at every prime to 401.
+- The forms were named by a modular-symbols engine written for this, [`modular_symbols.py`](modular_symbols.py). It
+  was needed because LMFDB answered a burst of queries with a captcha. The engine reproduces the four weight-4 eta
+  products of levels 5, 6, 8 and 9.
+
+What is proved and what is measured is set out in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8. This round tests the
+formulas at primes where they were not found.
+
+| | prediction | dies if |
+|---|---|---|
+| F0, forced | the engine reproduces the eta products of levels 5, 6, 8 and 9 at every prime to 601 | a prime fails |
+| F1 | I5's formula holds exactly at every prime from 409 to 509 | a prime fails |
+| F2 | J5's formula holds exactly at every prime from 409 to 509 | a prime fails |
+| F3 | the double octic: (−1\|p)·S_oct = 6p² − 19p − a10(p) at every prime from 409 to 601 | a prime fails |
+| F4 | E's traces equal those of the weight-2 newform of level 150 with a(7), a(11), a(13) = −2, 2, −6, at every prime from 409 to 601 | a prime fails |
+| F5, forced | the proved I2, I3, I4, J2 and J3, and round 16's I6 and J4, hold at every prime from 409 to 509 | one fails |
+| F6, precision | every raw operator value from 409 to 509 lies within 0.1 of its integer | not met: the round is inconclusive, not failed |
+
+**The drafter's expectation:** all hold.
+
+Run: `python fifth_moments.py test` (about ten minutes, four processes at below-normal priority).
