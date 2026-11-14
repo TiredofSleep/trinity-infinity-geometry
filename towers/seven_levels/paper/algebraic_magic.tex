@@ -29,7 +29,8 @@ is therefore known in closed form for every $p$, and its share of the ceiling te
 computation over all cubic forms on three qudits of dimension $3$ and $5$, and a large sample at $7$, finds it the most
 negative cubic-phase state; from dimension $11$ on, samples find smooth cubic curves whose states beat it.
 (iii) For the eigenbases of the non-split torus of $\mathrm{SL}(2,p)$, the oscillator states, the basis-averaged ratio
-$\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$. Numerically, up to $p=401$, the whole value distribution
+$\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$, and their basis-averaged third moment is exactly
+$2/(p^2(p+1))$, so the skew tapers to $0$ as $-1/\sqrt p$. Numerically, up to $p=401$, the whole value distribution
 of these states is the semicircle law. All computational predictions were registered before they were run.
 \end{abstract}
 
@@ -162,6 +163,41 @@ crossing pairing, whose area phases cancel on average. This is why the limit is 
 and not the Gaussian's $3$.
 \end{remark}
 
+\begin{theorem}\label{thm:third}
+$\displaystyle\frac1p\sum_j\sum_u W_j(u)^3=\frac{2}{p^2(p+1)}$, and, with $\varepsilon_j=pW_j(0)=\pm1$,
+$\displaystyle\sum_j\varepsilon_j\sum_u W_j(u)^3=\frac1{p^2}$ if $p\equiv1\pmod 3$ and
+$\displaystyle\frac1{p^2}\Big(1-\frac{2}{p+1}\Big)$ if $p\equiv2\pmod 3$.
+\end{theorem}
+\begin{proof}
+Step (2) of Theorem~\ref{thm:moment} holds for every power, and the half turn $P=A_0$, which represents $-1\in T$
+up to sign, is diagonal in the eigenbasis with entries $\varepsilon_j$. So $\sum_jW_j(u)^3=p^{-3}\Tr\bar A_u^3$ and
+$\sum_j\varepsilon_jW_j(u)^3=p^{-3}\Tr P\bar A_u^3$. Three phase-point operators multiply to
+$A_{u_1}A_{u_2}A_{u_3}=\omega^{2\langle u_2-u_1,u_3-u_1\rangle}A_{u_1-u_2+u_3}$, and $\Tr A_u=1$. Identify the phase
+plane with $\F_p(\sqrt\varepsilon)$, $\varepsilon$ a non-square, so that $T$ acts by the elements of norm one, the circles
+are $N(v)=r$, and $\langle a,b\rangle=\kappa\,\mathrm{Im}(\bar ab)$. The triangle $(a,a\mu_1,a\mu_1\mu_2)$ on the circle
+$N=r$ has $\langle v_2-v_1,v_3-v_1\rangle=\kappa rG(\mu_1,\mu_2)$ with
+$G=\mathrm{Im}\,\mu_1+\mathrm{Im}\,\mu_2-\mathrm{Im}\,\mu_1\mu_2$; summing over the $p-1$ circles gives
+$\sum_C\Theta(C)=m(pZ-m^2)$, where $\Theta(C)$ is the sum of the area phases over the $m^3$ triangles on $C$ and
+$Z=\#\{G=0\}$. A triangle of area zero on a circle is degenerate, since a line meets the circle at most twice, so
+$Z=3m-2=3p+1$ and $\sum_u\Tr\bar A_u^3=1+(p-1)(2p+1)/(p+1)=2p^2/(p+1)$. (In the Cayley coordinates
+$\mu=(t+\sqrt\varepsilon)/(t-\sqrt\varepsilon)$ one finds $G=-4\varepsilon(t_1+t_2)/((t_1^2-\varepsilon)(t_2^2-\varepsilon))$.)
+For the second identity, $\Tr(PA_{v_1}A_{v_2}A_{v_3})=p\,\omega^{2\langle v_1,v_3\rangle}$ if $v_2=v_1+v_3$ and $0$
+otherwise. On a circle this forces $v_3=v_1\mu$ with $\mu^2+\mu+1=0$, three corners of an inscribed hexagon, which
+$T$ contains if and only if $3\mid p+1$; summed over the circles these contribute $-2p/(p+1)$, and the origin
+contributes $\Tr P^4=p$.
+\end{proof}
+\begin{corollary}\label{cor:taper}
+Since every pure state has $\sum W=1$ and $\sum W^2=1/p$, the basis average of the standardized third moment of the
+Wigner values over all $p^2$ points is exactly
+$-(p+2)/\big((p+1)\sqrt{p-1}\big)=-p^{-1/2}\big(1+\tfrac{3}{2p}+O(p^{-2})\big)$. Off the origin, where a state's mean
+depends on its parity, Theorem~\ref{thm:third} gives the average exactly as well; it reproduces the computed values
+at every prime from $5$ to $401$ to six decimals, and it depends on $p\bmod3$ only from the term of order $p^{-7/2}$.
+\end{corollary}
+The non-split oscillator states are the Hecke eigenstates of the quantum cat maps at primes where the map's
+characteristic polynomial is irreducible \cite{KurlbergRudnick2000}. For smooth observables, the odd moments of
+their normalized matrix elements are known to vanish in the semiclassical limit for the fifth moment
+\cite{Rosenzweig2009}; Theorem~\ref{thm:third} is an exact statement at every $p$ for the phase-point operators.
+
 \paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
 $401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
 states), standardized, they match the semicircle law through the eighth moment, and the Kolmogorov distance of the
@@ -180,8 +216,9 @@ Gaussian (random states) & 0.7979 & 0 & 3 & 15 & 105\\\bottomrule
 \section{Discussion}
 Three algebraic families, the torus states, the norm states and the cubic-phase states, sit at or near the Sato--Tate
 share $8/(3\pi)$ of the ceiling, between random states ($\sqrt{2/\pi}$) and the most negative states found by search
-for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: proofs of the higher moments, which
-reduce by Step (2) to counts of polygons on the circles; the reason for the tie at $p=5$ between the norm form and
+for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: proofs of the sixth and higher moments,
+which reduce by Step (2) to counts of polygons on the circles (the third and fourth close because a line meets a
+circle at most twice); the reason for the tie at $p=5$ between the norm form and
 elliptic curves with $8$ points; and whether the most negative states have an algebraic description at all. The
 natural home for these questions is the theory of trace functions over finite fields \cite{FKMS}.
 
@@ -216,6 +253,10 @@ F\"allen, J. reine angew. Math. 172 (1935).
 Proc. Natl. Acad. Sci. 105 (2008).
 \bibitem{GurevichHadani} S. Gurevich, R. Hadani, Proof of the Kurlberg--Rudnick rate conjecture,
 arXiv:math-ph/0404074.
+\bibitem{KurlbergRudnick2000} P. Kurlberg, Z. Rudnick, Hecke theory and equidistribution for the quantization of
+linear maps of the torus, Duke Math. J. 103 (2000).
+\bibitem{Rosenzweig2009} L. Rosenzweig, On the fluctuations of matrix elements of the quantum cat map,
+arXiv:0909.1410 (2009).
 \bibitem{KurlbergRudnick2005} P. Kurlberg, Z. Rudnick, On the distribution of matrix elements for the quantum cat map,
 Ann. of Math. 161 (2005).
 \bibitem{FKMS} E. Fouvry, E. Kowalski, Ph. Michel, W. Sawin, Lectures on applied $\ell$-adic cohomology,

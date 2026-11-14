@@ -8,7 +8,8 @@ operators, the forced numbers for large arrays, and the norm state found on thre
 For round 10 it checks larger_arrays.py's Wigner function against the operators, the norm-type states' flatness and
 Kloosterman values on three wheels of 3, 5 and 7, the norm state on five wheels of 3, and the scores (section 12).
 For round 11 it checks the torus states (the chirp, the orbit count, the purity identity, the averaged fourth-moment
-identity) and the scores (section 13); for round 12, the counting steps of TORUS_MOMENTS.md's proof and the scores;
+identity) and the scores (section 13); for round 12, the counting steps of TORUS_MOMENTS.md's two proofs, the exact
+skew law against the log, and the scores;
 for round 13, the Walsh identity of cubic states, the exhaustive maxima at small sizes, and the scores (section 14).
 
 numpy + scipy + round3.py + larger_arrays.py.  ASCII output.
@@ -1462,6 +1463,22 @@ v12 = {"M1": abs(LOG12["m3"]) <= 0.1, "M2": abs(LOG12["m6"] - 5) <= 0.3, "M3": a
        "M5": LOG12["ks"] < 0.015}
 forced("the logged values give round 12's recorded scores (torus_moments_combined.log): "
        + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in v12.items()), all(v12.values()))
+# TORUS_MOMENTS.md section 6: the zero-area count, and the exact skew law against round 12's log
+ok_z12 = True
+for p_ in [q_ for q_ in osc.PRIMES if q_ <= 61]:
+    _, T12, _ = vtm.field_model(p_)
+    Tl12 = np.array(T12, dtype=np.int64)
+    G12 = (Tl12[:, None, 1] + Tl12[None, :, 1] - (Tl12[:, None, 0] * Tl12[None, :, 1] + Tl12[None, :, 0] * Tl12[:, None, 1])) % p_
+    ok_z12 &= len(T12) == p_ + 1 and int((G12 == 0).sum()) == 3 * p_ + 1
+sk12 = {}
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "torus_moments_run.log"), encoding="utf-8"):
+    f12 = line.split()
+    if line.startswith("MOM ") and f12[1].isdigit() and f12[2] == "nonsplit":
+        sk12[int(f12[1])] = float(f12[4])
+worst_sk12 = max(abs(vtm.offorigin_skew(p_) - v_) for p_, v_ in sk12.items())
+forced(f"TORUS_MOMENTS.md section 6: only degenerate triangles have area zero (Z = 3p + 1 at every prime from 5 to "
+       f"61), and the exact skew law reproduces all {len(sk12)} of round 12's logged non-split third moments "
+       f"(worst difference {worst_sk12:.1e})", ok_z12 and len(sk12) == 77 and worst_sk12 < 6e-7)
 if FULL:
     # M4's non-split basis averages again, from the states themselves, at the primes from 211 to 401
     logged12 = {}

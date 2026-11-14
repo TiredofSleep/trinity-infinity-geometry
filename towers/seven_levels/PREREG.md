@@ -1155,6 +1155,8 @@ It took 10.9 minutes, and its values are exact up to rounding. **All six held.**
 - The split states' moments come down to the semicircle's from above, more slowly than the non-split ones'.
 - The proof of round 11's identity is now written, in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), with
   [`verify_torus_moments.py`](verify_torus_moments.py) checking each of its steps.
+- (Added 2026-11-14.) The skew is now exact as well: [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §6 proves the third
+  moment, and its formula reproduces every logged non-split average, at all 77 primes.
 
 **Yield.** The whole distribution of the oscillator states' Wigner values is the semicircle at these sizes, through the
 eighth moment and in Kolmogorov distance: the Sato–Tate law in full. That is measurement. The proof covers the fourth

@@ -1,4 +1,5 @@
-TORUS_MOMENTS.md: averaged over the non-split eigenbasis, mu4/mu2^2 = 2p/(p + 1)
+TORUS_MOMENTS.md: averaged over the non-split eigenbasis, mu4/mu2^2 = 2p/(p + 1) (section 3) and the third
+moment is 2/(p^2 (p + 1)), with its parity split (section 6)
 PASS  step 1: the chirp moves phase-point operators by its symplectic map, U A_u U^dagger = A_(Su), at 9 primes from 5 to 31
 PASS  step 2: averaging A_u over the torus gives an operator diagonal in the eigenbasis, with entries p W_j(u)
 PASS  step 3: Tr(A_1 A_2 A_3 A_4) = p w^(-2<u1 - u2, u3 - u2>) when u1 - u2 + u3 - u4 = 0, and 0 otherwise
@@ -6,5 +7,14 @@ PASS  step 6: Tr(Abar_C^4) = (p/m^4)(2m^2 - 3m + Phi(C)) on the circles tested
 PASS  step 4: at the 24 primes from 5 to 101 the torus's orbits off the origin are p - 1 circles of p + 1 points, and on each the solutions of v1 + v3 = v2 + v4 number exactly 3m^2 - 3m
 PASS  step 5: Phi(C) adds up over the p - 1 circles to (p - 1)(p + 1), at every prime from 5 to 101
 PASS  step 7: the average over the eigenbasis of sum_u W^4 is 1/p^4 + 2(p - 1)/(p^3 (p + 1)^2), and the average fourth-moment ratio is 2p/(p + 1), at every prime from 5 to 101
+
+section 6, the third moment:
+PASS  step 8: Tr(A_1 A_2 A_3) = w^(2<u2 - u1, u3 - u1>), twice the triangle's signed area, at every prime from 5 to 31
+PASS  step 9: the half turn is diagonal in the eigenbasis with entries eps_j = p W_j(0); Tr(Abar_C^3) is the triangle sum Theta(C)/m^3; sum_j W_j(u)^3 = Tr(Abar_u^3)/p^3 and sum_j eps_j W_j(u)^3 = Tr(P Abar_u^3)/p^3
+PASS  step 10: the Cayley map is a bijection onto the turning wheel less 1, G = -4 eps (t1 + t2)/((t1^2 - eps)(t2^2 - eps)), and G vanishes exactly on the 3p + 1 degenerate pairs, at every prime from 5 to 101
+PASS  step 11: the triangle sums Theta(C) add up over the circles to (p + 1)(p - 1)(2p + 1), at every prime from 5 to 101
+PASS  step 12: on every circle the pairs v1, v3 with v1 + v3 on the circle number 2(p + 1) when p = 2 mod 3 and 0 when p = 1 mod 3 (the hexagons), at every prime from 5 to 101
+PASS  step 13: the average over the eigenbasis of sum_u W^3 is 2/(p^2 (p + 1)), the parity-weighted sum is (1 - 2[p = 2 mod 3]/(p + 1))/p^2, and (p + 1)/2 states are even, at every prime from 5 to 101
+PASS  step 14: over all points the average standardized third moment is -(p + 2)/((p + 1) sqrt(p - 1)) (5 to 101); off the origin the exact formula matches the states (5 to 101) and all 77 of round 12's logged non-split averages, 5 to 401 (worst difference 4.9e-07, the log's rounding)
 
 ALL PASS

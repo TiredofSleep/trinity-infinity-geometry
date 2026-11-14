@@ -20,6 +20,7 @@ after, as the tool.
 | Table 1: the norm state is the best cubic on three qudits | exhaustive at 3 and 5, sampled at 7 | [`../cubic_magic_run.log`](../cubic_magic_run.log) |
 | Theorem 2: the norm state's Wigner values are Kloosterman sums | proved, [`../NORM_STATE.md`](../NORM_STATE.md) | [`../verify_norm_state.py`](../verify_norm_state.py) |
 | Theorem 3: the oscillator states' averaged fourth moment is 2p/(p + 1) | proved, [`../TORUS_MOMENTS.md`](../TORUS_MOMENTS.md) | [`../verify_torus_moments.py`](../verify_torus_moments.py) |
+| Theorem 4 and its corollary: the averaged third moment is 2/(p²(p + 1)), so the skew tapers as −(p + 2)/((p + 1)√(p − 1)) | proved, [`../TORUS_MOMENTS.md`](../TORUS_MOMENTS.md) §6 | [`../verify_torus_moments.py`](../verify_torus_moments.py) |
 | Table 2: the semicircle through the eighth moment | measured, exact values | [`../torus_moments_run.log`](../torus_moments_run.log) |
 
 The registrations and scores behind every computation are in [`../PREREG.md`](../PREREG.md), rounds 10 to 13.

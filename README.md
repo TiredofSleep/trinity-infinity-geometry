@@ -61,7 +61,8 @@ checked twice, by independent code:
   negativity is known in closed form and tends to 8/(3π) of the ceiling, Sato–Tate's value
   ([number theory · magic states](towers/seven_levels/NORM_STATE.md)).
 - **The oscillator states' magic follows the Sato–Tate law,** and averaged over a torus's eigenbasis the
-  fourth moment of their Wigner values is exactly 2p/(p + 1)
+  third and fourth moments of their Wigner values are exact: the skew tapers as −1/√p, and the fourth-moment
+  ratio is 2p/(p + 1)
   ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it

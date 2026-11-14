@@ -5,7 +5,7 @@
 
 ### Tags: **[FORCED]** checked by [`verify_seven_levels.py`](verify_seven_levels.py) · **[NAMED]** a cited standard result · **[READING]** an interpretation · **[FENCE]** outside the mathematics.
 
-**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
+**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
 **Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 14 · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14.
 
@@ -692,15 +692,18 @@ run ([`PREREG.md`](PREREG.md)), and all five held.
   - So their magic obeys the same law as round 10's norm state, whose values are Kloosterman sums.
   - The non-split states sit on Sato–Tate's value once finite size is allowed for (0.8483). The split states come up
     from below (0.8452), held back by the tiny Wigner values on their two axes.
-- **An exact identity** [FORCED; proved in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)]. Averaged over the non-split
+- **Two exact identities** [FORCED; proved in [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)]. Averaged over the non-split
   torus's p eigenvectors, μ4/μ2² is exactly 2p/(p + 1), which tends to Sato–Tate's 2. Averaging a phase-point operator
   over the torus gives an operator diagonal in that basis, so the average is a trace: a count of parallelograms on the
   torus's circles, weighted by their areas, which a Legendre-symbol sum closes.
+  - The third moment is a count of triangles, and only degenerate triangles have area zero, so it is exactly
+    2/(p²(p + 1)). The skew tapers as −(p + 2)/((p + 1)√(p − 1)), and its split by parity depends on whether the
+    turning wheel holds a hexagon (p ≡ 2 mod 3). The exact law reproduces all 77 of round 12's logged skews.
 - **The whole distribution** [measured; round 12, registered first, six of six held]. Standardized, the values follow
   the semicircle through the eighth moment: at the primes from 211 to 401 the third, fourth, sixth and eighth moments
   average −0.057, 2.010, 5.066 and 14.35, against the semicircle's 0, 2, 5 and 14 (Gaussian: 0, 3, 15, 105). All 2.06
   billion values lie at Kolmogorov distance 0.0072 from the semicircle law, against 0.0426 from the Gaussian. The skew
-  shrinks like −1/√p. See [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §5 and [`torus_moments.py`](torus_moments.py).
+  shrinks like −1/√p, exactly (TORUS_MOMENTS.md §6). See [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §5 and [`torus_moments.py`](torus_moments.py).
 - **Good, not best** [measured]. The states lie close together: S/√p spreads by about 0.14/√p at each prime. So the
   best of them settles near 86% of the ceiling, between the average random state (80%) and the best states found by
   search from 7 to 31 (89 to 90%). None beats a known winner. At 5 one of them is the winner: Jain and Prakash's state.
@@ -830,7 +833,8 @@ five fresh ones died.
     Kloosterman sums, so their negativity is exact at every p, read as magic (the mechanism is close kin to Gurevich
     and Hadani's); the larger arrays' values (search results), with the norm state's win on three wheels of 7;
   - round 11: the magic of every oscillator state up to 401, exact: it follows the Sato–Tate law; and the theorem that,
-    averaged over the non-split torus's states, the fourth-moment ratio is exactly 2p/(p + 1) ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)).
+    averaged over the non-split torus's states, the fourth-moment ratio is exactly 2p/(p + 1) and the third moment
+    exactly 2/(p²(p + 1)), so the skew tapers as −1/√p ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)).
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
@@ -849,7 +853,7 @@ five fresh ones died.
   taught that at 243 and 343 levels random climbs stop short of states already known. Round 11 held five of five, on
   exact values: the oscillator states' magic follows the Sato–Tate law. Its mechanism is Gurevich and Hadani's; the
   measurement and the exact identity are new as far as we checked. Round 12 held six of six: the full distribution is
-  the semicircle through the eighth moment, measured; the fourth moment is proved. Round 13 held four of six: every
+  the semicircle through the eighth moment, measured; the third and fourth moments are proved. Round 13 held four of six: every
   cubic state's Wigner function is a Walsh spectrum (exact), and the norm state is the most magic cubic on three
   wheels of 3, 5 and 7 (exhaustive at 3 and 5), though not from 11 on. Round 14 held one of six, the forced Smith
   chart: its other five guesses died, and the deaths are kept.
