@@ -1,0 +1,10 @@
+the Walsh identity against the Wigner function computed from the state, and known values
+  2 wheels of 3: the identity holds for random cubic states with random lower terms: True
+  2 wheels of 5: the identity holds for random cubic states with random lower terms: True
+  2 wheels of 7: the identity holds for random cubic states with random lower terms: True
+  3 wheels of 3: the identity holds for random cubic states with random lower terms: True
+  3 wheels of 5: the identity holds for random cubic states with random lower terms: True
+  three wheels of 3: the norm form gives round 10's 1.888888889: True
+  three wheels of 5: the norm form gives round 10's 4.252724292: True
+  three wheels of 7: the norm form gives round 10's 7.902228372: True
+CALIBRATE True

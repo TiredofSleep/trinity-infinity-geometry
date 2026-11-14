@@ -1159,3 +1159,61 @@ It took 10.9 minutes, and its values are exact up to rounding. **All six held.**
 **Yield.** The whole distribution of the oscillator states' Wigner values is the semicircle at these sizes, through the
 eighth moment and in Kolmogorov distance: the Sato–Tate law in full. That is measurement. The proof covers the fourth
 moment only.
+
+---
+
+## Round 13: cubic magic (registered 2026-11-14, before any run)
+
+> *it's okay to drift, i am the visionary, you are the drafter... let's pick a useful direction... keep going, do what
+> you do* — the author, 14 November 2026
+
+Round 10's proof used one fact about the norm: it is a cubic. So the same reasoning should cover every cubic-phase
+state, ψ_f = Σ_x ω^f(x) |x⟩ / √q on n wheels with f of degree at most 3. These are the magic states of the third
+level's diagonal gates (Cui, Gottesman and Krishna), the non-Clifford gates of fault-tolerant computing with qudits.
+For a single qudit their Wigner functions are known to be cubic character sums (Howard and Vala; the qudit CHSH paper);
+for many wheels, which cubic is best has not been asked, as far as we found.
+
+**Made exact, before the run.**
+- **The identity** [FORCED]. Let C be f's homogeneous cubic part. Then ψ_f's Wigner function takes the values S(w)/q²,
+  each at q points, for w in F_p^n, where S(w) = Σ_s ω^(w·s − 2C(s)) is the Walsh transform of −2C. So
+  N = ((1/q) Σ_w |S(w)| − 1)/2, and the negativity depends only on C, and only on C up to a linear change of
+  coordinates.
+  - Proof. f(u + s) − f(u − s) is twice the part of f(u + s) that is odd in s: C(s), plus a term linear in s that
+    depends on u. So W(u, k) = q⁻² Σ_s ω^(−2C(s) + w·s) with w = 2k − 2ℓ_u, and for fixed u the map k → w is a
+    bijection. Over F_3 the cubic part uses the monomials of degree 3 with no exponent above 2, since x³ = x there.
+  - Checked before this registration ([`cubic_magic_calibrate.log`](cubic_magic_calibrate.log)) against the Wigner
+    function computed from the state, for random cubic states with random lower terms on two and three wheels of 3
+    and 5 and two of 7; and round 10's norm states come out again at 3, 5 and 7.
+- **A corollary: no cubic-phase state reaches the ceiling** [FORCED, with NAMED]. By Parseval, Σ|S(w)|² = q², so
+  (1/q) Σ|S(w)| ≤ √q, with equality exactly when −2C is bent. Mesnager, Özbudak and Sınak (2018) proved that there are no
+  homogeneous cubic bent functions in odd characteristic. So every cubic-phase state, on any number of wheels, falls
+  strictly below the ceiling (√q − 1)/2.
+- **The test.** [`cubic_magic.py`](cubic_magic.py), committed with this registration, takes every cubic form on two
+  wheels for p = 3 to 23 and on three wheels for p = 3 and 5 (9 765 625 forms at 5), and 2 000 000 random forms on three
+  wheels of 7 plus named ones. It logs the best negativity, the form that reaches it and the points of its curve.
+- **The timing printed no values.** The run takes about eight minutes.
+- **Not computed before this registration:** any cubic form's negativity except the norm forms, and any best value.
+
+**Predictions.** K0 is a calibration and K1 a check of the corollary; K2 to K6 are fresh.
+
+**K0. (Calibration, done.)** The identity against the state's own Wigner function, and round 10's norm states.
+
+**K1. (Forced.)** No cubic form on two or three wheels reaches the ceiling.
+
+**K2. (Fresh; Claude's reading.)** On two wheels of 5 and of 7, the best cubic-phase state reaches round 9's search
+best (1.766937 and 2.719253): the most negative two-qudit states found are third-level magic states. *Kill:* the best
+cubic falls short at either.
+
+**K3. (Fresh.)** On three wheels of 3, no cubic form beats the norm form's 17/9. *Kill:* one that does.
+
+**K4. (Fresh; Claude's reading.)** On three wheels of 5, some cubic form beats the norm form's 4.252724: at 5 the norm's
+Kloosterman sums are small, so another cubic should do better. *Kill:* none does.
+
+**K5. (Fresh.)** On three wheels of 7, no sampled cubic form beats the norm form's 7.902228. *Kill:* one that does.
+
+**K6. (Fresh; the useful one.)** Per wheel, the best cubic-phase state on three wheels carries more negativity than the
+CCZ-type state ω^(xyz), and at 5 and 7 more than three copies of the single-wheel cubic state ω^(x³). The measure per
+wheel is the cube root of the sum of sizes. *Kill:* either falls short at 3, 5 or 7.
+
+**Expected standing.** The identity and the corollary are exact. The best values on two wheels and on three wheels of
+3 and 5 are exhaustive, so exact maxima over cubic states; at 7 the sample is not exhaustive.
