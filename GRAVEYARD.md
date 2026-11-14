@@ -297,6 +297,15 @@ its own graveyard. These died, with what killed them:
   - **"With Freeland and Hurst's weights, the standard code is more optimized than the mitochondrial code"**
     (part 2's H2, a guess from the literature). None of a million random codes with its own blocks beat the
     mitochondrial code, against 3 of a million for the standard code.
+- **From the fifth moments (2026-11-14; `towers/seven_levels/TORUS_MOMENTS.md` §8):**
+  - **"The level-15 form is not in our fifth moments"** (round 16's search, repeated in `HOW_WE_WORK.md`). It is in
+    J5, through Kloosterman's fifth moment, beside an elliptic curve of conductor 150 that the search's library lacked.
+    The search tried the form with characters, never together with a curve. A correct form missing from the list
+    looks exactly like no form at all (`towers/seven_levels/verify_fifth_moment.py`, step 10).
+  - **The Q(√−11) family as I5's form.** Split by the class of w, the part of I5's count with w on the circle holds a
+    surface sum. That sum carries the weight-3 CM form of Q(√−11) and a weight-1 form of the cubic field of
+    discriminant −44, exactly, at every prime tried. Neither is in I5: they cancel against the rest. Kept for its
+    lesson: a piece of a count can carry motives the whole does not (step 13 of the same script).
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

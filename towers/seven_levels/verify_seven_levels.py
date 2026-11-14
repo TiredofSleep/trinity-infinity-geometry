@@ -1623,6 +1623,36 @@ forced("round 16's exact formulas for I6 (the weight-4, level-6 newform) and J4 
        "from the states at 31, 37, 41 and 43; and the test log scores E0 to E5 held",
        ok16 and all(held16.get(f"E{i}") for i in range(6)))
 
+# ------------------------------------------------------------------ round 17 (fifth_moments.py; its logs are fifth_moments_*.log)
+print()
+print("round 17:")
+import fifth_moments as fm17
+
+ok17 = True
+a10_17, e150_17 = fm17.named_forms(fm17.primes(7, 60))
+f15_17 = fm17.f15_coeffs(60)
+for p_ in (31, 37, 41, 43):
+    c17, _ = emo.counts(p_)
+    ok17 &= c17["I5"] == fm17.I5_formula(p_, a10_17[p_])
+    ok17 &= c17["J5"] == fm17.J5_formula(p_, p_ + 1 - fm17.E_count(p_), f15_17[p_])
+held17 = {}
+for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fifth_moments_test.log"), encoding="utf-8"):
+    f17 = line.split()
+    if len(f17) > 1 and f17[0][:1] == "F" and f17[0][1:].isdigit() and f17[1] in ("HELD", "FAILED"):
+        held17[f17[0]] = f17[1]
+    elif len(f17) > 1 and f17[0] == "F6":
+        held17["F6"] = "HELD" if line.rstrip().endswith("HELD") else ("INCONCLUSIVE" if "INCONCLUSIVE" in line else "?")
+# the outcome scored on 2026-11-14 (PREREG.md): F0 to F5 held, F6 (the precision bar) not met
+RECORDED17 = {"F0": "HELD", "F1": "HELD", "F2": "HELD", "F3": "HELD", "F4": "HELD", "F5": "HELD", "F6": "INCONCLUSIVE"}
+_r17 = _sp16.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "verify_fifth_moment.py")],
+                 capture_output=True, text=True)
+forced("TORUS_MOMENTS.md section 8's fifth moments, step by step (verify_fifth_moment.py: the Hermitian Gauss sums and "
+       "the rank lemma, the torus count N_W, the Clebsch cubic and its lines, the double octic, J5's chords and "
+       "triangles, Kloosterman's fifth moment)", _r17.returncode == 0)
+forced("round 17's exact formulas for I5 (the weight-4, level-10 newform) and J5 (the curve of conductor 150 and the "
+       "level-15 form), recomputed from the states at 31, 37, 41 and 43; and the test log scores F0 to F5 held, F6 "
+       "(the precision bar) not met, as recorded", ok17 and held17 == RECORDED17)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

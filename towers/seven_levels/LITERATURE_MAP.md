@@ -54,6 +54,21 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
    multiplication by the Gaussian integers.
    - [READING] Fresán stands on both of the strands this floor crosses: equidistribution, and the motives of Kloosterman
      moments.
+6. **The fifth moments live on a double octic** [NAMED; measured]. I5 reduces to the double cover of 3-space branched
+   along Clebsch's diagonal cubic surface and its five Sylvester planes, and its count carries the weight-4 newform of
+   level 10 ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theorem 7).
+   - Double octics are the classical workshop for rigid Calabi–Yau threefolds and their modular forms. Cynk and
+     Szemberg (1999) give their smooth models, and Meyer's book (2005) and his search of S4-symmetric double octics
+     (arXiv:1810.03659) catalogue the forms. Whether this octic, which is S5-symmetric, is in Meyer's tables was not
+     checked.
+   - Schütt (2003) found a rigid Calabi–Yau threefold of level 10 another way, from a fibre product of elliptic
+     surfaces. Whether it is birational to this double octic is open.
+   - Rigid Calabi–Yau threefolds over Q are modular (Gouvêa and Yui 2011; Dieulefait and Manoharmayum 2003). A proof of
+     the count would need the octic's rigidity, and a finite Faltings–Serre check.
+   - J5 carries the curve of conductor 150 and the CM form of level 15 from Kloosterman's fifth moment (Peters, Top and
+     van der Vlugt 1992).
+   - [READING] Duco van Straten stands where these meet: on the Barth–Nieto quintic of the sixth moment (with Hulek,
+     Spandaw and van Geemen), and on double octics (with Cynk).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 
@@ -77,9 +92,10 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 ## Who to read first
 
 - **Javier Fresán**, for both strands; **Emmanuel Kowalski**, for equidistribution and its rates; **Arthur Forey** and
-  **Yuval Wigderson**, for the semicircle graphs.
+  **Yuval Wigderson**, for the semicircle graphs. **Duco van Straten** and **Christian Meyer**, for the double octic and its form
+  of level 10 (Theorem 7).
 - Writing to any of them is the author's call. The note drafted earlier for Gurevich could be widened into one for this
-  group. With Theorems 1 to 5 and round 15 it now has something specific to offer them: the oscillator states' Wigner
+  group. With Theorems 1 to 7 and rounds 15 to 17 it now has something specific to offer them: the oscillator states' Wigner
   values as a family whose monodromy they could identify.
 
 ## Sources
@@ -102,3 +118,12 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 - Z. Yun, "Galois representations attached to moments of Kloosterman sums and conjectures of Evans", *Compositio
   Math.* (2015), [arXiv:1308.3920](https://arxiv.org/abs/1308.3920).
 - J.-P. Serre, *Algebraic Groups and Class Fields* (1988): generalized Jacobians.
+- S. Cynk and T. Szemberg, "Double covers of P³ and Calabi–Yau varieties" (1999),
+  [arXiv:math/9902057](https://arxiv.org/abs/math/9902057).
+- C. Meyer, *Modular Calabi–Yau Threefolds*, Fields Institute Monographs **22** (2005); "Modularity experiments on
+  S4-symmetric double octics", [arXiv:1810.03659](https://arxiv.org/abs/1810.03659).
+- M. Schütt, "New examples of modular rigid Calabi–Yau threefolds" (2003),
+  [arXiv:math/0311106](https://arxiv.org/abs/math/0311106).
+- F. Gouvêa and N. Yui, "Rigid Calabi–Yau threefolds over Q are modular", *Expo. Math.* **29** (2011).
+- C. Peters, J. Top and M. van der Vlugt, *J. reine angew. Math.* **432** (1992): Kloosterman's fifth moment.
+- A. Clebsch, *Math. Ann.* **4** (1871): the diagonal cubic surface.

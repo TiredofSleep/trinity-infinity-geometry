@@ -7,7 +7,7 @@
 
 **Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
-**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 16 · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14.
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 17 · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18.
 
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
@@ -802,11 +802,44 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
 - **Proved:** the sixth moment, in full. The phase-0 hexagons are counted by an elementary argument, triangle by
   triangle, and the modular form comes only from the closed hexagons, through the classical evaluation of
   Kloosterman's sixth moment ([`verify_sixth_moment.py`](verify_sixth_moment.py)).
-- **Open:** the count behind the fourth cumulant, and the fifth moments and J6, which fit no formula tried. They do
-  not carry the weight-3, level-15 form of Kloosterman's fifth moment.
+- **Open then:** the count behind the fourth cumulant, the fifth moments and J6, which fit no formula tried. The fifth
+  moments are now exact (§18).
 - Who else works on this ground, and what their theorems give this floor: [`LITERATURE_MAP.md`](LITERATURE_MAP.md).
 
-## 18. Our space, and what it cannot hold [FORCED; FENCE]
+## 18. Round 17: the fifth moments [FORCED; measured exactly; NAMED: Peters, Top and van der Vlugt; Clebsch]
+
+> *1, apply the hexagon method to the fifth moments* — the author, 14 November 2026
+
+Both fifth moments are exact ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theorems 6 and 7;
+[`verify_fifth_moment.py`](verify_fifth_moment.py)).
+
+- **J5 carries an elliptic curve and Kloosterman's fifth moment.** Summed over the circles, Tr(P S_C⁵) is
+  p(p + 1)[f(p) − p·a_E(p) + (4(−3|p) − 3)p − 1]. Here f is the weight-3, level-15 form of Kloosterman's fifth moment,
+  and E is the curve y² = x(x − 4)(4x² − 52x + 9), of conductor 150. The hexagon method proves it: the phase-0
+  polygons number (p + 1)·#E(F_p).
+- **I5 carries the weight-4 form of level 10,** through a double octic. Summed over the circles, Tr S_C⁵ is
+  p(p + 1)[p³ + 4p² − (1 + (5|p))p − 4 + a(p)] − p⁵ − 1.
+  - A second method gets there: expanding the conditions in Gauss sums of Hermitian forms leaves one count.
+  - That count lives on the double cover of 3-space branched along Clebsch's diagonal cubic surface (1871) and its
+    five Sylvester planes.
+  - Its count matches the newform exactly at every prime tried; that match is the one step that is measured, not
+    proved.
+- **One count for every odd moment and every even parity-weighted moment.** The same method writes I_n (n odd) and J_n
+  (n even) through the points of the turning wheel that multiply to ±1 and whose Cayley coordinates sum to 0.
+  - It gives the third moment again.
+  - It reduces the fourth cumulant's open count to one character sum on an elliptic surface.
+  - It makes J6 a count on a fourfold.
+- **The free picture holds at the fifth moment:** √p times the fifth moment tends to 5, as the free cumulants say.
+- **The forms were named here.** [`modular_symbols.py`](modular_symbols.py) computes the Hecke eigenvalues of
+  Γ0(N), and it reproduces the four weight-4 eta products of levels 5, 6, 8 and 9. It was written because LMFDB
+  answered a burst of queries with a captcha, which this work does not try to get past.
+- **Round 17** tested both formulas, the double octic and the curve at primes where they were not found
+  ([`PREREG.md`](PREREG.md); [`fifth_moments.py`](fifth_moments.py) `test`). Six of seven held.
+  - The double octic and the curve held blind to 601, in exact arithmetic.
+  - The operators matched both formulas at every prime from 409 to 509, but missed the registered precision bar, so
+    that half is inconclusive.
+
+## 19. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -823,7 +856,7 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 19. Standing
+## 20. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -901,7 +934,9 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
   wheels of 3, 5 and 7 (exhaustive at 3 and 5), though not from 11 on. Round 14 held one of six, the forced Smith
   chart: its other five guesses died, and the deaths are kept. Round 16 held six of six: the sixth moment and the
   fourth free cumulant are exact, with modular forms in them. Round 15 held eight of eight: every moment reduces
-  to polygon counts, only the non-crossing pairings survive, and the corrections are free.
+  to polygon counts, only the non-crossing pairings survive, and the corrections are free. Round 17 held six of seven:
+  the fifth moments are exact, the double octic and the curve held blind in exact arithmetic, and the operator checks
+  at 409 to 509 matched but missed their precision bar.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -915,8 +950,9 @@ refitting ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8; [`exact_moments.py`](exac
     is; what the best state on five wheels of 3 is, where the searches stopped below the product 517/81; and a search
     that reaches the top at 243 levels and more, which must start from the states already known;
   - the oscillator states: a proof that the generic polygons' area phases cancel at every even order, the one step
-    left for the whole semicircle (round 15 measured the sixth, and Theorem 4 now proves it); the proof of round 16's
-    count behind J4; and exact formulas for the fifth moments;
+    left for the whole semicircle (round 15 measured the sixth, and Theorem 4 now proves it); the elliptic surface's
+    sum that is all that remains of J4 (§18); the double octic's count behind I5, which matches the level-10 form at every prime
+    tried; and J6, now a count on a fourfold;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
 
@@ -971,6 +1007,10 @@ python exact_moments.py collect        # round 16: seconds
 python exact_moments_fit.py            # the exact fits, about a minute (sympy)
 python exact_moments.py test           # the blind test, minutes
 python verify_sixth_moment.py          # the sixth moment's proof, step by step: seconds
+python modular_symbols.py              # the engine that names the forms, checked on four eta products: seconds
+python fifth_moments.py collect        # round 17: the double octic's sums to 401, a minute
+python verify_fifth_moment.py          # the fifth moments' proofs, step by step: under a minute
+python fifth_moments.py test           # round 17's blind test at 409..601, minutes on four processes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

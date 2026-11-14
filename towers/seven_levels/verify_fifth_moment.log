@@ -1,0 +1,23 @@
+verify_fifth_moment.py -- TORUS_MOMENTS.md section 8, the fifth moments
+[PASS] 1. the modular-symbols engine reproduces the weight-4 eta products of levels 5, 6, 8, 9 (primes 7..199)
+[PASS] 2. Z5 counted in the field model equals the operators' (I5 + m^5)/p at p = 7, 11, 13
+[PASS] 3a. Z_n from the Hermitian rank strata equals the direct count (n = 3, 4, 5; p = 7, 11, 13)
+[PASS] 3b. the rank lemma: for h != 0 the rank of diag(lam) + hK is n or n - 1
+[PASS] 3c. J4 = p^4 - 1 - p(p + 1) N_V(4) against the operators at p = 7, 11, 13
+[PASS] 4. N_W = #{d in F_p^5: Prod(1 + sqrt(eps) d_i) in F_p} = (p^5 + 1)/(p + 1) at p = 7..17
+[PASS] 5. N_V(3) = 3p - 2 and so I3 = (p + 1)(p - 1)(2p + 1), the theorem of section 6 (p = 7..31)
+[PASS] 6a. on e1 = 0: the Clebsch cubic e3 = 0 has p^2 + (6 + (5|p))p + 1 points, the planes 5p^2 - 5p + 5, their common lines 15p - 20 (p = 7..43)
+[PASS] 6b. N_V = p^3 + 10p^2 - (20 + (5|p))p - 4 - (-1|p) S_oct (p = 7..19)
+[PASS] 7a. S_oct recomputed at every prime 7..101 equals fifth_moments_collect.log
+[PASS] 7b. (-1|p) S_oct = 6p^2 - 19p - a10(p) at all 76 primes 7..401 [measured]  (a10(7..23) = [-4, 12, -58, 66, -100, 132])
+[PASS] 8. I5 = p(p + 1)[p^3 + 4p^2 - (1 + (5|p))p - 4 + a10(p)] - p^5 - 1 at all 76 primes 7..401
+[PASS] 9. J5's phase-0 polygons: chords, triangles and the special classes as in the proof; Z = (p + 1) #E(F_p) (p = 7..23)
+[PASS] 10a. Kloosterman's fifth moment V5 = 1 + 4p + 5p^2 + 4(-3|p)p^3 + p^2 f15(p) (primes 7..199) [NAMED: Peters, Top, van der Vlugt]
+[PASS] 10b. J5 = p(p + 1)[f15(p) - p a_E(p) + (4(-3|p) - 3)p - 1] at all 76 primes 7..401
+[PASS] 10c. E's traces equal the level-150 newform's (a(7), a(11), a(13) = -2, 2, -6) at every prime 7..401 [measured]
+[PASS] 11. J4's count: N_V(4) = (p - 1)(p - 3) + 4b^2 by brute force (p = 7..29) and from round 16's J4 (to 401)
+[PASS] 11b. pairing: N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T(p), T the elliptic surface's sum (p = 7..29); and T(p) = (2 + (-1|p))p - 4b^2 at every prime 7..401 [measured]
+[PASS] 12. sqrt(p) x the normalized fifth moment I5/((p - 1) p m^(5/2)) approaches 5, the free picture's value  ([(101, 4.9209), (199, 5.044), (401, 4.9501)])
+[PASS] 13. the circle part's surface sum S2 = 2p - 1 + c11(p) - p(r3(p) - 1) (Q(sqrt -11)'s weight-3 CM form and a weight-1 form) at every prime 7..101; Theorem 7 carries neither, so they cancel [a dead end, kept]
+time 0.3 minutes
+ALL PASS

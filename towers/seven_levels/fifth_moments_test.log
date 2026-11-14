@@ -1,0 +1,83 @@
+Round 17: the fifth moments, tested where they were not found (PREREG.md)
+operator primes 409..509 (18), octic and curve primes 409..601 (31)
+F0 level 5: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 6: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 8: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 level 9: the engine's one rational weight-4 system equals the eta product at every prime 7..601: True
+F0 HELD
+F3 p=409: S_oct = 986385, a10 = 9530, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=419: S_oct = -1038145, a10 = 7260, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=421: S_oct = 1043385, a10 = 12062, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=431: S_oct = -1119985, a10 = -13608, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=433: S_oct = 1120545, a10 = -3838, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=439: S_oct = -1140585, a10 = 7400, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=443: S_oct = -1160725, a10 = 8352, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=449: S_oct = 1190305, a10 = 10770, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=457: S_oct = 1251105, a10 = -6694, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=461: S_oct = 1269385, a10 = -3018, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=463: S_oct = -1262925, a10 = 14492, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=467: S_oct = -1291885, a10 = 7776, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=479: S_oct = -1381225, a10 = -13680, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=487: S_oct = -1405845, a10 = 7916, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=491: S_oct = -1423225, a10 = 13932, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=499: S_oct = -1492785, a10 = -8260, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=503: S_oct = -1519645, a10 = -11148, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=509: S_oct = 1554505, a10 = -9690, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=521: S_oct = 1634785, a10 = -16038, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=523: S_oct = -1630245, a10 = 992, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=541: S_oct = 1738665, a10 = 7142, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=547: S_oct = -1777245, a10 = 7616, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=557: S_oct = 1861225, a10 = -10314, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=563: S_oct = -1898245, a10 = -7128, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=569: S_oct = 1929745, a10 = 2010, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=571: S_oct = -1968585, a10 = -23188, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=577: S_oct = 1964145, a10 = 22466, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=587: S_oct = -2033485, a10 = 22776, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=593: S_oct = 2119825, a10 = -21198, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=599: S_oct = -2125465, a10 = 15960, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 p=601: S_oct = 2149905, a10 = 5882, (-1|p) S_oct = 6p^2 - 19p - a10(p): True
+F3 HELD
+F4 E's traces equal the level-150 newform's at every prime 409..601: True 
+F4 HELD
+EXACT p I2 J2 I3 J3 I4 J4 I5 J5 I6 J6 worst
+EXACT 409 68417520 167280 137002320 0 55965531360 -62884160 141648581040 730457640 57168106109040 -274269572160 8.00e-03
+EXACT 419 73559640 175560 147294840 -351960 61642978320 220854480 155532003480 221030880 64569393383040 296634527280 9.38e-02
+EXACT 421 74618040 177240 149413320 0 62828389680 84744352 159362991240 -1463934880 66065480151000 35230551840 7.81e-03
+EXACT 431 80062560 185760 160310880 -372384 69013926720 240373440 170161054560 -3129887520 74364409295424 288696467520 4.69e-02
+EXACT 433 81182304 187488 162552096 0 70303875264 135491328 175363360228 -244298600 76032179816544 94712875488 1.25e-01
+EXACT 439 84604080 192720 169400880 0 74282382240 254004960 187304354160 -35541440 81452602358160 313698213840 7.81e-02
+EXACT 443 86937864 196248 174071976 -393384 77026947504 261009840 194558088048 2415377760 85304006497440 393287817168 1.56e-02
+EXACT 449 90518400 201600 181238400 -404100 81285523200 -51523200 205570720800 -3356858700 91242744804900 -429434443800 1.25e-01
+EXACT 457 95443536 208848 191095920 0 87235391904 273143872 217069368388 3156334480 99578968784592 343923455808 7.81e-02
+EXACT 461 97971720 212520 196155960 -425964 90329925840 208934880 225377764920 -1865722320 104104055776644 215231302440 9.38e-02
+EXACT 463 99252384 214368 198719136 0 91907707584 297971520 233279838208 696055680 106289722186464 517154116704 1.56e-01
+EXACT 467 101847096 218088 203912280 -437112 95125187664 305759376 239920067088 585730080 111059930779200 548698169448 1.72e-01
+EXACT 479 109901760 229440 220032960 -459840 105285886080 329934720 260288982720 -2973785280 126082220895360 621421107840 9.38e-02
+EXACT 487 115500816 237168 231238800 0 112497794784 346739616 283588012288 -1967791680 136853789800752 540009330048 2.97e-01
+EXACT 491 118370280 241080 236981640 -483144 116239614960 355351920 294201117000 1304488800 142683147064224 723479392440 1.25e-01
+EXACT 499 124251000 249000 248751000 0 124002498000 373002000 308193627000 358282000 154570610757000 513200292000 1.88e-01
+EXACT 503 127263024 253008 254779056 -507024 128026602144 382042080 317749658688 -3701275200 160996664193120 556240565664 2.19e-01
+EXACT 509 131871720 259080 264002520 -519180 134245410960 -106692000 333361583640 -925178760 170821942565220 -651458498040 2.81e-01
+OPS p=409: I5 = 141648581040 formula True;  J5 = 730457640 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 8.00e-03
+OPS p=419: I5 = 155532003480 formula True;  J5 = 221030880 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 9.38e-02
+OPS p=421: I5 = 159362991240 formula True;  J5 = -1463934880 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 7.81e-03
+OPS p=431: I5 = 170161054560 formula True;  J5 = -3129887520 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 4.69e-02
+OPS p=433: I5 = 175363360228 formula True;  J5 = -244298600 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.25e-01
+OPS p=439: I5 = 187304354160 formula True;  J5 = -35541440 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 7.81e-02
+OPS p=443: I5 = 194558088048 formula True;  J5 = 2415377760 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.56e-02
+OPS p=449: I5 = 205570720800 formula True;  J5 = -3356858700 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.25e-01
+OPS p=457: I5 = 217069368388 formula True;  J5 = 3156334480 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 7.81e-02
+OPS p=461: I5 = 225377764920 formula True;  J5 = -1865722320 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 9.38e-02
+OPS p=463: I5 = 233279838208 formula True;  J5 = 696055680 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.56e-01
+OPS p=467: I5 = 239920067088 formula True;  J5 = 585730080 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.72e-01
+OPS p=479: I5 = 260288982720 formula True;  J5 = -2973785280 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 9.38e-02
+OPS p=487: I5 = 283588012288 formula True;  J5 = -1967791680 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 2.97e-01
+OPS p=491: I5 = 294201117000 formula True;  J5 = 1304488800 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.25e-01
+OPS p=499: I5 = 308193627000 formula True;  J5 = 358282000 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 1.88e-01
+OPS p=503: I5 = 317749658688 formula True;  J5 = -3701275200 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 2.19e-01
+OPS p=509: I5 = 333361583640 formula True;  J5 = -925178760 formula True;  I2..I4, J2, J3, I6, J4 True;  worst 2.81e-01
+F1 HELD
+F2 HELD
+F5 HELD
+F6 worst distance of a raw operator value to its integer: 2.97e-01 -> INCONCLUSIVE
+time 8.7 minutes

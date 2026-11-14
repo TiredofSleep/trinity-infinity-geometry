@@ -4,7 +4,7 @@
 
 ### Tags: **[FORCED]** proved here and checked by [`verify_torus_moments.py`](verify_torus_moments.py) · **[NAMED]** a cited standard result · **[measured]** a computed result · **[READING]** an interpretation, not a claim.
 
-**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Hecke eigenstates · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
+**Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Hecke eigenstates · Walsh spectra · bent functions · elliptic curves · finite fields · Calabi–Yau threefolds · double octics · Clebsch cubic surface · modular symbols · Hermitian Gauss sums · pre-registered predictions
 
 Round 11 measured the magic of the oscillator states, the eigenvectors of the two tori of SL(2, p), at every prime up
 to 401, and found the Sato–Tate law ([README](README.md) §13). One number in it came out exact: averaged over the
@@ -344,7 +344,7 @@ and all eight held. The output is in [`free_moments_calibrate.log`](free_moments
   circle, and these add like free variables. The arithmetic, the circle's geometry and its hexagons, enters only
   through a few small free cumulants.
 
-## 8. The exact sixth moment, and the fourth free cumulant: modular forms enter [FORCED in part; measured exactly; NAMED]
+## 8. The exact sixth and fifth moments, and the fourth free cumulant: modular forms enter [FORCED in part; measured exactly; NAMED]
 
 > *go after an exact formula for the 6th moment first.. The free fourth cumulant equals 3/p² to every digit the log
 > keeps. Worth a short exact proof as a small theorem* — the author, 14 November 2026
@@ -432,19 +432,118 @@ with P(p) = 3p⁴ − 26p³ + 40p² − 6p − 11 when p ≡ 1 (mod 3) and 3p⁴
   turning wheel holds the fourth roots of unity and the count is a polynomial, as the third moment's count was where 3
   divides p + 1.
 
-**Not found.** The fifth moments I5 and J5, and the parity-weighted J6, fitted none of the formulas tried: a polynomial
-with the characters of p mod 3 and mod 4, plus one or two of fourteen modular forms
-([`exact_moments_fit.py`](exact_moments_fit.py)). Nor do they carry the newform of weight 3 and level 15,
-η(3τ)³η(5τ)³ + η(τ)³η(15τ)³, though it governs the fifth moment of Kloosterman sums [NAMED: Peters, Top and van der
-Vlugt 1992, through a K3 surface; Broadhurst 2016]: the search finds that law exactly, Σ_a K(a)⁵ = 1 + 4p + 5p² + 4(−3|p)p³ + p²f(p), at every prime from 7 to 199. Nor does any of 397 small
-elliptic curves with twists by 12 quadratic characters fit them; the best leaves 10⁻³ of I5. Their exact integers are
-kept in the logs.
+### The fifth moments
+
+> *1, apply the hexagon method to the fifth moments* — the author, 14 November 2026
+
+Round 16's search fitted the fifth moments to nothing. The reason is that their forms were outside its library: a
+polynomial with the characters of p mod 3 and mod 4, plus one or two of fourteen modular forms. It did hold the
+level-15 form below, but not together with an elliptic curve. The hexagon method of Theorem 4 finds J5. A second
+method, Gauss sums of Hermitian forms, finds I5, and it reduces every odd I_n and every even J_n to one count on the
+turning wheel. The forms were named with [`modular_symbols.py`](modular_symbols.py), written for this after LMFDB
+answered a burst of queries with a captcha. It reproduces the four weight-4 eta products of levels 5, 6, 8 and 9.
+Every step below is checked by [`verify_fifth_moment.py`](verify_fifth_moment.py)
+([`verify_fifth_moment.log`](verify_fifth_moment.log)).
+
+**Theorem 6: J5** [FORCED, given Kloosterman's fifth moment, NAMED].
+
+  J5 = p(p + 1)[f(p) − p·a_E(p) + (4(−3|p) − 3)p − 1].
+
+- f(p) is the p-th coefficient of η(3τ)³η(5τ)³ + η(τ)³η(15τ)³, the newform of weight 3 and level 15. It has complex
+  multiplication by Q(√−15).
+- E is the elliptic curve y² = x(x − 4)(4x² − 52x + 9), and a_E(p) = p + 1 − #E(F_p).
+- [measured] E's traces are those of the newform of weight 2 and level 150 with a(7), a(11), a(13) = −2, 2, −6, at
+  every prime from 7 to 401. So, as far as traces can tell, E has conductor 150; Tate's algorithm was not run.
+
+*Proof.*
+1. **Split.** J5 = p(pZ − N) by §7, with six operators P A_v1 ⋯ A_v5. Split them as (P A_v1 A_v2)(A_v3 A_v4 A_v5).
+   The hexagon closes when v2 − v1 = v3 − v4 + v5 =: w, and its phase is 2⟨v1, v2⟩ + 2A(v3, v4, v5). So Z counts
+   pairs of a chord (v1, v2) of the circle and a triangle with the same w and cancelling areas.
+2. **Chords.** Put ν = N(w). For a chord with v2 − v1 = w, v1·w̄ is a root of X² + νX + ν. So there are two chords,
+   with areas ±Y where 4εY² = ν² − 4ν, when ν² − 4ν is a non-square. There is one, of area 0, when ν = 4, and none
+   otherwise.
+3. **Triangles.** By Step 2 of Theorem 4's proof, with σ = 4(ν − 1)²/(2ν + 1), the triangles with alternating sum w
+   and area Y number 1 − η(4ν² − 52ν + 9), for ν ∉ {0, 1, 4, −1/2}. The special classes:
+   - ν = 1 (w on the circle) gives 2(1 + (13|p)) when (−3|p) = −1, and nothing otherwise;
+   - ν = 4 gives 1 − (−15|p);
+   - 2ν + 1 = 0 gives 0.
+4. **Adding up.** Each class has p + 1 points w. Over the other ν the count is
+   Σ (1 − η(ν(ν − 4)))(1 − η(4ν² − 52ν + 9)). Its cross term is the curve's character sum, and the Legendre sums of
+   the two quadratics are −1 each. The special classes' (13|p) and (−15|p) cancel against the terms the sum leaves
+   out. So Z = (p + 1)(p + 2 + Σ_ν η(ν(ν − 4)(4ν² − 52ν + 9))) = (p + 1)·#E(F_p).
+5. **The closed hexagons.** By the circle's Fourier transform, N = ((p + 1)⁵ − (p + 1)V5)/p². Here
+   V5 = Σ_a K(a)⁵ = 1 + 4p + 5p² + 4(−3|p)p³ + p²f(p), the fifth moment of the Kloosterman sums [NAMED: Peters, Top
+   and van der Vlugt 1992, through a K3 surface; checked at every prime to 199]. ∎
+
+**Theorem 7: I5** [FORCED given one count; that count measured exactly].
+
+  I5 = p(p + 1)[p³ + 4p² − (1 + (5|p))p − 4 + a(p)] − p⁵ − 1,
+
+where a(p) is the p-th coefficient of the newform of weight 4 and level 10: a(7), a(11), a(13), a(17), a(19) = −4, 12,
+−58, 66, −100. So the basis average of Σ_u W(u)⁵ is p⁻⁶[1 + I5/(p + 1)⁴].
+
+1. **The phase as a form.** With u_i = (−1)^i v_i, the five-point phase is a constant times Σ_(i<j) Im(ū_i u_j). In
+   the field model each u_i is a unit of F_p². So Z5 counts the common zeros of six quadrics: the five norms
+   N(u_i) = 1, and the phase.
+2. **Gauss sums of Hermitian forms.** Expand each condition in additive characters. The six quadrics combine into the
+   Hermitian form diag(λ) + hK on F_p²⁵, where K_ij = ±1/(2√ε) is a scaled tournament matrix. A Hermitian form of rank
+   r has Gauss sum (−p)^r p^(2(5 − r)).
+3. **The rank.** For h ≠ 0 put δ = 2λ/h. The principal minors are the real and imaginary parts of the products
+   Π_(i in S)(1 + √ε δ_i).
+   - So the rank is 5 or 4: if every 4-subset's product were imaginary, all five factors would be equal and the whole
+     product imaginary.
+   - The rank is 4 exactly when Π(1 + √ε δ_i) lies in F_p.
+   - Hence I5 = (p + 1)(p·N_V − N_W). N_W counts the δ in F_p⁵ whose product lies in F_p, and N_V those that also
+     have Σδ_i = 0.
+4. **N_W = (p⁵ + 1)/(p + 1).** Under the Cayley map δ ↦ (1 + √ε δ)/(1 − √ε δ), the condition says that five points of
+   the turning wheel, none equal to −1, multiply to 1. Count them with the wheel's characters.
+5. **N_V is a double octic.** On Σδ = 0 the condition reads e3 + εe5 = 0, in the elementary symmetric functions.
+   - Over each point of P³ = {Σδ = 0}, the scalings that solve it number 1 − (−1|p)η(e3e5), with separate counts
+     where e3 or e5 vanishes.
+   - e5 = Πδ_i vanishes on the five Sylvester planes.
+   - On Σδ = 0, e3 = (Σδ_i³)/3 vanishes on Clebsch's diagonal cubic surface. It has p² + (6 + (5|p))p + 1 points,
+     because its 27 lines are 15 over Q and 12 over Q(√5) [NAMED].
+   - The planes and the cubic share 15 lines, with 15p − 20 points.
+   - So N_V = p³ + 10p² − (20 + (5|p))p − 4 − (−1|p)S, where S = Σ_([δ] in P³) η(e3(δ)e5(δ)) is the character sum of
+     the double octic w² = e3e5. That is the double cover of 3-space branched along the Clebsch cubic and its
+     pentahedron.
+6. **The double octic** [measured]: (−1|p)S = 6p² − 19p − a(p), at every prime from 7 to 401
+   ([`fifth_moments_collect.log`](fifth_moments_collect.log)). It held blind at every prime from 409 to 601 in round
+   17, in exact arithmetic ([`fifth_moments_test.log`](fifth_moments_test.log)). With Step 5 this is Theorem 7. ∎
+   given Step 6.
+- Step 6 is the modularity of one threefold. Its count behaves like a rigid Calabi–Yau's: one non-CM form of weight
+  4, with Sato–Tate statistics (the remainder's mean square is 0.99 and its kurtosis 2.1). Rigid Calabi–Yau threefolds
+  over Q are modular [NAMED: Gouvêa and Yui 2011; Dieulefait and Manoharmayum 2003]. A proof here would still need
+  rigidity, and a finite check by the Faltings–Serre method.
+
+**Every odd I_n and even J_n is one count on the wheel.** Steps 2 to 4 work for any n:
+
+  I_n = (p + 1)(p·N_V⁽ⁿ⁾ − (pⁿ + 1)/(p + 1)) for odd n,   J_n = pⁿ − 1 − p(p + 1)·N_V⁽ⁿ⁾ for even n,
+
+where N_V⁽ⁿ⁾ counts the points g1, …, gn of the turning wheel, none equal to −1, with g1⋯gn = (−1)^(n+1) and
+Σ(g_i − 1)/(g_i + 1) = 0: the points that multiply to ±1 and whose Cayley coordinates sum to 0.
+- n = 3 gives N_V = 3p − 2, and §6's I3 again.
+- n = 4 reduces J4 to a surface count: N_V⁽⁴⁾ = (p − 1)(p − 3) + 4b² [measured, by brute force to 29 and from round
+  16's J4 to 401]. Pairing the four points two by two makes it one character sum [FORCED]. Put δ1 + δ2 = σ, and let
+  A = 1 + εδ1δ2 and B = 1 + εδ3δ4, so the condition reads AB = εσ². Legendre sums then give
+  N_V⁽⁴⁾ = (p − 1)² + 2 + (−1|p)p − T(p), where T(p) = Σ_(κ≠0) Σ_A η(κA(κ + 4 − 4A)((κ + 4)A − 4κ)) is the sum of an
+  elliptic surface. So all that is open in Theorem 5 is one evaluation, T(p) = (2 + (−1|p))p − 4b², exact at every
+  prime to 401 [measured]. The surface's middle cohomology should carry η(4τ)⁶.
+- n = 5 is the double octic.
+- n = 6 makes J6 a count on a fourfold, an integer at every prime to 401. A first look finds the Gaussian integers' CM
+  form η(4τ)⁶ in it again, with more left over.
 
 **What it says.**
 - The moments of the oscillator states' Wigner values are point counts, and modular forms appear in them. From the
   sixth moment on there is a non-CM form of weight 4. It is the form of the Barth–Nieto quintic and of Kloosterman's
   sixth moment, and it also turns up in Feynman integrals (Broadhurst 2016). The parity-weighted fourth moment carries
   the Gaussian integers' CM form.
+- The fifth moments carry three forms. J5 has an elliptic curve of conductor 150 and the CM form of level 15 that rules
+  Kloosterman's fifth moment. I5 has the weight-4 form of level 10, through a double octic built from Clebsch's
+  diagonal cubic, a surface known since 1871.
+- The free picture holds at the fifth moment. In §7's normalization, I5/((p − 1)p(p + 1)^(5/2)), √p times the fifth
+  moment tends to 5. That is what the free cumulants κ1 ≈ 1/√p and κ3 ≈ −1/√p give with no fifth cumulant (10κ1 + 5κ3).
+  The level-10 form enters one order later, at 1/p.
 - [READING] The author's "how primes form direction" appears here twice: in the Sato–Tate angles of b(p), and in the
   angle of the Gaussian prime a + bi, which tunes κ4's correction.
 - The neighbourhood of these results, and who works there, is in [`LITERATURE_MAP.md`](LITERATURE_MAP.md).
@@ -465,7 +564,13 @@ kept in the logs.
   to polygon counts, with the split into non-crossing, crossing and generic polygons (§7), and round 15's
   measurements. Web searches on 2026-11-14 found no treatment of the phase-point operators as free variables. And
   the exact sixth moment and fourth free cumulant (§8), with the modular forms in them, and the elementary count of the
-  phase-0 hexagons that completes Theorem 4.
+  phase-0 hexagons that completes Theorem 4. And the fifth moments (§8, Theorems 6 and 7): the curve of conductor 150
+  in J5; the reduction of every odd I_n and even J_n to one count on the wheel, by Gauss sums of Hermitian forms; and
+  the double octic over Clebsch's cubic and its pentahedron, whose count carries the weight-4 form of level 10.
+  - Web searches on 2026-11-14 found no double octic built this way. The nearest are Meyer's computer search of
+    S4-symmetric double octics (arXiv:1810.03659), whose tables were not checked for this one, and Schütt's rigid
+    Calabi–Yau threefold of level 10, built another way (arXiv:math/0311106).
+  - OpenAI's catalogue of 721 AI-written manuscripts (github.com/openai/math) has nothing on these topics.
 - **Checked** by [`verify_torus_moments.py`](verify_torus_moments.py), whose output is in
   [`verify_torus_moments.log`](verify_torus_moments.log). For §3: steps 1, 2, 3 and 6 with the operators themselves at
   every prime up to 31, and steps 4, 5 and the theorem by counting at every prime up to 101. For §6: the operator steps
@@ -475,11 +580,14 @@ kept in the logs.
   the pairings) at the primes it names. For §8: [`exact_moments.py`](exact_moments.py), its blind test at 211 to 401
   and its check against the states at 503 to 1009 ([`exact_moments_test.log`](exact_moments_test.log)); and
   [`verify_sixth_moment.py`](verify_sixth_moment.py), each step of Theorem 4's proof
-  ([`verify_sixth_moment.log`](verify_sixth_moment.log)).
+  ([`verify_sixth_moment.log`](verify_sixth_moment.log)). And [`verify_fifth_moment.py`](verify_fifth_moment.py),
+  each step of Theorems 6 and 7 ([`verify_fifth_moment.log`](verify_fifth_moment.log)), with round 17's blind test
+  at 409 to 601 ([`fifth_moments_test.log`](fifth_moments_test.log)).
 - **Measured, not proved:** the moments above the fourth and the whole distribution (§5 and §7;
   [`torus_moments_run.log`](torus_moments_run.log), [`torus_moments_combined.log`](torus_moments_combined.log),
   [`free_moments_run.log`](free_moments_run.log)), including the generic hexagons' 1/p and the free counts of the
-  odd moments; and the count behind J4 in §8, exact at every prime to 401 but not proved.
+  odd moments. Also, from §8: J4's surface count, the double octic's count behind I5, and E's conductor. Each is
+  exact at every prime to 401 (the octic and E to 601), but none is proved.
 
 ## Run it
 
@@ -494,6 +602,10 @@ python exact_moments.py collect    # round 16: the integers at 5..199, seconds
 python exact_moments_fit.py        # the exact fits that found Theorems 4 and 5 (sympy), a minute
 python exact_moments.py test       # round 16's blind test at 211..401 and the states at 503..1009, minutes
 python verify_sixth_moment.py      # Theorem 4's proof, step by step: seconds
+python modular_symbols.py          # the engine that names the forms, against four eta products: seconds
+python fifth_moments.py collect    # the double octic's sums at 7..401: a minute
+python verify_fifth_moment.py      # Theorems 6 and 7, step by step: under a minute
+python fifth_moments.py test       # round 17's blind test at 409..601: minutes, four processes
 ```
 
 ## Sources
@@ -525,3 +637,16 @@ python verify_sixth_moment.py      # Theorem 4's proof, step by step: seconds
   D. Gross, "Hudson's theorem for finite-dimensional quantum systems", *J. Math. Phys.* **47** (2006).
 - R. Lidl and H. Niederreiter, *Finite Fields* (1983): quadratic forms over finite fields and the sums of the Legendre
   symbol.
+- A. Clebsch, "Ueber die Anwendung der quadratischen Substitution auf die Gleichungen 5ten Grades und die
+  geometrische Theorie des ebenen Fünfseits", *Math. Ann.* **4** (1871): the diagonal cubic surface.
+- S. Cynk and T. Szemberg, "Double covers of P³ and Calabi–Yau varieties" (1999),
+  [arXiv:math/9902057](https://arxiv.org/abs/math/9902057): double octics.
+- C. Meyer, *Modular Calabi–Yau Threefolds*, Fields Institute Monographs **22** (2005); "Modularity experiments on
+  S4-symmetric double octics", [arXiv:1810.03659](https://arxiv.org/abs/1810.03659).
+- M. Schütt, "New examples of modular rigid Calabi–Yau threefolds" (2003),
+  [arXiv:math/0311106](https://arxiv.org/abs/math/0311106): among them one of level 10.
+- F. Gouvêa and N. Yui, "Rigid Calabi–Yau threefolds over Q are modular", *Expo. Math.* **29** (2011); L. Dieulefait
+  and J. Manoharmayum, "Modularity of rigid Calabi–Yau threefolds over Q" (2003).
+- L. Merel, "Universal Fourier expansions of modular forms", *On Artin's Conjecture for Odd 2-dimensional
+  Representations*, LNM **1585** (1994): the Heilbronn matrices; W. Stein, *Modular Forms: A Computational Approach*,
+  AMS (2007): modular symbols.

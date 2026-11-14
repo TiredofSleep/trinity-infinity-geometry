@@ -1537,3 +1537,45 @@ formulas at primes where they were not found.
 **The drafter's expectation:** all hold.
 
 Run: `python fifth_moments.py test` (about ten minutes, four processes at below-normal priority).
+
+---
+
+## Round 17 scores (added after the test, 2026-11-14)
+
+Run by [`fifth_moments.py`](fifth_moments.py) `test`, committed with this registration at ea0e632 before the test.
+- The first run printed F0, F3 and F4, all held. It then crashed while scoring F5, on a type error in the script
+  ([`fifth_moments_test_first_run.log`](fifth_moments_test_first_run.log)).
+- The one-line fix, committed at dc2a2b7 before the rerun, changed no prediction.
+- The rerun's output is [`fifth_moments_test.log`](fifth_moments_test.log).
+
+**Six of seven held. The seventh, the precision bar, was not met, so by its own rule the round's operator half is
+inconclusive.** The exact half held.
+
+| | outcome | evidence |
+|---|---|---|
+| F0, forced | held | the engine's one rational system equals each eta product at every prime from 7 to 601 |
+| F1 | held as computed; inconclusive by F6 | I5's formula equals the rounded operator integer at all 18 primes from 409 to 509 |
+| F2 | held as computed; inconclusive by F6 | J5's formula equals it at all 18 |
+| F3 | held | the double octic's sum is 6p² − 19p − a10(p), times (−1\|p), at all 31 primes from 409 to 601, in exact integer arithmetic |
+| F4 | held | E's traces equal the level-150 newform's at all 31, exactly |
+| F5, forced | held as computed; inconclusive by F6 | I2, I3, I4, J2, J3, I6 and J4 at all 18 |
+| F6, precision | not met | the worst raw operator value lay 0.297 from its integer (at 487), against the registered 0.1 |
+
+**Read after the run** (not a score; [`fifth_moments_precision.py`](fifth_moments_precision.py),
+[`fifth_moments_precision.log`](fifth_moments_precision.log)).
+- Each operator value's distance to its integer, measured separately: every one from I2 to J5 lies within 0.0005 of
+  its integer at all 18 primes.
+- The rounding error is all in the sixth moments: I6 up to 0.297, J6 up to 0.045.
+- So the fifth-moment integers behind F1 and F2 were read cleanly. F6 as registered covered every value, and it was
+  not met.
+
+**Yield.**
+- Two exact formulas for the fifth moments. J5's is proved, and it carries an elliptic curve of conductor 150 and the
+  CM form of level 15.
+- I5's is proved but for one count, on a double octic over Clebsch's diagonal cubic and its pentahedron. That count
+  carries the weight-4 newform of level 10, and held blind to 601 in exact arithmetic.
+- The method that proved I5 writes every odd I_n and even J_n as one count on the turning wheel. It reduces J4's open
+  count to one character sum on an elliptic surface.
+- A modular-symbols engine, checked on four known forms, named the forms after LMFDB answered with a captcha.
+- The deaths: round 16's "the level-15 form is not in the fifth moments", and the Q(√−11) form of the circle part,
+  which cancels in the whole. Both are kept in the graveyard.

@@ -246,6 +246,50 @@ $3/p^2+(16\sin^2\theta_p-8-8[p\equiv2\bmod3])/p^3+O(p^{-4})$, where $\sin^2\thet
 the angle of the Gaussian prime $a+bi$. Both formulas were found at the primes up to $199$ and confirmed, without
 refitting, at every prime from $211$ to $401$.
 
+\begin{theorem}\label{thm:fifth}
+Let $I_n=\sum_C\Tr S_C^n$ and $J_n=\sum_C\Tr(PS_C^n)$. For odd $n$ and for even $n'$,
+\[
+I_n=(p+1)\Big(p\,M_n-\frac{p^n+1}{p+1}\Big),\qquad J_{n'}=p^{n'}-1-p(p+1)\,M_{n'},
+\]
+where $M_n$ counts the $n$-tuples of points $g_i\ne-1$ of the non-split torus with $g_1\cdots g_n=(-1)^{n+1}$ and
+$\sum_i(g_i-1)/(g_i+1)=0$. In particular, with $\chi=(\tfrac{-3}{p})$, $f$ the newform
+$\eta(3\tau)^3\eta(5\tau)^3+\eta(\tau)^3\eta(15\tau)^3$ of weight $3$ and level $15$, and $E$ the elliptic curve
+$y^2=x(x-4)(4x^2-52x+9)$ with $a_E(p)=p+1-\#E(\mathbb F_p)$,
+\[
+J_5=p(p+1)\big[f(p)-p\,a_E(p)+(4\chi-3)p-1\big],\qquad
+M_5=p^3+10p^2-\big(20+(\tfrac5p)\big)p-4-\big(\tfrac{-1}{p}\big)S,
+\]
+where $S=\sum\eta\big(e_3(\delta)e_5(\delta)\big)$ over the points of the hyperplane $\sum_i\delta_i=0$ of
+$\mathbb P^4$ is the character sum of the double octic $w^2=e_3e_5$, the double cover of $\mathbb P^3$ branched along
+Clebsch's diagonal cubic surface \cite{Clebsch1871} and its five Sylvester planes.
+\end{theorem}
+\begin{proof}[Sketch]
+For $I_n$ and $J_{n'}$, put $u_i=(-1)^iv_i$; the phase is then a multiple of $\sum_{i<j}\mathrm{Im}(\bar u_iu_j)$. Expand the
+norm conditions and the phase in additive characters. They combine into the Hermitian form $\mathrm{diag}(\lambda)+hK$
+on $\mathbb F_{p^2}^n$, where $K$ is a scaled tournament matrix; its Gauss sum is $(-p)^rp^{2(n-r)}$ at rank $r$. For
+$h\ne0$ its principal minors are the real and imaginary parts of the products $\prod_{i\in S}(1+\sqrt\varepsilon\,\delta_i)$,
+$\delta=2\lambda/h$. So the rank is $n$ or $n-1$, and the Cayley map $\delta\mapsto(1+\sqrt\varepsilon\delta)/(1-\sqrt
+\varepsilon\delta)$ carries the rank-$(n-1)$ locus to the torus condition. For $n=5$, counting the scalings over each
+point of $\mathbb P^3$ uses the Clebsch cubic's $p^2+(6+(\tfrac5p))p+1$ points and its $15$ lines on the pentahedron.
+For $J_5$, split the six operators as $(PA_1A_2)(A_3A_4A_5)$, so a closed phase-$0$ hexagon pairs a chord and a triangle
+with the same alternating sum $w$. With $\nu=N(w)$, the chords have areas $\pm Y$ with $4\varepsilon Y^2=\nu^2-4\nu$.
+The triangles of area $Y$ number $1-\eta(4\nu^2-52\nu+9)$, apart from four special classes whose terms cancel. So the
+phase-$0$ count is $(p+1)\#E(\mathbb F_p)$, and the closed count is $((p+1)^5-(p+1)V_5)/p^2$ with
+$V_5=\sum_aK(a)^5=1+4p+5p^2+4\chi p^3+p^2f(p)$ \cite{PTvdV1992}.
+\end{proof}
+At every prime from $7$ to $401$, and in a registered blind test at every prime from $409$ to $601$,
+$(\tfrac{-1}{p})S=6p^2-19p-a(p)$, where $a(p)$ are the coefficients of the newform of
+weight $4$ and level $10$. Hence
+\[
+I_5=p(p+1)\Big[p^3+4p^2-\big(1+\big(\tfrac5p\big)\big)p-4+a(p)\Big]-p^5-1 .
+\]
+The curve $E$ has the traces of the newform of weight $2$ and level $150$ at every prime tested. The double octic
+behaves as a rigid Calabi--Yau threefold would; rigid Calabi--Yau threefolds over $\mathbb Q$ are modular
+\cite{GouveaYui2011}, and its count is the one step of $I_5$ not proved here. The case $n=3$ recovers the count behind
+Theorem~\ref{thm:third}. The case $n=4$ reduces the count behind $J_4$ to a surface, $M_4=(p-1)(p-3)+4b^2$. And
+$\sqrt p\,I_5/((p-1)p(p+1)^{5/2})\to5$, the value the free cumulants $\kappa_1\approx1/\sqrt p$ and
+$\kappa_3\approx-1/\sqrt p$ give.
+
 \paragraph{Numerics.} For every one-dimensional eigenvector of the split and non-split tori, at every prime from $5$ to
 $401$, the Wigner values were computed exactly (Table~\ref{tab:torus}). At the primes from $211$ to $401$ ($20\,056$
 states), standardized, they match the semicircle law through the eighth moment, and the Kolmogorov distance of the
@@ -270,7 +314,7 @@ Three algebraic families, the torus states, the norm states and the cubic-phase 
 share $8/(3\pi)$ of the ceiling, between random states ($\sqrt{2/\pi}$) and the most negative states found by search
 for single qudits of dimension up to $31$ (about $0.89$--$0.90$). Open questions: a proof that the area phases of the generic
 closed polygons cancel at every even order, which would give the whole semicircle (at order six they cancel to
-$O(1/p)$ in the numerics); the reason for the tie at $p=5$ between the norm form and
+$O(1/p)$ in the numerics); the modularity of the double octic behind $I_5$; the surface count behind $J_4$; the reason for the tie at $p=5$ between the norm form and
 elliptic curves with $8$ points; and whether the most negative states have an algebraic description at all. The
 natural home for these questions is the theory of trace functions over finite fields \cite{FKMS}.
 
@@ -309,6 +353,12 @@ arXiv:math-ph/0404074.
 linear maps of the torus, Duke Math. J. 103 (2000).
 \bibitem{Rosenzweig2009} L. Rosenzweig, On the fluctuations of matrix elements of the quantum cat map,
 arXiv:0909.1410 (2009).
+\bibitem{PTvdV1992} C. Peters, J. Top, M. van der Vlugt, The Hasse zeta function of a K3 surface related to the
+number of words of weight 5 in the Melas codes, J. reine angew. Math. 432 (1992).
+\bibitem{Clebsch1871} A. Clebsch, Ueber die Anwendung der quadratischen Substitution auf die Gleichungen 5ten Grades
+und die geometrische Theorie des ebenen F\"unfseits, Math. Ann. 4 (1871).
+\bibitem{GouveaYui2011} F. Gouv\^ea, N. Yui, Rigid Calabi--Yau threefolds over $\mathbb Q$ are modular, Expo. Math.
+29 (2011).
 \bibitem{HSvGvS2001} K. Hulek, J. Spandaw, B. van Geemen, D. van Straten, The modularity of the Barth--Nieto
 quintic and its relatives, Adv. Geom. 1 (2001).
 \bibitem{BozejkoSpeicher1991} M. Bo\.zejko, R. Speicher, An example of a generalized Brownian motion, Comm. Math.
