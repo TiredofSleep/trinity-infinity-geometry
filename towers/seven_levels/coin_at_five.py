@@ -20,6 +20,7 @@ gets one singular point, the centre [1:1:1:1:1].  In n variables the centre is s
 
   python coin_at_five.py          # the dictionary, checked                         -> coin_at_five_verify.log
   python coin_at_five.py test     # round 19 (PREREG.md)                            -> coin_at_five_test.log
+  python coin_at_five.py test20   # round 20: the cubics in 7 and 9 variables, blind -> coin_at_five_test20.log
                                   #   (four worker processes at below-normal priority; a few minutes)
 
 numpy + sympy + exact_moments.py (+ oscillator_states.py for the test).  ASCII output.
@@ -198,7 +199,8 @@ def cone_counts(p, ns=(5, 7, 9)):
     out = {}
     for n in ns:
         j = n // 2
-        out[n] = int((c[j] * c[n - j][np.ix_(neg, neg)]).sum())
+        # the products overflow 64 bits beyond p ~ 470 at n = 9, so the last sum is taken in Python integers
+        out[n] = int((c[j].astype(object) * c[n - j][np.ix_(neg, neg)].astype(object)).sum())
     return out
 
 
@@ -407,9 +409,66 @@ def test():
     LOG.close()
 
 
+def cm35(p):
+    """|a(p)| for the weight-3 newform with complex multiplication by Q(sqrt -35): 0 at the inert primes;
+    |2x^2 + 2xy - 17y^2| = |pi^2 + conj(pi)^2| when p = x^2 + xy + 9y^2 (a principal prime, pi = x + y(1 + sqrt -35)/2);
+    |u|, where u^2 + 35v^2 = 4p^2 with v != 0, when p = 3x^2 + xy + 3y^2 (the square of a prime above p is principal)"""
+    if leg(-35, p) != 1:
+        return 0
+    R = int(np.sqrt(4 * p)) + 2
+    for x in range(-R, R):
+        for y in range(0, R):
+            if x * x + x * y + 9 * y * y == p:
+                return abs(2 * x * x + 2 * x * y - 17 * y * y)
+    for v in range(1, int(np.sqrt(4 * p * p / 35)) + 2):
+        u2 = 4 * p * p - 35 * v * v
+        if u2 > 0 and int(np.sqrt(u2)) ** 2 == u2:
+            return int(np.sqrt(u2))
+        if u2 > 0 and (int(np.sqrt(u2)) + 1) ** 2 == u2:
+            return int(np.sqrt(u2)) + 1
+    raise ValueError(p)
+
+
+def _cones79(p):
+    low_priority()
+    return p, cone_counts(p, (7, 9))
+
+
+def test20():
+    """round 20 (PREREG.md): H1, H2 -- round 19's first look at the cubics in 7 and 9 variables, blind"""
+    global LOG
+    LOG = open(os.path.join(HERE, "coin_at_five_test20.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    P = primes(401, 601)
+    say("Round 20: the cubics in 7 and 9 variables at primes round 19 did not see (PREREG.md)")
+    say(f"primes {P[0]}..{P[-1]} ({len(P)})")
+    with Pool(4) as pool:
+        cones = dict(pool.map(_cones79, P))
+    say("CUBIC p t7 t9 c |cm35| (5|p) (105|p)")
+    bad1, bad2 = [], []
+    for p in P:
+        t7 = primitive_trace(7, projective(cones[p][7], p), p)
+        t9 = primitive_trace(9, projective(cones[p][9], p), p)
+        s, r = leg(5, p), leg(105, p)
+        c = t7 // p - p * (14 + 6 * s) if t7 % p == 0 else None
+        m = cm35(p)
+        say(f"CUBIC {p} {t7} {t9} {c} {m} {s} {r}")
+        if c is None or abs(c) != m:
+            bad1.append(p)
+        if c is None or t9 != p ** 3 * (42 + 27 * s + r) + 8 * p * p * c:
+            bad2.append(p)
+    say(f"H1 t7 = p^2 (14 + 6(5|p)) + p c(p), |c(p)| the CM form of Q(sqrt -35): {'HELD' if not bad1 else 'FAILED at ' + str(bad1)}")
+    say(f"H2 t9 = p^3 (42 + 27(5|p) + (105|p)) + 8 p^2 c(p): {'HELD' if not bad2 else 'FAILED at ' + str(bad2)}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
         verify()
     elif mode == "test":
         test()
+    elif mode == "test20":
+        test20()

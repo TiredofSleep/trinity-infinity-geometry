@@ -1,0 +1,449 @@
+Round 18: J4's surface sum, proved, tested where it was not measured (PREREG.md)
+G1 primes 409..3001 (352); G2, G3 primes 409..1009 (90)
+T p T(p) formula
+T 409 -373 -373
+T 419 419 419
+T 421 479 479
+T 431 431 431
+T 433 723 723
+T 439 439 439
+T 443 443 443
+T 449 -253 -253
+T 457 1307 1307
+T 461 983 983
+T 463 463 463
+T 467 467 467
+T 479 479 479
+T 487 487 487
+T 491 491 491
+T 499 499 499
+T 503 503 503
+T 509 -409 -409
+T 521 -37 -37
+T 523 523 523
+T 541 1223 1223
+T 547 547 547
+T 557 887 887
+T 563 563 563
+T 569 107 107
+T 571 571 571
+T 577 -573 -573
+T 587 587 587
+T 593 1523 1523
+T 599 599 599
+T 601 -501 -501
+T 607 607 607
+T 613 543 543
+T 617 827 827
+T 619 619 619
+T 631 631 631
+T 641 1859 1859
+T 643 643 643
+T 647 647 647
+T 653 23 23
+T 659 659 659
+T 661 1839 1839
+T 673 1443 1443
+T 677 -673 -673
+T 683 683 683
+T 691 691 691
+T 701 -601 -601
+T 709 191 191
+T 719 719 719
+T 727 727 727
+T 733 2183 2183
+T 739 739 739
+T 743 743 743
+T 751 751 751
+T 757 -433 -433
+T 761 683 683
+T 769 1731 1731
+T 773 383 383
+T 787 787 787
+T 797 -313 -313
+T 809 -709 -709
+T 811 811 811
+T 821 1679 1679
+T 823 823 823
+T 827 827 827
+T 829 2087 2087
+T 839 839 839
+T 853 1263 1263
+T 857 2507 2507
+T 859 859 859
+T 863 863 863
+T 877 2487 2487
+T 881 1619 1619
+T 883 883 883
+T 887 887 887
+T 907 907 907
+T 911 911 911
+T 919 919 919
+T 929 1187 1187
+T 937 507 507
+T 941 2423 2423
+T 947 947 947
+T 953 -277 -277
+T 967 967 967
+T 971 971 971
+T 977 2867 2867
+T 983 983 983
+T 991 991 991
+T 997 2847 2847
+T 1009 -109 -109
+T 1013 1103 1103
+T 1019 1019 1019
+T 1021 -537 -537
+T 1031 1031 1031
+T 1033 -997 -997
+T 1039 1039 1039
+T 1049 -949 -949
+T 1051 1051 1051
+T 1061 2783 2783
+T 1063 1063 1063
+T 1069 -393 -393
+T 1087 1087 1087
+T 1091 1091 1091
+T 1093 3263 3263
+T 1097 2267 2267
+T 1103 1103 1103
+T 1109 1391 1391
+T 1117 647 647
+T 1123 1123 1123
+T 1129 1787 1787
+T 1151 1151 1151
+T 1153 3203 3203
+T 1163 1163 1163
+T 1171 1171 1171
+T 1181 -1081 -1081
+T 1187 1187 1187
+T 1193 -517 -517
+T 1201 1299 1299
+T 1213 1703 1703
+T 1217 2627 2627
+T 1223 1223 1223
+T 1229 3671 3671
+T 1231 1231 1231
+T 1237 -913 -913
+T 1249 -349 -349
+T 1259 1259 1259
+T 1277 -793 -793
+T 1279 1279 1279
+T 1283 1283 1283
+T 1289 3611 3611
+T 1291 1291 1291
+T 1297 -1293 -1293
+T 1301 1199 1199
+T 1303 1303 1303
+T 1307 1307 1307
+T 1319 1319 1319
+T 1321 -1221 -1221
+T 1327 1327 1327
+T 1361 2483 2483
+T 1367 1367 1367
+T 1373 4103 4103
+T 1381 -481 -481
+T 1399 1399 1399
+T 1409 1091 1091
+T 1423 1423 1423
+T 1427 1427 1427
+T 1429 687 687
+T 1433 4043 4043
+T 1439 1439 1439
+T 1447 1447 1447
+T 1451 1451 1451
+T 1453 -1417 -1417
+T 1459 1459 1459
+T 1471 1471 1471
+T 1481 3419 3419
+T 1483 1483 1483
+T 1487 1487 1487
+T 1489 2867 2867
+T 1493 -1297 -1297
+T 1499 1499 1499
+T 1511 1511 1511
+T 1523 1523 1523
+T 1531 1531 1531
+T 1543 1543 1543
+T 1549 3351 3351
+T 1553 563 563
+T 1559 1559 1559
+T 1567 1567 1567
+T 1571 1571 1571
+T 1579 1579 1579
+T 1583 1583 1583
+T 1597 167 167
+T 1601 -1597 -1597
+T 1607 1607 1607
+T 1609 -1573 -1573
+T 1613 -937 -937
+T 1619 1619 1619
+T 1621 4463 4463
+T 1627 1627 1627
+T 1637 2207 2207
+T 1657 -213 -213
+T 1663 1663 1663
+T 1667 1667 1667
+T 1669 -769 -769
+T 1693 3783 3783
+T 1697 5027 5027
+T 1699 1699 1699
+T 1709 3191 3191
+T 1721 -1237 -1237
+T 1723 1723 1723
+T 1733 -577 -577
+T 1741 1623 1623
+T 1747 1747 1747
+T 1753 1163 1163
+T 1759 1759 1759
+T 1777 4307 4307
+T 1783 1783 1783
+T 1787 1787 1787
+T 1789 -1689 -1689
+T 1801 3099 3099
+T 1811 1811 1811
+T 1823 1823 1823
+T 1831 1831 1831
+T 1847 1847 1847
+T 1861 1983 1983
+T 1867 1867 1867
+T 1871 1871 1871
+T 1873 2483 2483
+T 1877 4847 4847
+T 1879 1879 1879
+T 1889 -733 -733
+T 1901 2999 2999
+T 1907 1907 1907
+T 1913 5483 5483
+T 1931 1931 1931
+T 1933 -1257 -1257
+T 1949 5447 5447
+T 1951 1951 1951
+T 1973 143 143
+T 1979 1979 1979
+T 1987 1987 1987
+T 1993 5403 5403
+T 1997 1367 1367
+T 1999 1999 1999
+T 2003 2003 2003
+T 2011 2011 2011
+T 2017 -1693 -1693
+T 2027 2027 2027
+T 2029 6071 6071
+T 2039 2039 2039
+T 2053 -897 -897
+T 2063 2063 2063
+T 2069 431 431
+T 2081 4643 4643
+T 2083 2083 2083
+T 2087 2087 2087
+T 2089 6011 6011
+T 2099 2099 2099
+T 2111 2111 2111
+T 2113 2243 2243
+T 2129 -13 -13
+T 2131 2131 2131
+T 2137 1227 1227
+T 2141 -2041 -2041
+T 2143 2143 2143
+T 2153 3323 3323
+T 2161 -1261 -1261
+T 2179 2179 2179
+T 2203 2203 2203
+T 2207 2207 2207
+T 2213 6623 6623
+T 2221 5879 5879
+T 2237 -1753 -1753
+T 2239 2239 2239
+T 2243 2243 2243
+T 2251 2251 2251
+T 2267 2267 2267
+T 2269 3207 3207
+T 2273 6563 6563
+T 2281 5819 5819
+T 2287 2287 2287
+T 2293 -177 -177
+T 2297 -853 -853
+T 2309 6527 6527
+T 2311 2311 2311
+T 2333 5063 5063
+T 2339 2339 2339
+T 2341 -1441 -1441
+T 2347 2347 2347
+T 2351 2351 2351
+T 2357 4367 4367
+T 2371 2371 2371
+T 2377 -613 -613
+T 2381 2519 2519
+T 2383 2383 2383
+T 2389 111 111
+T 2393 3083 3083
+T 2399 2399 2399
+T 2411 2411 2411
+T 2417 7187 7187
+T 2423 2423 2423
+T 2437 7167 7167
+T 2441 923 923
+T 2447 2447 2447
+T 2459 2459 2459
+T 2467 2467 2467
+T 2473 -1797 -1797
+T 2477 -1033 -1033
+T 2503 2503 2503
+T 2521 2379 2379
+T 2531 2531 2531
+T 2539 2539 2539
+T 2543 2543 2543
+T 2549 -2353 -2353
+T 2551 2551 2551
+T 2557 -793 -793
+T 2579 2579 2579
+T 2591 2591 2591
+T 2593 -1437 -1437
+T 2609 6227 6227
+T 2617 7787 7787
+T 2621 -2137 -2137
+T 2633 4763 4763
+T 2647 2647 2647
+T 2657 6947 6947
+T 2659 2659 2659
+T 2663 2663 2663
+T 2671 2671 2671
+T 2677 3407 3407
+T 2683 2683 2683
+T 2687 2687 2687
+T 2689 1667 1667
+T 2693 6143 6143
+T 2699 2699 2699
+T 2707 2707 2707
+T 2711 2711 2711
+T 2713 -2677 -2677
+T 2719 2719 2719
+T 2729 -2629 -2629
+T 2731 2731 2731
+T 2741 -241 -241
+T 2749 4647 4647
+T 2753 -2557 -2557
+T 2767 2767 2767
+T 2777 587 587
+T 2789 -1633 -1633
+T 2791 2791 2791
+T 2797 7607 7607
+T 2801 6803 6803
+T 2803 2803 2803
+T 2819 2819 2819
+T 2833 -717 -717
+T 2837 3887 3887
+T 2843 2843 2843
+T 2851 2851 2851
+T 2857 7547 7547
+T 2861 -1417 -1417
+T 2879 2879 2879
+T 2887 2887 2887
+T 2897 947 947
+T 2903 2903 2903
+T 2909 8327 8327
+T 2917 -2913 -2913
+T 2927 2927 2927
+T 2939 2939 2939
+T 2953 8283 8283
+T 2957 407 407
+T 2963 2963 2963
+T 2969 2507 2507
+T 2971 2971 2971
+T 2999 2999 2999
+T 3001 7403 7403
+G1 HELD
+STEPS 409 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 419 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 421 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 431 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 433 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 439 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 443 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 449 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 457 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 461 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 463 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 467 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 479 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 487 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 491 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 499 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 503 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 509 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 521 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 523 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 541 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 547 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 557 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 563 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 569 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 571 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 577 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 587 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 593 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 599 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 601 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 607 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 613 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 617 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 619 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 631 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 641 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 643 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 647 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 653 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 659 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 661 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 673 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 677 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 683 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 691 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 701 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 709 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 719 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 727 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 733 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 739 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 743 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 751 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 757 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 761 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 769 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 773 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 787 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 797 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 809 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 811 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 821 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 823 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 827 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 829 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 839 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 853 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 857 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 859 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 863 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 877 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 881 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 883 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 887 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 907 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 911 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 919 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 929 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 937 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 941 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 947 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 953 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 967 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 971 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 977 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 983 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 991 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 997 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+STEPS 1009 legendre:True landen:True sum:True jacobi:True T:True pairing:True
+G2 HELD
+G3 HELD
+time 0.6 minutes

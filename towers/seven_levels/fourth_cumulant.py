@@ -22,7 +22,7 @@ The proof (TORUS_MOMENTS.md section 8, Theorem 5), each step checked here:
      sum over A above without the factor eta(k), and sum_k G(k) = 2 + (-1|p) p.  So N_V(4) = (p - 1)^2 + 2 + (-1|p) p
      - T(p) = (p - 1)(p - 3) + 4b^2, and J4 = p^4 - 1 - p(p + 1) N_V(4) by section 8's reduction.
 
-  python fourth_cumulant.py           # every step at every prime 7..401; N_V(4) by brute force at 7..31; the chain
+  python fourth_cumulant.py           # every step at every prime 3..401; N_V(4) by brute force at 3..31; the chain
                                       #   against the operators' J4 (logs to 509)  -> fourth_cumulant_verify.log
   python fourth_cumulant.py test      # round 18 (PREREG.md): 409..3001 and 409..1009 -> fourth_cumulant_test.log
                                       #   (four worker processes at below-normal priority; a few minutes)
@@ -136,7 +136,7 @@ def steps(p):
     # 1. Legendre form
     ok = True
     for k in range(1, p):
-        if k == p - 4:
+        if k == (-4) % p:
             ok &= int(G1[k]) == p - 1
         else:
             ok &= int(G1[k]) == int(E[(-k) % p]) * int(L[16 * k * inv((k + 4) ** 2) % p])
@@ -173,7 +173,7 @@ def steps(p):
     Ainv = np.array([0] + [inv(a) for a in range(1, p)], dtype=np.int64)[1:][None, :]
     k = np.arange(1, p, dtype=np.int64)[:, None]
     F = ((1 - E[(k + 4 - 4 * A) % p]) * (1 - E[(k + 4 - 4 * k * Ainv) % p])).sum(axis=1)
-    F0 = int(((1 - E[4]) * (1 - E[(4 - 4 * np.arange(p)) % p])).sum() * 2 - (1 - E[4]) ** 2)
+    F0 = int(((1 - E[4 % p]) * (1 - E[(4 - 4 * np.arange(p)) % p])).sum() * 2 - (1 - E[4 % p]) ** 2)
     kk = np.arange(1, p, dtype=np.int64)
     okF = bool(np.all(F == p - 1 + 2 * E[(kk + 4) % p] + G[1:]))
     sumG = int(G[1:].sum()) == 2 + int(E[p - 1]) * p
@@ -217,7 +217,7 @@ def verify():
     LOG = open(os.path.join(HERE, "fourth_cumulant_verify.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("fourth_cumulant.py -- Theorem 5 (TORUS_MOMENTS.md section 8): T(p), the pairing and J4, step by step")
-    PS = primes(7, 401)
+    PS = primes(3, 401)
     res = {p: steps(p) for p in PS}
     for key, name in (("legendre", "1. Legendre form: the sum over A is eta(-k) L(16k/(k + 4)^2), and p - 1 at k = -4"),
                       ("landen", "2. Landen: L(4t/(1 + t)^2) = L(t^2) for t != 0, +-1 (2-isogenous curves); L(1) = -1"),
@@ -228,10 +228,10 @@ def verify():
                       ("pairing", "5. the pairing: F(0) = 0, F(k) = p - 1 + 2 eta(k + 4) + G(k), sum G = 2 + (-1|p)p, "
                                   "N_V(4) = (p - 1)^2 + 2 + (-1|p)p - T")):
         bad = [p for p in PS if not res[p][key]]
-        check(f"{name}  (every prime 7..401)", not bad, f"fails at {bad}" if bad else "")
-    small = primes(7, 31)
+        check(f"{name}  (every prime 3..401)", not bad, f"fails at {bad}" if bad else "")
+    small = primes(3, 31)
     ok = all(NV4_brute(p) == res[p]["NV"] == (p - 1) * (p - 3) + 4 * ab(p)[1] ** 2 for p in small)
-    check("   N_V(4) by brute force = the pairing's count = (p - 1)(p - 3) + 4b^2  (every prime 7..31)", ok)
+    check("   N_V(4) by brute force = the pairing's count = (p - 1)(p - 3) + 4b^2  (every prime 3..31)", ok)
     ops = operator_J4()
     have = sorted(p for p in ops if p >= 5)
     ok = all(ops[p] == J4_theorem(p) == p ** 4 - 1 - p * (p + 1) * ((p - 1) * (p - 3) + 4 * ab(p)[1] ** 2) for p in have)

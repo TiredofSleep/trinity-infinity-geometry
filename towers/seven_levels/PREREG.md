@@ -1661,3 +1661,78 @@ The test asks two things the dictionary does not decide.
 **The drafter's expectation:** C0 and C2 hold, and C1 holds at 5. At 3, a coin toss.
 
 Run: `python coin_at_five.py test` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 18 scores (added after the test, 2026-11-14)
+
+Run by [`fourth_cumulant.py`](fourth_cumulant.py) `test`, committed with this registration at c740708 before the
+test. Output: [`fourth_cumulant_test.log`](fourth_cumulant_test.log).
+
+**All three held.**
+
+| | outcome | evidence |
+|---|---|---|
+| G1 | held | T(p) = (2 + (−1\|p))p − 4b² at all 352 primes from 409 to 3001, in exact arithmetic |
+| G2 | held | every step of the proof at all 90 primes from 409 to 1009 |
+| G3 | held | the pairing at all 90 |
+
+After the test the verifier was extended down to p = 3 and 5. That took two small fixes in the step check: κ = −4 is
+k = (−4) mod p, which is not p − 4 when p = 3, and an index 4 is read mod p. Neither touches the code path at the
+test's primes. Every step now holds at every odd prime from 3 to 401
+([`fourth_cumulant_verify.log`](fourth_cumulant_verify.log)).
+
+**Yield.** J4 is a theorem, and with it the fourth free cumulant. The last open count of round 16 is closed.
+
+---
+
+## Round 19 scores (added after the test, 2026-11-14)
+
+Run by [`coin_at_five.py`](coin_at_five.py) `test`, committed with the registration at c740708 before the test.
+Output: [`coin_at_five_test.log`](coin_at_five_test.log).
+
+**Two of three scored predictions held. C1 failed on its J side.**
+
+| | outcome | evidence |
+|---|---|---|
+| C0, forced | held | at p = 3: I2 = 24, J2 = 8, I3 = 56, I4 = 144, J4 = 80; at p = 5: 120, 24, 264, 1200, −96. All are as proved, and Theorem 5's J4 holds at 3 |
+| C1 | **failed** | I5 = 3504 at 5 and 368 at 3, as predicted. But J5 = −1680 at 5 (registered −930), J5 = 240 at 3 (registered −84 or −192), and J3 = 24 at 3 (registered −12 or 0) |
+| C2 | held | t7 is divisible by p² at all 37 primes from 11 to 397 inert in Q(√−35), and at none of the 37 split ones. The control, t5 = (5 + (5\|p))p, holds at all 74 |
+| C3 | read, not scored | below |
+
+**Read after the run** (not scores).
+- **The edge.**
+  - The moment without the flip, I5, holds at the edge p = 5, where (5|5) = 0 averages its two sides.
+  - The moments with the parity flip P do not. J3 at 3 is +2p(p + 1), the negative of its (−3|p) = −1 side rather than
+    the average. J5's formula holds only from 7 on, as its derivation assumed.
+- **The cubic fourfold X7.** At every prime from 11 to 397, t7 = p²(14 + 6(5|p)) + p·c(p).
+  - |c(p)| is the coefficient of the weight-3 CM form of Q(√−35): 0 at the inert primes; |2x² + 2xy − 17y²| when
+    p = x² + xy + 9y²; and |u|, with u² + 35v² = 4p², when p = 3x² + xy + 3y².
+  - So its algebraic part sees only the pentagon's (5|p), and 7 enters only through the transcendental part, by
+    √−35 = √5·√−7.
+  - The dimensions add up: 22 = 14 + 6 + 2.
+- **The cubic sixfold X9.** At every prime from 11 to 397, t9 = p³(42 + 27(5|p) + (105|p)) + 8p²c(p), with the same c.
+  - The dimensions add up: 86 = 42 + 27 + 1 + 8·2.
+  - At 9 the one new character is (105|p) = (−3|p)(−35|p): the triangle's coin at 3, times the CM field from 7.
+- These two formulas were read after the run, so they count for nothing until tested blind (round 20).
+
+**Yield.**
+- The dictionary between the coin at 5 and the fifth moment.
+- The coin at 7, seen in the arithmetic of its flat face (C2).
+- One death: C1's J side, kept in the graveyard with these values.
+
+---
+
+## Round 20: the cubics in 7 and 9 variables, blind (registered 2026-11-14, before the test)
+
+Round 19's first look read two formulas after its run, at every prime from 11 to 397 (above). This round tests them
+at every prime from 401 to 601, where nothing about these cubics has been computed.
+
+| | prediction | dies if |
+|---|---|---|
+| H1 | t7 = p²(14 + 6(5\|p)) + p·c(p), with \|c(p)\| the coefficient of the weight-3 CM form of Q(√−35) as above, at every prime from 401 to 601 | a prime fails |
+| H2 | t9 = p³(42 + 27(5\|p) + (105\|p)) + 8p²c(p), with t7's c, at every prime from 401 to 601 | a prime fails |
+
+**The drafter's expectation:** both hold.
+
+Run: `python coin_at_five.py test20` (a few minutes, four processes at below-normal priority).
