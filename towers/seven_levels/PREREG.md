@@ -1347,3 +1347,51 @@ the forced S0; the five fresh predictions died.**
 **Yield.** Exact: the Smith chart's place in the two wheels, with 7 the only prime where it turns the whole wheel. The
 rest are negatives, kept: the triangle's unfolding is a one-prime event, design cubics are poor magic, and the norm
 state's reign as the best cubic ends at 11.
+
+---
+
+## Round 15: the free picture (registered 2026-11-14, before any run)
+
+> *2 and 3* — the author, 14 November 2026, answering two questions: whether to try a proof of the whole semicircle
+> through free probability, and whether to revive Luther's dispersion thread (the second is on
+> [`../THE_STAIRCASE.md`](../THE_STAIRCASE.md)).
+
+Rounds 11 and 12 measured the oscillator states' Wigner values following the semicircle through the eighth moment, and
+[`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) proves the third and fourth. In the fourth-moment count only two of the three
+ways to pair four points survive: the two that do not cross. That is the signature of free probability, where sums of
+free variables follow the semicircle because crossing pairings vanish. This round asks whether it holds for every
+moment.
+
+**What is forced, and checked by [`free_moments.py`](free_moments.py)'s calibrate step:**
+- By the twirl, the moments are traces of powers of the circle operator S_C, the sum of the phase-point operators over
+  a circle.
+- The circles are dilations of one another, and a dilation multiplies every phase by the norm. So, summed over the
+  circles, each moment is a count on one circle: Σ_C Tr S_C^k = p(pZ_k − N_k) for even k, where N_k counts the closed
+  k-gons on the circle and Z_k those with phase 0, and pZ_k − m^k for odd k (C2).
+- A product of phase-point operators is a phase-point operator (odd k) or a shift (even k) times a phase, and the
+  phase is a fan of triangle areas (C1).
+- Every non-crossing pairing of the vertices has phase 0, because A_v² = 1 removes an adjacent equal pair. So the
+  non-crossing pairings give the Catalan numbers (C3).
+- Every crossing pairing has a non-zero phase somewhere (C4, at k = 6 and 8), so the crossing pairings fall away like
+  1/p.
+- At k = 4 every closed quadrilateral lies on a pairing (C5), which is why the fourth moment came out exact.
+
+So the whole semicircle comes down to one question: do the area phases of the other closed polygons, the generic ones,
+cancel? At k = 6, the first case with generic polygons, it is enough that their phase is equidistributed; from k = 8 on
+it takes square-root cancellation. This round measures k = 6 on one circle at every prime up to 101, and the higher
+moments directly at five primes up to 1009.
+
+| | prediction | dies if |
+|---|---|---|
+| F0, forced | the calibrate checks C1 to C5 pass | any fails |
+| F1 | at k = 6 the non-crossing part of the normalized sixth moment, M6 = (pZ' − N')/((p − 1)m²) with the first vertex fixed, lies in [5 − 15/p, 5] at every prime from 5 to 101 | a prime outside |
+| F2 | the crossing part falls away: below 1 in size at every prime from 61 on, and p times its size at 101 is at most twice p times its size at 31 | either fails |
+| F3 | the generic part falls away: below 0.5 in size from 89 to 101, and the log of its size falls against log p over 31 to 101 (a negative least-squares slope) | either fails |
+| F4 | the generic hexagons' phase is equidistributed: p·Z'_gen/N'_gen lies in [0.9, 1.1] at every prime from 61 on | a prime outside |
+| F5 | the first correction is free, not classical: the basis average of the standardized fifth moment, over the third, lies in [4, 6] at 503, 701, 907 and 1009. A semicircle perturbed by a small free third cumulant gives 5, a classical perturbation 10 | a prime outside |
+| F6 | the semicircle holds in the 10th and 12th moments: at 1009 they lie within 10% of 42 and 132 (Gaussian: 945 and 10 395) | either outside |
+| F7 | the convergence goes on: at 1009 the sixth and eighth moments' distances from 5 and 14 are below half their values at 211 | either not |
+
+**The drafter's expectation:** F0 and F1 are forced. F2, F3, F4, F6 and F7 should hold. F5 is the open one.
+
+Run: `python free_moments.py calibrate`, then `python free_moments.py run` (minutes).
