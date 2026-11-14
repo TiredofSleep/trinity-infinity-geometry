@@ -54,8 +54,8 @@ checked twice, by independent code:
 - **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
   ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
 - **The magic of a cubic-phase qudit state is the L1 norm of a Walsh spectrum.** So no magic state of a
-  third-level diagonal gate ever reaches the Wigner-negativity ceiling, and on three qudits the norm state of
-  the field with p³ elements is the most magic of them (exhaustive at 3 and 5 levels)
+  third-level diagonal gate ever reaches the Wigner-negativity ceiling. On three qudits of 3, 5 and 7 levels the
+  norm state of the field with p³ elements is the most magic of them, and from 11 on elliptic-curve states beat it
   ([quantum information · finite fields](towers/seven_levels/README.md#14-round-13-cubic-magic-forced-measured-named-cui-gottesman-and-krishna-howard-and-vala-mesnager-özbudak-and-sınak)).
 - **The norm state's Wigner values are Kloosterman sums,** on three qudits of every odd prime, so its
   negativity is known in closed form and tends to 8/(3π) of the ceiling, Sato–Tate's value

@@ -1,0 +1,14 @@
+  three wheels of 7: norm value 7.902228372; 1445 sampled forms reach it, 0 exceed it; their curves' point counts: 0 points (1445 forms, 0 with a rational singular point)
+  three wheels of 11: norm value 14.900797513; 225 sampled forms reach it, 27453 exceed it; their curves' point counts: 0 points (225 forms, 0 with a rational singular point)
+  three wheels of 13: norm value 18.887726447; 80 sampled forms reach it, 14040 exceed it; their curves' point counts: 0 points (80 forms, 0 with a rational singular point)
+  7 wheels of 3: the Fano cubic's S/sqrt q 0.642292 (11 values); dense random best 0.791184; sparse random best 0.872493
+  7 wheels of 5: the Fano cubic's S/sqrt q 0.558291 (60 values); dense random best 0.801419; sparse random best 0.800828
+  7 wheels of 7: the Fano cubic's S/sqrt q 0.560109 (141 values); dense random best 0.798985; sparse random best 0.786208
+  9 wheels of 3: the affine-plane cubic's S/sqrt q 0.779236 (14 values); dense random best 0.810719; sparse random best 0.795779
+  9 wheels of 5: the affine-plane cubic's S/sqrt q 0.787888 (514 values); dense random best 0.798174; sparse random best 0.772812
+S0 HELD: the Smith chart's facts, exactly (forced)
+T1 DIED: the triangle unfolds at 11 (2 more than a multiple of 3) and not at 7 or 13
+T2 DIED: every non-norm form that ties the norm value is a curve with p + 3 points and no rational singular point
+F1 DIED: on 7 wheels at 3, 5 and 7 the Fano cubic beats every sampled dense and sparse cubic
+F2 DIED: the Fano cubic's S/sqrt q exceeds Sato-Tate's 8/(3 pi) at 5 and 7
+F3 DIED: on 9 wheels at 3 and 5 the affine-plane cubic beats every sampled dense cubic

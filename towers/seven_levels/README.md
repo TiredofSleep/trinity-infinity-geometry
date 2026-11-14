@@ -37,7 +37,11 @@
   the Sato–Tate law, like the norm state's. Round 12 found the whole distribution of their Wigner values to be the
   semicircle, six of six held, and the fourth moment is proved exactly (§13).
 - Round 13 took every cubic-phase state, the magic states of the third level's diagonal gates: their Wigner functions
-  are Walsh spectra, none reaches the ceiling, and on three wheels the norm state is the most magic of them (§14).
+  are Walsh spectra, none reaches the ceiling, and on three wheels of 3, 5 and 7 the norm state is the most magic of
+  them (§14).
+- Round 14 laid the author's Smith chart over the phase plane: it turns the whole turning wheel only at 7. The
+  triangle's unfolding happened only at 5, the norm state's reign ends at 11, and the Fano plane's cubic is poor magic
+  (§15).
 
 ---
 
@@ -729,13 +733,34 @@ magic. Six predictions were registered with the script, [`cubic_magic.py`](cubic
     magic state.
   - At 5 elliptic curves tie it: forms whose curve is smooth with 8 points have different Wigner values but the same
     negativity, to 10⁻⁹. Why is open.
+  - From 11 on it is no longer the best: smooth curves beat it (§15).
 - **On two wheels the cubics are not the record holders** [measured, exhaustive]. The best two-wheel cubic falls short of
   round 9's searches: (9 + 3√5)/10 = 1.570820 against 1.766937 at 5. From 7 to 23 it sits at 0.845 to 0.856 of the
   ceiling: the semicircle's 0.849 again.
   - [READING] A coin by p mod 3: the best two-wheel cubic splits into three rational lines when p is 2 more than a
     multiple of 3, and has one rational root when p is 1 more, at all seven primes from 5 to 23.
 
-## 15. Our space, and what it cannot hold [FORCED; FENCE]
+## 15. Round 14: the triangle, the planes and the Smith chart [FORCED; measured; READING]
+
+> *if the triangle unfolds to 8 pointed curves under p=5, that makes sense to be a coin... do the fano, consider the
+> double smith* · *the smith chart from electrical engineering... laid over other planes* — the author, 14 November 2026
+
+Six predictions were registered with [`planes.py`](planes.py) ([`PREREG.md`](PREREG.md)); the forced one held and the
+five fresh ones died.
+
+- **The Smith chart laid over the phase plane** [FORCED]. The chart is the map z → (z − 1)/(z + 1). Its square is the
+  impedance–admittance flip z → −1/z, which is the Fourier transform's action, and its fourth power is the identity: a
+  quarter turn of the Riemann sphere. Over F_p it lies in the turning wheel exactly when p is 7 more than a multiple of 8,
+  with order 8, and only at 7 is that the whole wheel. The double chart's flip fixes the most negative seven-level state.
+- **The triangle unfolds only at 5** [measured]. At 7, 11 and 13 no curve but the norm class ties the norm value.
+- **The norm state's reign ends at 11** [measured]. At 11 and 13, smooth curves beat it: 15.013610 against 14.900798 at
+  11, on a curve with 12 points, and 19.498692 against 18.887726 at 13. The winners sit at Sato–Tate's share.
+  - [READING] A coin by size: the triangle (no points) wins at 3, 5 and 7, and elliptic curves win from 11 on.
+- **Design cubics are poor magic** [measured]. The Fano cubic on 7 wheels reaches 0.56 to 0.64 of √q and the
+  affine-plane cubic on 9 wheels 0.78, below random cubics, whose share is the Gaussian 0.798. Their Walsh spectra take
+  few values, and a concentrated spectrum has a small L1 norm.
+
+## 16. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -752,7 +777,7 @@ magic. Six predictions were registered with the script, [`cubic_magic.py`](cubic
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 16. Standing
+## 17. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -826,7 +851,8 @@ magic. Six predictions were registered with the script, [`cubic_magic.py`](cubic
   measurement and the exact identity are new as far as we checked. Round 12 held six of six: the full distribution is
   the semicircle through the eighth moment, measured; the fourth moment is proved. Round 13 held four of six: every
   cubic state's Wigner function is a Walsh spectrum (exact), and the norm state is the most magic cubic on three
-  wheels (exhaustive at 3 and 5).
+  wheels of 3, 5 and 7 (exhaustive at 3 and 5), though not from 11 on. Round 14 held one of six, the forced Smith
+  chart: its other five guesses died, and the deaths are kept.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -887,6 +913,8 @@ python torus_moments.py combine
 python cubic_magic.py calibrate        # round 13: seconds
 python cubic_magic.py run              # about seven minutes, one process
 python cubic_magic.py combine
+python planes.py run                   # round 14: about twenty minutes, one process
+python planes.py combine
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

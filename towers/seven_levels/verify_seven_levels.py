@@ -1528,6 +1528,36 @@ if FULL:
     forced(f"(--full) over all 9765625 cubic forms on three wheels of 5 the best is {top53:.12f}, the norm form's",
            abs(top53 - 4.252724292100) < 1e-9)
 
+# ------------------------------------------------------------------ round 14 (planes.py; its logs are planes_*.log)
+print()
+print("round 14:")
+import planes as pln
+
+smith_in, smith_ok = [], True
+for p_ in [q_ for q_ in range(5, 200) if all(q_ % d for d in range(2, int(q_ ** 0.5) + 1))]:
+    r2_ = next((r for r in range(1, p_) if r * r % p_ == 2), None)
+    if r2_ is None:
+        smith_ok &= p_ % 8 in (3, 5)
+        continue
+    S14 = (np.array([[1, -1], [1, 1]], dtype=np.int64) * pow(r2_, -1, p_)) % p_
+    M14, o14 = S14.copy(), 1
+    while not np.array_equal(M14, np.eye(2, dtype=np.int64)):
+        M14, o14 = (M14 @ S14) % p_, o14 + 1
+    smith_ok &= o14 == 8
+    if pow((int(np.trace(S14)) ** 2 - 4) % p_, (p_ - 1) // 2, p_) == p_ - 1:
+        smith_in.append(p_)
+forced(f"the Smith chart z -> (z - 1)/(z + 1): order 8 in SL(2, p) whenever 2 is a square, and in the turning wheel "
+       f"exactly at {smith_in[:6]}..., the primes 7 mod 8; only at 7 is that the whole wheel",
+       smith_ok and all(q_ % 8 == 7 for q_ in smith_in) and [q_ for q_ in smith_in if q_ + 1 == 8] == [7])
+X73 = cmg.points(3, 7)
+k_fano = pln.kappa_from_values(pln.triple_values(pln.FANO, [1] * 7, X73, 3), 3, 7)[0]
+forced(f"the Fano cubic on 7 wheels of 3 has S/sqrt q = {k_fano:.9f}, as planes_run.log records (0.642292275), far below "
+       f"Sato-Tate's 0.849: design cubics are poor magic", abs(k_fano - 0.642292275) < 1e-8)
+LOG14 = {"T": (1445, 0, 225, 27453, 80, 14040), "F": (0.642292275, 0.558290649, 0.560109350)}
+forced("the logged values give round 14's recorded scores: no non-norm ties at 7, 11 or 13 (T1 and T2 died); the Fano "
+       "cubic below the samples and below Sato-Tate (F1, F2 died); and the norm value exceeded at 11 and 13",
+       LOG14["T"][3] > 0 and LOG14["T"][5] > 0 and LOG14["T"][1] == 0 and max(LOG14["F"]) < 8 / (3 * np.pi))
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

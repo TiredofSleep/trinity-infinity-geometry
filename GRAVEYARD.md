@@ -269,6 +269,20 @@ its own graveyard. These died, with what killed them:
       even side won on three wheels of 5, by 0.0019, and on five of 3, where both sides fell short of a known product.
     - "Every array's best reaches 88% of its ceiling" (V6): 84.5% on three wheels of 5, and 83.4% on five of 3, where
       the best known state, the product, reaches 87.5%.
+  - **Round 13's guesses on cubic magic** (2026-11-14; `towers/seven_levels/cubic_magic_*.log`):
+    - "The most negative two-qudit states are cubic-phase states" (K2): the best two-wheel cubics fall short,
+      (9 + 3√5)/10 against 1.766937 at 5 and 2.567775 against 2.719253 at 7.
+    - "Some cubic beats the norm form on three wheels of 5" (K4): none of the 9 765 625 forms does, though elliptic
+      curves with 8 points tie it.
+  - **Round 14's guesses** (2026-11-14; `towers/seven_levels/planes_*.log`):
+    - "The triangle unfolds again at 11 and not at 7 or 13" (T1), and "the tying curves have p + 3 points" (T2): no
+      curve but the norm class ties the norm value at 7, 11 or 13.
+    - "The Fano cubic beats random cubics" (F1) and "exceeds Sato–Tate's share" (F2): it reaches 0.642, 0.558 and 0.560
+      of √q at 3, 5 and 7, against about 0.80 for random cubics.
+    - "The affine-plane cubic beats random cubics" (F3): 0.779 and 0.788 at 3 and 5, against 0.811 and 0.798.
+    - Not a registered prediction, but a reading the run falsified: round 13's "the norm state is the most magic
+      three-qudit cubic" holds only at 3, 5 and 7. At 11 and 13 smooth curves beat it (15.013610 against 14.900798;
+      19.498692 against 18.887726).
 - **From the genetic-code study (2026-11-08; `lab/genetic_code/PREREG.md`, fenced):**
   - **"The vertebrate mitochondrial code is less optimized than the standard code"** (G1, a registered guess).
     51 of a million random codes with its own blocks beat it, against 98 for the standard code.

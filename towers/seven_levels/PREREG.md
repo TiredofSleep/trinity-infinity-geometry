@@ -1312,3 +1312,36 @@ or above it.
 
 **Expected standing.** S0 is exact. The ties and the plane cubics' values are exact for the forms tested; the samples
 make T1, F1 and F3 search-level evidence.
+
+---
+
+## Round 14 scores (added after the run, 2026-11-14)
+
+Run by [`planes.py`](planes.py), committed with this registration at 3bba54e, before the run; the output is kept in
+[`planes_run.log`](planes_run.log) and [`planes_combined.log`](planes_combined.log). It took 19.4 minutes. **One held,
+the forced S0; the five fresh predictions died.**
+
+| | outcome | evidence |
+|---|---|---|
+| S0, forced | held | at every prime from 5 to 199 the Smith chart is in the turning wheel exactly at 7, 23, 31, 47, 71, 79, 103, 127, 151, 167, 191 and 199 (7 more than a multiple of 8), with order 8; only at 7 is that the whole wheel |
+| T1 | **died** | no curve but the norm class ties the norm value at 7 (1 445 ties), 11 (225) or 13 (80): the triangle unfolded only at 5 |
+| T2 | **died** | there are no non-norm ties at all at 7, 11 and 13 |
+| F1 | **died** | the Fano cubic reaches S/√q = 0.642, 0.558 and 0.560 at 3, 5 and 7, below the sampled dense cubics' best (0.791, 0.801, 0.799) |
+| F2 | **died** | 0.558 and 0.560 are far below Sato–Tate's 0.849 |
+| F3 | **died** | the affine-plane cubic reaches 0.779 and 0.788 at 3 and 5, below the dense samples' 0.811 and 0.798 |
+
+**Read after the run.**
+- **The norm state is the best cubic only at small primes.** The samples at 11 and 13 found 27 453 and 14 040 forms
+  above the norm value. A further sample (200 000 and 120 000 forms, after the run) found the best at 15.013610
+  against the norm's 14.900798 at 11, a smooth curve with 12 = p + 1 points, and 19.498692 against 18.887726 at 13, a
+  smooth curve with 9 points. Both sit near Sato–Tate's share (0.846 and 0.850), where the norm falls short (0.840 and
+  0.824). Round 13's reading, that the norm state is the most magic cubic on three qudits, holds at 3, 5 and 7 only.
+- **Symmetric designs make poor magic.** The Fano and affine-plane cubics have few-valued Walsh spectra (11 and 14
+  distinct values at 3), and their negativity falls below random cubics'. Symmetry concentrates the spectrum, and a
+  concentrated spectrum has a small L1 norm.
+- **Random cubics on many wheels are Gaussian.** The dense random cubics on 7 and 9 wheels average S/√q = 0.775 to
+  0.798, at or below the Gaussian value √(2/π) = 0.798 of a random state, not the semicircle's 0.849.
+
+**Yield.** Exact: the Smith chart's place in the two wheels, with 7 the only prime where it turns the whole wheel. The
+rest are negatives, kept: the triangle's unfolding is a one-prime event, design cubics are poor magic, and the norm
+state's reign as the best cubic ends at 11.

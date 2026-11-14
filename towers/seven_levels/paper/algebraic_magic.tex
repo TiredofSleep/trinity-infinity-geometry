@@ -26,7 +26,8 @@ negativity is the $L^1$ norm of a cubic Walsh spectrum, and by the non-existence
 odd characteristic, no such state reaches the negativity ceiling. (ii) On three qudits, the state whose phase is the
 norm map of $\F_{p^3}$ has Wigner values $K(m)/p^5$, where $K$ is the Kloosterman sum, and $-(p+1)/p^5$. Its negativity
 is therefore known in closed form for every $p$, and its share of the ceiling tends to $8/(3\pi)$. An exhaustive
-computation over all cubic forms on three qudits of dimension $3$ and $5$ finds it the most negative cubic-phase state.
+computation over all cubic forms on three qudits of dimension $3$ and $5$, and a large sample at $7$, finds it the most
+negative cubic-phase state; from dimension $11$ on, samples find smooth cubic curves whose states beat it.
 (iii) For the eigenbases of the non-split torus of $\mathrm{SL}(2,p)$, the oscillator states, the basis-averaged ratio
 $\mu_4/\mu_2^2$ of the Wigner values is exactly $2p/(p+1)$. Numerically, up to $p=401$, the whole value distribution
 of these states is the semicircle law. All computational predictions were registered before they were run.
@@ -90,6 +91,9 @@ characteristic \cite{MOS2018}.
 \paragraph{Exhaustive comparison.} Table~\ref{tab:cubic} lists the most negative cubic-phase state on three qudits,
 over every cubic form at $p=3$ ($2187$ forms) and $p=5$ ($9\,765\,625$), and over a random sample of $2\,000\,004$ at
 $p=7$. It is the norm state of Section~\ref{sec:norm} in every case, ahead of the CCZ-type state $\omega^{x_1x_2x_3}$.
+This stops at small $p$: random samples at $p=11$ and $13$ find forms above it, the best on smooth cubic curves
+($15.0136$ against $14.9008$ at $p=11$, $19.4987$ against $18.8877$ at $p=13$), whose share of the ceiling is close
+to Sato--Tate's.
 At $p=5$ some smooth cubic curves with $8$ points over $\F_5$ give exactly the same negativity, with different Wigner
 values; we do not know why. On two qudits the best cubic-phase states fall below the most negative states known
 (e.g.\ $(9+3\sqrt5)/10\approx1.5708$ against $1.7669$ at $p=5$), and from $p=7$ to $23$ their share of the ceiling lies
