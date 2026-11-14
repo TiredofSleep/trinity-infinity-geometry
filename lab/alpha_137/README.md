@@ -49,6 +49,37 @@ The five nearest expressions: 137 + a4/a1 (137.035912), 137 − a13/a12 (137.032
 
 Both deaths are kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md).
 
+## The author's answer, and the physics inside it (14 November 2026)
+
+> *the edge was close... and it has a range at high energies, likely due to the edge being on the edge... it
+> expresses the same 137 over itself fractally* — the author, 14 November 2026
+
+Checked by [`running.py`](running.py), whose output is in [`running.log`](running.log). Nothing here is a registered
+test.
+
+- **Close, in two senses.** The nearest expression is 6.3 × 10⁻⁷ of α⁻¹ away, which is close by everyday measure. It
+  is also 4 100 times the measurement's uncertainty, and the grammar comes that close by chance one time in 46. Both
+  stand.
+- **The range at high energies is real, and its cause is known** [NAMED: vacuum polarization; Gell-Mann and Low
+  1954]. Virtual charged pairs screen the charge, so the coupling grows as you look closer: 1/α falls from 137.036 at
+  zero momentum to about 128.9 at the Z mass (on shell; 127.95 in the MS-bar scheme). [checked] QED's one-loop
+  leptonic part of that fall, 0.031421, is within 0.25% of Steinhauser's three-loop 0.0314977; the hadrons add about
+  0.0276, measured from e⁺e⁻ data. Only the zero-momentum value is free of the scheme, which is why the test aimed at
+  it.
+- **The range is itself a staircase** [READING, with exact content]. Per unit of ln Q, 1/α falls with slope
+  −(2/3π)·b(Q), where b(Q) counts the charged particles lighter than Q, weighted by colour and charge squared. It is 1
+  above the electron's mass, 2 above the muon's, and 20/3 once the three leptons and five quarks are all in (below
+  about 2 GeV the hadrons' share is set by data, not by quark thresholds). Each particle steps the slope up at its
+  mass, as each prime lights up its multiples on WP34's staircase.
+- **"The same 137 over itself"** [NAMED; READING]. The renormalization group is the precise mathematics of a coupling
+  expressed over itself at every scale: its value at one scale fixes it at every other, through a flow (Gell-Mann and
+  Low 1954; Wilson 1971). So the edge does move with the scale, and what pins 137.036 is the zero-momentum limit.
+- **Two literal readings, computed on sight** (post hoc, not a test). The self-referential forms x = 137 + ln(x)/x and
+  x = 137 + ln(137)/x have fixed points 137.035905 and 137.035903. Both land farther from α⁻¹ than the plain form:
+  −9.4 × 10⁻⁵ and −9.6 × 10⁻⁵, against −8.7 × 10⁻⁵.
+- **What would move the reading on** is the registration's rule: one expression, named in advance, that predicts a
+  second constant before either is computed.
+
 ## Run it
 
 ```

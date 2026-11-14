@@ -1,0 +1,19 @@
+running.py: the exact physics inside the author's answer [FENCE]
+
+R1  one-loop leptonic running to the Z mass: 0.0314209; Steinhauser's three-loop total 0.0314977; ratio 0.99756
+    PASS: within 0.5%. With the hadrons (about 0.0276, from e+e- data) 1/alpha falls from 137.036 to about 128.94 at the Z mass (on shell; 127.95 in the MS-bar scheme)
+
+R2  the staircase of thresholds: b(Q) = sum of N_c Q_f^2 over charged particles lighter than Q
+    above      0.5 MeV (e): b = 1.0000, slope of 1/alpha per unit of ln Q = -0.2122
+    above    105.7 MeV (mu): b = 2.0000, slope of 1/alpha per unit of ln Q = -0.4244
+    above   1000.0 MeV (u, d, s (as quarks)): b = 4.0000, slope of 1/alpha per unit of ln Q = -0.8488
+    above   1270.0 MeV (c): b = 5.3333, slope of 1/alpha per unit of ln Q = -1.1318
+    above   1776.9 MeV (tau): b = 6.3333, slope of 1/alpha per unit of ln Q = -1.3440
+    above   4180.0 MeV (b): b = 6.6667, slope of 1/alpha per unit of ln Q = -1.4147
+    PASS: with the three leptons and five quarks, b = 20/3
+
+R3  post hoc, NOT a test (computed on first reading the author's message):
+    137 + ln 137/137 (round c's nearest)   137.035912270   -8.691e-05 from alpha^-1
+    fixed point of x = 137 + ln(x)/x       137.035904772   -9.440e-05 from alpha^-1
+    fixed point of x = 137 + ln(137)/x     137.035902861   -9.632e-05 from alpha^-1
+    PASS: both self-referential forms land farther from alpha^-1 than the plain form

@@ -81,6 +81,10 @@ check("R13: the genetic-code study's recorded results, rechecked by genetic_code
 _r14 = _sp.run([_sys.executable, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "alpha_137",
                                               "alpha_test.py"), "calibrate"], capture_output=True, text=True)
 check("R14: the edge at 137's atoms pass their cross-checks (alpha_137/alpha_test.py calibrate)", _r14.returncode == 0)
+_r15 = _sp.run([_sys.executable, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "alpha_137",
+                                              "running.py")], capture_output=True, text=True)
+check("R15: QED's one-loop leptonic running, the threshold staircase and the two post-hoc forms "
+      "(alpha_137/running.py)", _r15.returncode == 0)
 
 print()
 print("ALL CHECKS PASSED" if not FAILS else f"{len(FAILS)} FAILED: {FAILS}")
