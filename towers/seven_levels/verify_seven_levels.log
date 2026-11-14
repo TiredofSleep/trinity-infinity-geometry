@@ -92,5 +92,11 @@ PASS  TORUS_MOMENTS.md's counting steps at every prime from 5 to 61: the torus's
 PASS  the logged values give round 12's recorded scores (torus_moments_combined.log): M1 held, M2 held, M3 held, M4 held, M5 held
 PASS  (--full) the non-split basis averages of the sixth and eighth moments, recomputed at every prime from 211 to 401, are the logged ones
 
+round 13:
+PASS  every cubic-phase state's Wigner values are the Walsh spectrum of its cubic part: random cubic states with random lower terms on two wheels of 5 and 7 and three of 3 and 5 agree with their own Wigner functions (largest difference 8.9e-16)
+PASS  exhaustive: over all 2187 cubic forms on three wheels of 3 the best is 1.888888888889 = 17/9, the norm form's, and xyz has 1.777777777778 = 16/9; over all 625 on two wheels of 5 the best is 1.570820393250 = (9 + 3 sqrt 5)/10, below round 9's 1.766937; the cube state w^(x^3) at 5 has 0.447213595500 = 1/sqrt 5; and no form reaches the ceiling
+PASS  the logged values give round 13's recorded scores: K2 died, K4 died, K5 held (K0, K1, K3 and K6 are checked above or exactly)
+PASS  (--full) over all 9765625 cubic forms on three wheels of 5 the best is 4.252724292100, the norm form's
+
 SCORE: 7 of 8 predictions held: Q1 held, Q2 held, Q3 held, Q4 held, Q5 held, Q6 held, Q7 died, Q8 held
 matches the recorded score: yes; the page's other lines: all pass

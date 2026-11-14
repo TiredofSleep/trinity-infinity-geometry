@@ -16,7 +16,7 @@ Run:  python verify_seven_levels.py           (about two minutes)
       python verify_seven_levels.py --full    (also round 3's 2^24 sign choices on each side, round 4's 2^28 real
                                                sign choices, the tetrahedral states at 3, 7, 11 and 13, the norm
                                                state's exact count of symmetries, the fields' character states, and
-                                               rounds 10 to 12's reruns; about 45 minutes)
+                                               rounds 10 to 13's reruns; about 50 minutes)
 """
 import ctypes
 import itertools

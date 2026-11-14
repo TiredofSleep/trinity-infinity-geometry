@@ -874,7 +874,7 @@ five fresh ones died.
 
 ```
 python verify_seven_levels.py          # about two minutes (numpy + scipy)
-python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 45 minutes
+python verify_seven_levels.py --full   # adds the long counts (2^24, 2^28, the norm state's symmetries) and reruns: about 50 minutes
 python verify_norm_state.py            # NORM_STATE.md's proof, checked: about a minute (numpy)
 python most_negative.py                # round 2's search, about a minute and a half
 python round3.py                       # round 3, about seven minutes (numpy + sympy)
