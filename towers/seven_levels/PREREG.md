@@ -1826,3 +1826,83 @@ been made. They are counts without a phase, so part (a) predicts them.
 - K2 and K3 are less sure: they need the counts at the nodes to see only the unramified part.
 
 Run: `python edge_rule.py test` (seconds). It also reads J5's split into its two counts at 3, 5, 7 and 11, unscored.
+
+---
+
+## Round 21 scores (added after the test, 2026-11-14)
+
+Run by [`edge_rule.py`](edge_rule.py) `test`. Output: [`edge_rule_test.log`](edge_rule_test.log). The registration was
+committed at 1620be1 before the test. GitHub could not be reached at the time, so it was pushed later, unchanged,
+with these scores.
+
+**All four held, and so did the controls.**
+
+| | outcome | evidence |
+|---|---|---|
+| K0 | held | Clebsch's cubic has 21 lines over F_5: 15 in the Sylvester planes, and 6 through the centre |
+| K1 | held | T5(5) = 0, so t5(5) = 25 |
+| K2 | held | T7(5) = −5⁴ and T7(7) = 7⁴. So c(5) = −5 and c(7) = 7, and t7(5) = 325, t7(7) = 441 |
+| K3 | held | T9(5) = T9(7) = 0, and t9(5) = 4250, t9(7) = 7889, as K3's formulas give |
+| control | held | T1 = p and T3 = 0 at 5 and 7, and T5(7) = −343 |
+
+**Read after the run** (not scores).
+- **The signs of c.** c(5) = −5 and c(7) = 7 are the coefficients at the bad primes of LMFDB's newform 35.3.c.b. Its
+  twin 35.3.c.a has +5 and −7 there.
+  - The q-expansion of 35.3.c.b matches X7's c(p) at every prime to 97.
+  - So X7's count is t7 = p²(14 + 6(5|p)) + p·a_p(35.3.c.b) at every prime from 5 to 601. Round 20's open item, the
+    signs, is closed.
+- **J5's two counts at its edges.** J5 = p(pZ − N), where N counts the closed pentagons on a circle and Z those with
+  phase 0.
+  - N follows Kloosterman's fifth moment at 3, 5, 7 and 11. At 3 that needs (−3|3) read as 0: the average, part (a).
+  - The whole deviation is in Z. At 3, Z = 60 where the side formula gives 24, so 36 = p²(p + 1) more configurations
+    have phase 0.
+  - At 5, Z = 6 where the side formula gives 36. The triangles vanish, since 4ν² − 52ν + 9 = 4(ν + 1)² there. Only
+    the six configurations (v, −v, v, −v, v) remain, and they close because 5v = 0: the regular decagon, merged onto a
+    diameter.
+  - At 7 and 11 both counts follow their formulas.
+
+**Yield.**
+- The rule's half (a), the fixed set, held blind at the cubics' five edge values and in K0's lines.
+- Its half (b), the mirror, rests on J3, whose mechanism is forced.
+- J5's deviations at its edges sit in its phase-0 count, not in its count of closed pentagons. That was read after
+  the run.
+
+---
+
+## Round 22: the cubic in eleven variables (registered 2026-11-14, before the test)
+
+> *1 and 2, the mirror rule first* — the author, 14 November 2026. The "2" says yes to the cubic in eleven variables,
+> past the base's edge at 10.
+
+X11 = {x1 + ⋯ + x11 = x1³ + ⋯ + x11³ = 0} is a cubic eightfold, and nothing about it has been computed. Its primitive
+middle cohomology has dimension 342. By the Airy decomposition of round 21, with m(11, ·) = 132, 165, 110, 44, 10, 1,
+
+  t11 = p⁴(132 + 110(5|p) + 10(105|p)) + 44p³c(p) + p⁻²T11,
+
+where c is X7's form, 35.3.c.b. Two facts fix T11's shape before any count.
+- **Its size** [FORCED; F4].
+  - The lower pieces use 340 of the 342 dimensions: 132 + 110 + 10 + 44·2. So T11's classical part is two-dimensional.
+  - Sabbah and Yu's Hodge numbers put it at (7, 5) + (5, 7), so it is not algebraic. It is a form of weight 3, with
+    T11 = p⁵g(p) and |g(p)| ≤ 2p.
+  - A weight-3 newform with rational coefficients has complex multiplication. Its character ε is odd, and
+    a_p = ε(p)a_p makes a_p = 0 wherever ε(p) = −1 [NAMED: Ribet 1977, on inner twists].
+- **Where it ramifies** [READING; F3].
+  - X11 has 165 nodes at 5, 55 at 7, and 1 at 11: the centre, where the eleven points coincide.
+  - The lower pieces account for 164, 54 and 0 of them.
+  - If each node is one ramified dimension, as at 5 and 7 in round 21, then the new piece is ramified at 5, 7 and 11.
+
+| | prediction | dies if |
+|---|---|---|
+| Q1 | T11 = p⁵g(p), with g(p) an integer and \|g(p)\| ≤ 2p, at every prime from 13 to 401 | a prime fails |
+| Q2 | g has complex multiplication. It vanishes exactly at the primes inert in one imaginary quadratic field K = Q(√−s), and 4p² − g(p)² is s times a square at the others | two fields, or none |
+| Q3 | 5, 7 and 11 ramify in K: √−11 enters at 11, as √−7 entered at 7 | one of them does not |
+| Q3′ | K = Q(√−1155). The signed square roots 3*, 5*, 7*, 11* multiply to −1155: the pattern 5, −35, 105 of 5, 7 and 9, continued | another field |
+| Q4 | at the edge primes 5, 7 and 11, \|g(p)\| = p | another value |
+| instrument | T1 = p, T3 = 0, T5 = (5\|p)p³, \|T7\| = p³\|c(p)\| and T9 = (105\|p)p⁵ at every prime from 13 to 401 | one fails |
+
+**The drafter's expectation.**
+- Q1 and Q2 hold.
+- Q3 holds if the node reading does.
+- Q3′ is a guess. Q(√−385), with 2 ramified in place of 3, fits the nodes just as well.
+
+Run: `python edge_rule.py test22` (a few minutes, four processes at below-normal priority).

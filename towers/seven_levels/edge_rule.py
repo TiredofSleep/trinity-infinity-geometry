@@ -348,6 +348,88 @@ def test():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 22: the cubic in eleven variables
+# LMFDB newform 35.3.c.b (weight 3, level 35, CM by Q(sqrt -35)): a_p at the primes to 97, read from its q-expansion
+LMFDB_35_3_c_b = {2: 0, 3: 1, 5: -5, 7: 7, 11: -13, 13: -19, 17: 29, 19: 0, 23: 0, 29: 23, 31: 0, 37: 0, 41: 0, 43: 0,
+                  47: -31, 53: 0, 59: 0, 61: 0, 67: 0, 71: 2, 73: -34, 79: -157, 83: 86, 89: 0, 97: 149}
+
+
+def squarefree_part(n):
+    s = 1
+    for q, e in sympy.factorint(n).items():
+        if e % 2:
+            s *= q
+    return s
+
+
+def fundamental_disc(s):
+    """the discriminant of Q(sqrt -s), s squarefree and positive"""
+    return -s if (-s) % 4 == 1 else -4 * s
+
+
+def _x11(p):
+    low_priority()
+    return p, t_values(p, (3, 5, 7, 9, 11))
+
+
+def test22():
+    """round 22 (PREREG.md): Q1 to Q4 -- the cubic eightfold X11 = {sum x = sum x^3 = 0} in eleven variables"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test22.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    P = primes(13, 401)
+    E = [5, 7, 11]
+    say("Round 22: the cubic in eleven variables (PREREG.md)")
+    say(f"primes {P[0]}..{P[-1]} ({len(P)}), and the edge primes {E}")
+    with Pool(4) as pool:
+        res = dict(pool.map(_x11, P + E))
+    say("X11 p t11 g (5|p) (105|p) a(p)   [t11 = p^4(132 + 110(5|p) + 10(105|p)) + 44p^3 a(p) + p^3 g(p)]")
+    g, lower_ok, lmfdb_ok = {}, True, True
+    for p in E + P:
+        t = res[p]
+        T = airy(p, t)
+        a = T[7] / p ** 3
+        if p not in E:
+            lower_ok &= (T[1] == p and T[3] == 0 and T[5] == leg(5, p) * p ** 3 and a.denominator == 1
+                         and abs(int(a)) == cf.cm35(p) and T[9] == leg(105, p) * p ** 5)
+        if p in LMFDB_35_3_c_b:
+            lmfdb_ok &= a == LMFDB_35_3_c_b[p]
+        g[p] = T[11] / p ** 5
+        say(f"X11 {p} {t[11]} {g[p]} {leg(5, p)} {leg(105, p)} {a}")
+    say(f"instrument: T1 = p, T3 = 0, T5 = (5|p)p^3, |T7/p^3| = |c(p)|, T9 = (105|p)p^5 at every prime 13..401: {lower_ok}")
+    say(f"read: X7's c(p) equals LMFDB 35.3.c.b's a_p at every prime to 97 here, the edges 5, 7, 11 included: {lmfdb_ok}")
+    bad1 = [p for p in P if g[p].denominator != 1 or abs(g[p]) > 2 * p]
+    say(f"Q1 p^5 divides T11 and |g(p)| <= 2p at every prime 13..401: {'HELD' if not bad1 else 'FAILED at ' + str(bad1)}")
+    zeros = [p for p in P if g[p] == 0]
+    svals = {p: squarefree_part(4 * p * p - int(g[p]) ** 2) for p in P if g[p] != 0 and not bad1}
+    S = sorted(set(svals.values()))
+    say(f"  g(p) = 0 at {len(zeros)} primes; squarefree parts of 4p^2 - g(p)^2 at the others: {S}")
+    q2 = False
+    if len(S) == 1 and not bad1:
+        s = S[0]
+        d = fundamental_disc(s)
+        pattern = all((g[p] == 0) == (sympy.jacobi_symbol(d % p, p) == -1) for p in P if d % p)
+        D = {p: 4 * p * p - int(g[p]) ** 2 for p in P if g[p] != 0}
+        squares = all(D[p] % s == 0 and sympy.integer_nthroot(D[p] // s, 2)[1] for p in D)
+        q2 = pattern and squares
+        say(f"  one field: Q(sqrt -{s}), discriminant {d} = {sympy.factorint(abs(d))}; g = 0 exactly at its inert primes: "
+            f"{pattern}; 4p^2 - g^2 = {s} v^2 at the others: {squares}")
+    say(f"Q2 g has complex multiplication by one imaginary quadratic field: {'HELD' if q2 else 'FAILED'}")
+    if q2:
+        q3 = all(s % r == 0 for r in (5, 7, 11))
+        say(f"Q3 5, 7 and 11 ramify in it (the nodes): {'HELD' if q3 else 'FAILED'}")
+        say(f"Q3' it is Q(sqrt -1155) (the pattern 5, 7, 9 -> 3, 11): {'HELD' if s == 1155 else 'FAILED'}")
+    else:
+        say("Q3 and Q3': not scored, since Q2 failed")
+    q4 = all(g[p].denominator == 1 and abs(g[p]) == p for p in E)
+    for p in E:
+        say(f"  edge p={p}: {len(cf.singular_sign_points(11, p))} nodes, g(p) = {g[p]}")
+    say(f"Q4 |g(p)| = p at the edge primes 5, 7 and 11: {'HELD' if q4 else 'FAILED'}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":

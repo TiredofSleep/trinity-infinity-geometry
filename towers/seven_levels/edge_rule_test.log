@@ -1,0 +1,15 @@
+Round 21: the coin on its edge -- the cubics at their edge primes 5 and 7 (PREREG.md)
+LINES p=5: 21 lines on Clebsch's cubic, 15 in the Sylvester planes, 6 through the centre
+K0 21 lines over F_5: the 15 of the edge and 6 through the centre: HELD
+CUBIC p=5: t3=2 t5=25 t7=325 t9=4250   T1=5 T3=0 T5=0 T7=-625 T9=0
+CUBIC p=7: t3=2 t5=28 t7=441 t9=7889   T1=7 T3=0 T5=-343 T7=2401 T9=0
+control: T1 = p and T3 = 0 at 5 and 7, T5(7) = (5|7)7^3 = -343: True
+K1 T5(5) = 0, so t5(5) = 25 (the symbol reads 0; the reflection would give 10): HELD  (T5(5) = 0)
+K2 |T7(5)| = 5^4 and |T7(7)| = 7^4, so |c(5)| = 5 and |c(7)| = 7: HELD  (c(5) = -5, c(7) = 7)
+K3 T9(5) = T9(7) = 0 (the symbol (105|p) reads 0): HELD  (T9(5) = 0, T9(7) = 0)
+READ (not scored): J5 = p(pZ - N) split at small primes
+  p=3: N = 100 (from Kloosterman's V5 = 31 over a != 0: 100), Z = 60 (the curve's side formula: 24), J5 = 240
+  p=5: N = 366 (from Kloosterman's V5 = -229 over a != 0: 366), Z = 6 (the curve's side formula: 36), J5 = -1680
+  p=7: N = 400 (from Kloosterman's V5 = 1646 over a != 0: 400), Z = 80 (the curve's side formula: 80), J5 = 1120
+  p=11: N = 2520 (from Kloosterman's V5 = -4674 over a != 0: 2520), Z = 120 (the curve's side formula: 120), J5 = -13200
+time 0.0 minutes
