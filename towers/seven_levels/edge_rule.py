@@ -430,6 +430,155 @@ def test22():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 23: the cubic in thirteen variables
+def _x13(p):
+    low_priority()
+    return p, t_values(p, (3, 5, 7, 9, 11, 13))
+
+
+def fundamental_discs(limit):
+    """every fundamental discriminant D with |D| <= limit, of either sign, and D = 1 (the trivial character)"""
+    sf = bytearray([1]) * (limit + 1)
+    for q in range(2, int(limit ** 0.5) + 1):
+        sf[q * q::q * q] = bytearray(len(sf[q * q::q * q]))
+    out = [1]
+    for d in range(-limit, limit + 1):
+        if d in (0, 1):
+            continue
+        if d % 4 == 1 and sf[abs(d)]:
+            out.append(d)
+        elif d % 4 == 0 and (d // 4) % 4 in (2, 3) and sf[abs(d // 4)]:
+            out.append(d)
+    return out
+
+
+def kron(D, p):
+    """the Kronecker symbol (D|p) for an odd prime p"""
+    return leg(D, p) if D % p else 0
+
+
+def split_tate_cm(P, U):
+    """U[p] = chi(p) p^2 + h(p) with chi a quadratic character and h a weight-5 form with complex multiplication?
+    At the primes inert in the CM field, h = 0 and p^2 divides U; at the split ones h is a unit mod p.  Returns
+    (ok, D_chi, d_K, s, report lines)."""
+    lines = []
+    inert = [p for p in P if U[p] % p == 0]
+    split = [p for p in P if U[p] % p]
+    chi = {p: U[p] // (p * p) if U[p] % (p * p) == 0 else None for p in inert}
+    lines.append(f"  p divides u at {len(inert)} primes; there u/p^2 = {sorted(set(chi.values()), key=str)}")
+    if not all(v in (1, -1) for v in chi.values()):
+        return False, None, None, None, lines
+    # the CM field first: at each other prime one sign of chi(p) must leave 4p^4 - h^2 = s w^2, with one s for all
+    opts = {}
+    for p in split:
+        opts[p] = {e: squarefree_part(4 * p ** 4 - (U[p] - e * p * p) ** 2)
+                   for e in (1, -1) if abs(U[p] - e * p * p) < 2 * p * p}
+    common = set.intersection(*(set(o.values()) for o in opts.values())) if opts else set()
+    lines.append(f"  squarefree parts shared by every one of the {len(split)} other primes: {sorted(common)}")
+    if len(common) != 1:
+        return False, None, None, None, lines
+    s = common.pop()
+    for p in split:
+        es = [e for e, v in opts[p].items() if v == s]
+        chi[p] = es[0] if len(es) == 1 else None
+    known = {p: v for p, v in chi.items() if v is not None}
+    cands = [D for D in fundamental_discs(100000) if all(kron(D, p) == v for p, v in known.items())]
+    lines.append(f"  quadratic characters matching chi at all {len(known)} primes where it is fixed, |D| <= 100000: "
+                 f"{cands[:6]}")
+    if len(cands) != 1:
+        return False, None, None, s, lines
+    Dchi = cands[0]
+    h = {p: U[p] - kron(Dchi, p) * p * p for p in P}
+    dK = fundamental_disc(s)
+    pattern = all((p in inert) == (kron(dK, p) == -1) for p in P)
+    squares = all((4 * p ** 4 - h[p] ** 2) % s == 0 and sympy.integer_nthroot((4 * p ** 4 - h[p] ** 2) // s, 2)[1]
+                  for p in split)
+    lines.append(f"  chi = ({Dchi}|p), {sympy.factorint(abs(Dchi)) if Dchi != 1 else 'trivial'}; K = Q(sqrt {dK}), "
+                 f"{sympy.factorint(abs(dK))}; u = chi p^2 exactly at K's inert primes: {pattern}; "
+                 f"4p^4 - h^2 = {s} w^2 at the others: {squares}")
+    return pattern and squares, Dchi, dK, s, lines
+
+
+def test23():
+    """round 23 (PREREG.md): S1 to S7 -- the cubic in thirteen variables and its three-dimensional piece"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test23.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    P = primes(17, 401)
+    E = [5, 7, 11, 13]
+    say("Round 23: the cubic in thirteen variables (PREREG.md)")
+    say(f"primes {P[0]}..{P[-1]} ({len(P)}), and the edge primes {E}")
+    with Pool(4) as pool:
+        res = dict(pool.map(_x13, P + E))
+    say("X13 p t13 u (5|p) (105|p) a(p) g(p)   [u = T13/p^5]")
+    u, T13, inst = {}, {}, True
+    for p in E + P:
+        t = res[p]
+        T = airy(p, t)
+        a, g = T[7] / p ** 3, T[11] / p ** 5
+        if p not in E:
+            inst &= (T[1] == p and T[3] == 0 and T[5] == leg(5, p) * p ** 3 and a.denominator == 1
+                     and abs(int(a)) == cf.cm35(p) and T[9] == leg(105, p) * p ** 5 and g.denominator == 1
+                     and (g == 0) == (leg(-1155, p) == -1))
+            if g != 0:
+                D_ = 4 * p * p - int(g) ** 2
+                inst &= D_ % 1155 == 0 and sympy.integer_nthroot(D_ // 1155, 2)[1]
+        if p in LMFDB_35_3_c_b:
+            inst &= a == LMFDB_35_3_c_b[p]
+        T13[p] = T[13]
+        u[p] = T[13] / p ** 5
+        say(f"X13 {p} {t[13]} {u[p]} {leg(5, p)} {leg(105, p)} {a} {g}")
+    say(f"instrument: T1..T11 as found in rounds 19 to 22 at every prime 17..401: {inst}")
+    bad1 = [p for p in P if u[p].denominator != 1 or abs(u[p]) > 3 * p * p]
+    s1 = not bad1
+    say(f"S1 T13 = p^5 u(p), u an integer with |u| <= 3p^2, at every prime 17..401: {'HELD' if s1 else 'FAILED at ' + str(bad1)}")
+    s2 = s3 = s4 = s5 = s6 = s6b = s7 = False
+    Dchi = dK = s = None
+    if s1:
+        s2, Dchi, dK, s, lines = split_tate_cm(P, {p: int(u[p]) for p in P})
+        for line in lines:
+            say(line)
+    say(f"S2 the new piece splits into a twisted Tate class and a weight-5 form with complex multiplication: "
+        f"{'HELD' if s2 else 'FAILED'}")
+    if s2:
+        def ram(D, q):
+            return D % q == 0
+        s3 = all(ram(Dchi, q) != ram(dK, q) for q in (5, 7, 11, 13))
+        s4 = ram(Dchi, 3) != ram(dK, 3)
+        s5 = Dchi > 0 and Dchi % 2 and dK % 2 and Dchi * dK == -15015
+        s6 = Dchi == 5 and dK == -3003
+        s6b = Dchi == 13 and dK == -1155
+        say(f"S3 each of 5, 7, 11 and 13 ramifies in exactly one of chi and K (the nodes): {'HELD' if s3 else 'FAILED'}")
+        say(f"S4 3 ramifies in exactly one of them (3 at its square): {'HELD' if s4 else 'FAILED'}")
+        say(f"S5 chi is even and 2 ramifies in neither, so D_chi d_K = -15015: {'HELD' if s5 else 'FAILED'}")
+        say(f"S6 chi = (5|p) and K = Q(sqrt -3003), the icosahedron's sqrt 5: {'HELD' if s6 else 'FAILED'}")
+        say(f"S6' chi = (13|p) and K = Q(sqrt -1155), eleven's field kept: {'HELD' if s6b else 'FAILED'}")
+        ok7 = True
+        for q in E:
+            v = T13[q]
+            if ram(dK, q) and not ram(Dchi, q):
+                good = v in (0, 2 * q ** 7, -2 * q ** 7)
+            elif ram(Dchi, q) and not ram(dK, q):
+                hq = v / q ** 5
+                good = hq.denominator == 1 and abs(hq) <= 2 * q * q and (
+                    (hq == 0) if kron(dK, q) == -1 else
+                    ((4 * q ** 4 - int(hq) ** 2) % s == 0 and sympy.integer_nthroot((4 * q ** 4 - int(hq) ** 2) // s, 2)[1]))
+            else:
+                good = False
+            ok7 &= good
+            say(f"  edge q={q}: {len(cf.singular_sign_points(13, q))} nodes, T13 = {v} = q^5 * {v / q ** 5}; "
+                f"ramified in {'K' if ram(dK, q) else ''}{'chi' if ram(Dchi, q) else ''}: {good}")
+        s7 = ok7
+        say(f"S7 at the edge primes 5, 7, 11 and 13, T13 is the trace on the unramified part: {'HELD' if s7 else 'FAILED'}")
+    else:
+        say("S3 to S7: not scored, since S2 failed")
+        for q in E:
+            say(f"  edge q={q}: T13 = {T13[q]} = q^5 * {T13[q] / q ** 5}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
@@ -438,3 +587,5 @@ if __name__ == "__main__":
         test()
     elif mode == "test22":
         test22()
+    elif mode == "test23":
+        test23()

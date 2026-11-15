@@ -1937,3 +1937,67 @@ Run by [`edge_rule.py`](edge_rule.py) `test22`, registered at c1dcfb4 before the
 - −1155 = (−3)·5·(−7)·(−11), the signed square roots of the odd primes up to 11. It continues the 5, −35 and 105 of
   5, 7 and 9.
 - The nodes predicted where the new piece ramifies, and they were right at all three primes they can see.
+
+---
+
+## Round 23: the cubic in thirteen variables (registered 2026-11-14, before the test)
+
+> *1 and 2, thirteen first* — the author, 14 November 2026. The "1" says yes to registering 13 next. The "2" says yes:
+> 9 is two coins of 3 tossed together, so 3 enters only at its square.
+
+X13 = {x1 + ⋯ + x13 = x1³ + ⋯ + x13³ = 0} is a cubic tenfold, and it has never been counted. Its primitive middle
+cohomology has dimension 1366, with Hodge numbers 1, 220, 924, 220, 1 [FORCED: Griffiths' residues; the Jacobian
+ring of a cubic in twelve variables has Hilbert series (1 + t)¹²]. By the Airy decomposition of rounds 21 and 22, with
+m(13, ·) = 429, 572, 429, 208, 65, 12, 1,
+
+  t13 = p⁵(429 + 429(5|p) + 65(105|p)) + 208p⁴c(p) + 12p⁴g(p) + p⁻²T13,
+
+where c is X7's form, 35.3.c.b, and g is X11's, with complex multiplication by Q(√−1155).
+- **Its size and shape** [FORCED; F4].
+  - The lower pieces use 1363 of the 1366 dimensions, so the new piece V13 has three.
+  - Sabbah and Yu's types for it are (5, 9), (7, 7) and (9, 5). In X13 the (7, 7) is one more Tate class, which brings
+    h^(5,5) to 924 = 429 + 429 + 65 + 1, and the rest is the h^(7,3) = 1.
+- **If it splits**, it is a twisted Tate class and a weight-5 form: T13 = χ(p)p⁷ + p⁵h(p).
+  - A weight-5 form with rational coefficients has complex multiplication, because its character is odd, as at
+    weight 3.
+  - So h vanishes at the primes inert in a field K, and there T13 = χ(p)p⁷.
+- **The nodes** [F3].
+  - X13 has 715 nodes at 5, 286 at 7, 13 at 11, and 1 at 13: the centre.
+  - The lower pieces fill all but one at each of these primes. So V13 has one ramified dimension at each of 5, 7, 11
+    and 13: each ramifies in exactly one of χ and K.
+- **3 at its square** (the author's "2").
+  - 3 ramifies in V9 and V11, and not in V5 or V7.
+  - Count the odd multiples of 9, as the nodes count the odd multiples of p: there is one up to 13. So 3 ramifies in
+    exactly one of χ and K.
+- **The pattern cannot sit in one field.**
+  - The signed roots up to 13 multiply to −15015, but Q(√−15015) has class number 96 and exponent 12.
+  - A rational weight-5 CM form needs a class group of exponent dividing 4 [NAMED: Schütt].
+  - Of the 16 ways to share 3, 5, 7, 11 and 13 between an even χ and an imaginary K, 12 remain:
+    (5, −3003), (13, −1155), (21, −715), (77, −195), (165, −91), (273, −55), (429, −35), (385, −39), (1001, −15),
+    (1365, −11), (2145, −7) and (5005, −3), as (D_χ, d_K).
+- **A guess from the base.** In [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md) 13 is the icosahedron with
+  its centre, and the icosahedron's field is Q(√5).
+  - If the Tate class carries that solid face's √5, then χ = (5|p) and K = Q(√−3003), with 3003 = 3·7·11·13.
+  - The 13-gon's √13 then goes into the form, with 3, 7 and 11.
+
+| | prediction | dies if |
+|---|---|---|
+| S1 | T13 = p⁵u(p), with u(p) an integer and \|u(p)\| ≤ 3p², at every prime from 17 to 401 | a prime fails |
+| S2 | V13 splits. There are a quadratic character χ and an imaginary quadratic field K = Q(√−s) such that u(p) = χ(p)p² at exactly the primes inert in K, and h(p) = u(p) − χ(p)p² has \|h(p)\| < 2p² and 4p⁴ − h(p)² = s·w² at the others | no such χ and K |
+| S3 | each of 5, 7, 11 and 13 ramifies in exactly one of χ and K (the nodes) | one does not |
+| S4 | 3 ramifies in exactly one of χ and K (3 at its square) | it ramifies in both or neither |
+| S5 | χ is even, like (5\|p) and (105\|p), and 2 ramifies in neither, so D_χ·d_K = −15015 | otherwise |
+| S6 | χ = (5\|p) and K = Q(√−3003): the icosahedron's √5 | another pair |
+| S6′ | χ = (13\|p) and K = Q(√−1155): the new prime twists the Tate class, and the form keeps eleven's field | another pair |
+| S7 | at the edge primes 5, 7, 11 and 13, T13 is the trace on the unramified part. Where q ramifies in K it is 0 or ±2q⁷; where q ramifies in χ it is q⁵h(q), with h(q) of K's CM shape | another value |
+| instrument | T1 to T11 as found in rounds 19 to 22, at every prime from 17 to 401 | one fails |
+
+**The drafter's expectation.**
+- S1 holds.
+- S2 holds if the piece splits, which Sabbah and Yu's types allow but do not force.
+- S3 and S4 follow from S2, if the node reading holds. S5 is likely.
+- S6 and S6′ are guesses, about one chance in twelve each.
+
+The identification step was checked first on planted pieces with known answers ((5|p), (13|p) or trivial, beside
+Q(√−35)'s weight-5 form), and on a control that does not split. Run: `python edge_rule.py test23` (a few minutes, four
+processes at below-normal priority).
