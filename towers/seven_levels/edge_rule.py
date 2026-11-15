@@ -579,6 +579,94 @@ def test23():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 24: thirteen's symmetric square, blind; fifteen
+# read after round 23: u(p) + (-15015|p) p^2 = s_p b_p^2, where s_p holds the prime l exactly when (D_l|p) = -1
+SYM2_CHARS = {-1: -15015, 2: -715, 3: 5005, 5: -3003, 11: -35, 13: -1155}
+
+
+def sym2_class(p):
+    s = 1
+    for l, D in SYM2_CHARS.items():
+        if kron(D, p) == -1:
+            s *= l
+    return s
+
+
+def sym2_ok(p, u):
+    """does u = s_p b^2 - (-15015|p) p^2 for an integer b?"""
+    if u.denominator != 1:
+        return False
+    v = int(u) + kron(-15015, p) * p * p
+    s = sym2_class(p)
+    return v % s == 0 and v // s >= 0 and sympy.integer_nthroot(v // s, 2)[1]
+
+
+def _x15(p):
+    low_priority()
+    return p, t_values(p, (3, 5, 7, 9, 11, 13, 15))
+
+
+def test24():
+    """round 24 (PREREG.md): R1 (thirteen's symmetric square, blind) and F1 to F4 (the cubic in fifteen variables)"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test24.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    P13, P15, E = primes(409, 601), primes(17, 401), [5, 7, 11, 13]
+    say("Round 24: thirteen's symmetric square at new primes, and the cubic in fifteen variables (PREREG.md)")
+    say(f"X13 at {P13[0]}..{P13[-1]} ({len(P13)}); X15 at {P15[0]}..{P15[-1]} ({len(P15)}) and the edge primes {E}")
+    with Pool(4) as pool:
+        r13 = dict(pool.map(_x13, P13))
+        r15 = dict(pool.map(_x15, P15 + E))
+    bad = []
+    for p in P13:
+        u = airy(p, r13[p])[13] / p ** 5
+        ok = u.denominator == 1 and abs(u) <= 3 * p * p and sym2_ok(p, u)
+        say(f"X13 {p} u={u} s_p={sym2_class(p)} {ok}")
+        if not ok:
+            bad.append(p)
+    say(f"R1 u(p) + (-15015|p)p^2 = s_p b^2 at every prime 409..601: {'HELD' if not bad else 'FAILED at ' + str(bad)}")
+    say("X15 p t15 w   [w = T15/p^7]")
+    w, T15, inst = {}, {}, True
+    for p in E + P15:
+        t = r15[p]
+        T = airy(p, t)
+        a, g = T[7] / p ** 3, T[11] / p ** 5
+        if p not in E:
+            inst &= (T[1] == p and T[3] == 0 and T[5] == leg(5, p) * p ** 3 and a.denominator == 1
+                     and abs(int(a)) == cf.cm35(p) and T[9] == leg(105, p) * p ** 5 and g.denominator == 1
+                     and (g == 0) == (leg(-1155, p) == -1) and sym2_ok(p, T[13] / p ** 5))
+        T15[p] = T[15]
+        w[p] = T[15] / p ** 7
+        say(f"X15 {p} {t[15]} {w[p]}")
+    say(f"instrument: T1..T13 as found in rounds 19 to 23 at every prime 17..401: {inst}")
+    bad1 = [p for p in P15 if w[p].denominator != 1 or abs(w[p]) > 2 * p]
+    say(f"F1 T15 = p^7 w(p), w an integer with |w| <= 2p, at every prime 17..401: {'HELD' if not bad1 else 'FAILED at ' + str(bad1)}")
+    f2 = f3 = False
+    if not bad1:
+        zeros = [p for p in P15 if w[p] == 0]
+        S = sorted({squarefree_part(4 * p * p - int(w[p]) ** 2) for p in P15 if w[p] != 0})
+        say(f"  w(p) = 0 at {len(zeros)} primes; squarefree parts of 4p^2 - w^2 at the others: {S}")
+        if len(S) == 1:
+            s = S[0]
+            d = fundamental_disc(s)
+            pattern = all((w[p] == 0) == (kron(d, p) == -1) for p in P15 if d % p)
+            D = {p: 4 * p * p - int(w[p]) ** 2 for p in P15 if w[p] != 0}
+            squares = all(D[p] % s == 0 and sympy.integer_nthroot(D[p] // s, 2)[1] for p in D)
+            f2 = pattern and squares
+            say(f"  one field: Q(sqrt -{s}), discriminant {d} = {sympy.factorint(abs(d))}; w = 0 exactly at its inert "
+                f"primes: {pattern}; 4p^2 - w^2 = {s} v^2 at the others: {squares}")
+            f3 = f2 and d == -3003
+    say(f"F2 w has complex multiplication by one imaginary quadratic field: {'HELD' if f2 else 'FAILED'}")
+    say(f"F3 the field is Q(sqrt -3003): 7, 11, 13 by the nodes, 3 at its square, 5 kept out: {'HELD' if f3 else 'FAILED'}")
+    ok4 = T15[5] == 0 and all(abs(T15[q]) == q ** 8 for q in (7, 11, 13))
+    for q in E:
+        say(f"  edge q={q}: {len(cf.singular_sign_points(15, q))} nodes, T15 = {T15[q]} = q^8 * {T15[q] / q ** 8}")
+    say(f"F4 T15(5) = 0 and |T15(q)| = q^8 at q = 7, 11, 13: {'HELD' if ok4 else 'FAILED'}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
@@ -589,3 +677,5 @@ if __name__ == "__main__":
         test22()
     elif mode == "test23":
         test23()
+    elif mode == "test24":
+        test24()

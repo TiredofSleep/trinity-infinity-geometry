@@ -2001,3 +2001,95 @@ where c is X7's form, 35.3.c.b, and g is X11's, with complex multiplication by Q
 The identification step was checked first on planted pieces with known answers ((5|p), (13|p) or trivial, beside
 Q(√−35)'s weight-5 form), and on a control that does not split. Run: `python edge_rule.py test23` (a few minutes, four
 processes at below-normal priority).
+
+---
+
+## Round 23 scores (added after the test, 2026-11-14)
+
+Run by [`edge_rule.py`](edge_rule.py) `test23`, registered at 6403bfd before the test. Output:
+[`edge_rule_test23.log`](edge_rule_test23.log).
+
+**S1 held. S2 died, and S3 to S7 are void with it.**
+
+| | outcome | evidence |
+|---|---|---|
+| S1 | held | T13 = p⁵u(p), with u(p) an integer and \|u(p)\| ≤ 3p², at all 73 primes from 17 to 401 |
+| S2 | **failed** | p divides u(p) at none of the 73 primes. A twisted Tate class beside a CM form would make p divide u at the primes inert in the CM field, about half of them. So the piece does not split |
+| S3 to S7 | void | they named the parts of a split that does not exist. The two guesses, S6 and S6′, are void with them |
+| instrument | held | T1 to T11 at every prime from 17 to 401 |
+
+**Read after the run** (not scores).
+- **A symmetric square.** At every one of the 73 primes, u(p) + (−15015|p)p² = s_p·b_p², with b_p an integer and s_p a
+  product of −1, 2, 3, 5, 11 and 13. Six quadratic characters decide which of them s_p holds:
+  - −1 by (−15015|p), 2 by (−715|p), 3 by (5005|p);
+  - 5 by (−3003|p), 11 by (−35|p) and 13 by (−1155|p);
+  - 7 never.
+  - So u(p) = a_p² − (−15015|p)p², with a_p = b_p√s_p. That is the trace of the symmetric square of a two-dimensional
+    piece of weight 3 whose determinant has the character (−15015|p).
+- [READING] **What the piece is.**
+  - The Airy pieces carry an orthogonal pairing, and a three-dimensional orthogonal piece is a twisted symmetric
+    square [NAMED: SO(3) ≅ PGL(2), and Tate's lifting of projective representations].
+  - Its two-dimensional root behaves like a weight-3 form with character (−15015|p) and inner twists by the five
+    other characters, with coefficients in Q(√−1, √2, √3, √5, √11, √13).
+  - Two of those twists are the CM fields of 7 and 11.
+  - It is ordinary at every prime tested, which a CM piece is not.
+- **The pattern lives on, in the determinant.** −15015 = (−3)·5·(−7)·(−11)·13 is the product of the signed square
+  roots up to 13.
+  - Schütt's condition forbids it as a CM field. It appears as the determinant's character, as (5|p), (−35|p) and
+    (105|p) did at 5, 7 and 9.
+  - At 7 the form's character is (−35|p) (LMFDB).
+- **The edges.** T13(5) = 0, T13(7) = 32·7⁵, T13(11) = 0 and T13(13) = 182·13⁵.
+- **3** ramifies in the piece, since its determinant's character does. So 3 is in V9, V11 and V13, and not in V5 or V7.
+  That was read after the run, so the author's "3 at its square" agrees with 13 but was not tested there.
+
+**Yield.** The coin at 13 does not split as 5, 7, 9 and 11 did. Its piece is a symmetric square, and the signed roots'
+pattern moves into its determinant.
+
+---
+
+## Round 24: thirteen's symmetric square, blind, and the cubic in fifteen variables (registered 2026-11-14, before the test)
+
+> *1 and 2, thirteen first* — the author, 14 November 2026. The "2": 9 is two coins of 3 tossed together, so 3 enters
+> only at its square.
+
+Round 23's read counts for nothing until it is tested blind. This round tests it at primes no count of X13 has seen.
+It also tests the author's "3 at its square" where the nodes say the most: in fifteen variables.
+
+- **Thirteen.** R1 restates the read exactly, with its six characters fixed.
+- **Fifteen** [FORCED: F3 and F4].
+  - X15 = {Σx = Σx³ = 0} in fifteen variables has never been counted.
+  - Its new piece V15 has two dimensions, of Hodge types (7, 9) and (9, 7), and it is orthogonal. A two-dimensional
+    orthogonal piece with two different Hodge types has complex multiplication [NAMED: Livné]. So T15 = p⁷w(p), with w
+    a weight-3 CM form.
+- **The nodes of X15.**
+  - X15 has 3004 nodes at 5, 1365 at 7, 105 at 11 and 15 at 13. The lower pieces leave 2 at 5, and 1 at each of 7, 11
+    and 13.
+  - 5 counts twice, because 5 and 15 are both odd multiples of 5. So at 5 both dimensions ramify: the Hecke character
+    ramifies there, and the field does not.
+  - At 7, 11 and 13 the field ramifies, and the Hecke character does not.
+- **3 at its square.** There is one odd multiple of 9 up to 15, so 3 ramifies in the field.
+- **Only one field fits.**
+  - Of the fields ramified at 7, 11 and 13 (and perhaps 3 or 2) and not at 5, only Q(√−3003) has a class group of
+    exponent at most 2, as a rational weight-3 CM form needs [NAMED: Schütt]. Its class number is 8.
+  - Without 3 the field would be Q(√−1001), of discriminant −4004 (exponent 10), or Q(√−2002), −8008 (exponent 4).
+    With both 3 and 2 it would be Q(√−6006), −24024 (exponent 8).
+  - So at 15 the node reading and Schütt's condition force 3 in by themselves. F3 tests the author's reading together
+    with the node reading, not apart from it.
+- **The edges.** T15(5) = 0. At 7, 11 and 13, |T15(q)| = q⁸, the trace on the one unramified line.
+
+| | prediction | dies if |
+|---|---|---|
+| R1 | at every prime from 409 to 601, T13 = p⁵u(p), with u(p) an integer and \|u(p)\| ≤ 3p², and u(p) + (−15015\|p)p² = s_p·b² with b an integer and s_p given by round 23's six characters | a prime fails |
+| F1 | T15 = p⁷w(p), with w(p) an integer and \|w(p)\| ≤ 2p, at every prime from 17 to 401 | a prime fails |
+| F2 | w has complex multiplication by one imaginary quadratic field | two fields, or none |
+| F3 | that field is Q(√−3003) | another field |
+| F4 | T15(5) = 0, and \|T15(q)\| = q⁸ at q = 7, 11 and 13 | another value |
+| instrument | T1 to T11 as found in rounds 19 to 22, and T13 by round 23's read, at every prime from 17 to 401 | one fails |
+
+**The drafter's expectation.**
+- R1 holds: the read rests on 73 primes and six characters.
+- F1 and F2 hold.
+- F3 holds if the node reading does.
+- F4 holds if the counts at the nodes see only the unramified part, as in round 21.
+
+Run: `python edge_rule.py test24` (a few minutes, four processes at below-normal priority).
