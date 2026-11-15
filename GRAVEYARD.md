@@ -332,6 +332,17 @@ its own graveyard. These died, with what killed them:
   - **"The signed roots' product is a CM field at 13."** Q(√−15015) has class number 96 and exponent 12. A rational
     weight-5 CM form needs exponent dividing 4, so this was ruled out before the test. The product lives on as the
     determinant's character.
+- **From seventeen (2026-11-15; `towers/seven_levels/COIN_AT_FIVE.md` §10, round 25):**
+  - **"A piece keeps a line exactly when the base's n points keep an axis"** (Z3). This was the drafter's exact version
+    of the reading at 13 that the author took up. Klein's finite rotation groups either keep an axis (the polygons'
+    groups) or keep none (the icosahedron's).
+    - The base gives the regular 17-gon at 17, which keeps its axis, so the dictionary predicted that 17's piece splits.
+    - p divides T17/p⁷ at only 2 of the 72 primes from 19 to 401, and no CM field fits. 17's piece keeps no line: it
+      is a twisted symmetric square, like 13's (`towers/seven_levels/edge_rule_test25.log`).
+    - The guess that named the split's parts, (17|p) with Q(√−3003), is void with it.
+    - What survives is the observation, not the link: the three-dimensional pieces at 13, 17 and 21 are all unsplit.
+  - **Not held, not dead: twenty-one's sign test** (D2). Only 3 primes to 113 had |T21/p⁹| > p², and the test asked
+    for 5. All three signs agree with (−138567|p), and an unregistered test supports it at all 22 primes.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

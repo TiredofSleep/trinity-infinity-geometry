@@ -94,7 +94,15 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        every one is 0 or 1, at rational exponents (Tunisian J. Math. 2023). The classical part, where the exponents
        are integers, has exactly the sizes the counts here need.
      - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
-       of Q(√−1155).
+       of Q(√−1155). At 13, 17 and 21 they are twisted symmetric squares, with determinants (−15015|p), (−51051|p) and
+       (−138567|p), and at 15 a CM form of Q(√−3003).
+     - Qin computed the Hodge numbers of the related motives in more variables, and found no identifications either
+       (Crelle 2024).
+     - Chuang's dissertation (arXiv:2607.05757, July 2026) gives an arithmetic Picard–Lefschetz formula for diagonal
+       singularities and applies it to the Airy moments at primes p > 5. It uses another model,
+       z³ = Σ(y³/3 − y), and it excludes 3 and 5. The good model at 3 here (e1 = e3 = 0), whose nodes are the author's
+       "3 at its square", and the nodes' parity rule for the determinants are not in the parts of it read
+       (2026-11-15). The node reading at p ≥ 7 may be, which has not been checked.
    - Rational weight-3 CM newforms need a class group of exponent at most 2 (Schütt's classification). Q(√−35),
      Q(√−1155) and Q(√−3003), the fields at 7, 11 and 15, all qualify, with one class in each genus. At 13,
      Q(√−15015) does not (exponent 12), and the piece there is a twisted symmetric square instead.
@@ -125,7 +133,7 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 - **Javier Fresán**, for both strands; **Emmanuel Kowalski**, for equidistribution and its rates; **Arthur Forey** and
   **Yuval Wigderson**, for the semicircle graphs. **Duco van Straten** and **Christian Meyer**, for the double octic and its form
   of level 10 (Theorem 7). **Claude Sabbah** and **Jeng-Daw Yu**, for the Airy moments behind the cubics
-  (COIN_AT_FIVE.md §6).
+  (COIN_AT_FIVE.md §6). **Ping-Hsun Chuang**, for the Airy moments at their bad primes (COIN_AT_FIVE.md §10).
 - Writing to any of them is the author's call. The note drafted earlier for Gurevich could be widened into one for this
   group. With Theorems 1 to 7 and rounds 15 to 17 it now has something specific to offer them: the oscillator states' Wigner
   values as a family whose monodromy they could identify.
@@ -173,6 +181,10 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
   [arXiv:1008.0408](https://arxiv.org/abs/1008.0408).
 - C. Sabbah and J.-D. Yu, "Hodge properties of Airy moments", *Tunisian J. Math.* **5** (2023),
   [arXiv:2112.13405](https://arxiv.org/abs/2112.13405).
+- Y. Qin, "Hodge numbers of motives attached to Kloosterman and Airy moments", *J. reine angew. Math.* (2024),
+  [arXiv:2302.05365](https://arxiv.org/abs/2302.05365).
+- P.-H. Chuang, "On the generalized arithmetic Picard–Lefschetz formula" (dissertation, 2026),
+  [arXiv:2607.05757](https://arxiv.org/abs/2607.05757).
 - M. Schütt, "CM newforms with rational coefficients", *Ramanujan J.* **19** (2009),
   [arXiv:math/0511228](https://arxiv.org/abs/math/0511228).
 - The LMFDB Collaboration, newform 35.3.c.b, [lmfdb.org](https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/35/3/c/b/).

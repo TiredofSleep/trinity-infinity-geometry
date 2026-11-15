@@ -75,8 +75,9 @@ checked twice, by independent code:
   shows the fixed set of its flip. Past the base, in eleven variables, √−11 enters: the cubic's new piece has complex
   multiplication by Q(√−1155), and −1155 = (−3)·5·(−7)·(−11). At 13 the piece does not split. It is a symmetric
   square whose determinant carries −15015 = (−3)·5·(−7)·(−11)·13. At 15 the field is Q(√−3003), which the author's
-  "3 enters only at its square" predicted
-  ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
+  "3 enters only at its square" predicted. At 3 itself the cubic's good model pinches exactly where the signs sum to a
+  multiple of 9, and counted there each piece loses one dimension from 9 on. At 17 and 21 the pieces are symmetric
+  squares again ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
 stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).

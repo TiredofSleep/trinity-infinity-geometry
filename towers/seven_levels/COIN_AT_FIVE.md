@@ -1,4 +1,4 @@
-# The coin at 5 in the fifth moment, the coins from 7 to 15, and the edge
+# The coin at 5 in the fifth moment, the coins from 7 to 21, and the edge
 
 ### Tags: **[FORCED]** checked by [`coin_at_five.py`](coin_at_five.py) or [`edge_rule.py`](edge_rule.py) · **[NAMED]** a cited result · **[measured]** computed exactly · **[READING]** an interpretation, not a claim · **[COIN]** a classified pair: flip, sides and edge.
 
@@ -11,6 +11,9 @@
 > *1 and 2, thirteen first* — the author, 14 November 2026. The "2": 9 is two coins of 3 tossed together, so 3 enters
 > only at its square.
 
+> *1 and 3, seventeen first* — the author, 15 November 2026. The "3" takes up the reading at 13: its piece is both
+> faces at once.
+
 Every coin has two sides and an edge (the author). [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md)
 classifies 5, 7 and 9 that way.
 - **The flat face** is the regular polygon, with its centre empty.
@@ -19,7 +22,8 @@ classifies 5, 7 and 9 that way.
 - **The edge** is the centre itself.
 
 This page finds that coin in the arithmetic of the fifth moment, and follows it to 7 and 9 (rounds 19 and 20 of
-[`PREREG.md`](PREREG.md)), to its edge (round 21), and past the base to 11, 13 and 15 (rounds 22 to 24).
+[`PREREG.md`](PREREG.md)), to its edge (round 21), past the base to 11, 13, 15, 17 and 21 (rounds 22 to 25), and to
+the prime 3 itself (round 25).
 
 ## What stands
 
@@ -64,6 +68,18 @@ This page finds that coin in the arithmetic of the fifth moment, and follows it 
     carries −15015, the product of the signed roots up to 13.
   - At 15 the piece has complex multiplication by Q(√−3003). That is the one field the nodes, the author's "3 at its
     square" and Schütt's condition allow.
+- **At the prime 3** [FORCED; measured, held blind; §10]. The author's "3 at its square" is where the cubics pinch at 3.
+  - On Σx = 0 the cubic Σx³ is 3e3, so X_n has a good model e1 = e3 = 0 at 3.
+  - Its nodes are the sign vectors whose sum is a multiple of 9. The cubic in nine variables pinches at its centre
+    mod 3, as the cubic in q variables does mod q.
+  - Counted at 3 for the first time, the pieces below 9 keep their values there. V9's line ramifies, and from 9 on
+    each piece loses exactly one dimension.
+- **At 17 and 21** [measured, held blind; §10].
+  - Both new pieces are twisted symmetric squares, like 13's.
+  - Their determinants are the ones the nodes' parity gives: (−51051|p) at 17, held blind. At 21, (−138567|p) passes
+    every test but the registered one had too few signs.
+  - The reading's exact version, which tied 13's unsplit piece to the icosahedron's lack of an axis, died at 17. The
+    17-gon keeps its axis, but 17's piece keeps no line.
 
 ## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
@@ -310,6 +326,8 @@ and (9, 5).
   - Its middle eigenvalue is a Tate class's, (−15015|p)p⁷, and its outer two have the size of a weight-5 form's. The
     three do not separate.
   - In the base, 13 is the icosahedron with its centre, past the edge at 10.
+  - The author took this reading up (15 November 2026). Its exact version tied the unsplit piece to the icosahedron's
+    symmetries, which keep no axis. It died at 17, whose piece is unsplit too (§10).
 
 ## 9. Fifteen: 3 at its square [measured; round 24]
 
@@ -317,7 +335,8 @@ and (9, 5).
 > only at its square.
 
 - **3 at its square.**
-  - The prime 3 never pinches a cubic: in characteristic 3 every one of them degenerates.
+  - In characteristic 3 the cubic Σx³ is the cube of the line Σx, so it was not counted at 3 here. Round 25 found the
+    model that can be counted there, and it pinches from 9 on (§10).
   - In the pieces, 3 is absent from V5 and V7, and present from V9 on, in V9, V11 and V13.
   - Counting the odd multiples of 9, as the nodes count the odd multiples of p for the primes from 5 on, gives the same
     answer.
@@ -337,7 +356,66 @@ and (9, 5).
   - A prime p from 5 on enters the piece at k once for each odd multiple of p up to k.
   - 3 enters once for each odd multiple of 9: two coins of 3 tossed together.
 
-## 10. Standing
+## 10. Seventeen, twenty-one, and the prime 3 [FORCED; measured; round 25]
+
+> *1 and 3, seventeen first* — the author, 15 November 2026.
+
+Round 25 was registered at 5be432c before any count of X17, of X21 or at 3. Its forced checks are in
+[`edge_rule_verify25.log`](edge_rule_verify25.log) and its scores in [`edge_rule_test25.log`](edge_rule_test25.log).
+- **The prime 3, in a good model** [FORCED; F7].
+  - On x1 + ⋯ + xn = 0 the cubic x1³ + ⋯ + xn³ equals 3e3, three times the third elementary symmetric function. So
+    over the 3-adic integers X_n = {e1 = e3 = 0}, and this model can be counted at 3.
+  - Mod 3 its only singular points are the sign vectors whose sum is a multiple of 9, and each is an ordinary node.
+    There are none up to seven variables. In nine variables the centre is the only one.
+  - So the cubic in nine variables pinches at its centre mod 3, as the cubic in q variables does mod q for every prime
+    q. The author's "3 at its square" is exactly where this model's nodes are.
+  - At a node of sum 9 the critical value j(j − 2)/(3(j − 1)²) has 3-adic valuation 1, so the total space is regular
+    there and the node ramifies.
+- **Counted at 3** (round 25: all three held, blind).
+  - T1 = 3, T3 = 0, T5 = (5|3)·3³ = −27 and T7 = 27. The last is 3³ times LMFDB's a₃ = 1 for 35.3.c.b, matched at a
+    prime where nothing had been counted. 3 does not enter below 9.
+  - T9 = 0: V9's line ramifies at 3.
+  - T11 = 3⁶ and T15 = −3⁸: one line survives in each CM plane. T13 = −8·3⁵ and T17 = 16·3⁷ fit one surviving plane
+    in each three-dimensional piece.
+- **Seventeen** (round 25; [`edge_rule_test25.log`](edge_rule_test25.log)).
+  - X17, a cubic fourteenfold, has a new piece V17 of three dimensions, of Hodge types (7, 11), (9, 9) and (11, 7):
+    13's shape, raised by two.
+  - It keeps no line, so it does not split: p divides u(p) = T17/p⁷ at only 2 of the 72 primes from 19 to 401.
+  - It is a twisted symmetric square: u(p) + (−51051|p)p² = ±s·b², with s dividing 2·3·5·7·11·13·17, at all 72.
+  - Its determinant has the character (−51051|p), with 51051 = 3·7·11·13·17. The nodes' parity predicted it blind:
+    3 once (at 9), 5 twice (at 5 and 15, so not at all), and 7, 11, 13 and 17 once.
+  - At the nodes T17(5) = −5⁹, the one line that survives. T17(13) = 0, and at 7, 11 and 17 the surviving plane's trace
+    is 72·7⁷, 234·11⁷ and 493·17⁷.
+- **Twenty-one.**
+  - V21 has three dimensions too, of types (9, 13), (11, 11) and (13, 9), and it keeps no line either.
+  - u21(p) + (−138567|p)p² = ±s·b², with s dividing 2·3·…·19, at all 22 primes from 23 to 113.
+  - 138567 = 3·11·13·17·19. 7 leaves the determinant at 21 because 7 and 21 both pinch, as 5 left it at 15. 3 enters
+    once, at 9 and not at 21.
+  - The registered sign test saw only three signs, below its minimum of five. So that item is counted as not held,
+    though nothing disagreed.
+- **The parity rule** [READING: Picard–Lefschetz; held blind at 17]. Each ramified node turns one vanishing cycle over,
+  so a piece's determinant is ramified exactly where the piece has an odd number of ramified nodes. It gives every
+  determinant found, from 5 to 21.
+- **The lower fields return.** Read after the run: the roots of the pieces at 13, 17 and 21 have their square classes
+  decided by quadratic characters, as at 13.
+  - The CM fields of 7, 11 and 15 are among them: (−35|p) at 13 and 17, (−1155|p) at 13 and 21, and (−3003|p) at 13, 17
+    and 21.
+- **What died** (kept in [`../../GRAVEYARD.md`](../../GRAVEYARD.md)).
+  - The reading at 13 was made exact as a dictionary with the base: the piece of n keeps a line exactly when the base's
+    n points keep an axis.
+  - Klein's finite rotation groups come in those two kinds [NAMED]. The base gives the icosahedron with its centre at
+    13 (no axis), the regular 17-gon at 17 (one axis) and the dodecahedron with its centre at 21 (no axis) [FORCED; F6].
+  - The dictionary fitted 13, read after the fact. At 17 it predicted a split, against the drafter's expectation, and
+    17's piece did not split.
+  - So 13's "both faces at once" is not 13's alone: the three-dimensional pieces at 13, 17 and 21 are all unsplit.
+- [READING] **The rule at 3, sharpened.** The critical values give a refinement past this round.
+  - A node ramifies only when its critical value has odd valuation. That is v_p(j) for p from 5 on, and v_3(j) − 1
+    for 3.
+  - So every prime from 5 on enters at its odd powers, and 3 at its even powers. 3 enters at 9 and 81 but not at 27,
+    and 5 enters at 5 and 125 but not at 25.
+  - The first tests are at 25 and 27. They are untested.
+
+## 11. Standing
 
 - **Known, and credited** [NAMED].
   - The 27 lines of Clebsch's diagonal cubic, 15 over Q and 12 over Q(√5) (Clebsch 1871). A cubic surface with one
@@ -350,27 +428,34 @@ and (9, 5).
   - The point counts of {Σx = Σx³ = 0} as moments of cubic exponential sums: orthogonality.
   - The newform 35.3.c.b (LMFDB), and the classification of rational CM newforms (Schütt).
   - SO(3) ≅ PGL(2), the lifting of projective representations (Tate), and inner twists (Ribet).
+  - The finite rotation groups and their two kinds, axial and polyhedral (Klein 1884).
+  - Ordinary double points and their vanishing cycles (Picard–Lefschetz). The arithmetic Picard–Lefschetz formula for
+    diagonal singularities, applied to the Airy moments at primes p > 5 in another model (Chuang 2026).
 - **This repository's own, new as far as we checked.**
   - The dictionary between the author's coin at 5 and the fifth moment.
   - The edge rule: why J3 mirrors at 3, why the mirror is exact at every prime edge and fails at prime powers, and
     the cubics' edge values.
-  - The exact point counts of X7, X9, X11, X13 and X15.
-  - What the Airy pieces are, to k = 15: (5|p), 35.3.c.b, (105|p), a CM form of Q(√−1155), a twisted symmetric square
-    with determinant (−15015|p), and a CM form of Q(√−3003).
-  - The node identity, with its reading as ramification, and 3 at its square.
-  - Web searches on 2026-11-14 found no point count, zeta function or Galois action for these cubics.
+  - The exact point counts of X7, X9, X11, X13, X15, X17 and X21.
+  - What the Airy pieces are, to k = 21: (5|p), 35.3.c.b, (105|p), a CM form of Q(√−1155), a twisted symmetric square
+    with determinant (−15015|p), a CM form of Q(√−3003), and twisted symmetric squares with determinants (−51051|p)
+    and (−138567|p).
+  - The node identity, with its reading as ramification, and the parity rule for the determinants.
+  - The good model at 3, whose nodes are the author's "3 at its square", and the pieces counted at 3.
+  - Web searches on 2026-11-14 and 2026-11-15 found no point count, zeta function or Galois action for these cubics.
     - They found the neighbours: the Fermat cubic fourfold's form of level 27, the census of cubic fourfolds over F₂,
       and the Segre cubic.
-    - For the Airy moments they found Hodge numbers and degrees, but no identification of a single piece.
+    - For the Airy moments they found Hodge numbers and degrees, and Chuang's local formula at p > 5, but no
+      identification of a single piece.
 - **Open.**
   - Proofs. Each piece is identified by its counts, and none is proved. Sabbah and Yu's Hodge numbers and Patrikis and
     Taylor's potential automorphy, which they point to, are one way in.
   - A blind test of the mirror half. Every parity-weighted edge value is already measured, so it needs a new
     parity-weighted formula, J6's or J7's.
-  - The root of the piece at 13: which weight-3 newform, with character (−15015|p) and five inner twists, it is the
-    symmetric square of, and at what level.
-  - A blind test of "3 at its square" apart from the nodes. At 15 the nodes force it too. The next piece where they
-    may not is 17's, which has three dimensions.
+  - The roots of the pieces at 13, 17 and 21: which weight-3 newforms they are the symmetric squares of, and at what
+    levels.
+  - Seventeen's square classes (six characters, read after round 25), tested blind at new primes.
+  - The rule at 3, sharpened by the critical values: 3 enters at 9 and 81 but not at 27, and 5 at 5 and 125 but not at
+    25. Its first tests are at 25 and 27.
   - Whether the seventh moment I7 carries Q(√−35), as I5 carries √5.
 - **Died** (kept in the graveyard):
   - C1's parity-weighted half (§2).
@@ -379,6 +464,9 @@ and (9, 5).
   - The split of the piece at 13 into a twisted Tate class and a weight-5 CM form (round 23, S2). The guesses that
     named its parts, (5|p) with Q(√−3003) and (13|p) with Q(√−1155), are void with it.
   - The pattern's single field at 13, Q(√−15015), ruled out before the test by its class group.
+  - The dictionary between the pieces and the base's axes (round 25, Z3): 17's piece did not split, although the
+    17-gon keeps its axis. The guess (17|p) with Q(√−3003) is void with it.
+  - Not held: twenty-one's registered sign test (D2), which saw three signs where it asked for five.
 
 ## Run it
 
@@ -391,6 +479,8 @@ python edge_rule.py test         # round 21: the cubics at their edge primes 5 a
 python edge_rule.py test22       # round 22: the cubic in eleven variables to 401: about a minute, four processes
 python edge_rule.py test23       # round 23: the cubic in thirteen variables to 401: about a minute, four processes
 python edge_rule.py test24       # round 24: thirteen at 409..601, blind, and fifteen to 401: a minute, four processes
+python edge_rule.py verify25     # round 25's forced checks, F6 to F8 (the base's rule, the good model at 3): seconds
+python edge_rule.py test25       # round 25: seventeen to 401, twenty-one to 113, and the prime 3: a minute, four processes
 ```
 
 ## Sources
@@ -421,3 +511,10 @@ python edge_rule.py test24       # round 24: thirteen at 409..601, blind, and fi
   *Math. Ann.* **253** (1980): inner twists.
 - J.-P. Serre, "Modular forms of weight one and Galois representations", in *Algebraic Number Fields*, Academic Press
   (1977), §6: Tate's theorem that projective representations of Gal(Q̄/Q) lift.
+- F. Klein, *Vorlesungen über das Ikosaeder und die Auflösung der Gleichungen vom fünften Grade*, Teubner (1884): the
+  finite rotation groups, the cyclic and dihedral groups beside the tetrahedral, octahedral and icosahedral ones.
+- Y. Qin, "Hodge numbers of motives attached to Kloosterman and Airy moments", *J. reine angew. Math.* (2024),
+  [arXiv:2302.05365](https://arxiv.org/abs/2302.05365).
+- P.-H. Chuang, "On the generalized arithmetic Picard–Lefschetz formula" (dissertation, 2026),
+  [arXiv:2607.05757](https://arxiv.org/abs/2607.05757): the inertia action at diagonal singularities in mixed
+  characteristic, applied to the Airy moments at p > 5.

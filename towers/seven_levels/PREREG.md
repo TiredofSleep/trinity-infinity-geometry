@@ -2223,3 +2223,58 @@ Z3 and Z3′ cannot both hold.
   p ≥ 7 may be, which has not been checked.
 
 Run: `python edge_rule.py test25` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 25 scores (added after the test, 2026-11-15)
+
+Run by [`edge_rule.py`](edge_rule.py) `test25`, registered at 5be432c before the test. Output:
+[`edge_rule_test25.log`](edge_rule_test25.log).
+
+**The reading's exact version died at 17. "3 at its square" held at the prime 3, and the parity rule held at 17.**
+
+| | outcome | evidence |
+|---|---|---|
+| Z1 | held | T17 = p⁷u(p), with u(p) an integer and \|u(p)\| ≤ 3p², at all 72 primes from 19 to 401 |
+| Z2 | held | \|u(p)\| > p² at 16 primes, and sign u(p) = (−51051\|p) at all 16. With 3 left out, (17017\|p), 10 of the 16 would be wrong |
+| Z3 | **failed** | p divides u(p) at only 2 of the 72 primes, 23 and 113, and no CM field fits. So V17 keeps no line, though the 17-gon keeps its axis. The dictionary dies at its first test |
+| G1 | void | it named the parts of a split that does not exist |
+| Z3′ | held | V17 keeps no line, and u(p) + (−51051\|p)p² = ±s·b², with s dividing 510510, at all 72 primes. It is a twisted symmetric square, like 13's |
+| Z4 | held | T17(5) = −5⁹. T17(7) = 72·7⁷, T17(11) = 234·11⁷, T17(13) = 0 and T17(17) = 493·17⁷ |
+| Z5a | held | at 3: T1 = 3, T3 = 0, T5 = −27 and T7 = 27, the value of LMFDB's a₃ = 1 at a prime where nothing had been counted |
+| Z5b | held | T9 = 0 at 3 |
+| Z5c | held | at 3: T11 = 3⁶, T15 = −3⁸, T13 = −8·3⁵ and T17 = 16·3⁷ |
+| D1 | held | T21 = p⁹u21(p), with u21(p) an integer and \|u21(p)\| ≤ 3p², at all 22 primes from 23 to 113 |
+| D2 | not held | only 3 primes had \|u21(p)\| > p², and the test's code asked for at least 5. All three signs agree with (−138567\|p). It is counted as not held |
+| D3 | held | p divides u21(p) only at 73, and there is no split |
+| instrument | held | T1 to T15 at every prime counted, and the good model's count equals brute force over F_3^n for n = 3, 5, 7 and 9 |
+
+**Read after the run** (not scores).
+- **Seventeen's square classes.** s_p is a product of −1, 2, 5, 7, 13 and 17, and six characters decide which:
+  - −1 by (−51051|p), the determinant's own, as at 13;
+  - 2 by (−715|p), as at 13;
+  - 5 by (−1547|p), with 1547 = 7·13·17, and 7 by (−12155|p), with 12155 = 5·11·13·17;
+  - 13 by (−35|p) and 17 by (−3003|p);
+  - 3 and 11 never.
+- **Twenty-one's.** u21(p) + (−138567|p)p² = ±s·b², with s dividing 9699690 = 2·3·…·19, at all 22 primes.
+  - A wrong character would almost never pass that test, so D2's character is right, though not by the registered
+    test.
+  - The classes: −1 by (−138567|p), 2 by (−19019|p), 3 by (−143|p), 5 by (−1547|p), 17 by (−1155|p) and 19 by
+    (−3003|p); 7, 11 and 13 never.
+- **The lower fields return as twists.**
+  - The CM fields of 7, 11 and 15 decide square classes of the higher pieces' roots: (−35|p) at 13 and 17, (−1155|p)
+    at 13 and 21, and (−3003|p) at 13, 17 and 21.
+  - (−715|p) serves both 13 and 17, and (−1547|p) both 17 and 21.
+- **Zeros.** u(p) + (−51051|p)p² = 0 at 23 and 113, and u21(p) + (−138567|p)p² = 0 at 73: the root's coefficient
+  vanishes there.
+- **At 3, past the registration.** T19 = −17·3⁷ and T21 = 3⁹.
+
+**Yield.**
+- The author's "3 at its square" held at the prime 3 itself, where nothing had been counted.
+  - The good model e1 = e3 = 0 pinches exactly at the sign vectors whose sum is a multiple of 9.
+  - The pieces below 9 keep their values there, −27 and LMFDB's a₃ = 1.
+  - V9's line ramifies at 3, and from 9 on each piece loses exactly one dimension there.
+- The parity rule held blind at 17: the determinant's character is (−51051|p).
+- The reading's exact version died. 17's piece keeps no line, although the 17-gon keeps its axis.
+  - 17 and 21 are the same kind as 13, so "both at once" is not 13's alone.
+  - It belongs to the three-dimensional pieces, not to the icosahedron.

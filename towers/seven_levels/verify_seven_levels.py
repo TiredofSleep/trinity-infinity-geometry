@@ -1749,6 +1749,34 @@ forced("the cubics in thirteen and fifteen variables recounted at 17, 19, 29 and
        "twisted symmetric square with determinant (-15015|p); fifteen's is the weight-3 form with complex multiplication "
        "by Q(sqrt -3003)", ok24)
 
+# ------------------------------------------------------------------ round 25 (edge_rule.py)
+print()
+print("round 25:")
+_r25 = _sp16.run([sys.executable, os.path.join(_HERE18, "edge_rule.py"), "verify25"], capture_output=True, text=True)
+forced("round 25's forced checks (edge_rule.py verify25: the base's rule at 13, 17 and 21, the good model at 3 and its "
+       "nodes, the bookkeeping for 17 and 21, and the parity rule on every determinant already read)",
+       _r25.returncode == 0 and "ALL PASS" in _r25.stdout)
+RECORDED25 = {"Z1": "HELD", "Z2": "HELD", "Z3": "FAILED", "Z3'": "HELD", "Z4": "HELD", "Z5a": "HELD", "Z5b": "HELD",
+              "Z5c": "HELD", "D1": "HELD", "D2": "FAILED", "D3": "HELD"}
+forced("round 25's test log scores Z1, Z2, Z3', Z4, Z5a to Z5c, D1 and D3 held, and Z3 (the dictionary) and D2 (too "
+       "few signs) not held, as recorded", _scores("edge_rule_test25.log", RECORDED25) == RECORDED25)
+ok25 = True
+D17_ = edge22.det_from_nodes(17)
+for p_ in (19, 23, 29, 31):
+    T_ = edge22.airy(p_, edge22.t_values_checked(p_, tuple(range(3, 18, 2))))
+    u_ = T_[17] / p_ ** 7
+    v_ = int(u_) + edge22.kron(D17_, p_) * p_ * p_
+    ok25 &= u_.denominator == 1 and abs(u_) <= 3 * p_ * p_ and (v_ == 0 or 510510 % edge22.squarefree_part(abs(v_)) == 0)
+    if abs(u_) > p_ * p_:
+        ok25 &= (1 if u_ > 0 else -1) == edge22.kron(D17_, p_)
+N3_ = {n: edge22.count_e3(n) for n in range(3, 18, 2)}
+N3_[1] = 1
+T3_ = edge22.airy(3, {n: (edge22.Fraction(N3_[n]) - edge22.Fraction(3) ** (n - 2)) / 2 for n in range(1, 18, 2)})
+ok25 &= [T3_[k] for k in (1, 3, 5, 7, 9)] == [3, 0, -27, 27, 0] and abs(T3_[11]) == 3 ** 6 and abs(T3_[15]) == 3 ** 8
+forced("the cubic in seventeen variables recounted at 19, 23, 29 and 31: a twisted symmetric square with determinant "
+       "(-51051|p); and the good model at 3: T1 = 3, T3 = 0, T5 = -27, T7 = 27, T9 = 0, |T11| = 3^6, |T15| = 3^8",
+       ok25)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))
