@@ -2093,3 +2093,29 @@ It also tests the author's "3 at its square" where the nodes say the most: in fi
 - F4 holds if the counts at the nodes see only the unramified part, as in round 21.
 
 Run: `python edge_rule.py test24` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 24 scores (added after the test, 2026-11-14)
+
+Run by [`edge_rule.py`](edge_rule.py) `test24`, registered at c9fb158 before the test. Output:
+[`edge_rule_test24.log`](edge_rule_test24.log).
+
+**All five held, and so did the instrument.**
+
+| | outcome | evidence |
+|---|---|---|
+| R1 | held | thirteen's symmetric square, u(p) + (−15015\|p)p² = s_p·b², at all 32 primes from 409 to 601, with the six characters fixed in advance |
+| F1 | held | T15 = p⁷w(p), with w(p) an integer and \|w(p)\| ≤ 2p, at all 73 primes from 17 to 401 |
+| F2 | held | w vanishes at exactly the 44 primes inert in one field, and 4p² − w(p)² = 3003v² at the other 29 |
+| F3 | held | the field is Q(√−3003) |
+| F4 | held | T15(5) = 0, and T15(q) = −q⁸ at q = 7, 11 and 13 |
+| instrument | held | T1 to T13 at every prime from 17 to 401 |
+
+**Yield.**
+- Thirteen's piece is a twisted symmetric square, now held blind. The signed roots' product −15015 is its determinant's
+  character.
+- Fifteen's piece is a weight-3 form with complex multiplication by Q(√−3003), with −3003 = (−3)·(−7)·(−11)·13.
+  - 5 stays out of the field: its two ramified dimensions are the Hecke character's, because 5 and 15 are both odd
+    multiples of 5.
+  - 3 is in, as the author's "3 at its square" says. At 15 the node reading forces it as well.

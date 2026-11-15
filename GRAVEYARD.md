@@ -322,6 +322,16 @@ its own graveyard. These died, with what killed them:
     the six pentagons (v, −v, v, −v, v) (`towers/seven_levels/edge_rule_test.log`).
   - **Q(√−385) as the field at 11**, the alternative to round 22's Q3′, with 2 ramified in place of 3. The field is
     Q(√−1155) (`towers/seven_levels/edge_rule_test22.log`).
+- **From thirteen (2026-11-14; `towers/seven_levels/COIN_AT_FIVE.md` §8, round 23):**
+  - **"The piece at 13 splits into a twisted Tate class and a weight-5 CM form"** (S2). p divides T13/p⁵ at none of
+    the 73 primes from 17 to 401, and a CM part would vanish at about half of them
+    (`towers/seven_levels/edge_rule_test23.log`).
+    - S3 to S7 named the parts of that split and are void with it. That includes the two guesses, (5|p) with
+      Q(√−3003), the icosahedron's √5, and (13|p) with Q(√−1155).
+    - The piece is a twisted symmetric square instead, held blind in round 24.
+  - **"The signed roots' product is a CM field at 13."** Q(√−15015) has class number 96 and exponent 12. A rational
+    weight-5 CM form needs exponent dividing 4, so this was ruled out before the test. The product lives on as the
+    determinant's character.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

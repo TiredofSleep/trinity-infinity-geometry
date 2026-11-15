@@ -1,4 +1,4 @@
-# The coin at 5 in the fifth moment, the coins at 7, 9 and 11, and the edge
+# The coin at 5 in the fifth moment, the coins from 7 to 15, and the edge
 
 ### Tags: **[FORCED]** checked by [`coin_at_five.py`](coin_at_five.py) or [`edge_rule.py`](edge_rule.py) · **[NAMED]** a cited result · **[measured]** computed exactly · **[READING]** an interpretation, not a claim · **[COIN]** a classified pair: flip, sides and edge.
 
@@ -8,6 +8,9 @@
 > *1 and 2, the mirror rule first* — the author, 14 November 2026. The "1" says a coin on its edge shows the mirror;
 > the "2" says go past the base, to eleven.
 
+> *1 and 2, thirteen first* — the author, 14 November 2026. The "2": 9 is two coins of 3 tossed together, so 3 enters
+> only at its square.
+
 Every coin has two sides and an edge (the author). [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md)
 classifies 5, 7 and 9 that way.
 - **The flat face** is the regular polygon, with its centre empty.
@@ -16,7 +19,7 @@ classifies 5, 7 and 9 that way.
 - **The edge** is the centre itself.
 
 This page finds that coin in the arithmetic of the fifth moment, and follows it to 7 and 9 (rounds 19 and 20 of
-[`PREREG.md`](PREREG.md)), to its edge (round 21) and past the base, to 11 (round 22).
+[`PREREG.md`](PREREG.md)), to its edge (round 21), and past the base to 11, 13 and 15 (rounds 22 to 24).
 
 ## What stands
 
@@ -56,6 +59,11 @@ This page finds that coin in the arithmetic of the fifth moment, and follows it 
 - **At 11** [measured, held blind; §7]. In eleven variables the new piece is a weight-3 form with complex
   multiplication by Q(√−1155), and −1155 = (−3)(5)(−7)(−11). So √−11 enters at 11, where the centre pinches, as √−7
   entered at 7.
+- **At 13 and 15** [measured, held blind; §8 and §9].
+  - At 13 the piece does not split; the registered split died. It is a twisted symmetric square, and its determinant
+    carries −15015, the product of the signed roots up to 13.
+  - At 15 the piece has complex multiplication by Q(√−3003). That is the one field the nodes, the author's "3 at its
+    square" and Schütt's condition allow.
 
 ## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
@@ -222,17 +230,23 @@ each piece's size and shape. With the ballot numbers they add up to every Betti 
 | 7 | 2 | (5, 3) + (3, 5) | p³ a_p(35.3.c.b), CM | Q(√−35) | 5, 7 |
 | 9 | 1 | (5, 5) | (105\|p)p⁵ | Q(√105) | 3, 5, 7 |
 | 11 | 2 | (7, 5) + (5, 7) | p⁵ g(p), CM | Q(√−1155) | 3, 5, 7, 11 |
+| 13 | 3 | (5, 9) + (7, 7) + (9, 5) | p⁵(a_p² − (−15015\|p)p²): a twisted symmetric square (§8) | its determinant, Q(√−15015) | 3, 5, 7, 11, 13 |
+| 15 | 2 | (7, 9) + (9, 7) | p⁷ w(p), CM (§9) | Q(√−3003) | 3, 5 (twice), 7, 11, 13 |
 
-- The fields alternate. A real field twists a Tate class, of type (m, m); an imaginary field carries a form with
-  complex multiplication.
-- Both CM fields have one class in each genus: class numbers 2 and 8, every class of order 2. That is what a rational
-  weight-3 CM form needs, a class group of exponent at most 2 [NAMED: Schütt, arXiv:math/0511228].
+- Through 11 the fields alternate. A real field twists a Tate class, of type (m, m); an imaginary field carries a form
+  with complex multiplication. At 13 the piece does not split, and the pattern's field moves into its determinant.
+- The three CM fields, Q(√−35), Q(√−1155) and Q(√−3003), have one class in each genus: class numbers 2, 8 and 8, every
+  class of order 2. That is what a rational weight-3 CM form needs, a class group of exponent at most 2 [NAMED: Schütt,
+  arXiv:math/0511228].
 - [READING] The discriminants are products of the primes' signed square roots, 3* = −3, 5* = 5, 7* = −7 and
   11* = −11:
   - 5 at 5;
   - 5·(−7) = −35 at 7;
   - (−3)·5·(−7) = 105 at 9, where 3 enters at its square;
-  - (−3)·5·(−7)·(−11) = −1155 at 11.
+  - (−3)·5·(−7)·(−11) = −1155 at 11;
+  - (−3)·5·(−7)·(−11)·13 = −15015 at 13, as the determinant's character.
+  - At 15, which adds no prime, the field is −3003 = (−3)·(−7)·(−11)·13, and 5 enters through the Hecke character
+    instead. If the determinant follows the pattern it is (−15015|p) again, which the traces of a CM form cannot show.
 
 **The nodes** [FORCED identity; F3].
 - Over F_p, p > 3, X_n has a node at each sign vector whose sum vanishes mod p.
@@ -264,7 +278,66 @@ predictions held ([`edge_rule_test22.log`](edge_rule_test22.log)).
   the new piece can carry. At 9 the centre never pinches, and 3 enters through the character instead.
   - The alternative the nodes allowed, Q(√−385), with 2 ramified in place of 3, died.
 
-## 8. Standing
+## 8. Thirteen: a symmetric square [measured; rounds 23 and 24]
+
+> *1 and 2, thirteen first* — the author, 14 November 2026.
+
+The cubic tenfold X13 had never been counted. Its new piece V13 has three dimensions, of Hodge types (5, 9), (7, 7)
+and (9, 5).
+- **It does not split** (round 23, S2 died).
+  - The registered guess was a twisted Tate class beside a weight-5 CM form. The pattern's single field, Q(√−15015),
+    was ruled out first: its class group has exponent 12.
+  - But p divides u(p) = T13/p⁵ at none of the 73 primes from 17 to 401. A CM part would vanish at half of them.
+  - The piece is ordinary at every prime tested.
+- **It is a twisted symmetric square** (read after round 23, then held blind at all 32 primes from 409 to 601 in
+  round 24).
+  - At every prime, u(p) + (−15015|p)p² = s_p·b_p², with b_p an integer.
+  - s_p is a product of −1, 2, 3, 5, 11 and 13, and six characters decide which: −1 by (−15015|p), 2 by (−715|p), 3 by
+    (5005|p), 5 by (−3003|p), 11 by (−35|p) and 13 by (−1155|p). 7 never enters.
+  - So T13 = p⁵(a_p² − (−15015|p)p²), with a_p = b_p√s_p: the trace of the symmetric square of a two-dimensional piece of
+    weight 3.
+- [READING] **What it is.**
+  - The Airy pieces carry an orthogonal pairing. A three-dimensional orthogonal piece is a twisted symmetric square,
+    because SO(3) ≅ PGL(2) and projective representations lift [NAMED: Tate].
+  - Its root behaves like a weight-3 form with character (−15015|p) and five inner twists, with coefficients in
+    Q(√−1, √2, √3, √5, √11, √13) [NAMED: Ribet, on inner twists].
+  - Two of the twists are the CM fields of 7 and 11, Q(√−35) and Q(√−1155).
+- **The pattern moved.** −15015, the product of the signed square roots up to 13, is not the field of a CM form here.
+  It is the determinant's character, as (5|p) and (105|p) were at 5 and 9.
+- **Its edges**: T13(5) = 0, T13(7) = 32·7⁵, T13(11) = 0 and T13(13) = 182·13⁵.
+- [READING] Through 11 the new pieces alternate between two kinds, a twisted Tate class and a CM form, like a coin's two
+  faces. At 13 the piece is both at once.
+  - Its middle eigenvalue is a Tate class's, (−15015|p)p⁷, and its outer two have the size of a weight-5 form's. The
+    three do not separate.
+  - In the base, 13 is the icosahedron with its centre, past the edge at 10.
+
+## 9. Fifteen: 3 at its square [measured; round 24]
+
+> *1 and 2, thirteen first* — the author, 14 November 2026. The "2": 9 is two coins of 3 tossed together, so 3 enters
+> only at its square.
+
+- **3 at its square.**
+  - The prime 3 never pinches a cubic: in characteristic 3 every one of them degenerates.
+  - In the pieces, 3 is absent from V5 and V7, and present from V9 on, in V9, V11 and V13.
+  - Counting the odd multiples of 9, as the nodes count the odd multiples of p for the primes from 5 on, gives the same
+    answer.
+- **Fifteen** (round 24: all five held, blind; [`edge_rule_test24.log`](edge_rule_test24.log)).
+  - The cubic in fifteen variables has a two-dimensional new piece, and it is orthogonal, so it has complex
+    multiplication.
+  - Its nodes leave two ramified dimensions at 5, since 5 and 15 are both odd multiples of 5, and one at each of 7,
+    11 and 13.
+  - With 3 at its square, only Q(√−3003) satisfies Schütt's condition.
+  - It is the field: w vanishes at exactly the 44 primes inert in Q(√−3003), and 4p² − w(p)² = 3003v² at the other 29.
+  - 5 stays out of the field and enters through the Hecke character, twice.
+  - At the edges, T15(5) = 0 and T15(q) = −q⁸ at 7, 11 and 13.
+- At 15 the node reading forces 3 into the field as well, so this test checks the author's reading together with the
+  nodes, not apart from them.
+- [READING] 9 = 3·3 and 15 = 3·5 are the first two odd numbers that are not prime. At 9, 3 enters at its square; at 15,
+  5 counts twice.
+  - A prime p from 5 on enters the piece at k once for each odd multiple of p up to k.
+  - 3 enters once for each odd multiple of 9: two coins of 3 tossed together.
+
+## 10. Standing
 
 - **Known, and credited** [NAMED].
   - The 27 lines of Clebsch's diagonal cubic, 15 over Q and 12 over Q(√5) (Clebsch 1871). A cubic surface with one
@@ -276,13 +349,15 @@ predictions held ([`edge_rule_test22.log`](edge_rule_test22.log)).
     2009).
   - The point counts of {Σx = Σx³ = 0} as moments of cubic exponential sums: orthogonality.
   - The newform 35.3.c.b (LMFDB), and the classification of rational CM newforms (Schütt).
+  - SO(3) ≅ PGL(2), the lifting of projective representations (Tate), and inner twists (Ribet).
 - **This repository's own, new as far as we checked.**
   - The dictionary between the author's coin at 5 and the fifth moment.
   - The edge rule: why J3 mirrors at 3, why the mirror is exact at every prime edge and fails at prime powers, and
     the cubics' edge values.
-  - The exact point counts of X7, X9 and X11.
-  - What the Airy pieces are, to k = 11: (5|p), 35.3.c.b, (105|p) and a CM form of Q(√−1155).
-  - The node identity, with its reading as ramification.
+  - The exact point counts of X7, X9, X11, X13 and X15.
+  - What the Airy pieces are, to k = 15: (5|p), 35.3.c.b, (105|p), a CM form of Q(√−1155), a twisted symmetric square
+    with determinant (−15015|p), and a CM form of Q(√−3003).
+  - The node identity, with its reading as ramification, and 3 at its square.
   - Web searches on 2026-11-14 found no point count, zeta function or Galois action for these cubics.
     - They found the neighbours: the Fermat cubic fourfold's form of level 27, the census of cubic fourfolds over F₂,
       and the Segre cubic.
@@ -292,15 +367,18 @@ predictions held ([`edge_rule_test22.log`](edge_rule_test22.log)).
     Taylor's potential automorphy, which they point to, are one way in.
   - A blind test of the mirror half. Every parity-weighted edge value is already measured, so it needs a new
     parity-weighted formula, J6's or J7's.
-  - The piece at 13. It has three dimensions, with Hodge types (5, 9), (7, 7) and (9, 5), and the nodes say it
-    ramifies at 5, 7, 11 and 13.
-    - It may split into a twisted Tate class and a weight-5 form, as the symmetric square of a CM form does.
-    - Or it may be one piece of three.
+  - The root of the piece at 13: which weight-3 newform, with character (−15015|p) and five inner twists, it is the
+    symmetric square of, and at what level.
+  - A blind test of "3 at its square" apart from the nodes. At 15 the nodes force it too. The next piece where they
+    may not is 17's, which has three dimensions.
   - Whether the seventh moment I7 carries Q(√−35), as I5 carries √5.
 - **Died** (kept in the graveyard):
   - C1's parity-weighted half (§2).
   - Plain negation of the −1 side at the edge, which fits J5 at 3 for no integer a_E(3).
   - The field Q(√−385) at 11.
+  - The split of the piece at 13 into a twisted Tate class and a weight-5 CM form (round 23, S2). The guesses that
+    named its parts, (5|p) with Q(√−3003) and (13|p) with Q(√−1155), are void with it.
+  - The pattern's single field at 13, Q(√−15015), ruled out before the test by its class group.
 
 ## Run it
 
@@ -311,6 +389,8 @@ python coin_at_five.py test20    # round 20: the cubics at 401..601, blind: abou
 python edge_rule.py              # the edge rule's forced checks, F1 to F5: seconds
 python edge_rule.py test         # round 21: the cubics at their edge primes 5 and 7, blind: seconds
 python edge_rule.py test22       # round 22: the cubic in eleven variables to 401: about a minute, four processes
+python edge_rule.py test23       # round 23: the cubic in thirteen variables to 401: about a minute, four processes
+python edge_rule.py test24       # round 24: thirteen at 409..601, blind, and fifteen to 401: a minute, four processes
 ```
 
 ## Sources
@@ -337,4 +417,7 @@ python edge_rule.py test22       # round 22: the cubic in eleven variables to 40
 - M. Schütt, "CM newforms with rational coefficients", *Ramanujan J.* **19** (2009),
   [arXiv:math/0511228](https://arxiv.org/abs/math/0511228).
 - K. Ribet, "Galois representations attached to eigenforms with Nebentypus", in *Modular Functions of One Variable V*,
-  LNM 601, Springer (1977): a_p = ε(p)·ā_p.
+  LNM 601, Springer (1977): a_p = ε(p)·ā_p. And "Twists of modular forms and endomorphisms of abelian varieties",
+  *Math. Ann.* **253** (1980): inner twists.
+- J.-P. Serre, "Modular forms of weight one and Galois representations", in *Algebraic Number Fields*, Academic Press
+  (1977), §6: Tate's theorem that projective representations of Gal(Q̄/Q) lift.

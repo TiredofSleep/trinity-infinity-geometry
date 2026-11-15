@@ -1728,6 +1728,27 @@ for p_ in (13, 17, 19, 23):
 forced("the cubic in eleven variables recounted at 13, 17, 19 and 23: T11 = p^5 g(p), with g the weight-3 form with "
        "complex multiplication by Q(sqrt -1155); and X7's c(p) is LMFDB 35.3.c.b's a_p", ok22)
 
+# ------------------------------------------------------------------ rounds 23 and 24 (edge_rule.py)
+print()
+print("rounds 23 and 24:")
+RECORDED23 = {"S1": "HELD", "S2": "FAILED"}
+RECORDED24 = {"R1": "HELD", "F1": "HELD", "F2": "HELD", "F3": "HELD", "F4": "HELD"}
+forced("round 23's test log scores S1 held and S2 failed (S3 to S7 void), and round 24's R1 and F1 to F4 held, as "
+       "recorded", _scores("edge_rule_test23.log", RECORDED23) == RECORDED23
+       and _scores("edge_rule_test24.log", RECORDED24) == RECORDED24)
+ok24 = True
+for p_ in (17, 19, 29, 31):
+    T_ = edge22.airy(p_, edge22.t_values(p_, (3, 5, 7, 9, 11, 13, 15)))
+    u_, w_ = T_[13] / p_ ** 5, T_[15] / p_ ** 7
+    ok24 &= u_ % p_ != 0 and edge22.sym2_ok(p_, u_)
+    ok24 &= w_.denominator == 1 and abs(w_) <= 2 * p_ and (w_ == 0) == (coin20.leg(-3003, p_) == -1)
+    if w_ != 0:
+        D_ = 4 * p_ * p_ - int(w_) ** 2
+        ok24 &= D_ % 3003 == 0 and edge22.sympy.integer_nthroot(D_ // 3003, 2)[1]
+forced("the cubics in thirteen and fifteen variables recounted at 17, 19, 29 and 31: thirteen's piece is unsplit, a "
+       "twisted symmetric square with determinant (-15015|p); fifteen's is the weight-3 form with complex multiplication "
+       "by Q(sqrt -3003)", ok24)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

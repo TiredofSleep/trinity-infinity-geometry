@@ -7,7 +7,7 @@
 
 **Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
-**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 22 · [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), the coin at 5 in the fifth moment, the cubics at 7, 9 and 11, and the coin's edge · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18, 18 §19, 19 and 20 §20, 21 and 22 §21.
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 24 · [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), the coin at 5 in the fifth moment, the cubics from 7 to 15, and the coin's edge · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18, 18 §19, 19 and 20 §20, 21 to 24 §21.
 
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
@@ -878,12 +878,12 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) ([`coin_at_five.py`](coi
   copies of the same CM form. That count also held blind.
 - **The scores.** Round 19 held two of three scored predictions (C1 failed on its J side). Round 20 held two of two.
 
-## 21. Rounds 21 and 22: the coin on its edge, and eleven [FORCED; measured; NAMED: Sabbah and Yu, LMFDB]
+## 21. Rounds 21 to 24: the coin on its edge, and eleven, thirteen and fifteen [FORCED; measured; NAMED: Sabbah and Yu, LMFDB, Schütt]
 
 > *1 and 2, the mirror rule first* — the author, 14 November 2026: a coin on its edge shows the mirror; and go past
 > the base, to eleven.
 
-The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §7 ([`edge_rule.py`](edge_rule.py)).
+The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §9 ([`edge_rule.py`](edge_rule.py)).
 - **Why J3 mirrors at 3** [FORCED].
   - J3 counts corners of hexagons inscribed in the circles, and their ratio is a cube root of unity.
   - At p = 3 the two cube roots merge into 1. The hexagon's phase vanishes, and its sum over the circles is p − 1 = 2
@@ -906,6 +906,16 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §7 ([`edge_rule.
   - The cubic in eleven variables has the predicted shape at every prime from 13 to 401.
   - Its new piece is a weight-3 form with complex multiplication by Q(√−1155), and −1155 = (−3)(5)(−7)(−11).
   - √−11 entered at 11, where the centre pinches, as √−7 entered at 7.
+- **Thirteen** (round 23: one of two scored held; round 24 held its read blind).
+  - The new piece does not split into a twisted Tate class and a CM form; that registered prediction died.
+  - It is a twisted symmetric square. At every prime, T13/p⁵ + (−15015|p)p² is a square times a product of −1, 2, 3,
+    5, 11 and 13 that six characters decide. It held blind at every prime from 409 to 601.
+  - −15015 = (−3)·5·(−7)·(−11)·13, the product of the signed roots up to 13, is its determinant's character.
+- **Fifteen and "3 at its square"** (round 24: five of five held, blind).
+  - The author: 9 is two coins of 3 tossed together, so 3 enters only at its square. In the pieces, 3 is absent from
+    5 and 7 and present from 9 on.
+  - At 15 the nodes, that reading and Schütt's condition leave one field, Q(√−3003). The piece has complex
+    multiplication by exactly that field.
 
 ## 22. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1010,7 +1020,9 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §7 ([`edge_rule.
   The parity-weighted moments' formulas did not hold at the edge primes, and that death is kept. Round 20 held two of
   two: exact counts for the cubics in 7 and 9 variables, held blind. Round 21 held four of four. On their edges the
   cubics see the fixed set of the flip, and J3's mirror is the merge of the cube roots. Round 22 held five of five: in
-  eleven variables √−11 enters, by complex multiplication by Q(√−1155).
+  eleven variables √−11 enters, by complex multiplication by Q(√−1155). Round 23 held one of two scored: the piece at
+  13 does not split, and the read after, a twisted symmetric square with determinant (−15015|p), held blind in round 24,
+  which also held fifteen's field, Q(√−3003), five of five.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -1029,7 +1041,8 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §7 ([`edge_rule.
   - the coin:
     - proofs of the cubics' Airy pieces;
     - a blind test of the mirror half, which needs a new parity-weighted formula;
-    - the piece at 13: three dimensions, which the nodes say ramify at 5, 7, 11 and 13;
+    - the root of the piece at 13: the weight-3 newform it is the symmetric square of;
+    - a test of "3 at its square" apart from the nodes, at 17 or later;
     - whether the seventh moment carries Q(√−35), as the fifth carries √5;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
     continues; and the best cubic on four or more wheels.
@@ -1097,6 +1110,8 @@ python coin_at_five.py test20          # round 20: the cubics at 401..601, blind
 python edge_rule.py                    # the coin's edge: the forced checks F1 to F5, seconds
 python edge_rule.py test               # round 21: the cubics at their edge primes 5 and 7, blind, seconds
 python edge_rule.py test22             # round 22: the cubic in eleven variables to 401, a minute on four processes
+python edge_rule.py test23             # round 23: the cubic in thirteen variables to 401, a minute on four processes
+python edge_rule.py test24             # round 24: thirteen at 409..601, blind, and fifteen to 401, a minute on four processes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

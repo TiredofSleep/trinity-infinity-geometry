@@ -95,8 +95,11 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        are integers, has exactly the sizes the counts here need.
      - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
        of Q(√−1155).
-   - Rational weight-3 CM newforms need a class group of exponent at most 2 (Schütt's classification). Q(√−35) and
-     Q(√−1155) both qualify, with one class in each genus.
+   - Rational weight-3 CM newforms need a class group of exponent at most 2 (Schütt's classification). Q(√−35),
+     Q(√−1155) and Q(√−3003), the fields at 7, 11 and 15, all qualify, with one class in each genus. At 13,
+     Q(√−15015) does not (exponent 12), and the piece there is a twisted symmetric square instead.
+   - The step from a three-dimensional orthogonal piece to a symmetric square is SO(3) ≅ PGL(2) with Tate's lifting
+     theorem (Serre 1977, §6). The root's inner twists are Ribet's (Math. Ann. 1980).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 

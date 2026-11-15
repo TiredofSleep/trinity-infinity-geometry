@@ -161,6 +161,8 @@ does, and at 5, 7 and 9 no arrangement does.
     - On its edge each coin shows the fixed set of its flip. At the prime n the cubic in n variables pinches at its
       centre, where all n points coincide.
     - Past the base, at 11, √−11 enters as √−7 did at 7.
+    - 9's third face is there too. 3 enters the cubics' arithmetic only from 9 on, at its square: two coins of 3
+      tossed together (the author, 14 November 2026). It held at 15.
     - See [`../towers/seven_levels/COIN_AT_FIVE.md`](../towers/seven_levels/COIN_AT_FIVE.md).
 - **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
   plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves
