@@ -165,6 +165,8 @@ does, and at 5, 7 and 9 no arrangement does.
       tossed together (the author, 14 November 2026). It held at 15, and at the prime 3 itself. There the cubic's good
       model pinches exactly where the sum of the signs is a multiple of 9. So the cubic in nine variables pinches at
       its centre mod 3, as the cubic in q variables does mod q.
+    - At 27, three coins of 3, it does not enter, and 5 does not enter at 25, two coins of 5 (round 26). For 5, two
+      coins cancel. For 3 the count starts one coin late, so two coins make one entry.
     - See [`../towers/seven_levels/COIN_AT_FIVE.md`](../towers/seven_levels/COIN_AT_FIVE.md).
 - **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
   plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves

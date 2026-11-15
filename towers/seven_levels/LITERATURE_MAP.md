@@ -95,7 +95,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        are integers, has exactly the sizes the counts here need.
      - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
        of Q(√−1155). At 13, 17 and 21 they are twisted symmetric squares, with determinants (−15015|p), (−51051|p) and
-       (−138567|p), and at 15 a CM form of Q(√−3003).
+       (−138567|p), and at 15 a CM form of Q(√−3003). At 19, 23 and 27 they are four-dimensional, with determinants
+       (969969|p), (3187041|p) and (3187041|p), read prime by prime.
      - Qin computed the Hodge numbers of the related motives in more variables, and found no identifications either
        (Crelle 2024).
      - Chuang's dissertation (arXiv:2607.05757, July 2026) gives an arithmetic Picard–Lefschetz formula for diagonal

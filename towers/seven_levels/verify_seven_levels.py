@@ -1777,6 +1777,29 @@ forced("the cubic in seventeen variables recounted at 19, 23, 29 and 31: a twist
        "(-51051|p); and the good model at 3: T1 = 3, T3 = 0, T5 = -27, T7 = 27, T9 = 0, |T11| = 3^6, |T15| = 3^8",
        ok25)
 
+# ------------------------------------------------------------------ round 26 (edge_rule.py)
+print()
+print("round 26:")
+_r26 = _sp16.run([sys.executable, os.path.join(_HERE18, "edge_rule.py"), "verify26"], capture_output=True, text=True)
+forced("round 26's forced checks (edge_rule.py verify26: the infinite place, reading a determinant from F_p and F_(p^2), "
+       "the new counter against the old one and a direct count, and the bookkeeping for 19 to 27)",
+       _r26.returncode == 0 and "ALL PASS" in _r26.stdout)
+RECORDED26 = {"Y1": "HELD", "Y2": "HELD", "Y2'": "FAILED", "Y3": "HELD", "Y4": "HELD", "Y5": "HELD", "W1": "FAILED",
+              "R2": "HELD", "R3": "HELD"}
+forced("round 26's test log scores Y1 to Y5, R2 and R3 held, and Y2' and W1 (too few signs) not held, as recorded",
+       _scores("edge_rule_test26.log", RECORDED26) == RECORDED26)
+ok26 = True
+for p_ in (29, 31):
+    T_ = edge22.airy(p_, edge22.t_values_crt(p_, 1, edge22.ODD27))
+    T2_ = edge22.airy(p_ * p_, edge22.t_values_crt(p_, 2, edge22.ODD27))
+    for k_, D_ in ((19, 969969), (23, 3187041), (27, 3187041)):
+        ok26 &= ((T_[k_] ** 2 - T2_[k_]) / 2 == 0) == (edge22.kron(D_, p_) == -1)
+    ok26 &= T2_[21] == T_[21] ** 2 - 2 * edge22.kron(-138567, p_) * p_ ** 11 * T_[21]
+    ok26 &= edge22.lower_square_ok(p_, T_, T2_)
+forced("the cubics to 27 variables recounted at 29 and 31, over F_p and the field of p^2 elements: V19, V23 and V27 "
+       "have determinants (969969|p), (3187041|p) and (3187041|p), V21 has (-138567|p), and the known pieces are the "
+       "squares of their eigenvalues", ok26)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

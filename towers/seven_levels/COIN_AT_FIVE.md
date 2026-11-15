@@ -1,4 +1,4 @@
-# The coin at 5 in the fifth moment, the coins from 7 to 21, and the edge
+# The coin at 5 in the fifth moment, the coins from 7 to 27, and the edge
 
 ### Tags: **[FORCED]** checked by [`coin_at_five.py`](coin_at_five.py) or [`edge_rule.py`](edge_rule.py) · **[NAMED]** a cited result · **[measured]** computed exactly · **[READING]** an interpretation, not a claim · **[COIN]** a classified pair: flip, sides and edge.
 
@@ -14,6 +14,8 @@
 > *1 and 3, seventeen first* — the author, 15 November 2026. The "3" takes up the reading at 13: its piece is both
 > faces at once.
 
+> *2 and 3, 27 first* — the author, 15 November 2026. The "2" asks for the sharpened rule at 27, three coins of 3.
+
 Every coin has two sides and an edge (the author). [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md)
 classifies 5, 7 and 9 that way.
 - **The flat face** is the regular polygon, with its centre empty.
@@ -22,8 +24,8 @@ classifies 5, 7 and 9 that way.
 - **The edge** is the centre itself.
 
 This page finds that coin in the arithmetic of the fifth moment, and follows it to 7 and 9 (rounds 19 and 20 of
-[`PREREG.md`](PREREG.md)), to its edge (round 21), past the base to 11, 13, 15, 17 and 21 (rounds 22 to 25), and to
-the prime 3 itself (round 25).
+[`PREREG.md`](PREREG.md)), to its edge (round 21), past the base to 11, 13, 15, 17 and 21 (rounds 22 to 25), to
+the prime 3 itself (round 25), and to 27 (round 26).
 
 ## What stands
 
@@ -80,6 +82,10 @@ the prime 3 itself (round 25).
     every test but the registered one had too few signs.
   - The reading's exact version, which tied 13's unsplit piece to the icosahedron's lack of an axis, died at 17. The
     17-gon keeps its axis, but 17's piece keeps no line.
+- **At 27: the coins at the cube and the square** [FORCED; measured, held blind; §11].
+  - 3 enters at 9, two coins of 3, but not at 27, three coins. 5 enters at 5 and 15, but not at 25, two coins of 5.
+  - The determinant of V27 was read at every prime, from the counts over F_p and over the field of p² elements. It
+    is (3187041|p), the same as V23's, which has no such node: the nodes at 25 and 27 add nothing.
 
 ## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
@@ -413,9 +419,49 @@ Round 25 was registered at 5be432c before any count of X17, of X21 or at 3. Its 
     for 3.
   - So every prime from 5 on enters at its odd powers, and 3 at its even powers. 3 enters at 9 and 81 but not at 27,
     and 5 enters at 5 and 125 but not at 25.
-  - The first tests are at 25 and 27. They are untested.
+  - The first tests are at 25 and 27. Round 26 tested 27 (§11).
 
-## 11. Standing
+## 11. Twenty-seven: the coins at the cube and the square [FORCED; measured; round 26]
+
+> *2 and 3, 27 first* — the author, 15 November 2026.
+
+Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forced checks are in
+[`edge_rule_verify26.log`](edge_rule_verify26.log) and its scores in [`edge_rule_test26.log`](edge_rule_test26.log).
+- **The rule.** A node ramifies only when its critical value has odd valuation. For 3 the valuation is v_3(j) − 1,
+  because Σx³ = 3e3 spends one coin of 3.
+  - So 3 enters at sums 9 and 81, but not at 3 or 27.
+  - 5 enters at sums 5, 15 and 125, but not at 25.
+  - X25 pinches at its centre mod 5 with valuation 2, and X27 at its centre mod 3 with valuation 2. Neither ramifies
+    by the rule.
+- **A faster counter** [FORCED; F11]. The counts are moments of cubic exponential sums.
+  - Taken mod primes l ≡ 1 (mod p) and joined by the Chinese remainder theorem, they reach 27 variables at every prime
+    to 1999.
+  - They also reach the field of p² elements to p = 151, which gives the square of each Frobenius.
+  - They equal the old counts wherever both run.
+- **Reading a determinant** [FORCED; F10].
+  - With e2 = (T(p)² − T(p²))/2, a four-dimensional orthogonal piece has determinant −1 at p only if e2 = 0.
+  - A three-dimensional one has e2 = det(p)·p^(w/2)·T(p).
+- **The infinite place** [FORCED; F9].
+  - V27's four Hodge types form two pairs, with no middle class, so its determinant is even.
+  - Letting 3 enter at 27 makes it odd. So 3's half of the rule was settled before the count, given the nodes' parity.
+- **Measured** (round 26: seven of nine held; the two not held lacked signs, and none disagreed).
+  - V27's determinant is (3187041|p), with 3187041 = 3·11·13·17·19·23, at all 27 primes counted over the field of p²
+    elements. The rivals fit at chance level: "5 enters at 25" fits 14 of the 27, "3 enters at 27" 13, and both 12.
+  - V23 has no thick node, and its determinant is the same, (3187041|p). V19's is (969969|p), as the nodes give.
+  - V21's determinant, (−138567|p), held at every prime. That is the item round 25 could not score.
+  - V27 has no CM plane: p divides T27/p¹¹ at none of 294 primes.
+  - Seventeen's square classes held at 224 new primes, and twenty-one's at 273.
+- **Read after the run.**
+  - V25's own determinant is decided by its traces and the circle at 7 of 27 primes, and all 7 agree with 5 left out
+    at 25.
+  - [READING] Each four-dimensional piece is irreducible, with determinant (D|p) for a real quadratic field Q(√D).
+    Over that field it is the tensor square of a piece that Galois turns over: Q(√969969) at 19, and Q(√3187041) at
+    23 and 27.
+- [READING] **The coins.** For 5, two coins tossed together cancel: 5 is in the sum 25 twice and enters 0 times. For 3
+  the count starts one coin late, so two coins make one entry. That is the author's "9 is two coins of 3 tossed
+  together", and three coins (27) are back to none.
+
+## 12. Standing
 
 - **Known, and credited** [NAMED].
   - The 27 lines of Clebsch's diagonal cubic, 15 over Q and 12 over Q(√5) (Clebsch 1871). A cubic surface with one
@@ -435,12 +481,15 @@ Round 25 was registered at 5be432c before any count of X17, of X21 or at 3. Its 
   - The dictionary between the author's coin at 5 and the fifth moment.
   - The edge rule: why J3 mirrors at 3, why the mirror is exact at every prime edge and fails at prime powers, and
     the cubics' edge values.
-  - The exact point counts of X7, X9, X11, X13, X15, X17 and X21.
+  - The exact point counts of X7 to X27, each odd n.
   - What the Airy pieces are, to k = 21: (5|p), 35.3.c.b, (105|p), a CM form of Q(√−1155), a twisted symmetric square
     with determinant (−15015|p), a CM form of Q(√−3003), and twisted symmetric squares with determinants (−51051|p)
     and (−138567|p).
   - The node identity, with its reading as ramification, and the parity rule for the determinants.
   - The good model at 3, whose nodes are the author's "3 at its square", and the pieces counted at 3.
+  - The rule's sharpening by the critical values, and its test at 27: 3 not at its cube, 5 not at its square.
+  - The four-dimensional pieces at 19, 23 and 27, with determinants (969969|p), (3187041|p) and (3187041|p).
+  - The counter by exponential sums mod primes, to 27 variables and to the field of p² elements.
   - Web searches on 2026-11-14 and 2026-11-15 found no point count, zeta function or Galois action for these cubics.
     - They found the neighbours: the Fermat cubic fourfold's form of level 27, the census of cubic fourfolds over F₂,
       and the Segre cubic.
@@ -453,9 +502,8 @@ Round 25 was registered at 5be432c before any count of X17, of X21 or at 3. Its 
     parity-weighted formula, J6's or J7's.
   - The roots of the pieces at 13, 17 and 21: which weight-3 newforms they are the symmetric squares of, and at what
     levels.
-  - Seventeen's square classes (six characters, read after round 25), tested blind at new primes.
-  - The rule at 3, sharpened by the critical values: 3 enters at 9 and 81 but not at 27, and 5 at 5 and 125 but not at
-    25. Its first tests are at 25 and 27.
+  - The sharpened rule at 81 (four coins of 3, which should enter) and at 125 (three coins of 5).
+  - A registered test of V25's own determinant, which needs the field of p³ elements (e3 = det·p¹³·e2).
   - Whether the seventh moment I7 carries Q(√−35), as I5 carries √5.
 - **Died** (kept in the graveyard):
   - C1's parity-weighted half (§2).
@@ -466,7 +514,9 @@ Round 25 was registered at 5be432c before any count of X17, of X21 or at 3. Its 
   - The pattern's single field at 13, Q(√−15015), ruled out before the test by its class group.
   - The dictionary between the pieces and the base's axes (round 25, Z3): 17's piece did not split, although the
     17-gon keeps its axis. The guess (17|p) with Q(√−3003) is void with it.
-  - Not held: twenty-one's registered sign test (D2), which saw three signs where it asked for five.
+  - Not held: twenty-one's registered sign test (D2), which saw three signs where it asked for five. Round 26 read
+    that determinant at every prime, and it held (Y4).
+  - Not held, for too few signs: round 26's Y2′ (8 of 10) and W1 (1 of 5). None of their signs disagreed.
 
 ## Run it
 
@@ -481,6 +531,8 @@ python edge_rule.py test23       # round 23: the cubic in thirteen variables to 
 python edge_rule.py test24       # round 24: thirteen at 409..601, blind, and fifteen to 401: a minute, four processes
 python edge_rule.py verify25     # round 25's forced checks, F6 to F8 (the base's rule, the good model at 3): seconds
 python edge_rule.py test25       # round 25: seventeen to 401, twenty-one to 113, and the prime 3: a minute, four processes
+python edge_rule.py verify26     # round 26's forced checks, F9 to F12 (the infinite place, the new counter): seconds
+python edge_rule.py test26       # round 26: 27 variables to 1999, and over F_(p^2) to 151: two minutes, four processes
 ```
 
 ## Sources

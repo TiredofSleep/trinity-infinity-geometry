@@ -2348,3 +2348,46 @@ X27, or any cubic in 13 or more variables over a field of p² elements
 - The literature gate of round 25 covers this round: no work found identifies any Airy piece past k = 9.
 
 Run: `python edge_rule.py test26` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 26 scores (added after the test, 2026-11-15)
+
+Run by [`edge_rule.py`](edge_rule.py) `test26`, registered at afc4e76 before the test. Output:
+[`edge_rule_test26.log`](edge_rule_test26.log).
+
+**The sharpened rule held at 27, prime by prime: 3 does not enter at its cube, and 5 does not enter at its square.**
+
+| | outcome | evidence |
+|---|---|---|
+| Y1 | held | T27 = p¹¹u27(p), with u27(p) an integer and \|u27(p)\| ≤ 4p³, at all 294 primes from 29 to 1999 |
+| Y2 | held | e2 = 0 exactly where (3187041\|p) = −1, at all 27 primes from 29 to 151. The rivals fit 14 ("5 enters at 25"), 13 ("3 enters at 27") and 12 (both) of the 27, about what chance gives |
+| Y2′ | not held | \|u27(p)\| > 2p³ at only 8 primes, and the test asked for 10. All 8 have (3187041\|p) = +1, and the rival "5 enters at 25" is wrong at all 8 |
+| Y3 | held | V23's determinant is (3187041\|p), the same as V27's, and V19's is (969969\|p), at all 27 primes. Both have the predicted shape at all 294 |
+| Y4 | held | V21's determinant is (−138567\|p) at all 27 primes: round 25's D2, now read directly |
+| Y5 | held | p divides u27(p) at none of the 294 primes |
+| W1 | not held | V25 has the predicted shape at all 294 primes, but \|u25(p)\| > 3p⁴ at only 1, where 5 were asked. That one sign agrees with (3187041\|p) and not with the rival |
+| R2 | held | seventeen's square classes, by the six characters fixed after round 25, at all 224 primes from 409 to 1999 |
+| R3 | held | twenty-one's, by its six characters, at all 273 primes from 127 to 1999 |
+| instrument | held | T1 to T15 at all 294 primes; seventeen's symmetric square at 29 to 401; over the field of p² elements the known pieces are the squares of their eigenvalues at all 27 primes, which rereads the determinants of 7, 11, 13, 15 and 17 |
+
+**Read after the run** (not scores).
+- **Twenty-five's own determinant.** At each prime counted over the field of p² elements, T25(p) and T25(p²) with the
+  circle (every eigenvalue of modulus p¹³) allow one sign or both.
+  - One sign only at 7 of the 27 primes. All 7 agree with (3187041|p), 5 left out at 25. The rival agrees at 3.
+  - So 5 stays out of V25 too, on the evidence read here. A registered test would need T25(p³), from the field of p³
+    elements.
+- [READING] **Where the four-dimensional pieces live.** V27 has no line (no middle class) and no CM plane (Y5), so it
+  is irreducible.
+  - An irreducible orthogonal piece of dimension 4 whose determinant is (D|p) becomes, over Q(√D), a tensor product of
+    two two-dimensional pieces that Galois swaps.
+  - So V23 and V27 live over Q(√3187041), and V19 over Q(√969969), as tensor squares of a piece of weights 3 and 5.
+
+**Yield.**
+- The author's coins, at the cube and the square.
+  - 3 enters at 9, two coins of 3, and not at 27, three coins. 5 enters at 5 and 15 and not at 25, two coins of 5.
+  - V27's determinant, read at each prime, is (3187041|p), the same as V23's, which has no thick node. So the thick
+    nodes at 25 and 27 add nothing.
+  - The infinite place had already ruled out 3 at 27. The count decided 5 at 25 against three rivals.
+- Twenty-one's determinant, which round 25 could not score, held prime by prime.
+- Seventeen's and twenty-one's square classes held blind at 224 and 273 new primes.

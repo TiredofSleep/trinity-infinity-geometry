@@ -342,7 +342,14 @@ its own graveyard. These died, with what killed them:
     - The guess that named the split's parts, (17|p) with Q(√−3003), is void with it.
     - What survives is the observation, not the link: the three-dimensional pieces at 13, 17 and 21 are all unsplit.
   - **Not held, not dead: twenty-one's sign test** (D2). Only 3 primes to 113 had |T21/p⁹| > p², and the test asked
-    for 5. All three signs agree with (−138567|p), and an unregistered test supports it at all 22 primes.
+    for 5. All three signs agree with (−138567|p), and an unregistered test supports it at all 22 primes. Round 26 read
+    the determinant at every prime (Y4), and it held.
+- **From twenty-seven (2026-11-15; `towers/seven_levels/COIN_AT_FIVE.md` §11, round 26):** nothing died.
+  - **Not held, not dead:** two sign tests saw too few signs. Y2′ saw 8 large traces of V27 where it asked for 10. W1
+    saw 1 large trace of V25 where it asked for 5. None of their signs disagreed
+    (`towers/seven_levels/edge_rule_test26.log`).
+  - **The rivals that lost:** "3 enters at 27" and "5 enters at 25", as readings of V27's determinant. They fit 13 and
+    14 of the 27 primes, at chance level, where the thin rule fits all 27.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,
