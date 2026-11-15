@@ -1,0 +1,358 @@
+"""edge_rule.py -- the coin on its edge (round 21), and the cubic in eleven variables (round 22).
+
+    "1 and 2, the mirror rule first"  -- the author, 14 November 2026
+    (1: yes, a coin on its edge shows the mirror, so register the mirror rule.  2: the cubic in eleven variables.)
+
+The rule, made precise (round 21 of PREREG.md).  Every coin has a flip, two sides and an edge, and the edge is the
+flip's fixed set (the author's classification).  At an edge prime the two sides merge into that fixed set.
+  (a) A count without a phase sees the fixed set once: its symbol reads 0, the average of its two sides.
+  (b) A count with a phase sees the phase vanish on the fixed set, which adds p for each merged point.  When the merged
+      points are all the primitive q-th roots of unity and the edge prime is q itself, the edge is the exact mirror of
+      the side that holds them, because there are q - 1 = p - 1 of them.  At a prime power the mirror fails.
+
+The cubics X_n = {x_1 + ... + x_n = x_1^3 + ... + x_n^3 = 0} are counts without a phase.  Their primitive traces t_n
+are the moments of the cubic exponential sums S(a) = sum_x e((x^3 + a x)/p), divided by p^2 (orthogonality), so they
+split by the ballot numbers m(n, k) into the symmetric powers of the Airy sheaf:
+
+    t_n = sum over odd k <= n of m(n, k) p^((n - k)/2 - 2) T_k(p),    m(n, k) = C(n, (n-k)/2) - C(n, (n-k)/2 - 1).
+
+T_k(p) is the trace on the classical part of H^1(A^1, Sym^k Ai), whose Hodge numbers are Sabbah and Yu's
+[NAMED: arXiv:2112.13405, Theorem 1.1].  Rounds 19 and 20 measured T_1 = p, T_3 = 0, T_5 = (5|p) p^3,
+T_7 = p^3 c(p) with c the weight-3 CM form of Q(sqrt -35), and T_9 = (105|p) p^5.
+
+  python edge_rule.py          # the forced checks F1 to F5                      -> edge_rule_verify.log
+  python edge_rule.py test     # round 21: the cubics at their edge primes 5 and 7 -> edge_rule_test.log
+  python edge_rule.py test22   # round 22: the cubic in eleven variables          -> edge_rule_test22.log
+                               #   (four worker processes at below-normal priority)
+
+numpy + sympy + coin_at_five.py.  ASCII output.
+"""
+import cmath
+import itertools
+import math
+import os
+import sys
+import time
+from fractions import Fraction
+
+for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ.setdefault(_v, "1")
+import numpy as np
+import sympy
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import coin_at_five as cf  # noqa: E402  (sets below-normal priority on import)
+
+primes, leg, low_priority = cf.primes, cf.leg, cf.low_priority
+LOG = None
+FAILS = []
+
+
+def say(s=""):
+    print(s, flush=True)
+    if LOG:
+        LOG.write(s + "\n")
+        LOG.flush()
+
+
+def check(name, ok, detail=""):
+    say(f"[{'PASS' if ok else 'FAIL'}] {name}" + (f"  ({detail})" if detail else ""))
+    if not ok:
+        FAILS.append(name)
+
+
+# ------------------------------------------------------------------ the ballot numbers and the Airy pieces
+def ballot(n, k):
+    """multiplicity of Sym^k in the n-th tensor power of the standard 2-dimensional representation of SL(2)"""
+    if (n - k) % 2 or k > n or k < 0:
+        return 0
+    j = (n - k) // 2
+    return math.comb(n, j) - (math.comb(n, j - 1) if j >= 1 else 0)
+
+
+def t_values(p, ns):
+    """t_n = (N_n - p^(n-2))/(p - 1) for odd n, exactly, where N_n counts F_p^n points with sum x = sum x^3 = 0.
+    For n >= 3 this is #X_n(F_p) - (1 + p + ... + p^(n-3)); for n = 1 (N_1 = 1) it is 1/p."""
+    N = cf.cone_counts(p, tuple(n for n in ns if n >= 3))
+    N[1] = 1
+    return {n: (Fraction(N[n]) - Fraction(p) ** (n - 2)) / (p - 1) for n in sorted(set(ns) | {1})}
+
+
+def airy(p, t):
+    """the traces T_k from the t_n, by inverting the ballot triangle: T_n = p^2 (t_n - sum_(k<n) m(n,k) p^((n-k)/2-2) T_k)"""
+    T = {}
+    for n in sorted(t):
+        s = t[n] - sum(ballot(n, k) * Fraction(p) ** ((n - k) // 2 - 2) * T[k] for k in T)
+        T[n] = s * p * p
+    return T
+
+
+def classical_hodge(k):
+    """Sabbah-Yu, Theorem 1.1, k odd: h^(p,q) = 1 for p + q = k + 1, p = (k + 2i)/3, 1 <= i <= (k + 1)/2.
+    The classical part is where p is an integer."""
+    return [((k + 2 * i) // 3, k + 1 - (k + 2 * i) // 3) for i in range(1, (k + 1) // 2 + 1) if (k + 2 * i) % 3 == 0]
+
+
+def betti_prim(n):
+    """primitive middle Betti number of a smooth cubic of dimension n - 3 (n odd): (2^(n-1) + 2)/3"""
+    return (2 ** (n - 1) + 2) // 3
+
+
+def ramified_dim(k, p):
+    """the node reading: the number of odd multiples of p that are at most k"""
+    return sum(1 for s in range(p, k + 1, 2 * p))
+
+
+# ------------------------------------------------------------------ the turning wheel's circles and the operators
+def nonsquare(p):
+    return next(e for e in range(2, p) if leg(e, p) == -1)
+
+
+def circles(p):
+    """the circles of a non-split torus: level sets r != 0 of the anisotropic form q^2 - eps k^2 (SO of it is the torus;
+    every non-split torus gives the same moments, since they are integers and the tori are conjugate up to scaling)"""
+    eps = nonsquare(p)
+    C = {r: [] for r in range(1, p)}
+    for q in range(p):
+        for k in range(p):
+            r = (q * q - eps * k * k) % p
+            if r:
+                C[r].append((q, k))
+    return C, eps
+
+
+def operators(p):
+    """<a|A_(q,k)|b> = [a + b = 2q] w^(k(a - b)), w = e^(2 pi i/p); A_0 is the half turn P"""
+    w = [cmath.exp(2j * math.pi * t / p) for t in range(p)]
+    A = {}
+    for q in range(p):
+        for k in range(p):
+            M = np.zeros((p, p), dtype=complex)
+            for a in range(p):
+                b = (2 * q - a) % p
+                M[a, b] = w[(k * (a - b)) % p]
+            A[(q, k)] = M
+    return A
+
+
+def J3_by_operators(p):
+    C, _ = circles(p)
+    A = operators(p)
+    P = A[(0, 0)]
+    tot = 0
+    for r, pts in C.items():
+        S = sum(A[v] for v in pts)
+        tot += np.trace(P @ S @ S @ S)
+    return tot
+
+
+def J3_merge(p):
+    """J3 = p sum_C sum over v1, v3 on C with v1 + v3 on C of w^(2<v1, v3>) (TORUS_MOMENTS.md section 6, Step 7),
+    with the ratios mu = v3/v1 in F_p(sqrt eps) that occur, and whether every phase is 0"""
+    C, eps = circles(p)
+    w = [cmath.exp(2j * math.pi * t / p) for t in range(p)]
+    tot, mus, phases = 0, set(), set()
+    for r, pts in C.items():
+        S = set(pts)
+        rinv = pow(r, p - 2, p)
+        for (q1, k1) in pts:
+            for (q3, k3) in pts:
+                s = ((q1 + q3) % p, (k1 + k3) % p)
+                if s not in S:
+                    continue
+                ph = (2 * (q1 * k3 - k1 * q3)) % p
+                tot += w[ph]
+                phases.add(ph)
+                a = (q3 * q1 - eps * k3 * k1) * rinv % p        # v3 * conj(v1) / N(v1)
+                b = (k3 * q1 - q3 * k1) * rinv % p
+                mus.add((a, b))
+    return p * tot, mus, phases
+
+
+# ------------------------------------------------------------------ verify: the forced checks
+def verify():
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_verify.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    say("edge_rule.py -- the coin on its edge: the forced checks")
+
+    # F1: the merge at J3's edge
+    ok, detail = True, []
+    for p in primes(3, 13):
+        op = J3_by_operators(p)
+        mg, mus, ph = J3_merge(p)
+        side = -2 * p * (p + 1) if p % 3 == 2 else 0
+        want = p * (p + 1) * (p - 1) if p == 3 else side
+        ok &= abs(op - want) < 1e-6 and abs(mg - want) < 1e-6
+        detail.append(f"{p}:{round(op.real)}")
+    check("F1a. J3 from the operators equals the merge count: -2p(p + 1) when p = 2 mod 3, 0 when p = 1 mod 3, and "
+          "p(p + 1)(p - 1) = 24 at p = 3", ok, " ".join(detail))
+    ok = True
+    for p in primes(5, 61):
+        mg, mus, ph = J3_merge(p)
+        cube = {(a, b) for (a, b) in mus if (a * a + nonsquare(p) * b * b + a + 1) % p == 0 and (2 * a * b + b) % p == 0}
+        if p % 3 == 2:
+            ok &= len(mus) == 2 and cube == mus and 0 not in ph and abs(mg + 2 * p * (p + 1)) < 1e-6
+        else:
+            ok &= len(mus) == 0 and abs(mg) < 1e-6
+    mg3, mus3, ph3 = J3_merge(3)
+    ok3 = mus3 == {(1, 0)} and ph3 == {0}
+    check("F1b. the pairs: on the side p = 2 mod 3 the ratio v3/v1 is a primitive cube root of unity, two of them, with "
+          "nonzero phase; at p = 1 mod 3 there are none (every prime 5..61); at the edge p = 3 the only ratio is 1, the "
+          "two roots merged (x^2 + x + 1 = (x - 1)^2 mod 3), and every phase is 0", ok and ok3,
+          f"p = 3: ratios {sorted(mus3)}, phases {sorted(ph3)}")
+
+    # F2: the cyclotomic weights -- the mirror is exact at a prime edge and fails at a prime power
+    x = sympy.symbols("x")
+    rows, ok = [], True
+    for q in (3, 5, 7, 11, 13, 4, 8, 9, 25, 27, 49):
+        ell = sympy.factorint(q)
+        ell, kk = next(iter(ell.items()))
+        phi = sympy.totient(q)
+        merged = sympy.Poly(sympy.cyclotomic_poly(q, x), x, modulus=ell) == sympy.Poly((x - 1) ** phi, x, modulus=ell)
+        mirror = (ell - 1) == phi
+        ok &= merged and (mirror == (kk == 1))
+        rows.append(f"{q}: sides -{phi}, edge +{ell - 1}{' mirror' if mirror else ''}")
+    check("F2. at the edge prime l the primitive q-th roots (q = l^k) merge into 1, Phi_q = (x - 1)^phi(q) mod l. Each "
+          "root's phase sum is -1 on the side that holds them; the merged point's is l - 1. So the edge mirrors the side "
+          "exactly when l - 1 = phi(q), that is when q = l is prime", ok, "; ".join(rows))
+
+    # F3: the node identity
+    ok, rows = True, []
+    for n in range(5, 18, 2):
+        for p in (5, 7, 11, 13):
+            nodes = len(cf.singular_sign_points(n, p))
+            pred = sum(ballot(n, k) * ramified_dim(k, p) for k in range(1, n + 1, 2))
+            ok &= nodes == pred
+            if n <= 11:
+                rows.append(f"n={n},p={p}:{nodes}")
+    check("F3. the node identity: #nodes(X_n mod p) = sum_k m(n, k) r_k(p), with r_k(p) the number of odd multiples of p "
+          "up to k (every odd n from 5 to 17, p = 5, 7, 11, 13). So each node is one dimension ramified at p if V_k is "
+          "ramified at p with dimension r_k(p): V_5 at 5; V_7 at 5, 7; V_9 at 5, 7; V_11 at 5, 7, 11", ok, " ".join(rows))
+
+    # F4: Sabbah-Yu's classical Hodge numbers and the Betti numbers
+    v = {k: len(classical_hodge(k)) for k in range(1, 14, 2)}
+    ok = all(sum(ballot(n, k) * v[k] for k in range(1, n + 1, 2)) == betti_prim(n) for n in range(3, 14, 2))
+    check("F4. the classical parts of Sabbah and Yu's Airy moments have dimensions v_k = 1, 0, 1, 2, 1, 2, 3 (k = 1..13) "
+          "and Hodge types " + ", ".join(f"k={k}:{classical_hodge(k)}" for k in (1, 5, 7, 9, 11)) +
+          "; with the ballot numbers they add up to the primitive Betti numbers 6, 22, 86, 342, 1366 of X_5..X_13", ok,
+          f"v = {v}")
+
+    # F5: the measured formulas in Airy form, at every prime 11..61
+    ok, worst = True, ""
+    for p in primes(11, 61):
+        T = airy(p, t_values(p, (3, 5, 7, 9)))
+        c = T[7] / p ** 3
+        good = (T[1] == p and T[3] == 0 and T[5] == leg(5, p) * p ** 3 and c.denominator == 1
+                and abs(int(c)) == cf.cm35(p) and T[9] == leg(105, p) * p ** 5)
+        ok &= good
+        if not good:
+            worst += f" {p}"
+    check("F5. rounds 19 and 20 in Airy form: T_1 = p, T_3 = 0, T_5 = (5|p)p^3, T_7 = p^3 c(p) with |c| the CM form of "
+          "Q(sqrt -35), T_9 = (105|p)p^5, at every prime 11..61", ok, worst.strip())
+
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    say("ALL PASS" if not FAILS else f"FAILED: {FAILS}")
+    LOG.close()
+
+
+# ------------------------------------------------------------------ round 21: the cubics at their edge primes
+def lines_at_five():
+    p = 5
+    U, V = cf.lines_on_cubic(p)
+    centre = np.array([1, 1, 1, 1])
+    planes = through = 0
+    for u, v in zip(U, V):
+        l = (u, v)
+        if cf.in_a_plane(l, p):
+            planes += 1
+        if cf.rank_mod_p(sympy.Matrix([list(u), list(v), list(centre)]), p) == 2:
+            through += 1
+    return len(U), planes, through
+
+
+def J5_split(p):
+    """J5 = p(pZ - N): N closed five-point configurations on one circle, Z of them with phase 0 (read, not scored)"""
+    C, _ = circles(p)
+    A = operators(p)
+    P = A[(0, 0)]
+    pts = C[1]
+    N = Z = 0
+
+    def walk(M, depth):  # depth-first over the 5-tuples, reusing partial products
+        nonlocal N, Z
+        if depth == 5:
+            tr = np.trace(M)
+            if abs(tr) > 0.5:
+                N += 1
+                ph = round(cmath.phase(tr) * p / (2 * math.pi)) % p
+                Z += ph == 0
+            return
+        for v in pts:
+            walk(M @ A[v], depth + 1)
+    walk(P, 0)
+    return N, Z, p * (p * Z - N)
+
+
+def kloosterman_V5(p):
+    w = [cmath.exp(2j * math.pi * t / p) for t in range(p)]
+    K = [sum(w[(x + a * pow(x, p - 2, p)) % p] for x in range(1, p)).real for a in range(p)]
+    return round(sum(k ** 5 for k in K[1:])), round(sum(k ** 5 for k in K))
+
+
+def curve_Z(p):
+    """the side formula for Z (TORUS_MOMENTS.md, Theorem 6, Step 4): (p + 1)(p + 2 + sum_nu eta(nu(nu - 4)(4nu^2 - 52nu + 9)))"""
+    s = sum(leg(n * (n - 4) * (4 * n * n - 52 * n + 9), p) for n in range(p))
+    return (p + 1) * (p + 2 + s)
+
+
+def test():
+    """round 21 (PREREG.md): K0 to K3, and the controls"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    say("Round 21: the coin on its edge -- the cubics at their edge primes 5 and 7 (PREREG.md)")
+    # K0
+    n, planes, through = lines_at_five()
+    say(f"LINES p=5: {n} lines on Clebsch's cubic, {planes} in the Sylvester planes, {through} through the centre")
+    k0 = n == 21 and planes == 15 and through == 6
+    say(f"K0 21 lines over F_5: the 15 of the edge and 6 through the centre: {'HELD' if k0 else 'FAILED'}")
+    # K1..K3
+    T = {}
+    for p in (5, 7):
+        t = t_values(p, (3, 5, 7, 9))
+        T[p] = airy(p, t)
+        say(f"CUBIC p={p}: t3={t[3]} t5={t[5]} t7={t[7]} t9={t[9]}   T1={T[p][1]} T3={T[p][3]} T5={T[p][5]} "
+            f"T7={T[p][7]} T9={T[p][9]}")
+    ctrl = all(T[p][1] == p and T[p][3] == 0 for p in (5, 7)) and T[7][5] == -343
+    say(f"control: T1 = p and T3 = 0 at 5 and 7, T5(7) = (5|7)7^3 = -343: {ctrl}")
+    k1 = T[5][5] == 0
+    say(f"K1 T5(5) = 0, so t5(5) = 25 (the symbol reads 0; the reflection would give 10): {'HELD' if k1 else 'FAILED'}  "
+        f"(T5(5) = {T[5][5]})")
+    k2 = abs(T[5][7]) == 5 ** 4 and abs(T[7][7]) == 7 ** 4
+    say(f"K2 |T7(5)| = 5^4 and |T7(7)| = 7^4, so |c(5)| = 5 and |c(7)| = 7: {'HELD' if k2 else 'FAILED'}  "
+        f"(c(5) = {T[5][7] / 125}, c(7) = {T[7][7] / 343})")
+    k3 = T[5][9] == 0 and T[7][9] == 0
+    say(f"K3 T9(5) = T9(7) = 0 (the symbol (105|p) reads 0): {'HELD' if k3 else 'FAILED'}  (T9(5) = {T[5][9]}, "
+        f"T9(7) = {T[7][9]})")
+    # read after the run, not scored: J5 split into Z and N
+    say("READ (not scored): J5 = p(pZ - N) split at small primes")
+    for p in (3, 5, 7, 11):
+        N, Z, j5 = J5_split(p)
+        V5a, V5b = kloosterman_V5(p)
+        Nf = ((p + 1) ** 5 - (p + 1) * V5a) / p ** 2
+        say(f"  p={p}: N = {N} (from Kloosterman's V5 = {V5a} over a != 0: {Nf:g}), Z = {Z} (the curve's side "
+            f"formula: {curve_Z(p)}), J5 = {j5}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
+if __name__ == "__main__":
+    mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
+    if mode == "verify":
+        verify()
+    elif mode == "test":
+        test()
+    elif mode == "test22":
+        test22()

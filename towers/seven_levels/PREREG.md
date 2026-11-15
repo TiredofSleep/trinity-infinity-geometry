@@ -1756,3 +1756,73 @@ Output: [`coin_at_five_test20.log`](coin_at_five_test20.log).
   multiplication by Q(√−35), as Laza and Zheng's lattice implies.
 - The cubic sixfold adds one character, (105|p), and eight copies of the same CM form.
 - What these are, and how they read the coin, is in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md).
+
+---
+
+## Round 21: the coin on its edge (registered 2026-11-14, before the test)
+
+> *1 and 2, the mirror rule first* — the author, 14 November 2026. The "1" says yes: a coin on its edge shows the
+> mirror, so register the mirror rule.
+
+Round 19 found J3 = +2p(p + 1) at its edge p = 3: the mirror of its side p ≡ 2 (mod 3), where it is −2p(p + 1). Before
+this registration [`edge_rule.py`](edge_rule.py) found why (F1 and F2 of
+[`edge_rule_verify.log`](edge_rule_verify.log) [FORCED]).
+- **The merge.** J3 counts pairs of points v1, v3 on a circle whose sum is on the circle too.
+  - Their ratio v3/v1 is a primitive cube root of unity. When p ≡ 2 (mod 3) the turning wheel holds two of them, and
+    each one's phase sums to −1 over the circles.
+  - At p = 3 the two merge into 1, since x² + x + 1 = (x − 1)² mod 3. On the merged point the phase vanishes, and the
+    sum over the circles is p − 1 = 2. So −2 becomes +2: the mirror.
+- **Why the mirror is exact.** At a prime edge q all q − 1 primitive q-th roots of unity merge, and the merged point
+  weighs p − 1 = q − 1. At a prime power it does not: at 9 the six primitive ninth roots merge into one point of
+  weight 2.
+
+**The rule, made precise.** The edge of a coin is the fixed set of its flip (the author's classification). At an edge
+prime the two sides merge into it.
+- (a) A count without a phase sees the fixed set once. Its symbol reads 0, the average of its sides.
+- (b) A count with a phase sees the phase vanish there, which adds p for each merged point. For all the primitive q-th
+  roots at the prime q, that is the exact mirror of the side that holds them.
+
+**What is already known.** These values are all in round 19's log, so none of them is a test.
+
+| moment, edge | operators | reading |
+|---|---|---|
+| I5 at 5 | 3504 | (a), the average |
+| I6 at 3 | 960 | (a), the average. Theorem 4 with (−3\|3) read as 0 gives 960, and the mirror gives 636. This value sat unread in round 19's log |
+| J3 at 3 | 24 | (b), the mirror, by the merge above |
+| J5 at 3 | 240 | fits (b) with (−3\|3) read as 3 and the newforms' a(3) = 1 and f(3) = −3. That fit was found after 240 was known, among ten readings tried. Plain negation of the −1 side fits no integer a_E(3) |
+| J5 at 5 | −1680 | no symbol in J5's formula has its edge at 5. Its curve and its form are bad there instead |
+
+So every parity-weighted edge value we can reach is already measured. The mirror half of the rule has no blind test
+left among the formulas we have.
+
+What has never been computed is the cubics at their edge primes: no count of X5 at 5, or of X7 and X9 at 5 or 7, has
+been made. They are counts without a phase, so part (a) predicts them.
+
+**The cubics as Airy moments** [FORCED; F4 and F5].
+- t_n = #X_n(F_p) − (1 + p + ⋯ + p^(n−3)) is the n-th moment of the cubic exponential sums S(a) = Σ_x e((x³ + ax)/p),
+  divided by p².
+- So it splits by the ballot numbers m(n, k) into the symmetric powers of the Airy sheaf:
+  t_n = Σ_k m(n, k)·p^((n−k)/2 − 2)·T_k.
+- By rounds 19 and 20, T_1 = p, T_3 = 0, T_5 = (5|p)p³, T_7 = p³c(p) and T_9 = (105|p)p⁵.
+- The coefficients 5, 14, 42 and 6, 27, 8 of their formulas are ballot numbers.
+- Sabbah and Yu's Hodge numbers for these pieces [NAMED: arXiv:2112.13405] add up to every Betti number.
+
+**The nodes** [FORCED identity; F3].
+- X_n has a node at each sign vector whose sum vanishes mod p.
+- Their number is Σ_k m(n, k)·r_k(p), where r_k(p) counts the odd multiples of p up to k.
+- [READING] Each node is one dimension where the cohomology is ramified at p: V5 at 5, V7 at 5 and 7, and V9 at 5
+  and 7.
+
+| | prediction | dies if |
+|---|---|---|
+| K0 | Clebsch's cubic over F_5 has exactly 21 lines: the 15 of the edge, and 6 through the centre, where the double six's pairs merge | another count |
+| K1 | T5(5) = 0, so t5(5) = 25: (5\|5) reads 0. The mirror would give T5(5) = −375 and t5(5) = 10 | T5(5) ≠ 0 |
+| K2 | the CM form at the two primes where Q(√−35) ramifies: \|T7(5)\| = 5⁴ and \|T7(7)\| = 7⁴. So t7(5) is 325 or 375, and t7(7) is 343 or 441 | another value |
+| K3 | T9(5) = T9(7) = 0: (105\|p) reads 0 at both. With K1, t9(5) = 5250 + 40(t7(5) − 350) and t9(7) = 5145 + 56(t7(7) − 392) | T9 ≠ 0 at either |
+| control | T1 = p and T3 = 0 at 5 and 7, and T5(7) = (5\|7)·7³ = −343 | one fails: the instrument fails |
+
+**The drafter's expectation.**
+- K0 and K1 hold, since a cubic surface with one node has 21 lines [NAMED].
+- K2 and K3 are less sure: they need the counts at the nodes to see only the unramified part.
+
+Run: `python edge_rule.py test` (seconds). It also reads J5's split into its two counts at 3, 5, 7 and 11, unscored.
