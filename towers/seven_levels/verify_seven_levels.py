@@ -1702,6 +1702,32 @@ for p_ in (11, 13, 17, 19):
 forced("the cubics in 7 and 9 variables recounted at 11, 13, 17 and 19: t7 = p^2(14 + 6(5|p)) + p c(p) with |c| the "
        "CM form of Q(sqrt -35), and t9 = p^3(42 + 27(5|p) + (105|p)) + 8p^2 c(p)", ok20)
 
+# ------------------------------------------------------------------ rounds 21 and 22 (edge_rule.py)
+print()
+print("rounds 21 and 22:")
+_r21 = _sp16.run([sys.executable, os.path.join(_HERE18, "edge_rule.py")], capture_output=True, text=True)
+forced("COIN_AT_FIVE.md's edge (edge_rule.py: the merge at J3's edge, the cyclotomic weights, the node identity, Sabbah "
+       "and Yu's classical Hodge numbers against the Betti numbers, and rounds 19 and 20 in Airy form)",
+       _r21.returncode == 0)
+RECORDED21 = {"K0": "HELD", "K1": "HELD", "K2": "HELD", "K3": "HELD"}
+RECORDED22 = {"Q1": "HELD", "Q2": "HELD", "Q3": "HELD", "Q3'": "HELD", "Q4": "HELD"}
+forced("round 21's test log scores K0 to K3 held, and round 22's Q1, Q2, Q3, Q3' and Q4 held, as recorded",
+       _scores("edge_rule_test.log", RECORDED21) == RECORDED21
+       and _scores("edge_rule_test22.log", RECORDED22) == RECORDED22)
+import edge_rule as edge22
+
+ok22 = True
+for p_ in (13, 17, 19, 23):
+    T_ = edge22.airy(p_, edge22.t_values(p_, (3, 5, 7, 9, 11)))
+    g_ = T_[11] / p_ ** 5
+    ok22 &= g_.denominator == 1 and abs(g_) <= 2 * p_ and (g_ == 0) == (coin20.leg(-1155, p_) == -1)
+    if g_ != 0:
+        D_ = 4 * p_ * p_ - int(g_) ** 2
+        ok22 &= D_ % 1155 == 0 and edge22.sympy.integer_nthroot(D_ // 1155, 2)[1]
+    ok22 &= T_[7] / p_ ** 3 == edge22.LMFDB_35_3_c_b[p_]
+forced("the cubic in eleven variables recounted at 13, 17, 19 and 23: T11 = p^5 g(p), with g the weight-3 form with "
+       "complex multiplication by Q(sqrt -1155); and X7's c(p) is LMFDB 35.3.c.b's a_p", ok22)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

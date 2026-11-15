@@ -313,6 +313,15 @@ its own graveyard. These died, with what killed them:
     −84 or −192) and J5 = −1680 at 5 (registered −930) (`towers/seven_levels/coin_at_five_test.log`).
   - Theorems 6 and 7 were written for p ≥ 7, so no stated theorem fell. What died is the reading that the edge
     averages the sides for every moment. At its edge J3 is +2p(p + 1), the mirror of its (−3|p) = −1 side.
+- **From the coin's edge and eleven (2026-11-14; `towers/seven_levels/COIN_AT_FIVE.md` §5 and §7, rounds 21 and 22):**
+  - **"At the edge, a moment is minus its −1 side."** This was read off J3 at 3. It fits J5 at 3 for no integer
+    a_E(3): 240 would need a_E(3) = −5/3. Round 19's log killed it before round 21 registered the rule in its
+    surviving form.
+  - **"The mirror rule for J5 at 5,"** as the drafter asked it on 2026-11-14, is ill-posed: no symbol of J5's formula
+    has its edge at 5. J5's deviation at 5 is the bad reduction of its elliptic curve. Its phase-0 count keeps only
+    the six pentagons (v, −v, v, −v, v) (`towers/seven_levels/edge_rule_test.log`).
+  - **Q(√−385) as the field at 11**, the alternative to round 22's Q3′, with 2 ramified in place of 3. The field is
+    Q(√−1155) (`towers/seven_levels/edge_rule_test22.log`).
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

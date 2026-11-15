@@ -73,7 +73,7 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      van der Vlugt 1992).
    - [READING] Duco van Straten stands where these meet: on the Barth–Nieto quintic of the sixth moment (with Hulek,
      Spandaw and van Geemen), and on double octics (with Cynk).
-7. **The coin at 5, and the cubics in 7 and 9 variables** [NAMED; measured; [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md)].
+7. **The coin at 5, and the cubics in 7, 9 and 11 variables** [NAMED; measured; [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md)].
    - Clebsch's cubic is the flat face of the coin at 5. Its 27 lines (Clebsch 1871) and its icosahedral symmetry, as
      the Hilbert modular surface of Q(√5) (Hirzebruch 1976), are classical.
    - The cubic fourfold {Σx = Σx³ = 0} in seven variables is one of the six cubic fourfolds with a maximal group of
@@ -86,6 +86,17 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      fourfolds over F₂ that counts points to find Frobenius eigenvalues.
    - [READING] Laza and Zheng's classification comes from the Leech lattice. The point counts here see the same field
      from the other side, through Frobenius.
+   - **The counts are Airy moments.** By orthogonality the cubics' counts are moments of the cubic exponential sums
+     Σ_x e((x³ + ax)/p).
+     - Haessig studied the L-functions of their symmetric powers: rationality, degree (k + 1)/2 for odd k, and p-adic
+       bounds (J. reine angew. Math. 2009; with Rojas-León for the generalized family).
+     - Sabbah and Yu computed the Hodge numbers of the complex analogue, the symmetric powers of the Airy equation:
+       every one is 0 or 1, at rational exponents (Tunisian J. Math. 2023). The classical part, where the exponents
+       are integers, has exactly the sizes the counts here need.
+     - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
+       of Q(√−1155).
+   - Rational weight-3 CM newforms need a class group of exponent at most 2 (Schütt's classification). Q(√−35) and
+     Q(√−1155) both qualify, with one class in each genus.
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 
@@ -110,7 +121,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 
 - **Javier Fresán**, for both strands; **Emmanuel Kowalski**, for equidistribution and its rates; **Arthur Forey** and
   **Yuval Wigderson**, for the semicircle graphs. **Duco van Straten** and **Christian Meyer**, for the double octic and its form
-  of level 10 (Theorem 7).
+  of level 10 (Theorem 7). **Claude Sabbah** and **Jeng-Daw Yu**, for the Airy moments behind the cubics
+  (COIN_AT_FIVE.md §6).
 - Writing to any of them is the author's call. The note drafted earlier for Gurevich could be widened into one for this
   group. With Theorems 1 to 7 and rounds 15 to 17 it now has something specific to offer them: the oscillator states' Wigner
   values as a family whose monodromy they could identify.
@@ -153,3 +165,11 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
   [arXiv:1511.00020](https://arxiv.org/abs/1511.00020).
 - J. H. Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed. (2009); K. Ireland and M. Rosen, *A Classical
   Introduction to Modern Number Theory*, 2nd ed. (1990).
+- C. D. Haessig, "L-functions of symmetric powers of cubic exponential sums", *J. reine angew. Math.* **631** (2009),
+  [arXiv:math/0608521](https://arxiv.org/abs/math/0608521); C. D. Haessig and A. Rojas-León, the generalized Airy family,
+  [arXiv:1008.0408](https://arxiv.org/abs/1008.0408).
+- C. Sabbah and J.-D. Yu, "Hodge properties of Airy moments", *Tunisian J. Math.* **5** (2023),
+  [arXiv:2112.13405](https://arxiv.org/abs/2112.13405).
+- M. Schütt, "CM newforms with rational coefficients", *Ramanujan J.* **19** (2009),
+  [arXiv:math/0511228](https://arxiv.org/abs/math/0511228).
+- The LMFDB Collaboration, newform 35.3.c.b, [lmfdb.org](https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/35/3/c/b/).

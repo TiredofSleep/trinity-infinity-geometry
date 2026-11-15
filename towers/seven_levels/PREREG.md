@@ -1906,3 +1906,34 @@ where c is X7's form, 35.3.c.b. Two facts fix T11's shape before any count.
 - Q3′ is a guess. Q(√−385), with 2 ramified in place of 3, fits the nodes just as well.
 
 Run: `python edge_rule.py test22` (a few minutes, four processes at below-normal priority).
+
+---
+
+## Round 22 scores (added after the test, 2026-11-14)
+
+Run by [`edge_rule.py`](edge_rule.py) `test22`, registered at c1dcfb4 before the test. Output:
+[`edge_rule_test22.log`](edge_rule_test22.log).
+
+**All five held, and so did the instrument.**
+
+| | outcome | evidence |
+|---|---|---|
+| Q1 | held | T11 = p⁵g(p), with g(p) an integer and \|g(p)\| ≤ 2p, at all 74 primes from 13 to 401 |
+| Q2 | held | g vanishes at exactly the 32 primes inert in Q(√−1155), and 4p² − g(p)² = 1155v² at the other 42 |
+| Q3 | held | 5, 7 and 11 all ramify in Q(√−1155), and so does 3 |
+| Q3′ | held | the field is Q(√−1155) |
+| Q4 | held | g(5) = 5, g(7) = −7 and g(11) = 11 |
+| instrument | held | the lower pieces at every prime from 13 to 401, and X7's form equal to 35.3.c.b at every prime to 97, the edges included |
+
+**Read after the run** (not scores).
+- Q(√−1155) has class number 8, and every class has order 2, one class in each genus. Q(√−35), the field at 7, has
+  class number 2 and the same property. A rational weight-3 CM form needs a class group of exponent at most 2
+  [NAMED: Schütt].
+- The alternative the drafter named, Q(√−385), with 2 ramified in place of 3, died.
+
+**Yield.**
+- √−11 enters at 11, as √−7 entered at 7: the cubic in eleven variables carries a weight-3 form with complex
+  multiplication by Q(√−1155).
+- −1155 = (−3)·5·(−7)·(−11), the signed square roots of the odd primes up to 11. It continues the 5, −35 and 105 of
+  5, 7 and 9.
+- The nodes predicted where the new piece ramifies, and they were right at all three primes they can see.

@@ -71,7 +71,9 @@ checked twice, by independent code:
 - **The author's coin at 5 is in that double octic.** It is branched along the coin's solid face (the planes where
   one point sits at the centre) and its flat face (Clebsch's cubic, which holds the pentagon), and they meet in 15
   rational lines, the edge. The coin at 7 is in the cubic fourfold {Σx = Σx³ = 0} in seven variables, whose count
-  carries Q(√−35) = Q(√5·√−7). Its exact count, and that of the nine-variable cubic, held blind
+  carries Q(√−35) = Q(√5·√−7). Its exact count, and that of the nine-variable cubic, held blind. On its edge the coin
+  shows the fixed set of its flip. Past the base, in eleven variables, √−11 enters: the cubic's new piece has complex
+  multiplication by Q(√−1155), and −1155 = (−3)·5·(−7)·(−11)
   ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it

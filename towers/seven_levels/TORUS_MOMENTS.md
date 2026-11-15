@@ -196,6 +196,11 @@ circle whose sum is on the circle too count.
   p ≡ 2 (mod 3). Then each circle has 2m such pairs, and Σ_(u ≠ 0) Tr(P Ā_u³) = (p/m) Σ_(r ≠ 0) (ω^(cr) + ω^(−cr)) =
   −2p/(p + 1), for a fixed c ≠ 0.
 - When p ≡ 1 (mod 3) there are none, and the sum is 0.
+- **At the edge p = 3** [FORCED; [`edge_rule.py`](edge_rule.py), F1]. The two cube roots of unity merge into 1, since
+  x² + x + 1 = (x − 1)² mod 3, and every pair is v3 = v1.
+  - The phase vanishes, and the sum over the circles is p − 1 = 2 in place of −1 for each root. So the operators give
+    J3 = p(p + 1)(p − 1) = 24 there, the mirror of the p ≡ 2 side.
+  - The mirror is exact at every prime edge and fails at prime powers ([`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5).
 
 Dividing p − 2p/(p + 1), or p, by p³ gives the split. For the corollary: over all points each state has mean 1/p² and
 variance (p − 1)/p⁴, so the average standardized third moment is
@@ -374,6 +379,8 @@ p^(−7)[p + I6/(p + 1)⁵].
   every prime from 211 to 401 (round 16), and then proved by the elementary count below.
 - So the modular form enters only through the closed polygons. The phase-0 polygons are a polynomial count, and the
   p mod 3 that round 15 saw in the generic part is the (−3|p) here.
+- **At the edges** [measured; round 19's log, read in round 21]. With (−3|3) read as 0 and b(3) = −3, the formula
+  gives I6 = 960 at p = 3, the operators' value: the average of its sides. It also holds at p = 5 (15 300).
 
 **Proof of the phase-0 count** [FORCED; each step checked by [`verify_sixth_moment.py`](verify_sixth_moment.py)].
 1. **Two triangles.** The six operators split as (A1A2A3)(A4A5A6). Each triple is one phase-point operator times
@@ -459,6 +466,10 @@ Every step below is checked by [`verify_fifth_moment.py`](verify_fifth_moment.py
   every prime from 7 to 401. So, as far as traces can tell, E has conductor 150; Tate's algorithm was not run.
 - **Its range is p ≥ 7**, as the proof's special classes assume. At the primes 3 and 5, where its forms are bad, it
   fails: the operators give J5 = 240 at 3 and −1680 at 5 (round 19; [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §2).
+  - Split as J5 = p(pZ − N), the failure is all in Z, the phase-0 count (round 21, read after). N follows
+    Kloosterman's fifth moment at 3 and 5, with (−3|3) read as 0.
+  - At 3, Z has 36 = p²(p + 1) more pentagons than the side formula. At 5 it keeps only the six pentagons
+    (v, −v, v, −v, v), which close because 5v = 0.
 
 *Proof.*
 1. **Split.** J5 = p(pZ − N) by §7, with six operators P A_v1 ⋯ A_v5. Split them as (P A_v1 A_v2)(A_v3 A_v4 A_v5).
