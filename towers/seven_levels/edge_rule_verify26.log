@@ -1,0 +1,19 @@
+edge_rule.py verify26 -- the forced checks for round 26 (twenty-seven, the 4-dimensional pieces)
+[PASS] F9a. complex conjugation: det F_inf = (-1)^(Hodge pairs) times +1 on the middle class matches the sign of every determinant already read (k = 1 to 15; m marks a middle class)  (k=1:+m k=5:+m k=7:- k=9:+m k=11:- k=13:-m k=15:-)
+[PASS] F9b. V27 has four Hodge types in two pairs and no middle class, so its determinant is even. The four readings (3 at 27, 5 at 25: thin or naive) give {('thin', 'thin'): 3187041, ('thin', 'naive'): 15935205, ('naive', 'thin'): -1062347, ('naive', 'naive'): -5311735}. Only those with 3 thin are even: letting 3 enter at its cube would make V27's determinant odd
+[PASS] F9c. the thin rule's determinants at 17 to 27 have the sign the Hodge types require (middle class +1)  (k=19:969969 k=23:3187041 k=25:3187041 k=27:3187041)
+[PASS] F10. for an orthogonal piece with eigenvalues normalized to modulus 1: in dimension 3, e2 = det * e1; in dimension 4, det = -1 forces e2 = 0; in dimension 5, e3 = det * e2 (200 random cases each). With e2 = (T(p)^2 - T(p^2))/2, the counts over F_p and F_(p^2) read the determinant prime by prime
+[PASS] F11a. the new counter equals the convolution count of rounds 19 to 25 for every odd n up to 21 at p = 23, 29, 31, 101 and 113  (23:True 29:True 31:True 101:True 113:True)
+[PASS] F11b. over F_(p^2) the counter equals a direct convolution on F_(p^2)^2 (p = 5, 7; n = 3, 5, 7)  (F_25:True F_49:True)
+[PASS] F11c. over F_(p^2) the known pieces are the squares of Frobenius: T1 = p^2, T3 = 0, T5 = T5(p)^2, T7 = T7(p)^2 - 2(-35|p)p^8, T9 = T9(p)^2, T11 = T11(p)^2 - 2(-1155|p)p^12 (p = 29, 31; n <= 11 only)  (29:True 31:True)
+[PASS] F12a. X19, X23, X25 and X27: the lower pieces fill all but 4, 4, 5 and 4 dimensions, and all but the thin nodes' share of each new piece. The thick nodes: at 25 the centre, mod 5 (sum 25); at 27 the centre mod 3 (sum 27) and the 27 sign vectors of sum 25, mod 5
+  V19: dim 4, types [(7, 13), (9, 11), (11, 9), (13, 7)]
+  V23: dim 4, types [(9, 15), (11, 13), (13, 11), (15, 9)]
+  V25: dim 5, types [(9, 17), (11, 15), (13, 13), (15, 11), (17, 9)]
+    n=25, l=5: 3321890 thin nodes (2 in V25) and 1 thick
+  V27: dim 4, types [(11, 17), (13, 15), (15, 13), (17, 11)]
+    n=27, l=3: 4686825 thin nodes (1 in V27) and 1 thick
+    n=27, l=5: 13333905 thin nodes (2 in V27) and 27 thick
+[PASS] F12b. the thin rule's determinants: V19 (969969|p), V23 (3187041|p), V25 (3187041|p), V27 (3187041|p). The naive rule changes V25 to (15935205|p) (5 at 25) and V27 to (15935205|p) or (-1062347|p)
+time 0.0 minutes
+ALL PASS

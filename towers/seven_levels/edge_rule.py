@@ -1130,6 +1130,444 @@ def test25():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 26: twenty-seven first, and the classes blind
+#   "2 and 3, 27 first"  -- the author, 15 November 2026
+#   (2: test the sharpened rule at 25 and 27, three coins of 3, with 27 first.  3: seventeen's six characters, blind.)
+#
+# A faster exact counter.  N_n(F_q) = q^-2 sum over (s, t) in F_q^2 of S(s, t)^n, where S(s, t) = sum_x psi(s x + t x^3)
+# and psi(z) = w^Tr(z).  For s != 0, S(s, t) = S(1, t/s^3), so only s = 0 and s = 1 are needed.  The sums are algebraic
+# integers in Q(zeta_p).  They are computed mod primes l = 1 (mod p), where w is a primitive p-th root of unity, and N_n
+# is joined back by the Chinese remainder theorem.  q = p, or q = p^2 for the squares of Frobenius.
+from sympy.ntheory.modular import crt  # noqa: E402
+
+
+def moduli_for(p, bits):
+    """primes l = 1 (mod p) just above 2^30, enough that their product has more than `bits` bits"""
+    out, prod = [], 1
+    m = (1 << 30) // p + 1
+    while prod.bit_length() <= bits:
+        l = 1 + p * m
+        if l >= 1 << 31:
+            raise ValueError(f"not enough moduli below 2^31 for p = {p}")
+        if sympy.isprime(l):
+            out.append(l)
+            prod *= l
+        m += 1
+    return out
+
+
+def root_of_unity(p, l):
+    for g in range(2, 1000):
+        w = pow(g, (l - 1) // p, l)
+        if w != 1:
+            return w
+    raise ValueError("no p-th root of unity found")
+
+
+def field_data(p, r):
+    """F_q, q = p^r (r = 1 or 2). For r = 2, x = a + b alpha with alpha^2 = nu (a non-square), indexed a + p b.
+    Returns Tr(x) and the linear forms that give Tr(t x^3) on the coordinates of t."""
+    if r == 1:
+        x = np.arange(p, dtype=np.int64)
+        return x, [x ** 3 % p]
+    nu = nonsquare(p)
+    idx = np.arange(p * p, dtype=np.int64)
+    a, b = idx % p, idx // p
+    ca = (a ** 3 + 3 * a * b * b * nu) % p
+    cb = (3 * a * a * b + nu * b ** 3) % p
+    return (2 * a) % p, [(2 * ca) % p, (2 * nu * cb) % p]
+
+
+def exp_sums(p, r, mods):
+    """S(0, t) and S(1, t) for every t in F_q, as residues mod each l in mods"""
+    trx, L = field_data(p, r)
+    q = p ** r
+    pw = []
+    for l in mods:
+        w = root_of_unity(p, l)
+        pw.append(np.array([pow(w, k, l) for k in range(p)], dtype=np.int64))
+    S0 = [np.zeros(q, dtype=np.int64) for _ in mods]
+    S1 = [np.zeros(q, dtype=np.int64) for _ in mods]
+    ta = np.arange(p, dtype=np.int64)
+    for tb in range(p if r == 2 else 1):
+        base = ta[:, None] * L[0][None, :]
+        if r == 2:
+            base = base + tb * L[1][None, :]
+        M0 = base % p
+        M1 = (base + trx[None, :]) % p
+        rows = slice(tb * p, (tb + 1) * p)
+        for i, l in enumerate(mods):
+            S0[i][rows] = pw[i][M0].sum(axis=1) % l
+            S1[i][rows] = pw[i][M1].sum(axis=1) % l
+    return S0, S1
+
+
+def counts_crt(p, r, ns):
+    """N_n(F_q) mod M for each odd n in ns, with M large enough to recover N_n - q^(n-2) exactly"""
+    q = p ** r
+    nmax = max(ns)
+    bound = 4 * (q - 1) * betti_prim(nmax) * q ** ((nmax - 3) // 2)
+    mods = moduli_for(p, bound.bit_length() + 1)
+    S0, S1 = exp_sums(p, r, mods)
+    res = {n: [] for n in ns}
+    for i, l in enumerate(mods):
+        c0, c1 = S0[i] % l, S1[i] % l
+        s0, s1 = c0 * c0 % l, c1 * c1 % l
+        inv = pow(q * q % l, l - 2, l)
+        for n in range(1, nmax + 1, 2):
+            if n in res:
+                res[n].append((int(c0.sum()) + (q - 1) * int(c1.sum())) % l * inv % l)
+            c0, c1 = c0 * s0 % l, c1 * s1 % l
+    M = math.prod(mods)
+    return {n: int(crt(mods, res[n])[0]) for n in ns}, M, bound
+
+
+def t_values_crt(p, r, ns):
+    """t_n = #X_n(F_q) - (1 + q + ... + q^(n-3)) exactly, q = p^r, for odd n (t_1 = 1/q, as in t_values)"""
+    q = p ** r
+    ns3 = tuple(n for n in ns if n >= 3)
+    N, M, bound = counts_crt(p, r, ns3)
+    t = {1: Fraction(1, q)}
+    for n in ns3:
+        v = (N[n] - q ** (n - 2)) % M
+        if v > M // 2:
+            v -= M
+        if abs(v) > bound or v % (q - 1):
+            raise ArithmeticError(f"the counter's self-check failed at p = {p}, r = {r}, n = {n}")
+        t[n] = Fraction(v // (q - 1))
+    return t
+
+
+def cone_counts_fq(p, ns):
+    """N_n(F_(p^2)) by convolving the measure of (x, x^3) on F_(p^2)^2, for small p: the brute-force check"""
+    nu = nonsquare(p)
+    pts = []
+    for b in range(p):
+        for a in range(p):
+            pts.append((a, b, (a ** 3 + 3 * a * b * b * nu) % p, (3 * a * a * b + nu * b ** 3) % p))
+    c = np.zeros((p, p, p, p), dtype=np.int64)
+    c[0, 0, 0, 0] = 1
+    out = {}
+    for n in range(1, max(ns) + 1):
+        acc = np.zeros_like(c)
+        for sh in pts:
+            acc += np.roll(c, sh, axis=(0, 1, 2, 3))
+        c = acc
+        if n in ns:
+            out[n] = int(c[0, 0, 0, 0])
+    return out
+
+
+def hodge_sign(k):
+    """complex conjugation swaps H^(a,b) and H^(b,a): det F_inf = (-1)^(pairs), times its sign on a middle class (a,a)"""
+    types = classical_hodge(k)
+    return (-1) ** sum(1 for a, b in types if a < b), any(a == b for a, b in types)
+
+
+def nodes_by_kind(n, l):
+    """the nodes of X_n at l, split into thin (odd valuation of the critical value: they ramify) and thick"""
+    shift = 1 if l == 3 else 0
+    step = 9 if l == 3 else l
+    thin = thick = 0
+    for j in range(1, n + 1, 2):
+        if j % step == 0:
+            c = math.comb(n, (n + j) // 2)
+            if (val(j, l) - shift) % 2:
+                thin += c
+            else:
+                thick += c
+    return thin, thick
+
+
+def naive_nodes(k, l):
+    """the rule before the critical values: every node ramifies (odd multiples of l, or of 9 at 3)"""
+    step = 9 if l == 3 else l
+    return sum(1 for j in range(1, k + 1, 2) if j % step == 0)
+
+
+def det_with(k, rule3, rule5):
+    """the parity rule's determinant at k, with 3 and 5 counted by the thin rule or the naive one"""
+    D = 1
+    for l in primes(3, k):
+        if l == 3:
+            r = thin_nodes(k, 3) if rule3 == "thin" else naive_nodes(k, 3)
+        elif l == 5:
+            r = thin_nodes(k, 5) if rule5 == "thin" else naive_nodes(k, 5)
+        else:
+            r = thin_nodes(k, l)
+        if r % 2:
+            D *= signed(l)
+    return D
+
+
+def verify26():
+    """the forced checks F9 to F12 behind round 26, and the new counter's validation. Nothing here counts X23, X25 or
+    X27, or any cubic in 13 or more variables over a field of p^2 elements."""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_verify26.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    say("edge_rule.py verify26 -- the forced checks for round 26 (twenty-seven, the 4-dimensional pieces)")
+
+    # F9: the infinite place
+    ok, rows = True, []
+    for k, D in MEASURED_DET.items():
+        sgn, mid = hodge_sign(k)
+        ok &= (1 if D > 0 else -1) == sgn
+        rows.append(f"k={k}:{'+' if sgn > 0 else '-'}{'m' if mid else ''}")
+    check("F9a. complex conjugation: det F_inf = (-1)^(Hodge pairs) times +1 on the middle class matches the sign of every "
+          "determinant already read (k = 1 to 15; m marks a middle class)", ok, " ".join(rows))
+    cand = {(a, b): det_with(27, a, b) for a in ("thin", "naive") for b in ("thin", "naive")}
+    sg27 = hodge_sign(27)
+    allowed = {key: D for key, D in cand.items() if (1 if D > 0 else -1) == sg27[0]}
+    ok = (sg27 == (1, False) and set(allowed) == {("thin", "thin"), ("thin", "naive")}
+          and cand[("thin", "thin")] == 3187041)
+    check(f"F9b. V27 has four Hodge types in two pairs and no middle class, so its determinant is even. The four "
+          f"readings (3 at 27, 5 at 25: thin or naive) give {cand}. Only those with 3 thin are even: letting 3 enter at "
+          f"its cube would make V27's determinant odd", ok)
+    ok = all(hodge_sign(k)[0] == (1 if det_with(k, 'thin', 'thin') > 0 else -1) for k in (17, 19, 21, 23, 25, 27))
+    check("F9c. the thin rule's determinants at 17 to 27 have the sign the Hodge types require (middle class +1)", ok,
+          " ".join(f"k={k}:{det_with(k, 'thin', 'thin')}" for k in (19, 23, 25, 27)))
+
+    # F10: reading a determinant from the traces of Frobenius and of its square
+    rng = np.random.default_rng(26)
+    ok = True
+    for d in (3, 4, 5):
+        for _ in range(200):
+            Q, R = np.linalg.qr(rng.normal(size=(d, d)))
+            Q = Q @ np.diag(np.sign(np.diag(R)))
+            ev = np.linalg.eigvals(Q)
+            e1, e2 = ev.sum().real, sum(ev[i] * ev[j] for i in range(d) for j in range(i + 1, d)).real
+            e3 = sum(ev[i] * ev[j] * ev[k] for i in range(d) for j in range(i + 1, d) for k in range(j + 1, d)).real
+            det = round(np.linalg.det(Q))
+            if d == 3:
+                ok &= abs(e2 - det * e1) < 1e-9
+            elif d == 4 and det == -1:
+                ok &= abs(e2) < 1e-9
+            elif d == 5:
+                ok &= abs(e3 - det * e2) < 1e-9
+    check("F10. for an orthogonal piece with eigenvalues normalized to modulus 1: in dimension 3, e2 = det * e1; in "
+          "dimension 4, det = -1 forces e2 = 0; in dimension 5, e3 = det * e2 (200 random cases each). With "
+          "e2 = (T(p)^2 - T(p^2))/2, the counts over F_p and F_(p^2) read the determinant prime by prime", ok)
+
+    # F11: the counter
+    ok, rows = True, []
+    for p in (23, 29, 31, 101, 113):
+        ns = tuple(range(3, 22, 2))
+        a, b = t_values_crt(p, 1, ns), t_values(p, ns)
+        ok &= all(a[n] == b[n] for n in ns)
+        rows.append(f"{p}:{all(a[n] == b[n] for n in ns)}")
+    check("F11a. the new counter equals the convolution count of rounds 19 to 25 for every odd n up to 21 at p = 23, 29, "
+          "31, 101 and 113", ok, " ".join(rows))
+    ok, rows = True, []
+    for p in (5, 7):
+        ns = (3, 5, 7)
+        brute = cone_counts_fq(p, ns)
+        q = p * p
+        tb = {n: Fraction(brute[n] - q ** (n - 2), q - 1) for n in ns}
+        tc = t_values_crt(p, 2, ns)
+        ok &= all(tb[n] == tc[n] for n in ns)
+        rows.append(f"F_{q}:{all(tb[n] == tc[n] for n in ns)}")
+    check("F11b. over F_(p^2) the counter equals a direct convolution on F_(p^2)^2 (p = 5, 7; n = 3, 5, 7)", ok,
+          " ".join(rows))
+    ok, rows = True, []
+    for p in (29, 31):
+        ns = tuple(range(3, 12, 2))
+        T = airy(p, t_values_crt(p, 1, ns))
+        q = p * p
+        T2 = airy(q, t_values_crt(p, 2, ns))
+        good = (T2[1] == q and T2[3] == 0 and T2[5] == T[5] ** 2 and T2[9] == T[9] ** 2
+                and T2[7] == T[7] ** 2 - 2 * leg(-35, p) * p ** 8 and T2[11] == T[11] ** 2 - 2 * leg(-1155, p) * p ** 12)
+        ok &= good
+        rows.append(f"{p}:{good}")
+    check("F11c. over F_(p^2) the known pieces are the squares of Frobenius: T1 = p^2, T3 = 0, T5 = T5(p)^2, "
+          "T7 = T7(p)^2 - 2(-35|p)p^8, T9 = T9(p)^2, T11 = T11(p)^2 - 2(-1155|p)p^12 (p = 29, 31; n <= 11 only)", ok,
+          " ".join(rows))
+
+    # F12: the bookkeeping for 19 to 27
+    ok, rows = True, []
+    v = {k: len(classical_hodge(k)) for k in range(1, 28, 2)}
+    for n in (19, 23, 25, 27):
+        ok &= sum(ballot(n, k) * v[k] for k in range(1, n + 1, 2)) == betti_prim(n)
+        rows.append(f"V{n}: dim {v[n]}, types {classical_hodge(n)}")
+        for l in [3] + primes(5, n):
+            thin, thick = nodes_by_kind(n, l)
+            lower = sum(ballot(n, k) * thin_nodes(k, l) for k in range(1, n, 2))
+            ok &= thin - lower == thin_nodes(n, l)
+            if thick:
+                rows.append(f"  n={n}, l={l}: {thin} thin nodes ({thin - lower} in V{n}) and {thick} thick")
+    check("F12a. X19, X23, X25 and X27: the lower pieces fill all but 4, 4, 5 and 4 dimensions, and all but the thin "
+          "nodes' share of each new piece. The thick nodes: at 25 the centre, mod 5 (sum 25); at 27 the centre mod 3 "
+          "(sum 27) and the 27 sign vectors of sum 25, mod 5", ok)
+    for row in rows:
+        say("  " + row)
+    D = {k: det_with(k, "thin", "thin") for k in (19, 23, 25, 27)}
+    check(f"F12b. the thin rule's determinants: V19 ({D[19]}|p), V23 ({D[23]}|p), V25 ({D[25]}|p), V27 ({D[27]}|p). "
+          f"The naive rule changes V25 to ({det_with(25, 'thin', 'naive')}|p) (5 at 25) and V27 to "
+          f"({det_with(27, 'thin', 'naive')}|p) or ({det_with(27, 'naive', 'thin')}|p)",
+          D == {19: 969969, 23: 3187041, 25: 3187041, 27: 3187041})
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    say("ALL PASS" if not FAILS else f"FAILED: {FAILS}")
+    LOG.close()
+
+
+# read after round 25: which characters decide the square classes of seventeen's and twenty-one's roots
+R2_CHARS = {-1: -51051, 2: -715, 5: -1547, 7: -12155, 13: -35, 17: -3003}
+R3_CHARS = {-1: -138567, 2: -19019, 3: -143, 5: -1547, 17: -1155, 19: -3003}
+ODD27 = tuple(range(3, 28, 2))
+
+
+def class_from(chars, p):
+    s = 1
+    for l, D in chars.items():
+        if kron(D, p) == -1:
+            s *= l
+    return s
+
+
+def square_class_ok(u, D, chars, p):
+    """u + (D|p) p^2 = s_p b^2, with b an integer and s_p the product of the primes whose character is -1 at p"""
+    if u.denominator != 1:
+        return False
+    v = int(u) + kron(D, p) * p * p
+    if v == 0:
+        return True
+    s = class_from(chars, p)
+    return v % s == 0 and v // s > 0 and sympy.integer_nthroot(v // s, 2)[1]
+
+
+def _r26_fp(p):
+    low_priority()
+    return p, t_values_crt(p, 1, ODD27)
+
+
+def _r26_fq(p):
+    low_priority()
+    return p, t_values_crt(p, 2, ODD27)
+
+
+def lower_square_ok(p, T, T2):
+    """the known pieces over F_(p^2): squares of their Frobenius eigenvalues, from their F_p traces and determinants"""
+    q = p * p
+    return (T2[1] == q and T2[3] == 0 and T2[5] == T[5] ** 2 and T2[9] == T[9] ** 2
+            and T2[7] == T[7] ** 2 - 2 * leg(-35, p) * p ** 8
+            and T2[11] == T[11] ** 2 - 2 * leg(-1155, p) * p ** 12
+            and T2[13] == T[13] ** 2 - 2 * kron(-15015, p) * p ** 7 * T[13]
+            and T2[15] == T[15] ** 2 - 2 * leg(-3003, p) * p ** 16
+            and T2[17] == T[17] ** 2 - 2 * kron(-51051, p) * p ** 9 * T[17])
+
+
+def test26():
+    """round 26 (PREREG.md): Y1 to Y5 (twenty-seven, with nineteen and twenty-three beside it), W1 (twenty-five), R2 and
+    R3 (seventeen's and twenty-one's square classes, blind)"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test26.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    PF, PQ = primes(29, 1999), primes(29, 151)
+    say("Round 26: twenty-seven first, with 19, 23 and 25 beside it, and the square classes of 17 and 21 (PREREG.md)")
+    say(f"over F_p at {PF[0]}..{PF[-1]} ({len(PF)} primes); over F_(p^2) at {PQ[0]}..{PQ[-1]} ({len(PQ)} primes)")
+    with Pool(4) as pool:
+        rq = dict(pool.map(_r26_fq, sorted(PQ, reverse=True)))
+        rf = dict(pool.map(_r26_fp, PF))
+    T = {p: airy(p, rf[p]) for p in PF}
+    T2 = {p: airy(p * p, rq[p]) for p in PQ}
+
+    # ---- the instruments
+    inst = all(lower_pieces_ok(p, T[p]) for p in PF)
+    say(f"instrument over F_p: T1..T15 as found in rounds 19 to 24 at every prime 29..1999: {inst}")
+    old17 = [p for p in PF if p < 409 and fused_signature([p], {p: T[p][17] / p ** 7}, -51051, 510510)]
+    say(f"instrument: seventeen's symmetric square (round 25, Z3') at 29..401: fails at {old17}")
+    inst2 = all(lower_square_ok(p, T[p], T2[p]) for p in PQ)
+    say(f"instrument over F_(p^2): T1..T17 are the squares of their Frobenius eigenvalues at every prime 29..151 "
+        f"(this rereads the determinants of 7, 11, 13, 15 and 17 prime by prime): {inst2}")
+
+    # ---- twenty-seven, and the four-dimensional pieces beside it
+    def e2(k, p):
+        v = (T[p][k] ** 2 - T2[p][k]) / 2
+        return v
+
+    say("X27 p u27 (3187041|p)   [u27 = T27/p^11]")
+    u27 = {p: T[p][27] / p ** 11 for p in PF}
+    for p in PF:
+        say(f"X27 {p} {u27[p]} {kron(3187041, p)}")
+    bad1 = [p for p in PF if u27[p].denominator != 1 or abs(u27[p]) > 4 * p ** 3]
+    y1 = not bad1
+    say(f"Y1 T27 = p^11 u27(p), u27 an integer with |u27| <= 4p^3, at every prime 29..1999: "
+        f"{'HELD' if y1 else 'FAILED at ' + str(bad1)}")
+    cands = {"thin": 3187041, "5 at 25": 15935205, "3 at 27": -1062347, "both": -5311735}
+    say("X27sq p e2   [e2 = (T27(p)^2 - T27(p^2))/2; det = -1 exactly when e2 = 0]")
+    zero27 = {p: e2(27, p) == 0 for p in PQ}
+    for p in PQ:
+        say(f"X27sq {p} {e2(27, p)} " + " ".join(f"{name}:{kron(D, p)}" for name, D in cands.items()))
+    fits = {name: sum(1 for p in PQ if zero27[p] == (kron(D, p) == -1)) for name, D in cands.items()}
+    y2 = y1 and fits["thin"] == len(PQ)
+    say(f"  primes (of {len(PQ)}) where the reading fits: {fits}")
+    say(f"Y2 V27's determinant is (3187041|p): 3 does not enter at 27, its cube, and 5 does not enter at 25, its square: "
+        f"{'HELD' if y2 else 'FAILED'}")
+    big = [p for p in PF if abs(u27[p]) > 2 * p ** 3]
+    bad2b = [p for p in big if kron(3187041, p) != 1]
+    rival = {name: sum(1 for p in big if kron(D, p) != 1) for name, D in cands.items()}
+    y2b = y1 and not bad2b and len(big) >= 10
+    say(f"  |u27| > 2p^3 at {len(big)} primes, where the determinant must be +1; the readings fail there: {rival}")
+    say(f"Y2' wherever |u27| > 2p^3, (3187041|p) = +1: {'HELD' if y2b else 'FAILED'}")
+    res3 = {}
+    for k, D, wexp in ((23, 3187041, 9), (19, 969969, 7)):
+        uk = {p: T[p][k] / p ** wexp for p in PF}
+        shape = all(uk[p].denominator == 1 and abs(uk[p]) <= 4 * p ** 3 for p in PF)
+        det_ok = all((e2(k, p) == 0) == (kron(D, p) == -1) for p in PQ)
+        res3[k] = (shape, det_ok)
+        say(f"  V{k}: T{k} = p^{wexp} u, u an integer with |u| <= 4p^3 at every prime: {shape}; e2 = 0 exactly where "
+            f"({D}|p) = -1, at every prime 29..151: {det_ok}")
+    y3 = all(a and b for a, b in res3.values())
+    say(f"Y3 the controls: V23's determinant is (3187041|p), the same as the thin rule gives V27, and V19's is "
+        f"(969969|p): {'HELD' if y3 else 'FAILED'}")
+    bad4 = [p for p in PQ if T2[p][21] != T[p][21] ** 2 - 2 * kron(-138567, p) * p ** 11 * T[p][21]]
+    y4 = not bad4
+    say(f"Y4 V21's determinant is (-138567|p), prime by prime over F_(p^2) at 29..151: "
+        f"{'HELD' if y4 else 'FAILED at ' + str(bad4)}")
+    div27 = [p for p in PF if y1 and int(u27[p]) % p == 0]
+    y5 = y1 and len(div27) <= 3
+    say(f"  p divides u27 at {len(div27)} of the {len(PF)} primes: {div27}")
+    say(f"Y5 V27 does not split into two CM planes: {'HELD' if y5 else 'FAILED'}")
+
+    # ---- twenty-five
+    u25 = {p: T[p][25] / p ** 9 for p in PF}
+    shape25 = all(u25[p].denominator == 1 and abs(u25[p]) <= 5 * p ** 4 for p in PF)
+    big25 = [p for p in PF if abs(u25[p]) > 3 * p ** 4]
+    signs = {name: [p for p in big25 if (1 if u25[p] > 0 else -1) != kron(D, p)]
+             for name, D in (("thin", 3187041), ("5 at 25", 15935205))}
+    w1 = shape25 and not signs["thin"] and len(big25) >= 5
+    say(f"  V25: T25 = p^9 u25, u25 an integer with |u25| <= 5p^4 at every prime: {shape25}; |u25| > 3p^4 at "
+        f"{len(big25)} primes; wrong signs: thin {len(signs['thin'])}, 5 at 25 {len(signs['5 at 25'])}")
+    say(f"W1 V25's middle eigenvalue has the sign (3187041|p): 5 does not enter at 25: {'HELD' if w1 else 'FAILED'}")
+    for p in PQ:
+        P = Fraction(p) ** 13
+        a1, b2 = T[p][25] / P, e2(25, p) / P ** 2
+        ok_d = []
+        for d in (1, -1):
+            A = a1 - d
+            B = b2 - d * A - 2
+            disc = A * A - 4 * B
+            if disc >= 0:
+                r = math.sqrt(float(disc))
+                if abs((float(A) + r) / 2) <= 2 + 1e-9 and abs((float(A) - r) / 2) <= 2 + 1e-9:
+                    ok_d.append(d)
+        say(f"X25sq {p} determinants allowed by T25(p), T25(p^2) and the circle: {ok_d}; thin {kron(3187041, p)}, "
+            f"5 at 25 {kron(15935205, p)} (read)")
+
+    # ---- seventeen's and twenty-one's square classes, blind
+    P2 = [p for p in PF if p >= 409]
+    bad = [p for p in P2 if not square_class_ok(T[p][17] / p ** 7, -51051, R2_CHARS, p)]
+    say(f"R2 seventeen's square classes, by the six characters read after round 25, at every prime 409..1999 "
+        f"({len(P2)}): {'HELD' if not bad else 'FAILED at ' + str(bad[:12])}")
+    P3 = [p for p in PF if p >= 127]
+    bad = [p for p in P3 if not square_class_ok(T[p][21] / p ** 9, -138567, R3_CHARS, p)]
+    say(f"R3 twenty-one's square classes, by its six characters, at every prime 127..1999 ({len(P3)}): "
+        f"{'HELD' if not bad else 'FAILED at ' + str(bad[:12])}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
@@ -1146,3 +1584,7 @@ if __name__ == "__main__":
         verify25()
     elif mode == "test25":
         test25()
+    elif mode == "verify26":
+        verify26()
+    elif mode == "test26":
+        test26()

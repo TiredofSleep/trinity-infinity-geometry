@@ -2278,3 +2278,73 @@ Run by [`edge_rule.py`](edge_rule.py) `test25`, registered at 5be432c before the
 - The reading's exact version died. 17's piece keeps no line, although the 17-gon keeps its axis.
   - 17 and 21 are the same kind as 13, so "both at once" is not 13's alone.
   - It belongs to the three-dimensional pieces, not to the icosahedron.
+
+---
+
+## Round 26: twenty-seven first, and the square classes blind (registered 2026-11-15, before the test)
+
+> *2 and 3, 27 first* — the author, 15 November 2026. The "2" asks for the sharpened rule at 25 and 27, where 27 is
+> three coins of 3, with 27 first. The "3" says yes to testing seventeen's square classes blind.
+
+**The rule under test** (round 25, §10 of [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), read from the critical values).
+- A node ramifies only when its critical value has odd valuation: v_p(j) for p from 5 on, and v_3(j) − 1 for 3.
+- So 3 enters at 9 but not at 27, its cube: three coins of 3. And 5 enters at 5 and 15 but not at 25, its square: two
+  coins of 5.
+- The first pieces where this matters are V25 and V27. The centre of X25 pinches mod 5 with valuation 2. The centre
+  of X27 pinches mod 3 with valuation 2, and 27 nodes of X27 (sum 25) pinch mod 5 with valuation 2.
+
+Before this registration [`edge_rule.py`](edge_rule.py) `verify26` checked the following, without counting X23, X25,
+X27, or any cubic in 13 or more variables over a field of p² elements
+([`edge_rule_verify26.log`](edge_rule_verify26.log), F9 to F12 [FORCED]).
+- **A faster counter** (F11). The convolution of rounds 19 to 25 stops at 21 variables.
+  - N_n = q⁻² Σ_(s,t) S(s, t)ⁿ, where S is the cubic exponential sum over F_q. Only s = 0 and s = 1 are needed, since
+    S(s, t) = S(1, t/s³).
+  - The sums are taken mod primes l ≡ 1 (mod p) and joined by the Chinese remainder theorem.
+  - It equals the old count for every odd n up to 21 at p = 23, 29, 31, 101 and 113.
+  - Over the field of p² elements it equals a direct count at 25 and 49 elements, and it gives the squares of the known
+    pieces' eigenvalues at 29 and 31 (n ≤ 11).
+  - It reaches 27 variables at every prime to 1999, and fields of p² elements to p = 151, in minutes.
+- **The four-dimensional pieces** (F12). V19, V23 and V27 have four dimensions each, all of one shape: Hodge types
+  (a, a + 6), (a + 2, a + 4), (a + 4, a + 2) and (a + 6, a), with a = 7, 9 and 11. V25 has five, with a middle class.
+- **Reading a determinant prime by prime** (F10).
+  - With e2 = (T(p)² − T(p²))/2, an orthogonal piece of dimension 4 has determinant −1 at p only if e2 = 0.
+  - In dimension 3, e2 = det(p)·p^(w/2)·T(p), with w the weight.
+  - So the counts over F_p and over the field of p² elements read the determinant at each prime, with no sign test.
+- **The infinite place** (F9).
+  - Complex conjugation swaps each pair of Hodge types. It gives the sign of every determinant already read: + with a
+    middle class at 1, 5 and 9, and − with one pair at 7, 11, 13 and 15.
+  - A four-dimensional piece of this shape has two pairs and no middle class, so its determinant is even: (D|p) with
+    D > 0.
+  - Four readings of V27 are possible, with 3 at 27 and 5 at 25 each counted as thin or as naive. They give
+    D = 3187041 (both thin), 15935205 (5 enters at 25), −1062347 (3 enters at 27) and −5311735 (both enter).
+  - The two that let 3 enter at 27 are odd. So the infinite place, with the nodes' parity, already says 3 does not
+    enter at its cube, and the count checks it. The open choice is 5 at 25.
+- **The controls.**
+  - V23 has no thick node. The thin rule gives it the same determinant as V27, (3187041|p), with
+    3187041 = 3·11·13·17·19·23. So V27's determinant equal to V23's says the thick nodes add nothing.
+  - V19's determinant is (969969|p), with 969969 = 3·7·11·13·17·19.
+- **Twenty-one.** Round 25's sign test could not score V21's determinant (D2). Here it is read prime by prime (Y4).
+- **The square classes** of seventeen and twenty-one were read after round 25. They are tested at new primes (R2, R3).
+
+| | prediction | dies if |
+|---|---|---|
+| Y1 | T27 = p¹¹u27(p), with u27(p) an integer and \|u27(p)\| ≤ 4p³, at every prime from 29 to 1999 | a prime fails |
+| Y2 | V27's determinant is (3187041\|p): e2 = 0 exactly at the primes where (3187041\|p) = −1, at every prime from 29 to 151. 3 does not enter at 27, and 5 does not enter at 25 | another pattern |
+| Y2′ | wherever \|u27(p)\| > 2p³ the determinant must be +1, and (3187041\|p) = +1 there, with at least 10 such primes | a prime fails, or fewer than 10 |
+| Y3 | the controls: V23's determinant is (3187041\|p) and V19's is (969969\|p), read the same way; and T23 = p⁹u23, T19 = p⁷u19, with integers \|u\| ≤ 4p³ | otherwise |
+| Y4 | V21's determinant is (−138567\|p) at every prime from 29 to 151: T21(p²) = T21(p)² − 2(−138567\|p)p¹¹T21(p) | a prime fails |
+| Y5 | V27 does not split into two CM planes: p divides u27(p) at no more than 3 primes | more |
+| W1 | twenty-five: T25 = p⁹u25(p), with u25(p) an integer and \|u25(p)\| ≤ 5p⁴; and wherever \|u25(p)\| > 3p⁴ the middle eigenvalue has the sign (3187041\|p), 5 left out at 25, with at least 5 such primes | a sign fails, or fewer than 5 |
+| R2 | seventeen's square classes: at every prime from 409 to 1999, u17(p) + (−51051\|p)p² = s_p·b², with b an integer and s_p the product of −1 by (−51051\|p), 2 by (−715\|p), 5 by (−1547\|p), 7 by (−12155\|p), 13 by (−35\|p) and 17 by (−3003\|p) | a prime fails |
+| R3 | twenty-one's: at every prime from 127 to 1999, u21(p) + (−138567\|p)p² = s_p·b², with −1 by (−138567\|p), 2 by (−19019\|p), 3 by (−143\|p), 5 by (−1547\|p), 17 by (−1155\|p) and 19 by (−3003\|p) | a prime fails |
+| instrument | T1 to T15 as found, at every prime; seventeen's symmetric square at 29 to 401; over the field of p² elements, the known pieces are the squares of their eigenvalues, which rereads the determinants of 7, 11, 13, 15 and 17 | one fails |
+
+**The drafter's expectation.**
+- Y1, Y3, Y4, R2 and R3 hold.
+- Y2 holds. The critical values make both thick nodes unramified, and the infinite place already forbids 3 at 27. Its
+  open half is 5 at 25.
+- Y2′ and W1 may see few signs, W1 especially.
+- Y5 holds: the drafter expects V27 to be unsplit, like the pieces from 13 to 21.
+- The literature gate of round 25 covers this round: no work found identifies any Airy piece past k = 9.
+
+Run: `python edge_rule.py test26` (a few minutes, four processes at below-normal priority).
