@@ -24,8 +24,12 @@ T_7 = p^3 c(p) with c the weight-3 CM form of Q(sqrt -35), and T_9 = (105|p) p^5
   python edge_rule.py test     # round 21: the cubics at their edge primes 5 and 7 -> edge_rule_test.log
   python edge_rule.py test22   # round 22: the cubic in eleven variables          -> edge_rule_test22.log
                                #   (four worker processes at below-normal priority)
+  python edge_rule.py test23   # round 23: the cubic in thirteen variables        -> edge_rule_test23.log
+  python edge_rule.py test24   # round 24: thirteen blind, and fifteen            -> edge_rule_test24.log
+  python edge_rule.py verify25 # the forced checks F6 to F8 for round 25          -> edge_rule_verify25.log
+  python edge_rule.py test25   # round 25: seventeen, twenty-one and the prime 3  -> edge_rule_test25.log
 
-numpy + sympy + coin_at_five.py.  ASCII output.
+numpy + sympy + coin_at_five.py (and ../../base/verify_one_rule.py for F6).  ASCII output.
 """
 import cmath
 import itertools
@@ -667,6 +671,465 @@ def test24():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 25: seventeen, twenty-one, and the prime 3
+#   "1 and 3, seventeen first"  -- the author, 15 November 2026
+#   (1: register seventeen.  3: the reading at 13 -- its piece is both faces at once, as 13 is the icosahedron with its
+#   centre.)
+def signed(l):
+    """the signed prime l* = (-1)^((l - 1)/2) l: Q(sqrt l*) is the quadratic field ramified at l alone"""
+    return l if l % 4 == 1 else -l
+
+
+def val(n, l):
+    v = 0
+    while n % l == 0:
+        n //= l
+        v += 1
+    return v
+
+
+def thin_nodes(k, l):
+    """the ramified dimensions of V_k at l by the node reading, refined by the critical values (F7).  A node at a sign
+    vector with sum j is thin (the total space is regular there, and inertia turns its vanishing cycle over) exactly when
+    the critical value has odd valuation: v_l(j) for l >= 5, and v_3(j) - 1 in the good model at 3.  Up to k = 23 this
+    is ramified_dim(k, l) for l >= 5; for 3 it counts the odd multiples of 9 (3 at its square)."""
+    shift = 1 if l == 3 else 0
+    return sum(1 for j in range(1, k + 1, 2) if j % l == 0 and (val(j, l) - shift) % 2 == 1)
+
+
+def det_from_nodes(k):
+    """the parity rule: V_k's determinant character is ramified exactly where V_k has an odd number of ramified
+    dimensions (each thin node turns one vanishing cycle over, so inertia acts with determinant (-1)^r).  The character
+    is (D|p), with D the product of the signed primes there."""
+    D = 1
+    for l in primes(3, k):
+        if thin_nodes(k, l) % 2:
+            D *= signed(l)
+    return D
+
+
+# the determinants' characters already read: V1 = p; V5 = (5|p)p^3 and V9 = (105|p)p^5 are lines; the forms at 7, 11
+# and 15 have the characters of their CM fields (LMFDB 35.3.c at 7; at 11 and 15 because 4p^2 - a_p^2 = s v^2 > 0 at the
+# split primes forces det = +p^2 there, and an odd character equal to 1 at every split prime is the field's); 13's
+# symmetric square has (-15015|p) (round 24, R1)
+MEASURED_DET = {1: 1, 5: 5, 7: -35, 9: 105, 11: -1155, 13: -15015, 15: -3003}
+
+
+def nodes_count(n, l):
+    """the nodes of X_n mod l: projective sign vectors whose sum j is a multiple of l (l >= 5), or of 9 in the good
+    model at 3 (F7)"""
+    step = 9 if l == 3 else l
+    return sum(math.comb(n, (n + j) // 2) for j in range(1, n + 1, 2) if j % step == 0)
+
+
+def e3_of(x, m=3):
+    e1 = e2 = e3 = 0
+    for xi in x:
+        e3 = (e3 + e2 * xi) % m
+        e2 = (e2 + e1 * xi) % m
+        e1 = (e1 + xi) % m
+    return e1, e2, e3
+
+
+def count_e3(n):
+    """N'_n = #{x in F_3^n : e1(x) = e3(x) = 0}, the cone over the good model at 3, by the numbers a, b of coordinates
+    equal to 1 and to -1: then e1 = a - b, and e3 is the t^3 coefficient of (1 + t)^a (1 - t)^b"""
+    N = 0
+    for a in range(n + 1):
+        for b in range(n + 1 - a):
+            if (a - b) % 3:
+                continue
+            e3 = sum(math.comb(a, i) * math.comb(b, 3 - i) * (-1) ** (3 - i) for i in range(4))
+            if e3 % 3 == 0:
+                N += math.factorial(n) // (math.factorial(a) * math.factorial(b) * math.factorial(n - a - b))
+    return N
+
+
+def e3_brute(n):
+    return sum(1 for x in itertools.product(range(3), repeat=n) if e3_of(x)[0] == 0 and e3_of(x)[2] == 0)
+
+
+def normalize3(x):
+    lead = next(v for v in x if v % 3)
+    inv = 1 if lead % 3 == 1 else 2
+    return tuple((inv * v) % 3 for v in x)
+
+
+def singular_e3(n):
+    """the singular points of {e1 = e3 = 0} in P^(n-1) over F_3, by brute force: grad e3 = (e2 + x_i^2)_i on e1 = 0,
+    singular when it is a multiple of grad e1 = (1, ..., 1)"""
+    pts = set()
+    for x in itertools.product(range(3), repeat=n):
+        if not any(x):
+            continue
+        e1, e2, e3 = e3_of(x)
+        if e1 or e3:
+            continue
+        if len({(e2 + v * v) % 3 for v in x}) == 1:
+            pts.add(normalize3(x))
+    return pts
+
+
+def rank_mod3(M):
+    M = [[v % 3 for v in row] for row in M]
+    r, cols = 0, len(M[0]) if M else 0
+    for c in range(cols):
+        piv = next((i for i in range(r, len(M)) if M[i][c]), None)
+        if piv is None:
+            continue
+        M[r], M[piv] = M[piv], M[r]
+        inv = 1 if M[r][c] == 1 else 2
+        M[r] = [(inv * v) % 3 for v in M[r]]
+        for i in range(len(M)):
+            if i != r and M[i][c]:
+                f = M[i][c]
+                M[i] = [(a - f * b) % 3 for a, b in zip(M[i], M[r])]
+        r += 1
+    return r
+
+
+def hessian_rank_e3(n, j):
+    """the Hessian of e3 on the hyperplane e1 = 0 at the node eps = (+1 x (n+j)/2, -1 x (n-j)/2), in the chart x_1 = 1:
+    d^2 e3/dx_i dx_j = e1 - x_i - x_j = -(eps_i + eps_j) mod 3 (i != j), 0 on the diagonal, on sum y = 0"""
+    eps = [1] * ((n + j) // 2) + [-1] * ((n - j) // 2)
+    e = eps[1:]
+    m = len(e)
+    H = [[0 if a == b else -(e[a] + e[b]) for b in range(m)] for a in range(m)]
+    B = [[(1 if r == c else 0) - (1 if r == m - 1 else 0) for c in range(m - 1)] for r in range(m)]  # e_c - e_last
+    Q = [[sum(B[r][a] * H[r][s] * B[s][b] for r in range(m) for s in range(m)) for b in range(m - 1)] for a in range(m - 1)]
+    return rank_mod3(Q), m - 1
+
+
+def critical_value(j, model):
+    """the critical value at the node of sum j (chart x_1 = 1): j(j - 2)/(j - 1)^2 for sum x^3, and a third of it for e3"""
+    cv = Fraction(j * (j - 2), (j - 1) ** 2)
+    return cv / 3 if model == "e3" else cv
+
+
+def critical_value_direct(n, j, model):
+    """e3 or p3 at the exact critical point (1, c eps') of the chart, c = -1/(j - 1), over Q"""
+    eps = [1] * ((n + j) // 2) + [-1] * ((n - j) // 2)
+    c = Fraction(-1, j - 1)
+    x = [Fraction(1)] + [c * e for e in eps[1:]]
+    if model == "p3":
+        return sum(v ** 3 for v in x)
+    e1 = e2 = e3 = Fraction(0)
+    for v in x:
+        e3 += e2 * v
+        e2 += e1 * v
+        e1 += v
+    return e3
+
+
+def fval(q, l):
+    return val(q.numerator, l) - val(q.denominator, l)
+
+
+def base_rule(ns, kmax=22):
+    """the base's rule (../../base/verify_one_rule.py): the most symmetric arrangement of n points in 3-space, not all
+    on a line, by searching every union of orbits of every point group -- the polyhedral groups and the axial families
+    up to a kmax-fold axis (a ring off the axis has at least k points, so kmax >= n is enough).  Returns, for each n, the
+    largest order, the winning groups with their orbit sizes, and whether every winner keeps an axis (an axial family:
+    C, S or D), for the rule itself and for its variant that fills three dimensions."""
+    sys.path.insert(0, os.path.join(HERE, "..", "..", "base"))
+    import verify_one_rule as vor
+    groups = vor.point_groups(kmax=kmax)
+    orders = {g: len(G) for g, G in groups.items()}
+    types = {g: vor.orbit_types(G) for g, G in groups.items()}
+    out = {}
+    for n in ns:
+        res = {}
+        for variant in ("rule", "solid"):
+            top, win = 0, []
+            for g, ty in types.items():
+                if orders[g] < top:
+                    continue
+                for P, desc in vor.unions(ty, n):
+                    if len(P) != n:
+                        continue
+                    r = vor.affine_rank(P)
+                    if (variant == "rule" and r < 2) or (variant == "solid" and r < 3):
+                        continue
+                    if orders[g] > top:
+                        top, win = orders[g], []
+                    centre, chosen = desc
+                    win.append((g, ("centre + " if centre else "") + "+".join(str(len(ty[i])) for i, m in chosen
+                                                                                for _ in range(m)), P))
+            full = {vor.sym_order(P) for _, _, P in win[:3]}
+            res[variant] = (top, sorted({(g, d) for g, d, _ in win}), full, all(g[0] in "CSD" for g, _, _ in win))
+        out[n] = res
+    return out
+
+
+def verify25():
+    """the forced checks F6 to F8 behind round 25's registration; none of them counts X17 or X21, or the good model at 3"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_verify25.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    say("edge_rule.py verify25 -- the forced checks for round 25 (seventeen, twenty-one, the prime 3)")
+
+    # F6: the base's rule at 13, 17 and 21, and whether its winner keeps an axis
+    B = base_rule((13, 17, 21))
+    ok = True
+    for n, res in B.items():
+        for variant, (top, win, full, axial) in res.items():
+            say(f"  n = {n} ({variant}): largest order {top}, winners {win}, full symmetry {sorted(full)}, "
+                f"{'keeps an axis' if axial else 'no axis kept by all its symmetries'}")
+    ok &= B[13]["rule"][0] == 120 and not B[13]["rule"][3] and {g for g, _ in B[13]["rule"][1]} == {"Ih"}
+    ok &= B[17]["rule"][0] == 68 and B[17]["rule"][3] and B[17]["rule"][2] == {68}
+    ok &= B[21]["rule"][0] == 120 and not B[21]["rule"][3] and {g for g, _ in B[21]["rule"][1]} == {"Ih"}
+    ok &= B[17]["solid"][3] and not B[13]["solid"][3] and not B[21]["solid"][3]
+    check("F6. the base's rule: 13 -> the icosahedron with its centre (Ih, 120, no axis), 17 -> the regular 17-gon "
+          "(68, one axis), 21 -> the dodecahedron with its centre (Ih, 120, no axis); in space (the variant filling three "
+          "dimensions) 13 and 21 are the same, and 17's winner still keeps an axis", ok)
+
+    # F7: the good model at 3
+    ok, rows = True, []
+    for n in (5, 7, 9, 11):
+        S = singular_e3(n)
+        want = set()  # every sign vector (entries 1 and -1 = 2) whose sum is a multiple of 9, up to sign
+        for j in range(1, n + 1, 2):
+            if j % 9 == 0:
+                for plus in itertools.combinations(range(n), (n + j) // 2):
+                    want.add(normalize3(tuple(1 if i in plus else 2 for i in range(n))))
+        ok &= S == want
+        rows.append(f"n={n}:{len(S)}")
+    check("F7a. over Z_3, sum x^3 = 3 e3 on sum x = 0, so X_n = {e1 = e3 = 0}. Mod 3 its singular points are exactly the "
+          "sign vectors whose sum is a multiple of 9 (none for n <= 7; n = 9: the centre alone) -- by brute force over "
+          "F_3^n, n = 5, 7, 9, 11", ok, " ".join(rows))
+    ok, rows = True, []
+    for n in range(9, 28, 2):
+        for j in (9, 27):
+            if j <= n:
+                r, d = hessian_rank_e3(n, j)
+                ok &= r == d
+                rows.append(f"n={n},j={j}:{r}/{d}")
+    check("F7b. each of those nodes is ordinary: the Hessian on the tangent hyperplane has full rank mod 3 "
+          "(n = 9..27, sums 9 and 27)", ok, " ".join(rows[:6]) + " ...")
+    ok, rows = True, []
+    for n, j in ((9, 9), (11, 9), (17, 9), (21, 9), (27, 27)):
+        d = critical_value_direct(n, j, "e3")
+        ok &= d == critical_value(j, "e3")
+        rows.append(f"n={n},j={j}:{d}")
+    for n, j in ((5, 5), (15, 15), (17, 5), (25, 25), (21, 7)):
+        d = critical_value_direct(n, j, "p3")
+        ok &= d == critical_value(j, "p3")
+    v9, v27 = fval(critical_value(9, "e3"), 3), fval(critical_value(27, "e3"), 3)
+    v5, v15, v25, v49 = (fval(critical_value(j, "p3"), l) for j, l in ((5, 5), (15, 5), (25, 5), (49, 7)))
+    ok &= (v9, v27, v5, v15, v25, v49) == (1, 2, 1, 1, 2, 2)
+    check("F7c. the critical values: j(j - 2)/(j - 1)^2 for sum x^3, a third of it for e3 (checked at the exact critical "
+          "points). Their valuations: at 3, v_3(j) - 1 -- 1 at sum 9 (thin: the total space is regular), 2 at 27 "
+          "(thick); at l >= 5, v_l(j) -- 1 at 5 and 15, 2 at 25 and 49", ok,
+          f"{'; '.join(rows)}; v3: 9->{v9}, 27->{v27}; v5: 5->{v5}, 15->{v15}, 25->{v25}; v7: 49->{v49}")
+
+    # F8: the bookkeeping for 17 and 21, and the parity rule on the characters already read
+    ok, rows = True, []
+    v = {k: len(classical_hodge(k)) for k in range(1, 22, 2)}
+    for n in (17, 21):
+        ok &= sum(ballot(n, k) * v[k] for k in range(1, n + 1, 2)) == betti_prim(n)
+        rows.append(f"V{n}: dim {v[n]}, types {classical_hodge(n)}, b_prim {betti_prim(n)}")
+        for l in [3] + primes(5, n):
+            nodes = nodes_count(n, l)
+            lower = sum(ballot(n, k) * thin_nodes(k, l) for k in range(1, n, 2))
+            ok &= nodes - lower == thin_nodes(n, l)
+            rows.append(f"n={n},l={l}: {nodes} nodes, lower {lower}, V{n} {nodes - lower}")
+    check("F8a. X17 and X21: the lower pieces fill all but three dimensions (V17 and V21 have three each, of types "
+          "(7,11), (9,9), (11,7) and (9,13), (11,11), (13,9)), and all but r nodes at each prime: at 17, r = 1 at 3, 7, "
+          "11, 13, 17 and r = 2 at 5; at 21, r = 1 at 3, 11, 13, 17, 19 and r = 2 at 5 and 7", ok)
+    for row in rows:
+        say("  " + row)
+    ok = all(det_from_nodes(k) == D for k, D in MEASURED_DET.items())
+    check("F8b. the parity rule reproduces every determinant already read: " +
+          ", ".join(f"k={k}: {det_from_nodes(k)}" for k in MEASURED_DET), ok)
+    D17, D21 = det_from_nodes(17), det_from_nodes(21)
+    check(f"F8c. its predictions: V17's determinant (D|p) with D = {D17} = {sympy.factorint(abs(D17))} (sign -); "
+          f"V21's with D = {D21} = {sympy.factorint(abs(D21))} (sign -)", (D17, D21) == (-51051, -138567))
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    say("ALL PASS" if not FAILS else f"FAILED: {FAILS}")
+    LOG.close()
+
+
+def cone_counts_checked(p, ns):
+    """cf.cone_counts with an overflow guard: each partial count is checked to stay inside int64 (no negative entry,
+    and the counts sum to p^k exactly)"""
+    x = np.arange(p, dtype=np.int64)
+    x3 = x ** 3 % p
+    c = {1: np.zeros((p, p), dtype=np.int64)}
+    c[1][x, x3] = 1
+    top = max((n + 1) // 2 for n in ns)
+    for k in range(2, top + 1):
+        acc = np.zeros((p, p), dtype=np.int64)
+        for s in range(p):
+            acc += np.roll(c[k - 1], (s, int(x3[s])), axis=(0, 1))
+        if acc.min() < 0 or int(acc.astype(object).sum()) != p ** k:
+            raise OverflowError(f"cone counts overflow at p = {p}, k = {k}")
+        c[k] = acc
+    neg = (-x) % p
+    out = {}
+    for n in ns:
+        j = n // 2
+        out[n] = int((c[j].astype(object) * c[n - j][np.ix_(neg, neg)].astype(object)).sum())
+    return out
+
+
+def t_values_checked(p, ns):
+    N = cone_counts_checked(p, tuple(n for n in ns if n >= 3))
+    N[1] = 1
+    return {n: (Fraction(N[n]) - Fraction(p) ** (n - 2)) / (p - 1) for n in sorted(set(ns) | {1})}
+
+
+def _x17(p):
+    low_priority()
+    return p, t_values_checked(p, tuple(range(3, 18, 2)))
+
+
+def _x21(p):
+    low_priority()
+    return p, t_values_checked(p, tuple(range(3, 22, 2)))
+
+
+def lower_pieces_ok(p, T):
+    """T1 to T15 as found in rounds 19 to 24, at a good prime p >= 17"""
+    a, g, w = T[7] / p ** 3, T[11] / p ** 5, T[15] / p ** 7
+    ok = (T[1] == p and T[3] == 0 and T[5] == leg(5, p) * p ** 3 and a.denominator == 1 and abs(int(a)) == cf.cm35(p)
+          and T[9] == leg(105, p) * p ** 5 and g.denominator == 1 and (g == 0) == (leg(-1155, p) == -1)
+          and sym2_ok(p, T[13] / p ** 5) and w.denominator == 1 and (w == 0) == (leg(-3003, p) == -1))
+    for f, s in ((g, 1155), (w, 3003)):
+        if ok and f != 0:
+            D_ = 4 * p * p - int(f) ** 2
+            ok = D_ % s == 0 and sympy.integer_nthroot(D_ // s, 2)[1]
+    if ok and p in LMFDB_35_3_c_b:
+        ok = a == LMFDB_35_3_c_b[p]
+    return ok
+
+
+def det_sign_test(P, u, D):
+    """an orthogonal three-dimensional piece has the eigenvalue det(p) p^2 (normalized), and the other two add up to at
+    most 2p^2 in size; so wherever |u| > p^2 the sign of u is the determinant's character"""
+    tested = [p for p in P if abs(u[p]) > p * p]
+    bad = [p for p in tested if (1 if u[p] > 0 else -1) != kron(D, p)]
+    return tested, bad
+
+
+def fused_signature(P, u, D, modulus):
+    """a twisted symmetric square: u + det(p) p^2 = chi(p) a_p^2 = +-s b^2, with s a squarefree divisor of the modulus"""
+    return [p for p in P if (int(u[p]) + kron(D, p) * p * p) and modulus % squarefree_part(abs(int(u[p]) + kron(D, p) * p * p))]
+
+
+def test25():
+    """round 25 (PREREG.md): Z1 to Z5 (seventeen and the prime 3) and D1 to D3 (twenty-one)"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test25.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    P17, E17, P21 = primes(19, 401), [5, 7, 11, 13, 17], primes(23, 113)
+    say("Round 25: seventeen, twenty-one, and the prime 3 (PREREG.md)")
+    say(f"X17 at {P17[0]}..{P17[-1]} ({len(P17)}) and the edge primes {E17}; X21 at {P21[0]}..{P21[-1]} ({len(P21)})")
+    with Pool(4) as pool:
+        r17 = dict(pool.map(_x17, P17 + E17))
+        r21 = dict(pool.map(_x21, P21))
+
+    # ---- seventeen
+    D17 = det_from_nodes(17)
+    u, T17, inst = {}, {}, True
+    say(f"X17 p t17 u ({D17}|p)   [u = T17/p^7]")
+    for p in E17 + P17:
+        T = airy(p, r17[p])
+        if p not in E17:
+            inst &= lower_pieces_ok(p, T)
+        T17[p] = T[17]
+        u[p] = T[17] / p ** 7
+        say(f"X17 {p} {r17[p][17]} {u[p]} {kron(D17, p)}")
+    say(f"instrument: T1..T15 as found in rounds 19 to 24 at every prime 19..401: {inst}")
+    bad1 = [p for p in P17 if u[p].denominator != 1 or abs(u[p]) > 3 * p * p]
+    z1 = not bad1
+    say(f"Z1 T17 = p^7 u(p), u an integer with |u| <= 3p^2, at every prime 19..401: "
+        f"{'HELD' if z1 else 'FAILED at ' + str(bad1)}")
+    tested, bad2 = det_sign_test(P17, u, D17)
+    alt = det_sign_test(P17, u, 17017)[1]
+    z2 = z1 and not bad2 and len(tested) >= 10
+    say(f"  |u| > p^2 at {len(tested)} primes; sign(u) = ({D17}|p) fails at {bad2}; with 3 left out, (17017|p) fails at "
+        f"{len(alt)} of them")
+    say(f"Z2 the determinant's character is ({D17}|p): 3 once (at 9), 5 twice (5 and 15), 7, 11, 13 and 17 once: "
+        f"{'HELD' if z2 else 'FAILED'}")
+    divides = [p for p in P17 if z1 and int(u[p]) % p == 0]
+    say(f"  p divides u at {len(divides)} of the {len(P17)} primes: {divides}")
+    z3, Dchi, dK, s, lines = split_tate_cm(P17, {p: int(u[p]) for p in P17}) if z1 else (False, None, None, None, [])
+    for line in lines:
+        say(line)
+    say(f"Z3 (the reading at 13, made exact) V17 keeps a line -- a twisted Tate class beside a weight-5 form with complex "
+        f"multiplication -- as the regular 17-gon keeps its axis: {'HELD' if z3 else 'FAILED'}")
+    if z3:
+        say(f"  G1 chi = (17|p) and K = Q(sqrt -3003): {'HELD' if (Dchi == 17 and dK == -3003) else 'FAILED'}")
+    badf = fused_signature(P17, u, D17, 510510) if z1 else P17
+    z3b = z1 and not z3 and len(divides) <= 3 and not badf
+    say(f"  u + ({D17}|p)p^2 = +-s b^2 with s dividing 510510 = 2.3.5.7.11.13.17: fails at {badf}")
+    say(f"Z3' (the same shape as 13) V17 keeps no line, and it is a twisted symmetric square: "
+        f"{'HELD' if z3b else 'FAILED'}")
+    ok4 = T17[5] in (5 ** 9, -5 ** 9)
+    for q in (7, 11, 13, 17):
+        v4 = T17[q] / q ** 7
+        ok4 &= v4.denominator == 1 and abs(v4) <= 2 * q * q
+    for q in E17:
+        say(f"  edge q={q}: {nodes_count(17, q)} nodes, T17 = {T17[q]} = q^7 * {T17[q] / q ** 7}")
+    say(f"Z4 T17(5) = +-5^9 (one line survives), and at 7, 11, 13 and 17 a plane survives: q^7 divides T17(q) and "
+        f"|T17(q)| <= 2q^9: {'HELD' if ok4 else 'FAILED'}")
+
+    # ---- the prime 3, in the good model
+    brute = {n: (count_e3(n), e3_brute(n)) for n in (3, 5, 7, 9)}
+    brute_ok = all(a == b for a, b in brute.values())
+    say(f"instrument at 3: the count of e1 = e3 = 0 equals brute force over F_3^n for n = 3, 5, 7, 9: {brute_ok}")
+    N3 = {n: count_e3(n) for n in range(3, 22, 2)}
+    N3[1] = 1
+    t3 = {n: (Fraction(N3[n]) - Fraction(3) ** (n - 2)) / 2 for n in range(1, 22, 2)}
+    T3 = airy(3, t3)
+    for k in range(1, 22, 2):
+        say(f"  at 3: N'_{k} = {N3[k]}, T{k} = {T3[k]}, {len(classical_hodge(k))} dims, "
+            f"{thin_nodes(k, 3)} ramified by 3 at its square")
+    a3 = LMFDB_35_3_c_b[3]
+    z5a = brute_ok and T3[1] == 3 and T3[3] == 0 and T3[5] == -27 and T3[7] == 27 * a3
+    z5b = brute_ok and T3[9] == 0
+    q13, q17 = T3[13] / 3 ** 5, T3[17] / 3 ** 7
+    z5c = (brute_ok and abs(T3[11]) == 3 ** 6 and abs(T3[15]) == 3 ** 8 and q13.denominator == 1 and abs(q13) <= 18
+           and q17.denominator == 1 and abs(q17) <= 18)
+    say(f"Z5a below 9, 3 does not enter: T1 = 3, T3 = 0, T5 = (5|3)3^3 = -27, T7 = 3^3 a_3(35.3.c.b) = {27 * a3}: "
+        f"{'HELD' if z5a else 'FAILED'}")
+    say(f"Z5b 3 enters at 9: V9's line is ramified, T9 = 0: {'HELD' if z5b else 'FAILED'}")
+    say(f"Z5c from 9 on, one dimension at a time: |T11| = 3^6 and |T15| = 3^8 (a line survives in each CM plane), and a "
+        f"plane survives in V13 and V17 (3^5 | T13, |T13| <= 2.3^7; 3^7 | T17, |T17| <= 2.3^9): "
+        f"{'HELD' if z5c else 'FAILED'}")
+
+    # ---- twenty-one
+    D21 = det_from_nodes(21)
+    u21, inst21 = {}, True
+    say(f"X21 p u21 ({D21}|p) T19/p^7   [u21 = T21/p^9]")
+    for p in P21:
+        T = airy(p, r21[p])
+        inst21 &= lower_pieces_ok(p, T)
+        u21[p] = T[21] / p ** 9
+        say(f"X21 {p} {u21[p]} {kron(D21, p)} {T[19] / p ** 7}")
+    say(f"instrument: T1..T15 as found in rounds 19 to 24 at every prime 23..113: {inst21}")
+    bad = [p for p in P21 if u21[p].denominator != 1 or abs(u21[p]) > 3 * p * p]
+    d1 = not bad
+    say(f"D1 T21 = p^9 u21(p), u21 an integer with |u21| <= 3p^2, at every prime 23..113: "
+        f"{'HELD' if d1 else 'FAILED at ' + str(bad)}")
+    tested, bad2 = det_sign_test(P21, u21, D21)
+    d2 = d1 and not bad2 and len(tested) >= 5
+    say(f"  |u21| > p^2 at {len(tested)} primes; sign(u21) = ({D21}|p) fails at {bad2}")
+    say(f"D2 the determinant's character is ({D21}|p): 3 once (at 9, not at 21), 5 and 7 twice, 11, 13, 17, 19 once: "
+        f"{'HELD' if d2 else 'FAILED'}")
+    div21 = [p for p in P21 if d1 and int(u21[p]) % p == 0]
+    sp21 = split_tate_cm(P21, {p: int(u21[p]) for p in P21})[0] if d1 else True
+    d3 = d1 and not sp21 and len(div21) <= 2
+    say(f"  p divides u21 at {len(div21)} of the {len(P21)} primes: {div21}")
+    say(f"D3 (the reading) V21 keeps no line, as the dodecahedron with its centre keeps no axis: "
+        f"{'HELD' if d3 else 'FAILED'}")
+    badf21 = fused_signature(P21, u21, D21, 9699690) if d1 else P21
+    say(f"  u21 + ({D21}|p)p^2 = +-s b^2 with s dividing 9699690 = 2.3.5.7.11.13.17.19: fails at {badf21} (read)")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
@@ -679,3 +1142,7 @@ if __name__ == "__main__":
         test23()
     elif mode == "test24":
         test24()
+    elif mode == "verify25":
+        verify25()
+    elif mode == "test25":
+        test25()

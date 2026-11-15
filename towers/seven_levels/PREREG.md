@@ -2119,3 +2119,107 @@ Run by [`edge_rule.py`](edge_rule.py) `test24`, registered at c9fb158 before the
   - 5 stays out of the field: its two ramified dimensions are the Hecke character's, because 5 and 15 are both odd
     multiples of 5.
   - 3 is in, as the author's "3 at its square" says. At 15 the node reading forces it as well.
+
+---
+
+## Round 25: seventeen, the reading at 13, and the prime 3 (registered 2026-11-15, before the test)
+
+> *1 and 3, seventeen first* — the author, 15 November 2026. The "1" says yes to registering 17. The "3" takes up the
+> reading at 13: its piece is both faces at once, and the base puts 13 at the icosahedron with its centre.
+
+X17 = {x1 + ⋯ + x17 = x1³ + ⋯ + x17³ = 0} is a cubic fourteenfold, and it has never been counted. Its primitive middle
+cohomology has dimension 21846. With m(17, ·) = 4862, 7072, 6188, 3808, 1700, 544, 119, 16, 1 and the pieces found so
+far,
+
+  t17 = p⁷(4862 + 6188(5|p) + 1700(105|p)) + p⁶(3808c(p) + 544g(p) + 16w(p)) + p⁵(119u13(p) + u(p)),
+
+where c, g and w are the CM forms of 7, 11 and 15, u13 is 13's symmetric square, and u(p) = T17(p)/p⁷ is the new piece.
+Before this registration [`edge_rule.py`](edge_rule.py) `verify25` checked the following, without counting X17, X21 or
+anything at 3 ([`edge_rule_verify25.log`](edge_rule_verify25.log), F6 to F8 [FORCED]).
+- **Seventeen's size and shape.**
+  - The lower pieces use 21843 of the 21846 dimensions, so the new piece V17 has three, of Hodge types (7, 11), (9, 9)
+    and (11, 7): 13's shape, raised by two.
+  - It is orthogonal. So at every prime it has the eigenvalue δ(p)p⁹, where δ is its determinant's character, and its
+    other two eigenvalues add up to at most 2p⁹ in size. Wherever |u| > p², the sign of u is δ(p).
+- **The nodes.** X17 has 12393 nodes at 5, 6188 at 7, 680 at 11, 136 at 13 and 1 at 17, its centre. The lower pieces
+  leave 2 at 5, because 5 and 15 are both odd multiples of 5, and 1 at each of 7, 11, 13 and 17.
+- **The prime 3, in a good model.** On x1 + ⋯ + xn = 0 the cubic x1³ + ⋯ + xn³ is 3e3, three times the third
+  elementary symmetric function. So over the 3-adic integers X_n = {e1 = e3 = 0}, and this model can be counted at 3,
+  where the cubic itself is the cube of the line and was never counted.
+  - Mod 3 its only singular points are the sign vectors whose sum is a multiple of 9 (brute force to n = 11), and each
+    is an ordinary node (n = 9 to 27).
+  - There are none for n ≤ 7. For n = 9 the centre is the only one: the cubic in nine variables pinches at its centre
+    mod 3, as the cubic in q variables does mod q for every prime q. The author's "3 at its square" is where this
+    model's nodes are.
+  - X17 has 2380 of them, and the lower pieces leave 1 for V17.
+  - At a node whose sum is 9, the critical value has 3-adic valuation 1, so the total space is regular there and the
+    node is one ramified dimension. At 27 the valuation is 2. That node would not ramify: a prediction for 27, past
+    this round.
+- **The parity rule** [READING: Picard–Lefschetz].
+  - Each ramified dimension at a node turns one vanishing cycle over. So a piece's determinant character is ramified
+    exactly where the piece has an odd number of them.
+  - The rule gives every determinant already read: (5|p), (−35|p), (105|p), (−1155|p), (−15015|p) and (−3003|p),
+    at 5 to 15.
+  - At 17 it gives (−51051|p), with 51051 = 3·7·11·13·17: 3 once (at 9), 5 twice (so not at all), and 7, 11, 13 and 17
+    once.
+  - At 17 no new multiple of 3 appears, so Z2 checks that the rule still holds at 3 with nothing else forcing it, as
+    Schütt's condition did at 15. The direct test of "3 at its square" is Z5, at the prime 3 itself.
+
+**The reading at 13, made exact** (the drafter's version, which the author's "3" took up).
+- A three-dimensional orthogonal piece either keeps a line or keeps none.
+  - If it keeps one, it splits into a twisted Tate class and a CM form, as round 23 registered for 13. Its Galois group
+    then turns the piece about one axis, as a regular polygon's symmetries do.
+  - If it keeps none, as at 13 (round 23's S2 died), no axis serves all its elements, as with the icosahedron's
+    symmetries. These are the two kinds in Klein's list of the finite rotation groups. The cyclic and dihedral groups
+    keep an axis; the tetrahedral, octahedral and icosahedral groups keep none [NAMED: Klein; SO(3) ≅ PGL(2)].
+- The base's rule, carried on to 21 [F6]:
+  - 13 is the icosahedron with its centre (120 symmetries, no axis kept);
+  - 17 is the regular 17-gon (68, one axis). Its best in space is the 15-gon with two poles, which keeps its axis too;
+  - 21 is the dodecahedron with its centre (120, no axis).
+- **The dictionary:** the piece of n keeps a line exactly when the base's n points keep an axis.
+  - At 13 it fits, but that was read after the fact.
+  - At 17 it predicts a split: the first test of the reading. 17 has 13's Hodge shape, but the base turns flat there.
+  - At 21 it predicts no split.
+- **Twenty-one.**
+  - X21 in 21 variables has a new piece V21 of three dimensions, of types (9, 13), (11, 11) and (13, 9).
+  - Its nodes leave one ramified dimension at each of 3, 11, 13, 17 and 19, and two at 5 (5, 15) and at 7 (7, 21).
+  - The parity rule gives (−138567|p), with 138567 = 3·11·13·17·19. 7 drops out as 5 did at 15, and 3 enters once,
+    at 9 and not at 21.
+  - The counts reach p = 113 before they leave 64-bit integers.
+
+| | prediction | dies if |
+|---|---|---|
+| Z1 | T17 = p⁷u(p), with u(p) an integer and \|u(p)\| ≤ 3p², at every prime from 19 to 401 | a prime fails |
+| Z2 | V17's determinant has the character (−51051\|p): wherever \|u(p)\| > p², sign u(p) = (−51051\|p) | a sign fails |
+| Z3 | the reading: V17 keeps a line. There are a quadratic character χ and an imaginary quadratic field K such that u(p) = χ(p)p² exactly at the primes inert in K, and u − χ(p)p² is a weight-5 form with complex multiplication by K | no such χ and K |
+| G1 | if Z3 holds: χ = (17\|p) and K = Q(√−3003). The new prime twists the Tate class, as 5 did at 5, and the form keeps fifteen's field | another pair |
+| Z3′ | the shape: V17 keeps no line. p divides u(p) at no more than 3 primes, and u(p) + (−51051\|p)p² = ±s·b² with b an integer and s dividing 510510 = 2·3·5·7·11·13·17, at every prime | otherwise |
+| Z4 | at the nodes: T17(5) = ±5⁹, since one line survives at 5. At 7, 11, 13 and 17 a plane survives: q⁷ divides T17(q), and \|T17(q)\| ≤ 2q⁹ | another value |
+| Z5a | at 3, in the good model, where nothing has been counted: T1 = 3, T3 = 0, T5 = (5\|3)·3³ = −27 and T7 = 3³a₃ = 27, with a₃ = 1 the coefficient of 35.3.c.b. 3 does not enter below 9 | another value |
+| Z5b | T9 = 0 at 3: V9's line ramifies there | T9 ≠ 0 |
+| Z5c | from 9 on, one dimension at a time: \|T11\| = 3⁶ and \|T15\| = 3⁸ (a line survives in each CM plane), and a plane survives in V13 and V17: T13 = 3⁵v and T17 = 3⁷v′, with v and v′ integers of size at most 18 | another value |
+| D1 | T21 = p⁹u21(p), with u21(p) an integer and \|u21(p)\| ≤ 3p², at every prime from 23 to 113 | a prime fails |
+| D2 | V21's determinant has the character (−138567\|p), read by the same signs | a sign fails |
+| D3 | the reading: V21 keeps no line. p divides u21(p) at no more than 2 primes, and the split test of Z3 finds no χ and K | it splits |
+| instrument | T1 to T15 as found in rounds 19 to 24, at every prime counted; and the good model's count equals brute force over F_3^n for n = 3, 5, 7 and 9 | one fails |
+
+Z3 and Z3′ cannot both hold.
+
+**The drafter's expectation.**
+- Z1, Z2, D1 and D2 hold, if the parity rule does.
+- Of Z3 and Z3′ the drafter expects Z3′, since 17 has 13's Hodge shape. So the drafter expects the dictionary to die at
+  its first test. A split at 17 would be its first blind success. G1 is a guess among several pairs.
+- Z4 holds if the counts at the nodes see only the unramified part, as in rounds 21 and 24.
+- Z5 holds if the good model at 3 is what F7 says. Z5a is the sharpest item: four exact values at a prime where nothing
+  has been counted.
+- D3 holds, but it cannot separate the dictionary from the shape, which agree at 21.
+
+**The literature gate (15 November 2026).**
+- No work found identifies the Airy pieces past k = 9: not Haessig, not Sabbah and Yu, and not Qin, who computes
+  Hodge numbers [NAMED: arXiv:2302.05365].
+- P.-H. Chuang's dissertation (arXiv:2607.05757, July 2026) gives an arithmetic Picard–Lefschetz formula for diagonal
+  singularities and applies it to the Airy moments at primes p > 5. It works in another model, z³ = Σ(y³/3 − y), and
+  excludes 3 and 5. The good model at 3 and the parity rule are not in the parts of it read here. The node reading at
+  p ≥ 7 may be, which has not been checked.
+
+Run: `python edge_rule.py test25` (a few minutes, four processes at below-normal priority).

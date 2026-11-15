@@ -1,0 +1,31 @@
+edge_rule.py verify25 -- the forced checks for round 25 (seventeen, twenty-one, the prime 3)
+  n = 13 (rule): largest order 120, winners [('Ih', 'centre + 12')], full symmetry [120], no axis kept by all its symmetries
+  n = 13 (solid): largest order 120, winners [('Ih', 'centre + 12')], full symmetry [120], no axis kept by all its symmetries
+  n = 17 (rule): largest order 68, winners [('D17h', '17')], full symmetry [68], keeps an axis
+  n = 17 (solid): largest order 60, winners [('D15h', '2+15')], full symmetry [60], keeps an axis
+  n = 21 (rule): largest order 120, winners [('Ih', 'centre + 20')], full symmetry [120], no axis kept by all its symmetries
+  n = 21 (solid): largest order 120, winners [('Ih', 'centre + 20')], full symmetry [120], no axis kept by all its symmetries
+[PASS] F6. the base's rule: 13 -> the icosahedron with its centre (Ih, 120, no axis), 17 -> the regular 17-gon (68, one axis), 21 -> the dodecahedron with its centre (Ih, 120, no axis); in space (the variant filling three dimensions) 13 and 21 are the same, and 17's winner still keeps an axis
+[PASS] F7a. over Z_3, sum x^3 = 3 e3 on sum x = 0, so X_n = {e1 = e3 = 0}. Mod 3 its singular points are exactly the sign vectors whose sum is a multiple of 9 (none for n <= 7; n = 9: the centre alone) -- by brute force over F_3^n, n = 5, 7, 9, 11  (n=5:0 n=7:0 n=9:1 n=11:11)
+[PASS] F7b. each of those nodes is ordinary: the Hessian on the tangent hyperplane has full rank mod 3 (n = 9..27, sums 9 and 27)  (n=9,j=9:7/7 n=11,j=9:9/9 n=13,j=9:11/11 n=15,j=9:13/13 n=17,j=9:15/15 n=19,j=9:17/17 ...)
+[PASS] F7c. the critical values: j(j - 2)/(j - 1)^2 for sum x^3, a third of it for e3 (checked at the exact critical points). Their valuations: at 3, v_3(j) - 1 -- 1 at sum 9 (thin: the total space is regular), 2 at 27 (thick); at l >= 5, v_l(j) -- 1 at 5 and 15, 2 at 25 and 49  (n=9,j=9:21/64; n=11,j=9:21/64; n=17,j=9:21/64; n=21,j=9:21/64; n=27,j=27:225/676; v3: 9->1, 27->2; v5: 5->1, 15->1, 25->2; v7: 49->2)
+[PASS] F8a. X17 and X21: the lower pieces fill all but three dimensions (V17 and V21 have three each, of types (7,11), (9,9), (11,7) and (9,13), (11,11), (13,9)), and all but r nodes at each prime: at 17, r = 1 at 3, 7, 11, 13, 17 and r = 2 at 5; at 21, r = 1 at 3, 11, 13, 17, 19 and r = 2 at 5 and 7
+  V17: dim 3, types [(7, 11), (9, 9), (11, 7)], b_prim 21846
+  n=17,l=3: 2380 nodes, lower 2379, V17 1
+  n=17,l=5: 12393 nodes, lower 12391, V17 2
+  n=17,l=7: 6188 nodes, lower 6187, V17 1
+  n=17,l=11: 680 nodes, lower 679, V17 1
+  n=17,l=13: 136 nodes, lower 135, V17 1
+  n=17,l=17: 1 nodes, lower 0, V17 1
+  V21: dim 3, types [(9, 13), (11, 11), (13, 9)], b_prim 349526
+  n=21,l=3: 54264 nodes, lower 54263, V21 1
+  n=21,l=5: 204820 nodes, lower 204818, V21 2
+  n=21,l=7: 116281 nodes, lower 116279, V21 2
+  n=21,l=11: 20349 nodes, lower 20348, V21 1
+  n=21,l=13: 5985 nodes, lower 5984, V21 1
+  n=21,l=17: 210 nodes, lower 209, V21 1
+  n=21,l=19: 21 nodes, lower 20, V21 1
+[PASS] F8b. the parity rule reproduces every determinant already read: k=1: 1, k=5: 5, k=7: -35, k=9: 105, k=11: -1155, k=13: -15015, k=15: -3003
+[PASS] F8c. its predictions: V17's determinant (D|p) with D = -51051 = {3: 1, 7: 1, 11: 1, 13: 1, 17: 1} (sign -); V21's with D = -138567 = {3: 1, 11: 1, 13: 1, 17: 1, 19: 1} (sign -)
+time 0.1 minutes
+ALL PASS
