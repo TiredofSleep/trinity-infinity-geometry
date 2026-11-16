@@ -32,6 +32,7 @@ T_7 = p^3 c(p) with c the weight-3 CM form of Q(sqrt -35), and T_9 = (105|p) p^5
   python edge_rule.py test26   # round 26: twenty-seven, and the square classes   -> edge_rule_test26.log
   python edge_rule.py verify27 # the forced checks F13 to F18 for round 27        -> edge_rule_verify27.log
   python edge_rule.py test27   # round 27: eighty-one, and twenty-five's own determinant -> edge_rule_test27.log
+  python edge_rule.py test28   # round 28: Theorem 8's determinants past 27, blind -> edge_rule_test28.log
 
 numpy + sympy + coin_at_five.py (and ../../base/verify_one_rule.py for F6).  ASCII output.
 """
@@ -2099,6 +2100,96 @@ def test27():
     LOG.close()
 
 
+# ------------------------------------------------------------------ round 28: Theorem 8's first new determinants, blind
+#   "2 and 3, the proof first"  -- the author, 16 November 2026
+#   (DETERMINANTS.md proves det V_k = (p/A_k); this reads the five determinants past 27 that the fields of p, p^2 and
+#   p^3 elements can see: V29 and V33 in five dimensions, V31, V35 and V39 in six.)
+ODD39 = tuple(range(3, 40, 2))
+R28_FIVE = {29: 92424189, 33: 260468169}
+R28_SIX = {31: -2865149859, 35: -9116385915, 39: -25946636835}
+
+
+def _r28(p):
+    low_priority()
+    return p, (t_values_crt(p, 1, ODD39), t_values_crt(p, 2, ODD39), t_values_dft(p, 3, ODD39))
+
+
+def test28():
+    """round 28 (PREREG.md): B1 to B5, the determinants of V29, V31, V33, V35 and V39 that Theorem 8 gives, read blind"""
+    global LOG
+    LOG = open(os.path.join(HERE, "edge_rule_test28.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    from multiprocessing import Pool
+    PQ = primes(41, 151)
+    say("Round 28: Theorem 8's determinants past 27, read blind (PREREG.md)")
+    say(f"X_n for odd n <= 39 over F_p, F_(p^2) and F_(p^3) at {PQ[0]}..{PQ[-1]} ({len(PQ)} primes)")
+    with Pool(4) as pool:
+        rq = dict(pool.map(_r28, sorted(PQ, reverse=True)))
+    say(f"counted in {(time.time() - t0) / 60:.1f} minutes")
+    Tq = {p: (airy(p, rq[p][0]), airy(p * p, rq[p][1]), airy(p ** 3, rq[p][2])) for p in PQ}
+
+    # ---- the instruments
+    inst = all(lower_square_ok(p, Tq[p][0], Tq[p][1]) and lower_cube_ok(p, Tq[p][0], Tq[p][2]) for p in PQ)
+    old = True
+    for k, D in ((19, 969969), (23, 3187041), (27, 3187041)):
+        for p in PQ:
+            e1, e2, e3 = e123(Tq[p][0][k], Tq[p][1][k], Tq[p][2][k])
+            old &= e3 == kron(D, p) * Fraction(p) ** (k + 1) * e1
+    for p in PQ:
+        e1, e2, e3 = e123(Tq[p][0][25], Tq[p][1][25], Tq[p][2][25])
+        old &= e2 != 0 and e3 == kron(3187041, p) * Fraction(p) ** 13 * e2
+    say(f"instrument: the known pieces are the squares and cubes of their eigenvalues at every prime: {inst}; the "
+        f"determinants of V19, V23, V25 and V27 as read in rounds 26 and 27: {old}")
+    shape = {}
+    for k in range(29, 40, 2):
+        types = classical_hodge(k)
+        h, d = min(a for a, _ in types), len(types)
+        shape[k] = [p for p in PQ if (Tq[p][0][k] / p ** h).denominator != 1
+                    or abs(Tq[p][0][k] / p ** h) > d * p ** ((k + 1) // 2 - h)]
+    say(f"shape: every piece from V29 to V39 has its forced shape at every prime: {not any(shape.values())} {shape}")
+
+    # ---- the five determinants
+    import math as _m
+    rival = {k: star_kernel(_m.prod(range(1, k + 1, 2))) for k in list(R28_FIVE) + list(R28_SIX)}
+    scores = {}
+    for k, D in R28_FIVE.items():
+        decided, good, rfit, exact = 0, 0, 0, True
+        say(f"X{k}cube p eps (D|p) rival   [eps = e3/(p^{(k + 1) // 2} e2)]")
+        for p in PQ:
+            e1, e2, e3 = e123(Tq[p][0][k], Tq[p][1][k], Tq[p][2][k])
+            if e2 == 0:
+                say(f"X{k}cube {p} undecided (e2 = 0)")
+                continue
+            eps = e3 / (Fraction(p) ** ((k + 1) // 2) * e2)
+            decided += 1
+            exact &= eps in (1, -1)
+            good += eps == kron(D, p)
+            rfit += eps == kron(rival[k], p)
+            say(f"X{k}cube {p} {eps} {kron(D, p)} {kron(rival[k], p)}")
+        scores[k] = exact and good == decided and decided >= 18
+        say(f"  V{k}: decided at {decided} of {len(PQ)}; e3/(P e2) exactly +-1: {exact}; fits ({D}|p) at {good}, "
+            f"the rival (p/{k}!!) at {rfit}")
+    for k, D in R28_SIX.items():
+        zero_where_minus, rfit, n_minus = True, 0, 0
+        say(f"X{k}cube p e3==0 (D|p) rival   [six dimensions: det -1 exactly when e3 = 0]")
+        for p in PQ:
+            e1, e2, e3 = e123(Tq[p][0][k], Tq[p][1][k], Tq[p][2][k])
+            z = e3 == 0
+            n_minus += kron(D, p) == -1
+            zero_where_minus &= z == (kron(D, p) == -1)
+            rfit += z == (kron(rival[k], p) == -1)
+            say(f"X{k}cube {p} {z} {kron(D, p)} {kron(rival[k], p)}")
+        scores[k] = zero_where_minus and n_minus >= 6
+        say(f"  V{k}: e3 = 0 exactly where ({D}|p) = -1: {zero_where_minus} ({n_minus} such primes); the rival "
+            f"(p/{k}!!) fits {rfit} of {len(PQ)}")
+    names = {29: "B1", 33: "B2", 31: "B3", 35: "B4", 39: "B5"}
+    for k in (29, 33, 31, 35, 39):
+        D = R28_FIVE.get(k, R28_SIX.get(k))
+        say(f"{names[k]} V{k}'s determinant is ({D}|p), as Theorem 8 gives: {'HELD' if scores[k] else 'FAILED'}")
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    LOG.close()
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "verify"
     if mode == "verify":
@@ -2123,3 +2214,5 @@ if __name__ == "__main__":
         verify27()
     elif mode == "test27":
         test27()
+    elif mode == "test28":
+        test28()

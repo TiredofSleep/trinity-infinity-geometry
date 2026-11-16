@@ -2507,3 +2507,50 @@ its square. At 81 the infinite place had already decided that 3 enters, four coi
 - The rule is one symbol: (p/A_k), Yun's (p/d!!) for Kloosterman sums with the cube's 3 taken out (F16). The shape is
   Yun's; the Airy determinants and the cube's 3 were found nowhere searched.
 - The counter reached 81 variables at every prime to 1999, and the field of p³ elements to 151.
+
+---
+
+## Round 28: Theorem 8's first new determinants, blind (registered 2026-11-16, before the test)
+
+> *2 and 3, the proof first* — the author, 16 November 2026. The "2" asks to turn the determinant rule into a
+> theorem; the "3" asks about the assumption round 27 used.
+
+**The proof came first.** [`DETERMINANTS.md`](DETERMINANTS.md) proves Theorem 8: every Airy piece V_k has
+determinant (p/A_k). It follows from Picard–Lefschetz at the cubic's nodes (ordinary double points at every prime
+l ≥ 5, and in the good model at 3), one vanishing cycle per orbit of nodes in the antisymmetric part, and class field
+theory, since the determinant is unramified at 2. Its corollary settles the assumption: complex conjugation fixes
+every middle class. Each computable step is checked by [`verify_determinants.py`](verify_determinants.py)
+([`verify_determinants.log`](verify_determinants.log), D1 to D10, all pass), including that the antisymmetric part
+is the measured piece: twisted point counts give its trace as T_k(p)/p² at k = 5 and 7.
+
+**What this round tests.** The proof's steps are standard, but its link to the measured pieces was checked directly
+only at k = 5 and 7, and no determinant past 27 has ever been read. The theorem names five that the counts over F_p,
+F_(p²) and F_(p³) can read.
+
+| piece | dimension | how it is read | Theorem 8 | the rival (p/k!!) |
+|---|---|---|---|---|
+| V29 | 5 | e3 = det·p¹⁵·e2 | 92424189 | −30808063 |
+| V31 | 6 | det = −1 exactly where e3 = 0 | −2865149859 | 955049953 |
+| V33 | 5 | e3 = det·p¹⁷·e2 | 260468169 | the same |
+| V35 | 6 | det = −1 exactly where e3 = 0 | −9116385915 | the same |
+| V39 | 6 | det = −1 exactly where e3 = 0 | −25946636835 | 8648878945 |
+
+- A six-dimensional orthogonal piece with determinant −1 has e3 = 0, since e3 = det·e3 (normalized). That was checked
+  on 400 random orthogonal matrices before this registration. V37 has 7 dimensions and would need the fourth power of
+  Frobenius.
+- The rival is Yun's symbol without the cube's 3, (p/k!!). It differs from Theorem 8 by −3 at 29, 31 and 39, and has
+  the wrong sign there for the Hodge types, so complex conjugation already rules it out at those three.
+
+| | prediction | dies if |
+|---|---|---|
+| B1 | V29: e3/(p¹⁵e2) is exactly ±1 and equals (92424189\|p) at every prime from 41 to 151 with e2 ≠ 0, with at least 18 such primes | a prime fails, or fewer |
+| B2 | V33: e3/(p¹⁷e2) is exactly ±1 and equals (260468169\|p), the same way | a prime fails, or fewer |
+| B3 | V31: e3 = 0 exactly at the primes from 41 to 151 where (−2865149859\|p) = −1, with at least 6 of them | a prime fails, or fewer |
+| B4 | V35: e3 = 0 exactly where (−9116385915\|p) = −1, the same way | a prime fails, or fewer |
+| B5 | V39: e3 = 0 exactly where (−25946636835\|p) = −1, the same way | a prime fails, or fewer |
+| instrument | the known pieces are the squares and cubes of their eigenvalues; V19, V23, V25 and V27 keep the determinants read in rounds 26 and 27; every piece from V29 to V39 has its forced shape, at every prime from 41 to 151 | one fails |
+
+**The drafter's expectation.** All five hold, since Theorem 8 is proved. A failure would point to Step 1, the link
+between the antisymmetric part and the piece measured as T_k, or to the counter at 39 variables.
+
+Run: `python edge_rule.py test28` (minutes; four processes at below-normal priority).
