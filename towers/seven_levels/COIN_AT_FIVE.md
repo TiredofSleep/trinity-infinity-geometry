@@ -1,4 +1,4 @@
-# The coin at 5 in the fifth moment, the coins from 7 to 27, and the edge
+# The coin at 5 in the fifth moment, the coins from 7 to 81, and the edge
 
 ### Tags: **[FORCED]** checked by [`coin_at_five.py`](coin_at_five.py) or [`edge_rule.py`](edge_rule.py) · **[NAMED]** a cited result · **[measured]** computed exactly · **[READING]** an interpretation, not a claim · **[COIN]** a classified pair: flip, sides and edge.
 
@@ -16,6 +16,9 @@
 
 > *2 and 3, 27 first* — the author, 15 November 2026. The "2" asks for the sharpened rule at 27, three coins of 3.
 
+> *1 and 3, 81 first* — the author, 15 November 2026. The "1" asks for 81, four coins of 3; the "3" asks for
+> twenty-five's own determinant.
+
 Every coin has two sides and an edge (the author). [`../../base/SEVEN_AND_NINE.md`](../../base/SEVEN_AND_NINE.md)
 classifies 5, 7 and 9 that way.
 - **The flat face** is the regular polygon, with its centre empty.
@@ -25,7 +28,7 @@ classifies 5, 7 and 9 that way.
 
 This page finds that coin in the arithmetic of the fifth moment, and follows it to 7 and 9 (rounds 19 and 20 of
 [`PREREG.md`](PREREG.md)), to its edge (round 21), past the base to 11, 13, 15, 17 and 21 (rounds 22 to 25), to
-the prime 3 itself (round 25), and to 27 (round 26).
+the prime 3 itself (round 25), to 27 (round 26), and to 81 (round 27).
 
 ## What stands
 
@@ -86,6 +89,18 @@ the prime 3 itself (round 25), and to 27 (round 26).
   - 3 enters at 9, two coins of 3, but not at 27, three coins. 5 enters at 5 and 15, but not at 25, two coins of 5.
   - The determinant of V27 was read at every prime, from the counts over F_p and over the field of p² elements. It
     is (3187041|p), the same as V23's, which has no such node: the nodes at 25 and 27 add nothing.
+- **At 81, and every coin complex conjugation can see** [FORCED; §12].
+  - The only node new at 81 is the centre, which pinches only mod 3. The Hodge types, which come from the cubics
+    alone, make V79's determinant odd and V81's even. So 3 enters at 81, four coins of 3, as the rule says, before
+    any count.
+  - The same argument decides every power of a prime ≡ 3 (mod 4), and always as the rule does: 3 enters at its even
+    powers, and 7, 11, 19, … at their odd powers.
+- **Twenty-five, counted** [measured, held blind; §12]. Complex conjugation cannot see 5, 13, 17 or any prime
+  ≡ 1 (mod 4), so their coins must be counted. Twenty-five's determinant, read at every prime from the fields of p,
+  p² and p³ elements, is (3187041|p) at all 27: 5 does not enter at 25.
+- **One symbol** [FORCED; NAMED; §12]. The rule is the Jacobi symbol (p/A_k), with A_k the product of the odd numbers
+  up to k, each multiple of 3 divided by 3 once. Yun proved the same shape, (p/d!!), for the Kloosterman moments. The
+  Airy moments differ by the cube's 3.
 
 ## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
@@ -461,7 +476,61 @@ Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forc
   the count starts one coin late, so two coins make one entry. That is the author's "9 is two coins of 3 tossed
   together", and three coins (27) are back to none.
 
-## 12. Standing
+## 12. Eighty-one, and twenty-five's own determinant [FORCED; measured; round 27]
+
+> *1 and 3, 81 first* — the author, 15 November 2026.
+
+Round 27 was registered at b8e5fde before any count of a cubic in more than 27 variables, or of a cubic in more than
+15 over the field of p³ elements. Its forced checks are in [`edge_rule_verify27.log`](edge_rule_verify27.log) and its
+scores in [`edge_rule_test27.log`](edge_rule_test27.log).
+- **The Hodge types, from the cubics alone** [FORCED; F13].
+  - A smooth cubic of dimension n − 3 has primitive Hodge numbers C(n − 1, 2n − 5 − 3a) [NAMED: Griffiths].
+  - Peeling off the lower pieces by the ballot triangle leaves each V_k up to k = 201 with exactly Sabbah and Yu's
+    classical types, each once.
+- **81: the infinite place decides** [FORCED; F14].
+  - The only node new at 81 is the centre, all 81 coordinates equal, and it pinches only mod 3. Every other node keeps
+    its local equation. So V81's determinant can differ from V79's only by the factor −3.
+  - V79 has 14 Hodge types in 7 pairs, so complex conjugation makes its determinant odd. V81 has 13: 6 pairs and the
+    middle class (41, 41), so its determinant is even. They differ, so they differ by −3: **3 enters at 81**.
+  - That is the rule's answer. In the good model the centre's critical value has valuation 3 at 3, which is odd. Four
+    coins of 3, with the count starting one coin late, make three.
+  - No count can read it directly. V81 has 13 dimensions, so its determinant would need Frobenius up to its seventh
+    power, at primes past 81.
+- **Every power of a prime ≡ 3 (mod 4)** [FORCED; F15].
+  - At every odd k up to 20001 the rule's determinant has the sign the Hodge types require. Both change exactly at
+    k ≡ 7, 9 and 11 (mod 12).
+  - So complex conjugation alone decides every coin of 3, 7, 11, 19, 23, 31, …, and it agrees with the rule each time.
+    3 enters at its even powers (9, 81, 729, 6561), and the others at their odd powers (7 and 343, but not 49 or
+    2401).
+  - For 5, 13, 17, 29 and every prime ≡ 1 (mod 4) the signed prime is positive, so complex conjugation cannot see them.
+    Their coins must be counted.
+  - The argument assumes complex conjugation acts by +1 on each middle class. That held at every k read.
+- **One symbol** [FORCED; NAMED; F16]. The rule is the Jacobi symbol (p/A_k), where A_k is the product of the odd
+  numbers up to k, each multiple of 3 divided by 3 once. Yun proved (p/d!!) for the Kloosterman moments (Compositio
+  2015, Theorem 1.2.3). The Airy moments' symbol is his, with the cube's 3 taken out.
+- **A counter for the cube of Frobenius** [FORCED; F17, F18].
+  - Over the field of p³ elements, S(1, t) for every t is one Fourier transform over (Z/p)³, run exactly in floating
+    point.
+  - It matches round 26's counter, a direct count over the fields of 125 and 343 elements, and the cubes of the known
+    pieces' eigenvalues.
+- **Measured** (round 27: five of five held).
+  - **Twenty-five's own determinant** is (3187041|p) at all 27 primes from 29 to 151. It was read from the traces of
+    Frobenius, its square and its cube, as e3 = det·p¹³·e2. So 5 does not enter at 25, two coins of 5.
+  - The rival fits 14 of the 27, about what chance gives, and is wrong at all 13 primes where the two differ.
+  - V19's, V23's and V27's determinants, read a second way (e3 = det·p^(k+1)·e1), are round 26's at every prime.
+  - The cubic in 81 variables was counted at the 281 primes from 83 to 1999. Every new piece from V29 to V81 has its
+    forced Hodge shape, and each is ordinary at all but at most 3 primes.
+  - V79 and V81 behave like pieces with the full orthogonal group. Their mean x² is 0.84 and 1.12, and their mean x⁴
+    1.96 and 3.35, against 1 and 3.
+- **Read after the run.** At each of the 27 primes, V25's characteristic polynomial is its forced line times a quartic
+  that is irreducible over Q.
+- [READING, the drafter's] **Two kinds of coin.**
+  - Complex conjugation is a mirror. It sees a prime exactly when the prime's signed root is negative (l* = −l, so
+    l ≡ 3 mod 4): 3, 7, 11, 19 and so on.
+  - For those primes the mirror decides every coin.
+  - For 5, 13, 17 and the rest it is blind, and only the count at the primes can decide, as it did at 25.
+
+## 13. Standing
 
 - **Known, and credited** [NAMED].
   - The 27 lines of Clebsch's diagonal cubic, 15 over Q and 12 over Q(√5) (Clebsch 1871). A cubic surface with one
@@ -477,6 +546,10 @@ Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forc
   - The finite rotation groups and their two kinds, axial and polyhedral (Klein 1884).
   - Ordinary double points and their vanishing cycles (Picard–Lefschetz). The arithmetic Picard–Lefschetz formula for
     diagonal singularities, applied to the Airy moments at primes p > 5 in another model (Chuang 2026).
+  - The Hodge numbers of smooth hypersurfaces, from the Jacobian ring (Griffiths 1969), and Newton above Hodge (Mazur
+    1972).
+  - The determinant of the Kloosterman moments' Galois representations, (p/d!!), and the shapes Yun expected for
+    their three- and four-dimensional cases (Yun 2015). This is the shape of the rule found here.
 - **This repository's own, new as far as we checked.**
   - The dictionary between the author's coin at 5 and the fifth moment.
   - The edge rule: why J3 mirrors at 3, why the mirror is exact at every prime edge and fails at prime powers, and
@@ -487,14 +560,20 @@ Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forc
     and (−138567|p).
   - The node identity, with its reading as ramification, and the parity rule for the determinants.
   - The good model at 3, whose nodes are the author's "3 at its square", and the pieces counted at 3.
-  - The rule's sharpening by the critical values, and its test at 27: 3 not at its cube, 5 not at its square.
-  - The four-dimensional pieces at 19, 23 and 27, with determinants (969969|p), (3187041|p) and (3187041|p).
-  - The counter by exponential sums mod primes, to 27 variables and to the field of p² elements.
+  - The rule's sharpening by the critical values, and its tests at 25, 27 and 81: 3 not at its cube but at its fourth
+    power, 5 not at its square.
+  - The rule as one symbol, (p/A_k): Yun's double factorial with the cube's 3 taken out.
+  - The infinite place deciding every coin of a prime ≡ 3 (mod 4), always as the rule does, and blind at the primes
+    ≡ 1 (mod 4).
+  - The four-dimensional pieces at 19, 23 and 27, with determinants (969969|p), (3187041|p) and (3187041|p), and the
+    five-dimensional piece at 25, with (3187041|p).
+  - The counter by exponential sums mod primes, to 81 variables and to the fields of p² and p³ elements.
   - Web searches on 2026-11-14 and 2026-11-15 found no point count, zeta function or Galois action for these cubics.
     - They found the neighbours: the Fermat cubic fourfold's form of level 27, the census of cubic fourfolds over F₂,
       and the Segre cubic.
     - For the Airy moments they found Hodge numbers and degrees, and Chuang's local formula at p > 5, but no
-      identification of a single piece.
+      identification of a single piece and no determinant.
+    - The nearest precedent is Yun's, for the Kloosterman moments.
 - **Open.**
   - Proofs. Each piece is identified by its counts, and none is proved. Sabbah and Yu's Hodge numbers and Patrikis and
     Taylor's potential automorphy, which they point to, are one way in.
@@ -502,8 +581,11 @@ Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forc
     parity-weighted formula, J6's or J7's.
   - The roots of the pieces at 13, 17 and 21: which weight-3 newforms they are the symmetric squares of, and at what
     levels.
-  - The sharpened rule at 81 (four coins of 3, which should enter) and at 125 (three coins of 5).
-  - A registered test of V25's own determinant, which needs the field of p³ elements (e3 = det·p¹³·e2).
+  - The coins of primes ≡ 1 (mod 4) past 25: 125 (three coins of 5, which should enter) and 169 (two coins of 13,
+    which should not). Complex conjugation cannot see them, and V125 and V169 have 21 and 29 dimensions.
+  - A proof of the symbol (p/A_k). Yun's route for the Kloosterman moments may carry over to the Airy sheaf.
+  - Why complex conjugation acts by +1 on every middle class. The infinite place's argument at 81 assumes it, and it
+    held at every k read.
   - Whether the seventh moment I7 carries Q(√−35), as I5 carries √5.
 - **Died** (kept in the graveyard):
   - C1's parity-weighted half (§2).
@@ -516,7 +598,10 @@ Round 26 was registered at afc4e76 before any count of X23, X25 or X27. Its forc
     17-gon keeps its axis. The guess (17|p) with Q(√−3003) is void with it.
   - Not held: twenty-one's registered sign test (D2), which saw three signs where it asked for five. Round 26 read
     that determinant at every prime, and it held (Y4).
-  - Not held, for too few signs: round 26's Y2′ (8 of 10) and W1 (1 of 5). None of their signs disagreed.
+  - Not held, for too few signs: round 26's Y2′ (8 of 10) and W1 (1 of 5). None of their signs disagreed. Round 27
+    read W1's determinant at every prime, and it held (Z1).
+  - The rival readings of the coins: "5 enters at 25" fits V25 at 14 of 27 primes and V27 at 14 of 27, and "3 enters
+    at 27" is ruled out by complex conjugation and fits 13 of 27.
 
 ## Run it
 
@@ -533,6 +618,8 @@ python edge_rule.py verify25     # round 25's forced checks, F6 to F8 (the base'
 python edge_rule.py test25       # round 25: seventeen to 401, twenty-one to 113, and the prime 3: a minute, four processes
 python edge_rule.py verify26     # round 26's forced checks, F9 to F12 (the infinite place, the new counter): seconds
 python edge_rule.py test26       # round 26: 27 variables to 1999, and over F_(p^2) to 151: two minutes, four processes
+python edge_rule.py verify27     # round 27's forced checks, F13 to F18 (the Hodge types, the infinite place, the symbol): seconds
+python edge_rule.py test27       # round 27: 81 variables at 83..1999, and over F_(p^3) to 151: four minutes, four processes
 ```
 
 ## Sources
@@ -570,3 +657,10 @@ python edge_rule.py test26       # round 26: 27 variables to 1999, and over F_(p
 - P.-H. Chuang, "On the generalized arithmetic Picard–Lefschetz formula" (dissertation, 2026),
   [arXiv:2607.05757](https://arxiv.org/abs/2607.05757): the inertia action at diagonal singularities in mixed
   characteristic, applied to the Airy moments at p > 5.
+- Z. Yun, "Galois representations attached to moments of Kloosterman sums and conjectures of Evans" (with an appendix
+  by C. Vincent), *Compositio Math.* **151** (2015), [arXiv:1308.3920](https://arxiv.org/abs/1308.3920): Theorem
+  1.2.3, the determinant (p/d!!) for odd d, and §1.4, the expected shapes in dimensions 3 and 4.
+- P. Griffiths, "On the periods of certain rational integrals", *Ann. of Math.* **90** (1969): the Hodge numbers of a
+  smooth hypersurface from its Jacobian ring.
+- B. Mazur, "Frobenius and the Hodge filtration", *Bull. Amer. Math. Soc.* **78** (1972): the Newton polygon lies on
+  or above the Hodge polygon.

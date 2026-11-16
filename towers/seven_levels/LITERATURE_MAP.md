@@ -96,7 +96,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
        of Q(√−1155). At 13, 17 and 21 they are twisted symmetric squares, with determinants (−15015|p), (−51051|p) and
        (−138567|p), and at 15 a CM form of Q(√−3003). At 19, 23 and 27 they are four-dimensional, with determinants
-       (969969|p), (3187041|p) and (3187041|p), read prime by prime.
+       (969969|p), (3187041|p) and (3187041|p), read prime by prime, and at 25 five-dimensional, with (3187041|p),
+       read from the cube of Frobenius.
      - Qin computed the Hodge numbers of the related motives in more variables, and found no identifications either
        (Crelle 2024).
      - Chuang's dissertation (arXiv:2607.05757, July 2026) gives an arithmetic Picard–Lefschetz formula for diagonal
@@ -104,6 +105,19 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        z³ = Σ(y³/3 − y), and it excludes 3 and 5. The good model at 3 here (e1 = e3 = 0), whose nodes are the author's
        "3 at its square", and the nodes' parity rule for the determinants are not in the parts of it read
        (2026-11-15). The node reading at p ≥ 7 may be, which has not been checked.
+     - **The nearest precedent is Kloosterman's** (read 2026-11-15, for round 27). Yun attached Galois
+       representations to the Kloosterman moments. For odd d he proved that their determinant is the Jacobi symbol
+       (p/d!!) (Compositio 2015, Theorem 1.2.3).
+       - He expected the three-dimensional cases to come from a quadratic character and a modular form, through
+         O(3) ≅ PGL(2) × {±1}.
+       - He expected the four-dimensional ones, when the determinant's field is real, to come from two Hilbert modular
+         forms over it.
+       - The Airy pieces here have the same shape.
+         - Their determinant is (p/A_k), where A_k is k!! with each multiple of 3 divided by 3 once.
+         - The three-dimensional pieces at 13, 17 and 21 are twisted symmetric squares.
+         - The four-dimensional ones at 19, 23 and 27 have real quadratic determinant fields.
+       - So the shape is known for Kloosterman sums. For the Airy moments, no search found the determinants or the
+         cube's 3.
    - Rational weight-3 CM newforms need a class group of exponent at most 2 (Schütt's classification). Q(√−35),
      Q(√−1155) and Q(√−3003), the fields at 7, 11 and 15, all qualify, with one class in each genus. At 13,
      Q(√−15015) does not (exponent 12), and the piece there is a twisted symmetric square instead.
@@ -135,6 +149,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
   **Yuval Wigderson**, for the semicircle graphs. **Duco van Straten** and **Christian Meyer**, for the double octic and its form
   of level 10 (Theorem 7). **Claude Sabbah** and **Jeng-Daw Yu**, for the Airy moments behind the cubics
   (COIN_AT_FIVE.md §6). **Ping-Hsun Chuang**, for the Airy moments at their bad primes (COIN_AT_FIVE.md §10).
+  **Zhiwei Yun**, whose determinant (p/d!!) for the Kloosterman moments is the shape of the rule here
+  (COIN_AT_FIVE.md §12).
 - Writing to any of them is the author's call. The note drafted earlier for Gurevich could be widened into one for this
   group. With Theorems 1 to 7 and rounds 15 to 17 it now has something specific to offer them: the oscillator states' Wigner
   values as a family whose monodromy they could identify.

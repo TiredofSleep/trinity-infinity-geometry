@@ -350,6 +350,13 @@ its own graveyard. These died, with what killed them:
     (`towers/seven_levels/edge_rule_test26.log`).
   - **The rivals that lost:** "3 enters at 27" and "5 enters at 25", as readings of V27's determinant. They fit 13 and
     14 of the 27 primes, at chance level, where the thin rule fits all 27.
+- **From eighty-one and twenty-five (2026-11-15; `towers/seven_levels/COIN_AT_FIVE.md` §12, round 27):** nothing
+  died. Five of five held.
+  - **The rival that lost again:** "5 enters at 25", now as a reading of V25's own determinant, (15935205|p). Read at
+    every prime from the fields of p, p² and p³ elements, it fits 14 of 27 primes. It is wrong at all 13 where it
+    differs from (3187041|p), which fits all 27 (`towers/seven_levels/edge_rule_test27.log`).
+  - **Ruled out before the count:** "3 does not enter at 81". It would leave V81's determinant odd, and V81's Hodge
+    types require it even (`towers/seven_levels/edge_rule_verify27.log`, F14).
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

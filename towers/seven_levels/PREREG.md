@@ -2470,3 +2470,40 @@ more than 27 variables, or any cubic in 17 or more variables over the field of p
     sheaves, whose determinants are the sheaves' own, a different object.
 
 Run: `python edge_rule.py test27` (minutes; four processes at below-normal priority).
+
+---
+
+## Round 27 scores (added after the test, 2026-11-15)
+
+Run by [`edge_rule.py`](edge_rule.py) `test27`, registered at b8e5fde before the test. Output:
+[`edge_rule_test27.log`](edge_rule_test27.log).
+
+**Five of five held. Twenty-five's own determinant is (3187041|p) at every prime counted: 5 does not enter at 25,
+its square. At 81 the infinite place had already decided that 3 enters, four coins of 3.**
+
+| | outcome | evidence |
+|---|---|---|
+| Q1 | held | every piece from V29 to V81 has its forced shape at all 281 primes from 83 to 1999 (and V17 to V27 beside them) |
+| Q2 | held | p divides u at no more than 3 of the 281 primes for any k from 29 to 81, and at none for 17 of the 27 pieces. V79 has the most: 331, 421 and 541 |
+| Q3 | held | V79: mean x² 0.836, mean x⁴ 1.963. V81: 1.120 and 3.354. V79 sits near the bottom of the band; a sample mean of x⁴ usually falls below its expected 3, since a few large values carry it |
+| Z1 | held | e2 ≠ 0 at all 27 primes, and e3/(p¹³e2) is exactly ±1 at each. It equals (3187041\|p) at all 27. The rival "5 enters at 25", (15935205\|p), fits 14, about what chance gives; it is wrong at all 13 primes where (5\|p) = −1 |
+| Z2 | held | e3 = det·p^(k+1)·e1 at all 27 primes for V27 and V23 with (3187041\|p), and for V19 with (969969\|p): round 26's determinants, read a second way |
+| instrument | held | T1 to T15 and seventeen's and twenty-one's square classes at all 281 primes. Over F_(p²) the known pieces are the squares of their eigenvalues and over F_(p³) their cubes, at all 27 primes, which rereads the determinants of 7, 11, 13, 15, 17 and 21 |
+
+**Read after the run** (not scores).
+- At every one of the 27 primes, V25's characteristic polynomial is the forced line, (1 − (3187041|p)·p¹³x), times a
+  quartic that is irreducible over Q. So no second line splits off at any of them.
+- The moments of every piece from V29 to V81 are in the log. The mean of x² lies between 0.78 and 1.12 for all of them.
+  The lowest are V73 (0.780) and V79 (0.836).
+
+**Yield.**
+- The author's coins, from 9 to 81.
+  - 3 enters at 9 and at 81, two and four coins of 3, but not at 3 or 27, one and three. That is "3 at its square",
+    with the count starting one coin late.
+  - At 81 the infinite place decides it before any count, as at 27. It decides every power of a prime ≡ 3 (mod 4) the
+    same way, and always as the thin rule does (F15).
+  - 5 enters at 5 and 15 but not at 25, two coins of 5. The infinite place cannot see 5, so this coin had to be
+    counted. Twenty-five's own determinant, now read at every prime, keeps 5 out.
+- The rule is one symbol: (p/A_k), Yun's (p/d!!) for Kloosterman sums with the cube's 3 taken out (F16). The shape is
+  Yun's; the Airy determinants and the cube's 3 were found nowhere searched.
+- The counter reached 81 variables at every prime to 1999, and the field of p³ elements to 151.

@@ -1,0 +1,138 @@
+Round 27: eighty-one first, then twenty-five's own determinant (PREREG.md)
+X_n for odd n <= 81 over F_p at 83..1999 (281 primes); X_n for odd n <= 27 over F_p, F_(p^2) and F_(p^3) at 29..151 (27 primes)
+counted in 3.5 minutes
+instrument over F_p at 83..1999: T1..T15 as found in rounds 19 to 24: True; seventeen's and twenty-one's square classes (rounds 25, 26): True
+V17: dim 3, lowest type 7; shape fails at []; p divides u at [113, 1423]
+V19: dim 4, lowest type 7; shape fails at []; p divides u at [241]
+V21: dim 3, lowest type 9; shape fails at []; p divides u at [641, 1091]
+V23: dim 4, lowest type 9; shape fails at []; p divides u at [1901]
+V25: dim 5, lowest type 9; shape fails at []; p divides u at []
+V27: dim 4, lowest type 11; shape fails at []; p divides u at []
+V29: dim 5, lowest type 11; shape fails at []; p divides u at [349, 1217]
+V31: dim 6, lowest type 11; shape fails at []; p divides u at [271]
+V33: dim 5, lowest type 13; shape fails at []; p divides u at []
+V35: dim 6, lowest type 13; shape fails at []; p divides u at []
+V37: dim 7, lowest type 13; shape fails at []; p divides u at []
+V39: dim 6, lowest type 15; shape fails at []; p divides u at []
+V41: dim 7, lowest type 15; shape fails at []; p divides u at []
+V43: dim 8, lowest type 15; shape fails at []; p divides u at []
+V45: dim 7, lowest type 17; shape fails at []; p divides u at []
+V47: dim 8, lowest type 17; shape fails at []; p divides u at [89]
+V49: dim 9, lowest type 17; shape fails at []; p divides u at []
+V51: dim 8, lowest type 19; shape fails at []; p divides u at []
+V53: dim 9, lowest type 19; shape fails at []; p divides u at [199]
+V55: dim 10, lowest type 19; shape fails at []; p divides u at [173, 1049]
+V57: dim 9, lowest type 21; shape fails at []; p divides u at []
+V59: dim 10, lowest type 21; shape fails at []; p divides u at []
+V61: dim 11, lowest type 21; shape fails at []; p divides u at []
+V63: dim 10, lowest type 23; shape fails at []; p divides u at [257]
+V65: dim 11, lowest type 23; shape fails at []; p divides u at [103, 463]
+V67: dim 12, lowest type 23; shape fails at []; p divides u at []
+V69: dim 11, lowest type 25; shape fails at []; p divides u at []
+V71: dim 12, lowest type 25; shape fails at []; p divides u at []
+V73: dim 13, lowest type 25; shape fails at []; p divides u at [89]
+V75: dim 12, lowest type 27; shape fails at []; p divides u at [977]
+V77: dim 13, lowest type 27; shape fails at []; p divides u at []
+V79: dim 14, lowest type 27; shape fails at []; p divides u at [331, 421, 541]
+V81: dim 13, lowest type 29; shape fails at []; p divides u at []
+Q1 every piece from 29 to 81 has the forced shape T_k = p^h u, u an integer, |u| <= d p^((k+1)/2 - h), at every prime 83..1999 (17 to 27 beside them): HELD
+Q2 ordinary: p divides u at no more than 5 primes for each k from 29 to 81 (most: 3): HELD
+moments V17: mean x -0.023, mean x^2 0.910, mean x^4 2.506
+moments V19: mean x +0.010, mean x^2 1.119, mean x^4 4.334
+moments V21: mean x +0.066, mean x^2 0.953, mean x^4 2.348
+moments V23: mean x +0.059, mean x^2 1.116, mean x^4 3.422
+moments V25: mean x -0.003, mean x^2 1.033, mean x^4 3.159
+moments V27: mean x +0.040, mean x^2 1.054, mean x^4 3.893
+moments V29: mean x -0.060, mean x^2 0.990, mean x^4 2.557
+moments V31: mean x -0.065, mean x^2 0.991, mean x^4 2.753
+moments V33: mean x -0.019, mean x^2 0.943, mean x^4 2.547
+moments V35: mean x +0.085, mean x^2 0.898, mean x^4 2.216
+moments V37: mean x +0.043, mean x^2 0.896, mean x^4 2.440
+moments V39: mean x +0.024, mean x^2 0.961, mean x^4 3.052
+moments V41: mean x -0.040, mean x^2 0.958, mean x^4 2.805
+moments V43: mean x -0.124, mean x^2 1.015, mean x^4 4.288
+moments V45: mean x +0.039, mean x^2 0.910, mean x^4 2.358
+moments V47: mean x +0.102, mean x^2 0.944, mean x^4 2.562
+moments V49: mean x +0.039, mean x^2 0.917, mean x^4 2.721
+moments V51: mean x +0.034, mean x^2 0.970, mean x^4 2.545
+moments V53: mean x +0.089, mean x^2 0.951, mean x^4 2.654
+moments V55: mean x +0.055, mean x^2 1.038, mean x^4 3.539
+moments V57: mean x -0.054, mean x^2 1.082, mean x^4 3.517
+moments V59: mean x -0.006, mean x^2 1.015, mean x^4 3.291
+moments V61: mean x -0.148, mean x^2 0.968, mean x^4 2.720
+moments V63: mean x -0.071, mean x^2 0.980, mean x^4 3.234
+moments V65: mean x -0.060, mean x^2 0.975, mean x^4 2.965
+moments V67: mean x +0.002, mean x^2 1.059, mean x^4 3.069
+moments V69: mean x -0.065, mean x^2 0.945, mean x^4 2.239
+moments V71: mean x -0.006, mean x^2 0.996, mean x^4 3.240
+moments V73: mean x -0.012, mean x^2 0.780, mean x^4 1.854
+moments V75: mean x +0.049, mean x^2 0.927, mean x^4 2.318
+moments V77: mean x +0.030, mean x^2 1.003, mean x^4 3.120
+moments V79: mean x +0.030, mean x^2 0.836, mean x^4 1.963
+moments V81: mean x +0.128, mean x^2 1.120, mean x^4 3.354
+Q3 V79 and V81 have big orthogonal Galois images: mean x^2 within 0.75..1.25 and mean x^4 within 1.8..4.5 (x = T/p^((k+1)/2)): V79 0.836, 1.963; V81 1.120, 3.354: HELD
+instrument over F_(p^2) at 29..151: the known pieces are the squares of their eigenvalues: True
+instrument over F_(p^3) at 29..151: the known pieces are the cubes of their eigenvalues (1, 5, 9; 7, 11, 15; 13, 17, 21): True
+X25cube p e2!=0 eps   thin 5at25 (5|p)   [eps = e3/(p^13 e2)]
+X25cube 29 1  1 1 1
+X25cube 31 -1  -1 -1 1
+X25cube 37 1  1 -1 -1
+X25cube 41 -1  -1 -1 1
+X25cube 43 1  1 -1 -1
+X25cube 47 1  1 -1 -1
+X25cube 53 -1  -1 1 -1
+X25cube 59 -1  -1 -1 1
+X25cube 61 -1  -1 -1 1
+X25cube 67 -1  -1 1 -1
+X25cube 71 1  1 1 1
+X25cube 73 -1  -1 1 -1
+X25cube 79 1  1 1 1
+X25cube 83 1  1 -1 -1
+X25cube 89 1  1 1 1
+X25cube 97 1  1 -1 -1
+X25cube 101 1  1 1 1
+X25cube 103 1  1 -1 -1
+X25cube 107 -1  -1 1 -1
+X25cube 109 -1  -1 -1 1
+X25cube 113 1  1 -1 -1
+X25cube 127 1  1 -1 -1
+X25cube 131 -1  -1 -1 1
+X25cube 137 -1  -1 1 -1
+X25cube 139 1  1 1 1
+X25cube 149 1  1 1 1
+X25cube 151 -1  -1 -1 1
+  decided at 27 of 27 primes (13 with (5|p) = -1, where the readings differ); e3/(p^13 e2) is exactly +-1 at every one: True; fits: {'thin': 27, '5 at 25': 14}
+Z1 V25's determinant is (3187041|p): 5 does not enter at 25, its square: HELD
+  V27: e3 = (3187041|p) p^28 e1 at all 27 primes with e1 != 0: True
+  V23: e3 = (3187041|p) p^24 e1 at all 27 primes with e1 != 0: True
+  V19: e3 = (969969|p) p^20 e1 at all 27 primes with e1 != 0: True
+Z2 the second reading of the four-dimensional pieces, from the cube of Frobenius: HELD
+read: V25's characteristic polynomial at each decided prime, and whether it splits over Q
+X25poly 29 a/p^9 = -542825 b/p^18 = 733450127880 quartic factors: 1
+X25poly 31 a/p^9 = 1204418 b/p^18 = 1545486479174 quartic factors: 1
+X25poly 37 a/p^9 = -716583 b/p^18 = -2205103550102 quartic factors: 1
+X25poly 41 a/p^9 = -950349 b/p^18 = 11644233510580 quartic factors: 1
+X25poly 43 a/p^9 = -10586662 b/p^18 = 49181992323018 quartic factors: 1
+X25poly 47 a/p^9 = -8583120 b/p^18 = 59370900657301 quartic factors: 1
+X25poly 53 a/p^9 = 22060525 b/p^18 = 223989284695128 quartic factors: 1
+X25poly 59 a/p^9 = 22780147 b/p^18 = 403791645554442 quartic factors: 1
+X25poly 61 a/p^9 = -11417912 b/p^18 = 17609146719729 quartic factors: 1
+X25poly 67 a/p^9 = 61863027 b/p^18 = 1699841366729602 quartic factors: 1
+X25poly 71 a/p^9 = -17956355 b/p^18 = 701120951067522 quartic factors: 1
+X25poly 73 a/p^9 = 71406318 b/p^18 = 2443051289205814 quartic factors: 1
+X25poly 79 a/p^9 = -80419955 b/p^18 = 3459481479631182 quartic factors: 1
+X25poly 83 a/p^9 = -6757098 b/p^18 = -860137599478442 quartic factors: 1
+X25poly 89 a/p^9 = -86542424 b/p^18 = 2990234567303918 quartic factors: 1
+X25poly 97 a/p^9 = -115309586 b/p^18 = 13276401702979578 quartic factors: 1
+X25poly 101 a/p^9 = -57978046 b/p^18 = -8247019334884737 quartic factors: 1
+X25poly 103 a/p^9 = -245958418 b/p^18 = 30930629542221887 quartic factors: 1
+X25poly 107 a/p^9 = 306915320 b/p^18 = 46413306152299838 quartic factors: 1
+X25poly 109 a/p^9 = -13437122 b/p^18 = 15554470651880874 quartic factors: 1
+X25poly 113 a/p^9 = -441655450 b/p^18 = 94288712675879730 quartic factors: 1
+X25poly 127 a/p^9 = -65844960 b/p^18 = 49911949586949565 quartic factors: 1
+X25poly 131 a/p^9 = -69508310 b/p^18 = 51663375487737423 quartic factors: 1
+X25poly 137 a/p^9 = 291816755 b/p^18 = 114307504661055218 quartic factors: 1
+X25poly 139 a/p^9 = -131381385 b/p^18 = -94818062854218968 quartic factors: 1
+X25poly 149 a/p^9 = -936316805 b/p^18 = 480428347116595032 quartic factors: 1
+X25poly 151 a/p^9 = 474388557 b/p^18 = 72415890179589712 quartic factors: 1
+time 3.6 minutes

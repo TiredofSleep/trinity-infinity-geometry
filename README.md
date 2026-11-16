@@ -77,7 +77,9 @@ checked twice, by independent code:
   square whose determinant carries −15015 = (−3)·5·(−7)·(−11)·13. At 15 the field is Q(√−3003), which the author's
   "3 enters only at its square" predicted. At 3 itself the cubic's good model pinches exactly where the signs sum to a
   multiple of 9, and counted there each piece loses one dimension from 9 on. At 17 and 21 the pieces are symmetric
-  squares again. At 27 neither 3, at its cube, nor 5, at its square, enters, read in the determinant at every prime
+  squares again. At 27 neither 3, at its cube, nor 5, at its square, enters, read in the determinant at every prime.
+  At 81, four coins of 3, 3 enters again. Complex conjugation decides that, as it decides every power of a prime
+  ≡ 3 (mod 4), and twenty-five's own determinant, counted over the field of p³ elements, keeps 5 out
   ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it

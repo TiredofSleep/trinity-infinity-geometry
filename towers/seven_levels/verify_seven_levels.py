@@ -1800,6 +1800,36 @@ forced("the cubics to 27 variables recounted at 29 and 31, over F_p and the fiel
        "have determinants (969969|p), (3187041|p) and (3187041|p), V21 has (-138567|p), and the known pieces are the "
        "squares of their eigenvalues", ok26)
 
+# ------------------------------------------------------------------ round 27 (edge_rule.py)
+print()
+print("round 27:")
+_r27 = _sp16.run([sys.executable, os.path.join(_HERE18, "edge_rule.py"), "verify27"], capture_output=True, text=True)
+forced("round 27's forced checks (edge_rule.py verify27: the Hodge types from the cubics, the infinite place at 81 and at "
+       "every k, the thin rule as the Jacobi symbol (p/A_k), and the counter over the field of p^3 elements)",
+       _r27.returncode == 0 and "ALL PASS" in _r27.stdout)
+RECORDED27 = {"Q1": "HELD", "Q2": "HELD", "Q3": "HELD", "Z1": "HELD", "Z2": "HELD"}
+forced("round 27's test log scores Q1 to Q3, Z1 and Z2 as recorded", _scores("edge_rule_test27.log", RECORDED27)
+       == RECORDED27)
+ok27 = True
+for p_ in (29, 31):
+    T_ = edge22.airy(p_, edge22.t_values_crt(p_, 1, edge22.ODD27))
+    T2_ = edge22.airy(p_ * p_, edge22.t_values_crt(p_, 2, edge22.ODD27))
+    T3_ = edge22.airy(p_ ** 3, edge22.t_values_dft(p_, 3, edge22.ODD27))
+    e1_, e2_, e3_ = edge22.e123(T_[25], T2_[25], T3_[25])
+    ok27 &= e2_ != 0 and e3_ == edge22.kron(3187041, p_) * p_ ** 13 * e2_
+    for k_, D_ in ((19, 969969), (23, 3187041), (27, 3187041)):
+        e1_, e2_, e3_ = edge22.e123(T_[k_], T2_[k_], T3_[k_])
+        ok27 &= e3_ == edge22.kron(D_, p_) * p_ ** (k_ + 1) * e1_
+    ok27 &= edge22.lower_cube_ok(p_, T_, T3_)
+T_ = edge22.airy(83, edge22.t_values_crt(83, 1, edge22.ODD81))
+for k_, h_ in ((79, 27), (81, 29)):
+    u_ = T_[k_] / 83 ** h_
+    ok27 &= u_.denominator == 1 and int(u_) % 83 != 0 and abs(u_) <= len(edge22.classical_hodge(k_)) * 83 ** ((k_ + 1) // 2 - h_)
+forced("the cubics to 27 variables recounted at 29 and 31 over the fields of p, p^2 and p^3 elements: V25's determinant "
+       "is (3187041|p) (e3 = det p^13 e2), V19, V23 and V27 read again from e3 = det p^(k+1) e1, and the known pieces "
+       "are the cubes of their eigenvalues; and the cubic in 81 variables at 83: V79 = 83^27 u and V81 = 83^29 u, "
+       "ordinary", ok27)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

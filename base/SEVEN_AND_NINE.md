@@ -167,6 +167,8 @@ does, and at 5, 7 and 9 no arrangement does.
       its centre mod 3, as the cubic in q variables does mod q.
     - At 27, three coins of 3, it does not enter, and 5 does not enter at 25, two coins of 5 (round 26). For 5, two
       coins cancel. For 3 the count starts one coin late, so two coins make one entry.
+    - At 81, four coins of 3, it enters again (round 27). Complex conjugation decides that, as it decides every coin
+      of a prime ≡ 3 (mod 4). It cannot see 5, so twenty-five's own determinant was counted, and 5 stays out at 25.
     - See [`../towers/seven_levels/COIN_AT_FIVE.md`](../towers/seven_levels/COIN_AT_FIVE.md).
 - **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
   plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves
