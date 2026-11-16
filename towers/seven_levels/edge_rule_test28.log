@@ -1,0 +1,141 @@
+Round 28: Theorem 8's determinants past 27, read blind (PREREG.md)
+X_n for odd n <= 39 over F_p, F_(p^2) and F_(p^3) at 41..151 (24 primes)
+counted in 4.3 minutes
+instrument: the known pieces are the squares and cubes of their eigenvalues at every prime: True; the determinants of V19, V23, V25 and V27 as read in rounds 26 and 27: True
+shape: every piece from V29 to V39 has its forced shape at every prime: True {29: [], 31: [], 33: [], 35: [], 37: [], 39: []}
+X29cube p eps (D|p) rival   [eps = e3/(p^15 e2)]
+X29cube 41 1 1 -1
+X29cube 43 -1 -1 -1
+X29cube 47 -1 -1 1
+X29cube 53 -1 -1 1
+X29cube 59 -1 -1 1
+X29cube 61 1 1 1
+X29cube 67 -1 -1 -1
+X29cube 71 1 1 -1
+X29cube 73 1 1 1
+X29cube 79 -1 -1 -1
+X29cube 83 1 1 -1
+X29cube 89 -1 -1 1
+X29cube 97 -1 -1 -1
+X29cube 101 -1 -1 1
+X29cube 103 1 1 1
+X29cube 107 -1 -1 1
+X29cube 109 -1 -1 -1
+X29cube 113 -1 -1 1
+X29cube 127 -1 -1 -1
+X29cube 131 1 1 -1
+X29cube 137 1 1 -1
+X29cube 139 1 1 1
+X29cube 149 1 1 -1
+X29cube 151 -1 -1 -1
+  V29: decided at 24 of 24; e3/(P e2) exactly +-1: True; fits (92424189|p) at 24, the rival (p/29!!) at 11
+X33cube p eps (D|p) rival   [eps = e3/(p^17 e2)]
+X33cube 41 -1 -1 -1
+X33cube 43 -1 -1 -1
+X33cube 47 -1 -1 -1
+X33cube 53 1 1 1
+X33cube 59 -1 -1 -1
+X33cube 61 1 1 1
+X33cube 67 -1 -1 -1
+X33cube 71 1 1 1
+X33cube 73 1 1 1
+X33cube 79 -1 -1 -1
+X33cube 83 1 1 1
+X33cube 89 1 1 1
+X33cube 97 -1 -1 -1
+X33cube 101 1 1 1
+X33cube 103 1 1 1
+X33cube 107 1 1 1
+X33cube 109 1 1 1
+X33cube 113 -1 -1 -1
+X33cube 127 -1 -1 -1
+X33cube 131 -1 -1 -1
+X33cube 137 -1 -1 -1
+X33cube 139 1 1 1
+X33cube 149 -1 -1 -1
+X33cube 151 -1 -1 -1
+  V33: decided at 24 of 24; e3/(P e2) exactly +-1: True; fits (260468169|p) at 24, the rival (p/33!!) at 24
+X31cube p e3==0 (D|p) rival   [six dimensions: det -1 exactly when e3 = 0]
+X31cube 41 False 1 -1
+X31cube 43 False 1 1
+X31cube 47 True -1 1
+X31cube 53 False 1 -1
+X31cube 59 True -1 1
+X31cube 61 True -1 -1
+X31cube 67 True -1 -1
+X31cube 71 False 1 -1
+X31cube 73 True -1 -1
+X31cube 79 False 1 1
+X31cube 83 True -1 1
+X31cube 89 False 1 -1
+X31cube 97 True -1 -1
+X31cube 101 True -1 1
+X31cube 103 False 1 1
+X31cube 107 True -1 1
+X31cube 109 True -1 -1
+X31cube 113 True -1 1
+X31cube 127 False 1 1
+X31cube 131 False 1 -1
+X31cube 137 True -1 1
+X31cube 139 True -1 -1
+X31cube 149 False 1 -1
+X31cube 151 False 1 1
+  V31: e3 = 0 exactly where (-2865149859|p) = -1: True (13 such primes); the rival (p/31!!) fits 11 of 24
+X35cube p e3==0 (D|p) rival   [six dimensions: det -1 exactly when e3 = 0]
+X35cube 41 False 1 1
+X35cube 43 False 1 1
+X35cube 47 True -1 -1
+X35cube 53 True -1 -1
+X35cube 59 False 1 1
+X35cube 61 True -1 -1
+X35cube 67 False 1 1
+X35cube 71 False 1 1
+X35cube 73 False 1 1
+X35cube 79 True -1 -1
+X35cube 83 False 1 1
+X35cube 89 True -1 -1
+X35cube 97 True -1 -1
+X35cube 101 True -1 -1
+X35cube 103 False 1 1
+X35cube 107 True -1 -1
+X35cube 109 False 1 1
+X35cube 113 False 1 1
+X35cube 127 False 1 1
+X35cube 131 False 1 1
+X35cube 137 False 1 1
+X35cube 139 True -1 -1
+X35cube 149 True -1 -1
+X35cube 151 True -1 -1
+  V35: e3 = 0 exactly where (-9116385915|p) = -1: True (11 such primes); the rival (p/35!!) fits 24 of 24
+X39cube p e3==0 (D|p) rival   [six dimensions: det -1 exactly when e3 = 0]
+X39cube 41 True -1 1
+X39cube 43 True -1 -1
+X39cube 47 False 1 -1
+X39cube 53 True -1 1
+X39cube 59 False 1 -1
+X39cube 61 False 1 1
+X39cube 67 True -1 -1
+X39cube 71 True -1 1
+X39cube 73 True -1 -1
+X39cube 79 False 1 1
+X39cube 83 True -1 1
+X39cube 89 True -1 1
+X39cube 97 True -1 -1
+X39cube 101 True -1 1
+X39cube 103 True -1 -1
+X39cube 107 True -1 1
+X39cube 109 False 1 1
+X39cube 113 True -1 1
+X39cube 127 False 1 1
+X39cube 131 True -1 1
+X39cube 137 True -1 1
+X39cube 139 True -1 -1
+X39cube 149 False 1 -1
+X39cube 151 False 1 1
+  V39: e3 = 0 exactly where (-25946636835|p) = -1: True (16 such primes); the rival (p/39!!) fits 11 of 24
+B1 V29's determinant is (92424189|p), as Theorem 8 gives: HELD
+B2 V33's determinant is (260468169|p), as Theorem 8 gives: HELD
+B3 V31's determinant is (-2865149859|p), as Theorem 8 gives: HELD
+B4 V35's determinant is (-9116385915|p), as Theorem 8 gives: HELD
+B5 V39's determinant is (-25946636835|p), as Theorem 8 gives: HELD
+time 4.3 minutes

@@ -1830,6 +1830,29 @@ forced("the cubics to 27 variables recounted at 29 and 31 over the fields of p, 
        "are the cubes of their eigenvalues; and the cubic in 81 variables at 83: V79 = 83^27 u and V81 = 83^29 u, "
        "ordinary", ok27)
 
+# ------------------------------------------------------------------ Theorem 8 and round 28 (DETERMINANTS.md)
+print()
+print("Theorem 8 and round 28:")
+_r28v = _sp16.run([sys.executable, os.path.join(_HERE18, "verify_determinants.py")], capture_output=True, text=True)
+forced("DETERMINANTS.md's Theorem 8, step by step (verify_determinants.py: the Jacobian ring, the nodes and their "
+       "ordinary double points, the critical values, the stabilizer's sign, the quadric count, the assembly, the twisted "
+       "counts, the corollary on complex conjugation)", _r28v.returncode == 0 and "ALL PASS" in _r28v.stdout)
+RECORDED28 = {"B1": "HELD", "B2": "HELD", "B3": "HELD", "B4": "HELD", "B5": "HELD"}
+forced("round 28's test log scores B1 to B5 held, as recorded", _scores("edge_rule_test28.log", RECORDED28) == RECORDED28)
+ok28 = True
+for p_ in (41, 43):
+    ns_ = tuple(range(3, 32, 2))
+    T_ = edge22.airy(p_, edge22.t_values_crt(p_, 1, ns_))
+    T2_ = edge22.airy(p_ * p_, edge22.t_values_crt(p_, 2, ns_))
+    T3_ = edge22.airy(p_ ** 3, edge22.t_values_dft(p_, 3, ns_))
+    e1_, e2_, e3_ = edge22.e123(T_[29], T2_[29], T3_[29])
+    ok28 &= e2_ != 0 and e3_ == edge22.kron(92424189, p_) * p_ ** 15 * e2_
+    e1_, e2_, e3_ = edge22.e123(T_[31], T2_[31], T3_[31])
+    ok28 &= (e3_ == 0) == (edge22.kron(-2865149859, p_) == -1)
+    ok28 &= edge22.star_kernel(edge22.airy_double_factorial(29)) == 92424189
+forced("the cubics to 31 variables recounted at 41 and 43 over the fields of p, p^2 and p^3 elements: V29's determinant "
+       "is (92424189|p) and V31's is (-2865149859|p), as Theorem 8 gives", ok28)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))

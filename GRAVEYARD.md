@@ -357,6 +357,11 @@ its own graveyard. These died, with what killed them:
     differs from (3187041|p), which fits all 27 (`towers/seven_levels/edge_rule_test27.log`).
   - **Ruled out before the count:** "3 does not enter at 81". It would leave V81's determinant odd, and V81's Hodge
     types require it even (`towers/seven_levels/edge_rule_verify27.log`, F14).
+- **From Theorem 8 and round 28 (2026-11-16; `towers/seven_levels/DETERMINANTS.md`, PREREG round 28):** nothing
+  died. Five of five held.
+  - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
+    At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
+    (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

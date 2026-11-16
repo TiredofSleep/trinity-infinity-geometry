@@ -169,6 +169,10 @@ does, and at 5, 7 and 9 no arrangement does.
       coins cancel. For 3 the count starts one coin late, so two coins make one entry.
     - At 81, four coins of 3, it enters again (round 27). Complex conjugation decides that, as it decides every coin
       of a prime ≡ 3 (mod 4). It cannot see 5, so twenty-five's own determinant was counted, and 5 stays out at 25.
+    - These coins are now a theorem: every piece's determinant is the Jacobi symbol (p/A_k), the product of the odd
+      numbers up to k with each multiple of 3 divided by 3 once. So a prime l ≥ 5 enters at k when v_l(k) is odd,
+      and 3 when v_3(k) is even and at least 2, at every k
+      ([`../towers/seven_levels/DETERMINANTS.md`](../towers/seven_levels/DETERMINANTS.md), Theorem 8).
     - See [`../towers/seven_levels/COIN_AT_FIVE.md`](../towers/seven_levels/COIN_AT_FIVE.md).
 - **The book** shows the flat face at 5, the pentagon, because its lesson — the break — lives in the
   plane. It teaches 0–6 and 8. The solid faces stay here, behind the wall, unless the author moves

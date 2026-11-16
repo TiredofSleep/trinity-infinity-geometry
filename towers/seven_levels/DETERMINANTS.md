@@ -23,6 +23,12 @@
   V_k's middle class, twisted to weight 0. Round 27's argument at 81 assumed this. It now follows from Theorem 8.
 - **The shape is Yun's.** For the Kloosterman moments Yun proved the determinant (p/d!!) [NAMED]. The Airy symbol is
   his with the cube's 3 taken out.
+- **Its first new predictions held blind** [measured; round 28 of [`PREREG.md`](PREREG.md)].
+  - No determinant past 27 had been read. Theorem 8 gives V29 (92424189|p), V31 (−2865149859|p), V33
+    (260468169|p), V35 (−9116385915|p) and V39 (−25946636835|p).
+  - Read from the counts over the fields of p, p² and p³ elements, all five held at every prime from 41 to 151.
+  - At 29, 31 and 39 Yun's symbol without the cube's 3 fits 11 of 24 primes, at chance level
+    ([`edge_rule_test28.log`](edge_rule_test28.log)).
 
 ## 1. The setting
 
@@ -161,7 +167,8 @@ This is the Jacobi symbol (p/A_n), with A_n = ∏_{j odd ≤ n} j/3^[3 | j].
   - The prime 3, through the good model e1 = e3 = 0, which Chuang and the Airy sheaf's theory exclude.
   - The corollary on complex conjugation.
 - **Checked, not proved.** That V_n is the piece measured as T_n rests on the Airy moments' standard structure (Step
-  1). D9 confirms it directly at k = 5 and 7.
+  1). D9 confirms it directly at k = 5 and 7. Round 28 bears it out through 39, since the measured pieces carry
+  the determinants that Theorem 8 gives the antisymmetric parts.
 
 ## 6. The checks
 
@@ -182,6 +189,7 @@ It checks:
 
 ```
 python verify_determinants.py      # Theorem 8, step by step: about a minute
+python edge_rule.py test28         # round 28: the determinants of V29 to V39, read blind: four minutes, four processes
 ```
 
 ## Sources

@@ -98,9 +98,12 @@ the prime 3 itself (round 25), to 27 (round 26), and to 81 (round 27).
 - **Twenty-five, counted** [measured, held blind; §12]. Complex conjugation cannot see 5, 13, 17 or any prime
   ≡ 1 (mod 4), so their coins must be counted. Twenty-five's determinant, read at every prime from the fields of p,
   p² and p³ elements, is (3187041|p) at all 27: 5 does not enter at 25.
-- **One symbol** [FORCED; NAMED; §12]. The rule is the Jacobi symbol (p/A_k), with A_k the product of the odd numbers
-  up to k, each multiple of 3 divided by 3 once. Yun proved the same shape, (p/d!!), for the Kloosterman moments. The
-  Airy moments differ by the cube's 3.
+- **One symbol, proved** [FORCED; NAMED; §12; [`DETERMINANTS.md`](DETERMINANTS.md), Theorem 8]. Every V_k has
+  determinant (p/A_k), with A_k the product of the odd numbers up to k, each multiple of 3 divided by 3 once.
+  - Proved from Picard–Lefschetz at the cubic's nodes, one vanishing cycle per orbit, and the determinant being
+    unramified at 2. So the author's coins hold at every k, and complex conjugation fixes every middle class.
+  - Yun proved the same shape, (p/d!!), for the Kloosterman moments. The Airy moments differ by the cube's 3.
+  - Its first five new determinants, V29 to V39, held blind at every prime from 41 to 151 (round 28).
 
 ## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
@@ -504,7 +507,8 @@ scores in [`edge_rule_test27.log`](edge_rule_test27.log).
     2401).
   - For 5, 13, 17, 29 and every prime ≡ 1 (mod 4) the signed prime is positive, so complex conjugation cannot see them.
     Their coins must be counted.
-  - The argument assumes complex conjugation acts by +1 on each middle class. That held at every k read.
+  - The argument assumed complex conjugation acts by +1 on each middle class. Theorem 8 proves it
+    ([`DETERMINANTS.md`](DETERMINANTS.md) §4).
 - **One symbol** [FORCED; NAMED; F16]. The rule is the Jacobi symbol (p/A_k), where A_k is the product of the odd
   numbers up to k, each multiple of 3 divided by 3 once. Yun proved (p/d!!) for the Kloosterman moments (Compositio
   2015, Theorem 1.2.3). The Airy moments' symbol is his, with the cube's 3 taken out.
@@ -562,7 +566,8 @@ scores in [`edge_rule_test27.log`](edge_rule_test27.log).
   - The good model at 3, whose nodes are the author's "3 at its square", and the pieces counted at 3.
   - The rule's sharpening by the critical values, and its tests at 25, 27 and 81: 3 not at its cube but at its fourth
     power, 5 not at its square.
-  - The rule as one symbol, (p/A_k): Yun's double factorial with the cube's 3 taken out.
+  - The rule as one symbol, (p/A_k): Yun's double factorial with the cube's 3 taken out. Proved as Theorem 8
+    ([`DETERMINANTS.md`](DETERMINANTS.md)), with its corollary that complex conjugation fixes every middle class.
   - The infinite place deciding every coin of a prime ≡ 3 (mod 4), always as the rule does, and blind at the primes
     ≡ 1 (mod 4).
   - The four-dimensional pieces at 19, 23 and 27, with determinants (969969|p), (3187041|p) and (3187041|p), and the
@@ -575,17 +580,15 @@ scores in [`edge_rule_test27.log`](edge_rule_test27.log).
       identification of a single piece and no determinant.
     - The nearest precedent is Yun's, for the Kloosterman moments.
 - **Open.**
-  - Proofs. Each piece is identified by its counts, and none is proved. Sabbah and Yu's Hodge numbers and Patrikis and
-    Taylor's potential automorphy, which they point to, are one way in.
+  - Proofs of the pieces themselves. Their determinants are proved (Theorem 8), but each piece is identified by its
+    counts. Sabbah and Yu's Hodge numbers and Patrikis and Taylor's potential automorphy, which they point to, are one
+    way in.
   - A blind test of the mirror half. Every parity-weighted edge value is already measured, so it needs a new
     parity-weighted formula, J6's or J7's.
   - The roots of the pieces at 13, 17 and 21: which weight-3 newforms they are the symmetric squares of, and at what
     levels.
   - The coins of primes ≡ 1 (mod 4) past 25: 125 (three coins of 5, which should enter) and 169 (two coins of 13,
     which should not). Complex conjugation cannot see them, and V125 and V169 have 21 and 29 dimensions.
-  - A proof of the symbol (p/A_k). Yun's route for the Kloosterman moments may carry over to the Airy sheaf.
-  - Why complex conjugation acts by +1 on every middle class. The infinite place's argument at 81 assumes it, and it
-    held at every k read.
   - Whether the seventh moment I7 carries Q(√−35), as I5 carries √5.
 - **Died** (kept in the graveyard):
   - C1's parity-weighted half (§2).
@@ -620,6 +623,8 @@ python edge_rule.py verify26     # round 26's forced checks, F9 to F12 (the infi
 python edge_rule.py test26       # round 26: 27 variables to 1999, and over F_(p^2) to 151: two minutes, four processes
 python edge_rule.py verify27     # round 27's forced checks, F13 to F18 (the Hodge types, the infinite place, the symbol): seconds
 python edge_rule.py test27       # round 27: 81 variables at 83..1999, and over F_(p^3) to 151: four minutes, four processes
+python verify_determinants.py    # Theorem 8 (DETERMINANTS.md), step by step: about a minute
+python edge_rule.py test28       # round 28: the determinants of V29 to V39, blind: four minutes, four processes
 ```
 
 ## Sources

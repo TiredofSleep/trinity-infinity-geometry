@@ -7,7 +7,7 @@
 
 **Keywords:** magic states · Wigner negativity · discrete Wigner function · qudits · Clifford hierarchy · Kloosterman sums · Sato–Tate law · Weil representation · quantum chaos · quantum cat map · Walsh spectra · bent functions · elliptic curves · finite fields · pre-registered predictions
 
-**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 27 · [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), the coin at 5 in the fifth moment, the cubics from 7 to 81, the prime 3, and the coin's edge · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18, 18 §19, 19 and 20 §20, 21 to 27 §21.
+**Pages here:** [`NORM_STATE.md`](NORM_STATE.md), the norm state's Kloosterman values, proved · [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md), the fourth-moment theorem and the semicircle · [`DETERMINANTS.md`](DETERMINANTS.md), the determinants of the Airy pieces, proved (Theorem 8) · [`LITERATURE_MAP.md`](LITERATURE_MAP.md), who else works on this ground · [`PREREG.md`](PREREG.md), every registration and score, rounds 1 to 28 · [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md), the coin at 5 in the fifth moment, the cubics from 7 to 81, the prime 3, and the coin's edge · [`modular_symbols.py`](modular_symbols.py), the engine that names the modular forms · [`verify_seven_levels.py`](verify_seven_levels.py), every check. Rounds: 1 §2–3, 2 §4, 3 §5, 4 §6, 5 §7, 6 §8, 8 §9, 7 §10, 9 §11, 10 §12, 11 and 12 §13, 13 §14, 14 §15, 15 §16, 16 §17, 17 §18, 18 §19, 19 and 20 §20, 21 to 28 §21.
 
 **A side floor of the number tower**, built on the sevenths of [`../../base/SEVENTHS.md`](../../base/SEVENTHS.md).
 - A quantum system with seven levels, |0⟩ to |6⟩, is indexed by the seven remainders mod 7, so both faces of 7
@@ -878,7 +878,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) ([`coin_at_five.py`](coi
   copies of the same CM form. That count also held blind.
 - **The scores.** Round 19 held two of three scored predictions (C1 failed on its J side). Round 20 held two of two.
 
-## 21. Rounds 21 to 27: the coin on its edge; eleven to eighty-one; and the prime 3 [FORCED; measured; NAMED: Sabbah and Yu, LMFDB, Schütt, Klein, Yun]
+## 21. Rounds 21 to 28: the coin on its edge; eleven to eighty-one; the prime 3; and Theorem 8 [FORCED; measured; NAMED: Sabbah and Yu, LMFDB, Schütt, Klein, Yun, SGA 7]
 
 > *1 and 2, the mirror rule first* — the author, 14 November 2026: a coin on its edge shows the mirror; and go past
 > the base, to eleven.
@@ -891,6 +891,9 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) ([`coin_at_five.py`](coi
 
 > *1 and 3, 81 first* — the author, 15 November 2026: 81, four coins of 3, first; and twenty-five's own
 > determinant.
+
+> *2 and 3, the proof first* — the author, 16 November 2026: turn the rule into a theorem, and settle round 27's one
+> assumption.
 
 The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule.py`](edge_rule.py)).
 - **Why J3 mirrors at 3** [FORCED].
@@ -961,6 +964,17 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     once. Yun proved (p/d!!) for the Kloosterman moments; the cube's 3 is the difference.
   - The cubic in 81 variables, counted at 281 primes: every piece from V29 to V81 has its forced shape, and V79 and
     V81 behave like pieces with the full orthogonal group.
+- **Theorem 8: the determinants, proved** ([`DETERMINANTS.md`](DETERMINANTS.md); round 28: five of five held).
+  - Every piece V_k has determinant (p/A_k). The cubic's nodes are ordinary double points at every prime from 5 up
+    and in the good model at 3. Each orbit of nodes gives the antisymmetric part, which is V_k, one vanishing cycle.
+    Picard–Lefschetz turns it over exactly when the critical value has odd valuation, and the determinant is
+    unramified at 2.
+  - So the author's coins hold at every k, and complex conjugation fixes every middle class: round 27's one
+    assumption is now a corollary.
+  - Its first new predictions, the determinants of V29, V31, V33, V35 and V39, held blind at every prime from 41 to
+    151. Yun's symbol without the cube's 3 fits at chance level where the two differ.
+  - Credited: Picard–Lefschetz (SGA 7); Chuang's thesis, which already holds the local picture at primes from 5 up
+    in another model; Yun's (p/d!!) for the Kloosterman moments.
 
 ## 22. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1076,6 +1090,8 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
   disagreed. Round 27 held five of five. At 81, 3 enters again, four coins of 3: complex conjugation decides it,
   as it decides every power of a prime ≡ 3 (mod 4). Twenty-five's own determinant, counted at every prime over the
   field of p³ elements, keeps 5 out at its square. The rule is Yun's double factorial with the cube's 3 taken out.
+  Theorem 8 then proves the rule, with its corollary on complex conjugation, and round 28 held five of five: the
+  first determinants past 27 are the theorem's, at every prime.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -1097,7 +1113,6 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     - the roots of the pieces at 13, 17 and 21: the weight-3 newforms they are the symmetric squares of;
     - the coins that complex conjugation cannot see, past 25: 125 (three coins of 5) and 169 (two coins of 13), whose
       pieces have 21 and 29 dimensions;
-    - a proof of the symbol (p/A_k), perhaps by Yun's route for the Kloosterman moments;
     - the four-dimensional pieces' Hilbert-type roots over Q(√969969) and Q(√3187041);
     - whether the seventh moment carries Q(√−35), as the fifth carries √5;
   - cubic magic: why elliptic curves with 8 points tie the norm form at 5; whether the two-wheel coin by p mod 3
@@ -1174,6 +1189,8 @@ python edge_rule.py verify26           # round 26's forced checks: the infinite 
 python edge_rule.py test26             # round 26: 27 variables to 1999 and the field of p^2 elements to 151, two minutes on four processes
 python edge_rule.py verify27           # round 27's forced checks: the Hodge types, the infinite place at every k, the symbol, the p^3 counter, seconds
 python edge_rule.py test27             # round 27: 81 variables at 83..1999 and the field of p^3 elements to 151, four minutes on four processes
+python verify_determinants.py          # Theorem 8 (DETERMINANTS.md), step by step, about a minute
+python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 
 - The first reruns all eight predictions and the page's other checks, among them the states recorded by rounds 2

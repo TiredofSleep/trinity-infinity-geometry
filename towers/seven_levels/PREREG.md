@@ -2554,3 +2554,30 @@ F_(p²) and F_(p³) can read.
 between the antisymmetric part and the piece measured as T_k, or to the counter at 39 variables.
 
 Run: `python edge_rule.py test28` (minutes; four processes at below-normal priority).
+
+---
+
+## Round 28 scores (added after the test, 2026-11-16)
+
+Run by [`edge_rule.py`](edge_rule.py) `test28`, registered at 1ec5bb8 before the test. Output:
+[`edge_rule_test28.log`](edge_rule_test28.log).
+
+**Five of five held. The first five determinants past 27 are exactly the ones Theorem 8 gives, at every prime
+counted.**
+
+| | outcome | evidence |
+|---|---|---|
+| B1 | held | V29: e2 ≠ 0 at all 24 primes from 41 to 151, and e3/(p¹⁵e2) is exactly ±1 at each, equal to (92424189\|p) at all 24. The rival (p/29!!) fits 11 |
+| B2 | held | V33: the same at all 24, with (260468169\|p). The rival is the same symbol here |
+| B3 | held | V31: e3 = 0 exactly at the 13 primes where (−2865149859\|p) = −1. The rival fits 11 of 24 |
+| B4 | held | V35: e3 = 0 exactly at the 11 primes where (−9116385915\|p) = −1. The rival is the same symbol here |
+| B5 | held | V39: e3 = 0 exactly at the 16 primes where (−25946636835\|p) = −1. The rival fits 11 of 24 |
+| instrument | held | the known pieces are the squares and cubes of their eigenvalues; V19, V23, V25 and V27 keep their determinants; every piece from V29 to V39 has its forced shape, at all 24 primes |
+
+**Yield.**
+- Theorem 8 predicted five determinants that had never been read, and all five held at every prime. At 29, 31 and 39,
+  where the cube's 3 matters, Yun's unshifted symbol fits at chance level.
+- The proof's one checked-not-proved step is that the antisymmetric part is the piece measured as T_k. It is now
+  borne out through 39: the measured pieces carry the determinants the antisymmetric parts must have. The direct
+  check is still at 5 and 7.
+- Round 27's one assumption, complex conjugation on the middle class, is proved (DETERMINANTS.md §4).

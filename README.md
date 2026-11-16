@@ -79,8 +79,11 @@ checked twice, by independent code:
   multiple of 9, and counted there each piece loses one dimension from 9 on. At 17 and 21 the pieces are symmetric
   squares again. At 27 neither 3, at its cube, nor 5, at its square, enters, read in the determinant at every prime.
   At 81, four coins of 3, 3 enters again. Complex conjugation decides that, as it decides every power of a prime
-  ≡ 3 (mod 4), and twenty-five's own determinant, counted over the field of p³ elements, keeps 5 out
-  ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md)).
+  ≡ 3 (mod 4), and twenty-five's own determinant, counted over the field of p³ elements, keeps 5 out. The rule is now
+  a theorem: every piece's determinant is the Jacobi symbol (p/A_k), Yun's double factorial with the cube's 3 taken
+  out, and its first five new determinants held blind
+  ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md),
+  [the proof](towers/seven_levels/DETERMINANTS.md)).
 
 There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
 stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).

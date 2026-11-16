@@ -104,7 +104,11 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        singularities and applies it to the Airy moments at primes p > 5. It uses another model,
        z³ = Σ(y³/3 − y), and it excludes 3 and 5. The good model at 3 here (e1 = e3 = 0), whose nodes are the author's
        "3 at its square", and the nodes' parity rule for the determinants are not in the parts of it read
-       (2026-11-15). The node reading at p ≥ 7 may be, which has not been checked.
+       (2026-11-15). Read again on 2026-11-16: its Theorems 4.21 and 4.22 give the full local Galois representation
+       of the Airy motive at every prime p ≥ 5 for odd k, in a model whose singularities are z³ plus squares, with
+       the inertia invariants fixed by a condition on v_p. The classical part's local behaviour at l ≥ 5, which
+       Theorem 8 (DETERMINANTS.md) uses, is contained in that description. The prime 3 and the global determinant
+       are not there.
      - **The nearest precedent is Kloosterman's** (read 2026-11-15, for round 27). Yun attached Galois
        representations to the Kloosterman moments. For odd d he proved that their determinant is the Jacobi symbol
        (p/d!!) (Compositio 2015, Theorem 1.2.3).
