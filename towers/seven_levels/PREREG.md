@@ -2391,3 +2391,82 @@ Run by [`edge_rule.py`](edge_rule.py) `test26`, registered at afc4e76 before the
   - The infinite place had already ruled out 3 at 27. The count decided 5 at 25 against three rivals.
 - Twenty-one's determinant, which round 25 could not score, held prime by prime.
 - Seventeen's and twenty-one's square classes held blind at 224 and 273 new primes.
+
+---
+
+## Round 27: eighty-one first, and twenty-five's own determinant (registered 2026-11-15, before the test)
+
+> *1 and 3, 81 first* — the author, 15 November 2026. The "1" asks for 81, four coins of 3, where the rule says 3
+> enters again. The "3" asks for a registered test of twenty-five's own determinant, from the field of p³ elements.
+
+**What the rule says at 81.** The centre of X81 pinches mod 3 with valuation 3 in the good model (v_3(81) − 1). That
+is odd, so 3 enters at 81. For 3 the count starts one coin late, so four coins count as three.
+
+Before this registration [`edge_rule.py`](edge_rule.py) `verify27` checked the following, without counting a cubic in
+more than 27 variables, or any cubic in 17 or more variables over the field of p³ elements
+([`edge_rule_verify27.log`](edge_rule_verify27.log), F13 to F18 [FORCED]).
+- **The Hodge types, from the cubics alone** (F13).
+  - A smooth cubic of dimension n − 3 has primitive Hodge numbers C(n − 1, 2n − 5 − 3a) [NAMED: Griffiths, from the
+    Fermat cubic].
+  - Peeling off the lower pieces by the ballot triangle leaves every V_k up to k = 201 with exactly Sabbah and Yu's
+    classical types, each once.
+  - So V79 has 14 types in 7 pairs, and V81 has 13: 6 pairs and the middle class (41, 41).
+- **The infinite place decides 81** (F14).
+  - The only node new at 81 is the centre, which pinches only mod 3. Every other node keeps its local equation, so
+    D81/D79 can only be −3 or 1.
+  - V79's determinant is odd and V81's is even, with the middle class at +1 as at every k read. So D81/D79 = −3, and
+    3 enters at 81.
+  - This is the thin rule's answer, decided before any count, as 27 was in round 26. No count can read it directly:
+    V81 has 13 dimensions, and its determinant needs the traces up to the seventh power of Frobenius at primes past
+    81.
+- **Every k** (F15).
+  - At every odd k up to 20001, the thin rule's determinant has the sign the Hodge types require. Both change sign
+    exactly at k ≡ 7, 9 and 11 (mod 12).
+  - Why. From k − 2 to k the thin rule's symbol gains the factor k, or k/3 when 3 divides k. Its sign changes by
+    χ₋₄(k)·(−1)^[3 | k], which is −1 exactly at those residues.
+  - The Hodge side: V_k has ⌈k/6⌉ types, one fewer when 3 divides k, and a middle class exactly when k ≡ 1 (mod 4).
+    The number of pairs changes parity at the same residues.
+  - So at every power of a prime l ≡ 3 (mod 4), the infinite place alone decides whether l enters, and it agrees with
+    the thin rule. 3 enters at its even powers (9, 81, 729, 6561). The other such primes enter at their odd powers:
+    7 and 343, but not 49 or 2401.
+  - At primes l ≡ 1 (mod 4) the signed prime l* is positive, so the infinite place is blind there, and their coins
+    must be counted. Twenty-five is the first. It is also the only one in reach, since V125 has 21 dimensions.
+- **One symbol** (F16).
+  - The thin rule says V_k's determinant is the Jacobi symbol (p/A_k), where A_k is the product of the odd numbers up
+    to k, each multiple of 3 divided by 3 once.
+  - For Kloosterman moments Yun proved the same shape, (p/d!!) [NAMED: Z. Yun, Compositio 2015, Theorem 1.2.3].
+  - The two differ only by the cube's 3.
+- **The counter over the field of p³ elements** (F17, F18).
+  - S(1, t) for every t at once is a Fourier transform over (Z/p)³. It runs exactly in floating point, mod primes
+    below 2²¹.
+  - It equals round 26's counter over F_p and F_(p²) for every odd n up to 27 (p = 29, 31 and 101).
+  - It equals a direct count over the fields of 125 and 343 elements.
+  - At 29 and 31 it gives the cubes of the known pieces' eigenvalues (n ≤ 15 only).
+  - With e1, e2 and e3 read from the traces of Frobenius, its square and its cube, and P = p^((k+1)/2): e3 = det·P³
+    in dimension 3, e3 = det·P²·e1 in dimension 4, and e3 = det·P·e2 in dimension 5.
+
+| | prediction | dies if |
+|---|---|---|
+| Q1 | eighty-one, counted: every new piece from V29 to V81 has its forced shape at every prime from 83 to 1999. T_k = p^h·u, with h the lowest type, u an integer and \|u\| ≤ d·p^((k+1)/2 − h) | a prime fails |
+| Q2 | ordinary: for each k from 29 to 81, p divides u at no more than 5 of the 281 primes | more, for some k |
+| Q3 | V79 and V81 have big orthogonal images. With x = T_k/p^((k+1)/2) over the 281 primes, the mean of x² is between 0.75 and 1.25, and the mean of x⁴ between 1.8 and 4.5. The full orthogonal group gives 1 and 3; a split piece gives x² near 2 or more | outside |
+| Z1 | twenty-five's own determinant is (3187041\|p): e3 = (3187041\|p)·p¹³·e2 exactly, at every prime from 29 to 151 with e2 ≠ 0, so 5 does not enter at 25. At least 20 such primes, with at least 8 where (5\|p) = −1, where the rival (15935205\|p) differs | a prime fails, or too few |
+| Z2 | a second reading of the four-dimensional pieces: e3 = det·p^(k+1)·e1, with det (3187041\|p) for V27 and V23 and (969969\|p) for V19, at every prime from 29 to 151 with e1 ≠ 0 (at least 20 for each) | a prime fails, or too few |
+| instrument | over F_p at 83..1999: T1 to T15 as found, and seventeen's and twenty-one's square classes. Over F_(p²) at 29..151 the known pieces are the squares of their eigenvalues; over F_(p³), their cubes, which rereads the determinants of 7, 11, 13, 15, 17 and 21 | one fails |
+
+**The drafter's expectation.**
+- All hold.
+- Q1 is Mazur's bound (Newton above Hodge) read through the counter, so its risk is the counter at 81 variables.
+- Q2 is a guess: no piece up to 27 was ever found non-ordinary.
+- Q3 expects the full orthogonal group, as for every piece measured so far.
+- Z1: round 26's circle reading decided 7 primes, all for (3187041|p).
+- The coin at 81 is not scored, because it is forced (F14).
+- **Literature gate.**
+  - No work found gives the determinants of the Airy moments.
+  - The closest precedent is Yun's theorem for Kloosterman moments. Their determinant is (p/d!!). He expected the
+    three-dimensional cases to come from modular forms, and the four-dimensional ones from Hilbert modular forms over
+    the determinant's real quadratic field. This is the shape found here at 13, 17 and 21, and at 19, 23 and 27.
+  - Also checked: Sabbah–Yu (2023), Qin (2024), Chuang (2026), Haessig (2008), and Katz–Rojas-León–Tiep on Airy
+    sheaves, whose determinants are the sheaves' own, a different object.
+
+Run: `python edge_rule.py test27` (minutes; four processes at below-normal priority).

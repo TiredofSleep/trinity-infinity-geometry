@@ -1,0 +1,17 @@
+edge_rule.py verify27 -- the forced checks for round 27 (eighty-one, and twenty-five's own determinant)
+[PASS] F13a. the primitive Hodge numbers of smooth cubics, C(n - 1, 2n - 5 - 3a) (Griffiths, from the Fermat cubic), peeled by the ballot triangle, give every V_k up to k = 201 exactly Sabbah and Yu's classical types, each once  (V79: [27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53]; V81: [29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53]; mismatches [])
+[PASS] F13b. the pieces fill every smooth cubic up to 81 variables: sum of m(n, k) dim V_k = (2^(n-1) + 2)/3
+[PASS] F14a. the only node new at 81 is the centre, of sum 81, which pinches only mod 3 (good model: critical value of valuation 3 at 3, thin); every other node keeps its local equation, so the thin counts of V79 and V81 differ only at [3]
+[PASS] F14b. the infinite place: V79 has 14 types in 7 pairs (determinant odd), V81 has 13: 6 pairs and the middle class (41, 41) (determinant even, middle class +1 as at every k read). So D81/D79 must be negative, and it can only be -3: 3 enters at 81. The thin rule gives D79 < 0 < D81 with D81/D79 = -3 up to squares
+  D79 = -3937450002252441791871027
+  D81 = 1312483334084147263957009
+[PASS] F15a. at every odd k up to 20001 the thin rule's determinant has the sign the Hodge types require (middle class +1), and both change sign exactly at k = 7, 9, 11 (mod 12)  (disagreements [])
+[PASS] F15b. the fast Hodge sign agrees with the listed types for every odd k up to 2001
+[PASS] F15c. at a power l^a of a prime l = 3 (mod 4) only l can change, and l* < 0, so the infinite place alone decides whether l enters, and it agrees with the thin rule: 3 at its even powers, every other such prime at its odd powers. At primes = 1 (mod 4), such as 5 and 13, l* > 0 and the infinite place is blind  (3: enters at a = [2, 4, 6, 8] of 1..9; 7: enters at a = [1, 3, 5] of 1..5; 11: enters at a = [1, 3] of 1..4; 19: enters at a = [1, 3] of 1..3; 23: enters at a = [1, 3] of 1..3; 31: enters at a = [1] of 1..2; 43: enters at a = [1] of 1..2; 47: enters at a = [1] of 1..2)
+[PASS] F16. the thin rule is one symbol: V_k's determinant is the Jacobi symbol (p/A_k), with A_k the product of the odd numbers up to k, each multiple of 3 divided by 3 once (every odd k up to 301; the values read at 1 to 27). Yun's theorem for Kloosterman moments has (p/d!!); the two differ only by the cube's 3
+[PASS] F17a. the Fourier counter equals round 26's counter over F_p and F_(p^2) for every odd n up to 27 (p = 29, 31, 101)  (F_29^1:True F_31^1:True F_101^1:True F_29^2:True F_31^2:True F_101^2:True)
+[PASS] F17b. F_p[b]/(f) is a field of p^3 elements (x^q = x, x^(q-1) = 1), and over it the counter equals a direct convolution on F_(p^3)^2 (p = 5: n = 3, 5, 7; p = 7: n = 3, 5)  (F_125:True F_343:True)
+[PASS] F17c. over F_(p^3) the known pieces are the cubes of their eigenvalues: T1 = p^3, T3 = 0, T5 and T9 cubed, T = a^3 - 3 det P^2 a on the planes 7, 11, 15, and T = a^3 - 3 det P a^2 + 3 det P^3 on V13 (p = 29, 31; n <= 15 only)  (29:True 31:True)
+[PASS] F18. for an orthogonal piece with eigenvalues of modulus 1: e3 = det in dimension 3, e3 = det * e1 in dimension 4, e3 = det * e2 in dimension 5 (300 random cases each, both determinants). With p3 = e1^3 - 3 e1 e2 + 3 e3 and the counts over F_p, F_(p^2), F_(p^3), each prime reads the determinant directly
+time 0.2 minutes
+ALL PASS
