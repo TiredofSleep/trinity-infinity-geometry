@@ -6,6 +6,9 @@
 > theorem. The "3" asks next about the one assumption round 27 used: that complex conjugation acts by +1 on the middle
 > class.
 
+**For readers outside this project:** the same statement, evidence and proof sketch, on two pages in standard
+terms: [`AIRY_DETERMINANTS_NOTE.md`](AIRY_DETERMINANTS_NOTE.md).
+
 ## What stands
 
 - **Theorem 8** [FORCED; proved from the standard results cited in §3]. For every odd k, the determinant of the Airy
