@@ -55,12 +55,14 @@ reviewed each one.
     The pieces at 11 and 15 have complex multiplication by
     Q(√−1155) and Q(√−3003), and those at 13, 17 and 21 are twisted symmetric squares. Theorem 8: every V_k has
     determinant (p/A_k), where A_k is the product of the odd numbers up to k, each multiple of 3 divided by 3 once.
-    That is the shape Yun proved for the Kloosterman moments, (p/d!!), with the cube's 3 taken out.
+    That is the shape Yun proved for the Kloosterman moments, (p/d!!), with the cube's 3 taken out. The same count
+    of nodes gives each piece's conductor: 35, 1155 and 3·5²·7·11·13 at 7, 11 and 15.
   - *The evidence.* Exact point counts at every prime up to 601 in seven and nine variables, and predictions
     registered before each count that held blind (rounds 19 to 28). The identification at 7 is Chênevert's
     theorem, rediscovered here; those at 9 to 21 are measured, not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
     by step, and a script checks each computable step; its local input at primes from 5 up is in Chuang's 2026
-    thesis. No one outside the loop has reviewed the proof or the identifications.
+    thesis. At 11 and 15 the L-functions satisfy their functional equations at those conductors, and every rival
+    level fails. No one outside the loop has reviewed the proof or the identifications.
   - *The reading, fenced.* The author reads these cubics through the coin. The fifth moment's double octic is
     branched along five planes and Clebsch's cubic surface, which meet in 15 lines, and the author's coin at 5
     calls them the solid face, the flat face and the edge. Those lines are classical, and any branch locus with two

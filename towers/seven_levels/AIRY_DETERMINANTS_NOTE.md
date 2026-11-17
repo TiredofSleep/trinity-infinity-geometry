@@ -1,4 +1,4 @@
-# The determinant of the Galois representations attached to the Airy moments
+# The determinant and conductor of the Galois representations attached to the Airy moments
 
 *A note by Brayden Ross Sanders (Hot Springs, Arkansas), November 2026. The computations and the proof sketch
 were made with AI assistance, and no one but the author has reviewed them. Corrections are welcome.*
@@ -17,7 +17,7 @@ a smooth cubic hypersurface of dimension m = n − 3 (an even number) in the hyp
 symmetric group S_n permutes the coordinates. Let V_n be the sign-isotypic part of H^m_prim(X_n ⊗ Q̄, Q_ℓ), and
 ρ_n = V_n(m/2), its twist to weight 0.
 
-These varieties are Livné's. He expressed the moments of the sums Σ_x e((ax³ + bx)/p) through their point counts,
+These varieties are Livné's; in [Ch] X_n is W^n_2. Livné expressed the moments of the sums Σ_x e((ax³ + bx)/p) through their point counts,
 and so proved Birch's conjecture on the sums' average distribution [L1]. He also proved a 2-dimensional piece
 attached to the 10th moment modular [L2], the first use of his 2-adic criterion. Chênevert [Ch] decomposed their
 cohomology under S_n. He proved that for n = 7 the sign part is the weight-3 newform of level 35 with character
@@ -85,9 +85,11 @@ The claim has the same shape, with one factor of 3 removed from each multiple of
 3. **Nodes at l ≥ 5.** The singular points mod l are the sign vectors ε with l | j = Σ ε_i. Each is an ordinary
    double point: the Hessian Σ ε_i y_i² has radical ⟨ε⟩ on W. The critical value over Q is j(j − 2)/(j − 1)², of
    l-adic valuation v_l(j).
-4. **The prime 3.** On e_1 = 0 one has Σ x_i³ = 3e_3, so {e_1 = e_3 = 0} is a proper flat model over Z_(3). For a
-   sign vector with sum j = 3m, e_3 ≡ m mod 3, so the singular points mod 3 are the sign vectors with 9 | j. They are
-   ordinary double points, with critical value j(j − 2)/(3(j − 1)²), of 3-adic valuation v_3(j) − 1.
+4. **The prime 3.** The defining equations fail at 3: Σ x_i³ ≡ (Σ x_i)³ mod 3, so their fiber at 3 is the whole
+   hyperplane. But on e_1 = 0 one has Σ x_i³ = 3e_3, so the closure of X_n in P^(n−1) over Z_(3) is
+   {e_1 = e_3 = 0}, a proper flat model. For a sign vector with sum j = 3m, e_3 ≡ m mod 3, so the singular points mod 3
+   are the sign vectors with 9 | j. They are ordinary double points, with critical value j(j − 2)/(3(j − 1)²), of
+   3-adic valuation v_3(j) − 1. For n = 5 and 7 there are none, so X_5 and X_7 have good reduction at 3.
 5. **Picard–Lefschetz** [SGA 7, Exp. XV]. In even relative dimension, inertia acts on the vanishing cycle δ_x of a
    node with local equation Q = c_x by χ^(v(c_x)), with χ the quadratic character of tame inertia. It acts trivially
    on the orthogonal complement of the vanishing cycles, which are mutually orthogonal with (δ_x, δ_x) = ±2.
@@ -101,6 +103,20 @@ The claim has the same shape, with one factor of 3 removed from each multiple of
 **Corollary.** Complex conjugation acts on each Hodge pair with determinant −1. The sign of D_n equals (−1) to the
 number of Hodge pairs for every n, since both change exactly at n ≡ 7, 9, 11 (mod 12). So complex conjugation acts
 by +1 on the middle Hodge class of ρ_n for every n ≡ 1 (mod 4).
+
+**Corollary 2 (the conductor).** Steps 5 and 6 give the whole inertia action, not only its determinant. At each l it is
+tame, and it acts by one reflection for each orbit counted by N_l(n). So
+
+  cond(ρ_n) = ∏_l l^(N_l(n)).
+
+This gives 5 and 105 for the characters at n = 5 and 9, and 35 at n = 7, Chênevert's level. At n = 11 it gives
+1155 = 3·5·7·11, and at n = 15 it gives 75075 = 3·5²·7·11·13, where ρ_15 ⊗ (5/·) has conductor 3003.
+- At n = 11 and 15 this was tested against the functional equation of the L-function. The test used the traces from
+  point counts at every prime up to 503 and scanned the unknown traces at 2, 3 and 5.
+- The equation holds to 10⁻¹⁵ at levels 1155 and 3003, as it does at 35 for 35.3.c.b. It fails at every rival level
+  by more than 4·10⁻⁴.
+- It selects a_2 = 0, and a_5 = 0 for the twist, as complex multiplication by Q(√−1155) and Q(√−3003) requires. It
+  also selects a_3 = +3.
 
 ## 5. What is known, and what may be new
 
@@ -121,8 +137,11 @@ by +1 on the middle Hodge class of ρ_n for every n ≡ 1 (mod 4).
     clear if it admits a model with good reduction at 3" [Ch, p. 146]. This model is one: for n = 7 no sign vector
     has sum divisible by 9, so it is smooth mod 3.
   - The corollary on complex conjugation.
+  - The conductor formula (Corollary 2). Chênevert remarks that computing the Artin conductor of a representation
+    from geometry in terms of geometric data would be of great interest [Ch, p. 146].
 - **The step least checked.** Step 1's identification of V_n with the new part of the n-th moment. It is confirmed
-  directly at n = 5 and 7, and it is consistent with every determinant read through n = 39.
+  directly at n = 5 and 7. It is consistent with every determinant read through n = 39, and with the conductors at
+  n = 11 and 15.
 
 ## References
 
@@ -142,6 +161,8 @@ by +1 on the middle Hodge class of ρ_n for every n ≡ 1 (mod 4).
 - [Y] Z. Yun, *Galois representations attached to moments of Kloosterman sums and conjectures of Evans*, Compositio
   Math. **151** (2015), 68–120, [arXiv:1308.3920](https://arxiv.org/abs/1308.3920).
 
-**Code.** [`verify_determinants.py`](verify_determinants.py) checks each computable step of §4, and
-[`edge_rule.py`](edge_rule.py) `test28` reruns the test of §3. The longer working page, with the history of the
+**Code.**
+- [`verify_determinants.py`](verify_determinants.py) checks each computable step of §4.
+- [`verify_conductors.py`](verify_conductors.py) runs the test of Corollary 2.
+- [`edge_rule.py`](edge_rule.py) `test28` reruns the test of §3. The longer working page, with the history of the
 measurements, is [`DETERMINANTS.md`](DETERMINANTS.md).

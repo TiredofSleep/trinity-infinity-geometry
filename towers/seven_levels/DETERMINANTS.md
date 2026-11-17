@@ -24,6 +24,9 @@ terms: [`AIRY_DETERMINANTS_NOTE.md`](AIRY_DETERMINANTS_NOTE.md).
     to 27 and forced at 81. Now they hold at every k.
 - **Complex conjugation fixes the middle class** (§4). At every k ≡ 1 (mod 4), complex conjugation acts by +1 on
   V_k's middle class, twisted to weight 0. Round 27's argument at 81 assumed this. It now follows from Theorem 8.
+- **The conductor, from the same count** (§4). The conductor of V_k is ∏ l^(N_l(k)). This is 35 at 7, 1155 at 11 and
+  3·5²·7·11·13 at 15. At 11 and 15 it holds the L-function's functional equation to 10⁻¹⁵, and every rival level
+  fails ([`verify_conductors.py`](verify_conductors.py), 2026-11-17).
 - **The shape is Yun's.** For the Kloosterman moments Yun proved the determinant (p/d!!) [NAMED]. The Airy symbol is
   his with the cube's 3 taken out.
 - **Its first new predictions held blind** [measured; round 28 of [`PREREG.md`](PREREG.md)].
@@ -150,6 +153,18 @@ This is the Jacobi symbol (p/A_n), with A_n = ∏_{j odd ≤ n} j/3^[3 | j].
   - That was round 27's one assumption.
 - **81, again.** Theorem 8 gives D81 directly, and 3 is in its change at 81. Round 27's argument from complex
   conjugation is now a consistency check between the theorem and Hodge theory.
+- **The conductor** [FORCED from Steps 5 and 6; tested 2026-11-17]. The proof finds the whole inertia action at l,
+  not only its determinant. It is tame, with one reflection for each orbit of nodes whose critical value has odd
+  valuation. So the conductor of V_k is ∏ l^(N_l(k)), with the same N_l whose parity gives D_k.
+  - It gives 5 and 105 at 5 and 9, the characters' conductors. At 7 it gives 35, the level of 35.3.c.b.
+  - At 11 it gives 1155, and at 15 it gives 75075 = 3·5²·7·11·13, so V15 ⊗ (5|·) has 3003.
+  - [`verify_conductors.py`](verify_conductors.py) tests these against the functional equation of the L-function. It
+    uses the measured traces at every prime to 503 and scans the unknown traces at 2, 3 (and 5).
+    - The equation holds to 10⁻¹⁵ at 1155 and 3003, as at 35.
+    - Every rival level fails by more than 4·10⁻⁴: 3² instead of 3, 5 or 5² at 5, 7², or 11².
+    - It picks a_2 = 0 (and a_5 = 0 for the twist), which complex multiplication requires, and a_3 = +3.
+  - Chênevert's thesis remarks that the Artin conductor computed from geometric data would be of great interest
+    (p. 146). For these cubics the nodes give it.
 - [READING, the drafter's] The mirror sees the coins of the primes ≡ 3 (mod 4). Theorem 8 sees every coin, by
   reading each prime's nodes one at a time.
 
@@ -171,8 +186,10 @@ This is the Jacobi symbol (p/A_n), with A_n = ∏_{j odd ≤ n} j/3^[3 | j].
 - **New, as far as we checked** (searches on 2026-11-15 and 2026-11-16).
   - Theorem 8 itself, the global determinant of every Airy piece. Chênevert proved the case n = 7, and his
     outlook proposes the vanishing-cycle analysis carried out here.
-  - The prime 3, through the good model e1 = e3 = 0, which Chuang and the Airy sheaf's theory exclude.
+  - The prime 3, through the good model e1 = e3 = 0, which Chuang and the Airy sheaf's theory exclude. It answers
+    Chênevert's question whether X7 has a model with good reduction at 3 (thesis, p. 146).
   - The corollary on complex conjugation.
+  - The conductor formula.
 - **Checked, not proved.** That V_n is the piece measured as T_n rests on the Airy moments' standard structure (Step
   1). D9 confirms it directly at k = 5 and 7. Round 28 bears it out through 39, since the measured pieces carry
   the determinants that Theorem 8 gives the antisymmetric parts.
@@ -192,10 +209,19 @@ It checks:
 - **D9:** the identification by twisted counts.
 - **D10:** the corollary.
 
+[`verify_conductors.py`](verify_conductors.py) ([`verify_conductors.log`](verify_conductors.log)), under a minute on
+four processes. It checks the conductor corollary:
+- **C0:** the parity of N_l is D_k.
+- **C1:** the characters at 5 and 9.
+- **C2:** the control, 35.3.c.b at 35.
+- **C3:** 1155 at 11.
+- **C4:** 3003 for V15 ⊗ (5|·).
+
 ## Run it
 
 ```
 python verify_determinants.py      # Theorem 8, step by step: about a minute
+python verify_conductors.py        # the conductor corollary, against the functional equation: under a minute
 python edge_rule.py test28         # round 28: the determinants of V29 to V39, read blind: four minutes, four processes
 ```
 

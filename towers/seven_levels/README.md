@@ -1190,6 +1190,7 @@ python edge_rule.py test26             # round 26: 27 variables to 1999 and the 
 python edge_rule.py verify27           # round 27's forced checks: the Hodge types, the infinite place at every k, the symbol, the p^3 counter, seconds
 python edge_rule.py test27             # round 27: 81 variables at 83..1999 and the field of p^3 elements to 151, four minutes on four processes
 python verify_determinants.py          # Theorem 8 (DETERMINANTS.md), step by step, about a minute
+python verify_conductors.py            # its conductor corollary, against the L-function's functional equation, under a minute
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 
