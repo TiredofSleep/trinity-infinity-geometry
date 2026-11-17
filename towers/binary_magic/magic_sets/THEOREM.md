@@ -1,5 +1,9 @@
 # Graph stars: genuine n-qubit magic sets, and critical ones for every odd n
 
+**Machine-checked part (2026-11-17):** that the C5 set is a magic set (commuting contexts, their signs, and no
+noncontextual assignment) is proved in Lean 4 with no Mathlib, in [`lean/C5MagicSet.lean`](lean/C5MagicSet.lean),
+which uses only Lean's standard axioms. Genuineness and the minimum are not formalized.
+
 **Status:** proved here (short, self-contained proofs below). It is independently checked by computer for
 n = 3–13 (`verify_star.py`, `critical_check.py`) and on 300 random graphs (`graph_star.py`). An **independent
 referee**, writing its own code with no access to mine, confirmed Theorem A and the odd-cycle records by

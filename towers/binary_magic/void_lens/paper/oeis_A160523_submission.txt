@@ -34,6 +34,13 @@ Reason for edit (suggested text):
   n <= 101.
 
 Notes for the submitter:
+  - Rechecked 2026-11-16 (check_oeis_program.py): the program matches OEIS's data for n = 1..20 and exact
+    determinants for odd n = 3..31; the example a(7) is right.
+  - BEFORE SUBMITTING, read the LAA papers on regular magic squares of odd order (magic(n) is regular for odd n):
+    Chan, Mainkar, Narayan and Webster, LAA 457 (2014) 293-302, doi:10.1016/j.laa.2014.05.032; Liu, Gao and Zhao,
+    LAA 459 (2014) 1-12, doi:10.1016/j.laa.2014.06.046; Lee, Love, Narayan, Wascher and Webster, LAA 437 (2012)
+    1346-1355; Loly, Cameron, Trump and Schindel, LAA 430 (2009) 2659-2680. LAA's open archive makes them free to
+    read in a browser. If any of them already has the formula, the %F line should credit it, not claim it.
   - Leave the %H line out until the arXiv note has a link; it can be added in a second edit.
   - The program returns 0 for even n >= 4, matching the existing Maple and Mathematica programs and the b-file.
     Doubly even n is proved singular (rank 3); for singly even n it is observed (rank n/2 + 2) but not proved here.

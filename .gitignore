@@ -37,3 +37,6 @@ dist/
 
 # Run logs: verification scripts write here; the committed *.log files are the reference copies
 runs/
+
+# Drafts of outward messages, kept local until the author sends them
+submissions/

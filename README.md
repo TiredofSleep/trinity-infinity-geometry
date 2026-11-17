@@ -15,8 +15,11 @@ reviewed it yet.
 ## Results
 
 Eight results. Each has a proof or an exhaustive computation and a script that re-checks it, and most were checked
-twice, by independent code. Every check so far has been made by an AI or a script: none of these results has yet
-passed a human expert or a proof checker. [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md) records who has reviewed each one.
+twice, by independent code. Every check so far has been made by an AI or a script, with one exception: the Lean 4
+kernel accepts a formal proof that the 16-observable set below is a magic set
+([`C5MagicSet.lean`](towers/binary_magic/magic_sets/lean/C5MagicSet.lean)); its genuineness and minimality are
+not formalized. No result has yet passed a human expert. [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md) records who has
+reviewed each one.
 
 - **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables,
   against a published record of 26 ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
@@ -236,6 +239,7 @@ python seven_levels/verify_seven_levels.py   # the sevenths on seven quantum lev
 cd binary_magic
 python run_all.py          # the cube's corners in binary: the 880 magic squares (pip install sympy scipy)
 cd magic_sets && python run_all.py && cd ..   # graph-star magic sets
+lean magic_sets/lean/C5MagicSet.lean          # the C5 set is a magic set, in Lean 4 (install Lean with elan)
 cd ../planes_and_mirrors && python run_all.py # octonions, mirrors, why 16 breaks
 cd ../kernel_ledger && python run_all.py       # forced vs accidental zeros (pip install networkx)
 cd ../laws_of_a_table                          # the laws a table obeys, counted with the ETP's 4,694

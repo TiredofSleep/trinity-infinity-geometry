@@ -16,8 +16,9 @@ and its checks live.
 - **measured**: a statistic on fresh samples.
 
 **Reviewed by** (the last column of every table): who outside the loop that produced a result has checked it.
-Every checker so far has been an AI or a script, so today every cell reads "no one outside the loop". It changes
-when a named expert replies, an OEIS editor accepts an edit, or a proof checker accepts a formal proof.
+Every checker so far has been an AI or a script, so almost every cell reads "no one outside the loop". The one
+exception so far: the Lean 4 kernel accepts a formal proof that the C5 graph star is a magic set (2026-11-17). A
+cell changes when a named expert replies, an OEIS editor accepts an edit, or a proof checker accepts a formal proof.
 
 ---
 
@@ -25,7 +26,7 @@ when a named expert replies, an OEIS editor accepts an edit, or a proof checker 
 
 | Result | Field | Strength | Where | Reviewed by |
 |---|---|---|---|---|
-| **Small genuine magic sets for every odd number of qubits.** A "graph star" built on an odd cycle is a critical, genuine n-qubit magic set with 3n + 1 observables. That gives 16 observables at five qubits, where the published record is 26, and the first known sets for odd n ≥ 7. This answers part of the open problem posed by Trandafir, Lisoněk and Cabello (*PRL* 2022) | quantum foundations | proved; three independent implementations | [`towers/binary_magic/magic_sets/THEOREM.md`](towers/binary_magic/magic_sets/THEOREM.md) | no one outside the loop |
+| **Small genuine magic sets for every odd number of qubits.** A "graph star" built on an odd cycle is a critical, genuine n-qubit magic set with 3n + 1 observables. That gives 16 observables at five qubits, where the published record is 26, and the first known sets for odd n ≥ 7. This answers part of the open problem posed by Trandafir, Lisoněk and Cabello (*PRL* 2022) | quantum foundations | proved; three independent implementations | [`towers/binary_magic/magic_sets/THEOREM.md`](towers/binary_magic/magic_sets/THEOREM.md) | the Lean 4 kernel, for one part: the C5 set is a magic set ([`lean/C5MagicSet.lean`](towers/binary_magic/magic_sets/lean/C5MagicSet.lean)). Genuineness and the minimum: no one outside the loop |
 | **16 is the exact minimum at five qubits** for genuine sets that hide no smaller contradiction among their contexts. Four lemmas reduce the search to three cases, and all three are empty | quantum foundations | computer-assisted | [`…/magic_sets/LOWER_BOUND.md`](towers/binary_magic/magic_sets/LOWER_BOUND.md) | no one outside the loop |
 | **A closed form for the determinant of MATLAB's odd magic squares,** (−1)^((n−1)/2) · n^(n−1) · (n²+1)/2 · ∏ (n^\|O\| − (−1)^\|O\|), over the doubling orbits O mod n. So these squares are never singular, and n^(n−1) divides the determinant, which Robert Israel had observed on OEIS A160523. Not found in what we could read: four papers on regular magic squares of odd order are unread (`NOVELTY.md`). Written up as a short note, with proposed OEIS lines ([`void_lens/paper/`](towers/binary_magic/void_lens/paper/README.md)) | linear algebra · number theory | proved; exact for every odd n to 101, checked twice | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) | no one outside the loop |
 | **Every pandiagonal 5×5 magic square is invertible** (all 28,800). It follows from a prime-order theorem: a square built from two cyclic Latin squares of prime order is never singular, whatever relabelling its digits get. The prime matters, since singular ones exist at order 9 | combinatorics · algebraic number theory | proved; exhaustive at order 5 (3,686,400 matrices) | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) | no one outside the loop |
