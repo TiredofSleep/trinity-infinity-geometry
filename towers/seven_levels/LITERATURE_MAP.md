@@ -159,6 +159,12 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        Wigner distributions.
      - Howard and Vala (2012): the qudit π/8 gates. Campbell, Anwar and Browne (2012): their distillation in every
        prime dimension.
+     - Zhu, Mao and Yi (arXiv:2410.13575, 2024; found 2026-11-17, during round 29) study the third moments of qudit
+       Clifford orbits. When p ≡ 1 (mod 3) they distinguish three types of T gates and magic states by cubic
+       characters, use cubic Gauss and Jacobi sums, and cite Kummer's problem. Round 29's E5, the third Wigner moment
+       of each class, 2p² + 2p·Re(χ(3t)G(χ)²), is in that spirit; whether it is in their paper was not checked.
+     - Feng and Luo also show that for the L1 norm the T gate is optimal among all diagonal gates in every prime
+       dimension; for Wigner negativity they leave it open beyond 3.
    - **Not found in what we could read.**
      - The bridge stated for every prime p.
      - The T state's total negativity (8/(3π))√p. It sits above the Haar-random √(2/π)·√p, so cubic-phase magic
@@ -170,6 +176,13 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      useful. The next step is a question to an expert (Campbell, Howard or Jennings). The author lifted the grounding
      gate on 2026-11-17, and round 29 of [`PREREG.md`](PREREG.md) measures it: the T state against random states, and
      the ladder of higher levels.
+   - **Round 29's answer** (2026-11-17, five of six held).
+     - The T state's S/√p averages 0.84890 from 1000 to 3000, against 8/(3π) = 0.84883. Every class beats the exact
+       Haar mean at every prime from 31 to 5000.
+     - The higher levels do not climb. Degree-5 and degree-6 phase states sit at USp(4)'s 0.7905, below random, and
+       degrees 7 and 8 at USp(6)'s 0.7985.
+     - At 5 and 7 the T state is the most negative of all phase states with p-th-root-of-unity phases (exhaustive).
+       That partly answers Feng and Luo's open question for the hierarchy's own gates.
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 

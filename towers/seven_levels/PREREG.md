@@ -2679,3 +2679,59 @@ corrections of order 1/p. Q2b and Q5 are on thinner ground.
   T gate's level makes states more negative than random, and the next odd level makes them less.
 
 Run: `python one_wheel.py test` (minutes; four processes at below-normal priority).
+
+---
+
+## Round 29 scores (added after the test, 2026-11-17)
+
+Run by [`one_wheel.py`](one_wheel.py) `test`, registered at fb9b5c0 before the test, in 2.5 minutes. Output:
+[`one_wheel_test.log`](one_wheel_test.log); the reads made after it are in [`one_wheel_reads.log`](one_wheel_reads.log).
+
+**Five of six held.** The T state's law, its lead over random states, and the ladder below it all held. The guess that
+the T state is not the best phase state at 7 died.
+
+| | outcome | evidence |
+|---|---|---|
+| forced | held | E4 at every prime to 101, and E5 at every prime ≡ 1 (mod 3) to 1000, in every class |
+| Q1 | held | mean S/√p = 0.84890 over the 516 T states at the primes from 1000 to 3000, against 8/(3π) = 0.84883 |
+| Q2a | held | every class is above the exact Haar mean at every prime from 500 to 5000 |
+| Q2b | held; its reason did not | every class is above it at every prime from 31 to 500 too (at 31, for one: 0.8305√p against 0.8043√p). But the deviations do not shrink like 1/p, as the reason said (the reads below) |
+| Q3 | held | means 0.79067 (x⁵), 0.78989 (x⁶), 0.79061 (random quintic) and 0.79067 (random sextic), against κ₂ = 0.79050. Every family is below the Haar mean at each of the 114 primes (its largest value is 0.79227, the Haar mean's smallest 0.79802) |
+| Q4 | held | means 0.79853 (x⁷), 0.79785 (x⁸), 0.79857 (random septic) and 0.79857 (random octic), against κ₃ = 0.79849 |
+| Q5 | **died** | at 7 the most negative of all 2401 phase classes is a T state, S = 2.450304 (t = 1). At 5 it is too, among all 25 |
+
+**Read after the test** (not scored).
+- **What keeps the T state from settling.**
+  - One class (when p ≡ 2 mod 3), and the mean of the three classes (when p ≡ 1), deviate from 8/(3π) by about
+    0.0005 rms from 1000 to 5000. They shrink roughly like p^(−0.4).
+  - The spread between the three classes is ten times larger and shrinks like p^(−1/2): 0.027 rms from 31 to 200,
+    0.0039 from 3000 to 5000.
+- **The Gauss sum's third moment does not pick the most negative class.** The class with the largest third moment is
+  the most negative at 24 of the 77 primes ≡ 1 (mod 3) up to 1000, which is chance. The negativity follows the even
+  moments, and the fourth is the same for every class.
+- **The small primes.**
+  - At 11 a degree-10 phase beats the T state in a sample of 10⁶ (S = 2.877321 against 2.827479).
+  - At 13 no sampled phase does. The best T class, 3.204742, is 0.889 of √13.
+  - Rounds 8 to 14 quote the negativity's share of its ceiling, (S − 1)/(√p − 1). In that measure the T state at 7
+    has 0.881, below round 8's search bests over all states (0.89 to 0.90).
+- **Prior art found during the run.**
+  - Zhu, Mao and Yi (arXiv:2410.13575, 2024), on third moments of qudit Clifford orbits, already treat the three
+    classes: they distinguish three types of T gates and magic states when p ≡ 1 (mod 3) by cubic characters. They
+    use cubic Gauss and Jacobi sums, and cite Kummer's problem.
+  - E5's formula is in that spirit. Whether it appears there was not checked: their sections on magic orbits could
+    not be read here.
+  - Feng and Luo (*PRA* 2026): for the L1 norm the T gate is optimal among all diagonal gates in every prime
+    dimension. For Wigner negativity this was open beyond 3, and at 5, 500 diagonal gates with general phases beat it.
+
+**Yield.**
+- **New, as far as we checked.**
+  - The T state's negativity, (8/(3π))√p, measured against p, and its lead over random states at every prime from 31
+    to 5000.
+  - The ladder above it. The fifth level of the Clifford hierarchy falls below random states (USp(4)'s 0.7905), and
+    from the seventh level on the values hug the random one.
+  - So for Wigner negativity the T gate is the only level of diagonal gate on one qudit that beats random states.
+- **Exhaustive at 5 and 7.** Among phases that are p-th roots of unity, the hierarchy's own diagonal gates, the T state
+  is the most negative. With general phases at 5 it is not (Feng and Luo).
+- **Useful.** In Pashayan, Wallman and Bartlett's quasi-probability simulation, the number of samples grows with the
+  square of the product of the magic states' S [NAMED]. So each T state multiplies the cost by about (8/(3π))²·p ≈ 0.72p.
+  A quintic-phase state multiplies it by less than a random state does.

@@ -362,6 +362,13 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From round 29, one wheel (2026-11-17; `towers/seven_levels/one_wheel_test.log`):**
+  - **"At 7 the T state is not the most negative phase state"** (Q5, Claude's reading).
+    - Over all 2401 phase classes the maximum is a T state, S = 2.450304; at 5 it is too, among all 25.
+    - The guess leaned on Feng and Luo's result at 5, which uses general phases, not p-th roots of unity.
+  - Not a registered prediction, but a reason the run falsified: Q2b's "the T state's deviation from 8/(3π) is
+    O(1/p)". Q2b held, but the deviation shrinks like p^(−0.4) within one class and like p^(−1/2) between the three
+    classes (`one_wheel_reads.log`).
 - **From the literature check of 2026-11-17 (`towers/seven_levels/LITERATURE_MAP.md`, item 7):** a novelty claim
   died.
   - **"No count of the cubics {Σx = Σx³ = 0}, and no identification of their pieces, is in the literature."**

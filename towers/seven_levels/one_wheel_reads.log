@@ -1,0 +1,10 @@
+one_wheel.py reads -- after round 29's test, not scored: the T state's deviation from 8/(3 pi), split by p mod 3
+
+  rms over each range of: (a) S/sqrt(p) - 8/(3 pi) at p = 2 mod 3 (one class); (b) the three classes' mean minus 8/(3 pi) at p = 1 mod 3; (c) the spread between the three classes
+        31-  200:  (a) 0.00348   (b) 0.00372   (c) 0.02656
+       200- 1000:  (a) 0.00130   (b) 0.00144   (c) 0.01133
+      1000- 3000:  (a) 0.00058   (b) 0.00067   (c) 0.00567
+      3000- 5001:  (a) 0.00049   (b) 0.00047   (c) 0.00390
+  log-log slopes from 500 to 5000: (a) -0.35   (b) -0.44   (c) -0.50
+  (a) times p, from 1000 to 5000: mean 0.113, rms 1.541
+

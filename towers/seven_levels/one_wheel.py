@@ -20,7 +20,9 @@ and the measure is the sum of sizes S = sum |W| (round 8 on; the mana is ln S, a
       2p^3 - p^2 for every class.
 
   python one_wheel.py calibrate   # E1-E5 at the primes up to 29, before the registration  -> one_wheel_calibrate.log
+                                  #   (with --runs, a rerun, -> runs/one_wheel_calibrate.log)
   python one_wheel.py test        # E4, E5 over the full ranges, and Q1-Q5 (round 29)     -> one_wheel_test.log
+  python one_wheel.py reads       # after the test, not scored: the T state's deviation    -> one_wheel_reads.log
 
 numpy + sympy (mpmath) + edge_rule.py.  Four worker processes at below-normal priority for the ladder.  ASCII output.
 """
@@ -164,7 +166,11 @@ def haar_usp(n, rng):
 # ------------------------------------------------------------------ calibrate
 def calibrate():
     global LOG
-    LOG = open(os.path.join(HERE, "one_wheel_calibrate.log"), "w", encoding="utf-8")
+    if "--runs" in sys.argv:   # a rerun (verify_seven_levels.py) logs to runs/, leaving the registered log as it was
+        os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)
+        LOG = open(os.path.join(HERE, "runs", "one_wheel_calibrate.log"), "w", encoding="utf-8")
+    else:
+        LOG = open(os.path.join(HERE, "one_wheel_calibrate.log"), "w", encoding="utf-8")
     t0 = time.time()
     rng = np.random.default_rng(SEED)
     say("one_wheel.py calibrate -- the forced identities of round 29, at the primes up to 29, before the registration")
@@ -447,5 +453,40 @@ def test():
     LOG.close()
 
 
+def reads():
+    """after the test, not scored: where the T state's slow approach to 8/(3 pi) comes from"""
+    global LOG
+    LOG = open(os.path.join(HERE, "one_wheel_reads.log"), "w", encoding="utf-8")
+    say("one_wheel.py reads -- after round 29's test, not scored: the T state's deviation from 8/(3 pi), split by p mod 3")
+    say()
+    P = [int(p) for p in sympy.primerange(31, 5001)]
+    one, mean3, spread3 = {}, {}, {}
+    for p in P:
+        v = [T_size(t, p) / math.sqrt(p) for t in classes(p)]
+        if p % 3 == 2:
+            one[p] = v[0] - KAPPA[1]
+        else:
+            mean3[p] = float(np.mean(v)) - KAPPA[1]
+            spread3[p] = max(v) - min(v)
+
+    def fit(d, lo=500):
+        ps = [p for p in d if p >= lo]
+        return np.polyfit(np.log(ps), np.log([max(abs(d[p]), 1e-12) for p in ps]), 1)[0]
+
+    def rms(d, lo, hi):
+        v = [d[p] for p in d if lo <= p < hi]
+        return math.sqrt(float(np.mean(np.square(v))))
+
+    say("  rms over each range of: (a) S/sqrt(p) - 8/(3 pi) at p = 2 mod 3 (one class); (b) the three classes' mean minus "
+        "8/(3 pi) at p = 1 mod 3; (c) the spread between the three classes")
+    for lo, hi in ((31, 200), (200, 1000), (1000, 3000), (3000, 5001)):
+        say(f"     {lo:5d}-{hi:5d}:  (a) {rms(one, lo, hi):.5f}   (b) {rms(mean3, lo, hi):.5f}   (c) {rms(spread3, lo, hi):.5f}")
+    say(f"  log-log slopes from 500 to 5000: (a) {fit(one):.2f}   (b) {fit(mean3):.2f}   (c) {fit(spread3):.2f}")
+    a1 = [one[p] * p for p in one if p >= 1000]
+    say(f"  (a) times p, from 1000 to 5000: mean {np.mean(a1):.3f}, rms {math.sqrt(np.mean(np.square(a1))):.3f}")
+    say()
+    LOG.close()
+
+
 if __name__ == "__main__":
-    {"calibrate": calibrate, "test": test}[sys.argv[1] if len(sys.argv) > 1 else "calibrate"]()
+    {"calibrate": calibrate, "test": test, "reads": reads}[sys.argv[1] if len(sys.argv) > 1 else "calibrate"]()

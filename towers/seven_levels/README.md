@@ -976,7 +976,51 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
   - Credited: Picard–Lefschetz (SGA 7); Chuang's thesis, which already holds the local picture at primes from 5 up
     in another model; Yun's (p/d!!) for the Kloosterman moments.
 
-## 22. Our space, and what it cannot hold [FORCED; FENCE]
+## 22. Round 29: one wheel, the qudit T state and the ladder [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+
+> *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
+> — the author, 17 November 2026
+
+Round 29 put one qudit's magic states against random states. Six predictions were registered with the script,
+[`one_wheel.py`](one_wheel.py), before the test ([`PREREG.md`](PREREG.md)), and five held.
+
+- **The T state's law** [FORCED from NAMED; measured].
+  - The T state's Wigner values are Birch sums (round 13, with one wheel). So its sum of sizes is
+    S = (1/p)Σ_a|S_t(a)|, and by the semicircle law S/√p tends to 8/(3π) = 0.8488.
+  - Measured: a mean of 0.84890 over every class at every prime from 1000 to 3000.
+- **It beats random states at every prime from 31 to 5000** [measured].
+  - The exact Haar mean is p·E|2X − 1| with X ~ Beta((p + 1)/2, (p − 1)/2). It tends to √(2/π)·√p = 0.7979√p, which is
+    Wilson and White's mana.
+  - Every class of T state is above it at all 659 primes.
+- **The ladder is not monotone** [FORCED from NAMED; measured].
+  - A degree-d phase state's rows are sums of odd polynomials of degree 2m + 1 (d = 2m + 1 or 2m + 2). By Katz's
+    monodromy and Deligne's equidistribution, they behave like traces of random USp(2m) matrices.
+  - E|tr| is 0.8488, 0.7905, 0.7985, 0.7978, …, tending to 0.7979.
+  - Measured at the 114 primes from 700 to 1500:
+    - x⁵, x⁶ and random quintics and sextics sit at 0.7899 to 0.7907, below random states at every one of the primes;
+    - x⁷, x⁸ and random septics and octics sit at 0.7979 to 0.7986.
+  - [READING] So among the diagonal gates of the Clifford hierarchy on one qudit, only the T gate's level beats random
+    states for Wigner negativity, and the fifth level falls below them.
+- **At 5 and 7 the T state is the best phase state** [measured, exhaustive].
+  - Over all 25 phase classes at 5, and all 2401 at 7, the maximum is a T state: S = 1 + 2/√5 at 5, and 2.450304 at 7
+    (t = 1). The registered guess Q5 said otherwise, and died.
+  - At 11 a degree-10 phase beats T in a sample of 10⁶ (2.877 against 2.827). At 13 no sampled phase does (T has
+    3.2047).
+  - Feng and Luo found 500 diagonal gates with general phases that beat T at 5 [NAMED]. Among phases that are p-th
+    roots of unity, the hierarchy's own gates, T is the maximum at 5 and 7.
+- **The moments are the cubics' counts** [FORCED].
+  - The T state's n-th Wigner moment is p^(1−2n)Σ_a S_t(a)^n, which is given by Livné's counts.
+  - Chênevert's form 35.3.c.b enters the seventh: (14 + 6(5|p))/p⁹ + a_p/p¹⁰ when p ≡ 2 (mod 3).
+- **When p ≡ 1 (mod 3), the cubic Gauss sum splits the three T states** [FORCED; derived; checked to 1000].
+  - Σ_a S_t(a)³ = 2p² + 2p·Re(χ(3t)G(χ)²), while the fourth moment, 2p³ − p², is the same for all three.
+  - The three classes of T gates, and the role of the cubic Gauss sums and Kummer's problem, are already in Zhu, Mao
+    and Yi (2024), for third moments of Clifford orbits [NAMED]. Whether this formula is theirs was not checked.
+  - [measured] The class split is what keeps the T state from settling fast. A single class (p ≡ 2 mod 3), and the
+    three classes' mean, deviate by about 0.0005 from 1000 to 5000. The spread between the classes shrinks like
+    p^(−1/2) (0.0039 rms from 3000 to 5000).
+  - [measured] The class with the largest third moment is the most negative at 24 of 77 primes, which is chance.
+
+## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
 - In our three-dimensional space the two faces cannot be one rigid object, because no symmetry of the octahedron
   has order 7.
@@ -993,7 +1037,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
   reading would go to [`../../lab/FENCED_READINGS.md`](../../lab/FENCED_READINGS.md), with the test that would
   decide it.
 
-## 23. Standing
+## 24. Standing
 
 - **Known, and credited:**
   - the Weyl operators and the Clifford group;
@@ -1048,6 +1092,9 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
   - round 11: the magic of every oscillator state up to 401, exact: it follows the Sato–Tate law; and the theorem that,
     averaged over the non-split torus's states, the fourth-moment ratio is exactly 2p/(p + 1) and the third moment
     exactly 2/(p²(p + 1)), so the skew tapers as −1/√p ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)).
+  - round 29: one qudit's T state beats random states at every prime from 31 to 5000, with S/√p → 8/(3π); the
+    ladder above it is not monotone (the fifth level falls below random, as USp(4)'s trace predicts); and at 5 and
+    7, exhaustively, the T state is the most negative phase state (§22).
 
   Web searches (2026-11-07 to 09), Erew and Goldstein's list and the OpenAI math release cover three and five
   levels, and nothing on seven, eleven or thirteen. Web searches on 2026-11-10 found no maximum of the total Wigner
@@ -1092,6 +1139,9 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
   field of p³ elements, keeps 5 out at its square. The rule is Yun's double factorial with the cube's 3 taken out.
   Theorem 8 then proves the rule, with its corollary on complex conjugation, and round 28 held five of five: the
   first determinants past 27 are the theorem's, at every prime.
+  Round 29 held five of six. The T state's law and its lead over random states held, and so did the ladder, with the
+  fifth level below random. The guess that the T state is not the best phase state at 7 died: at 5 and 7 it is the
+  best.
 - **Open:**
   - a proof at seven for states with no symmetry of any kind: about 10^10 classes of sign choices remain;
   - at eleven, states whose only symmetries have order 2 or 3;
@@ -1191,6 +1241,9 @@ python edge_rule.py verify27           # round 27's forced checks: the Hodge typ
 python edge_rule.py test27             # round 27: 81 variables at 83..1999 and the field of p^3 elements to 151, four minutes on four processes
 python verify_determinants.py          # Theorem 8 (DETERMINANTS.md), step by step, about a minute
 python verify_conductors.py            # its conductor corollary, against the L-function's functional equation, under a minute
+python one_wheel.py calibrate          # round 29's forced identities, at the primes up to 29, under a minute
+python one_wheel.py test               # round 29: the T state to 5000, the ladder from 700 to 1500, three minutes on four processes
+python one_wheel.py reads              # after round 29's test: where the T state's slow approach comes from, a minute
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

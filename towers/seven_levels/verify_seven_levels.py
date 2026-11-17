@@ -1856,6 +1856,23 @@ for p_ in (41, 43):
 forced("the cubics to 31 variables recounted at 41 and 43 over the fields of p, p^2 and p^3 elements: V29's determinant "
        "is (92424189|p) and V31's is (-2865149859|p), as Theorem 8 gives", ok28)
 
+# ------------------------------------------------------------------ round 29: one wheel (PREREG.md)
+print()
+print("Round 29, one wheel:")
+_r29c = _sp16.run([sys.executable, os.path.join(_HERE18, "one_wheel.py"), "calibrate", "--runs"], capture_output=True,
+                  text=True)
+forced("round 29's forced identities (one_wheel.py calibrate: the T state's Birch sums, the quartic's cubic rows, the "
+       "ladder's constants on USp(2m) and the exact Haar mean, the moments as counts, the cubic Gauss sum's third moment)",
+       _r29c.returncode == 0 and "ALL PASS" in _r29c.stdout)
+RECORDED29 = {"F1": "PASS", "F2": "PASS", "Q1": "PASS", "Q2a": "PASS", "Q2b": "PASS", "Q3": "PASS", "Q4": "PASS",
+              "Q5": "FAIL"}
+_got29 = {}
+for _line29 in open(os.path.join(_HERE18, "one_wheel_test.log"), encoding="utf-8"):
+    _w29 = _line29.split()
+    if len(_w29) > 1 and _w29[0] in ("[PASS]", "[FAIL]") and _w29[1] in RECORDED29:
+        _got29[_w29[1]] = _w29[0][1:-1]
+forced("round 29's test log scores Q1 to Q4 held and Q5 died, with F1 and F2 passing, as recorded", _got29 == RECORDED29)
+
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
       + ", ".join(f"{k} {'held' if v else 'died'}" for k, v in RESULTS.items()))
