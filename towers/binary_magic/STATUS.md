@@ -12,11 +12,11 @@ what stands, at what strength, and what is left.
 | **16 is the exact minimum** for genuine *context-minimal* 5-qubit magic sets | computer-assisted. The last case rests on one implementation, calibrated against two others on the smaller cases | `magic_sets/LOWER_BOUND.md` |
 | No genuine 4-qubit set with at most 6 contexts of 3–5 observables | computer-assisted | `magic_sets/LOWER_BOUND.md` |
 | The published sets are not context-minimal: 16 of 18 must hide a smaller clash. In MS5-26, all 3,051 minimal hidden clashes fit on at most 4 qubits | proved from the published tables; exhaustive on MS5-26's printed data | `magic_sets/` |
-| **Closed-form determinant of MATLAB's odd magic(n)**, so the squares are never singular, and n^(n−1) divides the determinant (OEIS A160523) | proved; exact to n = 101; probably new | `void_lens/` |
-| **Prime-order cyclic-Latin squares are never singular, so all 28,800 pandiagonal 5×5 magic squares are invertible** | proved; exhaustive at p = 5; probably new, pending two unread sources | `void_lens/` |
+| **Closed-form determinant of MATLAB's odd magic(n)**, so the squares are never singular, and n^(n−1) divides the determinant (OEIS A160523) | proved; exact to n = 101; not found in what we could read (four papers on regular odd-order squares unread) | `void_lens/` |
+| **Prime-order cyclic-Latin squares are never singular, so all 28,800 pandiagonal 5×5 magic squares are invertible** | proved; exhaustive at p = 5; not found in what we could read (Rosser–Walker and the same four papers unread) | `void_lens/` |
 | The void index: nullity ≥ \|(f_P + f_Q)/2 − 1\|. At order 4 it is exact, and Dudeney's two groups of 8 have index 0 | proved; small; Staab et al.'s Theorems 12–13 are its special cases | `void_lens/`; atlas v6 |
-| The fold theorem; degree 3 ⟺ invertible; the 432 affine squares are 9 of Fitting's 11 quadruples; the magic Mermin square is unique | proved or enumerated; probably new, pending Conway–Norton–Ryba | `README.md`, `NOVELTY.md` |
-| Pairwise bit-plane balance plus the 10 line sums force Nimm0 and a fold | computer-assisted; probably new | `code_lens/` |
+| The fold theorem; degree 3 ⟺ invertible; the 432 affine squares are 9 of Fitting's 11 quadruples; the magic Mermin square is unique | proved or enumerated; not found in what we could read (Conway–Norton–Ryba unread) | `README.md`, `NOVELTY.md` |
+| Pairwise bit-plane balance plus the 10 line sums force Nimm0 and a fold | computer-assisted; not found in what we could read | `code_lens/` |
 | One kernel ledger across five domains | a synthesis of known theorems, plus measured residue shares at order 5 (71% concentric, 5% eccentric, 25% weighted) | `../kernel_ledger/` |
 
 The author's synthesis essay, *A Ledger of Nothing*, is in `../kernel_ledger/A_LEDGER_OF_NOTHING.md`. It was

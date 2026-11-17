@@ -139,7 +139,7 @@ It goes toward teaching:
 - [*The Shape of Understanding*](https://github.com/TiredofSleep/shape-of-understanding) — the base,
   and its companion unit on flips, fixed points and the four kinds of paradox;
 - [the flagship](https://github.com/TiredofSleep/trinity-infinity-geometry) — the base, the towers,
-  and the coin, machine-checked;
+  and the coin, every computation re-checked by script;
 - a small study, already designed, to test whether any of it helps anyone learn.
 
 If you teach, or if you do mathematics, and you would read a chapter or try a lesson with a

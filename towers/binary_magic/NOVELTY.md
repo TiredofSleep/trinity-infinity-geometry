@@ -46,7 +46,7 @@ Fitting subgroup and Fitting's lemma. The 1933 paper again credits most of its i
 | No quantum-only contextuality from odd-prime Pauli operators | Qassim & Wallman, arXiv:1911.11171; arXiv:2209.14018 |
 | 1,105,920 bent-diagonal Franklin squares, 368,640 of them pandiagonal | Schindel, Rempel & Loly 2006 |
 
-## What survives as probably new
+## What survives: not found in what we could read
 
 All provisional until Conway–Norton–Ryba is read; most are small.
 - **The fold theorem.** Every square has a left–right or top–bottom mirror with A(mirror x) = A(x) XOR b.
@@ -148,13 +148,32 @@ the last section of `void_lens/PREREG.md`.
 
 | claim | status | prior work |
 |---|---|---|
-| Closed-form det of MATLAB's odd magic(n); never singular; n^(n−1) divides it | **probably new** (exact to n = 101) | OEIS A160523 (Bjerkeng 2009; Israel 2015: n^(n−2) proved, n^(n−1) observed, "0 iff n even" stated). Manjunath & Ambikasaran, arXiv:2205.15563, Theorem 1: eigenvalue bounds that imply nonsingularity, unstated |
+| Closed-form det of MATLAB's odd magic(n); never singular; n^(n−1) divides it | **not found in what we could read** (exact to n = 101). Odd magic(n) is regular (associative), and four papers on regular squares of odd order are unread: Lee et al. 2012, Chan et al. 2014, Liu et al. 2014, Loly et al. 2009 | OEIS A160523 (Bjerkeng 2009; Israel 2015: n^(n−2) proved, n^(n−1) observed, "0 iff n even" stated). Manjunath & Ambikasaran, arXiv:2205.15563, Theorem 1: eigenvalue bounds that imply nonsingularity, unstated |
 | Doubly-even magic(n) has rank 3 | **known** | Manjunath & Ambikasaran 2022, Theorem 9, with the eigenpairs. Moler's 2012 question "I don't see how today" was answered there |
-| Prime order: the two-Latin-square family is nonsingular for any digit relabelings; so are all 28,800 pandiagonal 5×5 squares | **probably new**, pending Rosser & Walker (1938–39) and Loly et al. (2009), not read | Lee, Love, Narayan, Wascher & Webster, LAA 437 (2012): nonsingular regular squares of prime and prime-power order, built another way. The method is Chebotarev's (DFT minors; Tao 2005) |
-| Void index: nullity ≥ \|(f_P + f_Q)/2 − 1\|; at order 4, singular ⟺ index ≥ 1, and Dudeney's two groups of 8 are the index-0 squares | **small, probably new** | Staab et al., Theorems 12–13, are its cases f = (0,0) and f = (0, 2m) |
+| Prime order: the two-Latin-square family is nonsingular for any digit relabelings; so are all 28,800 pandiagonal 5×5 squares | **not found in what we could read**; Rosser & Walker (1938–39) and the four papers above are unread. Jitjankarn & Rungratgasame (2022, read) construct nonsingular regular squares of every odd order, another family | Lee, Love, Narayan, Wascher & Webster, LAA 437 (2012): nonsingular regular squares of prime and prime-power order, built another way. The method is Chebotarev's (DFT minors; Tao 2005) |
+| Void index: nullity ≥ \|(f_P + f_Q)/2 − 1\|; at order 4, singular ⟺ index ≥ 1, and Dudeney's two groups of 8 are the index-0 squares | **small; not found in what we could read** | Staab et al., Theorems 12–13, are its cases f = (0,0) and f = (0, 2m) |
 | At order 5 some kernels have no void (5 of 19) | a proven limit | — |
 
 ## Still to read
+
+- **Four papers in *Linear Algebra and its Applications* on regular magic squares of odd order** (found
+  2026-11-16, while closing the holes an outside read named). MATLAB's odd magic(n) is regular, so all four bear on
+  the closed form and the family theorem. LAA's open archive should make them free to read; ScienceDirect
+  shows a CAPTCHA to automated readers, so the author has to open them.
+  - M. Lee, E. Love, S. K. Narayan, E. Wascher and J. D. Webster, "On nonsingular regular magic squares of odd
+    order", 437 (2012) 1346–1355, doi:10.1016/j.laa.2012.04.004. Known here only through secondary descriptions:
+    nonsingular regular squares of odd prime and prime-power order from a centroskew circulant matrix.
+  - C. Y. J. Chan, M. G. Mainkar, S. K. Narayan and J. D. Webster, "A construction of regular magic squares of odd
+    order", 457 (2014) 293–302, doi:10.1016/j.laa.2014.05.032. Keywords: eigenvalues, circulant matrices. It may
+    contain the determinant.
+  - L. Liu, Z. Gao and W. Zhao, "On an open problem concerning regular magic squares of odd order", 459 (2014)
+    1–12, doi:10.1016/j.laa.2014.06.046.
+  - P. Loly, I. Cameron, W. Trump and D. Schindel, "Magic square spectra", 430 (2009) 2659–2680,
+    doi:10.1016/j.laa.2008.10.032.
+- **Read:** P. Jitjankarn and T. Rungratgasame, "A generalization of nonsingular regular magic squares", *Mat.
+  Vesnik* 74 (2022) 272–279, doi:10.57016/MV-aqsi1967 (open access). It builds nonsingular sq-corner squares of
+  every order n ≥ 3, and so nonsingular regular squares of every odd order. It gives no closed form for
+  MATLAB's squares, and its reference list is where the three 2012–2014 papers were found.
 
 - **Conway, Norton & Ryba, "Frenicle's 880 Magic Squares".** In *The Mathematics of Various
   Entertaining Subjects*, vol. 2 (Princeton, 2017), pp. 71–82, DOI 10.1515/9781400889136-007.

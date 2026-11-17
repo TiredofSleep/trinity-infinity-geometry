@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trinity Infinity Geometry: magic states, Kloosterman sums and a new way to teach higher mathematics</title>
-<meta name="description" content="Open, machine-checked mathematics by Brayden Ross Sanders: the Wigner negativity (magic) of qudit states via Walsh spectra, Kloosterman sums and the Sato-Tate law; magic squares; quantum contextuality; and a new way to teach higher mathematics by classifying its paradoxes. Every prediction registered before it ran; every failure kept.">
+<meta name="description" content="Open mathematics by Brayden Ross Sanders, every computation re-checked by script: the Wigner negativity (magic) of qudit states via Walsh spectra, Kloosterman sums and the Sato-Tate law; magic squares; quantum contextuality; and a new way to teach higher mathematics by classifying its paradoxes. Every prediction registered before it ran; every failure kept.">
 <meta name="keywords" content="magic states, Wigner negativity, discrete Wigner function, qudits, Clifford hierarchy, third-level gates, Kloosterman sums, Sato-Tate law, Weil representation, oscillator states, quantum chaos, quantum cat map, Hecke eigenfunctions, free probability, modular forms, Kloosterman moments, trace functions, Walsh spectrum, bent functions, elliptic curves, Calabi-Yau threefolds, double octics, Clebsch cubic surface, modular symbols, finite fields, explicit formula, prime numbers, sieve of Eratosthenes, Mertens' theorem, Riemann zeta zeros, Frobenius angles, magic squares, quantum contextuality, Steiner triple systems, mathematics education, pre-registration, negative results, reproducible research, cubic fourfolds, Jacobi sums, Landen transformation">
 <meta name="author" content="Brayden Ross Sanders">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tiredofsleep.github.io/trinity-infinity-geometry/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Trinity Infinity Geometry">
-<meta property="og:description" content="Magic states, Kloosterman sums and the Sato-Tate law; magic squares and contextuality; a new way to teach higher mathematics by classifying its paradoxes. Machine-checked, pre-registered, failures kept.">
+<meta property="og:description" content="Magic states, Kloosterman sums and the Sato-Tate law; magic squares and contextuality; a new way to teach higher mathematics by classifying its paradoxes. Re-checked by script, registered before it ran, failures kept.">
 <meta property="og:url" content="https://tiredofsleep.github.io/trinity-infinity-geometry/">
 <meta property="og:image" content="https://tiredofsleep.github.io/trinity-infinity-geometry/share.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": ["SoftwareSourceCode", "Dataset"],
   "name": "Trinity Infinity Geometry",
-  "description": "Machine-checked mathematics: the Wigner negativity of algebraic qudit states (Walsh spectra, Kloosterman sums, the Sato-Tate law), magic squares, quantum contextuality, and a way to teach higher mathematics by classifying its paradoxes.",
+  "description": "Mathematics with every computation re-checked by script: the Wigner negativity of algebraic qudit states (Walsh spectra, Kloosterman sums, the Sato-Tate law), magic squares, quantum contextuality, and a way to teach higher mathematics by classifying its paradoxes.",
   "author": {"@type": "Person", "name": "Brayden Ross Sanders", "affiliation": {"@type": "Organization", "name": "7SiTe LLC"}},
   "codeRepository": "https://github.com/TiredofSleep/trinity-infinity-geometry",
   "url": "https://tiredofsleep.github.io/trinity-infinity-geometry/",
@@ -57,11 +57,18 @@ footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--rule
 <body>
 <main>
 <h1>Trinity Infinity Geometry</h1>
-<p class="lede">A new way to teach higher mathematics, by classifying its paradoxes rather than resolving them, and the research
-results it keeps producing. Every shape and every floor is a coin: two sides and an edge.</p>
-<blockquote>Theory of Nothing is the closest there will ever be to Theory of Everything. <br>— Brayden Sanders, March 2026</blockquote>
+<p class="lede"><strong>One result, in standard terms.</strong> For odd n, the determinant of the n × n magic square
+returned by MATLAB's <code>magic(n)</code> (de la Loubère's siamese square) is
+(−1)<sup>(n−1)/2</sup> · n<sup>n−1</sup> · (n² + 1)/2 · ∏<sub>O</sub> (n<sup>|O|</sup> − (−1)<sup>|O|</sup>), where O runs
+over the orbits of k ↦ 2k on the nonzero residues mod n. So magic(n) is never singular for odd n, and n<sup>n−1</sup>
+divides its determinant, which OEIS A160523 records as observed in 2015. The proof is a page of Fourier analysis, and a
+script checks the formula exactly for every odd n up to 101. It was not found in what we could read; four papers on
+regular magic squares of odd order are still unread. No one outside the loop that produced it has reviewed it yet.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/binary_magic/void_lens/paper/magic_det.tex">The note</a></p>
 
 <h2>Results</h2>
+<p>Each has a proof or an exhaustive computation and a script that re-checks it. Every check so far has
+been made by an AI or a script: none of these results has yet passed a human expert or a proof checker.</p>
 <ul class="results">
 <li><span class="tag">Quantum information · finite fields</span><strong>The magic of a cubic-phase qudit state is the L1 norm of a Walsh
 spectrum.</strong> So no magic state of a third-level diagonal gate reaches the Wigner-negativity ceiling. On three qudits of 3, 5 and
@@ -78,21 +85,22 @@ of Kloosterman's sixth moment. The fourth free cumulant is proved, and carries t
 fifth moments are exact too. One carries an elliptic curve of conductor 150. The other carries the weight-4 newform of
 level 10, through a double octic built on Clebsch's diagonal cubic surface.
 <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/TORUS_MOMENTS.md">The theorem</a></li>
-<li><span class="tag">Number theory · algebraic geometry</span><strong>The coin at 5 is in the fifth moment</strong>: its double
-octic is branched along the coin's solid face (the planes where one point sits at the centre) and its flat face
-(Clebsch's cubic, which holds the pentagon). The coin at 7 is in the cubic fourfold {Σx = Σx³ = 0} in seven variables,
-whose count carries Q(√−35) = Q(√5·√−7). Its exact count, and that of the nine-variable cubic, held blind. On its
-edge the coin shows the fixed set of its flip. Past the base, in eleven variables, √−11 enters: the cubic's new piece
-has complex multiplication by Q(√−1155), and −1155 = (−3)·5·(−7)·(−11). At 13 the piece does not split. It is a
-symmetric square whose determinant carries −15015 = (−3)·5·(−7)·(−11)·13. At 15 the field is Q(√−3003), which the
-author's "3 enters only at its square" predicted. At 3 itself the cubic's good model pinches exactly where the signs
-sum to a multiple of 9, and counted there each piece loses one dimension from 9 on. At 17 and 21 the pieces are
-symmetric squares again. At 27 neither 3, at its cube, nor 5, at its square, enters, read in the determinant at every
-prime. At 81, four coins of 3, 3 enters again. Complex conjugation decides that, as it decides every power of a prime
-&equiv; 3 (mod 4), and twenty-five's own determinant, counted over the field of p³ elements, keeps 5 out. The rule is
-now a theorem: every piece's determinant is the Jacobi symbol (p/A<sub>k</sub>), Yun's double factorial with the
-cube's 3 taken out, and its first five new determinants held blind.
-<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/COIN_AT_FIVE.md">The page</a></li>
+<li><span class="tag">Number theory · algebraic geometry</span><strong>The cubics {Σx = Σx³ = 0}: exact point counts,
+what their pieces are, and one rule for their determinants.</strong> <em>The statement:</em> for odd n the cubic's middle
+cohomology splits into pieces V<sub>k</sub>, the classical parts of the symmetric powers of the Airy sheaf. The piece at 7
+matches LMFDB's weight-3 newform 35.3.c.b, with complex multiplication by Q(√−35); the pieces at 11 and 15 have complex
+multiplication by Q(√−1155) and Q(√−3003); those at 13, 17 and 21 are twisted symmetric squares. Theorem 8: every
+V<sub>k</sub> has determinant (p/A<sub>k</sub>), A<sub>k</sub> being the product of the odd numbers up to k with each
+multiple of 3 divided by 3 once: Yun's shape for the Kloosterman moments, with the cube's 3 taken out. <em>The
+evidence:</em> exact counts at every prime to 601 in seven and nine variables, and predictions registered before each count
+that held blind; the identifications are measured, not proved; Theorem 8's proof is written out step by step, with each
+computable step checked by script, and no one outside the loop has reviewed it. <em>The reading, fenced:</em> the author
+reads the fifth moment's double octic, branched along five planes and Clebsch's cubic surface that meet in 15 lines, as
+the coin at 5's solid face, flat face and edge. Those lines are classical, and any two-component branch locus has two
+faces and an edge, so that dictionary is a reading. The author's "3 enters only at its square" is exact: it is where
+the good model at 3 pinches, and with Theorem 8 every prime's coins are decided.
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/COIN_AT_FIVE.md">The page</a>,
+<a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/seven_levels/DETERMINANTS.md">the proof</a></li>
 <li><span class="tag">Quantum contextuality</span><strong>Small genuine magic sets for every odd number of qubits</strong>: 16
 observables at five qubits against a published 26, and 16 is the minimum.
 <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/towers/binary_magic/magic_sets/THEOREM.md">The theorem</a></li>
@@ -100,6 +108,11 @@ observables at five qubits against a published 26, and 16 is the minimum.
 pandiagonal 5×5 magic square is invertible.
 <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/tree/main/towers/binary_magic/void_lens">The void lens</a></li>
 </ul>
+
+<h2>The idea</h2>
+<p>A new way to teach higher mathematics, by classifying its paradoxes rather than resolving them, and the research
+results it keeps producing. Every shape and every floor is a coin: two sides and an edge.</p>
+<blockquote>Theory of Nothing is the closest there will ever be to Theory of Everything. <br>— Brayden Sanders, March 2026</blockquote>
 
 <h2>Find it by field</h2>
 <div class="table-wrap"><table>
@@ -120,7 +133,8 @@ pandiagonal 5×5 magic square is invertible.
 <p>Each direction starts from the author's intuition, made exact. Predictions are registered in a public commit before anything
 runs, a second independent check confirms each result, a literature gate credits what is known, and every failed prediction is
 kept in the <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/GRAVEYARD.md">graveyard</a> with the
-evidence that killed it. The computations are AI-assisted and machine-checked; the directions are the author's.
+evidence that killed it. The computations are AI-assisted and re-checked by script, and the directions are the author's. A script checks a
+proof's consequences, not its logic, and no result here has yet been reviewed by a human expert or a proof checker.
 <a href="https://github.com/TiredofSleep/trinity-infinity-geometry/blob/main/HOW_WE_WORK.md">How we work</a>.</p>
 
 <h2>Cite</h2>

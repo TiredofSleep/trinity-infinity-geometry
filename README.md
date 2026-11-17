@@ -1,5 +1,100 @@
 # Trinity Infinity Geometry
 
+**One result, in standard terms.** For odd n, the determinant of the n × n magic square returned by MATLAB's
+`magic(n)` (de la Loubère's siamese square) is
+
+    det magic(n) = (−1)^((n−1)/2) · n^(n−1) · (n² + 1)/2 · ∏_O (n^|O| − (−1)^|O|),
+
+where O runs over the orbits of k ↦ 2k on the nonzero residues mod n. So magic(n) is never singular for odd n, and
+n^(n−1) divides its determinant, which OEIS A160523 records as observed in 2015. The proof is a page of Fourier
+analysis ([the note](towers/binary_magic/void_lens/paper/magic_det.tex)), and a script checks the formula exactly for
+every odd n up to 101. It was not found in what we could read, and four papers on regular magic squares of odd order
+are still unread ([`NOVELTY.md`](towers/binary_magic/NOVELTY.md)). No one outside the loop that produced it has
+reviewed it yet.
+
+## Results
+
+Eight results. Each has a proof or an exhaustive computation and a script that re-checks it, and most were checked
+twice, by independent code. Every check so far has been made by an AI or a script: none of these results has yet
+passed a human expert or a proof checker. [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md) records who has reviewed each one.
+
+- **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables,
+  against a published record of 26 ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
+- **16 is the minimum at five qubits** among genuine sets that hide no smaller contradiction. Four lemmas
+  reduce the question to three cases, and a computer search shows that all three are empty
+  ([the lower bound](towers/binary_magic/magic_sets/LOWER_BOUND.md)).
+- **The determinant of MATLAB's odd magic squares, in closed form.** It shows that they are never singular,
+  and it proves an observation recorded on OEIS in 2015: n^(n−1) divides the determinant
+  ([linear algebra](towers/binary_magic/void_lens/README.md)).
+- **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
+  ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
+- **The magic of a cubic-phase qudit state is the L1 norm of a Walsh spectrum.** So no magic state of a
+  third-level diagonal gate ever reaches the Wigner-negativity ceiling. On three qudits of 3, 5 and 7 levels the
+  norm state of the field with p³ elements is the most magic of them, and from 11 on elliptic-curve states beat it
+  ([quantum information · finite fields](towers/seven_levels/README.md#14-round-13-cubic-magic-forced-measured-named-cui-gottesman-and-krishna-howard-and-vala-mesnager-özbudak-and-sınak)).
+- **The norm state's Wigner values are Kloosterman sums,** on three qudits of every odd prime, so its
+  negativity is known in closed form and tends to 8/(3π) of the ceiling, Sato–Tate's value
+  ([number theory · magic states](towers/seven_levels/NORM_STATE.md)).
+- **The oscillator states' magic follows the Sato–Tate law,** and averaged over a torus's eigenbasis the
+  third and fourth moments of their Wigner values are exact: the skew tapers as −1/√p, and the fourth-moment
+  ratio is 2p/(p + 1). In every moment only the non-crossing pairings survive, as in free probability, and the
+  corrections are free too. The sixth moment is exact and carries the weight-4, level-6 newform of Kloosterman's
+  sixth moment; the fourth free cumulant is proved, and carries the Gaussian integers' η(4τ)⁶. The fifth moments
+  are exact too. One carries an elliptic curve of conductor 150. The other carries the weight-4 newform of level 10,
+  through a double octic built on Clebsch's diagonal cubic surface
+  ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
+- **The cubics {x₁ + ⋯ + x_n = x₁³ + ⋯ + x_n³ = 0}: exact point counts, what their pieces are, and one rule for
+  their determinants** ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md),
+  [the proof](towers/seven_levels/DETERMINANTS.md)).
+  - *The statement.* For odd n the cubic's middle cohomology splits into pieces V_k, one for each odd k ≤ n: the
+    classical parts of the symmetric powers of the Airy sheaf. The piece at 7 matches LMFDB's weight-3 newform
+    35.3.c.b, which has complex multiplication by Q(√−35). The pieces at 11 and 15 have complex multiplication by
+    Q(√−1155) and Q(√−3003), and those at 13, 17 and 21 are twisted symmetric squares. Theorem 8: every V_k has
+    determinant (p/A_k), where A_k is the product of the odd numbers up to k, each multiple of 3 divided by 3 once.
+    That is the shape Yun proved for the Kloosterman moments, (p/d!!), with the cube's 3 taken out.
+  - *The evidence.* Exact point counts at every prime up to 601 in seven and nine variables, and predictions
+    registered before each count that held blind (rounds 19 to 28). The identifications at 7 to 21 are measured,
+    not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
+    by step, and a script checks each computable step; its local input at primes from 5 up is in Chuang's 2026
+    thesis. No one outside the loop has reviewed the proof or the identifications.
+  - *The reading, fenced.* The author reads these cubics through the coin. The fifth moment's double octic is
+    branched along five planes and Clebsch's cubic surface, which meet in 15 lines, and the author's coin at 5
+    calls them the solid face, the flat face and the edge. Those lines are classical, and any branch locus with two
+    components has two faces and an edge, so the dictionary is a reading, not a result. The author's "3 enters only
+    at its square" is exact, though: it is where the cubic's good model at 3 pinches. With Theorem 8 every prime's
+    coins are decided: 3 enters at 9 and 81 but not at 27, and 5 at 5, 15 and 125 but not at 25.
+
+There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
+stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
+
+**Find it by field:**
+
+| field | where |
+|---|---|
+| quantum information: magic states, Wigner negativity, qudits | [`towers/seven_levels/`](towers/seven_levels/README.md), [`NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md) |
+| quantum contextuality: magic sets of observables | [`towers/binary_magic/magic_sets/`](towers/binary_magic/magic_sets/THEOREM.md) |
+| number theory: Kloosterman sums, Sato–Tate, repeating decimals | [`towers/seven_levels/NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`base/SEVENTHS.md`](base/SEVENTHS.md) |
+| number theory: primes, the sieve, Mertens' theorem, the explicit formula, Frobenius angles | [`towers/THE_STAIRCASE.md`](towers/THE_STAIRCASE.md) |
+| quantum chaos and the Weil representation | [`towers/seven_levels/TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md), seven levels §9 and §13 |
+| finite fields and signal design: Walsh spectra, bent functions, cubic forms | seven levels §14, [`cubic_magic.py`](towers/seven_levels/cubic_magic.py) |
+| linear algebra: determinants of magic squares | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) |
+| universal algebra: equational laws, Steiner triple systems | [`towers/laws_of_a_table/`](towers/laws_of_a_table/README.md) |
+| geometry: energy, the Platonic solids, the dodecahedron | [`THE_LENS.md`](THE_LENS.md), [`base/SYMMETRY_AND_ENERGY.md`](base/SYMMETRY_AND_ENERGY.md) |
+| mathematics education: the base, the towers, the coin | [`base/`](base/README.md), [`towers/`](towers/README.md), [`coin/`](coin/README.md) |
+| fenced: physics and biology readings, each with its test | [`lab/FENCED_READINGS.md`](lab/FENCED_READINGS.md), [`lab/genetic_code/`](lab/genetic_code/README.md) |
+
+**How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
+- One loop: an intuition, predictions written before anything runs, a second independent check, a
+  literature gate, and a graveyard for what fails.
+- It runs from a child's hands to the research frontier, and across about a dozen fields.
+- It runs on its own past too. The archived J series was read again on 2026-10-25. Nine pages came into
+  the towers and the coin, two of them small new results, and every error found is kept with its
+  counterexample ([`graveyard/j_series_reread/`](graveyard/j_series_reread/README.md)).
+
+---
+
+## The idea
+
 > *Theory of Nothing is the closest there will ever be to Theory of Everything.* — Brayden Sanders, March 2026
 
 **A new way to teach higher mathematics — by classifying its paradoxes, not resolving them.** The
@@ -39,82 +134,7 @@ The whole lens, part by part, in the author's words: [`THE_LENS.md`](THE_LENS.md
 **Author:** Brayden Ross Sanders / 7SiTe LLC · Hot Springs, Arkansas ·
 **License:** [CC BY-SA 4.0](LICENSE) for content, [GPL-3.0-or-later](LICENSE) for code
 
-## What's new
-
-Seven results at the research frontier. Each has a proof and a script that re-checks it, and most were
-checked twice, by independent code:
-- **Small genuine magic sets for every odd number of qubits.** At five qubits that is 16 observables,
-  against a published record of 26 ([quantum contextuality](towers/binary_magic/magic_sets/THEOREM.md)).
-- **16 is the minimum at five qubits** among genuine sets that hide no smaller contradiction. Four lemmas
-  reduce the question to three cases, and a computer search shows that all three are empty
-  ([the lower bound](towers/binary_magic/magic_sets/LOWER_BOUND.md)).
-- **The determinant of MATLAB's odd magic squares, in closed form.** It shows that they are never singular,
-  and it proves an observation recorded on OEIS in 2015: n^(n−1) divides the determinant
-  ([linear algebra](towers/binary_magic/void_lens/README.md)).
-- **Every pandiagonal 5×5 magic square is invertible,** by a theorem about prime order
-  ([combinatorics and number theory](towers/binary_magic/void_lens/README.md)).
-- **The magic of a cubic-phase qudit state is the L1 norm of a Walsh spectrum.** So no magic state of a
-  third-level diagonal gate ever reaches the Wigner-negativity ceiling. On three qudits of 3, 5 and 7 levels the
-  norm state of the field with p³ elements is the most magic of them, and from 11 on elliptic-curve states beat it
-  ([quantum information · finite fields](towers/seven_levels/README.md#14-round-13-cubic-magic-forced-measured-named-cui-gottesman-and-krishna-howard-and-vala-mesnager-özbudak-and-sınak)).
-- **The norm state's Wigner values are Kloosterman sums,** on three qudits of every odd prime, so its
-  negativity is known in closed form and tends to 8/(3π) of the ceiling, Sato–Tate's value
-  ([number theory · magic states](towers/seven_levels/NORM_STATE.md)).
-- **The oscillator states' magic follows the Sato–Tate law,** and averaged over a torus's eigenbasis the
-  third and fourth moments of their Wigner values are exact: the skew tapers as −1/√p, and the fourth-moment
-  ratio is 2p/(p + 1). In every moment only the non-crossing pairings survive, as in free probability, and the
-  corrections are free too. The sixth moment is exact and carries the weight-4, level-6 newform of Kloosterman's
-  sixth moment; the fourth free cumulant is proved, and carries the Gaussian integers' η(4τ)⁶. The fifth moments
-  are exact too. One carries an elliptic curve of conductor 150. The other carries the weight-4 newform of level 10,
-  through a double octic built on Clebsch's diagonal cubic surface
-  ([quantum chaos · magic states](towers/seven_levels/TORUS_MOMENTS.md)).
-- **The author's coin at 5 is in that double octic.** It is branched along the coin's solid face (the planes where
-  one point sits at the centre) and its flat face (Clebsch's cubic, which holds the pentagon), and they meet in 15
-  rational lines, the edge. The coin at 7 is in the cubic fourfold {Σx = Σx³ = 0} in seven variables, whose count
-  carries Q(√−35) = Q(√5·√−7). Its exact count, and that of the nine-variable cubic, held blind. On its edge the coin
-  shows the fixed set of its flip. Past the base, in eleven variables, √−11 enters: the cubic's new piece has complex
-  multiplication by Q(√−1155), and −1155 = (−3)·5·(−7)·(−11). At 13 the piece does not split. It is a symmetric
-  square whose determinant carries −15015 = (−3)·5·(−7)·(−11)·13. At 15 the field is Q(√−3003), which the author's
-  "3 enters only at its square" predicted. At 3 itself the cubic's good model pinches exactly where the signs sum to a
-  multiple of 9, and counted there each piece loses one dimension from 9 on. At 17 and 21 the pieces are symmetric
-  squares again. At 27 neither 3, at its cube, nor 5, at its square, enters, read in the determinant at every prime.
-  At 81, four coins of 3, 3 enters again. Complex conjugation decides that, as it decides every power of a prime
-  ≡ 3 (mod 4), and twenty-five's own determinant, counted over the field of p³ elements, keeps 5 out. The rule is now
-  a theorem: every piece's determinant is the Jacobi symbol (p/A_k), Yun's double factorial with the cube's 3 taken
-  out, and its first five new determinants held blind
-  ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md),
-  [the proof](towers/seven_levels/DETERMINANTS.md)).
-
-There are also about a dozen smaller results, and the teaching frame itself, each labelled by how firmly it
-stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
-
-**Find it by field:**
-
-| field | where |
-|---|---|
-| quantum information: magic states, Wigner negativity, qudits | [`towers/seven_levels/`](towers/seven_levels/README.md), [`NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md) |
-| quantum contextuality: magic sets of observables | [`towers/binary_magic/magic_sets/`](towers/binary_magic/magic_sets/THEOREM.md) |
-| number theory: Kloosterman sums, Sato–Tate, repeating decimals | [`towers/seven_levels/NORM_STATE.md`](towers/seven_levels/NORM_STATE.md), [`base/SEVENTHS.md`](base/SEVENTHS.md) |
-| number theory: primes, the sieve, Mertens' theorem, the explicit formula, Frobenius angles | [`towers/THE_STAIRCASE.md`](towers/THE_STAIRCASE.md) |
-| quantum chaos and the Weil representation | [`towers/seven_levels/TORUS_MOMENTS.md`](towers/seven_levels/TORUS_MOMENTS.md), seven levels §9 and §13 |
-| finite fields and signal design: Walsh spectra, bent functions, cubic forms | seven levels §14, [`cubic_magic.py`](towers/seven_levels/cubic_magic.py) |
-| linear algebra: determinants of magic squares | [`towers/binary_magic/void_lens/`](towers/binary_magic/void_lens/README.md) |
-| universal algebra: equational laws, Steiner triple systems | [`towers/laws_of_a_table/`](towers/laws_of_a_table/README.md) |
-| geometry: energy, the Platonic solids, the dodecahedron | [`THE_LENS.md`](THE_LENS.md), [`base/SYMMETRY_AND_ENERGY.md`](base/SYMMETRY_AND_ENERGY.md) |
-| mathematics education: the base, the towers, the coin | [`base/`](base/README.md), [`towers/`](towers/README.md), [`coin/`](coin/README.md) |
-| fenced: physics and biology readings, each with its test | [`lab/FENCED_READINGS.md`](lab/FENCED_READINGS.md), [`lab/genetic_code/`](lab/genetic_code/README.md) |
-
-**How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
-- One loop: an intuition, predictions written before anything runs, a second independent check, a
-  literature gate, and a graveyard for what fails.
-- It runs from a child's hands to the research frontier, and across about a dozen fields.
-- It runs on its own past too. The archived J series was read again on 2026-10-25. Nine pages came into
-  the towers and the coin, two of them small new results, and every error found is kept with its
-  counterexample ([`graveyard/j_series_reread/`](graveyard/j_series_reread/README.md)).
-
----
-
-## The idea
+### Why towers on one base
 
 Higher mathematics is usually met as a stack of separate courses — linear algebra, group theory,
 topology, analysis — each with its own language, joined by nothing a student can see. Here it is

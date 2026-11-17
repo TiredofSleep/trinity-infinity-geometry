@@ -10,6 +10,7 @@
 \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\Z}{\mathbb{Z}}
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 
 \title{The determinant of MATLAB's odd-order magic squares}
 \author{Brayden Sanders}
@@ -46,7 +47,21 @@ divisible by $4$ have rank $3$, and the remaining even orders have rank $n/2+2$.
 lists $a(n)=\det\mathrm{magic}(n)$. There Robert Israel noted (2015) that $a(n)$ is divisible by $n^{n-2}$ for odd
 $n$ and appears to be divisible by $n^{n-1}$. Manjunath and Ambikasaran \cite{ma} approximated the eigenvalues of
 the odd-order squares with proven error bounds; nonsingularity follows from those bounds, although it is not stated
-there. We were unable to find an exact formula for $a(n)$ in the literature.
+there.
+
+For odd $n$ the square $\mathrm{magic}(n)$ is regular (associative): $M_{IJ}+M_{n+1-I,\,n+1-J}=n^2+1$. Regular
+squares have their own literature. Mattingly \cite{mattingly} proved that every regular magic square of even order
+is singular, and Staab et al.\ \cite{staab} extended this to other complement symmetries in every even order. In odd
+order the question is which regular squares are nonsingular. Lee, Love, Narayan, Wascher and Webster \cite{llnww}
+constructed nonsingular regular squares of every odd prime and prime-power order from centroskew circulant
+matrices. Chan, Mainkar, Narayan and Webster \cite{cmnw} gave a construction of regular squares of odd order, Liu,
+Gao and Zhao \cite{lgz} took up an open problem about regular squares of odd order, and Jitjankarn and
+Rungratgasame \cite{jr} constructed nonsingular regular squares of every odd order. Loly, Cameron, Trump and
+Schindel \cite{lcts} studied the spectra of magic squares. We have not found an exact formula for $a(n)$ in the
+literature we could read.
+%% BEFORE SUBMITTING: \cite{cmnw}, \cite{lgz} and \cite{lcts} have not been read, and \cite{llnww} only through
+%% secondary descriptions. Their keywords (circulant matrices, eigenvalues, regular squares of odd order) are close
+%% enough that either theorem below may already be there. Read all four first.
 
 \begin{theorem}\label{thm:main}
 Let $n$ be odd. Then
@@ -171,6 +186,12 @@ reason. So no factor vanishes.
 Theorem~\ref{thm:main} is the case $(a_1,b_1,c_1,a_2,b_2,c_2)=(1,1,-h,1,2,1)$, where the two permutations are
 $k\mapsto-k$ and $k\mapsto-k/2$ and the phases cancel orbit by orbit.
 
+\begin{remark}
+Theorem~\ref{thm:family} concerns one family. Nonsingular regular squares of every odd order were already known to
+exist \cite{jr}, and of every odd prime and prime-power order by a circulant construction \cite{llnww}; how the family
+here relates to those of \cite{llnww}, \cite{cmnw} and \cite{lgz} has not been checked.
+\end{remark}
+
 \section{Verification}
 
 We computed $\det\mathrm{magic}(n)$ exactly, by fraction-free Gaussian elimination over the integers, for every odd
@@ -215,6 +236,18 @@ November 12, 2012. \url{https://blogs.mathworks.com/cleve/2012/11/12/magic-squar
 arXiv:2205.15563 (2022).
 \bibitem{staab} P. Staab et al., \emph{The magic of permutation matrices: categorizing, counting and eigenspectra
 of magic squares}, arXiv:1007.3239 (2010).
+\bibitem{mattingly} R. B. Mattingly, \emph{Even order regular magic squares are singular}, Amer. Math. Monthly
+\textbf{107} (2000), 777--782.
+\bibitem{llnww} M. Lee, E. Love, S. K. Narayan, E. Wascher and J. D. Webster, \emph{On nonsingular regular magic
+squares of odd order}, Linear Algebra Appl. \textbf{437} (2012), 1346--1355. \doi{10.1016/j.laa.2012.04.004}
+\bibitem{cmnw} C. Y. J. Chan, M. G. Mainkar, S. K. Narayan and J. D. Webster, \emph{A construction of regular magic
+squares of odd order}, Linear Algebra Appl. \textbf{457} (2014), 293--302. \doi{10.1016/j.laa.2014.05.032}
+\bibitem{lgz} L. Liu, Z. Gao and W. Zhao, \emph{On an open problem concerning regular magic squares of odd order},
+Linear Algebra Appl. \textbf{459} (2014), 1--12. \doi{10.1016/j.laa.2014.06.046}
+\bibitem{lcts} P. Loly, I. Cameron, W. Trump and D. Schindel, \emph{Magic square spectra}, Linear Algebra Appl.
+\textbf{430} (2009), 2659--2680. \doi{10.1016/j.laa.2008.10.032}
+\bibitem{jr} P. Jitjankarn and T. Rungratgasame, \emph{A generalization of nonsingular regular magic squares},
+Mat. Vesnik \textbf{74} (2022), 272--279. \doi{10.57016/MV-aqsi1967}
 \end{thebibliography}
 
 \end{document}

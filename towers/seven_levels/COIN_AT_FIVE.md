@@ -32,8 +32,11 @@ the prime 3 itself (round 25), to 27 (round 26), and to 81 (round 27).
 
 ## What stands
 
-- **The dictionary** [FORCED]. The double octic behind the fifth moment I5 ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md)
-  §8, Theorem 7) is the coin at 5.
+- **The dictionary** [READING; the facts under it are classical and FORCED]. The double octic behind the fifth
+  moment I5 ([`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §8, Theorem 7) is read as the coin at 5.
+  - Fenced on 2026-11-16, after an outside read: the 15 lines and the double six are Clebsch's (1871), and any
+    branch locus with two components has two faces and an edge. By this repository's own Gate 2 the dictionary
+    is not specific, so it is a reading, not a result. The counts and the determinant rule below are results.
   - The **solid face** is the five planes where one of the five points sits at the centre.
   - The **flat face** is Clebsch's cubic, which holds the regular pentagon.
   - The **edge** is their 15 common lines.
@@ -105,7 +108,7 @@ the prime 3 itself (round 25), to 27 (round 26), and to 81 (round 27).
   - Yun proved the same shape, (p/d!!), for the Kloosterman moments. The Airy moments differ by the cube's 3.
   - Its first five new determinants, V29 to V39, held blind at every prime from 41 to 151 (round 28).
 
-## 1. The dictionary [FORCED; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
+## 1. The dictionary [READING; its facts FORCED and classical; [`coin_at_five_verify.log`](coin_at_five_verify.log)]
 
 In the fifth moment the five points of the turning wheel have Cayley coordinates δ1, …, δ5 with Σδ_i = 0, so 0 is
 their centre. The count behind I5 lives on the double octic w² = e3·e5 over P³ = {Σδ = 0}. That is the double cover

@@ -102,7 +102,7 @@ and the scores were added after, losses included.
   derived along the way, by exhaustive search over this relaxation (*computer-assisted*).
   - Fitting's 1931 hand proof of Nimm0 (§III) uses the actual numbers 0–15: the sets of odd numbers and their
     sums, then explicit diagonals. So it depends on full distinctness.
-  - The pairwise statement is therefore stronger than his. It is probably new, pending Conway–Norton–Ryba.
+  - The pairwise statement is therefore stronger than his. It was not found in what we could read; Conway–Norton–Ryba is unread.
 - **Sharper for squares:** Nimm0 plus "the 8 diagonal cells sum to 60" forces a mirror fold. This covers
   106,368 semi-magic arrangements, 15 times the magic ones (*proved given Nimm0*: the fold proof never uses
   more). Fitting treats only magic squares, so this extension is not his.
@@ -144,7 +144,8 @@ independent implementation here ([`void_lens/void_lens_check.py`](void_lens/void
   (−1)^((n−1)/2) · n^(n−1) · (n² + 1)/2 · ∏ (n^|O| − (−1)^|O|), over the orbits O of doubling mod n.
   - Exact for every odd n up to 101, so magic(n) is never singular, and n^(n−1) divides the determinant. That
     proves what Robert Israel observed on OEIS A160523 in 2015.
-  - The closed form is *probably new*. That the squares are nonsingular follows, unstated, from Manjunath &
+  - The closed form was *not found in what we could read*. Four papers on regular magic squares of odd order
+    are unread (Lee et al. 2012, Chan et al. 2014, Liu et al. 2014 and Loly et al. 2009; see `NOVELTY.md`). That the squares are nonsingular follows, unstated, from Manjunath &
     Ambikasaran's 2022 eigenvalue bounds.
 - **Why the doubly-even magic(n) has rank 3:** the tiled sign pattern (1, −1, −1, 1) times a rank-2 ramp. This is
   *known*: Manjunath & Ambikasaran 2022, Theorem 9, answered Moler's "I don't see how" from 2012.
@@ -152,7 +153,7 @@ independent implementation here ([`void_lens/void_lens_check.py`](void_lens/void
   singular. The proof uses valuations at (1 − ω), the technique behind Chebotarev's theorem.
   - So **every pandiagonal 5×5 magic square is nonsingular** (all 28,800).
   - The prime matters: there are singular members at n = 9.
-  - *Probably new*, pending a fuller search. Lee et al. (2012) construct nonsingular regular squares of prime
+  - *Not found in what we could read*; the same four papers are unread. Lee et al. (2012) construct nonsingular regular squares of prime
     order by another route.
 - **The void index:** a complement symmetry by involutions P and Q forces nullity ≥ |(f_P + f_Q)/2 − 1|.
   - It contains Staab et al.'s two theorems as special cases.
@@ -177,7 +178,7 @@ independent implementation here ([`void_lens/void_lens_check.py`](void_lens/void
 |---|---|
 | [`ATLAS.md`](ATLAS.md) | the map: the three regions (center, petals, crossings), seen three ways (bits, folds, signs), and the status of every rule |
 | [`FOLD_PROOF.md`](FOLD_PROOF.md) | the fold theorem, step by step |
-| [`NOVELTY.md`](NOVELTY.md) | what was already known, with sources; what survives as probably new |
+| [`NOVELTY.md`](NOVELTY.md) | what was already known, with sources; what survives, not found in what we could read |
 | [`WORKING_LOG.md`](WORKING_LOG.md) | the chat's working log, in the order things were found (where its status notes differ from `NOVELTY.md`, `NOVELTY.md` is the later reading) |
 | [`HANDOFF_2026-10-22.md`](HANDOFF_2026-10-22.md) | the handoff from the chat, as received |
 | [`code_lens/`](code_lens/README.md) | the tesseract-code lens: pre-registered rounds 1–6c, the antinomy detector |

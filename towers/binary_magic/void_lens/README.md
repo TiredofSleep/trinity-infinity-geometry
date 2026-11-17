@@ -34,8 +34,9 @@ claims alone and shares no code with this folder's scripts. It covers:
   and B as its index-1 cases.
 
 The literature for each claim is in PREREG.md's last section:
-- **probably new:** the closed form, the prime-order family theorem and the pandiagonal 5x5 corollary, pending a
-  fuller search;
+- **not found in what we could read:** the closed form, the prime-order family theorem and the pandiagonal 5x5
+  corollary. Four papers on regular magic squares of odd order are unread (Lee et al. 2012, Chan et al. 2014, Liu
+  et al. 2014, Loly et al. 2009; `../NOVELTY.md`), and odd magic(n) is a regular square;
 - **known:** the doubly-even rank (2022);
 - **small:** the void index generalizes Staab et al.'s two theorems.
 

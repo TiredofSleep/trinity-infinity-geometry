@@ -33,7 +33,7 @@ abstract: >-
   half-turns of the Riemann sphere about the axes of the octahedron 0, oo, +-1,
   +-i; the centres of 5, 7 and 9 are forced by orbit parity in the solid
   symmetry groups, so 5, 7 and 9 are classified (flat face and solid face), not
-  chosen. Every forced floor is machine-checked by short numpy scripts; the
+  chosen. Every forced floor is re-checked by short numpy scripts; the
   theorems at the tops are cited. An earlier table-based program is archived at the
   tag archive-2026-09-24.
 keywords:
