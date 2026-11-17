@@ -2581,3 +2581,101 @@ counted.**
   borne out through 39: the measured pieces carry the determinants the antisymmetric parts must have. The direct
   check is still at 5 and 7.
 - Round 27's one assumption, complex conjugation on the middle class, is proved (DETERMINANTS.md §4).
+
+---
+
+## Round 29: one wheel, the qudit T state and the ladder of diagonal magic (registered 2026-11-17, before the test)
+
+> *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
+> — the author, 17 November 2026
+
+**Why one wheel.** Rounds 10 to 14 measured magic on two and three wheels. A single qudit's T state, the magic state of
+the qudit π/8 gate (Howard and Vala), is the standard non-Clifford resource for fault tolerance with qudits (Campbell,
+Anwar and Browne). Round 13's identity, with one wheel, makes its Wigner values Birch sums. The literature check of
+2026-11-17 ([`LITERATURE_MAP.md`](LITERATURE_MAP.md), item 8) found no measurement of its negativity against p, no
+comparison with random states, and no answer to how the higher levels of the Clifford hierarchy compare. This round
+asks all three.
+
+**Made exact, before the test.**
+- **The states.** A phase state is ψ_f = Σ_x ω^f(x) |x⟩/√p. When f is a polynomial of degree d < p it is the magic
+  state of a diagonal gate of level d (Cui, Gottesman and Krishna); d = 3 is the T gate. The measure is the sum of
+  sizes S = Σ|W| (rounds 8 on). The mana is ln S, the ceiling is √p, and S/√p is the share of the ceiling.
+- **E1. The T state** [FORCED; round 13 with one wheel]. For f = cx³ + ⋯, W(q, s) = S_t(f′(q) − s)/p², with t = c/4 and
+  S_t(a) = Σ_x ω^(tx³ + ax).
+  - So S = (1/p)Σ_a |S_t(a)|, which depends only on the cubic class of t.
+  - There is one T state when p ≡ 2 (mod 3) and three when p ≡ 1.
+- **E2. Even degrees fall to the odd degree below** [FORCED].
+  - f(q + y/2) − f(q − y/2) is odd in y. Its degree is d, or d − 1 when d is even, and then its leading coefficient is a
+    multiple of q.
+  - For f = cx⁴, W(0, s) = [s = 0]/p and W(q, s) = S_cq(4cq³ − s)/p².
+  - So the quartic state is cubic rows plus one positive row: S₄ = 1/p + p⁻²Σ_(q≠0)Σ_a|S_cq(a)|. It is below the T
+    state whenever p ≡ 2 (mod 3).
+- **E3. The ladder** [FORCED from NAMED theorems].
+  - At fixed q, each row of W is the family a ↦ Σ_y ω^(g(y) + ay) of an odd polynomial g of degree 2m + 1 (d = 2m + 1
+    or 2m + 2).
+  - Its geometric monodromy is Sp(2m) for p > 4m + 3 (Katz 1987, as we read it). By Deligne's equidistribution
+    theorem, p^(3/2)W is then distributed like the trace of a Haar-random matrix in USp(2m).
+  - So S/√p tends to κ_m = E|tr U|:
+
+| degree | group | κ: Weyl integral (Monte Carlo) |
+|---|---|---|
+| 3, 4 | USp(2) = SU(2) | 8/(3π) = 0.848826 |
+| 5, 6 | USp(4) | 0.790497 (0.7906 ± 0.0019) |
+| 7, 8 | USp(6) | 0.798491 (0.7997 ± 0.0027) |
+| 9, 10 | USp(8) | 0.79781 |
+| → ∞ | the Gaussian limit | √(2/π) = 0.797885 |
+
+  - **The random baseline, exactly.**
+    - A phase-point operator has (p + 1)/2 eigenvalues +1 and (p − 1)/2 eigenvalues −1. So a Haar-random state has
+      W(u) = (2X − 1)/p with X ~ Beta((p + 1)/2, (p − 1)/2), and its mean S is p·E|2X − 1|.
+    - This tends to √(2/π)·√p from above: 0.8385√p at 5, 0.7999√p at 101 and 0.7981√p at 1009. The limit is Wilson
+      and White's mana, ½ ln d − ½ ln(π/2).
+  - **So the ladder is not monotone.**
+    - Only the third level sits above random.
+    - The fifth sits below it: USp(4)'s trace has the Gaussian's second and fourth moments, but a smaller mean of |·|.
+    - From the seventh on, the ladder hugs the random value.
+- **E4. The moments are point counts** [FORCED].
+  - Σ_(q,s) W^n = p^(1−2n)Σ_a S_t(a)^n. Averaged over the three classes this is p^(3−2n)·t_n, from the counts of Livné's
+    cubics, and when p ≡ 2 (mod 3) every class equals it.
+  - So, for p ≡ 2 (mod 3), the T state's seventh moment is (14 + 6(5|p))/p⁹ + a_p/p¹⁰, with a_p the coefficient of
+    Chênevert's newform 35.3.c.b.
+- **E5. The cubic Gauss sum decides the classes** [FORCED; derived for this round].
+  - When p ≡ 1 (mod 3), Σ_a S_t(a)³ = 2p² + 2p·Re(χ(3t)G(χ)²), with χ a cubic character and G(χ) = Σ_v χ(v)ω^v. The
+    fourth moment, 2p³ − p², is the same for every class.
+  - Proof of the third. Σ_a S_t(a)³ = pΣ_(x+y+z=0) ω^(t(x³+y³+z³)) = pΣ_(x,y) ω^(−3txy(x+y)).
+    - Put y = λx, and count the cube roots of v as 1 + χ(v) + χ̄(v). This gives 2p + 2Re(χ(−3t)G(χ̄)J(χ, χ)).
+    - Then G(χ̄)J(χ, χ) = G(χ)², since G(χ)³ = pJ(χ, χ).
+  - Proof of the fourth. On x₁ + ⋯ + x₄ = 0, Σx³ = −3(x₁ + x₂)(x₁ + x₃)(x₂ + x₃). A linear change of variables leaves
+    pΣ_(u,v) p·[uv = 0].
+  - The Jacobi sum fixes the three values. Which class takes which is Kummer's question about the cube root: the edge
+    of the coin at 3.
+- **Checked before this registration** ([`one_wheel_calibrate.log`](one_wheel_calibrate.log), all pass):
+  - E1 and E2 against the Wigner function computed from the state, at every prime up to 29;
+  - E3's constants by quadrature and by Monte Carlo, and the exact Haar mean against 20 000 random states at 7 and 11;
+  - E4, the seventh moment and E5, at every prime up to 29.
+- **Not computed before this registration:** any T-state or higher-degree S at a prime above 29.
+  - Round 13 logged the T state at 5: S = 1 + 2/√5 = 0.8472√5, above the Haar mean of 0.8385√5.
+
+**Predictions.** All six are fresh.
+
+| | prediction | dies if |
+|---|---|---|
+| Q1 | **The T state's law.** Over every class at every prime from 1000 to 3000, the mean of S/√p is within 0.003 of 8/(3π) = 0.84883 | the mean is outside 0.84583 to 0.85183 |
+| Q2a | **The T state beats random.** At every prime from 500 to 5000, every class has S above the exact Haar mean | one class at one prime falls short |
+| Q2b | (Claude's reading, thinner) The same at every prime from 31 to 500. The even moments that govern \|S\| are exact up to O(1/p) (Σ_a S_t(a)² = p², Σ_a S_t(a)⁴ = 2p³ − p²), so the T state should sit near its limit even at small p | one falls short |
+| Q3 | **The fifth level is below random.** Take x⁵, x⁶, and a seeded random quintic and sextic at each prime. For each family, the mean S/√p over the primes from 700 to 1500 is within 0.004 of κ₂ = 0.79050, and below the mean Haar value at the same primes | a family's mean is outside 0.78650 to 0.79450, or not below the Haar mean |
+| Q4 | **The seventh level hugs random.** For x⁷, x⁸, and a seeded random septic and octic, the same mean is within 0.004 of κ₃ = 0.79849 | a family's mean is outside 0.79449 to 0.80249 |
+| Q5 | (Claude's reading) **At small p the T state is not the best phase state.** At 7, over all 2401 phase classes (f of degree at most 6, modulo degree 2), the most negative is not a T state. At 5, Feng and Luo found diagonal gates with general phases that beat T | a T class is the maximum at 7 |
+
+- **Reads, not scored:**
+  - how the T state's deviation from 8/(3π) shrinks with p;
+  - the spread between the three classes when p ≡ 1 (mod 3);
+  - whether the class with the largest third moment (the Gauss sum's choice) is the most negative;
+  - the best phase states at 5 (all 25 classes), and at 11 and 13 (10⁶ sampled at each).
+
+**The drafter's expectation.** Q1, Q2a, Q3 and Q4 rest on proved equidistribution, and their tolerances allow
+corrections of order 1/p. Q2b and Q5 are on thinner ground.
+- If Q3 holds, the useful statement is this. Among the diagonal gates of the Clifford hierarchy on one qudit, only the
+  T gate's level makes states more negative than random, and the next odd level makes them less.
+
+Run: `python one_wheel.py test` (minutes; four processes at below-normal priority).

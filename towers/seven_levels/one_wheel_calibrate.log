@@ -1,0 +1,25 @@
+one_wheel.py calibrate -- the forced identities of round 29, at the primes up to 29, before the registration
+
+[PASS] E0 sum W = 1 and sum W^2 = 1/p for random states, p = 5..29
+[PASS] E1 cubic phase states: W(q, s) = S_t(f'(q) - s)/p^2 with t = c/4, against the state's own Wigner function, p = 5..29
+[PASS] E2 quartic phase states: W(0, s) = [s = 0]/p and W(q, s) = S_cq(4cq^3 - s)/p^2, so S = 1/p + p^-2 sum_(q != 0) sum_a |S_cq(a)|, p = 5..29
+[PASS]     and the quartic state is below the T state at every p = 2 mod 3 up to 29 (forced: S_T > 1)
+E3 the ladder's constants, E|tr U| for U Haar in USp(2m), by the Weyl integral:
+     USp(2): 0.848826
+     USp(4): 0.790497
+     USp(6): 0.798491
+     Gaussian limit sqrt(2/pi) = 0.797885
+[PASS] E3 the quadrature gives 8/(3 pi) for USp(2), and the constants used in the registration
+     Monte Carlo, 100000 Haar matrices in USp(4): 0.7906 +- 0.0019
+     Monte Carlo, 50000 Haar matrices in USp(6): 0.7997 +- 0.0027
+[PASS]     the Monte Carlo agrees within 3 standard errors, and USp(4) lies below the Gaussian value
+     p = 7: 20000 Haar-random states, mean S = 2.18694 +- 0.00044; the formula gives 2.18750
+     p = 11: 20000 Haar-random states, mean S = 2.70747 +- 0.00038; the formula gives 2.70703
+[PASS]     the exact Haar mean p E|2X - 1| agrees with random states at 7 and 11
+[PASS] E4 the class average of sum_a S_t(a)^n is p^2 t_n (Livne's cubics) for n = 3, 5, 7, 9, and every class equals it when p = 2 mod 3, p = 5..29
+[PASS]     the seventh moment is p^4 (14 + 6(5|p)) + p^3 a_p(35.3.c.b) on average over the classes, p = 11..29
+[PASS] E5 p = 1 mod 3: sum_a S_t(a)^3 = 2p^2 + 2p Re(chi(3t) G(chi)^2) for every t, p = 7, 13, 19
+[PASS]     and sum_a S_t(a)^4 = 2p^3 - p^2 for every t
+
+time 0.3 minutes
+ALL PASS

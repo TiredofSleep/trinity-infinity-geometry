@@ -167,8 +167,9 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
    - **The caution.** At p = 5 the T gate is not the most negative diagonal gate, so the √p constant describes T-type
      states, not the best diagonal ones.
    - **The verdict.** This is a small connection between known results that the qudit-magic community may find
-     useful. The next step is a question to an expert (Campbell, Howard or Jennings). Any new computation waits for
-     the grounding gate.
+     useful. The next step is a question to an expert (Campbell, Howard or Jennings). The author lifted the grounding
+     gate on 2026-11-17, and round 29 of [`PREREG.md`](PREREG.md) measures it: the T state against random states, and
+     the ladder of higher levels.
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 
