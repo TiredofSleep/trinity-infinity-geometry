@@ -17,12 +17,18 @@ a smooth cubic hypersurface of dimension m = n − 3 (an even number) in the hyp
 symmetric group S_n permutes the coordinates. Let V_n be the sign-isotypic part of H^m_prim(X_n ⊗ Q̄, Q_ℓ), and
 ρ_n = V_n(m/2), its twist to weight 0.
 
+These varieties are Livné's. He expressed the moments of the sums Σ_x e((ax³ + bx)/p) through their point counts,
+and so proved Birch's conjecture on the sums' average distribution [L1]. He also proved a 2-dimensional piece
+attached to the 10th moment modular [L2], the first use of his 2-adic criterion. Chênevert [Ch] decomposed their
+cohomology under S_n. He proved that for n = 7 the sign part is the weight-3 newform of level 35 with character
+ε_35 (LMFDB 35.3.c.b) [Ch, §5.7], and that X_n has good reduction at 2 for odd n [Ch, Prop. 3.5.2].
+
 - The cup product makes ρ_n orthogonal. Its dimension is ⌈n/6⌉ − [3 | n], its Hodge numbers are 0 or 1, and they
   agree with the classical part in [SY]. There is a middle Hodge class exactly when n ≡ 1 (mod 4).
 - By orthogonality, #X_n(F_p) is a moment of S(a), and the n-th moment splits by ballot numbers into terms T_k(p),
   one for each odd k ≤ n. The Frobenius traces of V_n are the new terms, T_n(p)/p².
-- Small cases: V_5 is the character (5/p) times a Tate twist. V_7(1) has the Frobenius traces a_p of the weight-3 CM
-  newform 35.3.c.b (LMFDB) at every prime we counted, up to 601.
+- Small cases: V_5 is the character (5/p) times a Tate twist. V_7(1) is the weight-3 CM newform 35.3.c.b, with
+  determinant ε_35. That is Chênevert's theorem [Ch, §5.7], and our counts agree with it at every prime to 601.
 
 ## 2. The statement
 
@@ -99,6 +105,9 @@ by +1 on the middle Hodge class of ρ_n for every n ≡ 1 (mod 4).
 ## 5. What is known, and what may be new
 
 - **Known.**
+  - The varieties X_n and the moments: Livné [L1, L2].
+  - The S_n-decomposition of their cohomology, the case n = 7 (level 35, determinant ε_35), and good reduction at
+    2: Chênevert [Ch].
   - Picard–Lefschetz in mixed characteristic [SGA 7].
   - Griffiths' residues.
   - The Hodge numbers of the Airy moments [SY], and their L-functions [H].
@@ -106,18 +115,27 @@ by +1 on the middle Hodge class of ρ_n for every n ≡ 1 (mod 4).
   - Chuang's thesis [C, Theorems 4.21–4.22] gives the local Galois representation of the Airy motive at every
     p ≥ 5, in another model. The local input of Steps 3 and 5 at l ≥ 5 is contained in it.
 - **Not found in the literature we could read.**
-  - The global determinant.
-  - The prime 3 through the model e_1 = e_3 = 0.
+  - The determinant for every n. Chênevert computes the case n = 7 numerically and then proves it. His outlook
+    proposes the vanishing-cycle analysis of the ramified primes that Steps 3 to 7 carry out [Ch, p. 146].
+  - The prime 3 through the model e_1 = e_3 = 0. Chênevert notes that ρ_7 is unramified at 3 but that "it is not
+    clear if it admits a model with good reduction at 3" [Ch, p. 146]. This model is one: for n = 7 no sign vector
+    has sum divisible by 9, so it is smooth mod 3.
   - The corollary on complex conjugation.
 - **The step least checked.** Step 1's identification of V_n with the new part of the n-th moment. It is confirmed
   directly at n = 5 and 7, and it is consistent with every determinant read through n = 39.
 
 ## References
 
+- [Ch] G. Chênevert, *Exponential sums, hypersurfaces with many symmetries and Galois representations*, PhD
+  thesis, McGill University (2008).
 - [C] P.-H. Chuang, *On the generalized arithmetic Picard–Lefschetz formula*, dissertation (2026),
   [arXiv:2607.05757](https://arxiv.org/abs/2607.05757).
 - [H] C. D. Haessig, *L-functions of symmetric powers of cubic exponential sums*, J. reine angew. Math. **631**
   (2009), [arXiv:math/0608521](https://arxiv.org/abs/math/0608521).
+- [L1] R. Livné, *The average distribution of cubic exponential sums*, J. reine angew. Math. **375/376** (1987),
+  362–379.
+- [L2] R. Livné, *Cubic exponential sums and Galois representations*, in Current trends in arithmetical
+  algebraic geometry, Contemp. Math. **67** (1987), 247–261.
 - [SGA 7] P. Deligne, *La formule de Picard–Lefschetz*, Exposé XV, SGA 7 II, LNM 340 (1973).
 - [SY] C. Sabbah and J.-D. Yu, *Hodge properties of Airy moments*, Tunisian J. Math. **5** (2023),
   [arXiv:2112.13405](https://arxiv.org/abs/2112.13405).

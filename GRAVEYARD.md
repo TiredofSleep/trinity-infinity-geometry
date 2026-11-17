@@ -362,6 +362,18 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From the literature check of 2026-11-17 (`towers/seven_levels/LITERATURE_MAP.md`, item 7):** a novelty claim
+  died.
+  - **"No count of the cubics {Σx = Σx³ = 0}, and no identification of their pieces, is in the literature."**
+    It was stated after web searches on 2026-11-14 and repeated through Theorem 8's pages.
+  - **The evidence that killed it:**
+    - The cubics are Livné's W_n. He introduced them in 1987 for the moments of cubic exponential sums.
+    - Chênevert's McGill thesis (2008) proved X7's sign part is the level-35 newform (§5.7), with its Tate part
+      14 + 6(5|p) (Prop. 5.7.1). That is rounds 19 to 21's count, form and signs.
+  - **What survives:** the counts and forms past 7, Theorem 8 for every n, and the model at 3. The model answers
+    Chênevert's open question about good reduction at 3. All are not found in what we could read.
+  - **The lesson:** the 2026-11-14 searches used the variety's names (cubic fourfold, Clebsch–Segre) and missed
+    its origin. A search on what the counts are for ("moments of cubic exponential sums") found it at once.
 - **From the edge at 137 (2026-11-14; `lab/alpha_137/PREREG.md`, fenced):**
   - **"The prime gradient at 137 makes the inverse fine-structure constant"** (A1 and A2, the author's reading).
     Of 630 registered expressions built from the compression, the taper, the staircase and the qudit floor at 137,

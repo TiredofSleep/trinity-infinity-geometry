@@ -50,14 +50,15 @@ reviewed each one.
   their determinants** ([number theory · algebraic geometry](towers/seven_levels/COIN_AT_FIVE.md),
   [the proof](towers/seven_levels/DETERMINANTS.md)).
   - *The statement.* For odd n the cubic's middle cohomology splits into pieces V_k, one for each odd k ≤ n: the
-    classical parts of the symmetric powers of the Airy sheaf. The piece at 7 matches LMFDB's weight-3 newform
-    35.3.c.b, which has complex multiplication by Q(√−35). The pieces at 11 and 15 have complex multiplication by
+    classical parts of the symmetric powers of the Airy sheaf. The piece at 7 is LMFDB's weight-3 newform 35.3.c.b,
+    with complex multiplication by Q(√−35); Chênevert proved this in 2008, on the cubics Livné introduced in 1987.
+    The pieces at 11 and 15 have complex multiplication by
     Q(√−1155) and Q(√−3003), and those at 13, 17 and 21 are twisted symmetric squares. Theorem 8: every V_k has
     determinant (p/A_k), where A_k is the product of the odd numbers up to k, each multiple of 3 divided by 3 once.
     That is the shape Yun proved for the Kloosterman moments, (p/d!!), with the cube's 3 taken out.
   - *The evidence.* Exact point counts at every prime up to 601 in seven and nine variables, and predictions
-    registered before each count that held blind (rounds 19 to 28). The identifications at 7 to 21 are measured,
-    not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
+    registered before each count that held blind (rounds 19 to 28). The identification at 7 is Chênevert's
+    theorem, rediscovered here; those at 9 to 21 are measured, not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
     by step, and a script checks each computable step; its local input at primes from 5 up is in Chuang's 2026
     thesis. No one outside the loop has reviewed the proof or the identifications.
   - *The reading, fenced.* The author reads these cubics through the coin. The fifth moment's double octic is

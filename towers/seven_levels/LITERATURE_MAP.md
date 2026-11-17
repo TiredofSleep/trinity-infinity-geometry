@@ -81,9 +81,17 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      lattice of discriminant 35, and the Clebsch–Segre cubic in Koike's equations (arXiv:2409.08448).
    - A two-dimensional transcendental part is carried by a weight-3 CM form: Livné's mechanism for singular K3
      surfaces (1995). Here the field is Q(√−35).
-   - Web searches on 2026-11-14 found no point count, zeta function or Galois action for this fourfold, nor for the
-     nine-variable cubic sixfold. The nearest are the Fermat cubic fourfold's form of level 27, and a census of cubic
-     fourfolds over F₂ that counts points to find Frobenius eigenvalues.
+   - **Corrected 2026-11-17.** Web searches on 2026-11-14 found no point count, zeta function or Galois action for
+     this fourfold. They missed the source: these cubics are Livné's W_n. Livné (1987) introduced them to compute
+     the moments of the cubic exponential sums Σ_x e((ax³ + bx)/p), and so proved Birch's conjecture on their
+     average distribution. He also proved a 2-dimensional piece of the 10th moment modular, the first use of his
+     2-adic criterion.
+     - Chênevert's McGill thesis (2008) decomposed their cohomology under S_n (Prop. 3.5.1). It found the
+       14 + 6(5|p) Tate part of X7 (Prop. 5.7.1), and it **proved** the sign part of X7 is the weight-3 newform
+       of level 35 with character ε_35, 35.3.c.b (§5.7), by a Faltings–Serre criterion generalized to odd traces.
+     - So the count of X7 and its form, rounds 19 to 21, were a rediscovery (GRAVEYARD.md).
+     - Chênevert's outlook (p. 146) proposes the vanishing-cycle analysis that Theorem 8 carries out. It also
+       asks whether X7 has a model with good reduction at 3, and e1 = e3 = 0 is one.
    - [READING] Laza and Zheng's classification comes from the Leech lattice. The point counts here see the same field
      from the other side, through Frobenius.
    - **The counts are Airy moments.** By orthogonality the cubics' counts are moments of the cubic exponential sums
@@ -93,7 +101,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - Sabbah and Yu computed the Hodge numbers of the complex analogue, the symmetric powers of the Airy equation:
        every one is 0 or 1, at rational exponents (Tunisian J. Math. 2023). The classical part, where the exponents
        are integers, has exactly the sizes the counts here need.
-     - Neither identifies a piece. Here they are (5|p), LMFDB's 35.3.c.b, (105|p) and, at k = 11, a weight-3 CM form
+     - Neither identifies a piece; Chênevert did, at 7. Here they are (5|p), LMFDB's 35.3.c.b (Chênevert's), (105|p)
+       and, at k = 11, a weight-3 CM form
        of Q(√−1155). At 13, 17 and 21 they are twisted symmetric squares, with determinants (−15015|p), (−51051|p) and
        (−138567|p), and at 15 a CM form of Q(√−3003). At 19, 23 and 27 they are four-dimensional, with determinants
        (969969|p), (3187041|p) and (3187041|p), read prime by prime, and at 25 five-dimensional, with (3187041|p),
@@ -128,6 +137,39 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
    - The step from a three-dimensional orthogonal piece to a symmetric square is SO(3) ≅ PGL(2) with Tate's lifting
      theorem (Serre 1977, §6). The root's inner twists are Ribet's (Math. Ann. 1980).
 
+8. **The qudit direction: the magic state of a qudit T gate** [NAMED; checked 2026-11-17; not a round].
+   - **The bridge, checked numerically** (p = 11, 13, 17, 19). A single-qudit cubic-phase state ψ(x) = ω^(cx³ + ⋯)/√p,
+     the magic state of a qudit T gate, has every Wigner value equal to a Birch sum, S_t(a)/p² with t = c/4. Each
+     value is taken exactly p times.
+   - **What follows from known theorems.**
+     - The state's integer-order Wigner moments are the moments of the Birch sums, and so point counts of Livné's
+       W_n: exactly our counts when p ≡ 2 (mod 3), a cubic twist of them when p ≡ 1.
+     - Its total negativity tends to (8/(3π))√p, by the semicircle law for Birch sums (Katz 1987, Theorem 19,
+       monodromy SL₂ for p > 7; Livné 1987).
+   - **Known, and credited.**
+     - Kocia and Love (*Quantum* 2021, arXiv:1810.03622) call the qudit π/8 gate the discrete analogue of the Airy
+       function. They write the qutrit magic state's Wigner function as a cubic sum mod 9, with qutrit examples only,
+       no negativity against p, and no Sato–Tate.
+     - Wilson and White (arXiv:2011.13937): Haar-random qudit states have mana ½ ln d − ½ ln(π/2), that is,
+       negativity ≈ √(2/π)·√d.
+     - Li and Luo (*Phys. Lett. A* 2022): the qutrit T gate is the optimal diagonal gate for Wigner negativity.
+     - Feng and Luo (*Phys. Rev. A*, doi:10.1103/d36z-tb7h): at p = 5 the T gate is not optimal; 500 diagonal
+       gates outside the Clifford hierarchy beat it.
+     - Koukoulekidis and Jennings (*npj Quantum Inf.* 2022): bounds on distillation from the Rényi entropies of
+       Wigner distributions.
+     - Howard and Vala (2012): the qudit π/8 gates. Campbell, Anwar and Browne (2012): their distillation in every
+       prime dimension.
+   - **Not found in what we could read.**
+     - The bridge stated for every prime p.
+     - The T state's total negativity (8/(3π))√p. It sits above the Haar-random √(2/π)·√p, so cubic-phase magic
+       states are more negative than typical states.
+     - The exact Wigner moments as point counts, with modular forms: Chênevert's level-35 form enters at n = 7.
+   - **The caution.** At p = 5 the T gate is not the most negative diagonal gate, so the √p constant describes T-type
+     states, not the best diagonal ones.
+   - **The verdict.** This is a small connection between known results that the qudit-magic community may find
+     useful. The next step is a question to an expert (Campbell, Howard or Jennings). Any new computation waits for
+     the grounding gate.
+
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 
 | year | work | why it matters here |
@@ -161,6 +203,18 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
 
 ## Sources
 
+- L. Kocia and P. Love, "Stationary phase method in discrete Wigner functions and classical simulation of quantum
+  circuits", *Quantum* **5** (2021) 494, [arXiv:1810.03622](https://arxiv.org/abs/1810.03622).
+- J. Wilson and C. D. White, "Mana in Haar-random states", [arXiv:2011.13937](https://arxiv.org/abs/2011.13937).
+- L. Feng and S. Luo, "Optimal ququint diagonal gates for generating Wigner negativity", *Phys. Rev. A*,
+  [doi:10.1103/d36z-tb7h](https://journals.aps.org/pra/abstract/10.1103/d36z-tb7h).
+- N. Koukoulekidis and D. Jennings, "Constraints on magic state protocols from the statistical mechanics of Wigner
+  negativity", *npj Quantum Inf.* (2022), [arXiv:2106.15527](https://arxiv.org/abs/2106.15527).
+- M. Howard and J. Vala, "Qudit versions of the qubit π/8 gate" (2012), [arXiv:1206.1598](https://arxiv.org/abs/1206.1598).
+- N. Katz, "On the monodromy groups attached to certain families of exponential sums", *Duke Math. J.* **54** (1987).
+- G. Chênevert, PhD thesis, McGill (2008),
+  [PDF](https://www.math.mcgill.ca/goren/Students/Chenevert.thesis.pdf).
+
 - A. Forey, J. Fresán and E. Kowalski, [arXiv:2109.11961](https://arxiv.org/abs/2109.11961) (2021).
 - A. Forey, J. Fresán, E. Kowalski and Y. Wigderson, [arXiv:2511.21351](https://arxiv.org/abs/2511.21351) (2025) and
   [arXiv:2603.13198](https://arxiv.org/abs/2603.13198) (2026).
@@ -193,6 +247,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
   [arXiv:1905.11547](https://arxiv.org/abs/1905.11547).
 - K. Koike, "Cubic fourfolds with symplectic automorphisms" (2024), [arXiv:2409.08448](https://arxiv.org/abs/2409.08448).
 - R. Livné, *Israel J. Math.* **92** (1995): two-dimensional orthogonal motives and weight-3 CM forms.
+- R. Livné, "The average distribution of cubic exponential sums", *J. reine angew. Math.* **375/376** (1987); "Cubic exponential sums and Galois representations", *Contemp. Math.* **67** (1987).
+- G. Chênevert, *Exponential sums, hypersurfaces with many symmetries and Galois representations*, PhD thesis, McGill University (2008).
 - R. Evans and J. Greene, "A quadratic hypergeometric ₂F₁ transformation over finite fields",
   [arXiv:1511.00020](https://arxiv.org/abs/1511.00020).
 - J. H. Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed. (2009); K. Ireland and M. Rosen, *A Classical

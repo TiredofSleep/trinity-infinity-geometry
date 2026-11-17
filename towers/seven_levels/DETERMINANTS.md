@@ -156,6 +156,9 @@ This is the Jacobi symbol (p/A_n), with A_n = ∏_{j odd ≤ n} j/3^[3 | j].
 ## 5. What was known, and what is new
 
 - **Known, and credited** [NAMED].
+  - The cubics X_n and their moments (Livné 1987). Their S_n-decomposition, good reduction at 2 for odd n, and the
+    case n = 7, where the sign part is the level-35 newform with determinant ε_35 (Chênevert's thesis, 2008; found
+    2026-11-17).
   - Picard–Lefschetz for ordinary double points in mixed characteristic (Deligne, SGA 7, Exposé XV).
   - Griffiths' residues and the Jacobian ring.
   - Sabbah and Yu's Hodge numbers of the Airy moments. Step 1 rederives their classical part.
@@ -166,7 +169,8 @@ This is the Jacobi symbol (p/A_n), with A_n = ∏_{j odd ≤ n} j/3^[3 | j].
     gives the inertia invariants by a condition on v_p. The local behaviour used here at l ≥ 5 is the classical part
     of what Chuang describes, and in the cubic X_n it needs only ordinary double points.
 - **New, as far as we checked** (searches on 2026-11-15 and 2026-11-16).
-  - Theorem 8 itself, the global determinant of every Airy piece.
+  - Theorem 8 itself, the global determinant of every Airy piece. Chênevert proved the case n = 7, and his
+    outlook proposes the vanishing-cycle analysis carried out here.
   - The prime 3, through the good model e1 = e3 = 0, which Chuang and the Airy sheaf's theory exclude.
   - The corollary on complex conjugation.
 - **Checked, not proved.** That V_n is the piece measured as T_n rests on the Airy moments' standard structure (Step

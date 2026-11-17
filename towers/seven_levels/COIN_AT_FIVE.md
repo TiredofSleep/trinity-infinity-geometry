@@ -159,6 +159,9 @@ the registration: a10(5) = 5 and a10(3) = −8 (the engine, with U_q); f15(5) = 
 The dictionary's flat face at 7 is the analogue of Clebsch's cubic: X7 = {Σx = Σx³ = 0} in seven variables. The
 author's coin holds at 7: the heptagon is its flat face, and the octahedron with its centre its solid face.
 - **What was known** [NAMED].
+  - **Found 2026-11-17, after these rounds:** these cubics are Livné's (1987). Chênevert's thesis (2008, §5.7)
+    already proved that X7's sign part is the level-35 newform 35.3.c.b, with the Tate part 14 + 6(5|p). The
+    count below was rediscovered, not found first (GRAVEYARD.md).
   - X7 is the cubic fourfold that Laza and Zheng call X¹(A7). Koike calls it the Clebsch–Segre cubic.
   - The alternating group A7 acts on it symplectically. The odd permutations do not: they act by −1 on H^(3,1), the
     flip again.
@@ -545,6 +548,9 @@ scores in [`edge_rule_test27.log`](edge_rule_test27.log).
   - The cubic's icosahedral symmetry, and its place as the Hilbert modular surface of Q(√5) (Hirzebruch 1976).
   - X7 as X¹(A7), with its transcendental lattice (Laza and Zheng), and its equations and name (Koike).
   - Weight-3 CM forms for two-dimensional transcendental lattices (Livné 1995).
+  - The cubics {Σx = Σx³ = 0} as the moments of cubic exponential sums, and Birch's conjecture on their average
+    distribution (Livné 1987). Their S_n-decomposition, and X7's sign part as the level-35 newform, proved
+    (Chênevert 2008, found 2026-11-17).
   - The Airy moments' Hodge numbers (Sabbah and Yu 2023), and their L-functions' degrees and p-adic bounds (Haessig
     2009).
   - The point counts of {Σx = Σx³ = 0} as moments of cubic exponential sums: orthogonality.
