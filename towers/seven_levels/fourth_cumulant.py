@@ -23,7 +23,7 @@ The proof (TORUS_MOMENTS.md section 8, Theorem 5), each step checked here:
      - T(p) = (p - 1)(p - 3) + 4b^2, and J4 = p^4 - 1 - p(p + 1) N_V(4) by section 8's reduction.
 
   python fourth_cumulant.py           # every step at every prime 3..401; N_V(4) by brute force at 3..31; the chain
-                                      #   against the operators' J4 (logs to 509)  -> fourth_cumulant_verify.log
+                                      #   against the operators' J4 (logs to 509)  -> runs/fourth_cumulant_verify.log
   python fourth_cumulant.py test      # round 18 (PREREG.md): 409..3001 and 409..1009 -> fourth_cumulant_test.log
                                       #   (four worker processes at below-normal priority; a few minutes)
 
@@ -214,7 +214,8 @@ def operator_J4():
 
 def verify():
     global LOG
-    LOG = open(os.path.join(HERE, "fourth_cumulant_verify.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "fourth_cumulant_verify.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("fourth_cumulant.py -- Theorem 5 (TORUS_MOMENTS.md section 8): T(p), the pairing and J4, step by step")
     PS = primes(3, 401)

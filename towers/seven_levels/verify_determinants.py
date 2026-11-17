@@ -24,7 +24,7 @@ The proof has seven steps; each is checked here where a computer can check it.
       symmetric part's trace is 0.
   D10. Corollary: complex conjugation fixes the middle class of every V_k, k = 1 (mod 4), twisted to weight 0.
 
-numpy + sympy + edge_rule.py.  ASCII output; writes verify_determinants.log and exits with 1 if a check fails.
+numpy + sympy + edge_rule.py.  ASCII output; writes runs/verify_determinants.log and exits with 1 if a check fails.
 Run:  python verify_determinants.py      (a few minutes)
 """
 import itertools
@@ -45,7 +45,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import edge_rule as er  # noqa: E402  (sets below-normal priority on import, through coin_at_five)
 
-LOG = open(os.path.join(HERE, "verify_determinants.log"), "w", encoding="utf-8")
+os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+LOG = open(os.path.join(HERE, "runs", "verify_determinants.log"), "w", encoding="utf-8")
 FAILS = []
 
 

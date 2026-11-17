@@ -13,7 +13,7 @@ F_p*, where K(m) = sum over a in F_p* of w^(a + m/a), and -(p + 1)/p^5 at the ot
      Hasse's lifting G(chi o N) = g(chi)^3 for every character chi, and the key identity
          T(mu) = sum over s in F of w^(Tr(s) - mu N(s)) = p K(1/mu)   for every mu in F_p*.
 
-numpy only.  One process, one thread, below-normal priority.  ASCII output; writes verify_norm_state.log and exits
+numpy only.  One process, one thread, below-normal priority.  ASCII output; writes runs/verify_norm_state.log and exits
 with 1 if a check fails.
 Run:  python verify_norm_state.py      (about a minute)
 """
@@ -185,7 +185,8 @@ def part_b(p):
 
 def main():
     global LOG
-    LOG = open(os.path.join(HERE, "verify_norm_state.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "verify_norm_state.log"), "w", encoding="utf-8")
     say("NORM_STATE.md: the norm-type state on three wheels of p; its Wigner values are Kloosterman sums")
     say()
     say("A. the whole statement, from the state itself")

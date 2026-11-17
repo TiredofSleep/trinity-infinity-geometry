@@ -20,17 +20,17 @@ T_k(p) is the trace on the classical part of H^1(A^1, Sym^k Ai), whose Hodge num
 [NAMED: arXiv:2112.13405, Theorem 1.1].  Rounds 19 and 20 measured T_1 = p, T_3 = 0, T_5 = (5|p) p^3,
 T_7 = p^3 c(p) with c the weight-3 CM form of Q(sqrt -35), and T_9 = (105|p) p^5.
 
-  python edge_rule.py          # the forced checks F1 to F5                      -> edge_rule_verify.log
+  python edge_rule.py          # the forced checks F1 to F5                      -> runs/edge_rule_verify.log
   python edge_rule.py test     # round 21: the cubics at their edge primes 5 and 7 -> edge_rule_test.log
   python edge_rule.py test22   # round 22: the cubic in eleven variables          -> edge_rule_test22.log
                                #   (four worker processes at below-normal priority)
   python edge_rule.py test23   # round 23: the cubic in thirteen variables        -> edge_rule_test23.log
   python edge_rule.py test24   # round 24: thirteen blind, and fifteen            -> edge_rule_test24.log
-  python edge_rule.py verify25 # the forced checks F6 to F8 for round 25          -> edge_rule_verify25.log
+  python edge_rule.py verify25 # the forced checks F6 to F8 for round 25          -> runs/edge_rule_verify25.log
   python edge_rule.py test25   # round 25: seventeen, twenty-one and the prime 3  -> edge_rule_test25.log
-  python edge_rule.py verify26 # the forced checks F9 to F12 for round 26         -> edge_rule_verify26.log
+  python edge_rule.py verify26 # the forced checks F9 to F12 for round 26         -> runs/edge_rule_verify26.log
   python edge_rule.py test26   # round 26: twenty-seven, and the square classes   -> edge_rule_test26.log
-  python edge_rule.py verify27 # the forced checks F13 to F18 for round 27        -> edge_rule_verify27.log
+  python edge_rule.py verify27 # the forced checks F13 to F18 for round 27        -> runs/edge_rule_verify27.log
   python edge_rule.py test27   # round 27: eighty-one, and twenty-five's own determinant -> edge_rule_test27.log
   python edge_rule.py test28   # round 28: Theorem 8's determinants past 27, blind -> edge_rule_test28.log
 
@@ -182,7 +182,8 @@ def J3_merge(p):
 # ------------------------------------------------------------------ verify: the forced checks
 def verify():
     global LOG
-    LOG = open(os.path.join(HERE, "edge_rule_verify.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "edge_rule_verify.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("edge_rule.py -- the coin on its edge: the forced checks")
 
@@ -869,7 +870,8 @@ def base_rule(ns, kmax=22):
 def verify25():
     """the forced checks F6 to F8 behind round 25's registration; none of them counts X17 or X21, or the good model at 3"""
     global LOG
-    LOG = open(os.path.join(HERE, "edge_rule_verify25.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "edge_rule_verify25.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("edge_rule.py verify25 -- the forced checks for round 25 (seventeen, twenty-one, the prime 3)")
 
@@ -1309,7 +1311,8 @@ def verify26():
     """the forced checks F9 to F12 behind round 26, and the new counter's validation. Nothing here counts X23, X25 or
     X27, or any cubic in 13 or more variables over a field of p^2 elements."""
     global LOG
-    LOG = open(os.path.join(HERE, "edge_rule_verify26.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "edge_rule_verify26.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("edge_rule.py verify26 -- the forced checks for round 26 (twenty-seven, the 4-dimensional pieces)")
 
@@ -1839,7 +1842,8 @@ def verify27():
     """the forced checks F13 to F18 behind round 27. Nothing here counts a cubic in more than 27 variables, or any cubic
     in 17 or more variables over the field of p^3 elements."""
     global LOG
-    LOG = open(os.path.join(HERE, "edge_rule_verify27.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "edge_rule_verify27.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("edge_rule.py verify27 -- the forced checks for round 27 (eighty-one, and twenty-five's own determinant)")
 

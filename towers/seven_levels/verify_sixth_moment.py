@@ -21,7 +21,7 @@
      phase-0 count read from the states is the proved Z6 at every prime from 7 to 401
 
 numpy + oscillator_states.py + verify_torus_moments.py + exact_moments.py.  One process, below-normal priority.  ASCII output;
-writes verify_sixth_moment.log and exits with 1 if a check fails.
+writes runs/verify_sixth_moment.log and exits with 1 if a check fails.
 Run:  python verify_sixth_moment.py     (about a minute)
 """
 import ctypes
@@ -110,7 +110,8 @@ def triangles(Fd, C):
 
 def main():
     global LOG
-    LOG = open(os.path.join(HERE, "verify_sixth_moment.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "verify_sixth_moment.log"), "w", encoding="utf-8")
     say("TORUS_MOMENTS.md section 8, Theorem 4: the sixth moment, step by step")
     rng = np.random.default_rng(20261114)
     # 1. the trace phase of six operators splits into two triangles

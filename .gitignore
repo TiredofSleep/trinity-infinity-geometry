@@ -34,3 +34,6 @@ dist/
 
 # Anthropic / Claude Code state (if cloned alongside)
 .claude/
+
+# Run logs: verification scripts write here; the committed *.log files are the reference copies
+runs/

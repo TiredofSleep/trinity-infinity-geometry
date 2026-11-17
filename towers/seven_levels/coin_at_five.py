@@ -18,7 +18,7 @@ Q the two sixes are conjugate by sqrt5 -> -sqrt5 [NAMED: Clebsch 1871; Hirzebruc
 F_p when (5|p) = 1 and 15 when (5|p) = -1: that is the (5|p) in I5.  In characteristic 5, where (5|p) = 0, the cubic
 gets one singular point, the centre [1:1:1:1:1].  In n variables the centre is singular exactly when p > 3 divides n.
 
-  python coin_at_five.py          # the dictionary, checked                         -> coin_at_five_verify.log
+  python coin_at_five.py          # the dictionary, checked                         -> runs/coin_at_five_verify.log
   python coin_at_five.py test     # round 19 (PREREG.md)                            -> coin_at_five_test.log
   python coin_at_five.py test20   # round 20: the cubics in 7 and 9 variables, blind -> coin_at_five_test20.log
                                   #   (four worker processes at below-normal priority; a few minutes)
@@ -248,7 +248,8 @@ def singular_brute(n, p):
 
 def verify():
     global LOG
-    LOG = open(os.path.join(HERE, "coin_at_five_verify.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "coin_at_five_verify.log"), "w", encoding="utf-8")
     t0 = time.time()
     say("coin_at_five.py -- the coin at 5 in the fifth moments: the dictionary, checked")
     # D1: the pentagon lies on the flat face, off the solid face

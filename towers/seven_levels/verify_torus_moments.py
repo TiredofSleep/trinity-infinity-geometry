@@ -31,7 +31,7 @@ The third moment (section 6):
      off the origin the exact formula (offorigin_skew) matches the states (p <= 101) and all 77 of round 12's
      logged non-split averages (torus_moments_run.log, p <= 401)
 
-numpy + oscillator_states.py.  One process, below-normal priority.  ASCII output; writes verify_torus_moments.log
+numpy + oscillator_states.py.  One process, below-normal priority.  ASCII output; writes runs/verify_torus_moments.log
 and exits with 1 if a check fails.
 Run:  python verify_torus_moments.py     (about twenty seconds)
 """
@@ -146,7 +146,8 @@ def triangle_phases(P, p):
 
 def main():
     global LOG
-    LOG = open(os.path.join(HERE, "verify_torus_moments.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "verify_torus_moments.log"), "w", encoding="utf-8")
     say("TORUS_MOMENTS.md: averaged over the non-split eigenbasis, mu4/mu2^2 = 2p/(p + 1) (section 3) and the third")
     say("moment is 2/(p^2 (p + 1)), with its parity split (section 6)")
     rng = np.random.default_rng(20261113)

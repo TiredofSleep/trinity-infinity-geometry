@@ -32,7 +32,7 @@
      of x^3 - x^2 + x + 1 (a weight-1 form, discriminant -44); Theorem 7 has neither, so they cancel   (primes 7..101)
 
 numpy + sympy + modular_symbols.py + fifth_moments.py + exact_moments.py.  One process, below-normal priority.  ASCII
-output; writes verify_fifth_moment.log and exits with 1 if a check fails.
+output; writes runs/verify_fifth_moment.log and exits with 1 if a check fails.
 Run:  python verify_fifth_moment.py     (about two minutes)
 """
 import itertools
@@ -49,7 +49,8 @@ import fifth_moments as fm          # sets below-normal priority
 import modular_symbols as ms
 import exact_moments as emo
 
-LOG = open(os.path.join(HERE, "verify_fifth_moment.log"), "w", encoding="utf-8")
+os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+LOG = open(os.path.join(HERE, "runs", "verify_fifth_moment.log"), "w", encoding="utf-8")
 FAILS = []
 eta = fm.eta
 

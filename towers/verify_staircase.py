@@ -38,7 +38,7 @@ S13 Luther's dispersion, WP34's interleave score, from the primes alone: a floor
 S14 {k/d} and {k/d'} have covariance (g^2 - 1)/(12 d d') over a common period, g = gcd(d, d') (d, d' <= 30, exactly)
 S15 the wobble's variance over a period, exactly for every b <= 400, and its limit (2^w - 1)/12 for w primes
 
-numpy + mpmath (mpmath only for S7).  One process, below-normal priority.  ASCII output; writes verify_staircase.log.
+numpy + mpmath (mpmath only for S7).  One process, below-normal priority.  ASCII output; writes runs/verify_staircase.log.
 Runtime: about a minute.
 """
 import ctypes
@@ -161,7 +161,8 @@ def s1_s2():
 def main():
     global LOG
     t0 = time.time()
-    LOG = open(os.path.join(HERE, "verify_staircase.log"), "w", encoding="utf-8")
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)   # run logs go to runs/ (ignored); the committed copy is the reference
+    LOG = open(os.path.join(HERE, "runs", "verify_staircase.log"), "w", encoding="utf-8")
     say("THE_STAIRCASE.md: the interleave staircase, its line, its compression and its taper")
     s1_s2()
 
