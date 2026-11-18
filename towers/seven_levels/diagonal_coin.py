@@ -131,6 +131,21 @@ def best_T(p):
     return max(ow.T_size(t, p) for t in ow.classes(p))
 
 
+def interpolation_degree(f, p):
+    """the degree of the polynomial of degree < p through the values f(0..p-1) over F_p (Gaussian elimination mod p)"""
+    M = [[pow(x, k, p) for k in range(p)] + [f[x] % p] for x in range(p)]
+    for c in range(p):
+        r = next(i for i in range(c, p) if M[i][c] % p)
+        M[c], M[r] = M[r], M[c]
+        inv = pow(M[c][c], -1, p)
+        M[c] = [(v * inv) % p for v in M[c]]
+        for i in range(p):
+            if i != c and M[i][c]:
+                M[i] = [(a - M[i][c] * b) % p for a, b in zip(M[i], M[c])]
+    coeffs = [M[k][p] for k in range(p)]
+    return max((k for k in range(p) if coeffs[k]), default=0)
+
+
 def describe(v, p):
     """the phases in units of 2 pi / p, and whether they are p-th roots (then the polynomial degree)"""
     ph = np.concatenate([[0.0], v]) / (2 * np.pi) * p
@@ -138,12 +153,7 @@ def describe(v, p):
     on_grid = bool(np.max(np.abs(((ph - np.round(ph)) + 0.5) % 1 - 0.5)) < 1e-4)
     deg = None
     if on_grid:
-        f = [int(x) for x in near]
-        import sympy
-        X = sympy.symbols("X")
-        poly = sympy.interpolate(list(zip(range(p), f)), X)
-        poly = sympy.Poly(sympy.expand(poly), X, modulus=p) if poly != 0 else None
-        deg = poly.degree() if poly is not None else 0
+        deg = interpolation_degree([int(x) for x in near], p)
     return [round(float(x), 4) for x in ph], on_grid, deg
 
 

@@ -191,6 +191,9 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - Round 30 (three of four held). At 7, 400 optimizations over arbitrary phases found nothing above the T
        state, whose best class is optimal there, numerically. At 5, phases off the fifth roots beat it, as Feng and
        Luo found (our optimum 1.977576), and twenty-fifth roots come within 0.4%.
+     - Round 31 (four of four held). Through 23 the T gate is the best diagonal gate exactly when p = 3 or p ≡ 1
+       (mod 3). The ≡ 2 side has explicit witnesses at 5, 11, 17 and 23; the ≡ 1 side is numerical at 7, 13 and
+       19. Feng and Luo's three Clifford classes (2025) are the visible reason.
      - The short note in standard terms is [`QUDIT_NEGATIVITY_NOTE.md`](QUDIT_NEGATIVITY_NOTE.md).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)

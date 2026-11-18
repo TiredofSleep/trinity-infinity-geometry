@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Rounds 29 and 30: one wheel, the qudit T state, the ladder and the finer phases [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 to 31: one wheel, the qudit T state, the ladder, the finer phases and a coin by p mod 3 [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1039,9 +1039,19 @@ project, the statements and evidence are in a short note in standard terms:
   - At 7, 400 optimizations over arbitrary phases found nothing above the T state, and their best is the T state
     itself, f = 4x³ + x. The registered guess P3 said otherwise, and died. So, numerically, the T gate is optimal
     among all diagonal gates at 7, as Li and Luo proved at 3.
-  - [READING] Possibly a coin by p mod 3: optimal at 7 (≡ 1), beaten at 5 and 11 (≡ 2). Too few primes to say.
+  - Possibly a coin by p mod 3: optimal at 7 (≡ 1), beaten at 5 and 11 (≡ 2). Round 31 tested it.
   - Random p²-th-root phases have the random-state value (0.79801 against 0.79816 from 500 to 1000). Structured ones
     do not: g = x² mod p² is nearly classical (0.078), and g = x³ mod p² gives 0.736.
+- **Round 31: the coin by p mod 3** [measured; registered first, four of four held]
+  ([`diagonal_coin.py`](diagonal_coin.py)).
+  - The same fixed search ran at every prime: L-BFGS on the smoothed norm, from about 650 starts.
+  - At 13 and 19 (≡ 1) it found only the best T class, a degree-3 phase.
+  - At 17 and 23 (≡ 2) it found off-grid diagonal states that beat T: 0.880√17 and 0.886√23, against 0.849 and
+    0.847.
+  - So through 23 the T gate is the best diagonal gate exactly when p = 3 or p ≡ 1 (mod 3). The ≡ 2 side has
+    explicit witnesses. The ≡ 1 side is numerical.
+  - [READING] Every coin has an edge. When p ≡ 1 the best of the three T classes sits near 0.889√p, above the
+    non-T states' 0.88. But it tends to 0.849√p (0.873 at 31), so the ≡ 1 side should fail once it drops below them.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1270,6 +1280,8 @@ python one_wheel.py test               # round 29: the T state to 5000, the ladd
 python one_wheel.py reads              # after round 29's test: where the T state's slow approach comes from, a minute
 python fine_phases.py calibrate        # round 30's checks before registration (Li and Luo at 3), seconds
 python fine_phases.py test             # round 30: fine phases at 5 and 7, arbitrary phases, random fine phases, a minute
+python diagonal_coin.py calibrate      # round 31's checks before registration (the search at 5, 7, 11), seconds
+python diagonal_coin.py test           # round 31: the coin at 13, 17, 19, 23, under a minute on four processes
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

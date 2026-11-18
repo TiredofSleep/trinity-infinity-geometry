@@ -1886,6 +1886,17 @@ for _line30 in open(os.path.join(_HERE18, "fine_phases_test.log"), encoding="utf
     if len(_w30) > 1 and _w30[0] in ("[PASS]", "[FAIL]") and _w30[1] in RECORDED30:
         _got30[_w30[1]] = _w30[0][1:-1]
 forced("round 30's test log scores P1, P2 and P4 held and P3 died, as recorded", _got30 == RECORDED30)
+_r31c = _sp16.run([sys.executable, os.path.join(_HERE18, "diagonal_coin.py"), "calibrate", "--runs"], capture_output=True,
+                  text=True)
+forced("round 31's checks before registration (diagonal_coin.py calibrate: the gradient, and the fixed search at 5, 7 "
+       "and 11)", _r31c.returncode == 0 and "ALL PASS" in _r31c.stdout)
+RECORDED31 = {"R1": "PASS", "R2": "PASS", "R3": "PASS", "R4": "PASS"}
+_got31 = {}
+for _line31 in open(os.path.join(_HERE18, "diagonal_coin_test.log"), encoding="utf-8"):
+    _w31 = _line31.split()
+    if len(_w31) > 1 and _w31[0] in ("[PASS]", "[FAIL]") and _w31[1] in RECORDED31:
+        _got31[_w31[1]] = _w31[0][1:-1]
+forced("round 31's test log scores R1 to R4 held, as recorded", _got31 == RECORDED31)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

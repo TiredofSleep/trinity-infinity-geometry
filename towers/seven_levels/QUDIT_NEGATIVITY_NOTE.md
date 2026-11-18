@@ -88,10 +88,32 @@ Clifford.
   among all diagonal gates at 7, as at 3 [LL] and unlike 5 [FL26].
 - Random p²-th-root phases have the random-state value: 0.79801√p against 0.79816√p from 500 to 1000.
 
+**(7) A coin by p mod 3** (round 31). One fixed search ran at every prime: L-BFGS on a smoothed Wigner norm, from
+about 650 starts, some random and some near the T states. Through p = 23 the T gate is the most Wigner-negative
+diagonal gate exactly when p = 3 or p ≡ 1 (mod 3):
+
+| p | p mod 3 | best T state, S/√p | best diagonal state found, S/√p |
+|---|---|---|---|
+| 3 | 0 | 0.9158 | the T state [LL] |
+| 5 | 2 | 0.8472 | 0.8844 [FL26] |
+| 7 | 1 | 0.9261 | the T state |
+| 11 | 2 | 0.8525 | 0.8776 |
+| 13 | 1 | 0.8888 | the T state |
+| 17 | 2 | 0.8493 | 0.8803 |
+| 19 | 1 | 0.8886 | the T state |
+| 23 | 2 | 0.8470 | 0.8860 |
+
+- When p ≡ 2 (mod 3) the beating states are explicit, so that side is decisive. When p ≡ 1 the search returned only
+  the T state, which is numerical evidence and not a proof.
+- When p ≡ 1 (mod 3) the T gates form three Clifford classes [FL25]. The best class sits near 0.889√p, above the
+  roughly 0.88√p that other diagonal states reach. When p ≡ 2 there is one class, near 0.85√p.
+- The best class tends to 8/(3π)√p (§2(1)); at p = 31 it is 0.873√p. So the pattern should end at some larger
+  p ≡ 1 (mod 3).
+
 ## 3. Evidence
 
 The predictions were registered, with the script, before any value above p = 29 was computed
-([`PREREG.md`](PREREG.md), rounds 29 and 30).
+([`PREREG.md`](PREREG.md), rounds 29 to 31).
 
 | quantity | range | prediction | measured |
 |---|---|---|---|
@@ -104,6 +126,8 @@ The predictions were registered, with the script, before any value above p = 29 
 | the best fine phase vs arbitrary phases at p = 5 | 300 optimizations | ≥ 99% | 99.6% (1.969982 against 1.977576) |
 | arbitrary phases beat T at p = 7 | 400 optimizations | yes (a guess) | no: the best found is the T state; the guess failed |
 | random p²-th-root phases, mean S/√p | primes 500–1000 | the Haar mean ± 0.002 | 0.79801 against 0.79816 |
+| T optimal at 13, 19 (≡ 1 mod 3) | ~690 optimizations each | nothing above T | nothing above T |
+| T beaten at 17, 23 (≡ 2 mod 3) | ~630 optimizations each | a state above T | 0.8803 and 0.8860, against 0.8493 and 0.8470 |
 
 - For one class, the deviation of S/√p from 8/(3π) is about 5·10⁻⁴ for p from 1000 to 5000.
 - For p ≡ 1 (mod 3), the spread between the three classes shrinks like p^(−1/2).
@@ -128,7 +152,8 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
   - The ladder κ_m, and in particular that quintic and sextic phase states are less negative than random states.
   - The exhaustive maxima at p = 5 and 7 for phases that are p-th roots of unity. The case p = 5 may be implicit in
     [FL26].
-  - The numerical optimality of the T gate among all diagonal gates at p = 7.
+  - The pattern by p mod 3: the T gate is the most negative diagonal gate at p = 3, 7, 13 and 19, and is beaten at 5,
+    11, 17 and 23.
 
 ## References
 
@@ -166,3 +191,5 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 
 [`fine_phases.py`](fine_phases.py) runs round 30 ([`fine_phases_calibrate.log`](fine_phases_calibrate.log),
 [`fine_phases_test.log`](fine_phases_test.log)). Its calibration reproduces Li and Luo's optimum at p = 3.
+[`diagonal_coin.py`](diagonal_coin.py) runs round 31 ([`diagonal_coin_calibrate.log`](diagonal_coin_calibrate.log),
+[`diagonal_coin_test.log`](diagonal_coin_test.log)).

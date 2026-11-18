@@ -1,0 +1,21 @@
+Round 31: is the T gate the best diagonal gate exactly when p = 1 (mod 3)? (PREREG.md)
+
+  p = 13 (p = 1 mod 3): best of 690 climbs S = 3.204742 = 0.8888 sqrt p; the best T class 3.204742 = 0.8888 sqrt p; beats T: False
+     its phases in units of 2 pi/p: [0.0, 8.0, 12.0, 8.0, 5.0, 12.0, 12.0, 1.0, 1.0, 8.0, 5.0, 1.0, 5.0]; on the p-th-root grid: True, a polynomial of degree 3
+[PASS] R1 at 13 (= 1 mod 3) the search finds nothing above the best T class  (3.204742 against 3.204742)
+     (0.1 minutes so far)
+  p = 17 (p = 2 mod 3): best of 630 climbs S = 3.629595 = 0.8803 sqrt p; the best T class 3.501720 = 0.8493 sqrt p; beats T: True
+     its phases in units of 2 pi/p: [0.0, 3.7447, 7.3553, 13.0922, 12.0211, 1.1351, 10.404, 10.5356, 3.4048, 0.0609, 11.6308, 1.4892, 2.941, 9.1237, 0.7351, 10.9775, 6.5051]; on the p-th-root grid: False
+[PASS] R2 at 17 (= 2 mod 3) the search finds a diagonal state above the T state  (3.629595 against 3.501720)
+     (0.1 minutes so far)
+  p = 19 (p = 1 mod 3): best of 690 climbs S = 3.873476 = 0.8886 sqrt p; the best T class 3.873476 = 0.8886 sqrt p; beats T: False
+     its phases in units of 2 pi/p: [0.0, 4.0, 13.0, 13.0, 9.0, 6.0, 9.0, 4.0, 15.0, 9.0, 10.0, 4.0, 15.0, 10.0, 13.0, 10.0, 6.0, 6.0, 15.0]; on the p-th-root grid: True, a polynomial of degree 3
+[PASS] R3 at 19 (= 1 mod 3) the search finds nothing above the best T class  (3.873476 against 3.873476)
+     (0.2 minutes so far)
+  p = 23 (p = 2 mod 3): best of 630 climbs S = 4.248930 = 0.8860 sqrt p; the best T class 4.061994 = 0.8470 sqrt p; beats T: True
+     its phases in units of 2 pi/p: [0.0, 11.1145, 22.9759, 8.9587, 11.6639, 7.4937, 15.0617, 10.9611, 7.4546, 4.9298, 7.211, 22.1921, 1.6374, 9.6951, 22.3017, 20.1837, 4.0848, 0.2515, 3.6634, 6.3736, 8.5289, 22.4157, 2.5398]; on the p-th-root grid: False
+[PASS] R4 at 23 (= 2 mod 3) the search finds a diagonal state above the T state  (4.248930 against 4.061994)
+     (0.3 minutes so far)
+
+time 0.3 minutes
+ALL PASS

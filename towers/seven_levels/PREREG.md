@@ -2884,3 +2884,53 @@ other. Feng and Luo left the question open beyond 3.
   so at large p it will meet the other diagonal states.
 
 Run: `python diagonal_coin.py test` (minutes; four processes at below-normal priority).
+
+---
+
+## Round 31 scores (added after the test, 2026-11-17)
+
+Run by [`diagonal_coin.py`](diagonal_coin.py) `test`, registered at 2e5d136 before the test. Output:
+[`diagonal_coin_test.log`](diagonal_coin_test.log), 0.3 minutes.
+- The first run crashed before printing anything. The fault was in the helper that labels the best state's phases,
+  which interpolated over the rationals instead of mod p.
+- The helper was fixed (Gaussian elimination mod p, checked on 4x³ + x at 7 and x¹⁰ at 11), and the seeded test was
+  rerun. The search and the scoring were not touched, so the rerun is the run.
+
+**Four of four held. The coin held through 23.**
+
+| | outcome | evidence |
+|---|---|---|
+| R1 | held | at 13 (≡ 1), the best of 690 climbs is the T state, S = 3.204742 (0.8888√13), on the p-th-root grid with degree 3 |
+| R2 | held | at 17 (≡ 2), a state off the p-th-root grid has S = 3.629595 (0.8803√17), against the T state's 3.501720 |
+| R3 | held | at 19 (≡ 1), the best of 690 climbs is the T state, S = 3.873476 (0.8886√19), degree 3 |
+| R4 | held | at 23 (≡ 2), a state off the grid has S = 4.248930 (0.8860√23), against the T state's 4.061994 |
+
+**Read after the test** (not scored).
+- **The whole table, 3 to 23:**
+
+| p | p mod 3 | best T class / √p | best diagonal state found / √p | the T state |
+|---|---|---|---|---|
+| 3 | 0 | 0.9158 | 0.9158, the T state | optimal (Li and Luo, proved) |
+| 5 | 2 | 0.8472 | 0.8844 | beaten (Feng and Luo) |
+| 7 | 1 | 0.9261 | 0.9261, the T state | optimal (numerically) |
+| 11 | 2 | 0.8525 | 0.8776 | beaten |
+| 13 | 1 | 0.8888 | 0.8888, the T state | optimal (numerically) |
+| 17 | 2 | 0.8493 | 0.8803 | beaten |
+| 19 | 1 | 0.8886 | 0.8886, the T state | optimal (numerically) |
+| 23 | 2 | 0.8470 | 0.8860 | beaten |
+
+- **Why the coin, as far as the numbers show.**
+  - When p ≡ 1 (mod 3) the three T classes spread apart, and the best one sits near 0.889√p. That is above what the
+    non-T diagonal states reach, about 0.88√p.
+  - When p ≡ 2 there is one class, near 0.85√p, and other states pass it. Those are found off the p-th-root grid,
+    except at 11, where round 29 found a p-th-root one.
+- **Where its edge should be.** The best class tends to 8/(3π)√p = 0.849√p (round 29): at 31 it is 0.873√p, and at 127
+  it is 0.871√p. So the ≡ 1 side should fail once the best class drops below the other states, perhaps at 31.
+
+**Yield.**
+- For every prime through 23, the T gate is the most Wigner-negative diagonal gate exactly when p = 3 or p ≡ 1
+  (mod 3).
+  - On the ≡ 2 side the evidence is decisive: an explicit better state at 5, 11, 17 and 23.
+  - On the ≡ 1 side it is numerical: 690 climbs found only the T state at 13 and at 19, and 400 found only it at 7.
+- This is a concrete answer to Feng and Luo's open question, with a reason that can be tested: the three classes of
+  T states when p ≡ 1 (mod 3).
