@@ -2740,3 +2740,54 @@ the T state is not the best phase state at 7 died.
 - **Useful.** In Pashayan, Wallman and Bartlett's quasi-probability simulation, the number of samples grows with the
   square of the product of the magic states' S [NAMED]. So each T state multiplies the cost by about (8/(3π))²·p ≈ 0.72p.
   A quintic-phase state multiplies it by less than a random state does.
+
+---
+
+## Round 30: the p²-th-root phases (registered 2026-11-17, before the test)
+
+> *Livné proof first, then the p²-root phases* — the author, 17 November 2026
+
+**Why.**
+- Round 29's statements are about phase states ψ_f with p-th-root phases. The Clifford hierarchy also holds diagonal
+  gates whose phases are p^m-th roots of unity (Cui, Gottesman and Krishna); the qutrit T gate is one, with ninth
+  roots. At 5, Feng and Luo found diagonal gates that beat the T state with phases outside the fifth roots of unity.
+- This round takes the next step, m = 2: the fine-phase states ψ_g = p^(−1/2) Σ_x ζ^g(x) |x⟩, with ζ = e^(2πi/p²) and
+  g: F_p → Z/p². It also compares them with diagonal states whose phases are arbitrary real numbers.
+- The measure is round 29's sum of sizes, S = Σ|W|.
+
+**Made exact, before the test.**
+- **The states.** Any function {0, …, p − 1} → Z/p² is a polynomial mod p², since differences of distinct
+  representatives are units. So, as we read Cui, Gottesman and Krishna, every fine-phase gate lies in the hierarchy.
+  The p-th-root states of round 29 are the case g = p·f.
+- **The random baseline.**
+  - For a random g, the row sums of W are 1 + 2Σ_(y=1)^((p−1)/2) cos θ_y. The angles θ_y are independent and uniform,
+    because the pairs {q + y/2, q − y/2} are disjoint.
+  - So W ≈ (1 + N(0, p − 1))/p², and S/√p → √(2/π), the random-state value of round 29's exact Haar mean.
+- **Checked before this registration** ([`fine_phases_calibrate.log`](fine_phases_calibrate.log), all pass):
+  - C1: the diagonal-state Wigner norm, against the state's own Wigner function, p = 3 to 13;
+  - C2: Li and Luo's theorem at p = 3. The best of the 81 ninth-root states is the qutrit T state, S = 1.586257, and
+    200 optimizations over arbitrary phases do not beat it;
+  - C3: round 29's T states at 5 and 7.
+- **Not computed before this registration:** any fine-phase or arbitrary-phase value at p = 5 or above.
+
+**Predictions.** All four are fresh.
+
+| | prediction | dies if |
+|---|---|---|
+| P1 | (Claude's reading) **At 5 the T state is beaten by a fine phase.** Over all 390 625 fine-phase states (g(0) = 0), some state has S above the T state's 1 + 2/√5. Feng and Luo's arbitrary phases beat T at 5, and twenty-fifth roots approximate any phase to within π/25 | the T state's value is the maximum |
+| P2 | **The grid is fine enough.** At 5 the best fine-phase S is at least 99% of the best S over arbitrary phases (Nelder–Mead and Powell from 300 random starts) | below 99% |
+| P3 | (Claude's reading, thin) **At 7 the T state is not the best diagonal state.** Some arbitrary-phase state (400 starts) beats the T state's 2.450304. At 3 the T state is optimal (Li and Luo), at 5 it is not (Feng and Luo); 7 is open | nothing beats 2.450304 + 10⁻⁶ |
+| P4 | **Random fine phases are random states.** Over ten seeded random g at each prime from 500 to 1000, the mean S/√p is within 0.002 of the exact Haar mean over the same primes | the difference is 0.002 or more |
+
+- **Reads, not scored:**
+  - how many fine-phase states beat T at 5;
+  - the best of 10⁶ sampled fine-phase states at 7;
+  - the structured fine phases g = x^a mod p² (a = 2, 3, 4) from 500 to 1000.
+
+**The drafter's expectation.**
+- P2 and P4 rest on continuity and on the central limit theorem.
+- P1 rests on Feng and Luo, and P3 is a guess either way.
+- Whatever P3 does, the table of S at 3, 5 and 7 for p-th-root, fine and arbitrary phases says where the T gate stands
+  among all diagonal gates on one qudit.
+
+Run: `python fine_phases.py test` (a few minutes; four processes at below-normal priority).

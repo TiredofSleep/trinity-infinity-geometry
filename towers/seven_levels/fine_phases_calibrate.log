@@ -1,0 +1,9 @@
+fine_phases.py calibrate -- round 30, before the registration
+
+[PASS] C1 the diagonal-state Wigner norm equals the one computed from the state, p = 3..13
+     p = 3: best of the 81 ninth-root phase states S = 1.586257 at g = [0, 4, 8]; Howard and Vala's T state (0, 1, -1)/9: 1.586257; arbitrary phases (200 starts): 1.586257
+[PASS] C2 at p = 3 the best ninth-root state is the qutrit T state, and no diagonal state with arbitrary phases beats it (Li and Luo)
+[PASS] C3 round 29's best T states: S = 1 + 2/sqrt 5 at 5 and 2.450304 at 7  (1.894427, 2.450304)
+
+time 0.0 minutes
+ALL PASS
