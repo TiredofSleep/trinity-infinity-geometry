@@ -3113,3 +3113,19 @@ Run by [`winners.py`](winners.py) `test`, registered at 74958a0 before the test,
   Luo's count.
 - No common closed form was found. The two guesses about structure, glassy landscapes and a broken reflection, did
   not survive 41 and 47.
+
+---
+
+## Addendum (2026-11-18): round 30's death at 7 is a theorem
+
+> *attempt the proof* — the author, 18 November 2026
+
+- Round 30's P3 guessed that some diagonal state beats the T state at 7, and died: 400 optimizations found only the
+  T state.
+- [`t_optimal_7.py`](t_optimal_7.py) now proves it, computer-assisted: every diagonal state on seven levels has
+  S ≤ 2.4503041185…, with equality only at the T states of class 1.
+  - It is a branch and bound over the phases modulo the 49 Clifford phases: 47 136 512 boxes, each discarded by an
+    exact-range bound, by monotonicity, or inside a certified concave cube.
+  - It runs in double precision with margins of 10⁻⁹.
+  - The same prover fails at p = 5, as Feng and Luo's result requires.
+- This is not a prediction, so it carries no score. It closes the open case that P3 left numerical.

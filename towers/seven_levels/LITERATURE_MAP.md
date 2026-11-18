@@ -196,6 +196,9 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        19. Feng and Luo's three Clifford classes (2025) are the visible reason.
      - Round 32 (four of five held). The coin ends after 19, as registered: at 31, 37 and 43 the search beats the
        best T class.
+     - Theorem at p = 7 (2026-11-18, computer-assisted, [`t_optimal_7.py`](t_optimal_7.py)): the T gate is the most
+       Wigner-negative diagonal gate on seven levels, answering Feng and Luo's open question there. As far as we
+       checked, it was open.
      - Round 33 (three of six held). The winners give up the T state's 2p-element (or 6p) symmetry group and keep
        at most its reflection. At 5 the optimum is odd, with an orbit of 500, Feng and Luo's count. No common
        closed form was found.

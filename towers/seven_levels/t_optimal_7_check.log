@@ -1,0 +1,7 @@
+t_optimal_7.py check -- the lemmas of the proof at p = 7
+[PASS] L1 the bound U is above S at 60 000 sampled points of 2000 random boxes (half-widths 0.002 to 1)
+[PASS] L2 the two maximizers in D (c = 3, 4) have S = 2.4503041185401 = S of the T state 4x^3
+     maximizer: Hessian eigenvalues [-0.769149 -0.769149 -0.769149 -0.769149 -0.769149 -0.109878]; min |E| = 1.6920; max |grad| = 5.8e-15
+     maximizer: Hessian eigenvalues [-0.769149 -0.769149 -0.769149 -0.769149 -0.769149 -0.109878]; min |E| = 1.6920; max |grad| = 1.1e-14
+[PASS] L3 at both maximizers: gradient 0, Hessian below -24 rho0 = -0.0960, and every |E| above 12 rho0 (so on the cube of half-width rho0 = 0.004 the signs hold, S is smooth and concave)
+ALL PASS

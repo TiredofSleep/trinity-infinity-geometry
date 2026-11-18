@@ -1,0 +1,6 @@
+t_optimal_7.py prove -- branch and bound over D = [-pi/7, pi/7]^2 x [0, 2 pi]^4
+S_T = 2.4503041185401; discard margin 1e-9; concave cubes of half-width 0.004 around the two maximizers
+boxes examined 47136512; discarded by the bound 23403224, by monotonicity 164690, inside the concave cubes 854; the smallest box split had half-width 7.67e-04
+the largest S at any box center: 2.4503025778165 (S_T = 2.4503041185401)
+[PASS] THEOREM (p = 7): every diagonal state has S <= S_T, with equality only at the T states of class 1
+time 9.7 minutes

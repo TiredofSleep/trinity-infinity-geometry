@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Rounds 29 to 33: one wheel, the qudit T state, the ladder, the finer phases, a coin by p mod 3 with its edge, and what beats the T state [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 to 33: one wheel, the qudit T state, the ladder, the finer phases, a coin by p mod 3 with its edge, what beats the T state, and a theorem at 7 [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1070,6 +1070,14 @@ project, the statements and evidence are in a short note in standard terms:
     Clifford group has 500 members, Feng and Luo's count.
   - Two registered guesses died at 41 and 47: that the landscape is glassy, and that winners at p ≡ 2 break the
     reflection. Beyond about 40 the search reaches less (0.86√p), so fine structure there is out of reach.
+- **Theorem at p = 7: the T gate is the optimal diagonal gate** [FORCED, computer-assisted]
+  ([`t_optimal_7.py`](t_optimal_7.py)).
+  - Every diagonal state on seven levels has S ≤ 2.4503041185…, with equality only at the T states of class 1.
+  - The proof is a branch and bound over the phases modulo the 49 Clifford phases: 47 136 512 boxes, 9.7 minutes.
+    Each box is discarded by an exact-range bound, by monotonicity where S is smooth, or inside two certified
+    concave cubes around the maximizers.
+  - It runs in double precision with margins far above rounding. The same prover fails at p = 5, as it must.
+  - This answers Feng and Luo's open question at 7.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1304,6 +1312,9 @@ python diagonal_coin.py edge           # round 32: the coin's edge at 29, 31, 37
 python winners.py explore              # round 33's reads before registration (5 to 43, with the odd search), nine minutes
 python winners.py test                 # round 33: what the winners share, at 41 and 47, under a minute
 python winners.py forced               # the T state's symmetry group to 13, for the verifier, under a minute
+python t_optimal_7.py check            # the theorem's lemmas at p = 7 (the bound, the maximizers, the Hessian), seconds
+python t_optimal_7.py prove            # the theorem at p = 7: the branch and bound, ten minutes on four processes
+python t_optimal_7.py control          # the same prover at p = 5, where it must fail, seconds
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

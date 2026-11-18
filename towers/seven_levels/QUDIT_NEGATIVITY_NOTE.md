@@ -86,6 +86,21 @@ Clifford.
 - At 7, 400 optimizations over arbitrary phases found nothing above the T state, S = 2.450304. Their best is the
   T state itself, with phases (0, 5, 6, 6, 1, 1, 2)/7, that is, f = 4x³ + x. So, numerically, the T gate is optimal
   among all diagonal gates at 7, as at 3 [LL] and unlike 5 [FL26].
+
+**Theorem (p = 7; computer-assisted).** Every diagonal state has S ≤ 2.4503041185…, the T state's value. Equality
+holds only at the T states of the best class (c ∈ {3, 4}, so t = c/4 = 1).
+- **The proof** is a branch and bound over the torus of phases φ(1..6), reduced by the 49 Clifford phases to the box
+  [−π/7, π/7]² × [0, 2π]⁴.
+- **It examined 47 136 512 boxes in 9.7 minutes.** A box is discarded in one of three ways:
+  - by an upper bound. Each W(q, s) depends on three angles through disjoint coordinates, so its range is exact;
+    the terms that keep their sign are linearized together;
+  - by monotonicity, where S is smooth and a partial derivative cannot vanish;
+  - or inside the two cubes of half-width 0.004 around the maximizers, where S is certified concave. The Hessian's
+    eigenvalues there are −0.769 (five times) and −0.110.
+- **Precision.** It runs in double precision with margins (10⁻⁹) far above the rounding error. It is not formally
+  verified.
+- **The control.** The same prover at p = 5 fails at once, finding a state above the T state, as Feng and Luo's
+  result requires ([`t_optimal_7.py`](t_optimal_7.py), [`t_optimal_7.log`](t_optimal_7.log)).
 - Random p²-th-root phases have the random-state value: 0.79801√p against 0.79816√p from 500 to 1000.
 
 **(7) A pattern by p mod 3, and where it ends** (rounds 31 and 32). One fixed search ran at every prime: L-BFGS on
@@ -141,6 +156,7 @@ The predictions were registered, with the script, before any value above p = 29 
 | a fine phase beats T at p = 5 | all 390 625 | yes | yes: 129 500 do; the best is 1.969982 |
 | the best fine phase vs arbitrary phases at p = 5 | 300 optimizations | ≥ 99% | 99.6% (1.969982 against 1.977576) |
 | arbitrary phases beat T at p = 7 | 400 optimizations | yes (a guess) | no: the best found is the T state; the guess failed |
+| the T state is the optimum at p = 7 | branch and bound over all phases | (a theorem, not a prediction) | proved: 47 136 512 boxes, every one discarded |
 | random p²-th-root phases, mean S/√p | primes 500–1000 | the Haar mean ± 0.002 | 0.79801 against 0.79816 |
 | T optimal at 13, 19 (≡ 1 mod 3) | ~690 optimizations each | nothing above T | nothing above T |
 | T beaten at 17, 23 (≡ 2 mod 3) | ~630 optimizations each | a state above T | 0.8803 and 0.8860, against 0.8493 and 0.8470 |
@@ -171,6 +187,7 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
     [FL26].
   - The pattern by p mod 3, and its end: the T gate is the most negative diagonal gate at p = 3, 7, 13 and 19, and is
     beaten at 5, 11, 17, 23, 29, 31, 37 and 43.
+  - The theorem at p = 7, which answers [FL26]'s open question there.
 
 ## References
 
@@ -211,4 +228,6 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 [`diagonal_coin.py`](diagonal_coin.py) runs round 31 ([`diagonal_coin_calibrate.log`](diagonal_coin_calibrate.log),
 [`diagonal_coin_test.log`](diagonal_coin_test.log), [`diagonal_coin_edge.log`](diagonal_coin_edge.log)).
 [`winners.py`](winners.py) runs round 33 ([`winners_explore.log`](winners_explore.log),
-[`winners_test.log`](winners_test.log)).
+[`winners_test.log`](winners_test.log)). [`t_optimal_7.py`](t_optimal_7.py) proves the theorem at p = 7
+([`t_optimal_7_check.log`](t_optimal_7_check.log), [`t_optimal_7.log`](t_optimal_7.log),
+[`t_optimal_7_control.log`](t_optimal_7_control.log)).

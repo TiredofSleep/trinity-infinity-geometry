@@ -1,0 +1,4 @@
+t_optimal_7.py control -- the same prover at p = 5, target S_T(5) = 1 + 2/sqrt 5 (Feng and Luo: T is not optimal)
+after 16 boxes the prover reached a center with S = 1.949935 > 1.894427, at phases [0.0, -0.3142, -0.3142, 4.7124, 1.5708]
+[PASS] CONTROL the prover does not prove a false optimality: at p = 5 it finds a state above the T state
+time 0.0 minutes

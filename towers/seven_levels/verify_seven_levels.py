@@ -1914,6 +1914,12 @@ for _line33 in open(os.path.join(_HERE18, "winners_test.log"), encoding="utf-8")
     if len(_w33) > 1 and _w33[0] in ("[PASS]", "[FAIL]") and _w33[1] in RECORDED33:
         _got33[_w33[1]] = _w33[0][1:-1]
 forced("round 33's test log scores W1a, W1b and W2b held and W2a, W3a and W3b died, as recorded", _got33 == RECORDED33)
+_t7c = _sp16.run([sys.executable, os.path.join(_HERE18, "t_optimal_7.py"), "check"], capture_output=True, text=True)
+_t7k = _sp16.run([sys.executable, os.path.join(_HERE18, "t_optimal_7.py"), "control"], capture_output=True, text=True)
+_t7log = open(os.path.join(_HERE18, "t_optimal_7.log"), encoding="utf-8").read()
+forced("the theorem at p = 7 (t_optimal_7.py: its lemmas pass, the same prover fails at p = 5 as it must, and the "
+       "recorded branch and bound discarded every box)", _t7c.returncode == 0 and "ALL PASS" in _t7c.stdout
+       and "[PASS] CONTROL" in _t7k.stdout and "[PASS] THEOREM (p = 7)" in _t7log)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
