@@ -17,6 +17,7 @@ nothing is numerical evidence, not a proof.
 
   python diagonal_coin.py calibrate   # before the registration: the gradient, and the search at 5, 7, 11 -> diagonal_coin_calibrate.log
   python diagonal_coin.py test        # round 31: 13, 17, 19, 23                                      -> diagonal_coin_test.log
+  python diagonal_coin.py edge        # round 32: where the coin ends, 29, 31, 37, 43 (same search)    -> diagonal_coin_edge.log
 
 numpy + scipy + one_wheel.py + fine_phases.py.  Four worker processes at below-normal priority.  ASCII output.
 """
@@ -222,5 +223,35 @@ def test():
     LOG.close()
 
 
+def edge():
+    """round 32: the same search at 29 (= 2 mod 3, the control), and 31, 37, 43 (= 1 mod 3, where the best T class has
+    dropped below the level the other diagonal states reached at 5 to 23)"""
+    global LOG
+    LOG = open(os.path.join(HERE, "diagonal_coin_edge.log"), "w", encoding="utf-8")
+    t0 = time.time()
+    say("Round 32: where the coin ends (PREREG.md)")
+    say()
+    for p, name in ((29, "E1"), (31, "E2"), (37, "E3"), (43, "E4")):
+        T = best_T(p)
+        b, v, n = search(p)
+        ph, on_grid, deg = describe(v, p)
+        beats = b > T + 1e-6
+        say(f"  p = {p} (p = {p % 3} mod 3): best of {n} climbs S = {b:.6f} = {b / math.sqrt(p):.4f} sqrt p; the best T class "
+            f"{T:.6f} = {T / math.sqrt(p):.4f} sqrt p; beats T: {beats}")
+        say(f"     on the p-th-root grid: {on_grid}" + (f", a polynomial of degree {deg}" if on_grid else ""))
+        if p == 29:
+            check(f"{name} at 29 (= 2 mod 3, the control) the search beats the T state", beats, f"{b:.6f} against {T:.6f}")
+            check(f"{name}b and its best reaches 0.875 sqrt 29, the level of 5 to 23", b / math.sqrt(p) >= 0.875,
+                  f"{b / math.sqrt(p):.4f}")
+        else:
+            check(f"{name} at {p} (= 1 mod 3) the coin breaks: the search beats the best T class", beats,
+                  f"{b:.6f} against {T:.6f}")
+        say(f"     ({(time.time() - t0) / 60:.1f} minutes so far)")
+    say()
+    say(f"time {(time.time() - t0) / 60:.1f} minutes")
+    say(f"{'ALL PASS' if not FAILS else 'FAILED: ' + ', '.join(FAILS)}")
+    LOG.close()
+
+
 if __name__ == "__main__":
-    {"calibrate": calibrate, "test": test}[sys.argv[1] if len(sys.argv) > 1 else "calibrate"]()
+    {"calibrate": calibrate, "test": test, "edge": edge}[sys.argv[1] if len(sys.argv) > 1 else "calibrate"]()

@@ -2934,3 +2934,51 @@ Run by [`diagonal_coin.py`](diagonal_coin.py) `test`, registered at 2e5d136 befo
   - On the ≡ 1 side it is numerical: 690 climbs found only the T state at 13 and at 19, and 400 found only it at 7.
 - This is a concrete answer to Feng and Luo's open question, with a reason that can be tested: the three classes of
   T states when p ≡ 1 (mod 3).
+
+---
+
+## Round 32: where the coin ends (registered 2026-11-17, before the test)
+
+> *yes, round 32 at the edge* — the author, 17 November 2026
+
+**Why.**
+- Round 31 found the T gate to be the best diagonal gate at p = 3, 7, 13 and 19, and beaten at 5, 11, 17 and 23: a
+  coin by p mod 3.
+- Every coin has an edge. When p ≡ 1 (mod 3), the best of the three T classes is what beat the other diagonal states,
+  near 0.889√p at 13 and 19. But it tends to 8/(3π)√p = 0.849√p (round 29).
+- This round asks where the coin stops.
+
+**Made exact, before the test.**
+- **The best T class, from round 29's formula** (not from any search):
+
+| p | p mod 3 | best T class / √p | the other classes |
+|---|---|---|---|
+| 29 | 2 | 0.8561 | (one class) |
+| 31 | 1 | 0.8734 | 0.8624, 0.8305 |
+| 37 | 1 | 0.8740 | 0.8479, 0.8291 |
+| 43 | 1 | 0.8756 | 0.8407, 0.8361 |
+
+  - Every prime ≡ 1 (mod 3) from 31 to 109 has its best class at 0.8756√p or below, beneath the lowest level the other
+    diagonal states reached at 5 to 23, 0.8776√p (at 11).
+  - At 13 and 19 the best class was 0.889√p, above that level.
+- **The search is round 31's**, unchanged ([`diagonal_coin.py`](diagonal_coin.py) `edge`: the same starts, climbs and
+  threshold). A witness is decisive.
+- **Not computed before this registration:** any search at 29 or above.
+
+**Predictions.** All five are fresh.
+
+| | prediction | dies if |
+|---|---|---|
+| E1 | At 29 (≡ 2 mod 3, the control) the search beats the T state | nothing above 0.8561√29 |
+| E1b | and its best reaches 0.875√29, the level the other diagonal states held at 5 to 23. Without that, a failure at 31 could just mean a weaker search | below 0.875√29 |
+| E2 | **The coin breaks at 31.** At 31 (≡ 1) the search beats the best T class | nothing above 0.8734√31 |
+| E3 | At 37 (≡ 1) the search beats the best T class | nothing above 0.8740√37 |
+| E4 | At 43 (≡ 1) the search beats the best T class | nothing above 0.8756√43 |
+
+**The drafter's expectation.**
+- If E1, E1b and E2 to E4 hold, the coin is a small-prime fact. It holds at 3, 7, 13 and 19 and nowhere ≡ 1 (mod 3)
+  after.
+- Its edge is where the best T class falls below the other diagonal states.
+- If E2 dies, the T gate's lead at 31 needs another reason.
+
+Run: `python diagonal_coin.py edge` (a few minutes; four processes at below-normal priority).
