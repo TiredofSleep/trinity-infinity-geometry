@@ -188,6 +188,9 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
        degrees 7 and 8 at USp(6)'s 0.7985.
      - At 5 and 7 the T state is the most negative of all phase states with p-th-root-of-unity phases (exhaustive).
        That partly answers Feng and Luo's open question, for gates whose phases are p-th roots of unity.
+     - Round 30 (three of four held). At 7, 400 optimizations over arbitrary phases found nothing above the T
+       state, whose best class is optimal there, numerically. At 5, phases off the fifth roots beat it, as Feng and
+       Luo found (our optimum 1.977576), and twenty-fifth roots come within 0.4%.
      - The short note in standard terms is [`QUDIT_NEGATIVITY_NOTE.md`](QUDIT_NEGATIVITY_NOTE.md).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)

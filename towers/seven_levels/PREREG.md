@@ -2791,3 +2791,44 @@ the T state is not the best phase state at 7 died.
   among all diagonal gates on one qudit.
 
 Run: `python fine_phases.py test` (a few minutes; four processes at below-normal priority).
+
+---
+
+## Round 30 scores (added after the test, 2026-11-17)
+
+Run by [`fine_phases.py`](fine_phases.py) `test`, registered at b19b5c0 before the test, in 1.1 minutes. Output:
+[`fine_phases_test.log`](fine_phases_test.log).
+
+**Three of four held, and the death is the finding.** At 7 the T state is, numerically, the best diagonal state of all,
+as at 3 and unlike 5.
+
+| | outcome | evidence |
+|---|---|---|
+| P1 | held | at 5, 129 500 of the 390 625 fine-phase states beat the T state; the best has S = 1.969982 (0.8810 of √5), at g = (0, 12, 16, 1, 1)/25 |
+| P2 | held | the best over arbitrary phases (300 starts) is 1.977576 (0.8844 of √5); the best fine phase is 99.6% of it |
+| P3 | **died** | at 7, 400 optimizations over arbitrary phases found nothing above the T state's 2.450304. Their best is the T state itself: phases (0, 5, 6, 6, 1, 1, 2)/7, which is f = 4x³ + x, round 29's best class t = 1 |
+| P4 | held | ten random fine phases at each of the 73 primes from 500 to 1000: mean S/√p = 0.79801, against the Haar mean of 0.79816 |
+
+**Read after the test** (not scored).
+- **Where the T gate stands among all diagonal gates on one qudit:**
+
+| p | T state | best p-th-root phase | best p²-th-root phase | best arbitrary phase (numerical) | Haar mean | ceiling √p |
+|---|---|---|---|---|---|---|
+| 3 | 1.586257 | (no T state with cube roots) | 1.586257, the T state | 1.586257 (Li and Luo) | 1.5 | 1.732 |
+| 5 | 1.894427 | 1.894427, the T state | 1.969982 | 1.977576 (Feng and Luo: T is not optimal) | 1.875 | 2.236 |
+| 7 | 2.450304 | 2.450304, the T state | ≥ 2.437764 (10⁶ sampled) | 2.450304, the T state | 2.1875 | 2.646 |
+
+- **A coin by p mod 3?** The T state is optimal at 3 and, numerically, at 7. It is beaten at 5, and at 11 by a degree-10
+  phase (round 29). At 13 it beat every sampled phase.
+  - At p ≡ 1 (mod 3) the T states fall into three classes, and the best class sits high at small p: 0.926√7 and
+    0.889√13.
+  - So far: optimal at 7 (≡ 1), beaten at 5 and 11 (≡ 2). Too few primes to call it, and 13, 17 and 19 would test it.
+- **Structured fine phases are not random.** g = x² mod p² is a slow chirp and nearly classical: S/√p = 0.078 from 500
+  to 1000. g = x³ mod p², a discretized cubic phase, gives 0.736, below random. g = x⁴ gives 0.797.
+
+**Yield.**
+- At 7 no diagonal state found beats the T state, though 400 optimizations over arbitrary phases looked. Feng and Luo
+  asked whether the T gate is optimal for Wigner negativity in prime dimensions beyond 3. At 5 it is not (their
+  result); at 7 it appears to be.
+- At 5 the best diagonal state needs phases off the fifth roots of unity, and twenty-fifth roots come within 0.4% of it.
+- Random p²-th-root phases behave like random states, as the central limit theorem says.

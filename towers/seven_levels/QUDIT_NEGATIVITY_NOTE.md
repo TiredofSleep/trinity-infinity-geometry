@@ -77,10 +77,21 @@ Clifford.
   Mao and Yi's Lemma 24, read through the Wigner function [ZMY].
 - The fourth moment, (2p − 1)/p⁵, is the same for all three classes.
 
+**(6) Beyond p-th roots** (round 30).
+- With phases that are p²-th roots of unity, every g: F_p → Z/p² is allowed. Each such gate lies in the
+  hierarchy [CGK], and the qutrit T gate is one of them, with ninth roots.
+- At 5, 129 500 of the 390 625 states (g(0) = 0) beat the T state, and the best reaches S = 1.969982. The best
+  diagonal state with arbitrary phases, found from 300 random starts, has 1.977576 = 0.884√5. Feng and Luo's
+  optimal gates beat T at 5 [FL26], and twenty-fifth roots come within 0.4% of them.
+- At 7, 400 optimizations over arbitrary phases found nothing above the T state, S = 2.450304. Their best is the
+  T state itself, with phases (0, 5, 6, 6, 1, 1, 2)/7, that is, f = 4x³ + x. So, numerically, the T gate is optimal
+  among all diagonal gates at 7, as at 3 [LL] and unlike 5 [FL26].
+- Random p²-th-root phases have the random-state value: 0.79801√p against 0.79816√p from 500 to 1000.
+
 ## 3. Evidence
 
 The predictions were registered, with the script, before any value above p = 29 was computed
-([`PREREG.md`](PREREG.md), round 29).
+([`PREREG.md`](PREREG.md), rounds 29 and 30).
 
 | quantity | range | prediction | measured |
 |---|---|---|---|
@@ -89,6 +100,10 @@ The predictions were registered, with the script, before any value above p = 29 
 | degrees 5, 6 (x⁵, x⁶, one random each), mean S/√p | primes 700–1500 | κ₂ ± 0.004, below the Haar mean | 0.78989 to 0.79067, below the Haar mean at every prime |
 | degrees 7, 8, mean S/√p | primes 700–1500 | κ₃ ± 0.004 | 0.79785 to 0.79857 |
 | the best phase state at p = 7 | all 2401 classes | not a T state (a guess) | a T state: the guess failed |
+| a fine phase beats T at p = 5 | all 390 625 | yes | yes: 129 500 do; the best is 1.969982 |
+| the best fine phase vs arbitrary phases at p = 5 | 300 optimizations | ≥ 99% | 99.6% (1.969982 against 1.977576) |
+| arbitrary phases beat T at p = 7 | 400 optimizations | yes (a guess) | no: the best found is the T state; the guess failed |
+| random p²-th-root phases, mean S/√p | primes 500–1000 | the Haar mean ± 0.002 | 0.79801 against 0.79816 |
 
 - For one class, the deviation of S/√p from 8/(3π) is about 5·10⁻⁴ for p from 1000 to 5000.
 - For p ≡ 1 (mod 3), the spread between the three classes shrinks like p^(−1/2).
@@ -113,6 +128,7 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
   - The ladder κ_m, and in particular that quintic and sextic phase states are less negative than random states.
   - The exhaustive maxima at p = 5 and 7 for phases that are p-th roots of unity. The case p = 5 may be implicit in
     [FL26].
+  - The numerical optimality of the T gate among all diagonal gates at p = 7.
 
 ## References
 
@@ -147,3 +163,6 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 - `calibrate`: the identities of §2 and the constants κ_m ([`one_wheel_calibrate.log`](one_wheel_calibrate.log));
 - `test`: the registered predictions of §3 ([`one_wheel_test.log`](one_wheel_test.log));
 - `reads`: the analysis after the test ([`one_wheel_reads.log`](one_wheel_reads.log)).
+
+[`fine_phases.py`](fine_phases.py) runs round 30 ([`fine_phases_calibrate.log`](fine_phases_calibrate.log),
+[`fine_phases_test.log`](fine_phases_test.log)). Its calibration reproduces Li and Luo's optimum at p = 3.

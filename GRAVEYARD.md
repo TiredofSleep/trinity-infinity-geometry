@@ -362,6 +362,10 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From round 30, the p²-th-root phases (2026-11-17; `towers/seven_levels/fine_phases_test.log`):**
+  - **"At 7 some diagonal state with arbitrary phases beats the T state"** (P3, Claude's reading).
+    - 400 optimizations found nothing above 2.450304, and their best is the T state, f = 4x³ + x.
+    - The guess leaned on Feng and Luo's result at 5. Here 7 behaves like 3 instead.
 - **From round 29, one wheel (2026-11-17; `towers/seven_levels/one_wheel_test.log`):**
   - **"At 7 the T state is not the most negative phase state"** (Q5, Claude's reading).
     - Over all 2401 phase classes the maximum is a T state, S = 2.450304; at 5 it is too, among all 25.

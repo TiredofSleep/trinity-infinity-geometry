@@ -1,0 +1,18 @@
+Round 30: diagonal magic states with p^2-th-root phases (PREREG.md)
+
+  p = 5: all 390625 fine-phase states (g(0) = 0): best S = 1.969982 (0.8810 of sqrt 5) at g = [0, 12, 16, 1, 1] (in 25ths); 129500 beat the T state's 1.894427
+[PASS] P1 at 5 some fine-phase state beats the T state
+  p = 5: arbitrary phases (300 starts): S = 1.977576 (0.8844 of sqrt 5) at phases/(2 pi) = [0.0, 0.0605, 0.9632, 0.6237, 0.4119]
+[PASS] P2 at 5 the best fine-phase state is within 1% of the best diagonal state with arbitrary phases  (1.969982 against 1.977576)
+  p = 7: arbitrary phases (400 starts): S = 2.450304 (0.9261 of sqrt 7) at phases/(2 pi) = [0.0, 0.7143, 0.8571, 0.8571, 0.1429, 0.1429, 0.2857]; the T state 2.450304
+[FAIL] P3 at 7 some diagonal state with arbitrary phases beats the T state  (2.450304 against 2.450304)
+  read: p = 7, 10^6 sampled fine-phase states: best S = 2.437764
+
+  primes 500..1000 (73), ten random fine-phase states each: mean S/sqrt(p) = 0.79801; the exact Haar mean over the same primes 0.79816
+[PASS] P4 random fine-phase states have the random-state value: the mean S/sqrt(p) is within 0.002 of the Haar mean  (difference -0.00015)
+  read: g = x^2 mod p^2: mean S/sqrt(p) = 0.07767 (range 0.06632 .. 0.09337)
+  read: g = x^3 mod p^2: mean S/sqrt(p) = 0.73614 (range 0.73316 .. 0.74016)
+  read: g = x^4 mod p^2: mean S/sqrt(p) = 0.79658 (range 0.78827 .. 0.80016)
+
+time 1.1 minutes
+FAILED: P3 at 7 some diagonal state with arbitrary phases beats the T state

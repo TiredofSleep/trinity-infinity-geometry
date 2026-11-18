@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Round 29: one wheel, the qudit T state and the ladder [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 and 30: one wheel, the qudit T state, the ladder and the finer phases [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1033,6 +1033,15 @@ project, the statements and evidence are in a short note in standard terms:
     three classes' mean, deviate by about 0.0005 from 1000 to 5000. The spread between the classes shrinks like
     p^(−1/2) (0.0039 rms from 3000 to 5000).
   - [measured] The class with the largest third moment is the most negative at 24 of 77 primes, which is chance.
+- **Round 30: the p²-th-root phases** [measured; registered first, three of four held] ([`fine_phases.py`](fine_phases.py)).
+  - At 5, 129 500 of the 390 625 fine-phase states (phases e(2πi g(x)/25)) beat the T state. The best, 1.969982,
+    is 99.6% of the optimum over arbitrary phases, 1.977576 (0.884√5). Feng and Luo's T is not optimal at 5.
+  - At 7, 400 optimizations over arbitrary phases found nothing above the T state, and their best is the T state
+    itself, f = 4x³ + x. The registered guess P3 said otherwise, and died. So, numerically, the T gate is optimal
+    among all diagonal gates at 7, as Li and Luo proved at 3.
+  - [READING] Possibly a coin by p mod 3: optimal at 7 (≡ 1), beaten at 5 and 11 (≡ 2). Too few primes to say.
+  - Random p²-th-root phases have the random-state value (0.79801 against 0.79816 from 500 to 1000). Structured ones
+    do not: g = x² mod p² is nearly classical (0.078), and g = x³ mod p² gives 0.736.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1259,6 +1268,8 @@ python verify_cm_pieces.py             # Theorem 9: the pieces at 7, 11 and 15 a
 python one_wheel.py calibrate          # round 29's forced identities, at the primes up to 29, under a minute
 python one_wheel.py test               # round 29: the T state to 5000, the ladder from 700 to 1500, three minutes on four processes
 python one_wheel.py reads              # after round 29's test: where the T state's slow approach comes from, a minute
+python fine_phases.py calibrate        # round 30's checks before registration (Li and Luo at 3), seconds
+python fine_phases.py test             # round 30: fine phases at 5 and 7, arbitrary phases, random fine phases, a minute
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

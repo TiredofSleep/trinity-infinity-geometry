@@ -1875,6 +1875,17 @@ for _line29 in open(os.path.join(_HERE18, "one_wheel_test.log"), encoding="utf-8
     if len(_w29) > 1 and _w29[0] in ("[PASS]", "[FAIL]") and _w29[1] in RECORDED29:
         _got29[_w29[1]] = _w29[0][1:-1]
 forced("round 29's test log scores Q1 to Q4 held and Q5 died, with F1 and F2 passing, as recorded", _got29 == RECORDED29)
+_r30c = _sp16.run([sys.executable, os.path.join(_HERE18, "fine_phases.py"), "calibrate", "--runs"], capture_output=True,
+                  text=True)
+forced("round 30's checks before registration (fine_phases.py calibrate: the diagonal Wigner norm, and Li and Luo's "
+       "optimum at p = 3)", _r30c.returncode == 0 and "ALL PASS" in _r30c.stdout)
+RECORDED30 = {"P1": "PASS", "P2": "PASS", "P3": "FAIL", "P4": "PASS"}
+_got30 = {}
+for _line30 in open(os.path.join(_HERE18, "fine_phases_test.log"), encoding="utf-8"):
+    _w30 = _line30.split()
+    if len(_w30) > 1 and _w30[0] in ("[PASS]", "[FAIL]") and _w30[1] in RECORDED30:
+        _got30[_w30[1]] = _w30[0][1:-1]
+forced("round 30's test log scores P1, P2 and P4 held and P3 died, as recorded", _got30 == RECORDED30)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "
