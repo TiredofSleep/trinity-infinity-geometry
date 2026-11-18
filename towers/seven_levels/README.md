@@ -982,7 +982,9 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
 > — the author, 17 November 2026
 
 Round 29 put one qudit's magic states against random states. Six predictions were registered with the script,
-[`one_wheel.py`](one_wheel.py), before the test ([`PREREG.md`](PREREG.md)), and five held.
+[`one_wheel.py`](one_wheel.py), before the test ([`PREREG.md`](PREREG.md)), and five held. For readers outside this
+project, the statements and evidence are in a short note in standard terms:
+[`QUDIT_NEGATIVITY_NOTE.md`](QUDIT_NEGATIVITY_NOTE.md).
 
 - **The T state's law** [FORCED from NAMED; measured].
   - The T state's Wigner values are Birch sums (round 13, with one wheel). So its sum of sizes is
@@ -999,22 +1001,24 @@ Round 29 put one qudit's magic states against random states. Six predictions wer
   - Measured at the 114 primes from 700 to 1500:
     - x⁵, x⁶ and random quintics and sextics sit at 0.7899 to 0.7907, below random states at every one of the primes;
     - x⁷, x⁸ and random septics and octics sit at 0.7979 to 0.7986.
-  - [READING] So among the diagonal gates of the Clifford hierarchy on one qudit, only the T gate's level beats random
-    states for Wigner negativity, and the fifth level falls below them.
+  - [READING] So among the polynomial phase gates ω^f on one qudit, only the cubic level, the T gate, beats random
+    states for Wigner negativity, and degrees 5 and 6 fall below them. The hierarchy's higher levels also hold
+    p^m-th-root phases (Cui, Gottesman and Krishna), which were not tested.
 - **At 5 and 7 the T state is the best phase state** [measured, exhaustive].
   - Over all 25 phase classes at 5, and all 2401 at 7, the maximum is a T state: S = 1 + 2/√5 at 5, and 2.450304 at 7
     (t = 1). The registered guess Q5 said otherwise, and died.
   - At 11 a degree-10 phase beats T in a sample of 10⁶ (2.877 against 2.827). At 13 no sampled phase does (T has
     3.2047).
-  - Feng and Luo found 500 diagonal gates with general phases that beat T at 5 [NAMED]. Among phases that are p-th
-    roots of unity, the hierarchy's own gates, T is the maximum at 5 and 7.
+  - Feng and Luo found 500 diagonal gates with other phases that beat T at 5 [NAMED]. Among phases that are p-th
+    roots of unity, T is the maximum at 5 and 7.
 - **The moments are the cubics' counts** [FORCED].
   - The T state's n-th Wigner moment is p^(1−2n)Σ_a S_t(a)^n, which is given by Livné's counts.
   - Chênevert's form 35.3.c.b enters the seventh: (14 + 6(5|p))/p⁹ + a_p/p¹⁰ when p ≡ 2 (mod 3).
 - **When p ≡ 1 (mod 3), the cubic Gauss sum splits the three T states** [FORCED; derived; checked to 1000].
   - Σ_a S_t(a)³ = 2p² + 2p·Re(χ(3t)G(χ)²), while the fourth moment, 2p³ − p², is the same for all three.
-  - The three classes of T gates, and the role of the cubic Gauss sums and Kummer's problem, are already in Zhu, Mao
-    and Yi (2024), for third moments of Clifford orbits [NAMED]. Whether this formula is theirs was not checked.
+  - This is Zhu, Mao and Yi's Lemma 24 (2024), read through the Wigner function [NAMED]. They treat third moments of
+    Clifford orbits, and their κ(f, T) = g(3, ac)²/d² gives Σ_a S_t(a)³ = p·g(3, 3t)². The three Clifford classes of T
+    gates are Feng and Luo's (2025) [NAMED].
   - [measured] The class split is what keeps the T state from settling fast. A single class (p ≡ 2 mod 3), and the
     three classes' mean, deviate by about 0.0005 from 1000 to 5000. The spread between the classes shrinks like
     p^(−1/2) (0.0039 rms from 3000 to 5000).

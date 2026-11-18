@@ -162,7 +162,12 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - Zhu, Mao and Yi (arXiv:2410.13575, 2024; found 2026-11-17, during round 29) study the third moments of qudit
        Clifford orbits. When p ≡ 1 (mod 3) they distinguish three types of T gates and magic states by cubic
        characters, use cubic Gauss and Jacobi sums, and cite Kummer's problem. Round 29's E5, the third Wigner moment
-       of each class, 2p² + 2p·Re(χ(3t)G(χ)²), is in that spirit; whether it is in their paper was not checked.
+       of each class, 2p² + 2p·Re(χ(3t)G(χ)²) = p·g(3, 3t)², is their Lemma 24, κ(f, T) = g(3, ac)²/d². This was
+       checked in the paper on 2026-11-17, with the author's permission to open it.
+     - Feng and Luo (*EPJ Plus* 2025, doi:10.1140/epjp/s13360-025-06394-x): the Howard–Vala T gates form three
+       Clifford classes exactly when p ≡ 1 (mod 3). Also Feng and Luo (*Phys. Scr.* 2024): for the L1 norm the T
+       gate is optimal among diagonal gates in every prime dimension. Li and Luo (*Phys. Lett. A* 2023): the qutrit
+       T gate is optimal for Wigner negativity.
      - Feng and Luo also show that for the L1 norm the T gate is optimal among all diagonal gates in every prime
        dimension; for Wigner negativity they leave it open beyond 3.
    - **Not found in what we could read.**
@@ -182,7 +187,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - The higher levels do not climb. Degree-5 and degree-6 phase states sit at USp(4)'s 0.7905, below random, and
        degrees 7 and 8 at USp(6)'s 0.7985.
      - At 5 and 7 the T state is the most negative of all phase states with p-th-root-of-unity phases (exhaustive).
-       That partly answers Feng and Luo's open question for the hierarchy's own gates.
+       That partly answers Feng and Luo's open question, for gates whose phases are p-th roots of unity.
+     - The short note in standard terms is [`QUDIT_NEGATIVITY_NOTE.md`](QUDIT_NEGATIVITY_NOTE.md).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)
 

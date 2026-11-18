@@ -2718,8 +2718,11 @@ the T state is not the best phase state at 7 died.
   - Zhu, Mao and Yi (arXiv:2410.13575, 2024), on third moments of qudit Clifford orbits, already treat the three
     classes: they distinguish three types of T gates and magic states when p ≡ 1 (mod 3) by cubic characters. They
     use cubic Gauss and Jacobi sums, and cite Kummer's problem.
-  - E5's formula is in that spirit. Whether it appears there was not checked: their sections on magic orbits could
-    not be read here.
+  - E5 is their Lemma 24, read through the Wigner function: κ(f, T) = 2/d + (2/d²)Re(η₃(ac)G²(η₃)) = g(3, ac)²/d²,
+    with g(3, b) = Σ_x ω^(bx³). So Σ_a S_t(a)³ = p·g(3, 3t)². This was checked in their paper on 2026-11-17, with the
+    author's permission to open it.
+  - Feng and Luo (*EPJ Plus* 2025) show that the Howard–Vala T gates fall into three Clifford classes exactly when
+    p ≡ 1 (mod 3).
   - Feng and Luo (*PRA* 2026): for the L1 norm the T gate is optimal among all diagonal gates in every prime
     dimension. For Wigner negativity this was open beyond 3, and at 5, 500 diagonal gates with general phases beat it.
 
@@ -2729,9 +2732,11 @@ the T state is not the best phase state at 7 died.
     to 5000.
   - The ladder above it. The fifth level of the Clifford hierarchy falls below random states (USp(4)'s 0.7905), and
     from the seventh level on the values hug the random one.
-  - So for Wigner negativity the T gate is the only level of diagonal gate on one qudit that beats random states.
-- **Exhaustive at 5 and 7.** Among phases that are p-th roots of unity, the hierarchy's own diagonal gates, the T state
-  is the most negative. With general phases at 5 it is not (Feng and Luo).
+  - So among the polynomial phase gates ω^f on one qudit, only the cubic level, the T gate, makes states more
+    negative than random. The hierarchy's higher levels also hold gates with p^m-th-root phases (Cui, Gottesman and
+    Krishna), which this round did not test.
+- **Exhaustive at 5 and 7.** Among diagonal gates whose phases are p-th roots of unity, the T state is the most
+  negative. With other phases at 5 it is not (Feng and Luo).
 - **Useful.** In Pashayan, Wallman and Bartlett's quasi-probability simulation, the number of samples grows with the
   square of the product of the magic states' S [NAMED]. So each T state multiplies the cost by about (8/(3π))²·p ≈ 0.72p.
   A quintic-phase state multiplies it by less than a random state does.
