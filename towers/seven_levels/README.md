@@ -975,6 +975,16 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     151. Yun's symbol without the cube's 3 fits at chance level where the two differ.
   - Credited: Picard–Lefschetz (SGA 7); Chuang's thesis, which already holds the local picture at primes from 5 up
     in another model; Yun's (p/d!!) for the Kloosterman moments.
+- **Theorem 9: the pieces at 7, 11 and 15 are CM newforms** [FORCED, given Theorem 8 and Corollary 2; NAMED: Livné
+  1995, Serre, Hecke] ([`CM_PIECES.md`](CM_PIECES.md)).
+  - Each is two-dimensional and orthogonal, with a nontrivial determinant. So it is induced from a Hecke character
+    of Q(√−35), Q(√−1155) or Q(√−3003), and the conductor makes that character unramified (at 15 after twisting
+    by (5|·)).
+  - The class groups have exponent 2, so there are 2, 8 and 8 candidates. Exactly one has the measured traces at
+    every good prime to 401.
+  - At 7 it is 35.3.c.b, Chênevert's theorem by another route. At 11 and 15 the signs on the ramified primes are
+    (3, 5, −7, 11) and (3, 7, −11, 13).
+  - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
 ## 22. Round 29: one wheel, the qudit T state and the ladder [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
@@ -1245,6 +1255,7 @@ python edge_rule.py verify27           # round 27's forced checks: the Hodge typ
 python edge_rule.py test27             # round 27: 81 variables at 83..1999 and the field of p^3 elements to 151, four minutes on four processes
 python verify_determinants.py          # Theorem 8 (DETERMINANTS.md), step by step, about a minute
 python verify_conductors.py            # its conductor corollary, against the L-function's functional equation, under a minute
+python verify_cm_pieces.py             # Theorem 9: the pieces at 7, 11 and 15 are CM newforms, under a minute
 python one_wheel.py calibrate          # round 29's forced identities, at the primes up to 29, under a minute
 python one_wheel.py test               # round 29: the T state to 5000, the ladder from 700 to 1500, three minutes on four processes
 python one_wheel.py reads              # after round 29's test: where the T state's slow approach comes from, a minute

@@ -1840,6 +1840,9 @@ forced("DETERMINANTS.md's Theorem 8, step by step (verify_determinants.py: the J
 _r28c = _sp16.run([sys.executable, os.path.join(_HERE18, "verify_conductors.py")], capture_output=True, text=True)
 forced("DETERMINANTS.md's conductor corollary (verify_conductors.py: the nodes give 35, 1155 and 3*5^2*7*11*13, and "
        "the L-function's functional equation holds at those levels alone)", _r28c.returncode == 0 and "ALL PASS" in _r28c.stdout)
+_r28m = _sp16.run([sys.executable, os.path.join(_HERE18, "verify_cm_pieces.py")], capture_output=True, text=True)
+forced("CM_PIECES.md's Theorem 9 (verify_cm_pieces.py: the class groups, the 2, 8 and 8 unramified Hecke characters, "
+       "exactly one fitting each piece, the signs at the bad primes, and 35.3.c.b)", _r28m.returncode == 0 and "ALL PASS" in _r28m.stdout)
 RECORDED28 = {"B1": "HELD", "B2": "HELD", "B3": "HELD", "B4": "HELD", "B5": "HELD"}
 forced("round 28's test log scores B1 to B5 held, as recorded", _scores("edge_rule_test28.log", RECORDED28) == RECORDED28)
 ok28 = True

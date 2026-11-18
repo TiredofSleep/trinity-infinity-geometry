@@ -27,6 +27,10 @@ terms: [`AIRY_DETERMINANTS_NOTE.md`](AIRY_DETERMINANTS_NOTE.md).
 - **The conductor, from the same count** (§4). The conductor of V_k is ∏ l^(N_l(k)). This is 35 at 7, 1155 at 11 and
   3·5²·7·11·13 at 15. At 11 and 15 it holds the L-function's functional equation to 10⁻¹⁵, and every rival level
   fails ([`verify_conductors.py`](verify_conductors.py), 2026-11-17).
+- **The pieces at 7, 11 and 15 are CM newforms** (Theorem 9, [`CM_PIECES.md`](CM_PIECES.md)).
+  - With the determinant and the conductor, Livné's 1995 criterion makes them induced from unramified Hecke
+    characters of Q(√−35), Q(√−1155) and Q(√−3003) (at 15 after twisting by (5|·)).
+  - The traces pick one character each.
 - **The shape is Yun's.** For the Kloosterman moments Yun proved the determinant (p/d!!) [NAMED]. The Airy symbol is
   his with the cube's 3 taken out.
 - **Its first new predictions held blind** [measured; round 28 of [`PREREG.md`](PREREG.md)].

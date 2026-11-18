@@ -59,7 +59,9 @@ reviewed each one.
     of nodes gives each piece's conductor: 35, 1155 and 3·5²·7·11·13 at 7, 11 and 15.
   - *The evidence.* Exact point counts at every prime up to 601 in seven and nine variables, and predictions
     registered before each count that held blind (rounds 19 to 28). The identification at 7 is Chênevert's
-    theorem, rediscovered here; those at 9 to 21 are measured, not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
+    theorem, rediscovered here. With Theorem 8's determinant and its conductor, Livné's 1995 criterion proves the
+    pieces at 7, 11 and 15 to be CM newforms (Theorem 9), and the one-dimensional pieces at 5 and 9 equal their
+    determinants; those at 13, 17 and 21 are measured, not proved. Theorem 8's proof (ordinary double points, Picard–Lefschetz, class field theory) is written out step
     by step, and a script checks each computable step; its local input at primes from 5 up is in Chuang's 2026
     thesis. At 11 and 15 the L-functions satisfy their functional equations at those conductors, and every rival
     level fails. No one outside the loop has reviewed the proof or the identifications.
