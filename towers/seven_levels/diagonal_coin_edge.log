@@ -1,0 +1,22 @@
+Round 32: where the coin ends (PREREG.md)
+
+  p = 29 (p = 2 mod 3): best of 630 climbs S = 4.680564 = 0.8692 sqrt p; the best T class 4.610135 = 0.8561 sqrt p; beats T: True
+     on the p-th-root grid: False
+[PASS] E1 at 29 (= 2 mod 3, the control) the search beats the T state  (4.680564 against 4.610135)
+[FAIL] E1b and its best reaches 0.875 sqrt 29, the level of 5 to 23  (0.8692)
+     (0.1 minutes so far)
+  p = 31 (p = 1 mod 3): best of 690 climbs S = 4.899793 = 0.8800 sqrt p; the best T class 4.862890 = 0.8734 sqrt p; beats T: True
+     on the p-th-root grid: False
+[PASS] E2 at 31 (= 1 mod 3) the coin breaks: the search beats the best T class  (4.899793 against 4.862890)
+     (0.2 minutes so far)
+  p = 37 (p = 1 mod 3): best of 690 climbs S = 5.337764 = 0.8775 sqrt p; the best T class 5.316093 = 0.8740 sqrt p; beats T: True
+     on the p-th-root grid: False
+[PASS] E3 at 37 (= 1 mod 3) the coin breaks: the search beats the best T class  (5.337764 against 5.316093)
+     (0.3 minutes so far)
+  p = 43 (p = 1 mod 3): best of 690 climbs S = 5.743769 = 0.8759 sqrt p; the best T class 5.741504 = 0.8756 sqrt p; beats T: True
+     on the p-th-root grid: False
+[PASS] E4 at 43 (= 1 mod 3) the coin breaks: the search beats the best T class  (5.743769 against 5.741504)
+     (0.5 minutes so far)
+
+time 0.5 minutes
+FAILED: E1b and its best reaches 0.875 sqrt 29, the level of 5 to 23

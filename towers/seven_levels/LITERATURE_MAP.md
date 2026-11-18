@@ -194,6 +194,8 @@ arXiv. A second search followed the modular form that turned up in the sixth mom
      - Round 31 (four of four held). Through 23 the T gate is the best diagonal gate exactly when p = 3 or p ≡ 1
        (mod 3). The ≡ 2 side has explicit witnesses at 5, 11, 17 and 23; the ≡ 1 side is numerical at 7, 13 and
        19. Feng and Luo's three Clifford classes (2025) are the visible reason.
+     - Round 32 (four of five held). The coin ends after 19, as registered: at 31, 37 and 43 the search beats the
+       best T class.
      - The short note in standard terms is [`QUDIT_NEGATIVITY_NOTE.md`](QUDIT_NEGATIVITY_NOTE.md).
 
 ## The works citing Forey, Fresán and Kowalski (as indexed on 2026-11-14)

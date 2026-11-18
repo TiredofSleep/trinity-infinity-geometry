@@ -2982,3 +2982,37 @@ Run by [`diagonal_coin.py`](diagonal_coin.py) `test`, registered at 2e5d136 befo
 - If E2 dies, the T gate's lead at 31 needs another reason.
 
 Run: `python diagonal_coin.py edge` (a few minutes; four processes at below-normal priority).
+
+---
+
+## Round 32 scores (added after the test, 2026-11-17)
+
+Run by [`diagonal_coin.py`](diagonal_coin.py) `edge`, registered at 9d2f509 before the test, in 0.5 minutes. Output:
+[`diagonal_coin_edge.log`](diagonal_coin_edge.log).
+
+**Four of five held. The coin ends where the best T class falls below the other diagonal states: after 19, at 31.**
+
+| | outcome | evidence |
+|---|---|---|
+| E1 | held | at 29 (≡ 2) a diagonal state off the p-th-root grid has S = 4.680564 (0.8692√29), against the T state's 4.610135 (0.8561) |
+| E1b | **died** | that best is 0.8692√29, below the 0.875 the other diagonal states reached at 5 to 23. Their level is not a constant |
+| E2 | held | at 31 (≡ 1) the coin breaks: 4.899793 (0.8800√31) against the best T class's 4.862890 (0.8734) |
+| E3 | held | at 37 (≡ 1): 5.337764 (0.8775√37) against 5.316093 (0.8740) |
+| E4 | held | at 43 (≡ 1): 5.743769 (0.8759√43) against 5.741504 (0.8756), a thin margin but a witness |
+
+**Read after the test** (not scored).
+- **The coin from 3 to 43:**
+  - The T gate is the best diagonal gate at 3 (proved, Li and Luo) and at 7, 13 and 19 (numerically).
+  - It is beaten at 5, 11, 17, 23 and 29 (≡ 2) and at 31, 37 and 43 (≡ 1), each with an explicit witness.
+  - Its edge lies between 19 and 31, where the best of the three T classes drops from 0.889√p to 0.873√p.
+- **The other diagonal states' level wanders.** The best found was 0.8844, 0.8776, 0.8803, 0.8860, 0.8692, 0.8800,
+  0.8775 and 0.8759 at 5, 11, 17, 23, 29, 31, 37 and 43. It is a lower bound on the true optimum, from a search that
+  grows harder with p.
+- **The margin is thinning.** At 43 the witness beats the best T class by only 0.0003√43. As p grows, both the best T
+  class and the searched states sit near 0.86 to 0.88.
+
+**Yield.**
+- The coin is a small-prime fact with a measured edge.
+- When p ≡ 1 (mod 3), the T gate's three Clifford classes give it the best diagonal state at 7, 13 and 19, while the
+  best class stays above about 0.88√p.
+- From 31 on it does not, and the T gate is beaten on both sides of the coin.

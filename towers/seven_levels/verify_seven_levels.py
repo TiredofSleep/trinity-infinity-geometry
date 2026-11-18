@@ -1897,6 +1897,13 @@ for _line31 in open(os.path.join(_HERE18, "diagonal_coin_test.log"), encoding="u
     if len(_w31) > 1 and _w31[0] in ("[PASS]", "[FAIL]") and _w31[1] in RECORDED31:
         _got31[_w31[1]] = _w31[0][1:-1]
 forced("round 31's test log scores R1 to R4 held, as recorded", _got31 == RECORDED31)
+RECORDED32 = {"E1": "PASS", "E1b": "FAIL", "E2": "PASS", "E3": "PASS", "E4": "PASS"}
+_got32 = {}
+for _line32 in open(os.path.join(_HERE18, "diagonal_coin_edge.log"), encoding="utf-8"):
+    _w32 = _line32.split()
+    if len(_w32) > 1 and _w32[0] in ("[PASS]", "[FAIL]") and _w32[1] in RECORDED32:
+        _got32[_w32[1]] = _w32[0][1:-1]
+forced("round 32's edge log scores E1 and E2 to E4 held and E1b died, as recorded", _got32 == RECORDED32)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

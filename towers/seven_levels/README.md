@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Rounds 29 to 31: one wheel, the qudit T state, the ladder, the finer phases and a coin by p mod 3 [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 to 32: one wheel, the qudit T state, the ladder, the finer phases, and a coin by p mod 3 with its edge [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1052,6 +1052,13 @@ project, the statements and evidence are in a short note in standard terms:
     explicit witnesses. The ≡ 1 side is numerical.
   - [READING] Every coin has an edge. When p ≡ 1 the best of the three T classes sits near 0.889√p, above the
     non-T states' 0.88. But it tends to 0.849√p (0.873 at 31), so the ≡ 1 side should fail once it drops below them.
+- **Round 32: the coin's edge** [measured; registered first, four of five held] (`diagonal_coin.py edge`).
+  - The coin ends after 19. At 31, 37 and 43 (≡ 1) the same search beats the best T class: 0.8800, 0.8775 and
+    0.8759√p, against 0.8734, 0.8740 and 0.8756. At 29 (≡ 2) it beats T too.
+  - The registered claim that the search would still reach 0.875√29 died: it found 0.8692. The level the other
+    diagonal states reach wanders from prime to prime.
+  - So the T gate is the best diagonal gate at 3, 7, 13 and 19, and beaten at every other prime to 43. The edge
+    falls where the best of its three classes drops below the other states.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1282,6 +1289,7 @@ python fine_phases.py calibrate        # round 30's checks before registration (
 python fine_phases.py test             # round 30: fine phases at 5 and 7, arbitrary phases, random fine phases, a minute
 python diagonal_coin.py calibrate      # round 31's checks before registration (the search at 5, 7, 11), seconds
 python diagonal_coin.py test           # round 31: the coin at 13, 17, 19, 23, under a minute on four processes
+python diagonal_coin.py edge           # round 32: the coin's edge at 29, 31, 37, 43, under a minute on four processes
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

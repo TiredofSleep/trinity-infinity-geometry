@@ -362,6 +362,10 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From round 32, the coin's edge (2026-11-17; `towers/seven_levels/diagonal_coin_edge.log`):**
+  - **"At 29 the search still reaches 0.875√p, the level of 5 to 23"** (E1b).
+    - It reached 0.8692√29. The other diagonal states' level wanders from prime to prime: 0.8800 at 31, 0.8759 at 43.
+    - The breaks at 31, 37 and 43 stand, since each is an explicit witness.
 - **From round 30, the p²-th-root phases (2026-11-17; `towers/seven_levels/fine_phases_test.log`):**
   - **"At 7 some diagonal state with arbitrary phases beats the T state"** (P3, Claude's reading).
     - 400 optimizations found nothing above 2.450304, and their best is the T state, f = 4x³ + x.
