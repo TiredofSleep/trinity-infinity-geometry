@@ -3129,3 +3129,9 @@ Run by [`winners.py`](winners.py) `test`, registered at 74958a0 before the test,
   - It runs in double precision with margins of 10⁻⁹.
   - The same prover fails at p = 5, as Feng and Luo's result requires.
 - This is not a prediction, so it carries no score. It closes the open case that P3 left numerical.
+- Later the same day (*make it rigor* — the author): [`t7_rigorous/`](t7_rigorous/RIGOROUS.md) redoes the proof
+  with rigorous bounds.
+  - Every rounding is enclosed, and cos and sin come from the program's own enclosures.
+  - The constants and the lemmas are proved in exact rational arithmetic.
+  - It discarded all 47 174 654 boxes. A separate AI review of the code and the proof found nothing that breaks it;
+    no human referee has checked it yet.

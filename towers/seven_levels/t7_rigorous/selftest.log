@@ -1,0 +1,5 @@
+selftest.py -- t7_rigorous.exe against 50-digit arithmetic and the float prover
+[PASS] T1: cos/sin enclosures at 20000 doubles contain the 50-digit values (0 failures); widest enclosure 2.08e-14
+[PASS] T2: cos/sin ranges over 20000 intervals contain the true ranges (0 failures); largest overestimate 1.97e-14
+[PASS] T3: 3000 boxes (2594 smooth, 1622 monotone, 755 inside a cube): rigorous bound vs float prover differs by at most 8.70e-14 (0 disagreements over 1e-9); S at 64 sampled points never exceeds the bound (0 violations); flags agree (0 disagreements); 0 reduction failures
+[PASS] selftest: 3/3

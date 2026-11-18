@@ -1,0 +1,21 @@
+t7_rigorous.exe prove 4 -- rigorous branch and bound, built with MSVC /O2 /fp:strict /openmp, constants from constants.py
+  progress: 64/1024 first-grid boxes done, 715493 boxes in this thread, 129 s
+  progress: 128/1024 first-grid boxes done, 1496691 boxes in this thread, 268 s
+  progress: 192/1024 first-grid boxes done, 2262500 boxes in this thread, 404 s
+  progress: 256/1024 first-grid boxes done, 2962340 boxes in this thread, 528 s
+  progress: 320/1024 first-grid boxes done, 3673504 boxes in this thread, 660 s
+  progress: 384/1024 first-grid boxes done, 4427301 boxes in this thread, 804 s
+  progress: 448/1024 first-grid boxes done, 5147506 boxes in this thread, 942 s
+  progress: 512/1024 first-grid boxes done, 5890230 boxes in this thread, 1083 s
+  progress: 576/1024 first-grid boxes done, 6654052 boxes in this thread, 1228 s
+  progress: 640/1024 first-grid boxes done, 7398197 boxes in this thread, 1368 s
+  progress: 704/1024 first-grid boxes done, 8138060 boxes in this thread, 1510 s
+  progress: 768/1024 first-grid boxes done, 8790549 boxes in this thread, 1639 s
+  progress: 832/1024 first-grid boxes done, 9505170 boxes in this thread, 1777 s
+  progress: 896/1024 first-grid boxes done, 10406922 boxes in this thread, 1925 s
+  progress: 960/1024 first-grid boxes done, 11184039 boxes in this thread, 2072 s
+  progress: 1024/1024 first-grid boxes done, 11896997 boxes in this thread, 2205 s
+boxes 47174654 by_bound 23423054 by_monotone 163901 by_cube 884 fails 0 stuck 0 overflow 0 aborted 0
+max_center_S 2.450302503819568 ST_LO 2.450304118540082
+seconds 2205.4 threads 4
+VERDICT PASS: every box discarded with rigorous bounds

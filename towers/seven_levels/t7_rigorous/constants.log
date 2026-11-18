@@ -1,0 +1,12 @@
+constants.py -- the rigorous constants and lemmas for the p = 7 theorem (exact rational arithmetic)
+  pi enclosed by Machin's formula, width 3.2e-100; cos(2 pi k/7), k = 1, 2, 3, as roots of 8x^3 + 4x^2 - 4x - 1, widths 5.9e-68; sines widths 1.2e-67
+  c = 3: f = [0, 0, 0, 4, 2, 5, 3]; every E has a certified sign: True; S in [2.4503041185400822, 2.4503041185400822] (width 3.1e-67)
+         K2 interval gradient contains 0, width < 1e-50: True; K3 pivots of -H - (24 rho0 + 1/100) I: [0.553271, 0.531449, 0.498812, 0.44467, 0.337325, 0.022609] (all > 0: True)
+         K4 min |E| >= 1.692021471630 > 12 rho0 = 0.048: True
+         (information) Hessian eigenvalues ['-0.76914899', '-0.76914899', '-0.76914899', '-0.76914899', '-0.76914899', '-0.10987843']; the cosines agree with mpmath's to 4.9e-31
+  c = 4: f = [0, 0, 0, 3, 5, 2, 4]; every E has a certified sign: True; S in [2.4503041185400822, 2.4503041185400822] (width 3.1e-67)
+         K2 interval gradient contains 0, width < 1e-50: True; K3 pivots of -H - (24 rho0 + 1/100) I: [0.553271, 0.531449, 0.498812, 0.44467, 0.337325, 0.022609] (all > 0: True)
+         K4 min |E| >= 1.692021471630 > 12 rho0 = 0.048: True
+         (information) Hessian eigenvalues ['-0.76914899', '-0.76914899', '-0.76914899', '-0.76914899', '-0.76914899', '-0.10987843']; the cosines agree with mpmath's to 4.9e-31
+[PASS] K1-K4 in exact rational arithmetic: S_T enclosed at both maximizers, ST_LO = 2.450304118540082; the gradient is 0 (proved; the interval gradient contains 0); -H - (24 rho0 + 1/100) I is positive definite (interval LDL^T); min |E| > 12 rho0
+wrote t7_constants.h

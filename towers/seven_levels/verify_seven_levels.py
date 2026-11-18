@@ -1920,6 +1920,20 @@ _t7log = open(os.path.join(_HERE18, "t_optimal_7.log"), encoding="utf-8").read()
 forced("the theorem at p = 7 (t_optimal_7.py: its lemmas pass, the same prover fails at p = 5 as it must, and the "
        "recorded branch and bound discarded every box)", _t7c.returncode == 0 and "ALL PASS" in _t7c.stdout
        and "[PASS] CONTROL" in _t7k.stdout and "[PASS] THEOREM (p = 7)" in _t7log)
+# the same theorem with rigorous bounds (t7_rigorous/RIGOROUS.md): the lemmas in interval arithmetic, the header they
+# generate, the self-tests (rerun when the program has been built with build.bat), and the recorded rigorous run
+_T7R = os.path.join(_HERE18, "t7_rigorous")
+_t7rc = _sp16.run([sys.executable, os.path.join(_T7R, "constants.py"), "--check"], capture_output=True, text=True)
+if os.path.exists(os.path.join(_T7R, "t7_rigorous.exe")):
+    _t7rs = _sp16.run([sys.executable, os.path.join(_T7R, "selftest.py")], capture_output=True, text=True).returncode == 0
+else:
+    _t7rs = True                                     # not built here: the recorded self-test log is checked below
+_t7rlog = open(os.path.join(_T7R, "t7_rigorous.log"), encoding="utf-8").read()
+_t7rself = open(os.path.join(_T7R, "selftest.log"), encoding="utf-8").read()
+forced("the theorem at p = 7 with rigorous bounds (t7_rigorous/: the lemmas K1-K4 hold in exact rational arithmetic, the "
+       "header is exactly what they generate, the self-tests pass, and the recorded rigorous run discarded every box)",
+       _t7rc.returncode == 0 and "[PASS] K1-K4" in _t7rc.stdout and "[PASS] t7_constants.h is exactly" in _t7rc.stdout
+       and _t7rs and "[PASS] selftest: 3/3" in _t7rself and "VERDICT PASS" in _t7rlog)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

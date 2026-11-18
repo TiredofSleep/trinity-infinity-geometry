@@ -1070,13 +1070,17 @@ project, the statements and evidence are in a short note in standard terms:
     Clifford group has 500 members, Feng and Luo's count.
   - Two registered guesses died at 41 and 47: that the landscape is glassy, and that winners at p ≡ 2 break the
     reflection. Beyond about 40 the search reaches less (0.86√p), so fine structure there is out of reach.
-- **Theorem at p = 7: the T gate is the optimal diagonal gate** [FORCED, computer-assisted]
+- **Theorem at p = 7: the T gate is the optimal diagonal gate** [FORCED, computer-assisted, rigorous bounds]
   ([`t_optimal_7.py`](t_optimal_7.py)).
   - Every diagonal state on seven levels has S ≤ 2.4503041185…, with equality only at the T states of class 1.
   - The proof is a branch and bound over the phases modulo the 49 Clifford phases: 47 136 512 boxes, 9.7 minutes.
     Each box is discarded by an exact-range bound, by monotonicity where S is smooth, or inside two certified
     concave cubes around the maximizers.
-  - It runs in double precision with margins far above rounding. The same prover fails at p = 5, as it must.
+  - The first run used double precision with margins far above rounding. The same prover fails at p = 5, as it
+    must.
+  - It was then redone with rigorous bounds ([`t7_rigorous/RIGOROUS.md`](t7_rigorous/RIGOROUS.md)). Every rounding
+    is enclosed, cos and sin come from the program's own interval enclosures, and the lemmas at the maximizers
+    are proved in exact rational arithmetic. It discarded all 47 174 654 boxes in 37 minutes.
   - This answers Feng and Luo's open question at 7.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
@@ -1315,6 +1319,10 @@ python winners.py forced               # the T state's symmetry group to 13, for
 python t_optimal_7.py check            # the theorem's lemmas at p = 7 (the bound, the maximizers, the Hessian), seconds
 python t_optimal_7.py prove            # the theorem at p = 7: the branch and bound, ten minutes on four processes
 python t_optimal_7.py control          # the same prover at p = 5, where it must fail, seconds
+python t7_rigorous/constants.py        # the theorem's constants and lemmas K1-K4 in exact rational arithmetic, seconds
+t7_rigorous/build.bat                  # build the rigorous prover (MSVC: /O2 /fp:strict /openmp)
+python t7_rigorous/selftest.py         # its self-tests against 50-digit arithmetic and the float prover, a minute
+t7_rigorous/t7_rigorous.exe prove 4    # the theorem at p = 7 with rigorous bounds, on four threads
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

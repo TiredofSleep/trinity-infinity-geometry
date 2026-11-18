@@ -87,8 +87,8 @@ Clifford.
   T state itself, with phases (0, 5, 6, 6, 1, 1, 2)/7, that is, f = 4x³ + x. So, numerically, the T gate is optimal
   among all diagonal gates at 7, as at 3 [LL] and unlike 5 [FL26].
 
-**Theorem (p = 7; computer-assisted).** Every diagonal state has S ≤ 2.4503041185…, the T state's value. Equality
-holds only at the T states of the best class (c ∈ {3, 4}, so t = c/4 = 1).
+**Theorem (p = 7; computer-assisted, with rigorous bounds).** Every diagonal state has S ≤ 2.4503041185…, the T
+state's value. Equality holds only at the T states of the best class (c ∈ {3, 4}, so t = c/4 = 1).
 - **The proof** is a branch and bound over the torus of phases φ(1..6), reduced by the 49 Clifford phases to the box
   [−π/7, π/7]² × [0, 2π]⁴.
 - **It examined 47 136 512 boxes in 9.7 minutes.** A box is discarded in one of three ways:
@@ -97,9 +97,13 @@ holds only at the T states of the best class (c ∈ {3, 4}, so t = c/4 = 1).
   - by monotonicity, where S is smooth and a partial derivative cannot vanish;
   - or inside the two cubes of half-width 0.004 around the maximizers, where S is certified concave. The Hessian's
     eigenvalues there are −0.769 (five times) and −0.110.
-- **Precision.** It runs in double precision with margins (10⁻⁹) far above the rounding error. It is not formally
-  verified.
-- **The control.** The same prover at p = 5 fails at once, finding a state above the T state, as Feng and Luo's
+- **Rigor.** The first program ran in double precision with margins of 10⁻⁹. A second one,
+  [`t7_rigorous/`](t7_rigorous/RIGOROUS.md), redoes the same branch and bound with rigorous bounds.
+  - Every rounding error is enclosed, and cos and sin come from its own interval enclosures, not from a library.
+  - The constants and the lemmas at the maximizers are proved in exact rational arithmetic.
+  - It discarded every one of its 47 174 654 boxes in 37 minutes ([`t7_rigorous.log`](t7_rigorous/t7_rigorous.log)).
+  - Nothing is formally verified in a proof assistant.
+- **The control.** The float prover at p = 5 fails at once, finding a state above the T state, as Feng and Luo's
   result requires ([`t_optimal_7.py`](t_optimal_7.py), [`t_optimal_7.log`](t_optimal_7.log)).
 - Random p²-th-root phases have the random-state value: 0.79801√p against 0.79816√p from 500 to 1000.
 
@@ -156,7 +160,7 @@ The predictions were registered, with the script, before any value above p = 29 
 | a fine phase beats T at p = 5 | all 390 625 | yes | yes: 129 500 do; the best is 1.969982 |
 | the best fine phase vs arbitrary phases at p = 5 | 300 optimizations | ≥ 99% | 99.6% (1.969982 against 1.977576) |
 | arbitrary phases beat T at p = 7 | 400 optimizations | yes (a guess) | no: the best found is the T state; the guess failed |
-| the T state is the optimum at p = 7 | branch and bound over all phases | (a theorem, not a prediction) | proved: 47 136 512 boxes, every one discarded |
+| the T state is the optimum at p = 7 | branch and bound over all phases | (a theorem, not a prediction) | proved: every box discarded, 47 136 512 in floating point and 47 174 654 with rigorous bounds |
 | random p²-th-root phases, mean S/√p | primes 500–1000 | the Haar mean ± 0.002 | 0.79801 against 0.79816 |
 | T optimal at 13, 19 (≡ 1 mod 3) | ~690 optimizations each | nothing above T | nothing above T |
 | T beaten at 17, 23 (≡ 2 mod 3) | ~630 optimizations each | a state above T | 0.8803 and 0.8860, against 0.8493 and 0.8470 |
@@ -230,4 +234,6 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 [`winners.py`](winners.py) runs round 33 ([`winners_explore.log`](winners_explore.log),
 [`winners_test.log`](winners_test.log)). [`t_optimal_7.py`](t_optimal_7.py) proves the theorem at p = 7
 ([`t_optimal_7_check.log`](t_optimal_7_check.log), [`t_optimal_7.log`](t_optimal_7.log),
-[`t_optimal_7_control.log`](t_optimal_7_control.log)).
+[`t_optimal_7_control.log`](t_optimal_7_control.log)). [`t7_rigorous/`](t7_rigorous/RIGOROUS.md) proves it again
+with rigorous bounds ([`constants.log`](t7_rigorous/constants.log), [`selftest.log`](t7_rigorous/selftest.log),
+[`t7_rigorous.log`](t7_rigorous/t7_rigorous.log)).
