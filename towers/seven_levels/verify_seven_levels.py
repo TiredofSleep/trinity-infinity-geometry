@@ -1904,6 +1904,16 @@ for _line32 in open(os.path.join(_HERE18, "diagonal_coin_edge.log"), encoding="u
     if len(_w32) > 1 and _w32[0] in ("[PASS]", "[FAIL]") and _w32[1] in RECORDED32:
         _got32[_w32[1]] = _w32[0][1:-1]
 forced("round 32's edge log scores E1 and E2 to E4 held and E1b died, as recorded", _got32 == RECORDED32)
+_r33f = _sp16.run([sys.executable, os.path.join(_HERE18, "winners.py"), "forced"], capture_output=True, text=True)
+forced("round 33's F1 (winners.py forced: the T state's Wigner function has 2p affine symmetries, 6p when p = 1 mod 3, "
+       "every class to 13)", _r33f.returncode == 0 and "ALL PASS" in _r33f.stdout)
+RECORDED33 = {"W1a": "PASS", "W2a": "FAIL", "W3a": "FAIL", "W1b": "PASS", "W2b": "PASS", "W3b": "FAIL"}
+_got33 = {}
+for _line33 in open(os.path.join(_HERE18, "winners_test.log"), encoding="utf-8"):
+    _w33 = _line33.split()
+    if len(_w33) > 1 and _w33[0] in ("[PASS]", "[FAIL]") and _w33[1] in RECORDED33:
+        _got33[_w33[1]] = _w33[0][1:-1]
+forced("round 33's test log scores W1a, W1b and W2b held and W2a, W3a and W3b died, as recorded", _got33 == RECORDED33)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

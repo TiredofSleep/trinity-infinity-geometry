@@ -114,10 +114,22 @@ the most Wigner-negative diagonal gate exactly when p = 3 or p ≡ 1 (mod 3). Fr
 - The best class tends to 8/(3π)√p (§2(1)). The pattern ends where it falls below the other states, after 19: at 31,
   37 and 43 the search beats it. This was predicted before the search, and the 43 margin is thin.
 
+**(8) What the winners share** (round 33).
+- The T state's Wigner function has 2p affine symmetries, or 6p when p ≡ 1 (mod 3):
+  - the p shears (q, s) ↦ (q + d, s + 6cdq + 3cd²);
+  - the reflection (q, s) ↦ (−q, s), which is complex conjugation with parity, since cx³ is odd;
+  - the dilations by cube roots of unity, when they exist.
+- The states that beat it keep at most one of these, the reflection, which makes them odd phase functions after a
+  Clifford phase. They do at 5, 11, 37, 41 and 43, and nearly at 31 and 47, but not at 17, 23 and 29.
+- At 5 the optimum is a single state, odd, with phases (0, 0.7514, 0.7881, 0.2119, 0.2486) turns after removing
+  ω^(x²). Its orbit under the diagonal Clifford group (20 affine maps times 25 quadratic phases) has 500 members,
+  the count of optimal gates in [FL26].
+- No common closed form was found. Two registered guesses about the winners' structure failed at 41 and 47.
+
 ## 3. Evidence
 
 The predictions were registered, with the script, before any value above p = 29 was computed
-([`PREREG.md`](PREREG.md), rounds 29 to 32).
+([`PREREG.md`](PREREG.md), rounds 29 to 33).
 
 | quantity | range | prediction | measured |
 |---|---|---|---|
@@ -198,3 +210,5 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 [`fine_phases_test.log`](fine_phases_test.log)). Its calibration reproduces Li and Luo's optimum at p = 3.
 [`diagonal_coin.py`](diagonal_coin.py) runs round 31 ([`diagonal_coin_calibrate.log`](diagonal_coin_calibrate.log),
 [`diagonal_coin_test.log`](diagonal_coin_test.log), [`diagonal_coin_edge.log`](diagonal_coin_edge.log)).
+[`winners.py`](winners.py) runs round 33 ([`winners_explore.log`](winners_explore.log),
+[`winners_test.log`](winners_test.log)).

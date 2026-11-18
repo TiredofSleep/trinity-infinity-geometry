@@ -362,6 +362,14 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From round 33, what the winners share (2026-11-17; `towers/seven_levels/winners_test.log`):**
+  - **"From 17 on the landscape is glassy: the best is reached by one climb"** (W2a). At 41 the best was reached
+    by 24 of 630 climbs.
+  - **"Winners at p ≡ 2 (mod 3) break the T state's reflection symmetry"** (W3a, W3b). At 41 the best state is odd,
+    and at 47 the best odd state comes within 0.0002√p. The gaps at 17, 23 and 29 were local.
+  - Not a registered prediction, but an idea checked and dropped before registering: "the best T class is the
+    one with the flattest Wigner values". By kurtosis it held at 13 of 37 primes ≡ 1 (mod 3), which is chance
+    (`winners_explore.log` records the reads).
 - **From round 32, the coin's edge (2026-11-17; `towers/seven_levels/diagonal_coin_edge.log`):**
   - **"At 29 the search still reaches 0.875√p, the level of 5 to 23"** (E1b).
     - It reached 0.8692√29. The other diagonal states' level wanders from prime to prime: 0.8800 at 31, 0.8759 at 43.

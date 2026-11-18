@@ -3074,3 +3074,42 @@ have in common?
   optimum at 5 and the winners at 31 to 43 keep. At 29 the gap was only 0.0036, so W3 can fail.
 
 Run: `python winners.py test` (minutes; four processes at below-normal priority).
+
+---
+
+## Round 33 scores (added after the test, 2026-11-17)
+
+Run by [`winners.py`](winners.py) `test`, registered at 74958a0 before the test, in 0.5 minutes. Output:
+[`winners_test.log`](winners_test.log).
+
+**Three of six held. The winners beat the T state at 41 and 47, but the guess about what they share mostly died.**
+
+| | outcome | evidence |
+|---|---|---|
+| W1a | held | at 41 the search beats the T state: 0.8627√41 against 0.8609√41 |
+| W2a | **died** | at 41 the best value is reached by 24 climbs, a robust state as at 5, not a glassy one |
+| W3a | **died** | at 41 the best odd state reaches it (gap 0): the winner keeps the T state's reflection symmetry |
+| W1b | held | at 47 the search beats the T state: 0.8582√47 against 0.8507√47 |
+| W2b | held | at 47 the best value is reached by one climb |
+| W3b | **died** | at 47 the best odd state comes within 0.0002√47 of it |
+
+**Read after the test** (not scored).
+- **What every winner shares is a loss.** The T state's Wigner function has 2p affine symmetries, or 6p when p ≡ 1
+  (mod 3) (F1, proved). The states that beat it keep at most one, an antiunitary reflection.
+- **The reflection is common but not universal.** The best state is odd, φ(−x) = −φ(x) after a Clifford phase, at 5,
+  11, 37, 41 and 43, and within 0.0004√p of odd at 31 and 47. At 17, 23 and 29 the best found are not odd.
+- **There is no rule by p mod 3.** The registered guess that winners at p ≡ 2 give up the reflection died at 41 and
+  47. The gap at 17, 23 and 29 was local.
+- **The search reaches less at larger p.** Its best fell from about 0.88√p at 17 to 31 to 0.8627 and 0.8582 at 41
+  and 47, and the margins over the T state shrank to 0.0018√41 and 0.0075√47. Beyond about 40, fine structure is out
+  of this search's reach.
+
+**Yield.**
+- The T gate loses at the p ≡ 2 primes to states that give up its large symmetry group, the p shears with their
+  reflection.
+- The best of them often keep the reflection, which makes them odd phase functions like the T state's. They are off
+  the p-th-root grid, so they are not polynomial phases.
+- At 5 the optimum is one such state, and its 500-member orbit under the diagonal Clifford group matches Feng and
+  Luo's count.
+- No common closed form was found. The two guesses about structure, glassy landscapes and a broken reflection, did
+  not survive 41 and 47.

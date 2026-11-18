@@ -9,6 +9,7 @@ when p = 1 (mod 3).  The states that beat it (rounds 30-32) are asked what symme
 
   python winners.py explore   # the reads before the registration                 -> winners_explore.log
   python winners.py test      # round 33 at 41 and 47 (= 2 mod 3)                   -> winners_test.log
+  python winners.py forced    # F1 to 13, for verify_seven_levels.py (under a minute)        -> runs/winners_forced.log
 
 numpy + scipy + diagonal_coin.py (round 31's search) + one_wheel.py.  Four worker processes at below-normal priority.
 """
@@ -190,5 +191,22 @@ def test():
     LOG.close()
 
 
+def forced():
+    """F1 alone, for the verifier: the T state's affine symmetry group, exactly, at every class for p = 5..13 (the explore
+    log records it to 19; counting every affine map at 19 takes minutes)"""
+    global LOG
+    os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)
+    LOG = open(os.path.join(HERE, "runs", "winners_forced.log"), "w", encoding="utf-8")
+    ok = True
+    for p in (5, 7, 11, 13):
+        for t in ow.classes(p):
+            sym = w_symmetries(dc.Geometry(p).wigner(dc.t_phases(t, p))[1], p, 1e-9)
+            n_u, n_a = sum(1 for e, *_ in sym if e == 1), sum(1 for e, *_ in sym if e == -1)
+            ok &= n_u == n_a == (3 * p if p % 3 == 1 else p)
+    check("F1 every T state has 2p affine symmetries, or 6p when p = 1 (mod 3), p = 5..13, every class", ok)
+    say(f"{'ALL PASS' if not FAILS else 'FAILED: ' + ', '.join(FAILS)}")
+    LOG.close()
+
+
 if __name__ == "__main__":
-    {"explore": explore, "test": test}[sys.argv[1] if len(sys.argv) > 1 else "explore"]()
+    {"explore": explore, "test": test, "forced": forced}[sys.argv[1] if len(sys.argv) > 1 else "explore"]()

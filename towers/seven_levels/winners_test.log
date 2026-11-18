@@ -1,0 +1,15 @@
+Round 33: what the states that beat the T gate share, at 41 and 47 (PREREG.md)
+
+  p = 41: best of 630 climbs 0.8627 sqrt p (T 0.8609); reached by 24; the best odd state 0.8627; gap -0.0000 sqrt p
+[PASS] W1a at 41 the search beats the T state
+[FAIL] W2a at 41 the best value is reached by exactly one climb  (24)
+[FAIL] W3a at 41 the best odd state falls short of it by more than 0.003 sqrt p  (-0.0000)
+     (0.2 minutes so far)
+  p = 47: best of 630 climbs 0.8582 sqrt p (T 0.8507); reached by 1; the best odd state 0.8579; gap +0.0002 sqrt p
+[PASS] W1b at 47 the search beats the T state
+[PASS] W2b at 47 the best value is reached by exactly one climb  (1)
+[FAIL] W3b at 47 the best odd state falls short of it by more than 0.003 sqrt p  (+0.0002)
+     (0.5 minutes so far)
+
+time 0.5 minutes
+FAILED: W2a at 41 the best value is reached by exactly one climb, W3a at 41 the best odd state falls short of it by more than 0.003 sqrt p, W3b at 47 the best odd state falls short of it by more than 0.003 sqrt p

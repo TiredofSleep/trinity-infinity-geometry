@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Rounds 29 to 32: one wheel, the qudit T state, the ladder, the finer phases, and a coin by p mod 3 with its edge [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 to 33: one wheel, the qudit T state, the ladder, the finer phases, a coin by p mod 3 with its edge, and what beats the T state [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1059,6 +1059,17 @@ project, the statements and evidence are in a short note in standard terms:
     diagonal states reach wanders from prime to prime.
   - So the T gate is the best diagonal gate at 3, 7, 13 and 19, and beaten at every other prime to 43. The edge
     falls where the best of its three classes drops below the other states.
+- **Round 33: what the winners share** [FORCED in part; measured; registered first, three of six held]
+  ([`winners.py`](winners.py)).
+  - The T state's Wigner function has 2p affine symmetries, or 6p when p ≡ 1 (mod 3): the p shears
+    (q, s) ↦ (q + d, s + 6cdq + 3cd²), the reflection (q, s) ↦ (−q, s), and the cube roots of unity [FORCED, proved,
+    checked exactly to 19].
+  - The states that beat it keep at most one of these, the reflection. The best states are odd phase functions
+    after a Clifford phase at 5, 11, 37, 41 and 43, and nearly so at 31 and 47. At 17, 23 and 29 they are not.
+  - At 5 the optimum is one robust state, odd and off the fifth roots of unity. Its orbit under the diagonal
+    Clifford group has 500 members, Feng and Luo's count.
+  - Two registered guesses died at 41 and 47: that the landscape is glassy, and that winners at p ≡ 2 break the
+    reflection. Beyond about 40 the search reaches less (0.86√p), so fine structure there is out of reach.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1290,6 +1301,9 @@ python fine_phases.py test             # round 30: fine phases at 5 and 7, arbit
 python diagonal_coin.py calibrate      # round 31's checks before registration (the search at 5, 7, 11), seconds
 python diagonal_coin.py test           # round 31: the coin at 13, 17, 19, 23, under a minute on four processes
 python diagonal_coin.py edge           # round 32: the coin's edge at 29, 31, 37, 43, under a minute on four processes
+python winners.py explore              # round 33's reads before registration (5 to 43, with the odd search), nine minutes
+python winners.py test                 # round 33: what the winners share, at 41 and 47, under a minute
+python winners.py forced               # the T state's symmetry group to 13, for the verifier, under a minute
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 
