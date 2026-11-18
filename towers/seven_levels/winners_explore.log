@@ -1,0 +1,17 @@
+winners.py explore -- what the diagonal states that beat the T gate share (reads before round 33)
+
+[PASS] F1 every T state has exactly 2p affine symmetries of its Wigner function (p symplectic, p antisymplectic), or 6p when p = 1 (mod 3), p = 5..19, every class
+
+  p  mod3  best/sqrt p  climbs reaching it  distinct optima  best odd/sqrt p  gap
+   5  2     0.8844       177 of 630          56           0.8844       -0.0000
+      at 5: phases minus x^2/5, in turns: [0.0, 0.7514, 0.7881, 0.2119, 0.2486]; odd: True; W's affine symmetries: 1 symplectic, 1 antisymplectic
+  11  2     0.8776         3 of 630         610           0.8776       -0.0000
+  17  2     0.8803         1 of 630         630           0.8694       +0.0109
+  23  2     0.8860         1 of 630         630           0.8655       +0.0204
+  29  2     0.8692         1 of 630         630           0.8656       +0.0036
+  31  1     0.8800         1 of 690         674           0.8796       +0.0004
+  37  1     0.8775         1 of 690         690           0.8775       -0.0000
+  43  1     0.8759         1 of 690         690           0.8759       +0.0000
+
+time 8.5 minutes
+ALL PASS

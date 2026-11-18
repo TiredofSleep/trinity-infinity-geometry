@@ -3016,3 +3016,61 @@ Run by [`diagonal_coin.py`](diagonal_coin.py) `edge`, registered at 9d2f509 befo
 - When p ≡ 1 (mod 3), the T gate's three Clifford classes give it the best diagonal state at 7, 13 and 19, while the
   best class stays above about 0.88√p.
 - From 31 on it does not, and the T gate is beaten on both sides of the coin.
+
+---
+
+## Round 33: what the states that beat the T gate share (registered 2026-11-17, before the test)
+
+> *keep going, find what the p ≡ 2 winners share* — the author, 17 November 2026
+
+**Why.** Rounds 30 to 32 found diagonal states beating the T state at 5, 11, 17, 23, 29, 31, 37 and 43. What do they
+have in common?
+
+**Made exact, before the test.**
+- **F1. The T state's symmetry** [FORCED, proved; checked exactly at every class for p = 5 to 19].
+  - Its Wigner function W(q, s) = S_t(3cq² − s)/p² is fixed by the p maps (q, s) ↦ (q + d, s + 6cdq + 3cd²).
+  - It is fixed by the reflection (q, s) ↦ (−q, s), complex conjugation with parity, since cx³ is odd.
+  - When p ≡ 1 (mod 3), it is also fixed by (q, s) ↦ (ζq, s/ζ) for the cube roots of unity ζ.
+  - So its affine symmetry group has order 2p, or 6p when p ≡ 1 (mod 3).
+- **The reads before this registration** ([`winners_explore.log`](winners_explore.log)). They use round 31's search,
+  and the same search restricted to odd phase functions, φ(−x) = −φ(x), which is the T state's reflection symmetry.
+
+| p | p mod 3 | best / √p | climbs reaching it | distinct optima | best odd / √p | gap |
+|---|---|---|---|---|---|---|
+| 5 | 2 | 0.8844 | 177 of 630 | 56 | 0.8844 | 0 |
+| 11 | 2 | 0.8776 | 3 of 630 | 610 | 0.8776 | 0 |
+| 17 | 2 | 0.8803 | 1 of 630 | 630 | 0.8694 | +0.0109 |
+| 23 | 2 | 0.8860 | 1 of 630 | 630 | 0.8655 | +0.0204 |
+| 29 | 2 | 0.8692 | 1 of 630 | 630 | 0.8656 | +0.0036 |
+| 31 | 1 | 0.8800 | 1 of 690 | 674 | 0.8796 | +0.0004 |
+| 37 | 1 | 0.8775 | 1 of 690 | 690 | 0.8775 | 0 |
+| 43 | 1 | 0.8759 | 1 of 690 | 690 | 0.8759 | 0 |
+
+  - **At 5 the optimum is one robust state.**
+    - Its only symmetries are the identity and one antiunitary reflection. With the Clifford phase ω^(x²) removed,
+      its phase function is odd like the T state's: (0, 0.7514, 0.7881, 0.2119, 0.2486) turns, off the fifth roots of
+      unity.
+    - Its orbit under the diagonal Clifford group (20 affine maps times 25 quadratic phases) has 500 members. That is
+      Feng and Luo's count of optimal ququint gates.
+  - **At 11** an odd state also reaches the best value.
+  - **From 17 on the landscape is glassy.** The best value is reached by one climb among hundreds of distinct optima.
+    - At 17, 23 and 29 (≡ 2) the best odd state falls short.
+    - At 31, 37 and 43 (≡ 1) it does not.
+  - **Checked and dropped:** the idea that the best T class is the one with the flattest Wigner values. Measured by
+    kurtosis, it held at 13 of 37 primes ≡ 1 (mod 3), which is chance.
+- **Not computed before this registration:** any search at 41 or 47.
+
+**Predictions.** All six are fresh.
+
+| | prediction | dies if |
+|---|---|---|
+| W1a, W1b | At 41 and at 47 (both ≡ 2 mod 3) the search beats the T state | nothing above it |
+| W2a, W2b | The best value is reached by exactly one climb: the landscape is glassy | more than one |
+| W3a, W3b | The best odd phase state falls short of it by more than 0.003√p: the winner breaks the T state's reflection symmetry | a gap of 0.003√p or less |
+
+**The drafter's expectation.**
+- W1 and W2 should hold.
+- W3 tests whether the winners at p ≡ 2 (mod 3) from 17 on give up the reflection symmetry that the T state, the
+  optimum at 5 and the winners at 31 to 43 keep. At 29 the gap was only 0.0036, so W3 can fail.
+
+Run: `python winners.py test` (minutes; four processes at below-normal priority).
