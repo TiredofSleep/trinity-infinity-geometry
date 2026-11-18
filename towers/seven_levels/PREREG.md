@@ -2832,3 +2832,55 @@ as at 3 and unlike 5.
   result); at 7 it appears to be.
 - At 5 the best diagonal state needs phases off the fifth roots of unity, and twenty-fifth roots come within 0.4% of it.
 - Random p²-th-root phases behave like random states, as the central limit theorem says.
+
+---
+
+## Round 31: is the T gate the best diagonal gate exactly when p ≡ 1 (mod 3)? (registered 2026-11-17, before the test)
+
+> *1 yes, round 31 first, then the email* — the author, 17 November 2026
+
+**Why.** Rounds 29 and 30 found the T state the most negative of all diagonal states at 3 (Li and Luo's theorem) and,
+numerically, at 7, but beaten at 5 (Feng and Luo) and at 11 (round 29). When p ≡ 1 (mod 3) the T states fall into
+three classes; when p ≡ 2 there is one. This round asks whether that is a coin: optimal on one side, beaten on the
+other. Feng and Luo left the question open beyond 3.
+
+**Made exact, before the test.**
+- **The search, fixed in [`diagonal_coin.py`](diagonal_coin.py).** A diagonal state is Σ_x e^(iφ(x))|x⟩/√p with
+  φ(0) = 0.
+  - From each start, L-BFGS-B maximizes the smoothed size Σ√(W² + ε²) with its exact gradient, at ε = 10⁻⁵ and then
+    10⁻⁸. The exact S is taken at the end.
+  - The starts at each prime: 400 uniform random phase vectors, 100 random p-th-root phase functions, 100 random
+    p²-th-root ones, and, for each class of T state, 30 copies of its phases plus Gaussian noise of 0.3 radians.
+  - A state beats the T state when its S exceeds the best T class's by more than 10⁻⁶.
+  - A witness is decisive. Finding nothing is numerical evidence, not a proof.
+- **The best T class** (round 29's formula, computed before this registration):
+
+| p | p mod 3 | S of the best T class | / √p |
+|---|---|---|---|
+| 13 | 1 | 3.204742 | 0.8888 |
+| 17 | 2 | 3.501720 | 0.8493 |
+| 19 | 1 | 3.873476 | 0.8886 |
+| 23 | 2 | 4.061994 | 0.8470 |
+
+- **Checked before this registration** ([`diagonal_coin_calibrate.log`](diagonal_coin_calibrate.log), all pass):
+  - the gradient against finite differences;
+  - the search reproduces round 30 at 5 (1.977576, beating T) and at 7 (only the T state, 2.450304);
+  - at 11 it beats round 29's witness: 2.910515 against T's 2.827479.
+- **Not computed before this registration:** any search at 13, 17, 19 or 23.
+
+**Predictions.** All four are fresh. The coin holds through 23 if all four hold.
+
+| | prediction | dies if |
+|---|---|---|
+| R1 | At 13 (≡ 1 mod 3) the search finds nothing above the best T class | a state above 3.204742 + 10⁻⁶ |
+| R2 | At 17 (≡ 2 mod 3) the search finds a diagonal state above the T state | none above 3.501720 + 10⁻⁶ |
+| R3 | At 19 (≡ 1 mod 3) the search finds nothing above the best T class | a state above 3.873476 + 10⁻⁶ |
+| R4 | At 23 (≡ 2 mod 3) the search finds a diagonal state above the T state | none above 4.061994 + 10⁻⁶ |
+
+**The drafter's expectation.**
+- The ≡ 2 side should hold, since a witness is easy to find when T is beaten, as at 5 and 11.
+- The ≡ 1 side is the real test.
+- Even if all four hold, the coin can only be a small-p effect. The best class tends to 8/(3π)√p = 0.849√p (round 29),
+  so at large p it will meet the other diagonal states.
+
+Run: `python diagonal_coin.py test` (minutes; four processes at below-normal priority).

@@ -1,0 +1,13 @@
+diagonal_coin.py calibrate -- round 31, before the registration
+
+[PASS] K1 the smoothed size's gradient agrees with finite differences, and the size with round 30's, p = 5, 7, 13
+     the best T class at 11 (p = 2 mod 3): S = 2.827479 = 0.8525 sqrt p
+     the best T class at 13 (p = 1 mod 3): S = 3.204742 = 0.8888 sqrt p
+     the best T class at 17 (p = 2 mod 3): S = 3.501720 = 0.8493 sqrt p
+     the best T class at 19 (p = 1 mod 3): S = 3.873476 = 0.8886 sqrt p
+     the best T class at 23 (p = 2 mod 3): S = 4.061994 = 0.8470 sqrt p
+     5: best of 630 climbs S = 1.977576; 7: 2.450304 (T 2.450304); 11: 2.910515 (T 2.827479, round 29's degree-10 phase 2.877321)
+[PASS] K2 the search reproduces rounds 29 and 30: at 5 it beats T (1.977576), at 7 it finds only T, and at 11 it reaches round 29's witness
+
+time 0.2 minutes
+ALL PASS
