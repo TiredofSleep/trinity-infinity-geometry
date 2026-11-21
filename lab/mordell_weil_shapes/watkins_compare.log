@@ -1,0 +1,33 @@
+optimal rank-2 curves: 279056; of prime conductor: 1052
+  uniform law (3/pi)/Y      y>=1: 0.9549  y>=2: 0.4775  y>=4: 0.2387  y>=8: 0.1194  y>=16: 0.0597
+  Watkins, prime N < 1e10   y>=1: 0.9350  y>=2: 0.3540  y>=4: 0.0940  y>=8: 0.0170  y>=16: 0.0020
+  Cremona, prime N < 5e5    y>=1: 0.8850  y>=2: 0.1008  y>=4: 0.0029  y>=8: 0.0000  y>=16: 0.0000
+  Cremona, all N < 5e5      y>=1: 0.9275  y>=2: 0.1990  y>=4: 0.0185  y>=8: 0.0002  y>=16: 0.0000
+
+prime conductor, by the exponent k in |disc| = N^k:
+  k = 1: n =  1052  y>=1: 0.8850  y>=2: 0.1008  y>=4: 0.0029  y>=8: 0.0000  y>=16: 0.0000
+  (k is an integer to within 0.0e+00 on every prime-conductor curve)
+
+prime conductor with |disc| = N, by conductor band:
+       0-49999  n =   213  y>=1: 0.9155  y>=2: 0.1737  y>=4: 0.0000  y>=8: 0.0000  y>=16: 0.0000
+   50000-99999  n =   134  y>=1: 0.8657  y>=2: 0.0896  y>=4: 0.0000  y>=8: 0.0000  y>=16: 0.0000
+  100000-199999 n =   224  y>=1: 0.8705  y>=2: 0.0804  y>=4: 0.0089  y>=8: 0.0000  y>=16: 0.0000
+  200000-299999 n =   168  y>=1: 0.9048  y>=2: 0.1071  y>=4: 0.0000  y>=8: 0.0000  y>=16: 0.0000
+  300000-399999 n =   147  y>=1: 0.8912  y>=2: 0.0680  y>=4: 0.0000  y>=8: 0.0000  y>=16: 0.0000
+  400000-499999 n =   166  y>=1: 0.8554  y>=2: 0.0663  y>=4: 0.0060  y>=8: 0.0000  y>=16: 0.0000
+
+prime conductor, by the shape of the curve's own period lattice (Im tau, fifths):
+  Im tau  0.870-  0.985: n =   211  y>=2: 0.0095
+  Im tau  0.985-  1.163: n =   210  y>=2: 0.0095
+  Im tau  1.163-  1.533: n =   210  y>=2: 0.0048
+  Im tau  1.533-  2.130: n =   210  y>=2: 0.1381
+  Im tau  2.130-  6.027: n =   211  y>=2: 0.3412
+
+horizontal distribution for y >= 1 (Watkins's Table 1), prime conductor:
+  x bin        0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45
+  Watkins      0.090 0.096 0.098 0.099 0.100 0.100 0.102 0.105 0.106 0.105
+  Cremona      0.076 0.097 0.120 0.104 0.093 0.130 0.104 0.091 0.098 0.086   (n = 931, s.e. per bin about 0.010)
+  Cremona, all 0.087 0.096 0.099 0.101 0.102 0.104 0.103 0.103 0.103 0.101   (every conductor, n = 258819)
+  uniform      0.100 0.100 0.100 0.100 0.100 0.100 0.100 0.100 0.100 0.100
+
+prime conductor: torsion trivial in 1.0000, class size 1 in 1.0000

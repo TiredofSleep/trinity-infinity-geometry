@@ -1,0 +1,27 @@
+rank-2 optimal curves: 279056; conductor 389..499998
+thin share (elongation > 2) by band, recomputed vs handoff:
+     1000-9999    n=  1951  0.2430  (handoff 0.2430)
+    10000-29999   n=  7673  0.2324  (handoff 0.2324)
+    30000-59999   n= 14370  0.2175  (handoff 0.2175)
+    60000-99999   n= 21484  0.2124  (handoff 0.2124)
+   100000-199999  n= 55813  0.2040  (handoff 0.2040)
+   200000-299999  n= 58385  0.1980  (handoff 0.1980)
+   300000-399999  n= 59814  0.1922  (handoff 0.1922)
+   400000-499999  n= 59548  0.1870  (handoff 0.1870)
+by torsion: n, thin share, mean density (handoff: 228531/0.2222/0.544, 46462/0.0982/0.603, 2779/0.0583/0.623, 800/0.0175/0.659, 312/0.0032/0.670)
+  []       n=228531  thin 0.2222  density 0.5444
+  [2]      n= 46462  thin 0.0982  density 0.6028
+  [3]      n=  2779  thin 0.0583  density 0.6228
+  [4]      n=   800  thin 0.0175  density 0.6592
+  [2, 2]   n=   312  thin 0.0032  density 0.6700
+  [5]      n=    66  thin 0.0000  density 0.6810
+  [6]      n=   105  thin 0.0000  density 0.6884
+  [8]      n=     1  thin 0.0000  density 0.7248
+hidden loops: no loop n=223050 0.5434; isogeny only n=5481 0.5835; diff 0.0401, 18.7 s.e. (handoff 223050/0.5434, 5481/0.5835, 18.7 s.e.)
+A1 real loop: disc>0 n=75482 0.5474; disc<0 n=147568 0.5414; 7.8 s.e. (handoff 75482/0.5474, 147568/0.5414, 7.8)
+B1 disc>0: Spearman(density, Im tau) = -0.128 (handoff -0.128 / -0.032)
+B1 disc<0: Spearman(density, Im tau) = -0.032 (handoff -0.128 / -0.032)
+points on the loop: reach n=73337 0.5481; miss n=2145 0.5254; 6.1 s.e.; share missing 0.0284 (handoff 73331/0.5481, 2145/0.5254, 6.1, 2.8%)
+largest elongation 13.17 at conductor 383786 (handoff 13.17, 383786); counts above 3, 5, 8, 10, 15: [15885, 1705, 63, 8, 0] (handoff 15885, 1705, 63, 8, 0)
+mean density, all rank 2: 0.5554 (handoff 0.555); median elongation 1.376
+rank 3: n=8899; density lattice 0.3055, dual 0.3179; paired diff -0.0123 (-15.6 s.e.); lattice denser in 0.429 (handoff 0.3055, 0.3179, -0.0123, -15.6 s.e., 42.9%)

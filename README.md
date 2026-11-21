@@ -89,6 +89,7 @@ stands: [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md).
 | universal algebra: equational laws, Steiner triple systems | [`towers/laws_of_a_table/`](towers/laws_of_a_table/README.md) |
 | geometry: energy, the Platonic solids, the dodecahedron | [`THE_LENS.md`](THE_LENS.md), [`base/SYMMETRY_AND_ENERGY.md`](base/SYMMETRY_AND_ENERGY.md) |
 | mathematics education: the base, the towers, the coin | [`base/`](base/README.md), [`towers/`](towers/README.md), [`coin/`](coin/README.md) |
+| elliptic curves: the shapes of Mordell–Weil lattices, registered rounds (lab) | [`lab/mordell_weil_shapes/`](lab/mordell_weil_shapes/README.md) |
 | fenced: physics and biology readings, each with its test | [`lab/FENCED_READINGS.md`](lab/FENCED_READINGS.md), [`lab/genetic_code/`](lab/genetic_code/README.md) |
 
 **How the work keeps producing, and stays honest:** [`HOW_WE_WORK.md`](HOW_WE_WORK.md).
