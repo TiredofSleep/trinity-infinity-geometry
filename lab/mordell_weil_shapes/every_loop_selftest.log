@@ -1,0 +1,7 @@
+selftest 1 (reduction invariant under change of basis, shortest vector, elongation = Im tau): 0 errors in 2000
+selftest 2 (index-p neighbour recovered, p = 2..13): 0 errors in 6000
+selftest 3 (a lattice against itself gives n = 1): n = 1
+selftest 4 (bootstrap): q = 0.0295, bootstrap s.e. 0.00083, binomial s.e. 0.00085
+selftest 5 (PARI pipeline, a 2-isogenous pair of conductor 619904): 2 curves, 0 failures, BSD quotient 1.000000000000, index n = 2
+selftest 6 (scoring end to end on random lattices): ran, BSD check clean: True
+SELFTEST PASS
