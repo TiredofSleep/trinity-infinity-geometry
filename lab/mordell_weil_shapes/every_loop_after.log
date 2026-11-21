@@ -1,0 +1,74 @@
+1. fresh curves above 5: the neighbour that multiplies the partner's elongation by n
+   n =  0: elongation exactly n x partner's:   0; otherwise:  1 ['101761i3']
+   n =  1: elongation exactly n x partner's:   3; otherwise:  0 []
+   n =  2: elongation exactly n x partner's:  13; otherwise:  0 []
+   n =  3: elongation exactly n x partner's:  34; otherwise:  0 []
+   n =  5: elongation exactly n x partner's:  16; otherwise:  0 []
+   n =  7: elongation exactly n x partner's:   0; otherwise:  1 ['334278l2']
+   n =  9: elongation exactly n x partner's:   0; otherwise:  4 ['176961b3', '251049a3', '35557a3', '425024d3']
+   total 72: exactly n x partner's 66
+
+2. optimal curves with a loop (class size >= 2) above 5, thinnest first
+   364560fd1: elongation 6.194, torsion [], class size 2  <- above 5
+   22898b1: elongation 5.617, torsion [], class size 2  <- above 5
+   441378bs1: elongation 5.608, torsion [2], class size 2  <- above 5
+   150640e1: elongation 5.466, torsion [], class size 2  <- above 5
+   106358h1: elongation 5.274, torsion [2], class size 2  <- above 5
+   56400cy1: elongation 5.267, torsion [], class size 2  <- above 5
+   458370bw1: elongation 5.121, torsion [], class size 2  <- above 5
+   386688l1: elongation 5.064, torsion [2], class size 2  <- above 5
+   374978a1: elongation 4.882, torsion [], class size 2
+   400530db1: elongation 4.876, torsion [2], class size 2
+   256650cm1: elongation 4.818, torsion [2], class size 2
+   166950bg1: elongation 4.738, torsion [], class size 2
+   largest elongation, optimal with a loop: 6.194; with no loop: 13.172; optimal curves above 8: 63, of them with a loop: 0
+
+3. the graded statistic split by torsion (bootstrap over isogeny classes, as in L2)
+   fresh, no rational torsion   n=  7970  above 2 0.2055  above 5  59  q = 0.0360 (s.e. 0.0046);  no loop q = 0.0339;  difference -0.5 s.e.
+   fresh, rational torsion      n= 61646  above 2 0.1165  above 5  13  q = 0.0018 (s.e. 0.0005);  no loop q = 0.0339;  difference +32.7 s.e.
+   optimal, any loop            n= 56006  above 2 0.0978  above 5   8  q = 0.0015 (s.e. 0.0005);  no loop q = 0.0339;  difference +33.4 s.e.
+
+4. the 42 curves whose BSD quotient is 1/4 of their partner's: analytic Sha of both
+   194040co1 -> 194040co6: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   194766c1 -> 194766c4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   226005g1 -> 226005g3: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   226920a1 -> 226920a6: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   245310bs1 -> 245310bs8: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   256410m1 -> 256410m4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   256410q1 -> 256410q5: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   297330bm1 -> 297330bm4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   305256n1 -> 305256n4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   312018bm1 -> 312018bm4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   341202w1 -> 341202w5: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   348910q1 -> 348910q4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   356730cg1 -> 356730cg4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   370230cc1 -> 370230cc4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   373230s1 -> 373230s4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   389130p1 -> 389130p4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   389298cf1 -> 389298cf3: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   392190k1 -> 392190k2: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   392190n1 -> 392190n2: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   394485g1 -> 394485g8: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   395850e1 -> 395850e6: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   401709b1 -> 401709b4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   413490da1 -> 413490da4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   427025b1 -> 427025b4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   428298m1 -> 428298m2: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   433590v1 -> 433590v4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   439110q1 -> 439110q4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   442680ba1 -> 442680ba3: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   448800bh1 -> 448800bh4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   451248f1 -> 451248f4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   453390bu1 -> 453390bu4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   457470j1 -> 457470j4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   463080b1 -> 463080b4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   465120g1 -> 465120g4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   472290a1 -> 472290a4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   485112h1 -> 485112h4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   485826t1 -> 485826t4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   488070bp1 -> 488070bp4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   491970bp1 -> 491970bp4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   494760co1 -> 494760co4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   495482q1 -> 495482q4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   499290e1 -> 499290e4: analytic rank 2, 2; analytic Sha 1.000000, 4.000000
+   all 42: rank 2 on both, analytic Sha 1 on the optimal curve and 4 on the fresh one: True

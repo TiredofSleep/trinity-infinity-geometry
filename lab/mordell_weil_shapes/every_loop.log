@@ -1,0 +1,184 @@
+read 348672 curves of rank-2 classes from 50 tables; 0 failures
+
+PIPELINE: 69616 fresh curves; 42 whose BSD quotient Omega*Reg*prod(c_p)/|tors|^2 differs from the optimal partner's by more than 1e-6
+  194040co6: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  194766c4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  226005g3: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  226920a6: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  245310bs8: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  256410m4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  256410q5: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  297330bm4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  305256n4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  312018bm4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  341202w5: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  348910q4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  356730cg4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  370230cc4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  373230s4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  389130p4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  389298cf3: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  392190k2: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  392190n2: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  394485g8: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  395850e6: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  401709b4: quotient 0.25000000000000006; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25000000000000006
+  413490da4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  427025b4: quotient 0.25000000000000006; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25000000000000006
+  428298m2: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  433590v4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  439110q4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  442680ba3: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  448800bh4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  451248f4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  453390bu4: quotient 0.25000000000000006; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25000000000000006
+  457470j4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  463080b4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  465120g4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  472290a4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  485112h4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  485826t4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  488070bp4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  491970bp4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  494760co4: quotient 0.25000000000000006; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25000000000000006
+  495482q4: quotient 0.24999999999999994; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.24999999999999994
+  499290e4: quotient 0.25; regulator after saturation x1.000000 (partner x1.000000); quotient now 0.25
+  generators changed by saturation: 0
+  fresh curves that failed to compute: 0; flagged or failed above 1% (round void): False
+
+groups: fresh 69616, optimal with no loop 223050, optimal hidden-loop 5481, optimal with torsion 50525, optimal in all 279056
+
+==== REGISTERED CRITERIA ====
+L1/L2 fresh curves: n = 69616; above 5: 72  -> strict MISS
+L1/L2 fresh curves: q = 0.00817 (share above 2 0.1267, above 5 0.00103; bootstrap s.e. 0.00097)
+                    against no loop q = 0.03391 (share above 2 0.2244, above 5 0.00761; s.e. 0.00082)
+                    difference +0.02574, s.e. 0.00131 (+19.7 s.e.)  -> graded PASS
+L3 hidden-loop optimal curves: n = 5481; above 5: 5  -> strict MISS
+L3 hidden-loop optimal curves: q = 0.00675 (share above 2 0.1352, above 5 0.00091; bootstrap s.e. 0.00307)
+                               against no loop q = 0.03391 (share above 2 0.2244, above 5 0.00761; s.e. 0.00082)
+                               difference +0.02716, s.e. 0.00319 (+8.5 s.e.)  -> graded PASS
+
+SCORE: L1 MISS; L2 PASS; L3 strict MISS; L3 graded PASS
+RIVAL (L1 misses by 20 or more, and L2 misses): DIED
+
+==== SEEN, NOT SCORED: optimal curves with torsion ====
+  n = 50525; above 5: 3; q = 0.00063
+
+==== DESCRIPTION (no prediction) ====
+  fresh (non-optimal) curves         n=  69616  above 2 0.1267  above 3/5/8/10:   1554    72    4   0  mean density 0.5871
+  optimal, no loop                   n= 223050  above 2 0.2244  above 3/5/8/10:  15257  1697   63   8  mean density 0.5434
+  optimal, hidden loop (isogeny only) n=   5481  above 2 0.1352  above 3/5/8/10:    136     5    0   0  mean density 0.5835
+  optimal, torsion                   n=  50525  above 2 0.0938  above 3/5/8/10:    492     3    0   0  mean density 0.6055
+  optimal, any loop                  n=  56006  above 2 0.0978  above 3/5/8/10:    628     8    0   0  mean density 0.6033
+
+fresh curves by torsion:
+  torsion []                         n=   7970  above 2 0.2055  above 3/5/8/10:    460    59    4   0  mean density 0.5506
+  torsion [2]                        n=  53775  above 2 0.1268  above 3/5/8/10:   1076    13    0   0  mean density 0.5860
+  torsion [3]                        n=    760  above 2 0.1066  above 3/5/8/10:      8     0    0   0  mean density 0.5965
+  torsion [4]                        n=   1151  above 2 0.0295  above 3/5/8/10:      2     0    0   0  mean density 0.6350
+  torsion [5]                        n=      8  above 2 0.0000  above 3/5/8/10:      0     0    0   0  mean density 0.6732
+  torsion [6]                        n=    166  above 2 0.0000  above 3/5/8/10:      0     0    0   0  mean density 0.6645
+  torsion [8]                        n=      1  above 2 0.0000  above 3/5/8/10:      0     0    0   0  mean density 0.7917
+  torsion [2, 2]                     n=   5708  above 2 0.0427  above 3/5/8/10:      8     0    0   0  mean density 0.6339
+  torsion [2, 4]                     n=     76  above 2 0.0132  above 3/5/8/10:      0     0    0   0  mean density 0.6840
+  torsion [2, 6]                     n=      1  above 2 0.0000  above 3/5/8/10:      0     0    0   0  mean density 0.7465
+
+fresh curves by conductor band (q against no loop in the same band):
+       0-99999   fresh n= 11479 q=0.0070   no loop n= 36352 q=0.0343
+  100000-199999  fresh n= 14055 q=0.0076   no loop n= 44560 q=0.0336
+  200000-299999  fresh n= 14602 q=0.0079   no loop n= 46612 q=0.0349
+  300000-399999  fresh n= 14702 q=0.0071   no loop n= 47892 q=0.0327
+  400000-499999  fresh n= 14778 q=0.0110   no loop n= 47634 q=0.0341
+
+fresh lattice against its optimal partner's: smallest index n with (a tau + b)/d equivalent (n = 1: same shape; 0: none up to 16)
+  n =  0:     15 curves; above 2 0.4667; above 5    1; median elongation 1.719 (partners 1.452); thinner than partner 0.667
+  n =  1:  33625 curves; above 2 0.0793; above 5    3; median elongation 1.240 (partners 1.240); thinner than partner 0.000
+  n =  2:  28298 curves; above 2 0.1526; above 5   13; median elongation 1.363 (partners 1.269); thinner than partner 0.562
+  n =  3:   4822 curves; above 2 0.2538; above 5   34; median elongation 1.484 (partners 1.270); thinner than partner 0.611
+  n =  4:   2245 curves; above 2 0.1982; above 5    0; median elongation 1.427 (partners 1.314); thinner than partner 0.541
+  n =  5:    267 curves; above 2 0.2846; above 5   16; median elongation 1.452 (partners 1.223); thinner than partner 0.629
+  n =  6:    104 curves; above 2 0.1923; above 5    0; median elongation 1.423 (partners 1.294); thinner than partner 0.567
+  n =  7:     64 curves; above 2 0.2500; above 5    1; median elongation 1.473 (partners 1.305); thinner than partner 0.562
+  n =  8:     69 curves; above 2 0.1449; above 5    0; median elongation 1.278 (partners 1.387); thinner than partner 0.478
+  n =  9:     75 curves; above 2 0.3600; above 5    4; median elongation 1.641 (partners 1.375); thinner than partner 0.627
+  n = 10:      5 curves; above 2 0.0000; above 5    0; median elongation 1.019 (partners 1.165); thinner than partner 0.400
+  n = 11:      6 curves; above 2 0.1667; above 5    0; median elongation 1.246 (partners 1.435); thinner than partner 0.333
+  n = 12:      1 curves; above 2 1.0000; above 5    0; median elongation 2.767 (partners 2.173); thinner than partner 1.000
+  n = 13:      9 curves; above 2 0.4444; above 5    0; median elongation 1.367 (partners 1.225); thinner than partner 0.667
+  n = 14:      2 curves; above 2 0.0000; above 5    0; median elongation 1.438 (partners 2.030); thinner than partner 0.500
+  n = 15:      1 curves; above 2 0.0000; above 5    0; median elongation 1.593 (partners 1.628); thinner than partner 0.000
+  n = 16:      8 curves; above 2 0.3750; above 5    0; median elongation 1.556 (partners 1.388); thinner than partner 0.500
+
+every fresh curve above 5 (72), thinnest first: label, elongation, torsion, class size, partner's elongation, n
+  73280a2     9.416  []       2    1.883  5
+  465984b2     9.374  []       2    1.875  5
+  496230bo2     8.666  []       2    2.889  3
+  253982a2     8.435  []       2    1.687  5
+  465366x2     7.714  []       2    1.543  5
+  440400bk2     7.371  []       2    2.457  3
+  101761i3     7.288  []       3    1.567  0
+  348240i2     6.839  []       2    2.280  3
+  459214j2     6.838  []       2    1.368  5
+  413630e2     6.466  [2]      2    3.233  2
+  191296i2     6.401  []       2    2.134  3
+  288464i2     6.359  []       2    2.120  3
+  334278l2     6.310  []       2    0.954  7
+  445904h2     6.265  []       2    2.088  3
+  317730y2     6.263  [2]      2    3.132  2
+  370798c2     6.258  []       2    2.086  3
+  364560fd2     6.194  []       2    6.194  1
+  280650d2     6.115  []       2    1.223  5
+  123177f2     6.113  []       2    1.223  5
+  28608x2     6.089  []       2    2.030  3
+  94400w2     6.070  []       2    2.023  3
+  38514bc2     6.068  []       2    2.023  3
+  114155e2     6.000  []       2    1.200  5
+  44878c2     5.929  []       2    1.186  5
+  297390m2     5.883  [2]      2    2.941  2
+  491568em2     5.860  []       2    1.953  3
+  265536bh2     5.841  []       2    1.168  5
+  312650l2     5.826  []       2    1.942  3
+  396018a2     5.799  []       2    1.160  5
+  276450bt2     5.796  []       2    1.932  3
+  308074n2     5.770  []       2    1.923  3
+  260288t2     5.736  []       2    1.912  3
+  159229b2     5.694  []       2    1.898  3
+  195605a2     5.650  [2]      2    2.825  2
+  251049a3     5.626  []       3    1.566  9
+  221248i2     5.577  []       2    1.859  3
+  46010h2     5.557  []       2    1.852  3
+  154800ch2     5.532  []       2    1.844  3
+  170430a2     5.513  [2]      2    2.757  2
+  176961b3     5.508  []       3    1.195  9
+  451418e2     5.481  []       2    1.827  3
+  150640e2     5.466  []       2    5.466  1
+  35557a3     5.459  []       3    1.634  9
+  225786q2     5.435  []       2    1.087  5
+  158906g2     5.422  []       2    1.807  3
+  36784bg2     5.359  []       2    1.786  3
+  94800cz2     5.339  []       2    1.068  5
+  311542dd2     5.328  []       2    1.776  3
+  177630c2     5.325  []       2    1.065  5
+  493632f2     5.318  []       2    1.773  3
+  439922y2     5.278  []       2    1.759  3
+  433974h2     5.271  []       2    1.757  3
+  56400cy2     5.267  []       2    5.267  1
+  496650ck2     5.239  [2]      2    2.620  2
+  425024d3     5.222  []       3    1.664  9
+  230775f2     5.211  [2]      2    2.605  2
+  363600t2     5.202  []       2    1.734  3
+  237484a2     5.195  []       2    1.732  3
+  480525c2     5.188  [2]      2    2.594  2
+  398958cj2     5.185  [2]      2    2.593  2
+  13881d2     5.154  []       2    1.031  5
+  495690bo2     5.129  [2]      2    2.564  2
+  471975x2     5.115  []       2    1.705  3
+  231546g2     5.113  [2]      2    2.556  2
+  311542df2     5.111  []       2    1.704  3
+  437370f2     5.039  [2]      2    2.519  2
+  382690i2     5.036  [2]      2    2.518  2
+  499970g2     5.028  []       2    1.676  3
+  122598bd2     5.028  []       2    1.006  5
+  218560c2     5.007  []       2    1.669  3
+  445904j2     5.006  []       2    1.669  3
+  105552u2     5.006  []       2    1.669  3

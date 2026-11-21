@@ -96,4 +96,70 @@ does not count.
 
 # Outcome
 
-(Not yet run.)
+The registration was committed in `81297a4`, and the run came after it. The logs are
+[`../every_loop_compute.log`](../every_loop_compute.log) and [`../every_loop.log`](../every_loop.log). Heights for all
+348 672 curves of the rank-2 classes took 99 seconds, with no failures.
+
+**Checks of the pipeline.**
+- 42 fresh curves have a BSD quotient exactly 1/4 of their optimal partner's.
+- Saturation at every prime up to 100 changed no generator, on either side.
+- For all 42, the analytic order of Sha is 1 on the optimal curve and 4 on the fresh one
+  ([`../every_loop_after.log`](../every_loop_after.log)). So the quotient is a change of Sha across the isogeny, not a
+  fault in the generators.
+- 0.06% of the fresh curves were flagged and none failed, so the round is not void.
+
+| | n | above 2 | above 5 | q (bootstrap s.e.) | strict | graded |
+|---|---|---|---|---|---|---|
+| **fresh curves** (L1, L2) | 69 616 | 0.1267 | 72 | 0.0082 (0.0010) | **miss** | **pass**, 19.7 s.e. |
+| **optimal hidden-loop curves** (L3) | 5 481 | 0.1352 | 5 | 0.0068 (0.0031) | **miss** | **pass**, 8.5 s.e. |
+| optimal curves with no loop (the reference) | 223 050 | 0.2244 | 1 697 | 0.0339 (0.0008) | | |
+| optimal curves with torsion (seen, not scored) | 50 525 | 0.0938 | 3 | 0.0006 | | |
+
+- **L1 misses.** 72 fresh curves fail badly, with elongations from 5.006 to 9.416.
+- **L2 passes.** A fresh lattice that fails is about a quarter as likely to fail badly as one with no loop.
+- **L3:** the strict form misses (5 curves above 5), and the graded form passes.
+- **The rival died.** Its first half held, since L1 missed by 72 curves. Its second half did not: L2 passed.
+- **Seen, not scored:** 3 optimal curves with torsion lie above 5.
+
+**Two of four criteria held: the strict sentence died, and its graded form held.** No group of curves with a loop
+avoids the bad tail entirely. But a lattice with a loop that fails is far less likely to fail badly.
+
+## Read after the run (not registered; [`../every_loop_after.py`](../every_loop_after.py))
+
+- **Where loops fail badly: a round partner, stretched.**
+  - 63 of the 72 fresh curves above 5 have exactly n times the elongation of their optimal partner: n = 2 for 13
+    curves, 3 for 34 and 5 for 16. Their partners are round, with elongations from 1.0 to 3.2.
+  - 3 more share their partner's shape exactly, because their partners are themselves above 5.
+  - The other 6 are neighbours of index 7 or 9, or of none up to 16, and are not exact multiples.
+  - The 63 lie in classes of two curves. Such a class is joined by one isogeny of prime degree ℓ, and then the index
+    between the two lattices is 1 or ℓ. So n is the isogeny's degree, and the stretch is the neighbour τ ↦ ℓτ of the
+    rival's argument.
+- **The graded pass comes from rational torsion.**
+  - The fresh curves with no rational torsion number 7 970. A 2-isogeny's kernel is a rational point, so these
+    carry only isogenies of odd degree. They have q = 0.0360 ± 0.0046, no lower than with no loop (−0.5 s.e.), and
+    they hold 59 of the 72.
+  - Fresh curves with torsion have q = 0.0018 (+32.7 s.e.), and optimal curves with any loop have q = 0.0015
+    (+33.4 s.e.).
+  - The optimal hidden-loop curves (L3) are protected, but their stretched partners are not.
+- **No optimal curve with a loop fails very badly.**
+  - All 63 optimal curves above elongation 8 have no loop.
+  - The thinnest optimal curve with a loop is 364560fd1, at 6.19. The thinnest with no loop is at 13.17.
+  - Eight optimal curves with a loop lie above 5: five torsion-free, and three with ℤ/2.
+- **The fresh curve is more often the thinner member of its pair.** Among fresh curves related to their partner by
+  index 2, 3 or 5, the fresh curve is the thinner one in 56%, 61% and 63% of pairs. Nothing registered tested this,
+  and its cause is not known here.
+- **Across conductor bands,** q stays between 0.007 and 0.011 for the fresh curves, against 0.033–0.035 with no loop.
+
+## What this changes
+
+- **"None fails badly" is false as stated.** 80 curves with a loop (72 fresh, 5 hidden-loop optimal and 3 with
+  torsion) pack below a fifth of the honeycomb. It goes to the graveyard with this evidence.
+- **What survives is the graded form, with a mechanism for its exceptions.**
+  - A rational torsion point protects a lattice from failing badly. Given that the lattice fails, the protection is
+    about 20 to 1 against curves with no loop.
+  - An isogeny alone does not protect the non-optimal curve, whose lattice is often its round partner's stretched by
+    the isogeny's degree.
+- **Possible next rounds, if the author wants them:**
+  - register that the stretch factor is the isogeny's degree in classes of three or more curves (PARI's `ellisomat`
+    gives the degrees);
+  - register whether optimality picks the rounder member of a pair.

@@ -362,6 +362,30 @@ its own graveyard. These died, with what killed them:
   - **The rival that lost:** Yun's symbol without the cube's 3, (p/k!!), as a reading of the Airy determinants.
     At 29, 31 and 39, where it differs from (p/A_k), it fits 11 of 24 primes each, at chance level
     (`towers/seven_levels/edge_rule_test28.log`). Complex conjugation had already ruled it out there by sign.
+- **From the Mordell–Weil rounds of the lens handoff (2026-11-20 and 21; `lab/mordell_weil_shapes/registered/`):**
+  - **"Every loop fails a little, none fails badly"** (the author; the strict form, L1 and L3 of 21 November).
+    - Elongation above 5, a packing density below π/20, occurs for 72 of the 69 616 non-optimal rank-2 curves.
+      Each of those carries an isogeny.
+    - It also occurs for 5 of the 5 481 optimal curves with an isogeny and no torsion.
+    - Three optimal curves with torsion lie there too. That tail was printed before the registration, so it was
+      not scored.
+    - The graded form held (19.7 and 8.5 s.e.).
+    - 63 of the 72 are their round optimal partner's lattice, stretched by the isogeny's degree
+      (`lab/mordell_weil_shapes/every_loop.log`, `every_loop_after.log`).
+  - **The rival that lost:** "the non-optimal curves fail badly at least as often as curves with no loop" (Claude
+    Code, against L2).
+    - Given that a lattice fails, they fail badly a quarter as often.
+    - The rival's mechanism, the stretch τ ↦ ℓτ across an isogeny of degree ℓ, is what makes the exceptions.
+  - **"Groups already above density 0.607 rise toward the honeycomb"** (the author, 20 November; T2). Their pooled
+    slope against ln(conductor) is −0.0050 ± 0.0023 (`registered/REGISTERED_2026-11-20_threshold_0607.md`).
+  - **"At rank 3 the lattice packs better than its dual"** (Claude, the stated direction of a two-sided test,
+    20 November). The test passed the other way: the dual packs better, 0.3179 against 0.3055, 15.6 s.e.
+    (`registered/REGISTERED_2026-11-20_the_space_they_require.md`).
+  - **A novelty claim:** "nobody we could find has asked how those points are distributed" (the handoff, Part F).
+    - Watkins had asked in 2006. "Some heuristics about elliptic curves" (arXiv math/0608766), §6.4, places the
+      lattices of 2 143 079 rank-2 curves of prime conductor in SL₂(ℤ)\H, in the same coordinates.
+    - He finds them rounder than the uniform law: 35.4% have elongation at least 2, against 47.7%. He also finds x
+      skewed toward ½.
 - **From round 33, what the winners share (2026-11-17; `towers/seven_levels/winners_test.log`):**
   - **"From 17 on the landscape is glassy: the best is reached by one climb"** (W2a). At 41 the best was reached
     by 24 of 630 climbs.
