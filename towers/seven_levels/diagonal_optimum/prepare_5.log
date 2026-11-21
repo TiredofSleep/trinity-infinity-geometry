@@ -1,0 +1,3 @@
+p = 5: numerical maximum S = 1.977575821308542 at [0.074496953053, 0.148993906107, 2.282237102258, 4.149942111028]; |grad| = 3.0e-16; min |E| = 0.5111; Hessian eigenvalues [-0.8978, -0.7732, -0.5749, -0.1632]
+symmetry images in D: 20 distinct points (from 40 maps); S at each agrees to 1.1e-15; largest |grad| 7.5e-16
+wrote candidates_5.txt (certified half-width 0.004, Krawczyk half-width 1e-09)

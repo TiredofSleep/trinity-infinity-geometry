@@ -1,0 +1,5 @@
+bb_selftest.py -- the generalized prover against floating-point S
+[PASS] p = 3: 2000 boxes (1786 smooth, 1464 monotone): S above U at sampled points 0 times, below L 0 times; monotone flag contradicted 0 times; 0 reduction failures
+[PASS] p = 5: 2000 boxes (1570 smooth, 1269 monotone): S above U at sampled points 0 times, below L 0 times; monotone flag contradicted 0 times; 0 reduction failures
+[PASS] p = 7: 2000 boxes (1495 smooth, 1217 monotone): S above U at sampled points 0 times, below L 0 times; monotone flag contradicted 0 times; 0 reduction failures; against t7_rigorous.exe the upper bounds differ by at most 2.0e-14 (its constants 2 pi k/7 are exact-rational enclosures, here they are computed in interval arithmetic) and agree with the flags on 2000/2000 boxes
+[PASS] bb_selftest: 3/3

@@ -1934,6 +1934,23 @@ forced("the theorem at p = 7 with rigorous bounds (t7_rigorous/: the lemmas K1-K
        "header is exactly what they generate, the self-tests pass, and the recorded rigorous run discarded every box)",
        _t7rc.returncode == 0 and "[PASS] K1-K4" in _t7rc.stdout and "[PASS] t7_constants.h is exactly" in _t7rc.stdout
        and _t7rs and "[PASS] selftest: 3/3" in _t7rself and "VERDICT PASS" in _t7rlog)
+# the optimum at 3, 5 and 7 by the generalized prover (diagonal_optimum/OPTIMUM.md): its constants, its self-tests
+# (rerun when bb3/bb5/bb7.exe have been built with build.bat), and the three recorded runs
+_DO = os.path.join(_HERE18, "diagonal_optimum")
+_doc = _sp16.run([sys.executable, os.path.join(_DO, "bb_constants.py"), "--check"], capture_output=True, text=True)
+if all(os.path.exists(os.path.join(_DO, f"bb{_p}.exe")) for _p in (3, 5, 7)):
+    _dos = _sp16.run([sys.executable, os.path.join(_DO, "bb_selftest.py")], capture_output=True, text=True).returncode == 0
+else:
+    _dos = True                                      # not built here: the recorded self-test log is checked below
+_dologs = {_p: open(os.path.join(_DO, f"bb{_p}.log"), encoding="utf-8").read() for _p in (3, 5, 7)}
+forced("the maximum of S over diagonal states at 3, 5 and 7 (diagonal_optimum/: exact-rational constants, self-tests, "
+       "and three recorded runs that certify their maximizers and discard every box; at 5 one orbit of 500)",
+       _doc.returncode == 0 and _dos and "[PASS] bb_selftest: 3/3" in open(os.path.join(_DO, "bb_selftest.log"), encoding="utf-8").read()
+       and all("VERDICT PASS" in _dologs[_p] for _p in (3, 5, 7)) and "attained exactly at the 20 certified" in _dologs[5])
+# the circle operator stays inside the square-root limit (CIRCLE_OPERATOR.md)
+_cop = _sp16.run([sys.executable, os.path.join(_HERE18, "verify_circle_operator.py")], capture_output=True, text=True)
+forced("the circle operator: every eigenvalue inside 2 sqrt(p) to p = 997, and lambda = (p + 1) <psi|A_v|psi> "
+       "(verify_circle_operator.py)", _cop.returncode == 0 and "[PASS] verify_circle_operator: all checks" in _cop.stdout)
 
 print()
 print(f"SCORE: {sum(RESULTS.values())} of {len(RESULTS)} predictions held: "

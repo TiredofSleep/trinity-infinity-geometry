@@ -1,0 +1,23 @@
+bb7.exe prove candidates_7.txt 4 -- the p = 7 theorem again, with the maximizers' boxes certified by the program (interval Hessian + Krawczyk)
+  progress: 64/1024 first-grid boxes done, 155 s
+  progress: 128/1024 first-grid boxes done, 303 s
+  progress: 192/1024 first-grid boxes done, 450 s
+  progress: 256/1024 first-grid boxes done, 593 s
+  progress: 320/1024 first-grid boxes done, 742 s
+  progress: 384/1024 first-grid boxes done, 895 s
+  progress: 448/1024 first-grid boxes done, 1077 s
+  progress: 512/1024 first-grid boxes done, 1243 s
+  progress: 576/1024 first-grid boxes done, 1411 s
+  progress: 640/1024 first-grid boxes done, 1595 s
+  progress: 704/1024 first-grid boxes done, 1750 s
+  progress: 768/1024 first-grid boxes done, 1900 s
+  progress: 832/1024 first-grid boxes done, 2049 s
+  progress: 896/1024 first-grid boxes done, 2202 s
+  progress: 960/1024 first-grid boxes done, 2351 s
+  progress: 1024/1024 first-grid boxes done, 2507 s
+p = 7: 2 candidate maximizers, certified boxes of half-width 0.004, Krawczyk boxes of half-width 1e-09
+certified: all (signs fixed, -Hessian positive definite on every B_c [smallest pivot 15.01], Krawczyk contraction on every X_c [smallest margin 1e-09]); symmetry images of X_0 inside every B_c: yes
+S at the maximizer lies in [2.4503041185400107, 2.4503041185401555]
+boxes 47174654 by_bound 23423054 by_monotone 163901 by_certified_box 884 fails 0 stuck 0 overflow 0 aborted 0
+max_center_S 2.450302503819568 S_LO 2.450304118540011 seconds 2507.4 threads 4
+VERDICT PASS: the maximum of S over diagonal states on 7 levels lies in [2.4503041185400107, 2.4503041185401555], attained exactly at the 2 certified critical points in D, all images of one under the symmetries

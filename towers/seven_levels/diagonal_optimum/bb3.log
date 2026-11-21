@@ -1,0 +1,7 @@
+bb3.exe prove candidates_3.txt 4 -- rigorous branch and bound at p = 3 (calibration: Li and Luo's theorem)
+p = 3: 2 candidate maximizers, certified boxes of half-width 0.02, Krawczyk boxes of half-width 1e-09
+certified: all (signs fixed, -Hessian positive definite on every B_c [smallest pivot 5.037], Krawczyk contraction on every X_c [smallest margin 1e-09]); symmetry images of X_0 inside every B_c: yes
+S at the maximizer lies in [1.5862568277145306, 1.586256827714561]
+boxes 348 by_bound 104 by_monotone 66 by_certified_box 6 fails 0 stuck 0 overflow 0 aborted 0
+max_center_S 1.586247506721177 S_LO 1.586256827714531 seconds 0.0 threads 4
+VERDICT PASS: the maximum of S over diagonal states on 3 levels lies in [1.5862568277145306, 1.586256827714561], attained exactly at the 2 certified critical points in D, all images of one under the symmetries

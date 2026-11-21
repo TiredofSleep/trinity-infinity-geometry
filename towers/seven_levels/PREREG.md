@@ -3135,3 +3135,14 @@ Run by [`winners.py`](winners.py) `test`, registered at 74958a0 before the test,
   - The constants and the lemmas are proved in exact rational arithmetic.
   - It discarded all 47 174 654 boxes. A separate AI review of the code and the proof found nothing that breaks it;
     no human referee has checked it yet.
+
+## Addendum (2026-11-21): the optimum at 5 is a theorem
+
+> *1 yes, then p = 5 alongside everything else* — the author, 21 November 2026
+
+- Round 33 found numerically that at 5 the optimum is one robust odd state whose orbit has 500 members.
+- [`diagonal_optimum/`](diagonal_optimum/OPTIMUM.md) now proves it with rigorous bounds: every diagonal state on five
+  levels has S ≤ 1.97757582130854…, with equality exactly on that orbit of 500.
+- The program generalizes the p = 7 prover and certifies the neighbourhoods of the maximizers itself. It reproduces
+  Li and Luo's theorem at 3 and the theorem at 7.
+- This is not a prediction, so it carries no score.

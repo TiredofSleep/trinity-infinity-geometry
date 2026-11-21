@@ -986,7 +986,7 @@ The details are in [`COIN_AT_FIVE.md`](COIN_AT_FIVE.md) §5 to §12 ([`edge_rule
     (3, 5, −7, 11) and (3, 7, −11, 13).
   - The one-dimensional pieces at 5 and 9 equal their determinants. Only 13, 17 and 21 are left measured.
 
-## 22. Rounds 29 to 33: one wheel, the qudit T state, the ladder, the finer phases, a coin by p mod 3 with its edge, what beats the T state, and a theorem at 7 [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
+## 22. Rounds 29 to 33: one wheel, the qudit T state, the ladder, the finer phases, a coin by p mod 3 with its edge, what beats the T state, and theorems at 5 and 7 [FORCED; measured; NAMED: Howard and Vala, Cui, Gottesman and Krishna, Katz, Deligne, Wilson and White, Zhu, Mao and Yi, Feng and Luo]
 
 > *where can we try and extend this to be useful on the frontier of applications?* and *1 yes, then the qudit round*
 > — the author, 17 November 2026
@@ -1082,6 +1082,14 @@ project, the statements and evidence are in a short note in standard terms:
     is enclosed, cos and sin come from the program's own interval enclosures, and the lemmas at the maximizers
     are proved in exact rational arithmetic. It discarded all 47 174 654 boxes in 37 minutes.
   - This answers Feng and Luo's open question at 7.
+- **Theorem at p = 5: the optimum is one orbit of 500 states** [FORCED, computer-assisted, rigorous bounds]
+  ([`diagonal_optimum/OPTIMUM.md`](diagonal_optimum/OPTIMUM.md)).
+  - Every diagonal state on five levels has S ≤ 1.97757582130854…, with equality exactly on one orbit of 500
+    states, which matches Feng and Luo's count. The maximizer is odd about a point, and no integer polynomial of
+    degree at most 24 fits its value.
+  - The program certifies the neighbourhoods of the maximizers itself: fixed signs, a negative definite
+    interval Hessian, and a Krawczyk test. 629 676 boxes, 11 seconds.
+  - The same program reproduces Li and Luo's theorem at 3, and the theorem at 7 without the hand-proved lemma.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1323,6 +1331,11 @@ python t7_rigorous/constants.py        # the theorem's constants and lemmas K1-K
 t7_rigorous/build.bat                  # build the rigorous prover (MSVC: /O2 /fp:strict /openmp)
 python t7_rigorous/selftest.py         # its self-tests against 50-digit arithmetic and the float prover, a minute
 t7_rigorous/t7_rigorous.exe prove 4    # the theorem at p = 7 with rigorous bounds, on four threads
+python diagonal_optimum/bb_constants.py   # the generalized prover's constants, exact rational arithmetic
+diagonal_optimum/build.bat             # bb3.exe, bb5.exe, bb7.exe (MSVC)
+python diagonal_optimum/prepare.py 5   # candidate maximizers at 5 (likewise 3 and 7)
+diagonal_optimum/bb5.exe prove diagonal_optimum/candidates_5.txt 4   # the theorem at 5, seconds
+python diagonal_optimum/bb_selftest.py # the generalized prover against floating-point S, a minute
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

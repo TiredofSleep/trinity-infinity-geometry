@@ -1,0 +1,10 @@
+digits5.py -- the maximum of S over diagonal states at p = 5, to 60 digits (Newton at 130 digits)
+  the signs of E are those of the certified critical point; |grad| after Newton 4.85e-130
+  S*_5 = 1.97757582130854208841477817308660330000376679450167090965595
+  phases in turns: ['0.01185655832373580191363006', '0.02371311664747160382726012', '0.3632293161320857063188459', '0.6604838005153858975084142']
+  phi(2) - 2 phi(1) = -2.82e-131
+  symmetry: conjugation, x -> 4 x + 2, Clifford phase (beta, gamma) = (0, 0)
+  integer polynomial for S*_5: none of degree <= 24 with coefficients <= 1e9
+  integer polynomial for cos a: none of degree <= 24 with coefficients <= 1e9
+  integer polynomial for cos b: none of degree <= 24 with coefficients <= 1e9
+  integer polynomial for cos(a + b): none of degree <= 24 with coefficients <= 1e9

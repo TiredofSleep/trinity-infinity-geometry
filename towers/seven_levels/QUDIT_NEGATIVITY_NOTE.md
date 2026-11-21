@@ -107,6 +107,18 @@ state's value. Equality holds only at the T states of the best class (c ∈ {3, 
   result requires ([`t_optimal_7.py`](t_optimal_7.py), [`t_optimal_7.log`](t_optimal_7.log)).
 - Random p²-th-root phases have the random-state value: 0.79801√p against 0.79816√p from 500 to 1000.
 
+**Theorem (p = 5; computer-assisted, with rigorous bounds).** Every diagonal state on five levels has
+S ≤ S*₅ = 1.97757582130854208841…, with equality exactly on one orbit of 500 states, which are not T states.
+- The 500 match Feng and Luo's count [FL26]. The maximizer's only symmetry is an antiunitary reflection, and
+  re-centred it is odd. No integer polynomial of degree at most 24 fits S*₅.
+- The proof generalizes the p = 7 program. The program certifies the boxes around the 20 maximizers in D itself:
+  every E keeps its sign, the interval Hessian is negative definite, a Krawczyk test finds exactly one critical
+  point, and the symmetries map one certified point into every other box. It examined 629 676 boxes in 11 seconds
+  ([`diagonal_optimum/OPTIMUM.md`](diagonal_optimum/OPTIMUM.md)).
+- The same program reproduces Li and Luo's theorem at 3 [LL], and the theorem at 7 without the hand-proved cube
+  lemma. So at 3, 5 and 7 the most Wigner-negative diagonal state is known exactly: the T gate at 3 and 7, and an
+  orbit of 500 at 5.
+
 **(7) A pattern by p mod 3, and where it ends** (rounds 31 and 32). One fixed search ran at every prime: L-BFGS on
 a smoothed Wigner norm, from about 650 starts, some random and some near the T states. Through p = 23 the T gate is
 the most Wigner-negative diagonal gate exactly when p = 3 or p ≡ 1 (mod 3). From 29 on it is beaten everywhere:
@@ -161,6 +173,7 @@ The predictions were registered, with the script, before any value above p = 29 
 | the best fine phase vs arbitrary phases at p = 5 | 300 optimizations | ≥ 99% | 99.6% (1.969982 against 1.977576) |
 | arbitrary phases beat T at p = 7 | 400 optimizations | yes (a guess) | no: the best found is the T state; the guess failed |
 | the T state is the optimum at p = 7 | branch and bound over all phases | (a theorem, not a prediction) | proved: every box discarded, 47 136 512 in floating point and 47 174 654 with rigorous bounds |
+| the optimum at p = 5 | branch and bound over all phases | (a theorem, not a prediction) | proved: one orbit of 500 states, S*₅ = 1.9775758213085… |
 | random p²-th-root phases, mean S/√p | primes 500–1000 | the Haar mean ± 0.002 | 0.79801 against 0.79816 |
 | T optimal at 13, 19 (≡ 1 mod 3) | ~690 optimizations each | nothing above T | nothing above T |
 | T beaten at 17, 23 (≡ 2 mod 3) | ~630 optimizations each | a state above T | 0.8803 and 0.8860, against 0.8493 and 0.8470 |
@@ -234,6 +247,7 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 [`winners.py`](winners.py) runs round 33 ([`winners_explore.log`](winners_explore.log),
 [`winners_test.log`](winners_test.log)). [`t_optimal_7.py`](t_optimal_7.py) proves the theorem at p = 7
 ([`t_optimal_7_check.log`](t_optimal_7_check.log), [`t_optimal_7.log`](t_optimal_7.log),
-[`t_optimal_7_control.log`](t_optimal_7_control.log)). [`t7_rigorous/`](t7_rigorous/RIGOROUS.md) proves it again
+[`t_optimal_7_control.log`](t_optimal_7_control.log)). [`diagonal_optimum/`](diagonal_optimum/OPTIMUM.md) proves the
+theorem at 5 ([`bb5.log`](diagonal_optimum/bb5.log)). [`t7_rigorous/`](t7_rigorous/RIGOROUS.md) proves it again
 with rigorous bounds ([`constants.log`](t7_rigorous/constants.log), [`selftest.log`](t7_rigorous/selftest.log),
 [`t7_rigorous.log`](t7_rigorous/t7_rigorous.log)).

@@ -1,0 +1,23 @@
+bb5.exe prove candidates_5.txt 4 -- rigorous branch and bound at p = 5 (MSVC /O2 /fp:strict /openmp /DP=5; constants from bb_constants.py)
+  progress: 4/64 first-grid boxes done, 0 s
+  progress: 8/64 first-grid boxes done, 1 s
+  progress: 12/64 first-grid boxes done, 1 s
+  progress: 16/64 first-grid boxes done, 2 s
+  progress: 20/64 first-grid boxes done, 3 s
+  progress: 24/64 first-grid boxes done, 3 s
+  progress: 28/64 first-grid boxes done, 5 s
+  progress: 32/64 first-grid boxes done, 6 s
+  progress: 36/64 first-grid boxes done, 6 s
+  progress: 40/64 first-grid boxes done, 8 s
+  progress: 44/64 first-grid boxes done, 8 s
+  progress: 48/64 first-grid boxes done, 9 s
+  progress: 52/64 first-grid boxes done, 10 s
+  progress: 56/64 first-grid boxes done, 10 s
+  progress: 60/64 first-grid boxes done, 11 s
+  progress: 64/64 first-grid boxes done, 11 s
+p = 5: 20 candidate maximizers, certified boxes of half-width 0.004, Krawczyk boxes of half-width 1e-09
+certified: all (signs fixed, -Hessian positive definite on every B_c [smallest pivot 6.441], Krawczyk contraction on every X_c [smallest margin 1e-09]); symmetry images of X_0 inside every B_c: yes
+S at the maximizer lies in [1.9775758213085037, 1.9775758213085828]
+boxes 629676 by_bound 248262 by_monotone 65869 by_certified_box 739 fails 0 stuck 0 overflow 0 aborted 0
+max_center_S 1.977575391048513 S_LO 1.977575821308504 seconds 11.2 threads 4
+VERDICT PASS: the maximum of S over diagonal states on 5 levels lies in [1.9775758213085037, 1.9775758213085828], attained exactly at the 20 certified critical points in D, all images of one under the symmetries

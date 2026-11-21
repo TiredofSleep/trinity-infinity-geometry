@@ -1,0 +1,6 @@
+verify_circle_operator.py -- the circle operator and the square-root limit
+[PASS] C1: 228 operators (5 <= p <= 397, c = 1, 2, 3) are Hermitian with trace p + 1, and the handoff's convention gives the same matrices (0 failures)
+[PASS] C2: every eigenvalue has |lambda| < 2 sqrt(p) (p <= 397 with c = 1, 2, 3; p <= 997 with c = 1); the largest ratio |lambda| / (2 sqrt p) is 0.99931, at p = 673, c = 1
+[PASS] C3: at p = 11, 31, 101 every eigenvector has one expectation at all p + 1 points of the circle, and lambda = (p + 1) <psi|A_v|psi> (largest deviation 8.2e-12)
+[PASS] C4: at p = 251 the moments 2, 4, 6 of lambda/sqrt(p) are 1.004, 2.003, 4.943 (semicircle 1, 2, 5)
+[PASS] verify_circle_operator: all checks

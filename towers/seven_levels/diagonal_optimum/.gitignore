@@ -1,0 +1,4 @@
+# build products and self-test scratch files; build with build.bat
+*.exe
+*.obj
+_*.txt
