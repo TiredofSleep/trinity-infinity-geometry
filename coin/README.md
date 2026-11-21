@@ -17,6 +17,7 @@ is what every floor turns over.
 > python verify_mirror.py           # THE_MIRROR.md (26 checks, about thirty seconds)
 > python verify_polar_coin.py       # THE_POLAR_COIN.md (26 checks, about forty seconds; numpy + scipy)
 > python verify_lens.py             # ../THE_LENS.md: the glue and the worked square (23 checks; numpy + scipy)
+> python verify_lens_primes.py      # ../THE_LENS.md §8: the lens on the primes (21 checks, a few minutes; numpy, mpmath, PARI)
 > ```
 
 | file | what it is |

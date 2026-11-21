@@ -111,6 +111,9 @@ primes themselves: the staircase of the primes.
   [NAMED: von Koch 1901].
 - [checked, not proved] |ψ(x) − x| stays below √x ln² x/(8π), Schoenfeld's explicit form of the envelope [NAMED:
   Schoenfeld 1976], at every x from 74 to 10⁷. The largest ratio is 0.93.
+- **The author's sentences of 20 November** about the primes are matched, in [`THE_LENS.md`](../THE_LENS.md) §8, to
+  the classical results they restate, each with a check. Among them are the balance, the crossings, Lehmer's near
+  miss, the spectrum of the zeros and the rate in log time.
 
 ## 5. The finite-field twin: how primes form direction [NAMED; FORCED checks; measured]
 

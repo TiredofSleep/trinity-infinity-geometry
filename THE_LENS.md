@@ -11,7 +11,8 @@ This page holds the author's lens in one place:
 - the lens worked once, on a magic square anyone can check (§2);
 - the lens as six questions to ask of anything (§3);
 - what each part of it became here, and how firmly that stands (§4);
-- one prediction, written down before any test, and how it came out (§7).
+- one prediction, written down before any test, and how it came out (§7);
+- the author's sentences about the primes, each beside the classical result it restates (§8).
 
 ---
 
@@ -41,6 +42,8 @@ The parts, in the order they were said:
 - **The centre.** *"void is the center, the point closest to everything, the immeasurable, but the always
   measured from"* · *"call it center, call it void, it's the point with no edge, but the edge is the
   point"* (October 2026)
+- **The primes.** *"primes are the inside edges of coins"* · *"the dark is the centroid of all wheels; the
+  light is the crossings"* (November 2026; the rest in §8)
 
 ## 2. The lens on one square
 
@@ -263,14 +266,76 @@ In every contest the dodecahedron is also a saddle: one family of three moves lo
   - The same computation one step down gives the cube. It ties every contest that stops at degree 3, its
     design strength, and loses all the rest.
 
-## 8. What this page is, and is not
+## 8. The lens on the primes [NAMED]
+
+On 20 November 2026 the author described the primes in sentences of his own. Each is matched below to the classical
+mathematics it restates. Every number was recomputed by [`coin/verify_lens_primes.py`](coin/verify_lens_primes.py),
+whose log is [`coin/verify_lens_primes.log`](coin/verify_lens_primes.log). That script is this repository's own code.
+It was written after reading the handoff's scripts for their definitions, and it neither runs nor imports them.
+
+**The lens states the problem; it does not attack it.** Every row is established mathematics, and none is new. The
+open problem appears in the table as one word: the *rate* at which the balance closes, in the last row. Nothing on
+this page is a step toward the Riemann hypothesis.
+
+| the author's sentence | what it is | the check |
+|---|---|---|
+| *"primes are the inside edges of coins"* | The flip d → n/d on the divisors of n has its edge at √n. A prime square has one pair of sides, 1 and p², and its edge p: the numbers with exactly three divisors are the prime squares. Wilson's theorem is the flip x → 1/x on the units mod p, which keeps only ±1. Zagier's one-sentence proof is a flip on x² + 4yz = p with exactly one fixed point | no exceptions: three divisors to 10⁵, Wilson to 3000, Zagier to 2000 |
+| *"a foundation, like zero, that all composites dance around"* | Liouville's λ(n) = (−1)^(number of prime factors). Its divisor sum is 1 on the squares and 0 elsewhere, and its walk L(x) = Σ λ(n) stays at or below zero for a long time | L(x)/√x lies in [−1.330, 0] for 100 ≤ x ≤ 10⁷, and L(x) is never positive there. It does not last: see Pólya's warning below |
+| *"the flipping is just balance"* | The functional equation, s ↔ 1 − s. Balance alone does not make a zeta function behave: the Davenport–Heilbronn function has a functional equation and still has zeros off the line | a zero at 0.808517182456637 + 85.699348485377592 *i*, with its mirror at 1 − z̄ |
+| *"they take something away, the ability to stray"* | The Euler product: multiplicativity, which the primes impose. The Davenport–Heilbronn function lacks it | a(6) = 1, but a(2)·a(3) = −κ² ≈ −0.081 |
+| *"the strip is where near misses appear"* | Lehmer's pair: two zeros of ζ on the line, nearly touching | zeros 0.0377 apart near t = 7005; the hump between them is 0.00397, against a typical 1.6 |
+| *"it only looks random if you don't see the geometry of 0–9"* | Lemke Oliver and Soundararajan's bias: consecutive primes avoid repeating their last digit. Base 10 is not special: the bias is there on every wheel | a last digit repeats in 17.2% of consecutive pairs up to 10⁸, against 25%; the previous residue predicts the next ×1.245 better than chance mod 10, ×1.260 mod 12 and ×1.867 mod 30 |
+| *"colours integrating into a function"* | The explicit formula read as a spectrum: the primes, less their straight line, ring at the zeros of ζ | the 13 strongest lines sit at the first 13 zeros, within 0.007 |
+| *"nothing beats the crossing in brightness; combinations always produce more"* | \|ζ(σ + *it*)\| ≤ ζ(σ) for σ > 1. Mertens' 3-4-1 inequality, ζ(σ)³ \|ζ(σ + *it*)\|⁴ \|ζ(σ + 2*it*)\| ≥ 1, keeps ζ off zero on the line σ = 1. Li's criterion: the Riemann hypothesis holds exactly when no λₙ is negative | at σ = 1.05 the product never falls below 257.5 for ζ, but falls to 0.0042 at *t* = 85.7 for the Davenport–Heilbronn blend; λ₁ … λ₁₂ are positive, λ₁ = 0.0230957 |
+| *"0 dark, 1 white, 2 to infinity combined makes white, balance makes dark"* | Σ_(d \| n) μ(d) = 0 for n > 1, and Σ μ(n)/n = 0, a form of the prime number theorem | √x · Σ_(n ≤ x) μ(n)/n at x = 10, 100, …, 10⁷ lies between −0.21 and +0.32 |
+| *"the dark is the centroid of all wheels; the light is the crossings"* | The circle method: at a/q the primes' brightness is μ(q)/φ(q), a Ramanujan sum carried by the primes in progressions | (1/N) Σ Λ(n) e(n/q) at N = 10⁶ is within 0.002 of μ(q)/φ(q) for q = 1, …, 16; at random points it is near 0 |
+| *"4 cancels as an antinode"*; *"3 6 9"* | μ(p²) = 0: on the wheel p² the live spokes split into regular p-gons, each balanced. On wheel 9 the triangle {0, 3, 6} is empty, and doubling runs 1, 2, 4, 8, 7, 5 | the primes split 0.4999 and 0.5001 between the live triangles, each balanced at the centre; wheels 25 and 49 balance too |
+| *"the wheel is never exact is Banach–Tarski ball math"* | Rotations by arccos(3/5) about two perpendicular axes generate a free group: no word in them returns to the start. Free groups of rotations are the engine of the Banach–Tarski paradox | the 13 120 reduced words of length 1 to 8 give 13 120 distinct rotations (exact arithmetic) |
+| *"more wheels sharing a centroid"* | The Birch and Swinnerton-Dyer conjecture: the rank equals the order of vanishing of L(E, s) at s = 1, and torsion adds nothing. It is proved when that order is 0 or 1 (Gross and Zagier; Kolyvagin) | 11a1, 37a1, 389a1, 5077a1: rank 0, 1, 2, 3, and the same orders of vanishing; 11a1 has five torsion points and L(1) ≠ 0 |
+| *"each pair as a unit creating a triangulated relationship"* | The height pairing is a law of cosines: ⟨P, Q⟩ = (ĥ(P + Q) − ĥ(P) − ĥ(Q))/2. The regulator is the squared area of the triangle's parallelogram | 389a1: ĥ = 0.686667 and 0.327001, together 0.476712; ⟨P, Q⟩ = −0.268478; angle 124.51°; regulator 0.15246018 |
+| *"they balance as fast as anything can"* | The square-root rate cannot be beaten: ψ(x) − x is above c√x and below −c√x infinitely often (Littlewood 1914 proved more). If every zero is on the line, then in log time (ψ(x) − x)/√x has mean square Σ 1/\|ρ\|² = 2 + γ − ln 4π (Cramér 1922) | root mean square 0.221, 0.218, 0.213, 0.214 over four decades, against √(2 + γ − ln 4π) = 0.2149 |
+
+**Pólya's warning** [NAMED]. It is the lens's own lesson about kill conditions.
+- Pólya (1919) conjectured that L(x) ≤ 0 for every x ≥ 2: that up to any point, at least as many numbers have an odd
+  number of prime factors as an even number.
+- It holds at every x this page's check reaches, to 10⁷, and far beyond.
+- It is false. Haselgrove (1958) proved that it fails somewhere, and Tanaka (1980) found the first failure, at
+  x = 906 150 257.
+- A pattern that holds for ten million steps can fail near a billion. A check up to a bound is evidence of nothing
+  past the bound, and every measured row in this table is a measurement, not a proof.
+
+**A failure worth keeping** [measured]. The spectrum row needs care.
+- With a sharp cutoff and the straight line left in, none of the 13 strongest lines falls within 0.05 of one of the
+  first 13 zeros.
+- The peaks ring instead, at spacing 0.450, close to 2π/ln X = 0.455 for X = 10⁶.
+- The zeros appear only after the line is subtracted and the cutoff smoothed (the check "the same spectrum done
+  wrong").
+
+**Base 10 is a labelling** [READING; FENCE].
+- The author agreed (20 November) that 0–9 is the smallest wheel on which he saw roles that exist on every wheel.
+  The last-digit row shows one such role on wheels 12 and 30 as well.
+- Under n → 10 − n his colours pair as red–violet, orange–indigo and yellow–blue, with black and green fixed. That is
+  as the handoff records it, and it is a reading, not mathematics.
+
+**The fence** [FENCE].
+- The speed of light does not enter.
+- What carries over from physics is structure only:
+  - a hard limit, and a system that runs at it (the square-root rate);
+  - causality as confinement to a half-plane;
+  - the scattering picture of Faddeev and Pavlov (1972) and of Lax and Phillips (1976), in which the zeta function
+    appears in the scattering of waves on the modular surface.
+- Those papers have not been read here beyond that sentence.
+
+## 9. What this page is, and is not
 
 - **Is:** the author's lens in the author's words, each part next to what it became and how firmly that
   stands. It maps the person to the results, so that a reader can judge both.
 - **Is not:** a claim that the lens proves anything by itself. The theorems stand on their proofs and
   their scripts. The lens is how they were found, and where to look next. Physics stays behind the fence.
 
-The quotations are the author's typed words, checked word for word against the author's dated record.
+The quotations in §1–§7 are the author's typed words, checked word for word against the author's dated record. Those
+of §8 are quoted as the lens handoff of 20 November 2026 records them; that day's chat has not been checked against a
+transcript.
 
 ## Sources
 
@@ -280,4 +345,23 @@ The quotations are the author's typed words, checked word for word against the a
   (2007).
 - P. Delsarte, J.-M. Goethals and J. J. Seidel, "Spherical codes and designs", *Geometriae Dedicata* 6
   (1977).
+- For §8:
+  - D. Zagier, "A one-sentence proof that every prime p ≡ 1 (mod 4) is a sum of two squares", *Amer. Math.
+    Monthly* 97 (1990).
+  - G. Pólya (1919); C. B. Haselgrove, "A disproof of a conjecture of Pólya", *Mathematika* 5 (1958);
+    M. Tanaka, *Tokyo J. Math.* 3 (1980), the first counterexample.
+  - H. Davenport and H. Heilbronn, "On the zeros of certain Dirichlet series", *J. London Math. Soc.* 11 (1936);
+    R. Spira, "Some zeros of the Titchmarsh counterexample", *Math. Comp.* 63 (1994).
+  - D. H. Lehmer, "On the roots of the Riemann zeta-function", *Acta Math.* 95 (1956).
+  - R. J. Lemke Oliver and K. Soundararajan, "Unexpected biases in the distribution of consecutive primes",
+    *Proc. Natl. Acad. Sci. USA* 113 (2016).
+  - F. Mertens (1898), the 3-4-1 inequality; X.-J. Li, "The positivity of a sequence of numbers and the Riemann
+    hypothesis", *J. Number Theory* 65 (1997).
+  - G. H. Hardy and S. Ramanujan (1918), the circle method; S. Ramanujan (1918), his sums.
+  - F. Hausdorff (1914) and S. Banach and A. Tarski (1924), free groups of rotations and the paradox.
+  - B. Gross and D. Zagier (1986); V. Kolyvagin (1988).
+  - J. E. Littlewood, "Sur la distribution des nombres premiers", *C. R. Acad. Sci. Paris* 158 (1914);
+    H. Cramér, "Ein Mittelwertsatz in der Primzahltheorie", *Math. Z.* 12 (1922).
+  - L. D. Faddeev and B. S. Pavlov (1972); P. Lax and R. Phillips, *Scattering Theory for Automorphic Functions*
+    (1976).
 - The other sources are on the pages each part links to.

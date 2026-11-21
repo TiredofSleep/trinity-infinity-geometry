@@ -64,6 +64,12 @@ Use the conventions of [`TORUS_MOMENTS.md`](TORUS_MOMENTS.md) §1.
 - **Known:** the bound follows from Gurevich and Hadani's Theorem 4.2. This page restates it and measures it.
 - **Our search** found no earlier statement of it in the vocabulary of Ramanujan graphs. That is a statement about
   the search, not a claim of novelty.
+- **Earlier uses of the name in this project** (the handoff's Part C, checked 21 November 2026):
+  - the Ramanujan–Petersson bound: J55 checks |a_p| ≤ 2p^(5/2) for its weight-6 form at every prime p ≤ 97;
+  - Ramanujan sums: the April 2026 reflection audit writes its eigenvalues as c(j, 10), and J24 asks whether its
+    spectral product has a Ramanujan-sum form.
+
+  None of them uses the phrase "Ramanujan graph".
 - **Not claimed:** nothing here bears on the Riemann hypothesis. "Ramanujan" is used in the graph-theory sense only.
 - **Open (the handoff's Part E, not yet registered):** whether the top of the spectrum, 2 − max λ/√p, behaves like
   independent draws from the semicircle or like a random matrix. A pilot (20 November, not registered) found

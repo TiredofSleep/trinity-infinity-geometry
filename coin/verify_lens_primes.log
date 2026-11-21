@@ -1,0 +1,23 @@
+[PASS] flip d -> n/d: the 65 numbers up to 100000 with exactly three divisors (one pair of sides and the edge sqrt n) are the prime squares
+[PASS] Wilson: (n - 1)! = -1 (mod n) exactly when n is prime, n = 2..3000
+[PASS] Zagier: for every n = 1 (mod 4) up to 2000 his map is an involution of {x^2 + 4yz = n} with floor(tau(n)/2) fixed points; exactly one when n is a prime or a prime square
+[PASS] Liouville's divisor sum: sum of lambda(d) over d | n is 1 on squares and 0 elsewhere, n <= 200000
+[PASS] Polya's walk to 10^7: L(x) = sum of lambda(n), n <= x, is never positive for 2 <= x <= 10^7 (largest 0); L(x)/sqrt(x) for 100 <= x <= 10^7 lies in [-1.330, 0.000]
+[PASS] Davenport-Heilbronn balance: Lambda(s) = (5/pi)^((s+1)/2) Gamma((s+1)/2) f(s) satisfies Lambda(s) = Lambda(1 - s): relative error 8.0e-31
+[PASS] its zero off the line: f has a zero at 0.8085171824566374 + 85.699348485377592 i (Spira 1994), |f| = 1.23e-32; its mirror 1 - conj(z) = 0.1914828175433626 + 85.699348485377592 i is a zero too
+[PASS] no Euler product: its coefficients have a(6) = 1.0 but a(2) a(3) = -kappa^2 = -0.0807009, so it is not multiplicative
+[PASS] Lehmer's pair: zeros of Z(t) at 7005.06286617 and 7005.10056467, 0.0377 apart; |Z| between them peaks at 0.00397, against a median peak of 1.60 over 6990-7020 (34 peaks)
+[PASS] last digits: primes 11..10^8: a last digit repeats in 0.1718 of consecutive pairs (0.1693 averaged over the four digits, first half), against 0.25; predicting the next residue from the last beats chance by x1.245 mod 10, x1.260 mod 12, x1.867 mod 30
+[PASS] the primes' spectrum: the 13 strongest lines of sum (Lambda(n) - 1) n^(-1/2) (1 - ln n/ln X) cos(t ln n), n <= 10^6, sit at the first 13 zeros of zeta, within 0.007
+[PASS] the same spectrum done wrong: with a sharp cutoff and the main term left in, only 0 of the first 13 zeros lie within 0.05 of one of the 13 strongest lines; the peaks ring at median spacing 0.450, against 2 pi/ln X = 0.455
+[PASS] Mertens' 3-4-1: at sigma = 1.05, zeta(s)^3 |zeta(s+it)|^4 |zeta(s+2it)| >= 257.5 for 0.5 <= t < 100, and no |zeta(1.05 + it)| exceeds zeta(1.05); for the Davenport-Heilbronn blend the same product falls to 0.0042 at t = 85.7, below 1 at 0.57 of the heights
+[PASS] Li's numbers: lambda_1..lambda_12 = 0.0230957, 0.0923457, 0.207639, 0.36879, 0.575543, 0.827566, 1.12446, 1.46576, 1.85092, 2.27934, 2.75036, 3.26326, all positive; lambda_1 = 1 + gamma/2 - ln(4 pi)/2 = 0.023095709
+[PASS] Moebius balance: sum of mu(d) over d | n is 0 for 1 < n <= 100000; sqrt(x) * sum of mu(n)/n, n <= x, at x = 10..10^7: +0.286, +0.311, +0.140, -0.208, -0.154, +0.201, +0.321
+[PASS] the circle method: (1/N) sum of Lambda(n) e(n/q), N = 10^6, is within 0.0014 of mu(q)/phi(q) for q = 1..16; at 200 random points its median size is 0.0022
+[PASS] wheel 9: primes 11..10^7 mod 9: the triangle 0,3,6 empty, 1,4,7 holds 0.4999 and 2,5,8 0.5001, each balanced within 0.00025 of the centre; doubling runs [1, 2, 4, 8, 7, 5]; balance point of all primes on wheels 9, 25, 49: 0.00022, 0.00081, 0.00020
+[PASS] free turns: turns by arccos(3/5) about two perpendicular axes: the 13120 reduced words of length 1-8 give 13120 distinct rotations, none the identity (exact arithmetic)
+[PASS] rank = order of vanishing: 11a1, 37a1, 389a1, 5077a1: rank and analytic rank 0/0, 1/1, 2/2, 3/3; 11a1 has torsion of order 5 and L(1) is not 0
+[PASS] the pairing as a law of cosines: 389a1, P = (-1, 1), Q = (0, 0): h(P) = 0.686667, h(Q) = 0.327001, h(P + Q) = 0.476712; <P, Q> = -0.268478, angle 124.51 degrees, regulator 0.15246018
+[PASS] Cramer's mean square: (psi(x) - x)/sqrt(x), sampled evenly in ln x: rms 0.221, 0.218, 0.213, 0.214 over 10^3-10^4, 10^4-10^5, 10^5-10^6, 10^6-2*10^7; sqrt(2 + gamma - ln 4 pi) = 0.2149
+
+21 of 21 checks pass (451 s)
