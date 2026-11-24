@@ -384,8 +384,24 @@ its own graveyard. These died, with what killed them:
   - **A novelty claim:** "nobody we could find has asked how those points are distributed" (the handoff, Part F).
     - Watkins had asked in 2006. "Some heuristics about elliptic curves" (arXiv math/0608766), §6.4, places the
       lattices of 2 143 079 rank-2 curves of prime conductor in SL₂(ℤ)\H, in the same coordinates.
-    - He finds them rounder than the uniform law: 35.4% have elongation at least 2, against 47.7%. He also finds x
-      skewed toward ½.
+    - He reports them rounder than the uniform law: 35.4% have elongation at least 2, against 47.7%. He also
+      reports x skewed toward ½. Round 10 (below) found that the 35.4% does not reproduce.
+  - **From round 10, on the Stein–Watkins prime tables (2026-11-24;
+    `registered/REGISTERED_2026-11-24_the_watkins_tension.md`):**
+    - **"A uniform sample of Watkins's population reproduces his 35.4%"** (Claude Code, W1). 4 000 of his 2 143 079
+      curves are 9.17% ± 0.46% thin. 0.10% reach elongation 4, against his 9.4%, and none reaches 8, against his
+      1.7%.
+      - The lattices are right. The curves below 5 × 10⁵ match Cremona's exactly, and for 220 of 220 curves the BSD
+        formula gives a perfect square for Sha.
+      - The cause of the published figure is not known. One guess died: doubling the pairing's off-diagonal gives
+        10.1%.
+    - **"Watkins's curves have more elongated period lattices, which explains the gap"** (Claude Code, the Part F
+      page of 21 November). The median Im τ is 1.31 to 1.35 at every conductor, and there was no gap in the curves.
+    - **"The thin share rises above 0.25 by 10¹⁰"** (Claude Code, the rival). It is 9.8% near 10¹⁰.
+    - **"The shape law given the period lattice does not depend on conductor"** (Claude Code, W3). In the lowest Im τ
+      bin the thin share is 0.8% below 5 × 10⁵ and 7.6% near 10¹⁰ (+7.7 s.e.).
+    - **Not a death, recorded beside them:** the author's "less and less likely" (rounds 1 and 2) is not decided out
+      to 10¹⁰. For prime conductors the fall stops above 10⁷, flat at 8–10%.
 - **From round 33, what the winners share (2026-11-17; `towers/seven_levels/winners_test.log`):**
   - **"From 17 on the landscape is glassy: the best is reached by one climb"** (W2a). At 41 the best was reached
     by 24 of 630 climbs.

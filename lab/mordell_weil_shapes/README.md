@@ -30,6 +30,8 @@ Watkins, "Some heuristics about elliptic curves" (arXiv math/0608766, 2006), §6
 - He placed their lattices in the same coordinates and compared them with the same uniform law.
 - He found them rounder than the uniform law: 35.4% thin, against 47.7%. He also found x skewed toward ½. He left open
   whether this is an artefact of small discriminants or a sign that the uniform law is simply wrong.
+- **His figures do not reproduce (round 10, below).** On his own population, with generators checked by the BSD
+  formula, 9.2% are thin, not 35.4%.
 
 The handoff's "nobody we could find has asked" was wrong, and it is in the graveyard.
 
@@ -56,25 +58,34 @@ trends and splits by conductor, torsion, isogeny and real components; rank 3 aga
 - **Not yet read:** Park, Poonen, Voight and Wood's model, and Delaunay's heuristics. Both concern ranks and Sha
   rather than shapes.
 
-## The tension with Watkins (open; [`watkins_compare.py`](watkins_compare.py), [`watkins_compare.log`](watkins_compare.log))
+## The tension with Watkins, resolved by round 10 ([`registered/REGISTERED_2026-11-24_the_watkins_tension.md`](registered/REGISTERED_2026-11-24_the_watkins_tension.md))
 
 | share with elongation at least | 1 | 2 | 4 | 8 | 16 |
 |---|---|---|---|---|---|
 | uniform law, (3/π)/Y | 0.955 | 0.477 | 0.239 | 0.119 | 0.060 |
-| Watkins: prime conductor below 10¹⁰ | 0.935 | 0.354 | 0.094 | 0.017 | 0.002 |
+| Watkins (2006): prime conductor below 10¹⁰, as published | 0.935 | 0.354 | 0.094 | 0.017 | 0.002 |
+| **the same population, recomputed here (4 000 at random)** | **0.891** | **0.092** | **0.001** | **0** | **0** |
 | Cremona: prime conductor below 5 × 10⁵ (1 052 curves) | 0.885 | 0.101 | 0.003 | 0 | 0 |
 | Cremona: every conductor below 5 × 10⁵ (279 056 curves) | 0.928 | 0.199 | 0.019 | 0.0002 | 0 |
 
-- **The populations should match.** Watkins notes that his prime-conductor curves have |Δ| = N with few exceptions.
-  All 1 052 of Cremona's prime-conductor rank-2 curves have |Δ| = N too.
-- **Yet Cremona's are far rounder.** Among them the thin share falls with conductor: 17% below 50 000, and 7% above
-  300 000. That is the direction of the full tables' trend, and the opposite of what reaching 35% by 10¹⁰ would need.
-- **The shape follows the curve's own period lattice.** Among prime conductors the thin share is 0.5–1% while the
-  period lattice's Im τ is below 1.53, and 34% in its top fifth (Im τ from 2.13 to 6.03), which is Watkins's level. A
-  sample richer in elongated period lattices would be thinner. Whether Watkins's sample is richer in them is not
-  checked here; that needs the Stein–Watkins curves.
-- **The horizontal skew agrees.** For all of Cremona's curves with y ≥ 1, the share in each tenth of x rises from
-  0.087 to 0.101–0.104. Watkins's runs from 0.090 to 0.105.
+- **What looked like a tension.** Cremona's prime-conductor curves seemed far rounder than Watkins's: 10.1% thin
+  against 35.4% ([`watkins_compare.py`](watkins_compare.py), [`watkins_compare.log`](watkins_compare.log)). Both
+  populations have |Δ| = N.
+- **Round 10 took Watkins's own curves.** It used the Stein–Watkins prime tables, which hold 2 143 079 classes of
+  analytic rank 2, his count. The generators were found with PARI ([`watkins_round.py`](watkins_round.py)).
+  - Below 5 × 10⁵ the tables hold exactly Cremona's 1 052 curves, and their shapes match Cremona's to 4 × 10⁻¹⁶.
+  - For 220 of 220 curves checked, out to 10¹⁰, the BSD formula with these regulators gives a perfect square for Sha.
+- **The result:** 9.2% ± 0.5% of Watkins's population is thin, not 35.4%. No curve reaches elongation 8, where he
+  reports 1.7%.
+  - From 5 × 10⁴ to 10¹⁰ the thin share is flat at 8–10%.
+  - The curves' period lattices do not change shape with conductor either.
+- **Unknown:** the cause of the published figures. Doubling or halving the pairing's off-diagonal does not produce
+  them.
+- **What died with it:** the reconciliation this page offered on 21 November. It said Watkins's curves might have
+  more elongated period lattices; there was nothing to reconcile.
+- **One part of Watkins's report does reproduce: the horizontal skew.** For all of Cremona's curves with y ≥ 1, the
+  share in each tenth of x rises from 0.087 to 0.101–0.104, against his 0.090 to 0.105. The prime-conductor sample of
+  round 10 is too small to show it.
 
 ## Reproduced here ([`analyse.log`](analyse.log))
 
@@ -119,6 +130,7 @@ positive discriminant. So 6 curves were probably dropped there.
 | 7 | Nov 20 | rational points on the closed component pack better (the author's sentence) | pass, 6.1 s.e. |
 | 8 | Nov 20 | at rank 3 a lattice and its dual pack differently (Claude, two-sided) | pass, 15.6 s.e.; Claude's direction was wrong |
 | 9 | Nov 21 | "every loop fails a little, none fails badly" (the author) | strict **miss**; graded pass, 19.7 s.e.; Claude's rival died |
+| 10 | Nov 24 | on the Stein–Watkins tables: Watkins's 35.4% reproduced (Claude); thin lattices keep getting rarer out to 10¹⁰ (the author's sentence of rounds 1 and 2) | Watkins's figure **does not reproduce** (9.2%); the author's sentence is not decided (flat at 8–10%); Claude's rival and W3 died |
 
 **Round 9** ([`REGISTERED_2026-11-21_every_loop_fails_a_little.md`](registered/REGISTERED_2026-11-21_every_loop_fails_a_little.md))
 was registered and pushed before any shape was computed. It ran on the 69 616 non-optimal curves of the rank-2
@@ -132,9 +144,9 @@ classes, which no script had read for shape.
 
 ## Open, for the author
 
-- **Fresh data beyond Cremona's tables.** One source is LMFDB above conductor 500 000; it answers bursts of queries
-  with a captcha, so no bulk queries. The other is the Stein–Watkins tables, a download that would also test the
-  tension directly.
+- **Fresh data beyond Cremona's tables.** The Stein–Watkins tables are now in hand: prime conductors to 10¹⁰ and all
+  conductors to 10⁸, though not complete. Round 10 used the prime tables. The torsion and isogeny rounds could be run
+  again on the all-conductor tables.
 - **Rounds that round 9 names:**
   - in classes of three or more curves, is the stretch factor the isogeny's degree?
   - does optimality pick the rounder member of a pair?

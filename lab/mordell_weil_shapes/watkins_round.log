@@ -1,0 +1,39 @@
+==== CHECK OF THE PIPELINE AND FAILURES ====
+  A: 1052 curves, 0 failures (0.000%), median 0.01 s, slowest 0.0 s
+  B: 2000 curves, 2 failures (0.100%), median 0.02 s, slowest 0.1 s
+  C: 2000 curves, 15 failures (0.750%), median 0.03 s, slowest 0.1 s
+  D: 2000 curves, 26 failures (1.300%), median 0.03 s, slowest 0.1 s
+  U: 4000 curves, 32 failures (0.800%), median 0.03 s, slowest 0.1 s
+W0: stratum A has 1052 curves; 1052 matched to Cremona's prime-conductor rank-2 curves (by conductor and j), 0 absent from Cremona's tables, 0 without two points; largest shape difference 4.44e-16. Cremona has 1052 such curves, so Stein-Watkins holds 1052 of them  -> PASS
+
+==== REGISTERED CRITERIA ====
+W1 (Watkins reproduced): U thin share 364/3968 = 0.0917 (s.e. 0.0046); window 0.32-0.39 -> MISS
+   stratum A: thin share 106/1052 = 0.1008 (s.e. 0.0093)
+   stratum B: thin share 163/1998 = 0.0816 (s.e. 0.0061)
+   stratum C: thin share 172/1985 = 0.0866 (s.e. 0.0063)
+   stratum D: thin share 194/1974 = 0.0983 (s.e. 0.0067)
+W2 (the author's sentence carried to 10^10: A >= B >= C >= D) -> NOT DECIDED (neither monotone nor a reversal)
+RIVAL (D's thin share above 0.25) -> DIED
+W3 (the shape law given Im tau does not depend on the conductor) -> MISS
+   Im tau [0.866, 1.5): A 5/615, D 86/1133; difference +0.0678, +7.7 s.e.
+   Im tau [1.5, 2.0): A 22/195, D 22/344; difference -0.0489, -1.8 s.e.
+   Im tau [2.0, 2.5): A 36/126, D 31/239; difference -0.1560, -3.4 s.e.
+   Im tau [2.5, 3.5): A 30/92, D 33/185; difference -0.1477, -2.6 s.e.
+   Im tau [3.5, inf): A 13/24, D 22/73; fewer than 30 in one of them, not compared
+
+==== RECORDED, NO PREDICTION ====
+  A: n = 1052; shares y >= 2, 4, 8, 16: 0.1008, 0.0029, 0.0000, 0.0000; Im tau median 1.312, upper quartile 1.930
+  B: n = 1998; shares y >= 2, 4, 8, 16: 0.0816, 0.0030, 0.0000, 0.0000; Im tau median 1.351, upper quartile 1.926
+  C: n = 1985; shares y >= 2, 4, 8, 16: 0.0866, 0.0030, 0.0000, 0.0000; Im tau median 1.334, upper quartile 1.929
+  D: n = 1974; shares y >= 2, 4, 8, 16: 0.0983, 0.0020, 0.0000, 0.0000; Im tau median 1.349, upper quartile 2.014
+  U: n = 3968; shares y >= 2, 4, 8, 16: 0.0917, 0.0010, 0.0000, 0.0000; Im tau median 1.339, upper quartile 1.945
+  Watkins: 0.354, 0.094, 0.017, 0.002
+  x by tenths (y >= 1), A: 0.076 0.097 0.120 0.104 0.093 0.130 0.104 0.091 0.098 0.086
+  x by tenths (y >= 1), D: 0.108 0.105 0.100 0.098 0.098 0.112 0.099 0.110 0.084 0.088
+  x by tenths (y >= 1), U: 0.107 0.102 0.104 0.089 0.098 0.101 0.097 0.104 0.106 0.093
+  x by tenths, Watkins:   0.090 0.096 0.098 0.099 0.100 0.100 0.102 0.105 0.106 0.105
+  thin share by Im tau, A: [0.866,1.5) 5/615; [1.5,2.0) 22/195; [2.0,2.5) 36/126; [2.5,3.5) 30/92; [3.5,inf) 13/24
+  thin share by Im tau, B: [0.866,1.5) 51/1167; [1.5,2.0) 20/375; [2.0,2.5) 24/199; [2.5,3.5) 42/175; [3.5,inf) 26/82
+  thin share by Im tau, C: [0.866,1.5) 81/1167; [1.5,2.0) 29/369; [2.0,2.5) 16/205; [2.5,3.5) 26/159; [3.5,inf) 20/85
+  thin share by Im tau, D: [0.866,1.5) 86/1133; [1.5,2.0) 22/344; [2.0,2.5) 31/239; [2.5,3.5) 33/185; [3.5,inf) 22/73
+  thin share by Im tau, U: [0.866,1.5) 158/2330; [1.5,2.0) 67/736; [2.0,2.5) 42/430; [2.5,3.5) 56/331; [3.5,inf) 41/141

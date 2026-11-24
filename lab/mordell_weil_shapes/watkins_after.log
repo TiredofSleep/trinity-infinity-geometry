@@ -1,0 +1,33 @@
+1. the BSD formula at large conductor (stratum D): analytic order of Sha from the generators found here
+   N = 9965558293: elongation 1.307, analytic rank 2, analytic Sha 1.000000
+   N = 9931263103: elongation 1.353, analytic rank 2, analytic Sha 1.000000
+   N = 9936099499: elongation 1.420, analytic rank 2, analytic Sha 1.000000
+   N = 9957987667: elongation 3.197, analytic rank 2, analytic Sha 1.000000
+   N = 9914326561: elongation 0.925, analytic rank 2, analytic Sha 1.000000
+   N = 9908833939: elongation 1.032, analytic rank 2, analytic Sha 1.000000
+   N = 9965114449: elongation 1.244, analytic rank 2, analytic Sha 1.000000
+   N = 9972491437: elongation 0.975, analytic rank 2, analytic Sha 1.000000
+   N = 9933766763: elongation 1.665, analytic rank 2, analytic Sha 1.000000
+   N = 9952072939: elongation 1.141, analytic rank 2, analytic Sha 1.000000
+   N = 9928258027: elongation 5.208, analytic rank 2, analytic Sha 1.000000
+   N = 9965833597: elongation 4.328, analytic rank 2, analytic Sha 1.000000
+   N = 9937377253: elongation 4.239, analytic rank 2, analytic Sha 1.000000
+   N = 9988573213: elongation 4.182, analytic rank 2, analytic Sha 1.000000
+   N = 9987238673: elongation 3.985, analytic rank 2, analytic Sha 1.000000
+   N = 9909217979: elongation 3.641, analytic rank 2, analytic Sha 1.000000
+   N = 9933964669: elongation 3.595, analytic rank 2, analytic Sha 1.000000
+   N = 9962925523: elongation 3.432, analytic rank 2, analytic Sha 1.000000
+   N = 9977648323: elongation 3.278, analytic rank 2, analytic Sha 1.000000
+   N = 9972410897: elongation 3.264, analytic rank 2, analytic Sha 1.000000
+   largest distance from a perfect square: 2.22e-16
+
+2. the shares under three readings of the height pairing (stratum U, Watkins's population)
+  Watkins (2006), section 6.4                           y>=1: 0.9350  y>=2: 0.3540  y>=4: 0.0940  y>=8: 0.0170  y>=16: 0.0020
+                                               x by tenths (y >= 1): 0.090 0.096 0.098 0.099 0.100 0.100 0.102 0.105 0.106 0.105
+  the pairing <P,Q> = (h(P+Q) - h(P) - h(Q))/2 n= 3968 (degenerate 0)  y>=1: 0.8906  y>=2: 0.0917  y>=4: 0.0010  y>=8: 0.0000  y>=16: 0.0000
+                                               x by tenths (y >= 1): 0.107 0.102 0.104 0.089 0.098 0.101 0.097 0.104 0.106 0.093
+  off-diagonal doubled, h(P+Q) - h(P) - h(Q)   n= 3968 (degenerate 0)  y>=1: 0.8979  y>=2: 0.1011  y>=4: 0.0040  y>=8: 0.0000  y>=16: 0.0000
+                                               x by tenths (y >= 1): 0.091 0.096 0.101 0.094 0.099 0.105 0.104 0.094 0.103 0.113
+  off-diagonal halved                          n= 3968 (degenerate 0)  y>=1: 0.9624  y>=2: 0.0938  y>=4: 0.0013  y>=8: 0.0000  y>=16: 0.0000
+                                               x by tenths (y >= 1): 0.194 0.185 0.195 0.206 0.220 0.000 0.000 0.000 0.000 0.000
+  the uniform law                                       y>=1: 0.9549  y>=2: 0.4775  y>=4: 0.2387  y>=8: 0.1194  y>=16: 0.0597
