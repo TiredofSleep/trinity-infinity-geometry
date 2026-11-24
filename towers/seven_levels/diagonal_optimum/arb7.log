@@ -1,0 +1,6 @@
+arb_check.py, p = 7: Arb ball arithmetic (python-flint 0.9.0, 64-bit balls), 4 worker processes
+2 candidate maximizers, certified boxes of half-width 0.004, Krawczyk boxes of half-width 1e-09
+certified: all (signs fixed, -Hessian positive definite on every B_c by interval Cholesky [smallest pivot 17.17], Krawczyk contraction on every X_c [smallest margin 1e-09]); symmetry images of X_0 inside every B_c: yes; B_c pairwise disjoint: yes
+S at the maximizer lies in [[2.45030411854008216 +/- 2.56e-18], [2.45030411854008219 +/- 9.94e-19]]
+boxes 100185058 by_bound 49894418 by_monotone 197739 by_certified_box 884 stuck 0; 34619.6 s
+VERDICT PASS (Arb): the maximum of S over diagonal states on 7 levels lies in [[2.45030411854008216 +/- 2.56e-18], [2.45030411854008219 +/- 9.94e-19]], attained exactly at the 2 certified critical points in D

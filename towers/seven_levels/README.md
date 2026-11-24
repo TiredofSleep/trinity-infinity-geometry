@@ -1090,6 +1090,10 @@ project, the statements and evidence are in a short note in standard terms:
   - The program certifies the neighbourhoods of the maximizers itself: fixed signs, a negative definite
     interval Hessian, and a Krawczyk test. 629 676 boxes, 11 seconds.
   - The same program reproduces Li and Luo's theorem at 3, and the theorem at 7 without the hand-proved lemma.
+  - A second program, [`diagonal_optimum/arb_check.py`](diagonal_optimum/arb_check.py), proves all three again in
+    Arb's ball arithmetic, with none of the first program's arithmetic. At 5 it encloses the maximum in
+    [1.97757582130854207, 1.97757582130854211]; at 7 it took 100 185 058 boxes and 9.6 hours. The candidates'
+    symmetries, which neither program checks, are checked separately in integer arithmetic.
 
 ## 23. Our space, and what it cannot hold [FORCED; FENCE]
 
@@ -1336,6 +1340,8 @@ diagonal_optimum/build.bat             # bb3.exe, bb5.exe, bb7.exe (MSVC)
 python diagonal_optimum/prepare.py 5   # candidate maximizers at 5 (likewise 3 and 7)
 diagonal_optimum/bb5.exe prove diagonal_optimum/candidates_5.txt 4   # the theorem at 5, seconds
 python diagonal_optimum/bb_selftest.py # the generalized prover against floating-point S, a minute
+python -I diagonal_optimum/symmetry_check.py   # the candidates' symmetries, exact integer checks
+python -I diagonal_optimum/arb_check.py 5 4    # the second proof, in Arb (python-flint); at 7 about ten hours
 python edge_rule.py test28             # round 28: the determinants of V29 to V39, blind, four minutes on four processes
 ```
 

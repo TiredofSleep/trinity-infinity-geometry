@@ -102,6 +102,7 @@ state's value. Equality holds only at the T states of the best class (c ∈ {3, 
   - Every rounding error is enclosed, and cos and sin come from its own interval enclosures, not from a library.
   - The constants and the lemmas at the maximizers are proved in exact rational arithmetic.
   - It discarded every one of its 47 174 654 boxes in 37 minutes ([`t7_rigorous.log`](t7_rigorous/t7_rigorous.log)).
+  - Two later programs prove it again: the generalized prover below, and a second proof in Arb's ball arithmetic.
   - Nothing is formally verified in a proof assistant.
 - **The control.** The float prover at p = 5 fails at once, finding a state above the T state, as Feng and Luo's
   result requires ([`t_optimal_7.py`](t_optimal_7.py), [`t_optimal_7.log`](t_optimal_7.log)).
@@ -118,6 +119,13 @@ S ≤ S*₅ = 1.97757582130854208841…, with equality exactly on one orbit of 5
 - The same program reproduces Li and Luo's theorem at 3 [LL], and the theorem at 7 without the hand-proved cube
   lemma. So at 3, 5 and 7 the most Wigner-negative diagonal state is known exactly: the T gate at 3 and 7, and an
   orbit of 500 at 5.
+- **A second proof.** A separate program, [`arb_check.py`](diagonal_optimum/arb_check.py), proves all three again.
+  - It works in Arb's ball arithmetic, with Arb's own cos and sin, and none of the first program's arithmetic.
+  - It examined 780 204 boxes at 5 and 100 185 058 at 7 ([`arb5.log`](diagonal_optimum/arb5.log),
+    [`arb7.log`](diagonal_optimum/arb7.log)).
+  - At 5 it encloses S*₅ in [1.97757582130854207, 1.97757582130854211].
+  - The candidates' symmetries, which neither program checks, are checked separately in integer arithmetic
+    ([`symmetry_check.log`](diagonal_optimum/symmetry_check.log)).
 
 **(7) A pattern by p mod 3, and where it ends** (rounds 31 and 32). One fixed search ran at every prime: L-BFGS on
 a smoothed Wigner norm, from about 650 starts, some random and some near the T states. Through p = 23 the T gate is
@@ -248,6 +256,8 @@ So each T state multiplies the cost by about (64/(9π²))·p ≈ 0.72p, against 
 [`winners_test.log`](winners_test.log)). [`t_optimal_7.py`](t_optimal_7.py) proves the theorem at p = 7
 ([`t_optimal_7_check.log`](t_optimal_7_check.log), [`t_optimal_7.log`](t_optimal_7.log),
 [`t_optimal_7_control.log`](t_optimal_7_control.log)). [`diagonal_optimum/`](diagonal_optimum/OPTIMUM.md) proves the
-theorem at 5 ([`bb5.log`](diagonal_optimum/bb5.log)). [`t7_rigorous/`](t7_rigorous/RIGOROUS.md) proves it again
-with rigorous bounds ([`constants.log`](t7_rigorous/constants.log), [`selftest.log`](t7_rigorous/selftest.log),
+theorem at 5 ([`bb5.log`](diagonal_optimum/bb5.log)), and [`arb_check.py`](diagonal_optimum/arb_check.py) proves
+the theorems at 3, 5 and 7 again in Arb ([`arb3.log`](diagonal_optimum/arb3.log),
+[`arb5.log`](diagonal_optimum/arb5.log), [`arb7.log`](diagonal_optimum/arb7.log)).
+[`t7_rigorous/`](t7_rigorous/RIGOROUS.md) proves the theorem at 7 again with rigorous bounds ([`constants.log`](t7_rigorous/constants.log), [`selftest.log`](t7_rigorous/selftest.log),
 [`t7_rigorous.log`](t7_rigorous/t7_rigorous.log)).

@@ -1,0 +1,4 @@
+p = 3: 2 candidates; symmetry data valid for 2 of 2; distinct (eps, alpha, t, beta, gamma): 2; sanity: |S(g phi) - S(phi)| <= 1.3e-15 at 200 random phi per candidate
+p = 5: 20 candidates; symmetry data valid for 20 of 20; distinct (eps, alpha, t, beta, gamma): 20; sanity: |S(g phi) - S(phi)| <= 1.8e-15 at 200 random phi per candidate
+p = 7: 2 candidates; symmetry data valid for 2 of 2; distinct (eps, alpha, t, beta, gamma): 2; sanity: |S(g phi) - S(phi)| <= 2.7e-15 at 200 random phi per candidate
+VERDICT PASS: every g_c is an affine map of F_p, conjugation or not, a diagonal Clifford phase and multiples of 2 pi, so it preserves S

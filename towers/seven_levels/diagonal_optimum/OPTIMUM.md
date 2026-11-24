@@ -7,9 +7,11 @@ value of its Wigner function. At the first three odd primes its maximum is now k
 
 | p | the maximum of S | attained at | proved by |
 |---|---|---|---|
-| 3 | 1.58625682771454… | the qutrit T state: 2 points of D, 18 states | `bb3.exe` (Li and Luo's theorem [LL], reproduced) |
-| **5** | **1.97757582130854208841…** | **one orbit of 500 states, not a T state** | **`bb5.exe`: new** |
-| 7 | 2.45030411854008217396… | the T states of the best class: 2 points of D, 98 states | [`../t7_rigorous/`](../t7_rigorous/RIGOROUS.md); again by `bb7.exe` |
+| 3 | 1.58625682771454… | the qutrit T state: 2 points of D, 18 states | `bb3.exe` (Li and Luo's theorem [LL], reproduced); again in Arb |
+| **5** | **1.97757582130854208841…** | **one orbit of 500 states, not a T state** | **`bb5.exe`: new**; again in Arb |
+| 7 | 2.45030411854008217396… | the T states of the best class: 2 points of D, 98 states | [`../t7_rigorous/`](../t7_rigorous/RIGOROUS.md); again by `bb7.exe` and in Arb |
+
+"Again in Arb" is a second proof with none of `bb.c`'s arithmetic, described below.
 
 **Theorem (p = 5).** Every diagonal state on five levels has
 
@@ -17,8 +19,9 @@ value of its Wigner function. At the first three odd primes its maximum is now k
 
 with equality exactly on one orbit of 500 states under the diagonal Clifford group: the 25 Clifford phases times the
 20 affine maps x ↦ αx + t, with complex conjugation acting inside the orbit.
-- The rigorous enclosure is S*₅ ∈ [1.9775758213085037, 1.9775758213085828]. The 60 digits above come from Newton's
-  method at 130 digits on the certified critical point.
+- `bb.c` encloses S*₅ in [1.9775758213085037, 1.9775758213085828]. The second proof, in Arb, encloses it in
+  [1.97757582130854207, 1.97757582130854211]. The 60 digits above come from Newton's method at 130 digits on the
+  certified critical point.
 - Feng and Luo report 500 diagonal gates at 5 that beat the T gate [FL26]. The optimal states form one orbit of
   exactly 500, matching their count. The theorem says that no other diagonal state does as well, and gives the
   common value S*₅.
@@ -49,7 +52,7 @@ c, the program then proves:
 3. the Krawczyk operator of ∇S maps a box X_c of half-width 10⁻⁹ into its own interior, so ∇S has exactly one zero
    φ_c* in X_c, and φ_c* is the maximum of S over B_c;
 4. for c > 0, the symmetry that produced the candidate maps X_0 into B_c, so φ_c* is the image of φ_0* and has the
-   same value;
+   same value (that each such map preserves S is checked separately, under "What is trusted");
 5. the boxes B_c are pairwise disjoint, so the critical points are distinct.
 
 The branch and bound then discards every box of D:
@@ -77,6 +80,36 @@ by the bound, 163 901 by monotonicity and 884 inside the cubes.
 eac005c6f8bc3068403eb44bf0b6dcea70e051957837425f3cf7e337945c6cb6. Both hashes are of the files as stored in the
 repository, with LF line endings.
 
+## A second proof, in Arb ([`arb_check.py`](arb_check.py))
+
+`bb.c` does its own interval arithmetic, so an error in it, such as a wrong rounding direction or cosine enclosure,
+would go unseen. [`arb_check.py`](arb_check.py) proves the three theorems again with none of that arithmetic.
+- Every operation is a ball operation of Arb, through python-flint 0.9.0 with 64-bit balls. π, cos and sin are Arb's
+  own.
+- The logic was coded again from this page's statement, with bounds of its own. It has the same domain D, the same
+  first grid, the same three rules and the same five certificates. Negative definiteness is shown by an interval
+  Cholesky factorization of −H, with every pivot certainly positive.
+- Its bounds are simpler than `bb.c`'s.
+  - Each cosine stays within w(|sin θ_c| + w) of its value at the centre.
+  - The second-order remainder is at most w² per term.
+  - So it needs more boxes: about twice as many at 7.
+
+| p | boxes | by the bound | by monotonicity | in a certified box | time | the maximum lies in | log |
+|---|---|---|---|---|---|---|---|
+| 3 | 380 | 114 | 72 | 6 | 0.7 s (2 processes) | [1.58625682771454450, 1.58625682771454453] | [`arb3.log`](arb3.log) |
+| 5 | 780 204 | 318 720 | 70 621 | 793 | 105 s (4 processes) | [1.97757582130854207, 1.97757582130854211] | [`arb5.log`](arb5.log) |
+| 7 | 100 185 058 | 49 894 418 | 197 739 | 884 | 9.6 hours (4 processes) | [2.45030411854008215, 2.45030411854008220] | [`arb7.log`](arb7.log) |
+
+- Every verdict is PASS, and every candidate is certified. The smallest pivots of −H on the certified boxes are
+  5.149, 7.114 and 17.17.
+- The enclosures are a few times 10⁻¹⁷ wide, against 10⁻¹³ for `bb.c`, because Arb's 64-bit balls carry less
+  rounding error than doubles padded outward at every step.
+- Each enclosure lies inside `bb.c`'s, and each contains the value known independently:
+  - at 3, the T state's value, (1 + 4 cos(π/9))/3 = 1.586256827714544512… (checked at 40 digits);
+  - at 5, the 130-digit value;
+  - at 7, the T state's value.
+- The run at 7 used 4 processes at below-normal priority on a home computer.
+
 ## Checks that are not part of the proof ([`bb_selftest.py`](bb_selftest.py), [`bb_selftest.log`](bb_selftest.log))
 
 At each of p = 3, 5, 7, the program's bounds were tested on 2000 boxes, from the first grid down to 10⁻⁷, many near
@@ -89,19 +122,33 @@ the maximizers.
 
 ## What is trusted
 
-The same as for the p = 7 proof:
-- IEEE 754 double arithmetic, rounded to nearest, as compiled by MSVC with `/fp:strict` on x64;
-- Python's exact integers and fractions, for the constants.
+Each theorem now rests on two arithmetics, and either one suffices:
+- **for `bb.c`:** IEEE 754 double arithmetic, rounded to nearest, as compiled by MSVC with `/fp:strict` on x64, with
+  Python's exact integers and fractions for the constants, as for the p = 7 proof;
+- **for `arb_check.py`:** Arb's ball arithmetic and its π, cos and sin (FLINT, through python-flint 0.9.0), run by
+  CPython. Its floating-point steps need no trust, since any values there leave the proof valid: box centres and
+  splits, and the approximate inverse in the Krawczyk test.
 
-`prepare.py` is not trusted: its candidates are only starting points, and everything the proof uses about them is
-certified in `bb.c`. Nothing is formally verified in a proof assistant, and no human referee has checked it.
+Two things are shared, so running twice does not check them:
+- **The mathematics:** the reduction to D, the three rules and the derivation of the bounds
+  ([`../t7_rigorous/RIGOROUS.md`](../t7_rigorous/RIGOROUS.md) §2–3 and this page). A mistake there would pass both.
+- **The candidates,** from `prepare.py`, which is not trusted.
+  - Their points are only starting points: everything the proofs use about them is certified.
+  - Their symmetries are different. Step 4 assumes that each g_c preserves S, and neither program checks it.
+  - [`symmetry_check.py`](symmetry_check.py) checks it, in exact integer arithmetic, for all 24 candidates. Each g_c
+    is an affine map of F_p, with or without conjugation, followed by a diagonal Clifford phase and whole turns
+    ([`symmetry_check.log`](symmetry_check.log)).
+
+Nothing is formally verified in a proof assistant, and no human referee has checked it.
 
 ## Standing
 
 - **p = 3** reproduces Li and Luo's theorem [LL] that the qutrit T gate is optimal.
 - **p = 5** is new as far as we know. Feng and Luo found 500 gates beating the T gate [FL26]. Here the optimal
-  states are proved to be exactly one orbit of 500, with their value, enclosed to 10⁻¹³.
-- **p = 7** is the theorem of [`../t7_rigorous/`](../t7_rigorous/RIGOROUS.md).
+  states are proved to be exactly one orbit of 500, with their value enclosed to 10⁻¹³, and to 4·10⁻¹⁷ by the
+  second proof.
+- **p = 7** is the theorem of [`../t7_rigorous/`](../t7_rigorous/RIGOROUS.md), now proved three times: there, by
+  `bb7.exe`, and in Arb.
 
 At 11 the same method would need a 10-dimensional search, which is out of reach as it stands.
 
@@ -113,6 +160,8 @@ build.bat                       # MSVC: bb3.exe, bb5.exe, bb7.exe (cl /O2 /fp:st
 python prepare.py 5             # candidates -> candidates_5.txt (likewise 3 and 7)
 bb5.exe prove candidates_5.txt 4
 python bb_selftest.py           # the checks above, a minute
+python -I symmetry_check.py     # the candidates' symmetries, exact integer checks, a second
+python -I arb_check.py 5 4      # the second proof, in Arb (pip install python-flint): 3 and 5 in minutes, 7 in ~10 hours
 ```
 
 ## Sources
