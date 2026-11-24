@@ -36,12 +36,25 @@ The handoff's "nobody we could find has asked" was wrong, and it is in the grave
 What the work here adds, as far as we know, uses Cremona's complete tables rather than a sample ordered by
 discriminant: every optimal rank-2 curve of conductor below 500 000, 279 056 in all. On them it registers and scores
 trends and splits by conductor, torsion, isogeny and real components; rank 3 against its dual; and the round of
-21 November. **Beyond Watkins, the literature has not been checked.** Still to read before any novelty claim:
-- Park, Poonen, Voight and Wood's model;
-- Delaunay's heuristics;
-- Elkies's and Shioda's Mordell–Weil lattices over function fields;
-- Hindry and Silverman, and Lang's height conjecture;
-- Bhargava and Harron on shapes of number fields.
+21 November.
+
+**A first literature pass (24 November 2026; web searches, not a full reading).**
+- **On the distribution of shapes:** nothing was found beyond Watkins. Prakash ("Effective height bounds from
+  Mordell–Weil lattice symmetries", arXiv 2509.22672, 2025) uses the height Gram matrix of a rank-2 Mordell–Weil
+  lattice and its Bravais type, but to bound heights on curves of higher genus, not to study shapes.
+- **On torsion and the shape:** nothing was found that states round 9's effect.
+- **The nearest known mechanism concerns sizes, not shapes.**
+  - Lang's conjecture puts a floor under the height of a point of infinite order, ĥ(P) ≥ c log|Δ|. Silverman proved
+    it for integral j-invariant, and Hindry and Silverman under the abc conjecture.
+  - In function fields, Jain ("Points of low height on elliptic surfaces with torsion", *LMS J. Comput. Math.* 13,
+    2010) found the smallest heights when there is a 2- or 3-torsion point. Elkies (arXiv math/0608593, 2006) found
+    them without torsion.
+  - Comparing those two minima is the natural first test of "torsion raises the floor". It has not been done here.
+- **The contrast:** Bhargava and Harron (*Compositio* 2016) proved that the lattice shapes of rings of integers in
+  Sₙ number fields of degree 3, 4 and 5 *are* equidistributed. Mordell–Weil lattices, by Watkins's data and
+  Cremona's, are not.
+- **Not yet read:** Park, Poonen, Voight and Wood's model, and Delaunay's heuristics. Both concern ranks and Sha
+  rather than shapes.
 
 ## The tension with Watkins (open; [`watkins_compare.py`](watkins_compare.py), [`watkins_compare.log`](watkins_compare.log))
 
